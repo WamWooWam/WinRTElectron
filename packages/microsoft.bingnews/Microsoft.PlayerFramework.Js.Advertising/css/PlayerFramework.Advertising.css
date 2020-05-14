@@ -1,0 +1,71 @@
+﻿.pf-ad-container {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+}
+
+.pf-container:not(.pf-show-ad-container) .pf-ad-container {
+    display: none;
+}
+
+.pf-container.pf-show-ad-container .pf-error-container, .pf-container.pf-show-ad-container .pf-loader-container {
+    display: none;
+}
+
+.pf-linear-ad, .pf-nonlinear-ad {
+    display: block;
+    visibility: hidden;
+}
+
+.pf-linear-ad > div, .pf-nonlinear-ad > div {
+    display: -ms-flexbox;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+}
+
+.pf-linear-ad a, .pf-nonlinear-ad a {
+    display: block;
+    margin: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    -ms-flex-item-align: start;
+}
+
+.pf-linear-ad video {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pf-nonlinear-ad #item {
+    display: block;
+    -ms-flex-item-align: end;
+}
+
+.pf-ad-icon-container {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.pf-ad-icon-container img {
+    display: block;
+    position: absolute;
+}
+
+.pf-companion-ad {
+    display: inline-block;
+}
+

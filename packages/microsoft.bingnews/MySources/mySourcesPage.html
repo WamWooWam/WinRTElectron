@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>sources</title>
+<script src="///MSAdvertisingJS/ads/ad.js" ></script>
+<script src="/common/js/ads.js"></script>
+<!--Common Controls References-->
+<script src="/common/js/utils.js"></script>
+<script src="/common/js/newscluster.js"></script>
+<script src="/common/js/articlereader.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<!--NYT-->
+<link rel="stylesheet" href="/nytshared/nytTheme.css" />
+<link rel="stylesheet" href="/nytshared/nytCategoryPano.css" />
+<script src="/nytshared/nytEntityClusterConfig.js"></script>
+<!--WSJ-->
+<link rel="stylesheet" href="/wsjshared/wsjTheme.css" />
+<link rel="stylesheet" href="/wsjshared/wsjPano.css" />
+<script src="/wsjshared/wsjEntityClusterConfig.js"></script>
+<script src="/js/newsUtilities.js"></script>
+<script src="/js/bindings.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/MySources/mySourcesPage.js"></script>
+<script src="/js/sourceData.js"></script>
+<script src="/js/rssSourceData.js"></script>
+<script src="/dynamicPano/dynamicPanoData.js"></script>
+<script src="/common/js/dynamicpano.js"></script>
+<script src="/MySources/providers.js"></script>
+</head>
+<body>
+<div class="mySources fragment">
+<div class="platformMainContent" id="news_Panorama" data-win-control="CommonJS.Immersive.SemanticZoomPanorama"
+data-win-bind="winControl.title: title; winControl.panoramaState: panoramaState;winControl.headerOptions: headerOptions; winControl.semanticZoomRenderer:semanticZoomRenderer; winControl.clusterDataSource: clusterDataSource;">
+</div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="newsActionEdgyRight">
+<button tabindex="0" class="hiddenButton" id="previewButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE175', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</div>
+</body>
+</html>

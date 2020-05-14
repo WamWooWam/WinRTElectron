@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EntityClusterConfig>
+  <TemplateClassMap>
+    <Class>
+      <Name>WSJRegular</Name>
+      <!--<AspectRatioMin>1.3</AspectRatioMin>
+      <AspectRatioMax>1.89</AspectRatioMax>
+      <SnippetMin>650</SnippetMin>-->
+      <TemplateList>
+        <Template>WSJ_Small_Square_1col_2row</Template>
+        <Template>WSJ_None_1col_2row</Template>
+      </TemplateList>
+    </Class>
+    
+    <Class>
+      <Name>WSJLead</Name>
+      <TemplateList>
+        <Template>WSJ_Large_Landscape_2col_4row</Template>
+        <Template>WSJ_None_2col_2row</Template>
+      </TemplateList>
+    </Class>
+    <Class>
+      <Name>WSJLeadVideo</Name>
+      <TemplateList>
+        <Template>WSJ_Large_Video_2col_4row</Template>
+        <Template>WSJ_None_2col_2row</Template>
+      </TemplateList>
+    </Class>
+    <Class>
+      <Name>WSJPhoto</Name>
+      <TemplateList>
+        <Template>WSJ_Photos_Large_Landscape_2col_4row</Template>
+      </TemplateList>
+    </Class>
+    
+    
+  </TemplateClassMap>
+  <TemplateDefinitions>   
+    <Template>
+      <Name>WSJ_Large_Landscape_2col_4row</Name>
+      <Width>61</Width>
+      <Height>59</Height>
+      <ThumbnailWidth>590</ThumbnailWidth>
+      <ThumbnailHeight>350</ThumbnailHeight>
+      <LastResort>False</LastResort>
+    </Template>
+    <Template>
+      <Name>WSJ_None_2col_2row</Name>
+      <Width>61</Width>
+      <Height>29</Height>
+      <LastResort>True</LastResort>
+    </Template>
+    
+    
+    
+    
+    
+    
+    <Template>
+      <Name>WSJ_Small_Square_1col_2row</Name>
+      <Width>30</Width>
+      <Height>29</Height>
+      <ThumbnailWidth>100</ThumbnailWidth>
+      <ThumbnailHeight>100</ThumbnailHeight>
+      <LastResort>False</LastResort>
+    </Template>    
+    <Template>
+      <Name>WSJ_None_1col_2row</Name>
+      <Width>30</Width>
+      <Height>29</Height>
+      <LastResort>True</LastResort>
+    </Template>
+
+    <Template>
+      <Name>WSJ_Large_Video_2col_4row</Name>
+      <Width>61</Width>
+      <Height>59</Height>
+      <ThumbnailWidth>590</ThumbnailWidth>
+      <ThumbnailHeight>350</ThumbnailHeight>
+      <LastResort>False</LastResort>
+    </Template>    
+
+    <Template>
+      <Name>WSJ_Photos_Large_Landscape_2col_4row</Name>
+      <Width>61</Width>
+      <Height>59</Height>
+      <ThumbnailWidth>590</ThumbnailWidth>
+      <ThumbnailHeight>400</ThumbnailHeight>
+      <LastResort>True</LastResort>
+    </Template>
+
+  </TemplateDefinitions>
+  <RuleList>
+    <!-- can only appear once per subcluster -->
+    <Rule>
+      <Type>Frequency</Type>
+      <TemplateList>
+        <Template>WSJ_Large_Landscape_2col_4row</Template>
+      </TemplateList>
+      <Columns>8</Columns>
+      <Count>1</Count>
+    </Rule>
+    <Rule>
+      <Type>Frequency</Type>
+      <TemplateList>
+        <Template>WSJ_None_2col_2row</Template>
+      </TemplateList>
+      <Columns>8</Columns>
+      <Count>1</Count>
+    </Rule>
+    
+  </RuleList>
+</EntityClusterConfig>

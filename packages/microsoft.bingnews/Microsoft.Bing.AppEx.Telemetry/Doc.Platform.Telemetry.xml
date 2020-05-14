@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+  <assembly>
+    <name>Microsoft.Bing.AppEx.Telemetry</name>
+  </assembly>
+  <members>
+    <member name="N:Microsoft.Bing.AppEx.Telemetry">
+      <summary>
+        Implements the <see cref="T:Microsoft.Bing.AppEx.Telemetry.FlightRecorder"/> and several other classes 
+        that provide for capturing information about the content presented to users by applications,
+        the actions that users perform, information about network activity as well as other 
+        interesting information.  <see cref="T:Microsoft.Bing.AppEx.Telemetry.FlightRecorder"/> will then
+        manage delivery of this information to a server side infrastructure where it can be
+        analyzed and acted upon.
+      </summary>
+    </member>
+  </members>
+</doc>

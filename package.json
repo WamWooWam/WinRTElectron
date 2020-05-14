@@ -1,0 +1,13 @@
+{
+  "name": "winjs-electron",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "dependencies": {
+    "electron": "^8.2.5",
+    "typescript": "^3.9.2"
+  },
+  "scripts": {
+    "start": "electron ."
+  }
+}

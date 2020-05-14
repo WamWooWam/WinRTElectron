@@ -1,0 +1,1680 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<BlockMap xmlns="http://schemas.microsoft.com/appx/2010/blockmap" HashMethod="http://www.w3.org/2001/04/xmlenc#sha256">
+    <File Name="AppFeatures.xml" Size="4271" LfhSize="45">
+        <Block Hash="Uihl/VVsQm3runq/Oh1QdKQLjfnyzCfSzEj+fiaTCFU=" Size="676"/>
+    </File>
+    <File Name="BaseNewsApp.targets" Size="9463" LfhSize="49">
+        <Block Hash="ipRr+IRp59HD0LObSsKoRyRFVBjhvtgmC/nXCtOa76g=" Size="1241"/>
+    </File>
+    <File Name="cannedData\FREOffline.json" Size="702" LfhSize="56">
+        <Block Hash="aL6S5QH7UXOKEcIJT3ujGgBjjr1cYlcgbZEc2fOdxmI=" Size="366"/>
+    </File>
+    <File Name="cannedData\FREOfflineClustersDefinition.json" Size="280" LfhSize="74">
+        <Block Hash="Z3oOvACY33/LT0aMiA8Nw79c1qdOoMgYGdgyqAREC3s=" Size="188"/>
+    </File>
+    <File Name="cannedData\offline.json" Size="98" LfhSize="53">
+        <Block Hash="DQyr1YmFQ9zb8+98fxesPzf5Vv6O7mJ89hV1JkW0eJs=" Size="83"/>
+    </File>
+    <File Name="DynamicPano.targets" Size="2170" LfhSize="49">
+        <Block Hash="TwFEQD6viUopKCFpiUkaZDGz1EQgJlvAlDRFxnXsutQ=" Size="576"/>
+    </File>
+    <File Name="images\AP_pin.scale-100.png" Size="1547" LfhSize="57">
+        <Block Hash="w4n7wtoPDNEJ9QSk2EqZbzX+Ntvk+zXbQNUZvM98eDw="/>
+    </File>
+    <File Name="images\Customization_Medium.png" Size="1077" LfhSize="61">
+        <Block Hash="/5quzBahlfQyxXXjG2z6cZieN8F+wW+d19xwBczF2+Q="/>
+    </File>
+    <File Name="images\Customization_Medium_Popular.png" Size="528" LfhSize="69">
+        <Block Hash="DlIRgp5jpRIsulo/xVLRc5xvXkTY7n9U23gXRiSaD1I="/>
+    </File>
+    <File Name="images\badge.contrast-white_scale-100.png" Size="150" LfhSize="71">
+        <Block Hash="DptZ9JXgwdfA8IQfkAraSVZge9S+HE/yM8lknNDaU0c="/>
+    </File>
+    <File Name="images\Customization_Small.png" Size="861" LfhSize="60">
+        <Block Hash="DXJSaZrhGm66JONY+lx6ck9L4VBOToBQ5V6PQ4zjIw4="/>
+    </File>
+    <File Name="images\badge.contrast-black_scale-100.png" Size="144" LfhSize="71">
+        <Block Hash="PBvZUDbDytD8LmoJtsUpmtERJSs1+vgv89beO48Mmvk="/>
+    </File>
+    <File Name="images\APLogo.svg" Size="1091" LfhSize="47">
+        <Block Hash="pKkuCj2YpVwnaxw8eKEUnloSXwmtMKfwg2d0RdrmJlw=" Size="623"/>
+    </File>
+    <File Name="images\Customization_Large.png" Size="1085" LfhSize="60">
+        <Block Hash="GjEdVqqulV8h6kzcyZABsNY8NJk9tiI0pGv4jqpNef0="/>
+    </File>
+    <File Name="images\badge.scale-100.png" Size="144" LfhSize="56">
+        <Block Hash="PBvZUDbDytD8LmoJtsUpmtERJSs1+vgv89beO48Mmvk="/>
+    </File>
+    <File Name="images\defaultSource.png" Size="1029" LfhSize="54">
+        <Block Hash="dvWDc7y+8voIwOfcwkJ9JG7uTQPGR9n6f1szxJQPVKo="/>
+    </File>
+    <File Name="images\featuredAP.png" Size="63159" LfhSize="51">
+        <Block Hash="y7irKCMSNv/wyiTPlLnSySgt0KnRUs4OHb8skJCr4BM="/>
+    </File>
+    <File Name="images\featuredHoistAP.png" Size="2344" LfhSize="56">
+        <Block Hash="yIP066IzxCfP/XKAmnYpFwSOzgOKdfHLROSzIPd5+bA="/>
+    </File>
+    <File Name="images\featuredHoistNYT.png" Size="3020" LfhSize="57">
+        <Block Hash="BehVLAV3ERIF19R7df0aEB8jHTF+2MYpX7jzPxdYIHs="/>
+    </File>
+    <File Name="images\featuredHoistWSJ.png" Size="4653" LfhSize="57">
+        <Block Hash="XpO2KijlqbnK16cVUUbbskwmni370KRkUbLTc7Tpcpw="/>
+    </File>
+    <File Name="images\featuredNYT.png" Size="4446" LfhSize="52">
+        <Block Hash="vhcB4Q7EznWjXeZtuo3TAfMEOhCZ/OCcXz01MqzdiIE="/>
+    </File>
+    <File Name="images\featuredWSJ.png" Size="4178" LfhSize="52">
+        <Block Hash="dyxV56e8zayNgaQX+/CkWTBLkh1+5IBCvQeNcz4L4oM="/>
+    </File>
+    <File Name="images\large.contrast-black_scale-100.png" Size="3839" LfhSize="71">
+        <Block Hash="ADufZ9QVnSH+2ATxXz6HyJMJU3J6hZc5U4/QpfVZmwU="/>
+    </File>
+    <File Name="images\large.contrast-black_scale-80.png" Size="3603" LfhSize="70">
+        <Block Hash="NRZIL2vS0IEvrmnTNdsbXsj4m4gYdlWM7AzEWzqcu3E="/>
+    </File>
+    <File Name="images\large.contrast-white_scale-100.png" Size="846" LfhSize="71">
+        <Block Hash="K5QPHPZHSx0pdIS2xoMna4hduMb3YDOymmuKgVj/Q4Q="/>
+    </File>
+    <File Name="images\large.contrast-white_scale-80.png" Size="3510" LfhSize="70">
+        <Block Hash="AnSKs8ISroRIvNiB8vSbdUMdYNr/Pd+V/2Xk0LeshhE="/>
+    </File>
+    <File Name="images\large.scale-100.png" Size="3839" LfhSize="56">
+        <Block Hash="ADufZ9QVnSH+2ATxXz6HyJMJU3J6hZc5U4/QpfVZmwU="/>
+    </File>
+    <File Name="images\logo.contrast-black_scale-100.png" Size="551" LfhSize="70">
+        <Block Hash="pHLvFaBW5vQwQXB+1riDC/6sF6ErcoKVDPRA35QVhAA="/>
+    </File>
+    <File Name="images\logo.contrast-black_scale-80.png" Size="408" LfhSize="69">
+        <Block Hash="AEcju5aGErJygwTRB4fZMxanrewzozIvepImmBOhpWw="/>
+    </File>
+    <File Name="images\logo.contrast-white_scale-100.png" Size="579" LfhSize="70">
+        <Block Hash="ADW3t3M/4x6OzhqsxcBqQTuApCJUzip8LAypsBZDcZw="/>
+    </File>
+    <File Name="images\logo.contrast-white_scale-80.png" Size="444" LfhSize="69">
+        <Block Hash="bmpKKBJcSAg0s+GnwqAwoldHW0xmBu9pnQNSmfyT+a0="/>
+    </File>
+    <File Name="images\logo.scale-100.png" Size="549" LfhSize="55">
+        <Block Hash="p9BgB9H5qSjYQO/mP8iONFFXtn7Zs+XRNWRd9386yNg="/>
+    </File>
+    <File Name="images\logo.scale-80.png" Size="411" LfhSize="54">
+        <Block Hash="nq1h8DCdhfK5S2OpBVjYsqfDlM6DVrbgsiOf1gDRSnw="/>
+    </File>
+    <File Name="images\logoCategory.contrast-black_scale-100.png" Size="246" LfhSize="78">
+        <Block Hash="iWeMxytVu25UHv2QwNZ6bbpUGDWqDTsVwzg2CzhPcdw="/>
+    </File>
+    <File Name="images\large.scale-80.png" Size="3603" LfhSize="55">
+        <Block Hash="NRZIL2vS0IEvrmnTNdsbXsj4m4gYdlWM7AzEWzqcu3E="/>
+    </File>
+    <File Name="images\logoCategory.contrast-black_scale-80.png" Size="246" LfhSize="77">
+        <Block Hash="iWeMxytVu25UHv2QwNZ6bbpUGDWqDTsVwzg2CzhPcdw="/>
+    </File>
+    <File Name="images\logoCategory.contrast-white_scale-100.png" Size="402" LfhSize="78">
+        <Block Hash="y9eHDxGjmXw2NARJVQc46TKGPLp47FCr2NtEJ9qLWVI="/>
+    </File>
+    <File Name="images\logoCategory.contrast-white_scale-80.png" Size="288" LfhSize="77">
+        <Block Hash="NnQNj/S2zmYVOMJEUVz8l5GVkZ12pQRQ17RctMMaLVo="/>
+    </File>
+    <File Name="images\logoCategory.scale-100.png" Size="246" LfhSize="63">
+        <Block Hash="iWeMxytVu25UHv2QwNZ6bbpUGDWqDTsVwzg2CzhPcdw="/>
+    </File>
+    <File Name="images\logoSource.contrast-black_scale-100.png" Size="236" LfhSize="76">
+        <Block Hash="tHt63AUb4+OlOa1j3T3mffsas5Mg0AgSg277pzzhoV4="/>
+    </File>
+    <File Name="images\logoSource.contrast-black_scale-80.png" Size="236" LfhSize="75">
+        <Block Hash="tHt63AUb4+OlOa1j3T3mffsas5Mg0AgSg277pzzhoV4="/>
+    </File>
+    <File Name="images\logoSource.contrast-white_scale-100.png" Size="394" LfhSize="76">
+        <Block Hash="nrr0vKSf14h4SOWkxvp/YCxEWDUU/gA6KiHs//cJuUk="/>
+    </File>
+    <File Name="images\logoSource.contrast-white_scale-80.png" Size="265" LfhSize="75">
+        <Block Hash="4v8GNIhqgS01zxR3zTKo8WWrdQP2TJgpfxgDv3TEuzQ="/>
+    </File>
+    <File Name="images\logoCategory.scale-80.png" Size="246" LfhSize="62">
+        <Block Hash="iWeMxytVu25UHv2QwNZ6bbpUGDWqDTsVwzg2CzhPcdw="/>
+    </File>
+    <File Name="images\logoSource.scale-100.png" Size="236" LfhSize="61">
+        <Block Hash="tHt63AUb4+OlOa1j3T3mffsas5Mg0AgSg277pzzhoV4="/>
+    </File>
+    <File Name="images\logoSource.scale-80.png" Size="236" LfhSize="60">
+        <Block Hash="tHt63AUb4+OlOa1j3T3mffsas5Mg0AgSg277pzzhoV4="/>
+    </File>
+    <File Name="images\logoTopic.scale-100.png" Size="321" LfhSize="60">
+        <Block Hash="2tjXA5V9H894oEmus9qC1tpDZc1bGDMN+GzYS5BZ+NQ="/>
+    </File>
+    <File Name="images\logoTopic.contrast-black_scale-80.png" Size="321" LfhSize="74">
+        <Block Hash="2tjXA5V9H894oEmus9qC1tpDZc1bGDMN+GzYS5BZ+NQ="/>
+    </File>
+    <File Name="images\logoTopic.contrast-white_scale-100.png" Size="439" LfhSize="75">
+        <Block Hash="dCqr7lASXiaPTHd2iI5LwH6JdMOtV8c4I3l2G2Eo4hE="/>
+    </File>
+    <File Name="images\logoTopic.contrast-white_scale-80.png" Size="359" LfhSize="74">
+        <Block Hash="zAYk09oTZtE/FnhqbjkLbPIKRB/52IiIamYZ+H9D/3w="/>
+    </File>
+    <File Name="images\logoTopic.contrast-black_scale-100.png" Size="321" LfhSize="75">
+        <Block Hash="2tjXA5V9H894oEmus9qC1tpDZc1bGDMN+GzYS5BZ+NQ="/>
+    </File>
+    <File Name="images\small.contrast-black_scale-80.png" Size="148" LfhSize="70">
+        <Block Hash="0dWs81irMc9XF7rl8h+YQtdEbdnANCXLvb4wPw9gzJo="/>
+    </File>
+    <File Name="images\logoTopic.scale-80.png" Size="321" LfhSize="59">
+        <Block Hash="2tjXA5V9H894oEmus9qC1tpDZc1bGDMN+GzYS5BZ+NQ="/>
+    </File>
+    <File Name="images\logoTopic.targetsize-16.png" Size="159" LfhSize="64">
+        <Block Hash="SJm5+smazZFr1yd2i7yMz8cRPnsFFoFAW+g3P8+CcTg="/>
+    </File>
+    <File Name="images\logoTopic.targetsize-32.png" Size="272" LfhSize="64">
+        <Block Hash="fyN2UkEmIJvNsND/XNvQ0KwNYIjqsrdHLmGszxDS6/I="/>
+    </File>
+    <File Name="images\NYT_pin.scale-100.png" Size="1856" LfhSize="58">
+        <Block Hash="T0dZW5MXYd8CXrwUByQwrj1Ij8nnSCusEGvVtKqTWMs="/>
+    </File>
+    <File Name="images\rss_icon_1.4.png" Size="1745" LfhSize="53">
+        <Block Hash="0VZjcpUZO+Htnp3VgSw3gdhzrEGhOOVXHx1Nqsx4isM="/>
+    </File>
+    <File Name="images\rss_icon_1.8.png" Size="2259" LfhSize="53">
+        <Block Hash="aif4fRfI8Gp4LqA6ATQRYsbWHj7/eBA6Ff1XnGLbSQI="/>
+    </File>
+    <File Name="images\small.contrast-black_targetsize-16.png" Size="169" LfhSize="75">
+        <Block Hash="KGd8Ds0f6CPGrZS2SpKAs8yIFst/i7kUJwNkE5xVgq8="/>
+    </File>
+    <File Name="images\small.contrast-black_scale-100.png" Size="174" LfhSize="71">
+        <Block Hash="pE9Pnxr8xbBIV72H5Nsp3QJjxOzCu/BseCB9bTMSiaY="/>
+    </File>
+    <File Name="images\small.contrast-black_targetsize-256.png" Size="911" LfhSize="76">
+        <Block Hash="b6kg15VZWBDDV3KCwHe1dj3gffeIGtLVEDp2B/JtTrU="/>
+    </File>
+    <File Name="images\small.contrast-black_targetsize-32.png" Size="208" LfhSize="75">
+        <Block Hash="ESjDXdjj1ggQtuISu8cWlxKnJud9iuDXo+OgTngSWfA="/>
+    </File>
+    <File Name="images\rss_icon_1.png" Size="3668" LfhSize="51">
+        <Block Hash="zv73BR8QuUu3H4Me28I/QkButkebMIPLf5GfKc/zTPQ="/>
+    </File>
+    <File Name="images\small.contrast-white_targetsize-48.png" Size="220" LfhSize="75">
+        <Block Hash="qnZ990ZeWR14tr30iX0wS9TYeon+7hiEAUsIbbBYMyU="/>
+    </File>
+    <File Name="images\small.scale-100.png" Size="174" LfhSize="56">
+        <Block Hash="pE9Pnxr8xbBIV72H5Nsp3QJjxOzCu/BseCB9bTMSiaY="/>
+    </File>
+    <File Name="images\small.contrast-white_targetsize-256.png" Size="942" LfhSize="76">
+        <Block Hash="xlLOHbB+9sXqc6TAZT20Nb6A0x9aWDBIlUqPJ7AtU6M="/>
+    </File>
+    <File Name="images\small.contrast-white_targetsize-16.png" Size="166" LfhSize="75">
+        <Block Hash="gII9a0UVFs2twzzt0LdUnqBc+zjmCUW9N3q8Bn/PpLQ="/>
+    </File>
+    <File Name="images\small.contrast-white_scale-80.png" Size="152" LfhSize="70">
+        <Block Hash="R4brotx89ycDBNf1UCsZHHUf9sCq0nnUVfqYQPlRQsI="/>
+    </File>
+    <File Name="images\small.contrast-white_scale-100.png" Size="206" LfhSize="71">
+        <Block Hash="d0ZNCbmvRtiRi+yiW6mQJ0Ox6jpv0UY2UoaoonWdLHE="/>
+    </File>
+    <File Name="images\small.contrast-black_targetsize-48.png" Size="217" LfhSize="75">
+        <Block Hash="9ozqSjyYo0aNojiOsspXH8AVHDRpxG7/NH3FqNSAVfw="/>
+    </File>
+    <File Name="images\small.scale-80.png" Size="146" LfhSize="55">
+        <Block Hash="Ui9EGU3HZejHmAkWBw4utiX8VDO1sMUR5ZDCqqHQEzU="/>
+    </File>
+    <File Name="images\small.targetsize-16.png" Size="169" LfhSize="60">
+        <Block Hash="b+nH+CEgEih+Sj83pIVI68uhXxykbO8+oskT0MLpfhE="/>
+    </File>
+    <File Name="images\small.targetsize-32.png" Size="214" LfhSize="60">
+        <Block Hash="2JWJbJ13kBxkcgZb55QZOqN24Ryrhwf9kin7e3UVefU="/>
+    </File>
+    <File Name="images\small.contrast-white_targetsize-32.png" Size="211" LfhSize="75">
+        <Block Hash="nRuKDoMH+VyBbsu20KtMElE/hfQioqEj+A5q4oOO78s="/>
+    </File>
+    <File Name="images\small.targetsize-256.png" Size="1009" LfhSize="61">
+        <Block Hash="nYgs+MWCI6GbXC6qozQhu7vzgPsbq5iUj7JDFOnOWZM="/>
+    </File>
+    <File Name="images\small.targetsize-48.png" Size="240" LfhSize="60">
+        <Block Hash="e/r+KB9lhh4CuYfShhmKAfPfd/nhywfOoGk8pXcMaxA="/>
+    </File>
+    <File Name="images\smallCategory.contrast-black_scale-100.png" Size="194" LfhSize="79">
+        <Block Hash="biiedZP1dT3CsnvISLyFDe+me4ZM0r5mVREetUtBHak="/>
+    </File>
+    <File Name="images\smallCategory.scale-80.png" Size="157" LfhSize="63">
+        <Block Hash="WFhuHy0FsFuwRA34HhLKlI/POx/wKGWjdIkGlwDASv4="/>
+    </File>
+    <File Name="images\smallCategory.contrast-black_scale-80.png" Size="157" LfhSize="78">
+        <Block Hash="WFhuHy0FsFuwRA34HhLKlI/POx/wKGWjdIkGlwDASv4="/>
+    </File>
+    <File Name="images\smallCategory.contrast-white_scale-100.png" Size="189" LfhSize="79">
+        <Block Hash="Hve2YIKcDP8Ad+U2h6CvGeyGGBIYlNnyXCq7q6uUYn8="/>
+    </File>
+    <File Name="images\smallCategory.contrast-white_scale-80.png" Size="158" LfhSize="78">
+        <Block Hash="uiYQDsQrvv6wrIJ7fHAQbYk3DrVMJ4OiDS0ggmG60CU="/>
+    </File>
+    <File Name="images\smallCategory.scale-100.png" Size="194" LfhSize="64">
+        <Block Hash="biiedZP1dT3CsnvISLyFDe+me4ZM0r5mVREetUtBHak="/>
+    </File>
+    <File Name="images\smallSource.contrast-black_scale-100.png" Size="173" LfhSize="77">
+        <Block Hash="g/qMJNEr/qEkQPaMrMb98xD8FMpZEMUWTfHuFJRDMJc="/>
+    </File>
+    <File Name="images\smallTopic.contrast-black_scale-100.png" Size="230" LfhSize="76">
+        <Block Hash="XuUm1CdvJ9UmOMC46dmsV0JMRqjwN7Cfa1nURib16NE="/>
+    </File>
+    <File Name="images\smallSource.contrast-black_scale-80.png" Size="206" LfhSize="76">
+        <Block Hash="HlteTgUqNzhfljpFyefScqcuN5BykiLivZu8EwXTGjk="/>
+    </File>
+    <File Name="images\smallSource.contrast-white_scale-100.png" Size="175" LfhSize="77">
+        <Block Hash="nUR8GwZn162NLjxBEKl7mpv6HZQVmxuKzSGUThEkyF0="/>
+    </File>
+    <File Name="images\smallSource.contrast-white_scale-80.png" Size="200" LfhSize="76">
+        <Block Hash="y0OedQ4wrcWAPtHZHUrMCSpKbxahZ5bbNPs1J9wGkek="/>
+    </File>
+    <File Name="images\smallSource.scale-100.png" Size="173" LfhSize="62">
+        <Block Hash="g/qMJNEr/qEkQPaMrMb98xD8FMpZEMUWTfHuFJRDMJc="/>
+    </File>
+    <File Name="images\smallSource.scale-80.png" Size="206" LfhSize="61">
+        <Block Hash="HlteTgUqNzhfljpFyefScqcuN5BykiLivZu8EwXTGjk="/>
+    </File>
+    <File Name="images\smallTopic.contrast-white_scale-100.png" Size="224" LfhSize="76">
+        <Block Hash="DJ+S7GQxlnhJGw3efsATcZmIeR1Hjipi6s945FB/Zs0="/>
+    </File>
+    <File Name="images\smallTopic.contrast-white_scale-80.png" Size="204" LfhSize="75">
+        <Block Hash="IcCr6PNWiABHcOGChCHjaUQr1/kPw5v/ObNJ2SRnX60="/>
+    </File>
+    <File Name="images\smallTopic.scale-100.png" Size="230" LfhSize="61">
+        <Block Hash="XuUm1CdvJ9UmOMC46dmsV0JMRqjwN7Cfa1nURib16NE="/>
+    </File>
+    <File Name="images\smallTopic.scale-80.png" Size="211" LfhSize="60">
+        <Block Hash="iXLRXixA7ZP8TT8fxIVN2vkVYxE/dAWv1d3gSA+Qrf8="/>
+    </File>
+    <File Name="images\smallTopic.contrast-black_scale-80.png" Size="211" LfhSize="75">
+        <Block Hash="iXLRXixA7ZP8TT8fxIVN2vkVYxE/dAWv1d3gSA+Qrf8="/>
+    </File>
+    <File Name="images\splash.contrast-black_scale-100.png" Size="1522" LfhSize="72">
+        <Block Hash="HTmmVDUkgqsuv/nzXCUsWEwRFqKfe6ceEf1w8f3QAhY="/>
+    </File>
+    <File Name="images\splash.contrast-white_scale-100.png" Size="1538" LfhSize="72">
+        <Block Hash="PC+HMOrL0FItk5jo9UqgTcXbAa7pnGw+ocDB8X8UlMk="/>
+    </File>
+    <File Name="images\splash.scale-100.png" Size="1479" LfhSize="57">
+        <Block Hash="A5O2RS00Utm5T+MMNcaiJwWJJy+PVoLj1hbyka7tAs8="/>
+    </File>
+    <File Name="images\store.contrast-black_scale-100.png" Size="265" LfhSize="71">
+        <Block Hash="YmO5OdNUmYnVIohf0xGPFRc/ttzCNIwtlux56iD2AnQ="/>
+    </File>
+    <File Name="images\store.contrast-white_scale-100.png" Size="272" LfhSize="71">
+        <Block Hash="dEHeXfjgd70SsrCuPzVX7/5j1UIEDFCdjHQspHLM8rg="/>
+    </File>
+    <File Name="images\store.scale-100.png" Size="265" LfhSize="56">
+        <Block Hash="YmO5OdNUmYnVIohf0xGPFRc/ttzCNIwtlux56iD2AnQ="/>
+    </File>
+    <File Name="images\tiny.contrast-black_scale-100.png" Size="3104" LfhSize="70">
+        <Block Hash="DuJW+RuNcuwjRgdxZTSrAkSFjUARaSVnwMAZ1LwA3bQ="/>
+    </File>
+    <File Name="images\tiny.contrast-black_scale-80.png" Size="3085" LfhSize="69">
+        <Block Hash="QDPNd4oWfa0hoPdhDIyVP2MzG6jcL6n6gsd/cOQQl0k="/>
+    </File>
+    <File Name="images\tiny.contrast-white_scale-100.png" Size="391" LfhSize="70">
+        <Block Hash="cRur/rPPMnoKVI96l9yhGHlH2dQdDKMMaHPXRAwSINw="/>
+    </File>
+    <File Name="images\tiny.scale-100.png" Size="3104" LfhSize="55">
+        <Block Hash="DuJW+RuNcuwjRgdxZTSrAkSFjUARaSVnwMAZ1LwA3bQ="/>
+    </File>
+    <File Name="images\tiny.scale-80.png" Size="3085" LfhSize="54">
+        <Block Hash="QDPNd4oWfa0hoPdhDIyVP2MzG6jcL6n6gsd/cOQQl0k="/>
+    </File>
+    <File Name="images\tinyCategory.contrast-black_scale-100.png" Size="261" LfhSize="78">
+        <Block Hash="KgqNHJS/UlqHu6raiIUWuFOvFDxdiaN3BRdjWyeUv/Q="/>
+    </File>
+    <File Name="images\tinyCategory.contrast-black_scale-80.png" Size="242" LfhSize="77">
+        <Block Hash="BqBlQDoI/L5nGPuq7PZ2DjXfY4pdSOctfCutw96CsEg="/>
+    </File>
+    <File Name="images\tinyCategory.contrast-white_scale-100.png" Size="243" LfhSize="78">
+        <Block Hash="pOlRlB3WB4X0FIkJ4hSu+5meS9WJdMjAlOE6fHo4ghY="/>
+    </File>
+    <File Name="images\tinyCategory.contrast-white_scale-80.png" Size="230" LfhSize="77">
+        <Block Hash="juL6kjlIWiH4+BSu89RrwhWhae4io0M1+pTqagklmSY="/>
+    </File>
+    <File Name="images\tinyCategory.scale-100.png" Size="261" LfhSize="63">
+        <Block Hash="KgqNHJS/UlqHu6raiIUWuFOvFDxdiaN3BRdjWyeUv/Q="/>
+    </File>
+    <File Name="images\tiny.contrast-white_scale-80.png" Size="360" LfhSize="69">
+        <Block Hash="ZsZzkR6iDv6/eW3/+bGXLj/PNmwBCRXvEQnNzz6Gmhk="/>
+    </File>
+    <File Name="images\tinyCategory.scale-80.png" Size="242" LfhSize="62">
+        <Block Hash="BqBlQDoI/L5nGPuq7PZ2DjXfY4pdSOctfCutw96CsEg="/>
+    </File>
+    <File Name="images\tinyTopic.contrast-black_scale-80.png" Size="333" LfhSize="74">
+        <Block Hash="sSvwa1Bh1d5zO1H4QqV8JXWAqARg7t0mhGWyRHdLAhQ="/>
+    </File>
+    <File Name="images\tinySource.contrast-black_scale-80.png" Size="273" LfhSize="75">
+        <Block Hash="tJSoH2fJo1fLAIOUJSQhuP4zy9V4i0sriab0hhRWhMs="/>
+    </File>
+    <File Name="images\tinySource.contrast-white_scale-100.png" Size="279" LfhSize="76">
+        <Block Hash="ug5n1TdslI7HNTQeAuwNsmdnU3gmYFSaa5w7o0qo1hc="/>
+    </File>
+    <File Name="images\tinySource.contrast-white_scale-80.png" Size="318" LfhSize="75">
+        <Block Hash="EA8DBng/bYvcxRJYAySL6qSui/iUqNhhYDqorCWAnoY="/>
+    </File>
+    <File Name="images\tinySource.scale-100.png" Size="315" LfhSize="61">
+        <Block Hash="yr7CogfXK9sjXLc15+O5JGXt1VUONupc/Ixw8D7xWms="/>
+    </File>
+    <File Name="images\tinySource.scale-80.png" Size="273" LfhSize="60">
+        <Block Hash="tJSoH2fJo1fLAIOUJSQhuP4zy9V4i0sriab0hhRWhMs="/>
+    </File>
+    <File Name="images\tinyTopic.contrast-black_scale-100.png" Size="305" LfhSize="75">
+        <Block Hash="x21AY99vRx5wLWcEUZNhwvwowZ5gzL4C/vU0ZrX3z2M="/>
+    </File>
+    <File Name="images\tinySource.contrast-black_scale-100.png" Size="315" LfhSize="76">
+        <Block Hash="yr7CogfXK9sjXLc15+O5JGXt1VUONupc/Ixw8D7xWms="/>
+    </File>
+    <File Name="images\tinyTopic.contrast-white_scale-100.png" Size="300" LfhSize="75">
+        <Block Hash="L2mXkwRJ4AGycdcjSbdqcoXluKrWnSm5N0iVOYjlwx8="/>
+    </File>
+    <File Name="images\tinyTopic.contrast-white_scale-80.png" Size="259" LfhSize="74">
+        <Block Hash="Wh2zIDRc8+67RwcItfYdxIbSNpNB2bExZ4Mu8F4JH4Q="/>
+    </File>
+    <File Name="images\tinyTopic.scale-100.png" Size="305" LfhSize="60">
+        <Block Hash="x21AY99vRx5wLWcEUZNhwvwowZ5gzL4C/vU0ZrX3z2M="/>
+    </File>
+    <File Name="images\wide.contrast-black_scale-100.png" Size="677" LfhSize="70">
+        <Block Hash="TJwvlLQqbAWw6r1oH3GE9FXaV8/n3DSHMT3Zut5uWI4="/>
+    </File>
+    <File Name="images\wide.contrast-black_scale-80.png" Size="486" LfhSize="69">
+        <Block Hash="VGK5D6Qte2l88nyjnrJWOHgoDd0Y9tRnRY0wnPH5ULw="/>
+    </File>
+    <File Name="images\wide.contrast-white_scale-100.png" Size="709" LfhSize="70">
+        <Block Hash="5YDGVBPQpHW2E5hesEhx1vJRUIN7QIPGIFR/7MtI4WM="/>
+    </File>
+    <File Name="images\wide.contrast-white_scale-80.png" Size="521" LfhSize="69">
+        <Block Hash="N/6JXxkIpnobRo0+I/S5pjs/NNHBVBk/V4caj3t/76o="/>
+    </File>
+    <File Name="images\tinyTopic.scale-80.png" Size="333" LfhSize="59">
+        <Block Hash="sSvwa1Bh1d5zO1H4QqV8JXWAqARg7t0mhGWyRHdLAhQ="/>
+    </File>
+    <File Name="images\wide.scale-100.png" Size="677" LfhSize="55">
+        <Block Hash="TJwvlLQqbAWw6r1oH3GE9FXaV8/n3DSHMT3Zut5uWI4="/>
+    </File>
+    <File Name="images\wideSource.contrast-black_scale-100.png" Size="579" LfhSize="76">
+        <Block Hash="bP2zHblWDeQ1dhtHLEWl6h/i+4NLfbyVA7Bi47PWQVY="/>
+    </File>
+    <File Name="images\wideCategory.scale-80.png" Size="491" LfhSize="62">
+        <Block Hash="1BdCgF8un1HqI0pufl/kvLpWu1lgrThgmojHxfxKk6w="/>
+    </File>
+    <File Name="images\wideCategory.scale-100.png" Size="505" LfhSize="63">
+        <Block Hash="4Kwn5eeqQdS+LhzO0ibNfKhE2NT97LkuSsOkWrSwhQA="/>
+    </File>
+    <File Name="images\wideCategory.contrast-white_scale-80.png" Size="492" LfhSize="77">
+        <Block Hash="R4GHGtopxuNVvuvT5zvKxcx1XHv+fXDkDYNtYInsoYM="/>
+    </File>
+    <File Name="images\wideCategory.contrast-white_scale-100.png" Size="481" LfhSize="78">
+        <Block Hash="nqjbuyxGY4hlzw7I4WAcIXfH5FQGsT78wLGX46UbZws="/>
+    </File>
+    <File Name="images\wide.scale-80.png" Size="486" LfhSize="54">
+        <Block Hash="JeVFaHhkDjMXusPHWCC9ZACYd7MiocJChhN1RVWrZIM="/>
+    </File>
+    <File Name="images\wideCategory.contrast-black_scale-100.png" Size="505" LfhSize="78">
+        <Block Hash="4Kwn5eeqQdS+LhzO0ibNfKhE2NT97LkuSsOkWrSwhQA="/>
+    </File>
+    <File Name="images\wideCategory.contrast-black_scale-80.png" Size="491" LfhSize="77">
+        <Block Hash="1BdCgF8un1HqI0pufl/kvLpWu1lgrThgmojHxfxKk6w="/>
+    </File>
+    <File Name="images\wideTopic.contrast-white_scale-100.png" Size="589" LfhSize="75">
+        <Block Hash="hYDmqkDXIpoVaewSJYhVSQzFQoeWGFvy0fyOH67vETM="/>
+    </File>
+    <File Name="images\wideTopic.contrast-black_scale-100.png" Size="616" LfhSize="75">
+        <Block Hash="SJHFVWHh766EqgAvnIr2hD+/0tYga874R6rNCBdgWOk="/>
+    </File>
+    <File Name="images\wideSource.scale-80.png" Size="447" LfhSize="60">
+        <Block Hash="0jXj903ZR5OXLaFBS3OOpTV5qqInkO+jGFqY5PN+/iw="/>
+    </File>
+    <File Name="images\wideSource.scale-100.png" Size="579" LfhSize="61">
+        <Block Hash="bP2zHblWDeQ1dhtHLEWl6h/i+4NLfbyVA7Bi47PWQVY="/>
+    </File>
+    <File Name="images\wideSource.contrast-white_scale-80.png" Size="465" LfhSize="75">
+        <Block Hash="dbmZf7uuu0+nL/a5vcEw9w6EN/SkWDMt4UduEmEYUFM="/>
+    </File>
+    <File Name="images\wideSource.contrast-black_scale-80.png" Size="447" LfhSize="75">
+        <Block Hash="0jXj903ZR5OXLaFBS3OOpTV5qqInkO+jGFqY5PN+/iw="/>
+    </File>
+    <File Name="images\wideSource.contrast-white_scale-100.png" Size="508" LfhSize="76">
+        <Block Hash="4ZGHN6JA6YwGMpmr+wb7v3R5R3ZGvYZd3H6j9w2V2Lo="/>
+    </File>
+    <File Name="images\wideTopic.contrast-black_scale-80.png" Size="495" LfhSize="74">
+        <Block Hash="+nxWgmmsr0Ic/5WRjBfMKyIL/m3Qzs2oW0qN8TM1fgc="/>
+    </File>
+    <File Name="images\wideTopic.scale-100.png" Size="616" LfhSize="60">
+        <Block Hash="SJHFVWHh766EqgAvnIr2hD+/0tYga874R6rNCBdgWOk="/>
+    </File>
+    <File Name="images\wideTopic.contrast-white_scale-80.png" Size="467" LfhSize="74">
+        <Block Hash="suF8dffwZuc7ESmtOxlYVIf65IMZLOAeRBJUbiFPlx0="/>
+    </File>
+    <File Name="images\wideTopic.scale-80.png" Size="495" LfhSize="59">
+        <Block Hash="+nxWgmmsr0Ic/5WRjBfMKyIL/m3Qzs2oW0qN8TM1fgc="/>
+    </File>
+    <File Name="images\wsj_pin.scale-100.png" Size="2325" LfhSize="58">
+        <Block Hash="ZGO07+r8jjVEr/9wtQ1IafphruguDnEBPiQT2VyavUA="/>
+    </File>
+    <File Name="MicrosoftAdvertising.ini" Size="16" LfhSize="54">
+        <Block Hash="ubpTX1p058eNGM9I5n9TeFdt6gbVUTP9PrdFzkZtrH4=" Size="22"/>
+    </File>
+    <File Name="NewsApp.targets" Size="33013" LfhSize="45">
+        <Block Hash="RcOqA2FzlFPSrwczSG4nlIZu+518dOztkFCagaC15H8=" Size="2070"/>
+    </File>
+    <File Name="nytshared\fonts\NYT_Icons.ttf" Size="25344" LfhSize="59">
+        <Block Hash="0RfLH03N+UmjufU8D9rSbAC4ID5/SXMmcaKEnCF86rk=" Size="17477"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Arts.svg" Size="1879" LfhSize="62">
+        <Block Hash="qwm/41j9nA4qIXfnYLJEw4Nw0WOQKXMiWb3cR4xbmuc=" Size="1052"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Autos.svg" Size="2832" LfhSize="63">
+        <Block Hash="l8xJS+qOhmIVk/vM64QQ7UzFIBjotxUOEruf3NivSro=" Size="1122"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_black_t-bg.svg" Size="1924" LfhSize="68">
+        <Block Hash="x+g62HnLKbLf2GuhsG6bOw+vRoVjyn/jpZEY6FByqR0=" Size="1067"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Blogs.svg" Size="2289" LfhSize="63">
+        <Block Hash="sMVHU+C4fChwGZUAY+lQKMJ0Odw49zWIn6yIfnDlHBQ=" Size="1201"/>
+    </File>
+    <File Name="nytshared\images\gray_sub.svg" Size="1242" LfhSize="59">
+        <Block Hash="14sKLKTAR4XLxTkARymp/Sn2JJi43x3ruZupxspB0NY=" Size="647"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Books.svg" Size="2060" LfhSize="63">
+        <Block Hash="NEtCaAN85T5eqN2WecQ9CrhPRX3JU7pEXVLumixTKbo=" Size="1157"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Business.svg" Size="1070" LfhSize="66">
+        <Block Hash="nI0E7sw6BycHbjrnzsYRWWGyETbavXf565Ixl40tMCE=" Size="490"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Classifieds.svg" Size="1593" LfhSize="69">
+        <Block Hash="VbR9AEp9Xc2R/x1qBP7ZnBaaP1omrnAj6/0EQTXMJic=" Size="860"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_DiningWine.svg" Size="1902" LfhSize="68">
+        <Block Hash="NDfl91TTAh9OfjitILm5ayuIKsNZrnidJ7Txxl4oKYE=" Size="1039"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_DealBooks.svg" Size="1138" LfhSize="67">
+        <Block Hash="mM5KyJAwUSQpTCLEpuYmsFSpQjofM7mI6xb1G3u5bzs=" Size="673"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Health.svg" Size="924" LfhSize="64">
+        <Block Hash="btNdkjw2Fl9hPGYU+zmFL5apMpV8aM3CLQZfjTlFlLM=" Size="543"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_History.svg" Size="1749" LfhSize="65">
+        <Block Hash="DrjnrkhYL+RO6d6B6B3t9Ho1Qay9NmjgK6LL/BUG5eA=" Size="856"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_HomeGarden.svg" Size="1079" LfhSize="68">
+        <Block Hash="V1a72RJ62C54VVV13a1SD5G+Iw2BdIOuGvz8TP4/gaU=" Size="687"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Lock.svg" Size="726" LfhSize="62">
+        <Block Hash="OInqptqP0RB3hfT4HhlkSh0O9fE5mxl96li3tJ4YsY8=" Size="464"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_FashionStyle.svg" Size="997" LfhSize="70">
+        <Block Hash="TM/ju6di2BXg0PL2B8aM/Z523oc5Tq5heMrN6O8tbeM=" Size="617"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Obituaries.svg" Size="1610" LfhSize="68">
+        <Block Hash="VtqL74+ZiSGAPQHUylcd/SKzhPwvbscPjWE8Oj3WeJM=" Size="926"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Logo.svg" Size="2187" LfhSize="62">
+        <Block Hash="hC3srhFVGcUKdYEwSBiqV19GHofWs8o7mn0617oXfE4=" Size="1261"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_NewYork.svg" Size="1078" LfhSize="65">
+        <Block Hash="9H4Mv1BMi7NdmDURoFMI2rsI7swp0LgP/ltmvC+DHAg=" Size="688"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Movies.svg" Size="1432" LfhSize="64">
+        <Block Hash="ki/ch7YIGM6aYEL0R+PLMgETujhInH9VKig1ZdjKDXE=" Size="719"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_MoreMail.svg" Size="1134" LfhSize="66">
+        <Block Hash="s6JzIAgxbX3DahyNdjGfCKUL4shSWP1LE1XKE3kMo4w=" Size="582"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Magazine.svg" Size="1138" LfhSize="66">
+        <Block Hash="mM5KyJAwUSQpTCLEpuYmsFSpQjofM7mI6xb1G3u5bzs=" Size="673"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Opinions.svg" Size="1025" LfhSize="66">
+        <Block Hash="LkZVslXpPmJtbfwLWAH1A7jLcShqfKEzbHxUJP/K5Jg=" Size="613"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Politics.svg" Size="1364" LfhSize="66">
+        <Block Hash="S54+j7oGlJSoCusuE/yufx8g0T6sCtBueD2m5AOT5aE=" Size="726"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_RealEstate.svg" Size="1541" LfhSize="68">
+        <Block Hash="pNJiomEIVDhO2kJPivkgtAtWUpAUavUf96EtYQFXvI0=" Size="858"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Science.svg" Size="1368" LfhSize="65">
+        <Block Hash="8oQpLMnkmvsVkYgawL3Z0J/NH2qUHbTr15cvUAGWSGs=" Size="737"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Saved.svg" Size="1231" LfhSize="63">
+        <Block Hash="rCqQEqHT+c76u78KN621s2MC7AfZ7Qovd52FegonDSE=" Size="747"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Photos.svg" Size="1890" LfhSize="64">
+        <Block Hash="t+VJDGpfmNi5Qdtq0vc1FNXnX7/Sw38Ijm83F9Cber0=" Size="977"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Settings.svg" Size="2784" LfhSize="66">
+        <Block Hash="MsCPJ7PzfeldO3pYzAnmxifXoBNGqJGon0T8CXussKo=" Size="1560"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Sports.svg" Size="4504" LfhSize="64">
+        <Block Hash="Gjl/Iyzd+tmCmzpekU8G1XQfq2uq3w4KVHeWRwIuAoc=" Size="2266"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Theater.svg" Size="1468" LfhSize="65">
+        <Block Hash="0l+q7ke0RFOLUl5v2ebzQ4jOvcMvtlOFWtffkUb5QuE=" Size="842"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Technology.svg" Size="2016" LfhSize="68">
+        <Block Hash="eVuf9tch3W521OXUmzkaJinO+Hhch/obHcEKYhfQiEM=" Size="1101"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_SundayReview.svg" Size="2573" LfhSize="70">
+        <Block Hash="FoKDA3Sv6/0QTBKqGQZVDiGwpKET/DzX1xuH8jCIYW4=" Size="1290"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_US.svg" Size="1636" LfhSize="60">
+        <Block Hash="OQxy2CJuuQpvJLdCtbXUupJHUYmshgjJ17yxR6IMdG0=" Size="975"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_WeddingCeleb.svg" Size="1631" LfhSize="70">
+        <Block Hash="m3wv6tW2MY4FKSKRydb9MP2QQvYSXCOjnX4eShEJSJo=" Size="942"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_World.svg" Size="1745" LfhSize="63">
+        <Block Hash="4wOskuJvoWdQr6IE9xYK/U+6w+Rp7lumM7txlHCo9D0=" Size="1018"/>
+    </File>
+    <File Name="nytshared\images\HC\NYTLock.svg" Size="793" LfhSize="61">
+        <Block Hash="iNunAu/dVHcoEIeAWDnJ9wdJ62myVRTefKNVE69gHrw=" Size="509"/>
+    </File>
+    <File Name="nytshared\images\HC\NYT_Travel.svg" Size="1094" LfhSize="64">
+        <Block Hash="LX/k9qP0qP4XD8wewY+DuiwQsoez3LLGQxmsgzpLeYA=" Size="673"/>
+    </File>
+    <File Name="nytshared\images\NYT_Books.svg" Size="2060" LfhSize="60">
+        <Block Hash="3IZrHiSA5YpEOpIqWDRpvPZG0dHYCeq6LjZOjLTjiFg=" Size="1157"/>
+    </File>
+    <File Name="nytshared\images\NYT_Blogs.svg" Size="2289" LfhSize="60">
+        <Block Hash="e1QDgz9FrxZB18/zCGtmhQLioq/sokxcSxZp0SFOqGo=" Size="1201"/>
+    </File>
+    <File Name="nytshared\images\NYT_black_t-bg.svg" Size="1924" LfhSize="65">
+        <Block Hash="7hBFpPk2459tjT/+IlSbii1c5+DuR0+cJfm7VbbExdI=" Size="1068"/>
+    </File>
+    <File Name="nytshared\images\NYT_Autos.svg" Size="2832" LfhSize="60">
+        <Block Hash="Hv9B0aFMJar28z3tHyGGxWJV3tLqRHTgwNlV/N/nnmc=" Size="1122"/>
+    </File>
+    <File Name="nytshared\images\NYT_Arts.svg" Size="1879" LfhSize="59">
+        <Block Hash="tf/+v8jaYC0X7DTwkgu8e4ywpCINcmHvNfUjm8K1PYc=" Size="1053"/>
+    </File>
+    <File Name="nytshared\images\NYT_Business.svg" Size="1070" LfhSize="63">
+        <Block Hash="V2hiaYakEgecWgYnIH/sk1XOZGVQmet4KiK9MPlsL6E=" Size="490"/>
+    </File>
+    <File Name="nytshared\images\NYT_Classifieds.svg" Size="1593" LfhSize="66">
+        <Block Hash="7y0JN/Surv5NP3WidbS02akbBVxZyfVRzsPjPv4FzNI=" Size="861"/>
+    </File>
+    <File Name="nytshared\images\NYT_DealBooks.svg" Size="1138" LfhSize="64">
+        <Block Hash="bNUaU4zKD2xR/Hg+Ecf0yw/8nXrV7VXBGj/MPj2x+Qk=" Size="673"/>
+    </File>
+    <File Name="nytshared\images\NYT_DiningWine.svg" Size="1902" LfhSize="65">
+        <Block Hash="qspzhiCRMNKEsQx0WZTpvwyIYCbhbZq3/sTutvBoAJU=" Size="1039"/>
+    </File>
+    <File Name="nytshared\images\NYT_Health.svg" Size="924" LfhSize="61">
+        <Block Hash="u/ysXI38lxGtd6L9USlXqRFvCMm4IoGzaK+xzZKagrA=" Size="543"/>
+    </File>
+    <File Name="nytshared\images\NYT_FashionStyle.svg" Size="997" LfhSize="67">
+        <Block Hash="LhLRcC3rkoOy1B6PbDWabXPfFFzIOuOFmNaxdt2DZFc=" Size="618"/>
+    </File>
+    <File Name="nytshared\images\NYT_logo_black.png" Size="3221" LfhSize="65">
+        <Block Hash="9u9EqpoiWdMwn/AJfBW/nberNVeTart5pErzGwAXC8U="/>
+    </File>
+    <File Name="nytshared\images\NYT_Logo.svg" Size="2187" LfhSize="59">
+        <Block Hash="YmHTipYm8B1gcl/KW7MdD0FcL1Ze1BaWTJuQDtlxvZ0=" Size="1262"/>
+    </File>
+    <File Name="nytshared\images\NYT_Lock.svg" Size="726" LfhSize="59">
+        <Block Hash="jg7VExgQeYsEQnvk/OtlsJvQHFurXEMgVEg7y/sG8JE=" Size="466"/>
+    </File>
+    <File Name="nytshared\images\NYT_History.svg" Size="1749" LfhSize="62">
+        <Block Hash="v9yvFAbpGTsN5GUJ2iKkgdLBDd88nPEIIuAfm8xvd6I=" Size="856"/>
+    </File>
+    <File Name="nytshared\images\NYT_HomeGarden.svg" Size="1079" LfhSize="65">
+        <Block Hash="in1TWfRxutTdtJlBW0vKooHcLkIbXdJlpwcFP2afBgY=" Size="687"/>
+    </File>
+    <File Name="nytshared\images\NYT_new_logo_black.png" Size="3937" LfhSize="69">
+        <Block Hash="FjFNePqdc5+PnC3v8cYWxLv1gyETzyEx+ZXSor0xre0="/>
+    </File>
+    <File Name="nytshared\images\NYT_Movies.svg" Size="1432" LfhSize="61">
+        <Block Hash="79AhnWFTRclanKrXul4WpF7r1EI1Nq4eZVaw3px5JU4=" Size="719"/>
+    </File>
+    <File Name="nytshared\images\NYT_logo_long_black.svg" Size="10520" LfhSize="70">
+        <Block Hash="g99yFeK9aVWTcnxEvy3YbS2EKB4iBXOLxFSl7jDZCP0=" Size="4403"/>
+    </File>
+    <File Name="nytshared\images\NYT_Obituaries.svg" Size="1610" LfhSize="65">
+        <Block Hash="h9aEG65R32TjtQVwnLXWbwLt6FdBGLfGlSQs8eBBuVU=" Size="926"/>
+    </File>
+    <File Name="nytshared\images\NYT_MoreMail.svg" Size="1134" LfhSize="63">
+        <Block Hash="Zrc18LZIaJoPNUQAQIq900kJGMv+eTaf6GDWgWmapoA=" Size="583"/>
+    </File>
+    <File Name="nytshared\images\NYT_Magazine.svg" Size="1138" LfhSize="63">
+        <Block Hash="bNUaU4zKD2xR/Hg+Ecf0yw/8nXrV7VXBGj/MPj2x+Qk=" Size="673"/>
+    </File>
+    <File Name="nytshared\images\NYT_logo_white.png" Size="3671" LfhSize="65">
+        <Block Hash="6nZK9LtWl1uCnLTnjuNncQs9tBx0dAIcCCaQRob+C7o="/>
+    </File>
+    <File Name="nytshared\images\NYT_NewYork.svg" Size="1078" LfhSize="62">
+        <Block Hash="JxyjMaOdeOamUWtNeskOI6I6BbKq9ag1yuF+0NyE6B4=" Size="688"/>
+    </File>
+    <File Name="nytshared\images\NYT_Photos.svg" Size="1890" LfhSize="61">
+        <Block Hash="WDI08jD/9VuppZ3vEkUmTtCaN1OKTBQnFX8ARiBS7qA=" Size="978"/>
+    </File>
+    <File Name="nytshared\images\NYT_Opinions.svg" Size="1025" LfhSize="63">
+        <Block Hash="PZHlHqc0fSJTJcTNG11PjR7v8dANslKpMQcuUyvVPrQ=" Size="613"/>
+    </File>
+    <File Name="nytshared\images\NYT_Politics.svg" Size="1364" LfhSize="63">
+        <Block Hash="TxGfzaz+JVutfWBmBZKuS1FqtSc/RuJj2YyKDQx6mV8=" Size="726"/>
+    </File>
+    <File Name="nytshared\images\NYT_RealEstate.svg" Size="1541" LfhSize="65">
+        <Block Hash="SMmoQthOgv+grZsBaspxlTItJhF+6pNxMC53S79ZHVc=" Size="858"/>
+    </File>
+    <File Name="nytshared\images\NYT_Saved.svg" Size="1231" LfhSize="60">
+        <Block Hash="zq74rn6lFz492plwMuZtrcnHNrKhn48Gr2N2JbdotLU=" Size="748"/>
+    </File>
+    <File Name="nytshared\images\NYT_Science.svg" Size="1368" LfhSize="62">
+        <Block Hash="OT2FHXVl5dILMP4AbAEKSl6EogKrbRQP5VbmV9TZN6M=" Size="737"/>
+    </File>
+    <File Name="nytshared\images\NYT_Technology.svg" Size="2016" LfhSize="65">
+        <Block Hash="nehOYqZPoSF2ORga+svpKSYaB1TLT9GauwJsYZ/ff2s=" Size="1101"/>
+    </File>
+    <File Name="nytshared\images\NYT_SundayReview.svg" Size="2573" LfhSize="67">
+        <Block Hash="OdRS5acgGU89wVRii8Q9bIgsu9kvxOZ+EQTOISHza9Y=" Size="1291"/>
+    </File>
+    <File Name="nytshared\images\NYT_Settings.svg" Size="2784" LfhSize="63">
+        <Block Hash="XVpXi10QT2pPs7aC8zMIXG2AgguWgUtMnoJASRfGtgQ=" Size="1561"/>
+    </File>
+    <File Name="nytshared\images\NYT_Sports.svg" Size="4504" LfhSize="61">
+        <Block Hash="fqgwJbjIg7cjl/X9zFlzT6JEdC8r5c3Afn5Ioh53rk8=" Size="2267"/>
+    </File>
+    <File Name="nytshared\images\NYT_World.svg" Size="1745" LfhSize="60">
+        <Block Hash="WQ/AxJcY/lnfrYUYE324d4FSeMdrVuVdbtRhxEpy/Sc=" Size="1019"/>
+    </File>
+    <File Name="nytshared\images\NYT_WeddingCeleb.svg" Size="1631" LfhSize="67">
+        <Block Hash="pm2PnmN6N0Cdl+699LZynpu2uQTi82Hi/h8bxP4tqIg=" Size="943"/>
+    </File>
+    <File Name="nytshared\images\NYT_US.svg" Size="1636" LfhSize="57">
+        <Block Hash="zHrxQlAd89Qi27wfS7WQrhtHTar7Qnp29PLhayUTWsI=" Size="975"/>
+    </File>
+    <File Name="nytshared\images\NYT_Theater.svg" Size="1468" LfhSize="62">
+        <Block Hash="xQUz1eeJ3v+m67jZSAlUdBlp+GzdLZz8qseOYLobaJA=" Size="842"/>
+    </File>
+    <File Name="nytshared\images\NYTBlack.png" Size="1037" LfhSize="59">
+        <Block Hash="O+QblKXwOdEcLwCAaw7ddiw43jVqrkgHjUTil8n7j/c="/>
+    </File>
+    <File Name="nytshared\images\NYT_Travel.svg" Size="1094" LfhSize="61">
+        <Block Hash="8cOqLQvOZYerWT19O/ANIQyGY0yrp5PwbS0npOP0WrE=" Size="673"/>
+    </File>
+    <File Name="nytshared\images\NYTWhite.png" Size="1010" LfhSize="59">
+        <Block Hash="2Q+Zb3HJJ7gspf9p3a+kCgWhBSFHFf6y0YBT0DdcnXI="/>
+    </File>
+    <File Name="nytshared\images\NYTLock.svg" Size="777" LfhSize="58">
+        <Block Hash="lCFjvsSyemV9mtxH6mf66ydUkn64iyA2+woHqYSApL4=" Size="499"/>
+    </File>
+    <File Name="nytshared\nytEntityClusterConfig.xml" Size="7183" LfhSize="66">
+        <Block Hash="AsibsfAXW5K99JY1RI3wnbyhjFun4igZeOO776mckM8=" Size="876"/>
+    </File>
+    <File Name="wsjshared\images\gray_sub.svg" Size="1242" LfhSize="59">
+        <Block Hash="14sKLKTAR4XLxTkARymp/Sn2JJi43x3ruZupxspB0NY=" Size="647"/>
+    </File>
+    <File Name="wsjshared\images\dotted_grey_ccc.gif" Size="1095" LfhSize="66">
+        <Block Hash="Un4fmDBc1FNL9LkhJ1HhbEkzV7QxOrnqvy1UuXTUCJk="/>
+    </File>
+    <File Name="wsjshared\fonts\WSJ_Icons.ttf" Size="17076" LfhSize="59">
+        <Block Hash="dFAaXGc3fX9Ej8GS63sLcGYfQwGSVoW+F5yngslnToU=" Size="11499"/>
+    </File>
+    <File Name="wsjshared\images\dotted_white_ccc.gif" Size="1095" LfhSize="67">
+        <Block Hash="Un4fmDBc1FNL9LkhJ1HhbEkzV7QxOrnqvy1UuXTUCJk="/>
+    </File>
+    <File Name="wsjshared\images\key.svg" Size="980" LfhSize="54">
+        <Block Hash="//YGAobgakOGp39BgHxhvoOUIO9TZd8DZHFq/3ZXwQY=" Size="601"/>
+    </File>
+    <File Name="wsjshared\images\marketplaceHC.svg" Size="3624" LfhSize="64">
+        <Block Hash="HjM1ig6gwQU8CTqfODcfBx39iBEdVzmEHYBY1tmC2OA=" Size="1856"/>
+    </File>
+    <File Name="wsjshared\images\marketplace.svg" Size="3624" LfhSize="62">
+        <Block Hash="8srdRpQqGBj8VwyAj8diwAsgTSd1v6qSDyvF7OeazdI=" Size="1856"/>
+    </File>
+    <File Name="wsjshared\images\keyHCWhite.svg" Size="980" LfhSize="61">
+        <Block Hash="9i2FZjXz5WtQwUCZ+8eIwH1p1ankCpqbTEiQKJVzXL8=" Size="601"/>
+    </File>
+    <File Name="wsjshared\images\keyHCBlack.svg" Size="980" LfhSize="61">
+        <Block Hash="AQOS7muwgWecB4czP08btiFHLWZHjDI5cCPtdt20EJo=" Size="600"/>
+    </File>
+    <File Name="wsjshared\images\money.svg" Size="3553" LfhSize="56">
+        <Block Hash="ziZ6VtbN4wNwaj9Oa3//l+Wc3QdfJiFafI5iVXxt1fo=" Size="1851"/>
+    </File>
+    <File Name="wsjshared\images\WallStreetJournalWhite.png" Size="7759" LfhSize="73">
+        <Block Hash="TN/gmQxHmFBr4R7M/ZIkp84j/BsAnFrXIEzYlFQZs7Y="/>
+    </File>
+    <File Name="wsjshared\images\WallStreetJournalBlack.png" Size="7813" LfhSize="73">
+        <Block Hash="qVJCN/iP3GAdjLG62RU8jXoGtCNLFhwPxWw7ykCAFa0="/>
+    </File>
+    <File Name="wsjshared\images\opinionHC.svg" Size="3579" LfhSize="60">
+        <Block Hash="xwyhhu6gUwgQDL0oyGd2SYdq7gKqIzvG9YK4jtZAhjU=" Size="1853"/>
+    </File>
+    <File Name="wsjshared\images\opinion.svg" Size="3579" LfhSize="58">
+        <Block Hash="pvMh85/Z0KWv6vdpSDUz0VfLNNKA1/UIPPCTIHQ1+ec=" Size="1854"/>
+    </File>
+    <File Name="wsjshared\images\moneyHC.svg" Size="3553" LfhSize="58">
+        <Block Hash="Lnas1/yyMtNFK5kOHfCl8nwxxd6LR67JR4BYpOyYQXo=" Size="1851"/>
+    </File>
+    <File Name="wsjshared\images\whatsnews.svg" Size="3643" LfhSize="60">
+        <Block Hash="Jsdu8vEPf24p3lUSVwu3ujfozU2ZrLh6W6XP6pTlTJc=" Size="1857"/>
+    </File>
+    <File Name="wsjshared\images\WSJ_Live_bw.svg" Size="4002" LfhSize="62">
+        <Block Hash="6xI+xnexTQa4rxKf9ez+liqglCb3pSg0mavWb+7giE4=" Size="1899"/>
+    </File>
+    <File Name="wsjshared\images\whatsnewsHC.svg" Size="3643" LfhSize="62">
+        <Block Hash="E4eyJyWaVBB5meHpTZwYYHZ306HEQ0Xpjub5SU8CwT4=" Size="1856"/>
+    </File>
+    <File Name="wsjshared\images\WSJ_Live_color.svg" Size="4052" LfhSize="65">
+        <Block Hash="Ch22XfGjnBPV0pG5H5zEN3ztssnNDHkMkXQ9TX4PGPM=" Size="1890"/>
+    </File>
+    <File Name="wsjshared\images\WSJ_Live_white.svg" Size="3761" LfhSize="65">
+        <Block Hash="G+hzBp9SlJ88wwLvbwYMEJfF4pZlmgwqqutJqrIX6eY=" Size="1855"/>
+    </File>
+    <File Name="wsjshared\images\WSJ_Logo_white.svg" Size="21808" LfhSize="65">
+        <Block Hash="5/D22Qx6ZCDqZwyHGKm51uNDajyiM4IAuhcOq9aMyVk=" Size="5519"/>
+    </File>
+    <File Name="wsjshared\images\WSJ_Logo_black_short.svg" Size="1916" LfhSize="71">
+        <Block Hash="fTaJ/8D+yY6VyexHYxGKJXLwC5zAFdeQxt8o8mX2iTA=" Size="1068"/>
+    </File>
+    <File Name="wsjshared\images\WSJLogoWhite.png" Size="1551" LfhSize="63">
+        <Block Hash="0R/DzklazbZTkjv3mRHvne8LPKenBlyd16CpUpJgsi4="/>
+    </File>
+    <File Name="wsjshared\images\WSJ_Logo_black.svg" Size="21808" LfhSize="65">
+        <Block Hash="mXCXZvtEAW7hxUZVzwNMIsBUXF3egSy64EqWak+/GbY=" Size="5521"/>
+    </File>
+    <File Name="wsjshared\images\WSJLogoBlack.png" Size="879" LfhSize="63">
+        <Block Hash="3WJ3yPkjOqWgqIzp8B5S4Gl0njTenGGU1uQu8s7hvDs="/>
+    </File>
+    <File Name="wsjshared\transform.xml" Size="498" LfhSize="53">
+        <Block Hash="stkzsDTJrzuKnipI+Pr1GnQVv2OfNNHhj5gxazxvh2A=" Size="239"/>
+    </File>
+    <File Name="wsjshared\wsjEntityClusterConfig.xml" Size="3051" LfhSize="66">
+        <Block Hash="/IXQmvugsYFCWSd1Qdy2nzl1j9rAGNUBfnj8wdNayZk=" Size="568"/>
+    </File>
+    <File Name="Common\fonts\AppExSymbol-Regular.ttf" Size="153032" LfhSize="66">
+        <Block Hash="wNzQB0hvwjjJzIx+pA2ApYsF5uvwiqkfNny8m4v3G04=" Size="41593"/>
+        <Block Hash="9opOHiDo/mcWQIufcmc9eUxcXQGd/6eKtqaOQO3VtFo=" Size="40103"/>
+        <Block Hash="2AgXiLhGg0rN9ru9I4S9eU1X2tmN/0znjy1Qtykqx1I=" Size="14263"/>
+    </File>
+    <File Name="Common\images\customizationItemLarge.png" Size="1085" LfhSize="70">
+        <Block Hash="GjEdVqqulV8h6kzcyZABsNY8NJk9tiI0pGv4jqpNef0="/>
+    </File>
+    <File Name="Common\images\app_update.png" Size="1677" LfhSize="58">
+        <Block Hash="XYVwtoGAMx5RVa7Jv9iqmiOTs80Gvp+A/Mbk/KrQhxo="/>
+    </File>
+    <File Name="Common\images\beak_nav_asset.scale-100.png" Size="487" LfhSize="72">
+        <Block Hash="GrgnHiwxScnXZBtCQQqH+7+BOLLbAYwDgszH0Kl02QE="/>
+    </File>
+    <File Name="Common\images\customizationItemMedium.png" Size="1077" LfhSize="71">
+        <Block Hash="/5quzBahlfQyxXXjG2z6cZieN8F+wW+d19xwBczF2+Q="/>
+    </File>
+    <File Name="Common\images\key.svg" Size="980" LfhSize="51">
+        <Block Hash="//YGAobgakOGp39BgHxhvoOUIO9TZd8DZHFq/3ZXwQY=" Size="601"/>
+    </File>
+    <File Name="Common\images\keyHCBlack.svg" Size="980" LfhSize="58">
+        <Block Hash="AQOS7muwgWecB4czP08btiFHLWZHjDI5cCPtdt20EJo=" Size="600"/>
+    </File>
+    <File Name="Common\images\customizationItemSmall.png" Size="861" LfhSize="70">
+        <Block Hash="DXJSaZrhGm66JONY+lx6ck9L4VBOToBQ5V6PQ4zjIw4="/>
+    </File>
+    <File Name="Common\images\imagePlaceHolder_dark.svg" Size="2321" LfhSize="69">
+        <Block Hash="3S8/sXs0Z5L0HKhk8htAarJ/9DghFtUmyKZUNLcq5Kk=" Size="1218"/>
+    </File>
+    <File Name="Common\images\imagePlaceHolder_light.svg" Size="2448" LfhSize="70">
+        <Block Hash="4kK0CspsNNbf9R9qL+r84WeoyXXqxYm3OzX1WinJags=" Size="1289"/>
+    </File>
+    <File Name="Common\images\update.png" Size="1942" LfhSize="54">
+        <Block Hash="lHaKtjknD/MggowZm/+KFeeyLf6VJPgI6Bh0kb8DkFM="/>
+    </File>
+    <File Name="Common\images\und\binglogo.png" Size="1463" LfhSize="60">
+        <Block Hash="lZHcJZLQTWZoqGcv+3HLRQTn5Eg0cp0NCdqO9I4XB28="/>
+    </File>
+    <File Name="Common\images\keyHCWhite.svg" Size="980" LfhSize="58">
+        <Block Hash="9i2FZjXz5WtQwUCZ+8eIwH1p1ankCpqbTEiQKJVzXL8=" Size="601"/>
+    </File>
+    <File Name="Common\images\mic.png" Size="3133" LfhSize="51">
+        <Block Hash="dMI2huN9LgBmgQ07nhfS2oKQAVI42ziHlq2mryAyN3U="/>
+    </File>
+    <File Name="Common\images\Microsoft_Logo.png" Size="199" LfhSize="62">
+        <Block Hash="/8Mo4ConmFdWMEQiYZyeH0u9KIypxmEzt+nmr/m0Dyw="/>
+    </File>
+    <File Name="Common\images\Pattern_15x15.png" Size="110" LfhSize="61">
+        <Block Hash="6iBeGMfLozrtT/zWDbKzmstqLjk3RIWvDtV2RRj5P44="/>
+    </File>
+    <File Name="Common\images\snap_placeholder.png" Size="701" LfhSize="64">
+        <Block Hash="//CNsNFVieRfMezjvd0poVdAI75v2pDZWNkNYFmmMqw="/>
+    </File>
+    <File Name="Common\images\tilePlaceHolder_dark.svg" Size="2233" LfhSize="68">
+        <Block Hash="zIoeuyiPNBX0NqOH76GZrnN3k55CJ1868Wz1OVVDrQw=" Size="1137"/>
+    </File>
+    <File Name="Common\images\tilePlaceHolder_light.svg" Size="2345" LfhSize="69">
+        <Block Hash="/V7JHPtSN7jEYp3hkDNe4raPtcmnMK9NEzn4D2ZL26k=" Size="1208"/>
+    </File>
+    <File Name="Common\images\und\binglogo.contrast-black.png" Size="1477" LfhSize="75">
+        <Block Hash="05VE+RG6yV2evG6vGH6Ig+4kItXeKfqM42efzfw2wrU="/>
+    </File>
+    <File Name="Common\images\und\binglogo.contrast-white.png" Size="1463" LfhSize="75">
+        <Block Hash="A74crtcmrzu5TuiVlW5eA1EI8/puvff5Ig/UmesYOI4="/>
+    </File>
+    <File Name="Common\images\world_dark.png" Size="1867" LfhSize="58">
+        <Block Hash="AO7/yisAi6LrP2JKm6afzRA+UvqWvs5Yhafu03hnFSQ="/>
+    </File>
+    <File Name="Common\images\wsj_key.svg" Size="980" LfhSize="55">
+        <Block Hash="//YGAobgakOGp39BgHxhvoOUIO9TZd8DZHFq/3ZXwQY=" Size="601"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\GripperHover_fullscreen.svg" Size="841" LfhSize="88">
+        <Block Hash="XgkNM+XIcSegYubDVHjO9giKNNaPHy9t7L9xwG4ToGg=" Size="517"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\GripperHover_inline.svg" Size="800" LfhSize="84">
+        <Block Hash="PWlQbRLMnsUIlbbtGJspnV9NGU6LB/8w7va/dm2xT3k=" Size="496"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\black.mp4" Size="31876" LfhSize="70">
+        <Block Hash="pyHioq6krUOvRGuFiUPrb8Ge5NbjbjWw8D5OC/HQ1pk=" Size="1522"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\GripperPressed_fullscreen.svg" Size="827" LfhSize="90">
+        <Block Hash="loJ+oAOVKfb31jIntDLpa+nCCvH15+advHaMSQM5Cmc=" Size="503"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\GripperPressed_inline.svg" Size="803" LfhSize="86">
+        <Block Hash="M3hMmI3Zy8A7LL/Lwd9eRZlO5sxsUaCdPr/G5zx0Chs=" Size="496"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\GripperRest_fullscreen.svg" Size="826" LfhSize="87">
+        <Block Hash="YqhZRUFQ79sh9sICNiaCiJyLWLr89XsBtL1m9O8Vat8=" Size="510"/>
+    </File>
+    <File Name="Common\MediaPlayback\Resources\GripperRest_inline.svg" Size="817" LfhSize="83">
+        <Block Hash="T5kZyxOnAfyycVfsvb50Wg4qqZ0+RYrpaV0Vj8UZ+yc=" Size="508"/>
+    </File>
+    <File Name="Microsoft.Bing.AppEx.Telemetry\Doc.Platform.Telemetry.xml" Size="809" LfhSize="87">
+        <Block Hash="PyHj8VFeQC8NffZV3XWctd+hgZQHk8nKJtJRuCnqIaw=" Size="395"/>
+    </File>
+    <File Name="SqliteWrapper.dll" Size="449040" LfhSize="47">
+        <Block Hash="OlmyIoft52M3dVJRA6q8J9iPzV/w4DxDKziIW1JaA9M=" Size="22424"/>
+        <Block Hash="PlQ9GS4ne+sCLuWqVs9BMAjhanlOE5dYvW2cHkGrnQU=" Size="21631"/>
+        <Block Hash="dFvOhzEcLG7RqKG84szKaqgDqW+pOBUBOvqv/jFKkLM=" Size="23546"/>
+        <Block Hash="QMDOLm0sg7X1VRunlJMg31iTwkl3g3UEA9ljlEg7nCk=" Size="25513"/>
+        <Block Hash="Abzi66XWJJqT814vVFs537tKtlc4/h92GNBjJ6hpwBM=" Size="16533"/>
+        <Block Hash="sROqVlyBywDq2SV0rGQsYrw/opZPOXUPJLQZXPoLp2o=" Size="18464"/>
+        <Block Hash="4zjHirRAOgJgSNZfSe9xUyyjeq06viuTGuBr9har1Dg=" Size="26256"/>
+    </File>
+    <File Name="SqliteWrapper.winmd" Size="16912" LfhSize="49">
+        <Block Hash="595doY0ACWbpaOg33HaJ9rJdKbnexg/VJXfZVgAUJDw=" Size="9177"/>
+    </File>
+    <File Name="Newtonsoft.Json.dll" Size="407040" LfhSize="49">
+        <Block Hash="r2SDFQ6GytsPwb5P5Te7hYg/W0iGzJrL4jY4+o5JcRs=" Size="27290"/>
+        <Block Hash="1Mhct/msZylYd6Zsbe1sH2A00mxyF89Ru2ndsdoC+BY=" Size="28878"/>
+        <Block Hash="OQYVBcBG4QWbLkJLCHgGa9FgJGE7HhEGc0B3dAtgeig=" Size="32783"/>
+        <Block Hash="6nUQKIVhOAyzECy8/oZX7/zTYCwuiS08rXCahwJNSlk=" Size="30293"/>
+        <Block Hash="I4V/ZBuYPOr1bpR0sLLNtmS7UgoQFxlF9jB8vbhmKCI=" Size="19184"/>
+        <Block Hash="IbWlMvqrDGIpJ+W/frFBwT9j4qA0rGbo5SwZJzUag1o=" Size="17828"/>
+        <Block Hash="e+jw+kFIFcmXOmPnFPcp/AXfg2o+xJdBuIHFU3jHSoc=" Size="5697"/>
+    </File>
+    <File Name="Microsoft.PerfTrack.dll" Size="40048" LfhSize="53">
+        <Block Hash="k7ZO3CofevSVSpQXcmTiMGSJKromV0JP2zROWNH+eA4=" Size="20575"/>
+    </File>
+    <File Name="Microsoft.PerfTrack.winmd" Size="12728" LfhSize="55">
+        <Block Hash="23Ez3LikByPCsHs2LxqErgCqzbsfg+0d9UbV6brdpFA=" Size="7432"/>
+    </File>
+    <File Name="sqlite3.dll" Size="535992" LfhSize="41">
+        <Block Hash="xWCZu9HLyKj1hl0t6Er8ZwMb20LGAu00zLHPXFoQRl0=" Size="37157"/>
+        <Block Hash="55qSJKPB3gxlc0fXIwYzBzCnPWY4DTGzSe6q/F8l3bk=" Size="38251"/>
+        <Block Hash="/PSxV5FegsYSHD2bQWAH7BkuSXQf9ZvMRLA6cCeHSiQ=" Size="36279"/>
+        <Block Hash="/sMw0mXs3ocmUDL1sgqDUsP5TSoUooNFYycGOVhqVU8=" Size="36984"/>
+        <Block Hash="+SNyEYLjJY9CDKbubWEnVljo1cWDwIt002yzvSzQSiU=" Size="34630"/>
+        <Block Hash="oqjIrMQeYBzvfBpgY6NmlsScwyFBUCq3JLSaoTAePec=" Size="32182"/>
+        <Block Hash="8UmlHmuOY6+BH2VJ9BFex7OlSAiwqh19TQwnYqmYuGA=" Size="37572"/>
+        <Block Hash="I0xa9gUGg4Xt4bzk1vylRcbJxs2fP4VyFpFgvart78k=" Size="35351"/>
+        <Block Hash="eltbn8pFAS+8RztWrt3+h8ocPTUQmNrkx5VgRlYJGKE=" Size="7209"/>
+    </File>
+    <File Name="Microsoft.Media.AdaptiveStreaming.winmd" Size="29448" LfhSize="69">
+        <Block Hash="8KZNcDgczp2RHFgEsqO1iB/99mI0IFnOiKPbxhD6lbQ=" Size="13768"/>
+    </File>
+    <File Name="Microsoft.Media.AdaptiveStreaming.dll" Size="1113352" LfhSize="67">
+        <Block Hash="yklNrLrV0EMYXU4PaEKNyePcDZ3ScxL7JbZe1ncW0mU=" Size="26209"/>
+        <Block Hash="IPC7/F/ieez14DctdJYYEO0fEiFkhZmZuCz1aZD/hEA=" Size="21447"/>
+        <Block Hash="WmFMIRtR4lSURvlLNALnsNyIl5bHDLT7rWDSD/iysig=" Size="26141"/>
+        <Block Hash="i95TgOqnyj/tcUTE+taeBMVLNHzyTRSO7GujVwMfR04=" Size="28128"/>
+        <Block Hash="GvoEB+4E6c/Ip0hdB0SSKJPj+uKoVeKlPcKhvOX9puA=" Size="25836"/>
+        <Block Hash="EZoqZcY2QTR5b9Q33uLG3EfvoJ5m6JQI/MN5KOXk2Ro=" Size="33041"/>
+        <Block Hash="S+8fX6EAjgTWc3GCwbliGb/iKQc0PyprUT9qD8b/u4U=" Size="29701"/>
+        <Block Hash="KV2A406KWl+Lq6p8Dwj/yqKxzDJFqApkIVdYvQc8PkM=" Size="32604"/>
+        <Block Hash="n5jbKldZaExm+cPSAXkN0agAbPqzObecG6d29K6gxvM=" Size="30656"/>
+        <Block Hash="vsFdpBsk2NwZ2WKVRyVr1H1q25SFXMQCEcHcGvF112g=" Size="27010"/>
+        <Block Hash="IMHV1aQvii4Wg+r754lWZr90FrobaZp+YLI7Spo94IY=" Size="25329"/>
+        <Block Hash="93PyvfKVVg2KmIev3CVGs9pi1uiOZf69yogLiJqKbUk=" Size="19409"/>
+        <Block Hash="XAPAXv+PP1m+KFtj5QYHoqC/RwjWxadRNEQM5zvhhe4=" Size="14953"/>
+        <Block Hash="wEDnsx9gYsfy0eeU0pBY8KK9iD9+TO5yUzUi+GS0CJQ=" Size="13906"/>
+        <Block Hash="AZsORZVjrEgTad6MRrpBXOymNhZvsfAkslJc+QffK2w=" Size="3007"/>
+        <Block Hash="JieMIKsK51v9I+Zh4NJnveLYzG+yHdr8fHvHsKEcBNA=" Size="22366"/>
+        <Block Hash="VdrNMrk12s2i2hSzg6320hC19fzn/0t369jBYxo0i2Y=" Size="23074"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js.Advertising\css\PlayerFramework.Advertising.css" Size="1298" LfhSize="106">
+        <Block Hash="RWnWhCtpFfX0G6dEsw7tel+gKKEvBd2njOBQuWvnXFU=" Size="341"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js.Advertising\js\PlayerFramework.Advertising.js" Size="151499" LfhSize="104">
+        <Block Hash="3OMQ3h0rr688BadeKz/cut8QUfdO7OWJ3p7uwjhccFs=" Size="8576"/>
+        <Block Hash="eW/ePrbhdpkXKtvGmEe8ikogsA7zAwvqoAmao6ex0dA=" Size="7568"/>
+        <Block Hash="mR1iKvCj6r7ufSZ3NXwjuFBgl592GRJ/jSdgVCC3M1k=" Size="2506"/>
+    </File>
+    <File Name="Microsoft.Media.Advertising.winmd" Size="321536" LfhSize="63">
+        <Block Hash="p7lpfdi2sSDHPJst+AiJSukLBSn40eM5h4FMDW8Ruug=" Size="25456"/>
+        <Block Hash="Yo0/v2Ct9ADHA3fq2u0YOdJQ27vsuwZ/++S6Fh4caMg=" Size="30872"/>
+        <Block Hash="9OifZqAxuDVJP1XT7S3na+Fv9X8+1XUeBuP9f0ZsAfQ=" Size="20240"/>
+        <Block Hash="E0ScnN9zE2TvKAnp0q2S7eycD72RtBeBaz6v4kPJ2UU=" Size="28059"/>
+        <Block Hash="1OXB9GK+W8SxAz2xHZgrhKnmjkv0d65rE3taJpaihc8=" Size="21181"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js.Advertising.winmd" Size="60416" LfhSize="76">
+        <Block Hash="WoJcAluHy1yUfT7dZ2+qBYxVb4hkWT+7YhGnukfbY5k=" Size="23501"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-dark.css" Size="21975" LfhSize="101">
+        <Block Hash="NjUoQ5hPynDA0yLm6G9h/v1FuOnH4aETcsTxBNTaHl0=" Size="3361"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\css\PlayerFramework-dark.css" Size="17213" LfhSize="87">
+        <Block Hash="FGnUzfuGZ7++7U8ZwiUTWradHfw8ZRbtLz4IKIMEVIU=" Size="2795"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\css\PlayerFramework-light.css" Size="17183" LfhSize="88">
+        <Block Hash="rSoP5zPPpI7gKYdYjVDq17H28PlsqBkMeVZQnfB6EX4=" Size="2793"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\css\PlayerFramework-Entertainment-light.css" Size="21938" LfhSize="102">
+        <Block Hash="C+ZBAw0zvpVjs8VWkOX80uKcP0dxWye3HAQKLJzJIFc=" Size="3358"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\css\PlayerFramework-Universal-dark.css" Size="26083" LfhSize="97">
+        <Block Hash="o/QjL4vVmuhk1Z2TUh4QlwIC/xW5IeYtZ5xtM07IRoI=" Size="3727"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\images\thumb-light.png" Size="738" LfhSize="81">
+        <Block Hash="/6B8U+N8jfWL+sajJHxxklBFgLg2lQVB+VXyFGuQZwM="/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\css\PlayerFramework-Universal-light.css" Size="26029" LfhSize="98">
+        <Block Hash="MEgRhJtYV/VwsHslNPdgVq7YM1wzx9kAXwcA9IKfAkQ=" Size="3727"/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\images\thumb-dark.png" Size="751" LfhSize="80">
+        <Block Hash="oc+8x/FQwBU3G7GSDq3aQexyBpj3qmNL4ECv8ldXpyg="/>
+    </File>
+    <File Name="Microsoft.PlayerFramework.Js\js\PlayerFramework.js" Size="454964" LfhSize="80">
+        <Block Hash="fcbyoPQ3itsXT9ofpMsAGZNkJk47YrBEOzDk2Nvpx28=" Size="10377"/>
+        <Block Hash="NgKkJWhJha4L9sK7ksFc3LOOh1Cf4wSKJlu5IdKlgvU=" Size="8082"/>
+        <Block Hash="BxoQhBxdXWeBbT55j+0fCEuzE9z9SaVa+pX35osK/pM=" Size="5074"/>
+        <Block Hash="l0HmEdqCNKja1t5ZDVHaW4y5z1U/KrbR2Dlv6sOWCJI=" Size="7903"/>
+        <Block Hash="oLuMqPGRQGN+uGEuuAeKiW30RmX8uk6c/uUtlm6fgiE=" Size="7035"/>
+        <Block Hash="P+FazSsKgeLZMPgjjxSbrBDHjuEs7D92dc3SbTaROs0=" Size="7721"/>
+        <Block Hash="VK7T63nT47CMBF3PKuh4jm83+aFTOIAU1bChw8za6lE=" Size="5961"/>
+    </File>
+    <File Name="MicrosoftAdvertising.SDK.Plugins.MMPPF.JS\html\MSASettingsPanel.html" Size="2006" LfhSize="98">
+        <Block Hash="+S6fI/mLqob/Qja6QY/3+j3gQ5FmpO1vd+fLxz1LSxI=" Size="777"/>
+    </File>
+    <File Name="MicrosoftAdvertising.SDK.Plugins.MMPPF.JS\js\AdSDKPlugin.js" Size="23103" LfhSize="89">
+        <Block Hash="qC5e2StQ+h7e7kk2MZ9/IhxhpCbduV2Sxt46ZoCPx7M=" Size="9355"/>
+    </File>
+    <File Name="MicrosoftAdvertising_MMPPF.dll" Size="793280" LfhSize="60">
+        <Block Hash="Y2Wqa8QLSO/9lMc5RKpa//Amhn6Pnezn/MDDbo25+4k=" Size="25630"/>
+        <Block Hash="316tvFQYKpUzNo+HFyQHAw13rIuMgzYdnh5hO8Ey4Og=" Size="18520"/>
+        <Block Hash="MNQMMnQINIEL+05X8bgpdyx9gzykIU4h4TBlznPmmmg=" Size="27247"/>
+        <Block Hash="034LvpyPwHG4Tx7TWVOOHj+T/VWi/znBhqSwlQYStKU=" Size="17551"/>
+        <Block Hash="ipHvrKU5UIajAQbQs/MVXc00c7wM9TanbWyr4cMmZiI=" Size="17898"/>
+        <Block Hash="0zSKJSni+xqAQEZCxBBoybXg06c/YH8U6xD3QfIDRtQ=" Size="21709"/>
+        <Block Hash="Iy4UmMyvzXxpZVid/hd2vtfnjOrH4CXaCIbtj7xuPhM=" Size="26519"/>
+        <Block Hash="Wl3wzr7b0SR61JkQjXMKu0ZdYmVAy0bazkd+ptvR5T0=" Size="20481"/>
+        <Block Hash="2Aj5CYpl4LQrI+4f31/WjGjAwlG6ysoL3/DQPdx2/YY=" Size="16598"/>
+        <Block Hash="MYUUZpEHlFg4RnEWCSzlvq1EObVF57su7+gYDw2qOtA=" Size="18600"/>
+        <Block Hash="YfF71xa82c5tSuMmgKnwBixekFblUV3oIH13fpITnbs=" Size="5948"/>
+        <Block Hash="RuXqSkcxwxKiFaP+osJjKrMghee05V9cLGhm+PwUD9E=" Size="28483"/>
+        <Block Hash="bHCKmcKePYUibaiVQCbNnvsD3LmyTUIqUuiVOz7aAZM=" Size="4627"/>
+    </File>
+    <File Name="MicrosoftAdvertising_MMPPF.winmd" Size="11456" LfhSize="62">
+        <Block Hash="D4If8lLp7AsWE3Dn7y3uwBQandfcYbjA034W37bMkNE=" Size="6505"/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\bootstrap.html" Size="1223" LfhSize="64">
+        <Block Hash="Kr7XWiDsEBAEkn0nAnn/rpZqB9/ViLJc9f5zGCIWYHs=" Size="545"/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\300x600\DefaultImageAd.png" Size="3650" LfhSize="99">
+        <Block Hash="BhECQ+47sthagu2tS3Z79xUZZYWE1PUtCvrTc2G3jSA="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\300x250\DefaultImageAd.png" Size="2613" LfhSize="99">
+        <Block Hash="vRSTDZb/dILmxgrAV4wORPlixkqODctf0IeqUfR0HEw="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\bootstrap.js" Size="27567" LfhSize="62">
+        <Block Hash="xgg6PiQDg9bgxzxgVeqE2BwCKQLlS2BnKqAa9PI4H3k=" Size="9585"/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\1366x768\DefaultImageAd.png" Size="8913" LfhSize="100">
+        <Block Hash="EmBvt/pHZ6r43lRK0fQ2Qq4zABGbZmFPEQqOMwjTYTo="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\160x600\DefaultImageAd.png" Size="3501" LfhSize="99">
+        <Block Hash="uwB7FN7UtTOLxdDbYz2D0STQSD0Yb5m06sLxvGYkvEI="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\250x250\DefaultImageAd.png" Size="2511" LfhSize="99">
+        <Block Hash="NPj0jtg88C/kPcxCNYT5+h/N8jk3VeeG1nLwu1vZj8Y="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\250x510\DefaultImageAd.png" Size="3250" LfhSize="99">
+        <Block Hash="MR8eN74qyxgDENjmvwyJkNkwXAL5VxOG6fv9n9ramoc="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\images\DefaultImageAds\728x90\DefaultImageAd.png" Size="2612" LfhSize="98">
+        <Block Hash="EdtXXVL24KleLf9BNsn+DvhTOAI9tHpuBuDuN+QuAVI="/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\MSASettingsPanel.html" Size="2006" LfhSize="71">
+        <Block Hash="+S6fI/mLqob/Qja6QY/3+j3gQ5FmpO1vd+fLxz1LSxI=" Size="777"/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\mraidApi.html" Size="675" LfhSize="63">
+        <Block Hash="vnXnb+7hSuFtJx/kSPrww0DrIYkjPBD69bOSXHZg8kU=" Size="326"/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\ormma.js" Size="72453" LfhSize="58">
+        <Block Hash="jUe8ZZLdLjFNymoB4ZU8VwME7dBpUdGcLrcSyts8Xhk=" Size="14144"/>
+        <Block Hash="R11GbESulF6dWxlwB1Mi3IgVGi/pW+U3LlMdKrery44=" Size="3833"/>
+    </File>
+    <File Name="MSAdvertisingJS\ads\ad.js" Size="105923" LfhSize="55">
+        <Block Hash="ABPgUSZVaTWn7zvrvsFR0824e+A4yrq3uqDqtk6Vpt4=" Size="13237"/>
+        <Block Hash="Ov2j8BhRB+LXK1bSKNhq6P7bGu+ZqWznl9GaWoTQ0G8=" Size="12565"/>
+    </File>
+    <File Name="MicrosoftAdvertising.winmd" Size="225968" LfhSize="56">
+        <Block Hash="vD4Q64QcbAIQDrP351TBenojvpkVMZDHzj5Rv4j5puE=" Size="29204"/>
+        <Block Hash="jnGQ1C8HReVYdwmhMV9ZBNBfiTgBTRHViV1TxLsrsxY=" Size="8431"/>
+        <Block Hash="CAK4nwMjBjoCRqpHFYQMviOmwpDXhZBm5ASO+ZrI760=" Size="6287"/>
+        <Block Hash="k3bGc0t1l8sltb8SDw/DPRU12TnzhsCnMIfw7H4/l5o=" Size="9519"/>
+    </File>
+    <File Name="Platform.winmd" Size="929296" LfhSize="44">
+        <Block Hash="yy3f7bKPx96olgiT/gMZ23EGOqmbXeI9EnmqIZUIdfM=" Size="26297"/>
+        <Block Hash="vB0QEbEwMtZgcJb8BoAWlgeY0mFJL0wyDRaCfESWBgY=" Size="28637"/>
+        <Block Hash="jJ8mhIVrwyKSfHlhRsMhqI17nyH66JwpIMoeoZ2bUkk=" Size="26959"/>
+        <Block Hash="HIruUWF1PbHgL1h7SLbS9as+F7WKvARQIO3HLhqKbE4=" Size="25888"/>
+        <Block Hash="2RJoIzY751xYkuMZhu1Kzohj9fsFN6Te0Wg9Stw/m/g=" Size="27546"/>
+        <Block Hash="y0aGyGhaQvF4RUB8BSRz7MbMnS/PvDiL01UC6CRHjjU=" Size="26443"/>
+        <Block Hash="hIctZX1Q/O5EMjUvlYKPTu1io7+viQf9cw0qG4E6Fi0=" Size="20189"/>
+        <Block Hash="NUY9WLKDXwg7w71Zx6LGMmWipOdebU+MNWy739E4ffg=" Size="21776"/>
+        <Block Hash="yxp0YrvwDapcGY+zqugRtQ67W7YHFW1XKprsXDWhBCY=" Size="28150"/>
+        <Block Hash="MXwGCjCoQFWHstvLGp4rGF3hW9/sjBmt0qpW2OsaCUM=" Size="17145"/>
+        <Block Hash="saaW/65+pj9VPy/4ks5Mjntj6v6IUlasjxVQsjzJLRs=" Size="17489"/>
+        <Block Hash="BHox9j/gXGXeufxGCrRWMp9GO+rIphyPmhH2kmiUVCk=" Size="19172"/>
+        <Block Hash="aUWyV/87cZ6Am2VZ44rzOXGG/t6cDixpYjZ2Ii881pE=" Size="25170"/>
+        <Block Hash="0ryHu8WLYh61Jjk9tpTLfaUVQXSnSeng/v6ZmdAGrc0=" Size="8274"/>
+        <Block Hash="HZLLJl3kkDc27Tj5UhLVpvB2aOvjxy+PdIJ6kys2LUc=" Size="6756"/>
+    </File>
+    <File Name="Microsoft.Bing.AppEx.Telemetry.winmd" Size="280576" LfhSize="66">
+        <Block Hash="St8ghHid7EzfGm0kYUqydTZJtfqAymJKMbwXfI1bD4s=" Size="26127"/>
+        <Block Hash="IjZexIFX2Ag7ZWbRppMuUhlA1QzMhHYt6TgaKb64S3M=" Size="27591"/>
+        <Block Hash="ORfruXMFAxPQZ9bhnw7DhvPwtwb2fYubE51hXj0Mnqc=" Size="24875"/>
+        <Block Hash="kBWejGF2eHjsj6nrUHbfC2Oh+5tlZdMUClF50PLrgLs=" Size="18730"/>
+        <Block Hash="uFG94bD+oJnLLMOOnnVMdSAxrxMXGmXYkDo5w0gTFZM=" Size="7416"/>
+    </File>
+    <File Name="AppEx.Common.winmd" Size="151568" LfhSize="48">
+        <Block Hash="C//o9vNT+nXGpjRZAZxOdOMPYFjnMlazUzvmTQMvVm8=" Size="25649"/>
+        <Block Hash="2/yaT7GAmtzHRiwf0Kp84ntw53tBbomExsZ2SNJdtoY=" Size="28045"/>
+        <Block Hash="fdcV/UqKKSWqEJAhOvX75isQ27rCJ5hbMIc7yfF8VCc=" Size="9366"/>
+    </File>
+    <File Name="AppEx.Common.NewsBdiTransformer.winmd" Size="98832" LfhSize="67">
+        <Block Hash="aW/4AMLcnzt+hoJ7CVK7Fh7eNNTWia2r5G5FeUEYqRA=" Size="25463"/>
+        <Block Hash="V1PNLhaTWjRbIuqBIL/x/ZjFvaRrUUb+i4GNVH83H+8=" Size="12019"/>
+    </File>
+    <File Name="Microsoft.Amp.PersonalDataPlatform.DataClient.winmd" Size="152080" LfhSize="81">
+        <Block Hash="fUzUI4wWRWM2nciQ9/rwwYO+6xnbNXLNxwmh7qqPPMo=" Size="27572"/>
+        <Block Hash="m7wSnTWzI+w/KIjQZ7fOvE33zWIScaSOlHVhjpNm8OM=" Size="25828"/>
+        <Block Hash="7OQ7BXuJdRjNTYkMPv5RK9QvbT+GuJflp5cmq767DEA=" Size="8840"/>
+    </File>
+    <File Name="NYT.winmd" Size="24080" LfhSize="39">
+        <Block Hash="zPhYhg39LfFehw9KlkbtbPy8iQU9jIhkzFnNRnQmWeg=" Size="13421"/>
+    </File>
+    <File Name="News.winmd" Size="29200" LfhSize="40">
+        <Block Hash="HWzaR891itczOu6ZJiJrbKfBFi53MKwKmcKenqoSU9k=" Size="15954"/>
+    </File>
+    <File Name="tests\UITests\WebControlTest.js" Size="1265" LfhSize="61">
+        <Block Hash="Kw9J34afAy92/Q7BsCdW7QTxwI+mVV5S4TE/BViDXSY=" Size="476"/>
+    </File>
+    <File Name="tests\UITests\DefaultCategoryVerificationTest.js" Size="1626" LfhSize="78">
+        <Block Hash="NDY8mJare+lKdJikEEdzMTMYRKDF9n6KCiR106Dialk=" Size="696"/>
+    </File>
+    <File Name="js\topEdgy.js" Size="5244" LfhSize="43">
+        <Block Hash="DEfFy2Olng0cku5s/kv6A+zGAMdlmwxrzi0oDYzblXw=" Size="1476"/>
+    </File>
+    <File Name="js\emptyPage.js" Size="429" LfhSize="45">
+        <Block Hash="85f56p7628Tu+iYgjLRtCwhb+Hn4mi2mogNN10CUM7c=" Size="251"/>
+    </File>
+    <File Name="js\algoNewsProvider.js" Size="3352" LfhSize="52">
+        <Block Hash="YsDT1j5HCjIBAl1PxoF+bUAG7khY7MmRD0jxGVtVEnU=" Size="1026"/>
+    </File>
+    <File Name="State\StateManager.js" Size="1046" LfhSize="51">
+        <Block Hash="vq8MnwHem+91V9Ekqx7niwWpyemKhKhsuePQVb9kuMk=" Size="472"/>
+    </File>
+    <File Name="tests\UITests\WebControlTestUtilities.js" Size="3549" LfhSize="70">
+        <Block Hash="9FDtMVECLCMdJZWlLPoJMUEiU3Jd9MxZ3x6/vM5v6m4=" Size="1068"/>
+    </File>
+    <File Name="Customization\MarketSelectorControl.js" Size="4116" LfhSize="68">
+        <Block Hash="od08FUjGEeiX4iIRy7HMba6xEq0cGs5hyy+WjenRrgc=" Size="1253"/>
+    </File>
+    <File Name="pages\SourcesPage\SourcesPage.js" Size="6129" LfhSize="62">
+        <Block Hash="SV7X5gBS60yRqcEtH8QkIkvGAisWcTI2CJpPXzUk83s=" Size="2005"/>
+    </File>
+    <File Name="Customization\categoriesTabs.js" Size="5569" LfhSize="61">
+        <Block Hash="DtPhCEzUfbJkQxvVo5ZukaJbsC1+zrzrcSfHo+tl6jU=" Size="1631"/>
+    </File>
+    <File Name="pages\FRECustomizeHome\FRECustomizeHome.js" Size="5365" LfhSize="72">
+        <Block Hash="24TCxRFm6Cn2Ved/RF11LKACTHYHWRUoF+bwz+Ty2Nw=" Size="1658"/>
+    </File>
+    <File Name="Common\js\bdiReportFragment.js" Size="2905" LfhSize="60">
+        <Block Hash="XoCA7BvqvfQqg9W35CR05TxSFa3+tZHKVdUCiQYO8do=" Size="934"/>
+    </File>
+    <File Name="Customization\tilesPanel.js" Size="5276" LfhSize="57">
+        <Block Hash="RzbHRexOTossMclVyjEOfjkv0ziesinAtuQozQMBm+Q=" Size="1615"/>
+    </File>
+    <File Name="Customization\selectionPageProvider.js" Size="8214" LfhSize="68">
+        <Block Hash="ieS26tB094N/Q/36R2BJVTV9ZUueMcy8G7nJK+a6/HU=" Size="2153"/>
+    </File>
+    <File Name="prefetch\bingDailyPrefetch.js" Size="5920" LfhSize="59">
+        <Block Hash="zS9sCJ4Su60xI5OSHwGRl/rM8urKaDoIhKYzme5fWHo=" Size="1686"/>
+    </File>
+    <File Name="js\search.js" Size="19840" LfhSize="42">
+        <Block Hash="OZvkJdEKfSfLIOsgJ8uVZT68amIcJV1JSqX34L7INg8=" Size="4790"/>
+    </File>
+    <File Name="js\newsAutoSuggest.js" Size="13217" LfhSize="51">
+        <Block Hash="JLfjJcGp8zMFXG+Mhu2HdgwiGbps4GrXFsYwj9BJ/pE=" Size="2877"/>
+    </File>
+    <File Name="Common\js\uiconfig.js" Size="3549" LfhSize="51">
+        <Block Hash="3SIviLF9gtddiFpbES2/PyPAYzNGL9cTtJ8O06URjMc=" Size="1209"/>
+    </File>
+    <File Name="Common\js\dynamicpartners.js" Size="8655" LfhSize="58">
+        <Block Hash="q1SJTsjTVW+YJ4T1/xcC37AvUkKebzRfPlQlMcq8zjY=" Size="1140"/>
+    </File>
+    <File Name="Common\js\feedbackFragment.js" Size="7427" LfhSize="59">
+        <Block Hash="YQLXAYd+q4SncDAHXV1ODBpRYQx6Ilum8QieqiqyAIU=" Size="2586"/>
+    </File>
+    <File Name="js\myTopics.js" Size="22390" LfhSize="44">
+        <Block Hash="aPf4sz9rTfvXTIEIBGG6Qrp2gbcdOgolitAPawuxZ/0=" Size="5087"/>
+    </File>
+    <File Name="Common\js\dynamicPanoDataProvider.js" Size="11048" LfhSize="66">
+        <Block Hash="VW+1+WDowViO2ftQRcACDA4PH5GrbaYQCJwc+hGtNE8=" Size="2782"/>
+    </File>
+    <File Name="js\sourcesGalleryProvider.js" Size="18060" LfhSize="58">
+        <Block Hash="qhyxA9AlSUcqWBNTY7Y56F1xt0aedVi0zV5t8SrALqI=" Size="4522"/>
+    </File>
+    <File Name="prefetch\PrefetchManager.js" Size="23171" LfhSize="57">
+        <Block Hash="D5xJVxx64EwWRttY1OPIMYbrTjxRL5Bt46WrRyud4Ws=" Size="5229"/>
+    </File>
+    <File Name="Common\WebWorkers\PlatformWebWorker.js" Size="177" LfhSize="68">
+        <Block Hash="I05KUBxpy/z7BQxqGibpWkFWq5pMPlmbcLUbEeIOw0s=" Size="141"/>
+    </File>
+    <File Name="wsjshared\wsjEntityClusterConfig.js" Size="2150" LfhSize="65">
+        <Block Hash="euNu4x4hsABXXaWwKk9CCAZXWA1eH8wQx+KvehvgYv0=" Size="529"/>
+    </File>
+    <File Name="nytshared\nytBlogsPano.js" Size="1598" LfhSize="55">
+        <Block Hash="/orX9MAMEPZIGgNtEj5LPm5bBQDbGrmnu3TchrUmHLg=" Size="720"/>
+    </File>
+    <File Name="Common\js\mdialogad.js" Size="16484" LfhSize="52">
+        <Block Hash="NkL2kItQEW5LQfcTUXELi7F0DFJ/6DQteCEg1ZR0gY4=" Size="4018"/>
+    </File>
+    <File Name="nytshared\nyt-launch.js" Size="4932" LfhSize="53">
+        <Block Hash="vX2F8GSWivCLHqS+wrwled254MMBNJDugwXsj1Q4OP8=" Size="1138"/>
+    </File>
+    <File Name="Common\js\autosuggest.js" Size="26745" LfhSize="54">
+        <Block Hash="kGpXSQPqY3mDQg/iy25CFW7ojQUfmruIRPez0u4inro=" Size="5022"/>
+    </File>
+    <File Name="nytshared\nytSavedArticles.js" Size="11600" LfhSize="59">
+        <Block Hash="vYrhAHh7oDEB9MhO3mCuLrpgdyhvEZMUoRlEqE6CeM0=" Size="3190"/>
+    </File>
+    <File Name="js\constants.js" Size="743" LfhSize="45">
+        <Block Hash="cUHc314x2zIKENcyUQ6vJWe2fJBIdwUJ1cxx/ngMRsg=" Size="307"/>
+    </File>
+    <File Name="Common\js\dynamicArticleReader.js" Size="28452" LfhSize="63">
+        <Block Hash="6vMk8N5+10F4mDw+eGTzsHicf7UYYvFBQ6gslyo2ZUk=" Size="5801"/>
+    </File>
+    <File Name="js\default.js" Size="1166" LfhSize="43">
+        <Block Hash="w1OwOR3Di+slb14zhH1Dqgu8gn4DFsRzMOINtJd4BCQ=" Size="545"/>
+    </File>
+    <File Name="Common\js\search.js" Size="21649" LfhSize="49">
+        <Block Hash="drq3nXBDZx69xFycAHO786oKnzeXDGdg6jbGhh4p7TE=" Size="3953"/>
+    </File>
+    <File Name="Panorama\SemanticZoomPanorama.js" Size="718" LfhSize="62">
+        <Block Hash="p7sImo/49LeWyukTxzOIIIN3mbgtlj0WjqYQx6ddo6k=" Size="355"/>
+    </File>
+    <File Name="nytshared\nytCategoryPano.js" Size="7955" LfhSize="58">
+        <Block Hash="pJvct4kuk6Nsd7wMF5MVRyCiTFUOocosAD+DKm5K1jY=" Size="2242"/>
+    </File>
+    <File Name="nytshared\nytEntityClusterConfig.js" Size="6366" LfhSize="65">
+        <Block Hash="66vPpyCEMVKf4J/2EYaJmeZbasJjGv71xf8ocqdBsVk=" Size="930"/>
+    </File>
+    <File Name="Customization\SelectionPage.js" Size="33219" LfhSize="60">
+        <Block Hash="YV+LXkwH114BoPnrpUOmyO7C+7Xf9jewCvqy3R5n2JY=" Size="7302"/>
+    </File>
+    <File Name="wsjshared\wsjCategoryPano.js" Size="10140" LfhSize="58">
+        <Block Hash="rMahBSGOn/PDkpUzW8foILVJY4oC2cD15TsgELPI4DA=" Size="2922"/>
+    </File>
+    <File Name="js\sourceBasePage.js" Size="3014" LfhSize="50">
+        <Block Hash="QttBgW0x8Tu7m5W/TAv2qK+NMDFrOZ5p9Eo02dp4da0=" Size="1044"/>
+    </File>
+    <File Name="DevelopingNews\DevelopingNewsControl.js" Size="1899" LfhSize="69">
+        <Block Hash="N/KwGKioqfoMGKMdjS1mIlehmlbR4NUSFpgG0pJxhlQ=" Size="810"/>
+    </File>
+    <File Name="js\logger.js" Size="1261" LfhSize="42">
+        <Block Hash="k+NkGnnWT5PrYtPnySOIXUGhNW9wQni+WggKo6xRCEY=" Size="538"/>
+    </File>
+    <File Name="js\sourcesContentBasePage.js" Size="2173" LfhSize="58">
+        <Block Hash="N6Y7HvoT9Mht43wExA58Pi0fWSzTt5QR0qWMXy9cEUU=" Size="731"/>
+    </File>
+    <File Name="articleReader\newsArticleReaderPage.js" Size="3199" LfhSize="68">
+        <Block Hash="NPM4YraYV6V+hexh1jjX47YCxU91Zrj8IVGqzMTPyRg=" Size="1113"/>
+    </File>
+    <File Name="js\msapp-error.js" Size="2004" LfhSize="47">
+        <Block Hash="p/Ml6dIofl8EH/MAmQF1P83ThHCUeG7M8uxIyIRf+QM=" Size="849"/>
+    </File>
+    <File Name="MySources\mySourcesPage.js" Size="5173" LfhSize="56">
+        <Block Hash="D069hlPP/X4CVDG3xNVTyh/1SqYw+2euB4ui+pi3TTE=" Size="1660"/>
+    </File>
+    <File Name="js\bindings.js" Size="7092" LfhSize="44">
+        <Block Hash="uxd2atuNCp9eLSx9WMRxT1XI7aCVJ4AK+BjJio/lXHI=" Size="1795"/>
+    </File>
+    <File Name="js\newsUtilitiesPinning.js" Size="7044" LfhSize="56">
+        <Block Hash="k5CERapWaBERip56NJ7zAQogy+rJMZPQBDslSvGLyR8=" Size="1654"/>
+    </File>
+    <File Name="js\rssSourcePage.js" Size="9685" LfhSize="49">
+        <Block Hash="MFD4kJNn3bhr7cjrPzOCB1GJpPiwjhtz6t1RzK/gZQA=" Size="2878"/>
+    </File>
+    <File Name="js\newsSlideshow.js" Size="4447" LfhSize="49">
+        <Block Hash="dJccFoZl+tgWVSskqwDBoGy27sMWBnPVA8BHl9zV4KU=" Size="1444"/>
+    </File>
+    <File Name="Customization\tilesPanel.html" Size="2018" LfhSize="59">
+        <Block Hash="9gHwR2tpUDxzoJg7eC7MzAdsSIk0D5O0cMMH9Agr3/k=" Size="515"/>
+    </File>
+    <File Name="js\globalization.js" Size="4624" LfhSize="49">
+        <Block Hash="Bt+68YOsAKpPobHsrbJqhJFe5eiub/ou6MEYVHNlrDo=" Size="934"/>
+    </File>
+    <File Name="js\processListener.js" Size="13079" LfhSize="51">
+        <Block Hash="VenJCCTnNtN7Ov/TdpO8uqjb+T16Hau15UbTTVT4ang=" Size="3585"/>
+    </File>
+    <File Name="js\newsSecondaryTile.js" Size="5569" LfhSize="53">
+        <Block Hash="LRR0QpI/oLNAUkn0zIKPHIK78aHkR/5dfEJticCQ06Y=" Size="1715"/>
+    </File>
+    <File Name="js\categoryPage.js" Size="22156" LfhSize="48">
+        <Block Hash="uLS/3jOO3TVuQLwoOPztny5wx9Uw8RM9t+ZZ+FtQC5U=" Size="5417"/>
+    </File>
+    <File Name="html\myTopics.html" Size="2644" LfhSize="48">
+        <Block Hash="gDMOLpYZZ2a8FCne6q/LsH4U7kFysesCIivOLObxtcs=" Size="770"/>
+    </File>
+    <File Name="builtinPartners\helpersArticleReader.js" Size="10381" LfhSize="69">
+        <Block Hash="APbudRhG6cBM9P3FNvFPc+6Qt4GR62qLDn2Syh+UBwA=" Size="3051"/>
+    </File>
+    <File Name="html\search.html" Size="1634" LfhSize="46">
+        <Block Hash="yQRaPBel8fmD0U0CYCxaHBLRektXg5nhiP2W4uNaM7I=" Size="598"/>
+    </File>
+    <File Name="html\emptyPage.html" Size="164" LfhSize="49">
+        <Block Hash="43BJRH7EVxWU2JiYElY0yUUWMPq2LPJk5gEiSmnFKTU=" Size="124"/>
+    </File>
+    <File Name="Customization\SelectionPage.html" Size="3958" LfhSize="62">
+        <Block Hash="F1oBaUxFQ30WaVAXyVep9SwsUU8MyPvD/M6FmfXU2LY=" Size="1040"/>
+    </File>
+    <File Name="default.html" Size="2892" LfhSize="42">
+        <Block Hash="RzkrfnZzGXQbFefZLrq59hbA+vJdmXUsWnKucYaqv14=" Size="885"/>
+    </File>
+    <File Name="defaultLazy.html" Size="661" LfhSize="46">
+        <Block Hash="oaR+yvW7evJ6051Vb1Xnig73VsIu0h9eB+aICTGHgk4=" Size="249"/>
+    </File>
+    <File Name="OpenSource\localytics\localytics.js" Size="19848" LfhSize="65">
+        <Block Hash="s/h06+IR1V1v3oKOmbGzcXczeUDTtpulmietL69kxDs=" Size="5717"/>
+    </File>
+    <File Name="Common\js\auth.js" Size="64088" LfhSize="47">
+        <Block Hash="Y874c9rnqdEEnZKgIThd9+7FXGXMtCgv6HgVZOvTS/I=" Size="11428"/>
+    </File>
+    <File Name="html\templates-launch.html" Size="2319" LfhSize="56">
+        <Block Hash="lWEIvAzjHr9COTvqwDzOvdDyalXPfAzHBAkEgho7c9c=" Size="540"/>
+    </File>
+    <File Name="pages\FRECustomizeHome\FRECustomizeHome.html" Size="2023" LfhSize="74">
+        <Block Hash="rxDmyHYKZ/78zlWYO19W0qk2umXf/IuxhUAAL1Q483I=" Size="612"/>
+    </File>
+    <File Name="pages\SourcesPage\SourcesPage.html" Size="1766" LfhSize="64">
+        <Block Hash="rPAZ/sNbtUIhebhH+RtVE74pU3nX2THvO12fO70SuG0=" Size="622"/>
+    </File>
+    <File Name="Common\js\slideshow.js" Size="54138" LfhSize="52">
+        <Block Hash="Zup1rK+9vBlSjI8mHRL0NOdOWFfwLo8sG/4EaT5UYSw=" Size="11890"/>
+    </File>
+    <File Name="Common\html\platform.html" Size="992" LfhSize="55">
+        <Block Hash="pgtVYHP1Sq7Cs47ZZWpb3X79CQ+86Cb1Mk+yTzWhJ2E=" Size="390"/>
+    </File>
+    <File Name="Common\html\feedbackFragment.html" Size="2807" LfhSize="63">
+        <Block Hash="IUehnzjMGxTuCusxek8Go7b0/7WUuss4258ghiCtY7A=" Size="859"/>
+    </File>
+    <File Name="Common\ArticleReader\html\ArticleReaderPage.html" Size="1029" LfhSize="78">
+        <Block Hash="b8cQU0shQkrnk0FABQdxWuNieeZjTiuk6rHoX6Bw++I=" Size="454"/>
+    </File>
+    <File Name="Common\html\configurationFragment.html" Size="753" LfhSize="68">
+        <Block Hash="q1T3WjusJruyGifmXE+J3XgmunXwSkwcGoZbFIqTbng=" Size="375"/>
+    </File>
+    <File Name="Common\FeaturedCluster\html\FeaturedClusterTemplates.html" Size="1266" LfhSize="87">
+        <Block Hash="4xWRnqMAbUb+gytOYV2FHW3teMztrMMFSf+sznYjr+I=" Size="511"/>
+    </File>
+    <File Name="Common\DynamicPano\html\PaywallCard.html" Size="1529" LfhSize="70">
+        <Block Hash="ZhX7sQt0BQqxyxszXtn7azAZ3ppohnEr4+2nPsJ7B3w=" Size="486"/>
+    </File>
+    <File Name="Common\Hero\html\HeroLayouts.html" Size="2995" LfhSize="63">
+        <Block Hash="pecZUFQ9p1RtutC2eLyGCSZZTQmVs+niXHS3Y6oMPvI=" Size="597"/>
+    </File>
+    <File Name="Common\html\bdiReportFragment.html" Size="3325" LfhSize="64">
+        <Block Hash="73H7/eVTpM/vA0bpGz0XWrlqiwYZWfcOlRvmmbuxDxk=" Size="1023"/>
+    </File>
+    <File Name="Common\js\ads.js" Size="61196" LfhSize="46">
+        <Block Hash="q+c7IXiOX7KfeaQFIcWKvF6kDVPVPOOmYPbQ8roMDIM=" Size="12267"/>
+    </File>
+    <File Name="Common\DynamicPano\html\DynamicPano.html" Size="18104" LfhSize="70">
+        <Block Hash="ZX37x+qfMgZNodKwZIsFPG8vr6tNnlxG/QuU+t4v3BM=" Size="2282"/>
+    </File>
+    <File Name="Common\EntityCollection\providers\RichBrowse\EntityCollection.html" Size="484" LfhSize="96">
+        <Block Hash="rNlAEMwsbTyUU7vw1yRklCwwhAPbHmmSUzLIAcpik4A=" Size="257"/>
+    </File>
+    <File Name="nytshared\nyt.js" Size="51056" LfhSize="46">
+        <Block Hash="OZRLrgwxWrOHv3SP5bEJ98rn2TZVAc4oXqAtFgXwAzQ=" Size="10818"/>
+    </File>
+    <File Name="Common\SlideShow\html\GenericSlideshowPage.html" Size="473" LfhSize="77">
+        <Block Hash="4rItpzx1y1GCTlH8RgreS4xN6h0MYBX69vYJ2x9tepQ=" Size="254"/>
+    </File>
+    <File Name="Common\SlideShow\html\ImageModuleTemplates.html" Size="901" LfhSize="77">
+        <Block Hash="cyjqnMa8Qj4SIl19MTuHM7QRRf/HJqgll2XohQrb/vU=" Size="382"/>
+    </File>
+    <File Name="Common\MediaPlayback\html\ThirdPartyPlayerPage.html" Size="662" LfhSize="81">
+        <Block Hash="8hXmM0oyFwiZVlyKVHq7WxWWEsnXerzY3RUoOLwx+Uk=" Size="318"/>
+    </File>
+    <File Name="Common\SlideShow\html\SlideshowPage.html" Size="809" LfhSize="70">
+        <Block Hash="UUNOTGYe/v/idy1SPkRye3rmIwTQLbKSphqD8Z2/ZFk=" Size="421"/>
+    </File>
+    <File Name="wsjshared\wsj.js" Size="48519" LfhSize="46">
+        <Block Hash="WjVfNz8u3VHLWtFFoigDnqKhftb17o6Ch10XxkD+Ndg=" Size="11371"/>
+    </File>
+    <File Name="Common\EntityCollection\html\EntityCollectionFragment.html" Size="3514" LfhSize="88">
+        <Block Hash="1f3JWXzPnanlGXbG98IjjOpK+519EXlIjJ4aMk078Uw=" Size="1054"/>
+    </File>
+    <File Name="Common\MediaPlayback\html\MediaPlayback.html" Size="8200" LfhSize="74">
+        <Block Hash="zSmnStRvRA9eA714BJ2Zeq8VYgH4qaILrSjGQKigpt0=" Size="1818"/>
+    </File>
+    <File Name="Common\html\PrivacySettings.html" Size="2632" LfhSize="62">
+        <Block Hash="DGegndFUkHTXbPIQeiQOtKc0x21W07ha+VMitozO3PY=" Size="690"/>
+    </File>
+    <File Name="Common\PhotosynthView\PhotosynthView.html" Size="576" LfhSize="71">
+        <Block Hash="bI0cpDz1bBAWGc+TlFfuTLLRNvw2GWkwgd0VzUo73xQ=" Size="272"/>
+    </File>
+    <File Name="wsjshared\wsjCategoryPano.html" Size="1944" LfhSize="60">
+        <Block Hash="icSf7c6olD74g8sJ/OH48IIOZ5IJn5rBtW/WzgYwLOc=" Size="690"/>
+    </File>
+    <File Name="Common\Table\html\TableTemplates.html" Size="1159" LfhSize="67">
+        <Block Hash="oaj1Gg7t+oJCgsY+yY2/LfYuaaesUntaQdKwcDjGd9k=" Size="297"/>
+    </File>
+    <File Name="Common\WebPicks\html\Templates.html" Size="619" LfhSize="65">
+        <Block Hash="+5tMbS/+Z3/p/I9Jm26RE77mXpT85ERQZVdxt89Siqs=" Size="306"/>
+    </File>
+    <File Name="wsjshared\wsjZoomCategoryPano.html" Size="1936" LfhSize="64">
+        <Block Hash="XCLARvknHrOaHGhqXOC6oX4y2HflrqoeliAR+pDK7dU=" Size="689"/>
+    </File>
+    <File Name="html\aboutSettings.html" Size="1121" LfhSize="53">
+        <Block Hash="J/seDJUXUgY1YssrRYkmXS2XjH2gtjOECnimsDUyV3U=" Size="446"/>
+    </File>
+    <File Name="Common\WebPicks\html\GroupPage.html" Size="1229" LfhSize="65">
+        <Block Hash="TLfANk09Pi68aYjVziNU10Ds9Oub0RnVS3D0JmcuK4A=" Size="487"/>
+    </File>
+    <File Name="dynamicPano\dynamicPanoPage.js" Size="16069" LfhSize="60">
+        <Block Hash="5F5h6IJ1lY8EThLsSthhw/F0SwKXt00GmdxTGk1ZRa8=" Size="3992"/>
+    </File>
+    <File Name="nytshared\nytSavedArticles.html" Size="1505" LfhSize="61">
+        <Block Hash="g5vqEslVcNWiOK+ocGu4gZxEWEa/PW3XootWY815BxE=" Size="612"/>
+    </File>
+    <File Name="nytshared\nytCategoryPano.html" Size="1976" LfhSize="60">
+        <Block Hash="Zn9jLY00h9bu0Cvb+W0WnUZ13F9c/Z0RVDq1IApREXk=" Size="700"/>
+    </File>
+    <File Name="nytshared\nytBlogsPano.html" Size="1473" LfhSize="57">
+        <Block Hash="/exX9KQouvJ3NgractGbDEG35fTAaRgCr429FrEU3OQ=" Size="609"/>
+    </File>
+    <File Name="MySources\mySourcesPage.html" Size="2321" LfhSize="58">
+        <Block Hash="qZzTzJztgzyTQEj0jZDZaG2e9Vd8/Dl2pzJLj89sqQw=" Size="743"/>
+    </File>
+    <File Name="html\categoryPage.html" Size="2178" LfhSize="52">
+        <Block Hash="B0J5kZ+mQeQfiheGfO1gNwmmhnMomAB5s4MI81J/UtM=" Size="701"/>
+    </File>
+    <File Name="html\rssSourcePage.html" Size="1651" LfhSize="53">
+        <Block Hash="IWFhJUCYazyYqbCEcezmiFmK1RLitQ1IDc4/svE8Oi0=" Size="606"/>
+    </File>
+    <File Name="bingDaily\lazyBingDaily.html" Size="1349" LfhSize="58">
+        <Block Hash="CJCZEQSEkAn2ewlKt0lFEClO+j+reYOvXeiJgVKgvao=" Size="440"/>
+    </File>
+    <File Name="bingDaily\bingDaily.js" Size="44132" LfhSize="52">
+        <Block Hash="fVHo+oht3rZK5+btl6uijZsoeEToa+SoudBPPQAInws=" Size="8724"/>
+    </File>
+    <File Name="html\settingSettings.html" Size="1353" LfhSize="55">
+        <Block Hash="EZkkaOWE7ikLiBurDNVQaeZqPmI/gjOMGLI8dR/Yprk=" Size="545"/>
+    </File>
+    <File Name="html\social.html" Size="735" LfhSize="46">
+        <Block Hash="6sd8ZGJ5rft//n4jSJbPdzDGeNb6yqkqYgVxe3bIJJM=" Size="360"/>
+    </File>
+    <File Name="msapp-error.html" Size="672" LfhSize="46">
+        <Block Hash="2rb4IRJhBAH91o+dh+FPTlnl5C8jsnv8BAcpTwViEWg=" Size="290"/>
+    </File>
+    <File Name="dynamicPano\dynamicPano.html" Size="2436" LfhSize="58">
+        <Block Hash="e2uUlpwx47tvMxJwULHjQFSkQRTQBlYRB9M05kLj6IA=" Size="758"/>
+    </File>
+    <File Name="js\state.js" Size="36730" LfhSize="41">
+        <Block Hash="Ntcz36YXw115Ss+3Bby2dM06vqxAPIr9xbXNiJmzxDo=" Size="6230"/>
+    </File>
+    <File Name="bingDaily\bingDaily.html" Size="3386" LfhSize="54">
+        <Block Hash="pkeiMod5OlkfomUStXzZ9LAanRx1UOtzH0qVlTZ1yKI=" Size="973"/>
+    </File>
+    <File Name="Common\js\dynamicpano.js" Size="94678" LfhSize="54">
+        <Block Hash="nOWAn/kTFVhT18Nb82+z9aD9p4y3bpmG3JFSbdN+spY=" Size="14799"/>
+        <Block Hash="sxKz8CTCTy6E5f4vHVfO0MO0zFIW7Nx8GVYNQrpW/mw=" Size="6540"/>
+    </File>
+    <File Name="html\newsSlideshow.html" Size="1776" LfhSize="53">
+        <Block Hash="oz2AvN8d8IxZxfngN6y/KOmqOOs68dok+Sf5yID7MjU=" Size="650"/>
+    </File>
+    <File Name="js\StateMachines.js" Size="1686" LfhSize="49">
+        <Block Hash="NAMmzvyrTCkUZBRwk6v5FU2M0JfysXLerU/wMJcrc8Y=" Size="715"/>
+    </File>
+    <File Name="bundle\orchestration.js" Size="2603" LfhSize="53">
+        <Block Hash="m1G2tFFubGbWr+aZVJ5IgObxzCQttoI71ohEFsZsY6g=" Size="845"/>
+    </File>
+    <File Name="html\templates.html" Size="17459" LfhSize="49">
+        <Block Hash="YEthjKYL8QWvNS7YXcE0wQgzXa2dZJSSvNKv+D8+3/s=" Size="2180"/>
+    </File>
+    <File Name="js\newsControls.js" Size="6233" LfhSize="48">
+        <Block Hash="z69+3MjBdcIF1qIuhcv3LdQfI0xu7L+OP5lF1YX1aYA=" Size="1774"/>
+    </File>
+    <File Name="MySources\providers.js" Size="9806" LfhSize="52">
+        <Block Hash="IxGamXNN3DGRjHsT8Pud3m5c++DeLg1PBgBjKMCja0w=" Size="1695"/>
+    </File>
+    <File Name="Common\js\services.js" Size="101122" LfhSize="51">
+        <Block Hash="y9Z7vk9JH/YBYQ6XDwHwMswhGgAX4zkPGJLLbH6Tctc=" Size="12865"/>
+        <Block Hash="pTY6aSfTw+sZSAQ5bxaW3jljYB+NHZhmTb0JLRP6tnc=" Size="7168"/>
+    </File>
+    <File Name="js\data\bing.js" Size="16483" LfhSize="45">
+        <Block Hash="v7d96rw0Ka6KsIB+gYrFEgOyk1muahzQ1EcWxAsnujY=" Size="2798"/>
+    </File>
+    <File Name="css\search.css" Size="5537" LfhSize="44">
+        <Block Hash="AirOjUGvU5jyTjIYhg+UKSJNGuCR89WMeIEomkTbxJs=" Size="810"/>
+    </File>
+    <File Name="css\myTopics.css" Size="10901" LfhSize="46">
+        <Block Hash="XPRjK5WNZx1OhwU55P4HG4j14YJZgrwy5CQZxcM/mC4=" Size="1953"/>
+    </File>
+    <File Name="js\personalization.js" Size="12470" LfhSize="51">
+        <Block Hash="L1W/tIHlHZl9az+Ih3DKRCV/a9lKB1kR0+OvaNWfKhU=" Size="3294"/>
+    </File>
+    <File Name="pages\SourcesPage\SourcesPage.css" Size="7549" LfhSize="63">
+        <Block Hash="wNtE9GrORIShawsFKcTRy7xUbxm318gwOYEqhOG+IAc=" Size="1274"/>
+    </File>
+    <File Name="css\sourcesGalleryPano.css" Size="9650" LfhSize="56">
+        <Block Hash="GCCwh5VywtA0J41DuIEK3Scd3i/ciua0AbKFei4Fp8I=" Size="1676"/>
+    </File>
+    <File Name="pages\FRECustomizeHome\FRECustomizeHome.css" Size="14438" LfhSize="73">
+        <Block Hash="XHCcWOhwtwheeBUBpn3p7LNI4w1xo8rH0qSEDoiOz4Q=" Size="2506"/>
+    </File>
+    <File Name="js\newsBasePage.js" Size="29843" LfhSize="48">
+        <Block Hash="30fBDr16XY/7pqzDXU1BGtErzA+JMGoLNYZT5bnW5e4=" Size="7140"/>
+    </File>
+    <File Name="css\categories.css" Size="193" LfhSize="48">
+        <Block Hash="w8XHFIFeZoh+CRYRHz9Fngh8n58MvrkvmRzH7cXb4aQ=" Size="113"/>
+    </File>
+    <File Name="js\partnerHelpers.js" Size="25778" LfhSize="50">
+        <Block Hash="CWqSgtXZceMdeAXjQG3yqnHOpPOb2isCrZnmRw8g/1o=" Size="6294"/>
+    </File>
+    <File Name="css\categoryPage.css" Size="154" LfhSize="50">
+        <Block Hash="JcPUErMpJOSzH1HjYK1zsjjtCmF+jteZpkIadlYcrO8=" Size="122"/>
+    </File>
+    <File Name="css\newsStand.css" Size="599" LfhSize="47">
+        <Block Hash="bQIZTjS2IUprLmHZb/2HiKyXtRNM2EObur+/BpmqS40=" Size="354"/>
+    </File>
+    <File Name="css\social.css" Size="593" LfhSize="44">
+        <Block Hash="dl52wkbNP5nbwAX896mFVhxD0aCwoSQMTquPyJgtQT0=" Size="349"/>
+    </File>
+    <File Name="js\customization.js" Size="22284" LfhSize="49">
+        <Block Hash="oVlVIzGGEcLK6nknCrGi1o6XXRNKSHWfkqX+mtXo1v8=" Size="4583"/>
+    </File>
+    <File Name="Common\js\mediaplayback.js" Size="146914" LfhSize="56">
+        <Block Hash="Hj7F7D8x/l29IV9YNd7BR8TDM8LHBpUfWgZFHsp1f5c=" Size="12748"/>
+        <Block Hash="ka++rdwLv+TqmZPt3PWtcN6TYVPliy6Yh4ZneZENXpM=" Size="13282"/>
+        <Block Hash="z5iMifRXE3UpqcZQ7uNOxGsX+/A7RjGOfXVHIr6h0kI=" Size="3715"/>
+    </File>
+    <File Name="Customization\SelectionPage.css" Size="31035" LfhSize="61">
+        <Block Hash="tzw1jDhgKIIKaanfJUIAu30nk+mreDwOeV7X+A+tjgo=" Size="4231"/>
+    </File>
+    <File Name="css\settings.css" Size="631" LfhSize="46">
+        <Block Hash="dB4r5E80vbWjDb0wsFF6syDULV6Ry/kKnPjEGV2X0lI=" Size="366"/>
+    </File>
+    <File Name="nytshared\nytCategoryPano.css" Size="18427" LfhSize="59">
+        <Block Hash="GK/272OjONlpLnzV3GVnc9L4QgZyyvqCIt4Y3nGYn20=" Size="2241"/>
+    </File>
+    <File Name="bingDaily\clusterHandlers.js" Size="34244" LfhSize="58">
+        <Block Hash="kTNFR23wkqRbG1nE7v+MP3Nf8cOwBVTzPNmnkf+JEcw=" Size="7103"/>
+    </File>
+    <File Name="js\telemetry.js" Size="39058" LfhSize="45">
+        <Block Hash="aoiqjd+ANH119UH59Q8Llb/tJLBcjEOCExTcc9hjFFA=" Size="6558"/>
+    </File>
+    <File Name="css\newsSlideshow.css" Size="453" LfhSize="51">
+        <Block Hash="o6m0L+OZkap1bJSp/QFqLtYgJ1TGfo7S00Lm4YIIiA4=" Size="249"/>
+    </File>
+    <File Name="js\coreUtilities.js" Size="30743" LfhSize="49">
+        <Block Hash="JRdOf/hW6FeI7tB2bstHnHNLv/NFudTC1B68UoNY03k=" Size="6081"/>
+    </File>
+    <File Name="wsjshared\wsjPano.css" Size="20691" LfhSize="51">
+        <Block Hash="wBJWJmXxcFe0MAc2frpZYI6d9HuoC63NKjViOdc0fbs=" Size="2517"/>
+    </File>
+    <File Name="Common\js\navigation.js" Size="133885" LfhSize="53">
+        <Block Hash="vDlPBZuaLAxDEgwd01txvdrovh5pIqp8OAwsfh8U+u0=" Size="12995"/>
+        <Block Hash="cYiz25ZSpoHW3hYPog0GQ/7E67Ia4lQXnhCPsEDWNQY=" Size="14195"/>
+        <Block Hash="CiYEdNOZhHC2vfFUJFP7mnt9W67nRQDgjeY3uXUkC5w=" Size="905"/>
+    </File>
+    <File Name="css\partners.css" Size="4372" LfhSize="46">
+        <Block Hash="j/A/0yhqToSW9oosdeeV+WUllZhYfPzxsl3torUhA9w=" Size="1083"/>
+    </File>
+    <File Name="Common\ArticleReader\css\Content.css" Size="42467" LfhSize="66">
+        <Block Hash="w/2nMgeRfKPuG+6zUnAZPmw+BT/ze7Jk6kcskIbJM34=" Size="3531"/>
+    </File>
+    <File Name="bundle\providers.js" Size="42542" LfhSize="49">
+        <Block Hash="wmaZ4erCLqm3B7xdj5G5cZIahg1mZEZhMJWoZsMDVhc=" Size="8424"/>
+    </File>
+    <File Name="Common\js\newscluster.js" Size="129944" LfhSize="54">
+        <Block Hash="l/Ru4GfCAXfdL2BkjCBBo+kKPtLLNZKksN3Tj9GcjTE=" Size="13476"/>
+        <Block Hash="d4/qLkoukChm8DNUzyfF7bpXVu4TDw7CB3tqhIc/KjE=" Size="12984"/>
+    </File>
+    <File Name="Common\js\utilities.js" Size="133248" LfhSize="52">
+        <Block Hash="bkQEPKCDRmIuSR/9hNnqxccSXVomCkqqxa63PrYfjeA=" Size="16921"/>
+        <Block Hash="56H/z72Y5g+mQRlVL6lFSljtZJiMPHCMRoVFE9P8LHM=" Size="14503"/>
+        <Block Hash="rl6tO8iEJFBlRVjihFt/MQDO7yqTvPOEk0h2k++RQUg=" Size="744"/>
+    </File>
+    <File Name="css\today-deferred.css" Size="64902" LfhSize="52">
+        <Block Hash="AWtW6z5ln7ytm3dp700jrJIYxvKNXG1XAjTQ1YT2z4E=" Size="5618"/>
+    </File>
+    <File Name="js\newsUtilities.js" Size="87480" LfhSize="49">
+        <Block Hash="2534cEGKMNi4SZ7scgtBEjY87uR9gh6YxVyBGy3aGrE=" Size="13560"/>
+        <Block Hash="gqs/w919RZHebh+svam+Rvd+rrS2DYnmpl6L494DbMQ=" Size="4812"/>
+    </File>
+    <File Name="css\today.css" Size="59261" LfhSize="43">
+        <Block Hash="yJxZVE8f5ee/UjbapATtwHgkQPr3a41TiNVYgeWprDo=" Size="5188"/>
+    </File>
+    <File Name="css\default-deferred.css" Size="79645" LfhSize="54">
+        <Block Hash="7CyFnj72NDn/ISKsZn5v8JuxZYXv3gvlSanvjIflJHM=" Size="6671"/>
+        <Block Hash="pTmshcqSGZTzw2zZXdIg4KviHnq03Cp5+GqFJq/lrKA=" Size="2123"/>
+    </File>
+    <File Name="css\articleReader.css" Size="122107" LfhSize="51">
+        <Block Hash="uLyfhaCRD3TZ+c+hRNaFa0G0NKkSW4QCnX717bvMGmc=" Size="5140"/>
+        <Block Hash="5/CY8fkABaVBT1F85senCp+iVt2GWUDyzKP6NwDgTZY=" Size="4504"/>
+    </File>
+    <File Name="css\default.css" Size="144245" LfhSize="45">
+        <Block Hash="8xI/CtdldT3XGl0jp9RwCujSLSZgU5wQopb4a7dwkao=" Size="6264"/>
+        <Block Hash="Sj7n2FbVMnR1DreMjbC/wEFF9wY3WrP5qogrPPN+VWA=" Size="5431"/>
+        <Block Hash="DcbrYalvXcyMcGOnNo01ZqnYCIgIfe8ra+XJdBlTbTU=" Size="1368"/>
+    </File>
+    <File Name="Common\js\articlereader.js" Size="441089" LfhSize="56">
+        <Block Hash="Lew9ipXq5+0lvqwiUIMIL5YaqNDqxIs7WM5IxldlN5s=" Size="11129"/>
+        <Block Hash="KToyYbodZ3jT8nJlvKaKWalBm4cEYeBVsQcltbEjjbk=" Size="9631"/>
+        <Block Hash="GEM5KPwvLC/CU0onY1CyPhl4wNzoGQNpz04CynsWoF0=" Size="13323"/>
+        <Block Hash="I1ejbeL5Ys6i5cRXz1wWR+kCCFL6lLHvoeF0hL/XFic=" Size="11942"/>
+        <Block Hash="kfQqZShzbwQNoJqdbxKdjjfok9EO/SHLrkc2AZo1iwE=" Size="13564"/>
+        <Block Hash="+B7Tetyv7W7I3CwdDUvZD5XIxikvWlI7HD49ef+wJaI=" Size="12484"/>
+        <Block Hash="Jt1lhG51W5m0J/bp63ijkXG33Ft9exttANqXghxILdU=" Size="9405"/>
+    </File>
+    <File Name="Common\css\common.css" Size="283515" LfhSize="51">
+        <Block Hash="k/HKE4zRYYgkCZvu8mI8i+/YCvyPXhmZSfaOCkzD22c=" Size="6901"/>
+        <Block Hash="np89jRJLF69KWOJMXyeg/0W2r6WaqE8gstxjSBF2J6M=" Size="6362"/>
+        <Block Hash="SYcDcRnm0GmH6TNQpuj5ALmOXJSoUffPvt1hQtkgBHg=" Size="7199"/>
+        <Block Hash="ZjGojwbwuBOpHzqR7e5HglTtvA9WIYY++KJJCT7q9tc=" Size="4194"/>
+        <Block Hash="U4mhLrLNiwSSh9CiSjkihoJvMVXhkeTGdnLu+A3W+Jw=" Size="1888"/>
+    </File>
+    <File Name="wsjshared\wsjTheme.css" Size="258758" LfhSize="52">
+        <Block Hash="dVgx9/BTQylfmxpkveBN2r+QSPW/4QyoI0YWE5z8Jp8=" Size="5854"/>
+        <Block Hash="Qy/PnQJSBlEECRiRTnhEhh1HQEJE2dW2UzUlVMG/9kE=" Size="5957"/>
+        <Block Hash="/havwwbV/v6bq4GFim2tRjCFvExOSmRmN8dSJa1Yxww=" Size="5621"/>
+        <Block Hash="5t0OGpht6ilzCN75HclbCkW2hn3DwngpHhydTWR1c+4=" Size="4475"/>
+    </File>
+    <File Name="Common\css\common-deferred.css" Size="332910" LfhSize="60">
+        <Block Hash="Rpjeryq7UrcYipp4Xu5IgOqMDJ0h2PrF1xJGkqa4Ah8=" Size="5308"/>
+        <Block Hash="Dnplm3qhSdq5FUZZh0ZQc4P6+hDEQyUPuyZlnU51UbI=" Size="5229"/>
+        <Block Hash="/sSbDaxIRtEDR7GXXOd27zcsWa39zc7t66fxAOlIktM=" Size="5640"/>
+        <Block Hash="Y0AGGmDgd4nCSLN3sB4mCRwr5RwENdcv29p5G3MyfQM=" Size="6814"/>
+        <Block Hash="JU1cKWabFSFKxvaJ8kRRBu+PtssEwkElZX/QhokdusY=" Size="6315"/>
+        <Block Hash="LBZyfqp7FES4r+sYfDrN25lDoDCkcGflJTNIMXMdhLY=" Size="1256"/>
+    </File>
+    <File Name="Common\css\dynamicpano.css" Size="355667" LfhSize="56">
+        <Block Hash="a9UdoatkYRszxA/gNM0TxrkMw1OSgjQPd2G4BDSSQ5c=" Size="6580"/>
+        <Block Hash="+XCXO1XadEpcTDMRBScbC+b2g1rTKlrkFx4sAcImTFY=" Size="5275"/>
+        <Block Hash="pemkBexQm89ANAHPXKCv+bDHR0NJb4TrSbmGsMhBhCI=" Size="5560"/>
+        <Block Hash="eNSVlmT/IKnHrLMCTHjwDOdIqICx1YaQAM1iGLx6l4A=" Size="4959"/>
+        <Block Hash="MHNCphv0wc+Lcc+G+cu51TCa67KoOPYfAbD2ywpkblg=" Size="5625"/>
+        <Block Hash="Ij9aS2r7NMXp+KDwUBU7v4l2y7PV0yoGSHG/A4R9BGk=" Size="2274"/>
+    </File>
+    <File Name="nytshared\nytTheme.css" Size="330656" LfhSize="52">
+        <Block Hash="1vfwU45YpUUTl/SXHM/cGBgDf57IiyaIh247+X6dOO0=" Size="5854"/>
+        <Block Hash="sw/JgQVAgRIx+ZNZy5/Cs4WUe6Zbq38t7Kw8TMPEv58=" Size="6614"/>
+        <Block Hash="JE4gpjkDKbGrXqsAB/GFmc5ahm8+DMhmUrW6B9Sycbg=" Size="4652"/>
+        <Block Hash="NoFJvy8KcM209ANDRUQyHYxxFzvOH/fCufbNI1YnVaA=" Size="3794"/>
+        <Block Hash="zSzaPQo1fRjnEwbt26cliqxIldSDQrJaK86l7QmYPbg=" Size="4202"/>
+        <Block Hash="LitZyC2QyrMIeteK05JsIq6JYObsdU26GpyyqHPPmVo=" Size="766"/>
+    </File>
+    <File Name="Common\js\controls.js" Size="603681" LfhSize="51">
+        <Block Hash="S4zIVKD3FlyZgX39Um76n/Q/FUbTVYqMHPAYViRxQVk=" Size="13836"/>
+        <Block Hash="km2QcgEdadZQIem+aAEzHqLJI9v+4tp/CUrApQQESqY=" Size="13394"/>
+        <Block Hash="F6QUU091A4RmQQXhjwJ5aVd3SgaOz/8GBhpbFasD+YU=" Size="13355"/>
+        <Block Hash="sxHLfrEIGBhPizu8oEYUZVKBhsQGd3l+G3pGTGqiZuc=" Size="15492"/>
+        <Block Hash="9nt9JOSas4iqRJdFVSemOYoEfLKHjVM2s148z06E35w=" Size="13790"/>
+        <Block Hash="j4EHaU4HSYukML40aVO7n3uJsRAV8BgQ5PXbEXrRztc=" Size="13803"/>
+        <Block Hash="dgw3LhnWIY9mdvIFuNZgX+77l5QrbIbjibN6DljT/Rg=" Size="14272"/>
+        <Block Hash="hwFCWT7U9AJglnXWYyULFd40TcuQVgtTFEe4KrXkdzo=" Size="12944"/>
+        <Block Hash="lGYa6dw816NAIfaJ/Sxn+WDgk6DoiN7VKDTeuMiLRHU=" Size="13652"/>
+        <Block Hash="rtTDcqGPh281IKk1jXdgc3OrcFJzRbDCi2U/5Ji6LTA=" Size="2978"/>
+    </File>
+    <File Name="Common\css\dynamicpartners.css" Size="525393" LfhSize="60">
+        <Block Hash="1vfwU45YpUUTl/SXHM/cGBgDf57IiyaIh247+X6dOO0=" Size="5854"/>
+        <Block Hash="u4DjioFTAr3GOk3YwRoV9+lLrSazqekm5VHBu2WPcKM=" Size="5439"/>
+        <Block Hash="6Cy1/I5dUUJS58rg8tFVhRFgU1gxQQ5sf4NgpOOh56Y=" Size="3953"/>
+        <Block Hash="QedrZDTE82uDiBKrrl0N2StPCL7yTEgSleVf1XJqhOg=" Size="3513"/>
+        <Block Hash="BTIS9vVzaB6jt3pmMW5/f/4YBWlfKvhSRRMihN5vf3E=" Size="5104"/>
+        <Block Hash="GhxvCaqveajgg4XuSnvVx3G8FrxQrpLeCS4oxYHQffI=" Size="5226"/>
+        <Block Hash="T0QbXAfz0TzEl5USIWZvr6+6MQjDsDzATDHKAkbrzmQ=" Size="5457"/>
+        <Block Hash="LPqEft3QP9w3zJuEm8z2E6U0e/XQZqlV+/Ov8fh03d8=" Size="4529"/>
+        <Block Hash="C57Ff7WhtLs8sMv3v670E9eyUOv3h9ZTnuW6SNsEcrY=" Size="348"/>
+    </File>
+    <File Name="Configuration\configuration.sqlite" Size="612352" LfhSize="64">
+        <Block Hash="EFkvP/0cuC270kf5z+jNUtopVYYYvh6u9qjxxPTPLYA=" Size="15100"/>
+        <Block Hash="uKhj0z0VbXFxVugvC87WIYd5JwPxfnrZiK6cqQfdztI=" Size="16436"/>
+        <Block Hash="30+Pw+E0F5mwlUAmXiQ0xackpnGaI0yAF/aRiidna0E=" Size="15574"/>
+        <Block Hash="iUR3WtFSEC4BvoJMk31JATLCR9FSz1iyanmPtOBSHQw=" Size="16218"/>
+        <Block Hash="5wme3gcc+ggQjg0o7bin2gfl0DlL3OSGxySlEx3dpzY=" Size="10772"/>
+        <Block Hash="gOAQq8ERLnCMcMm5Ak+FyQMHfaZkJONclT1UpcPKuxI=" Size="10386"/>
+        <Block Hash="RQ3kRvk7PIHhTvVsXYmrnsEBVuQsEs3NpKL5Szjl3N0=" Size="15056"/>
+        <Block Hash="PMo2WmMh3eskS0Z5suLrJgnVGVc1iWMI6WZoEbiE2rw=" Size="16611"/>
+        <Block Hash="3v2OoqW375XRoIqhky5gZyOQYENzi+/QbrxFwi7GdII=" Size="16428"/>
+        <Block Hash="TaL8CqVyeW8tAA8Wr6mqqjzAly2YXl78HTJnZfbf3zU=" Size="4997"/>
+    </File>
+    <File Name="resources.pri" Size="1083256" LfhSize="43">
+        <Block Hash="GA0c8Sw0KXoNIGfy5hqOym3v1N5aMvjja5GDaSNnMKI=" Size="23797"/>
+        <Block Hash="6PJapocgm01GIHyBUzmoMS/NTugY0zYuLBFzYHPNCYI=" Size="16891"/>
+        <Block Hash="xdain2H0YW3NLCBl17MAgzvuKDSG90LXecmJ4LScSgs=" Size="17464"/>
+        <Block Hash="i4UE7FsPh1jKsgBhKY7wwAj9O26bDKzDUrnGW0mHwAA=" Size="20680"/>
+        <Block Hash="Hq1IEXIPMc3hLlNmQEyQO2J4tDLLHQ2m5Eu/AMXK05Y=" Size="19096"/>
+        <Block Hash="hX/7VRx8ADgfjnABKwt7S1O8U0BI5P0BDTgUknUaZFc=" Size="19903"/>
+        <Block Hash="/swpliQeu/Tq8oDrpPJ86pXqv7PA4SilRbAxcJgSR1M=" Size="16885"/>
+        <Block Hash="WZBGV7G/g6y+h+UJyn9vbY7mDB3VbrcWHIzvV7InnBM=" Size="19415"/>
+        <Block Hash="1byyQolcecvIEPYtpgcKUYnaJw9LwpU0mn/aGqe6hJY=" Size="18848"/>
+        <Block Hash="M3fydXnTRcwzxuTT8On7I62G+xgG+Y4z/ao/ByaWJA4=" Size="19500"/>
+        <Block Hash="8nRLmc4n/crHNptaYfxj2WeNBcpi4Hy9aCI+IidwOY8=" Size="17664"/>
+        <Block Hash="JIuzVUmcqb+bhgsMc3mCJMf/ByLHbTzpAf563kcywgY=" Size="19049"/>
+        <Block Hash="5kaCj+xbNGurIVXD0Po2AXcXcugQZTByi1AWSmPFTnc=" Size="18398"/>
+        <Block Hash="RpPI6dzuyE7Bf8Q3YiV+tyHCSfZVID0C3muMi9iu8zo=" Size="18893"/>
+        <Block Hash="GRkdDS7xhaWIMhRgfdghtO2j/sDwjrfq1HSKFPRVxrs=" Size="17831"/>
+        <Block Hash="1OPTIKEDIVZ4fQJowjktYrqHFuIyb2LE3hHJI1rKJVc=" Size="18982"/>
+        <Block Hash="cEKvjwUcHihyNKSlL6esXem80nT+j+3x6ckFq+h1Vh0=" Size="4118"/>
+    </File>
+    <File Name="AppxManifest.xml" Size="32206" LfhSize="46">
+        <Block Hash="iAaCgfrmzHUx8LhfC91J3YporJtc2rPhhMScXLAFaqU=" Size="3854"/>
+    </File>
+</BlockMap>

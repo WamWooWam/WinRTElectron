@@ -1,0 +1,74 @@
+﻿<!---->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>News</title>
+<style> 
+@font-face {
+font-family: AppExSymbolFont;
+src: url('/common/fonts/AppExSymbol-Regular.ttf');
+}
+</style>
+<!-- WinJS references -->
+<script src="//Microsoft.BingNews.Shim/dist/shim.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<!-- AppStitch references -->
+<script src="/bundle/providers.js"></script>
+<script src="/js/coreUtilities.js"></script>
+<script src="/js/StateMachines.js"></script>
+<!-- Platform references -->
+<script src="/common/js/utilities.js"></script>
+<script src="/common/js/controls.js"></script>
+<script src="/common/js/navigation.js"></script>
+<script src="/common/js/services.js"></script>
+<script src="/common/js/utils.js"></script>
+<script src="/common/js/auth.js"></script>
+<!-- AppStitch bundles -->
+<script src="/bundle/orchestration.js"></script>
+<!-- UI references -->
+<script src="opensource/localytics/localytics.js"></script>
+<script src="/js/state.js"></script>
+<script src="/js/telemetry.js"></script>
+<script src="/js/newsUtilities.js"></script>
+<script src="/js/newsUtilitiesPinning.js"></script>
+<script src="/js/newsSecondaryTile.js"></script>
+<script src="/js/topEdgy.js"></script>
+<script src="/common/js/dynamicPanoDataProvider.js"></script>
+<script src="/js/constants.js"></script>
+<script src="/js/processListener.js"></script>
+<script src="/js/globalization.js"></script>
+<script src="/js/data/bing.js"></script>
+<script src="/js/customization.js"></script>
+<script src="/js/sourcesGalleryProvider.js"></script>
+<script src="/js/newsControls.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/common/js/ads.js"></script>
+<script src="/js/newsSlideshow.js"></script>
+<script src="/js/partnerHelpers.js"></script>
+<script src="/nytshared/nyt-launch.js"></script>
+<script src="/common/js/auth.js"></script>
+<script src="/js/default.js"></script>
+<!-- WinJS references -->
+<link rel="stylesheet" href="//Microsoft.WinJS.2.0/css/ui-light.css" />
+<!-- Platform references -->
+<link rel="stylesheet" href="/common/css/common.css" />
+<!-- UI references -->
+<link rel="stylesheet" href="/css/default.css" />
+<link rel="stylesheet" href="/css/partners.css" />    
+</head>
+<body id="newsBody" class="newsAppBody">
+<div id="platformNavigationBar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'top', layout: 'custom'}"
+aria-label="Navigation Bar">
+<div data-win-control="CommonJS.NavigationBar" data-win-bind="winControl.channels: channels">
+</div>
+</div>
+<div id="platformPageArea" style="width: 100%; height: 100%">
+</div>
+<div id="splashContainer" class="platformSplash" style="background: #ac193d">
+<img id="splashImage" src="/images/splash.png" />
+<progress id="splashProgress" class="win-medium win-ring" />
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="///MSAdvertisingJS/ads/ad.js" ></script>
+<script src="/common/js/ads.js"></script>
+<!--Common Controls References-->
+<script src="/common/js/Utils.js"></script>
+<script src="/common/js/newscluster.js"></script>
+<script src="/common/js/articlereader.js"></script>
+<!--WSJ Category Pano References-->
+<link rel="stylesheet" href="/wsjshared/wsjTheme.css" />
+<script src="/common/js/mediaplayback.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/js/bindings.js"></script>
+<link rel="stylesheet" href="/wsjshared/wsjPano.css" />
+<script src="/wsjshared/wsjEntityClusterConfig.js"></script>
+<script src="/wsjshared/wsjCategoryPano.js"></script>
+</head>
+<body>
+<div class="wsjCategoryPano wsjPano fragment WSJ">
+<div class="panoAccentLine"></div>
+<div class="platformMainContent" id="news_Panorama" data-win-control="CommonJS.Immersive.Panorama"
+data-win-bind="winControl.headerOptions: headerOptions; winControl.panoramaState: panoramaState; winControl.semanticZoomRenderer: semanticZoomRenderer">
+</div>
+<div class="offlineMessageContainer hidden" id="offlineMessageContainer">
+<div id="offlineContainerContent"></div>
+</div>
+<div class="newsActionEdgyHidden"></div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="newsActionEdgyLeft">
+<button tabindex="0" id="pinSection" data-win-control="WinJS.UI.AppBarCommand" />
+</div>
+<div class="newsActionEdgyRight">                    
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</div>
+</body>
+</html>

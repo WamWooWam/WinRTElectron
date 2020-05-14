@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>today</title>
+<!-- Synchronously load ads dependency. -->
+<script src="///MSAdvertisingJS/ads/ad.js"></script>
+<!-- Common Controls References -->
+<script src="/common/js/newscluster.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<script src="/common/js/mdialogad.js"></script>
+<!-- State Manager -->
+<script src="/State/StateManager.js"></script>
+<script src="/Panorama/SemanticZoomPanorama.js"></script>
+<!--Today References-->
+<link rel="stylesheet" href="/css/today.css" />
+<script src="/js/bindings.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/bingDaily/bingDaily.js"></script>
+<script src="/js/data/bing.js"></script>
+<script src="/bingDaily/clusterHandlers.js"></script>
+<script src="/js/personalization.js"></script>
+</head>
+<body>
+<div class="today fragment" id="todayPage">
+<div class="platformMainContent platformPanoramaFlushLeft" id="news_Panorama" data-win-control="NewsApp.Panorama.SemanticZoomPanorama"
+data-win-bind="winControl.title: title;
+winControl.panoramaState: panoramaState;
+winControl.headerOptions: headerOptions;
+winControl.customizationTitle: customizationTitle;
+winControl.customizationStartIndex: customizationStartIndex;
+winControl.enableCustomization: enableCustomization;
+winControl.customizationMode: customizationMode;
+winControl.customizationUseVariableSizedTemplates: customizationUseVariableSizedTemplates;
+winControl.customizationUseHeroImageTemplate: customizationUseHeroImageTemplate;
+winControl.customizationHintText: customizationHintText;
+winControl.customizationAddButtonOptions: customizationAddButtonOptions;
+winControl.customizationImageMap: customizationImageMap;
+winControl.showCustomizationImmediate: showCustomizationImmediate;
+winControl.onCustomizationCompleted: onCustomizationCompleted;
+winControl.customizationAddCallback: customizationAddCallback;
+winControl.queryClusterData: queryClusterData;
+winControl.semanticZoomRenderer:semanticZoomRenderer;
+winControl.clusterDataSource: clusterDataSource;">
+</div>
+<div class="newsActionEdgyHidden"></div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="newsActionEdgyLeft">
+<button tabindex="0" id="customizeButton" class="hiddenButton" data-win-control="WinJS.UI.AppBarCommand" role="link"
+data-win-options="{icon: '\uE182', extraClass: 'appexSymbol'}" />
+</div>
+<div class="newsActionEdgyRight platformFeedbackButtonParent">
+<button tabindex="0" class="hiddenButton" id="previewButton" data-win-control="WinJS.UI.AppBarCommand" role="link"
+data-win-options="{icon: '\uE175', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="addSectionButton" class="hiddenButton" data-win-control="WinJS.UI.AppBarCommand" role="link" />
+<button tabindex="0" id="pinInternatinalBD" class="hiddenButton" data-win-control="WinJS.UI.AppBarCommand" role="link" />
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" role="link" />
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" role="link" />
+</div>
+</div>
+</div>
+</body>
+</html>

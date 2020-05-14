@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Privacy Settings</title>
+</head>
+<body>
+<div id="privacySettingsPage" class="settingsPanel" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow'}">
+<!--Header -->
+<div class="win-header">
+<button type="button" class="win-backbutton" data-win-bind="onclick:backbuttonclick"></button>
+<div class="settingsTitle" data-win-bind="textContent: pageTitle"></div>
+<div class="appIcon"></div>
+</div>
+<!--Content -->
+<div class="win-content">
+<div class="win-settings-section">
+<div id="privacySettingsPage1" class="platformDisplayNone privacySettingsPage">
+<!--Connect to MSA-->
+<div class="privacySettingsSectionContainer">
+<div id="msaConnectionTitle" class="privacySettingsSectionTitle"></div>
+<div data-win-bind="textContent: msaConnectionDescription"></div>
+</div>
+<div id="msaContainer" class="privacySettingsSectionContainer msaContainer" tabindex="0">
+<div class="msaLogo">
+<img src="/Common/images/Microsoft_Logo.png" />
+</div>
+<div class="msaName" data-win-bind="textContent: microsoftAccount"></div>
+<div id="msaUserIdPage1" class="msaUserId"></div>
+</div>
+<div class="privacySettingsLinkContainer">
+<a id="privacyStatementUrl" class="privacySettingsLink" data-win-bind="href: privacyStatementUrl; textContent: privacyStatementText"></a>
+</div>
+<div class="privacySettingsSectionContainer msAdsPrivacyStatementContainer">
+<div class="privacySettingsSectionTitle" data-win-bind="textContent: microsoftAdvertisingPrivacyStatementTitle"></div>
+<div class="msAdsPrivacyStatement" data-win-bind="textContent: microsoftAdvertisingPrivacyStatement"></div>
+<a data-win-bind="href: microsoftAdvertisingPrivacyLinkUrl; textContent: microsoftAdvertisingPrivacyLinkText"></a>
+</div>
+</div>
+<div id="privacySettingsPage2" class="platformDisplayNone privacySettingsPage">
+<div class="privacySettingsSeparatorBar">
+<div class="privacySettingsSectionContainer">
+<div class="privacySettingsSectionTitle" data-win-bind="textContent: accountNameLabel"></div>
+<div data-win-bind="textContent: microsoftAccount"></div>
+</div>
+<div class="privacySettingsSectionContainer ">
+<div class="privacySettingsSectionTitle" data-win-bind="textContent: userNameLabel"></div>
+<div id="msaUserIdPage2"></div>
+</div>
+</div>
+<div id="msaConnectionRemoveLink" class="privacySettingsSectionContainer msaConnectionRemoveLink" tabindex="0">
+<div class="privacySettingsLink" data-win-bind="textContent: msaConnectionRemoveLink"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

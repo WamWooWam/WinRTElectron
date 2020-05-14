@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(BaseNewsAppTarget)' == ''">
+    <BaseNewsAppTarget>true</BaseNewsAppTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(_NewsAppPath)' == ''">
+    <_NewsAppPath>$(INETROOT)\private\Apps\NewsApp\NewsApp</_NewsAppPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- BEGIN: Manually edited. -->
+    <Content Include="$(_NewsAppPath)\less\application.less">
+      <Link>less\application.less</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\default.css">
+      <Link>css\default.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\default-deferred.css">
+      <Link>css\default-deferred.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\msapp-error.html">
+      <Link>msapp-error.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\logger.js">
+      <Link>js\logger.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\msapp-error.js">
+      <Link>js\msapp-error.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\base\newsPanoBasePage.js">
+      <Link>base\newsPanoBasePage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\base\baseBuiltinPartnerPano.js">
+      <Link>base\baseBuiltinPartnerPano.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\articleReader\newsArticleReaderPage.js">
+      <Link>articleReader\newsArticleReaderPage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\domUtil.js">
+      <Link>Controls\domUtil.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\moreColumnControl.js">
+      <Link>Controls\moreColumnControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\slideShowEntryBlock.js">
+      <Link>Controls\slideShowEntryBlock.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\verticalScrollContainer.js">
+      <Link>Controls\verticalScrollContainer.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\personalization\MySourcesControl.js">
+      <Link>personalization\MySourcesControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\personalization\MySourcesDataProvider.js">
+      <Link>personalization\MySourcesDataProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\personalization\DataManager.js">
+      <Link>personalization\DataManager.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\personalization\Utilities.js">
+      <Link>personalization\Utilities.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\StateMachines\StateMachine.js">
+      <Link>StateMachines\StateMachine.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesArticle.js">
+      <Link>utils\newsUtilitiesArticle.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesBIDI.js">
+      <Link>utils\newsUtilitiesBIDI.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesDate.js">
+      <Link>utils\newsUtilitiesDate.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesDOM.js">
+      <Link>utils\newsUtilitiesDOM.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesError.js">
+      <Link>utils\newsUtilitiesError.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesMisc.js">
+      <Link>utils\newsUtilitiesMisc.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesNavigation.js">
+      <Link>utils\newsUtilitiesNavigation.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesRSS.js">
+      <Link>utils\newsUtilitiesRSS.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesSources.js">
+      <Link>utils\newsUtilitiesSources.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesString.js">
+      <Link>utils\newsUtilitiesString.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesTile.js">
+      <Link>utils\newsUtilitiesTile.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesTopics.js">
+      <Link>utils\newsUtilitiesTopics.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesUI.js">
+      <Link>utils\newsUtilitiesUI.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\utils\newsUtilitiesURI.js">
+      <Link>utils\newsUtilitiesURI.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\newsUtilitiesPinning.js">
+      <Link>js\newsUtilitiesPinning.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\templates.html">
+      <Link>html\templates.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\bindings.js">
+      <Link>js\bindings.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersAds.js">
+      <Link>builtinPartners\helpersAds.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersArticleReader.js">
+      <Link>builtinPartners\helpersArticleReader.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersAuth.js">
+      <Link>builtinPartners\helpersAuth.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersBaseProcessListener.js">
+      <Link>builtinPartners\helpersBaseProcessListener.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersConfig.js">
+      <Link>builtinPartners\helpersConfig.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersNewsClusterProvider.js">
+      <Link>builtinPartners\helpersNewsClusterProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersSlideShowPage.js">
+      <Link>builtinPartners\helpersSlideShowPage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersTheme.js">
+      <Link>builtinPartners\helpersTheme.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\builtinPartners\helpersWLProcessListener.js">
+      <Link>builtinPartners\helpersWLProcessListener.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\newsSecondaryTile.js">
+      <Link>js\newsSecondaryTile.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\articleReaderTelemetry.js">
+      <Link>telemetry\articleReaderTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\bingDailyTelemetry.js">
+      <Link>telemetry\bingDailyTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\categoryTelemetry.js">
+      <Link>telemetry\categoryTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\clusterTelemetry.js">
+      <Link>telemetry\clusterTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\customizationTelemetry.js">
+      <Link>telemetry\customizationTelemetry.js</Link>
+    </Content>    
+    <Content Include="$(_NewsAppPath)\telemetry\localNewsTelemetry.js">
+      <Link>telemetry\localNewsTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\rssSourcePageTelemetry.js">
+      <Link>telemetry\rssSourcePageTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\searchTelemetry.js">
+      <Link>telemetry\searchTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\slideShowTelemetry.js">
+      <Link>telemetry\slideShowTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\sourcePageTelemetry.js">
+      <Link>telemetry\sourcePageTelemetry.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\telemetryStrings.js">
+      <Link>telemetry\telemetryStrings.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\telemetryUtilities.js">
+      <Link>telemetry\telemetryUtilities.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\telemetry\topicsTelemetry.js">
+      <Link>telemetry\topicsTelemetry.js</Link>
+    </Content>
+    <PRIResource Include="$(_NewsAppPath)\strings\en-US\partners.resw">
+      <Link>strings\en-US\partners.resw</Link>
+    </PRIResource>
+    <Content Include="$(_NewsAppPath)\js\newsSlideshow.js">
+      <Link>js\newsSlideshow.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\newsSlideshow.css">
+      <Link>css\newsSlideshow.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\articleReader.css">
+      <Link>css\articleReader.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\partners.css">
+      <Link>css\partners.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\newsSlideshow.html">
+      <Link>html\newsSlideshow.html</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+    <Folder Include="css\" />
+    <Folder Include="html\" />
+    <Folder Include="images\" />
+    <Folder Include="less\" />
+  </ItemGroup>
+  <Import Condition="'$(UITarget)' == ''" Project="$(INETROOT)\private\Platform\UI\UI.targets" />
+</Project>

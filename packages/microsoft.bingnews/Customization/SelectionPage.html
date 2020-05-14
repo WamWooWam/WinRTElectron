@@ -1,0 +1,91 @@
+﻿<!---->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Customization Picker</title>
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<!-- Platform references -->
+<script src="/common/js/utilities.js"></script>
+<script src="/common/js/ui.js"></script>
+<script src="/common/js/controls.js"></script>
+<script src="/common/js/navigation.js"></script>
+<script src="/common/js/services.js"></script>
+<script src="/common/js/utils.js"></script>
+<script src="/common/js/auth.js"></script>
+<!-- UI references -->
+<script src="/js/state.js"></script>
+<script src="/js/telemetry.js"></script>
+<script src="/js/newsUtilities.js"></script>
+<script src="/js/newsUtilitiesPinning.js"></script>
+<script src="/js/newsSecondaryTile.js"></script>
+<script src="/js/topEdgy.js"></script>
+<script src="/common/js/articlereader.js"></script>
+<script src="/common/js/dynamicPanoDataProvider.js"></script>
+<script src="/common/js/dynamicArticleReader.js"></script>
+<script src="/common/js/autosuggest.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<script src="/js/constants.js"></script>
+<script src="/js/processListener.js"></script>
+<script src="/js/globalization.js"></script>
+<script src="/js/data/bing.js"></script>
+<script src="/js/sourcesGalleryProvider.js"></script>
+<script src="/js/newsAutoSuggest.js"></script>
+<script src="/js/newsControls.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/common/js/ads.js"></script>
+<script src="/common/dynamicpano/js/dynamicPanoAuth.js"></script>
+<script src="/common/js/auth.js"></script>
+<script src="/js/default.js"></script>
+<script src="/Customization/SelectionPage.js"></script>
+<script src="/Customization/MarketSelectorControl.js"></script>
+<script src="/Customization/selectionPageProvider.js"></script>
+<script src="/Customization/tilesPanel.js"></script>      
+<script src="/Customization/categoriesTabs.js"></script>      
+<script src="/prefetch/PrefetchManager.js"></script>
+<!-- WinJS references -->
+<!-- Platform references -->
+<link rel="stylesheet" href="/common/css/common.css" />
+<!-- UI references -->
+<link rel="stylesheet" href="/css/default.css" />
+<link rel="stylesheet" href="/css/default-deferred.css" />
+<link rel="stylesheet" href="/Customization/SelectionPage.css" />
+<link rel="stylesheet" href="/Customization/RssValidatorControl.css" />
+</head>
+<body>
+<div class="offlineMessageContainer hidden" id="offlineMessageContainer">
+<div id="offlineContainerContent"></div>
+</div>
+<div id="platformMainContent" class="fragment SelectionPageMainContent" style="width: 100%; height: 100%">
+<div class="SelectionPage">
+<div data-win-control="CommonJS.Immersive.Header" id="filterBar">
+</div>
+<div id="filterHost" class="filterHost">  
+<div id="marketPickerIcon"></div>
+<div data-win-control="NewsJS.MarketPicker" id="marketPicker"></div>                                
+</div>
+<div id="searchHost" class="searchHost">
+<div id="placeHolder"></div>
+<input id="searchBox" type="search" />                
+<button id="searchButton" />
+</div>
+<div class="centerContent">
+<div class="leftPanel" id="leftPanel">
+<div id="categoriesTabs" class="categoriesTabs" data-win-control="NewsJS.Customization.CategoriesTabs"></div>
+</div>
+<div class="rightPanel" id="rightPanel">
+<div id="tileContainer" class="tileContainer"  data-win-control="NewsJS.Customization.TilesPanel"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">            
+<div class="newsActionEdgyRight">                
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(BaseNewsAppTarget)' == ''">
+    <BaseNewsAppTarget>true</BaseNewsAppTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(_NewsAppPath)' == ''">
+    <_NewsAppPath>$(INETROOT)\private\Apps\NewsApp\NewsApp</_NewsAppPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(_NewsAppPath)\css\today.css" >
+      <Link>css\today.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\today-deferred.css" >
+      <Link>css\today-deferred.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\newsSlideshow.css">
+      <Link>css\newsSlideshow.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\data\helper.js" >
+      <Link>js\data\helper.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\data\algoBrowse.js" >
+      <Link>js\data\algoBrowse.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\data\algoSearch.js" >
+      <Link>js\data\algoSearch.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\data\cmsToday.js" >
+      <Link>js\data\cmsToday.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\globalization.js">
+      <Link>js\globalization.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\state.js">
+      <Link>js\state.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\dynamicPano\dynamicPano.html" >
+      <Link>dynamicPano\dynamicPano.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\dynamicPano\dynamicPanoPage.js" >
+      <Link>dynamicPano\dynamicPanoPage.js</Link>
+    </Content>
+
+    <!-- END: Manually edited. -->
+    <!-- BEGIN: Programmatically edited. -->
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+    <Folder Include="css\" />
+    <Folder Include="html\" />
+    <Folder Include="images\" />
+    <Folder Include="less\" />
+  </ItemGroup>
+  <Import Condition="'$(UITarget)' == ''" Project="$(INETROOT)\private\Platform\UI\UI.targets" />
+</Project>

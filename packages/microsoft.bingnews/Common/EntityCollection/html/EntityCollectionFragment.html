@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<script src="/common/js/filters.js"></script>
+<script src="/common/js/table.js"></script>
+<link rel="stylesheet" href="/common/css/common.css" />
+<!--Platform References-->
+<!--Home References-->
+<script src="/common/js/ecv.js"></script>
+</head>
+<body>
+<!-- list view templates -->
+<div style="display: none">
+<div class="listHeaderTemplate" data-win-control="WinJS.Binding.Template">
+<h3 class="win-contentTitle" tabindex="0" role="link" data-win-bind="textContent: group"></h3>
+<div data-win-bind="innerHTML: columnHeaders">
+</div>
+</div>
+<div class="listItemTemplate" data-win-control="WinJS.Binding.Template">
+<div>
+</div>
+</div>
+</div>
+<!-- grid view default templates -->
+<div style="display: none">
+<div class="headerTemplate" data-win-control="WinJS.Binding.Template">
+<div class="win-contentTitle fontMMB entityCollectionClusterTitle" data-win-bind="textContent: group" role="link">
+</div>
+</div>
+<div class="listTemplate" data-win-control="WinJS.Binding.Template">
+<h1>list</h1>
+</div>
+<div class="itemTemplate" data-win-control="WinJS.Binding.Template">
+<div data-win-control="CommonJS.Module" data-win-bind="winControl.Options: All PlatformHelper.Binding.PassThroughBinding">
+</div>
+</div>
+</div>
+<!-- view agnostic default templates -->
+<div style="display: none">
+<div id="semanticZoomTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+<div class="semanticZoomTemplateClass groupContainer">
+<div class="groupName" data-win-bind="innerText: group">
+</div>
+<div class="groupCount" data-win-bind="innerText: groupCount">
+</div>
+</div>
+</div>
+</div>
+<!--ECV view containers-->
+<div class="page0 fragment ImersivePage ecv" aria-label="ECV" id="ecvRootContainer">
+<div data-win-control="CommonJS.Immersive.Header" data-win-bind="winControl.headerTitleText: title" id="filterBar">
+</div>
+<section class="mainContent platformMainContent" role="main" aria-label="Main content">
+<div id="viewspace" class="viewportShape">
+<!-- view content goes in this space-->
+</div>
+</section>
+<div id="watermark" class="platformWatermark"></div>
+<div id="filtersDisplayedStyle" class="viewportShape ecvHide"></div>
+<div class="entityappbar platformFeedbackButtonParent" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom'}" aria-label="Navigation Bar">
+<button data-win-control="WinJS.UI.AppBarCommand" id="clearFilters" data-win-options="{icon: '\uE068', extraClass: 'appexSymbol'}" style="display:none"></button>
+<button data-win-control="WinJS.UI.AppBarCommand" id="dataAttribution" data-win-options="{icon: '\uE014', extraClass: 'appexSymbol'}" style="display:none"></button>
+</div>
+<div id="selectionAppBar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom', sticky: 'true'}" aria-label="Navigation Bar">
+<button data-win-control="WinJS.UI.AppBarCommand" id="clearSelection" class="win-command platformButton">
+<span class="win-commandicon win-commandring"><span class="win-commandimage iconClear"></span></span><span class="win-label" id="Span1" data-win-res="{ textContent:'/platform/clearSelectionLabel' }"></span>
+</button>
+</div>
+<div id="dataAttribFlyout" data-win-control="WinJS.UI.Flyout" aria-label="{data attribution}">
+</div>
+</div>
+</body>
+</html>

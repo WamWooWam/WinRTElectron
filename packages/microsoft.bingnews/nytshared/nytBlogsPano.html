@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<!--Common Controls References-->
+<script src="/common/js/Utils.js"></script>
+<script src="/common/js/newscluster.js"></script>
+<!--NYT Category Pano References-->
+<link rel="stylesheet" href="/nytshared/nytTheme.css" />
+<script src="/js/newsBasePage.js"></script>
+<script src="/js/bindings.js"></script>
+<link rel="stylesheet" href="/nytshared/nytCategoryPano.css" />    
+<script src="/nytshared/nytEntityClusterConfig.js"></script>
+<script src="/nytshared/nytBlogsPano.js"></script>
+</head>
+<body>
+<div class="nytBlogsPano nytPano fragment NYT">
+<div class="platformMainContent" id="news_Panorama" data-win-control="CommonJS.Immersive.SemanticZoomPanorama"
+data-win-bind="winControl.headerOptions: headerOptions; winControl.panoramaState: panoramaState; winControl.semanticZoomRenderer: semanticZoomRenderer">
+</div>
+<div class="offlineMessageContainer hidden" id="offlineMessageContainer">
+<div id="offlineContainerContent"></div>
+</div>
+<div class="newsActionEdgyHidden"></div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="newsActionEdgyLeft">
+</div>
+<div class="newsActionEdgyRight">
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</div>
+</body>
+</html>

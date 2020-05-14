@@ -1,0 +1,39 @@
+﻿<!doctype HTML>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="content-type" />
+    <title></title>
+    <style>
+        #adSettingsFlyout .inlineLink {
+            padding-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- BEGINSETTINGSFLYOUT -->
+    <div data-win-control="WinJS.UI.SettingsFlyout" id="adSettingsFlyout" aria-label="Ad Settings Flyout" data-win-options="{settingsCommandId:'msaAdSettings',width:'narrow'}">
+        <!-- Use either 'win-ui-light' or 'win-ui-dark' depending on the contrast between the header title and background color -->
+        <div class="win-ui-dark win-header">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+            <div class="win-label" id="mainLabel"></div>
+        </div>
+        <div class="win-content">
+            <div class="win-settings-section">
+                <h3 id="heading1Label"></h3>
+
+                <p style="display: none;" id="signInPrompt"><span id="signInPrompt1"></span>&nbsp;<a href="#" class="inlineLink" id="signInLink"></a>&nbsp;<span id="signInPrompt2"></span></p>
+                <p style="display: none;" id="statusUnknownPrompt"></p>
+                <p style="display: none;" id="optedOutPrompt">
+                    <span id="optedOutPrompt1"></span>&nbsp;
+                <a class="inlineLink" href="http://go.microsoft.com/fwlink/?linkid=286759" id="optOutMoreInfoLink"></a>&nbsp;<span id="optedOutPrompt2"></span>
+                </p>
+                <progress id="progressRing" class="win-ring" style="display: none; margin: 20px auto;"></progress>
+                <p style="display: none;" id="optToggle" data-win-control="WinJS.UI.ToggleSwitch">
+                </p>
+                <p id="privacyBlob"><a id="privacyStatementLink" href="http://go.microsoft.com/fwlink/?LinkId=248689"></a></p>
+            </div>
+        </div>
+    </div>
+    <!-- ENDSETTINGSFLYOUT -->
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>FRE Customize Home</title>
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<!-- Platform references -->
+<script src="/common/js/utilities.js"></script>
+<script src="/common/js/ui.js"></script>
+<script src="/common/js/controls.js"></script>
+<script src="/common/js/navigation.js"></script>
+<script src="/common/js/services.js"></script>
+<script src="/common/js/utils.js"></script>
+<!-- Project JavaScript References-->
+<script src="/State/StateManager.js"></script>
+<script src="/js/state.js"></script>
+<script src="/js/telemetry.js"></script>
+<script src="/pages/FRECustomizeHome/FRECustomizeHome.js"></script>
+<script src="/Customization/tilesPanel.js"></script>        
+<script src="/js/newsControls.js"></script>
+<script src="/js/newsBasePage.js"></script>         
+<script src="/js/default.js"></script>
+<!-- Platform references -->
+<link rel="stylesheet" href="/common/css/common.css" />
+<!-- UI references -->
+<link rel="stylesheet" href="/css/default.css" />
+<link rel="stylesheet" href="/css/default-deferred.css" />
+<link rel="stylesheet" href="/pages/FRECustomizeHome/FRECustomizeHome.css" />
+</head>
+<body>        
+<div id="platformMainContent" class="fragment FRECustomizeHomePageMainContent">
+<div class="FRECustomizeHomePage">
+<div  class="topContent">
+<div class="welcomeMessage">
+<h1 class= "welcomeMessageHeading" id="welcomeMessageHeading"></h1>                
+<h3 class= "welcomeMessageText" id="welcomeMessageText"></h3>                    
+<div class="continue">         
+<button id="continueButton" class="continueButton" data-win-bind="disabled: disabled">&#xe001;</button>
+</div> 
+</div>
+</div>
+<div class="centerContent">
+<div class="categories" id="categories">
+<div id="tileContainer" class="tileContainer" data-win-control="NewsJS.Customization.TilesPanel"></div>
+</div>
+</div>       
+</div>
+</div>
+</body>
+</html>

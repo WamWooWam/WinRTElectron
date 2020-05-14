@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title></title>
+</head>
+<body>
+<div id="panoHero" data-win-control="WinJS.Binding.Template">
+<div class="panoHeroOverlay">
+<div role="link" class="panoHeroTextContainer" tabindex="0">
+<div class="panoHeroTitle" data-win-bind="innerHTML: title">
+</div>
+<div class="panoHeroSubContainer">
+<div class="heroFaviconContainer" data-win-bind="style.display: favicon NewsJS.Controls.DomUtil.domCollapser">
+<div class="heroFavicon fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageErrorHandler: faviconErrorHandler; winControl.imageSource: favicon PlatformJS.Utilities.imageCardSource; winControl.alternateText: source;">
+</div>
+</div>
+<div class="panoHeroSource" data-win-bind="style.display: source NewsJS.Controls.DomUtil.domCollapser; textContent: source">
+</div>
+<div class="panoHeroPublishTime" data-win-bind="textContent: publishTime">
+</div>
+</div>
+<div class="panoHeroSnippet" data-win-bind="innerHTML: snippet">
+</div>
+</div>
+</div>
+</div>
+<div id="panoHeroBreakingNews" data-win-control="WinJS.Binding.Template">
+<div class="panoHeroOverlay">
+<div role="link" class="panoHeroTextContainer">
+<div class="breakingNewsBar">
+<div class="breakingNewsText" data-win-bind="textContent: breakingNews"></div>
+</div>
+<div class="panoHeroBreakingNewsTitle" data-win-bind="innerHTML: title">
+</div>
+<div class="panoHeroSubContainer">
+<div class="heroFaviconContainer" data-win-bind="style.display: favicon NewsJS.Controls.DomUtil.domCollapser">
+<div class="heroFavicon fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageErrorHandler: faviconErrorHandler; winControl.imageSource: favicon PlatformJS.Utilities.imageCardSource; winControl.alternateText: source;">
+</div>
+</div>
+<div class="panoHeroSource" data-win-bind="style.display: source NewsJS.Controls.DomUtil.domCollapser; textContent: source">
+</div>
+<div class="panoHeroPublishTime" data-win-bind="textContent: publishTime">
+</div>
+</div>
+<div class="panoHeroSnippet" data-win-bind="innerHTML: snippet">
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>News About</title>
+</head>
+<body>
+<div class="settingsPanel">
+<div id="AboutPage" class="panel" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow'}">
+<!--Header -->
+<div class="win-header">
+<button type="button" data-win-bind="onclick:optionsBackbuttonclick" class="win-backbutton">
+</button>
+<div class="settingsTitle" data-win-bind="textContent:aboutLabelText"></div>
+<div class="appIcon"></div>
+</div>
+<!--Content -->
+<div class="win-content">
+<div class="win-settings-section">
+<!--Version -->
+<div class="simpleLabel" data-win-bind="textContent:appName"></div>
+<div class="simpleLabel" data-win-bind="textContent:versionText"></div>
+<div class="simpleLabel" data-win-bind="textContent:publisherName"></div>
+<a tabindex="0" class="settingsLink" data-win-bind="textContent:helpText; onclick:onHelpClick"></a>
+<a tabindex="0" class="settingsLink" data-win-bind="textContent:creditsText; onclick:onCreditsClick"></a>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

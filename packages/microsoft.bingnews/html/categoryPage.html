@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="///MSAdvertisingJS/ads/ad.js" ></script>
+<script src="/common/js/ads.js"></script>
+<!--Common Controls References-->
+<script src="/common/js/utils.js"></script>
+<script src="/common/js/newscluster.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<link rel="stylesheet" href="/css/categoryPage.css" />
+<link rel="stylesheet" href="/css/sourcesGalleryPano.css" />
+<script src="/js/newsUtilities.js"></script>
+<script src="/js/bindings.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/js/sourcesContentBasePage.js"></script>
+<script src="/js/categoryPage.js"></script>
+<script src="/prefetch/PrefetchManager.js"></script>
+<link rel="stylesheet" href="/css/default-deferred.css" />
+</head>
+<body>
+<div class="fragment categoryPage" id="categoryPage">
+<div class="platformMainContent zoom" id="news_Panorama" data-win-control="CommonJS.Immersive.SemanticZoomPanorama"
+data-win-bind="winControl.title: title; winControl.panoramaState: panoramaState; winControl.headerOptions: headerOptions; winControl.semanticZoomRenderer: semanticZoomRenderer">
+</div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="newsActionEdgyRight">
+<button tabindex="0" class="hiddenButton" id="previewButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE175', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="reportBadResults" class="hiddenButton" data-win-control="WinJS.UI.AppBarCommand" />
+<button tabindex="0" id="addSectionButton" class="hiddenButton" data-win-control="WinJS.UI.AppBarCommand"></button>
+<button tabindex="0" id="pinCategory" data-win-control="WinJS.UI.AppBarCommand" />
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿{"clustersDefinition":[{"isFREOffline":1,"editorial":true,"pinned":true,"title":"_TopStory_","guid":"hero","clusterType":"NewsApp.Controls.HeroControl","providerConfiguration":{"providerType":"NewsApp.DataProviders.CMS.DataProvider","categoryKey":"hero","strategy":"hero"}}]}

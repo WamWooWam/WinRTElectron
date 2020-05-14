@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<!--Common Controls References-->
+<script src="/common/js/slideshow.js"></script>
+<!-- News App References -->
+<script src="/js/data/bing.js"></script>
+<script src="/js/newsUtilities.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/js/newsSlideshow.js"></script>
+<!-- Windows CSS references -->
+<link rel="stylesheet" href="//Microsoft.WinJS.2.0/css/ui-light.css" />
+<!--Common Controls CSS References-->
+<link rel="stylesheet" href="/common/css/common-deferred.css" />
+<link rel="stylesheet" href="/common/slideshow/css/slideshow.css" />
+<!-- News App References -->
+<link rel="stylesheet" href="/css/default.css" />
+<link rel="stylesheet" href="/css/default-deferred.css" />
+<link rel="stylesheet" href="/css/newsSlideshow.css" />
+</head>
+<body>
+<div class="newsSlideshow slideShow fragment">
+<div class="platformHeader slideShowHeader" data-win-control="CommonJS.Header"></div>
+<div class="platformMainContent">
+<div id="ssView" class="slideView" data-win-control="CommonJS.Slideshow.SlideshowControl"
+data-win-bind="winControl.dataOptions: dataOptions; winControl.options.onClickHandler: clickHandler; winControl.options.startIndex: startIndex; winControl.options.dontShowSlideTitle: dontShowSlideTitle; winControl.instrumentationEntryPoint: instrumentationEntryPoint"
+data-win-options="{ cacheId: '343196E7-DCF2-4938-9223-DF2A9C3D87B3', showArticleLinkLabel: true, missingImage: 'logo.png', mediaBlockPosition: CommonJS.Slideshow.SlideshowControl.MediaBlockPosition.bottomLeft }">
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+<div id="fillerTileTemplate" data-win-control="WinJS.Binding.Template">
+<div class="fillerTile"> 
+</div>
+</div>
+<div id="tileTemplate" data-win-control="WinJS.Binding.Template">
+<button class="tile" role="link" data-win-bind="this['data-source']: id WinJS.Binding.setAttribute; " >
+<img class="sourceLogo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-win-bind="style.backgroundImage: win8_image NewsJS.Customization.TilesPanel.urlToImageConverter; style.display: win8_image NewsJS.Customization.TilesPanel.imageConverter" />                
+<div class="source">
+<div class="sourceName" data-win-bind="textContent: displayname"></div>
+<div class="sourceDesc" data-win-bind="textContent: sourcedescription NewsJS.Customization.TilesPanel.nullConverter"></div>
+</div>
+</button>
+</div>
+<div id="tileTemplateWithToggle" data-win-control="WinJS.Binding.Template">
+<button data-win-bind="this['data-source']: id WinJS.Binding.setAttribute; className: selected NewsJS.Customization.TilesPanel.selectedConverter; this['aria-selected']: selected WinJS.Binding.setAttribute; style.backgroundImage: tile_backgroundImage NewsJS.Customization.TilesPanel.urlToImageConverter;" >                
+<img class="sourceLogo" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-win-bind="style.backgroundImage: win8_image NewsJS.Customization.TilesPanel.urlToImageConverter; style.display: win8_image NewsJS.Customization.TilesPanel.imageConverter" />
+<div class="source">
+<div class="sourceName" data-win-bind="textContent: displayname"></div>
+<div class="sourceDesc" data-win-bind="textContent: sourcedescription NewsJS.Customization.TilesPanel.nullConverter"></div>
+</div>
+<div  class="sourceToggle">
+<div class="sourceToggleCircle"></div>
+<div class="sourceToggleCheck"></div>
+<div class="sourceToggleAdded" data-win-bind="textContent: added"></div>
+</div>
+</button>
+</div>
+</body>
+</html>

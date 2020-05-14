@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+  <xsl:template match="p|tagline">
+    <p>
+      <xsl:apply-templates/>
+    </p>
+  </xsl:template>
+
+  <xsl:template match="highlight[@type='ITALIC']">
+    <i>
+      <xsl:value-of select="."/>
+    </i>
+  </xsl:template>
+
+  <xsl:template match="highlight[@type='BOLD']">
+    <b>
+      <xsl:value-of select="."/>
+    </b>
+  </xsl:template>
+
+</xsl:stylesheet>

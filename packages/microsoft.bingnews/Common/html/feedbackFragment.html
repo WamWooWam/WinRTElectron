@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>application feedback </title>
+<!-- WinJS references -->
+<script src="/common/js/feedbackFragment.js"></script>
+</head>
+<body>
+<div>
+<div class="feedbackDiv" id="SharedFeedbackPage" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow'}" data-win-res="{ attributes: { 'aria-label': '/platform/feedbackButtonLabel' } }" >
+<div class="feedbackDivBody">
+<div class="feedbackHeader">
+<button type="button" data-win-bind="onclick:feedbackBackbuttonclick" class="win-backbutton"></button>
+<a id="categoryText" class="feedbackLabel feedbackColor" data-win-bind="textContent: categoryText">
+</a>
+<div class="appIcon"></div>
+</div>
+<div class="feedbackWhiteBar">
+</div>
+<div class="feedbackDivTopDiv">
+<div class="freeformTextWarning" data-win-bind="innerText: freeformTextWarning"></div>
+<div class="feedbackDivTableTopQuestion1" data-win-bind="textContent: question1"></div>
+<select id="question1" class="feedbackDivTableTopSelect" name="Q1" data-win-bind="title:question1">
+<option value="1" data-win-bind="text: question1option1" />
+<option value="2" data-win-bind="text: question1option2" />
+<option value="3" data-win-bind="text: question1option3" />
+<option value="4" data-win-bind="text: question1option4" />
+<option value="5" data-win-bind="text: question1option5" />
+</select>
+<div class="feedbackDivTableTopQuestion2" data-win-bind="textContent: question2"></div>
+<select id="question2" class="feedbackDivTableTopSelect" name="Q2" data-win-bind="title:question2">
+<option value="1" data-win-bind="text: question2option1" />
+<option value="2" data-win-bind="text: question2option2" />
+<option value="3" data-win-bind="text: question2option3" />
+<option value="4" data-win-bind="text: question2option4" />
+<option value="5" data-win-bind="text: question2option5" />
+</select>
+<div id="questionTitle" class="feedbackDivTableTopTitle" data-win-bind="textContent: questionTitle"></div>
+<textarea class="feedbackDivTableTopTextarea" id="userSuggest" cols="75" rows="2" maxlength="300" data-win-bind="title:questionTitle; innerText:autosavedComment" oninput="CommonJS.Feedback.onFeedbackInputChange()"></textarea>
+</div>
+<div class="feedbackDivBottomDiv">
+<div class="feedbackDivBottomDivLinkContainer">
+<a class="feedbackDivBottomDivLink" href="" data-win-bind="href: privacyStatementUrl; textContent: privacyStatementText"></a>
+<div class="feedbackDivBottomDivButtonContainer">
+<button type="button" class="rectUIBtnDark feedbackDivBottomDivButton" id="feedbackSubmitButton"
+data-win-bind="textContent: submitLabel; title: submitLabel; onclick:submitButtonclick"></button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

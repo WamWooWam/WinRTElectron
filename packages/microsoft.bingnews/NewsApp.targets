@@ -1,0 +1,656 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(NewsAppTarget)' == ''">
+    <NewsAppTarget>true</NewsAppTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(_NewsAppPath)' == ''">
+    <_NewsAppPath>$(INETROOT)\private\Apps\NewsApp\NewsApp</_NewsAppPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="$(_NewsAppPath)\js\constants.js">
+      <Link>js\constants.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\categoryPage.js">
+      <Link>js\categoryPage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\default.js">
+      <Link>js\default.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\CategoryControl.js">
+      <Link>Controls\CategoryControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\UnknownControl.js">
+      <Link>Controls\UnknownControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\NYTControl.js">
+      <Link>Controls\NYTControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\WSJControl.js">
+      <Link>Controls\WSJControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\InternationalEditionControl.js">
+      <Link>Controls\InternationalEditionControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\TopicControl.js">
+      <Link>Controls\TopicControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\SourceControl.js">
+      <Link>Controls\SourceControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\CustomPartnersControl.js">
+      <Link>Controls\CustomPartnersControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\HeroControl.js">
+      <Link>Controls\HeroControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Controls\ControlBase.js">
+      <Link>Controls\ControlBase.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\BingRSSProvider.js">
+      <Link>MySources\BingRSSProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\CustomRSSProvider.js">
+      <Link>MySources\CustomRSSProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\NYTProvider.js">
+      <Link>MySources\NYTProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\PartnerSourcesProvider.js">
+      <Link>MySources\PartnerSourcesProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\RSSProvider.js">
+      <Link>MySources\RSSProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\WSJProvider.js">
+      <Link>MySources\WSJProvider.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Orchestration\Orchestrator.js">
+      <Link>Orchestration\Orchestrator.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Orchestration\ViewportOrchestrationProxy.js">
+      <Link>Orchestration\ViewportOrchestrationProxy.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Panorama\SemanticZoomPanorama.js">
+      <Link>Panorama\SemanticZoomPanorama.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\Customization\PersonalizationManager.js">
+	    <Link>Customization\PersonalizationManager.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\PanoramaProxy.js">
+      <Link>PanoramaProxy.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\PageSessionManager.js">
+      <Link>PageSessionManager.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\bingDaily\clusterHandlerFeatured.js">
+      <Link>bingDaily\clusterHandlerFeatured.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\DevelopingNews\developingNewsControl.js">
+      <Link>DevelopingNews\DevelopingNewsControl.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\processListener.js">
+      <Link>js\processListener.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\rssSourcePage.js">
+      <Link>js\rssSourcePage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\sourceBasePage.js">
+      <Link>js\sourceBasePage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\mySourcesPage.js">
+      <Link>MySources\mySourcesPage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\js\sourcesContentBasePage.js">
+      <Link>js\sourcesContentBasePage.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\bingDaily\bingDaily.js">
+      <Link>bingDaily\bingDaily.js</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\categories.css">
+      <Link>css\categories.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\categoryPage.css">
+      <Link>css\categoryPage.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\default.css">
+      <Link>css\default.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\newsStand.css">
+      <Link>css\newsStand.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\settings.css">
+      <Link>css\settings.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\css\social.css">
+      <Link>css\social.css</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\aboutSettings.html">
+      <Link>html\aboutSettings.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\categoryPage.html">
+      <Link>html\categoryPage.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\MySources\mySourcesPage.html">
+      <Link>MySources\mySourcesPage.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\rssSourcePage.html">
+      <Link>html\rssSourcePage.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\settingSettings.html">
+      <Link>html\settingSettings.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\html\social.html">
+      <Link>html\social.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\bingDaily\bingDaily.html">
+      <Link>bingDaily\bingDaily.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\bingDaily\lazyBingDaily.html">
+      <Link>bingDaily\lazyBingDaily.html</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\defaultSource.png">
+      <Link>images\defaultSource.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-black_scale-100.png">
+      <Link>images\logoCategory.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-black_scale-140.png">
+      <Link>images\logoCategory.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-black_scale-180.png">
+      <Link>images\logoCategory.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-black_scale-80.png">
+      <Link>images\logoCategory.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-white_scale-100.png">
+      <Link>images\logoCategory.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-white_scale-140.png">
+      <Link>images\logoCategory.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-white_scale-180.png">
+      <Link>images\logoCategory.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.contrast-white_scale-80.png">
+      <Link>images\logoCategory.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.scale-100.png">
+      <Link>images\logoCategory.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.scale-140.png">
+      <Link>images\logoCategory.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.scale-180.png">
+      <Link>images\logoCategory.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoCategory.scale-80.png">
+      <Link>images\logoCategory.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-black_scale-100.png">
+      <Link>images\logoSource.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-black_scale-140.png">
+      <Link>images\logoSource.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-black_scale-180.png">
+      <Link>images\logoSource.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-black_scale-80.png">
+      <Link>images\logoSource.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-white_scale-100.png">
+      <Link>images\logoSource.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-white_scale-140.png">
+      <Link>images\logoSource.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-white_scale-180.png">
+      <Link>images\logoSource.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.contrast-white_scale-80.png">
+      <Link>images\logoSource.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.scale-100.png">
+      <Link>images\logoSource.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.scale-140.png">
+      <Link>images\logoSource.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.scale-180.png">
+      <Link>images\logoSource.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoSource.scale-80.png">
+      <Link>images\logoSource.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-black_scale-100.png">
+      <Link>images\logoTopic.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-black_scale-140.png">
+      <Link>images\logoTopic.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-black_scale-180.png">
+      <Link>images\logoTopic.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-black_scale-80.png">
+      <Link>images\logoTopic.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-white_scale-100.png">
+      <Link>images\logoTopic.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-white_scale-140.png">
+      <Link>images\logoTopic.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-white_scale-180.png">
+      <Link>images\logoTopic.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.contrast-white_scale-80.png">
+      <Link>images\logoTopic.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.scale-100.png">
+      <Link>images\logoTopic.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.scale-140.png">
+      <Link>images\logoTopic.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.scale-180.png">
+      <Link>images\logoTopic.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.scale-80.png">
+      <Link>images\logoTopic.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.targetsize-16.png">
+      <Link>images\logoTopic.targetsize-16.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\logoTopic.targetsize-32.png">
+      <Link>images\logoTopic.targetsize-32.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_scale-100.png">
+      <Link>images\small.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_scale-140.png">
+      <Link>images\small.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_scale-180.png">
+      <Link>images\small.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_scale-80.png">
+      <Link>images\small.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_targetsize-16.png">
+      <Link>images\small.contrast-black_targetsize-16.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_targetsize-256.png">
+      <Link>images\small.contrast-black_targetsize-256.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_targetsize-32.png">
+      <Link>images\small.contrast-black_targetsize-32.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-black_targetsize-48.png">
+      <Link>images\small.contrast-black_targetsize-48.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_scale-100.png">
+      <Link>images\small.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_scale-140.png">
+      <Link>images\small.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_scale-180.png">
+      <Link>images\small.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_scale-80.png">
+      <Link>images\small.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_targetsize-16.png">
+      <Link>images\small.contrast-white_targetsize-16.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_targetsize-256.png">
+      <Link>images\small.contrast-white_targetsize-256.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_targetsize-32.png">
+      <Link>images\small.contrast-white_targetsize-32.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.contrast-white_targetsize-48.png">
+      <Link>images\small.contrast-white_targetsize-48.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.scale-100.png">
+      <Link>images\small.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.scale-140.png">
+      <Link>images\small.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.scale-180.png">
+      <Link>images\small.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.scale-80.png">
+      <Link>images\small.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.targetsize-16.png">
+      <Link>images\small.targetsize-16.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.targetsize-256.png">
+      <Link>images\small.targetsize-256.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.targetsize-32.png">
+      <Link>images\small.targetsize-32.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\small.targetsize-48.png">
+      <Link>images\small.targetsize-48.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-black_scale-100.png">
+      <Link>images\smallCategory.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-black_scale-140.png">
+      <Link>images\smallCategory.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-black_scale-180.png">
+      <Link>images\smallCategory.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-black_scale-80.png">
+      <Link>images\smallCategory.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-white_scale-100.png">
+      <Link>images\smallCategory.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-white_scale-140.png">
+      <Link>images\smallCategory.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-white_scale-180.png">
+      <Link>images\smallCategory.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.contrast-white_scale-80.png">
+      <Link>images\smallCategory.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.scale-100.png">
+      <Link>images\smallCategory.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.scale-140.png">
+      <Link>images\smallCategory.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.scale-180.png">
+      <Link>images\smallCategory.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallCategory.scale-80.png">
+      <Link>images\smallCategory.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-black_scale-100.png">
+      <Link>images\smallSource.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-black_scale-140.png">
+      <Link>images\smallSource.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-black_scale-180.png">
+      <Link>images\smallSource.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-black_scale-80.png">
+      <Link>images\smallSource.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-white_scale-100.png">
+      <Link>images\smallSource.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-white_scale-140.png">
+      <Link>images\smallSource.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-white_scale-180.png">
+      <Link>images\smallSource.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.contrast-white_scale-80.png">
+      <Link>images\smallSource.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.scale-100.png">
+      <Link>images\smallSource.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.scale-140.png">
+      <Link>images\smallSource.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.scale-180.png">
+      <Link>images\smallSource.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallSource.scale-80.png">
+      <Link>images\smallSource.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-black_scale-100.png">
+      <Link>images\smallTopic.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-black_scale-140.png">
+      <Link>images\smallTopic.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-black_scale-180.png">
+      <Link>images\smallTopic.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-black_scale-80.png">
+      <Link>images\smallTopic.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-white_scale-100.png">
+      <Link>images\smallTopic.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-white_scale-140.png">
+      <Link>images\smallTopic.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-white_scale-180.png">
+      <Link>images\smallTopic.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.contrast-white_scale-80.png">
+      <Link>images\smallTopic.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.scale-100.png">
+      <Link>images\smallTopic.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.scale-140.png">
+      <Link>images\smallTopic.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.scale-180.png">
+      <Link>images\smallTopic.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\smallTopic.scale-80.png">
+      <Link>images\smallTopic.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.contrast-black_scale-100.png">
+      <Link>images\splash.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.contrast-black_scale-140.png">
+      <Link>images\splash.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.contrast-black_scale-180.png">
+      <Link>images\splash.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.contrast-white_scale-100.png">
+      <Link>images\splash.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.contrast-white_scale-140.png">
+      <Link>images\splash.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.contrast-white_scale-180.png">
+      <Link>images\splash.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.scale-100.png">
+      <Link>images\splash.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.scale-140.png">
+      <Link>images\splash.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\splash.scale-180.png">
+      <Link>images\splash.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.contrast-black_scale-100.png">
+      <Link>images\store.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.contrast-black_scale-140.png">
+      <Link>images\store.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.contrast-black_scale-180.png">
+      <Link>images\store.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.contrast-white_scale-100.png">
+      <Link>images\store.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.contrast-white_scale-140.png">
+      <Link>images\store.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.contrast-white_scale-180.png">
+      <Link>images\store.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.scale-100.png">
+      <Link>images\store.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.scale-140.png">
+      <Link>images\store.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\store.scale-180.png">
+      <Link>images\store.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-black_scale-100.png">
+      <Link>images\wide.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-black_scale-140.png">
+      <Link>images\wide.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-black_scale-180.png">
+      <Link>images\wide.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-black_scale-80.png">
+      <Link>images\wide.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-white_scale-100.png">
+      <Link>images\wide.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-white_scale-140.png">
+      <Link>images\wide.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-white_scale-180.png">
+      <Link>images\wide.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.contrast-white_scale-80.png">
+      <Link>images\wide.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.scale-100.png">
+      <Link>images\wide.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.scale-140.png">
+      <Link>images\wide.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.scale-180.png">
+      <Link>images\wide.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wide.scale-80.png">
+      <Link>images\wide.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-black_scale-100.png">
+      <Link>images\wideCategory.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-black_scale-140.png">
+      <Link>images\wideCategory.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-black_scale-180.png">
+      <Link>images\wideCategory.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-black_scale-80.png">
+      <Link>images\wideCategory.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-white_scale-100.png">
+      <Link>images\wideCategory.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-white_scale-140.png">
+      <Link>images\wideCategory.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-white_scale-180.png">
+      <Link>images\wideCategory.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.contrast-white_scale-80.png">
+      <Link>images\wideCategory.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.scale-100.png">
+      <Link>images\wideCategory.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.scale-140.png">
+      <Link>images\wideCategory.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.scale-180.png">
+      <Link>images\wideCategory.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideCategory.scale-80.png">
+      <Link>images\wideCategory.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-black_scale-100.png">
+      <Link>images\wideSource.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-black_scale-140.png">
+      <Link>images\wideSource.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-black_scale-180.png">
+      <Link>images\wideSource.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-black_scale-80.png">
+      <Link>images\wideSource.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-white_scale-100.png">
+      <Link>images\wideSource.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-white_scale-140.png">
+      <Link>images\wideSource.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-white_scale-180.png">
+      <Link>images\wideSource.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.contrast-white_scale-80.png">
+      <Link>images\wideSource.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.scale-100.png">
+      <Link>images\wideSource.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.scale-140.png">
+      <Link>images\wideSource.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.scale-180.png">
+      <Link>images\wideSource.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideSource.scale-80.png">
+      <Link>images\wideSource.scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-black_scale-100.png">
+      <Link>images\wideTopic.contrast-black_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-black_scale-140.png">
+      <Link>images\wideTopic.contrast-black_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-black_scale-180.png">
+      <Link>images\wideTopic.contrast-black_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-black_scale-80.png">
+      <Link>images\wideTopic.contrast-black_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-white_scale-100.png">
+      <Link>images\wideTopic.contrast-white_scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-white_scale-140.png">
+      <Link>images\wideTopic.contrast-white_scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-white_scale-180.png">
+      <Link>images\wideTopic.contrast-white_scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.contrast-white_scale-80.png">
+      <Link>images\wideTopic.contrast-white_scale-80.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.scale-100.png">
+      <Link>images\wideTopic.scale-100.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.scale-140.png">
+      <Link>images\wideTopic.scale-140.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.scale-180.png">
+      <Link>images\wideTopic.scale-180.png</Link>
+    </Content>
+    <Content Include="$(_NewsAppPath)\images\wideTopic.scale-80.png">
+      <Link>images\wideTopic.scale-80.png</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="js\" />
+    <Folder Include="css\" />
+    <Folder Include="html\" />
+    <Folder Include="images\" />
+    <Folder Include="less\" />
+  </ItemGroup>
+  <Import Condition="'$(BaseNewsAppTarget)' == ''" Project="$(_NewsAppPath)\BaseNewsApp.targets" />
+  <Import Condition="'$(DynamicPanoTarget)' == ''" Project="$(_NewsAppPath)\DynamicPano.targets" />
+</Project>

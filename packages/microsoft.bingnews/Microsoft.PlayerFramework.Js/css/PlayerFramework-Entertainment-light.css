@@ -1,0 +1,942 @@
+﻿/* Containers */
+.pf-container {
+    display: inline-block;
+    position: relative;
+    min-width: 300px;
+    min-height: 180px;
+    font-size: 11pt;
+    font-family: "Segoe UI";
+    font-weight: 300;
+    line-height: 1.3636;
+    letter-spacing: 0.02em;
+    cursor: default;
+    /*overflow: hidden;*/
+}
+
+.pf-container.pf-full-screen {
+    position: fixed !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    overflow: hidden !important;
+    z-index: 999 !important;
+}
+
+.pf-buffering-container, .pf-control-container, .pf-error-container, .pf-loader-container {
+    display: -ms-flexbox;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+}
+
+.pf-container:not(.pf-show-buffering-container) .pf-buffering-container, .pf-container.pf-show-loader-container .pf-buffering-container, .pf-container.pf-show-error-container .pf-buffering-container {
+    display: none;
+}
+
+.pf-container:not(.pf-show-control-container) .pf-control-container, .pf-container.pf-show-loader-container .pf-control-container, .pf-container.pf-show-error-container .pf-control-container {
+    display: none;
+}
+
+.pf-container:not(.pf-show-error-container) .pf-error-container {
+    display: none;
+}
+
+.pf-container:not(.pf-show-loader-container) .pf-loader-container {
+    display: none;
+}
+
+.pf-control-container {
+    z-index: 300;
+    pointer-events: none;
+}
+
+.pf-loader-container {
+    z-index: 400;
+}
+
+.pf-buffering-container {
+    z-index: 500;
+}
+
+.pf-error-container {
+    z-index: 600;
+    -ms-flex-flow: column;
+}
+
+/* Media Element */
+.pf-media {
+    position:absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* Shim Element */
+.pf-shim {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+/* Links */
+.pf-link {
+    text-decoration: none;
+    cursor: default;
+}
+
+/* Controls */
+.pf-control.pf-hidden {
+    display: none !important;
+}
+
+/* Button Control */
+.pf-button {
+    display: inline-block;
+    vertical-align: middle;
+    width: 48px;
+    height: 48px;
+    min-width: 0;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    font-size: 28px;
+    font-family: "Segoe UI Symbol";
+    letter-spacing: inherit;
+    color: inherit !important;
+    background: none !important;
+}
+
+.pf-loader-container .pf-button, .pf-error-container .pf-button {
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+}
+
+.pf-button-container {
+    display: -ms-flexbox;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border-width: 2px;
+    border-style: solid;
+    box-sizing: border-box;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-flow: column;
+}
+
+.pf-loader-container .pf-button-container, .pf-error-container .pf-button-container {
+    border-width: 5px;
+}
+
+.pf-button-container, .pf-button:active .pf-button-container {
+    background-color: transparent;
+}
+
+.pf-button:disabled .pf-button-container {
+    background-color: transparent !important;
+}
+
+.pf-button:disabled .pf-button-content {
+    color: inherit !important;
+}
+
+.pf-button-content {
+    display: block;
+    line-height: 0;
+}
+
+.pf-button-content:nth-child(1) {
+    visibility: visible;
+}
+
+.pf-button-content:nth-child(2) {
+    visibility: hidden;
+}
+
+.pf-button.pf-hover:hover .pf-button-content:nth-child(1) {
+    visibility: hidden;
+}
+
+.pf-button.pf-hover:hover .pf-button-content:nth-child(2) {
+    visibility: visible;
+}
+
+.pf-button.pf-hover:disabled .pf-button-content:nth-child(1) {
+    visibility: visible;
+}
+
+.pf-button.pf-hover:disabled .pf-button-content:nth-child(2) {
+    visibility: hidden;
+}
+
+/* Indicator Control */
+.pf-indicator {
+    display: inline-block;
+    vertical-align: middle;
+    width: 60px;
+    height: 48px;
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.pf-indicator-text {
+    display: -ms-flexbox;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    box-sizing: border-box;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-flow: column;
+}
+
+/* Meter Control */
+.pf-meter {
+    display: -ms-inline-flexbox;
+    vertical-align: middle;
+    width: 50px;
+    height: 48px;
+    -ms-flex-pack: center;
+    -ms-flex-align: end;
+    -ms-flex-flow: row;
+}
+
+.pf-meter-bar {
+    -ms-flex: 1;
+}
+
+.pf-meter-bar:nth-child(1) {
+    height: 33.333%;
+}
+
+.pf-meter-bar:nth-child(2) {
+    height: 66.667%;
+    margin: 0 1px;
+}
+
+.pf-meter-bar:nth-child(3) {
+    height: 100%;
+}
+
+.pf-meter[aria-valuetext=low] .pf-meter-bar:nth-child(-n+1), .pf-meter[aria-valuetext=medium] .pf-meter-bar:nth-child(-n+2), .pf-meter[aria-valuetext=high] .pf-meter-bar:nth-child(-n+3) {
+    background-color: currentColor;
+}
+
+/* Slider Control */
+.pf-slider {
+    display: inline-block;
+    vertical-align: middle;
+    width: 250px;
+    height: 11px;
+    -ms-user-select: none;
+}
+
+.pf-slider.pf-vertical {
+    width: 11px;
+    height: 250px;
+}
+
+.pf-slider.pf-vertical input[type=range], .pf-slider.pf-vertical progress {
+    -ms-writing-mode: bt-lr;
+}
+
+.pf-slider input[type=range], .pf-slider input[type=range]::-ms-track, .pf-slider input[type=range]::-ms-thumb, .pf-slider input[type=range]::-ms-fill-lower, .pf-slider input[type=range]::-ms-fill-upper, .pf-slider progress, .pf-slider progress::-ms-fill {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.pf-slider input[type=range]::-ms-thumb {
+    width: 11px;
+    height: 11px;
+}
+
+.pf-slider input[type=range]::-ms-tooltip, .pf-slider input[type=range]::-ms-ticks-before, .pf-slider input[type=range]::-ms-ticks-after {
+    display: none;
+}
+
+.pf-slider-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.pf-slider-container input[type=range], .pf-slider-container input[type=range]::-ms-track, .pf-slider-container progress, .pf-slider-container .pf-slider-marker-container, .pf-slider-container .pf-slider-thumbnail-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.pf-slider-container .pf-slider-marker-container {
+    pointer-events: none;
+}
+
+.pf-slider-container .pf-slider-thumbnail-container {
+    overflow: visible;
+}
+
+/* Buffering Control */
+.pf-buffering-control:indeterminate {
+    width: 100%;
+    height: 4px;
+    padding: 0;
+}
+
+.pf-buffering-control::-ms-fill {
+    animation-name: -ms-bar;
+}
+
+/* Error Control */
+.pf-error-control {
+    margin: 16px auto 0;
+}
+
+.pf-error-text {
+    font-size: 24px;
+}
+
+.pf-error-label {
+    font-size: 36px;
+}
+
+/* Control Panel */
+.pf-control-panel {
+    display: -ms-flexbox;
+    width: auto;
+    height: 42px;
+    padding: 8px;
+    box-sizing: border-box;
+    -ms-flex: 1;
+    -ms-flex-pack: center;
+    -ms-flex-align: center;
+    -ms-flex-item-align: end;
+}
+
+.pf-control-panel.pf-hidden {
+    display: none;
+}
+
+.pf-control-container .pf-control-panel {
+    opacity: 1;
+    transition: opacity 250ms linear;
+}
+
+.pf-interactive {
+    pointer-events: all;
+}
+
+.pf-control-container .pf-control-panel.pf-hidden {
+    display: -ms-flexbox;
+    opacity: 0;
+    transition: opacity 167ms linear;
+}
+
+.pf-control-panel > * {
+    margin: 0 8px;
+}
+
+.pf-control-panel .pf-button {
+    width: 26px;
+    height: 26px;
+    font-size: 15px;
+}
+
+.pf-control-panel .pf-button-container {
+    border-width: 2px;
+}
+
+.pf-control-panel .pf-indicator {
+    width: 30px;
+    height: 24px;
+    font-size: 15px;
+}
+
+.pf-control-panel .pf-indicator-text {
+    border-radius: 3px;
+}
+
+.pf-control-panel .pf-meter {
+    width: 26px;
+    height: 24px;
+}
+
+.pf-control-panel .pf-slider {
+    -ms-flex: 1;
+}
+
+/* Media Player Controls */
+.pf-play-pause-control .pf-button-content, .pf-play-resume-control .pf-button-content, .pf-pause-control .pf-button-content {
+    transform: scale(0.85);
+}
+
+.pf-replay-control .pf-button-content {
+    transform: scale(-1, 1) rotate(-45deg);
+}
+
+.pf-rewind-control .pf-button-content { 
+    transform: translate(-0.06em, -0.09em);
+}
+
+.pf-fast-forward-control .pf-button-content {
+    transform: translate(0.06em, -0.09em);
+}
+
+.pf-slow-motion-control .pf-button-content {
+    transform: scale(1.1, 1.25) translate(2px, 0.5px) rotate(90deg);
+}
+
+.pf-skip-previous-control .pf-button-content {
+    transform: translate(0.5px, 0);
+}
+
+.pf-skip-next-control .pf-button-content {
+    transform: translate(-0.5px, 0);
+}
+
+.pf-skip-back-control .pf-button-content { 
+    transform: translate(-0.5px, -0.12em);
+}
+
+.pf-skip-ahead-control .pf-button-content {
+    transform: translate(0.5px, -0.12em);
+}
+
+.pf-elapsed-time-control, .pf-remaining-time-control, .pf-total-time-control {
+    width: auto !important;
+}
+
+.pf-elapsed-time-control .pf-button-container, .pf-remaining-time-control .pf-button-container, .pf-total-time-control .pf-button-container {
+    border: 0;
+    border-radius: 0;
+    background-color: transparent !important;
+}
+
+.pf-elapsed-time-control .pf-button-content, .pf-remaining-time-control .pf-button-content,, .pf-total-time-control .pf-button-content {
+    color: inherit !important;
+}
+
+.pf-go-live-control .pf-button-content {
+    font-size: 60%;
+    font-weight: 600;
+    font-family: "Segoe UI";
+}
+
+.pf-captions-control .pf-button-content {
+    font-size: 85%;
+}
+
+.pf-audio-control .pf-button-content {
+    font-size: 98%;
+}
+
+.pf-volume-mute-control .pf-button-content, .pf-volume-control .pf-button-content, .pf-mute-control .pf-button-content {
+    transform: translate(-0.5px, 0);
+}
+
+.pf-volume-mute-container {
+    position: relative;
+}
+
+.pf-volume-mute-container .pf-volume-slider-control {
+    position: absolute;
+    left: calc(50% - 21px);
+    bottom: calc(100% + 8px);
+    height: 115px;
+    padding: 15px 15px 0 15px;
+    opacity: 1;
+    transition: opacity 250ms linear;
+}
+
+.phone .pf-volume-mute-container .pf-volume-slider-control {
+    bottom: calc(100% - 4px);
+}
+
+.pf-volume-mute-container .pf-volume-slider-control.pf-hidden {
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 167ms linear;
+}
+
+.win-top .pf-volume-mute-container .pf-volume-slider-control {
+    top: calc(100% + 8px);
+    bottom: auto;
+    padding: 0 15px 15px 15px;
+}
+
+.pf-full-screen-control .pf-button-content {
+    font-size: 77%;
+}
+
+.pf-zoom-control .pf-button-content {
+    font-size: 77%;
+}
+
+/* Flyouts */
+.pf-volume-flyout {
+    display: -ms-flexbox;
+    padding: 0;
+    -ms-flex-align: center;
+    -ms-flex-direction: column;
+}
+
+.pf-volume-flyout hr {
+    display: block;
+    width: calc(100% - 20px);
+    height: 1px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: rgb(123, 123, 123);
+}
+
+.pf-volume-flyout .pf-mute-control {
+    height: 36px;
+    margin: 10px;
+}
+
+.pf-volume-flyout .pf-mute-control .pf-button-container {
+    border: 0;
+    border-radius: 0;
+}
+
+.pf-volume-flyout .pf-volume-slider-control {
+    height: 163px;
+    margin: 15px;
+}
+
+.pf-hide-focus {
+    outline: none;
+}
+
+.pf-slider-marker {
+    position:absolute;
+    width: 3px;
+    left: -1.5px;
+    height: 11px;
+    pointer-events: all;
+}
+
+.pf-slider-thumbnailView {
+    position:absolute;
+    width: 160px;
+    height: 90px;
+    left: -80px;
+    top: -106px;
+}
+
+.pf-slider-thumbnailView .pf-slider-thumbnailImage {
+    width: 160px;
+    height: 90px;
+}
+/* Containers */
+.pf-container {
+    color: rgb(0, 0, 0);
+    background-color: rgb(222, 222, 222);
+}
+
+.win-ui-dark .pf-container, .pf-container.win-ui-dark {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+/* Links */
+.pf-link {
+    color: rgb(79, 26, 203);
+}
+
+.pf-link:hover {
+    color: rgba(79, 26, 203, 0.8);
+}
+
+.pf-link:hover:active {
+    color: rgba(79, 26, 203, 0.6);
+}
+
+.pf-link[disabled], .pf-link[disabled]:active {
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.win-ui-dark .pf-link {
+    color: rgb(156, 114, 255);
+}
+
+.win-ui-dark .pf-link:hover {
+    color: rgba(156, 114, 255, 0.8);
+}
+
+.win-ui-dark .pf-link:hover:active {
+    color: rgba(156, 114, 255, 0.6);
+}
+
+.win-ui-dark .pf-link[disabled], .win-ui-dark .pf-link[disabled]:active {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+/* Button Control */
+.pf-button:hover .pf-button-container {
+    background-color: rgba(0, 0, 0, 0.13);
+}
+
+.pf-button:hover:active .pf-button-container {
+    background-color: currentColor;
+}
+
+.pf-button:hover:active .pf-button-content {
+    color: rgb(255, 255, 255);
+}
+
+.pf-button:disabled {
+    color: rgba(0, 0, 0, 0.4) !important;
+}
+
+.win-ui-dark .pf-button:hover .pf-button-container {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.win-ui-dark .pf-button:hover:active .pf-button-container {
+    background-color: currentColor;
+}
+
+.win-ui-dark .pf-button:hover:active .pf-button-content {
+    color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-button:disabled {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Indicator Control */
+.pf-indicator-text {
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-indicator-text {
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+}
+
+/* Meter Control */
+.pf-meter-bar {
+    background-color: rgba(0, 0, 0, 0.23);
+}
+
+.win-ui-dark .pf-meter-bar {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+
+/* Slider Control */
+.pf-slider input[type=range]::-ms-fill-lower {
+    background-color: rgb(70, 23, 180);
+}
+
+.pf-slider input[type=range]:hover::-ms-fill-lower {
+    background-color: rgb(95, 55, 190);
+}
+
+.pf-slider input[type=range]:active::-ms-fill-lower {
+    background-color: rgb(114, 65, 228);
+}
+
+.pf-slider input[type=range]:disabled::-ms-fill-lower {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pf-slider input[type=range]::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pf-slider input[type=range]:hover::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.15);
+}
+
+.pf-slider input[type=range]:active::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.pf-slider input[type=range]:disabled::-ms-fill-upper {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pf-slider input[type=range]::-ms-thumb {
+    background-color: rgb(1, 1, 1);
+}
+
+.pf-slider input[type=range]:disabled::-ms-thumb {
+    background-color: rgb(146, 146, 146);
+}
+
+.pf-slider progress::-ms-fill {
+    background-color: rgba(0, 0, 0, 0.07);
+}
+
+.win-ui-dark .pf-slider input[type=range]::-ms-fill-lower {
+    background-color: rgb(91, 46, 197);
+}
+
+.win-ui-dark .pf-slider input[type=range]:hover::-ms-fill-lower {
+    background-color: rgb(114, 75, 205);
+}
+
+.win-ui-dark .pf-slider input[type=range]:active::-ms-fill-lower {
+    background-color: rgb(129, 82, 239);
+}
+
+.win-ui-dark .pf-slider input[type=range]:disabled::-ms-fill-lower {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+
+.win-ui-dark .pf-slider input[type=range]::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.win-ui-dark .pf-slider input[type=range]:hover::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+.win-ui-dark .pf-slider input[type=range]:active::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.23);
+}
+
+.win-ui-dark .pf-slider input[type=range]:disabled::-ms-fill-upper {
+    background-color: rgba(255, 255, 255, 0.16);
+}
+
+.win-ui-dark .pf-slider input[type=range]::-ms-thumb {
+    background-color: rgb(254, 254, 254);
+}
+
+.win-ui-dark .pf-slider input[type=range]:disabled::-ms-thumb {
+    background-color: rgb(126, 126, 126);
+}
+
+.win-ui-dark .pf-slider progress::-ms-fill {
+    background-color: rgba(255, 255, 255, 0.07);
+}
+
+/* Buffering Control */
+.pf-buffering-control {
+    color: rgb(70, 23, 180);
+}
+
+.win-ui-dark .pf-buffering-control {
+    color: rgb(91, 46, 197);
+}
+
+/* Control Panel */
+.pf-control-panel, .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgb(255, 255, 255);
+}
+
+.pf-container .pf-control-panel, .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(255, 255, 255, 0.65);
+}
+
+.win-ui-dark .pf-control-panel, .win-ui-dark .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-container .pf-control-panel, .win-ui-dark .pf-container .pf-volume-mute-container .pf-volume-slider-control {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.pf-slider-marker {
+    background-color: rgba(0, 0, 0, 0.65);
+}
+
+.win-ui-dark .pf-slider-marker {
+    background-color: rgba(255, 255, 255, 0.65);
+}/* Containers */
+.pf-container.pf-show-buffering-container .pf-control-container {
+    display: none;
+}
+
+.pf-loader-container .pf-button, .pf-error-container .pf-button, .pf-control-container .pf-button {
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+}
+
+.pf-loader-container .pf-button-container, .pf-error-container .pf-button-container, .pf-control-container .pf-button-container {
+    border-width: 3px;
+}
+
+/* Buffering Control */
+.pf-buffering-control:indeterminate {
+    width: 60px;
+    height: 60px;
+}
+
+.pf-buffering-control::-ms-fill {
+    animation-name: -ms-ring;
+}
+
+/* Control Panel */
+.pf-container .pf-control-panel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+}
+
+.pf-container .pf-control-panel {
+    background-color: transparent !important;
+}
+
+.pf-container .pf-control-panel > * {
+    margin: 0 15px;
+}
+
+.pf-container .pf-control-panel > *:not(.pf-play-pause-control):not(.pf-rewind-control):not(.pf-fast-forward-control):not(.pf-skip-previous-control):not(.pf-skip-next-control):not(.pf-elapsed-time-control):not(.pf-remaining-time-control):not(.pf-timeline-control) {
+    display: none;
+}
+
+.pf-container .pf-control-panel > *:not(.pf-play-pause-control) {
+    width: 70px;
+    height: 70px;
+    font-size: 42px;
+}
+
+.pf-container .pf-control-panel .pf-elapsed-time-control, .pf-container .pf-control-panel .pf-remaining-time-control, .pf-container .pf-control-panel .pf-total-time-control  {
+    position: absolute;
+    bottom: 15px;
+    height: 15px;
+    font-size: 15px;
+}
+
+.pf-container .pf-control-panel .pf-elapsed-time-control  {
+    left: 15px;
+}
+
+.pf-container .pf-control-panel .pf-remaining-time-control {
+    right: 15px;
+}
+
+.pf-container .pf-control-panel .pf-total-time-control {
+    right: 15px;
+}
+
+
+.pf-container .pf-control-panel .pf-timeline-control {
+    position: absolute;
+    left: 80px;
+    right: 80px;
+    bottom: 20px;
+    width: auto;
+    height: 38px; /* thumb height + timeline height */
+    z-index: 1;
+}
+
+.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-track, .pf-container .pf-control-panel .pf-timeline-control progress {
+    height: 3px; /* timeline height */
+    margin-top: 35px; /* thumb height */
+    padding-left: 15px; /* thumb width / 2 */
+    padding-right: 15px; /* thumb width / 2 */
+}
+
+.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
+    width: 30px; /* thumb width */
+    height: 35px; /* thumb height */
+    margin-bottom: 38px; /* thumb height + timeline height */
+}
+
+.pf-container .pf-captions-container {
+    padding: 65px 15px;
+}
+
+.pf-container.pf-full-screen .pf-captions-container {
+    padding: 100px 15px;
+}
+
+.pf-container.pf-full-screen .pf-cue {
+    font-size: 30px;
+}
+
+@media screen and (-ms-view-state: snapped) {
+    .pf-container .pf-control-panel .pf-control:not(.pf-play-pause-control) {
+        display: none !important;
+    }
+}
+
+.pf-slider-marker {
+    height: 3px;
+    top: 35px;
+}
+
+.pf-slider-container .pf-slider-marker-container {
+    left:0;
+    right:0;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: auto;
+}
+
+.pf-slider-container .pf-slider-thumbnail-container {
+    left:0;
+    right:0;
+    margin-left: 15px;
+    margin-right: 15px;
+    width: auto;
+}
+
+.pf-slider-thumbnailView {
+    border: solid;
+    border-width: 2px;
+    top: -66px;
+}/* Buffering Control */
+.pf-buffering-control:indeterminate {
+    color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-buffering-control:indeterminate {
+    color: rgb(255, 255, 255);
+}
+
+/* Control Panel */
+.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
+    background: transparent url("../images/thumb-light.png");
+}
+
+.pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-fill-lower {
+    background-color: rgb(0, 0, 0);
+}
+
+.pf-container .pf-control-panel .pf-timeline-control input[type=range]:disabled::-ms-fill-lower {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.pf-slider-thumbnailView {
+    border-color: rgb(0, 0, 0);
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-thumb {
+    background: transparent url("../images/thumb-dark.png");
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-timeline-control input[type=range]::-ms-fill-lower {
+    background-color: rgb(255, 255, 255);
+}
+
+.win-ui-dark .pf-container .pf-control-panel .pf-timeline-control input[type=range]:disabled::-ms-fill-lower {
+    background-color: rgba(255, 255, 255, 0.4);
+}
+
+.win-ui-dark .pf-slider-thumbnailView {
+    border-color: rgb(255, 255, 255);
+}

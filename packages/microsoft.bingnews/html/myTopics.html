@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>my news</title>
+<script src="/common/js/utils.js"></script>
+<script src="/common/js/newscluster.js"></script>
+<!--Following References-->
+<link rel="stylesheet" href="/css/myTopics.css" />
+<link rel="stylesheet" href="/css/default-deferred.css" />
+<script src="/js/bindings.js"></script>
+<script src="/js/newsUtilities.js"></script>
+<script src="/js/algoNewsProvider.js"></script>
+<script src="/js/newsBasePage.js"></script>
+<script src="/js/myTopics.js"></script>
+</head>
+<body>
+<div id="headerTemplate" data-win-control="WinJS.Binding.Template" style="display: inline">
+<h1 class="listViewGroupHeader" data-win-bind="innerText: title">
+</h1>
+</div>
+<div class="following fragment">
+<div class="platformMainContent zoom" id="news_Panorama" data-win-control="CommonJS.Immersive.SemanticZoomPanorama"
+data-win-bind="winControl.title: title; winControl.panoramaState: panoramaState; winControl.zoomOutOptions: zoomOutOptions; winControl.clusterDataSource: clusters; winControl.onHeaderSelection: onHeaderSelection; winControl.headerOptions: headerOptions; winControl.semanticZoomRenderer: semanticZoomRenderer">
+</div>
+<div class="newsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="newsActionEdgyLeft">
+<button tabindex="0" id="PromoteTopic" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE017', extraClass: 'appexSymbol'}"></button>
+<button tabindex="0" id="ClearSelection" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE009', extraClass: 'appexSymbol'}"></button>
+<button tabindex="0" id="RemoveTopics" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE018', extraClass: 'appexSymbol'}"></button>
+</div>
+<div class="newsActionEdgyRight">
+<button tabindex="0" id="reportBadResults" class="hiddenButton" data-win-control="WinJS.UI.AppBarCommand" />
+<button tabindex="0" id="MoreTopics" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE017', extraClass: 'appexSymbol'}"></button>
+<button tabindex="0" id="EditTopics" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE018', extraClass: 'appexSymbol'}"></button>
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</div>
+</body>
+</html>

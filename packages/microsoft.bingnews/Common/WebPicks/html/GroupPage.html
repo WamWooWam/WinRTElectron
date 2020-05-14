@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="utf-8" />
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<!-- UX Framework References -->
+<link rel="stylesheet" href="/common/css/common.css" />
+<script src="/common/js/utilities.js"></script>
+<script src="/common/js/ui.js"></script>
+<script src="/common/js/controls.js"></script>
+<script src="/common/js/navigation.js"></script>
+<script src="/common/js/services.js"></script>
+<script src="/common/js/utils.js"></script>
+<!-- WebPicks References -->
+<script src="/common/js/webpicks.js"></script>
+</head>
+<body>
+<div class="webCollectionContainer" id ="webCollectionContainer">
+<div class="webCollectionBackgroundGradient">
+</div>
+<div class="ImersivePage fragment">
+<div id="mainPanorama" class="platformMainContent" data-win-control="CommonJS.Immersive.SemanticZoomPanorama" data-win-bind="winControl.clusterDataSource: clusters; 
+winControl.onHeaderSelection: onHeaderSelection; 
+winControl.title: title;
+winControl.semanticZoomRenderer: semanticZoomRenderer;
+winControl.zoomOptions: zoomOptions;">
+</div>
+</div>
+</div>
+</body>
+</html>

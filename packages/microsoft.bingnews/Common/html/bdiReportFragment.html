@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>BDI Result Report Form</title>
+<!-- WinJS references -->
+<script src="/common/js/bdiReportFragment.js"></script>
+</head>
+<body>
+<div >
+<div style="margin-left: 4px" class="feedbackDiv" id="SharedBdiReportPage" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'wide'}" data-win-res="{ attributes: { 'aria-label': 'Bdi Report Button Label' } }" >
+<div class="feedbackHeader">
+<button type="button" onclick="PlatformJS.Utilities.getControl('SharedBdiReportPage').hide()" class="win-backbutton">
+</button>
+<a id="categoryText" class="feedbackLabel feedbackColor" data-win-bind="textContent: categoryText">
+</a>
+<div class="appIcon"></div>
+</div>
+<div class="feedbackWhiteBar">
+</div>
+<div style="margin: 7px">
+<img id="articleImageDisplay" src="" alt="Article Image" data-win-bind="src: data.imageUrl; style.display: data.imageUrl CommonJS.BdiReportFragment.domCollapser" />
+<h2><div id="articleHeadlineDisplay" style="font-weight: bold" data-win-bind="textContent: data.articleHeadline"></div></h2>
+<div id="articleSnippetDisplay" data-win-bind="textContent: data.articleSnippet"></div>
+</div>
+<table class="">
+<td id="">
+<button id="buttonBadImg" tabindex="0" onclick="CommonJS.BdiReportFragment.setReportType('BAD_IMAGE')" class="feedbackDivTableLeftTdDiv feedbackDivTableLeftTdDivSelected feedbackColor">
+<p class="feedbackDivTableLeftTdDivP2">Bad Image</p>
+</button>
+<button id="buttonBadSnippet" tabindex="0" onclick="CommonJS.BdiReportFragment.setReportType('BAD_SNIPPET')" class="feedbackDivTableLeftTdDiv feedbackDivTableLeftTdDivUnselected feedbackColor">
+<p class="feedbackDivTableLeftTdDivP2">Bad Snippet</p>
+</button>
+<button id="buttonOther" tabindex="0" onclick="CommonJS.BdiReportFragment.setReportType('OTHER')" class="feedbackDivTableLeftTdDiv feedbackDivTableLeftTdDivUnselected feedbackColor">
+<p class="feedbackDivTableLeftTdDivP2">Other</p>
+</button>
+<div id="notesDiv">
+<div id="Div1" class="feedbackDivTableRightTdTitle">Notes:</div>
+<textarea class="feedbackDivTableRightTdTextarea" id="notesText" cols="75" rows="2" title="notesText"></textarea>
+</div>
+<div class="feedbackDivBottomDiv">
+<div class="feedbackDivBottomDivLinkContainer">
+<div class="feedbackDivBottomDivButtonContainer">
+<button type="button" class="rectUIBtnDark feedbackDivBottomDivButton"
+onclick="CommonJS.BdiReportFragment.submitReport()" data-win-bind="textContent: submitLabel; title: submitLabel">
+</button>
+</div>
+</div>
+</div>
+</td>
+</table>
+<p id="reportType" class ="feedbackHiddenElement" >0</p>
+<p id="bdiRequestUrl" class="feedbackHiddenElement" data-win-bind="textContent: data.bdiRequestUrl"></p>
+<p id="rawResponse" class="feedbackHiddenElement" data-win-bind="textContent: data.rawResponse"></p>
+<p id="articleHeadline" class="feedbackHiddenElement" data-win-bind="textContent: data.articleHeadline"></p>
+<p id="articleSnippet" class="feedbackHiddenElement" data-win-bind="textContent: data.articleSnippet"></p>
+<p id="articleUrl" class="feedbackHiddenElement" data-win-bind="textContent: data.articleUrl"></p>
+<p id="imageUrl" class="feedbackHiddenElement" data-win-bind="textContent: data.imageUrl"></p>
+</div>
+</div>
+</body>
+</html>

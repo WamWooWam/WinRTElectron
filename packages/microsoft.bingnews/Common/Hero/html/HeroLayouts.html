@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+</head>
+<body>   
+<div id="MultiStory4ItemSmall" data-win-control="WinJS.Binding.Template">
+<div id="heroCluster" style="height:100%; width:100%">
+<div id="primaryHeroImage" data-win-control="CommonJS.Immersive.HeroImage" data-win-bind="winControl.imageData: imageData;"></div>
+<div id="HeroContentLayout" class="platformHeroContent">
+<div id="heroContent" class="heroContentMultiStory">
+<div id="primaryHeroContent" class="primaryHeroContent"></div>
+<div class="secondaryHeroContent"></div>
+<div class="secondaryHeroContent"></div>
+<div class="secondaryHeroContent"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="PrimaryHeroItemMultiStoryLayout" data-win-control="WinJS.Binding.Template">
+<div id="primaryHeroItem">
+<div class="panoHeroTitle" data-win-bind="innerHTML: title">
+</div>
+<div class="sourceContainer">
+<div class="sourceIcon fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageSource: sourceIcon PlatformJS.Utilities.imageCardSource; winControl.alternateText: source;">
+</div>
+<div class="sourceText" data-win-bind="textContent: source"></div>
+</div>
+</div>
+</div>
+<div id="PrimaryHeroItemMultiStoryLayout_BreakingNews" data-win-control="WinJS.Binding.Template">
+<div id="primaryHeroItem">
+<div class="breakingNewsBar">
+<div class="breakingNewsText" data-win-bind="textContent: breakingNews"></div>
+</div>
+<div class="panoHeroTitle" data-win-bind="innerHTML: title">
+</div>
+<div class="sourceContainer">
+<div class="sourceIcon fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageSource: sourceIcon PlatformJS.Utilities.imageCardSource; winControl.alternateText: source;">
+</div>
+<div class="sourceText" data-win-bind="textContent: source"></div>
+</div>
+</div>
+</div>
+<div id="SecondaryHeroItemMultiStoryLayout" data-win-control="WinJS.Binding.Template">
+<div class="heroTile">
+<div class="tileTitle" data-win-bind="innerHTML: title"> </div>
+<div class="heroTileThumbnail fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageSource: thumbnailImage;"></div>
+<div class="sourceText" data-win-bind="textContent: source"></div>
+</div>
+</div>
+<div id="SecondaryHeroItemWithThumbnail" data-win-control="WinJS.Binding.Template">
+<div class="heroTile">
+<div class="tileTitle" data-win-bind="innerHTML: title"> </div>
+<div class="heroTileThumbnail fitBoth subHeroThubnailIcons" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageSource: thumbnailImage;">
+<div id="subHeroThumbnailIcon" class="icon">
+<div class="iconImage"></div>
+</div>
+</div>
+<div class="sourceText" data-win-bind="textContent: source"></div>
+</div>
+</div>
+</body>
+</html>
