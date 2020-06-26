@@ -1,0 +1,272 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Embedded Media Page CSS
+ *
+ */
+
+.embeddedMediaPage {
+    height: 100%;
+    width: 100%;
+}
+
+.embeddedMediaPage .embeddedMediaPageGrid {
+    display: -ms-grid;
+    -ms-grid-columns: 250px 40px 1px 40px 1fr;
+    -ms-grid-rows: 1fr 100px;
+    height: 100%;
+}
+
+.embeddedMediaPage .paneSplitter {
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    margin-top: 135px;
+    margin-bottom: 65px;
+    box-sizing: border-box;
+    background-color: #CCCCCC; /* Ash */
+}
+
+.embeddedMediaPage .embeddedMediaPageGrid .mediaImportButton {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+}
+
+.embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 70px auto 30px 1fr;
+}
+
+    .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .existingMediaTypeHeader {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+        font-family: 'Segoe UI';
+        font-weight: lighter;
+        font-size: 15pt;
+        color: #824A82; /*Fandango*/
+        line-height: 35px;
+    }
+
+    .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .noMediaContainer {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4;
+        font-family: "Segoe UI";
+        font-size: 10pt;
+        color: rgba(0, 0, 0, 1.0); /* Ink */
+    }
+
+    .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4;
+        font-family: "Segoe UI";
+        font-size: 10pt;
+        color: rgba(0, 0, 0, 1.0); /* Ink */
+    }
+
+        .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist .mediaTypeListItem {
+            display: -ms-flexbox;
+            -ms-flex-align: center;
+            height: 35px;
+            margin-bottom: 15px;
+            margin-left: -10px;
+        }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist .mediaTypeListItem .mediaTypeListIcon {
+                width: 20px;
+                height: 20px;
+                margin-left: 10px;
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist .mediaTypeListItem .mediaTypelistItemName {
+                color: rgba(0, 0, 0, 1.0); /* Ink */
+                margin-left: 15px;
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist .mediaTypeListItem:hover,
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist .mediaTypeListItem.selected,
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaTypeSelector .mediaTypelist .mediaTypeListItem.selected:active {
+                background-color: rgba(246, 246, 246, 1.0); /* Snow */
+            }
+
+.embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer {
+    -ms-grid-column: 5;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+}
+
+    .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+        overflow-y: auto;
+        margin-bottom: 20px;
+        font-family: "Segoe UI";
+        font-size: 10pt;
+        color: rgba(0, 0, 0, 1.0); /* Ink */
+        padding-right: 30px;
+    }
+
+        .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaListHeader {
+            -ms-grid-column: 1;
+            -ms-grid-row: 2;
+            font-family: 'Segoe UI';
+            font-weight: lighter;
+            font-size: 15pt;
+            color: #824A82; /*Fandango*/
+            margin-top: 70px;
+            margin-bottom: 30px;
+            line-height: 35px;
+        }
+
+        .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItemSpacer {
+            height: 1px;
+            border-top: solid 1px rgba(100, 57, 100, 1.0); /* Eveningstar */
+        }
+
+        .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem {
+            display: -ms-grid;
+            -ms-grid-columns: 20px 20px auto 20px 1fr 60px 35px 40px;
+            -ms-grid-rows: 20px auto 20px;
+            color: rgba(0, 0, 0, 1.0); /* Ink */
+        }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem.selectedMediaItem {
+                background-color: rgba(230, 230, 230, 1.0); /* Smoke */
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .removeButton {
+                -ms-grid-column: 7;
+                -ms-grid-row: 2;
+                box-sizing: border-box;
+                border: 2px solid transparent;
+                border-radius: 50%; /* Circular border around icon. */
+                background-color: #643964; /* EveningStar */
+                width: 24px;
+                height: 24px;
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem:hover .removeButton:hover {
+                background-color: rgba(124, 1, 124, 1); /* Spellbound */
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem.selectedMediaItem .removeButton:hover {
+                background-color: rgba(111, 63, 111, 1.0); /* Nightshade */
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .removeButton img {
+                width: 20px;
+                height: 20px;
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .removeButton:active,
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .removeButton:hover:active {
+                background-color: rgba(111, 63, 111, 1); /* Spellbound */
+                border-color: rgba(255, 255, 255, 1); /* border-color is needed here to override the WinJS border-color. */
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem.selectedMediaItem .removeButton:active,
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem.selectedMediaItem .removeButton:hover:active {
+                background-color: rgba(68, 45, 68, 1);
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .mediaItemTypeListIcon {
+                -ms-grid-column: 1;
+                -ms-grid-row: 2;
+                width: 20px;
+                height: 20px;
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .mediaItemImage {
+                -ms-grid-column: 3;
+                -ms-grid-row: 2;
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .mediaItemImage .imageThumbnail {
+                max-width: 300px;
+                max-height: 169px;
+            }
+
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioBackgroundColor {
+                -ms-grid-column: 3;
+                -ms-grid-row: 2;
+                display: -ms-grid;
+                -ms-grid-columns: 1fr;
+                -ms-grid-rows: 1fr;
+                width: 300px;
+                height: 169px;
+                background-color: rgba(0, 0, 0, 1.0); /* Ink */
+            }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer {
+                -ms-grid-column: 3;
+                -ms-grid-row: 2;
+                max-width: 300px;
+                max-height: 169px;
+                display: -ms-grid;
+                -ms-grid-columns: 1fr;
+            }
+
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer .audioVideoViewerControlsContainer.selected {
+                    display: -ms-grid;
+                    -ms-grid-columns: 1fr;
+                    -ms-grid-rows: 1fr;
+                    opacity: 0;
+                    transition-property: opacity;
+                    transition-duration: 0.75s;
+                    background-color: rgba(0, 0, 0, 0.40); /* Obscure */
+                }
+
+                    .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer .audioVideoViewerControlsContainer.overlay {
+                        opacity: 1;
+                    }
+
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioBackgroundColor .audioVideoViewerVideo,
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer .audioVideoViewerVideo {
+                    max-width: 300px;
+                    max-height: 169px;
+                }
+
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer .audioVideoViewerControlsContainer.selected .playPauseButton,
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioBackgroundColor .playPauseButton {
+                    -ms-grid-column-align: center;
+                    -ms-grid-row-align: center;
+                    padding: 0px;
+                    border-radius: 50%;
+                    border-style: none;
+                    height: 50px;
+                    width: 50px;
+                    background-image: url(/controls/playback/images/iconPlay.svg);
+                    background-size: 100%;
+                    border-radius: 50%; /* Added to cover up the clipped border around arrow when resizing. */
+                }
+
+                    .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer .audioVideoViewerControlsContainer.selected .playPauseButton.playing,
+                    .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioBackgroundColor .playPauseButton.playing {
+                        background-image: url(/controls/playback/images/iconPause.svg);
+                    }
+
+                    .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioVideoViewerVideoContainer .audioVideoViewerControlsContainer.selected .playPauseButton:hover,
+                    .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .audioBackgroundColor .playPauseButton:hover {
+                        background-color: rgba(213, 213, 213, 0.14); /* Token */
+                    }
+
+            .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .mediaItemDetails {
+                -ms-grid-column: 5;
+                -ms-grid-row: 2;
+            }
+
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .mediaItemDetails .mediaItemFileName {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+
+                .embeddedMediaPage .embeddedMediaPageGrid .mediaListAndMediaViewerContainer .mediaList .mediaItem .mediaItemDetails .mediausedPlacesCountText {
+                    margin-top: 20px;
+                }

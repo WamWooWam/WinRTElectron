@@ -1,0 +1,10 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic BarChart control CSS
+ *
+ */
+.appmagic-barchart-outerscroll {
+    overflow-x: auto;
+    overflow-y: hidden;
+}

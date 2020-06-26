@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>authDialogBody</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="authDialogBody.css" rel="stylesheet" />
+    <script src="authDialogBody.js"></script>
+</head>
+    <body>
+        <div class="auth-dialog-container">
+            <div class="auth-dialog-header-container">
+                <div class="auth-dialog-header">
+                    <div class="backButton" data-bind="click: onClickCancel, text: AppMagic.AuthoringTool.SegoeGlyphs.back"></div>
+                    <div class="title-container">
+                        <div class="title" data-bind="text: AppMagic.Strings.AuthenticationDialogTitleLabelText"></div>
+                    </div>
+                    <div class="button-container">
+                        <button class="auth-button" data-bind="text: AppMagic.Strings.Cancel, click: onClickCancel"></button>
+                    </div>
+                </div>
+            </div>
+            <div class="auth-dialog-body">
+                <progress class="win-ring spinner" data-bind="visible: !hasLoaded"></progress>
+                <x-ms-webview class="auth-webview" data-bind="css: { hidden: !hasLoaded }"></x-ms-webview>
+            </div>
+        </div>
+    </body>
+</html>

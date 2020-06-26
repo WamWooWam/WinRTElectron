@@ -1,0 +1,652 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Settings Backstage Page CSS
+ *
+ */
+/* Colors */
+/* Misc styles */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+.appSettings {
+  width: 100%;
+  height: calc(100% - 70px);
+  box-sizing: border-box;
+  font-family: 'Segoe UI';
+  font-size: 10pt;
+  color: #000000;
+  padding: 70px 0px 0px 0px;
+  display: -ms-grid;
+  -ms-grid-columns: 250px 40px 40px auto;
+  -ms-grid-rows: auto auto 1fr;
+}
+.appSettings-vertical-align {
+  text-align: center;
+  align-content: center;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.appSettings-row-one {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  display: -ms-grid;
+  -ms-grid-columns: 100%;
+  -ms-grid-rows: auto 20px 1fr;
+}
+.appSettings-row-two {
+  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+  display: -ms-grid;
+  margin-top: 40px;
+  -ms-grid-rows: auto 20px auto 20px auto 20px auto 20px 1fr;
+}
+.appSettings-row-three {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  -ms-grid-row-align: end;
+}
+.appSettings-header {
+  font-family: 'Segoe UI Light';
+  font-size: 15pt;
+  color: #824a82;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+.appSettings-header-help {
+  margin-left: 10px;
+  width: 20px;
+  height: 100%;
+  background: url("/images//questionmark_rest.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.appSettings-header-help:hover {
+  background: url("/images/questionmark_hoverpress.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.appSettings-tooltip {
+  display: inline;
+  position: relative;
+}
+.appSettings-tooltip:hover:after {
+  content: attr(title);
+  position: absolute;
+  border: 2px solid gray;
+  padding: 9px;
+  font-size: 9pt;
+  color: gray;
+  bottom: 30px;
+  min-width: 270px;
+}
+.appSettings-header-help > .tooltip-container {
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+}
+.appSettings-orientation-option {
+  font-family: 'Segoe UI Semilight';
+  font-size: 11pt;
+  color: #333333;
+  line-height: 40px;
+}
+.appSettings-orientation-option-image {
+  margin-left: 10px;
+  margin-right: 15px;
+  width: 20px;
+  height: 20px;
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.appSettings-orientation-option-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.appSettings-orientation-option-container.selected:hover,
+.appSettings-orientation-option-container.selected {
+  background-color: #e1d7e2;
+}
+.appSettings-orientation-option-container:hover {
+  background-color: #f4f4f4;
+}
+.appSettings-orientation-header {
+  font-family: 'Segoe UI Light';
+  font-size: 15pt;
+  color: #824a82;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.appSettings-orientation-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+}
+.appSettings-aspect-ratio-header {
+  font-family: 'Segoe UI Light';
+  font-size: 15pt;
+  color: #824a82;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.appSettings-aspect-ratio-checkmark {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  height: 100%;
+  width: 100%;
+}
+.appSettings-aspect-ratio-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 3;
+  -ms-grid-row: 3;
+}
+.appSettings-aspect-ratio-option-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  padding-right: 20px;
+}
+.appSettings-aspect-ratio-option-preview {
+  background-color: #e1d7e2;
+  color: #824a82;
+  font-family: 'Segoe UI Semilight';
+  font-size: 15pt;
+  text-align: center;
+  align-content: center;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.appSettings-aspect-ratio-option-preview.selected:hover,
+.appSettings-aspect-ratio-option-preview.selected {
+  box-sizing: border-box;
+  border: 3px solid #643964;
+}
+.appSettings-aspect-ratio-option {
+  font-family: 'Segoe UI Semilight';
+  font-size: 11pt;
+  color: #333333;
+  line-height: 40px;
+  text-align: center;
+}
+.appSettings-aspect-ratio-separator-text {
+  -ms-grid-column: 3;
+  -ms-grid-row: 5;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bolder;
+  color: #643964;
+}
+.appSettings-aspect-ratio-custom-header {
+  font-family: 'Segoe UI Light';
+  font-size: 15pt;
+  color: #824a82;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 3;
+  -ms-grid-row: 7;
+}
+.appSettings-aspect-ratio-custom-checkmark {
+  -ms-grid-column: 1;
+  -ms-grid-row: 7;
+  height: 100%;
+  width: 100%;
+}
+.appSettings-aspect-ratio-custom-container {
+  -ms-grid-column: 3;
+  -ms-grid-row: 9;
+  display: -ms-grid;
+  -ms-grid-columns: 80px 20px 80px;
+  -ms-grid-rows: auto 30px;
+}
+.appSettings-aspect-ratio-custom-input-container {
+  border: 1px solid #333333;
+  color: #643964;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+.appSettings-aspect-ratio-custom-width-header {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.appSettings-aspect-ratio-custom-height-header {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.appSettings-aspect-ratio-custom-input {
+  width: 4em;
+  border: 0;
+  outline: none;
+}
+.appSettings-aspect-ratio-custom-divider {
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bolder;
+  color: #643964;
+}
+.appSettings-aspect-ratio-custom-width-input-container {
+  border: 1px solid #333333;
+  color: #643964;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+}
+.appSettings-aspect-ratio-custom-height-input-container {
+  border: 1px solid #333333;
+  color: #643964;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-grid-column: 3;
+  -ms-grid-row: 2;
+}
+.appSettings-apply-button {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}

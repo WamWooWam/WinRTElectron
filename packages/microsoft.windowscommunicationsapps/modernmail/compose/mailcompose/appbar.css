@@ -1,0 +1,11 @@
+﻿.win-appbar hr.win-command{background-color:white;}
+div.compose-flyout{min-height:0;min-width:0;}
+.fontFlyout{min-height:0;min-width:0;grid-template-columns:0px auto 20px auto;grid-auto-rows:auto;display:grid;}.fontFlyout .fontNameControlContainer{grid-row:1;grid-column:2;}
+.fontFlyout .fontSizeControlContainer{grid-row:1;grid-column:4;}
+.fontFlyout select{display:inline-block;min-width:0;height:166px;}
+.fontFlyout option:checked,.fontFlyout select:focus::-ms-value{background-color:#0072c6 !important;}
+.colorFlyout{font-size:0;line-height:0;padding:10px;width:150px;min-height:0;min-width:0;pointer-events:none;}.colorFlyout .fontColorButton{-ms-high-contrast-adjust:none;border:2px solid #ffffff;display:inline-block;height:40px;width:40px;margin:5px;min-height:0;min-width:0;padding:0;pointer-events:all;}.colorFlyout .fontColorButton[aria-checked="true"]{outline:2px solid #000000;border:2px solid #ffffff;}
+.colorFlyout .fontColorButton:focus{outline:#000000 solid 2px;}
+.colorFlyout .fontColorButton .whiteButton{border:1px solid #000000;height:34px;margin:0;padding:0;width:34px;}
+#highlightColorFlyout{width:100px;}
+@media (-ms-high-contrast){.colorFlyout .fontColorButton[aria-checked="true"]{border-color:Highlight;}}

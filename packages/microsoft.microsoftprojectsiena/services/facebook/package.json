@@ -1,0 +1,18 @@
+{
+    "id": "facebook",
+    "version": "0.1.0",
+
+    "name": "Facebook",
+    "description": "Access Facebook graph data.",
+    "author": "Microsoft AppMagic Team",
+    "copyright": "Copyright (C) Microsoft Corporation.  All rights reserved.",
+
+    "required": [ "facebook.js" ],
+    "serviceClass": "AppMagic.Services.Facebook",
+
+    "functions": {
+        "friends": {
+            "result": { "type": "*[id:s,name:s,age:n,image:s]" }
+        }
+    }
+}

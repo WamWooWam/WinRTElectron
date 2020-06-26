@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Table Config</title>
+    <link href="cloudTableConfig.css" rel="stylesheet" />
+    <script src="cloudTableConfig.js"></script>
+</head>
+<body>
+    <div class="fragment cloudtable-pane">
+        <div data-bind="visible: !isCloudTableSelectorVisible">
+            <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageCloudTableAuthFormTitle"></div>
+
+            <div class="cloudtable-config-prop">
+                <input class="urlInput" type="text" data-bind="attr: { placeholder: AppMagic.AuthoringStrings.BackStageCloudTableClientIdLabel }, value: clientId, valueUpdate: ['keyup', 'input']" />
+            </div>
+
+            <div class="cloudtable-config-prop">
+                <input class="urlInput" type="text" data-bind="attr: { placeholder: AppMagic.AuthoringStrings.BackStageCloudTableRedirectUriLabel }, value: redirectUri, valueUpdate: ['keyup', 'input']" />
+            </div>
+
+            <div class="cloudtable-config-prop link" data-bind="click: useAzureSubscription">
+                <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.BackStageUseAzureSubscriptionLabel"></span>
+                <span class="icon">&#xE2AB;</span>
+            </div>
+
+            <div class="cloudtable-config-import-container">
+                <button class="cloudtable-config-import backstage-button" type="submit"
+                        data-bind="text: AppMagic.AuthoringStrings.BackstageConnectButtonText, click: connect"></button>
+            </div>
+        </div>
+
+        <div class="cloudtable-tables-selector dc-types-pane" data-bind="visible: isCloudTableSelectorVisible">
+            <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageCloudTableSelectTablesTitle"></div>
+            <div class="dc-types-container">
+                <div class="dc-type" data-bind="click: newTable">
+                    <img src="/images/Excel_icon.png" />
+                    <span data-bind="text: AppMagic.AuthoringStrings.BackStageCloudTableNewTableLabel"></span>
+                </div>
+                <div class="dc-type" data-bind="click: newTableFromExcel">
+                    <img src="/images/Excel_icon.png" />
+                    <span data-bind="text: AppMagic.AuthoringStrings.BackStageCloudTableCopyFromExcelLabel"></span>
+                </div>
+            </div>
+            <div class="cloudtable-config-prop link" data-bind="click: showAuthForm">
+                <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.BackStageChangeUserLabel"></span>
+                <span class="icon">&#xE2AB;</span>
+            </div>
+
+            <div class="pane-header second-header" data-bind="text: AppMagic.AuthoringStrings.BackStageCloudTableOtherTablesTitle"></div>
+            <div class="dc-types-container">
+                <div class="dc-type">
+                    <img src="/images/Excel_icon.png" />
+                    <span>VideoLinks</span>
+                </div>
+                <div class="dc-type">
+                    <img src="/images/Excel_icon.png" />
+                    <span>Devices</span>
+                </div>
+                <div class="dc-type">
+                    <img src="/images/Excel_icon.png" />
+                    <span>OEMS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+﻿.mirrorInRTL{transform:none;}
+body{margin:0;}
+::selection{background-color:#0072c6;}
+.composeWindow{height:100%;}
+.composeMainFrame{font-size:14.66667px;height:100%;}
+.compose-tab-anchor{position:absolute;width:0px;height:0px;}
+.compose-command{border-radius:50%;border-style:solid;border-width:2px;font-family:"Segoe UI Symbol";font-size:14pt;font-weight:normal;height:40px;line-height:36px;margin:0px;min-height:0px;min-width:0px;padding:0px;text-align:center;width:40px;}.compose-command.useCustomFont{font-family:"Custom Icons";}
+.compose-command,.compose-command:disabled{background-color:transparent;border-color:#0072c6;color:#0072c6;}
+.compose-command:hover:enabled{background-color:rgba(0, 114, 198, 0.13);border-color:#0072c6;border-radius:50%;border-style:solid;border-width:2px;}
+.compose-command:hover:active:enabled{background-color:#0072c6;color:#ffffff;}
+.compose-command-div{width:36px;}
+.composeButtonArea{padding-top:25px;padding-right:40px;padding-left:40px;display:grid;grid-template-columns:auto 1fr auto auto auto auto auto;}
+.cmdBack{grid-column:1;}.parentVisible .cmdBack{display:none;}
+.composeFromArea{margin-top:16px;grid-column:2;}
+.cmdSend{grid-column:4;}
+.cmdAttach{grid-column:5;}
+.cmdNew{grid-column:6;}
+.cmdDelete{grid-column:7;}
+.cmdBack{margin-left:0px;margin-right:30px;}@media (min-width: 491px) and (max-width: 767px), (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.cmdBack{margin-left:0px;margin-right:20px;}}
+.cmdAttach,.cmdNew,.cmdDelete{margin-left:30px;margin-right:0px;}@media (min-width: 491px) and (max-width: 767px), (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.cmdAttach,.cmdNew,.cmdDelete{margin-left:20px;margin-right:0px;}}
+.composeSnapButtons{display:none;}
+.composePortrait{display:none;}
+.compose-describedby-label{border-style:none;height:0;font-size:0;margin:0;padding:0;visibility:hidden;width:0;}
+.compose-address-label{font-weight:300;font-family:inherit;display:inherit;border:0px;padding-left:0px;padding-right:10px;margin-top:6px;margin-bottom:-4px;text-align:left;height:30px;min-width:30px;min-height:30px;overflow:visible;background-color:transparent;color:#0072c6;}
+.compose-address-label:disabled{background-color:transparent;color:#666666;}
+.compose-address-label:not(:disabled):hover{background-color:transparent;color:#0072c6;opacity:.8;}
+.compose-address-label:not(:disabled):hover:active{background-color:transparent;color:#0072c6;opacity:.6;}
+.compose-errorMessage{font-weight:300;color:#ff3000;margin:0;}
+.compose-errorMessage:empty{font-size:0;margin:0;padding:0;display:none;}
+.composeAddressFieldArea{margin-top:3px;padding-left:40px;padding-right:40px;display:grid;grid-template-rows:auto auto auto auto auto auto;grid-template-columns:auto 1fr auto;}
+.toElement{grid-row:2;}
+.ccElement{grid-row:3;}
+.bccElement{grid-row:4;}
+.addressWellError{grid-row:1;grid-column:span 3;margin-top:6px;margin-bottom:14px;}
+.compose-address-label{grid-column:1;}
+.compose-address-editbox{grid-column:2 / 4;grid-column-span:2;margin-bottom:8px;font-weight:300;color:#000000;}
+.composeExtraFieldArea{grid-row:5;grid-column:2 / 4;grid-column-span:2;display:flex;flex-wrap:wrap-reverse;width:100%;}
+.composeFieldLabel{margin-top:6px;padding-right:10px;font-weight:300;color:#666666;}
+.composeExternalFieldLabel{display:none;}
+.composeField{grid-column:2;margin-top:0px;margin-bottom:8px;width:200px;font-family:inherit;}.composeField .composeFieldOption{font-family:inherit;}
+.composePriority{-ms-flex-order:2;display:grid;grid-template-columns:auto 1fr;}
+.composeIrmChooser{-ms-flex-order:1;padding-right:20px;display:grid;grid-template-columns:auto 1fr;}
+option:checked,select:focus::-ms-value{background-color:#0072c6 !important;}
+.composeIrmDescription{margin-top:7px;width:100%;color:#808080;}
+.cmdExpand{grid-column:3;grid-row:6;margin-bottom:-10px;font-family:inherit;}
+.composeReadOnlyHeader{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto;margin-left:40px;margin-right:40px;}
+.mailReadingPaneHeaderDetails{grid-template-rows:auto auto auto auto auto auto;}
+.editHeaderButtonParent{grid-row:6;}
+.cmdEditHeader{padding-bottom:8px;margin-top:-2px;}
+.header-readonly .composeAddressFieldArea,.header-readonly .composeFromArea{display:none;}
+.header-edit-condensed .composeReadOnlyHeader,.header-edit-condensed .composeFromArea{display:none;}
+.header-edit-condensed .composeIrmDescription{margin-bottom:-7px;}
+.header-edit-full .cmdExpand,.header-edit-full .composeReadOnlyHeader{display:none;}
+.composeLinkButton{font-weight:300;text-align:left;background-color:transparent;border-style:hidden;color:#0072c6;display:block;padding-left:0px;padding-right:0px;min-width:30px;}.composeLinkButton:hover{background-color:transparent;opacity:.8;}.composeLinkButton:hover:active{background-color:transparent;color:#0072c6;opacity:.6;}
+.composeLinkButton:active{background-color:transparent;color:#0072c6;}
+.composeSubjectParent{padding-left:40px;padding-right:40px;display:grid;grid-template-columns:auto 1fr;margin-top:1px;cursor:text;}
+.composeDraftText{grid-column:1;font-weight:300;margin-top:6px;color:#e16600;}
+.composeMainFrame .composeSubjectLine{font-size:21.33333px;letter-spacing:0.02em;line-height:27px;padding-bottom:2px;padding-top:1px;grid-column:2;font-weight:300;font-family:inherit;border-style:none;margin-top:0px;margin-bottom:6px;margin-right:0px;margin-left:0px;overflow:hidden;text-overflow:ellipsis;width:100%;background-color:transparent;}
+.composeMainFrame .composeSubjectLine::-ms-clear{display:none;}
+.composeMainFrame .composeSubjectLine:-ms-input-placeholder{color:#666666;}
+.composeLineDividerParent{grid-row:2;padding-left:40px;padding-right:40px;}
+.composeLineDivider{border-bottom:1px solid #e5e5e5;height:0;width:100%;}
+progress.compose-progress-bar{color:#0072c6;display:block;margin:0;position:absolute;top:0px;width:100%;z-index:510;}
+.compose-progress-bar[aria-hidden="true"]{display:none;}
+.composeAttachmentArea{grid-row:4;padding-left:40px;padding-right:40px;}.composeAttachmentArea .attachmentWell-view{margin-top:23px;margin-bottom:-15px;}
+#attachmentWellComposeText{padding-left:0px;padding-right:0px;}
+.attachmentWell-errorList[aria-hidden="true"]{padding:0;}
+.attachmentWell-listView{padding-top:11px;}
+.attachmentWell-listView .win-horizontal .win-listlayout.win-surface{margin-left:0px;margin-right:0px;}
+.attachmentWell-listView[aria-hidden="true"]{padding:0;}
+.composeCanvas{grid-row:5;border-style:none;max-width:100%;overflow:visible;padding:0;width:100%;min-height:60px;}
+.composeCanvas .modernCanvas-cueText{left:40px;top:24px;}
+.composeContentScrollArea{grid-template-rows:auto 1fr;grid-template-columns:1fr;display:grid;position:absolute;top:76px;overflow-y:auto;width:100%;}
+.header-edit-full .composeContentScrollArea{top:96px;}
+.composeContentArea{grid-row:2;grid-template-rows:auto auto auto auto 1fr;grid-template-columns:1fr;display:grid;}
+.warningMessage{grid-row:3;color:#ff3000;padding-left:40px;padding-right:40px;}
+.composeEmojiAnchor{visibility:hidden;bottom:0px;height:0px;left:0px;}
+@media (min-width: 1920px) and (max-width: 2559px),(min-width: 2560px){.composeButtonArea,.composeAddressFieldArea,.composeSubjectParent,.composeLineDividerParent,.composeAttachmentArea,.warningMessage{padding-right:80px;padding-left:80px;} .composeReadOnlyHeader{margin-left:80px;margin-right:80px;} .composeCanvas .modernCanvas-cueText{left:80px;}}@media (min-width: 1366px) and (max-width: 1919px){.composeButtonArea,.composeAddressFieldArea,.composeSubjectParent,.composeLineDividerParent,.composeAttachmentArea,.warningMessage{padding-right:60px;padding-left:60px;} .composeReadOnlyHeader{margin-left:60px;margin-right:60px;} .composeCanvas .modernCanvas-cueText{left:60px;}}@media (max-width: 501px),(min-width: 502px) and (max-width: 671px),(min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px),(min-width: 1025px) and (max-width: 1365px), (min-resolution:134dpi) and (min-width: 1031px) and (max-width: 1365px){.composeButtonArea{grid-template-columns:1fr;grid-template-rows:auto auto;} .composeFromArea{grid-row:2;grid-column:1;margin-top:15px;} .composeExtraFieldArea{display:grid;grid-column:1;grid-column-span:3;grid-template-columns:auto 1fr;grid-template-rows:auto auto auto;} .priorityElement{grid-row:1;} .irmElement{grid-row:2;} .composeField{width:100%;} .composeExternalFieldLabel{grid-column:1;display:block;} :not(.composeExternalFieldLabel).composeFieldLabel{display:none;} .composePriority{grid-column:2;} .composeIrmChooser{grid-column:2;padding-right:0px;} .composeIrmDescription{grid-row:3;grid-column:1;grid-column-span:2;} .compose-command{display:none;} .composeSnapButtons{grid-column:1;display:grid;grid-template-columns:auto 1fr auto auto auto auto;} .composeSnapButtons .compose-command{display:block;} .cmdBackSnap{grid-column:1;}.parentVisible .cmdBackSnap{display:none;} .cmdSendSnap{grid-column:3;} .cmdAttachSnap{grid-column:4;} .cmdNewSnap{grid-column:5;} .cmdDeleteSnap{grid-column:6;} .cmdAttachSnap,.cmdNewSnap,.cmdDeleteSnap{margin-left:30px;margin-right:0px;} .header-edit-full .composeContentScrollArea{top:136px;}}@media (max-width: 501px){.composeContentScrollArea{top:70px;} .composeAddressFieldArea{margin-top:-12px;grid-template-rows:auto auto auto auto auto auto auto auto auto;grid-template-columns:1fr auto;} .compose-address-label{grid-column-span:2;height:auto;padding-top:0px;padding-bottom:5px;margin-top:15px;margin-bottom:0px;} .compose-address-editbox{grid-column:1;grid-column-span:2;} .addressWellError{grid-row:1;grid-column-span:2;margin-top:5px;margin-bottom:-5px;} #addressbarToFieldLabel{grid-row:2;} #addressbarToField{grid-row:3;} #addressbarCcFieldLabel{grid-row:4;} #addressbarCcField{grid-row:5;} #addressbarBccFieldLabel{grid-row:6;} #addressbarBccField{grid-row:7;} .composeExtraFieldArea{grid-row:8;grid-column-span:2;grid-template-rows:auto auto auto auto auto;grid-template-columns:1fr;} .cmdExpand{grid-row:9;grid-column:2;margin-top:-1px;} .composeFieldLabel{grid-column:1;margin-top:15px;margin-bottom:5px;} #composePriorityFieldLabelExternal{grid-row:1;} .composePriority{grid-row:2;grid-column:1;} #composeIrmFieldLabelExternal{grid-row:3;} .composeIrmChooser{grid-row:4;grid-column:1;} .composeIrmDescription{grid-row:5;margin-top:6px;} .composeSubjectParent{margin-top:12px;} .header-edit-full .composeContentScrollArea{top:130px;}}@media (max-width: 501px),(min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.composeButtonArea,.composeAddressFieldArea,.composeSubjectParent,.composeLineDividerParent,.composeAttachmentArea,.warningMessage{padding-right:20px;padding-left:20px;} .composeReadOnlyHeader{margin-left:20px;margin-right:20px;} .composeCanvas .modernCanvas-cueText{left:20px;}}@media (min-width: 491px) and (max-width: 767px), (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.cmdAttachSnap,.cmdNewSnap,.cmdDeleteSnap{margin-left:20px;margin-right:0px;}}@media (max-width: 490px){.composeContentScrollArea{top:60px;} .header-edit-full .composeContentScrollArea{top:120px;} .compose-command{font-size:10.5pt;height:30px;line-height:26px;width:30px;} .cmdSendSnap,.cmdAttachSnap,.cmdNewSnap,.cmdDeleteSnap{margin-left:10px;margin-right:0px;}}@media (max-width: 501px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-right: 20px;}}@media (min-width: 502px) and (max-width: 843px), (min-resolution:134dpi) and (min-width: 502px) and (max-width: 1029px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-right: 40px;}}@media (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-right: 60px;}}@media (min-width: 1025px), (min-resolution:134dpi) and (min-width: 1031px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-right: 80px;}}@media (max-width: 501px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-left: 20px;}}@media (min-width: 502px) and (max-width: 843px), (min-resolution:134dpi) and (min-width: 502px) and (max-width: 1029px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-left: 40px;}}@media (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-left: 60px;}}@media (min-width: 1025px), (min-resolution:134dpi) and (min-width: 1031px){.childWindow .composeButtonArea,.childWindow .composeAddressFieldArea,.childWindow .composeSubjectParent,.childWindow .composeLineDividerParent,.childWindow .composeAttachmentArea,.childWindow .warningMessage{padding-left: 80px;}}
+@media (max-width: 501px){.childWindow .composeReadOnlyHeader{margin-right: 20px;}}@media (min-width: 502px) and (max-width: 843px), (min-resolution:134dpi) and (min-width: 502px) and (max-width: 1029px){.childWindow .composeReadOnlyHeader{margin-right: 40px;}}@media (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.childWindow .composeReadOnlyHeader{margin-right: 60px;}}@media (min-width: 1025px), (min-resolution:134dpi) and (min-width: 1031px){.childWindow .composeReadOnlyHeader{margin-right: 80px;}}@media (max-width: 501px){.childWindow .composeReadOnlyHeader{margin-left: 20px;}}@media (min-width: 502px) and (max-width: 843px), (min-resolution:134dpi) and (min-width: 502px) and (max-width: 1029px){.childWindow .composeReadOnlyHeader{margin-left: 40px;}}@media (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.childWindow .composeReadOnlyHeader{margin-left: 60px;}}@media (min-width: 1025px), (min-resolution:134dpi) and (min-width: 1031px){.childWindow .composeReadOnlyHeader{margin-left: 80px;}}
+@media (max-width: 501px){.childWindow .composeCanvas .modernCanvas-cueText{left: 20px;}}@media (min-width: 502px) and (max-width: 843px), (min-resolution:134dpi) and (min-width: 502px) and (max-width: 1029px){.childWindow .composeCanvas .modernCanvas-cueText{left: 40px;}}@media (min-width: 844px) and (max-width: 1024px), (min-resolution:134dpi) and (min-width: 1030px) and (max-width: 1030px){.childWindow .composeCanvas .modernCanvas-cueText{left: 60px;}}@media (min-width: 1025px), (min-resolution:134dpi) and (min-width: 1031px){.childWindow .composeCanvas .modernCanvas-cueText{left: 80px;}}

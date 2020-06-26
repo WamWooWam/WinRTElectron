@@ -1,0 +1,117 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Data Source Data Viewer Control CSS
+ *
+ */
+
+.dataSourceDataViewerControl {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto 1fr;
+    height: 100%;
+    overflow-y: auto;
+}
+
+    .dataSourceDataViewerControl .depthBandContainer {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+        margin-bottom: 20px;
+    }
+
+        .dataSourceDataViewerControl .depthBandContainer .depthBandHelp {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBandHelp .typeIndicatorHelpLabel {
+                font-size: 10pt;
+                color: #000000; /* Ink */
+                margin-bottom: 10px;
+            }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBandHelp .helpLink {
+                font-size: 8pt;
+                color: #643964; /* Evening Star */
+                cursor: pointer;
+            }
+
+        .dataSourceDataViewerControl .depthBandContainer .depthBand {
+            display: inline-block;
+            background-color: #FFFFFF; /* Steed */
+            height: 30px;
+            line-height: 30px;
+        }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .depthLevelCaret {
+                margin-left: 10px;
+                margin-right: 10px;
+                font-size: 10pt;
+            }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .depthLevel,
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .depthLevelCaret {
+                color: rgba(0, 0, 0, 1.0); /* Ink */
+            }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .depthRoot,
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .depthLevel {
+                font-size: 11pt;
+                font-weight: 300;
+                font-family: 'Segoe UI';
+            }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .depthRoot,
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .clickableDepth {
+                color: #643964; /* Evening Star */
+            }
+
+                .dataSourceDataViewerControl .depthBandContainer .depthBand .clickableDepth:hover {
+                    color: #824A82; /* Fandango */
+                }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .typeIndicatorLeft {
+                margin-right: 3px;
+            }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .typeIndicatorRight {
+                margin-left: 3px;
+            }
+
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .typeIndicatorLeft,
+            .dataSourceDataViewerControl .depthBandContainer .depthBand .typeIndicatorRight {
+                color: rgba(0, 0, 0, 1.0); /* Ink */
+            }
+
+    .dataSourceDataViewerControl .viewersGrid {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+        display: -ms-grid;
+        -ms-grid-rows: 1fr 17px;
+        -ms-grid-columns: auto 10px 1fr;
+        height: 100%;
+        overflow-y: auto;
+    }
+
+        .dataSourceDataViewerControl .viewersGrid .viewer.expandedViewer {
+            -ms-grid-column: 1;
+            -ms-grid-row: 1;
+            -ms-grid-column-span: 3;
+            -ms-grid-row-span: 2;
+            overflow: auto;
+        }
+
+        .dataSourceDataViewerControl .viewersGrid .viewer.collapsedParentViewer {
+            -ms-grid-column: 1;
+            -ms-grid-row: 1;
+            max-width: 500px;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+
+        .dataSourceDataViewerControl .viewersGrid .viewer.collapsedViewer {
+            -ms-grid-column: 3;
+            -ms-grid-row: 1;
+            -ms-grid-row-span: 2;
+            overflow: auto;
+        }

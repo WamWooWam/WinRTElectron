@@ -1,0 +1,25 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic toggleSwitch control CSS
+ *
+ */
+
+.appmagic-toggleSwitch {
+    box-sizing: border-box;
+    padding: 0px;
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.appmagic-toggleSwitch-off,
+.appmagic-toggleSwitch-on,
+.appmagic-toggleSwitch-handle {
+    position: absolute;
+}
+
+.animate-toggle {
+    transition: left 0.15s, width 0.15s;
+}

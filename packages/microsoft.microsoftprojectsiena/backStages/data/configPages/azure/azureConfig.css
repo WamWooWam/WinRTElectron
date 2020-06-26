@@ -1,0 +1,64 @@
+﻿
+.azure-config-prop .urlLabel {
+    display: inline-block;
+    padding: 0px 5px 0px 0px;
+
+    width: 73px;
+
+    text-align: right;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+input[type=text].urlInput:-ms-input-placeholder {
+    color: #777777; /* Storm */
+}
+
+.azure-config-prop .urlInput {
+    border: 1px solid #363636 !important;      /* Abyss */
+    color: rgba(0, 0, 0, 1);        /* Ink */
+    display: inline-block;
+    margin: 0 0 10px 0; 
+
+    box-sizing: border-box;
+    height: 35px;
+    width: 300px;
+
+    vertical-align: middle;
+
+    /* Body1 */
+    font-family: "Segoe UI";
+    font-weight: normal;
+    font-size: 10pt;
+}
+
+    .azure-config-prop .urlInput::selection {
+        background-color: rgba(124, 1, 124, 1);     /* Spellbound */
+        color: rgba(255, 255, 255, 1);              /* Steed */
+    }
+
+.ams-config-import-container {
+    margin-top: 10px;
+}
+
+.ams-config-import {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+}
+
+.azure-config-table {
+    margin-top: 20px;
+}
+
+.ams-pane .pane-header {
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    font-size: 15pt;
+    color: #824A82; /*Fandango*/ 
+    line-height: 35px;
+    margin-bottom: 30px;
+}
+
+progress .ams-connection-wait {
+    width: 375px;
+}

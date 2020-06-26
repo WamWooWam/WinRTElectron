@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Selector</title>
+
+    <link href="tableSelector.css" rel="stylesheet" />
+    <script src="tableSelector.js"></script>
+</head>
+<body>
+    <div class="fragment table-selector">
+        <div class="table-selector-controls">
+            <label data-bind="text: AppMagic.AuthoringStrings.BackStageLabelSelectAll,
+                                click: selectAllTables"></label>
+            <label data-bind="text: AppMagic.AuthoringStrings.BackStageLabelUnselectAll,
+                                click: unselectAllTables"></label>
+        </div>
+
+        <div class="table-selector-tables">
+            <table>
+                <tbody data-bind="foreach: tables">
+                    <tr class="table-selector-table">
+                        <td><input type="checkbox" data-bind="checked: isSelected" /></td>
+                        <td><label data-bind="text: tableName"></label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-selector-import-container">
+            <button class="table-selector-import backstage-button" type="submit"
+                    data-bind="text: AppMagic.AuthoringStrings.BackStageFlyoutSaveButtonText,
+                                click: importTables"></button>
+        </div>
+    </div>
+</body>
+</html>

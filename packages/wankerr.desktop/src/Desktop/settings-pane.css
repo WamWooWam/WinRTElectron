@@ -1,0 +1,18 @@
+
+.settings-pane-item {
+    display: list-item;
+    color: white;
+    padding: 14px 40px;
+    transition: transform 0.05s ease-in-out;
+}
+
+.settings-pane-item:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.settings-pane-item:active {
+    color: white !important;
+    transform: scale3d(0.975, 0.975, 0.975);
+    background: rgba(255, 255, 255, 0.2);
+}

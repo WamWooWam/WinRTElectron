@@ -1,0 +1,33 @@
+﻿.app-frame{background-color:#ffffff;}
+.peoplePickerControl{position:absolute;left:0px;top:0px;width:100%;height:100%;}
+.peoplePickerContent{position:absolute;box-sizing:border-box;top:0;left:0;width:100%;height:100%;}
+.peoplePickerFooter{position:absolute;bottom:8px;right:40px;display:-ms-grid;-ms-grid-columns:1fr auto;-ms-grid-rows:45px 1fr;}
+.connectedAccountsControl{-ms-grid-column:2;-ms-grid-row:1;margin-right:26px;margin-top:18px;}
+.messagebar-status{top:auto !important;bottom:19px !important;}
+.viewport-horizontal>.section{margin-top:62px;height:calc((100% - 80px));}
+.viewport-horizontal .zoomedOutSection .sectionContent{padding-left:100px;}
+.viewport-horizontal .pickerAlphabeticSection{margin-left:0px;}
+.peoplePickerContent .ic-listItem{margin-right:40px;}
+.pickerAlphabeticSection.zeroContacts .gridContainer{visibility:hidden;}
+.pickerAlphabeticSection .sectionHeader{display:none;}
+.pickerAlphabeticSection .sectionContent{padding-top:18px;padding-left:110px;padding-right:120px;padding-bottom:10px;height:100%;}
+.peoplePickerContent .zoomedOutSection .sectionContent{padding-top:3px;}
+.pp-hasDisambiguators .abHeaderContainer{width:340px;}
+.pp-hidden{visibility:hidden;}
+.pp-disambiguatorContainer{color:#666666;}
+.pp-disambiguator{font-family:"Segoe UI Symbol";font-size:14pt;margin-top:10px;padding-top:15px;height:35px;text-align:center;}
+.pp-noContacts{margin-left:10px;}
+#ppFilterTabs{margin-left:117px;margin-top:10px;}
+.ic-pickerLayout{position:relative;width:350px;margin-right:40px;}
+.ic-pickerLayout-secondaryHitTarget{position:absolute;top:0px;left:310px;height:80px;width:40px;}
+.pp-hoverListItem:hover{background-color:#f5efe7;}
+.ic-pickerLayout:hover:not(.pressed) .ic-billboardLayout,.ic-pickerLayout.menuOpened .ic-billboardLayout,.ic-pickerLayout:hover:not(.pressed):not(.menuOpened) .ic-pickerLayout-secondaryHitTarget:not(.pressed){background-color:#f4f1ee;}
+.ic-pickerLayout:hover .ic-billboardLayout:hover,.ic-pickerLayout.pressed:hover .ic-billboardLayout,.ic-pickerLayout:hover:not(.pressed):not(.menuOpened) .ic-pickerLayout-secondaryHitTarget:hover:not(.pressed){background-color:#f5efe7;}
+.ic-pickerLayout-secondaryHitTarget.pressed,.ic-pickerLayout.menuOpened .ic-pickerLayout-secondaryHitTarget{background-color:#d24625;color:white;}
+.ic-billboardLayout-secondaryContent{color:#666666;}
+@media screen and (-ms-high-contrast){.pp-hoverListItem:hover{background-color:Highlight;color:HighlightText;} .ic-pickerLayout{width:346px;padding:2px;} .ic-pickerLayout .ic-billboardLayout{height:76px;} .ic-pickerLayout .ic-billboardLayout-tile{left:8px;top:8px;} .ic-pickerLayout .ic-billboardLayout-textArea{left:78px;top:-2px;} .ic-pickerLayout-secondaryHitTarget{top:2px;left:312px;height:76px;width:36px;} .ic-pickerLayout:hover .ic-billboardLayout,.ic-pickerLayout.pressed .ic-billboardLayout,.ic-pickerLayout.menuOpened .ic-billboardLayout,.ic-pickerLayout:hover:not(.pressed) .ic-pickerLayout-secondaryHitTarget,.ic-pickerLayout-secondaryHitTarget.pressed,.ic-pickerLayout.menuOpened .ic-pickerLayout-secondaryHitTarget{outline:2px solid WindowText;} .ic-billboardLayout:hover,.ic-billboardLayout.pressed,.ic-pickerLayout:not(.pressed) .ic-pickerLayout-secondaryHitTarget:hover,.ic-pickerLayout-secondaryHitTarget.pressed,.ic-pickerLayout.menuOpened .ic-pickerLayout-secondaryHitTarget{background-color:Highlight;color:HighlightText;}}.viewport-vertical .gridContainer{padding-top:0px;padding-left:0px;padding-right:0px;width:100%;}
+.viewport-vertical>.section{padding-left:0px;margin-top:0px;}
+.viewport-vertical .pickerAlphabeticSection .sectionContent{margin-left:0px;padding-left:10px;padding-right:0px;}
+.viewport-vertical .zoomedOutSection .sectionContent{padding-left:17px;}
+.viewport-vertical .zoomedOutSection{width:100% !important;}
+@media (min-width:320px) and (max-width:499px){.peoplePickerControl{display:inline;} .peoplePickerContent{position:relative;box-sizing:border-box;top:0;left:0;width:100%;height:calc((100% - 41px));} .peoplePickerFooter{background-color:#f4f4f4;position:relative;bottom:0;right:0;height:41px;display:-ms-grid;-ms-grid-columns:1fr auto;-ms-grid-rows:1fr;} .connectedAccountsControl{-ms-grid-column:2;-ms-grid-row:1;margin-top:13px;margin-right:20px;} .messagebar-status{visibility:hidden !important;} .pickerAlphabeticSection .sectionContent{padding-top:0px;} .ic-billboardLayout-primaryArea{display:-ms-grid;-ms-grid-columns:1fr auto;-ms-grid-rows:auto 1fr;} .ic-billboardLayout-primaryContent{-ms-grid-row:1;-ms-grid-column:1;margin-top:13px;font-size:14.66667px;line-height:20px;} .ic-billboardLayout-secondaryContent{-ms-grid-row:2;-ms-grid-column:1;-ms-grid-column-span:2;font-size:14.66667px;color:#666666;margin-top:2px;} .ic-billboardLayout-selectionMark{-ms-grid-row:1;-ms-grid-column:2;-ms-grid-column-align:end;}}@media (min-width:320px) and (max-width:350px){.abHeaderLine{width:290px;} .ic-pickerLayout .ic-billboardLayout-textArea{width:165px;} .ic-pickerLayout .ic-billboardLayout{width:250px;} .ic-pickerLayout .ic-pickerLayout-secondaryHitTarget{left:250px;}}@media (min-width:351px) and (max-width:380px){.abHeaderLine{width:320px;} .ic-pickerLayout .ic-billboardLayout-textArea{width:195px;} .ic-pickerLayout .ic-billboardLayout{width:280px;} .ic-pickerLayout .ic-pickerLayout-secondaryHitTarget{left:280px;}}

@@ -1,0 +1,275 @@
+﻿/* Colors */
+/* Misc styles */
+.rest-config .import-file-view .import-file-view-line-0,
+.rest-config .import-url-view .rest-config-line-0 {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  margin-bottom: 20px;
+}
+.rest-config .import-file-view .import-file-view-line-0 .file-label {
+  text-align: right;
+  width: 68px;
+}
+input[type=text].rest-config-file-textbox:-ms-input-placeholder,
+input[type=text].rest-config-url-textbox:-ms-input-placeholder {
+  color: #777777;
+  /* Storm */
+}
+.rest-config .import-file-view .import-file-view-line-0 .rest-config-file-textbox {
+  /* Override default textbox margins */
+  margin: 0px;
+  border-width: 1px;
+  width: 300px;
+  height: 35px;
+  box-sizing: border-box;
+  border-color: rgba(0, 0, 0, 0.65);
+  /* Obscure */
+  /* Override default color for disabled input text */
+  color: #000000;
+  /* Ink */
+}
+.rest-config .import-file-view .import-file-view-line-0 .rest-config-file-textbox,
+.rest-config .import-url-view .rest-config-line-0 .rest-config-url-textbox {
+  /* Body1 */
+  font-family: "Segoe UI";
+  font-size: 10pt;
+}
+.rest-config .import-file-view .import-file-view-line-0 .rest-config-file-button {
+  margin: 0px 30px 0px 10px;
+  height: 30px;
+  width: 30px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background-size: contain;
+  background-image: url(/images/browseicon.svg);
+}
+.rest-config .import-file-view .import-file-view-line-0 .rest-config-file-button:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+  /* Shroud */
+}
+.rest-config .import-file-view .import-file-view-line-0 .rest-config-file-button:active {
+  background-image: url(/images/browseicon_black.svg);
+}
+.rest-config .import-keys-view {
+  margin-top: 20px;
+}
+.rest-config .import-keys-view .rest-service-key-config-note {
+  width: 340px;
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 9pt;
+}
+.rest-config .configure-tab-container {
+  -ms-grid-rows: 45px;
+  -ms-grid-columns: 200px 220px auto;
+  margin-bottom: 10px;
+}
+.rest-config .configure-tab-container .configure-connection-label.selected,
+.rest-config .configure-tab-container .import-file.selected {
+  background-color: #ffffff;
+  /* Steed */
+}
+.rest-config .configure-tab-container .configure-connection-label,
+.rest-config .configure-tab-container .import-file {
+  font-family: 'Segoe UI';
+  font-weight: 600;
+  font-size: 11pt;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 45px;
+}
+.rest-config .configure-tab-container .configure-connection-label {
+  -ms-grid-column: 1;
+}
+.rest-config .configure-tab-container .configure-connection-label:hover,
+.rest-config .configure-tab-container .import-file:hover {
+  background-color: #EAEAEA;
+  /* Fog */
+}
+.rest-config .configure-tab-container .import-file {
+  -ms-grid-column: 2;
+}
+.rest-config .import-file-view .import-file-view-line-1 .configure-connection-label {
+  margin-right: 30px;
+}
+.rest-config .import-url-view .rest-config-line-0 .rest-config-url-label {
+  text-align: right;
+  width: 85px;
+}
+.rest-config .import-url-view .rest-config-line-0 .rest-config-url-textbox {
+  /* Override default textbox margin */
+  margin: 0px;
+  border-width: 1px;
+  width: 300px;
+  height: 35px;
+  box-sizing: border-box;
+  border-color: rgba(0, 0, 0, 0.65);
+  /* Obscure */
+}
+.rest-config .import-url-view .rest-config-line-0 .rest-config-url-textbox::selection {
+  background-color: #7c017c;
+  /* Spellbound */
+  color: #ffffff;
+  /* Steed */
+}
+.rest-config .import-url-view .rest-config-line-1 {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: start;
+  -ms-flex-direction: row;
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-auth-label {
+  text-align: right;
+  width: 85px;
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-auth-selector {
+  width: 150px;
+  height: 30px;
+  min-height: 0px;
+  margin: 0px 0px 0px 10px;
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-auth-selector:focus::-ms-value {
+  background-color: #ffffff;
+  /* Steed*/
+  color: #000000;
+  /* Ink */
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-auth-selector option:hover {
+  background-color: #777777;
+  /* Storm */
+  color: #ffffff;
+  /* Steed*/
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-auth-selector option:checked {
+  background-color: #966596;
+  /* Tincture */
+  color: #ffffff;
+  /* Steed*/
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-enable-headers-checkbox {
+  /* Override default margin, add a margin on the left due to outline */
+  margin: 0px 5px 0px 1px;
+  padding: 0px;
+  width: 15px;
+  height: 15px;
+  outline: 1px solid #000000;
+  /* Ink */
+}
+.rest-config .import-url-view .rest-config-line-1 .rest-config-enable-headers-label {
+  margin-left: 10px;
+  font-size: 10pt;
+}
+.rest-config .import-url-view .request-headers .request-header:first-child {
+  margin-top: 0px;
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  margin-top: 20px;
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line .request-header-textbox {
+  margin: 0px;
+  border-width: 1px;
+  /* The total width should be 302px. */
+  width: 300px;
+  /* The total height should be 40px. */
+  height: 38px;
+  border-color: rgba(0, 0, 0, 0.65);
+  /* Obscure */
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line .request-header-textbox::selection {
+  background-color: #7c017c;
+  /* Spellbound */
+  color: #ffffff;
+  /* Steed */
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line .delete-header-button {
+  width: 28px;
+  height: 28px;
+  background-color: #643964;
+  box-sizing: border-box;
+  line-height: 35px;
+  min-width: 0px;
+  min-height: 0px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  margin-left: 15px;
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line .delete-header-button .button-image {
+  display: -ms-grid;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  width: 24px;
+  height: 24px;
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line .delete-header-button:hover {
+  background-color: #824a82 !important;
+  /* Fandango */
+}
+.rest-config .import-url-view .request-headers .request-header .request-header-line .delete-header-button:active .button-image-active {
+  display: inline;
+  background-color: #000000;
+  /* Ink */
+}
+.rest-config .import-url-view .oauth-properties {
+  margin-top: 15px;
+}
+.rest-config .import-url-view .oauth-properties .oauth-property {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-direction: row;
+  margin-top: 15px;
+}
+.rest-config .import-url-view .oauth-properties .oauth-property:first-child {
+  margin-top: 0px;
+}
+.rest-config .import-url-view .oauth-properties .oauth-property .oauth-property-label {
+  margin-left: 20px;
+  width: 65px;
+  text-align: right;
+}
+.rest-config .import-url-view .oauth-properties .oauth-property .oauth-property-textbox {
+  margin: 0px 0px 0px 10px;
+  border-width: 1px;
+  /* The total width should be 375px. */
+  width: 373px;
+  /* The total height should be 40px. */
+  height: 38px;
+  border-color: rgba(0, 0, 0, 0.65);
+  /* Obscure */
+}
+.rest-config .import-url-view .oauth-properties .oauth-property .oauth-property-textbox::selection {
+  background-color: #7c017c;
+  /* Spellbound */
+  color: #ffffff;
+  /* Steed */
+}
+.rest-config .import-url-view .button-container,
+.rest-config .import-file-view .button-container {
+  margin-top: 20px;
+}
+.rest-config .import-url-view .add-header-button {
+  margin-top: 20px;
+  border-width: 0px;
+  color: #000000;
+  /* Ink */
+  height: 35px;
+}
+.rest-config .import-url-view .rest-config-import {
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+}
+.rest-config .import-url-view .import-file {
+  margin-right: 30px;
+}
+.pane-header {
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 15pt;
+  color: #824A82;
+  /*Fandango*/
+  line-height: 35px;
+  margin-bottom: 30px;
+}

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Internet Explorer</title>
+
+    <script src="//microsoft.bingnews.shim/dist/shim.js"></script>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="/css/default.css" rel="stylesheet" />
+    <script src="/js/default.js"></script>
+</head>
+
+<body>
+    <div class="tab-container">
+        <iframe src="https://www.github.com/"></iframe>
+    </div>
+    <div data-win-control="WinJS.UI.AppBar">
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'backButton', icon: 'back', type:'button', section:'secondary'}"></button>
+        
+        <div data-win-control="WinJS.UI.AppBarCommand" style="flex: 1;" data-win-options="{ id: 'urlbar', type: 'content', label:'Text field', section: 'secondary' }">
+            <input type="text" value="Text" style="width: 100%;" />
+        </div>
+
+        <button class="win-reduced" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id:'refreshButton', icon: 'refresh', type:'button' }"></button>
+        <button class="win-reduced" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id:'tabsButton', icon: 'viewall', type:'button' }"></button>
+        <button class="win-reduced" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id:'favoriteButton', icon: 'favorite', type:'button' }"></button>
+        <button class="win-reduced" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id:'settingsButton', icon: 'repair', type:'button' }"></button>
+        <button class="win-reduced" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{ id:'forwardButton', icon: 'forward', type:'button' }"></button>
+    </div>
+</body>
+
+</html>

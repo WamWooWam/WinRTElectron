@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="camera_x5F_icon" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="16px" height="12px" viewBox="0 0 16 12" enable-background="new 0 0 16 12" xml:space="preserve">
+<g>
+	<path id="_x3C_Compound_Path_x3E_insideLens_2_" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" d="M13.726,7.724
+		c0,2.239-1.784,4.054-3.985,4.054c-2.201,0-3.984-1.815-3.984-4.054c0-2.239,1.784-4.055,3.984-4.055
+		C11.942,3.669,13.726,5.484,13.726,7.724z M9.741,4.48c-1.761,0-3.188,1.453-3.188,3.244s1.427,3.243,3.188,3.243
+		s3.188-1.452,3.188-3.243S11.501,4.48,9.741,4.48z"/>
+	<path id="_x3C_Compound_Path_x3E_body" fill="#FFFFFF" d="M16,1v11h-3.701c1.254-1,2.082-2.462,2.082-4.107
+		c0-2.607-2.078-4.806-4.641-4.806c-2.563,0-4.64,2.242-4.64,4.849C5.101,9.581,5.928,11,7.183,12H0V1H16z M14.835,1.904
+		c-0.314,0-0.569,0.255-0.569,0.569c0,0.315,0.255,0.569,0.569,0.569c0.314,0,0.569-0.254,0.569-0.569
+		C15.404,2.159,15.149,1.904,14.835,1.904z"/>
+	<polygon id="cliker_2_" fill="#FFFFFF" points="4,0 4,0 2,0 2,0 1,0 1,1 4,1 4,0 	"/>
+</g>
+</svg>

@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>publishPage</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <script src="appSettingsPage.js"></script>
+    <link href="appSettingsPage.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="appSettings">
+        <div class="appSettings-row-one">
+            <div class="appSettings-orientation-header" data-bind="text: AppMagic.AuthoringStrings.AppSettingsPageOrientationHeader"></div>
+            <div class="appSettings-orientation-container" data-bind="foreach: orientations">
+                <div class="appSettings-orientation-option-container" data-bind="click: $parent.onOrientationClick.bind($parent, $data.value), css: { selected: $parent.isSelectedOrientation($data.value) }">
+                    <img class="appSettings-orientation-option-image" data-bind="attr: { src: imageUrl }" />
+                    <div class="appSettings-orientation-option" data-bind="text: displayName"></div>
+                </div>
+            </div>
+        </div>
+        <div class="appSettings-row-two">
+            <!-- <img class="appSettings-aspect-ratio-checkmark" src="/images/greencheckmark.svg" data-bind="visible: !isCustomAspectRatio" /> -->
+            <div class="appSettings-aspect-ratio-header">
+                <div data-bind="text: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioHeader"></div>
+                <div class="appSettings-header-help appSettings-tooltip" data-bind="attr: {title: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioTooltip}"><span class="tooltip-container" title=""></span></div>
+            </div>
+            <div class="appSettings-aspect-ratio-container" data-bind="foreach: aspectRatios">
+                <div class="appSettings-aspect-ratio-option-container" data-bind="click: $parent.onAspectRatioClick.bind($parent, $data.width, $data.height)">
+                    <div class="appSettings-aspect-ratio-option-preview" data-bind="
+                        style: {
+                            width: $parent.previewWidth(width, height),
+                            height: $parent.previewHeight() },
+                        css: { selected: $parent.isSelectedAspectRatio($data.width, $data.height) && !$parent.isCustomAspectRatio }">
+                        <!-- To get this to properly align it must be child element of the preview. -->
+                        <div data-bind="text: aspectRatioDisplay"></div>
+                    </div>
+                    <div class="appSettings-aspect-ratio-option" data-bind="text: displayName"></div>
+                </div>
+            </div>
+            
+            <!-- Hiding until after Beta Refresh as custom will not be a publicly supported scenario
+        <div class="appSettings-aspect-ratio-separator-text" data-bind="text: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioSeparatorText"></div>
+        <img class="appSettings-aspect-ratio-custom-checkmark" src="/images/greencheckmark.svg" data-bind="visible: isCustomAspectRatio" />
+        <div class="appSettings-aspect-ratio-custom-header">
+            <div data-bind="text: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioCustomHeader"></div>
+            <div class="appSettings-header-help appSettings-tooltip" data-bind="attr: {title: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioTooltip}"><span class="tooltip-container" title=""></span></div>
+        </div>
+        <div class="appSettings-aspect-ratio-custom-container">
+            <div class="appSettings-aspect-ratio-custom-width-header" data-bind="text: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioCustomWidthHeader"></div>
+            <div class="appSettings-aspect-ratio-custom-height-header" data-bind="text: AppMagic.AuthoringStrings.AppSettingsPageAspectRatioCustomHeightHeader"></div>
+            <div class="appSettings-aspect-ratio-custom-width-input-container" data-bind="click: focusInputBox.bind($data, $element)">
+                <input class="appSettings-aspect-ratio-custom-input" id="custom-input" maxlength="4" data-bind="value: customAspectRatioWidth" />
+                <div class="appSettings-vertical-align">
+                    <div>px</div>
+                </div>
+            </div>
+            <div class="appSettings-aspect-ratio-custom-height-input-container" data-bind="click: focusInputBox.bind($data, $element)">
+                <input class="appSettings-aspect-ratio-custom-input" id="custom-input" maxlength="4" data-bind="value: customAspectRatioHeight"/>
+                <div class="appSettings-vertical-align">
+                    <div>px</div>
+                </div>
+            </div>
+            <div class="appSettings-aspect-ratio-custom-divider" data-bind="text:  AppMagic.AuthoringStrings.AppSettingsPageAspectRatioCustomDivider"></div>
+        </div>
+        -->
+        </div>
+        <div class="appSettings-row-three">
+            <button class="appSettings-apply-button backstage-button" data-bind="disable: !canApply(), click: onClickApply, text: AppMagic.AuthoringStrings.AppSettingsPageApply"></button>
+        </div>
+    </div>
+</body>
+</html>

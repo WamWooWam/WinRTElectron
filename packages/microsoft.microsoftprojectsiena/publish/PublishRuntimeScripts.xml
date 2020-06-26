@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--This XML file contains the files that must be included in default.html. The ordering is important
+because it informs the generation in what order the files should be put in default.html -->
+
+<App>
+  <Scripts>
+
+    <!-- WinJS dependencies -->
+    <item sourcePath="//Microsoft.WinJS.2.0/css/ui-dark.css" publishTarget="win"></item>
+    <item sourcePath="//Microsoft.WinJS.2.0/js/base.js" publishTarget="win"></item>
+    <item sourcePath="//Microsoft.WinJS.2.0/js/ui.js" publishTarget="win"></item>
+
+    <!-- Web dependencies-->
+    <item sourcePath="css/winjs/ui-dark.css" publishTarget="web"></item>
+    <item sourcePath="js/winjs/base.min.js" publishTarget="web"></item>
+    <item sourcePath="js/winjs/ui.min.js" publishTarget="web"></item>
+    <item sourcePath="cordova.js" publishTarget="web"></item>
+
+    <!-- Sax -->
+    <item sourcePath="openSource/unmodified/sax/sax.js"></item>
+
+    <!-- Caja -->
+    <item sourcePath="openSource/unmodified/caja/html-sanitizer.js"></item>
+
+    <!-- JSZip -->
+    <item sourcePath="openSource/unmodified/jszip/jszip.js"></item>
+    <item sourcePath="openSource/unmodified/jszip/jszip-deflate.js"></item>
+    <item sourcePath="openSource/unmodified/jszip/jszip-inflate.js"></item>
+    <item sourcePath="openSource/unmodified/jszip/jszip-load.js"></item>
+
+    <!-- CryptoJS -->
+    <item sourcePath="openSource/unmodified/cryptojs/rollups/hmac-sha1.js" publishTarget="web"></item>
+    <item sourcePath="openSource/unmodified/cryptojs/components/enc-base64-min.js" publishTarget="web"></item>
+
+    <!-- Sugarjs - for parsing/formatting dates-->
+    <item sourcePath="openSource/unmodified/sugarjs/sugar-1.4.1.js"></item>
+
+    <item sourcePath="js/extends.js"></item>
+    <item sourcePath="js/Core.Polyfill.js" publishTarget="web"></item>
+    <item sourcePath="openSource/unmodified/polymer/pointerevents.min.js" publishTarget="web"></item>
+
+    <item sourcePath="css/default.css"></item>
+    <item sourcePath="css/canvas.css"></item>
+    <item sourcePath="js/knockout-3.2.0.js"></item>
+    <item sourcePath="js/common/constants.js"></item>
+    <item sourcePath="js/canvas.js"></item>
+    <item sourcePath="js/screen.js"></item>
+    <item sourcePath="js/utility.js"></item>
+    <item sourcePath="js/converters.js"></item>
+    <item sourcePath="js/promiseQueue.js"></item>
+    <item sourcePath="js/Core.js"></item>
+    <item sourcePath="js/Core.Knockout.js"></item>
+    <item sourcePath="js/AppMagic.Common.js"></item>
+    <item sourcePath="js/AppMagic.UI.js"></item>
+    <item sourcePath="js/AppMagic.Services.js"></item>
+    <item sourcePath="js/AppMagic.Controls.js"></item>
+    <item sourcePath="js/dialog.js"></item>
+    <item sourcePath="js/xml.js"></item>
+    <item sourcePath="js/AppMagic.Common.Windows.js" publishTarget="win"></item>
+    <item sourcePath="js/cssRuleUtility.js"></item>
+    <item sourcePath="js/dialog.js"></item>
+    <item sourcePath="js/globalization.js"></item>
+    <item sourcePath="js/dialogButtonViewModel.js"></item>
+    <item sourcePath="js/notificationViewModel.js"></item>
+    <item sourcePath="js/progressIndicatorViewModel.js"></item>
+    <item sourcePath="js/impexWorkerController.js"></item>
+    <item sourcePath="js/RESTWorkerController.js"></item>
+    
+    <!-- TASK 99218 - Set up proper localization pipeline for published web apps -->
+    <item sourcePath="js/strings.js" publishTarget="web"></item>
+
+    <item sourcePath="js/AppMagic.PublishedApp.Common.js"></item>
+    <item sourcePath="js/AppMagic.PublishedApp.Web.js" publishTarget="web"></item>
+    <item sourcePath="js/AppMagic.PublishedApp.Windows.js" publishTarget="win"></item>
+    <item sourcePath="js/runtimebase.js"></item>
+    <item sourcePath="js/domUtility.js"></item>
+
+    <item sourcePath="js/runtime.js"></item>
+    <item sourcePath="js/aggregateFunctions.js"></item>
+    <item sourcePath="js/behaviorFunctions.js"></item>
+    <item sourcePath="js/collectionFunctions.js"></item>
+    <item sourcePath="js/dateTimeFunctions.js"></item>
+    <item sourcePath="js/informationFunctions.js"></item>
+    <item sourcePath="js/mathFunctions.js"></item>
+    <item sourcePath="js/membershipFunctions.js"></item>
+    <item sourcePath="js/screenFunctions.js"></item>
+    <item sourcePath="js/sharedFunctions.js"></item>
+    <item sourcePath="js/solverFunctions.js"></item>
+    <item sourcePath="js/textFunctions.js"></item>
+    <item sourcePath="js/uiUtility.js"></item>
+    <item sourcePath="js/common/platformHelpers.js"></item>
+    <item sourcePath="js/inlineEditText.js"></item>
+
+    <item sourcePath="js/requirementsManager.js"></item>
+    <item sourcePath="js/animation.js"></item>
+    <item sourcePath="js/controlManager.js"></item>
+    <item sourcePath="js/modelValueConstrainers.js"></item>
+    <item sourcePath="js/visualIntellisenseConstants.js"></item>
+    <item sourcePath="services/utility.js"></item>
+    <item sourcePath="services/results.js"></item>
+
+    <item sourcePath="js/ruleValueEditor.js"></item>
+    <item sourcePath="js/ruleValue.js"></item>
+
+    <item sourcePath="js/init.js"></item>
+  </Scripts>
+
+  <HtmlFiles>
+    <!-- List of HTML files to package in the markup -->
+    <!-- HTML references for controls are automatically packaged -->
+    <item sourcePath="controls\common\dialog\authDialogBody.html" />
+    <item sourcePath="controls\common\dialog\dialog.html" />
+    <item sourcePath="controls\common\dialog\messageDialogBody.html" />
+    <item sourcePath="controls\common\dialog\waitDialogBody.html" />
+    <item sourcePath="controls\common\notification\notification.html" />
+    <item sourcePath="controls\common\seekBar\seekBar.html" />
+    <item sourcePath="controls\common\progressIndicator\progressIndicator.html" />
+  </HtmlFiles>
+</App>

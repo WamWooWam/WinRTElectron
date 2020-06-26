@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+        <title>About flyout</title>
+    </head>
+    <body>
+        <div id="aboutdiv" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{settingsCommandId:'about',width:'narrow'}">
+            <div class="win-header">
+                <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+                <div class="win-label">About</div>
+                <img src="win8-small-tile.png" style="position: absolute; right: 40px">
+            </div>
+            <div class="win-content">
+                <p><a href="https://www.mediawiki.org/wiki/Wikimedia_Apps/Wikipedia">Wikipedia Mobile</a> for Windows 8.1</p>
+                <p>The code is 100% open source and community built. If you are a developer and good at JS/HTML5, then <a href="https://github.com/wikimedia/WikipediaMobile">come fork us</a>!</p>
+                <p><a href="https://wikimediafoundation.org/wiki/Privacy_policy">Wikimedia privacy policy</a></p>
+            </div>
+        </div>
+    </body>
+</html>

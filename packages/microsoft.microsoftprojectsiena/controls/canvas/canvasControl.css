@@ -1,0 +1,596 @@
+﻿/* Colors */
+/* Misc styles */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+.canvas {
+  width: 100%;
+  height: 100%;
+  /* This is required so the adorner does not inherit
+       the direction property from its parent. */
+  direction: ltr;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr;
+  -ms-grid-rows: 1fr;
+}
+.contentContainer {
+  /* This fixes the issue where interacting with the adorners on nested controls in
+       Custom Gallery using touch would pan the Gallery instead of move/resize the controls as expected. */
+  touch-action: none;
+}
+.preview .contentContainer {
+  touch-action: auto;
+}
+/*
+        The canvas has the following hierarchy of elements in markup order.
+
+            .controlContainer       Contains all the controls
+                .contentContainer   Container for the content and fill
+                    .content        Container for the actual control
+                    .fill           Interactive element to capture mouse clicks when the visual is unselected
+
+            .visualContainer        Container for all control decorators such as draggers, resizers, and labels
+                .visual             Decorator container for a single control
+                    .dragger        Interactive element to drag the visual.
+                    .resizer        Interactive element to resize the visual.
+                    .label          Label displayed when holding down Alt key
+                    .errorIcon      Error icon shown when control has an error
+
+            .guideContainer         Non-interactive SVG container for alignment guides.
+
+            .addVisualText          Container for the add visual button.
+
+        The .contentContainer is assigned the visual's z-index. The .fill element has position: relative so that
+        it stacks higher than .content. This can be overridden if .content contains a descendant that has both
+        position and z-index attributes; that allows nested visuals to be selected without having to select the
+        parent visual first.
+
+        .dragger and .resizer are children of .visual but with a topmost z-index to place them above all other visuals.
+        Note that we cannot create a container for .dragger and .resizer and refactor the topmost z-index there,
+        since that container would itself become interactive and cover .content. This applies whether that container
+        lives within .visualContainer > .visual, or that container becomes a sibling of .visualContainer.
+    */
+.canvas > .controlContainer,
+.canvas > .guideContainer,
+.canvas > .disabledCover {
+  width: 100%;
+  height: 100%;
+}
+.canvas > .controlContainer > .contentContainer {
+  -ms-grid-column-span: 3;
+  -ms-grid-row-span: 3;
+  position: relative;
+  /*
+            Use a grid layout so that .content can fill .contentContainer without using the position attribute,
+            which has the undesired effect of creating a new CSS stacking context.
+        */
+  display: -ms-grid;
+  -ms-grid-columns: 1fr;
+  -ms-grid-rows: 1fr;
+}
+.canvas > .controlContainer > .contentContainer > .fill {
+  /*
+                Create a stacking context for .fill so that it overlays on top of .content.
+                However, descendants of .content can override this by specifying position with z-index.
+                This is used to allow nested visuals to be selected without having to select the parent visual first.
+            */
+  position: absolute;
+}
+/*
+        visualContainer: Contains the resizing and dragging adorners to manipulate controls in the canvas
+    */
+.canvas > .visualContainer {
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+.canvas > .visualContainer.selected,
+.canvas > .visualContainer.selected.descendantSelected {
+  outline: 15px solid rgba(153, 153, 153, 0.4);
+  /* Custom selection border color. */
+  /* Don't allow panning actions when authoring area is selected */
+  touch-action: none;
+}
+.canvas > .visualContainer > .visual {
+  width: 0;
+  height: 0;
+}
+.canvas > .visualContainer:not(.outlineIncompatible) > .visual:not(.outlineIncompatible) > .contentContainer > .fill {
+  /*
+                The outline attribute is needed to eat clicks for x-ms-webview. solid black is required for
+                this to work, but it can have 0 thickness.
+            */
+  outline: 0px solid black;
+}
+/*
+            Adorner elements inside .visualContainer.
+        */
+.canvas > .visualContainer.preview > .visual > .contentContainer > .fill,
+.canvas > .visualContainer.preview > .visual > .dragger,
+.canvas > .visualContainer.preview > .visual > .resizer {
+  display: none;
+}
+.canvas > .visualContainer > .visual > .groupBorder {
+  border: none;
+  position: absolute;
+}
+.canvas > .visualContainer > .visual > .groupBorder.left,
+.canvas > .visualContainer > .visual > .groupBorder.right {
+  border-left: 1.5px dashed #888888;
+}
+.canvas > .visualContainer > .visual > .groupBorder.top,
+.canvas > .visualContainer > .visual > .groupBorder.bottom {
+  border-top: 1.5px dashed #888888;
+}
+/*
+            The outset drag frame surrounding the visual.
+            It is defined in pieces so that the center can remain hollow and transparent to clicks.
+        */
+.canvas > .nestedCanvasContainer > .nestedCanvas > .dragger,
+.canvas > .visualContainer > .visual > .dragger {
+  background-color: rgba(153, 153, 153, 0.4);
+  /* Custom selection border color. */
+  position: absolute;
+}
+@media all and (-ms-high-contrast: active) {
+  .canvas > .nestedCanvasContainer > .nestedCanvas > .dragger,
+  .canvas > .visualContainer > .visual > .dragger {
+    background-color: Highlight;
+  }
+}
+.canvas > .visualContainer > .visual > .dragger {
+  /* Hide dragger until we're selected. */
+  display: none;
+}
+/* Only display the move cursor when the visual is selected. */
+.canvas > .nestedCanvasContainer > .nestedCanvas.selected > .dragger,
+.canvas > .visualContainer > .visual.selected > .dragger {
+  pointer-events: all;
+  cursor: move;
+  display: block;
+  /*
+                TASK: 101906: Work around IE issue where adorners don't repaint properly when resizing
+                certain controls. Both outline-style and outline-width are required for the workaround.
+            */
+  outline-style: solid;
+  outline-width: 0px;
+}
+.canvas > .nestedCanvasContainer.visualLabelsVisible > .nestedCanvas > .dragger,
+.canvas > .visualContainer.visualLabelsVisible > .visual > .dragger {
+  display: block;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer,
+.canvas > .visualContainer > .visual > .resizer {
+  /*
+                This places the resizer within the same stacking context as the other adorners, otherwise it'll appear below them
+                in the grid layout.
+            */
+  position: absolute;
+  /* Hide resizer until we're selected. */
+  display: none;
+  transition-duration: 0.2s;
+  transition-property: opacity;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.hidden,
+.canvas > .visualContainer > .visual > .resizer.hidden {
+  /* Make adorners non-visible while resizing and dragging. */
+  opacity: 0;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas.selected > .resizer,
+.canvas > .visualContainer > .visual.selected > .resizer {
+  pointer-events: all;
+  display: block;
+}
+.canvas > .visualContainer > .visual > .label {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+  display: none;
+  position: absolute;
+}
+.canvas > .visualContainer > .visual > .label > .label-text {
+  padding: 6px 15px 6px 15px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 9pt;
+  text-align: center;
+}
+.canvas > .visualContainer.visualLabelsVisible > .visual > .label {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+.canvas > .visualContainer > .visual > .errorIcon {
+  position: absolute;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .canvasBorder {
+  position: absolute;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .canvasBorder.left {
+  margin-left: -2px;
+  border-left: 1.5px dashed #888888;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .canvasBorder.top {
+  margin-top: -2px;
+  border-top: 1.5px dashed #888888;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .canvasBorder.right {
+  border-right: 1.5px dashed #888888;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .canvasBorder.bottom {
+  border-bottom: 1.5px dashed #888888;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.nw,
+.canvas > .visualContainer > .visual > .resizer.nw {
+  cursor: nw-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.nw > .inner,
+.canvas > .visualContainer > .visual > .resizer.nw > .inner {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-bottom-width: 0;
+  border-left-width: 0;
+  border-color: #ffffff transparent transparent transparent;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.n,
+.canvas > .visualContainer > .visual > .resizer.n {
+  cursor: n-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.n > .inner,
+.canvas > .visualContainer > .visual > .resizer.n > .inner {
+  position: absolute;
+  background-color: #fff;
+  -ms-grid-row-align: start;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.ne,
+.canvas > .visualContainer > .visual > .resizer.ne {
+  cursor: ne-resize;
+  width: 0px;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.ne > .inner,
+.canvas > .visualContainer > .visual > .resizer.ne > .inner {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  float: right;
+  border-style: solid;
+  border-top-width: 0;
+  border-left-width: 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.w,
+.canvas > .visualContainer > .visual > .resizer.w {
+  cursor: w-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.w > .inner,
+.canvas > .visualContainer > .visual > .resizer.w > .inner {
+  position: absolute;
+  background-color: #fff;
+  -ms-grid-row-align: start;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.e,
+.canvas > .visualContainer > .visual > .resizer.e {
+  cursor: e-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.e > .inner,
+.canvas > .visualContainer > .visual > .resizer.e > .inner {
+  position: absolute;
+  background-color: #fff;
+  -ms-grid-row-align: center;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.sw,
+.canvas > .visualContainer > .visual > .resizer.sw {
+  cursor: sw-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.sw > .inner,
+.canvas > .visualContainer > .visual > .resizer.sw > .inner {
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  border-style: solid;
+  border-right-width: 0;
+  border-bottom-width: 0;
+  border-color: transparent transparent transparent #ffffff;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.s,
+.canvas > .visualContainer > .visual > .resizer.s {
+  cursor: s-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.s > .inner,
+.canvas > .visualContainer > .visual > .resizer.s > .inner {
+  position: absolute;
+  bottom: 0px;
+  background-color: #fff;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.se,
+.canvas > .visualContainer > .visual > .resizer.se {
+  cursor: se-resize;
+}
+.canvas > .nestedCanvasContainer > .nestedCanvas > .resizer.se > .inner,
+.canvas > .visualContainer > .visual > .resizer.se > .inner {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  width: 0px;
+  height: 0px;
+  border-style: solid;
+  border-top-width: 0;
+  border-right-width: 0;
+  border-color: transparent transparent #ffffff transparent;
+}
+/*
+    guideContainer: Container for non-interactive guide elements for aligning visuals.
+*/
+.canvas > .guideContainer {
+  /* Ignore mouse/touch event since guides are non-interactive. */
+  pointer-events: none;
+  position: absolute;
+}
+.canvas > .guideContainer > .alignment {
+  stroke: #7C017C;
+  /* Spellbound */
+}
+.canvas > .guideContainer > .spacing {
+  stroke: #BABABA;
+  /* Wolf */
+}
+.canvas > .guideContainer > .triangle {
+  fill: #7C017C;
+  /* Spellbound */
+}
+.canvas > .guideContainer > .selectionBox {
+  fill: rgba(136, 136, 136, 0.5);
+  /* Nimbus at 50% opacity */
+}
+/*
+    Button on the canvas to add a new visual.
+*/
+.canvas > .addVisualText {
+  /* Use flexbox to center the text vertically. */
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  position: relative;
+  color: #888888;
+  height: 100%;
+  width: 100%;
+  white-space: normal;
+  text-align: center;
+  font-family: "Segoe UI Semilight";
+  line-height: 1.3636;
+}
+.canvas > .addVisualText:hover {
+  color: #5c5c5c;
+}
+.canvas > .addVisualText.nonNested {
+  font-size: 40px;
+}
+.canvas > .addVisualText.nested {
+  font-size: 23pt;
+}
+.canvas > .addVisualText.nested:hover {
+  color: #777777;
+}
+/*
+    Element to prevent interaction with the canvas during transition animations.
+
+    The .disabled class is set by screenTransition() on the pagecontrol, which is the parent of .canvas.
+*/
+.canvas > .disabledCover {
+  display: none;
+}
+.canvasContainer.disabled > .canvas > .disabledCover {
+  display: block;
+}

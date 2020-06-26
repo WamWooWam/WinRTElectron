@@ -1,0 +1,11 @@
+﻿#sasLoadSpinner{color:#5133ab;}
+#sasTitle,#sasBackButton{color:#ffffff;border-color:#ffffff;}
+#sasBackButton:hover{background-color:rgba(255, 255, 255, 0.19999999999999995);}
+#sasBackButton:hover:active{background-color:#ffffff;border-color:#ffffff;color:#5133ab;}
+#sasHeader{background-color:#5133ab;}
+#sasAppIcon{background-image:url('/ModernPeople/images/CalendarIcon-30.png');background-size:100% 100%;height:30px;width:30px;top:32px;right:40px;}
+#FMSContainer input[onclick^="plugin0.next"]{background-color:#5133ab;border-color:#5133ab;color:#ffffff;}
+#FMSContainer input[onclick^="plugin0.next"]:hover{background-color:rgba(81, 51, 171, 0.87);border-color:rgba(81, 51, 171, 0.87);}
+#FMSContainer input[onclick^="plugin0.next"]:disabled{background-color:rgba(202, 202, 202, 0.4);border-color:rgba(0, 0, 0, 0.08);color:rgba(0, 0, 0, 0.4);}
+#FMSContainer input[onclick^="plugin0.next"]:hover:active{background-color:#000000;border-color:transparent;color:#ffffff;}
+@media (max-width:644px){#sasAppIcon{right:5px;}}

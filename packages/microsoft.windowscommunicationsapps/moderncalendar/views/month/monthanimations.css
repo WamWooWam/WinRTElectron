@@ -1,0 +1,11 @@
+﻿@keyframes fadeInHack {
+    from {
+        opacity: 0;
+        -ms-transform: translate(0px, 0px);
+    }
+
+    to {
+        opacity: 1;
+        -ms-transform: translate(0px, 0px);
+    }
+}

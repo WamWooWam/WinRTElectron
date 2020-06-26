@@ -1,0 +1,9 @@
+﻿::selection{background-color:#75a4d5;}
+a[href]{color:#0072c6;}a[href]:hover{color:#338ed1;}a[href]:hover:active{color:#66aadd;}
+body.modernCanvas>.modernCanvas-content{padding-top:24px;}
+body.modernCanvas>.modernCanvas-content.modernCanvas-hasIrmQuotedBody{min-height:auto;}
+body.modernCanvas>.modernCanvas-irmQuotedBody{-ms-user-select:element;cursor:text;}body.modernCanvas>.modernCanvas-irmQuotedBody.disableCopy{-ms-user-select:none;cursor:default;}
+body.modernCanvas>.modernCanvas-visible{padding-left:40px;}
+body.modernCanvas.composeLarge>.modernCanvas-visible{padding-left:80px;}
+body.modernCanvas.composeMedium>.modernCanvas-visible{padding-left:60px;}
+body.modernCanvas.composeSmall>.modernCanvas-visible{padding-left:20px;}

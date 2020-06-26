@@ -1,0 +1,1 @@
+﻿Jx.delayDefine(People,"Callback",function(){var n=window.People,t=n.Callback=function(n,t,i){this.fn=n;this.self=t;this.args=i};t.prototype.invoke=function(n){return this.fn.apply(this.self,n||this.args)}})

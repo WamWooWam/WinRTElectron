@@ -1,0 +1,25 @@
+{
+    "id": "skydrive",
+    "version": "0.1.0",
+
+    "name": "Sky Drive",
+    "description": "Access user data for SkyDrive including albums, photos, and files.",
+    "author": "Microsoft AppMagic Team",
+    "copyright": "Copyright (C) Microsoft Corporation.  All rights reserved.",
+
+    "required": [ "skydrive.js" ],
+    "serviceClass": "AppMagic.Services.SkyDrive",
+
+    "functions": {
+        "albums": {
+            "result": { "type": "*[id:s,name:s,description:s,count:n]" }
+        },
+
+        "photos": {
+            "arguments": [
+                { "name": "album", "type": "![id:s]" }
+            ],
+            "result": { "type": "*[id:s,name:s,description:s,source:s,width:n,height:n,location:s]" }
+        }
+    }
+}

@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+  <script type="text/html" id="appmagic-radio-template">
+    <div class="appmagic-radio-control">
+      <!-- click class is defined for label/radio control to enable the label to select/deselect the radio control -->
+      <label class="radio-label click">
+        <input type="radio" class="appmagic-radio click"
+               data-bind="{ disable: $parent.viewState.disabled,
+                            event: { click: $parent.handleClick },
+                            attr: { name: $parent._id, value: (typeof Value !== 'undefined')  ? Value : ''},
+                            style: { width: $parent.properties.RadioSize, height: $parent.properties.RadioSize },
+                            checked: $parent.checkedValue()
+                          }" />
+          <div tabindex="-1" class="appmagic-radio-label" spellcheck="false"
+               data-bind="{ html: ((typeof Value !== 'undefined') && AppMagic.Utility.isScalarType(Value)) ? Value : '',
+                          style: { fontFamily: $parent.properties.Font,
+                                    fontSize: $parent.properties.Size,
+                                    lineHeight: $parent.properties.Size,
+                                    color: $parent.autoProperties.Color,
+                                    fontWeight: $parent.properties.FontWeight,
+                                    fontStyle: $parent.properties.Italic,
+                                    textAlign: $parent.properties.Align,
+                                    lineHeight: $parent.properties.LineHeight},
+                            css: {
+                              left: $parent.properties.Align() === 'left',
+                              center: $parent.properties.Align() === 'center',
+                              right: $parent.properties.Align() === 'right',
+                              justify: $parent.properties.Align() === 'justify',
+                              underline: $parent.properties.Underline,
+                              strikethrough: $parent.properties.Strikethrough
+                            },
+                          }">
+          </div>
+      </label>
+    </div>
+  </script>
+</body>
+</html>

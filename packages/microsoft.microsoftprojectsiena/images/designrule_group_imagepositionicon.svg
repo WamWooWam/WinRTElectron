@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="position" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="26px" height="15px" viewBox="0 0 26 15" enable-background="new 0 0 26 15" xml:space="preserve">
+<polyline id="mountains_x5F_one_x5F_line" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-miterlimit="10" points="
+	5.479,10.622 10.065,6.067 16.979,13.534 "/>
+<path id="sun" fill="#FFFFFF" d="M15.369,2.778c-0.966,0-1.752,0.786-1.752,1.752s0.786,1.753,1.752,1.753
+	c0.968,0,1.754-0.787,1.754-1.753S16.337,2.778,15.369,2.778L15.369,2.778z"/>
+<path id="border" fill="#FFFFFF" d="M21,14.02H5v-14h16V14.02z M6,13.02h14v-12H6V13.02z"/>
+<polygon id="arrowright" fill="#FFFFFF" points="3.379,10.833 0.083,7.54 3.379,4.245 "/>
+<polygon id="arrowleft" fill="#FFFFFF" points="22.703,4.245 26,7.539 22.703,10.832 "/>
+</svg>

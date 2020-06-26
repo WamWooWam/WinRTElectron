@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>commandBar</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="commandBar.css" rel="stylesheet" />
+    <link href="../common/ruleValueEditor/ruleValueEditor.css" rel="stylesheet" />
+    <script src="commandBar.js"></script>
+
+    <script type="text/html" id="designTabTemplate">
+        <div class="designTab" data-bind="attr: { title: tooltip }, clickOrEnter: $parent.selectRule.bind($parent, $data)" tabindex="0">
+            <div class="selectionBar" data-bind="css: { selected: rule.propertyName === $parent.rule.propertyName }"></div>
+            <div class="iconContainer">
+                <img class="errorIcon" src="/images/warningicon_small.svg" data-bind="visible: rule.hasErrors, attr: { title: rule.errorMessage }" />
+                <div class="icon">
+                    <!-- ko if: $data.appearance === "color" -->
+                    <div class="color">
+                        <img data-bind="attr: { src: designImageUrl }" />
+                        <div data-bind="style: { backgroundColor: colorCss }"></div>
+                    </div>
+                    <!-- /ko -->
+
+                    <!-- ko if: $data.appearance === "penThickness" || $data.appearance === "fontSize" -->
+                    <div class="fontSizeIcon" data-bind="css: { fontSize: $data.appearance === 'fontSize' }, text: parseInt($data.propertyValue) >= 0 ? parseInt($data.propertyValue) : $data.appearance === 'fontSize' ? 11 : 0 "></div>
+                    <!-- /ko -->
+
+                    <!-- ko if: $data.appearance !== "color" && $data.appearance !== "penThickness" && $data.appearance !== "fontSize"-->
+                    <img data-bind="attr: { src: designImageUrl }" />
+                    <!-- /ko -->
+                </div>
+            </div>
+        </div>
+    </script>
+</head>
+<body>
+    <div class="commandBar" data-bind="visible: visible && !isPreview, css: { smallLayout: AppMagic.context.shellViewModel.smallLayout }, shortcut: { provider: visualsShortcuts }">
+        <div class="leftContainer" data-bind="with: ruleButtonPanel">
+
+            <div id="dataCategoryPanel" class="category"
+                 data-bind="
+                    css: {
+                        divider: behaviorButtons.length > 0 || designButtons.length > 0,
+                        selected: isRuleInCategorySelected('data')
+                    }
+                ">
+                <div class="selectionBar"></div>
+                <div class="contentContainer">
+                    <div class="content">
+                        <!-- ko foreach: isCategoryExpanded('data') ? dataButtons : [] -->
+                        <div class="button" data-bind="
+                            clickOrEnter: $parent.handleRuleClick.bind($parent),
+                            attr: { buttonName: propertyName, title: tooltip },
+                            css: { active: $parent.isShowingRuleFlyout(selectedRule) },
+                            viewTrigger: [{ trigger: $parent.showRuleFlyoutTrigger, data: selectedRule }],
+                            ">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: selectedRule.hasErrors, attr: { title: selectedRule.errorMessage }" />
+                                <img data-bind="attr: { src: imageUrl }" />
+                            </div>
+                            <span data-bind="text: displayName"></span>
+                        </div>
+                        <!-- /ko -->
+                        <div class="button" data-bind="
+                            visible: isCategoryExpanded('data') && overflowDataButtons.length > 0,
+                            click: showOverflow.bind($data, 'data'),
+                            attr: { buttonName: 'More' },
+                            css: { active: dataOverflowFlyout.visible },
+                            ">
+                            <div class="frame">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: hasDataOverflowErrors, attr: { title: dataOverflowErrorMessage }" />
+                                <span data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.more"></span>
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.More"></span>
+                        </div>
+                        <div class="button" data-bind="visible: !isCategoryExpanded('data') && hasDataButtons,
+                            clickOrEnter: selectCategory.bind($data, 'data'),
+                            attr: { buttonName: 'Data' }">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: hasDataErrors, attr: { title: dataCategoryErrorMessage }" />
+                                <img src="/images/datarule_dataicon.svg" />
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.Data"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="behaviorCategoryPanel" class="category"
+                 data-bind="
+                    css: {
+                        divider: designButtons.length > 0,
+                        selected: isRuleInCategorySelected('behavior')
+                    }
+                ">
+                <div class="selectionBar"></div>
+                <div class="contentContainer">
+                    <div class="content">
+                        <!-- ko foreach: isCategoryExpanded('behavior') ? behaviorButtons : [] -->
+                        <div class="button" data-bind="
+                            clickOrEnter: $parent.handleRuleClick.bind($parent),
+                            attr: { buttonName: propertyName, title: tooltip },
+                            css: { active: $parent.isShowingRuleFlyout(selectedRule) },
+                            viewTrigger: [{ data: selectedRule, trigger: $parent.showRuleFlyoutTrigger }]
+                            ">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: selectedRule.hasErrors, attr: { title: selectedRule.errorMessage }" />
+                                <img data-bind="attr: { src: imageUrl }" />
+                            </div>
+                            <span data-bind="text: displayName"></span>
+                        </div>
+                        <!-- /ko -->
+                        <div class="button" data-bind="
+                            visible: isCategoryExpanded('behavior') && overflowBehaviorButtons.length > 0,
+                            click: showOverflow.bind($data, 'behavior'),
+                            attr: { buttonName: 'More' },
+                            css: { active: behaviorOverflowFlyout.visible },
+                            ">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: hasBehaviorOverflowErrors, attr: { title: behaviorOverflowErrorMessage }" />
+                                <span data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.more"></span>
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.More"></span>
+                        </div>
+                        <div class="button" data-bind="visible: !isCategoryExpanded('behavior') && hasBehaviorButtons,
+                            clickOrEnter: selectCategory.bind($data, 'behavior'),
+                            attr: { buttonName: 'Behavior' }">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: hasBehaviorErrors, attr: { title: behaviorCategoryErrorMessage }" />
+                                <span data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.remote"></span>
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.Behavior"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="designCategoryPanel" class="category"
+                 data-bind="
+                    css: {
+                        selected: isRuleInCategorySelected('design')
+                    }
+                ">
+                <div class="selectionBar"></div>
+                <div class="contentContainer">
+                    <div class="content">
+                        <!-- ko foreach: isCategoryExpanded('design') ? designButtons : [] -->
+                        <div class="button" data-bind="clickOrEnter: $parent.handleRuleClick.bind($parent),
+                                                       attr: { buttonName: displayName },
+                                                       css: { active: $parent.isShowingRuleFlyout(selectedRule) },
+                                                       viewTrigger: [{ data: selectedRule, trigger: $parent.showRuleFlyoutTrigger }]
+                                                      ">
+
+                            <div class="frame" tabindex="0" data-bind="css: appearance">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: errorInfo.hasErrors, attr: { title: errorInfo.message }" />
+                                <img class="icon" data-bind="attr: { src: imageUrl }" />
+
+                                <!-- ko if: appearance === "color" -->
+                                <div class="colorBar" data-bind="style: { backgroundColor: colorCss }"></div>
+                                <!-- /ko -->
+                            </div>
+
+                            <span data-bind="text: displayName"></span>
+                        </div>
+                        <!-- /ko -->
+                        <div class="button" data-bind="
+                            visible: isCategoryExpanded('design') && overflowDesignButtons.length > 0,
+                            click: showOverflow.bind($data, 'design'),
+                            attr: { buttonName: AppMagic.AuthoringStrings.More },
+                            css: { active: designOverflowFlyout.visible },
+                            ">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: designOverflowErrorInfo.hasErrors, attr: { title: designOverflowErrorInfo.message }" />
+                                <span data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.more"></span>
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.More"></span>
+                        </div>
+                        <div class="button" data-bind="visible: !isCategoryExpanded('design') && hasDesignButtons,
+                            clickOrEnter: selectCategory.bind($data, 'design'),
+                            attr: { buttonName: 'Design' }">
+                            <div class="frame" tabindex="0">
+                                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: hasDesignErrors, attr: { title: designCategoryErrorMessage }" />
+                                <span data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.edit"></span>
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.Design"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="rightContainer">
+            <div id="selectionCategoryPanel" class="category divider">
+                <div class="contentContainer">
+                    <div class="content">
+                        <div class="button" data-bind="clickOrEnter: handleZoomClicked.bind($data),
+                             css: { active: flyoutVisible.zoom }">
+                            <div class="frame" tabindex="0">
+                                <div class="zoomValue" data-bind="text: AppMagic.context.documentViewModel.zoom.value"></div>
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.Zoom"></span>
+                        </div>
+                        <div class="button" data-bind="
+                            visible: canArrange,
+                            clickOrEnter: handleArrangeClicked.bind($data),
+                            attr: { buttonName: 'Arrange' },
+                            css: { active: flyoutVisible.align() || flyoutVisible.arrange() || flyoutVisible.order() }
+                            ">
+                            <div class="frame" tabindex="0">
+                                <img src="/images/ordericon.svg" />
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.Arrange"></span>
+                        </div>
+                        <div class="button" data-bind="clickOrEnter: handleCopyPasteClicked.bind($data),
+                            attr: { buttonName: 'CopyPaste' },
+                            css: { active: flyoutVisible.copyPaste }">
+                            <div class="frame" tabindex="0">
+                                <img src="/images/edit_icon.svg" />
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.Edit"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="category rulesCategoryPanel">
+                <div class="contentContainer">
+                    <div class="content">
+                        <div class="button expressView" data-bind="clickOrEnter: handleExpressView.bind($data),
+                             css: { active: AppMagic.context.documentViewModel.configuration.visibility === 'normal' }">
+                            <div class="frame" tabindex="0">
+                                <img src="/images/expressView_openicon.svg" />
+                            </div>
+                            <span data-bind="text: AppMagic.AuthoringStrings.RulesPanel"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flyout for the overflow data properties. -->
+        <div id="dataOverflowFlyout" class="commandFlyout overflow" data-bind="winjsControlClass: WinJS.UI.Flyout, observableFlyoutVisible: ruleButtonPanel.dataOverflowFlyout.visible" tabindex="0">
+            <div class="content scrollbar" data-bind="with: ruleButtonPanel.dataOverflowFlyout" tabindex="0">
+                <!-- ko foreach: overflowButtons -->
+                <div class="menuItem" data-bind="click: $parent.handleItemClick.bind($parent, $data)">
+                    <img src="/images/warning_sign.svg" data-bind="visible: selectedRule.hasErrors, attr: { title: selectedRule.errorMessage }" />
+                    <div data-bind="text: displayName"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!--
+            Flyouts for data rules.
+            We have an array to allow simultaneous invocations of flyouts (which can happen when dismissing one and showing a new one).
+        -->
+        <div data-bind="foreach: ruleButtonPanel.dataRuleFlyouts">
+            <div class="commandFlyout dataRuleFlyout" data-bind="winjsControlClass: WinJS.UI.Flyout, viewModelProperty: { element: $element }, event: {  keyup: $parent.handleEscape.bind($data) }" tabindex="0">
+                <!-- ko foreach: { data: [pageNavigator.activePage], afterAdd: pageNavigator.animateAddPage.bind(pageNavigator), beforeRemove: pageNavigator.animateRemovePage.bind(pageNavigator) } -->
+                <div class="content" tabindex="0">
+                    <!-- ko if: pageName === 'DataSources' -->
+                    <div class="nameMapIcon" data-bind="visible: nameMapIconVisible, click: showColumns, attr: { title: AppMagic.AuthoringStrings.PickColumn }">
+                        <img src="/images/namemap_icon.svg" />
+                    </div>
+                    <div class="ruleTextBox" data-bind="observableProperty: { rule: rule }, property: { container: $element.parentNode }, winjsControl: '/controls/intellisense/commandRuleTextBox.html'"></div>
+                    <div class="options scroll">
+
+                        <!-- ko if: isMedia -->
+                        <div class="addDataSourceContainer" data-bind="clickOrEnter: addDataSource.bind($data)" tabindex="0">
+                            <img class="icon" src="/images/add_20x20.svg" />
+                            <span class="option" data-bind="text: addDataSourceText"></span>
+                        </div>
+                        <!-- /ko -->
+                        <!-- Only show Add Data Source for aggregate properties when property name is not Default, since those properties can't directly bind to data sources. -->
+                        <div data-bind="visible: $parent.isAggregate && !isMedia && !isDefault" tabindex="0">
+                            <div class="chooseDataSetLabel" data-bind="text: AppMagic.AuthoringStrings.ChooseDataSource"></div>
+                            <div class="addDataSourceContainer" data-bind="clickOrEnter: addDataSource.bind($data)" tabindex="0">
+                                <img class="icon" src="/images/add_20x20.svg" />
+                                <span class="option" data-bind="text: addDataSourceText"></span>
+                            </div>
+                        </div>
+
+                        <!-- ko foreach: dataSourceExpressions -->
+                        <div class="option" tabindex="0" data-bind="text: displayName, css: { selected: $parent.rule.rhs === ruleExpression || ($parent.rule.nameMap && $parent.rule.nameMap.sourceRule === ruleExpression) }, clickOrEnter: $parent.selectDataSource.bind($parent)"></div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: pageName === 'NameMap' -->
+                    <div class="back" data-bind="visible: pageNavigator.canGoBack, click: pageNavigator.navigateBack.bind(pageNavigator), text: AppMagic.AuthoringTool.SegoeGlyphs.back"></div>
+                    <div class="nameMapHeader">
+                        <div class="nameMapVisualsLabel" data-bind="text: Core.Utility.formatString(AppMagic.AuthoringStrings.NameMapVisualsLabelText, controlName)"></div>
+                        <div class="chooseConnectionLabel" data-bind="text: AppMagic.AuthoringStrings.ChooseConnection"></div>
+                        <div class="columnsHeaderContainer">
+                            <div class="visualsHeader" data-bind="text: AppMagic.AuthoringStrings.VisualsHeaderText"></div>
+                            <div class="columnHeader" data-bind="text: AppMagic.AuthoringStrings.ColumnHeaderText"></div>
+                            <div class="headerSplitter"></div>
+                        </div>
+                    </div>
+                    <div class="nameMapBindings" data-bind="css: { padded: $parent.pageNavigator.canGoBack }, foreach: bindings">
+                        <div class="binding" data-bind="click: $parent.selectBinding.bind($parent)">
+                            <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: sink.hasErrors" />
+                            <div class="column1" data-bind="text: sink.displayName, attr: { title: sink.displayName }"></div>
+                            <img class="linkIcon" src="/images/link_icon.svg" />
+                            <div class="column2" data-bind="text: sourceDisplayName, attr: { title: sourceDisplayName }"></div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: pageName === 'ValueSelector' -->
+                    <div class="back" data-bind="visible: pageNavigator.canGoBack, click: pageNavigator.navigateBack.bind(pageNavigator), text: AppMagic.AuthoringTool.SegoeGlyphs.back"></div>
+                    <div class="ruleText" data-bind="visible: isNameMapBinding">
+                        <div class="key" data-bind="text: displaySinkName, click: pageNavigator.navigateBack.bind(pageNavigator)"></div>
+                        <div class="value" data-bind="text: selectedValue"></div>
+                    </div>
+                    <div class="ruleTextBox" data-bind="visible: !isNameMapBinding, observableProperty: { rule: rule }, property: { isChildRule: isLiftedProperty, container: $element.parentNode }, winjsControl: '/controls/intellisense/commandRuleTextBox.html'"></div>
+
+                    <div class="options scroll">
+                        <!-- ko if: isMedia -->
+                        <div class="addDataSourceContainer" data-bind="clickOrEnter: addDataSource.bind($data)" tabindex="0">
+                            <img class="icon padded" src="/images/add_20x20.svg" />
+                            <span class="option" data-bind="text: addDataSourceText,
+                                                            css: { padded: $parent.pageNavigator.canGoBack }"></span>
+                        </div>
+                        <!-- /ko -->
+
+                        <div data-bind="foreach: values, focusRoot: selectedIndex">
+                            <div class="option values" data-bind="text: displayName, click: $parent.selectValue.bind($parent, $index()), css: { selected: $parent.selectedValue === $data.expression, padded: $parent.pageNavigator.canGoBack },
+                                                                  focusElement: $index(),
+                                                                  event: { keydown: $parent.handleKeyDown.bind($parent), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Align flyout. -->
+        <div id="alignFlyout" class="commandFlyout" data-bind="shortcut: { provider: commandBarShortcuts }, observableFlyoutVisible: flyoutVisible.align" data-win-control="WinJS.UI.Flyout" tabindex=" 0">
+            <div class="content">
+                <div class="commandFlyoutTitle" data-bind="text: AppMagic.AuthoringStrings.Align"></div>
+                <!-- ko foreach: $data.commandBarShortcuts.getAlignFlyoutOptions() -->
+                <div class="menuItem" data-bind="click: $parent.handleCommandButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.commandBarShortcuts.selectedIndex() },
+                    attr: { title: title }" tabindex="-1">
+                    <img data-bind="attr: {src: image}" />
+                    <div data-bind="text: text"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Copy/Paste flyout. -->
+        <div id="copyPasteFlyout" class="commandFlyout copyPasteFlyout" data-bind="shortcut: { provider: commandBarShortcuts }, observableFlyoutVisible: flyoutVisible.copyPaste" data-win-control="WinJS.UI.Flyout" tabindex="0">
+            <div class="content">
+                <!-- ko foreach: $data.commandBarShortcuts.getEditFlyoutOptions() -->
+                <div class="menuItem" data-bind="click: $parent.handleCommandButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.commandBarShortcuts.selectedIndex() },
+                    attr: { title: title }" tabindex="-1">
+                    <img data-bind="attr: {src: image}" />
+                    <div data-bind="text: text"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Arrange flyout. -->
+        <div id="arrangeFlyout" class="commandFlyout arrangeFlyout" data-bind="shortcut: { provider: commandBarShortcuts }, observableFlyoutVisible: flyoutVisible.arrange" data-win-control="WinJS.UI.Flyout" tabindex="0">
+            <div class="content">
+                <!-- ko foreach: $data.commandBarShortcuts.getArrangeFlyoutOptions() -->
+                <div class="menuItem" data-bind="click: $parent.handleCommandButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.commandBarShortcuts.selectedIndex() },
+                    attr: { title: title }" tabindex="-1">
+                    <img data-bind="attr: {src: image}" />
+                    <div data-bind="text: text"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Zoom flyout. -->
+        <div id="zoomFlyout" class="commandFlyout" data-bind="observableFlyoutVisible: flyoutVisible.zoom" data-win-control="WinJS.UI.Flyout" tabindex="0">
+            <div class="content" data-bind="event: { keyup: handleEscapeZoom.bind($data) }">
+                <div class="zoomToFit" data-bind="click: zoom.fitToPage.bind(zoom, AppMagic.AuthoringTool.Constants.Zoom.Source.userInvoked),
+                                                  attr: { title: AppMagic.AuthoringStrings.FitToPageButtonTooltip }">
+                    <img src="/images/fiticon.svg" />
+                </div>
+                <div class="zoomDivider"></div>
+                <div class="zoomPlus" data-bind="click: zoom.zoomIn.bind(zoom), attr: { title: AppMagic.AuthoringStrings.ZoomInButtonTooltip }">
+                    <img src="/images/zoomPlus_icon.svg" />
+                </div>
+
+                <div class="zoomSliderContainer">
+                    <input class="zoomSlider valueSlider win-vertical" type="range" data-bind="value: zoom.sliderValue,
+                                                                                               clickBubble: false,
+                                                                                               attr: {
+                                                                                                   min: AppMagic.AuthoringTool.Constants.Zoom.SliderMin,
+                                                                                                   max: AppMagic.AuthoringTool.Constants.Zoom.SliderMax,
+                                                                                               },
+                                                                                               event: { keydown: zoom.handleKeyDown.bind(zoom) }" tabindex="0" />
+                    <div class="tickMarksContainer">
+                        <div class="tickMark" data-bind="click: zoom.setValue.bind(zoom, 100, AppMagic.AuthoringTool.Constants.Zoom.Source.userInvoked)">
+                            <div class="tick"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="zoomMinus" data-bind="click: zoom.zoomOut.bind(zoom), attr: { title: AppMagic.AuthoringStrings.ZoomOutButtonTooltip }">
+                    <img src="/images/zoomMinus_icon.svg" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Order flyout. -->
+        <div id="orderFlyout" class="commandFlyout" data-bind="shortcut: { provider: commandBarShortcuts }, observableFlyoutVisible: flyoutVisible.order" data-win-control="WinJS.UI.Flyout" tabindex="0">
+            <div class="content">
+                <div class="commandFlyoutTitle" data-bind="text: AppMagic.AuthoringStrings.Order"></div>
+                <!-- ko foreach: $data.commandBarShortcuts.getOrderFlyoutOptions() -->
+                <div class="menuItem" data-bind="click: $parent.handleCommandButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.commandBarShortcuts.selectedIndex() },
+                    attr: { title: title }" tabindex="-1">
+                    <img data-bind="attr: {src: image}" />
+                    <div data-bind="text: text"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!-- Flyout for the overflow design properties. -->
+        <div id="designOverflowFlyout" class="commandFlyout overflow" data-bind="winjsControlClass: WinJS.UI.Flyout, observableFlyoutVisible: ruleButtonPanel.designOverflowFlyout.visible">
+            <div class="content scrollbar" data-bind="with: ruleButtonPanel.designOverflowFlyout" tabindex="0">
+                <!-- ko foreach: overflowButtons -->
+                <div class="menuItem" data-bind="click: $parent.handleItemClick.bind($parent, $data)">
+                    <img src="/images/warning_sign.svg" data-bind="visible: errorInfo.hasErrors, attr: { title: errorInfo.message }" tabindex="0" />
+                    <div data-bind="text: displayName"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!--
+            Flyouts for design rules.
+        -->
+        <div data-bind="foreach: ruleButtonPanel.designRuleFlyouts">
+            <div class="commandFlyout designRuleFlyout" data-bind="winjsControlClass: WinJS.UI.Flyout, viewModelProperty: { element: $element }">
+                <div class="content" data-bind="event: {  keyup: $parent.handleEscape.bind($data) }">
+                    <div class="designTabColumn" data-bind="foreach: tabs">
+                        <!-- ko template: { name: 'designTabTemplate' } --><!-- /ko -->
+                    </div>
+                    <div class="divider"></div>
+                    <div class="activeRule" data-bind="with: rule">
+                        <div class="ruleTextBox" data-bind="observableProperty: { rule: $data }, property: { container: $element.parentNode}, winjsControl: '/controls/intellisense/commandRuleTextBox.html'"></div>
+                        <div class="valueEditor" data-bind="observableProperty: { rule: $data }, winjsControl: '/controls/common/ruleValueEditor/ruleValueEditor.html'"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Flyout for the overflow behavior properties. -->
+        <div id="behaviorOverflowFlyout" class="commandFlyout overflow" data-bind="winjsControlClass: WinJS.UI.Flyout, observableFlyoutVisible: ruleButtonPanel.behaviorOverflowFlyout.visible" tabindex="0">
+            <div class="content scrollbar" data-bind="with: ruleButtonPanel.behaviorOverflowFlyout" tabindex="0">
+                <!-- ko foreach: overflowButtons -->
+                <div class="menuItem" data-bind="click: $parent.handleItemClick.bind($parent, $data)">
+                    <img src="/images/warning_sign.svg" data-bind="visible: selectedRule.hasErrors, attr: { title: selectedRule.errorMessage }" />
+                    <div data-bind="text: displayName"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <!--
+            Flyouts for behavior rules.
+        -->
+        <div data-bind="foreach: ruleButtonPanel.behaviorRuleFlyouts">
+            <div class="commandFlyout behaviorRuleFlyout" data-bind="winjsControlClass: WinJS.UI.Flyout, viewModelProperty: { element: $element }, event: {  keyup: $parent.handleEscape.bind($data) }" tabindex="0">
+                <!-- ko foreach: { data: [pageNavigator.activePage], afterAdd: pageNavigator.animateAddPage.bind(pageNavigator), beforeRemove: pageNavigator.animateRemovePage.bind(pageNavigator) } -->
+                <div class="content">
+                    <!-- ko if: pageName === 'BehaviorRulePage' -->
+                    <div class="ruleTextBox" data-bind="
+                        observableProperty: { rule: rule },
+                        property: { container: $element.parentNode },
+                        winjsControl: '/controls/intellisense/commandRuleTextBox.html',
+                        viewTrigger: [{ trigger: setEditableRuleTextBox, data: 0 }]
+                        "></div>
+                    <div class="functions" data-bind="foreach: visibleFunctions">
+                        <div class="function" data-bind="css: { disabled: $parent.toggleSwitchesDisabled }">
+                            <div class="functionName" data-bind="text: $data, event: { click: $parent.handleClick.bind($parent, $data) }, clickBubble: false,
+                                                                 css: { selected: (!$parent.toggleSwitchesDisabled && $parent.toggleSwitchesState[$data]()) }">
+                            </div>
+                            <div class="toggleSwitch"
+                                 data-bind="winjsControlClass: WinJS.UI.ToggleSwitch,
+                                           winjsattr: {
+                                               disabled: $parent.toggleSwitchesDisabled,
+                                               checked: $parent.toggleSwitchesState[$data](),
+                                               onchange: $parent.handleChange.bind($parent, $data)
+                                           }">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                    <!-- ko if: pageName === 'FunctionArgSelector' -->
+                    <div class="argSelector">
+                        <div class="back" data-bind="click: handleBackClick.bind($data), text: AppMagic.AuthoringTool.SegoeGlyphs.back"></div>
+                        <div class="functionName" data-bind="text: functionName"></div>
+                        <div class="functionText" data-bind="text: functionText, click: handleFunctionTextClick.bind($data)"></div>
+
+                        <div class="args" data-bind="foreach: functionArgs">
+                            <div class="argsDropDown">
+                                <div class="arg">
+                                    <div class="argText"
+                                         data-bind="text: currentValue().displayName,
+                                                    event: { blur: $parent.handleBlur.bind($parent, $index(), $data, currentValue().ruleExpression), click: $parent.handleArrowClick.bind($parent, $index(), $element.parentNode.parentNode) },
+                                                    clickBubble: false"></div>
+
+                                    <div class="dropArrow" data-bind="click: $parent.handleArrowClick.bind($parent, $index(), $element.parentNode.parentNode)">
+                                        <img class="dropArrowImg" src="../../images/dropdownarrow_blackicon.svg" />
+                                    </div>
+                                </div>
+                                <div class="argOptions" data-bind="visible: optionsVisible(), foreach: options()" tabindex="0">
+                                    <div class="optionItem" data-bind="text: displayName, css: { selected: displayName === $parent.currentValue().displayName },
+                                                                       click: $parents[1].handleOptionClick.bind($parents[1], $data, $parentContext.$index()),
+                                                                       event: { keydown: $parents[1].handleOptionKeyDown.bind($parents[1], $index(), $parentContext.$index(), $element.parentNode) }" tabindex="0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /ko -->
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="o365Meetings"
+        restServiceConnectorId="{E22A66D0-3FE7-4F00-8128-9657319BF140}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[Connect to your Office 365 Calendar]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="OfficeLogo" dataSourceLocation="ctrllib/o365Controls/images/OfficeLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%Gallery1.ID%" template="Gallery" name="CalendarDatesView" variant="office365DateGallery">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="28" />
+        <rule name="Height" value="85" />
+        <rule name="Width" value="500" />
+        <rule name="TemplatePadding" value="0"/>
+        <rule name="Items" value="[0, 1, 2, 3, 4, 5, 6]" isExpr="true" />
+        <rule name="TemplateSize" value="%Gallery1.ID%!Width/7" isExpr="true"  />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="BorderThickness" value="2" />
+      </rules>
+    </control>
+    <control template="Label" name="DateToday">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="Upper(Text(Today()+%Gallery1.ID%!Selected!Value, DateTimeFormat!LongDate))" isExpr="true"/>
+      </rules>
+    </control>
+    <control metaDataId="%Gallery2.ID%" template="Gallery" name="CalendarItemsView" variant="office365ItemGallery">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="113" />
+        <rule name="Height" value="240" />
+        <rule name="Width" value="500" />
+        <rule name="TemplatePadding" value="0"/>
+        <rule name="TemplateSize" value="60" />
+        <rule name="Layout" value="Layout!Vertical" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="Items" value="Sort(Office365!Calendar(Text(%Gallery1.ID%!Selected!Value+Today(),&quot;UTC&quot;), Text(%Gallery1.ID%!Selected!Value+1+Today(),&quot;UTC&quot;))!items, Start)" isExpr="true" />
+        <rule name="BorderThickness" value="2" />
+      </rules>
+    </control>
+  </controls>
+</composition>

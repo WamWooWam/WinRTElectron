@@ -1,0 +1,12 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "noImplicitAny": false,
+    "sourceMap": true,
+    "lib": [ "ES2019", "DOM", "DOM.Iterable" ],
+    "target": "ES6",
+    "moduleResolution": "node",
+    "resolveJsonModule": true
+  }
+}

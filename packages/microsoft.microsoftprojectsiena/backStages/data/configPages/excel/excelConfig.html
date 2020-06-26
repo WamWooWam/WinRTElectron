@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Excel Config</title>
+
+    <link href="excelConfig.css" rel="stylesheet" />
+    <script src="excelConfig.js"></script>
+</head>
+<body>
+    <div class="fragment excel-pane">
+        <div class="excel-pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageSelectTables"></div>
+        <div class="excel-config-file">
+            <img class="excel-icon" src="/images/Excel_icon.png" data-bind="visible: (fileName !== '')"/>
+            <span data-bind="text: fileName"/>
+        </div>
+
+        <div data-bind="property: { viewModel: tableSelector },
+                        visible: tableSelectorVisible,
+                        winjsControl: '/backStages/data/configPages/tableSelector/tableSelector.html'">
+        </div>
+
+        <div class="excel-config-failure failure" data-bind="visible: isErrorVisible">
+            <ul class="failure-messages" data-bind="foreach: errorMessages">
+                <li data-bind="text: $data" unselectable="off"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

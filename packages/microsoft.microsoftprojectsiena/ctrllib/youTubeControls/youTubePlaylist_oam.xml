@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="youTubePlaylist"
+        restServiceConnectorId="{41F27212-8117-4B5F-8279-BCC060DFD665}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[YOUTUBE PLAYLIST
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="YoutubeLogo" dataSourceLocation="ctrllib/youTubeControls/images/YoutubeLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##YouTubePlaylist_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control metaDataId="%Gallery.ID%" template="Gallery" name="VideoSearchResults" variant="youTubePlaylistGalleryHorizontal">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="265" />
+        <rule name="Height" value="185" />
+        <rule name="Width" value="400" />
+        <rule name="TemplateSize" value="138" />
+        <rule name="Layout" value="Layout!Horizontal" isExpr="true" />
+        <rule name="Items" value="%RESTServiceName%!PlaylistItems(&quot;PLNA-j_cL4mUQfVcjrQiARsekT66OdqSPQ&quot;)" isExpr="true" />
+        <rule name="TemplatePadding" value="3" />
+      </rules>
+    </control>
+    <control template="videoPlayback" name="Video">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="225" />
+        <rule name="Width" value="400" />
+        <rule name="Media" value="&quot;https://www.youtube.com/watch?v=&quot;&amp;%Gallery.ID%!Selected!snippet!resourceId!videoId" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(127, 127, 127, 0.1)" isExpr="true" />
+      </rules>
+    </control>
+  </controls>
+</composition>

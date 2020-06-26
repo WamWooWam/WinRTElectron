@@ -1,0 +1,13 @@
+﻿.QUESTIONCONTAINER{margin-bottom:25px;}
+.QUESTIONTEXT{margin-bottom:20px;}
+.QUESTIONINSTRUCTION{margin-bottom:10px;}
+.ANSWERTEXT,.QUESTIONREQUIRED{display:none;}
+.CHOICEROW,.ANSWERTEXT{padding-bottom:17px;}
+.QUESTIONTEXT button{display:none;}
+#FMSContainer{padding-top:33px;}
+#FMSContainer textarea{height:80px;margin-bottom:25px;width:537px;display:block;-ms-touch-select:grippers;}
+#FMSContainer .FirstButton,#FMSContainer input[onclick^="plugin0.previous"]{left:0;}
+#FMSContainer .SecondButton{left:145px;}
+#FMSContainer input[type=button]{display:block;cursor:default;top:calc((100% - 39px));position:absolute;width:125px;}
+#FMSContainer input[type=radio]{margin-left:0;}
+@media (max-width:644px){#FMSContainer textarea{width:calc((100% - 30px));}}

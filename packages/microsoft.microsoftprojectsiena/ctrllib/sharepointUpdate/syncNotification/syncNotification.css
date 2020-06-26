@@ -1,0 +1,471 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic SharePoint Update Sync Notification control CSS
+ *
+ */
+
+.sync-notification,
+.sync-notification-progress-grid,
+.sync-notification-resolve-grid {
+    width: 100%;
+    height: 100%;
+}
+
+.sync-notification-progress-grid {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr auto 1fr;
+}
+
+.sync-notification-progress-band {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    display: -ms-grid;
+    -ms-grid-columns: 130px 50px 35px 1fr 30px;
+    -ms-grid-rows:70px 50px 15px auto 30px;
+}
+
+.sync-notification-progress-ring {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+}
+
+.sync-notification-progress-band-text-container {
+    -ms-grid-column: 4;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 55px 45px 5px 20px;
+}
+
+.sync-notification-progress-band-title {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+}
+
+.sync-notification-progress-band-details {
+    -ms-grid-column: 1;
+    -ms-grid-row: 4;
+}
+
+.sync-notification-progress-button-container {
+    -ms-grid-column: 4;
+    -ms-grid-row: 4;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto auto;
+    -ms-grid-rows: 1fr;
+}
+
+.sync-notification-progress-button-resolve {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+}
+
+.sync-notification-progress-button-cancel {
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+}
+
+.sync-notification-resolve-grid {
+    display: -ms-grid;
+    -ms-grid-columns: 120px 1fr 60px;
+    -ms-grid-rows: 38px 82px 15px 20px 45px 1fr 40px auto 45px;
+}
+
+.sync-notification-resolve-title {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+}
+
+.sync-notification-resolve-description-conflicts-exist,
+.sync-notification-resolve-description-no-conflicts-exist {
+    -ms-grid-column: 2;
+    -ms-grid-row: 4;
+}
+
+.sync-notification-conflicts-container {
+    -ms-grid-column: 2;
+    -ms-grid-row: 6;
+    -ms-grid-column-span: 2;
+}
+
+.sync-notification-conflict {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 25px 4px 1px auto;
+}
+
+.sync-notification-conflict-title {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+}
+
+.sync-notification-conflict-indicator-line {
+    -ms-grid-column: 1;
+    -ms-grid-row: 3;
+}
+
+.sync-notification-conflict-details-container {
+    -ms-grid-column: 1;
+    -ms-grid-row: 4;
+    display: -ms-grid;
+    -ms-grid-columns: 20px 110px 20px 1fr 10px;
+    -ms-grid-rows: 10px 40px 40px 2px 40px auto 10px;
+}
+
+.sync-notification-select-version-label {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+}
+
+.sync-notification-version-button-local {
+    -ms-grid-column: 2;
+    -ms-grid-row: 3;
+}
+
+.sync-notification-version-button-server {
+    -ms-grid-column: 2;
+    -ms-grid-row: 5;
+}
+
+.sync-notification-conflict-details,
+.sync-notification-conflict-details-spacer-container {
+    -ms-grid-column: 4;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 5;
+}
+
+.sync-notification-conflict-details-spacer-container {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 80px 2px;
+}
+
+.sync-notification-conflict-details-spacer {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+}
+
+.sync-notification-conflict-details {
+    display: -ms-grid;
+    -ms-grid-rows: 40px 40px 2px 40px 17px; /* 17px for the scroll bar*/
+    overflow-x: auto;
+}
+
+.sync-notification-select-version-label,
+.sync-notification-header-change,
+.sync-notification-cell-local,
+.sync-notification-cell-server,
+.sync-notification-header-nonchange {
+    line-height: 40px;
+}
+
+.sync-notification-header-underlay {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}
+
+.sync-notification-header-change,
+.sync-notification-header-nonchange {
+    -ms-grid-row: 1;
+}
+
+.sync-notification-cell-local {
+    -ms-grid-row: 2;
+}
+
+.sync-notification-cell-server {
+    -ms-grid-row: 4;
+}
+
+.sync-notification-cell-change-overlay {
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 3;
+}
+
+.sync-notification-resolve-buttons-container {
+    -ms-grid-column: 2;
+    -ms-grid-row: 8;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto auto auto auto;
+    -ms-grid-rows: auto;
+}
+
+.sync-notification-resolve-button-apply {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+}
+
+.sync-notification-resolve-button-server {
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+}
+
+.sync-notification-resolve-button-local {
+    -ms-grid-column: 4;
+    -ms-grid-row: 1;
+}
+
+.sync-notification-resolve-button-cancel {
+    -ms-grid-column: 5;
+    -ms-grid-row: 1;
+}
+
+/* Background color, border color */
+
+.sync-notification {
+    background-color: rgba(0, 0, 0, 0.3); /*Doubt*/
+}
+
+.sync-notification-progress-band,
+.sync-notification-resolve-grid {
+    background-color: rgba(51, 51, 51, 1.0); /*Black Suede*/
+}
+
+.sync-notification-conflict-indicator-line {
+    background-color: rgba(255, 203, 0, 1.0); /*Grail*/
+}
+
+.sync-notification-conflict-details-spacer {
+    background-color: rgba(255, 255, 255, 0.1); /*Whisper*/
+}
+
+.sync-notification-header-change {
+    background-color: rgba(56, 29, 56, 1.0); /*Crater*/
+}
+
+.sync-notification-header-underlay {
+    background-color: rgba(0, 0, 0, 1.0); /*Ink*/
+}
+
+.sync-notification-cell-change-overlay {
+    background-color: rgba(201, 95, 201, 0.3);/*Pale Orchid*/
+}
+
+.sync-notification-conflict-details-container {
+    background-color: rgba(0, 0, 0, 0.4); /*Cloak*/
+}
+
+button.sync-notification-version-button-selected {
+    background-color: rgba(124, 1, 124, 1.0); /*Spellbound*/
+    border-color: rgba(124, 1, 124, 1.0); /*Spellbound*/
+}
+
+    button.sync-notification-version-button-selected:hover {
+        background-color: rgba(155, 62, 155, 1.0); /*Thistle*/
+        border-color: rgba(124, 1, 124, 1.0); /*Spellbound*/
+    }
+
+    button.sync-notification-version-button-selected:active,
+    button.sync-notification-version-button-selected:hover:active {
+        background-color: rgba(255, 255, 255, 1.0); /*Steed*/
+        border-color: rgba(255, 255, 255, 1.0); /*Steed*/
+    }
+
+button.sync-notification-version-button-not-selected {
+    background-color: rgba(92, 92, 92, 1.0); /*Arsenic*/
+    border-color: rgba(92, 92, 92, 1.0); /*Arsenic*/
+}
+
+    button.sync-notification-version-button-not-selected:hover {
+        background-color: rgba(119, 119, 119, 1.0); /*Storm*/
+        border-color: rgba(119, 119, 119, 1.0); /*Storm*/
+    }
+
+    button.sync-notification-version-button-not-selected:active,
+    button.sync-notification-version-button-not-selected:hover:active {
+        background-color: rgba(255, 255, 255, 1.0); /*Steed*/
+        border-color: rgba(255, 255, 255, 1.0); /*Steed*/
+    }
+
+button.sync-notification-button {
+    background-color: rgba(92, 92, 92, 1.0); /*Arsenic*/
+    border-color: rgba(92, 92, 92, 1.0); /*Arsenic*/
+}
+
+    button.sync-notification-button:hover {
+        background-color: rgba(119, 119, 119, 1.0); /*Storm*/
+        border-color: rgba(119, 119, 119, 1.0); /*Storm*/
+    }
+
+    button.sync-notification-button:active,
+    button.sync-notification-button:hover:active {
+        background-color: rgba(255, 255, 255, 1.0); /*Steed*/
+        border-color: rgba(255, 255, 255, 1.0); /*Steed*/
+    }
+
+button.sync-notification-button-default {
+    background-color: rgba(0, 0, 0, 0.0); /*Ghost*/
+    border-color: rgba(255, 255, 255, 1.0); /*Steed*/
+}
+
+    button.sync-notification-button-default:hover {
+        background-color: rgba(255, 255, 255, 0.2); /*Trace*/
+        border-color: rgba(255, 255, 255, 1.0); /*Steed*/
+    }
+
+    button.sync-notification-button-default:active,
+    button.sync-notification-button-default:hover:active {
+        background-color: rgba(255, 255, 255, 1.0); /*Steed*/
+        border-color: rgba(255, 255, 255, 1.0); /*Steed*/
+    }
+
+/* Font size, font color, font-weight */
+
+progress.win-ring.sync-notification-progress-ring {
+    color: rgba(255, 255, 255, 1.0); /*Steed*/
+}
+
+.sync-notification-progress-band-title {
+    font-size: 25pt;
+    color: rgba(255, 255, 255, 1.0); /*Steed*/
+    font-weight: lighter;
+}
+
+.sync-notification-progress-band-details {
+    font-size: 11pt;
+    color: rgba(217, 217, 217, 1.0); /*Cellar*/
+}
+
+.sync-notification-resolve-title {
+    font-size: 57px;
+    color: rgba(255, 255, 255, 1.0); /*Steed*/
+}
+
+.sync-notification-resolve-description {
+    font-size: 11pt;
+    color: rgba(217, 217, 217, 1.0); /*Cellar*/
+}
+
+.sync-notification-conflict-title {
+    font-size: 15pt;
+    color: rgba(255, 255, 255, 1.0); /*Steed*/
+}
+
+.sync-notification-select-version-label,
+.sync-notification-header-change,
+.sync-notification-header-nonchange {
+    font-size: 12pt;
+    color: rgba(255, 255, 255, 1.0); /*Steed*/
+}
+
+.sync-notification-cell-local,
+.sync-notification-cell-server {
+    font-size: 11pt;
+    color: rgba(166, 166, 166, 1.0); /*Stone*/
+}
+
+button.sync-notification-version-button-selected,
+button.sync-notification-version-button-selected:hover {
+    color: rgba(225, 225, 225, 1.0); /*Steed*/
+}
+
+    button.sync-notification-version-button-selected:active,
+    button.sync-notification-version-button-selected:hover:active {
+        color: rgba(0, 0, 0, 1.0); /*Ink*/
+    }
+
+button.sync-notification-version-button-not-selected,
+button.sync-notification-version-button-not-selected:hover {
+    color: rgba(225, 225, 225, 1.0); /*Steed*/
+}
+
+    button.sync-notification-version-button-not-selected:active,
+    button.sync-notification-version-button-not-selected:hover:active {
+        color: rgba(0, 0, 0, 1.0); /*Ink*/
+    }
+
+button.sync-notification-button {
+    color: rgba(225, 225, 225, 1.0); /*Steed*/
+}
+
+    button.sync-notification-button:hover {
+        color: rgba(225, 225, 225, 1.0); /*Steed*/
+    }
+
+    button.sync-notification-button:active,
+    button.sync-notification-button:hover:active {
+        color: rgba(0, 0, 0, 1.0); /*Ink*/
+    }
+
+button.sync-notification-button-default {
+    color: rgba(225, 225, 225, 1.0); /*Steed*/
+}
+
+    button.sync-notification-button-default:hover {
+        color: rgba(225, 225, 225, 1.0); /*Steed*/
+    }
+
+    button.sync-notification-button-default:active,
+    button.sync-notification-button-default:hover:active {
+        color: rgba(0, 0, 0, 1.0); /*Ink*/
+    }
+
+/* Text align*/
+
+.sync-notification-select-version-label {
+    text-align:center;
+}
+
+/* Layout, overflow */
+
+progress.win-ring.sync-notification-progress-ring {
+    width: 50px;
+    height: 50px;
+    padding: 0px;
+}
+
+.sync-notification-warning-sign {
+    margin-right: 10px;
+}
+
+.sync-notification-conflict {
+    width: calc(100% - 60px);
+    margin-bottom: 45px;
+}
+
+.sync-notification-conflicts-container {
+    -ms-overflow-y: auto;
+}
+
+.sync-notification-conflict.sync-notification-conflict-last {
+    margin-bottom: 0px;
+}
+
+.sync-notification-header-change,
+.sync-notification-cell-local,
+.sync-notification-cell-server,
+.sync-notification-header-nonchange {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.sync-notification-cell-local,
+.sync-notification-cell-server {
+    max-width: 600px;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+}
+
+button.sync-notification-version-button-local,
+button.sync-notification-version-button-server {
+    min-height: 0px;
+    height: 30px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0px;
+}
+
+.sync-notification-progress-button-resolve,
+.sync-notification-resolve-button-apply,
+.sync-notification-resolve-button-local,
+.sync-notification-resolve-button-server {
+    margin-right: 15px;
+}
+
+.sync-notification-button,
+.sync-notification-button-default {
+    height: 35px;
+}

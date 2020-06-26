@@ -1,0 +1,40 @@
+{
+    "id": "sharepoint",
+    "version": "0.1.0",
+
+    "name": "SharePoint",
+    "description": "Access Enterprise SharePoint data.",
+    "author": "Microsoft AppMagic Team",
+    "copyright": "Copyright (C) Microsoft Corporation.  All rights reserved.",
+
+    "required": [ "sharepoint.js" ],
+    "serviceClass": "AppMagic.Services.SharePoint",
+
+    "functions": {
+        "getLists": {
+            "arguments": [
+                { "name": "siteUri", "type": "string" }
+            ],
+            "result": { "type": "*[id:s,count:n,title:s]" }
+        },
+        "getWebUrlFromPageUrl": {
+            "arguments": [
+                { "name": "siteUri", "type": "string" }
+            ],
+            "result": { "type": "string" }
+        }
+    },
+
+    "dataSources": {
+        "list": {
+            "displayName": "SharePoint",
+            "query": "queryListDataSource",
+            "sync": "synchronizeListDataSource",
+            "features": {
+                "pageable": true
+            }
+        }
+    },
+
+    "thumbnail": "/images/logos/sharepoint.png"
+}

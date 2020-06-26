@@ -1,0 +1,211 @@
+
+
+.start-screen {
+    display: grid;
+    grid-template-rows: 120px 1fr 94px;
+    height: 100vh;
+    transition: opacity 0.15s ease-out, transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.start-header {
+    margin-left: 118px;
+    display: flex;
+    align-items: flex-end;
+}
+
+.start-main-header {
+    margin-right: 38px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.start-title {
+    font-family: "Segoe UI";
+    font-size: 42pt;
+    font-weight: 200;
+    margin: 0;
+    padding-bottom: 14px;
+    margin-left: -2px;
+}
+
+.start-header-buttons {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 170px 57px 57px;
+    column-gap: 2px;
+    margin-bottom: 20px;
+}
+
+.start-header-button {
+    height: 57px;
+    transition: transform 0.1s ease-out;
+}
+
+.start-header-button:hover {
+    background: #2B0680;
+}
+
+.start-header-button:active {
+    background: #2B0680;
+    transform: scale3d(0.975, 0.975, 0.975);
+}
+
+.start-header-user-button {
+    display: grid;
+    text-align: right;
+    align-items: center;
+    grid-template-columns: 1fr 60px;
+}
+
+.start-header-user-button > .username > p {
+    margin: 0;
+}
+
+.start-header-user-button > .username > .primary {
+    font-size: 27px;
+    line-height: 27px;
+}
+
+.start-header-user-button > .picture {
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    justify-self: center;
+}
+
+.start-header-power, .start-header-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI Symbol";
+    font-size: 30px;
+    line-height: 30px;
+    width: 57px;
+    height: 57px;
+}
+
+.mobile > .start-header, .mobile > .start-footer {
+    display: none;
+}
+
+.start.mobile {
+    margin: 8px;
+}
+
+.start-tiles {    
+    padding-left: 118px;
+    display: flex;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.mobile > .start-tiles {
+    grid-auto-rows: calc(calc(100vw / 6) - 6px);
+    grid-auto-columns: calc(calc(100vw / 6) - 6px);
+}
+
+.start-footer {
+    margin-left: 118px;
+    display: flex;
+    align-items: center;
+}
+
+.start-tile-group {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-right: 56px;
+}
+
+.tile-group-header {    
+    height: 35px;
+    margin: 8px 0;
+    font-size: 22px;
+    font-weight: 100;
+}
+
+.tile-group-header-text {    
+    opacity: 0.75;
+}
+
+.tile-group-tiles {
+    display: grid;
+    grid-column-gap: 4px;
+    grid-auto-columns: 60px;
+    grid-row-gap: 4px;
+    grid-template-rows: repeat(auto-fit, 60px);
+
+    flex: 1;
+}
+
+.start-show-all-button {
+    transform: rotate(90deg);
+}
+
+.start-hide-all-button {
+    transform: rotate(-90deg);
+}
+
+.start-arrow-button { 
+    font-family: "Segoe UI Symbol";    
+    font-size: 42px;
+    display: flex;
+    justify-self: flex-start;
+}
+
+.start-show-all-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.start-show-all-button #arrow {
+    fill:white;
+}
+
+.start-show-all-button #circle {
+    stroke:white;
+    fill:transparent;
+}
+
+.start-show-all-button:hover #circle {
+    fill: #2E00A5;
+}
+
+.start-show-all-button:active #circle {
+    fill:white;
+}
+
+.start-show-all-button:active #arrow {
+    fill:#180053;
+}
+
+.start-hide-all-button #arrow {
+    fill:black;
+}
+
+.start-hide-all-button #circle {
+    stroke:black;
+    fill:transparent;
+}
+
+.start-hide-all-button:hover #arrow {
+    fill: white;
+}
+
+.start-hide-all-button:hover #circle {
+    fill: #2E00A5;
+}
+
+.start-hide-all-button:active #circle {
+    fill:black;
+}
+
+.start-hide-all-button:active #arrow {
+    fill:#180053;
+}
+
+.all-apps-text {
+    display: grid;
+    grid-auto-columns: 450px;
+    column-gap: 20px;
+}

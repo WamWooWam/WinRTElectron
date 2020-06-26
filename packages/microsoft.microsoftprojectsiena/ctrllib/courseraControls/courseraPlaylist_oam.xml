@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="courseraPlaylist"
+        restServiceConnectorId="{2256B860-71A9-4951-B715-21AB28296185}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[COURSERA LESSONS BY TOPIC
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="CourseraLogo" dataSourceLocation="ctrllib/courseraControls/images/CourseraLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##CourseraPlaylist_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control metaDataId="%TopicDropdown.ID%" template="Dropdown" name="TopicDropdown">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="400" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true"/>
+        <rule name="Items" value='Sort(%RESTServiceName%!Categories()!name, name)' isExpr="true">
+          <nameMap>
+            <entry sink="Value" source="name" />
+          </nameMap>
+        </rule>
+      </rules>
+    </control>
+    <control metaDataId="%Gallery.ID%" template="Gallery" name="VideoSearchResults" variant="courseraSearchGalleryVertical">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="315" />
+        <rule name="Height" value="185" />
+        <rule name="Width" value="400" />
+        <rule name="TemplateSize" value="85" />
+        <rule name="Layout" value="Layout!Vertical" isExpr="true" />
+        <rule name="Items" value="Filter(%RESTServiceName%!SearchCourses(%TopicDropdown.ID%!Selected!name),!IsBlank(video))" isExpr="true" />
+        <rule name="TemplatePadding" value="0" />
+      </rules>
+    </control>
+    <control template="videoPlayback" name="Video">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="80" />
+        <rule name="Height" value="225" />
+        <rule name="Width" value="400" />
+        <rule name="Media" value="If(Len(%Gallery.ID%!Selected!video)=32,&quot;https://d1a2y8pfnfh44t.cloudfront.net/&quot;&amp;%Gallery.ID%!Selected!video&amp;&quot;/full/540p/index.mp4&quot;,&quot;https://www.youtube.com/watch?v=&quot;&amp;%Gallery.ID%!Selected!video)" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+      </rules>
+    </control>
+  </controls>
+</composition>

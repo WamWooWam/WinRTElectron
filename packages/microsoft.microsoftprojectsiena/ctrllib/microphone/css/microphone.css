@@ -1,0 +1,65 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Microphone control CSS
+ *
+ */
+.appmagic-microphone {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 120px 1fr;
+    -ms-grid-rows: 1fr 120px 1fr;
+}
+
+.appmagic-microphone-center {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 25fr 35fr 20fr 20fr 15fr 5fr;
+}
+
+.appmagic-microphone-icon-row {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto 1fr;
+    -ms-grid-rows: 1fr;
+}
+
+.appmagic-microphone-icon-container {
+    border-radius: 35px;
+    background-color: #FFFFFF; /*Steed*/
+    opacity: 0;
+}
+
+    .appmagic-microphone-icon-container:hover {
+        opacity: 0.2;
+    }
+
+.appmagic-microphone-icon {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+}
+
+.appmagic-microphone-label {
+    -ms-grid-column: 1;
+    -ms-grid-row: 4;
+    text-align: center;
+}
+
+.appmagic-microphone-bar {
+    -ms-grid-column: 1;
+    -ms-grid-row: 6;
+    background-color: rgba(69, 69, 69, 1.0); /* Charcoal */
+}
+
+.appmagic-microphone-bar-active {
+    background-color: #ED1C24; /*Chili*/
+}

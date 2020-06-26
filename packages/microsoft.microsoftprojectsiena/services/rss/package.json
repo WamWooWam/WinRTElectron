@@ -1,0 +1,21 @@
+{
+    "id": "rss",
+    "version": "0.1.0",
+
+    "name": "RSS",
+    "description": "Access data from an RSS feed.",
+    "author": "Microsoft AppMagic Team",
+    "copyright": "Copyright (C) Microsoft Corporation.  All rights reserved.",
+
+    "required": [ "rss.js" ],
+    "serviceClass": "AppMagic.Services.Rss",
+
+    "dataSources": {
+        "rssDataSource": {
+            "displayName": "RSS Feed",
+            "query": "queryFeed"
+        }
+    },
+
+    "thumbnail": "/images/logos/rss_icon.svg"
+}

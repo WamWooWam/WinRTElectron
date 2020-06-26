@@ -1,0 +1,22 @@
+
+
+.splashScreen {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 10000;
+    transition: opacity 0.15s ease-out;
+    transform-style: preserve-3d;
+}
+
+.splashScreenContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}

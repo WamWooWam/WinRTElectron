@@ -1,0 +1,36 @@
+﻿html,body{width:100%;height:100%;margin:0;padding:0;}
+body{direction:ltr;-ms-content-zooming:none;}
+.hidden{display:none;}
+.calendar,.calendar>.viewManager{width:100%;height:100%;}
+.messageBar .mb-button1{background-color:#5133ab;}
+.messageBar .mb-button1:hover{background-color:#7b64bf;}
+.messageBar .mb-button1:active{background-color:#212121;}
+.messageBar .messagebar-status{left:60px;right:60px;top:15px;text-align:right;font-size:9pt;font-weight:normal;color:#666666;}
+.darkBg .messageBar .messagebar-status{color:#ffffff;}
+.messageBar .mb-event-subject{font-weight:600;}
+.messagebar-error a:link{color:#5133ab;}
+.messagebar-error a:hover{color:rgba(81, 51, 171, 0.8);}
+.messagebar-error a:visited{color:#5133ab;}
+.messagebar-error a:active{color:rgba(81, 51, 171, 0.6);}
+#navBar{background-color:#4a2f96;}
+.cal-navbar-agenda .win-navbarcommand-icon,.cal-navbar-workweek .win-navbarcommand-icon{font-family:"Custom Icons";}
+.cal-navbar-agenda .win-navbarcommand-icon{transform:none;}
+.win-navbarcommand-label{font-weight:600;}
+.win-navbarcontainer-horizontal .win-navbarcommand{width:210px;}
+.win-ui-dark .win-navbarcommand-button.win-pressed,.win-ui-dark .win-navbarcommand-button.win-pressed:hover{color:#4a2f96;}
+.win-ui-dark .win-navbarcontainer-navarrow{font-family:"Segoe UI Symbol";background-color:rgba(255, 255, 255, 0.11);color:white;letter-spacing:0;}.win-ui-dark .win-navbarcontainer-navarrow:hover{background-color:rgba(255, 255, 255, 0.22);color:white;}.win-ui-dark .win-navbarcontainer-navarrow:hover:active{background-color:#FFFFFF;color:#4a2f96;}
+#appBar{background-color:#4a2f96;}
+#appBar button{border-color:transparent;}
+#appBar button:focus{border-color:white;}
+#appBar button.win-hidefocus:focus{border-color:transparent;}
+#appBar button:active:hover .win-commandimage,#appBar button[aria-checked=true] .win-commandimage{color:#4a2f96;}
+#appBar button[aria-checked=true]:active:hover .win-commandimage{color:white;}
+#appBar #workWeekCommand .win-commandimage{font-family:"Custom Icons";}
+.peekbar{background-color:#442b8a;}
+.peekbar:hover{background-color:#4a2f96;}
+.win-flyout:not(.win-menu){padding:17px 20px 20px;}
+.win-flyout .cal-flyout-msg{word-wrap:break-word;}
+.win-flyout .cal-flyout-buttons{display:-ms-flexbox;-ms-flex-flow:row wrap;-ms-flex-pack:start;}
+.win-flyout .cal-flyout-button{margin-top:14px;margin-right:20px;margin-left:0;}
+.win-flyout .cal-flyout-button:last-child{margin-right:0;margin-left:0;}
+@media (max-width:671px){.win-flyout .cal-flyout-buttons,.win-flyout .cal-flyout-msg{max-width:265px;}}@media (max-width:499px){.messageBar .messagebar-status{left:30px;right:30px;}}

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>waitControl</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="waitControl.css" rel="stylesheet" />
+    <script src="waitControl.js"></script>
+</head>
+<body>
+    <div id="waitControl" class="wait-control fragment">
+        <div class="wait-message-dialog">
+            <div class="left-content">
+                <progress class="win-ring progress-ring"></progress>
+            </div>
+            <div class="main-content">
+                <div class="content">
+                    <div class="title" data-bind="text: text"></div>
+                    <div class="details" data-bind="text: descriptionText"></div>
+                </div>
+                <div class="button-container">
+                    <button class="cancel-button" type="submit" data-bind="
+                        click: handleCancelClicked,
+                        text: AppMagic.Strings.Cancel,
+                        css: { 'hidden-button': !showCancelButton }">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

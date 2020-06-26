@@ -1,0 +1,441 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Ink control CSS
+ *
+ */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+/* Colors */
+/* Misc styles */
+.appmagic-inkControl {
+  -ms-grid-rows: 1fr auto;
+  -ms-grid-columns: 1fr;
+  display: -ms-grid;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  /* Prevent user's drawing actions from being interpreted as panning or other touch gestures. */
+  -ms-touch-action: none;
+}
+.appmagic-inkControl-draw-canvas {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  background-color: transparent;
+}
+.appmagic-inkControl-selection-canvas {
+  background-color: transparent;
+}
+.appmagic-inkControl-commandBar,
+.appmagic-inkControl-commandBar-disabled {
+  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box;
+  color: black;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.appmagic-inkControl-commandBar .appmagic-inkControl-commandBar-penModes {
+  min-width: 171px;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.appmagic-inkControl-commandBar .appmagic-inkControl-commandBar-penModes .button.active .icon {
+  background-color: #00b0f0;
+}
+.appmagic-inkControl-commandBar .appmagic-inkControl-commandBar-penModes .splitter {
+  background-color: #a6a6a6;
+  width: 1px;
+  height: 40px;
+  margin: 10px 10px 0px 10px;
+}
+.appmagic-inkControl-commandBar-disabled {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.appmagic-inkControl-commandBar .button {
+  box-sizing: border-box;
+  min-width: 50px;
+  /* Horizontally center text and vertically align beneath the icon. */
+  line-height: 25px;
+  text-align: center;
+  float: left;
+  margin-top: 10px;
+}
+.appmagic-inkControl-commandBar .button .icon:hover {
+  background-color: #00b0f0;
+}
+.appmagic-inkControl-commandBar .button.active .icon {
+  background-color: #00b0f0;
+}
+.appmagic-inkControl-commandBar .button .icon {
+  box-sizing: border-box;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  width: 40px;
+  height: 40px;
+  line-height: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Segoe UI Symbol';
+  font-size: 14pt;
+  background-color: black;
+  color: #ffffff;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+.appmagic-inkControl-commandBar .button .icon > div {
+  color: #ffffff;
+}
+.appmagic-inkControl-commandBar .button .icon .colorBar {
+  box-sizing: border-box;
+  border: 1px solid #FFFFFF;
+  width: 22px;
+  height: 6px;
+}
+.appmagic-inkControl-flyout {
+  border-width: 0px;
+  border: 0px;
+  padding: 0px;
+  /*
+        The flyout div itself has 0 height.
+        The content is anchored above and the pointer is anchored below.
+        This lets the content grow upwards purely via CSS instead of requiring positioning code.
+    */
+  min-height: 0px;
+  max-height: 0px;
+  /* Make overflow visible so that the content and anchor are visible when positioned outside the flyout. */
+  overflow: visible;
+  /*TASK 84561: Pen : Commandbar flyout margin becomes noticeably inaccurate once the zoom level changes.*/
+  margin-bottom: 15px;
+  width: 245px;
+  height: 0px;
+}
+/* Panel inside the flyout that contains the actual content. */
+.appmagic-inkControl-flyoutContent {
+  background-color: black;
+  color: #ffffff;
+  /* Position the content above the flyout. */
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer {
+  margin: 0;
+  padding: 15px 0 5px 15px;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .colorsDiv,
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .recentlyUsedContainer {
+  margin: 0;
+  white-space: normal;
+  display: block;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .colorsDiv .colorRow,
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .recentlyUsedContainer .colorRow {
+  display: inline;
+  margin-left: 0;
+  line-height: 30px;
+  padding: 0;
+  height: auto;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .colorsDiv .colorRow .colorDiv,
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .recentlyUsedContainer .colorRow .colorDiv {
+  margin-right: 12px;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .colorsContainer .center.container {
+  margin: 0 15px 0 0;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  margin: 5px 15px;
+  width: auto;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider {
+  width: auto;
+  height: auto;
+  -ms-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  flex: 1;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueTextBoxContainer {
+  height: auto;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .imageTextItem.selected {
+  background-color: #00b0f0;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider::-ms-fill-lower,
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider:hover::-ms-fill-lower,
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider:active::-ms-fill-lower,
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider:not(focus)::-ms-fill-lower {
+  background-color: #00b0f0 !important;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider::-ms-fill-upper,
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider:hover::-ms-fill-upper,
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider:active::-ms-fill-upper,
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider:not(focus)::-ms-fill-upper {
+  background-color: #d9d9d9 !important;
+}
+.appmagic-inkControl-flyoutContent .visualIntellisense .center.container .valueSlider::-ms-thumb {
+  background-color: #333333;
+}
+.appmagic-inkControl-propertyName {
+  padding: 10px 10px 10px 20px;
+}
+.appmagic-inkControl-flyoutMenuItem {
+  /* Padding for the text content. */
+  padding: 10px 20px 10px 20px;
+  height: 20px;
+}
+.appmagic-inkControl-flyoutMenuItem:hover {
+  background-color: #777777;
+}

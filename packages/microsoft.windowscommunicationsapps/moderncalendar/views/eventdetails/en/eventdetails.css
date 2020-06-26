@@ -1,0 +1,66 @@
+﻿.scrollableY{overflow-y:auto;-ms-overflow-style:-ms-autohiding-scrollbar;}
+#cedContainer{width:100%;height:100%;display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr;}#cedContainer .freebusy{position:relative;z-index:1;}
+#cedBackground{background-color:#f4f4f4;position:absolute;z-index:-1;left:0;top:0;width:520px;height:100%;opacity:0;}
+#eventDetails input[type="text"]{font-family:inherit;}
+#eventDetails{display:-ms-grid;width:100%;height:100%;-ms-grid-rows:auto 1fr;-ms-grid-columns:520px 1fr;font-weight:400;}#eventDetails button.win-command{padding:2px;margin-left:24px;margin-right:-2px;border:none;}#eventDetails button.win-command[aria-hidden="true"]{display:none;}
+#eventDetails button.win-command .win-commandicon{font-family:"Segoe UI Symbol";line-height:36px;margin:0;}#eventDetails button.win-command .win-commandicon .win-commandimage{margin-top:-6px;}
+#eventDetails button.win-command.useCustomFont .win-commandimage{font-family:"Custom Icons";}
+#eventDetails button.win-command:focus:not(:active){outline:#000000;outline-style:dotted;outline-width:1px;}
+#eventDetails button.win-command:active{outline:none;}
+#eventDetails>#nav{-ms-grid-row:1;-ms-grid-column:1;padding:20px 40px 10px;background-color:#f4f4f4;}#eventDetails>#nav .cedHeader{display:none;}
+#eventDetails>#nav .calendarSelector{margin-left:80px;margin-right:10px;}
+#eventDetails .error{color:#ff3000;font-weight:300;}
+#eventDetails #showError{margin:5px 0 -5px 0;}
+#eventDetails #addressWellError{margin:14px 0 -15px;}
+#eventDetails #endOccurrenceError{margin:14px 0 -14px;}
+#eventDetails>#schedule{-ms-grid-row:2;-ms-grid-column:1;overflow-y:auto;-ms-overflow-style:-ms-autohiding-scrollbar;padding:0 60px;background-color:#f4f4f4;}#eventDetails>#schedule input:not([type="email"]){margin:0;padding:0;}
+#eventDetails>#schedule select{margin:0;height:32px;}#eventDetails>#schedule select option:hover:active{color:#000000 !important;background-color:#d3d3d3;}
+#eventDetails>#schedule .win-timepicker select,#eventDetails>#schedule .win-timepicker input{margin-right:10px;}
+#eventDetails>#schedule .win-timepicker select:last-child,#eventDetails>#schedule .win-timepicker input:last-child{margin-right:0;}
+#eventDetails>#schedule .win-timepicker-hour,#eventDetails>#schedule .win-timepicker-minute,#eventDetails>#schedule .win-timepicker-period{width:70px;}
+#eventDetails>#schedule input.readonly{background-color:#E3E3E3;border-color:#D0D0D0;color:#5E5E5E;}#eventDetails>#schedule input.readonly:-ms-input-placeholder{color:#8C8C8C;}
+#eventDetails>#schedule .fullWidth>input[type="text"],#eventDetails>#schedule .fullWidth #ShowMore>input[type="text"]{width:100%;font-weight:400;box-sizing:border-box;height:32px;line-height:24px;}#eventDetails>#schedule .fullWidth>input[type="text"]:-ms-input-placeholder,#eventDetails>#schedule .fullWidth #ShowMore>input[type="text"]:-ms-input-placeholder{color:#666666;}
+#eventDetails>#schedule .fullWidth>input[type="text"]::-ms-value,#eventDetails>#schedule .fullWidth #ShowMore>input[type="text"]::-ms-value{margin:0 8px;}
+#eventDetails>#schedule .fullWidth select{width:100%;}
+#eventDetails>#schedule label{display:block;margin:21px 0 7px;color:#000000;}#eventDetails>#schedule label[aria-hidden='true']{display:none;}
+#eventDetails>#schedule label.readonly{color:#626262;}
+#eventDetails>#schedule input[type="checkbox"]{margin-right:5px;}
+#eventDetails>#schedule #showMore label{margin:19px 0 7px;}
+#eventDetails>#schedule #StartDateCombo,#eventDetails>#schedule #EndDateCombo,#eventDetails>#schedule #EndOccurrenceCombo{width:calc((100% - 4px));border:2px solid rgba(0, 0, 0, 0.3);background-color:white;}#eventDetails>#schedule #StartDateCombo .value,#eventDetails>#schedule #EndDateCombo .value,#eventDetails>#schedule #EndOccurrenceCombo .value{white-space:nowrap;overflow:hidden;margin-right:50px;padding:4px 8px;}
+#eventDetails>#schedule #StartDateCombo .check:before,#eventDetails>#schedule #EndDateCombo .check:before,#eventDetails>#schedule #EndOccurrenceCombo .check:before{content:'\E0A1';}
+#eventDetails>#schedule #StartDateCombo .check,#eventDetails>#schedule #EndDateCombo .check,#eventDetails>#schedule #EndOccurrenceCombo .check{float:right;width:30px;text-align:center;font-family:"Segoe UI Symbol";font-size:18px;}
+#eventDetails>#schedule #StartDateCombo:hover,#eventDetails>#schedule #EndDateCombo:hover,#eventDetails>#schedule #EndOccurrenceCombo:hover{border-color:rgba(0, 0, 0, 0.4);}
+#eventDetails>#schedule #StartDateCombo.readonly,#eventDetails>#schedule #EndDateCombo.readonly,#eventDetails>#schedule #EndOccurrenceCombo.readonly{border-color:#d0d0d0;background-color:#e3e3e3;color:#5e5e5e;}#eventDetails>#schedule #StartDateCombo.readonly .check,#eventDetails>#schedule #EndDateCombo.readonly .check,#eventDetails>#schedule #EndOccurrenceCombo.readonly .check{display:none;}
+#eventDetails>#schedule #StartDateDescrip{margin-top:21px;}
+#eventDetails>#schedule #EndTimeCombo{margin-top:7px;}
+#eventDetails>#schedule #FreeBusy{display:inline-block;margin-top:10px;margin-left:0;margin-right:15px;}@media (max-width:440px){#eventDetails>#schedule #FreeBusy{display:none;}}
+#eventDetails>#schedule .cedInputHost{padding-right:3px;}
+#eventDetails>#schedule #cedTitleSnap{display:none;}
+#eventDetails>#schedule #StartTimeHolder{overflow:auto;clear:left;}
+#eventDetails>#schedule #StartTimeCombo{float:left;margin-right:20px;}
+#eventDetails>#schedule #allDayHolder{float:left;margin-top:7px;}
+#eventDetails>#schedule #AlldayCheckboxDescrip{margin:0;}
+#eventDetails>#schedule #SetEndOccurrenceButton,#eventDetails>#schedule #ClearEndOccurrenceButton,#eventDetails>#schedule #ToggleResponsesButton{margin-top:10px;}
+#eventDetails>#schedule .privateEvent,#eventDetails>#schedule .durationCustom{display:inline;margin-bottom:0;vertical-align:middle;}#eventDetails>#schedule .privateEvent[aria-hidden="true"],#eventDetails>#schedule .durationCustom[aria-hidden="true"]{display:none;}
+#eventDetails>#schedule #PrivateHolder{margin:24px 0 175px;}
+#eventDetails>#schedule #ToggleResponsesButton,#eventDetails>#schedule #ShowMoreButton{font-weight:300;font-family:inherit;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;cursor:pointer;padding:0;min-width:0;min-height:0;background-color:transparent;border:hidden;}
+#eventDetails>#schedule #ShowMoreButton{margin:19px 0 34px;display:block;}
+#eventDetails>#schedule #yourResponse{margin-top:4px;color:#666666;}
+#eventDetails>#schedule #FreeBusy[aria-hidden="true"],#eventDetails>#schedule #ShowMore[aria-hidden="true"],#eventDetails>#schedule #ShowMoreButton[aria-hidden="true"],#eventDetails>#schedule #GuestsCombo[aria-hidden="true"],#eventDetails>#schedule #EndCustom[aria-hidden="true"],#eventDetails>#schedule #yourResponse[aria-hidden="true"],#eventDetails>#schedule #SetEndOccurrenceButton[aria-hidden="true"],#eventDetails>#schedule #ClearEndOccurrenceButton[aria-hidden="true"],#eventDetails>#schedule #ToggleResponsesButton[aria-hidden="true"],#eventDetails>#schedule #AttendeeResponses[aria-hidden="true"],#eventDetails>#schedule #EndOccurrenceCombo[aria-hidden="true"]{display:none;}
+#eventDetails>#schedule .attendee{display:-ms-grid;width:100%;-ms-grid-rows:50% 50%;-ms-grid-columns:40px 10px 1fr;margin-top:12px;}#eventDetails>#schedule .attendee .avatar{-ms-grid-row:1;-ms-grid-row-span:2;-ms-grid-column:1;-ms-high-contrast-adjust:none;margin-top:3px;}
+#eventDetails>#schedule .attendee .name{-ms-grid-row:1;-ms-grid-column:3;color:#000000;padding-top:3px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+#eventDetails>#schedule .attendee .email{-ms-grid-row:2;-ms-grid-column:3;color:#666666;padding-top:3px;margin-top:-3px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;}
+#eventDetails>#schedule #AttendeeResponses .responseHeader{margin-top:19px;color:#666666;}
+#eventDetails>#schedule #OrganizerDescrip{margin-bottom:-4px;}
+#eventDetails>#cedNotes{-ms-grid-row:2;-ms-grid-column:2;margin-left:60px;margin-right:0px;margin-top:-1px;padding-top:25px;border-top-width:1px;border-top-style:solid;border-top-color:#f4f4f4;}#eventDetails>#cedNotes #NotesTextbox{height:100%;overflow:auto;}#eventDetails>#cedNotes #NotesTextbox .modernCanvas-cueText{top:10px;}
+#eventDetails>#cedTitle{-ms-grid-row:1;-ms-grid-column:2;padding-top:19px;margin-left:60px;}#eventDetails>#cedTitle input[type="text"]{border-width:0;}#eventDetails>#cedTitle input[type="text"]::-ms-clear{display:none;}
+#eventDetails>#cedTitle input[type="text"]::-ms-value{margin:0;}
+#eventDetails>#cedTitle input[type="text"]:-ms-input-placeholder{color:#666666;}
+#eventDetails>#cedTitle #EventTitleDescrip{display:none;}
+#eventDetails>#cedTitle #cedTitleFull{display:-ms-flexbox;margin-right:64px;}#eventDetails>#cedTitle #cedTitleFull #EventTitleTextbox{line-height:60px;height:60px;width:auto;-ms-flex:1 1 auto;color:#000000;font-weight:200;font-size:26.66667px;letter-spacing:0.02em;margin-right:-2px;margin-top:0;margin-bottom:0;}#eventDetails>#cedTitle #cedTitleFull #EventTitleTextbox:-ms-input-placeholder{color:#666666;}
+#eventDetails>#cedTitle #cedTitleFull #cedButtonsFull{padding-top:9px;margin-right:-6px;flex-shrink:0;}
+#eventDetails>#cedTitle #cedSave,#eventDetails>#cedTitle #cedSend{margin-left:23px;}
+#eventDetails>#cedTitle #cedCancel{margin-right:0;}
+#eventDetails #cedBackFull{float:left;margin-top:8px;margin-left:-6px;margin-right:20px;}
+#eventDetails .mirrorInRTL{transform:none;}
+@media (max-width:1023px){#cedBackground{width:100%;} #eventDetails{width:100%;display:-ms-flexbox;-ms-flex-direction:column;overflow:auto;height:calc((100% - 134px));margin-top:134px;}#eventDetails>#nav{position:absolute;margin-top:-134px;width:100%;box-sizing:border-box;padding-top:30px;padding-left:40px;padding-right:60px;padding-bottom:0;}#eventDetails>#nav .calendarSelector{margin-left:20px;margin-right:10px;} #eventDetails>#nav .cedHeader{display:block;overflow:hidden;}#eventDetails>#nav .cedHeader #cedBackSnap{float:left;margin-left:-6px;margin-right:0;} #eventDetails>#nav .cedHeader #cedButtonsSnap{float:right;} #eventDetails #showError{margin:10px 0 -10px;} #eventDetails>#schedule{padding:0 60px;width:100%;box-sizing:border-box;-ms-flex:0 0 auto;overflow-y:visible;}#eventDetails>#schedule #cedButtonsFull{display:none;} #eventDetails>#schedule #cedTitleSnap{display:block;margin-bottom:21px;} #eventDetails>#schedule .win-timepicker{display:-ms-flexbox;} #eventDetails>#schedule .win-timepicker-hour,#eventDetails>#schedule .win-timepicker-minute,#eventDetails>#schedule .win-timepicker-period{width:70px;} #eventDetails>#schedule #PrivateHolder{margin:24px 0 28px;} #eventDetails>#schedule #EndDateDescrip{margin-top:26px;} #eventDetails>#schedule #EndTimeCombo{margin:28px 0 -1px;} #eventDetails>#schedule #StartDateDescrip{margin-top:8px;} #eventDetails>#schedule #EventTitleDescrip{margin-top:17px;} #eventDetails>#schedule #ShowMoreButton{margin:21px 0 29px;} #eventDetails>#cedNotes{-ms-flex:1 1 auto;min-height:169px;padding:0;background-color:white;border-top-style:none;margin:0;overflow:visible;}#eventDetails>#cedNotes #cedNotesLabel{display:none;} #eventDetails>#cedNotes #NotesTextbox{padding:0;margin:0;overflow:visible;}#eventDetails>#cedNotes #NotesTextbox .modernCanvas-frame{background-color:white;} #eventDetails>#cedNotes #NotesTextbox .modernCanvas-cueText{top:15px;left:60px;} #eventDetails>#cedTitle{display:none;margin-top:10px;}}@media (max-width:499px){#eventDetails{height:calc((100% - 137px));margin-top:137px;}#eventDetails>#nav{padding:40px 20px 2px;margin-top:-137px;}#eventDetails>#nav .calendarSelector{margin:10px 0 0 0;position:relative;top:0;} #eventDetails #cedButtonsSnap{margin-right:0;} #eventDetails button.win-command{min-width:30px;margin-left:4px;}#eventDetails button.win-command .win-commandicon{width:30px;height:30px;}#eventDetails button.win-command .win-commandicon .win-commandimage{font-size:10.5pt;width:30px;line-height:30px;} #eventDetails button.win-command .win-commandicon .win-commandimage.new-icon{line-height:22px;margin-top:2px;margin-left:-3px;} #eventDetails #showError{margin:15px 0 -15px;} #eventDetails>#schedule{padding:0 20px;}#eventDetails>#schedule select::-ms-value{padding-right:2px;} #eventDetails>#schedule .win-timepicker-hour{-ms-flex:1 1 70px;} #eventDetails>#schedule .win-timepicker-minute{-ms-flex:1 1 110px;} #eventDetails>#schedule .win-timepicker-period{-ms-flex:1 1 80px;} #eventDetails>#schedule #EventTitleDescrip{margin-top:19px;} #eventDetails>#schedule #PrivateHolder{margin:24px 0 33px;} #eventDetails>#cedNotes{min-height:193px;}#eventDetails>#cedNotes #NotesTextbox .modernCanvas-cueText{left:20px;} #eventDetails .aw-ddContainer{width:100%;}}@media screen and (-ms-high-contrast){#eventDetails .scroll>#schedule #ShowMoreButton{color:-ms-hotlight;}}

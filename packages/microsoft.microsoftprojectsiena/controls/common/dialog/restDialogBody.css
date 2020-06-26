@@ -1,0 +1,123 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic RestDialog CSS
+ *
+ */
+
+.rest-dialog {
+    display: -ms-grid;
+    -ms-grid-rows: auto 15px;
+    -ms-grid-columns: 1fr auto 1fr;
+}
+
+.rest-dialog-Container {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    display: -ms-grid;
+    -ms-grid-rows: 40px 30px 1fr auto auto;
+    -ms-grid-columns: auto;
+}
+
+.rest-dialog .rest-dialog-Container .rest-dialog-line0 {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    display: -ms-grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 40px 30px 1fr;
+}
+
+    .rest-dialog .rest-dialog-Container .rest-dialog-line0 .icon {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        width: 40px;
+        height: 40px;
+    }
+
+    .rest-dialog .rest-dialog-Container .rest-dialog-line0 .title {
+        -ms-grid-row: 1;
+        -ms-grid-column: 3;
+        font-size: 25pt;
+        font-weight: lighter;
+        font-family: 'Segoe UI';
+        color: rgba(255, 255, 255, 1); /* Steed */
+    }
+
+.rest-dialog .rest-dialog-Container .rest-dialog-line1 {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    margin-left: 70px;
+}
+
+    .rest-dialog .rest-dialog-Container .rest-dialog-line1 .userVariableName {
+        font-size: 11pt;
+        font-family: 'Segoe UI';
+        color: rgba(255, 255, 255, 1); /* Steed */
+    }
+
+    .rest-dialog .rest-dialog-Container .rest-dialog-line1 .userVariableTextBox {
+        font-size: 10pt;
+        font-weight: lighter;
+        font-family: 'Segoe UI';
+        width: 310px;
+        margin: 10px 0px 15px 0px;
+        box-sizing: border-box;
+        background-color: rgba(255, 255, 255, 1); /* Steed */
+    }
+
+.rest-dialog .rest-dialog-Container .rest-dialog-line2 {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+}
+
+    .rest-dialog .rest-dialog-Container .rest-dialog-line2 .rest-dialog-forget-info {
+        color: rgba(255, 255, 255, 1.0); /* Steed */
+        border: 2px solid white;
+        font-family: "Segoe UI";
+        font-weight: bold;
+        font-size: 9pt;
+        margin-left: 70px;
+        margin-top: 0px;
+        cursor: pointer;
+        min-width: 0px;
+    }
+
+        .rest-dialog .rest-dialog-Container .rest-dialog-line2 .rest-dialog-forget-info:not([disabled]):hover {
+            color: rgba(255, 255, 255, 1); /* Steed */
+            border: 2px solid white;
+            background-color: rgba(255, 255, 255, 0.2); /* Trace */
+        }
+
+        .rest-dialog .rest-dialog-Container .rest-dialog-line2 .rest-dialog-forget-info:not([disabled]):active {
+            color: rgba(0, 0, 0, 1); /* Ink */
+            border: 2px solid white;
+            background-color: rgba(255, 255, 255, 1); /* Steed */
+        }
+
+.rest-dialog .rest-dialog-Container .rest-dialog-disclaimer-note {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    font-size: 9pt;
+    font-family: 'Segoe UI';
+    width: 310px;
+    margin: 5px 0px 0px 70px;
+    color: rgba(255, 255, 255, 1); /* Steed */
+}
+
+.rest-dialog .rest-dialog-Container .rest-dialog-help-container {
+    -ms-grid-row: 6;
+    -ms-grid-column: 1;
+    margin: 20px 0px 0px 70px;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+}
+
+    .rest-dialog .rest-dialog-Container .rest-dialog-help-container .rest-dialog-help-link {
+        color: rgba(255, 255, 255, 1.0); /* Steed */
+        font-family: "Segoe UI";
+        font-weight: bold;
+        font-size: 9pt;
+        margin-left: 5px;
+        cursor: pointer;
+        line-height: 20px;
+    }

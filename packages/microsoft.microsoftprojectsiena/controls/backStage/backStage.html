@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>backStage</title>
+
+    <link href="backStage.css" rel="stylesheet" />
+    <script src="backStage.js"></script>
+</head>
+<body>
+    <div id="backStage" class="fragment" data-bind="shortcut: { provider: backStageShortcuts }" ondragstart="return false;">
+        <div class="backStagePanel">
+            <div id="backstagebackbutton" class="backStageBackButton" data-bind="clickOrEnter: handleBackButtonClick.bind($data), text: AppMagic.AuthoringTool.SegoeGlyphs.back" data-appmagic-initialfocus="true" tabindex="0"></div>
+
+            <div class="backStagePanelItem" data-bind="css: { selected: current.title === AppMagic.AuthoringStrings.DataSources }, click: onClickSetting.bind($data, AppMagic.AuthoringStrings.DataSources), text: AppMagic.AuthoringStrings.DataSources"></div>
+            <div class="backStagePanelItem" data-bind="css: { selected: current.title === AppMagic.AuthoringStrings.EmbeddedMedia }, click: onClickSetting.bind($data, AppMagic.AuthoringStrings.EmbeddedMedia), text: AppMagic.AuthoringStrings.EmbeddedMedia"></div>
+            <div class="backStagePanelItem" data-bind="css: { selected: current.title === AppMagic.AuthoringStrings.DataCollections }, click: onClickSetting.bind($data, AppMagic.AuthoringStrings.DataCollections), text: AppMagic.AuthoringStrings.DataCollections"></div>
+            <div class="backStagePanelItem" data-bind="css: { selected: current.title === AppMagic.AuthoringStrings.MacroBackstage }, click: onClickSetting.bind($data, AppMagic.AuthoringStrings.MacroBackstage), text: AppMagic.AuthoringStrings.MacroBackstage, visible: macroBackStageVisible"></div>
+            <div class="backStagePanelItem" data-bind="css: { selected: current.title === AppMagic.AuthoringStrings.AppSettings }, click: onClickSetting.bind($data, AppMagic.AuthoringStrings.AppSettings), text: AppMagic.AuthoringStrings.AppSettings"></div>
+            <div class="backStagePanelItem" data-bind="css: { selected: current.title === AppMagic.AuthoringStrings.Publish }, click: onClickSetting.bind($data, AppMagic.AuthoringStrings.Publish), text: AppMagic.AuthoringStrings.Publish"></div>
+        </div>
+
+        <div class="backStageContentHost" data-bind="
+            property: { viewModel: current.viewModel },
+            winjsControl: current.pageUrl"></div>
+    </div>
+</body>
+</html>

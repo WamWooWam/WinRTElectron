@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <script type="text/html" id="appmagic-dropdownFlyout-template">
+        <div spellcheck="false" class="appmagic-dropdownList" tabindex="-1"
+             data-bind="style: {
+                fontFamily: properties.Font,
+                fontSize: properties.Size,
+                fontWeight: properties.FontWeight,
+                fontStyle: properties.Italic,
+                textAlign: properties.Align },
+                visible: visible,
+                css: {
+                    underline: properties.Underline,
+                    strikethrough: properties.Strikethrough 
+                },
+                event: {keydown: onKeyDownItem},
+                foreach: currentItems">
+            <div class="appmagic-dropdownListItem" tabindex="-1"
+                 data-bind="style: {
+                    color: textColor,
+                    backgroundColor: backgroundColor,
+                    borderColor: $parent.properties.BorderColor,
+                    borderStyle: $parent.properties.BorderStyle,
+                    'border-left-width': $parent.properties.BorderThickness,
+                    'border-right-width': $parent.properties.BorderThickness,
+                    'border-top-width': getTopBorderWidthCss($index(), $parent.currentItems.length),
+                    'border-bottom-width': getBottomBorderWidthCss($index(), $parent.currentItems.length),
+                    paddingTop: $parent.properties.PaddingTop,
+                    paddingRight: $parent.properties.PaddingRight,
+                    paddingBottom: $parent.properties.PaddingBottom,
+                    paddingLeft: $parent.properties.PaddingLeft},
+                    hasFocus: hasFocus,
+                    css: {selected: selected},
+                    event: {
+                        click: $parent.onClickItem.bind($parent),
+                        mouseover: onMouseOver,
+                        mouseout: onMouseOut,
+                        mousedown: onMouseDown,
+                        mouseup: onMouseUp
+                    },
+                    text: value">
+            </div>
+        </div>
+    </script>
+</body>
+</html>

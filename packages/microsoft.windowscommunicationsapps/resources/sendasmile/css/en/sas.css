@@ -1,0 +1,10 @@
+﻿#SendASmile{font-size:14.66667px;width:644px;}
+#sasForm{display:none;width:100%;height:calc(((100% - 75px) - 39px));margin-bottom:39px;}
+#surveyFrame{height:100%;width:566px;margin:0 40px;}
+#sasTitle{padding-left:40px;width:480px;display:inline-block;cursor:default;}
+#sasAppIcon{-ms-high-contrast-adjust:none;position:absolute;background-size:100% 100%;}
+#sasLoadCtr{margin:0 40px;margin-top:33px;color:#000000;}
+#sasLoadSpinner{margin-right:10px;}
+#sasLegalLink{position:absolute;top:calc(((100% - 31px) - 80px));margin-left:40px;display:block;color:#26a0da;}
+#sasLoadHeaderText{font-weight:bold;}
+@media (max-width:644px){#SendASmile{width:100%;} #surveyFrame{width:calc((100% - 10px));margin-left:5px;margin-right:5px;} #sasHeader{padding-right:5px;padding-left:5px;} #sasTitle{width:calc((100% - 40px));} #sasLoadCtr{margin:0 10px;} #sasLegalLink{margin-left:10px;}}

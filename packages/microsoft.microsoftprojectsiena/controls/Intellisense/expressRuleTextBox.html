@@ -1,0 +1,172 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>expressRuleTextBox</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="expressRuleTextBox.css" rel="stylesheet" />
+    <script src="expressRuleTextBox.js"></script>
+</head>
+<body>
+    <script type="text/html" id="intellisense-container">
+        <div class="bracketHighlightContainer" data-bind="foreach: ruleDecorationManager.bracketHighlights">
+            <div class="bracketHighlight" data-bind="style: { left: left, height: height, top: top, width: width }"></div>
+        </div>
+
+        <div class="macroHighlightContainer" data-bind="foreach: ruleDecorationManager.macroHighlights">
+            <div class="macroHighlight" data-bind="style: { left: left, height: height, top: top, width: width }"></div>
+        </div>
+
+        <div class="suggestions" data-bind="visible: intellisenseVisible, foreach: viewModel.intellisenseVM.suggestions,
+                                            style: { bottom: intellisenseBottom }, css: { scroll: viewModel.intellisenseVM.suggestions.length > 3 },
+                                            event: { scroll: viewModel.intellisenseVM.scrollSuggestions.bind(viewModel.intellisenseVM, $element) }">
+            <div class="suggestion" data-bind="html: styledText, css: { selected: $parent.viewModel.intellisenseVM.selectedIndex === $index() },
+                                               event: { click: $parent.selectSuggestion.bind($parent, $data) }"></div>
+        </div>
+    </script>
+
+    <script type="text/html" id="tooltip-container">        
+        <div class="absoluteTooltipContainer" data-bind="visible: intellisenseTooltipVisible">
+            <div class="intellisenseTooltipContainer" data-bind="with: viewModel.intellisenseVM.tooltipContent,
+                                                            style: { bottom: intellisenseTooltipPosition.bottom, left: intellisenseTooltipPosition.left} ">
+                <div class="intellisenseTooltip" data-bind="visible: fnSignature, with: fnSignature, style: { width: $parent.intellisenseTooltipWidth }">
+                    <span data-bind="text: start"></span><span class="highlightedText" data-bind="text: highlight"></span><span data-bind="text: end"></span>
+                </div>
+                <div class="intellisenseTooltip" data-bind="visible: definition, style: { width: $parent.intellisenseTooltipWidth }">
+                    <span class="highlightedText" data-bind="text: highlightedText"></span><span data-bind="text: definition"></span>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="flyout-container">
+        <div class="flyoutContainer" data-bind="visible: flyoutVisible, style: { bottom: flyoutPosition.bottom, right: flyoutPosition.right, top: flyoutPosition.top }">
+
+            <div class="contextMenu" data-bind="visible: contextMenuVisible, foreach: contextItems">
+                <div data-bind="text: text, event: { click: handleClick }, clickBubble: false, visible: visible, css: overlayClass"></div>
+                <!-- ko if: canEdit -->
+                <input type="text" class="editItem" spellcheck="false" data-bind="css: additionalClass, value: editValue, valueUpdate: 'keyup', visible: editVisible, event: { blur: handleEditBlur, keyup: handleEditKeyup, keydown: handleEditKeydown }" />
+                <div class="editItemSquigglies" data-bind="visible: editVisible, style: { width: errorWidth }"></div>
+                <!-- /ko -->
+            </div> 
+
+            <div class="visualIntellisensePage" data-bind="visible: visualIntellisenseVisible && !fnDiscoveryPanelVisible && !contextMenuVisible,
+                                                           observableProperty: { rule: viewModel },
+                                                           winjsControl: '/controls/common/ruleValueEditor/ruleValueEditor.html'"></div>
+
+            <div class="fnDiscoveryPanel" data-bind="visible: fnDiscoveryPanelVisible">
+                <!-- ko with: fnDiscoveryPanel -->
+                <div class="FunctionDiscoveryPanel categoryContainer" data-bind="css: { selected: categoriesVisible }, event: { keydown: handleCategoryContainerKeyDown.bind($data) }">
+                    <div class="dropDownContainer" data-bind="click: handleCategoryArrowClick.bind($data), clickBubble: false">
+                        <div class="selectedCategory" data-bind="text: selectedCategory.value, css: { selected: categoriesVisible }"></div>
+
+                        <div class="dropArrow">
+                            <img class="dropArrowImg" src="../../images/dropdownarrow_stoneicon.svg" />
+                        </div>
+                    </div>
+
+                    <div class="categories scroll" data-bind="visible: categoriesVisible, foreach: categories, focusRoot: categoriesVisible ? selectedCategory.value : ''">
+                        <div class="category" data-bind="text: $data.value, css: { selected: $data.value === $parent.selectedCategory.value },
+                                                         focusElement: value,
+                                                         click: $parent.handleCategoryClick.bind($parent, $data),
+                                                         event: { keydown: $parent.handleCategoryKeyDown.bind($parent) }" tabindex="1" ">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fnList scroll" data-bind="foreach: selectedCategoryFunctions, focusRoot: $parent.fnDiscoveryPanelVisible && !categoriesVisible ? selectedFunction.qualifiedName : ''">
+                    <div class="fnName" data-bind="text: qualifiedName,
+                                                   attr: { title: qualifiedName },
+                                                   css: { selected: qualifiedName === $parent.selectedFunction.qualifiedName },
+                                                   focusElement: qualifiedName,
+                                                   click: $parent.handleFnClick.bind($parent, $data),
+                                                   event: { keydown: $parents[1].handleFnNameKeyDown.bind($parents[1]), dblclick: $parents[1].handleFnNameDblClick.bind($parents[1]) }" tabindex="1"></div>
+                </div>
+
+                <div class="fnInfo">
+                    <span class="fnDescription" data-bind="visible: !categoriesVisible, text: selectedFunction.description"></span>
+                    <span class="fnHelp" data-bind="visible: !categoriesVisible, text: selectedFunction.helpLink ? AppMagic.AuthoringStrings.LearnMore : '', click: handleHelpClick.bind($data)"></span>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </script>
+
+    <script type="text/html" id="namemap-container">
+        <div class="nameMap">
+            <div class="sink" data-bind="text: $data"></div>
+            <div class="equal" data-bind="text: '='"></div>
+            <!-- ko with: $parent.viewModel.nameMap[$data] -->
+            <div class="expressView source" tabindex="0" data-bind="event: { keydown: $parents[1].handleSourcesKeyDown.bind($parents[1], $parent, $element) }">
+                <div class="sourceText" data-bind="text: source(), click: $parents[1].handleArrowClick.bind($parents[1], $parent, $element.parentNode), clickBubble: false"></div>
+
+                <div class="dropArrow" data-bind="click: $parents[1].handleArrowClick.bind($parents[1], $parent, $element.parentNode), css: { selected: sourcesVisible() }">
+                    <img class="dropArrowImg" src="../../images/dropdownarrow_icon.svg" />
+                </div>
+
+                <div class="sources" data-bind="visible: sourcesVisible(), foreach: sources()">
+                    <div class="sourceItem" data-bind="text: $data, css: { selected: $data === $parent.source() },
+                                                       click: $parents[2].viewModel.handleSourceClick.bind($parents[2].viewModel, $parentContext.$data),
+                                                       event: { keydown: $parents[2].handleSourceKeyDown.bind($parents[2], $index(), $parentContext.$data, $element.parentNode) }" tabindex="1"></div>
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </script>
+
+    <div class="expressRuleTextBox"
+         data-bind="css: { behaviorRule: viewModel.category === Microsoft.AppMagic.Authoring.PropertyRuleCategory.behavior,
+                    dataRule: viewModel.category === Microsoft.AppMagic.Authoring.PropertyRuleCategory.data,
+                    designRule: viewModel.category === Microsoft.AppMagic.Authoring.PropertyRuleCategory.design }">
+
+        <div class="key" data-bind="attr: { title: viewModel.tooltip }">
+            <span data-bind="text: styledDisplayKey.start"></span><span class="highlightedText" data-bind="text: styledDisplayKey.middle"></span><span data-bind="text: styledDisplayKey.end"></span>
+        </div>
+        <div class="equal" data-bind="text: '='"></div>
+
+        <div class="bodyContainer" data-bind="style: { height: textAreaHeight }, event: { click: handleBodyContainerClick.bind($data) }">
+            <!-- We do not bind to an empty text to avoid height change when text changes from empty to non-empty or vice versa.
+                We also do not define min-height to be able to support differnt font-sizes. -->
+            <div class="nonEditable" data-bind="text: viewModel.rhs.length > 0 ? viewModel.rhs : '.',
+                                                css: { visibleBackground: editable }"></div>
+
+            <textarea class="ruleValue"
+                      spellcheck="false"
+                      ondragstart="return false"
+                      oncontextmenu="return false"
+                      data-bind="value: viewModel.rhsUserEdit, valueUpdate: 'keyup',
+                           css: { editable: editable }, style: { height: textAreaHeight },
+                           event: {
+                               /* Set editable when the element gets focus through keyboard (like tab). */
+                               focus: setEditable.bind($data),
+                               /* on click, the element is already in editable mode */
+                               click: handleClick.bind($data),
+                               mousemove: handleMouseMove.bind($data),
+                               /* contextmenu: handleContextMenu.bind($data), */
+                               keydown: handleKeyDown.bind($data), keyup: handleKeyUp.bind($data)
+                           }"></textarea>
+
+            <div class="squigglyContainer" data-bind="foreach: ruleDecorationManager.squigglies">
+                <div class="squiggly" data-bind="style: { left: left, top: top, width: width }, event: { contextmenu: $parent.handleContextMenu.bind($parent) }"></div>
+            </div>
+
+            <!-- ko template: { name: 'intellisense-container', if: editable }--><!-- /ko -->
+        </div>
+
+        <!-- ko template: { name: 'tooltip-container', if: editable }--><!-- /ko -->
+
+        <div class="nameMaps" data-bind="template: { name: 'namemap-container', foreach: viewModel.nameMapSinks }"></div>
+
+        <!-- ko template: { name: 'flyout-container', if: editable } --><!-- /ko -->
+
+        <div class="fnDiscoveryButton" data-bind="visible: editable, click: handleFnDiscoveryButtonClick.bind($data), attr: { title: AppMagic.AuthoringStrings.BrowseFunctions }">
+            <img src="../../images/fndiscovery_onicon.svg" />
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,238 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>publishPage</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <script src="publishPage.js"></script>
+    <link href="publishPage.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="publish-container">
+        <div id="colorPickerPopupAnchor"></div>
+        <div id="colorPickerPopup" data-bind="winjsControlClass: WinJS.UI.Flyout" class="publish-color-picker">
+            <div class="publish-color-picker-popup">
+                <div class="publish-color-picker-button"
+                     data-bind="
+                            observableProperty: { rule: colorPickerViewModel },
+                            winjsControl: '/controls/common/ruleValueEditor/ruleValueEditor.html',
+                            ">
+                </div>
+            </div>
+        </div>
+        <div class="publish">
+            <div class="publish-details-title publish-tile-header publish-tile-sample-label"
+                 data-bind="text: AppMagic.AuthoringStrings.PublishAppTileSampleLable">
+            </div>
+            <div class="publish-tile-preview-column">
+                <div class="publish-logo-image publish-tile-border"
+                     data-bind="
+                                style: {
+                            backgroundSize: getBackgroundImageSizeForSample(scaleMultipierFullSizeTileToMaxSize),
+                            backgroundPosition: getBackgroundImageLocationForSquareSample(scaleMultipierFullSizeTileToMaxSize),
+                                    backgroundColor: backgroundColorAsCss ,
+                                    backgroundImage: logoImageUrl.length !== 0 ? 'url(&quot;' + logoImageUrl + '&quot;)' : ''
+                                },
+                                css: { 'publish-logo-image-default': logoImageUrl.length === 0 }">
+                    <div class="publish-tile-app-name-mangepage" data-bind="text: applicationName, style : { color: tileAppNameColor }"></div>
+                </div>
+                <div class="publish-sample-tile-see-all-button-container link" tabindex="0" data-bind="clickOrEnter: switchToLogosPage.bind($data)">
+                    <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.PublishAppSeeAllTilesButton"></span>
+                    <span class="icon">&#xE2AB;</span>
+                </div>
+            </div>
+            <div class="publish-tile-data-column">
+                <div class="publish-background-color-line">
+                    <div class="publish-background-color-square publish-tile-border"
+                         data-bind="
+                        style: { backgroundColor: backgroundColorAsCss }">
+                    </div>
+                    <div class="button publish-change-color-button" tabindex="0"
+                         data-bind="clickOrEnter: showOrHideColorPicker.bind($data)">
+                        <img src="/images/fillicon.svg" />
+                    </div>
+                </div>
+                <input class="publish-app-name-textbox"
+                       maxlength="50" type="text" data-bind="
+                    value: applicationName,
+                    valueUpdate: ['keyup', 'input']" data-appmagic-initialfocus="true" />
+                <div class="publish-background-icon-line">
+                    <div class="publish-link-button publish-upload-image-button"
+                         data-bind="clickOrEnter: handleLogoButtonClicked.bind($data)">
+                        <div tabindex="0" class="publish-frame publish-segoeglyphs" data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.more">
+                        </div>
+                    </div>
+                    <input type="text" readonly class="publish-image-filename"
+                           data-bind="value: logoImageFileName" tabindex="-1" />
+                    <div class="publish-image-formatting-block">
+                        <span class="publish-image-formatting-block-label" data-bind="text: AppMagic.AuthoringStrings.PublishAppBestFormatsLabel"></span>
+                        <span class="publish-image-formatting-block-value" data-bind="text: AppMagic.AuthoringStrings.PublishAppBestFormatsValue"></span><br />
+                        <span class="publish-image-formatting-block-label" data-bind="text: AppMagic.AuthoringStrings.PublishAppBestSizesLabel"></span>
+                        <span class="publish-image-formatting-block-value" data-bind="text: AppMagic.AuthoringStrings.PublishAppBestSizesValue"></span><br />
+                        <span class="publish-image-formatting-block-label" data-bind="text: AppMagic.AuthoringStrings.PublishAppAcceptedFormatsLabel"></span>
+                        <span class="publish-image-formatting-block-value" data-bind="text: AppMagic.AuthoringStrings.PublishAppAcceptedFormatsValue"></span><br />
+                    </div>
+                </div>
+            </div>
+            <div class="publish-resources-table">
+                <div class="publish-local-resources-header publish-tile-header" data-bind="text: AppMagic.AuthoringStrings.PublishResourcesLabel"></div>
+                <!-- For the checkbox itself we let Knockout's checked binding handle the click event but remove the keyboard events.
+                    We override the label associated with it and use the div click handler to handle both the label and for when the
+                    keyboard is tab highlighting and hits the div instead of the checkbox so that a proper selection box is shown. -->
+                <div class="publish-resources-checkbox" tabindex="0" data-bind="clickOrEnter: publishLocallyClickEnterEvent">
+                    <input id="isPublishLocally" tabindex="-1" type="checkbox" data-bind="checked: isPublishLocally, evt: { keypress: function () { } }" />
+                    <label for="isPublishLocally" class="publish-local-resources-label" data-bind="text: AppMagic.AuthoringStrings.PublishLocalResourcesDisplayText, click: publishLocallyClickEnterEvent"></label>
+                </div>
+            </div>
+            <div class="publish-servicekeys-table" data-bind="visible: services.length > 0">
+                <div class="publish-servicekeys-label publish-tile-header" data-bind="text: AppMagic.AuthoringStrings.PublishServiceKeysLabel"></div>
+                <div class="publish-servicekeys-displaytext" data-bind="text: AppMagic.AuthoringStrings.PublishServiceKeysDisplayText"></div>
+                <div class="publish-servicekeys-viewtext-container link" tabindex="0" data-bind="clickOrEnter: switchToServiceKeysPage.bind($data)">
+                    <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.PublishServiceKeysViewText"></span>
+                    <span class="icon">&#xE2AB;</span>
+                </div>
+            </div>
+            <div class="paneSplitter"></div>
+            <div class="publish-all-logos"
+                 data-bind="visible: showLogosPage">
+                <div class="publish-tile-size publish-tile-header"
+                     data-bind="
+                        text: AppMagic.AuthoringStrings.PublishTileSize">
+                </div>
+                <div class="publish-wide-logos">
+                    <div class="publish-subtitle publish-splash-screen-title"
+                         data-bind="
+                        text: AppMagic.AuthoringStrings.PublishSplashScreen">
+                    </div>
+                    <div class="publish-subtitle publish-splash-screen-title-value"
+                         data-bind="
+                        text: AppMagic.AuthoringStrings.PublishSplashScreenValue">
+                    </div>
+                    <div class="publish-splash-screen-sample publish-tile-border"
+                         data-bind="
+                    style: {
+                        backgroundSize: getBackgroundImageSizeForSplash(),
+                        backgroundPosition: getBackgroundImageLocationForSpash(),
+                        backgroundColor: backgroundColorAsCss,
+                        backgroundImage: logoImageUrl.length !== 0 ? 'url(&quot;' + logoImageUrl + '&quot;)' : ''
+                    },
+                    css: { 'publish-logo-image-default': logoImageUrl.length === 0 }
+                    ">
+                    </div>
+                </div>
+                <div class="publish-square-logos">
+                    <div class="publish-subtitle publish-square-tile-title"
+                         data-bind="
+                    text: AppMagic.AuthoringStrings.PublishSquareTile">
+                    </div>
+                    <div class="publish-subtitle publish-square-tile-value"
+                         data-bind="
+                    text: AppMagic.AuthoringStrings.PublishSquareTileValue">
+                    </div>
+                    <div class="publish-square-tile-sample publish-tile-border"
+                         data-bind="
+                    style: {
+                        backgroundSize: getBackgroundImageSizeForSample(scaleMultipierFullSizeTileToMaxSize),
+                        backgroundPosition: getBackgroundImageLocationForSquareSample(scaleMultipierFullSizeTileToMaxSize),
+                        backgroundColor: backgroundColorAsCss ,
+                        backgroundImage: logoImageUrl.length !== 0 ? 'url(&quot;' + logoImageUrl + '&quot;)' : ''
+                    },
+                    css: { 'publish-logo-image-default': logoImageUrl.length === 0 },
+                    ">
+                        <div class="publish-tile-app-name" data-bind="text: applicationName, style : { color: tileAppNameColor }"></div>
+                    </div>
+                    <div class="publish-subtitle publish-store-tile-title"
+                         data-bind="
+                        text: AppMagic.AuthoringStrings.PublishStoreLogo">
+                    </div>
+                    <div class="publish-subtitle publish-store-tile-value"
+                         data-bind="
+                    text: AppMagic.AuthoringStrings.PublishStoreLogoValue">
+                    </div>
+                    <div class="publish-store-tile-sample publish-tile-border" data-bind="
+                    style: {
+                        backgroundSize: getBackgroundImageSizeForSample(scaleMultipierStoreTileToMaxSize),
+                        backgroundPosition: getBackgroundImageLocationForSquareSample(scaleMultipierStoreTileToMaxSize),
+                        backgroundColor: backgroundColorAsCss ,
+                        backgroundImage: logoImageUrl.length !== 0 ? 'url(&quot;' + logoImageUrl + '&quot;)' : ''
+                    },
+                    css: { 'publish-logo-image-default': logoImageUrl.length === 0 }
+                    ">
+                    </div>
+                    <div class="publish-subtitle publish-small-tile-title"
+                         data-bind="
+                        text: AppMagic.AuthoringStrings.PublishSmallLogo">
+                    </div>
+                    <div class="publish-subtitle publish-small-tile-value"
+                         data-bind="
+                    text: AppMagic.AuthoringStrings.PublishSmallLogoValue">
+                    </div>
+                    <div class="publish-small-tile-sample publish-tile-border" data-bind="
+                    style: {
+                        backgroundSize: getBackgroundImageSizeForSample(scaleMultipierSmallTileToMaxSize),
+                        backgroundPosition: getBackgroundImageLocationForSquareSample(scaleMultipierSmallTileToMaxSize),
+                        backgroundColor: backgroundColorAsCss ,
+                        backgroundImage: logoImageUrl.length !== 0 ? 'url(&quot;' + logoImageUrl + '&quot;)' : ''
+                    },
+                    css: { 'publish-logo-image-default': logoImageUrl.length === 0 }
+                    ">
+                    </div>
+                    <div class="publish-subtitle publish-notification-tile-title"
+                         data-bind="
+                    text: AppMagic.AuthoringStrings.PublishNotificationLogo">
+                    </div>
+                    <div class="publish-subtitle publish-notification-tile-value"
+                         data-bind="
+                    text: AppMagic.AuthoringStrings.PublishNotificationLogoValue">
+                    </div>
+                    <div class="publish-notification-tile-sample publish-tile-border" data-bind="
+                    style: {
+                        backgroundSize: getBackgroundImageSizeForSample(scaleMultipierNotificationTileToMaxSize),
+                        backgroundPosition: getBackgroundImageLocationForSquareSample(scaleMultipierNotificationTileToMaxSize),
+                        backgroundColor: backgroundColorAsCss ,
+                        backgroundImage: logoImageUrl.length !== 0 ? 'url(&quot;' + logoImageUrl + '&quot;)' : ''
+                    },
+                    css: { 'publish-logo-image-default': logoImageUrl.length === 0 }
+                    ">
+                    </div>
+                </div>
+            </div>
+            <div class="publish-all-service-keys"
+                 data-bind="visible: showServiceKeysPage">
+                <div class="publish-all-servicekeys-label publish-tile-header" data-bind="text: AppMagic.AuthoringStrings.PublishServiceKeysLabel"></div>
+                <div class="publish-all-service-keys-config-container">
+                    <div class="publish-service-key-config-note" data-bind="text: services.length > 0 ? AppMagic.AuthoringStrings.PublishServiceKeyConfigNote : AppMagic.AuthoringStrings.RestServiceKeyConfigDone"></div>
+                    <div class="publish-service-keys-container"
+                         data-bind="foreach: services">
+                        <div class="publish-service-keys-header"
+                             data-bind="clickOrEnter: $parent.toggleSelection.bind($parent),
+                             css: { selected: selected }"
+                             tabindex="0">
+                            <img data-bind="attr: { src: serviceIcon }" />
+                            <span data-bind="text: serviceName"></span>
+                        </div>
+                        <!-- ko if: selected -->
+                        <!-- ko if: connectorId === AppMagic.Services.AzureConstants.ConnectorIds.office365 -->
+                        <div class="publish-all-service-keys-config"
+                             data-bind="property: { viewModel: serviceKeyConfigVm },
+                                winjsControl: '/backStages/data/configPages/azure/azureServiceKeyConfig.html'"></div>
+                        <!-- /ko -->
+                        <!-- ko if: connectorId !== AppMagic.Services.AzureConstants.ConnectorIds.office365 -->
+                        <div class="publish-all-service-keys-config"
+                             data-bind="property: { viewModel: serviceKeyConfigVm },
+                                winjsControl: '/backStages/data/configPages/rest/restServiceKeyConfig.html'"></div>
+                        <!-- /ko -->
+                        <!-- /ko -->
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="publish-button backstage-button" tabindex="0"
+                    data-bind="clickOrEnter: handlePublishClicked.bind($data), text: AppMagic.AuthoringStrings.Publish, disable: services.length > 0" data-appmagic-lastfocus="true" />
+        </div>
+    </div>
+</body>
+</html>

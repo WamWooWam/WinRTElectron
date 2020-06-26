@@ -1,0 +1,60 @@
+﻿.timelineScroller {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    -ms-scroll-snap-type: mandatory;
+    -ms-scroll-translation: none;
+}
+
+.timelineScroller > * {
+    width: 100%;
+}
+
+.timeline-host {
+    grid-row: 1/4;
+}
+
+input[type=button].timelineArrow {
+    min-width: 0;
+    min-height: 0;
+    font-weight: 400;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin: 0;
+    border: 0;
+    padding: 0;
+    position: absolute;
+    top: 60px;
+    width: 40px;
+    height: 40px;
+    padding: 1px 0 9px;
+    font-family: "Segoe UI Symbol";
+    font-size: 16pt;
+    color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(213, 213, 213, 0.35);
+    direction: ltr;
+    z-index: 100;
+}
+
+input[type=button].timelineArrow:hover {
+    color: #000000;
+    background-color: rgba(215, 215, 215, 0.94);
+}
+
+input[type=button].timelineArrow:active {
+    color: #ffffff;
+    background-color: rgba(41, 41, 41, 0.74);
+}
+
+.timelineArrow.left {
+    left: 0;
+}
+
+.timelineArrow.right {
+    right: 0;
+}

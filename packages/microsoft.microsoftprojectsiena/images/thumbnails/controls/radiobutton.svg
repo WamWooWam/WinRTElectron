@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="radiobuttonicon" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="80px" height="40px" viewBox="0 0 80 40" enable-background="new 0 0 80 40" xml:space="preserve">
+<path id="circlecenter" fill="#FFFFFF" d="M40.092,15.762c-0.966,0-1.94,0.306-2.768,0.937c-2.006,1.532-2.392,4.398-0.86,6.405
+	c0.899,1.178,2.259,1.796,3.637,1.796c0.966,0,1.94-0.304,2.769-0.936c2.004-1.53,2.39-4.398,0.86-6.405
+	C42.829,16.38,41.468,15.762,40.092,15.762"/>
+<g id="circleouter">
+	<path fill="#FFFFFF" d="M40,6.727c7.319,0,13.273,5.955,13.273,13.273c0,7.319-5.954,13.273-13.273,13.273
+		c-7.319,0-13.273-5.954-13.273-13.273C26.727,12.681,32.681,6.727,40,6.727 M40,4.727c-8.436,0-15.273,6.838-15.273,15.273
+		S31.564,35.273,40,35.273S55.273,28.436,55.273,20S48.436,4.727,40,4.727L40,4.727z"/>
+</g>
+</svg>

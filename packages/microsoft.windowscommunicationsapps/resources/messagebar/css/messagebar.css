@@ -1,0 +1,18 @@
+﻿.messagebar-error{position:absolute;left:0px;top:0px;width:100%;background-color:White;border-bottom:2px solid #000000;display:-ms-grid;-ms-grid-columns:1fr auto;-ms-grid-rows:auto auto;}
+.messagebar-error .mb-messageParent{padding-top:24px;padding-bottom:24px;font-weight:400;font-size:14.66667px;-ms-grid-column:1;-ms-grid-row:1;display:-ms-flexbox;}
+.messagebar-error .mb-message{color:#000000;max-width:80%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-left:60px;}
+.messagebar-errorExtended .mb-message{max-width:100%;}
+.messagebar-error .mb-linkDiv{padding-left:3px;-ms-flex:1 1 auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.messagebar-error .mb-textButton{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.messagebar-error .mb-buttonsParent{-ms-grid-column:2;-ms-grid-row:1;display:-ms-flexbox;font-size:14.66667px;}
+.messagebar-error .mb-button1Layout{-ms-flex:1 1 auto;text-align:right;margin-right:20px;margin-left:0px;padding-top:19px;padding-bottom:19px;padding-left:110px;padding-right:0px;}
+.messagebar-error .mb-button1,.messagebar-error .mb-button2{border:0px;font-weight:600;font-size:14.66667px;line-height:20px;padding-bottom:0px;padding-top:0px;padding-top:0.24em;padding-right:20px;padding-bottom:0.35em;padding-left:20px;min-width:90px;letter-spacing:0.02em;}
+.messagebar-error .mb-button1{color:#ffffff;}
+.messagebar-error .mb-button1:active{background-color:#212121;}
+.messagebar-error .mb-button2Layout{margin-right:66px;margin-left:0px;padding-top:19px;padding-bottom:19px;}
+.messagebar-error .mb-button2{color:#000000;background-color:rgba(182, 182, 182, 0.7);}
+.messagebar-error .mb-button2:hover{color:#000000;background-color:rgba(205, 205, 205, 0.82);}
+.messagebar-error .mb-button2:active{color:#ffffff;background-color:#000000;}
+.messagebar-status{position:absolute;top:25px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:400;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;color:#000000;left:26px;right:26px;}
+.mb-progress{position:absolute;top:0px;width:100%;visibility:hidden;}
+@media screen and (max-width: 375px),screen and (orientation:portrait){.messagebar-error .mb-buttonsParent{-ms-grid-column:1;-ms-grid-row:2;} .messagebar-error .mb-messageParent{padding-top:24px;padding-bottom:15px;padding-left:20px;padding-right:20px;} .messagebar-error .mb-message{padding-left:0px;max-width:100%;} .messagebar-error .mb-linkDiv{max-width:80%;padding-left:0px;-ms-flex:1 1 auto;} .messagebar-error .mb-button1Layout{padding-top:0px;padding-bottom:15px;padding-left:20px;padding-right:0px;} .messagebar-error .mb-button2Layout{margin-left:0px;margin-right:20px;padding-top:0px;padding-bottom:15px;}}@media screen and (-ms-high-contrast){.messagebar-error{-ms-high-contrast-adjust:none;background-color:Background;border-bottom-color:WindowText;} .messagebar-error .mb-message{color:WindowText;} .messagebar-error .mb-textButton{-ms-high-contrast-adjust:auto;} .messagebar-error .mb-button1,.messagebar-error .mb-button2{-ms-high-contrast-adjust:auto;border:ButtonText solid 2px;} .messagebar-error .mb-button1:hover,.messagebar-error .mb-button2:hover{color:HighlightText;background-color:Highlight;} .messagebar-error .mb-button1:active,.messagebar-error .mb-button2:active{color:ButtonFace;background-color:ButtonText;} .messagebar-error .mb-button1{color:HighlightText;background-color:Highlight;} .messagebar-status{color:WindowText;} .mb-progress{color:Highlight;}}.mbhidden{display:none;visibility:hidden;}

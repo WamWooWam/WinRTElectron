@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/dropdown"
+        name="dropdown"
+        jsClass="AppMagic.Controls.Dropdown"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[DROPDOWN
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/dropdown.css" />
+    <require type="javascript" src="js/dropdown.js" />
+    <require type="javascript" src="js/dropdownListViewModel.js" />
+    <require type="javascript" src="js/dropdownListItemViewModel.js" />
+    <require type="other" src="data/DropdownSample.xlsx" authoringOnly="true" />
+    <require type="other" src="images/dropdownarrow_blackicon.svg" />
+    <require type="markup" src="html/dropdownListBody.html" />
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    screenActiveAware="true"
+  />
+
+  <content>
+    <![CDATA[
+    <div
+      class="appmagic-dropdown" >    
+      <div class="appmagic-dropdownLabel"  
+        data-bind="style: {
+          fontFamily: properties.Font,
+          fontSize: properties.Size,
+          color: properties.Color, 
+          fontWeight: properties.FontWeight,
+          fontStyle: properties.Italic,
+          textAlign: properties.Align,
+          paddingTop: properties.PaddingTop, 
+          paddingRight: properties.PaddingRight, 
+          paddingBottom: properties.PaddingBottom, 
+          paddingLeft: properties.PaddingLeft
+        },
+        visible: !visible,
+        attr: { title: properties.Tooltip },
+        event: { click: onClickLabel },
+        css: { 
+          disabled: isDisabled, 
+          underline: properties.Underline,
+          strikethrough: properties.Strikethrough 
+        }">
+          <div class="appmagic-dropdownLabelText" data-bind="
+            text: selectedValue">
+          </div>
+          <div class="appmagic-dropdownLabelArrow">
+            <img class="appmagic-dropdownLabelArrowImage" src="ctrllib/dropdown/images/dropdownarrow_blackicon.svg">
+          </div>
+    </div>
+  </div>
+  ]]>
+  </content>
+
+  <properties>
+    <property name="Items" localizedName="##dropdown_Items##" datatype="Array" direction="in" isPrimaryInputProperty="true">
+      <title>dropdown items</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##dropdown_Items_DisplayName##</appMagic:displayName>
+      <appMagic:sampleDataSource name="DropDownSample" location="data/DropdownSample.xlsx"/>
+      <properties>
+        <property name="Value" localizedName="##dropdown_Value##" datatype="String">
+        </property>
+      </properties>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_itemsicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##dropdown_Items_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Selected" localizedName="##dropdown_Selected##" datatype="object" direction="out" isPrimaryOutputProperty="true">
+      <title>Selected item that is going to be passed through</title>
+      <appMagic:passThroughReference>Items</appMagic:passThroughReference>
+      <appMagic:category>data</appMagic:category>
+      <properties>
+        <property name="Value" localizedName="##dropdown_Value##" datatype="String">
+        </property>
+      </properties>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_selectedicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="Default" localizedName="##dropdown_Default##" datatype="String" defaultValue="1" editable="true" direction="in">
+      <title>Selected item</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##dropdown_Default_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_defaulticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##dropdown_Default_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="SelectionColor" localizedName="##dropdown_SelectionColor##" datatype="Color" defaultValue="RGBA(255, 255, 255, 1)" isExpr="true" converter="argbConverter">
+      <title>Selected Text color</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##dropdown_SelectionColor_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/rulebutton_color.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>2</appMagic:position>
+        <appMagic:group>color</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##dropdown_SelectionColor_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="SelectionFill" localizedName="##dropdown_SelectionFill##" datatype="Color" defaultValue="RGBA(0, 176, 240, 1)" isExpr="true" converter="argbConverter">
+      <title>Selected Fill color</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##dropdown_SelectionFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/fillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>2</appMagic:position>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##dropdown_SelectionFill_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <!-- Design -->
+    <appMagic:includeProperty name="Color" isExpr="true">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="HoverColor" defaultValue="%CONTROL.ID%!Color">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>3</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PressedColor" defaultValue="%CONTROL.ID%!Color">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>4</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderColor" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle" defaultValue="BorderStyle!Solid">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness" defaultValue="2">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(255, 255, 255, 1)">      
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Font">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Size">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="FontWeight">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Italic" />
+    <appMagic:includeProperty name="Underline" />
+    <appMagic:includeProperty name="Strikethrough" />
+    <appMagic:includeProperty name="PaddingTop" defaultValue="10">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingRight" defaultValue="10">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingBottom" defaultValue="10">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingLeft" defaultValue="10">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" />
+    <appMagic:includeProperty name="Height" defaultValue="40" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Behavior -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    <appMagic:includeProperty name="OnChange" direction="in" />
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="80" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="35" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+
+  </appMagic:includeProperties>
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Items" output="Selected"/>
+    <appMagic:propertyDependency input="Default" output="Selected"/>
+  </appMagic:propertyDependencies>
+</widget>

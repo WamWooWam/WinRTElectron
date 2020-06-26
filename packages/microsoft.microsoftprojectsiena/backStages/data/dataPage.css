@@ -1,0 +1,145 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ */
+/* Colors */
+/* Misc styles */
+.data-sources-page {
+  display: -ms-grid;
+  -ms-grid-columns: 290px 1px 40px 1fr;
+  -ms-grid-rows: 100%;
+  height: calc(100% - 70px);
+  padding-top: 70px;
+}
+.data-sources-page .existing-sources-pane {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  display: -ms-grid;
+  -ms-grid-rows: auto 1fr 100px;
+  -ms-grid-columns: 100%;
+}
+.data-sources-page .existing-sources-pane .existing-sources-pane-header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+}
+.data-sources-page .existing-sources-pane .no-existing-sources-message {
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 10pt;
+  margin-top: 30px;
+}
+.data-sources-page .existing-sources-pane .data-connection-items,
+.data-sources-page .existing-sources-pane .no-existing-sources-message {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  margin-top: 30px;
+}
+.data-sources-page .existing-sources-pane .addDataSource {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+}
+.data-sources-page .paneSplitter {
+  -ms-grid-column: 2;
+  -ms-grid-row: 1;
+}
+.data-sources-page .paneSplitter,
+.data-sources-page .add-sources-pane-container .paneSplitter {
+  margin-top: 65px;
+  margin-bottom: 65px;
+  box-sizing: border-box;
+  background-color: #cccccc;
+}
+.data-sources-page .dataViewer {
+  -ms-grid-column: 4;
+  -ms-grid-row: 1;
+}
+.data-sources-page .dataViewer .dataView {
+  height: 90%;
+}
+.data-sources-page .add-sources-pane-container {
+  -ms-grid-column: 4;
+  -ms-grid-row: 1;
+  display: -ms-grid;
+  -ms-grid-columns: 270px 40px 1px 40px auto;
+  -ms-grid-rows: 1fr;
+}
+.data-sources-page .add-sources-pane-container .dc-types-pane {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.data-sources-page .add-sources-pane-container .dc-types-pane .dc-types-pane-header,
+.data-sources-page .existing-sources-pane .existing-sources-pane-header {
+  line-height: 35px;
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 15pt;
+  color: #824a82;
+}
+.data-sources-page .add-sources-pane-container .dc-types-pane .dc-types-container {
+  margin-top: 30px;
+}
+.data-sources-page .add-sources-pane-container .dc-types-pane .dc-types-container .dc-type {
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 10pt;
+  height: 35px;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  margin-left: -10px;
+}
+.data-sources-page .add-sources-pane-container .paneSplitter {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.data-sources-page .add-sources-pane-container .dc-type-config-pane {
+  -ms-grid-column: 5;
+  -ms-grid-row: 1;
+  overflow-y: auto;
+}
+.dc-type:hover,
+.dc-type.selected {
+  background-color: #f4f4f4;
+}
+.dc-type img {
+  float: left;
+  margin: 0 15px 0 10px;
+  height: 20px;
+  width: 20px;
+}
+.dc-type span {
+  height: 20px;
+  vertical-align: middle;
+}
+.dc-type-config {
+  background-color: #ffffff;
+  color: #000000;
+}
+.dc-help-container {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  margin-top: 30px;
+}
+.data-sources-page .data-sources-list-container {
+  overflow-y: auto;
+  padding-right: 40px;
+  height: calc(100% - 20px);
+}
+.data-connection-error {
+  padding: 20px 0 20px 25px;
+  width: 100%;
+  text-align: left;
+}
+.data-connection-type-menu:focus {
+  outline: none;
+}
+.data-connection-type-menu .data-connection-type-option.selected,
+.data-connection-type-menu .data-connection-type-option.selected:hover {
+  background-color: #966596;
+  color: #ffffff;
+}
+.data-connection-type-option:hover,
+.data-connection-type-option:active,
+.data-connection-type-option:hover:active {
+  background-color: #777777;
+  color: #ffffff;
+}

@@ -1,0 +1,585 @@
+﻿/* Colors */
+/* Misc styles */
+.expressRuleTextBox {
+  display: -ms-grid;
+  margin-bottom: 5px;
+  width: 100%;
+  -ms-grid-columns: auto auto 1fr 45px;
+  -ms-grid-rows: auto auto;
+}
+.expressRuleTextBox.behaviorRule {
+  background-color: #804A80;
+  /*Dusk*/
+}
+.expressRuleTextBox.dataRule {
+  background-color: #643964;
+  /*Eveningstar*/
+}
+.expressRuleTextBox.designRule {
+  background-color: #502E50;
+  /*Nocturnal*/
+}
+.expressRuleTextBox .separator {
+  background-color: #333333;
+  /*Black Suede*/
+  -ms-grid-column-span: 4;
+  -ms-grid-row: 3;
+}
+.expressRuleTextBox .key,
+.expressRuleTextBox .nameMaps .nameMap .sink,
+.expressRuleTextBox .equal,
+.expressRuleTextBox .nameMaps .nameMap .equal {
+  color: #CCCCCC;
+  /*Ash*/
+  font-family: 'Segoe UI';
+  font-size: 11pt;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
+.expressRuleTextBox .key,
+.expressRuleTextBox .nameMaps .nameMap .sink {
+  box-sizing: border-box;
+  margin-left: 30px;
+  max-width: 200px;
+  max-height: 50px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.expressRuleTextBox .key,
+.expressRuleTextBox .equal {
+  -ms-grid-column: 1;
+}
+.expressRuleTextBox .nameMaps .nameMap .sink {
+  margin-left: 50px;
+}
+.expressRuleTextBox .key > .highlightedText {
+  color: #BAD80A;
+  /* Trinket */
+}
+.expressRuleTextBox .equal,
+.expressRuleTextBox .nameMaps .nameMap .equal {
+  text-align: center;
+  margin-left: 5px;
+  margin-right: 5px;
+  -ms-grid-column: 2;
+}
+.expressRuleTextBox .bodyContainer {
+  box-sizing: content-box;
+  padding: 10px;
+  position: relative;
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.expressRuleTextBox .bodyContainer .nonEditable,
+.expressRuleTextBox .bodyContainer .ruleValue,
+.expressRuleTextBox .bodyContainer .ruleValue:focus,
+.expressRuleTextBox .bodyContainer .ruleValue:hover {
+  border: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  cursor: inherit;
+  font-family: 'Segoe UI';
+  left: 0px;
+  line-height: 20px;
+  margin: 10px 0px;
+  min-width: 200px;
+  padding: 10px 5px !important;
+  position: absolute;
+  top: 0px;
+  /* Necessary to preserve white-spaces added to the cotrol text.*/
+  white-space: pre-wrap;
+  width: 100%;
+  word-wrap: break-word;
+}
+.expressRuleTextBox .bodyContainer .nonEditable {
+  color: transparent;
+  font-size: 11.7pt;
+  height: auto;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+}
+/*When the rule goes to editable mode, we set the background of non-editable which is visible through ruleValue.*/
+.expressRuleTextBox .bodyContainer .nonEditable.visibleBackground {
+  background-color: #FFFFFF;
+  /*Steed*/
+}
+@media all and (-ms-high-contrast: active) {
+  .expressRuleTextBox .bodyContainer .nonEditable.visibleBackground {
+    outline: 1px solid WindowText;
+  }
+}
+.expressRuleTextBox .bodyContainer .ruleValue {
+  background-color: transparent;
+  color: #FFFFFF;
+  /*Steed*/
+  font-size: 11pt;
+  overflow: hidden;
+  z-index: 3;
+}
+.expressRuleTextBox .bodyContainer .ruleValue.editable,
+.expressRuleTextBox .bodyContainer .ruleValue.editable:focus,
+.expressRuleTextBox .bodyContainer .ruleValue.editable:hover {
+  background-color: transparent;
+  color: #000000;
+  /*Ink*/
+  cursor: text;
+}
+.expressRuleTextBox .bodyContainer .ruleValue::selection,
+.expressRuleTextBox .bodyContainer .ruleValue:hover::selection {
+  background-color: transparent;
+}
+.expressRuleTextBox .bodyContainer .ruleValue.editable::selection,
+.expressRuleTextBox .bodyContainer .ruleValue.editable:focus::selection,
+.expressRuleTextBox .bodyContainer .ruleValue.editable:hover::selection {
+  background-color: #777777;
+  /*Storm*/
+}
+.expressRuleTextBox .bodyContainer .squigglyContainer,
+.expressRuleTextBox .bodyContainer .bracketHighlightContainer,
+.expressRuleTextBox .bodyContainer .macroHighlightContainer {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  top: 10px;
+  z-index: 2;
+}
+.expressRuleTextBox .bodyContainer .squigglyContainer .squiggly {
+  background-image: url(../../images/squiggle.png);
+  background-repeat: repeat-x;
+  cursor: text;
+  height: 4px;
+  position: absolute;
+}
+.expressRuleTextBox .bodyContainer .bracketHighlightContainer .bracketHighlight {
+  background-color: #AD85AD;
+  /*Moth*/
+  cursor: text;
+  margin-top: 1.5px;
+  opacity: 0.5;
+  position: absolute;
+}
+.expressRuleTextBox .bodyContainer .macroHighlightContainer .macroHighlight {
+  background-color: #669933;
+  /* Herb */
+  cursor: text;
+  opacity: .4;
+  position: absolute;
+}
+.expressRuleTextBox .bodyContainer .suggestions {
+  box-sizing: border-box;
+  left: 0px;
+  max-height: 105px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 6;
+}
+@media all and (-ms-high-contrast: active) {
+  .expressRuleTextBox .bodyContainer .suggestions {
+    outline: 1px solid WindowText;
+  }
+}
+.expressRuleTextBox .bodyContainer .suggestions.scroll {
+  /* Make the scrollbar visible without requiring mouse hover/interaction when we have an overflow of suggestions. */
+  -ms-overflow-style: scrollbar;
+}
+.expressRuleTextBox .bodyContainer .suggestions .suggestion {
+  background-color: #EAEAEA;
+  /*Fog*/
+  color: #000000;
+  /*Ink*/
+  font-family: 'Segoe UI';
+  font-size: 11pt;
+  height: 35px;
+  line-height: 35px;
+  box-sizing: border-box;
+  /*Border right and left is used as padding because text goes over when we use Padding*/
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+@media all and (-ms-high-contrast: active) {
+  .expressRuleTextBox .bodyContainer .suggestions .suggestion {
+    border-left: 5px solid Window;
+    border-right: 5px solid Window;
+  }
+}
+.expressRuleTextBox .bodyContainer .suggestions .suggestion.selected {
+  background-color: #D9D9D9;
+  /*Cellar*/
+}
+@media all and (-ms-high-contrast: active) {
+  .expressRuleTextBox .bodyContainer .suggestions .suggestion.selected {
+    background-color: Highlight;
+    color: HighlightText;
+    border-left: 5px solid Highlight;
+    border-right: 5px solid Highlight;
+  }
+}
+.expressRuleTextBox .bodyContainer .suggestions .suggestion:hover {
+  background-color: #CCCCCC;
+  /*Ash*/
+}
+@media all and (-ms-high-contrast: active) {
+  .expressRuleTextBox .bodyContainer .suggestions .suggestion:hover {
+    background-color: Highlight;
+    color: HighlightText;
+    border-left: 5px solid Highlight;
+    border-right: 5px solid Highlight;
+  }
+}
+.expressRuleTextBox .absoluteTooltipContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 6;
+  bottom: -9px;
+}
+.expressRuleTextBox .absoluteTooltipContainer .intellisenseTooltipContainer {
+  position: absolute;
+}
+.expressRuleTextBox .absoluteTooltipContainer .intellisenseTooltipContainer .intellisenseTooltip {
+  background-color: #D9D9D9;
+  /*Cellar*/
+  border: 1px solid #FFFFFF;
+  /*Steed*/
+  box-sizing: border-box;
+  color: #333333;
+  /*Black Suede*/
+  font-family: 'Segoe UI';
+  font-size: 12px;
+  margin-bottom: 2px;
+  max-height: 60px;
+  overflow-y: scroll;
+  padding: 5px;
+  position: relative;
+  width: 100%;
+  z-index: 1000;
+  overflow-x: hidden;
+  word-wrap: break-word;
+}
+.expressRuleTextBox .absoluteTooltipContainer .intellisenseTooltipContainer .intellisenseTooltip .highlightedText {
+  font-weight: bold;
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .item {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  font-size: 11pt;
+  height: 40px;
+  padding: 10px 20px;
+  width: 100%;
+  z-index: 1001;
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .item:hover {
+  background-color: #6f3f6f;
+  /* Nightshade */
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .macroRenameOverlay {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  font-size: 11pt;
+  height: auto;
+  width: 100%;
+  word-wrap: break-word;
+  z-index: 1001;
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .macroRenameOverlay {
+  font-weight: 700;
+  padding: 10px 20px;
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .editItem {
+  border: 4px solid #000000;
+  /*Ink*/
+  border-width: 4px 10px;
+  box-sizing: border-box;
+  color: #000000;
+  /*Ink*/
+  cursor: text;
+  font-size: 11pt;
+  height: 40px;
+  margin: 0px;
+  min-height: 0px;
+  min-width: 250px;
+  padding: 0px;
+  width: 100%;
+  z-index: 1001;
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .editItem::-ms-clear {
+  display: none;
+}
+.expressRuleTextBox .flyoutContainer .contextMenu .editItemSquigglies {
+  border: 0px;
+  box-sizing: border-box;
+  background-image: url(../../images/squiggle.png);
+  background-repeat: repeat-x;
+  height: 4px;
+  left: 0px;
+  margin: 0px 19px;
+  margin-top: -10px;
+  max-width: calc(100% - 38px);
+  padding: 0px;
+  position: absolute;
+  z-index: 1001;
+}
+.expressRuleTextBox .nameMaps {
+  width: 100%;
+  -ms-grid-row: 2;
+  -ms-grid-column-span: 4;
+}
+.expressRuleTextBox .nameMaps .nameMap {
+  display: -ms-grid;
+  -ms-grid-columns: auto auto 1fr 30px;
+  width: 100%;
+}
+.expressRuleTextBox .nameMaps .nameMap .source {
+  background-color: transparent;
+  height: 60px;
+  position: relative;
+  width: 100%;
+  -ms-grid-column: 3;
+}
+.expressRuleTextBox .nameMaps .nameMap .source .sourceText {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  display: inline-block;
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  line-height: 20px;
+  min-height: 40px;
+  margin: 10px 0px;
+  padding: 10px 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  width: calc(100% - 40px);
+  word-wrap: normal;
+}
+.expressRuleTextBox .nameMaps .nameMap .source .dropArrow {
+  display: inline;
+  float: right;
+  height: 40px;
+  line-height: 40px;
+  margin: 10px 10px 10px 0px;
+  text-align: right;
+  width: 30px;
+}
+.expressRuleTextBox .nameMaps .nameMap .source .dropArrow > img {
+  height: 8px;
+  vertical-align: middle;
+  width: 10px;
+}
+.expressRuleTextBox .nameMaps .nameMap .source .sources {
+  background-color: #FFFFFF;
+  /*Steed*/
+  border: solid 1px #D9D9D9;
+  /*Cellar*/
+  max-height: 200px;
+  position: absolute;
+  overflow-y: auto;
+  top: 9px;
+  width: 100%;
+  z-index: 1001;
+  -ms-overflow-style: scrollbar;
+  -ms-grid-column: 3;
+}
+.expressRuleTextBox .nameMaps .nameMap .source .sources .sourceItem {
+  box-sizing: border-box;
+  color: #000000;
+  /*Ink*/
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  line-height: 40px;
+  outline: none;
+  padding-left: 4px;
+  padding-right: 4px;
+  height: auto;
+}
+.expressRuleTextBox .nameMaps .nameMap .source .sources .sourceItem:hover {
+  background-color: #777777;
+  /*Storm*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.expressRuleTextBox .nameMaps .nameMap .source .sources .sourceItem.selected {
+  background-color: #966596;
+  /*Tincture*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.expressRuleTextBox .flyoutContainer {
+  background-color: #000000;
+  /*Ink*/
+  position: absolute;
+}
+.expressRuleTextBox .flyoutContainer .visualIntellisensePage,
+.expressRuleTextBox .flyoutContainer .contextMenu {
+  width: 439px;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel {
+  background-color: #000000;
+  /*Ink*/
+  box-sizing: border-box;
+  padding-bottom: 10px;
+  width: 250px;
+  z-index: 10;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer {
+  background-color: #000000;
+  /*Ink*/
+  box-sizing: border-box;
+  margin: 10px 10px 0px 10px;
+  padding-bottom: 5px;
+  position: relative;
+  width: calc(100% - 20px);
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .dropDownContainer {
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .dropDownContainer .selectedCategory {
+  box-sizing: border-box;
+  color: #878787;
+  /*Stone*/
+  font: lighter 16pt "Segoe UI";
+  height: 35px;
+  line-height: 33px;
+  padding: 0px 10px 2px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  -ms-grid-column: 1;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .dropDownContainer .dropArrow {
+  height: 35px;
+  line-height: 35px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding-right: 10px;
+  -ms-grid-column: 2;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .dropDownContainer .dropArrow > img {
+  height: 10px;
+  vertical-align: middle;
+  width: 12px;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .categories {
+  background-color: #FFFFFF;
+  /*Steed*/
+  bottom: -190px;
+  box-sizing: border-box;
+  max-height: 190px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 1001;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .categories .category {
+  background-color: #FFFFFF;
+  /*Steed*/
+  box-sizing: border-box;
+  color: #000000;
+  /*Ink*/
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  line-height: 30px;
+  margin: 0px;
+  outline: none;
+  padding: 0px 10px 0px 10px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: pre;
+  width: 100%;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .categories .category:hover {
+  background-color: #777777;
+  /*Storm*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .categoryContainer .categories .category.selected {
+  background-color: #966596;
+  /*Tincture*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnList {
+  background-color: #FFFFFF;
+  /*Steed*/
+  height: 120px;
+  margin: 0px 10px;
+  overflow-y: auto;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnList .fnName {
+  background-color: #FFFFFF;
+  /*Steed*/
+  color: #000000;
+  /*Ink*/
+  font-size: 11pt;
+  line-height: 30px;
+  outline: none;
+  padding-left: 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnList .fnName:hover {
+  background-color: #777777;
+  /*Storm*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnList .fnName.selected {
+  background-color: #966596;
+  /*Tincture*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnInfo {
+  box-sizing: border-box;
+  height: 48px;
+  line-height: 14px;
+  margin: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnInfo .fnDescription,
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnInfo .fnHelp {
+  color: #FFFFFF;
+  /*Steed*/
+  font-size: 9pt;
+  line-height: 14px;
+}
+.expressRuleTextBox .flyoutContainer .fnDiscoveryPanel .fnInfo .fnHelp {
+  cursor: pointer;
+  text-decoration: underline;
+}
+.expressRuleTextBox .fnDiscoveryButton {
+  box-sizing: border-box;
+  margin: 20px 10px 0px 5px;
+  -ms-grid-column: 4;
+  -ms-grid-row: 1;
+}
+@media all and (-ms-high-contrast: active) {
+  .expressRuleTextBox .visualIntellisensePage .visualIntellisense .container {
+    outline: 1px solid WindowText;
+    background-color: Window;
+    color: WindowText;
+  }
+}

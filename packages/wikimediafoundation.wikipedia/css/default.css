@@ -1,0 +1,382 @@
+﻿body {
+    overflow: hidden;
+}
+.header {
+    height:  120px;
+    background-color: #f4f1f1;
+    border-bottom: solid 1px #b8b8b8;
+}
+#title {
+    position:  absolute;
+    left:  120px;
+    top:  30px;
+    /*height: 90px;
+    overflow-y: hidden;*/
+}
+#back {
+    position: absolute;
+    left: 50px;
+    top:  50px;
+}
+#searchBox {
+    position: absolute;
+    right: 50px;
+    top: 50px;
+}
+.win-appbar, #find-bar {
+    background-color: #f4f1f1;
+    border-top: solid 1px #b8b8b8;
+}
+#find-bar {
+    display: none;
+    padding-left: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+}
+#spinner {
+    position: absolute;
+    top: 140px;
+    height: 10px;
+    left: 150px;
+    right: 50px;
+}
+.searchItemTemplate {
+    width: 310px;
+    height: 100px;
+    border: none;
+    background: #eee;
+}
+.win-listview {
+    height: 600px;
+}
+#hub-list .win-listview {
+    margin-bottom: 50px;
+}
+.photo-item {
+    width: 150px;
+    height: 150px;
+    border: none;
+    padding: 0;
+    overflow: hidden;
+    background: #eef;
+}
+.photo-item.large {
+    width: 310px;
+    height: 310px;
+}
+.photo-item.large.wide {
+    width: 470px;
+    height: 310px;
+}
+.photo-item.large.tall {
+    width: 310px;
+    height: 470px;
+}
+.featured-item h5 {
+    display: none;
+}
+.photo-item h4 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    
+    font-size: 14px;
+}
+.photo-item h6 {
+    display: none;
+}
+.photo-item img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+}
+
+.featured-item {
+    width: 150px;
+    height: 150px;
+    border: none;
+    padding: 0px;
+    overflow: hidden;
+    background: #eef;
+}
+.featured-item.large {
+    width: 310px;
+    height: 150px;
+}
+.featured-item h5 {
+    display: none;
+}
+.featured-item h4 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    
+    font-size: 14px;
+}
+.featured-item h6 {
+    display: none;
+}
+.featured-item.large h6 {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0px;
+    width: 140px;
+    top: 0;
+    padding: 0 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+}
+.featured-item img {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: auto;
+}
+.featured-item.large img {
+    width: 150px;
+}
+.featured-item.large img.wide {
+    width: auto;
+    height: 150px;
+}
+
+.onthisday-item {
+    width: 308px;
+    height: 148px;
+    border: none;
+    padding: 0px;
+    overflow: hidden;
+    background: #efe;
+    border: solid 1px #beb;
+}
+.onthisday-item h4 {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    padding: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    
+    font-size: 14px;
+}
+.onthisday-item h5 {
+    padding: 10px;
+    padding-bottom: 0;
+    font-size: 28px;
+}
+.onthisday-item h6 {
+    padding: 10px;
+}
+.onthisday-item h6 {
+    right: 0;
+}
+.onthisday-item img {
+    display: none;
+}
+
+.spacer-item img {
+    display: none;
+}
+
+.tocItemTemplate {
+    width: 310px;
+    height: 30px;
+    padding: 10px;
+    background: #eee;
+}
+.tocitem-0 {
+    font-weight: bold;
+}
+.tocitem-1 {
+    font-weight: bold;
+    margin-left: 10px;
+}
+.tocitem-2 {
+    margin-left: 20px;
+}
+.tocitem-3 {
+    margin-left: 30px;
+}
+.tocitem-4 {
+    margin-left: 40px;
+}
+.tocitem-5 {
+    margin-left: 50px;
+}
+.tocitem-6 {
+    margin-left: 60px;
+}
+        
+#content {
+    font-family: 'Cambria';
+}
+#content h1,
+#content h2,
+#content h3,
+#content h4,
+#content h5,
+#content h6 {
+    font-family: 'Segoe UI';
+}
+#content, .lightbox-fg {
+    -ms-user-select: text;
+}
+#content button {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#hub, #reader {
+    position: absolute;
+    top: 150px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+}
+#hub {
+    top: 130px;
+}
+
+#content h2 {
+    break-before: column;
+    margin-after: 10px;
+}
+#hub h2 {
+    position: relative;
+}
+#hub h2.first {
+    break-before: inherit;
+}
+
+.column-spacer {
+    break-before: column;
+}
+.simpleHeaderItem {
+    padding-bottom: 10px;
+}
+
+#content ul,
+#content ol {
+    padding-left: 32px; /* need space for triple-digit ref lists */
+}
+#content .reflist {
+    column-width: auto !important;
+    column-count: 1 !important;
+}
+
+#semanticZoomer {
+    overflow-y: visible !important; /* sometimes lines get half cut off */
+}
+
+.lightbox-bg {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.5);
+
+    z-index:10;
+}
+.lightbox-fg {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    right: 100px;
+    bottom: 50px;
+    background: white;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 20px;
+    z-index:11;
+}
+
+.imageview {
+    display: block;
+    margin: auto;
+}
+
+.table-view {
+    float: none !important;
+    margin: auto !important;
+}
+
+button.show-table {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.lightbox-fg.small {
+    margin: auto;
+    height: 200px;
+}
+
+.win-listview .win-viewport.win-vertical {
+    padding-left: 10px;
+}
+.win-listview .win-viewport.win-horizontal {
+    padding-left: 120px;
+}
+
+#offline {
+    padding-left: 120px;
+    padding-top: 20px;
+}
+
+@media all and (min-width: 641px) {
+    /* Fullscreen or most of screen */
+    #subcontent {
+        column-width: 280px;
+        column-gap: 20px;
+        column-fill: auto;
+    }
+    #content[dir=ltr] #subcontent {
+        /* Padding for the left end of the screen */
+        padding-left: 120px;
+    }
+    #content[dir=rtl] #subcontent {
+        padding-right: 120px;
+    }
+    .lightbox-fg.small {
+        width: 400px;
+    }
+}
+@media all and (max-width: 640px) {
+    /* Snapped */
+    #content {
+        overflow-x: visible !important; /* override the scroller */
+        overflow-y: scroll !important;
+    }
+    #subcontent {
+        padding: 10px 20px;
+    }
+    .lightbox-fg {
+        left: 10px;
+        right: 10px;
+    }
+}
+
+.mw-editsection {
+	display: none;
+}
+

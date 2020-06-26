@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>notification</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="notification.css" rel="stylesheet" />
+    <script src="notification.js"></script>
+</head>
+<body>
+    <div id="notification" class="fragment" data-bind="visible: pageViewModel">
+        <div class="notification-control" data-bind="
+            property: { viewModel: pageViewModel },
+            winjsControl: pageViewModel ? pageViewModel.url : ''"></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="o365MailMessage"
+        restServiceConnectorId="{E22A66D0-3FE7-4F00-8128-9657319BF140}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[Connect to your Office 365 Mail]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="OfficeLogo" dataSourceLocation="ctrllib/o365Controls/images/OfficeLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##O365MailMessage_Title##" />
+      </rules>
+    </control>
+   <control template="Label" name="Subject">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="28" />
+        <rule name="Height" value="90" />
+        <rule name="Width" value="550" />
+        <rule name="Size" value="22" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+        <rule name="Text" value="First(Office365!Emails(&quot;Inbox&quot;)!items)!Subject" isExpr="true"/>
+        <rule name="PaddingLeft" value="15" />
+        <rule name="PaddingRight" value="80" />
+        <rule name="LineHeight" value="1.3" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderThickness" value="2" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Time">
+      <rules>
+        <rule name="X" value="475" />
+        <rule name="Y" value="28" />
+        <rule name="Height" value="90" />
+        <rule name="Width" value="75" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Right" isExpr="true" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+        <rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+        <rule name="Text" value="Text(DateTimeValue(First(Office365!Emails(&quot;Inbox&quot;)!items)!DateTimeReceived), DateTimeFormat!ShortTime)" isExpr="true"/>
+      </rules>
+    </control>
+    <control template="HtmlViewer" name="Message">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="118" />
+        <rule name="Width" value="550" />
+        <rule name="Height" value="400" />
+        <rule name="HtmlText" value="First(Office365!Emails(&quot;Inbox&quot;)!items)!Body!Content" isExpr="true" />
+        <rule name="Size" value="10" />
+        <rule name="PaddingTop" value="5" />
+        <rule name="PaddingLeft" value="5" />
+        <rule name="PaddingRight" value="5" />
+        <rule name="PaddingBottom" value="5" />
+        <rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" /> 
+        <rule name="BorderThickness" value="2" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+      </rules>
+    </control>
+  </controls>
+</composition>

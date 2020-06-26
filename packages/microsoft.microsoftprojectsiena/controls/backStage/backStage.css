@@ -1,0 +1,113 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ */
+/* Colors */
+/* Misc styles */
+#backStage {
+  background-color: #ffffff;
+  /* Steed */
+  padding: 0 40px 0 0;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: -ms-grid;
+  -ms-grid-columns: 140px 50px 1fr;
+  -ms-grid-rows: 100%;
+}
+#backStage .backstage-button {
+  color: #ffffff;
+  background-color: #643964;
+  min-width: 150px;
+  max-width: 100%;
+  height: 35px;
+  border-width: 0;
+  font-family: 'Segoe UI';
+  font-weight: 600;
+  font-size: 11pt;
+  -ms-grid-column-align: start;
+}
+#backStage .backstage-button:not([disabled]):hover,
+#backStage .backstage-button:not([disabled]):active {
+  background-color: #824a82;
+}
+#backStage .backstage-button:disabled {
+  background-color: #bababa;
+}
+#backStage .link {
+  color: #643964;
+  cursor: pointer;
+}
+#backStage .link:hover {
+  color: #824a82;
+}
+#backStage .link .link-text {
+  font-family: 'Segoe UI';
+  margin-right: 5px;
+  line-height: 20px;
+  font-size: 9pt;
+}
+#backStage .link .icon {
+  font-family: 'Segoe UI Symbol';
+  font-size: 15px;
+}
+#backStage .failure {
+  font-size: 12px;
+  margin-top: 15px;
+  display: flex;
+}
+#backStage .failure-messages {
+  border: 1px solid #eed3d7;
+  background-color: #f2dede;
+  color: #b94a48;
+  padding: 10px;
+  margin: 0;
+  list-style-type: none;
+}
+.backStagePanel {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  background-color: #643964;
+  color: white;
+}
+.backStagePanelItem {
+  min-height: 35px;
+  padding-left: 25px;
+  line-height: 35px;
+  font-size: 10pt;
+  font-family: "Segoe UI";
+  margin-bottom: 1px;
+}
+.backStagePanelItem.selected,
+.backStagePanelItem:hover {
+  background-color: #824a82;
+}
+.backStageBackButton {
+  border: 2px solid white;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  box-sizing: border-box;
+  font-family: 'Segoe UI Symbol';
+  font-size: 10pt;
+  height: 35px;
+  line-height: 31px;
+  margin-left: 25px;
+  margin-top: 20px;
+  margin-bottom: 15px;
+  text-align: center;
+  width: 35px;
+}
+.backStageBackButton:hover,
+.backStageBackButton:active {
+  opacity: 0.5;
+}
+.backStageBackButton:focus {
+  outline: none;
+}
+.backStageContentHost {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+  overflow-x: auto;
+}

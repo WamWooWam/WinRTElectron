@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="instagramFeed"
+        restServiceConnectorId="{94225C2F-9A04-45AE-AD54-1765C7B1D62A}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[INSTAGRAM FEED
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="InstagramLogo" dataSourceLocation="ctrllib/instagramControls/images/InstagramLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="590" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##InstagramFeed_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control template="Gallery" name="InstagramFollowing" variant="instagramMyLikesAndFeedHorizontal">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="31" />
+        <rule name="Height" value="292" />
+        <rule name="Width" value="610" />
+        <rule name="Items" value='%RESTServiceName%!MyFeed()' isExpr="true"/>
+        <rule name="TemplatePadding" value="0" />
+        <rule name="Layout" value="Layout!Horizontal" isExpr="true" />
+        <rule name="TemplateSize" value="235" />
+      </rules>
+    </control>
+  </controls>
+</composition>

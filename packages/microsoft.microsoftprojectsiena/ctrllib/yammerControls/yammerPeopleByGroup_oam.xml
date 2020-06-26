@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="yammerPeopleByGroup"
+        restServiceConnectorId="{2ECEC570-4882-4633-9369-B724564A310B}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[YAMMER PEOPLE BY GROUP
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="YammerLogo" dataSourceLocation="ctrllib/yammerControls/images/YammerLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##YammerPeopleByGroup_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control metaDataId="%Dropdown.ID%" template="DropDown" name="InputText">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="41" />
+        <rule name="Width" value="400" />
+        <rule name="Default" value="1" />
+        <rule name="Items" value="%RESTServiceName%!CurrentUser({include_group_memberships:true})!group_memberships" isExpr="true">
+          <nameMap>
+            <entry sink="Value" source="name" />
+          </nameMap>
+        </rule>
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%Gallery.ID%" template="Gallery" name="PeopleearchResults" variant="yammerSearchGalleryVertical">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="80" />
+        <rule name="Height" value="238" />
+        <rule name="Width" value="400" />
+        <rule name="TemplateSize" value="90" />
+        <rule name="Layout" value="Layout!Vertical" isExpr="true" />
+        <rule name="Items" value="%RESTServiceName%!UsersInGroup(%Dropdown.ID%!Selected!id)!users" isExpr="true" />
+        <rule name="TemplatePadding" value="0" />
+      </rules>
+    </control>
+  </controls>
+</composition>

@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Connection View</title>
+
+    <link href="connectionView.css" rel="stylesheet" />
+    <script src="connectionView.js"></script>
+</head>
+<body>
+    <div class="fragment data-connection" data-bind="css: { highlight: isExpanded }">
+        <div class="data-connection-header-container" data-bind="click: toggleExpansionAndRetrieveData">
+            <div class="data-connection-header">
+                <img src="#" data-bind="attr: { src: icon }" />
+                <div class="data-connection-name" data-bind="text: label, attr: { title: tooltip }"></div>
+            </div>
+            <div class="data-connection-refresh-button" data-bind="click: refreshSource, clickBubble: false, visible: supportsRefresh">
+                <img src="/images/refresh_icon_25x25.svg" />
+            </div>
+            <div class="data-connection-remove-button" data-bind="
+                     click: removeDataSourceGroup, clickBubble: false">
+                <img src="/images/trashcan_20x20.svg" />
+            </div>
+        </div>
+        <div class="data-source-selector-menu" tabindex="0" data-bind="visible: isExpanded, foreach: sources">
+            <div class="tableItem" data-bind="text: name,
+                                              click: $parent.onClickDataSource.bind($parent),
+                                              css: { 'selected-data-source': $parent.selectedSource !== null && name === $parent.selectedSource.name }"></div>
+        </div>
+    </div>
+</body>
+</html>

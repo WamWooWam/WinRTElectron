@@ -1,0 +1,83 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Rest Connection Data View</title>
+
+    <link href="restConnectionDataView.css" rel="stylesheet" />
+    <script src="restConnectionDataView.js"></script>
+</head>
+<body>
+    <div class="fragment rest-connection">
+        <div class="pane-header" data-bind="text: serviceNamespace"></div>
+
+        <!-- ko if: serviceKeyConfigViewModel !== null && isServiceKeyConfigPageVisible && connectorId !== AppMagic.Services.AzureConstants.ConnectorIds.office365 -->
+        <div class="rest-service-key-config-container">
+            <div class="rest-service-key-config-note" data-bind="text: AppMagic.AuthoringStrings.RestServiceKeyConfigNote"></div>
+            <div class="rest-service-key-page" data-bind="
+                             property: { viewModel: serviceKeyConfigViewModel },
+                             winjsControl: '/backStages/data/configPages/rest/restServiceKeyConfig.html'">
+            </div>
+        </div>
+        <!-- /ko-->
+        <!-- ko if: serviceKeyConfigViewModel !== null && isServiceKeyConfigPageVisible && connectorId === AppMagic.Services.AzureConstants.ConnectorIds.office365 -->
+        <div class="rest-service-key-config-container">
+            <div class="rest-service-key-config-note" data-bind="text: AppMagic.AuthoringStrings.RestServiceKeyConfigNote"></div>
+            <div class="rest-service-key-page" data-bind="
+                             property: { viewModel: serviceKeyConfigViewModel },
+                             winjsControl: '/backStages/data/configPages/azure/azureServiceKeyConfig.html'">
+            </div>
+        </div>
+        <!-- /ko-->
+
+        <div class="rest-data-connection-container" data-bind="visible: !isServiceKeyConfigPageVisible">
+            <div class="rest-connection-controls">
+                <div class="rest-connection-selector">
+                    <div class="rest-function-selector-container">
+                        <select class="rest-function-selector" data-bind="
+                            options: functions,
+                            optionsText: 'displayName',
+                            value: selectedFunction
+                        "></select>
+                    </div>
+                    <button class="rest-connection-control-button backstage-button" data-bind="
+                    attr: { title: AppMagic.AuthoringStrings.RestConnectionTryItText },
+                    text: AppMagic.AuthoringStrings.RestConnectionTryItLabel,
+                    click: onClickTryIt,
+                    visible: isTryItVisible"></button>
+                </div>
+                <div class="rest-connection-grid-scroll-container">
+                    <div class="rest-connection-grid" data-bind="style: { msGridColumns: detailColWidths[0].toString() + 'px 5px ' + detailColWidths[1].toString() + 'px 5px 1fr' }">
+                        <div class="selected-function-name-header" data-bind="text: AppMagic.AuthoringStrings.RestConnectionFunctionNameLabel"></div>
+                        <div class="column-splitter-0" data-bind="
+                     event: { MSPointerDown: onMSPointerDownResizeColWidth.bind($data, 0) }">
+                            <div class="splitter"></div>
+                        </div>
+                        <div class="selected-function-description-header" data-bind="text: AppMagic.AuthoringStrings.RestConnectionFunctionDescriptionLabel"></div>
+                        <div class="column-splitter-1" data-bind="
+                     event: { MSPointerDown: onMSPointerDownResizeColWidth.bind($data, 1) }">
+                            <div class="splitter"></div>
+                        </div>
+                        <div class="selected-function-arguments-header" data-bind="text: AppMagic.AuthoringStrings.RestConnectionFunctionParametersLabel"></div>
+                        <div class="selected-function-name" unselectable="off" data-bind="text: selectedFunction.displayName"></div>
+                        <div class="selected-function-description" unselectable="off" data-bind="text: selectedFunction.description"></div>
+                        <div class="selected-function-arguments" unselectable="off" data-bind="text: selectedFunction.parametersDescription"></div>
+                    </div>
+                </div>
+                <div class="rest-sample-data-header" unselectable="off" data-bind="text: sampleDataHeader"></div>
+            </div>
+
+            <progress class="rest-connection-wait" data-bind="visible: isWaitVisible"></progress>
+
+            <div class="rest-connection-error" data-bind="visible: errorMessage.length > 0">
+                <div class="rest-connection-error-message" data-bind="text: errorMessage" unselectable="off">
+                </div>
+            </div>
+
+            <div class="rest-connection-table" data-bind="
+            property: { viewModel: dataViewerViewModel, importedRestConfigViewModel: $data },
+            winjsControl: '/controls/dataSourceDataViewer/dataSourceDataViewerControl.html',
+            visible: !isWaitVisible && isDataVisible"></div>
+        </div>
+      </div>
+</body>
+</html>

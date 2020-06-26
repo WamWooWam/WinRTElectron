@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Table Config</title>
+    <link href="localTableConfig.css" rel="stylesheet" />
+    <script src="localTableConfig.js"></script>
+</head>
+<body>
+    <div class="localtable-pane">
+        <div class="localtable-pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageLocalTableCreateTableTitle"></div>
+
+        <div class="localtable-nameinput-container dc-type" data-bind="click: enterEditMode">
+            <img src="/images/table_icon.png" data-bind="attr: { alt: AppMagic.AuthoringStrings.BackStageLocalTableCreateTableTitle }" />
+            <input type="text" data-bind="visible: isInEditMode, value: tableName, valueUpdate: 'afterkeydown', onEnterKeyPressed: createTable, hasFocus: isInEditMode" />
+            <span data-bind="visible: !isInEditMode, text: AppMagic.AuthoringStrings.BackStageLocalTableNamePlaceHolder" />
+        </div>
+
+        <div class="failure" data-bind="visible: isErrorVisible">
+            <ul class="failure-messages" data-bind="foreach: errorMessages">
+                <li data-bind="text: $data"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

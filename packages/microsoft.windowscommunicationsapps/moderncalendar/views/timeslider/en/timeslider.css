@@ -1,0 +1,25 @@
+﻿.timeSlider{position:relative;z-index:1;}.timeSlider .surface{position:relative;}
+.timeSlider .container{position:absolute;width:100%;height:100%;opacity:0;}
+.timeSlider .vertical .slider{left:0;right:0;margin-top:-1px;margin-bottom:1px;}@media (-ms-high-contrast){.timeSlider .vertical .slider{left:-1px;right:0;margin-bottom:-1px;}}
+.timeSlider .vertical .line{width:100%;height:3px;z-index:20;}
+.timeSlider .vertical .focus-region{bottom:0;}
+.timeSlider .vertical .grabber{left:1px;top:1px;cursor:row-resize;}@media (-ms-high-contrast){.timeSlider .vertical .grabber{background:Background;}}
+.timeSlider .vertical .grabberTouch{left:-24px;z-index:20;}
+.timeSlider .horizontal .slider{top:61px;bottom:1px;margin-left:-2px;margin-right:0;}@media (-ms-high-contrast){.timeSlider .horizontal .slider{top:60px;bottom:0;}}
+.timeSlider .horizontal .line{width:3px;height:100%;}
+.timeSlider .horizontal .focus-region{height:39px;}
+.timeSlider .horizontal .grabber{left:1px;top:1px;cursor:col-resize;}
+.timeSlider .horizontal .grabberTouch{top:-16px;}
+.timeSlider .slider{position:absolute;background:rgba(50, 120, 180, 0.3);}@media (-ms-high-contrast){.timeSlider .slider{border:3px solid -ms-hotlight;background:transparent;}}
+.timeSlider .line{position:absolute;background-color:#1a1a1a;z-index:2;}.timeSlider .line.left{left:0;}
+.timeSlider .line.right{right:0;}
+.timeSlider .line.top{top:-1px;}
+.timeSlider .line.bottom{bottom:-2px;}
+@media (-ms-high-contrast){.timeSlider .line{background-color:-ms-hotlight;}.timeSlider .line.left{left:-3px;} .timeSlider .line.right{right:-3px;} .timeSlider .line.top{top:-3px;} .timeSlider .line.bottom{bottom:-3px;}}
+.timeSlider .focus-region{position:absolute;top:0;left:0;right:0;z-index:0;}
+.timeSlider .grabberTouch{-ms-touch-action:none;-ms-high-contrast-adjust:none;position:absolute;z-index:3;width:19px;height:19px;border:6px solid transparent;}.timeSlider .grabberTouch.left{left:-14px;}
+.timeSlider .grabberTouch.right{right:-14px;}
+.timeSlider .grabberTouch.top{top:-15px;}
+.timeSlider .grabberTouch.bottom{bottom:-16px;}
+@media (-ms-high-contrast){.timeSlider .grabberTouch.left{left:-17px;} .timeSlider .grabberTouch.right{right:-17px;} .timeSlider .grabberTouch.top{top:-17px;} .timeSlider .grabberTouch.bottom{bottom:-17px;}}
+.timeSlider .grabber{position:absolute;width:11px;height:11px;border:3px solid #1a1a1a;border-radius:50%;background:#fff;}@media (-ms-high-contrast){.timeSlider .grabber{border-color:-ms-hotlight;}}

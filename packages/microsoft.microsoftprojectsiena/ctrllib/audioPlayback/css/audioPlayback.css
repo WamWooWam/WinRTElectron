@@ -1,0 +1,463 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic AudioPlayback control CSS
+ *
+ */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+/* Colors */
+/* Misc styles */
+.appmagic-audio-playback {
+  box-sizing: border-box;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #FFFFFF;
+  /*Steed*/
+}
+.appmagic-audio-playback,
+.appmagic-audio-playback-label-container,
+.appmagic-audio-playback-controls,
+.appmagic-audio-playback-background-image {
+  width: 100%;
+  height: 100%;
+}
+.appmagic-audio-playback-volume-container,
+.appmagic-audio-playback-label {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.75s;
+}
+.appmagic-audio-playback-volume-container-click {
+  opacity: 1;
+  visibility: visible;
+}
+.appmagic-audio-playback-disabled {
+  background-color: #BABABA;
+  /*Wolf*/
+}
+.appmagic-audio-playback .icon {
+  border-radius: 50%;
+  /* Added to cover up the clipped border around arrow when resizing. */
+  background-size: 100%;
+  background-position: center;
+}
+.appmagic-audio-playback .icon:hover {
+  background-color: #00B0F0;
+  /*Aquarius*/
+}
+.highlighted {
+  background-color: #1295c7;
+  /* Wave */
+}
+.appmagic-audio-playback-label {
+  word-wrap: break-word;
+}
+.appmagic-audio-playback-label::selection {
+  background-color: #777777;
+  /*Storm*/
+}
+.appmagic-audio-playback-controls {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  box-sizing: border-box;
+  padding: 15px;
+}
+.appmagic-audio-playback-controls .time {
+  line-height: 35px;
+  font-family: "Segoe UI";
+  font-weight: bold;
+  font-size: 9pt;
+  margin-bottom: 0px;
+}
+.appmagic-audio-playback-controls .icon {
+  box-sizing: border-box;
+  height: 35px;
+  width: 35px;
+  min-width: 35px;
+  max-width: 35px;
+  border: 2px solid white;
+}
+.appmagic-audio-playback-timer-time {
+  margin-right: 15px;
+}
+.appmagic-audio-playback-timer-duration {
+  margin-left: 15px;
+}
+.appmagic-audio-playback-button-play-pause {
+  background-image: url(../../../controls/playback/images/iconPlay.svg);
+  margin-right: 15px;
+}
+.appmagic-audio-playback-button-play-pause.playing {
+  background-image: url(../../../controls/playback/images/iconPause.svg);
+}
+.appmagic-audio-playback-button-volume {
+  background-size: 50% !important;
+  /* overwriting the background size for playback icon */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../../controls/playback/images/iconVolume.svg);
+  margin-left: 15px;
+}
+.appmagic-audio-playback-button-volume.muted {
+  background-image: url(../../../controls/playback/images/iconVolumeMuted.svg);
+}
+.appmagic-audio-playback-button-volume-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+.appmagic-audio-playback-volume-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+  background-color: #f2f2f2;
+  /* Place the volume container div right next the volume button. */
+  position: absolute;
+  bottom: 15px;
+  right: 55px;
+  height: 35px;
+  width: 100px;
+}
+.appmagic-audio-playback-volume-container input[type=range].appmagic-audio-playback-slider-volume {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  -ms-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  flex: 1;
+  padding: 10px 10px 10px 0;
+}
+.appmagic-audio-playback-volume-container input[type=range].appmagic-audio-playback-slider-volume::-ms-track {
+  background-color: transparent;
+}
+.appmagic-audio-playback-volume-container input[type=range].appmagic-audio-playback-slider-volume::-ms-fill-lower {
+  background-color: #00b0f0;
+}
+.appmagic-audio-playback-volume-container input[type=range].appmagic-audio-playback-slider-volume.muted::-ms-fill-lower {
+  background-color: #777777;
+}
+.appmagic-audio-playback-volume-container input[type=range].appmagic-audio-playback-slider-volume::-ms-fill-upper {
+  background-color: #cccccc;
+}
+.appmagic-audio-playback-volume-container input[type=range].appmagic-audio-playback-slider-volume::-ms-thumb {
+  background-color: #333333;
+}
+.appmagic-audio-playback-volume-container .appmagic-audio-playback-volume-top {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  padding: 10px;
+  width: 16px;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../../controls/playback/images/iconVolumeBlack.svg);
+}
+.appmagic-audio-playback-volume-container .appmagic-audio-playback-volume-top.muted {
+  background-image: url(../../../controls/playback/images/iconVolumeMutedBlack.svg);
+}
+.appmagic-audio-playback-volume-container-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  /* Place the volume container div right above the volume button. */
+  position: absolute;
+  bottom: 55px;
+  right: 15px;
+  height: 100px;
+  width: 35px;
+}
+.appmagic-audio-playback-volume-container-vertical input[type=range].appmagic-audio-playback-slider-volume {
+  -ms-flex: auto;
+  -moz-box-flex: auto;
+  -webkit-box-flex: auto;
+  flex: auto;
+  -webkit-appearance: slider-vertical;
+  /* show vertical slider in chrome and safari */
+  writing-mode: bt-lr;
+  width: 100%;
+  padding: 0 10px 10px 10px;
+  margin: 0;
+}
+.appmagic-audio-playback-seekbar-controls {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  width: 100%;
+  height: 65px;
+}
+.appmagic-audio-playback-seekbar {
+  -ms-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  flex: 1;
+  margin-bottom: 11px;
+}
+.appmagic-audio-playback-disabled-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(119, 119, 119, 0.5);
+}

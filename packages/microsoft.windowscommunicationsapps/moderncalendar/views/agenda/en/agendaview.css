@@ -1,0 +1,623 @@
+﻿.agendaview {
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    background-color: #cccccc;
+    color: #ffffff;
+    font-weight: 300;
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
+.agendaview .backgroundcontainer {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+}
+
+.agendaview .backgroundcontainer .backgroundprogress {
+    color: #ffffff;
+    left: 50%;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: -20px;
+    position: absolute;
+    right: 50%;
+    top: 50%;
+    z-index: 10;
+}
+
+.agendaview .backgroundcontainer .background {
+    background-color: #ffffff;
+    background-position: 50% 33%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.agendaview .backgroundcontainer .backgroundDefault {
+    transform: none;
+}
+
+.agendaview .backgroundcontainer .backgroundoverlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.agendaview .agendacontainer {
+    display: grid;
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 100%;
+}
+
+.agendaview .event {
+    box-sizing: border-box;
+    display: grid;
+    padding: 0px;
+    grid-template-rows: 100%;
+    grid-template-columns: auto 1fr;
+}
+
+.agendaview .event .glyph {
+    box-sizing: border-box;
+    height: 100%;
+    width: 7px;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.agendaview .event .glyphinner {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+}
+
+.agendaview .event[data-status='free'] .glyphinner {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.agendaview .event[data-status='tentative'] .glyphinner {
+    background-color: transparent;
+    background-image: url('/moderncalendar/Tentative.png');
+    background-repeat: repeat;
+}
+
+.agendaview .event[data-status='outOfOffice'] .glyphinner,.agendaview .event[data-status='workingElsewhere'] .glyphinner {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.agendaview .event .eventinfo {
+    color: #666666;
+    display: grid;
+    overflow: hidden;
+    padding-bottom: 21px;
+    padding-left: 17px;
+    padding-right: 25px;
+    padding-top: 17px;
+    grid-column: 2;
+    grid-template-columns: 100%;
+    grid-row: 1;
+    grid-template-rows: auto auto auto 1fr;
+}
+
+.agendaview .event .eventinfo .subject {
+    color: #000000;
+    margin-bottom: 7px;
+    grid-row: 1;
+}
+
+.agendaview .event .eventinfo .subjectinner {
+    font-size: 21.33333px;
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    padding-bottom: 2px;
+    padding-top: 1px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.agendaview .event .eventinfo .location {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-row: 2;
+}
+
+.agendaview .event .eventinfo .timespan {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-row: 3;
+}
+
+.agendaview .event .eventinfo .timespan .conflict {
+    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+    margin-left: 4px;
+}
+
+.agendaview .event .eventinfo .herotext {
+    color: #000000;
+    margin-left: 10px;
+    align-content: end;
+    grid-row: 3 / 5;
+    justify-content: end;
+}
+
+.agendaview .alldaycontainer .alldayinfo {
+    overflow: hidden;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.agendaview .alldayevent {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+}
+
+.agendaview .alldayevent .subject {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #ffffff;
+    grid-column: 2;
+}
+
+.agendaview .alldayevent .starttime {
+    margin-right: 10px;
+    grid-column: 1;
+}
+
+.agendaview .alldayevent .endtime {
+    margin-left: 10px;
+    grid-column: 3;
+}
+
+.agendaview .textcontainer .info {
+    color: #00a693;
+    overflow: hidden;
+    padding-bottom: 21px;
+    padding-left: 24px;
+    padding-right: 25px;
+    padding-top: 19px;
+}
+
+.agendaview .herocontainer {
+    padding-bottom: 10px;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: 40px;
+    position: relative;
+    z-index: 2;
+    grid-row: 1;
+    grid-column: 1;
+}
+
+@media (max-width: 499px) {
+    .agendaview .herocontainer {
+        padding-left:29px;
+        padding-right: 30px;
+        padding-top: 30px;
+    }
+}
+
+.agendaview .herocontainer .date {
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    color: #ffffff;
+    display: inline-block;
+    font-weight: 200;
+}
+
+@media (max-width: 499px) {
+    .agendaview .herocontainer .date {
+        font-size:26.66667px;
+        letter-spacing: 0.02em;
+        line-height: 32px;
+        padding-bottom: 5px;
+        padding-top: 3px;
+        font-weight: 300;
+    }
+}
+
+.agendaview .herocontainer .date:hover {
+    color: #d9d9d9;
+}
+
+.agendaview .herocontainer .date:active {
+    color: #b3b3b3;
+}
+
+.agendaview .herocontainer .allday {
+    display: grid;
+}
+
+.agendaview .herocontainer .alldaycontainer {
+    margin-top: -3px;
+    margin-left: 4px;
+    margin-bottom: -2px;
+    width: 380px;
+}
+
+.agendaview .herocontainer .alldaycontainer.hover {
+    color: #d9d9d9;
+}
+
+.agendaview .herocontainer .alldaycontainer.hover .alldayevent .subject {
+    color: #d9d9d9;
+}
+
+.agendaview .herocontainer .alldaycontainer.active {
+    color: #b3b3b3;
+}
+
+.agendaview .herocontainer .alldaycontainer.active .alldayevent .subject {
+    color: #b3b3b3;
+}
+
+@media (max-width: 499px) {
+    .agendaview .herocontainer .alldaycontainer {
+        margin-top:4px;
+        margin-left: 0px;
+        margin-bottom: 0px;
+        width: 260px;
+    }
+}
+
+.agendaview .herocontainer .alldayevent {
+    font-size: 21.33333px;
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    padding-bottom: 2px;
+    padding-top: 1px;
+    display: grid;
+    margin-bottom: 2px;
+    grid-template-columns: auto 1fr auto;
+}
+
+@media (max-width: 499px) {
+    .agendaview .herocontainer .alldayevent {
+        font-size:14.66667px;
+        letter-spacing: 0.02em;
+        line-height: 20px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.agendaview .herocontainer .alldayevent .subject {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #ffffff;
+    grid-column: 2;
+}
+
+.agendaview .herocontainer .alldayevent .starttime {
+    margin-right: 10px;
+    grid-column: 1;
+}
+
+.agendaview .herocontainer .alldayevent .endtime {
+    margin-left: 10px;
+    grid-column: 3;
+}
+
+.agendaview .herocontainer .morealldayevents {
+    font-size: 21.33333px;
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    padding-bottom: 2px;
+    padding-top: 1px;
+    margin-bottom: 2px;
+}
+
+@media (max-width: 499px) {
+    .agendaview .herocontainer .morealldayevents {
+        font-size:14.66667px;
+        letter-spacing: 0.02em;
+        line-height: 20px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+        margin-bottom: 0px;
+    }
+}
+
+.agendaview .timeline {
+    grid-column: 1;
+    grid-row: 1 / 3;
+    z-index: 1;
+}
+
+@media (max-width: 856px) {
+    .agendaview .timeline {
+        grid-row:2 / 3;
+    }
+}
+
+.agendaview .timeline .agendaheader {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    background-color: #5133ab;
+    box-sizing: border-box;
+    display: inline-block;
+    font-weight: 300;
+    max-width: 100%;
+    padding-bottom: 11px;
+    padding-left: 24px;
+    padding-right: 26px;
+    padding-top: 9px;
+}
+
+@media (max-width: 499px) {
+    .agendaview .timeline .agendaheader {
+        padding-left:20px;
+        padding-right: 22px;
+    }
+}
+
+.agendaview .timeline .alldaycontainer {
+    background-color: #5133ab;
+}
+
+.agendaview .timeline .alldaycontainer .alldayinfo {
+    color: #ffffff;
+    padding-bottom: 21px;
+    padding-left: 24px;
+    padding-right: 25px;
+    padding-top: 19px;
+}
+
+.agendaview .timeline.win-listview .win-focusedoutline,.agendaview .timeline .win-itemcontainer .win-focusedoutline {
+    outline-color: #ffffff;
+}
+
+.agendaview .timeline.win-listview {
+    height: 100%;
+}
+
+.agendaview .timeline.win-listview.peekBarSpace {
+    box-sizing: border-box;
+    padding-bottom: 15px;
+}
+
+.agendaview .timeline.win-listview .win-horizontal .win-surface {
+    margin-left: 0px;
+    padding-bottom: 73px;
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-top: calc((100vh - 278px));
+}
+
+.agendaview .timeline.win-listview .win-horizontal .win-groupleader {
+    margin-left: 0px;
+}
+
+.agendaview .timeline.win-listview .win-vertical .win-surface {
+    margin-bottom: 20px;
+    margin-left: 55px;
+    margin-right: 55px;
+    margin-top: 31px;
+}
+
+@media (max-width: 499px) {
+    .agendaview .timeline.win-listview .win-vertical .win-surface {
+        margin-left:25px;
+        margin-right: 25px;
+        margin-top: 26px;
+    }
+}
+
+.agendaview .timeline.win-listview .win-vertical .win-groupleader {
+    margin-top: 0px;
+}
+
+.agendaview .timeline.win-listview .win-vertical .win-groupheadercontainer {
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-bottom: -4px;
+    max-width: 390px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+@media (max-width: 499px) {
+    .agendaview .timeline.win-listview .win-vertical .win-groupheadercontainer {
+        max-width:270px;
+    }
+}
+
+.agendaview .timeline.win-listview .win-vertical .win-listlayout .win-container {
+    margin-bottom: 0px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-top: 10px;
+    min-width: 380px;
+    width: 60%;
+}
+
+@media (max-width: 499px) {
+    .agendaview .timeline.win-listview .win-vertical .win-listlayout .win-container {
+        min-width:260px;
+        width: 260px;
+    }
+}
+
+.agendaview .timeline .win-horizontal {
+    visibility: visible;
+}
+
+@media (max-width: 856px) {
+    .agendaview .timeline .win-horizontal {
+        visibility:hidden;
+    }
+}
+
+.agendaview .timeline .win-horizontal .win-groupheadercontainer {
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.agendaview .timeline .win-horizontal .event {
+    height: 150px;
+    width: 350px;
+}
+
+.agendaview .timeline .win-vertical {
+    visibility: hidden;
+}
+
+@media (max-width: 856px) {
+    .agendaview .timeline .win-vertical {
+        visibility:visible;
+    }
+}
+
+.agendaview .timeline .win-vertical .win-itemsblock {
+    margin-bottom: -5px;
+    padding-bottom: 5px;
+}
+
+.agendaview .timeline .win-vertical .event {
+    height: 120px;
+    width: 100%;
+}
+
+.agendaview .timeline .win-vertical .event .eventinfo {
+    padding-bottom: 16px;
+    padding-top: 12px;
+}
+
+@media (max-width: 499px) {
+    .agendaview .timeline .win-vertical .event .eventinfo {
+        padding-bottom:11px;
+        padding-left: 13px;
+        padding-right: 14px;
+        padding-top: 14px;
+    }
+
+    .agendaview .timeline .win-vertical .event .eventinfo .subject {
+        margin-bottom: 10px;
+    }
+
+    .agendaview .timeline .win-vertical .event .eventinfo .subjectinner {
+        font-size: 14.66667px;
+        letter-spacing: 0.02em;
+        line-height: 20px;
+        padding-bottom: 0px;
+        padding-top: 0px;
+    }
+}
+
+@media (max-width: 499px) {
+    .agendaview .timeline .win-vertical .alldaycontainer .alldayinfo,.agendaview .timeline .win-vertical .textcontainer .info {
+        padding-bottom:15px;
+        padding-left: 20px;
+        padding-right: 21px;
+        padding-top: 14px;
+    }
+}
+
+@media (-ms-high-contrast) {
+    .agendaview .event {
+        border: 2px solid windowtext;
+    }
+
+    .agendaview .event[data-status="busy"] .glyphinner {
+        background-color: window;
+    }
+
+    .agendaview .event[data-status="outOfOffice"] .glyphinner,.agendaview .event[data-status="workingElsewhere"] .glyphinner {
+        background-color: windowtext;
+    }
+
+    .agendaview .event[data-status="tentative"] .glyphinner {
+        background-image: linear-gradient(135deg, window 25%, windowtext 25%, windowtext 50%, window 50%, window 75%, windowtext 75%);
+        background-size: 10px 10px;
+    }
+
+    .agendaview .event[data-status="free"] .glyphinner {
+        background-color: window;
+        border-left: none;
+        border-right: solid 1px windowtext;
+    }
+
+    .agendaview .event .eventinfo {
+        padding-bottom: 19px;
+        padding-left: 15px;
+        padding-right: 23px;
+        padding-top: 15px;
+    }
+
+    .agendaview .timeline .alldaycontainer .alldayinfo,.agendaview .timeline .textcontainer .info {
+        padding-bottom: 19px;
+        padding-left: 22px;
+        padding-right: 23px;
+        padding-top: 17px;
+    }
+
+    .agendaview .timeline .agendaheader {
+        border: 2px solid windowtext;
+        padding-bottom: 9px;
+        padding-left: 22px;
+        padding-right: 24px;
+        padding-top: 7px;
+    }
+
+    .agendaview .timeline .win-vertical .event .eventinfo {
+        padding-bottom: 14px;
+        padding-top: 10px;
+    }
+
+    .agendaview .allday .event {
+        border: none;
+    }
+}
+
+@media (-ms-high-contrast) and (max-width: 499px) {
+    .agendaview .timeline .agendaheader {
+        padding-left:18px;
+        padding-right: 20px;
+    }
+}
+
+@media (-ms-high-contrast) and (max-width: 499px) {
+    .agendaview .timeline .win-vertical .event .eventinfo {
+        padding-bottom:9px;
+        padding-left: 11px;
+        padding-right: 12px;
+        padding-top: 12px;
+    }
+}
+
+@media (-ms-high-contrast) and (max-width: 499px) {
+    .agendaview .timeline .win-vertical .alldaycontainer .alldayinfo,.agendaview .timeline .win-vertical .textcontainer .info {
+        padding-bottom:13px;
+        padding-left: 18px;
+        padding-right: 19px;
+        padding-top: 12px;
+    }
+}

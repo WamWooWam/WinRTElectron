@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/audioPlayback"
+        name="audioPlayback"
+        jsClass="AppMagic.Controls.AudioPlayback"
+        authoringjsClass="AppMagic.Controls.AuthoringAudioPlayback"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[AUDIOPLAYBACK
+          Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/audioPlayback.css" />
+    <require type="javascript" src="/controls/playback/js/playback.js" />
+    <require type="javascript" src="/controls/playback/js/playbackViewModel.js" />
+    <require type="javascript" src="/controls/playback/js/media.js" />
+    <require type="javascript" src="/controls/playback/js/mediaFactory.js" />
+    <require type="javascript" src="/controls/playback/js/htmlMedia.js" />
+    <require type="javascript" src="js/audioPlayback.js" />
+    <require type="other" src="/controls/playback/images/iconPause.svg"/>
+    <require type="other" src="/controls/playback/images/iconPlay.svg"/>
+    <require type="other" src="/controls/playback/images/iconVolume.svg"/>
+    <require type="other" src="/controls/playback/images/iconVolumeMuted.svg"/>
+    <require type="other" src="/controls/playback/images/iconVolumeBlack.svg"/>
+    <require type="other" src="/controls/playback/images/iconVolumeMutedBlack.svg"/>
+    <require type="other" src="/controls/common/seekBar/css/seekBar.css"/>
+    <require type="other" src="/controls/common/seekBar/images/seekBarThumb.svg"/>
+    <require type="other" src="/controls/common/seekBar/images/seekBarThumbSelected.svg"/>
+    <require type="other" src="/controls/common/seekBar/js/seekBar.js"/>
+    <require type="markup" src="/controls/common/seekBar/seekBar.html"/>
+    <require type="javascript" src="js/authoringAudioPlayback.js" authoringOnly="true"/>
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    screenActiveAware="true"
+    />  
+
+  <content>
+    <![CDATA[
+      <div class="appmagic-audio-playback" data-bind="
+          style: {
+              backgroundSize: properties.ImagePosition().size,
+              backgroundRepeat: properties.ImagePosition().repeat,
+              backgroundPosition: properties.ImagePosition().position,
+              backgroundImage: backgroundImage,
+              backgroundColor: Fill
+          },
+          attr: { title:properties.Tooltip }">
+          <!-- ko if: mediaObject.template === 'audio' -->
+            <div class="appmagic-audio-playback-controls" data-bind="
+                visible: properties.ShowControls(),
+                event: { 
+                    click: mediaObject.onClick.bind(mediaObject), 
+                    pointermove: mediaObject.onPointerMove.bind(mediaObject) 
+                }">
+                <div class="appmagic-audio-playback-button-play-pause icon" data-bind="
+                    css: { playing: isPlaying },
+                    click: mediaObject.onClickPlayPauseButton.bind(mediaObject),
+                    visible: audioControlsVisibility().playPause"></div>
+
+                <div class="appmagic-audio-playback-timer-time time" data-bind="text: mediaObject.seekBarTime, visible: audioControlsVisibility().timers"></div>
+
+                <div class="appmagic-audio-playback-seekbar" data-bind="
+                    observableProperty: { 
+                        value: mediaObject.seekBarValue, 
+                        min: mediaObject.seekBarMin, 
+                        max: mediaObject.seekBarMax 
+                    },
+                    winjsControl: '/controls/common/seekBar/seekBar.html',
+                    event: { 
+                        pointerdown: mediaObject.onPlaybackSeekBarPointerDown.bind(mediaObject), 
+                        pointerup: mediaObject.onPlaybackSeekBarPointerUp.bind(mediaObject) 
+                    },
+                    visible: audioControlsVisibility().seekbar">
+                </div>
+
+                <div class="appmagic-audio-playback-timer-duration time" data-bind="text: mediaObject.seekBarDuration, visible: audioControlsVisibility().timers"></div>
+
+                <div class="appmagic-audio-playback-button-volume-container">
+                    <div class="appmagic-audio-playback-button-volume-container-parent">
+                        <div class="appmagic-audio-playback-button-volume icon" data-bind="
+                            css: { 
+                              muted: mediaObject.isMuted, 
+                              highlighted: mediaObject.isVolumeContainerVisible 
+                            },
+                            event: { click: mediaObject.onClickVolumeButton.bind(mediaObject) },
+                            visible: audioControlsVisibility().volume"></div>
+
+                        <div class="appmagic-audio-playback-volume-container" data-bind="
+                            css: {
+                                'appmagic-audio-playback-volume-container-click': mediaObject.isVolumeContainerVisible,
+                                'appmagic-audio-playback-volume-container-vertical': audioControlsVisibility().verticalVolume
+                            }">
+                            <div class="appmagic-audio-playback-volume-top" data-bind="
+                                css: { muted: mediaObject.isMuted }, 
+                                event: { click: mediaObject.onClickVolumeMuteButton.bind(mediaObject) }"></div>
+                            <input class="appmagic-audio-playback-slider-volume win-horizontal" type="range" min="0" max="100" step="1" data-bind="
+                                value: mediaObject.volumeSliderValue,
+                                valueUpdate: 'input',
+                                attr: { 
+                                    min: mediaObject.minVolume.toString(), 
+                                    max: mediaObject.maxVolume.toString() 
+                                },
+                                css: { 
+                                    muted : mediaObject.isMuted,
+                                    'win-horizontal': !audioControlsVisibility().verticalVolume,
+                                    'win-vertical': audioControlsVisibility().verticalVolume
+                                }" />
+                        </div>
+                    </div>
+                </div>
+            </div> <!-- appmagic-audio-playback-controls -->
+            
+            <audio class="appmagic-audio-playback-audio" data-bind="
+                event: {
+                    durationchange: mediaObject ? mediaObject.durationChanged.invoke : function () { },
+                    ended: mediaObject ? mediaObject.ended.invoke : function () { },
+                    error: mediaObject ? mediaObject.error.invoke : function () { },
+                    loadedmetadata: mediaObject ? mediaObject.metadataLoaded.invoke : function () { },
+                    pause: mediaObject ? mediaObject.paused.invoke : function () { },
+                    play: mediaObject ? mediaObject.playing.invoke : function () { },
+                    timeupdate: mediaObject ? mediaObject.timeUpdated.invoke : function () { },
+                },
+                mediaattr: { 
+                    loop: mediaObject.loop, 
+                    muted: mediaObject.isMuted, 
+                    volume: mediaObject.volume 
+                }">
+            </audio>
+            
+            <div class="appmagic-audio-playback-disabled-overlay" data-bind="visible: isDisabled()"></div>
+          <!-- /ko -->
+        
+      </div> <!-- appmagic-audio-playback -->
+    ]]>
+  </content>
+
+  <properties>
+    <!-- Data -->
+    <property name="Image" localizedName="##audioPlayback_Image##" datatype="Image" defaultValue="" converter="encodeImageUrl" direction="in" isExpr="true">
+      <title>Poster image content</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##audioPlayback_Image_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_imageicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##CommonProperties_Image_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Duration" localizedName="##audioPlayback_Duration##" datatype="Number" direction="out">
+      <title>Duration of playback in seconds</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##audioPlayback_Duration_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_durationicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="Loop" localizedName="##audioPlayback_Loop##" datatype="Boolean" defaultValue="false">
+      <title>Loop</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##audioPlayback_Loop_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_loopicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>4</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_Loop_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Media" localizedName="##audioPlayback_Media##" datatype="Media" defaultValue="SampleAudio" direction="in" isExpr="true" isPrimaryInputProperty="true">
+      <title>Playback input</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##audioPlayback_Media_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_audioicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_Media_Tooltip##</appMagic:tooltip>
+      <appMagic:sampleDataSource name="SampleAudio" location="media/SampleAudio.mp3"/>
+    </property>
+    <property name="Start" localizedName="##timer_Start##" datatype="boolean" defaultValue="false" nullDefault="false">
+      <title>When true, audio will start playing or continue to play. When false, audio stops playing</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##audioPlayback_Start_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_starticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_Start_tooltip##</appMagic:tooltip>
+    </property>
+    <property name="AutoStart" localizedName="##audioPlayback_AutoStart##" datatype="Boolean" direction="in" defaultValue="false">
+      <title>Set to true to start playing when the screen where the control is located becomes active. False will only play when the play button is pressed.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##audioPlayback_AutoStart_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_autostarticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>6</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_AutoStart_tooltip##</appMagic:tooltip>
+    </property>
+    <property name="AutoPause" localizedName="##audioPlayback_AutoPause##" datatype="Boolean" direction="in" defaultValue="true">
+      <title>For determing behavior when navigating to a different screen</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##audioPlayback_AutoPause_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_pausedicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>7</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_AutoPause_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="StartTime" localizedName="##audioPlayback_StartTime##" datatype="Number" direction="in" defaultValue="0">
+      <title>Set to true to start playing when the screen where the control is located becomes active. False will only play when the play button is pressed.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##audioPlayback_StartTime_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_starttimeicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>5</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_StartTime_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Paused" localizedName="##audioPlayback_Paused##" datatype="Boolean" direction="out" defaultValue="true">
+      <title>Current status of the playback. True if the playback is paused.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##audioPlayback_Paused_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_pausedicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>6</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="Time" localizedName="##audioPlayback_Time##" datatype="Number" direction="out" isPrimaryOutputProperty="true">
+      <title>Current time in seconds</title>
+      <appMagic:category>data</appMagic:category>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>8</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Design -->
+    <appMagic:includeProperty name="ImagePosition">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty> <!-- Charcoal -->
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="485">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Height" defaultValue="65">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="ShowControls">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>false</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="65" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="65" />
+
+    <!-- Behavior -->
+    <appMagic:includeProperty name="OnStart" direction="in" />
+    <appMagic:includeProperty name="OnPause" direction="in" />
+    <appMagic:includeProperty name="OnEnd" direction="in" />
+  </appMagic:includeProperties>
+
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="AutoStart" output="Paused"/>
+    <appMagic:propertyDependency input="AutoStart" output="Time"/>
+    <appMagic:propertyDependency input="StartTime" output="Time"/>
+    <appMagic:propertyDependency input="Media" output="Time"/>
+    <appMagic:propertyDependency input="Media" output="Duration"/>
+  </appMagic:propertyDependencies>
+</widget>

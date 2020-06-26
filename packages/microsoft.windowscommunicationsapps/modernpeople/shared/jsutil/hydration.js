@@ -1,0 +1,1 @@
+﻿Jx.delayDefine(People,"Hydration",function(){var n=window.People;n.Hydration={};n.Hydration.get=function(n,t,i){if(Jx.isObject(n)){var r=n[t];if(Jx.isUndefined(i)||typeof r==typeof i)return r;Jx.isUndefined(r)||Jx.log.warning("Ignoring bad hydration data for "+t+".  Expected "+typeof i+", received "+typeof r+".")}return i};n.Hydration.set=function(n,t,i){return n[t]=i,i}})

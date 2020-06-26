@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" content="IE=edge" http-equiv="X-UA-Compatible" />
+
+    <script src="//microsoft.windowscommunicationsapps.shim/dist/shim.js"></script>
+
+    <!-- Create the platform first so that when it blocks, IE can continue to load subsequent scripts -->
+    <script src="/ModernMail/util/Platform.js" type="text/javascript" ></script>
+
+    <script>
+        window.msWriteProfilerMark("creating worker,StartTA,Mail");
+        window._mailWorker = new Worker("/ModernMail/App/MailWorker.js");
+        window.msWriteProfilerMark("creating worker,StopTA,Mail");
+        window.msWriteProfilerMark("loading JX code,StartTA,Mail");
+    </script>
+    <script src="/Jx/Jx.js" type="text/javascript" ></script>
+    <script src="/Jx/JxUI.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading JX code,StopTA,Mail");
+        window.msWriteProfilerMark("loading include code,StartTA,Mail");
+    </script>
+    <script src="/ModernPeople/shared/JSUtil/Include.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Namespaces.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading include code,StopTA,Mail");
+        window.msWriteProfilerMark("loading base code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/util/HtmlNodes.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Logging.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading base code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail util code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/util/AccountValidator.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Announcer.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/AriaFlows.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/composeHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/ConnectivityHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Disposer.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/EventHook.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Flyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Globalization.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Instrumentation.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/KeyboardDismisser.js" type="text/javascript"></script>
+    <script src="/ModernMail/util/ListViewHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/PromiseHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/util/Validators.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail util code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail data model code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/UIDataModel/AllPinnedViewSyncMonitor.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/FolderViewSyncMonitor.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/PlatformEventForwarder.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/UIMailFolder.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/UIMailView.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/UIMailItem.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/UIMailMessage.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/UIMailConversation.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/ViewCapabilities.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/ViewSyncMonitor.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/CachedProperties.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/FolderCache.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/Collection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/ArrayCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/ConcatenatedCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/CollectionCounter.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/MappedCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/QueryCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/SortedCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/FilteredCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/DeferredCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/ItemDemux.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Objects/Account.js" type="text/javascript" ></script>
+    <script src="/ModernMail/UIDataModel/Collections/CappedCollection.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail data model code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail controls code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/Controls/ComboBox/ComboBox.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail controls code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail frame code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/Frame/AccountSyncStatus.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/Animations.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/DefaultAccountAuthPresenter.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/DragDrop.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/Frame.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/GUIState.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/ReadingPaneSection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/ResizePerfReport.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/Selection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/SuspendResumeHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/SyncMessageBarHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/Frame/WelcomeMessage.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail frame code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail reading pane code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/ReadingPane/BodyWriter.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/BodyCopyHandler.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/BodyLinkFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/CalendarInviteArea.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/CalendarInviteArea.tmpl.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/CalendarNotificationArea.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/EmbeddedAttachments.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ImageDownloadStatus.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPane.html.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPane.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneAttachmentWell.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneBody.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneHeader.html.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/HeaderControl.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneHeader.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneSubjectArea.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneTruncated.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ReadingPaneWarning.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/ShareHandler.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/StandardReadingPane.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail reading pane code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail message list code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/MessageList/AccessibilityHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/CollectionHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/ConversationNode.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/ConversationSelection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/DisplayedItem.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/DisplayedItemManager.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/DisplayedItemRetriever.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/EndOfListItem.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/FilteredSelection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/FolderNameHeader.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/ListViewVDSMonitor.js" type="text/javascript" ></script>    
+    <script src="/ModernMail/components/MessageList/MailHeaderRenderer.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageList.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListDataSource.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListDataProvider.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListEmptyTextControl.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListFilter.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListNotificationHandler.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListItem.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListItemAria.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListItemFactory.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListProgressRing.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/MessageListTreeNode.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/OnItemCommandControl.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SearchAccessibility.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SelectAllCheckbox.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SelectionAggregator.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SelectionHandler.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SelectionHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SelectionModel.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/SelectionController.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/ThreadedListCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/TrailingItemCollection.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/UnseenMonitor.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/ViewCustomizations.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/MessageList/ViewIntro.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail message list code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail command bar code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/CommandBar/CommandManager.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/CommandBar/CommandHost.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/CommandBar/CommandBar.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/CommandBar/SweepFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/CommandBar/SweepRules.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail command bar code,StopTA,Mail");
+        window.msWriteProfilerMark("loading winjs code,StartTA,Mail");
+    </script>
+
+    <script src="//Microsoft.WinJS.2.0/js/base.js" type="text/javascript" ></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading winjs code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail app code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/App/Activation.js"></script>
+    <script src="/ModernMail/App/AppSettings.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/Scheduler.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/SplashScreen.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/PostStartupQueue.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/StartupHelper.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/AppState.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/RestartCheck.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/BaseApp.js" type="text/javascript" ></script>
+    <script src="/ModernMail/App/App.js" type="text/javascript" ></script>
+    <script src="/ModernMail/Worker/WorkerOwner.js" type="text/javascript" ></script>
+    <script src="/ModernMail/Worker/MessageScrubber.js" type="text/javascript" ></script>
+    <script src="/ModernMail/Worker/ScrubHelper.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail app code,StopTA,Mail");
+        window.msWriteProfilerMark("loading people code,StartTA,Mail");
+    </script>
+    <script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+
+    <script src="/ModernPeople/shared/JSUtil/Callback.js"></script>
+    <script src="/ModernPeople/shared/JSUtil/Flyout.js"></script>
+    <script src="/ModernPeople/shared/JSUtil/Hydration.js"></script>
+    <script src="/ModernPeople/shared/JSUtil/Localization.js"></script>
+    <script src="/ModernPeople/shared/JSUtil/PeopleAnimation.js"></script>
+    <script src="/ModernPeople/shared/JSUtil/PeopleLog.js"></script>
+    <script src="/ModernPeople/shared/JSUtil/Promises.js"></script>
+    <script src="/ModernPeople/Shared/Bici/Bici.js"></script>
+
+    <script src="/ModernPeople/shared/Accounts/AccountBarricadeDialog.js"></script>
+    <script src="/ModernPeople/shared/Accounts/AccountControlBase.js"></script>
+    <script src="/ModernPeople/shared/Accounts/AccountDialog.js"></script>
+    <script src="/ModernPeople/shared/Accounts/AccountList.js"></script>
+    <script src="/ModernPeople/shared/Accounts/AccountSettings.js"></script>
+    <script src="/ModernPeople/shared/Accounts/AccountSynchronization.js"></script>
+    <script src="/ModernPeople/shared/Accounts/ConnectedAccounts.js"></script>
+    <script src="/ModernPeople/shared/Accounts/CredUI.js"></script>
+    <script src="/ModernPeople/shared/Accounts/Dialog.js"></script>
+    <script src="/ModernPeople/shared/Accounts/EasiIdConnector.js"></script>
+    <script src="/ModernPeople/shared/Accounts/FlowLauncher.js"></script>
+    <script src="/ModernPeople/shared/Accounts/LogonErrorDialog.js"></script>
+    <script src="/ModernPeople/Shared/Accounts/NetworkConnectivity.js"></script>
+    <script src="/ModernPeople/shared/Accounts/OAuthLauncher.js"></script>
+    <script src="/ModernPeople/Shared/Accounts/ObjectList.js"></script>
+    <script src="/ModernPeople/Shared/Accounts/Overlay.js"></script>
+    <script src="/ModernPeople/Shared/Accounts/PerAccountSettingsPage.js"></script>
+    <script src="/ModernPeople/Shared/Accounts/CertificateSettings.js"></script>
+    <script src="/ModernPeople/shared/Accounts/Phase1Upsell.js"></script>
+    <script src="/ModernPeople/shared/Accounts/UpsellSettings.js"></script>
+    <script src="/ModernPeople/shared/ContactCard/ContactCard.js"></script>
+
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityControl.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityControlActions.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityControlNode.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityElements.js"></script>
+
+    <script src="/ModernPeople/Shared/Navigation/Protocols.js"></script>
+    <script src="/ModernPeople/Shared/Navigation/UriGenerator.js"></script>
+
+    <script src="/ModernPeople/Shared/Platform/FetchContacts.js"></script>
+    <script src="/ModernPeople/Shared/Platform/PlatformCache.js"></script>
+    <script src="/ModernPeople/Shared/Platform/PlatformObjectBinder.js"></script>
+
+    <script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+    <script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+    <script src="/ModernPeople/AddressBook/Controls/Scheduler/Jobset.js"></script>
+    <script src="/ModernPeople/addressbook/Controls/Collections/PlatformCollectionWatcher.js"></script>
+
+    <script src="/ModernPeople/AddressBook/Controls/Collections/CappedPlatformCollection.js"></script>
+
+    <script src="/ModernPeople/Social/Social.Utilities.js"></script>
+    <script src="/ModernPeople/Social/Social.Imports.js"></script>
+    <script src="/ModernPeople/Social/Social.Core.js"></script>
+    <script src="/ModernPeople/Social/Social.Platform.js"></script>
+    <script src="/ModernPeople/Social/Social.Providers.js"></script>
+
+    <script>
+        window.msWriteProfilerMark("loading people code,StopTA,Mail");
+        window.msWriteProfilerMark("loading canvas code,StartTA,Mail");
+    </script>
+    <script src="/ModernCanvas/MCanvas.js"></script>
+    <script src="/ModernCanvas/ModernCanvasPlugins.js"></script>
+    <script src="/ModernCanvas/AutoReplaceDefinitionsMail.js"></script>
+    <script src="/ModernCanvas/AutoReplaceDefinitionsMailConsume.js"></script>
+    <script src="/ModernCanvas/AutoReplaceDefinitionsMailCompose.js"></script>
+    <script src="/ModernCanvas/EmojiPicker.js"></script>
+    <script>
+        window.msWriteProfilerMark("loading canvas code,StopTA,Mail");
+        window.msWriteProfilerMark("loading glom manager code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/GlomManager/GlomManagerUtil.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/GlomManager/ParentMailGlomManager.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading glom manager code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail nav pane and folder list code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/NavPane/NavPane.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/NavPane/NavPaneFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/AccountViews.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/BoundElements.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/FolderFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/PeopleFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/ViewFilters.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/ViewFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/ViewItems.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ViewSwitcher/ViewSwitcher.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/FolderList/FolderListDataSource.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/FolderList/TreeFlattener.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail nav pane and folder list code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail account list code,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/components/AccountList/AccountListItem.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/AccountList.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/AccountNameHeader.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/AccountSettings.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/AccountSwitcherAggregator.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/AccountSwitcherFlyout.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/OofIndicatorSwitcher.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountList/SelectedAccountOofPresenter.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountUpsell/MailPhase1Upsell.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/AccountUpsell/UpsellFrame.js" type="text/javascript" ></script>
+    <script>
+        window.msWriteProfilerMark("loading mail account list code,StopTA,Mail");
+        window.msWriteProfilerMark("loading extra files,StartTA,Mail");
+    </script>
+    <script src="/ModernMail/App/RetailExperience.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandContexts.js"></script>
+    <script src="/ModernMail/components/CommandBar/BaseCommandFactory.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandFactory.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandItem.js"></script>
+    <script src="/ModernMail/components/CommandBar/FolderOperations.js"></script>
+    <script src="/MenuArrowKeyHandler/MenuArrowKeyHandler.js"></script>
+    <script src="/FontSelector/FontSelector.js"></script>
+    <script src="/ModernMail/components/CommandBar/ComposeFlyouts.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandHandlers.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandShortcuts.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandMenuFlyout.js"></script>
+    <script src="/ModernMail/components/CommandBar/CanvasCommandBar.js"></script>
+    <script src="/ModernMail/components/CommandBar/MailAppBar.js"></script>
+    <script src="/ModernMail/components/CommandBar/MoveAllDialog.js"></script>
+    <script src="/ModernMail/components/CommandBar/MoveConfirmDialog.js"></script>
+    <script src="/ModernMail/components/CommandBar/MoveFlyout.js"></script>
+    <script src="/ModernMail/components/CommandBar/CommandBarSelectionHelper.js"></script>
+    <script src="/ModernMail/components/Frame/OutboxQueueHandlerBase.js"></script>
+    <script src="/ModernMail/components/Frame/GenericQueueHandler.js"></script>
+    <script src="/ModernMail/components/Frame/OutboxMonitor.js"></script>
+    <script src="/ModernMail/components/Frame/RulesMessageBarPresenter.js"></script>
+    <script src="/ModernMail/components/MessageList/SearchCollection.js"></script>
+    <script src="/ModernMail/components/MessageList/SearchEndOfListItem.js"></script>
+    <script src="/ModernMail/components/MessageList/SearchHandler.js"></script>
+    <script src="/ModernMail/components/MessageList/SearchHeader.js"></script>
+    <script src="/ModernMail/components/MessageList/SearchResultsFetcher.js"></script>
+    <script src="/ModernMail/components/MessageList/SearchScopeSwitcher.js"></script>
+    <script src="/ModernMail/components/MessageList/TypeToSearch.js" type="text/javascript" ></script>
+    <script src="/ModernMail/components/ReadingPane/PrintHandler.js"></script>
+    <script src="/ModernMail/Components/SettingsPane/MessageListSettings.js"></script>
+    <script src="/ModernMail/Components/SettingsPane/FontSettings.js"></script>
+    <script src="/ModernMail/Components/SettingsPane/SettingsPane.js"></script>
+    <script src="/ModernMail/Components/SettingsPane/ReadingDirectionSetting.js"></script>
+
+    <script src="/ModernMail/compose/components/attachmentwell.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/body.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/buttons.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/from.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/priority.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/irmchooser.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/replyheader.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/subject.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/toccbcc.tmpl.js"></script>
+    <script src="/ModernMail/compose/components/warningmessage.tmpl.js"></script>
+
+    <script src="/ModernMail/Compose/Core/Compose.js"></script>
+    <script src="/ModernMail/Compose/Components/ComposeComponents.js"></script>
+    <script src="/ModernMail/Compose/MailCompose/MailCompose.js"></script>
+
+    <script src="/MessageBar/messagebar/src/messagebar.js"></script>
+    <script src="/MessageBar/messagebar/src/accountmbpresenter.js"></script>
+    <script src="/MessageBar/messagebar/src/authmbpresenter.js"></script>
+    <script src="/MessageBar/messagebar/src/ProxyAuthenticator.js"></script>
+    <script src="/MessageBar/messagebar/src/syncmbpresenter.js"></script>
+    <script src="/MessageBar/messagebar/src/syncmbflyout.js"></script>
+    <script src="/MessageBar/messagebar/src/ensurelockscreen.js"></script>
+    <script src="/MessageBar/messagebar/src/messagebar.tmpl.js"></script>
+
+    <script src="/FromControl/FromControl.js"></script>
+    <script src="/ModernAddressWell/AddressWell.js"></script>
+    <script src="/ModernAttachmentWell/AttachmentWell.js"></script>
+
+    <script>
+        window.msWriteProfilerMark("loading extra files,StopTA,Mail");
+        window.msWriteProfilerMark("loading winjs css,StartTA,Mail");
+    </script>
+
+    <!-- WinJS CSS file -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="Stylesheet" type="text/css">
+    <script>
+        window.msWriteProfilerMark("loading winjs css,StopTA,Mail");
+        window.msWriteProfilerMark("loading sendasmile code,StartTA,Mail");
+    </script>
+
+    <script src="/SendaSmile/SasManager.js" type="text/javascript" ></script>
+    <script src="/SendaSmile/Sas.js" type="text/javascript" ></script>
+
+    <script>
+        window.msWriteProfilerMark("loading sendasmile code,StopTA,Mail");
+        window.msWriteProfilerMark("loading mail css,StartTA,Mail");
+    </script>
+
+    <!-- Our CSS file -->
+    <!-- NOTE: Please make sure that mail.css is loaded AFTER WinJS's styles so that our ListView overrides will take effect. -->
+    <link href="/ModernMail/resources/css/mail.css" rel="Stylesheet" type="text/css">
+    <link href="/ModernMail/Controls/ComboBox/ComboBox.css" rel="Stylesheet" type="text/css">
+
+    <script>
+        window.msWriteProfilerMark("loading mail css,StopTA,Mail");
+        window.msWriteProfilerMark("loading external css,StartTA,Mail");
+    </script>
+
+    <!-- Other teams' CSS files -->
+    <link href="/ModernShared/resources/css/shared_styles.css" rel="Stylesheet" type="text/css">
+    <link href="/ModernPeople/resources/css/IdentityControl.css" rel="Stylesheet" type="text/css">
+    <link href="/Resources/MessageBar/css/messagebar.css" rel="Stylesheet" type="text/css">
+    <link href="/ModernCanvas/ModernCanvas.css" rel="Stylesheet" type="text/css">
+    <link href="/resources/modernaddresswell/css/addresswell.css" rel="stylesheet" type="text/css">
+    <link href="/Resources/ModernAddressWell/css/MailAddressWellColor.css" rel="Stylesheet" type="text/css">
+    <link href="/resources/ModernAttachmentWell/css/AttachmentWell.css" rel="stylesheet" type="text/css">
+
+    <script>
+        window.msWriteProfilerMark("loading external css,StopTA,Mail");
+        window.msWriteProfilerMark("loading dynamic fonts,StartTA,Mail");
+    </script>
+
+    <script src="/ModernShared/Resources/script/shared_primary_fonts.js"></script>
+
+    <script>
+        window.msWriteProfilerMark("loading dynamic fonts,StopTA,Mail");
+    </script>
+
+</head>
+
+<body>
+    <div id="splashScreen">
+        <!-- for explanation of 'onload=""', please see WinLive bug 607837 or Win8 bug 941240 -->
+        <img id="splashScreenImage" onload="" src="/ModernMail/Res/MailSplash.png">
+        <div id="splashScreenContent">
+            <div id="splashScreenProgressWrapper" class="hidden">
+                <progress id="splashScreenProgress" class="" max="100"></progress>
+            </div>
+        </div>
+    </div>
+    <div id="appBody" class="invisible">
+        <div id="idCompApp"></div>
+    </div>
+</body>
+
+</html>
+

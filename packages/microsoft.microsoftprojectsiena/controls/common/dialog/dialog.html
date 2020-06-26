@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dialog</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="dialog.css" rel="stylesheet" />
+</head>
+<body>
+    <!-- This is the transparent background for the dialog -->
+    <div class="dialog-background" data-bind="shortcut: { provider: shortcutsProvider }, style: { zIndex: AppMagic.Constants.zIndex.topmost }">
+
+        <!-- This is the dialog "band" that displays on the foreground, containing the buttons and contents -->
+        <div class="dialog" data-bind="css: { fullscreen: fullScreen, overlay: !fullScreen }">
+            <div class="content"></div>
+            <div class="button-strip" data-bind="foreach: buttons">
+                <button data-bind="disable: !isEnabled, text: title, event: { keydown: onButtonKeyDown, click: onButtonClick }" data-appmagic-initialfocus="true" tabindex="0"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

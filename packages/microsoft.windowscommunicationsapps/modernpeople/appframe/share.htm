@@ -1,0 +1,85 @@
+﻿<!DOCTYPE html>
+
+<!-- Copyright (c) Microsoft Corporation. All Rights Reserved. -->
+
+<html>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+        <!-- For cover builds running in IE, stub out the CodeCoverage -->
+        <!-- It must be included before any other JS file which would have CodeCoverage code injected into it. -->
+        <!-- This line is commented out so it will not show up in Ship builds.  HTM files do not get preprocessed, so
+             the ///#ifdef NO_SHIP is not available.
+             If you want to debug a cover build in IE, uncomment the following line including CoverStubs.js. -->
+        <!-- <script src="../Shared/Stubs/CoverStubs.js"></script> -->
+
+        <!-- Create the platform as early as possible, so that it can spin up the database in the background -->
+        <script src="/modernpeople/AppFrame/CreatePlatform.js"></script>
+
+        <!-- Now load as little as possible to get our perftrack start point fired -->
+        <script src="../Shared/JSUtil/Include.js"></script>
+        <script src="/jx/Jx.js" hint="$(jxCore)"></script>
+        <script src="/modernpeople/Shared/JSUtil/Namespace.js"></script>
+        <script src="/modernpeople/Shared/JSUtil/PeopleLog.js"></script>
+        <script src="/modernpeople/Shared/Accounts/CredUI.js"></script>
+        <script src="/modernpeople/Shared/Accounts/Dialog.js"></script>
+        <script src="/modernpeople/Shared/Accounts/NetworkConnectivity.js"></script>
+        <script src="/modernpeople/Shared/Accounts/LogonErrorDialog.js"></script>
+        <script src="/modernpeople/shared/Accounts/OAuthLauncher.js"></script>
+        <script src="/modernpeople/Shared/Accounts/Overlay.js"></script>
+        <script src="/modernpeople/Shared/AppTile/AppTile.js"></script>
+        <script src="/modernpeople/Shared/Platform/FetchContacts.js"></script>
+        <script src="/modernpeople/Shared/Platform/PlatformCache.js"></script>
+        <script src="/modernpeople/Shared/Platform/PlatformObjectBinder.js"></script>
+        <script src="/modernpeople/Shared/ShareTarget/ShareRoot.js"></script>
+        <script src="/modernpeople/Shared/Sequence/Sequence.js"></script>
+        <script src="/modernpeople/AddressBook/Controls/Collections/DeferredCollection.js"></script>
+        <script src="/modernpeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
+        <script src="/modernpeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+        <script src="/modernpeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+        <script src="/modernpeople/AppFrame/People.js"></script>
+        <script src="/modernpeople/AppFrame/Settings.js"></script>
+
+        <script src="/modernshareanything/shareconstants.js"></script>
+        <script src="/modernshareanything/sharedataloader.js"></script>
+        <script src="/modernshareanything/sharedata.js"></script>
+        <script src="/modernshareanything/sharelinkdata.js"></script>
+        <script src="/modernshareanything/sharepreview.tmpl.js"></script>
+        <script src="/modernshareanything/sharepreview.js"></script>
+        <script src="/modernshareanything/soxe.js"></script>
+
+        <script src="/modernpeople/Social/jquery.js"></script>
+        <script src="/modernpeople/Social/Social.Core.js"></script>
+        <script src="/modernpeople/Social/Social.Imports.js"></script>
+        <script src="/modernpeople/Social/Social.Model.js"></script>
+        <script src="/modernpeople/Social/Social.Platform.js"></script>
+        <script src="/modernpeople/Social/Social.Providers.js"></script>
+        <script src="/modernpeople/Social/Social.UI.Core.js"></script>
+        <script src="/modernpeople/Social/Social.UI.Share.js"></script>
+        <script src="/modernpeople/Social/Social.Utilities.js"></script>
+
+        <script src="/moderncanvas/MCanvas.js"></script>
+        <script src="/moderncanvas/ModernCanvasPlugins.js"></script>
+        <script src="/moderncanvas/AutoReplaceDefinitionsBasic.js"></script>
+
+        <!-- CSS (scripts might attempt to load this, beat them to it) -->
+        <link href="//Microsoft.WinJS.2.0/css/ui-light.css" hint="$(winJS)" rel="stylesheet" type="text/css">
+        <link href="/modernshared/resources/css/shared_styles.css" hint="$(localizedSharedResources)" rel="stylesheet" type="text/css">
+        <link href="/modernpeople/resources/css/People.css" hint="$(cssResources)" rel="stylesheet" type="text/css">
+        <link href="/modernpeople/resources/css/Social.css" hint="$(cssResources)" rel="stylesheet" type="text/css">
+
+        <!-- Framework -->
+        <script src="//Microsoft.WinJS.2.0/js/base.js" hint="$(winJS)"></script>
+        <script src="//Microsoft.WinJS.2.0/js/ui.js" hint="$(winJS)"></script>
+
+        <!-- Shared -->
+        <script src="/modernpeople/Shared/JSUtil/PeopleAnimation.js"></script>
+
+        <script src="/modernshared/Resources/script/shared_primary_fonts.js"></script>
+
+    </head>
+    <body>
+        <div id="idRoot" class="app-frame"></div>
+    </body>
+</html>

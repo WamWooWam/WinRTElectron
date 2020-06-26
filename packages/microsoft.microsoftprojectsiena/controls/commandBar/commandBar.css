@@ -1,0 +1,1291 @@
+﻿/* Colors */
+/* Misc styles */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+.commandBar {
+  width: 100%;
+  height: 88px;
+  background-color: black;
+  box-sizing: border-box;
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+  -ms-grid-rows: auto;
+}
+@media all and (-ms-high-contrast: active) {
+  .commandBar {
+    border-top: 1px solid WindowText;
+  }
+}
+.commandBar .button,
+.commandBar .category,
+.commandBar .category .contentContainer .content {
+  /* Make command bar elements flow horizontally. */
+  display: inline-block;
+}
+.contentContainer .content .button .frame.selected,
+.contentContainer .content .button .frame:focus {
+  background-color: #7C017C;
+  outline: none;
+}
+.commandBar .button {
+  box-sizing: border-box;
+  font-size: 10pt;
+  min-width: 100px;
+  /* Horizontally center text and vertically align beneath the icon. */
+  line-height: 25px;
+  text-align: center;
+}
+.commandBar .button .frame {
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  width: 41px;
+  height: 41px;
+  line-height: 36px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Segoe UI Symbol';
+  font-size: 14pt;
+  position: relative;
+  background-color: black;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .commandBar .button .frame {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}
+.commandBar .button .frame:hover,
+.commandBar .button.active .frame:hover {
+  background-color: #7C017C;
+  /* Spellbound */
+}
+.commandBar .button.active .frame {
+  background-color: #6F3F6F;
+  /* Nightshade */
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .commandBar .button.active .frame {
+    background-color: #6F3F6F;
+    /* Nightshade */
+  }
+}
+.commandBar .button .frame.color {
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  -ms-flex-align: center;
+}
+.commandBar .button .frame.color .colorBar {
+  box-sizing: border-box;
+  border: 1px solid #FFFFFF;
+  width: 22px;
+  height: 6px;
+  -ms-high-contrast-adjust: none;
+  /*In High contrast mode, this allows the color bar in Fill / Color buttons to render the color selected*/
+}
+.commandBar .button .frame .errorIcon {
+  position: absolute;
+  top: 0px;
+  left: -8px;
+  width: 15px;
+  height: 15px;
+}
+.commandBar .button .zoomValue {
+  font-family: "Segoe UI Semibold";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30px;
+}
+.commandBar .button .zoomValue {
+  font-size: 11pt;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .commandBar .button .zoomValue {
+    color: #FFFFFF;
+  }
+}
+.commandBar .leftContainer {
+  -ms-grid-column: 1;
+}
+.commandBar .rightContainer {
+  -ms-grid-column: 2;
+  -ms-grid-column-align: end;
+}
+.commandBar.smallLayout .rightContainer #selectionCategoryPanel {
+  /* Hide the Zoom and Edit buttons in the right container if layout is too small. But always display the Express View button.*/
+  display: none;
+}
+.commandBar .leftContainer,
+.commandBar .rightContainer {
+  /*
+            Use a grid to tightly pack the categories, otherwise gaps appear between them.
+            The gaps are not very noticeable unless you compare screenshots.
+        */
+  display: -ms-grid;
+  -ms-grid-columns: auto auto auto auto;
+}
+.commandBar .category {
+  transition: none 0.35s ease-out;
+  height: 65px;
+  margin-top: 14px;
+  position: relative;
+}
+.commandBar .category .contentContainer {
+  width: 100%;
+  height: 100%;
+  /*
+                Clip content to the category to prevent overlapping with other categories.
+                The clipping exists here instead of on .category to prevent clipping .selectionBar.
+            */
+  overflow: hidden;
+}
+.commandBar .category.animate {
+  transition-property: width;
+}
+.commandBar .category.divider {
+  border-right: 1px solid #363636;
+  /* Abyss */
+  /*
+                This negative left margin lets consecutive dividers merge into each other,
+                otherwise they'll appear as a 2-pixel divider.
+            */
+  margin-left: -1px;
+}
+.commandBar .category .selectionBar {
+  /*
+                Position the bar above the command bar. This is why we cannot have overflow: hidden
+                on .category.
+            */
+  position: absolute;
+  top: calc(-17px);
+  /* .category's margin - .selectionBar's height */
+  width: calc(100% - 4px);
+  margin-left: 2px;
+  height: 3px;
+  background-color: rgba(92, 92, 92, 0.5);
+  /* Abyss */
+  transition: background-color 0.35s linear;
+}
+@media all and (-ms-high-contrast: active) {
+  .commandBar .category .selectionBar {
+    border-bottom: 1px solid WindowText;
+    height: 2px;
+    /* Allow room for the 1px border*/
+  }
+}
+.commandBar .category.selected .selectionBar {
+  background-color: #6F3F6F;
+  /* Nightshade */
+}
+@media all and (-ms-high-contrast: active) {
+  .commandBar .category.selected .selectionBar {
+    background-color: Highlight;
+    height: 3px;
+    /* Only show the higlighted selection bar, no border*/
+    border-bottom-style: none;
+  }
+}
+/*
+            Content within a section.
+
+            This container exists so that the animation code can determine the width of the content,
+            which it uses to animate .section's width.
+        */
+.commandBar .category .contentContainer .content {
+  margin-left: 15px;
+  margin-right: 15px;
+  white-space: nowrap;
+}
+.commandBar.smallLayout .category .contentContainer .content {
+  /* Reduce margin for small layouts so that more buttons fit. */
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.commandBar .leftContainer .category .contentContainer .content {
+  /*
+                    Visually, the buttons appear left-aligned, but from an animation perspective they are actually right-aligned
+                    within the .category element.
+
+                    The buttons are children of the .content element. Imagine that the .content element is a train exiting a tunnel,
+                    and the buttons are windows on the train. As the train moves, the content and windows remain stationary relative to
+                    the front of the train.
+
+                    The float: right attribute ensures that the content is aligned to the right edge of the .category. Without this,
+                    the .content aligns to the left edge of the .category, which in the train analogy is the tunnel entrance. That alignment
+                    looks awkward during animations.
+                */
+  float: right;
+}
+.controlAuthoringButtons .button .frame {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 41px;
+  height: 41px;
+  position: relative;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  background-color: rgba(0, 0, 0, 0) !important;
+  background-image: url(../../images/CG_Edit_Rest.svg);
+}
+.controlAuthoringButtons .button .frame:hover,
+.controlAuthoringButtons .button.active .frame:hover {
+  background-image: url(../../images/CG_Edit_Hover.svg);
+}
+.controlAuthoringButtons .button .frame:active,
+.controlAuthoringButtons .button.active .frame:active {
+  background-image: url(../../images/CG_Edit_Pressed.svg);
+}
+#behaviorCategoryPanel {
+  -ms-grid-column: 2;
+  /*
+        During startup before _refreshCategorySizes is called, the behavior panel has auto width. Screens don't have behavior properties,
+        so the first _refreshCategorySizes call sets the behavior panel's width to 0, which causes a jarring shift.
+
+        We avoid this shift by simply setting the behavior panel's width to 0. Subsequent _refreshCategorySizes calls will override it.
+    */
+  width: 0px;
+}
+#dataCategoryPanel {
+  -ms-grid-column: 1;
+}
+#designCategoryPanel {
+  -ms-grid-column: 3;
+}
+#selectionCategoryPanel {
+  -ms-grid-column: 1;
+}
+.commandBar .rulesCategoryPanel {
+  -ms-grid-column: 2;
+}
+.commandFlyout {
+  border-width: 0px;
+  padding: 0px;
+  /*
+        The flyout div itself has 0 height.
+        The content is anchored above and the pointer is anchored below.
+        This lets the content grow upwards purely via CSS instead of requiring positioning code.
+    */
+  width: 500px;
+  height: 0px;
+  min-height: 0px;
+  max-height: 0px;
+  outline: none;
+  /* Make overflow visible so that the content and anchor are visible when positioned outside the flyout. */
+  overflow: visible;
+  /*
+        Position the flyout above the command bar.
+        The position is relative to the top of the button, so the total margin needed is:
+            .category top margin + .selectionBar height + spacing according to redlines
+    */
+  margin-bottom: calc(22px);
+}
+.commandFlyoutTitle {
+  background-color: black;
+  border: none;
+  box-sizing: border-box;
+  color: #888888;
+  /*Nimbus*/
+  font-family: "Segoe UI";
+  font-size: 16pt;
+  font-weight: 300;
+  height: auto;
+  margin: 10px 5px 10px 10px;
+  padding: 5px 10px !important;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+}
+/* Panel inside the flyout that contains the actual content. */
+.commandFlyout .content {
+  background-color: black;
+  color: white;
+  /* Position the content above the flyout. */
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 10px 0px;
+}
+@media all and (-ms-high-contrast: active) {
+  .commandFlyout .content {
+    outline: 1px solid WindowText;
+  }
+}
+.commandFlyout .menuItem {
+  /* Padding for the text content. */
+  padding: 10px 20px 10px 20px;
+  height: 20px;
+  display: -ms-grid;
+  -ms-grid-columns: auto auto;
+  -ms-grid-rows: auto;
+}
+.commandFlyout .menuItem > img {
+  /* Icon for the menu item. */
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  width: 16px;
+  padding-right: 20px;
+  height: 16px;
+}
+.commandFlyout .menuItem > div {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-row-align: center;
+}
+.commandFlyout .menuItem.back > img {
+  /* The back button has a larger icon. */
+  width: 20px;
+  height: 20px;
+}
+.commandFlyout .menuItem:hover {
+  background-color: #777777;
+}
+.commandFlyout .menuItem:focus,
+.commandFlyout .menuItem.selected {
+  background-color: #777777;
+}
+.commandFlyout .menuItem:focus {
+  outline: none;
+}
+.commandFlyout .menuItem:disabled {
+  color: #363636;
+  background-color: #777777;
+}
+.commandFlyout .ruleTextBox {
+  position: relative;
+}
+.commandFlyout .content .options {
+  height: auto;
+  margin-top: 10px;
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.commandFlyout .content.scrollbar,
+.commandFlyout .content .options.scroll {
+  -ms-scrollbar-arrow-color: rgba(0, 0, 0, 0.6);
+  -ms-scrollbar-face-color: rgba(200, 200, 200, 0.87);
+  -ms-scrollbar-track-color: white;
+  -ms-scrollbar-shadow-color: #555555;
+  max-height: 160px;
+}
+.addDataSourceContainer {
+  overflow: hidden;
+  width: 100%;
+  min-height: 40px;
+}
+.addDataSourceContainer:hover,
+.addDataSourceContainer:focus {
+  background-color: #777777;
+  outline: none;
+}
+.addDataSourceContainer.selected {
+  background-color: #966596;
+}
+.chooseDataSetLabel,
+.chooseConnectionLabel {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  font-family: 'Segoe UI';
+  font-size: 15pt;
+  height: auto;
+}
+.chooseDataSetLabel {
+  padding: 5px 20px 15px 20px;
+}
+.commandFlyout .content .options .icon {
+  position: relative;
+  left: 20px;
+  margin-top: 10px;
+  margin-bottom: -5px;
+  margin-right: 5px;
+}
+.commandFlyout .content .options .icon.padded {
+  left: 75px;
+}
+.commandFlyout .content .options .option {
+  color: white;
+  border: none;
+  box-sizing: border-box;
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  height: auto;
+  line-height: 20px;
+  overflow: hidden;
+  padding: 10px 20px !important;
+  text-overflow: ellipsis;
+  white-space: pre;
+  word-wrap: normal;
+  /* Override word-wrap defined by WinJS. */
+}
+.commandFlyout .content .options .option:hover,
+.commandFlyout .content .options .option.values:focus {
+  background-color: #777777;
+}
+.commandFlyout .content .options .option.selected,
+.commandFlyout .content .options .option.values.selected {
+  background-color: #966596;
+}
+.commandFlyout .content .options .option.values:focus {
+  outline: none;
+}
+.commandFlyout .content .options .initialFocusDiv {
+  width: 0px;
+  height: 0px;
+}
+.dataRuleFlyout .content {
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+  -ms-grid-rows: auto auto;
+}
+.dataRuleFlyout .content .nameMapIcon {
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  padding-top: 3px;
+  padding-right: 2px;
+  height: 33px;
+  width: 33px;
+  position: absolute;
+  right: 15px;
+  top: 24px;
+  z-index: 2;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+}
+.dataRuleFlyout .content .nameMapIcon:hover {
+  background-color: #7C017C;
+  /*Spellbound*/
+}
+.dataRuleFlyout .content .back,
+.behaviorRuleFlyout .content .argSelector .back {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  border: 2px solid white;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  box-sizing: border-box;
+  font-family: 'Segoe UI Symbol';
+  font-size: 12pt;
+  height: 30px;
+  line-height: 27.5px;
+  margin-left: 15px;
+  margin-right: 10px;
+  margin-top: 17px;
+  text-align: center;
+  width: 30px;
+}
+.dataRuleFlyout .content .back:hover,
+.behaviorRuleFlyout .content .argSelector .back:hover {
+  background-color: #7c017c;
+  /* Spellbound */
+}
+.dataRuleFlyout .content .back:active,
+.behaviorRuleFlyout .content .argSelector .back:active {
+  background-color: #6f3f6f;
+  /* Nightshade */
+}
+.dataRuleFlyout .content .ruleText,
+.dataRuleFlyout .content .ruleTextBox,
+.dataRuleFlyout .content .nameMapHeader {
+  -ms-grid-column: 2;
+  -ms-grid-row: 1;
+}
+.dataRuleFlyout .content .ruleText,
+.dataRuleFlyout .content .nameMapHeader {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+.dataRuleFlyout .content .ruleText .key,
+.dataRuleFlyout .content .ruleText .value {
+  background-color: black;
+  border: none;
+  box-sizing: border-box;
+  color: #888888;
+  /*Nimbus*/
+  font-family: "Segoe UI";
+  height: auto;
+  margin: 10px;
+  padding: 5px 10px;
+  width: calc(100% - 20px);
+}
+.dataRuleFlyout .content .ruleText .key {
+  font-size: 16pt;
+  font-weight: 300;
+}
+.dataRuleFlyout .content .ruleText .value {
+  font-size: 11pt;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  padding-right: 20px;
+  word-wrap: normal;
+  /* Override word-wrap defined by WinJS. */
+}
+.dataRuleFlyout .content .nameMapHeader .nameMapVisualsLabel,
+.dataRuleFlyout .content .nameMapHeader .chooseConnectionLabel,
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer {
+  margin: 10px 0px;
+  padding: 5px 0px;
+}
+.dataRuleFlyout .content .nameMapHeader .nameMapVisualsLabel {
+  color: #888888;
+  /*Nimbus*/
+  font-size: 16pt;
+  font-weight: 300;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer {
+  display: -ms-grid;
+  -ms-grid-columns: 160px 115px 110px 18px;
+  -ms-grid-rows: auto auto;
+  width: 400px;
+}
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer .visualsHeader,
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer .columnHeader {
+  color: #BABABA;
+  /*Wolf*/
+  font-family: 'Segoe UI Semibold';
+  font-size: 11pt;
+}
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer .visualsHeader {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer .columnHeader {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.dataRuleFlyout .content .nameMapHeader .columnsHeaderContainer .headerSplitter {
+  -ms-grid-column-span: 3;
+  -ms-grid-row: 2;
+  height: 1px;
+  margin-top: 15px;
+  background-color: #777777;
+  /*Storm*/
+}
+.dataRuleFlyout .content .nameMapBindings,
+.dataRuleFlyout .content .options {
+  -ms-grid-column-span: 2;
+  -ms-grid-row: 2;
+}
+.dataRuleFlyout .content .nameMapBindings {
+  max-height: 160px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.dataRuleFlyout .content .nameMapBindings .binding {
+  display: -ms-grid;
+  -ms-grid-columns: 15px 2px 40% 10px 60%;
+  padding: 15px 20px 15px 3px;
+}
+.dataRuleFlyout .content .nameMapBindings.padded .binding {
+  -ms-grid-columns: 15px 15px 160px 30px 30px 55px 110px 18px 1fr;
+  padding: 15px 0px 15px 25px;
+}
+.dataRuleFlyout .content .nameMapBindings .binding:hover {
+  background-color: #777777;
+  /*Storm*/
+}
+.dataRuleFlyout .content .nameMapBindings .binding .errorIcon {
+  -ms-grid-column: 1;
+  -ms-grid-row-align: center;
+  width: 15px;
+  height: 15px;
+}
+.dataRuleFlyout .content .nameMapBindings .binding .column1,
+.dataRuleFlyout .content .nameMapBindings .binding .column2 {
+  /* Force the columns to one line of text with ellipses for overflow. */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  padding-right: 20px;
+  word-wrap: normal;
+  /* Override word-wrap defined by WinJS. */
+}
+.dataRuleFlyout .content .nameMapBindings .binding .column1 {
+  -ms-grid-column: 3;
+}
+.dataRuleFlyout .content .nameMapBindings .binding .linkIcon {
+  -ms-grid-column: 5;
+  -ms-grid-row-align: center;
+  width: 30px;
+  height: 15px;
+}
+.dataRuleFlyout .content .nameMapBindings .binding .column2 {
+  -ms-grid-column: 7;
+  font-family: 'Segoe UI Semibold';
+  font-size: 11pt;
+  color: #D9A4CC;
+  /*Iris*/
+  text-decoration: underline;
+}
+.dataRuleFlyout .content .options .option.padded {
+  padding: 10px 20px 10px 75px !important;
+}
+.commandFlyout.overflow .content {
+  max-height: 200px;
+  overflow-y: auto;
+}
+.commandFlyout.designRuleFlyout .content {
+  padding-bottom: 0px;
+  width: 500px;
+  display: -ms-grid;
+  -ms-grid-columns: 60px 1px 1fr;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn {
+  -ms-grid-column: 1;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab {
+  height: 45px;
+  display: -ms-grid;
+  -ms-grid-columns: 5px 1fr;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab:focus {
+  outline: none;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .selectionBar {
+  height: 45px;
+  width: 5px;
+  -ms-grid-column: 1;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .selectionBar.selected,
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab:hover .selectionBar.selected,
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab:focus .selectionBar.selected {
+  background-color: #966596;
+  /* Tincture */
+  outline: none;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab:hover .selectionBar,
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab:focus .selectionBar {
+  background-color: #777777;
+  /* Storm */
+  outline: none;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .iconContainer {
+  -ms-grid-column-span: 2;
+  position: relative;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr auto 1fr;
+  -ms-grid-rows: 1fr auto 1fr;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .fontSizeIcon {
+  height: 45px;
+  line-height: 45px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .iconContainer .errorIcon {
+  position: absolute;
+  left: 10px;
+  top: 9px;
+  height: 10px;
+  width: 11px;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .iconContainer .icon {
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .iconContainer .icon .color {
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  -ms-flex-align: center;
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .iconContainer .icon .color > div {
+  box-sizing: border-box;
+  border: 1px solid #FFFFFF;
+  width: 22px;
+  height: 6px;
+  -ms-high-contrast-adjust: none;
+  /*In High contrast mode, this allows the color bar in Fill / Color buttons to render the color selected*/
+}
+.commandFlyout.designRuleFlyout .content .designTabColumn .designTab .iconContainer .icon .fontSize {
+  font-family: "Segoe UI Semibold";
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 30px;
+}
+.commandFlyout.designRuleFlyout .content .divider {
+  background-color: #3C3C3C;
+  /* Zen */
+  -ms-grid-column: 2;
+}
+.commandFlyout.designRuleFlyout .content .activeRule {
+  -ms-grid-column: 3;
+}
+.commandFlyout.designRuleFlyout .content .activeRule .valueEditor {
+  height: 170px;
+  overflow: hidden;
+}
+.behaviorRuleFlyout .content .functions {
+  margin-top: 10px;
+}
+.behaviorRuleFlyout .content .functions .function,
+.behaviorRuleFlyout .content .functions .function.disabled:hover {
+  background-color: transparent;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr auto;
+}
+.behaviorRuleFlyout .content .functions .function:hover {
+  background-color: #777777;
+}
+.behaviorRuleFlyout .content .functions .function .functionName,
+.behaviorRuleFlyout .content .functions .function.disabled:hover .functionName {
+  -ms-grid-column: 1;
+  border: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  height: 40px;
+  line-height: 20px;
+  padding: 10px 20px;
+  width: 100%;
+}
+@media all and (-ms-high-contrast: active) {
+  .behaviorRuleFlyout .content .functions .function .functionName,
+  .behaviorRuleFlyout .content .functions .function.disabled:hover .functionName {
+    color: GrayText !important;
+  }
+}
+.behaviorRuleFlyout .content .functions .function .functionName.selected {
+  color: #FFFFFF;
+  /*Steed*/
+}
+@media all and (-ms-high-contrast: active) {
+  .behaviorRuleFlyout .content .functions .function .functionName.selected {
+    color: WindowText !important;
+  }
+}
+.behaviorRuleFlyout .content .functions .function:hover .functionName {
+  color: #FFFFFF;
+  /*Steed*/
+}
+.behaviorRuleFlyout .content .functions .function .win-toggleswitch {
+  -ms-grid-column: 2;
+  background-color: transparent;
+  height: 20px;
+  margin: 10px 15px 10px 10px;
+}
+.behaviorRuleFlyout .content .functions .function .win-toggleswitch .win-label,
+.behaviorRuleFlyout .content .functions .function .win-toggleswitch .win-title {
+  display: none;
+}
+.behaviorRuleFlyout .content .functions .function .win-toggleswitch .win-switch::selection {
+  background-color: #6F3F6F;
+  /*Nightshade*/
+}
+.behaviorRuleFlyout .content .argSelector {
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+  -ms-grid-rows: auto auto auto;
+}
+.behaviorRuleFlyout .content .argSelector .functionName,
+.behaviorRuleFlyout .content .argSelector .functionText {
+  -ms-grid-column: 2;
+  background-color: black;
+  border: none;
+  box-sizing: border-box;
+  color: #888888;
+  /*Nimbus*/
+  font-family: "Segoe UI";
+  margin: 10px 10px 10px 0;
+  width: calc(100% - 55px);
+}
+.behaviorRuleFlyout .content .argSelector .functionName {
+  -ms-grid-row: 1;
+  font-size: 17pt;
+  height: 40px;
+  padding: 5px 10px;
+}
+.behaviorRuleFlyout .content .argSelector .functionText {
+  -ms-grid-row: 2;
+  font-size: 11pt;
+  height: auto;
+  padding: 10px;
+}
+@media all and (-ms-high-contrast: active) {
+  .behaviorRuleFlyout .content .argSelector .functionText {
+    color: GrayText;
+  }
+}
+.behaviorRuleFlyout .content .argSelector .args {
+  -ms-grid-column: 2;
+  -ms-grid-row: 3;
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown {
+  border: none;
+  padding: 15px 10px;
+  position: relative;
+  width: calc(100% - 55px);
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .arg {
+  display: block;
+  padding: 0px;
+  height: 30px;
+}
+@media all and (-ms-high-contrast: active) {
+  .behaviorRuleFlyout .content .argSelector .args .argsDropDown .arg {
+    outline: 1px solid WindowText;
+  }
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .arg .argText {
+  background-color: #C2C2C2;
+  /*Ash*/
+  box-sizing: border-box;
+  color: #000000;
+  display: inline-block;
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  line-height: 30px;
+  height: 30px;
+  margin: 0px;
+  padding: 0px 0px 0px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  width: calc(100% - 30px);
+  word-wrap: normal;
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .arg .dropArrow {
+  background-color: #C2C2C2;
+  /*Ash*/
+  display: inline;
+  float: right;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+}
+@media all and (-ms-high-contrast: active) {
+  .behaviorRuleFlyout .content .argSelector .args .argsDropDown .arg .dropArrow {
+    background-color: white ! important;
+  }
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .arg .dropArrow > img {
+  height: 8px;
+  vertical-align: middle;
+  width: 10px;
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .argOptions {
+  background-color: #FFFFFF;
+  border: solid 1px #D9D9D9;
+  box-sizing: border-box;
+  max-height: 120px;
+  position: absolute;
+  top: 14px;
+  overflow-y: auto;
+  width: calc(100% - 20px);
+  z-index: 1;
+  -ms-overflow-style: scrollbar;
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .argOptions .optionItem {
+  border: none;
+  box-sizing: border-box;
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  line-height: 30px;
+  outline: none;
+  padding-left: 9px;
+  padding-right: 9px;
+  height: auto;
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .argOptions .optionItem:hover {
+  background-color: #777777;
+  /*Storm*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.behaviorRuleFlyout .content .argSelector .args .argsDropDown .argOptions .optionItem.selected {
+  background-color: #966596;
+  /*Tincture*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+@media all and (-ms-high-contrast: active) {
+  .behaviorRuleFlyout .content .argSelector .args .argsDropDown .argOptions .optionItem.selected {
+    color: HighlightText;
+    background-color: Highlight;
+  }
+}
+.toggleSwitch.win-toggleswitch .win-switch,
+.toggleSwitch.win-toggleswitch .win-switch::-ms-track {
+  background-color: transparent;
+  border: none;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+  width: 45px;
+}
+@media all and (-ms-high-contrast: active) {
+  .toggleSwitch.win-toggleswitch .win-switch,
+  .toggleSwitch.win-toggleswitch .win-switch::-ms-track {
+    border: 1px solid WindowText !important;
+  }
+}
+.toggleSwitch.win-toggleswitch .win-switch::-ms-thumb,
+.toggleSwitch.win-toggleswitch .win-switch:disabled::-ms-thumb {
+  height: 20px;
+  width: 10px;
+}
+.toggleSwitch.win-toggleswitch .win-switch::-ms-thumb {
+  background-color: #C2C2C2 !important;
+  /*Ash*/
+}
+.toggleSwitch.win-toggleswitch .win-switch:disabled::-ms-thumb {
+  background-color: #444444 !important;
+}
+.toggleSwitch.win-toggleswitch .win-switch:disabled::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:disabled:hover::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:disabled::-ms-fill-upper,
+.toggleSwitch.win-toggleswitch .win-switch:disabled:hover::-ms-fill-upper {
+  background-color: #333333 !important;
+  /*Black Suede*/
+}
+.toggleSwitch.win-toggleswitch .win-switch::-ms-tooltip {
+  display: none;
+}
+.toggleSwitch.win-toggleswitch .win-switch::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:hover::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:not(focus)::-ms-fill-lower {
+  background-color: #6F3F6F !important;
+  /*Nightshade*/
+}
+.toggleSwitch.win-toggleswitch .win-switch:active::-ms-fill-lower {
+  background-color: #7C017C !important;
+  /*Spellbound*/
+}
+.toggleSwitch.win-toggleswitch .win-switch::-ms-fill-upper {
+  background-color: #BABABA;
+  /*Wolf*/
+}
+.toggleSwitch.win-toggleswitch .win-switch:hover::-ms-fill-upper,
+.toggleSwitch.win-toggleswitch .win-switch:active::-ms-fill-upper,
+.toggleSwitch.win-toggleswitch .win-switch:not(focus)::-ms-fill-upper {
+  background-color: #666666 !important;
+  /*Storm*/
+}
+.toggleSwitch.win-toggleswitch .win-switch::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:hover::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:active::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch:not(focus)::-ms-fill-lower,
+.toggleSwitch.win-toggleswitch .win-switch::-ms-fill-upper,
+.toggleSwitch.win-toggleswitch .win-switch:hover::-ms-fill-upper,
+.toggleSwitch.win-toggleswitch .win-switch:active::-ms-fill-upper,
+.toggleSwitch.win-toggleswitch .win-switch:not(focus)::-ms-fill-upper {
+  border: 0px none;
+  height: 20px;
+  margin: 0px;
+  padding: 0px;
+}
+#zoomFlyout,
+#zoomFlyout .content {
+  width: 65px;
+  height: 303px;
+}
+#zoomFlyout .content {
+  display: -ms-grid;
+  -ms-grid-columns: 1fr auto 1fr;
+  -ms-grid-rows: auto auto 32px 1fr 32px;
+  padding: 0px;
+}
+#zoomFlyout .content .zoomToFit {
+  -ms-grid-column: 2;
+  -ms-grid-row: 1;
+  width: 21px;
+  height: 22px;
+  padding: 20px 22px 20px 22px;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  #zoomFlyout .content .zoomToFit {
+    background-color: #000000;
+  }
+}
+#zoomFlyout .content .zoomToFit:hover,
+#zoomFlyout .content .zoomToFit:active {
+  background-color: #363636;
+  /* Abyss */
+}
+@media all and (-ms-high-contrast: active) {
+  #zoomFlyout .content .zoomToFit:hover,
+  #zoomFlyout .content .zoomToFit:active {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+#zoomFlyout .content .zoomPlus {
+  -ms-grid-column: 2;
+  -ms-grid-row: 3;
+  -ms-grid-column-align: center;
+  padding-top: 9px;
+}
+#zoomFlyout .content .zoomDivider {
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  width: 100%;
+  height: 1px;
+  background-color: #cccccc;
+  /* Ash */
+}
+#zoomFlyout .content .zoomSliderContainer {
+  -ms-grid-column: 2;
+  -ms-grid-row: 4;
+  height: 160px;
+  width: 65px;
+  margin: 0;
+  padding: 7.5px 0px 7.5px 0px;
+  display: -ms-grid;
+  -ms-grid-rows: auto;
+}
+#zoomFlyout .content .zoomMinus {
+  -ms-grid-column: 2;
+  -ms-grid-row: 5;
+  -ms-grid-column-align: center;
+}
+#zoomFlyout .content .zoomSliderContainer .zoomSlider {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  height: 160px;
+  width: 11px;
+  left: 27px;
+  position: absolute;
+  margin: 0;
+  z-index: 2;
+}
+#zoomFlyout .content .zoomSliderContainer input[type=range].zoomSlider::-ms-track {
+  width: 11px;
+}
+#zoomFlyout .content .tickMarksContainer {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  height: 160px;
+  width: 65px;
+  position: absolute;
+  z-index: 1;
+  display: -ms-grid;
+  -ms-grid-rows: 160px;
+  -ms-grid-columns: 65px;
+}
+#zoomFlyout .content .tickMarksContainer .tickMark {
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  height: 15px;
+  width: 30px;
+  box-sizing: border-box;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+#zoomFlyout .content .tickMarksContainer .tick {
+  width: 30px;
+  height: 1px;
+  background-color: #5c5c5c;
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+#arrangeFlyout,
+#orderFlyout,
+#alignFlyout {
+  width: auto;
+  min-width: 250px;
+}
+#copyPasteFlyout {
+  width: auto;
+  min-width: 150px;
+}

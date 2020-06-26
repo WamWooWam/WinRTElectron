@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="47.65px" height="47.65px" viewBox="0 0 47.65 47.65" enable-background="new 0 0 47.65 47.65"
+	 xml:space="preserve">
+<g id="circle">
+	<path id="circlefill" opacity="0" fill="#CCCCCC" d="M23.931,3.246c11.35,0,20.59,9.23,20.59,20.58s-9.24,20.58-20.59,20.58
+		c-11.34,0-20.58-9.229-20.58-20.58S12.591,3.246,23.931,3.246z"/>
+	<path id="circleborder_x5F_47px" fill-rule="evenodd" clip-rule="evenodd" fill="#666666" d="M23.931,0.306
+		c-12.99,0-23.52,10.53-23.52,23.52s10.53,23.52,23.52,23.52s23.53-10.53,23.53-23.52S36.921,0.306,23.931,0.306z M23.931,3.246
+		c11.35,0,20.59,9.23,20.59,20.58s-9.24,20.58-20.59,20.58c-11.34,0-20.58-9.229-20.58-20.58S12.591,3.246,23.931,3.246z"/>
+</g>
+<g id="expand">
+	<rect x="32.071" y="13.926" fill="#666666" width="4" height="20"/>
+	<polygon fill="#666666" points="30.071,15.926 30.071,13.926 13.071,13.926 13.071,33.926 30.071,33.926 30.071,31.926 
+		15.071,31.926 15.071,15.926 	"/>
+	<polygon fill="#666666" points="17.071,21.926 24.071,21.926 24.071,17.595 30.009,23.533 24.071,29.47 24.071,25.926 
+		17.071,25.926 	"/>
+</g>
+</svg>

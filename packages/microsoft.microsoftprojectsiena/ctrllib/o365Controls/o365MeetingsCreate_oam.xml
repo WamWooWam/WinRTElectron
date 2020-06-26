@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="o365MeetingsCreate"
+        restServiceConnectorId="{E22A66D0-3FE7-4F00-8128-9657319BF140}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[Add an event to your Office 365 Calendar]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="OfficeLogo" dataSourceLocation="ctrllib/o365Controls/images/OfficeLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##O365MeetingSchedule_Title##" />
+      </rules>
+    </control>
+    <control metaDataId="%InputTo.ID%" template="Text" name="InputTo">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="28" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="500" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="PaddingLeft" value="0" />
+        <rule name="HintText" value="##O365Mail_To##" />
+        <rule name="Default" value="" />
+      </rules>
+    </control>
+    <control metaDataId="%InputSubject.ID%" template="Text" name="InputSubject">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="68" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="500" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="PaddingLeft" value="0" />
+        <rule name="HintText" value="##O365Mail_Subject##" />
+        <rule name="Default" value="" />
+      </rules>
+    </control>
+    <control metaDataId="%InputLocation.ID%" template="Text" name="InputLocation">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="108" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="500" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="PaddingLeft" value="0" />
+        <rule name="HintText" value="##O365Meeting_Location##" />
+        <rule name="Default" value="" />
+      </rules>
+    </control>
+    <control metaDataId="%InputStartDay.ID%" template="Text" name="InputStartDay">
+      <rules>
+        <rule name="X" value="80" />
+        <rule name="Y" value="155" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="235" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="PaddingLeft" value="0" />
+        <rule name="PaddingRight" value="0" />
+        <rule name="Color" value="If(IsBlank(DateValue(%InputStartDay.ID%!Text)), Color!Red, Color!Black)" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="Default" value="Text(Today(), DateTimeFormat!LongDate)" isExpr="true"/>
+        <rule name="Tooltip" value="&quot;##O365MeetingSchedule_DateExample## &quot; &amp; Text(Today(), DateTimeFormat!LongDate)" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%InputEndDay.ID%" template="Text" name="InputEndDay">
+      <rules>
+        <rule name="X" value="80" />
+        <rule name="Y" value="195" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="235" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="PaddingLeft" value="0" />
+        <rule name="PaddingRight" value="0" />
+        <rule name="Color" value="If(IsBlank(DateValue(%InputEndDay.ID%!Text)), Color!Red, Color!Black)" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="Default" value="%InputStartDay.ID%!Text" isExpr="true"/>
+        <rule name="Tooltip" value="&quot;Format &quot; &amp; Text(Today(), DateTimeFormat!LongDate)" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%SelectStartHour.ID%" template="Dropdown" name="SelectStartHour">
+      <rules>
+        <rule name="X" value="315" />
+        <rule name="Y" value="155" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="61" />
+        <rule name="Size" value="11" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="SelectionFill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Items" value="[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;]" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%SelectStartMinute.ID%" template="Dropdown" name="SelectStartMinute">
+      <rules>
+        <rule name="X" value="375" />
+        <rule name="Y" value="155" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="61" />
+        <rule name="Size" value="11" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="SelectionFill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Items" value="[&quot;00&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, &quot;21&quot;, &quot;22&quot;, &quot;23&quot;, &quot;24&quot;, &quot;25&quot;, &quot;26&quot;, &quot;27&quot;, &quot;28&quot;, &quot;29&quot;, &quot;30&quot;, &quot;31&quot;, &quot;32&quot;, &quot;33&quot;, &quot;34&quot;, &quot;35&quot;, &quot;36&quot;, &quot;37&quot;, &quot;38&quot;, &quot;39&quot;, &quot;40&quot;, &quot;41&quot;, &quot;42&quot;, &quot;43&quot;, &quot;44&quot;, &quot;45&quot;, &quot;46&quot;, &quot;47&quot;, &quot;48&quot;, &quot;49&quot;, &quot;50&quot;, &quot;51&quot;, &quot;52&quot;, &quot;53&quot;, &quot;54&quot;, &quot;55&quot;, &quot;56&quot;, &quot;57&quot;, &quot;58&quot;, &quot;59&quot;]" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%SelectStartAMPM.ID%" template="Dropdown" name="SelectStartAMPM">
+      <rules>
+        <rule name="X" value="435" />
+        <rule name="Y" value="155" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="65" />
+        <rule name="Size" value="11" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="SelectionFill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Items" value="[&quot;AM&quot;, &quot;PM&quot;]" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%SelectEndHour.ID%" template="Dropdown" name="SelectEndHour">
+      <rules>
+        <rule name="X" value="315" />
+        <rule name="Y" value="195" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="61" />
+        <rule name="Size" value="11" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="SelectionFill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Items" value="[&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;, &quot;6&quot;, &quot;7&quot;, &quot;8&quot;, &quot;9&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;]" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%SelectEndMinute.ID%" template="Dropdown" name="SelectEndMinute">
+      <rules>
+        <rule name="X" value="375" />
+        <rule name="Y" value="195" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="61" />
+        <rule name="Size" value="11" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="SelectionFill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Items" value="[&quot;00&quot;, &quot;01&quot;, &quot;02&quot;, &quot;03&quot;, &quot;04&quot;, &quot;05&quot;, &quot;06&quot;, &quot;07&quot;, &quot;08&quot;, &quot;09&quot;, &quot;10&quot;, &quot;11&quot;, &quot;12&quot;, &quot;13&quot;, &quot;14&quot;, &quot;15&quot;, &quot;16&quot;, &quot;17&quot;, &quot;18&quot;, &quot;19&quot;, &quot;20&quot;, &quot;21&quot;, &quot;22&quot;, &quot;23&quot;, &quot;24&quot;, &quot;25&quot;, &quot;26&quot;, &quot;27&quot;, &quot;28&quot;, &quot;29&quot;, &quot;30&quot;, &quot;31&quot;, &quot;32&quot;, &quot;33&quot;, &quot;34&quot;, &quot;35&quot;, &quot;36&quot;, &quot;37&quot;, &quot;38&quot;, &quot;39&quot;, &quot;40&quot;, &quot;41&quot;, &quot;42&quot;, &quot;43&quot;, &quot;44&quot;, &quot;45&quot;, &quot;46&quot;, &quot;47&quot;, &quot;48&quot;, &quot;49&quot;, &quot;50&quot;, &quot;51&quot;, &quot;52&quot;, &quot;53&quot;, &quot;54&quot;, &quot;55&quot;, &quot;56&quot;, &quot;57&quot;, &quot;58&quot;, &quot;59&quot;]" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%SelectEndAMPM.ID%" template="Dropdown" name="SelectEndAMPM">
+      <rules>
+        <rule name="X" value="435" />
+        <rule name="Y" value="195" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="65" />
+        <rule name="Size" value="11" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="SelectionFill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Items" value="[&quot;AM&quot;, &quot;PM&quot;]" isExpr="true" />
+      </rules>
+    </control>
+  <control metaDataId="%InputMessage.ID%" template="Text" name="InputMessage">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="242" />
+        <rule name="Height" value="150" />
+        <rule name="Width" value="500" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+        <rule name="HintText" value="##O365Mail_Message##" />
+        <rule name="Mode" value="TextMode!MultiLine" isExpr="true" />
+        <rule name="Default" value="" />
+      </rules>
+    </control>
+    <control metaDataId="%LabelStartTime.ID%" template="Label" name="LabelStartTime">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="155" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="80" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="Color" value="If(DateTimeValue(%InputStartDay.ID%!Text &amp; &quot; &quot; &amp; Text(DateTimeValue(%SelectStartHour.ID%!Selected!Value &amp; &quot;:&quot; &amp; %SelectStartMinute.ID%!Selected!Value &amp; &quot; &quot; &amp; %SelectStartAMPM.ID%!Selected!Value, &quot;en&quot;), DateTimeFormat!ShortTime24)) &gt; DateTimeValue(%InputEndDay.ID%!Text &amp; &quot; &quot; &amp; Text(DateTimeValue(%SelectEndHour.ID%!Selected!Value &amp; &quot;:&quot; &amp; %SelectEndMinute.ID%!Selected!Value &amp; &quot; &quot; &amp; %SelectEndAMPM.ID%!Selected!Value, &quot;en&quot;), DateTimeFormat!ShortTime24)), Color!Red, Color!Gray)" isExpr="true" />
+        <rule name="Text" value="##O365MeetingSchedule_StartTime##" />
+      </rules>
+    </control>
+    <control metaDataId="%LabelEndTime.ID%" template="Label" name="LabelEndTime">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="195" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="80" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Left" isExpr="true" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="Color" value="%LabelStartTime.ID%!Color" isExpr="true" />
+        <rule name="Text" value="##O365MeetingSchedule_EndTime##" />
+      </rules>
+    </control>
+    <control metaDataId="%ButtonCreate.ID%" template="Button" name="ButtonCreate">
+      <rules>
+        <rule name="X" value="350" />
+        <rule name="Y" value="402" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="150" />
+        <rule name="Size" value="11" />
+        <rule name="Align" value="Align!Center" isExpr="true" />
+        <rule name="Fill" value="RGBA(218, 59, 1, 1)" isExpr="true" />
+        <rule name="Text" value="##O365Meeting_Create##" />
+        <rule name="Disabled" value="IsBlank(%InputTo.ID%!Text) || IsBlank(DateValue(%InputStartDay.ID%!Text)) || IsBlank(DateValue(%InputEndDay.ID%!Text)) || (DateTimeValue(%InputStartDay.ID%!Text &amp; &quot; &quot; &amp; Text(DateTimeValue(%SelectStartHour.ID%!Selected!Value &amp; &quot;:&quot; &amp; %SelectStartMinute.ID%!Selected!Value &amp; &quot; &quot; &amp; %SelectStartAMPM.ID%!Selected!Value, &quot;en&quot;), DateTimeFormat!ShortTime24))) &gt; (DateTimeValue(%InputEndDay.ID%!Text &amp; &quot; &quot; &amp; Text(DateTimeValue(%SelectEndHour.ID%!Selected!Value &amp; &quot;:&quot; &amp; %SelectEndMinute.ID%!Selected!Value &amp; &quot; &quot; &amp; %SelectEndAMPM.ID%!Selected!Value, &quot;en&quot;), DateTimeFormat!ShortTime24)))" isExpr="true"/>
+        <rule name="OnSelect" value="Office365!CreateMeeting(Office365!Attendees(%InputTo.ID%!Text, &quot;Required&quot;),  %InputSubject.ID%!Text, %InputMessage.ID%!Text, Text(DateTimeValue(%InputStartDay.ID%!Text &amp; &quot; &quot; &amp; Text(DateTimeValue(%SelectStartHour.ID%!Selected!Value &amp; &quot;:&quot; &amp; %SelectStartMinute.ID%!Selected!Value &amp; &quot; &quot; &amp; %SelectStartAMPM.ID%!Selected!Value, &quot;en&quot;), DateTimeFormat!ShortTime24)), DateTimeFormat!UTC), Text(DateTimeValue(%InputEndDay.ID%!Text &amp; &quot; &quot; &amp; Text(DateTimeValue(%SelectEndHour.ID%!Selected!Value &amp; &quot;:&quot; &amp; %SelectEndMinute.ID%!Selected!Value &amp; &quot; &quot; &amp; %SelectEndAMPM.ID%!Selected!Value, &quot;en&quot;), DateTimeFormat!ShortTime24)), DateTimeFormat!UTC), {Location: %InputLocation.ID%!Text})" isExpr="true" />
+      </rules>
+    </control>
+  </controls>
+</composition>

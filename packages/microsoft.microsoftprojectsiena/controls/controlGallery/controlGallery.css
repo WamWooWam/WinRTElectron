@@ -1,0 +1,192 @@
+﻿/* Colors */
+/* Misc styles */
+#controlGallery {
+  width: 285px;
+  height: 100%;
+  background-color: #333333;
+  -ms-grid-rows: 40px auto 35px 20px 1fr 10px;
+  -ms-grid-columns: 10px 1fr 10px;
+  display: none;
+}
+#controlGallery.expanded {
+  display: -ms-grid;
+}
+#controlGalleryHeader {
+  -ms-grid-column: 2;
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+  -ms-grid-row: 2;
+  min-height: 50px;
+  margin-bottom: 10px;
+}
+#controlGalleryBack {
+  -ms-grid-column: 1;
+  -ms-grid-row-align: center;
+  margin-left: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+#controlGalleryBack:hover {
+  background-color: #7C017C;
+  /* Spellbound */
+}
+#controlGalleryBack:active {
+  background-color: #6F3F6F;
+  /* Nightshade */
+}
+#controlGalleryText {
+  font-size: 21pt;
+  color: #FFFFFF;
+  text-align: left;
+  -ms-grid-column: 2;
+  margin-left: 10px;
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+}
+#controlGalleryFilter {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  padding-left: 10px;
+  width: 230px;
+}
+#controlGalleryFilter .textFilter,
+#controlGalleryFilter .textFilter:focus,
+#controlGalleryFilter .textFilter:hover {
+  background-color: #333333;
+  border: 1px solid #777777;
+  box-sizing: border-box;
+  font-family: 'Segoe UI';
+  font-size: 11pt;
+  width: 230px;
+}
+#controlGalleryFilter .textFilter::-ms-value {
+  font-size: 11pt;
+  color: #777777;
+}
+#controlGalleryFilter .textFilter.editable {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+#controlGalleryFilter .textFilter.editable::-ms-value {
+  color: #000000;
+}
+#controlGalleryFilter input[type=text].textFilter::-ms-clear {
+  height: 20px;
+  vertical-align: middle;
+  visibility: visible;
+  width: 20px;
+}
+#controlGalleryFilter input[type=text].textFilter::selection {
+  background-color: #777777;
+  /*Storm (#777777)*/
+}
+#controlGalleryList {
+  width: 100%;
+  height: 100%;
+  -ms-grid-row: 5;
+  -ms-grid-column: 2;
+  overflow-x: hidden;
+  overflow-y: auto;
+  line-height: 0;
+}
+@media all and (-ms-high-contrast: active) {
+  #controlGalleryList {
+    /* in high contrast mode the TemplateItem borders are cut off on the top and bottom rows with the default 0px padding*/
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+}
+.controlGalleryTemplate {
+  display: inline-block;
+  margin-left: 6px;
+  margin-bottom: 10px;
+  width: 110px;
+  height: 110px;
+}
+.controlGalleryTemplate.wide {
+  width: 230px;
+}
+.controlGalleryTemplateItem {
+  background-color: #6F3F6F;
+  display: -ms-grid;
+  -ms-grid-columns: 15px auto 15px;
+  -ms-grid-rows: 20px auto 20px auto 10px;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+@media all and (-ms-high-contrast: active) {
+  .controlGalleryTemplateItem {
+    outline: 1px solid;
+  }
+}
+.controlGalleryTemplateItem:focus {
+  background-color: #804A80;
+}
+.controlGalleryTemplateItem:hover {
+  background-color: #804A80;
+  outline: none;
+}
+@media all and (-ms-high-contrast: active) {
+  .controlGalleryTemplateItem:hover {
+    outline: 3px solid Highlight !important;
+  }
+}
+.controlGalleryTemplateItem.wide {
+  -ms-grid-rows: 15px auto 0px auto 10px;
+}
+.controlGalleryTemplateImageTile {
+  width: 80px;
+  height: 40px;
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+  text-align: center;
+  -ms-grid-row-align: center;
+  display: -ms-grid;
+  -ms-grid-rows: 1fr;
+  -ms-grid-columns: 1fr;
+  /* TASK 95897:  Emily does not like how this looks, it makes the control thumbnails visible in the black on white mode, but violates approved design guidelines. It is merely an icons show up wrong, rather than an icons don't show up bug. */
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .controlGalleryTemplateImageTile {
+    background-color: black;
+  }
+}
+.controlGalleryTemplateImageTile.wide {
+  width: 200px;
+  height: 65px;
+}
+.controlGalleryTemplateImage {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+}
+.controlGalleryTemplateText {
+  -ms-grid-column: 2;
+  -ms-grid-row: 4;
+  -ms-grid-row-align: center;
+  width: 100%;
+  height: 20px;
+  text-overflow: ellipsis;
+  position: relative;
+}
+.controlGalleryTemplateText.wide {
+  text-align: left;
+}
+.controlGalleryTemplateTextElement {
+  font-family: 'Segoe UI';
+  font-weight: normal;
+  font-size: 9pt;
+  color: #FFFFFF;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  word-wrap: break-word;
+  white-space: normal;
+  /* Limit text to two lines max */
+  line-height: 1.4em;
+  max-height: 2.8em;
+  overflow: hidden;
+}

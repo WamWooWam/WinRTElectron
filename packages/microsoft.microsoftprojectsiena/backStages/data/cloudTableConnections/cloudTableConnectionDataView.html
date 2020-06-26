@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Connection Data View</title>
+
+    <link href="cloudTableConnectionDataView.css" rel="stylesheet" />
+    <script src="cloudTableConnectionDataView.js"></script>
+</head>
+<body>
+
+    <div class="cloudTableDataContainer fragment">
+        <div class="pane-header" data-bind="text: label"></div>
+
+        <!-- ko with: dataViewerViewModel.viewers[0] -->
+        <div class="viewer" data-bind="
+            property: { viewModel: $data },
+            winjsControl: '/controls/objectViewer/objectViewerControl.html'">
+        </div>
+        <!-- /ko -->
+    </div>
+</body>
+</html>

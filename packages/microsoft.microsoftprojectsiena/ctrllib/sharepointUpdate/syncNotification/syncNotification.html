@@ -1,0 +1,153 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SyncNotification</title>
+    <link rel="stylesheet" type="text/css" href="syncNotification.css" />
+    <script src="syncNotification.js"></script>
+</head>
+<body>
+    <div class="sync-notification fragment win-ui-light">
+        <div class="sync-notification-progress-grid" data-bind="visible: !isConflictsVisible">
+            <div class="sync-notification-progress-band">
+                <progress class="sync-notification-progress-ring win-ring" data-bind="visible: !isUpdateErrorVisible && conflicts.length === 0"></progress>
+                <div class="sync-notification-progress-band-text-container">
+                    <div class="sync-notification-progress-band-title" data-bind="
+                        text: isUpdateErrorVisible ? (isNoDataErrorVisible ? AppMagic.Strings.SyncNotificationNoDataSpecified : AppMagic.Strings.SyncNotificationInvalidDataSpecified)
+                            : AppMagic.Strings.SyncNotificationUpdateInProgress"></div>
+                    <div class="sync-notification-progress-band-details" data-bind="
+                        text: isUpdateErrorVisible ? AppMagic.Strings.SyncNotificationPleaseSpecifyData : AppMagic.Strings.SyncNotificationContactingTheServer,
+                        visible: conflicts.length === 0"></div>
+                    <div class="sync-notification-progress-band-details" data-bind="visible: conflicts.length > 0">
+                        <img class="sync-notification-warning-sign" src="warning_sign.svg"/><span data-bind="
+                            text: conflicts.length === 1 ?
+                            AppMagic.Strings.SyncNotificationProgressDetailsOneConflictExists :
+                            Core.Utility.formatString(AppMagic.Strings.SyncNotificationProgressDetailsMutltipleConflictsExist, conflicts.length)"></span>
+                    </div>
+                </div>
+                <div class="sync-notification-progress-button-container">
+                    <button class="sync-notification-progress-button-resolve sync-notification-button-default" data-bind="
+                        text: AppMagic.Strings.SyncNotificationReviewConflicts,
+                        click: onClickReviewConflicts,
+                        visible: conflicts.length > 0"></button>
+                    <button class="sync-notification-progress-button-cancel sync-notification-button" data-bind="
+                        text: AppMagic.Strings.SyncNotificationCancel,
+                        click: onClickCancelProgress,
+                        css: {
+                            'sync-notification-button-default': conflicts.length === 0
+                        }"></button>
+                </div>
+            </div>
+        </div>
+        <div class="sync-notification-resolve-grid" data-bind="visible: isConflictsVisible">
+            <div class="sync-notification-resolve-title" data-bind="text: AppMagic.Strings.SyncNotificationResolveDataConflicts"></div>
+            <div class="sync-notification-resolve-description-conflicts-exist" data-bind="visible: !isAllResolved()">
+                <img class="sync-notification-warning-sign" src="warning_sign.svg"/><span class="sync-notification-resolve-description" data-bind="
+                    text: conflicts.length  === 1 ?
+                    AppMagic.Strings.SyncNotificationDescriptionOneConflict :
+                    Core.Utility.formatString(AppMagic.Strings.SyncNotificationDescriptionMultipleConflicts, conflicts.length)"></span>
+            </div>
+            <div class="sync-notification-resolve-description-no-conflicts-exist sync-notification-resolve-description" data-bind="
+                visible: isAllResolved(),
+                text: AppMagic.Strings.SyncNotificationDescriptionNoMoreConflicts"></div>
+            <div class="sync-notification-conflicts-container" data-bind="foreach: conflicts">
+                <div class="sync-notification-conflict" data-bind="
+                    css: {
+                        'sync-notification-conflict-last': $index() === $parent.conflicts.length - 1,
+                    }">
+                    <div class="sync-notification-conflict-title" data-bind="
+                        text: $parent.resolutions[$index()].isResolved ?
+                        Core.Utility.formatString(AppMagic.Strings.SyncNotificationDescriptionItemN, $index() + 1) :
+                            (changedKeys.length > 1 ?
+                            Core.Utility.formatString(AppMagic.Strings.SyncNotificationDescriptionItemNMultipleConflicts, $index() + 1, changedKeys.length) :
+                            Core.Utility.formatString(AppMagic.Strings.SyncNotificationDescriptionItemNOneConflict, $index() + 1))"></div>
+                    <div class="sync-notification-conflict-indicator-line" data-bind="visible: !$parent.resolutions[$index()].isResolved"></div>
+                    <div class="sync-notification-conflict-details-container">
+                        <div class="sync-notification-select-version-label" data-bind="
+                            text: AppMagic.Strings.SyncNotificationSelectVersion"></div>
+                        <button class="sync-notification-version-button-local" data-bind="
+                            text: AppMagic.Strings.SyncNotificationApp,
+                            click: $parent.onClickVersion.bind($parent, $index(), true),
+                            css: {
+                                'sync-notification-version-button-selected': $parent.resolutions[$index()].isResolved && $parent.resolutions[$index()].isResolvedWithKeepLocal,
+                                'sync-notification-version-button-not-selected': !$parent.resolutions[$index()].isResolved || !$parent.resolutions[$index()].isResolvedWithKeepLocal,
+                            }"></button>
+                        <button class="sync-notification-version-button-server" data-bind="
+                            text: AppMagic.Strings.SyncNotificationServer,
+                            click: $parent.onClickVersion.bind($parent, $index(), false),
+                            css: {
+                                'sync-notification-version-button-selected': $parent.resolutions[$index()].isResolved && !$parent.resolutions[$index()].isResolvedWithKeepLocal,
+                                'sync-notification-version-button-not-selected': !$parent.resolutions[$index()].isResolved || $parent.resolutions[$index()].isResolvedWithKeepLocal,
+                            }"></button>
+                        <div class="sync-notification-conflict-details-spacer-container">
+                            <div class="sync-notification-conflict-details-spacer"></div>
+                        </div>
+                        <div class="sync-notification-conflict-details" data-bind="
+                            style: {
+                                msGridColumns: '(auto 10px)[' + (changedKeys.length + nonchangedKeys.length - 1).toString() + '] auto 1fr',
+                            }">
+                            <div class="sync-notification-header-underlay" data-bind="
+                                style: {
+                                    msGridColumnSpan: (2 * (changedKeys.length + nonchangedKeys.length)).toString(),
+                                }"></div>
+                            <!-- ko foreach: changedKeys -->
+                            <div class="sync-notification-header-change" data-bind="text: $data,
+                                style: {
+                                    msGridColumn: (2 * $index() + 1).toString(),
+                                }"></div>
+                            <div class="sync-notification-cell-local" data-bind="text: $parent.localRow[$data] ? $parent.localRow[$data] : '---',
+                                style: {
+                                    msGridColumn: (2 * $index() + 1).toString(),
+                                }" ></div>
+                            <div class="sync-notification-cell-server" data-bind="text: $parent.serverRow[$data] ? $parent.serverRow[$data] : '---',
+                                style: {
+                                    msGridColumn: (2 * $index() + 1).toString(),
+                                }"></div>
+                            <div class="sync-notification-cell-change-overlay" data-bind="
+                                visible: !$parents[1].resolutions[$parentContext.$index()].isResolved,
+                                style: {
+                                    msGridColumn: (2 * $index() + 1).toString(),
+                                }"></div>
+                            <!-- /ko -->
+                            <!-- ko foreach: nonchangedKeys -->
+                            <div class="sync-notification-header-nonchange" data-bind="
+                                text: $data,
+                                style: {
+                                    msGridColumn: (2 * ($index() + $parent.changedKeys.length) + 1).toString(),
+                                }"></div>
+                            <div class="sync-notification-cell-local" data-bind="
+                                text: $parent.localRow[$data] ? $parent.localRow[$data] : '---',
+                                style: {
+                                    msGridColumn: (2 * ($index() + $parent.changedKeys.length) + 1).toString(),
+                                }"></div>
+                            <div class="sync-notification-cell-server" data-bind="text: $parent.serverRow[$data] ? $parent.serverRow[$data] : '---',
+                                style: {
+                                    msGridColumn: (2 * ($index() + $parent.changedKeys.length) + 1).toString(),
+                                }"></div>
+                            <!-- /ko -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sync-notification-resolve-buttons-container">
+                <button class="sync-notification-resolve-button-apply sync-notification-button-default" data-bind="
+                    text: AppMagic.Strings.SyncNotificationApply,
+                    visible: isAllResolved,
+                    click: onClickApply"></button>
+                <button class="sync-notification-resolve-button-server" data-bind="
+                    text: AppMagic.Strings.SyncNotificationKeepAllServerVersion,
+                    click: onClickResolveAll.bind($data, false),
+                    css: {
+                        'sync-notification-button': isAllResolved(),
+                        'sync-notification-button-default': !isAllResolved(),
+                    }"></button>
+                <button class="sync-notification-resolve-button-local sync-notification-button" data-bind="
+                    text: AppMagic.Strings.SyncNotificationKeepAllAppVersion,
+                    click: onClickResolveAll.bind($data, true)"></button>
+                <button class="sync-notification-resolve-button-cancel sync-notification-button"data-bind="
+                    text: AppMagic.Strings.SyncNotificationCancel, click: onClickCancelResolve"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,3 @@
+﻿.timeIndicator{position:absolute;z-index:1;width:100%;height:1px;}.timeIndicator .clock{font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;position:absolute;width:50px;overflow:hidden;text-align:center;font-feature-settings:"kern" 1,"ss20" 1,"dlig" 1,'smcp';background-color:#757576;color:#ffffff;}
+.timeIndicator .text{position:relative;top:-1px;}
+.timeIndicator .line{position:absolute;width:100%;height:3px;top:-3px;border-top:1px solid rgba(255, 255, 255, 0.25);border-bottom:1px solid rgba(255, 255, 255, 0.25);background-color:rgba(0, 0, 0, 0.3);background-clip:content-box;}

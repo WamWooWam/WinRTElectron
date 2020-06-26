@@ -1,0 +1,230 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ruleValueEditor</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="ruleValueEditor.css" rel="stylesheet" />
+    <script src="ruleValueEditor.js"></script>
+</head>
+<body>
+    <script type="text/html" id="colorTemplate">
+        <div class="colorDiv" data-bind="style: { backgroundColor: value.toCss(), backgroundImage: 'url(' + image + ')' },
+                                             click: $parents[1].handleColorClick.bind($parents[1], value, $element.parentNode.index, $index()), clickBubble: false,
+                                             css: { selected: $parents[1].normalizedValue.equals(value) },
+                                             focusElement: $element.parentNode.index === $parents[1].selectedRow && $index() === $parents[1].selectedColumn,
+                                             event: {
+                                                 keyup: $parents[1].handleColorKeyDown.bind($parents[1], value), 
+                                                 blur: $parents[1].handleColorBlur.bind($parents[1]),
+                                             }" tabindex="0"></div>
+    </script>
+
+    <!-- $data (the RuleViewModel) may be null, in which case we don't display anything in the control. -->
+    <div class="visualIntellisense" data-bind="with: $data">
+        <!-- ko with: getPresentationValueForTemplate('fontWeight') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.TopFontWeights, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                             style: { fontWeight: ruleValue },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.TopFontWeights, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('boolean') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.BooleanValues, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === text },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.BooleanValues, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('fontFamily') -->
+        <div class="container scroll" data-bind="foreach: values, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                             style: { fontFamily: ruleValue + ', Segoe UI' },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, $parent.values, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('range') -->
+        <div class="container center">
+            <input class="valueSlider" type="range" data-bind="attr: { min: rangeMin, max: rangeMax }, value: rangeValue, clickBubble: false,
+                                                               event: { mousedown: handleRangeMouseDown.bind($parent), mouseup: handleRangeMouseUp.bind($parent) }" />
+            <div class="valueTextBoxContainer">
+                <input class="valueTextBox" type="text" maxlength="4" data-bind="value: textBoxValue, valueUpdate: 'keyup', disable: disabled, clickBubble: false" />
+            </div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('imagePosition') -->
+        <div class="container scroll" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.ImagePositionStyles, focusRoot: selectedIndex">
+            <div class="imageTextItem" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                                  css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                                  focusElement: $index(),
+                                                  event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.ImagePositionStyles, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0">
+                <img data-bind="attr: { src: image }" />
+                <div data-bind="text: displayText"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('transition') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.Transitions, focusRoot: selectedIndex">
+            <div class="imageTextItem" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                                  css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                                  focusElement: $index(),
+                                                  event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.Transitions, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0">
+                <img data-bind="attr: { src: image }" />
+                <div data-bind="text: displayText"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('layout') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.Layouts, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.Layouts, true), blur: $parent.handleBlur. bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('themes') -->
+        <div class="container scroll" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.Themes, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.Themes, true), blur: $parent.handleBlur. bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('textMode') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.TextModes, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                            clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                            css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                            style: { fontWeight: ruleValue },
+                                            focusElement: $index(),
+                                            event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.TextModes, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('direction') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.Directions, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.Directions, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('penMode') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.PenModes, focusRoot: selectedIndex">
+            <div class="imageTextItem pen" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                                      css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                                      focusElement: $index(),
+                                                      event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.PenModes, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0">
+                <img data-bind="attr: { src: image }" />
+                <div data-bind="text: displayText"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('penModeInvariant') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.PenModesInvariant, focusRoot: selectedIndex">
+            <div class="imageTextItem pen" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                                      css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                                      focusElement: $index(),
+                                                      event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.PenModesInvariant, true), blur: $parent.handleBlur.bind($parent) }" tabindex="0">
+                <img data-bind="attr: { src: image }" />
+                <div data-bind="text: displayText"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('penType') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.PenTypes">
+            <div class="checkboxTextItem">
+                <input type="checkbox" data-bind="attr: { value: ruleValue }, checked: $parent.typeList" />
+                <div data-bind="text: displayText"></div>
+            </div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('textAlign') -->
+        <div class="container imageList" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.TextAlignments, focusRoot: selectedIndex">
+            <div class="imageItem" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                              css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                              style: { backgroundImage: 'url(' + image + ')' },
+                                              focusElement: $index(),
+                                              event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.TextAlignments, false), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('verticalAlign') -->
+        <div class="container imageList" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.VerticalAlignments, focusRoot: selectedIndex">
+            <div class="imageItem" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                            css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                            style: { backgroundImage: 'url(' + image + ')' },
+                                              focusElement: $index(),
+                                            event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.VerticalAlignments, false), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('borderStyle') -->
+        <div class="container imageList" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.TopBorderStyles, focusRoot: selectedIndex">
+            <div class="imageItem" data-bind="clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                              css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                              style: { backgroundImage: 'url(' + image + ')', borderStyle: ruleValue, borderWidth: '1px', boxSizing: 'border-box' },
+                                              focusElement: $index(),
+                                              event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.TopBorderStyles, false), blur: $parent.handleBlur.bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+
+        <!-- ko with: getPresentationValueForTemplate('overflow') -->
+        <div class="container" data-bind="foreach: AppMagic.AuthoringTool.VisualIntellisense.Overflows, focusRoot: selectedIndex">
+            <div class="textItem" data-bind="text: displayText,
+                                             clickOrEnter: $parent.handleClick.bind($parent, text, $index()), clickBubble: false,
+                                             css: { selected: $parent.normalizedValue === displayText || $parent.normalizedValue === text },
+                                             focusElement: $index(),
+                                             event: { keydown: $parent.handleKeyDown.bind($parent, AppMagic.AuthoringTool.VisualIntellisense.Overflows, true), blur: $parent.handleBlur. bind($parent) }" tabindex="0"></div>
+        </div>
+        <!-- /ko -->
+        
+        <!-- ko with: getPresentationValueForTemplate('color') -->
+        <div class="colorsContainer">
+            <div class="colorsDiv" data-bind="foreach: preDefinedColors, focusRoot: true" tabindex="0">
+                <div class="colorRow" data-bind="property: { index: $index() }, template: { name: 'colorTemplate', foreach: $data }"></div>
+            </div>
+
+            <!-- Bind to an array with 1 item since recentlyUsedColors forms only 1 row of colors. -->
+            <div class="recentlyUsedContainer" data-bind="foreach: [recentlyUsedColors]">
+                <div class="colorRow" data-bind="property: { index: AppMagic.AuthoringTool.VisualIntellisense.ColorMruIndex }, template: { name: 'colorTemplate', foreach: $data }" tabindex="0"></div>
+            </div>
+            <div class="container center">
+                <input class="valueSlider" type="range" step="0.1" data-bind="value: rangeValue, attr: { min: rangeMin, max: rangeMax }, clickBubble: false,
+                                                                          event: { mousedown: handleRangeMouseDown.bind($parent), mouseup: handleRangeMouseUp.bind($parent) }" tabindex="0" />
+                <div class="valueTextBoxContainer" tabindex="0">
+                    <input class="valueTextBox" type="text" maxlength="4" data-bind="value: textBoxValue, valueUpdate: 'keyup', clickBubble: false" />
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</body>
+</html>

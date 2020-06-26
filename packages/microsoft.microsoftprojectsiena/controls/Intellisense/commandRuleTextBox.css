@@ -1,0 +1,371 @@
+﻿/* Colors */
+/* Misc styles */
+.commandRuleTextBox {
+  display: -ms-grid;
+  /* First column is for fx Icon and the second column is for rule textarea.*/
+  -ms-grid-columns: auto 1fr;
+  -ms-grid-rows: auto auto;
+}
+.commandRuleTextBox .key {
+  background-color: black;
+  border: none;
+  box-sizing: border-box;
+  color: #888888;
+  /*Nimbus*/
+  font-family: "Segoe UI";
+  font-size: 16pt;
+  font-weight: 300;
+  height: auto;
+  margin: 10px 5px 10px 10px;
+  padding: 5px 10px !important;
+  -ms-grid-column-span: 2;
+  -ms-grid-row: 1;
+  word-wrap: normal;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.commandRuleTextBox .fnDiscoveryButton {
+  background-color: #F2F2F2;
+  /*Wisp*/
+  box-sizing: border-box;
+  height: 40px;
+  width: 40px;
+  margin: 10px 0px 10px 20px;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+}
+.commandRuleTextBox .fnDiscoveryButton:hover {
+  background-color: #D9D9D9;
+  /*Cellar*/
+}
+.commandRuleTextBox .fnDiscoveryButton.selected {
+  background-color: #6F3F6F;
+  /*Nightshade*/
+}
+.commandRuleTextBox .bodyContainer {
+  position: relative;
+  -ms-grid-column: 2;
+  -ms-grid-row: 2;
+}
+.commandRuleTextBox .bodyContainer .nonEditable,
+.commandRuleTextBox .bodyContainer .ruleValue,
+.commandRuleTextBox .bodyContainer .ruleValue:focus,
+.commandRuleTextBox .bodyContainer .ruleValue:hover {
+  /* Border should be none, otherwise it should be added
+                to textArea height when calculating the height in ruleTextBoxBase.js. */
+  border: none;
+  box-sizing: border-box;
+  font-family: "Segoe UI";
+  line-height: 20px;
+  margin: 10px 10px 10px 3px;
+  padding: 10px !important;
+  /* Necessary to preserve white-spaces added to the cotrol text.*/
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  /* Need to override WinJS's min-width value of 260px, which is too wide for some of our flyouts. */
+  min-width: 170px !important;
+  overflow: hidden;
+  width: calc(100% - 18px);
+}
+@media all and (-ms-high-contrast: active) {
+  .commandRuleTextBox .bodyContainer .nonEditable,
+  .commandRuleTextBox .bodyContainer .ruleValue,
+  .commandRuleTextBox .bodyContainer .ruleValue:focus,
+  .commandRuleTextBox .bodyContainer .ruleValue:hover {
+    border: 1px solid WindowText !important;
+  }
+}
+.commandRuleTextBox .bodyContainer .nonEditable {
+  background-color: #FFFFFF;
+  color: transparent;
+  font-size: 11.7pt;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 1;
+}
+.commandRuleTextBox .bodyContainer .ruleValue,
+.commandRuleTextBox .bodyContainer .ruleValue.editable,
+.commandRuleTextBox .bodyContainer .ruleValue:focus,
+.commandRuleTextBox .bodyContainer .ruleValue:hover {
+  background-color: transparent;
+  color: #000000;
+  /*Ink*/
+  font-size: 11pt;
+  position: relative;
+  z-index: 3;
+}
+@media all and (-ms-high-contrast: active) {
+  .commandRuleTextBox .bodyContainer .ruleValue,
+  .commandRuleTextBox .bodyContainer .ruleValue.editable,
+  .commandRuleTextBox .bodyContainer .ruleValue:focus,
+  .commandRuleTextBox .bodyContainer .ruleValue:hover {
+    background-color: Window;
+    color: WindowText;
+    font-size: 11pt;
+  }
+}
+.commandRuleTextBox .bodyContainer .ruleValue::selection,
+.commandRuleTextBox .bodyContainer .ruleValue:focus::selection,
+.commandRuleTextBox .bodyContainer .ruleValue:hover::selection {
+  background-color: #7C017C;
+}
+.commandRuleTextBox .bodyContainer .absoluteContainer {
+  /* TASK: 93834 - Investigate if we can use only padding here. Sometimes content overflows on padding. */
+  /* We use transparent border instead of padding to make sure squigglies do not overflow outside of the ruleTextBox. */
+  border: 10px solid transparent;
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+}
+@media all and (-ms-high-contrast: active) {
+  .commandRuleTextBox .bodyContainer .absoluteContainer {
+    border: 10px none transparent !important;
+  }
+}
+.commandRuleTextBox .bodyContainer .squigglyContainer,
+.commandRuleTextBox .bodyContainer .bracketHighlightContainer {
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  top: 10px;
+  z-index: 2;
+}
+.commandRuleTextBox .bodyContainer .squigglyContainer .squiggly {
+  background-image: url(../../images/squiggle.png);
+  background-repeat: repeat-x;
+  cursor: text;
+  height: 4px;
+  position: absolute;
+}
+.commandRuleTextBox .bodyContainer .bracketHighlightContainer .bracketHighlight {
+  background-color: #AD85AD;
+  /*Moth*/
+  cursor: text;
+  margin-top: 1.5px;
+  opacity: 0.5;
+  position: absolute;
+}
+.commandRuleTextBox .bodyContainer .absoluteTooltipContainer {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+.commandRuleTextBox .bodyContainer .absoluteTooltipContainer .intellisenseTooltipContainer {
+  border: none;
+  position: absolute;
+  z-index: 30;
+}
+.commandRuleTextBox .bodyContainer .absoluteTooltipContainer .intellisenseTooltipContainer .intellisenseTooltip {
+  background-color: #D9D9D9;
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  color: #333333;
+  font-family: 'Segoe UI';
+  font-size: 9.5pt;
+  line-height: 18px;
+  padding: 10px;
+  position: absolute;
+  width: 300px;
+}
+.commandRuleTextBox .bodyContainer .absoluteTooltipContainer .intellisenseTooltipContainer .intellisenseTooltip.fnSignature {
+  bottom: -8px;
+}
+.commandRuleTextBox .bodyContainer .absoluteTooltipContainer .intellisenseTooltipContainer .intellisenseTooltip .highlightedText {
+  font-weight: bold;
+}
+.commandRuleTextBox .suggestions {
+  box-sizing: border-box;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-height: 105px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  left: 53px;
+  width: calc(100% - 78px);
+  /* Subtract the fx icon width and the left/right margin since border-box doesn't include margin. */
+  z-index: 10;
+}
+.commandRuleTextBox .suggestions.scroll {
+  /* Make the scrollbar visible without requiring mouse hover/interaction when we have an overflow of suggestions. */
+  -ms-overflow-style: scrollbar;
+}
+.commandRuleTextBox .suggestions .suggestion {
+  background-color: #EAEAEA;
+  color: #000000;
+  /*Ink*/
+  font-family: 'Segoe UI';
+  font-size: 11pt;
+  height: 35px;
+  line-height: 35px;
+  box-sizing: border-box;
+  padding-left: 5px;
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100%;
+}
+.commandRuleTextBox .suggestions .suggestion.selected {
+  background-color: #cab2ca;
+}
+.commandRuleTextBox .suggestions .suggestion:hover {
+  background-color: #5c5c5c;
+}
+.commandRuleTextBox .fnDiscoveryPanel {
+  background-color: #000000;
+  /*Ink*/
+  border-bottom: 1px solid #643964;
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  position: absolute;
+  right: 0px;
+  width: 100%;
+  z-index: 10;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer {
+  background-color: #000000;
+  /*Ink*/
+  box-sizing: border-box;
+  margin: 10px 10px 0px 10px;
+  padding-bottom: 5px;
+  position: relative;
+  width: calc(100% - 20px);
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .dropDownContainer {
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .dropDownContainer .selectedCategory {
+  box-sizing: border-box;
+  color: #878787;
+  /*Stone*/
+  font: lighter 16pt "Segoe UI";
+  height: 35px;
+  line-height: 33px;
+  padding: 0px 10px 2px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre;
+  -ms-grid-column: 1;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .dropDownContainer .dropArrow {
+  height: 35px;
+  line-height: 35px;
+  margin-left: 10px;
+  margin-right: 5px;
+  padding-right: 10px;
+  -ms-grid-column: 2;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .dropDownContainer .dropArrow > img {
+  height: 10px;
+  vertical-align: middle;
+  width: 12px;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .categories {
+  background-color: #FFFFFF;
+  /*Steed*/
+  bottom: -198px;
+  box-sizing: border-box;
+  max-height: 198px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 1001;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .categories .category {
+  box-sizing: border-box;
+  color: #000000;
+  /*Ink*/
+  font-family: "Segoe UI";
+  font-size: 11pt;
+  line-height: 30px;
+  margin: 0px;
+  outline: none;
+  padding: 0px 10px 0px 10px;
+  height: 30px;
+  text-overflow: ellipsis;
+  white-space: pre;
+  width: 100%;
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .categories .category:hover {
+  background-color: #777777;
+  /*Storm*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.commandRuleTextBox .fnDiscoveryPanel .categoryContainer .categories .category.selected {
+  background-color: #966596;
+  /*Tincture*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnList {
+  background-color: #FFFFFF;
+  /*Steed*/
+  height: 120px;
+  margin: 0px 10px;
+  overflow-y: auto;
+  width: calc(100% - 20px);
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnList .fnName {
+  background-color: #FFFFFF;
+  /*Steed*/
+  color: #000000;
+  /*Ink*/
+  font-size: 11pt;
+  height: 30px;
+  line-height: 30px;
+  outline: none;
+  padding-left: 10px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: keep-all;
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnList .fnName:hover {
+  background-color: #777777;
+  /*Storm*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnList .fnName.selected {
+  background-color: #966596;
+  /*Tincture*/
+  color: #FFFFFF;
+  /*Steed*/
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnInfo {
+  box-sizing: border-box;
+  height: 48px;
+  line-height: 14px;
+  margin: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0px 10px;
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnInfo .fnDescription,
+.commandRuleTextBox .fnDiscoveryPanel .fnInfo .fnHelp {
+  color: #FFFFFF;
+  /*Steed*/
+  font-size: 9pt;
+  line-height: 14px;
+}
+.commandRuleTextBox .fnDiscoveryPanel .fnInfo .fnHelp {
+  cursor: pointer;
+  text-decoration: underline;
+}

@@ -1,0 +1,115 @@
+﻿.alc {
+    width: 100%;
+}
+
+.ali {
+    height: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-left: -10px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+    font-size: 21.33333px;
+    line-height: normal;
+}
+
+.selected .ali {
+    background-color: #26a0da;
+}
+
+.ali ::selection {
+    background-color: transparent;
+}
+
+.ali-icon,.ali-largeIcon {
+    background-size: 100% 100%;
+    background-position: center;
+    background-clip: content-box;
+    -ms-high-contrast-adjust: none;
+}
+
+.ali-icon {
+    width: 20px;
+    height: 20px;
+    margin-top: 7px;
+    margin-right: 10px;
+}
+
+.ali-largeIcon {
+    width: 40px;
+    height: 40px;
+    margin-top: 6px;
+    margin-right: 10px;
+}
+
+.ali-displayName {
+    margin-top: 1px;
+    font-weight: 300;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    color: #000000;
+    min-width: 70px;
+    flex: .1 auto;
+}
+
+.noDescription.ali-displayName {
+    margin-top: 10px;
+}
+
+.selected .ali-displayName {
+    color: #ffffff;
+}
+
+.ali-description {
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    letter-spacing: normal;
+    color: #666666;
+    padding-left: 1px;
+}
+
+.selected .ali-description {
+    color: #ffffff;
+}
+
+.ali-leftColumn {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.ali-rightColumn {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.ali-errorText {
+    color: #ff3000;
+}
+
+@media screen and (-ms-high-contrast) {
+    .selected .ali {
+        -ms-high-contrast-adjust: none;
+        background-color: Highlight;
+    }
+
+    .selected .ali-displayName {
+        -ms-high-contrast-adjust: none;
+        color: HighlightText;
+    }
+
+    .selected .ali-description,.ali.pressed .ali-description {
+        -ms-high-contrast-adjust: none;
+        background-color: Highlight;
+        color: HighlightText;
+    }
+}

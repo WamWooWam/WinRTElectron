@@ -1,0 +1,159 @@
+﻿/* Colors */
+/* Misc styles */
+.configurationControl .filter,
+.configurationControl .ruleList {
+  height: 100%;
+  width: 100%;
+}
+.configurationControl {
+  background-color: #333333;
+  display: -ms-grid;
+  height: 100%;
+  overflow: hidden;
+  -ms-grid-rows: 81px 20px 1fr;
+  -ms-grid-columns: 1fr;
+}
+@media all and (-ms-high-contrast: active) {
+  .configurationControl {
+    border-left: 1px solid WindowText;
+  }
+}
+.configurationControl .divFilter {
+  background-color: #333333;
+  padding: 41px 20px 5px 20px;
+  -ms-grid-row: 1;
+}
+.configurationControl .filter,
+.configurationControl .filter:focus,
+.configurationControl .filter:hover {
+  background-color: #333333;
+  border: 1px solid #777777;
+  box-sizing: border-box;
+  font-family: 'Segoe UI';
+  font-size: 11pt;
+  width: 100%;
+}
+.configurationControl .filter::-ms-value {
+  font-size: 11pt;
+  color: #777777;
+}
+.configurationControl .filter.editable {
+  background-color: #FFFFFF;
+  border-color: #BAD80A;
+  /* Trinket */
+  color: #000000;
+}
+input[type=text].filter::-ms-clear {
+  height: 20px;
+  vertical-align: middle;
+  visibility: hidden;
+  width: 20px;
+}
+input[type=text].filter.editable::-ms-clear {
+  visibility: visible;
+}
+.configurationControl .ruleList {
+  background-color: #333333;
+  box-sizing: border-box;
+  display: block;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding-top: 25px;
+  -ms-grid-row: 3;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .configurationControl .ruleList {
+    background-color: #000000;
+  }
+}
+.configurationControl .ruleList.filterView {
+  padding-top: 25px;
+}
+.configurationControl .ruleList .category {
+  border: none;
+  background-color: #333333;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-family: 'Segoe UI';
+  font-size: 20pt;
+  font-weight: lighter;
+  height: 35px;
+  line-height: 1em;
+  margin: 0px 30px 10px 30px;
+  padding: 0px;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .configurationControl .ruleList .category {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}
+.configurationControl .ruleList .group {
+  border: none;
+  background-color: #333333;
+  box-sizing: border-box;
+  color: #CCCCCC;
+  font-family: 'Segoe UI';
+  font-size: 13pt;
+  font-weight: lighter;
+  height: 40px;
+  line-height: 1em;
+  padding: 15px 30px 5px 30px;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .configurationControl .ruleList .group {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}
+.configurationControl .ruleList .more {
+  background-color: transparent;
+  width: 100%;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 15px auto;
+  -ms-grid-rows: 35px;
+}
+.configurationControl .ruleList .more .img {
+  background-color: transparent;
+  background-image: url(../../images/lessicon.svg);
+  background-position-x: right;
+  background-position-y: top;
+  background-repeat: no-repeat;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 12px 30px 8px 25px;
+  box-sizing: border-box;
+  height: 35px;
+  -ms-grid-column: 3;
+}
+@media all and (-ms-high-contrast: active) {
+  .configurationControl .ruleList .more .img {
+    background-color: #000000;
+    border-color: transparent;
+    border-style: solid;
+    background-image: url(../../images/lessicon.svg);
+  }
+}
+.configurationControl .ruleList .more .img.collapsedCategories {
+  background-image: url(../../images/moreicon.svg);
+}
+@media all and (-ms-high-contrast: active) {
+  .configurationControl .ruleList .more .img.collapsedCategories {
+    background-color: #000000;
+    border-color: transparent;
+    border-style: solid;
+    background-image: url(../../images/moreicon.svg);
+  }
+}
+.configurationControl .ruleList .more .errorIcon {
+  width: 15px;
+  height: 15px;
+  vertical-align: top;
+  padding-top: 10px;
+  -ms-grid-column: 2;
+}
+/* We use this div to make sure that there is enought room for intellisense at the bottom of the ruleList for the last rule in the list. 
+       TASK: 92130 - Remove this div when changing intellisense position to top of the rule when there is not enough space for it. */
+.configurationControl .ruleList .buttomPadding {
+  height: 60px;
+}

@@ -1,0 +1,32 @@
+﻿/*
+    This class is used to hide an element that needs to be be rendered on the DOM - specifically for cases like gallery where setting display: none can have undesirable side effects
+*/
+.offScreen {
+    left: -10000px;
+    top: -10000px;
+    position: absolute;
+}
+
+.appmagic-borderfill-container,
+.appmagic-border-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.appmagic-borderfill-container {
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.appmagic-borderfill-container.appmagic-hoverFill {
+   transition-duration: 116ms;
+   transition-timing-function: ease;
+}
+
+.appmagic-borderfill-container.appmagic-pressedFill {
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}

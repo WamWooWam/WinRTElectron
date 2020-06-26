@@ -1,0 +1,164 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Data Collections Page CSS
+ *
+ */
+
+.dataCollectionsPage {
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 290px 1px 40px auto;
+    -ms-grid-rows: 100%;
+}
+
+    .dataCollectionsPage .collectionMenu {
+        margin: 2px 0px 0px 0px;
+        outline: none;
+        border-width: 2px;
+        /* We want min-width including the border to be 180px. */
+        min-width: 176px;
+        /* We want max-width including the border to be 400px. */
+        max-width: 396px;
+        /* We want max-height including the border to be 230px. */
+        max-height: 226px;
+    }
+
+        .dataCollectionsPage .collectionMenu .collectionMenuOptions:active,
+        .dataCollectionsPage .collectionMenu .collectionMenuOptions:hover,
+        .dataCollectionsPage .collectionMenu .collectionMenuOptions:hover:active {
+            background-color: rgba(119, 119, 119, 1.0); /* Storm */
+            color: rgba(255, 255, 255, 1.0); /* Steed */
+        }
+
+        .dataCollectionsPage .collectionMenu .collectionMenuOptions.selected,
+        .dataCollectionsPage .collectionMenu .collectionMenuOptions.selected:active {
+            background-color: rgba(150, 101, 150, 1.0); /* Tincture */
+            color: rgba(255, 255, 255, 1.0); /* Steed */
+        }
+
+.dataCollectionsPage .paneSplitter {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    margin-top: 135px;
+    margin-bottom: 65px;
+    box-sizing: border-box;
+    background-color: #CCCCCC; /*Ash*/
+}
+
+.dataCollectionsPage .dataCollectionsNamesList {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 70px auto 30px 1fr 20px;
+}
+
+    .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslistHeader {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+        font-family: 'Segoe UI';
+        font-weight: lighter;
+        font-size: 15pt;
+        color: #824A82; /*Fandango*/
+        line-height: 35px;
+    }
+
+    .dataCollectionsPage .dataCollectionsNamesList .noCollectionsContainer {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4;
+        font-family: "Segoe UI";
+        font-size: 10pt;
+        color: rgba(0, 0, 0, 1.0); /* Ink */
+    }
+
+    .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslist {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4;
+        padding-right: 40px;
+        overflow-y: auto;
+    }
+
+        .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslist .dataCollectionslistItem {
+            -ms-grid-column: 1;
+            -ms-grid-row: 1;
+            display: -ms-grid;
+            -ms-grid-columns: 150px;
+            -ms-grid-rows: 35px;
+            color: rgba(0, 0, 0, 1.0); /* Ink */
+            font-size: 10pt;
+            vertical-align: middle;
+            margin-bottom: 15px;
+            height: 35px;
+            display: -ms-flexbox;
+            -ms-flex-align: center;
+            margin-left: -10px;
+        }
+
+            .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslist .dataCollectionslistItem:hover,
+            .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslist .dataCollectionslistItem.selected,
+            .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslist .dataCollectionslistItem.selected:active {
+                background-color: rgba(246, 246, 246, 1.0); /* Snow */
+            }
+
+            .dataCollectionsPage .dataCollectionsNamesList .dataCollectionslist .dataCollectionslistItem .dataCollectionslistItemName {
+                margin-left: 10px;
+                margin-right: 10px;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                overflow: hidden;
+            }
+
+.dataCollectionsPage .dataCollectionsPreview {
+    -ms-grid-column: 4;
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-rows: 70px 35px 30px 50px 5px 1fr 20px;
+    -ms-grid-columns: 1fr;
+}
+
+    .dataCollectionsPage .dataCollectionsPreview .dataCollectionsPreviewHeader {
+        -ms-grid-column: 1;
+        -ms-grid-row: 2;
+        font-family: 'Segoe UI';
+        font-weight: lighter;
+        font-size: 15pt;
+        color: #824A82; /*Fandango*/
+        line-height: 35px;
+    }
+
+    .dataCollectionsPage .dataCollectionsPreview .dataCollectionsPanorama {
+        -ms-grid-column: 1;
+        -ms-grid-row: 6;        
+        height: 100%;
+        overflow: auto;
+    }
+
+    .dataCollectionsPage .dataCollectionsPreview .dataCollectionsPanorama .viewer {
+        height: 100%;
+    }
+
+    .dataCollectionsPage .dataCollectionsPreview .depthBand {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4;
+        height: 35px;
+    }
+
+        .dataCollectionsPage .dataCollectionsPreview .depthBand .depthRoot,
+        .dataCollectionsPage .dataCollectionsPreview .depthBand .depthLevel {
+            color: rgba(0, 0, 0, 1.0); /* Ink */
+            font-size: 10pt;
+            font-weight: 300;
+        }
+
+        .dataCollectionsPage .dataCollectionsPreview .depthBand .depthLevelcaret {
+            margin-left: 10px;
+            margin-right: 10px;
+            color: rgba(80, 46, 80, 1.0); /* Eggplant */
+            font-size: 10pt;
+        }
+
+        .dataCollectionsPage .dataCollectionsPreview .depthBand .clickableDepth,
+        .dataCollectionsPage .dataCollectionsPreview .depthBand .clickableDepth:hover {
+            color: rgba(130, 74, 130, 1.0); /* Fandango */
+        }

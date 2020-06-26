@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>controlGallery</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="controlGallery.css" rel="stylesheet" />
+    <script src="controlGallery.js"></script>
+</head>
+<body>
+    <div id="controlGallery" class="fragment">
+        <div id="controlGalleryHeader">
+            <img id="controlGalleryBack" src="/images/backarrow_gallery_white.svg" data-bind="click: _handleBackClicked, visible: backButtonVisible" />
+            <div id="controlGalleryText" data-bind="text: title"></div>
+        </div>
+        <div id="controlGalleryFilter">
+            <input id="controlGalleryFilterInput" type="text" class="textFilter" spellcheck="false"
+                   data-bind="value: findBoxFilterText, valueUpdate: 'keyup', attr: { placeholder: AppMagic.AuthoringStrings.FindVisual }, css: { editable: findBoxEditable },
+                                event: { focus: _handleFindBoxFocus.bind($data), blur: _handleFindBoxBlur.bind($data), input: _filterControls.bind($data),
+                                    mousedown: function ($data, evt) { return AppMagic.AuthoringTool.Utility.focusOnMouseDown(evt); }, clickBubble: false }" />
+        </div>
+        <!--Formatting of the divs is not accurate because of empty spaces in the rendered html.-->
+        <div id="controlGalleryList" data-bind="foreach: controls">
+            <div class="controlGalleryTemplate" data-bind="css: { wide: typeof hasWideTile !== 'undefined' && hasWideTile }">
+                <div class="controlGalleryTemplateItem"
+                     data-bind="css: { wide: typeof hasWideTile !== 'undefined' && hasWideTile },
+                               hover: { enter: $data.hoverColor, exit: $data.backgroundColor },
+                               style: { backgroundColor: typeof backgroundColor !== 'undefined' && backgroundColor},
+                               click: $parent._handleControlTileClicked.bind($parent, $data),
+                               event: { keydown: $parent.handleKeyDown.bind($parent, $data) },
+                               attr: { title: title }" tabindex="0">
+                    <div class="controlGalleryTemplateImageTile" data-bind="css: { wide: typeof hasWideTile !== 'undefined' && hasWideTile } ">
+                        <img class="controlGalleryTemplateImage" data-bind="attr: { src: image }" />
+                    </div>
+                    <div class="controlGalleryTemplateText">
+                        <h4 class="controlGalleryTemplateTextElement" data-bind="css: { wide: typeof hasWideTile !== 'undefined' && hasWideTile }, text: title"></h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

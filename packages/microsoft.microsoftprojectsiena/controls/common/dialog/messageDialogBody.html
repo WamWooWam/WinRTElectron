@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dialog</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="messageDialogBody.css" rel="stylesheet" />
+    <script src="messageDialogBody.js"></script>
+</head>
+<body>
+    <div class="message-dialog">
+        <div class="title" data-bind="text: title"></div>
+        <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: showWarningIcon" />
+        <div class="description" data-bind="text: description"></div>
+    </div>
+</body>
+</html>

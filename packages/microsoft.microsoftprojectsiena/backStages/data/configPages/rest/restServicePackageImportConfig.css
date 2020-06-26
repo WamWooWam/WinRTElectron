@@ -1,0 +1,56 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Rest Service Config CSS
+ *
+ */
+
+.restServiceConfigContainer {
+    display: -ms-grid;
+    -ms-grid-rows: auto 30px auto 10px auto 20px auto;
+    -ms-grid-columns: auto;
+}
+
+    .restServiceConfigContainer .title {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        font-family: 'Segoe UI';
+        font-weight: lighter;
+        font-size: 15pt;
+        color: #824A82; /*Fandango*/
+        line-height: 35px;
+    }
+
+    .restServiceConfigContainer .note1 {
+        -ms-grid-row: 3;
+        -ms-grid-column: 1;
+    }
+
+    .restServiceConfigContainer .note2 {
+        -ms-grid-row: 5;
+        -ms-grid-column: 1;
+    }
+
+    .restServiceConfigContainer .note1,
+    .restServiceConfigContainer .note2 {
+        color: rgba(0, 0, 0, 1); /* Ink */
+        font-family: "Segoe UI";
+        font-size: 10pt;
+    }
+
+    .restServiceConfigContainer button {
+        -ms-grid-row: 7;
+        -ms-grid-column: 1;
+    }
+
+    .restServiceConfigContainer .import-keys-view {
+        margin-top: 20px;
+        -ms-grid-row: 2;
+    }
+
+        .restServiceConfigContainer .import-keys-view .rest-service-key-config-note {
+            width: 340px;
+            color: rgba(0, 0, 0, 1); /* Ink */
+            font-family: "Segoe UI";
+            font-size: 9pt;
+        }

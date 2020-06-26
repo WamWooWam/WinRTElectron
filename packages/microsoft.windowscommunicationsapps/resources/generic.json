@@ -1,0 +1,188 @@
+{
+  "Files": {
+    "ModernAddressWell": {
+      "UserPawn.png": "ModernAddressWell\\UserPawn.png"
+    },
+    "ModernCalendar": {
+      "CalendarBadge.png": "ModernCalendar\\CalendarBadge.scale-100.png",
+      "CalendarLargeLogo.png": "ModernCalendar\\CalendarLargeLogo.scale-100.png",
+      "CalendarLogo.png": "ModernCalendar\\CalendarLogo.scale-100.png",
+      "CalendarSmallLogo.png": "ModernCalendar\\CalendarSmallLogo.scale-100.png",
+      "CalendarSplash.png": "ModernCalendar\\CalendarSplash.scale-100.png",
+      "CalendarTinyLogo.png": "ModernCalendar\\CalendarTinyLogo.scale-100.png",
+      "CalendarWideLogo.png": "ModernCalendar\\CalendarWideLogo.scale-100.png",
+      "Tentative.png": "ModernCalendar\\Tentative.scale-100.png",
+      "views": {
+        "agenda": {
+          "Background.jpg": "ModernCalendar\\views\\agenda\\Background.jpg"
+        },
+        "freebusy": {
+          "outOfOffice.png": "ModernCalendar\\views\\freebusy\\outOfOffice.png",
+          "schedule.png": "ModernCalendar\\views\\freebusy\\schedule.png",
+          "tentative.png": "ModernCalendar\\views\\freebusy\\tentative.png",
+          "unknown.png": "ModernCalendar\\views\\freebusy\\unknown.png"
+        }
+      },
+      "WeekBackground.png": "ModernCalendar\\WeekBackground.png",
+      "WeekendBackground.png": "ModernCalendar\\WeekendBackground.png"
+    },
+    "ModernMail": {
+      "Res": {
+        "MailBadge.png": "ModernMail\\Res\\MailBadge.scale-100.png",
+        "MailLargeLogo.png": "ModernMail\\Res\\MailLargeLogo.scale-100.png",
+        "MailLogo.png": "ModernMail\\Res\\MailLogo.scale-100.png",
+        "MailSmallLogo.png": "ModernMail\\Res\\MailSmallLogo.scale-100.png",
+        "MailSplash.png": "ModernMail\\Res\\MailSplash.scale-100.png",
+        "MailTinyLogo.png": "ModernMail\\Res\\MailTinyLogo.scale-100.png",
+        "MailWideLogo.png": "ModernMail\\Res\\MailWideLogo.scale-100.png"
+      },
+      "Resources": {
+        "images": {
+          "account_switcher.png": "ModernMail\\Resources\\images\\account_switcher.scale-100.png",
+          "account_switcher_black.png": "ModernMail\\Resources\\images\\account_switcher_black.scale-100.png",
+          "account_switcher_error.png": "ModernMail\\Resources\\images\\account_switcher_error.scale-100.png",
+          "account_switcher_error_black.png": "ModernMail\\Resources\\images\\account_switcher_error_black.scale-100.png",
+          "account_switcher_single_error.png": "ModernMail\\Resources\\images\\account_switcher_single_error.scale-100.png",
+          "account_switcher_single_error_black.png": "ModernMail\\Resources\\images\\account_switcher_single_error_black.scale-100.png",
+          "account_switcher_single_oof.png": "ModernMail\\Resources\\images\\account_switcher_single_oof.scale-100.png",
+          "account_switcher_single_oof_black.png": "ModernMail\\Resources\\images\\account_switcher_single_oof_black.scale-100.png",
+          "attached.png": "ModernMail\\Resources\\images\\attached.scale-100.png",
+          "attached_grey.png": "ModernMail\\Resources\\images\\attached_grey.scale-100.png",
+          "attached_white.png": "ModernMail\\Resources\\images\\attached_white.scale-100.png",
+          "command_delete_black.png": "ModernMail\\Resources\\images\\command_delete_black.scale-100.png",
+          "command_delete_grey.png": "ModernMail\\Resources\\images\\command_delete_grey.scale-100.png",
+          "command_delete_white.png": "ModernMail\\Resources\\images\\command_delete_white.scale-100.png",
+          "command_flag_black.png": "ModernMail\\Resources\\images\\command_flag_black.scale-100.png",
+          "command_flag_grey.png": "ModernMail\\Resources\\images\\command_flag_grey.scale-100.png",
+          "command_flag_white.png": "ModernMail\\Resources\\images\\command_flag_white.scale-100.png",
+          "command_mark_read_unread_black.png": "ModernMail\\Resources\\images\\command_mark_read_unread_black.scale-100.png",
+          "command_mark_read_unread_grey.png": "ModernMail\\Resources\\images\\command_mark_read_unread_grey.scale-100.png",
+          "command_mark_read_unread_white.png": "ModernMail\\Resources\\images\\command_mark_read_unread_white.scale-100.png",
+          "exchangebadge.png": "ModernMail\\Resources\\images\\exchangebadge.scale-100.png",
+          "exchangelargelogo.png": "ModernMail\\Resources\\images\\exchangelargelogo.scale-100.png",
+          "exchangelogo.png": "ModernMail\\Resources\\images\\exchangelogo.scale-100.png",
+          "exchangesmalllogo.png": "ModernMail\\Resources\\images\\exchangesmalllogo.scale-100.png",
+          "exchangetinylogo.png": "ModernMail\\Resources\\images\\exchangetinylogo.scale-100.png",
+          "exchangewidelogo.png": "ModernMail\\Resources\\images\\exchangewidelogo.scale-100.png",
+          "flag.png": "ModernMail\\Resources\\images\\flag.scale-100.png",
+          "flag_grey.png": "ModernMail\\Resources\\images\\flag_grey.scale-100.png",
+          "flag_white.png": "ModernMail\\Resources\\images\\flag_white.scale-100.png",
+          "forwarded.png": "ModernMail\\Resources\\images\\forwarded.scale-100.png",
+          "forwarded_grey.png": "ModernMail\\Resources\\images\\forwarded_grey.scale-100.png",
+          "forwarded_white.png": "ModernMail\\Resources\\images\\forwarded_white.scale-100.png",
+          "hotmailbadge.png": "ModernMail\\Resources\\images\\hotmailbadge.scale-100.png",
+          "hotmaillargelogo.png": "ModernMail\\Resources\\images\\hotmaillargelogo.scale-100.png",
+          "hotmaillogo.png": "ModernMail\\Resources\\images\\hotmaillogo.scale-100.png",
+          "hotmailsmalllogo.png": "ModernMail\\Resources\\images\\hotmailsmalllogo.scale-100.png",
+          "hotmailtinylogo.png": "ModernMail\\Resources\\images\\hotmailtinylogo.scale-100.png",
+          "hotmailwidelogo.png": "ModernMail\\Resources\\images\\hotmailwidelogo.scale-100.png",
+          "invite.png": "ModernMail\\Resources\\images\\invite.scale-100.png",
+          "invite_grey.png": "ModernMail\\Resources\\images\\invite_grey.scale-100.png",
+          "invite_white.png": "ModernMail\\Resources\\images\\invite_white.scale-100.png",
+          "irm.png": "ModernMail\\Resources\\images\\irm.scale-100.png",
+          "irm_grey.png": "ModernMail\\Resources\\images\\irm_grey.scale-100.png",
+          "irm_white.png": "ModernMail\\Resources\\images\\irm_white.scale-100.png",
+          "lowpriority.png": "ModernMail\\Resources\\images\\lowpriority.scale-100.png",
+          "lowpriority_grey.png": "ModernMail\\Resources\\images\\lowpriority_grey.scale-100.png",
+          "lowpriority_white.png": "ModernMail\\Resources\\images\\lowpriority_white.scale-100.png",
+          "pinnedpersontile.png": "ModernMail\\Resources\\images\\pinnedpersontile.png",
+          "pinnedpersontoast.png": "ModernMail\\Resources\\images\\pinnedpersontoast.png",
+          "priority.png": "ModernMail\\Resources\\images\\priority.scale-100.png",
+          "priority_grey.png": "ModernMail\\Resources\\images\\priority_grey.scale-100.png",
+          "priority_white.png": "ModernMail\\Resources\\images\\priority_white.scale-100.png",
+          "replied.png": "ModernMail\\Resources\\images\\replied.scale-100.png",
+          "replied_grey.png": "ModernMail\\Resources\\images\\replied_grey.scale-100.png",
+          "replied_white.png": "ModernMail\\Resources\\images\\replied_white.scale-100.png",
+          "view_allfavorites.png": "ModernMail\\Resources\\images\\view_allfavorites.png",
+          "view_allfavorites_black.png": "ModernMail\\Resources\\images\\view_allfavorites_black.png",
+          "view_favorite.png": "ModernMail\\Resources\\images\\view_favorite.scale-100.png",
+          "view_favorite_black.png": "ModernMail\\Resources\\images\\view_favorite_black.scale-100.png",
+          "view_flagged.png": "ModernMail\\Resources\\images\\view_flagged.scale-100.png",
+          "view_flagged_appcolor.png": "ModernMail\\Resources\\images\\view_flagged_appcolor.scale-100.png",
+          "view_flagged_black.png": "ModernMail\\Resources\\images\\view_flagged_black.scale-100.png",
+          "view_folder.png": "ModernMail\\Resources\\images\\view_folder.scale-100.png",
+          "view_folder_appcolor.png": "ModernMail\\Resources\\images\\view_folder_appcolor.scale-100.png",
+          "view_folder_black.png": "ModernMail\\Resources\\images\\view_folder_black.scale-100.png",
+          "view_inbox.png": "ModernMail\\Resources\\images\\view_inbox.scale-100.png",
+          "view_inbox_appcolor.png": "ModernMail\\Resources\\images\\view_inbox_appcolor.scale-100.png",
+          "view_inbox_black.png": "ModernMail\\Resources\\images\\view_inbox_black.scale-100.png",
+          "view_newsletter.png": "ModernMail\\Resources\\images\\view_newsletter.scale-100.png",
+          "view_newsletter_appcolor.png": "ModernMail\\Resources\\images\\view_newsletter_appcolor.scale-100.png",
+          "view_newsletter_black.png": "ModernMail\\Resources\\images\\view_newsletter_black.scale-100.png",
+          "view_socialupdate.png": "ModernMail\\Resources\\images\\view_socialupdate.scale-100.png",
+          "view_socialupdate_appcolor.png": "ModernMail\\Resources\\images\\view_socialupdate_appcolor.scale-100.png",
+          "view_socialupdate_black.png": "ModernMail\\Resources\\images\\view_socialupdate_black.scale-100.png"
+        }
+      }
+    },
+    "ModernPeople": {
+      "Icon.png": "ModernPeople\\Icon.targetsize-16.png",
+      "images": {
+        "All_Updates_40.png": "ModernPeople\\images\\All_Updates_40.png",
+        "CalendarIcon-30.png": "ModernPeople\\images\\CalendarIcon-30.scale-100.png",
+        "ChatIcon-30.png": "ModernPeople\\images\\ChatIcon-30.scale-100.png",
+        "DefaultMailAccount_16x16.png": "ModernPeople\\images\\DefaultMailAccount_16x16.png",
+        "DefaultMailAccount_48x48.png": "ModernPeople\\images\\DefaultMailAccount_48x48.png",
+        "Default_User_Tile_270.png": "ModernPeople\\images\\Default_User_Tile_270.png",
+        "ic-default-100.png": "ModernPeople\\images\\ic-default-100.png",
+        "ic-default-220.png": "ModernPeople\\images\\ic-default-220.png",
+        "ic-default-40.png": "ModernPeople\\images\\ic-default-40.png",
+        "ic-default-60.png": "ModernPeople\\images\\ic-default-60.png",
+        "ic-default-95.png": "ModernPeople\\images\\ic-default-95.png",
+        "ic-placeholder-disambiguator-rtl.png": "ModernPeople\\images\\ic-placeholder-disambiguator-rtl.png",
+        "ic-placeholder-disambiguator.png": "ModernPeople\\images\\ic-placeholder-disambiguator.png",
+        "ic-placeholder-rtl.png": "ModernPeople\\images\\ic-placeholder-rtl.png",
+        "ic-placeholder.png": "ModernPeople\\images\\ic-placeholder.png",
+        "MailIcon-30.png": "ModernPeople\\images\\MailIcon-30.scale-100.png",
+        "PeopleIcon-30.png": "ModernPeople\\images\\PeopleIcon-30.scale-100.png",
+        "ra-1x1.gif": "ModernPeople\\images\\ra-1x1.gif",
+        "ra-photoViewerNext-hover.png": "ModernPeople\\images\\ra-photoViewerNext-hover.png",
+        "ra-photoViewerNext-pressed.png": "ModernPeople\\images\\ra-photoViewerNext-pressed.png",
+        "ra-photoViewerNext.png": "ModernPeople\\images\\ra-photoViewerNext.png",
+        "ra-photoViewerPrevious-hover.png": "ModernPeople\\images\\ra-photoViewerPrevious-hover.png",
+        "ra-photoViewerPrevious-pressed.png": "ModernPeople\\images\\ra-photoViewerPrevious-pressed.png",
+        "ra-photoViewerPrevious.png": "ModernPeople\\images\\ra-photoViewerPrevious.png",
+        "ra-selfPageBackHover.png": "ModernPeople\\images\\ra-selfPageBackHover.png",
+        "ra-selfPageBackRest.png": "ModernPeople\\images\\ra-selfPageBackRest.png",
+        "ra-videoOverlay.png": "ModernPeople\\images\\ra-videoOverlay.png",
+        "searchgal.png": "ModernPeople\\images\\searchgal.png",
+        "searchviewall.png": "ModernPeople\\images\\searchviewall.png",
+        "WLActiveMedium.png": "ModernPeople\\images\\WLActiveMedium.png",
+        "WLActiveSmall.png": "ModernPeople\\images\\WLActiveSmall.png"
+      },
+      "people.png": "ModernPeople\\people.scale-100.png",
+      "PeopleLarge.png": "ModernPeople\\PeopleLarge.scale-100.png",
+      "peopleSmall.png": "ModernPeople\\peopleSmall.scale-100.png",
+      "PeopleSplash.png": "ModernPeople\\PeopleSplash.scale-100.png",
+      "PeopleTiny.png": "ModernPeople\\PeopleTiny.scale-100.png",
+      "PeopleWide.png": "ModernPeople\\PeopleWide.scale-100.png"
+    },
+    "ModernShared": {
+      "Resources": {
+        "img": {
+          "suite_logo.png": "ModernShared\\Resources\\img\\suite_logo.png"
+        }
+      }
+    },
+    "Resources": {
+      "ModernAttachmentWell": {
+        "images": {
+          "attached.png": "Resources\\ModernAttachmentWell\\images\\attached.png",
+          "default.png": "Resources\\ModernAttachmentWell\\images\\default.png",
+          "emlIcon.png": "Resources\\ModernAttachmentWell\\images\\emlIcon.scale-100.png",
+          "photoVideoIcon.png": "Resources\\ModernAttachmentWell\\images\\photoVideoIcon.scale-100.png"
+        }
+      },
+      "ModernMail": {
+        "images": {
+          "NoHighlight.png": "Resources\\ModernMail\\images\\NoHighlight.png"
+        }
+      },
+      "ModernShareTarget": {
+        "images": {
+          "MailQuickLinkIcon.png": "Resources\\ModernShareTarget\\images\\MailQuickLinkIcon.png"
+        }
+      }
+    }
+  }
+}

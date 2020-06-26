@@ -1,0 +1,60 @@
+
+
+.message-dialog-container {    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    align-items: center;
+}
+
+.message-dialog-root {
+    display: flex;
+    justify-content: center;
+    background: white;
+    color: black;
+    padding: 24px;
+    width: 100%;
+}
+
+.message-dialog-content-root {
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.message-dialog-content {
+    font-family: "Segoe UI";
+    font-size: 15px;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    overflow-x: hidden;
+}
+
+.message-dialog-button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.message-dialog-button {
+    -webkit-appearance: none;
+    background-color: #000000;
+    border-color: #000000;
+    color: white;
+    margin-left: 12px;
+}
+
+.message-dialog-button:hover {
+  background-color: rgba(0, 0, 0, 0.82) !important;
+  border-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+.message-dialog-title {
+    font-size: 20pt;
+    font-weight: 300;
+    line-height: 1.2;
+}

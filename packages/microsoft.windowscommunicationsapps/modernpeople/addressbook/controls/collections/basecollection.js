@@ -1,0 +1,1 @@
+﻿Jx.delayDefine(People,"Collection",function(){"use strict";var n=window.People;n.Collection=function(n){this.initEvents();this.name=n;this.length=0;this.isHydrated=false;this.isLoaded=false};Jx.inherit(n.Collection,Jx.Events);n.Collection.prototype.dispose=function(){}})

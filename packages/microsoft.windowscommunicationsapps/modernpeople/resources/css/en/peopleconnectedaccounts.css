@@ -1,0 +1,15 @@
+﻿.connectedAccounts{white-space:nowrap;position:relative;color:#666666;}
+.connectedAccounts:hover{color:#ff7347;}
+.connectedAccounts:active{color:#ff4f22;}
+.connectedAccounts.disabled:hover,.connectedAccounts.disabled:active{color:#666666;}
+.connectedAccounts-inlineBlock{display:inline-block;}
+.connectedAccounts-canvasContainer{position:relative;}
+.connectedAccounts-canvas{position:relative;top:0px;right:0px;}
+.bottomAligned{bottom:0px;position:relative;}
+.connectedAccounts-accounts{position:relative;height:16px;}
+.connectedAccounts-account{padding-left:10px;height:16px;}
+.connectedAccounts-icon{bottom:1px;position:relative;width:16px;height:16px;background-size:100% 100%;background-position:center;background-clip:content-box;background-repeat:no-repeat;-ms-high-contrast-adjust:none;}
+.connectedAccounts-ellipsis{padding-left:10px;}
+.displayOnTwoLines{display:block;line-height:24px;}
+.displayOnTwoLines .connectedAccounts-accounts{margin-left:-10px;}
+@media screen and (-ms-high-contrast){.connectedAccounts,.connectedAccounts:hover,.connectedAccounts:active{color:Hotlight;} .connectedAccounts.disabled,.connectedAccounts.disabled:hover,.connectedAccounts.disabled:active{color:Graytext;}}

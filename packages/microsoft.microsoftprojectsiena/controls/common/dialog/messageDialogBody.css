@@ -1,0 +1,36 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic MessageDialog CSS
+ *
+ */
+
+.message-dialog {
+    margin-right: 15px;
+}
+
+    .message-dialog .title {
+        font-size: 25pt;
+        color: rgba(255, 255, 255, 1.0); /* Steed */
+        font-weight: lighter;
+        font-family: 'Segoe UI';
+        margin-bottom: 5px;
+        max-height: 45px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .message-dialog  .errorIcon {
+        display: inline;
+        float: left;
+        margin-top: 2px;
+        margin-left: 1px;
+    }
+
+    .message-dialog .description {
+        font-size: 11pt;
+        color: rgba(255, 255, 255, 1.0); /* Steed */
+        font-family: 'Segoe UI';
+        height: 100%;
+    }

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/pieChart"
+        name="pieChart"
+        jsClass="AppMagic.Controls.PieChart"
+        version="1.0"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[PieChart
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="javascript" src="/openSource/modified/flotr2.js" />
+    <require type="javascript" src="/ctrllib/charts/js/Charts.js" />
+    <require type="css" src="css/pieChart.css" />
+    <require type="other" src="data/PieChartSample.xlsx" authoringOnly="true" />
+  </requires>
+
+  <appMagic:capabilities 
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+
+  <content>
+    <![CDATA[
+    <div class="appmagic-piechart" 
+     data-bind="style: {
+            width: canvasWidth,
+            height: canvasHeight,
+            fontFamily: properties.Font,
+            fontSize: properties.Size,
+            color: properties.Color
+            },
+            disable: viewState.disabled">
+    </div>
+  ]]>
+  </content>
+
+  <properties>
+    <property name="Items" localizedName="##chart_Items##" datatype="Array" direction="in" isPrimaryInputProperty="true">
+      <title>Items</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:sampleDataSource name="PieChartSample" location="data/PieChartSample.xlsx"/>
+      <appMagic:displayName>##chart_Items_DisplayName##</appMagic:displayName>
+      <properties>
+        <property name="Labels" localizedName="##pieChart_Labels##" datatype="String" ></property>
+        <property name="Series" localizedName="##pieChart_Series##" datatype="Number" ></property>
+      </properties>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_itemsicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>39</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##chart_Items_Tooltip##</appMagic:tooltip>
+    </property>
+
+    <property name="Selected" localizedName="##pieChart_Selected##" datatype="object" direction="out" isPrimaryOutputProperty="true">
+      <title>Selected that is going to be passed through</title>
+      <appMagic:passThroughReference>Items</appMagic:passThroughReference>
+      <appMagic:displayName>##pieChart_Selected_DisplayName##</appMagic:displayName>
+      <appMagic:category>data</appMagic:category>
+      <properties>
+        <property name="Value" localizedName="##pieChart_Value##" datatype="Number" />
+        <property name="Color" localizedName="##chart_Color##" datatype="color"/>
+        <property name="Label" localizedName="##chart_Label##" datatype="string" />
+      </properties>
+    </property>
+
+    <property name="SeriesLabels" localizedName="##chart_SeriesLabels##" datatype="Array" direction="out">
+      <title>Series Labels that are going to be passed through</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##chart_SeriesLabels_DisplayName##</appMagic:displayName>
+      <properties>
+        <property name="Value" localizedName="##chart_SeriesLabels_Value##" datatype="String">
+        </property>
+      </properties>
+    </property>
+
+    <property name="Fill" localizedName="##pieChart_Fill##" datatype="Themes" defaultValue="Themes!Vivid" isExpr="true" >
+      <title>Fill</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>themes</appMagic:helperUI>
+      <appMagic:displayName>##pieChart_Fill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/fillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##barChart_Fill_Tooltip##</appMagic:tooltip>
+    </property>
+
+    <property name="Explode" localizedName="##piechart_Explode##" datatype="Number" defaultValue="0">
+      <title>Explode</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##piechart_Explode_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/explodeicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:position>19</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##piechart_Explode_Tooltip##</appMagic:tooltip>
+    </property>
+    
+    <property name="FadeOnHover" localizedName="##CommonProperties_FadeOnHover##" datatype="Number" defaultValue="30" minimum="-100" maximum="100" hidden="true">
+      <title>Fade On Hover</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>fade</appMagic:helperUI>
+      <appMagic:displayName>##CommonProperties_FadeOnHover_DisplayName##</appMagic:displayName>
+    </property>
+
+    <property name="FadeOnClick" localizedName="##CommonProperties_FadeOnClick##" datatype="Number" defaultValue="30" minimum="-100" maximum="100" hidden="true">
+      <title>Fade On Click</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>fade</appMagic:helperUI>
+      <appMagic:displayName>##CommonProperties_FadeOnClick_DisplayName##</appMagic:displayName>
+    </property>
+
+    <property name="FadeOnClickBorder" localizedName="##CommonProperties_FadeOnClickBorder##" datatype="Number" defaultValue="-30" minimum="-100" maximum="100" hidden="true">
+      <title>Fade On Click Border</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>fade</appMagic:helperUI>
+      <appMagic:displayName>##CommonProperties_FadeOnClickBorder_DisplayName##</appMagic:displayName>
+    </property>
+  
+  </properties>
+  <!-- Design -->
+  <appMagic:includeProperties>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, -30%)" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 30%)" />
+    <appMagic:includeProperty name="Size" defaultValue="10">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Color">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty> />
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X"  />
+    <appMagic:includeProperty name="Y"  />
+    <appMagic:includeProperty name="Font" >
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Width" defaultValue="400" />
+    <appMagic:includeProperty name="Height" defaultValue="400" />
+    <appMagic:includeProperty name="Visible" defaultValue="true">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior Properties -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="5" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="5" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+  </appMagic:includeProperties>
+
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Items" output="Selected"/>
+  </appMagic:propertyDependencies>
+  
+</widget>

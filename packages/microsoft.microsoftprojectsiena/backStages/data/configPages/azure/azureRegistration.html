@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure App Registration Config</title>
+    <link href="azureRegistration.css" rel="stylesheet" />
+    <script src="azureRegistration.js"></script>
+</head>
+<body>
+    <div class="fragment azure-registration-config-container">
+        <div class="rest-service-key-config-line0" >
+            <div class="userVariableName" data-bind="text: 'App Name'"></div>
+            <input tabindex="0" class="userVariableTextBox" type="text" data-bind="value: appName, valueUpdate: ['keyup', 'input']" />
+            <div class="userVariableName" data-bind="text: 'App Tenant Name'"></div>
+            <input tabindex="0" class="userVariableTextBox" type="text" data-bind="value: appTenantName, valueUpdate: ['keyup', 'input']" />
+            <div class="userVariableName" data-bind="text: 'App Callback Url'"></div>
+            <input tabindex="0" class="userVariableTextBox" type="text" data-bind="value: appRedirectUri, valueUpdate: ['keyup', 'input']" />
+        </div>
+        <div class="rest-service-key-config-buttons">
+            <button class="backstage-button" data-bind="text: AppMagic.AuthoringStrings.BackStageKeyUpdateText,
+                                                        clickOrEnter: onClickRegister" tabindex="0"></button>
+            <button class="backstage-button" data-bind="text: AppMagic.AuthoringStrings.BackStageKeyClearText,
+                                                        clickOrEnter: onClickCancel" tabindex="0"></button>
+        </div>
+    </div>
+</body>
+</html>

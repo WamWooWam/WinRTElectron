@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        id="http://microsoft.com/appmagic/group"
+        name="group"
+        jsClass="AppMagic.Controls.Group"
+        version="1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[GROUP Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="javascript" src="js/group.js" />
+  </requires>
+
+  <content>
+    <![CDATA[<div class="appmagic-group"></div>]]>
+  </content>
+
+  <appMagic:includeProperties>
+    <!-- TODO: Investigate why non-zero default value is required. -->
+    <appMagic:includeProperty name="X"  defaultValue="0" hidden="true"/>
+    <appMagic:includeProperty name="Y" defaultValue="0" hidden="true"/>
+    <appMagic:includeProperty name="Width" defaultValue="5" hidden="true"/>
+    <appMagic:includeProperty name="Height" defaultValue="5" hidden="true"/>
+    <appMagic:includeProperty name="Visible" defaultValue="true" hidden="true"/>
+    <appMagic:includeProperty name="minimumHeight" defaultValue="5" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="5" />
+  </appMagic:includeProperties>
+
+</widget>

@@ -1,0 +1,10 @@
+.app-switcher-light-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.app-switcher-overlay-image {
+    max-width: 150px;
+    border: 1px solid #180053;
+}

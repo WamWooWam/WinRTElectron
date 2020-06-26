@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.0" id="icon" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="20.091px" height="25.061px" viewBox="0 0 20.091 25.061" enable-background="new 0 0 20.091 25.061"
+	 xml:space="preserve">
+<path id="squiggle_x5F_path" fill="#FFFFFF" d="M5.45,23.75c-3.013,0-4.533-2.511-4.596-2.618l1.29-0.767
+	C2.19,20.442,3.307,22.25,5.45,22.25c0.96,0,1.653-0.521,2.529-1.181c1.077-0.811,2.417-1.819,4.571-1.819
+	c3.328,0,4.525,2.388,4.694,3.651l-1.487,0.198c-0.035-0.235-0.43-2.349-3.207-2.349c-1.652,0-2.632,0.737-3.668,1.518
+	C7.913,22.997,6.912,23.75,5.45,23.75z"/>
+<g id="pen_x5F_small">
+	<polyline fill="#FFFFFF" points="12.747,11.813 15.382,11.813 16.307,13.697 20,18.413 18.381,12.284 11.698,6.146 9.302,8.6 	"/>
+	<polyline fill="#FFFFFF" points="12.83,11.73 12.83,14.374 14.712,15.299 19.421,19 13.301,17.381 7.179,10.673 9.625,8.269 	"/>
+	<polygon fill="#FFFFFF" points="10.343,4.792 5.882,9.26 1,4.37 5.543,0 	"/>
+</g>
+</svg>

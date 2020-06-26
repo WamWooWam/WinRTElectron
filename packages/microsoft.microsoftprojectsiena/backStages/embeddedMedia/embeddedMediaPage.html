@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>embeddedMediaPage</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="embeddedMediaPage.css" rel="stylesheet" />
+    <script src="embeddedMediaPage.js"></script>
+</head>
+<body>
+    <div class="embeddedMediaPage">      
+
+        <div class="embeddedMediaPageGrid">
+            <div class="mediaTypeSelector">
+                <div class="existingMediaTypeHeader" data-bind="text: AppMagic.AuthoringStrings.EmbeddedMediaExistingMediaHeader"></div>
+
+                <div class="noMediaContainer" data-bind="visible: !hasResources">
+                    <div data-bind="text: AppMagic.AuthoringStrings.BackstageNoMediaMessageLine"></div>
+                </div>
+                
+                <div class="mediaTypelist" data-bind="visible: hasResources, foreach: mediaTypeOptions">
+                    <div class="mediaTypeListItem" data-bind="
+                          css: { selected: $index() === $parent.getMediaTypeOptionIndexFromMediaType($parent.shownMedia.mediaType) },
+                          click: $parent.onClickMediaOption.bind($parent, true)">
+                        <img class="mediaTypeListIcon" src="#" data-bind="attr: { src: mediaTypeIcon }" />
+                        <div class="mediaTypelistItemName" data-bind="
+                           text: mediaTypeNameAndCount,
+                           css: { selected: $index() === $parent.getMediaTypeOptionIndexFromMediaType($parent.shownMedia.mediaType) }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="paneSplitter"></div>
+
+            <button class="mediaImportButton backstage-button" type="button" data-bind="
+               click: onClickImportMedia.bind($data), text: AppMagic.AuthoringStrings.EmbeddedMediaImport"></button>
+
+            <div class="mediaListAndMediaViewerContainer">
+                <div class="mediaList" data-bind="foreach: shownMedia.mediaList">
+                    <!-- ko if: $index() === 0 -->
+                    <div class="mediaListHeader" data-bind="text: $parent.shownMedia.displayName"></div>
+                    <!-- /ko -->
+                    <!-- ko if: $index() === 0 -->
+                    <div class="mediaItemSpacer"></div>
+                    <!-- /ko -->
+                    <div class="mediaItem" data-bind="
+                        css: { 'selectedMediaItem': $index() === $parent.selectedMediaItemIndex }">
+                        <div class="removeButton" data-bind="
+                            clickBubble: false,
+                            click: function (args, evt) {
+                                $parent.onClickRemoveMediaItem.bind($parent)($parent.shownMedia.mediaType, $index(), args, evt);
+                            },
+                            attr: { title: AppMagic.AuthoringStrings.Delete }">
+                            <img src="/images/trashcan_20x20.svg" />
+                        </div>
+                        <img class="mediaItemTypeListIcon" src="#" data-bind="attr: { src: $parent.shownMedia.mediaTypeIcon }" />
+                        <!-- ko if: $parent.shownMedia.mediaType === AppMagic.AuthoringTool.ViewModels.EmbeddedMediaViewModel.mediaTypes.audio -->
+                        <div class="audioBackgroundColor" data-bind="event: { pointermove: $parent.onPointerMove.bind($parent, $index()) }">
+                            <audio class="audioVideoViewerVideo" data-bind="attr: { src: resourceUri }"></audio>
+                            <div class="playPauseButton" data-bind="
+                                    click: $parent.onClickAudioVideoViewer.bind($parent, $index()),
+                                    css: { playing: isPlaying }">
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: $parent.shownMedia.mediaType === AppMagic.AuthoringTool.ViewModels.EmbeddedMediaViewModel.mediaTypes.image -->
+                        <div class="mediaItemImage">
+                            <img class="imageThumbnail" src="#" unselectable="on" data-bind="attr: { src: resourceUri }" />
+                        </div>
+                        <!-- /ko -->
+                        <!-- ko if: $parent.shownMedia.mediaType === AppMagic.AuthoringTool.ViewModels.EmbeddedMediaViewModel.mediaTypes.video -->
+                        <div class="audioVideoViewerVideoContainer" data-bind="event: { pointermove: $parent.onPointerMove.bind($parent, $index()) }">
+                            <video class="audioVideoViewerVideo" data-bind="attr: { src: resourceUri }"></video>
+                            <div id="embeddedMediaVideoControls" class="audioVideoViewerControlsContainer" data-bind="css: { selected: $index() ===  $parent.selectedAudioVideoViewerIndex, overlay: $parent.controlsVisible }">
+                                <div class="playPauseButton" data-bind="
+                                    click: $parent.onClickAudioVideoViewer.bind($parent, $index()),
+                                    css: { playing: isPlaying }">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /ko -->
+                        <div class="mediaItemDetails">
+                            <div class="mediaItemFileName" data-bind="text: fileName, attr: { title: fileName }"></div>
+                            <div data-bind="
+                                text: Core.Utility.formatString(AppMagic.AuthoringStrings.EmbeddedMediaPageFileSizeFormat,
+                                    AppMagic.Utility.formatFileSize(fileSize))">
+                            </div>
+                            <!-- ko if: typeof width === 'number' && typeof height === 'number' -->
+                            <div data-bind="
+                                text: Core.Utility.formatString(AppMagic.AuthoringStrings.EmbeddedMediaPageDimensionsFormat, width, height)"></div>
+                            <!-- /ko -->
+                            <!-- ko if: typeof duration === 'number' -->
+                            <div data-bind="
+                                text: Core.Utility.formatString(AppMagic.AuthoringStrings.EmbeddedMediaPageDurationFormat,
+                                    AppMagic.Utility.secondsToHHMMSS(Math.round(duration / 1000)))"></div>
+                            <!-- /ko -->
+                            <div class="mediausedPlacesCountText" data-bind="text: usedPlacesCountText"></div>
+                        </div>
+                    </div>
+                    <div class="mediaItemSpacer"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dialog</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="restDialogBody.css" rel="stylesheet" />
+    <script src="restDialogBody.js"></script>
+</head>
+<body>
+    <div class="rest-dialog">
+        <div class="rest-dialog-Container">
+            <div class="rest-dialog-line0">
+                <img class="icon" data-bind="attr: { src: icon }" />
+                <div class="title" data-bind="text: AppMagic.AuthoringStrings.RestDialogTitleLabelText + title"></div>
+            </div>
+            <div class="rest-dialog-line1" data-bind="foreach: userVariables">
+                <div class="userVariableName" data-bind="text: $data.title"></div>
+                <input class="userVariableTextBox" type="password" data-bind="value: $data.value, valueUpdate: ['keyup', 'input']" data-appmagic-initialfocus="true" />
+            </div>
+            <div class="rest-dialog-line2">
+                <button class="rest-dialog-forget-info" data-bind="click: onClickForgetInfo, text: AppMagic.AuthoringStrings.RestDialogClearInfoText"></button>
+            </div>
+            <div class="rest-dialog-disclaimer-note" data-bind="text: AppMagic.AuthoringStrings.RestDialogDisclaimerNote"></div>
+            <div class="rest-dialog-help-container">
+                <img src="/images/question.svg" />
+                <span class="rest-dialog-help-link" data-bind="text: AppMagic.AuthoringStrings.RestDialogHelpText, click: onHelpLinkClick"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

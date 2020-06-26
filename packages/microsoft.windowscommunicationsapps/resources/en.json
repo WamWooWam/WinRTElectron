@@ -1,0 +1,170 @@
+{
+  "Files": {
+    "FromControl": {
+      "MailFromControl.css": "FromControl\\en\\MailFromControl.css"
+    },
+    "Jx": {
+      "PeekBar.css": "Jx\\en\\PeekBar.css",
+      "SettingsFlyout.css": "Jx\\en\\SettingsFlyout.css"
+    },
+    "ModernCalendar": {
+      "views": {
+        "agenda": {
+          "AgendaView.css": "ModernCalendar\\views\\agenda\\en\\AgendaView.css"
+        },
+        "calendar": {
+          "Calendar.css": "ModernCalendar\\views\\calendar\\en\\Calendar.css"
+        },
+        "datepicker": {
+          "DatePicker.css": "ModernCalendar\\views\\datepicker\\en\\DatePicker.css"
+        },
+        "day": {
+          "DayView.css": "ModernCalendar\\views\\day\\en\\DayView.css"
+        },
+        "eventdetails": {
+          "calendarModernCanvas.css": "ModernCalendar\\views\\eventdetails\\en\\calendarModernCanvas.css",
+          "calendarSelector.css": "ModernCalendar\\views\\eventdetails\\en\\calendarSelector.css",
+          "eventDetails.css": "ModernCalendar\\views\\eventdetails\\en\\eventDetails.css"
+        },
+        "freebusy": {
+          "FreeBusy.css": "ModernCalendar\\views\\freebusy\\en\\FreeBusy.css"
+        },
+        "grid": {
+          "MonthGrid.css": "ModernCalendar\\views\\grid\\en\\MonthGrid.css"
+        },
+        "month": {
+          "Month.css": "ModernCalendar\\views\\month\\en\\Month.css"
+        },
+        "provider": {
+          "Provider.css": "ModernCalendar\\views\\provider\\en\\Provider.css"
+        },
+        "quickEvent": {
+          "quickEvent.css": "ModernCalendar\\views\\quickEvent\\en\\quickEvent.css"
+        },
+        "settings": {
+          "settings.css": "ModernCalendar\\views\\settings\\en\\settings.css"
+        },
+        "timeindicator": {
+          "TimeIndicator.css": "ModernCalendar\\views\\timeindicator\\en\\TimeIndicator.css"
+        },
+        "timeline": {
+          "Timeline.css": "ModernCalendar\\views\\timeline\\en\\Timeline.css"
+        },
+        "timeslider": {
+          "TimeSlider.css": "ModernCalendar\\views\\timeslider\\en\\TimeSlider.css"
+        },
+        "week": {
+          "Week.css": "ModernCalendar\\views\\week\\en\\Week.css"
+        }
+      }
+    },
+    "ModernCanvas": {
+      "EmojiPickerBase.css": "ModernCanvas\\en\\EmojiPickerBase.css",
+      "ModernCanvas.css": "ModernCanvas\\en\\ModernCanvas.css",
+      "ModernCanvasEmoji.css": "ModernCanvas\\en\\ModernCanvasEmoji.css",
+      "ModernCanvasFrame.css": "ModernCanvas\\en\\ModernCanvasFrame.css"
+    },
+    "ModernLaunch": {
+      "Launch": {
+        "Resources": {
+          "css": {
+            "Launch.css": "ModernLaunch\\Launch\\Resources\\css\\en\\Launch.css"
+          }
+        }
+      }
+    },
+    "ModernMail": {
+      "compose": {
+        "components": {
+          "mailmoderncanvas.css": "ModernMail\\compose\\components\\en\\mailmoderncanvas.css"
+        },
+        "mailcompose": {
+          "appbar.css": "ModernMail\\compose\\mailcompose\\en\\appbar.css",
+          "inline.css": "ModernMail\\compose\\mailcompose\\en\\inline.css"
+        }
+      },
+      "Controls": {
+        "ComboBox": {
+          "ComboBox.css": "ModernMail\\Controls\\ComboBox\\en\\ComboBox.css"
+        }
+      },
+      "Resources": {
+        "css": {
+          "mail.css": "ModernMail\\Resources\\css\\en\\mail.css",
+          "ReadingPaneBody.css": "ModernMail\\Resources\\css\\en\\ReadingPaneBody.css",
+          "worker.css": "ModernMail\\Resources\\css\\en\\worker.css"
+        }
+      }
+    },
+    "ModernPeople": {
+      "resources": {
+        "css": {
+          "AccountListControl.css": "ModernPeople\\resources\\css\\en\\AccountListControl.css",
+          "AddressBook.css": "ModernPeople\\resources\\css\\en\\AddressBook.css",
+          "CalendarAccountSettings.css": "ModernPeople\\resources\\css\\en\\CalendarAccountSettings.css",
+          "CalendarDialog.css": "ModernPeople\\resources\\css\\en\\CalendarDialog.css",
+          "Controls-people.css": "ModernPeople\\resources\\css\\en\\Controls-people.css",
+          "IdentityControl.css": "ModernPeople\\resources\\css\\en\\IdentityControl.css",
+          "LandingPage.css": "ModernPeople\\resources\\css\\en\\LandingPage.css",
+          "MailAccountSettings.css": "ModernPeople\\resources\\css\\en\\MailAccountSettings.css",
+          "MailDialog.css": "ModernPeople\\resources\\css\\en\\MailDialog.css",
+          "People.css": "ModernPeople\\resources\\css\\en\\People.css",
+          "PeopleAccountSettings.css": "ModernPeople\\resources\\css\\en\\PeopleAccountSettings.css",
+          "PeopleConnectedAccounts.css": "ModernPeople\\resources\\css\\en\\PeopleConnectedAccounts.css",
+          "PeopleDialog.css": "ModernPeople\\resources\\css\\en\\PeopleDialog.css",
+          "PeoplePicker.css": "ModernPeople\\resources\\css\\en\\PeoplePicker.css",
+          "SettingsFlyout.css": "ModernPeople\\resources\\css\\en\\SettingsFlyout.css",
+          "Social.css": "ModernPeople\\resources\\css\\en\\Social.css",
+          "Upsell.css": "ModernPeople\\resources\\css\\en\\Upsell.css"
+        }
+      }
+    },
+    "ModernShared": {
+      "Resources": {
+        "css": {
+          "shared_styles.css": "ModernShared\\Resources\\css\\en\\shared_styles.css"
+        }
+      }
+    },
+    "Resources": {
+      "MessageBar": {
+        "css": {
+          "messagebar.css": "Resources\\MessageBar\\css\\en\\messagebar.css"
+        }
+      },
+      "ModernAddressWell": {
+        "css": {
+          "AddressWell.css": "Resources\\ModernAddressWell\\css\\en\\AddressWell.css",
+          "CalendarAddressWellColor.css": "Resources\\ModernAddressWell\\css\\en\\CalendarAddressWellColor.css",
+          "MailAddressWellColor.css": "Resources\\ModernAddressWell\\css\\en\\MailAddressWellColor.css",
+          "PeopleAddressWellColor.css": "Resources\\ModernAddressWell\\css\\en\\PeopleAddressWellColor.css"
+        }
+      },
+      "ModernAttachmentWell": {
+        "css": {
+          "AttachmentWell.css": "Resources\\ModernAttachmentWell\\css\\en\\AttachmentWell.css"
+        }
+      },
+      "ModernShareAnything": {
+        "css": {
+          "ShareAnything.css": "Resources\\ModernShareAnything\\css\\en\\ShareAnything.css"
+        }
+      },
+      "ModernShareTarget": {
+        "css": {
+          "ShareTarget.css": "Resources\\ModernShareTarget\\css\\en\\ShareTarget.css",
+          "ShareTargetModernCanvas.css": "Resources\\ModernShareTarget\\css\\en\\ShareTargetModernCanvas.css"
+        }
+      },
+      "SendASmile": {
+        "css": {
+          "CalendarSaSColor.css": "Resources\\SendASmile\\css\\en\\CalendarSaSColor.css",
+          "fms.css": "Resources\\SendASmile\\css\\en\\fms.css",
+          "MailSaSColor.css": "Resources\\SendASmile\\css\\en\\MailSaSColor.css",
+          "PeopleSaSColor.css": "Resources\\SendASmile\\css\\en\\PeopleSaSColor.css",
+          "SaS.css": "Resources\\SendASmile\\css\\en\\SaS.css"
+        }
+      }
+    }
+  }
+}

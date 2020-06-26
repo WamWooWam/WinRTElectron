@@ -1,0 +1,5 @@
+﻿.win-settingsflyout .win-header{background-color:#d24625;}.win-settingsflyout .win-header .win-backbutton:hover:active{color:#d24625;}
+.win-settingsflyout .win-header .icon{background-image:url('/ModernPeople/images/PeopleIcon-30.png');background-size:100% 100%;}
+.win-settingsflyout a,.win-settingsflyout a:visited{color:#d24625;}
+.win-settingsflyout .win-settings-section input[type=checkbox]{padding-bottom:9px;}
+.win-settingsflyout .win-settings-section #accountFilterDescription{padding-top:2px;padding-bottom:12px;}

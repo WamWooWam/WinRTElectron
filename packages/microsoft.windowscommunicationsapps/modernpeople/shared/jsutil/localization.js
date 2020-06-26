@@ -1,0 +1,1 @@
+﻿Jx.delayDefine(People,"bidi",function(){var n=window.People;n.BiDi=function(){var n=getComputedStyle(document.body).direction;this.direction=n};n.bidi=new n.BiDi})

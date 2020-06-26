@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="position_x5F_tile_x5F_icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+	 x="0px" y="0px" width="80px" height="40px" viewBox="0 0 80 40" enable-background="new 0 0 80 40" xml:space="preserve">
+<g>
+	<polygon id="mountains_3_" fill="#FFFFFF" points="6.766,7.959 13.139,14.922 17.041,10.127 21,14.922 21,19 1,19 1,14.922 	"/>
+	<path id="sun_4_" fill="#FFFFFF" d="M13.1,1.965c-1.047,0-1.899,0.852-1.899,1.899s0.853,1.901,1.899,1.901S15,4.913,15,3.865
+		S14.146,1.965,13.1,1.965L13.1,1.965z"/>
+</g>
+<g>
+	<polygon id="mountains_4_" fill="#FFFFFF" points="27.766,7.959 34.139,14.922 38.041,10.127 42,14.922 42,19 22,19 22,14.922 	"/>
+	<path id="sun_5_" fill="#FFFFFF" d="M34.1,1.965c-1.047,0-1.899,0.852-1.899,1.899s0.853,1.901,1.899,1.901S36,4.913,36,3.865
+		S35.146,1.965,34.1,1.965L34.1,1.965z"/>
+</g>
+<g>
+	<polygon id="mountains_5_" fill="#FFFFFF" points="48.766,7.959 55.139,14.922 59.041,10.127 63,14.922 63,19 43,19 43,14.922 	"/>
+	<path id="sun_6_" fill="#FFFFFF" d="M55.1,1.965c-1.047,0-1.899,0.852-1.899,1.899s0.853,1.901,1.899,1.901S57,4.913,57,3.865
+		S56.146,1.965,55.1,1.965L55.1,1.965z"/>
+</g>
+<g>
+	<polygon id="mountains_10_" fill="#FFFFFF" points="6.766,28.459 13.139,35.422 17.041,30.627 21,35.422 21,39.5 1,39.5 1,35.422 	
+		"/>
+	<path id="sun_11_" fill="#FFFFFF" d="M13.1,22.465c-1.047,0-1.899,0.852-1.899,1.9c0,1.047,0.853,1.9,1.899,1.9s1.9-0.854,1.9-1.9
+		C15,23.316,14.146,22.465,13.1,22.465L13.1,22.465z"/>
+</g>
+<g>
+	<polygon id="mountains_9_" fill="#FFFFFF" points="27.766,28.459 34.139,35.422 38.041,30.627 42,35.422 42,39.5 22,39.5 
+		22,35.422 	"/>
+	<path id="sun_10_" fill="#FFFFFF" d="M34.1,22.465c-1.047,0-1.899,0.852-1.899,1.9c0,1.047,0.853,1.9,1.899,1.9s1.9-0.854,1.9-1.9
+		C36,23.316,35.146,22.465,34.1,22.465L34.1,22.465z"/>
+</g>
+<g>
+	<polygon id="mountains_8_" fill="#FFFFFF" points="48.766,28.459 55.139,35.422 59.041,30.627 63,35.422 63,39.5 43,39.5 
+		43,35.422 	"/>
+	<path id="sun_9_" fill="#FFFFFF" d="M55.1,22.465c-1.047,0-1.899,0.852-1.899,1.9c0,1.047,0.853,1.9,1.899,1.9s1.9-0.854,1.9-1.9
+		C57,23.316,56.146,22.465,55.1,22.465L55.1,22.465z"/>
+</g>
+<g>
+	<polygon fill="#FFFFFF" points="69.766,7.959 64,14.922 64,19 79,19 79,11.406 76.139,14.922 	"/>
+	<circle fill="#FFFFFF" cx="76.1" cy="3.865" r="1.9"/>
+	<polygon fill="#FFFFFF" points="69.766,28.459 64,35.422 64,40 79,40 79,31.906 76.139,35.422 	"/>
+	<circle fill="#FFFFFF" cx="76.1" cy="24.365" r="1.9"/>
+</g>
+<rect id="border_x5F_orig_x5F_80x40_1_" x="0.5" y="0.5" fill="none" stroke="#FFFFFF" stroke-miterlimit="10" width="79" height="39"/>
+</svg>

@@ -24442,15 +24442,9 @@ StringLiteral       7.8.4
                     return uri;
                 }
 
-                var getUrl = window.location;
-                var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1] + "/";
-                let url = new URL(uri.substr(1), baseUrl);
-
-                // var a = _Global.document.createElement("a");
-                // a.href = uri;
-                // return a.href;
-
-                return url.href;
+                var a = _Global.document.createElement("a");
+                a.href = uri;
+                return a.href;
             }
             var viewMap = {};
 

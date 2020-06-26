@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/rating"
+        name="Rating"
+        jsClass="AppMagic.Controls.Rating"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[RATING
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/rating.css" />
+    <require type="javascript" src="js/rating.js" />
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    />
+  
+  <content>
+    <![CDATA[
+  <div
+    class="appmagic-rating"
+    data-win-control="WinJS.UI.Rating"
+    data-bind="{
+      attr: { title: properties.Tooltip },
+      winjsattr: {
+        userRating: properties.Value,        
+        maxRating: properties.Max,
+        disabled: isDisabled },
+      event: { click: handleClick }
+    }" >
+  </div>
+  ]]>
+  </content>
+  
+  <properties>
+    <!--The 200 max value comes from constants.js: AppMagic.Constants.Controls.RatingMaxValue.-->
+    <property name="Max" localizedName="##rating_Max##" datatype="Number" minimum="1" maximum="200" defaultValue="5" nullDefault="1">
+      <title>Rating max</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##rating_Max_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_maxicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="Default" localizedName="##rating_Default##" datatype="Number" defaultValue="3" minimum="0" nullDefault="0" isExpr="true" editable="true">
+      <title>Rating default value</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##rating_Default_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_valueicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="Value" localizedName="##rating_Value##" datatype="Number" direction="out" isPrimaryOutputProperty="true">
+      <title>Rating value</title>
+      <appMagic:category>data</appMagic:category>
+    </property>
+    <property name="Readonly" localizedName="##rating_Readonly##" datatype="Boolean" defaultValue="false">
+      <title>Read Only</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##rating_Readonly_DisplayName##</appMagic:displayName>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_readonlyicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="RatingFill" localizedName="##rating_RatingFill##" datatype="Color" isExpr="true" defaultValue="RGBA(0, 176, 240, 1)" converter="argbConverter">
+      <title>color</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##rating_RatingFill_DisplayName##</appMagic:displayName>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_starcoloricon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:position>7</appMagic:position>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <!-- Design -->
+    <appMagic:includeProperty name="Fill">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" />
+    <appMagic:includeProperty name="Height" defaultValue="30" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="ShowValue">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    <appMagic:includeProperty name="OnChange" direction="in" />
+    
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="150" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="30" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+  </appMagic:includeProperties>
+
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Default" output="Value"/>
+  </appMagic:propertyDependencies>
+</widget>

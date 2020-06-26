@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>appBarControl</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="appBarControl.css" rel="stylesheet" />
+    <script src="appBarControl.js"></script>
+</head>
+<body>
+    <div class="appBarControl fragment">
+        <!-- tabindex is required to make sure when topAppBar is visible, other elements (such as rule textarea) lose focus. -->
+        <div id="topAppBar" class="customDarkAppBar"
+             data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'top', disabled:true, sticky:true}"
+             data-bind="winjsattr: { disabled: isDisabled }, event: { beforeshow: handleScrollBeforeShow }">
+            <div class="topAppBarGrid">
+                <div class="cmdButtonContainer left" data-bind="visible: !isPreview">
+                    <div data-bind="clickOrEnter:  handleTopAppBarFileButtonClicked.bind($data), css: { active: fileFlyoutVisible }" id="cmdFile" class="topAppBarButton" tabindex="0">
+                        <img class="topAppBarFileButtonIcon topAppBarIcon" src="../../images/fileicon.svg" draggable="false" />
+                        <img class="topAppBarTwirl" align="right" src="../../images/twirl_icon.svg" draggable="false" />
+                        <div class="topAppBarMenuItemText" data-bind="text: AppMagic.AuthoringStrings.FileButtonLabel"></div>
+                    </div>
+                    <hr data-bind="visible: !smallLayout" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'separator',id:'cmdFileSeparator',section:'global'}" />
+                    <div data-bind="clickOrEnter: handleTopAppBarAppDataButtonClicked.bind($data), css: { active: dataFlyoutVisible }" id="cmdAppData" class="topAppBarButton" tabindex="0">
+                        <img class="topAppBarDataButtonIcon topAppBarIcon" src="../../images/datarule_dataicon.svg" draggable="false" />
+                        <img class="topAppBarTwirl" align="right" src="../../images/twirl_icon.svg" draggable="false" />
+                        <div class="topAppBarMenuItemText" data-bind="text: AppMagic.AuthoringStrings.AppDataButtonLabel"></div>
+                    </div>
+                    <hr data-bind="visible: !smallLayout" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'separator',id:'cmdFileSeparator',section:'global'}" />
+                    <div data-bind="clickOrEnter: handleTopAppBarHelpButtonClicked.bind($data), css: { active: helpFlyoutVisible }" id="cmdHelp" class="topAppBarButton" tabindex="0">
+                        <img class="topAppBarHelpButtonIcon topAppBarIcon" src="../../images/help_icon.svg" draggable="false" />
+                        <img class="topAppBarTwirl" align="right" src="../../images/twirl_icon.svg" draggable="false" />
+                        <div class="topAppBarMenuItemText" data-bind="text: AppMagic.AuthoringStrings.HelpButtonLabel"></div>
+                    </div>
+
+                    <hr data-bind="visible: !smallLayout" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'separator',id:'cmdFileSeparator',section:'global'}" />
+                    <div data-bind="clickOrEnter: handleAddScreenClicked.bind($data), visible: !smallLayout" id="cmdAddScreen" class="topAppBarAddScreenButton" tabindex="0">
+                        <img class="topAppBarAddScreenButtonIcon" src="../../images/addscreenicon.svg" draggable="false" />
+                        <div data-bind="text: AppMagic.AuthoringStrings.AddScreenButtonLabel"></div>
+                    </div>
+                </div>
+                <div id="appBarScreenListContainer" class="screenListContainer" data-bind="visible: !smallLayout">
+                    <div id="appBarScreenList" class="screenList" data-bind="foreach: viewModel.screens, css: { previewMode: isPreview }">
+                        <div class="dropIndicatorContainer" data-bind="
+                            event: {
+                                dragover: $parent.handleDragOver.bind($parent, $index(), false),
+                                dragleave: $parent.handleDragLeave.bind($parent),
+                                drop: $parent.handleDrop.bind($parent),
+                            } ">
+                            <div class="dropIndicator" data-bind="css: { overTarget: $parent.activeDropTarget === $index() }"></div>
+                        </div>
+                        <div class="screenTemplateItem" tabindex="0" data-bind="click: $parent.handleScreenClicked.bind($parent),
+                            css: { currentScreen: $data === $parent.viewModel.currentScreen },
+                            event: {
+                                contextmenu: $parent.showContextMenu.bind($parent),
+                                keydown: $parent.handleScreenKeydown.bind($parent),
+                                dragover: $parent.handleDragOver.bind($parent, $index(), true),
+                                drop: $parent.handleDrop.bind($parent),
+                                dragstart: $parent.handleDragStart.bind($parent, $data.name),
+                                dragleave: $parent.handleDragLeave.bind($parent),
+                                dragend: $parent.handleDragEnd.bind($parent),
+                            },
+                            attr: {draggable: $parent.draggableValue}">
+                            <div class="screenTemplateItemHighContrastOutline">
+                                <div class="screenTemplateIconArea">
+                                    <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: appBarErrorVisible" />
+                                    <div class="removeScreenButton" data-bind="click: $parent.handleRemoveScreenClicked.bind($parent), clickBubble: false, visible: $parent.removeScreenVisible && !$parent.isPreview"></div>
+                                </div>
+                                <div class="screenTemplateTextContainer">
+                                    <div class="screenTemplateText" data-bind="text: $data.name"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ko if: $data.index === ($parent.viewModel.screens.length - 1) -->
+                        <div class="dropIndicatorContainer" data-bind="
+                            event: {
+                                dragover: $parent.handleDragOver.bind($parent, $index() + 1, false),
+                                dragleave: $parent.handleDragLeave.bind($parent),
+                                drop: $parent.handleDrop.bind($parent),
+                            } ">
+                            <div class="dropIndicator" data-bind="css: { overTarget: $parent.activeDropTarget === ($index() + 1) }"></div>
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                </div>
+                <div class="cmdButtonContainer right">
+                    <hr data-bind="visible: !smallLayout" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'separator',id:'cmdFileSeparator',section:'global'}" />
+
+                    <div id="cmdPlay" tabindex="0" class="topAppBarAddScreenButton designPreviewButton" data-bind="clickOrEnter: handlePlayClicked.bind($data), attr: { title: !isPreview ? AppMagic.AuthoringStrings.PlayButtonTooltip : AppMagic.AuthoringStrings.StopButtonTooltip }">
+                        <img class="topAppBarDesignButtonIcon" draggable="false" data-bind="attr: { src: !isPreview ? '../../images/play_icon.svg' : '../../images/design_icon.svg' }" />
+                        <span data-bind="text: !isPreview ? AppMagic.AuthoringStrings.PlayButtonLabel : AppMagic.AuthoringStrings.StopButtonLabel"></span>
+                    </div>
+                    <!-- Remove for V1.
+                        <hr data-win-control="WinJS.UI.AppBarCommand" data-win-options="{type:'separator',id:'cmdFileSeparator',section:'global'}" />
+                        <div data-bind="clickOrEnter: handleTopAppBarPlayFlyoutClicked.bind($data), css: { active: playFlyoutVisible }" id="cmdPlayFlyout" class="topAppBarButton" tabindex="0">
+                            <img class="topAppBarTwirl" align="right" src="../../images/twirl_icon.svg" />
+                        </div>
+                    -->
+                </div>
+            </div>
+        </div>
+
+        <!-- TASK: 104787: Move the AppBar Shortcut dependency from appBarControl.js to appBarViewModel.js --> 
+        <div id="topAppBarFileFlyout" class="appBarFlyout" data-bind="shortcut: { provider: appBarShortcuts }" tabindex="0" data-win-control="WinJS.UI.Flyout">
+            <div class="itemContainer">
+                <!-- ko foreach: $data.appBarShortcuts.getFileMenuOptions() -->
+                <div class="appBarFlyoutItem" data-bind="click: $parent.handleAppbarButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.appBarShortcuts.selectedIndex },
+                    event: { mouseover: $parent.appBarShortcuts.onMouseOver.bind($parent.appBarShortcuts) },
+                    text: text,
+                    attr: { title: title }" tabindex="-1">
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div id="topAppBarDataFlyout" class="appBarFlyout" data-bind="shortcut: { provider: appBarShortcuts }" tabindex="0" data-win-control="WinJS.UI.Flyout">
+            <div class="itemContainer">
+                <!-- ko foreach: $data.appBarShortcuts.getAppDataMenuOptions() -->
+                <div class="appBarFlyoutItem" data-bind="click: $parent.handleAppbarButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.appBarShortcuts.selectedIndex },
+                    event: { mouseover: $parent.appBarShortcuts.onMouseOver.bind($parent.appBarShortcuts) },
+                    text: text" tabindex="-1">
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div id="topAppBarHelpFlyout" class="appBarFlyout" data-bind="shortcut: { provider: appBarShortcuts }" tabindex="0" data-win-control="WinJS.UI.Flyout">
+            <div class="itemContainer">
+                <!-- ko foreach: $data.appBarShortcuts.getHelpMenuOptions() -->
+                <div class="appBarFlyoutItem" data-bind="click: $parent.handleAppbarButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.appBarShortcuts.selectedIndex },
+                    event: { mouseover: $parent.appBarShortcuts.onMouseOver.bind($parent.appBarShortcuts) },
+                    text: text" tabindex="-1">
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div id="topAppBarPlayFlyout" class="appBarFlyout" data-bind="shortcut: { provider: appBarShortcuts }" tabindex="0" data-win-control="WinJS.UI.Flyout">
+            <div class="itemContainer">
+                <!-- ko foreach: $data.appBarShortcuts.getPreviewMenuOptions() -->
+                <div class="appBarFlyoutItem" data-bind="click: $parent.handleAppbarButtons.bind($parent, $data),
+                    css: { selected: $index() === $parent.appBarShortcuts.selectedIndex },
+                    event: { mouseover: $parent.appBarShortcuts.onMouseOver.bind($parent.appBarShortcuts) },
+                    text: text" tabindex="-1"></div>
+                <!-- /ko -->
+            </div>
+        </div>
+    </div>
+</body>
+</html>

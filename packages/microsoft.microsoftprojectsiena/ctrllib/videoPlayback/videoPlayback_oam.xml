@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/videoPlayback"
+        name="videoPlayback"
+        jsClass="AppMagic.Controls.VideoPlayback"
+        authoringjsClass="AppMagic.Controls.AuthoringVideoPlayback"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[VIDEOPLAYBACK
+          Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/videoPlayback.css" />
+    <require type="javascript" src="/controls/playback/js/playback.js" />
+    <require type="javascript" src="/controls/playback/js/playbackViewModel.js" />
+    <require type="javascript" src="/controls/playback/js/media.js" />
+    <require type="javascript" src="/controls/playback/js/mediaFactory.js" />
+    <require type="javascript" src="/controls/playback/js/htmlMedia.js" />
+    <require type="javascript" src="/controls/playback/js/iframeMedia.js" />
+    <require type="javascript" src="js/videoPlayback.js" />
+    
+    <!--
+      The iframe dependencies are marked as other since they are loaded into an x-ms-webview,
+      not into the application web page.
+    -->
+    <require type="other" src="html/iframeHost.css" />
+    <require type="other" src="html/iframeHost.js" />
+    <require type="other" src="html/iframe-youtube.html" />
+    
+    <require type="other" src="images/iconFullscreen.svg" />
+    <require type="other" src="images/iconFullscreenCollapse.svg" />
+    <require type="other" src="/controls/playback/images/iconPause.svg" />
+    <require type="other" src="/controls/playback/images/iconPlay.svg" />
+    <require type="other" src="/controls/playback/images/iconVolume.svg" />
+    <require type="other" src="/controls/playback/images/iconVolumeMuted.svg" />
+    <require type="other" src="/controls/playback/images/iconVolumeBlack.svg" />
+    <require type="other" src="/controls/playback/images/iconVolumeMutedBlack.svg" />
+    <require type="other" src="/controls/common/seekBar/css/seekBar.css" />
+    <require type="other" src="/controls/common/seekBar/images/seekBarThumb.svg" />
+    <require type="other" src="/controls/common/seekBar/images/seekBarThumbSelected.svg" />
+    <require type="other" src="/controls/common/seekBar/js/seekBar.js" />
+    <require type="markup" src="/controls/common/seekBar/seekBar.html" />
+    <require type="javascript" src="js/authoringVideoPlayback.js" authoringOnly="true" />
+  </requires>
+
+  <appMagic:capabilities
+      contextualViewsEnabled="true"
+      autoBorders="true"
+      outlineIncompatible="true"
+      screenActiveAware="true"
+  />
+
+  <content>
+    <![CDATA[
+    <div class="appmagic-video-playback" data-bind="
+          attr:{ title:properties.Tooltip }">
+      <!-- ko with: mediaObject.template.indexOf('iframe-') === 0 ? mediaObject : null -->
+      <x-ms-webview class="appmagic-video-playback-iframe" data-bind="event: { MSWebViewNavigationStarting: onNavigationStarting }"></x-ms-webview>
+      <div class="appmagic-video-playback-iframe-disabled" data-bind="css: { active: $parent.isDisabledDiv }"></div>
+      <!-- /ko -->
+      <!-- ko with: mediaObject.template === 'video' ? mediaObject : null -->
+      <div class="appmagic-video-playback-grid" data-bind="
+            css: { 'appmagic-video-playback-grid-hover': controlsIsVisible, 'fullscreen-grid': $parent.isFullscreen },
+            style: { backgroundColor: $parent.properties.Fill, zIndex: $parent.isFullscreen ? AppMagic.Constants.zIndex.topmost : 'auto' },
+            event: { click: onClick, pointermove: onPointerMove }">
+        <video
+          class="appmagic-video-playback-video"
+          data-bind="
+            click: onClickPlayPauseButton,
+            event: {
+                durationchange: durationChanged.invoke,
+                ended: ended.invoke,
+                error: error.invoke,
+                loadedmetadata: metadataLoaded.invoke,
+                pause: paused.invoke,
+                play: playing.invoke,
+                timeupdate: timeUpdated.invoke,
+            },
+            mediaattr: { loop: loop, poster: $parent.poster, muted: isMuted, volume: volume }
+          "></video>
+        <div class="appmagic-video-playback-controls-container" data-bind="visible: showControls && !$parent.isDisabled()">
+          <div class="appmagic-video-playback-button-play-pause-container">
+            <div class="appmagic-video-playback-button-play-pause" data-bind="
+                  style: { height: $parent.properties.Height() / $parent.scaleFactor + 'px',
+                          width: $parent.properties.Height() / $parent.scaleFactor + 'px' },
+                  css: { playing: $parent.isPlaying, 
+                        largeIcon: $parent.isFullscreen },
+                  click: onClickPlayPauseButton"></div>
+          </div>
+          <div class="appmagic-video-playback-controls" data-bind="css: { 'appmagic-video-playback-controls-hide': $parent.hideControls }">
+            <div class="appmagic-video-playback-seekbar" data-bind="
+                  observableProperty: { value: seekBarValue, min: seekBarMin, max: seekBarMax },
+                  winjsControl: '/controls/common/seekBar/seekBar.html',
+                  event: { pointerdown: onPlaybackSeekBarPointerDown, pointerup: onPlaybackSeekBarPointerUp }">
+            </div>
+            <div class="appmagic-video-playback-seekbar-controls">
+              <div class="appmagic-video-playback-seekbar-current-time appmagic-video-playback-timer-label" data-bind="text: seekBarTime"></div>
+              <div class="appmagic-video-playback-seekbar-duration-seprator">/</div>
+              <div class="appmagic-video-playback-seekbar-duration appmagic-video-playback-timer-label" data-bind="text: seekBarDuration"></div>
+              <div class="appmagic-video-playback-button-volume-container">
+                <div class="appmagic-video-playback-button-volume-container-parent">
+                  <div class="appmagic-video-playback-button-volume icon" data-bind="
+                        css: { muted: isMuted },
+                        event: { click: onClickVolumeButton }"></div>
+                  <div class="appmagic-video-playback-volume-container" data-bind="css: {'appmagic-video-playback-volume-container-click': isVolumeContainerVisible }">
+                    <div class="appmagic-video-playback-volume-top" data-bind="css: { muted: isMuted }, event: { pointerdown: onClickVolumeMuteButton }"></div>
+                    <div class="appmagic-video-volume-slider-divider"></div> 
+                    <input class="appmagic-video-playback-slider-volume win-vertical" type="range" min="0" max="100" step="1" data-bind="
+                            value: volumeSliderValue, 
+                            valueUpdate: 'input',
+                            attr: { min: minVolume.toString(), max: maxVolume.toString() },
+                            css: { muted : isMuted }" />
+                  </div>
+                </div>
+              </div>
+              <div class="appmagic-video-playback-button-fullscreen icon" data-bind="
+                  css: { 'fullscreen-collapsed-icon': $parent.isFullscreen },
+                  click: $parent.onClickFullscreenButton.bind($parent)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /ko -->
+    </div>
+    ]]>
+  </content>
+
+  <properties>
+    <!-- Data -->
+    <property name="Duration" localizedName="##videoPlayback_Duration##" datatype="Number" direction="out">
+      <title>Duration of playback in seconds</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_durationicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="Loop" localizedName="##videoPlayback_Loop##" datatype="Boolean" defaultValue="false">
+      <title>True if the playback loops.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##videoPlayback_Loop_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_loopicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>4</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_Loop_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Media" localizedName="##videoPlayback_Media##" datatype="Media" defaultValue="SampleVideo" direction="in" isExpr="true" isPrimaryInputProperty="true">
+      <title>Playback input</title>
+      <appMagic:autoBind>true</appMagic:autoBind>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##videoPlayback_Media_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_mediaicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##videoPlayback_Media_Tooltip##</appMagic:tooltip>
+      <appMagic:sampleDataSource name="SampleVideo" location="media/SampleVideo.mp4"/>
+    </property>
+    <property name="Time" localizedName="##videoPlayback_Time##" datatype="Number" direction="out" isPrimaryOutputProperty="true">
+      <title>Current time in seconds</title>
+      <appMagic:category>data</appMagic:category>
+    </property>
+    <property name="Start" localizedName="##videoPlayback_Start##" datatype="boolean" defaultValue="false" nullDefault="false">
+      <title>When true, video will start playing or continue to play. When false, video stops playing</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##videoPlayback_Start_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_starticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_Start_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="AutoStart" localizedName="##videoPlayback_AutoStart##" datatype="Boolean" direction="in" defaultValue="false">
+      <title>Set to true to start playing when the screen where the control is located becomes active. False will only play when the play button is pressed.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##videoPlayback_AutoStart_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_autostarticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>6</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_AutoStart_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="AutoPause" localizedName="##videoPlayback_AutoPause##" datatype="Boolean" direction="in" defaultValue="true">
+      <title>For determing behavior when navigating to a different screen</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##videoPlayback_AutoPause_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_pausedicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>7</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_AutoPause_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="StartTime" localizedName="##videoPlayback_StartTime##" datatype="Number" direction="in" defaultValue="0">
+      <title>Set to true to start playing when the screen where the control is located becomes active. False will only play when the play button is pressed.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##videoPlayback_StartTime_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_starttimeicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>5</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##audioPlayback_StartTime_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Paused" localizedName="##videoPlayback_Paused##" datatype="Boolean" direction="out" defaultValue="true">
+      <title>Current status of the playback. True if the playback is paused.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_pausedicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>52</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Image" datatype="Image" defaultValue="">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>8</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Design -->
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty> <!-- Charcoal -->
+    <appMagic:includeProperty name="ShowControls">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="484">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Height" defaultValue="272">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Hidden -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="90" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="300" />
+
+    <!-- Behavior -->
+    <appMagic:includeProperty name="OnStart" direction="in" />
+    <appMagic:includeProperty name="OnPause" direction="in" />
+    <appMagic:includeProperty name="OnEnd" direction="in" />
+  </appMagic:includeProperties>
+
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="AutoStart" output="Paused"/>
+    <appMagic:propertyDependency input="AutoStart" output="Time"/>
+    <appMagic:propertyDependency input="StartTime" output="Time"/>
+    <appMagic:propertyDependency input="Media" output="Time"/>
+    <appMagic:propertyDependency input="Media" output="Duration"/>
+  </appMagic:propertyDependencies>
+
+</widget>

@@ -1,0 +1,28 @@
+﻿
+.excel-config-file {
+    margin: 30px 0px 30px 0px;
+    display: -ms-flexbox;
+    -ms-flex-align: center;
+}
+
+    .excel-config-file .excel-icon {
+        float: left;
+        margin-right: 10px;
+        height: 20px;
+        width: 20px;
+    }
+
+    .excel-config-file span {
+        font-family: "Segoe UI";
+        font-size: 10pt;
+        height: 20px;
+        vertical-align: middle;
+    }
+
+.excel-pane-header {    
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    font-size: 15pt;
+    color: #824A82; /* Fandango */
+    line-height: 35px;
+}

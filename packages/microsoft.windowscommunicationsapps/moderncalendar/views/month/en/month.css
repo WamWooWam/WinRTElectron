@@ -1,0 +1,391 @@
+﻿.monthview {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 17px;
+    overflow-y: hidden;
+    font-weight: 400;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    color: #5e5c5e;
+    background-color: #e8e7ea;
+}
+
+.monthview .dp-anchor {
+    position: absolute;
+    visibility: hidden;
+    left: 60px;
+    top: 120px;
+}
+
+@media (max-width: 320px) {
+    .monthview {
+        display:none;
+    }
+}
+
+.monthview .month {
+    position: absolute;
+    width: calc((100% + 2px));
+    height: 100%;
+    z-index: 0;
+}
+
+.monthview .month>.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 124px 26px 1fr;
+}
+
+.monthview .header {
+    margin-top: 40px;
+    margin-left: 60px;
+    margin-right: 0;
+    margin-bottom: 4px;
+    font-weight: 200;
+}
+
+.monthview .month .dateAnchor {
+    display: -ms-inline-grid;
+    grid-template-columns: 1fr 64px;
+    grid-template-rows: 1fr;
+}
+
+.monthview .month .dateAnchor.hover {
+    color: #7a787a;
+}
+
+.monthview .month .dateAnchor.active {
+    color: #b1afb2;
+}
+
+.monthview .month .dateAnchor .anchorText {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    font-weight: 200;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.monthview .month .dateAnchor .dateChevron {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    font-size: 27px;
+    font-weight: 200;
+    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+    padding-left: 20px;
+    padding-right: 0;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    display: none;
+}
+
+.monthview .month .activeAnchor .dateChevron {
+    display: inline-block;
+}
+
+.dp-flyout.monthviewPicker {
+    margin-top: 3px;
+}
+
+.monthview .dayHeaders {
+    grid-row: 2;
+}
+
+.monthview .dayHeaders .dayHeader {
+    float: left;
+    box-sizing: border-box;
+    padding-left: 14px;
+    padding-right: 0;
+    width: 14.28%;
+    height: 100%;
+    border-left: 0;
+    border-right: 1px solid #ffffff;
+}
+
+.dayHeader .dayText {
+    padding-top: 5px;
+    margin-top: -5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.monthview .grid {
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+.monthview .days {
+    display: flex;
+    flex-wrap: wrap;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.monthview .events {
+    position: relative;
+    z-index: 3;
+    opacity: 0;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.monthview .event {
+    position: absolute;
+    box-sizing: border-box;
+    border-top: 1px solid #e8e7ea;
+    padding-right: 1px;
+    background: #ffffff;
+    background-clip: content-box;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: 1fr;
+}
+
+.monthview .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.monthview .overlay:hover,.monthview [data-state] .overlay {
+    background-color: rgba(255, 255, 255, 0.13);
+}
+
+.monthview .subject {
+    grid-column: 3;
+    font-weight: 600;
+    margin-left: 0;
+    margin-right: 20px;
+}
+
+.monthview .time {
+    grid-column: 2;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-feature-settings: "kern" 1,"ss20" 1,"dlig" 1,"smcp";
+    padding-top: 1px;
+    margin-left: 0;
+    margin-right: 5px;
+}
+
+.monthview .time.right {
+    grid-column: 4;
+}
+
+.monthview .multiDay .subject {
+    text-align: center;
+}
+
+.monthview .subject,.monthview .time {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.monthview .glyph {
+    box-sizing: border-box;
+    min-width: 7px;
+    margin-left: 0;
+    margin-right: 7px;
+}
+
+.monthview .glyphInner {
+    width: 100%;
+    height: 100%;
+}
+
+.monthview [data-status="tentative"] .glyphInner {
+    background-image: url('../../Tentative.png');
+    -ms-high-contrast-adjust: none;
+}
+
+.monthview [data-status="free"] .glyphInner {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.monthview [data-status="busy"] .glyphInner {
+    background-color: transparent;
+}
+
+.monthview [data-status="outOfOffice"] .glyphInner,.monthview [data-status="workingElsewhere"] .glyphInner {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.monthview .days>.day {
+    box-sizing: border-box;
+    position: relative;
+    width: 14.28%;
+    border-top: 1px solid #ffffff;
+    border-left: 0;
+    border-right: 1px solid #ffffff;
+}
+
+.monthview .date {
+    padding: 12px 14px 0;
+}
+
+.monthview .today[data-state='pressed'] {
+    background-color: #616161;
+}
+
+.monthview .today .date {
+    color: #ffffff;
+}
+
+.monthview .hidden {
+    display: none;
+}
+
+.monthview .thisMonth {
+    background-color: #e8e7ea;
+}
+
+.monthview .lastMonth,.monthview .nextMonth {
+    background-color: #e0dfe2;
+}
+
+.monthview .today {
+    background-color: #757576;
+}
+
+.monthview .lastMonth .date,.monthview .nextMonth .date {
+    opacity: .8;
+}
+
+.monthview .thisMonth[data-state='pressed'],.monthview .nextMonth[data-state='pressed'],.monthview .lastMonth[data-state='pressed'] {
+    background-color: #c8c8c8;
+}
+
+.monthview .overflow,.monthview .overflowToday {
+    position: absolute;
+}
+
+.monthview .overflowInner {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-weight: 300;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin: 14px 5px 0;
+}
+
+.monthview .overflowToday>.overflowInner {
+    color: #ffffff;
+}
+
+.monthview .overflow>.overflowInner:hover {
+    color: #303030;
+}
+
+.monthview .overflowToday>.overflowInner:hover {
+    color: #e3e3e3;
+}
+
+.monthview .overflow[data-state='pressed']>.overflowInner {
+    color: #909090;
+}
+
+.monthview .overflowToday[data-state='pressed']>.overflowInner {
+    color: #acacac;
+}
+
+.monthview .recycling .days>.day {
+    background-color: #e8e7ea;
+}
+
+.monthview .recycling .days .date {
+    visibility: hidden;
+}
+
+@media (-ms-high-contrast) {
+    .monthview {
+        color: windowtext;
+    }
+
+    .monthview .event {
+        border: 1px solid windowtext;
+    }
+
+    .monthview .event.hasPrevious {
+        border-top: 0;
+    }
+
+    .monthview .overlay:hover,.monthview .overlay:active {
+        opacity: 0;
+    }
+
+    .monthview .events {
+        top: 1px;
+    }
+
+    .monthview .dayHeaders,.monthview .days {
+        background-color: windowtext;
+    }
+
+    .monthview .days>.day:not(.today),.monthview .dayHeader,.monthview .events>.day:not(.overflowToday) {
+        background-color: window;
+    }
+
+    .monthview .today {
+        background-color: highlight;
+        color: highlighttext;
+    }
+
+    .monthview .overflow {
+        box-sizing: border-box;
+    }
+
+    .monthview .overflowToday {
+        color: highlighttext;
+    }
+
+    .monthview [data-status="tentative"] .glyphInner {
+        background-image: linear-gradient(135deg, window 25%, windowtext 25%, windowtext 50%, window 50%, window 75%, windowtext 75%);
+        background-size: 10px 10px;
+        box-sizing: border-box;
+    }
+
+    .monthview [data-status="free"] .glyphInner {
+        background-color: window;
+        border-left: 0;
+        border-right: 1px solid windowtext;
+    }
+
+    .monthview [data-status="outOfOffice"] .glyphInner,.monthview [data-status="workingElsewhere"] .glyphInner {
+        box-sizing: border-box;
+        background-color: windowtext;
+    }
+}

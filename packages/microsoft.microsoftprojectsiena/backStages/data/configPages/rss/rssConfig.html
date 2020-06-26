@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>RSS Config</title>
+
+    <link href="rssConfig.css" rel="stylesheet" />
+    <script src="rssConfig.js"></script>
+</head>
+<body>
+    <div class="fragment rss-pane">
+        <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageRSSTitle"></div>
+        <div class="rss-config-prop">
+            <input class="rss-config-url-textbox" type="text" data-bind="attr: { placeholder: AppMagic.AuthoringStrings.DefaultRSSFeedURL }, value: feedUrl, event: { keypress: handleKeypress }, valueUpdate: ['keyup', 'input']" />
+        </div>
+
+        <div class="rss-config-import-container">
+            <button class="rss-config-import backstage-button" type="submit"
+                    data-bind="text: AppMagic.AuthoringStrings.BackStageFlyoutSaveButtonText,
+                               click: addDataSource"></button>
+        </div>
+
+        <div class="rss-config-failure failure" data-bind="visible: isErrorVisible">
+            <ul class="failure-messages" data-bind="foreach: errorMessages">
+                <li data-bind="text: $data" unselectable="off"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

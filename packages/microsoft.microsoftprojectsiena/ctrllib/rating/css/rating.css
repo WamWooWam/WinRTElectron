@@ -1,0 +1,30 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Rating control CSS
+ *
+ */
+/* Colors */
+/* Misc styles */
+.win-rating.appmagic-rating {
+  padding: 0;
+  margin: 0;
+  min-width: 145px;
+  width: 100%;
+  font-size: 11pt;
+  background-color: transparent;
+  box-sizing: border-box;
+}
+.win-rating.appmagic-rating .win-star.win-empty {
+  color: #888888;
+}
+.win-rating.appmagic-rating .win-star.win-disabled.win-empty {
+  color: #777777;
+}
+.win-rating.appmagic-rating .win-star {
+  font-size: 25px;
+  padding: 0;
+  margin: 0px;
+  height: 27px;
+  width: 29px;
+}

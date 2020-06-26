@@ -1,0 +1,36 @@
+﻿html,body.modernCanvas{font-feature-settings:"kern" 1,"ss20" 1;font-size:16px;font-weight:400;letter-spacing:normal;line-height:20px;padding-bottom:0px;padding-top:0px;cursor:text;color:#000000;line-height:normal;margin:0;padding:0;min-height:100%;min-width:100%;word-wrap:break-word;}
+body.modernCanvas{overflow:auto;white-space:normal;}body.modernCanvas a{text-decoration:none;}
+body.modernCanvas ul,body.modernCanvas ol{margin-bottom:0;margin-top:0;padding-bottom:0;padding-top:0;}
+body.modernCanvas blockquote{margin-top:0px;margin-bottom:0px;}
+body.modernCanvas .modernCanvas-content{min-height:100%;width:100%;}
+body.modernCanvas.modernCanvas-exceededDefaultHeight>#modernCanvasContent{min-height:auto;}
+@media (-ms-high-contrast){a,a:hover,a:hover:active{background-color:transparent;color:-ms-hotlight;opacity:1;}}ul{list-style-type:disc;}
+ul ul{list-style-type:circle;}
+ul ul ul{list-style-type:square;}
+ul ul ul ul{list-style-type:disc;}
+ul ul ul ul ul{list-style-type:circle;}
+ul ul ul ul ul ul{list-style-type:square;}
+ul ul ul ul ul ul ul{list-style-type:disc;}
+ul ul ul ul ul ul ul ul{list-style-type:circle;}
+ul ul ul ul ul ul ul ul ul{list-style-type:square;}
+ul ul ul ul ul ul ul ul ul ul{list-style-type:disc;}
+ul ul ul ul ul ul ul ul ul ul ul{list-style-type:circle;}
+ul ul ul ul ul ul ul ul ul ul ul ul{list-style-type:square;}
+ul ul ul ul ul ul ul ul ul ul ul ul ul{list-style-type:disc;}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul{list-style-type:circle;}
+ul ul ul ul ul ul ul ul ul ul ul ul ul ul ul{list-style-type:square;}
+ol{list-style-type:decimal;}
+ol ol{list-style-type:lower-alpha;}
+ol ol ol{list-style-type:lower-roman;}
+ol ol ol ol{list-style-type:decimal;}
+ol ol ol ol ol{list-style-type:lower-alpha;}
+ol ol ol ol ol ol{list-style-type:lower-roman;}
+ol ol ol ol ol ol ol{list-style-type:decimal;}
+ol ol ol ol ol ol ol ol{list-style-type:lower-alpha;}
+ol ol ol ol ol ol ol ol ol{list-style-type:lower-roman;}
+ol ol ol ol ol ol ol ol ol ol{list-style-type:decimal;}
+ol ol ol ol ol ol ol ol ol ol ol{list-style-type:lower-alpha;}
+ol ol ol ol ol ol ol ol ol ol ol ol{list-style-type:lower-roman;}
+ol ol ol ol ol ol ol ol ol ol ol ol ol{list-style-type:decimal;}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol{list-style-type:lower-alpha;}
+ol ol ol ol ol ol ol ol ol ol ol ol ol ol ol{list-style-type:lower-roman;}

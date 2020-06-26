@@ -1,0 +1,10 @@
+﻿body, html, iframe {
+    /* These are important on the html element to ensure that the page fills the parent iframe. */
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    overflow: hidden;
+}

@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>progressIndicator</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="progressIndicator.css" rel="stylesheet" />
+    <script src="progressIndicator.js"></script>
+</head>
+<body>
+    <div class="progress-indicator" data-bind="visible: numberOfActionsInProgress > 0, style: { zIndex: AppMagic.Constants.zIndex.topmost }">
+        <progress class="progress-bar"></progress>
+    </div>
+</body>
+</html>

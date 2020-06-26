@@ -1,0 +1,678 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Publish Backstage Page CSS
+ *
+ */
+/* Colors */
+/* Misc styles */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+#colorPickerPopupAnchor {
+  position: absolute;
+  left: 450px;
+  top: 150px;
+}
+.publish {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: -ms-grid;
+  -ms-grid-columns: 190px 250px 50px 1px 50px 360px;
+  -ms-grid-rows: 35px 30px 200px 40px auto 40px auto 40px 1fr 100px;
+  font-family: 'Segoe UI';
+  font-size: 10pt;
+  color: #000000;
+  padding: 70px 0px 0px 0px;
+}
+.publish .paneSplitter {
+  -ms-grid-column: 4;
+  -ms-grid-row: 3;
+  -ms-grid-row-span: 8;
+  margin-bottom: 65px;
+  box-sizing: border-box;
+  background-color: #cccccc;
+}
+.publish-tile-sample-label {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+}
+.publish-tile-preview-column {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  display: -ms-grid;
+  box-sizing: border-box;
+  -ms-grid-columns: 150px 40px;
+  -ms-grid-rows: 150px 20px auto;
+}
+.publish-logo-image {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  width: 150px;
+  height: 150px;
+}
+.publish-tile-border {
+  border: 1px solid rgba(153, 153, 153, 0.4);
+  /* Custom selection border color. */
+}
+.publish-sample-tile-see-all-button-container {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+.publish-tile-data-column {
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  box-sizing: border-box;
+  display: -ms-grid;
+  -ms-grid-columns: 250px;
+  -ms-grid-rows: 30px 20px 30px 20px 100px;
+}
+.publish-tile-data-column .publish-app-name-textbox,
+.publish-tile-data-column .publish-image-filename {
+  border: solid 1px #000000 !important;
+  box-sizing: border-box;
+  color: #000000;
+  font-size: 10pt;
+  font-family: 'Segoe UI';
+  margin: 0 !important;
+  /* In order to override ui-dark.css values */
+  width: 200px;
+}
+.publish-app-name-textbox {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+}
+.publish-background-color-line {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  display: -ms-grid;
+  -ms-grid-rows: 30px;
+  -ms-grid-columns: 30px 10px 30px 1fr;
+}
+.publish-background-color-square {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  background-size: 100%;
+}
+.publish-change-color-button {
+  box-sizing: border-box;
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+  border-radius: 50%;
+  background-color: #643964;
+  width: 30px;
+  height: 30px;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+}
+.publish-change-color-button:hover,
+.publish-change-color-button.active {
+  background-color: #824a82;
+}
+.publish-background-icon-line {
+  -ms-grid-column: 1;
+  -ms-grid-row: 5;
+  -ms-grid-column-span: 3;
+  display: -ms-grid;
+  -ms-grid-rows: 30px 20px 50px;
+  -ms-grid-columns: 200px 10px 30px;
+}
+/* Pick Color and Pick File Buttons use Segoe UI Symbol */
+.publish-segoeglyphs {
+  font-family: 'Segoe UI Symbol';
+}
+.publish-frame {
+  box-sizing: border-box;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  width: 30px;
+  height: 30px;
+  line-height: 36px;
+  font-family: 'Segoe UI Symbol';
+  font-size: 14pt;
+  position: relative;
+  color: #ffffff;
+  background-color: #643964;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+  -ms-flex-pack: center;
+}
+.publish-frame:hover,
+.publish-frame:active {
+  background-color: #824a82;
+}
+.publish-upload-image-button {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+}
+.publish-image-filename {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.publish-image-formatting-block {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  font-size: 9pt;
+  font-family: 'Segoe UI';
+}
+.publish-image-formatting-block-label {
+  color: #000000;
+}
+.publish-image-formatting-block-value {
+  color: #000000;
+}
+.publish-resources-table {
+  -ms-grid-column: 1;
+  -ms-grid-row: 5;
+  -ms-grid-column-span: 2;
+}
+.publish-local-resources-header {
+  font-family: 'Segoe UI';
+  font-size: 10pt;
+  line-height: 20px;
+  vertical-align: middle;
+  color: #000000;
+  width: 450px;
+}
+.publish-tile-header {
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 15pt;
+  color: #824a82;
+  line-height: 35px;
+}
+.publish-color-picker {
+  background-color: #000000 /* Ink */ !important;
+  /* Get rid of white bar below color picker flyout */
+  margin: 10px;
+  padding: 0px;
+  border: 0px;
+}
+.publish-resources-checkbox-control {
+  width: 21px;
+  margin-right: 5px;
+}
+.publish-resources-checkbox {
+  margin-top: 22px;
+  display: -ms-grid;
+  width: 480px;
+  -ms-grid-columns: 30px 450px;
+  -ms-grid-rows: 1fr;
+}
+.publish-resources-checkbox input[type=checkbox] {
+  outline: solid 1px #333333;
+  /* Black Suede */
+  width: 15px;
+  margin-right: 5px;
+  height: 15px;
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+}
+.publish-local-resources-label {
+  display: block;
+  font-family: 'Segoe UI';
+  font-size: 10pt;
+  line-height: 20px;
+  vertical-align: top;
+  color: #000000;
+  width: 450px;
+  -ms-grid-column: 2;
+  -ms-grid-row: 1;
+}
+.publish-servicekeys-table {
+  -ms-grid-column: 1;
+  -ms-grid-row: 7;
+  -ms-grid-column-span: 2;
+}
+.publish-servicekeys-displaytext {
+  font-family: 'Segoe UI';
+  font-size: 10pt;
+  line-height: 20px;
+  vertical-align: middle;
+  width: 450px;
+  color: #000000;
+  padding-top: 20px;
+}
+.publish-servicekeys-viewtext-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  padding-top: 20px;
+}
+.publish-logo-image-default {
+  background-image: url('/publish/images/default_icon_transparent.png');
+}
+.publish-button {
+  -ms-grid-column: 1;
+  -ms-grid-row: 10;
+}
+.publish-button:disabled {
+  background-color: gray !important;
+}
+.publish-subtitle {
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 10pt;
+  color: #000000;
+  word-wrap: break-word;
+}
+.publish-link-button {
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 10pt;
+  color: #000000;
+}
+.publish-splash-screen-title {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  -ms-grid-column-span: 2;
+}
+.publish-splash-screen-title-value {
+  -ms-grid-column: 1;
+  -ms-grid-row: 4;
+  -ms-grid-column-span: 2;
+}
+.publish-splash-screen-sample {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  -ms-grid-column-span: 2;
+  background-repeat: no-repeat;
+  width: 620px;
+  height: 300px;
+}
+.publish-square-tile-title {
+  -ms-grid-column: 1;
+  -ms-grid-row: 3;
+  max-width: 150px;
+}
+.publish-square-tile-value {
+  -ms-grid-column: 1;
+  -ms-grid-row: 4;
+  max-width: 150px;
+}
+.publish-square-tile-sample {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  background-repeat: no-repeat;
+  width: 150px;
+  height: 150px;
+}
+.publish-store-tile-title {
+  -ms-grid-column: 3;
+  -ms-grid-row: 3;
+  max-width: 135px;
+}
+.publish-store-tile-value {
+  -ms-grid-column: 3;
+  -ms-grid-row: 4;
+  max-width: 135px;
+}
+.publish-store-tile-sample {
+  -ms-grid-column: 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-align: end;
+  background-repeat: no-repeat;
+  width: 50px;
+  height: 50px;
+}
+.publish-small-tile-title {
+  -ms-grid-column: 5;
+  -ms-grid-row: 3;
+  max-width: 135px;
+}
+.publish-small-tile-value {
+  -ms-grid-column: 5;
+  -ms-grid-row: 4;
+  max-width: 135px;
+}
+.publish-small-tile-sample {
+  -ms-grid-column: 5;
+  -ms-grid-row: 1;
+  -ms-grid-row-align: end;
+  background-repeat: no-repeat;
+  width: 30px;
+  height: 30px;
+}
+.publish-notification-tile-title {
+  -ms-grid-column: 7;
+  -ms-grid-row: 3;
+  max-width: 140px;
+}
+.publish-notification-tile-value {
+  -ms-grid-column: 7;
+  -ms-grid-row: 4;
+  max-width: 140px;
+}
+.publish-notification-tile-sample {
+  -ms-grid-column: 7;
+  -ms-grid-row: 1;
+  -ms-grid-row-align: end;
+  background-repeat: no-repeat;
+  width: 24px;
+  height: 24px;
+}
+.publish-all-logos {
+  -ms-grid-column: 6;
+  -ms-grid-row: 1;
+  display: -ms-grid;
+  box-sizing: border-box;
+  -ms-grid-columns: 620px;
+  -ms-grid-rows: 35px 30px 220px 40px 1fr;
+  font-family: 'Segoe UI';
+  color: #000000;
+}
+.publish-tile-size {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+  -ms-grid-row-align: end;
+}
+.publish-wide-logos {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  display: -ms-grid;
+  -ms-grid-columns: 310px 310px;
+  -ms-grid-rows: 300px 10px 20px 20px;
+}
+.publish-square-logos {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
+  display: -ms-grid;
+  -ms-grid-columns: 150px 20px auto 20px auto 20px auto 1fr;
+  -ms-grid-rows: 150px 10px auto auto;
+}
+.publish-tile-app-name-mangepage,
+.publish-tile-app-name {
+  font-family: 'Segoe UI';
+  font-size: 9pt;
+  color: #ffffff;
+  margin-left: 15px;
+  margin-top: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.publish-color-picker-popup {
+  background-color: #000000;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.publish-container {
+  height: 100%;
+  width: 100%;
+}
+.publish-color-picker-button {
+  z-index: 2;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}
+/* This will hide the opacity section of the color picker */
+.publish-color-picker-popup .visualIntellisense .container {
+  display: none;
+}
+.publish-all-service-keys {
+  -ms-grid-column: 6;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 10;
+  display: -ms-grid;
+  box-sizing: border-box;
+  -ms-grid-columns: auto;
+  -ms-grid-rows: 35px 1fr 65px;
+  font-family: 'Segoe UI';
+  color: #000000;
+}
+.publish-all-servicekeys-label {
+  -ms-grid-column: 1;
+  -ms-grid-row: 1;
+  -ms-grid-row-align: end;
+}
+.publish-all-service-keys-config-container {
+  -ms-grid-column: 1;
+  -ms-grid-row: 2;
+  display: -ms-grid;
+  -ms-grid-columns: auto;
+  -ms-grid-rows: 30px auto 10px 1fr;
+  background-color: #ffffff;
+}
+.publish-all-service-keys-config-container .publish-service-key-config-note {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 9pt;
+}
+.publish-all-service-keys-config-container .publish-service-keys-container {
+  -ms-grid-row: 4;
+  -ms-grid-column: 1;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-service-keys-header {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  height: 35px;
+  display: -ms-flexbox;
+  -ms-flex-direction: row;
+  -ms-flex-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-left: -10px;
+  margin-right: -10px;
+  margin-bottom: 2px;
+}
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-service-keys-header:hover,
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-service-keys-header.selected,
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-service-keys-header:focus {
+  background-color: #f4f4f4;
+}
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-service-keys-header img {
+  margin-left: 10px;
+  margin-right: 10px;
+  float: left;
+  height: 20px;
+  width: 20px;
+}
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-service-keys-header span {
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 10pt;
+  height: 35px;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+}
+.publish-all-service-keys-config-container .publish-service-keys-container .publish-all-service-keys-config {
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+}

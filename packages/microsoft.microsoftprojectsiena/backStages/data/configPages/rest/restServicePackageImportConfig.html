@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>REST Service Package Import Config</title>
+    <link href="restServicePackageImportConfig.css" rel="stylesheet" />
+    <script src="restServicePackageImportConfig.js"></script>
+</head>
+<body>
+    <div class="restServiceConfigContainer">
+        <div class="title" data-bind="text: AppMagic.AuthoringStrings.RestServiceConfigTitleText + serviceInfo.name"></div>
+        <!-- ko if: !showKeyConfig -->
+        <div class="note1" data-bind="text: AppMagic.AuthoringStrings.RestServiceConfigNote1"></div>
+        <div class="note2" data-bind="visible: hasConfigurableTemplateVariables, text: AppMagic.AuthoringStrings.RestServiceConfigNote2"></div>
+        <button class="backstage-button" data-bind="text: AppMagic.AuthoringStrings.BackstageConnectButtonText, event: { keydown: onConnectWithDefaultKeysKeyDown.bind($data), click: onConnectWithDefaultKeysClick }, hasfocus: buttonHasFocus" tabindex="0"></button>
+        <!-- /ko -->
+        <!-- ko if: showKeyConfig -->
+        <div class="import-keys-view">
+            <div class="rest-service-key-config-note" data-bind="text: AppMagic.AuthoringStrings.RestServiceKeyConfigNote"></div>
+            <div class="rest-service-key-page" data-bind="
+                             property: { viewModel: serviceKeyConfigViewModel },
+                             winjsControl: '/backStages/data/configPages/rest/restServiceKeyConfig.html'">
+            </div>
+        </div>
+        <!-- /ko -->
+    </div>
+</body>
+</html>

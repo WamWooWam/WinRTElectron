@@ -1,0 +1,26 @@
+﻿.header {
+    height:  80px;
+    background-color: inherit;
+    border-bottom: solid 1px #b8b8b8;
+}
+#title {
+    position: absolute;
+    left: 40px;
+    top: 10px;
+    font-size: 36px;
+}
+
+#content {
+    overflow-x: visible !important; /* override the scroller */
+    overflow-y: scroll !important;
+}
+#subcontent {
+    padding: 0px 40px !important;
+    column-width: inherit;
+    column-gap: inherit;
+    column-fill: inherit;
+}
+.lightbox-fg {
+    left: 10px;
+    right: 10px;
+}

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/camera"
+        name="camera"
+        jsClass="AppMagic.Controls.Camera"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[CAMERA
+      Control description here.]]>
+  </description>
+  
+  <requires>
+    <require type="folder" src="js/" />
+    <require type="css" src="css/camera.css" />
+    <require type="javascript" src="js/camera.js" />
+    <require type="other" src="images/camera_no_stream.svg" />
+  </requires>
+  
+  <appMagic:capabilities 
+    contextualViewsEnabled="true" 
+    autoBorders="true" 
+    screenActiveAware="true"
+    />
+  
+  <content>
+    <![CDATA[
+    <div class="appmagic-camera" data-bind="attr: { title:properties.Tooltip }">
+      <div class="appmagic-camera-stream" data-bind="visible: supportsStreaming && !isDisabled"></div>
+      <div class="appmagic-camera-video-disabled" data-bind= "visible: isDisabled" ></div>
+      <div class="appmagic-no-camera" data-bind="visible: state === 'error'">
+        <div data-bind="text: AppMagic.Strings.CameraNoCameraError"></div>
+      </div>
+      <div class="appmagic-no-stream" data-bind="visible: !supportsStreaming">
+          <img class="appmagic-camera-icon" src="ctrllib/camera/images/camera_no_stream.svg"></img>
+      </div>
+    </div>
+    ]]>
+    </content>
+  
+  <properties>
+    <property name="Contrast" localizedName="##camera_Contrast##" datatype="Number" defaultValue="50">
+      <title>Camera contrast</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##camera_Contrast_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_contrasticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="Brightness" localizedName="##camera_Brightness##" datatype="Number" defaultValue="50">
+      <title>Camera brightness</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##camera_Brightness_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_brightnessicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="Zoom" localizedName="##camera_Zoom##" datatype="Number" defaultValue="50">
+      <title>Camera brightness</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##camera_Zoom_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_zoomicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##camera_Zoom_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Photo" localizedName="##camera_Photo##" datatype="Image" direction="out" isPrimaryOutputProperty="true">
+      <title>Camera image output </title>
+      <appMagic:category>Data</appMagic:category>
+    </property>
+    <property name="Camera" localizedName="##camera_Camera##" datatype="Number" defaultValue="-1">
+      <title>Camera</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##camera_Camera_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_cameraicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##camera_Camera_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <!-- Design -->
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="400">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Height" defaultValue="300">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior Properties -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="30" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="40" />
+  </appMagic:includeProperties>
+</widget>

@@ -1,0 +1,1 @@
+﻿Jx.delayDefine(People,"Handler",function(){var t=People,n=t.Handler=function(n,t){this._jobSet=t;n!==undefined&&n!==null&&this.setDataContext(n)};n.prototype.setDataContext=function(n){this._data=n};n.prototype.nullify=function(){this._data=null};n.prototype._data=null})

@@ -1,0 +1,56 @@
+﻿::selection,select:focus::-ms-value{background-color:#5133ab;}
+option:checked,select:focus::-ms-value{background-color:#5133ab;}
+option:checked:hover,select:focus option:checked:hover{background-color:rgba(82, 52, 173, 0.8);}
+button[type=submit],input[type=submit]{background-color:#5133ab;border-color:#5133ab;}
+button[type=submit]:hover,input[type=submit]:hover{background-color:rgba(82, 52, 173, 0.8);border-color:rgba(82, 52, 173, 0.8);}
+button:disabled,button[type=submit]:disabled,input[type=button]:disabled,input[type=reset]:disabled,input[type=submit]:disabled,input[type=file]:disabled::-ms-browse,button:disabled:active,button[type=submit]:disabled:active,input[type=button]:disabled:active,input[type=reset]:disabled:active,input[type=submit]:disabled:active,input[type=file]:disabled::-ms-browse:active{background-color:rgba(202, 202, 202, 0.4);border-color:rgba(0, 0, 0, 0.08);color:rgba(0, 0, 0, 0.4);}
+a{color:#5133ab;}
+a:hover{color:rgba(82, 52, 173, 0.8);}
+a:hover:active{color:rgba(82, 52, 173, 0.4);}
+a:visited{color:#5133ab;}
+progress{color:#5133ab;}
+progress:indeterminate{border:transparent;}
+progress::-ms-fill{background-color:#5133ab;}
+input[type=range]::-ms-fill-lower{background-color:#5133ab;}
+input[type=range]:hover::-ms-fill-lower{background-color:rgba(82, 52, 173, 0.8);}
+input[type=range]:active::-ms-fill-lower{background-color:rgba(82, 52, 173, 0.4);}
+.asc{font-weight:300;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;height:100%;}
+.asc-connectedPage .asc-addAccountLink{font-weight:200;display:inline;font-size:14.66667px;letter-spacing:normal;color:#5133ab;cursor:default;padding-bottom:23px;}
+.asc-upsellsPage .asc-addAccountLink{display:none;}
+.asc-perAccountSettingsPage .asc-addAccountLink{display:none;}
+.asc-page{height:100%;}
+.asc-error{color:#ff3000;}
+.asc-title{font-weight:200;font-size:26.66667px;letter-spacing:0.02em;line-height:32px;padding-bottom:5px;padding-top:3px;color:White;cursor:default;padding-left:10px;padding-top:1px;-ms-grid-column:2;-ms-grid-row:1;}
+.asc_pageContent{padding-top:1px;}
+.asc-separator{border-top:1px solid #e5e5e5;margin-bottom:14px;margin-top:20px;width:237px;}
+.asc-upsellsPage .asc-separator{display:none;}
+.asc-perAccountSettingsPage .asc-separator{display:none;}
+.asc-header{background-color:#5133ab;display:-ms-grid;-ms-grid-columns:30px 200px 30px;-ms-grid-rows:auto;}
+.asc-backButton{position:inherit;-ms-grid-column:1;-ms-grid-row:1;}
+.asc .win-backbutton:hover:active{background-color:#ffffff !important;}
+.asc-appIcon{background-image:url('/ModernPeople/images/CalendarIcon-30.png');background-size:100% 100%;-ms-high-contrast-adjust:none;height:30px;width:30px;margin-left:5px;margin-right:5px;margin-top:2px;float:right;-ms-grid-column:3;-ms-grid-row:1;}
+.asc_pageContent .ali:hover{background-color:rgba(81, 51, 171, 0.13);}
+.asc_pageContent .ali.pressed,.asc_pageContent .ali.pressed .ali-displayName,.asc_pageContent .ali.pressed .ali-description,.asc_pageContent .upsell-more.pressed,.asc_pageContent .upsell-more.pressed .upsell-moreIcon{background-color:#5133ab;color:white;}
+@media screen and (-ms-high-contrast){.asc_pageContent .ali:hover{background-color:Highlight;color:HighlightText;} .asc_pageContent .ali.pressed,.asc_pageContent .ali.pressed .ali-displayName,.asc_pageContent .ali.pressed .ali-description,.asc_pageContent .upsell-more.pressed,.asc_pageContent .upsell-more.pressed .upsell-moreIcon{background-color:Highlight;color:HighlightText;}}.asc-perAccountSettingsPage input,.asc-perAccountSettingsPage select,.asc-perAccountSettingsPage textarea{font-family:inherit;}
+.asc-perAccountSettingsPage input[type=text],.asc-perAccountSettingsPage input[type=password],.asc-perAccountSettingsPage input[type=url],.asc-perAccountSettingsPage input[type=number],.asc-perAccountSettingsPage textarea,.asc-perAccountSettingsPage select{margin-bottom:25px;}
+.asc-perAccountSettingsPage input[type=text][readonly],.asc-perAccountSettingsPage input[type=url][readonly]{background-color:rgba(202, 202, 202, 0.4);border-color:rgba(0, 0, 0, 0.15);color:rgba(0, 0, 0, 0.5);}
+.asc-perAccountSettingsPage input[type=text][readonly]::selection,.asc-perAccountSettingsPage input[type=url][readonly]::selection{background-color:rgba(0, 0, 0, 0.6);color:White;}
+@media screen and (-ms-high-contrast){.asc-perAccountSettingsPage input[type=text][readonly],.asc-perAccountSettingsPage input[type=url][readonly]{color:ButtonText;background-color:ButtonFace;border:2px solid GrayText;}}.asc-perAccountSettingsPage input[type=text],.asc-perAccountSettingsPage input[type=password],.asc-perAccountSettingsPage input[type=url],.asc-perAccountSettingsPage input[type=number],.asc-perAccountSettingsPage select{width:100%;}
+.asc-perAccountSettingsPage textarea{width:calc((100% - 21px));min-width:0px;}
+.asc-perAccountSettingsPage input[type=button]{margin-top:4px;margin-bottom:25px;margin-right:10px;max-width:270px;}
+.flyoutMenu.certMenu{min-height:100px;border:solid 2px;padding-top:9px;padding-bottom:11px;padding-left:0px;padding-right:0px;}
+.flyoutMenu.certMenu .flyoutMenu-item{padding:10px 20px;margin:6px 0px;}.flyoutMenu.certMenu .flyoutMenu-item:focus,.flyoutMenu.certMenu .flyoutMenu-item:hover{outline:0px;color:#000000;background-color:rgba(81, 51, 171, 0.13);}@media screen and (-ms-high-contrast){.flyoutMenu.certMenu .flyoutMenu-item:focus,.flyoutMenu.certMenu .flyoutMenu-item:hover{color:HighlightText;background-color:Highlight;}}
+.flyoutMenu.certMenu .flyoutMenu-item:active,.flyoutMenu.certMenu .flyoutMenu-item.selected-item{color:#fff;background-color:#5133ab;}@media screen and (-ms-high-contrast){.flyoutMenu.certMenu .flyoutMenu-item:active,.flyoutMenu.certMenu .flyoutMenu-item.selected-item{color:HighlightText;background-color:Highlight;}}
+.pas-tooltipCheck{overflow:hidden;}
+.pas-checkbox{font-weight:400;padding-top:3px;}.pas-checkbox input[type="checkbox"]{vertical-align:-6px;height:24px;}
+.pas-toggle{margin-bottom:21px;}
+.pas-checkboxGroup{margin-bottom:25px;}
+.pas-textarea{-ms-touch-select:grippers;}
+.pas-inlineAdvise{color:#ff3000;margin-bottom:5px;overflow:hidden;white-space:normal;}
+.pas-inlineInfo{margin-bottom:5px;font-weight:400;overflow:hidden;white-space:normal;}
+.pas-link{margin-bottom:12px;}
+.pas-settingGroup{margin-bottom:25px;}.pas-settingGroup textarea{margin-bottom:0px;}
+.serverAndPortLeft{float:left;width:175px;}
+.serverAndPortRight{float:right;width:75px;}
+.clear{clear:both;}
+#pasSignature{font-family:inherit;}

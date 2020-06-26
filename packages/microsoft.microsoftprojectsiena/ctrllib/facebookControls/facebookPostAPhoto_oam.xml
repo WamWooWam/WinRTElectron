@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="facebookPostAPhoto"
+        restServiceConnectorId="{325988AD-BC14-4DFD-B610-3B01EB053CE3}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[FACEBOOK POST A PHOTO
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="FacebookLogo" dataSourceLocation="ctrllib/facebookControls/images/FacebookLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="380" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##FacebookPostAPhoto_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control metaDataId="%Camera.ID%" template="Camera" name="Camera">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="70" />
+        <rule name="Width" value="93" />
+      </rules>
+    </control>
+    <control template="Label" name="BackgroundLabel">
+      <rules>
+        <rule name="X" value="103" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="190" />
+        <rule name="Width" value="297" />
+        <rule name="Text" value="##TapCamera##" />
+        <rule name="Fill" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+        <rule name="Align" value="Align!Center" isExpr="true" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%Image.ID%" template="Image" name="CaputuredImage">
+      <rules>
+        <rule name="X" value="103" />
+        <rule name="Y" value="29" />
+        <rule name="Height" value="190" />
+        <rule name="Width" value="297" />
+        <rule name="Image" value="%Camera.ID%!Photo" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%InputText.ID%" template="Text" name="InputText">
+      <rules>
+        <rule name="X" value="104" />
+        <rule name="Y" value="229" />
+        <rule name="Height" value="88" />
+        <rule name="Width" value="295" />
+        <rule name="Default" value="" />
+        <rule name="HintText" value="##Facebook_WriteCaption##" />
+        <rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+        <rule name="Mode" value="TextMode!MultiLine" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%Button.ID%" template="Button" name="PostPhoto">
+      <rules>
+        <rule name="X" value="293" />
+        <rule name="Y" value="327" />
+        <rule name="Height" value="40" />
+        <rule name="Width" value="107" />
+        <rule name="Text" value="##Post##" />
+        <rule name="BorderColor" value="RGBA(127, 127, 127, 0.1)" isExpr="true" />
+        <rule name="OnSelect" value="%RESTServiceName%!UploadPhoto(&quot;me&quot;,%Image.ID%!Image,{message:%InputText.ID%!Text})" isExpr="true" />
+        <rule name="Disabled" value="IsBlank(%Image.ID%!Image)" isExpr="true" />
+      </rules>
+    </control>
+  </controls>
+</composition>

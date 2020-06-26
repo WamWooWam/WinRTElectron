@@ -1,0 +1,21 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Progress Indicator CSS
+ *
+ */
+
+.progress-indicator {
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto;
+    position: relative;
+}
+
+    .progress-indicator .progress-bar {
+        -ms-grid-column: 1;
+        -ms-grid-row: 1;
+        padding: 0px;
+        width: 100%;
+        color: rgba(153, 153, 153, 1.0); /* Same as dragger */
+    }

@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>WikipediaMetroTest</title>
+
+    <script src="//wikimediafoundation.wikipedia.shim//dist/shim.js"></script>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- WikipediaMetroTest references -->
+    <link href="/css/default.css" rel="stylesheet">
+
+    <script src="/js/jquery-1.7.2.js"></script>
+    <script src="/js/mediawiki.js"></script>
+    <script src="/js/jquery.localize.js"></script>
+    <script src="/js/propertiesFileReader.js"></script>
+    <script src="/js/l10n-setup.js"></script>
+    <script src="/js/find.js"></script>
+    <script src="/js/share.js"></script>
+
+    <script src="/js/default.js"></script>
+    <script src="/js/wikiview.js"></script>
+</head>
+<body>
+    <div class="header">
+        <button id="back" class="win-backbutton"></button>
+        <h1 id="title">Wikipedia</h1>
+        <div id="searchBox" data-win-control="WinJS.UI.SearchBox"></div>
+    </div>
+    <progress id="spinner"></progress>
+    <div class="hub" id="hub">
+        <div id="hubItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-win-bind="className: style">
+                <img src="#" data-win-bind="src: image" />
+                <h5 data-win-bind="innerText: heading"></h5>
+                <h6 data-win-bind="innerText: snippet"></h6>
+                <h4 data-win-bind="innerText: title" style="font-weight: bold"></h4>
+            </div>
+        </div>
+        <div id="headerTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+            <div class="simpleHeaderItem">
+                <h2 data-win-bind="innerText: title"></h2>
+            </div>
+        </div>
+        <div id="hub-list"
+            data-win-control="WinJS.UI.ListView"
+            data-win-options="{
+                itemDataSource: HubContents.groupedList.dataSource,
+                itemTemplate: select('#hubItemTemplate'),
+                groupHeaderTemplate: headerTemplate,
+                selectionMode: 'none',
+                swipeBehavior: 'none',
+                groupDataSource: HubContents.groupedList.groups.dataSource
+            }">
+        </div>
+    </div>
+    <div class="page" id="reader">
+        <div id="tocItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="tocItemTemplate">
+                <h4 data-win-bind="innerText: title; className: style"></h4>
+            </div>
+        </div>
+        <div id="semanticZoomer"
+            data-win-control="WinJS.UI.SemanticZoom"
+            data-win-options="{ zoomFactor: 0.5, initiallyZoomedOut: false }"
+            style="height: 600px"
+        >
+            <div id="content"
+                data-win-control="WikiControls.WikiView"
+                data-win-options="{}"
+            ></div>
+            <div id="toc"
+                data-win-control="WinJS.UI.ListView"
+                data-win-options="{
+                    itemDataSource : TocSections.itemList.dataSource,
+                    itemTemplate: select('#tocItemTemplate'),
+                    selectionMode: 'none',
+                    swipeBehavior: 'none'
+                }">
+            </div>
+        </div>
+    </div>
+    <div class="page" id="search">
+        <div id="search-results">
+            <div id="searchItemTemplate" data-win-control="WinJS.Binding.Template">
+                <div class="searchItemTemplate" style="">
+                    <h4 data-win-bind="innerText: title" style="font-weight: bold"></h4>
+                    <h6 data-win-bind="innerText: snippet"></h6>
+                </div>
+            </div>
+            <div id="resultlist"
+                data-win-control="WinJS.UI.ListView"
+                data-win-options="{
+                    itemDataSource : SearchResults.itemList.dataSource,
+                    itemTemplate: select('#searchItemTemplate'),
+                    selectionMode: 'none',
+                    swipeBehavior: 'none'
+                }">
+            </div>
+        </div>
+    </div>
+    <div class="page" id="offline">
+        <msg key="error-not-available"></msg>
+        <msg key="error-offline-prompt"></msg>
+    </div>
+    <div id="appbar" data-win-control="WinJS.UI.AppBar" data-win-options="">
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'readInCmd',label:'Read in',icon:'world',section:'selection',tooltip:'Read this article in another language'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'pinCmd',label:'Pin page',icon:'pin',section:'selection',tooltip:'Pin page to Start'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'unpinCmd',label:'Unpin page',icon:'unpin',section:'selection',tooltip:'Unpin page from Start'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'browserCmd',label:'Open in browser',icon:'page',section:'selection',tooltip:'Open this article in a web browser'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'findCmd',label:'Find in page',icon:'find',section:'selection',tooltip:'Search in this article'}"></button>
+
+        <!--<button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'nearbyCmd',label:'Nearby',icon:'mappin',section:'global',tooltip:'Show nearby articles'}"></button>-->
+    </div>
+    <div id="find-bar">
+        <label for="find-input">Find in page:</label>
+        <input id="find-input" value="" />
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'find-prev',label:'Find prev',icon:'previous',section:'selection'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'find-next',label:'Find next',icon:'next',section:'selection'}"></button>
+        <button data-win-control="WinJS.UI.AppBarCommand" data-win-options="{id:'find-close',label:'Close',icon:'cancel',section:'global'}"></button>
+    </div>
+</body>
+</html>

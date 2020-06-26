@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="200px" height="200px" viewBox="0 0 200 200" enable-background="new 0 0 200 200" xml:space="preserve">
+<g id="bg">
+	<rect fill="#E5E5E5" width="200" height="200"/>
+</g>
+<g id="Navy">
+	<g id="border_x5F_4px_2_">
+		<path fill="#002060" d="M173,27v146H27V27H173 M175,25H25v150h150V25L175,25z"/>
+	</g>
+	<polygon id="bottom_1_" fill="#002060" points="111.848,137.609 70.011,99.169 47,121.68 47,153 152,153 152,134.512 
+		135.797,114.008 	"/>
+	<path id="top_1_" fill="#002060" d="M111.654,116.948l25.461-25.063L152,110.761V48H47v52.467l22.634-22.136L111.654,116.948z
+		 M111.939,56.875c8.156,0,14.785,6.63,14.785,14.774c0,8.156-6.629,14.782-14.785,14.782c-8.143,0-14.771-6.626-14.771-14.782
+		C97.169,63.505,103.798,56.875,111.939,56.875z"/>
+</g>
+</svg>

@@ -1,0 +1,7 @@
+﻿.jx-settingsflyout{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}.jx-settingsflyout .primaryFontSemibold{font-weight:600;}
+.jx-settingsflyout .win-header{display:-ms-flexbox;color:#ffffff;}.jx-settingsflyout .win-header .win-backbutton{border-color:#ffffff;color:#ffffff;}.jx-settingsflyout .win-header .win-backbutton:hover{background-color:rgba(255, 255, 255, 0.19999999999999995);}
+.jx-settingsflyout .win-header .win-backbutton:hover:active{background-color:#ffffff;border-color:#ffffff;}
+.jx-settingsflyout .win-header .win-label{padding-top:2px;margin-top:-2px;padding-bottom:2px;margin-bottom:-2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-ms-flex:1 1 auto;}
+.jx-settingsflyout .win-header .icon{height:30px;width:30px;background-size:100% 100%;padding-top:2px;-ms-high-contrast-adjust:none;}
+.jx-settingsflyout .win-content{padding-top:24px;}.jx-settingsflyout .win-content a{cursor:pointer;}
+.jx-settingsflyout .win-settings-section.about a{display:inline;padding:0;}

@@ -1,0 +1,102 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ */
+
+.cloudtable-data-connection {
+    margin-bottom: 25px;
+}
+
+    .cloudtable-data-connection.highlight {
+        background-color: #F4F4F4; /* Snow White */
+    }
+
+.cloudtable-data-connection-header-container {
+    display: -ms-grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 1fr auto auto;
+    padding: 0px 10px;
+}
+
+    .cloudtable-data-connection-header-container .cloudtable-data-connection-header {
+        -ms-grid-column: 1;
+        height: 35px;
+        /*
+        Flexbox is used to implement pretty path truncation, where the parent path is truncated
+        before the filename is truncated.
+    */
+        /* Center content within element. */
+        display: flex;
+        align-items: center;
+        /* Prevent the path from extending beyond the header. */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -ms-grid;
+        -ms-grid-columns: 20px 10px 1fr 10px;
+    }
+
+    .cloudtable-data-connection-header-container img {
+        -ms-grid-column: 1;
+        display: -ms-grid;
+        -ms-grid-row-align: center;
+        -ms-grid-column-align: center;
+        height: 20px;
+        width: 20px;
+        line-height: 35px;
+    }
+
+.cloudtable-data-connection-header div,
+.cloudtable-data-connection .tableItem {
+    color: rgba(0, 0, 0, 1); /* Ink */
+    font-family: "Segoe UI";
+    font-size: 10pt;
+    height: 20px;
+    vertical-align: middle;
+    -ms-grid-column: 3;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.cloudtable-data-connection-header .cloudtable-data-connection-name {
+    -ms-grid-column: 3;
+    height: 35px;
+    line-height: 35px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* Give the first label a shrink factor of 1 so that it truncates before the second label. */
+    -ms-flex: 0 1 auto;
+}
+
+.cloudtable-data-connection-remove-button {
+    background-color: #643964; /* EveningStar */
+    box-sizing: border-box;
+    border: 2px solid transparent;
+    border-radius: 50%; /* Circular border around icon. */
+    display: -ms-grid;
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center;
+    width: 24px;
+    height: 24px;
+}
+
+.cloudtable-data-connection-remove-button {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+}
+
+    .cloudtable-data-connection-remove-button:hover,
+    .cloudtable-data-connection-remove-button:active {
+        background-color: #824A82; /* Fandango */
+    }
+
+.cloudtable-data-connection .tableItem {
+    min-height: 35px;
+    line-height: 35px;
+}
+
+    .cloudtable-data-connection .tableItem:hover,
+    .cloudtable-data-connection .tableItem:active,
+    .cloudtable-data-connection .tableItem.selected-data-source { 
+        background-color: #C8C8C8; /* Clay */
+    }

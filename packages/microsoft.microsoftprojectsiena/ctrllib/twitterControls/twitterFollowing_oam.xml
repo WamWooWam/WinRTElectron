@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="twitterFollowing"
+        restServiceConnectorId="{928831A8-B29F-4363-9397-E67F18E77579}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[Twitter Following
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="TwitterLogo" dataSourceLocation="ctrllib/twitterControls/images/TwitterLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="280" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##Following_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control template="Gallery" name="TwitterFollowing" variant="twitterFollowingVertical">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="293" />
+        <rule name="Width" value="300" />
+        <rule name="Items" value='%RESTServiceName%!MyFollowing()' isExpr="true"/>
+        <rule name="TemplatePadding" value="0" />
+        <rule name="Layout" value="Layout!Vertical" isExpr="true" />
+        <rule name="TemplateSize" value="90" />
+      </rules>
+    </control>
+  </controls>
+</composition>

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Cloud Table Connection View</title>
+
+    <link href="cloudTableConnectionView.css" rel="stylesheet" />
+    <script src="cloudTableConnectionView.js"></script>
+</head>
+<body>
+    <div class="fragment cloudtable-data-connection">
+        <div class="cloudtable-data-connection-header-container tableItem">
+            <div class="cloudtable-data-connection-header" data-bind="click: onClickDataSource.bind($data, $data.sources[0])">
+                <img src="#" data-bind="attr: { src: icon }" />
+                <div class="cloudtable-data-connection-name" data-bind="text: label, attr: { title: tooltip }"></div>
+            </div>
+            <div class="cloudtable-data-connection-remove-button" data-bind="click: removeDataSourceGroup, clickBubble: false">
+                <img src="/images/trashcan_20x20.svg" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

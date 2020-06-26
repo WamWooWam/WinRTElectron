@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Connection Data View</title>
+
+    <link href="connectionDataView.css" rel="stylesheet" />
+    <script src="connectionDataView.js"></script>
+</head>
+<body>
+
+    <div class="fragment data-connection">
+        <div class="data-connection-controls">
+            <div class="pane-header" data-bind="text: previewTitle"></div>
+
+            <div class="data-connection-control-button data-connection-refresh-button" data-bind="
+                visible: supportsLaunchInExcel,
+                click: launchInExcel,
+                attr: { title: AppMagic.AuthoringStrings.BackStageLaunchInExcelTooltip }">
+
+                <img class="data-connection-control-button-image"
+                     src="/images/Excel_15x15_white.png" />
+            </div>
+
+            <div class="data-connection-control-button data-connection-remove-button" data-bind="
+                click: removeSelectedSource">
+                <img class="data-connection-control-button-image"
+                     src="/images/trashcan_20x20.svg" />
+            </div>
+        </div>
+
+        <progress class="data-connection-wait"
+                  data-bind="visible: isWaitVisible"></progress>
+
+        <div class="data-connection-error"
+             data-bind="visible: isErrorVisible, text: errorMessage"></div>
+
+        <div class="data-connection-table" data-bind="
+            property: { viewModel: dataViewerViewModel, connectionViewModel: $data},
+            winjsControl: '/controls/dataSourceDataViewer/dataSourceDataViewerControl.html',
+            visible: !isWaitVisible && isDataVisible"></div>
+
+        <div class="data-connection-type-menu" data-win-control="WinJS.UI.Menu" tabindex="0" data-bind="foreach: columnTypeConverterOptions">
+            <button class="data-connection-type-option" type="button" data-win-control="WinJS.UI.MenuCommand"
+                    data-bind="winjsControlClass: WinJS.UI.MenuCommand,
+                               text: $data.locKind,
+                               click: $parent.onColumnTypeSelect.bind($parent),
+                               css: { selected: $data.isCurrentColumnType }"></button>
+        </div>
+    </div>
+</body>
+</html>

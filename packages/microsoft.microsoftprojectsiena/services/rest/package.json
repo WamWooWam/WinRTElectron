@@ -1,0 +1,21 @@
+{
+    "id": "rest",
+    "version": "0.1.0",
+
+    "name": "REST Connector",
+    "description": "Access data from REST based services",
+    "author": "Microsoft",
+    "copyright": "Copyright (C) Microsoft Corporation.  All rights reserved.",
+
+    "required": [ "rest.js" ],
+    "serviceClass": "AppMagic.Services.Rest",
+
+    "dataSources": {
+        "restDataSource": {
+            "displayName": "REST",
+            "query": "queryEndpoint"
+        }
+    },
+
+    "thumbnail": "/images/logos/ms.jpg"
+}

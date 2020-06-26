@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SharePoint Config</title>
+    <link href="sharepointConfig.css" rel="stylesheet" />
+    <script src="sharepointConfig.js"></script>
+</head>
+
+<body>
+    <div class="fragment sp-pane">
+        <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageSharepointTitle"></div>
+
+        <div data-bind="visible: !tableSelectorVisible">
+            <div>
+                <div class="sp-config-option-1">
+                    <input class="sp-config-office365-radio" id="spConfigOffice365Radio" name="spConfigRadio" type="radio" data-bind="checked: checkedValue, attr: { value: AppMagic.AuthoringStrings.SharepointOffice365}" />
+                    <label class="sp-config-office365-label" for="spConfigOffice365Radio" data-bind="text: AppMagic.AuthoringStrings.SharepointOffice365"></label>
+                </div>
+
+                <div class="sp-config-option-2">
+                    <input class="sp-config-onPremise-radio" id="spConfigOnPremiseRadio" name="spConfigRadio" type="radio" data-bind="checked: checkedValue, attr: { value: AppMagic.AuthoringStrings.SharepointOnPremise}" />
+                    <label class="sp-config-onPremise-label" for="spConfigOnPremiseRadio" data-bind="text: AppMagic.AuthoringStrings.SharepointOnPremise"></label>
+                </div>
+            </div>
+
+            <div class="sp-config-search">
+                <input class="urlInput" type="text" data-bind="attr: { placeholder: AppMagic.AuthoringStrings.SharepointURLPlaceholder }, value: siteUrl, event: { keypress: handleKeypress }, valueUpdate: ['keyup', 'input']" />
+                <div class="searchButton" data-bind="click: searchSharePoint"></div>
+            </div>
+
+            <div class="sp-config-import-container">
+                <button class="ams-config-import backstage-button" type="submit"
+                        data-bind="text: AppMagic.AuthoringStrings.BackstageConnectButtonText,
+                               click: searchSharePoint"></button>
+            </div>
+        </div>
+
+        <progress class="sp-connection-wait" data-bind="visible: isWaitVisible"></progress>
+
+        <div class="sp-online-list-title" data-bind="text: AppMagic.AuthoringStrings.BackStageSharepointOnlineListTitle, visible: tableSelectorVisible && !isSharepointOnPremise"></div>
+        <div class="sp-table-container" data-bind="
+            property: { viewModel: tableSelector },
+            visible: !isWaitVisible && tableSelectorVisible,
+            winjsControl: '/backStages/data/configPages/sharepointTableSelector/sharepointTableSelector.html'">
+        </div>
+
+        <div class="sp-config-failure failure" data-bind="visible: isErrorVisible">
+            <ul class="failure-messages" data-bind="foreach: errorMessages">
+                <li data-bind="text: $data" unselectable="off"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

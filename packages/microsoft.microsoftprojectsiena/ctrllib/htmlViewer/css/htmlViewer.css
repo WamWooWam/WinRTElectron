@@ -1,0 +1,38 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic HtmlViewer control CSS
+ *
+ */
+
+.appmagic-htmlviewer-container {
+    width: 100%;
+    height: 100%;
+}
+
+.appmagic-htmlviewer {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+
+.appmagic-htmlviewer-disabled-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.appmagic-htmlviewer-iframe {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    /*Works for Firefox*/
+    -moz-user-select: text;
+    /*Works for Chrome and Safari*/
+    -webkit-user-select: text;
+    /*Works for Internet Explorer*/
+    -ms-user-select: text;
+}

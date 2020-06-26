@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/htmlViewer"
+        name="htmlViewer"
+        jsClass="AppMagic.Controls.HtmlViewer"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[HtmlViewer
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/htmlViewer.css" />
+    <require type="javascript" src="js/htmlViewer.js" />
+  </requires>
+  
+  <appMagic:capabilities 
+    contextualViewsEnabled="true" 
+    autoBorders="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+  
+  <content>
+    <![CDATA[
+   <div class="appmagic-htmlviewer-container">
+   <div class="appmagic-htmlviewer"
+       data-bind="
+         disabled: viewState.disabled,
+         style: {
+           backgroundColor: Fill,
+           paddingTop: properties.PaddingTop, 
+           paddingRight: properties.PaddingRight, 
+           paddingBottom: properties.PaddingBottom, 
+           paddingLeft: properties.PaddingLeft
+      }">
+    <iframe class="appmagic-htmlviewer-iframe" sandbox="allow-same-origin"></iframe>
+  </div>
+     <div class="appmagic-htmlviewer-disabled-overlay"
+       data-bind="
+         visible: viewState.disabled,
+         style: { backgroundColor: properties.DisabledFill }">
+     </div>
+  </div>
+  ]]>
+  </content>
+  
+  <properties>
+    <property name="HtmlText" localizedName="##htmlViewer_HtmlText##" datatype="String" defaultValue="##HTMLViewer_DefaultValue_HtmlText##">
+      <title>HtmlViewer contents</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##htmlViewer_HtmlText_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_itemsicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>39</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##htmlViewer_HtmlText_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>   
+    <!-- Design -->
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(119, 119, 119, .4)" />
+    <appMagic:includeProperty name="Font">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Color">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Size">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(255, 255, 255, 0)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="%CONTROL.ID%!BorderColor"  hidden="true" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="%CONTROL.ID%!BorderColor" />
+    <appMagic:includeProperty name="BorderStyle" defaultValue="BorderStyle!None">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible" />
+    <appMagic:includeProperty name="Width" defaultValue="200" />
+    <appMagic:includeProperty name="Height" defaultValue="40" />
+    <appMagic:includeProperty name="PaddingTop">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingRight">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingBottom">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingLeft">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+
+    <!-- Behavior Properties -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="35" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="35" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+  </appMagic:includeProperties>
+  <appMagic:propertyDependencies>
+    
+  </appMagic:propertyDependencies>
+</widget>

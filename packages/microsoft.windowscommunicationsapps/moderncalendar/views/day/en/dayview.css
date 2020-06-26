@@ -1,0 +1,592 @@
+﻿.dayview {
+    font-weight: 400;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    color: #5e5c5e;
+    background-color: #e8e7ea;
+}
+
+.dayview .dp-anchor {
+    position: absolute;
+    visibility: hidden;
+    left: 62px;
+    top: 119px;
+}
+
+.dayview .day {
+    position: absolute;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1px 1fr;
+    z-index: 0;
+}
+
+.dayview .header {
+    margin-top: 40px;
+    padding-left: 50px;
+    padding-right: 0;
+    border-bottom: 1px solid #ffffff;
+}
+
+.dayview .dayName {
+    padding-left: 12px;
+    padding-right: 0;
+}
+
+.dayview .header .dateAnchor {
+    display: -ms-inline-grid;
+    grid-template-columns: 1fr 64px;
+    grid-template-rows: 1fr;
+}
+
+.dayview .header .dateAnchor.hover {
+    color: #7a787a;
+}
+
+.dayview .header .dateAnchor.active {
+    color: #b1afb2;
+}
+
+.dayview .header .dateAnchor .anchorText {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    font-weight: 200;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.dayview .header .dateAnchor .dateChevron {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    font-size: 27px;
+    font-weight: 200;
+    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+    padding-left: 20px;
+    padding-right: 0;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    display: none;
+}
+
+.dayview .header .dateAnchor .dateChevron:before {
+    content: '\E09D';
+}
+
+.dayview .header .activeAnchor .dateChevron {
+    display: inline-block;
+}
+
+.dp-flyout.dayviewPicker {
+    margin-top: 0px;
+}
+
+.dayview .quickEvent .dropdownHolder {
+    margin-right: 12px;
+}
+
+.dayview .fullDate {
+    border-left: 1px solid #ffffff;
+    border-right: 1px solid #ffffff;
+    padding: 0 1px;
+}
+
+.dayview .today .fullDate {
+    background-color: #757576;
+    color: #ffffff;
+}
+
+.dayview .fullDate-text {
+    height: 24px;
+    padding-top: 4px;
+    padding-left: 14px;
+    padding-right: 0;
+    padding-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dayview .allDay {
+    grid-row: 2;
+    position: relative;
+    padding-left: 50px;
+    padding-right: 0;
+    border-bottom: 1px solid #ffffff;
+}
+
+.dayview .allDay>.events {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    position: relative;
+    border: 1px solid #ffffff;
+    border-top: 0;
+    border-bottom: 0;
+}
+
+.dayview .allDay>.events>.container {
+    min-height: 29px;
+    opacity: 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dayview .allDaySpacer {
+    grid-row: 3;
+    padding-left: 50px;
+    padding-right: 0;
+}
+
+.dayview .allDaySpacer>.events {
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+    height: 1px;
+}
+
+.dayview .grid {
+    grid-row: 4;
+    position: relative;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-y: snapInterval(0px, 60px);
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border-left: 0;
+    border-right: 1px solid #ffffff;
+    display: grid;
+    grid-template-columns: 51px 1fr;
+}
+
+.dayview .hours {
+    grid-column-end: span 2;
+    height: 1440px;
+    margin-top: -1px;
+}
+
+.dayview .hours>.hour {
+    position: relative;
+    box-sizing: border-box;
+    height: 60px;
+    border-bottom: 1px solid #ffffff;
+    padding-top: 18px;
+    font-feature-settings: "kern" 1,"ss20" 1,"dlig" 1,"smcp";
+    text-align: center;
+}
+
+.dayview .hours>.hour .trim {
+    position: relative;
+    overflow: hidden;
+    width: 50px;
+    height: 41px;
+}
+
+.dayview .grid>.events {
+    grid-column: 2;
+    position: relative;
+    height: 1440px;
+    color: #ffffff;
+    margin-top: -1px;
+}
+
+.dayview .grid>.events>.container {
+    position: absolute;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+    width: 100%;
+    height: 100%;
+    margin-left: -1px;
+    margin-right: 0;
+    margin-top: -1px;
+    opacity: 0;
+}
+
+@media (-ms-high-contrast:none) {
+    .dayview .hours [data-state='pressed'],.dayview .allDay[data-state='pressed'] {
+        background-color: #c8c8c8;
+    }
+
+    .dayview .allDay .more:hover {
+        color: fadeIn(#666666, 20%);
+    }
+
+    .dayview .allDay .more[data-state='pressed'] {
+        color: fadeOut(#666666, 20%);
+    }
+}
+
+.dayview .weekend .allDay,.dayview .weekend .grid {
+    background-color: #dfdee1;
+}
+
+@media (-ms-high-contrast:none) {
+    .dayview .weekend .hours [data-state='pressed'],.dayview .weekend .allDay[data-state='pressed'] {
+        background-color: #bcbcbc;
+    }
+}
+
+.dayview .glyph {
+    box-sizing: border-box;
+    min-width: 7px;
+    height: 100%;
+}
+
+.dayview .glyphInner {
+    width: 100%;
+    height: 100%;
+}
+
+.dayview [data-status="free"] .glyphInner {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.dayview [data-status="tentative"] .glyphInner {
+    background-image: url('../../Tentative.png');
+    background-color: transparent;
+    background-repeat: repeat;
+    -ms-high-contrast-adjust: none;
+}
+
+.dayview [data-status="outOfOffice"] .glyphInner,.dayview [data-status="workingElsewhere"] .glyphInner {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dayview .allDay .event {
+    position: relative;
+    width: 0;
+    height: 29px;
+    flex: 1 0 auto;
+    background-clip: content-box;
+    border: 1px solid #ffffff;
+    background-color: #ffffff;
+    margin-left: -1px;
+    margin-right: 0;
+    margin-top: -1px;
+    margin-bottom: -1px;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: 1fr;
+}
+
+
+.dayview .allDay .full {
+    width: 100%;
+    margin-left: -1px;
+    margin-right: -2px;
+    margin-bottom: 0;
+}
+
+.dayview .allDay .full:last-child {
+    margin-bottom: -1px;
+}
+
+.dayview .allDay .startTime {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    grid-column: 2;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 0;
+    -ms-font-feature-settings: "smcp";
+}
+
+.dayview .allDay .subject {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-column: 3;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 8px;
+}
+
+.dayview .allDay .endTime {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    grid-column: 4;
+    padding-top: 3px;
+    padding-left: 0;
+    padding-right: 8px;
+    -ms-font-feature-settings: "smcp";
+}
+
+.dayview .allDay .more {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-weight: 300;
+    position: relative;
+    box-sizing: border-box;
+    width: 33%;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 0;
+}
+
+.dayview .grid .event {
+    border: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+    background-color: #ffffff;
+    display: flex;
+    -ms-flex-align: start;
+    margin-left: -1px;
+    margin-right: 1px;
+    z-index: 0;
+}
+
+.dayview .grid .event.short {
+    border-color: transparent;
+    background: transparent;
+}
+
+.dayview .grid .event.short .details {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-top: 3px;
+    background: #ffffff;
+}
+
+.dayview .grid .event.hasPreviousEvent {
+    border-top-color: #e8e7ea;
+}
+
+.dayview .grid .details {
+    box-sizing: border-box;
+    height: 100%;
+    flex: 1 1 auto;
+    padding-top: 8px;
+    padding-left: 7px;
+    padding-right: 8px;
+    overflow: hidden;
+}
+
+.dayview .grid .subject,.dayview .grid .location {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-bottom: 3px;
+    margin-bottom: -2px;
+}
+
+.dayview .grid .subject {
+    font-weight: 600;
+}
+
+.dayview .grid .location {
+    color: #666666;
+}
+
+.dayview .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.dayview .focusArea {
+    width: calc((100% + 2px));
+    height: 59px;
+    position: absolute;
+    margin-top: 1px;
+}
+
+@media (-ms-high-contrast:none) {
+    .dayview .overlay:hover,.dayview [data-state]>.overlay {
+        background-color: rgba(255, 255, 255, 0.13);
+    }
+
+    .dayview .events[data-state='pressed'],.dayview .focusArea[data-state='pressed'] {
+        background-color: #c8c8c8;
+    }
+
+    .dayview .allDay .more:hover {
+        color: fadeIn(#666666, 20%);
+    }
+
+    .dayview .allDay .more[data-state='pressed'] {
+        color: fadeOut(#666666, 20%);
+    }
+}
+
+@media (-ms-high-contrast) {
+    .dayview {
+        color: windowtext;
+    }
+
+    .dayview .today .fullDate {
+        background-color: highlight;
+        border-color: windowtext;
+        color: highlighttext;
+    }
+
+    .dayview .grid>.events {
+        border-color: windowtext;
+        color: windowtext;
+    }
+
+    .dayview .grid .short.event .details {
+        background-color: window;
+    }
+
+    .dayview .grid .event {
+        background-color: window;
+        border: 1px solid windowtext;
+        padding-bottom: 0;
+    }
+
+    .dayview .grid .details,.dayview .grid .subject,.dayview .grid .location {
+        color: windowtext !important;
+    }
+
+    .dayview .event {
+        background-color: window;
+        border-left: 1px solid windowtext;
+        border-right: 0;
+        border-top: 1px solid windowtext;
+    }
+
+    .dayview .weekend .grid>.events,.dayview .grid>.events {
+        border-color: windowtext;
+    }
+
+    .dayview [data-status="outOfOffice"] .glyphInner,.dayview [data-status="workingElsewhere"] .glyphInner,.dayview [data-status="busy"] .glyphInner {
+        background-color: windowtext;
+    }
+
+    .dayview [data-status="tentative"] .glyphInner {
+        background-image: linear-gradient(135deg, window 25%, windowtext 25%, windowtext 50%, window 50%, window 75%, windowtext 75%);
+        background-size: 10px 10px;
+        box-sizing: border-box;
+    }
+
+    .dayview [data-status="free"] .glyphInner {
+        background-color: window;
+        border-left: 0;
+        border-right: solid 1px windowtext;
+    }
+
+    .dayview .timeIndicator .clock {
+        background-color: highlight;
+        color: highlighttext;
+    }
+
+    .dayview .timeIndicator .line {
+        border-color: highlight;
+        background-color: transparent;
+    }
+}
+
+@media all and (max-width: 671px) {
+    .dayview .day {
+        width:100%;
+    }
+
+    .dayview .dayName {
+        padding-top: 0;
+    }
+
+    .dayview .header {
+        margin-top: 30px;
+    }
+
+    .dayview input[type=button].timelineArrow {
+        top: 31px;
+    }
+
+    .dayview .header .dateAnchor .dateChevron {
+        font-size: 26.66667px;
+        letter-spacing: 0.02em;
+        line-height: 32px;
+        padding-bottom: 5px;
+        padding-top: 3px;
+        font-size: 25px;
+        padding-left: 15px;
+    }
+
+    .dayview .header .dateAnchor .dateChevron:before {
+        content: '\E099';
+        font-weight: 400;
+    }
+
+    .dayview .header .dateAnchor .anchorText {
+        font-size: 26.66667px;
+        letter-spacing: 0.02em;
+        line-height: 32px;
+        padding-bottom: 5px;
+        padding-top: 3px;
+        font-weight: 300;
+        padding-left: 2px;
+        padding-bottom: 11px;
+    }
+}
+
+@media all and (min-width: 672px) and (max-width:1919px) {
+    .dayview .day {
+        width:50.1%;
+    }
+}
+
+@media all and (min-width: 1920px) {
+    .dayview .day {
+        width:33.3334%;
+    }
+}
+
+@media screen and (min-resolution: 134dpi) {
+    .dayview .allDay .event {
+        margin-left:-0.7px;
+        margin-right: 0;
+        margin-top: -0.7px;
+        margin-bottom: -0.7px;
+    }
+
+    .dayview .allDay :last-child.event {
+        margin-left: -0.7px;
+        margin-right: -1.4px;
+    }
+
+    .dayview .grid .event {
+        margin-top: -0.7px;
+        margin-bottom: -0.7px;
+    }
+
+    .dayview .grid>.events>.container {
+        margin-top: 0;
+    }
+}

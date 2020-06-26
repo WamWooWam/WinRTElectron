@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>azureServiceKeyConfig</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="azureServiceKeyConfig.css" rel="stylesheet" />
+    <script src="azureServiceKeyConfig.js"></script>
+</head>
+<body>
+    <div class="rest-service-key-config">
+        <div class="rest-service-key-config-line0" data-bind="foreach: userVariables">
+            <div class="userVariableName" data-bind="text: $data.title"></div>
+            <input tabindex="0" class="userVariableTextBox" data-bind="attr: { type: $data.inputtype }, value: $data.value, valueUpdate: ['keyup', 'input']" data-appmagic-initialfocus="true" />
+        </div>
+        <div class="azure-service-key-config-buttons">
+            <button class="backstage-button" data-bind="disable: !isConnectEnabled,
+                                                        text: AppMagic.AuthoringStrings.BackStageKeyUpdateText,
+                                                        clickOrEnter: onClickConnect" tabindex="0"></button>
+        </div>
+        <div class="azure-registration-link link" tabindex="0" data-bind="visible: !registrationSuccessVisible, clickOrEnter: onRegistrationLinkClick">
+            <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.BackstageOffice365UseSubscriptionLink"></span>
+            <span class="icon">&#xE2AB;</span>
+        </div>
+    <div class="azure-registration-completed-note link" data-bind="visible: registrationSuccessVisible">
+        <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.BackstageOffice365UseSubscriptionSuccess"></span>
+    </div>
+</body>
+</html>

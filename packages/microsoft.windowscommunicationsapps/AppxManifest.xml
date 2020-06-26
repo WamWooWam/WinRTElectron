@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<Package IgnorableNamespaces="windowsbuild" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:windowsbuild="http://schemas.microsoft.com/developer/appx/2013/windowsbuild">
+	<Identity Name="microsoft.windowscommunicationsapps" 
+		ProcessorArchitecture="x86" 
+		Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" 
+		Version="17.5.9600.22013"/>
+
+	<Properties>
+		<DisplayName>ms-resource:communicationsPackageName</DisplayName>
+		<Description>ms-resource:communicationsPackageName</Description>
+		<PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+		<Logo>ModernShared\Resources\img\suite_logo.png</Logo>
+	</Properties>
+
+	<Resources>
+		<Resource m2:Scale="100"/>
+		<Resource Language="en-us"/>
+		<Resource Language="en"/>
+		<Resource Language="en-gb"/>		
+	</Resources>
+
+	<Prerequisites>
+		<OSMinVersion>6.3.0</OSMinVersion>
+		<OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+	</Prerequisites>
+
+	<windowsbuild:Metadata>
+		<windowsbuild:Item Name="AppXArch" Value="x86"/>
+		<windowsbuild:Item Name="Type" Value="fre"/>
+		<windowsbuild:Item Name="Branch" Value="winblue_ltsb"/>
+		<windowsbuild:Item Name="Date" Value="180707-0600"/>
+		<windowsbuild:Item Name="BuildUser" Value="REDMOND\cxesa"/>
+		<windowsbuild:Item Name="Version" Value="17.5.9600.22013"/>
+		<windowsbuild:Item Name="ProductVersion" Value="6.3.9600.19095"/>
+	</windowsbuild:Metadata>
+
+	<Applications>
+	
+		<Application Id="Microsoft.WindowsLive.Mail" StartPage="ModernMail\App\App.html">
+			<m2:VisualElements DisplayName="ms-resource:mailAppTitle" Square150x150Logo="ModernMail\Res\MailLogo.png" Square30x30Logo="ModernMail\Res\MailSmallLogo.png" Description="ms-resource:mailAppTitle" ForegroundText="light" BackgroundColor="#0072C6" ToastCapable="true">
+				<m2:DefaultTile ShortName="ms-resource:mailAppTitle" Square70x70Logo="ModernMail\Res\MailTinyLogo.png" Wide310x150Logo="ModernMail\Res\MailWideLogo.png" Square310x310Logo="ModernMail\Res\MailLargeLogo.png">
+					<m2:ShowNameOnTiles>
+						<m2:ShowOn Tile="square310x310Logo"/>
+						<m2:ShowOn Tile="square150x150Logo"/>
+						<m2:ShowOn Tile="wide310x150Logo"/>
+					</m2:ShowNameOnTiles>
+				</m2:DefaultTile>
+				<m2:LockScreen Notification="badge" BadgeLogo="ModernMail\Res\MailBadge.png"/>
+				<m2:SplashScreen Image="ModernMail\Res\MailSplash.png" BackgroundColor="#0072C6"/>
+				<m2:InitialRotationPreference>
+					<m2:Rotation Preference="landscape"/>
+					<m2:Rotation Preference="landscapeFlipped"/>
+					<m2:Rotation Preference="portrait"/>
+					<m2:Rotation Preference="portraitFlipped"/>
+				</m2:InitialRotationPreference>
+				<m2:ApplicationView MinWidth="width320"/>
+			</m2:VisualElements>
+			<ApplicationContentUriRules>
+				<Rule Type="include" Match="https://support.microsoft.com/"/>
+			</ApplicationContentUriRules>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="mailto"/>
+				</Extension>
+				<Extension Category="windows.protocol">
+					<Protocol Name="ms-mail"/>
+				</Extension>
+				<Extension Category="windows.shareTarget" StartPage="ModernShareTarget\share.html">
+					<ShareTarget m2:Description="ms-resource:mailShareDescription">
+						<SupportedFileTypes>
+							<SupportsAnyFileType/>
+						</SupportedFileTypes>
+						<DataFormat>Uri</DataFormat>
+						<DataFormat>Text</DataFormat>
+						<DataFormat>Html</DataFormat>
+						<DataFormat>Bitmap</DataFormat>
+					</ShareTarget>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.VerbBackgroundTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="systemEvent"/>
+						<Task Type="timer"/>
+						<Task Type="pushNotification"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.LockscreenStateChangeTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="systemEvent"/>
+						<Task Type="pushNotification"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.ServicingCompleteTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="systemEvent"/>
+						<Task Type="pushNotification"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.OnlineIdConnectedStateChangeTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="systemEvent"/>
+						<Task Type="pushNotification"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.LiveComm.FirstRun">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="systemEvent"/>
+						<Task Type="pushNotification"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.DirectPushNotificationTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="controlChannel"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.DirectPushKeepAliveTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="controlChannel"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.ManualPushNotificationTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="controlChannel"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Microsoft.WindowsLive.Platform.ManualPushKeepAliveTask">
+					<BackgroundTasks ServerName="Microsoft.WindowsLive.Platform.Server">
+						<Task Type="controlChannel"/>
+					</BackgroundTasks>
+				</Extension>
+			</Extensions>
+		</Application>
+		
+		<Application Id="Microsoft.WindowsLive.Calendar" StartPage="ModernCalendar\app\App.html">
+			<m2:VisualElements DisplayName="ms-resource:calendarAppTitle" Square150x150Logo="ModernCalendar\CalendarLogo.png" Square30x30Logo="ModernCalendar\CalendarSmallLogo.png" Description="ms-resource:calendarAppTitle" ForegroundText="light" BackgroundColor="#5133AB" ToastCapable="true">
+				<m2:DefaultTile ShortName="ms-resource:calendarAppTitle" Wide310x150Logo="ModernCalendar\CalendarWideLogo.png" Square310x310Logo="ModernCalendar\CalendarLargeLogo.png" Square70x70Logo="ModernCalendar\CalendarTinyLogo.png">
+					<m2:ShowNameOnTiles>
+						<m2:ShowOn Tile="square150x150Logo"/>
+						<m2:ShowOn Tile="wide310x150Logo"/>
+						<m2:ShowOn Tile="square310x310Logo"/>
+					</m2:ShowNameOnTiles>
+				</m2:DefaultTile>
+				<m2:LockScreen Notification="badgeAndTileText" BadgeLogo="ModernCalendar\CalendarBadge.png"/>
+				<m2:SplashScreen Image="ModernCalendar\CalendarSplash.png" BackgroundColor="#5133AB"/>
+				<m2:ApplicationView MinWidth="width320"/>
+			</m2:VisualElements>
+			<ApplicationContentUriRules>
+				<Rule Type="include" Match="https://support.microsoft.com/"/>
+			</ApplicationContentUriRules>
+			<Extensions>
+				<Extension Category="windows.protocol" StartPage="ModernCalendar\app\App.html">
+					<Protocol Name="wlcalendar">
+						<Logo>ModernCalendar\CalendarLogo.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Dummy.Class.For.Lockscreen.Notification.Capability.Do.Not.Delete" Executable="Dummy.Class.For.Lockscreen.Notification.Capability.Do.Not.Delete.exe">
+					<BackgroundTasks>
+						<Task Type="pushNotification"/>
+					</BackgroundTasks>
+				</Extension>
+				<Extension Category="windows.backgroundTasks" EntryPoint="Dummy.Class.For.RTC.Control.Channel.Do.Not.Delete" Executable="Dummy.Class.For.RTC.Control.Channel.Do.Not.Delete.exe">
+					<BackgroundTasks>
+						<Task Type="controlChannel"/>
+					</BackgroundTasks>
+				</Extension>
+				<m2:Extension Category="windows.appointmentsProvider" StartPage="ModernCalendar\views\provider\provider.htm">
+					<m2:AppointmentsProvider>
+						<m2:AppointmentsProviderLaunchActions DesiredView="useHalf">
+							<m2:LaunchAction Verb="showTimeFrame" StartPage="ModernCalendar\app\App.html"/>
+						</m2:AppointmentsProviderLaunchActions>
+					</m2:AppointmentsProvider>
+				</m2:Extension>
+			</Extensions>
+		</Application>
+
+		<Application Id="Microsoft.WindowsLive.People" StartPage="ModernPeople\AppFrame\People.htm">
+			<m2:VisualElements DisplayName="ms-resource:///strings/peopleAppName" Square150x150Logo="ModernPeople\People.png" Square30x30Logo="ModernPeople\PeopleSmall.png" Description="ms-resource:///strings/peopleAppName" ForegroundText="light" BackgroundColor="#d24726">
+				<m2:DefaultTile ShortName="ms-resource:///strings/peopleAppName" Square70x70Logo="ModernPeople\PeopleTiny.png" Wide310x150Logo="ModernPeople\PeopleWide.png" Square310x310Logo="ModernPeople\PeopleLarge.png">
+					<m2:ShowNameOnTiles>
+						<m2:ShowOn Tile="square150x150Logo"/>
+						<m2:ShowOn Tile="wide310x150Logo"/>
+						<m2:ShowOn Tile="square310x310Logo"/>
+					</m2:ShowNameOnTiles>
+				</m2:DefaultTile>
+				<m2:SplashScreen Image="ModernPeople\PeopleSplash.png"/>
+				<m2:ApplicationView MinWidth="width320"/>
+			</m2:VisualElements>
+			<ApplicationContentUriRules>
+				<Rule Type="include" Match="https://support.microsoft.com/"/>
+			</ApplicationContentUriRules>
+			<Extensions>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="wlpeople">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-messenger">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-outlook-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-skype-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-twitter-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-google-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-weibo-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-linkedin-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-yahoo-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\AppFrame\People.htm">
+					<Protocol Name="profile-lync-com">
+						<Logo>ModernPeople\Icon.png</Logo>
+					</Protocol>
+				</Extension>
+				<Extension Category="windows.accountPictureProvider" StartPage="ModernPeople\AppFrame\People.htm"/>
+				<Extension Category="windows.contactPicker" StartPage="ModernPeople\AppFrame\Picker.htm"/>
+				<Extension Category="windows.search" StartPage="ModernPeople\AppFrame\People.htm"/>
+				<Extension Category="windows.shareTarget" StartPage="ModernPeople\AppFrame\Share.htm">
+					<ShareTarget m2:Description="ms-resource:///strings/raShareDescription">
+						<DataFormat>WebLink</DataFormat>
+					</ShareTarget>
+				</Extension>
+				<m2:Extension Category="windows.contact">
+					<m2:Contact>
+						<m2:ContactLaunchActions>
+							<m2:LaunchAction Verb="post" DesiredView="useLess">
+								<m2:ServiceId>twitter.com</m2:ServiceId>
+							</m2:LaunchAction>
+						</m2:ContactLaunchActions>
+					</m2:Contact>
+				</m2:Extension>
+			</Extensions>
+		</Application>
+	</Applications>
+
+	<Capabilities>
+		<Capability Name="privateNetworkClientServer"/>
+		<Capability Name="sharedUserCertificates"/>
+		<Capability Name="internetClient"/>
+		<DeviceCapability Name="webcam"/>
+	</Capabilities>
+
+	<Extensions>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.WindowsLive.Platform.Calendar.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Calendar.CalendarManager" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Calendar.CalendarService" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Calendar.CalendarParser" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.WindowsLive.Platform.Calendar.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Meetings.InvitesManager" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>ErrorReporting.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Shared.Telemetry.ErrorReporting" ThreadingModel="MTA"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.proxyStub">
+			<ProxyStub ClassId="3c20f953-30a9-406c-a60b-e59383c0c2d4">
+				<Path>ErrorReporting.dll</Path>
+				<Interface InterfaceId="06596403-3E45-4C1D-A884-CA6CD1150CD4" Name="IErrorReporting"/>
+			</ProxyStub>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>wlcore.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Cid.CidFormatter" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Jx" ThreadingModel="STA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Market" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.PerfTrack.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.PerfTrack.PerfTrackLogger" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>bici.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.Bici" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.DatapointValueList" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.TransactionContext" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.TransactionId" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.WindowsLive.Launch.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Config.Shared.SuiteUpdate" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Config.Shared.Feedback" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.WindowsLive.Platform.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.LiveComm.FirstRun" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Client" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.LockscreenStateChangeTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.DirectPushNotificationTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.DirectPushKeepAliveTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.ManualPushNotificationTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.ManualPushKeepAliveTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Private.ClientManagerProvider" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.OnlineIdConnectedStateChangeTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.ServicingCompleteTask" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.VerbBackgroundTask" ThreadingModel="MTA"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.outOfProcessServer">
+			<OutOfProcessServer ServerName="Microsoft.WindowsLive.Platform.Server">
+				<Path>LiveComm.exe</Path>
+				<Instancing>singleInstance</Instancing>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Service.RemoteProcess"/>
+			</OutOfProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.proxyStub">
+			<ProxyStub ClassId="3F0E13A0-4667-4C78-84B0-9BB753C5EF0E">
+				<Path>Microsoft.WindowsLive.Platform.dll</Path>
+				
+				<Interface InterfaceId="5F333224-DB8B-4A5D-8294-136963C37A6C" Name="IContactSynchronizationPrivate"/>
+				
+				<Interface InterfaceId="A18B599B-94DD-41DD-80F5-86E36617F08A" Name="ILivePlatformRemoteUserFactory"/>
+				<Interface InterfaceId="FCDCFE93-A860-448F-9F59-40E7D85609BC" Name="ILivePlatformRemoteUser"/>
+				<Interface InterfaceId="D6C4144A-21BD-4385-BAC2-7F2F1C53DE89" Name="ILivePlatformRemoteUserCallback"/>
+				<Interface InterfaceId="A7E197EA-F5A0-4028-9D8B-1E909B157BF7" Name="ILivePlatformRemoteUserCollection"/>
+				<Interface InterfaceId="A0BA40C3-0231-4C69-B33D-36F181F09F4E" Name="ILivePlatformRestartCallback"/>
+				<Interface InterfaceId="8BCEC5DB-850C-469F-862F-8AE7AB6C33FC" Name="ILivePlatformVerb"/>
+				<Interface InterfaceId="09B06684-A2BF-4F62-9A77-D1B04F3187CA" Name="ILivePlatformVerbManager"/>
+				<Interface InterfaceId="C02321F7-A955-40E5-99F0-67E58E088AB1" Name="ILivePlatformSuspendResumeHandler"/>
+				<Interface InterfaceId="10A3C2A2-0BCE-4FE2-94BC-F757CD5A5890" Name="ILivePlatformClientVisibility"/>
+				
+				<Interface InterfaceId="F2CAF5A9-6237-401D-A8F6-08A553F00C8F" Name="ILivePlatformPropertyBag"/>
+				<Interface InterfaceId="F6794DDC-B81A-42B8-817C-C9C5B7309AA1" Name="ILivePlatformObjectWithSite"/>
+				<Interface InterfaceId="24D38301-B637-48A4-87FF-C5AA37C7B4A5" Name="ILivePlatformService"/>
+				<Interface InterfaceId="946B3A75-7908-4422-AAEC-0848CE3E5D0F" Name="ILivePlatformServiceProvider"/>
+				<Interface InterfaceId="FFE41672-09AD-426E-8516-BD8F20665BDC" Name="ILivePlatformServiceSink"/>
+				<Interface InterfaceId="2B7B0B00-5A8C-43A0-923A-BD301CE1E641" Name="ILivePlatformServiceSite"/>
+				<Interface InterfaceId="236D2810-8F38-4A3F-A962-76671AE05706" Name="ILivePlatformVerbHandler"/>
+				
+				<Interface InterfaceId="146579FD-2F9F-4F33-8D16-E3AEEB5E01F8" Name="IStoreCacheViewRpc"/>
+				<Interface InterfaceId="3759ACE6-7445-4381-B1D1-BAF75D537116" Name="IStoreIndexViewCallbackRpc"/>
+				<Interface InterfaceId="A36A9A63-949C-4C1C-BD7D-E136E746A628" Name="IStoreIndexViewRpc"/>
+				<Interface InterfaceId="822C098A-6362-4ECE-BB8B-B1644AEA0DDB" Name="IStoreObjectManagerAttachRpc"/>
+				<Interface InterfaceId="5D18B906-9491-4068-BC9A-EC2DF95D0038" Name="IStoreObjectManagerRpc"/>
+				<Interface InterfaceId="5BF07B22-C7D9-4D0D-AEA0-A8F5F9B157E4" Name="IStoreObjectViewCallbackRpc"/>
+			</ProxyStub>
+		</Extension>
+		<Extension Category="windows.activatableClass.proxyStub">
+			<ProxyStub ClassId="3F0E13A0-4667-4C78-84B0-9BB753C5EF0E">
+				<Path>Microsoft.WindowsLive.Platform.dll</Path>
+				<Interface InterfaceId="FCFF04A5-FD25-4067-92AD-D5E68E8713D3" Name="IClient"/>
+				<Interface InterfaceId="6856F702-1773-42B2-B9FE-7B016B287620" Name="IClientServices"/>
+				<Interface InterfaceId="1B90E109-764C-497C-B263-42B4CF9077F7" Name="IDisposable"/>
+				<Interface InterfaceId="441A3458-5FA4-47A1-8901-BA0DB7904AE3" Name="IObject"/>
+				<Interface InterfaceId="9277EF55-3AAA-4DBF-91D7-333EC929BDDE" Name="ICollection"/>
+				<Interface InterfaceId="7E4DFA6D-DDC6-4102-9D04-41329B11F469" Name="IAccountManager"/>
+				<Interface InterfaceId="EFD894E3-B4E3-47BE-AE33-775EBA39EC4C" Name="IAccount"/>
+				<Interface InterfaceId="3784BDD8-0A96-4AB2-9B75-44D3341013B8" Name="IAccountResource"/>
+				<Interface InterfaceId="B13DD99F-6A9C-4E64-AD46-A960ACDF48E2" Name="IMailManager"/>
+				<Interface InterfaceId="D65F1BC5-07F6-4445-A75F-492F4B5A7F2F" Name="IMailMessage"/>
+				<Interface InterfaceId="B3A9D3C0-9C7D-46D9-9097-5D2002F86C7E" Name="IMailAttachment"/>
+				<Interface InterfaceId="7360a25c-2487-5597-ab3c-959d5ab01fe2" Name="__FIAsyncOperationCompletedHandler_1_Microsoft__CWindowsLive__CPlatform__CIMailMessage"/>
+			</ProxyStub>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.WindowsLive.Photomail.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Photomail.PhotomailTranscoder" ThreadingModel="MTA"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Photomail.AttachmentManager" ThreadingModel="MTA"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.proxyStub">
+			<ProxyStub ClassId="0142FA53-13F8-4b40-A3FE-611389F6600E">
+				<Path>Microsoft.WindowsLive.Photomail.dll</Path>
+				<Interface Name="Microsoft.WindowsLive.Photomail.IPhotomailTranscoderStatics" InterfaceId="C10D9473-49AF-4E96-8E19-124046F28CB8"/>
+				<Interface Name="__FIAsyncOperationCompletedHandler_1_Microsoft__CWindowsLive__CPhotomail__CExifOrientation" InterfaceId="621b1632-abc3-5331-865c-01f013b96079"/>
+				<Interface Name="__FIAsyncOperation_1_Microsoft__CWindowsLive__CPhotomail__CExifOrientation" InterfaceId="83407ad1-58bd-58f9-859a-a5c2a9815b40"/>
+				<Interface Name="Microsoft.WindowsLive.Photomail.IAttachmentManagerStatics" InterfaceId="E19BB976-53CD-4DF0-9FC2-20AF457EA1ED"/>
+				<Interface Name="Microsoft.WindowsLive.Photomail.IAttachmentManager" InterfaceId="C9699850-6154-4577-A0BD-73079BBFC0DD"/>
+				<Interface Name="IQueueEmptyHandler" InterfaceId="009D04BE-4567-48BA-BBE7-7B18CB8547B2"/>
+			</ProxyStub>
+		</Extension>
+	</Extensions>
+
+	<Dependencies>
+		<PackageDependency Name="Microsoft.WinJS.2.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"/>
+		<PackageDependency Name="Microsoft.VCLibs.120.00" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" MinVersion="12.0.20501.1"/>
+	</Dependencies>
+</Package>

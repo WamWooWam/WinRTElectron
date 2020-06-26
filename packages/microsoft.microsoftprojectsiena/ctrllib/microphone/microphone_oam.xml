@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/microphone"
+        name="microphone"
+        jsClass="AppMagic.Controls.Microphone"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[MICROPHONE
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/microphone.css" />
+    <require type="javascript" src="js/microphone.js" />
+    <require type="javascript" src="js/microphoneViewModel.js" />
+    <require type="other" src="images/microphone_disabled_icon.svg" />
+    <require type="other" src="images/microphone_rest_icon.svg" />
+    <require type="other" src="images/microphone_stop_icon.svg" />
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+
+  <content>
+    <![CDATA[
+    <div
+      class="appmagic-microphone"
+      data-bind="style: {
+          color: autoProperties.Color,
+          backgroundImage: backgroundImage,
+          backgroundSize: properties.ImagePosition().size,
+          backgroundRepeat: properties.ImagePosition().repeat,
+          backgroundPosition: properties.ImagePosition().position,
+        },
+        event: { click: onClick },
+        attr: { title:properties.Tooltip }">
+        <div class="appmagic-microphone-center" data-bind="if: isControlLoaded">
+          <div class="appmagic-microphone-icon-row">
+            <div class="appmagic-microphone-icon appmagic-microphone-icon-container"></div>
+            <img class="appmagic-microphone-icon" src="/ctrllib/microphone/images/microphone_stop_icon.svg" data-bind="visible: isDeviceAvailable() && microphoneViewModel.isRecording" />
+            <img class="appmagic-microphone-icon" src="/ctrllib/microphone/images/microphone_rest_icon.svg" data-bind="visible: isDeviceAvailable() && !microphoneViewModel.isRecording" />
+            <img class="appmagic-microphone-icon" src="/ctrllib/microphone/images/microphone_disabled_icon.svg" data-bind="visible: !isDeviceAvailable()" />
+          </div>
+          <div class="appmagic-microphone-label" data-bind="text: label"></div>
+          <div class="appmagic-microphone-bar" data-bind="css: { 'appmagic-microphone-bar-active': microphoneViewModel.isRecording }"></div>
+        </div>
+    </div>
+    ]]>
+  </content>
+
+  <properties>
+    <property name="Audio" localizedName="##microphone_Audio##" datatype="String" defaultValue="" direction="out" isPrimaryOutputProperty="true">
+      <title>Microphone audio output</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_audioicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="Mic" localizedName="##microphone_Mic##" datatype="Number" defaultValue="0">
+      <title>Microphone device id</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##microphone_Mic_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_micicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:position>44</appMagic:position>
+        <appMagic:group>none</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##microphone_Mic_Tooltip##</appMagic:tooltip>
+    </property>
+
+    <!-- Behavior Properties -->
+    <property name="OnStop" localizedName="##microphone_OnStop##" datatype="Boolean" defaultValue="false" direction="in">
+      <title>Behavior when playback ends and stops</title>
+      <appMagic:category>behavior</appMagic:category>
+      <appMagic:displayName>##microphone_OnStop_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/behaviorrule_onendicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>85</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##microphone_OnStop_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="OnStart" localizedName="##microphone_OnStart##" datatype="Boolean" defaultValue="false" direction="in">
+      <title>Behavior when playback starts</title>
+      <appMagic:category>behavior</appMagic:category>
+      <appMagic:displayName>##microphone_OnStart_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/behaviorrule_onplayicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>84</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##microphone_OnStart_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Design -->
+    <appMagic:includeProperty name="Color" defaultValue="RGBA(255, 255, 255, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledColor" defaultValue="RGBA(186, 186, 186, 1)" />
+    <appMagic:includeProperty name="PressedColor" defaultValue="%CONTROL.ID%!Color" />
+    <appMagic:includeProperty name="HoverColor" defaultValue="%CONTROL.ID%!Color" />
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, -15%)" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 15%)" />
+    <appMagic:includeProperty name="BorderStyle" defaultValue="BorderStyle!None">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Image" defaultValue="">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="ImagePosition">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(119, 119, 119, 1)" />
+    <appMagic:includeProperty name="PressedFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, -15%)" />
+    <appMagic:includeProperty name="HoverFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, 15%)" />
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="120" />
+    <appMagic:includeProperty name="Height" defaultValue="120" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="200" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="200" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="120" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="120" />
+  </appMagic:includeProperties>
+</widget>

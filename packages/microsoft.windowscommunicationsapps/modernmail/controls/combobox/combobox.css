@@ -1,0 +1,6 @@
+﻿.comboboxHost{height:20px;display:-ms-grid;-ms-grid-columns:minmax(0, min-content) auto;}.comboboxHost>.comboboxText,.comboboxHost>.comboboxArrow{font-size:11pt;font-weight:400;color:#000000;margin:0px;padding:0px;pointer-events:none;}
+.comboboxHost:hover>.comboboxText,.comboboxHost:hover>.comboboxArrow{color:#313131;}
+.comboboxHost:active>.comboboxText,.comboboxHost:active>.comboboxArrow{color:#949494;}
+.comboboxHost>.comboboxText{margin-top:-1px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;-ms-grid-column:1;}
+.comboboxHost>.comboboxArrow{font-family:"Segoe UI Symbol";margin-top:-2px;margin-left:0px;margin-right:0px;-ms-grid-column:2;}
+.dropdownContainer.win-menu{margin:0px;padding-top:2px;padding-bottom:2px;padding-left:0px;padding-right:0px;max-width:100vw;overflow:hidden;}.dropdownContainer.win-menu>.win-command{font-size:11pt;font-weight:400;color:#000000;height:40px;margin:0px;padding-top:8px;padding-bottom:10px;padding-left:18px;padding-right:38px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}

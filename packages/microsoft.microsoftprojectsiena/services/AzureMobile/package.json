@@ -1,0 +1,25 @@
+{
+    "id": "azuremobile",
+    "version": "0.1.0",
+
+    "name": "Azure Mobile Services",
+    "description": "Accessing to functionality provided by Azure Mobile Services.",
+    "author": "Microsoft AppMagic Team",
+    "copyright": "Copyright (C) Microsoft Corporation.  All rights reserved.",
+
+    "required": [ "ams.js" ],
+    "serviceClass": "AppMagic.Services.AzureMobile",
+
+    "dataSources": {
+        "table": {
+            "displayName": "Azure Mobile Services",
+            "query": "queryTableDataSource",
+            "features": {
+                "sortable": true,
+                "pageable": true
+            }
+        }
+    },
+
+    "thumbnail": "/images/logos/ms.jpg"
+}

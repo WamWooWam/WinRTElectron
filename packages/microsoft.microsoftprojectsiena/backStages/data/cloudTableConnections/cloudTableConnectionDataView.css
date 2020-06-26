@@ -1,0 +1,20 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ */
+/* Colors */
+/* Misc styles */
+.cloudTableDataContainer .viewer {
+  margin-top: 30px;
+  height: 100%;
+}
+.cloudTableDataContainer {
+  height: 100%;
+}
+.cloudTableDataContainer .pane-header {
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 15pt;
+  color: #824a82;
+  line-height: 35px;
+  margin-bottom: 10px;
+}

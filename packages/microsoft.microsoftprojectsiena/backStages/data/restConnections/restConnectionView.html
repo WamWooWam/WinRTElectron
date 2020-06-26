@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Rest Connection View</title>
+
+    <link href="restConnectionView.css" rel="stylesheet" />
+    <script src="restConnectionView.js"></script>
+</head>
+<body>
+    <div class="fragment rest-connection" data-bind="css: {highlight: isExpanded }">
+        <div class="rest-connection-header-container">
+            <div class="rest-connection-header" data-bind="click: toggleExpansionAndRetrieveData">
+                <img data-bind="attr: { src: icon }" />
+                <div class="fileNameContainer">
+                    <div class="rest-connection-label1" data-bind="text: serviceNamespace"></div>
+                </div>
+            </div>
+
+            <div class="rest-connection-refresh-button" data-bind="
+                     visible: isServiceRefreshVisible,
+                     click: onClickRefreshConnection">
+                <img src="/images/refresh_icon_25x25.svg" />
+            </div>
+
+            <div class="rest-connection-remove-button" data-bind="
+                    visible: isRemoveEnabled,
+                    click: onClickRemoveConnection">
+                <img src="/images/trashcan_20x20.svg" />
+            </div>
+
+        </div>
+        <div class="rest-connection-item" data-bind="visible: isExpanded, text: AppMagic.AuthoringStrings.RestFunctions, css: { 'selected': !isServiceKeyConfigPageVisible}, click: onClickFunction.bind($data)"></div>
+        <div class="rest-connection-item" data-bind="visible: hasKeys && isExpanded, text: AppMagic.AuthoringStrings.RestConnectionKeys, css: { 'selected': isServiceKeyConfigPageVisible}, click: onClickKeys.bind($data)"></div>
+    </div>
+</body>
+</html>

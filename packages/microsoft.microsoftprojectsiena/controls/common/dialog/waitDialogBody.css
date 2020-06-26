@@ -1,0 +1,40 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Wait Dialog CSS
+ *
+ */
+
+.dialog .waitProgressDialogBody {
+    margin: 100px 0px;
+}
+
+.dialog .waitProgressDialogBody {
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto auto 1fr;
+    -ms-grid-rows: 1fr auto 1fr;
+}
+
+.dialog .win-ring.waitProgressRing {
+    width: 55px;
+    height: 55px;    
+    -ms-grid-column: 2;    
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center;
+    color: rgba(255, 255, 255, 1); /* Steed */
+}
+
+.dialog .waitProgressDialogText {
+    font-family: 'Segoe UI Light';
+    color: rgba(255, 255, 255, 1) /* Steed */;
+    font-size: 26pt;
+    margin-left: 25px;    
+    -ms-grid-column: 3;    
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center;
+    max-width: 600px;
+}

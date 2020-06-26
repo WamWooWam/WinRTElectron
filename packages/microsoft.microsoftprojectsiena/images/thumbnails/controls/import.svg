@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="80px" height="40px" viewBox="0 0 80 40" enable-background="new 0 0 80 40" xml:space="preserve">
+<g id="BG_x5F_40x40_x2C__80x40" display="none">
+	<rect id="_x38_0x40_1_" display="inline" fill-rule="evenodd" clip-rule="evenodd" fill="#8CC63F" width="80" height="40"/>
+	<rect id="_x34_0x40" x="20" fill-rule="evenodd" clip-rule="evenodd" fill="#D9E021" width="40" height="40"/>
+</g>
+<g id="image_x5F_40x40" display="none">
+	<g id="border_x5F_4px_2_" display="inline">
+		<path fill="#FFFFFF" d="M58,2v36H22V2H58 M60,0H20v40h40V0L60,0z"/>
+	</g>
+	<rect id="_x32_8x28" x="26" y="6" display="inline" fill="#FFFFFF" width="28" height="28"/>
+	<polyline id="line_x5F_4px_3_" display="inline" fill="none" stroke="#FF0000" stroke-width="4" stroke-miterlimit="10" points="
+		22.914,26.039 31.953,17 43,27.274 49.722,20.786 55.793,28.236 	"/>
+	<path id="sun_5_" display="inline" fill="#FF0000" d="M43.051,8.5c-2.171,0-3.939,1.768-3.939,3.94
+		c0,2.175,1.768,3.942,3.939,3.942c2.175,0,3.942-1.767,3.942-3.942C46.993,10.268,45.226,8.5,43.051,8.5L43.051,8.5z"/>
+	<rect id="_x34_x4px_2_" x="22" y="2" fill="#FF0000" width="4" height="4"/>
+</g>
+<g id="image_x5F_40x40_compound">
+	<g id="border_x5F_4px_1_">
+		<path fill="#FFFFFF" d="M58,2v36H22V2H58 M60,0H20v40h40V0L60,0z"/>
+	</g>
+	<g>
+		<polygon id="arrowDown" fill="#FFFFFF" points="42.134,26.787 48.5,20.523 48.5,25.618 39.981,34 31.5,25.654 31.5,20.562 
+			37.83,26.787 37.83,12.661 42.134,12.661 		"/>
+		<rect id="rectRt" x="31.516" y="6" fill-rule="evenodd" clip-rule="evenodd" fill="#FFFFFF" width="16.984" height="3.915"/>
+	</g>
+</g>
+</svg>

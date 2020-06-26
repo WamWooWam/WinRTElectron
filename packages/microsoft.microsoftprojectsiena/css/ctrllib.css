@@ -1,0 +1,39 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic controls common CSS
+ *
+ */
+
+.appmagic-cell-outer {
+    width: 100%;
+    height: 100%;
+    display: table;
+    overflow: hidden;
+}
+        
+.appmagic-cell {
+    position: static;
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@keyframes appmagic-fadein-keyframes {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes appmagic-fadeout-keyframes {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+.appmagic-fadein-quick {
+    animation: appmagic-fadein-keyframes 0.4s cubic-bezier(0.05,1,0.55,1);
+}
+
+.appmagic-fadeout-quick {
+    animation: appmagic-fadeout-keyframes 0.4s cubic-bezier(0.05,1,0.55,1);
+    animation-fill-mode: forwards;
+}

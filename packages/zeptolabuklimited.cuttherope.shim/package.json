@@ -1,0 +1,16 @@
+{
+  "name": "zeptolabuklimited.cuttherope.shim",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^14.0.1",
+    "css-loader": "^3.5.3",
+    "electron": "^8.2.5",
+    "file-loader": "^6.0.0",
+    "ts-loader": "^7.0.4",
+    "typescript": "^3.9.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}

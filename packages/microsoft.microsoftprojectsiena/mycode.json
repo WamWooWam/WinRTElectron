@@ -1,0 +1,13 @@
+﻿{
+    "Eval" : "MyCode",
+    "Function" : "Library",
+    "ScriptBlock" : "Unrelated",
+    "MyCode" : [
+        '*AppMagic.Common.js'
+    ],
+    "Libraries" : [
+        "*.min.js"
+    ],
+    "Unrelated" : [
+    ]
+}

@@ -1,0 +1,1621 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/gallery"
+        name="gallery"
+        jsClass="AppMagic.Controls.Gallery.GalleryControl"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[GALLERY
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="/css/ctrllib.css" />
+    <require type="css" src="css/gallery.css" />
+    <require type="markup" src="html/gallery.html" />
+    <require type="javascript" src="js/gallery.js" />
+    <require type="css" src="css/authoringButtons.css" authoringOnly="true" />
+    <require type="markup" src="html/authoringButtons.html" authoringOnly="true" />
+    <require type="other" src="/images/customgallery_editicon.svg" authoringOnly="true" />
+    <!-- 
+      This would cause imageGallery added with just sample data to not show up in published app. 
+      None of our scenarios need this for now and this is one of the 2 items that can 
+      be left out from publish time to demonstrate the feature. Therefore, we are marking it designOnly.
+    -->
+    <require type="other" src="data/imageGallery/ImageGallerySample.xlsx" authoringOnly="true" />
+    <require type="other" src="data/imageGallery/Image_Placeholder.svg" authoringOnly="true" />
+    <require type="other" src="data/textualGallery/TextualGallerySample.xlsx" authoringOnly="true" />
+    <require type="other" src="data/CustomGallerySample.xlsx" authoringOnly="true" />
+  </requires>
+
+  <appMagic:capabilities
+    supportsNestedControls="true"
+    replicatesNestedControls="true"
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+
+  <!-- TASK 89033 - Custom Gallery - Consider making the properties needed for the view public. -->
+  <content>
+    <![CDATA[
+  <div class="appmagic-gallery-container" data-bind="css: layout">
+    <div class="appmagic-gallery"
+      tabindex="0" 
+      data-bind="style: {
+        msScrollSnapType: snapType,
+        msScrollSnapPointsX: snapPointX,
+        msScrollSnapPointsY: snapPointY,
+        direction: direction,
+        overflow: !isPublishOrPreview && controlContext.isTemplate && nestedTemplate.ownerDescendantSelected ? 'hidden' : '',
+      },
+      event: { keydown: handleKeyDown },
+      disable: controlContext.viewState.disabled">
+      <div class="appmagic-gallery-items" data-bind="style: {
+        top: itemsMarginTopBottom,
+        bottom: itemsMarginTopBottom,
+        left: itemsMarginLeftRight,
+        right: itemsMarginLeftRight,
+        direction: direction
+        }"><div class="appmagic-gallery-template-item"
+          data-bind="style: {
+            display: templateItemDisplay },
+          css: transition"></div><div class="appmagic-gallery-iterated-items"
+            data-bind="css: transition"><div class="appmagic-gallery-iterated-window"
+              data-bind="css: { faded: !isPublishOrPreview && controlContext.isTemplate && nestedTemplate.ownerDescendantSelected }"></div></div>
+      </div>
+      <div class="appmagic-gallery-hiddenarea">
+        <div class="appmagic-gallery-template" tabindex="0"></div>
+        
+      </div>
+    </div>
+
+    <!--
+        zIndex for these buttons needs to be the same as zIndex for nested controlContainer, 
+        otherwise the buttons may be hidden under the gallery's controls 
+    -->
+    <button type="button" class="appmagic-gallery-navigation-button prev"
+        data-bind="html: prevText, visible: prevVisibility, disable: controlContext.viewState.disabled, click: nextOrPrevious.bind($data, -1),
+                   style: { zIndex: AppMagic.Constants.zIndex.topmost + 1 }"
+        type="button"></button>
+    <button type="button" class="appmagic-gallery-navigation-button next"
+        data-bind="html: nextText, visible: nextVisibility, disable: controlContext.viewState.disabled, click: nextOrPrevious.bind($data, 1),
+                   style: { zIndex: AppMagic.Constants.zIndex.topmost + 1 }"
+        type="button"></button>    
+  </div>  
+  ]]>
+  </content>
+
+  <appMagic:nestedWidgets>
+    <appMagic:dataControlWidget name="galleryTemplate"
+      jsClass="AppMagic.Controls.Gallery.Template"
+      id="http://microsoft.com/appmagic/galleryTemplate"
+      version="1.0">
+      
+      <appMagic:capabilities intangible="true" viewContainer="true" />
+      <properties>
+        <property name="IsSelected" localizedName="##gallery_IsSelected##" datatype="Boolean" direction="out">
+          <title>##gallery_IsSelected_Description##</title>
+          <appMagic:category>data</appMagic:category>
+        </property>
+        <property name="TemplateFill" localizedName="##gallery_TemplateFill##" datatype="Color" direction="in" defaultValue="RGBA(0, 0, 0, 0)" isExpr="true" converter="argbConverter">
+          <title>##gallery_TemplateFill_Description##</title>
+          <appMagic:category>design</appMagic:category>
+          <appMagic:helperUI>color</appMagic:helperUI>
+          <appMagic:displayName>##gallery_TemplateFill_DisplayName##</appMagic:displayName>
+          <appMagic:commandBar>
+            <appMagic:icon>
+              <appMagic:path>/images/fillicon.svg</appMagic:path>
+            </appMagic:icon>
+            <appMagic:visible>true</appMagic:visible>
+            <appMagic:position>2</appMagic:position>
+            <appMagic:group>template</appMagic:group>
+          </appMagic:commandBar>
+        </property>
+      </properties>
+    </appMagic:dataControlWidget>
+</appMagic:nestedWidgets>
+  
+  <properties>
+    <property name="Items" localizedName="##gallery_Items##" datatype="Array" direction="in" isPrimaryInputProperty="true">
+      <title>##gallery_Items_Description##</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:thisItemInput></appMagic:thisItemInput>
+      <appMagic:displayName>##gallery_Items_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_itemsicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>0</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_Items_Tooltip##</appMagic:tooltip>
+      <appMagic:sampleDataSource name="CustomGallerySample" location="data/CustomGallerySample.xlsx"/>
+    </property>
+    <property name="Default" localizedName="##gallery_Default##" datatype="object" direction="in" isExpr="true">
+      <title>##gallery_Default_Description##</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:passThroughReference>Items</appMagic:passThroughReference>
+      <appMagic:displayName>##gallery_Default_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_defaulticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_Default_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="AllItems" localizedName="##gallery_AllItems##" datatype="Array" direction="out">
+      <title>##gallery_AllItems_Description##</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:passThroughReference>Items</appMagic:passThroughReference>
+      <appMagic:nestedAware/>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_allitemsicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <!-- TASK 100068 - Gallery Architecture: Lock down requirements for/implement multi-selection. -->
+    <!--
+    <property name="SelectedItems" localizedName="##gallery_SelectedItems##" datatype="Array" direction="out">
+      <title>Pass through data and child control data for the selected items in the gallery.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:passThroughReference filtered="true">Items</appMagic:passThroughReference>
+      <appMagic:nestedAware/>
+      <appMagic:displayName>##gallery_SelectedItems_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_allitemsicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    -->
+    <property name="Selected" localizedName="##gallery_Selected##" datatype="object" direction="out" isPrimaryOutputProperty="true">
+      <title>##gallery_Selected_Description##</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:passThroughReference>Items</appMagic:passThroughReference>
+      <appMagic:nestedAware/>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_selectedicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="VisibleIndex" localizedName="##gallery_VisibleIndex##" datatype="Number" direction="out" defaultValue="1">
+      <title>##gallery_VisibleIndex_Description##</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##gallery_VisibleIndex_DisplayName##</appMagic:displayName>
+    </property>
+    <property name="TemplateSize" localizedName="##gallery_TemplateSize##" datatype="Number" direction="in" defaultValue="320" minimum="1">
+      <title>##gallery_TemplateSize_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>templateSize</appMagic:helperUI>
+      <appMagic:displayName>##gallery_TemplateSize_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_widthicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+        <appMagic:group>template</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_TemplateSize_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="TemplateWidth" localizedName="##gallery_TemplateWidth##" datatype="Number" direction="out" modelValueConstrainer="templateWidthConstrainer" defaultValue="320">
+      <title>##gallery_TemplateWidth_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##gallery_TemplateWidth_DisplayName##</appMagic:displayName>
+    </property>
+    <property name="TemplateHeight" localizedName="##gallery_TemplateHeight##" datatype="Number" direction="out" modelValueConstrainer="templateHeightConstrainer" defaultValue="320">
+      <title>##gallery_TemplateHeight_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##gallery_TemplateHeight_DisplayName##</appMagic:displayName>
+    </property>
+    <property name="TemplatePadding" localizedName="##gallery_TemplatePadding##" datatype="Number" defaultValue="5">
+      <title>##gallery_TemplatePadding_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##gallery_TemplatePadding_DisplayName##</appMagic:displayName>
+      <appMagic:helperUI>templatePadding</appMagic:helperUI>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_paddingicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>5</appMagic:position>
+        <appMagic:group>template</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_TemplatePadding_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Layout" localizedName="##gallery_Layout##" datatype="Layout" defaultValue="Layout!Horizontal" isExpr="true">
+      <title>##gallery_Layout_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>layout</appMagic:helperUI>
+      <appMagic:displayName>##gallery_Layout_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_layouticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_Layout_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Direction" localizedName="##gallery_Direction##" datatype="Direction" direction="in" defaultValue="Direction!Start" isExpr="true">
+      <title>##gallery_Direction_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>direction</appMagic:helperUI>
+      <appMagic:displayName>##gallery_Direction_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_directionicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>2</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_Direction_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Transition" localizedName="##gallery_Transition##" datatype="Transition" direction="in" defaultValue="Transition!None" isExpr="true">
+      <title>##gallery_Transition_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>transition</appMagic:helperUI>
+      <appMagic:displayName>##gallery_Transition_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_transitionicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>3</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_Transition_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="ShowNavigation" localizedName="##gallery_ShowNavigation##" datatype="Boolean" direction="in" defaultValue="false">
+      <title>##gallery_ShowNavigation_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##gallery_ShowNavigation_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/showcontrols.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>4</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_ShowNavigation_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="NavigationStep" localizedName="##gallery_NavigationStep##" datatype="Number" direction="in" defaultValue="1" minimum="1">
+      <title>##gallery_NavigationStep_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##gallery_NavigationStep_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/NavArrowJump.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>5</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_NavigationStep_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Snap" localizedName="##gallery_Snap##" datatype="Boolean" direction="in" defaultValue="false">
+      <title>##gallery_Snap_Description##</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##gallery_Snap_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_snapicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>6</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##gallery_Snap_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="%CONTROL.ID%!BorderColor" hidden="true" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="%CONTROL.ID%!BorderColor" hidden="true" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="%CONTROL.ID%!BorderColor" hidden="true" />
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>0</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="%CONTROL.ID%!Fill" hidden="true" />
+    <appMagic:includeProperty name="PressedFill" defaultValue="%CONTROL.ID%!Fill" hidden="true" />
+    <appMagic:includeProperty name="HoverFill" defaultValue="%CONTROL.ID%!Fill" hidden="true" />
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="643">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>8</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Height" defaultValue="344">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>9</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="20" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="20" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+  </appMagic:includeProperties>
+
+  <appMagic:controlVariants>
+
+    <appMagic:controlVariant name="galleryVertical">
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="Width" defaultValue="344" />
+        <appMagic:overrideProperty name="Height" defaultValue="643" />
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="280" />
+        <appMagic:overrideProperty name="Layout" defaultValue="Layout!Vertical" isExpr="true" />
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+    
+    <appMagic:controlVariant name="textualGalleryHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Heading##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Heading" isExpr="true" />
+            <appMagic:rule name="Size" value="22" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!Black" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="44" />
+            <appMagic:rule name="PaddingTop" value="4" />
+            <appMagic:rule name="PaddingBottom" value="4" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Subtitle" isExpr="true" />
+            <appMagic:rule name="Size" value="14" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(90, 90, 90, 1)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="44" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="24" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Body##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Body" isExpr="true" />
+            <appMagic:rule name="Size" value="11" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="68" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight - 68" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, 380, 120)" isExpr="true" />
+        <appMagic:overrideProperty name="TemplatePadding" defaultValue="5" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="TextualGallerySample" location="data/textualGallery/TextualGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="textualGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Heading##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Heading" isExpr="true" />
+            <appMagic:rule name="Size" value="22" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!Black" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="44" />
+            <appMagic:rule name="PaddingTop" value="4" />
+            <appMagic:rule name="PaddingBottom" value="4" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Subtitle" isExpr="true" />
+            <appMagic:rule name="Size" value="14" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(90, 90, 90, 1)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="44" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="24" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Body##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Body" isExpr="true" />
+            <appMagic:rule name="Size" value="11" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="68" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight - 68" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="Layout" defaultValue="Layout!Vertical" isExpr="true" />
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, 380, 160)" isExpr="true" />
+        <appMagic:overrideProperty name="TemplatePadding" defaultValue="5" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="TextualGallerySample" location="data/textualGallery/TextualGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <!-- TASK 93096 - Custom Gallery: Change ImageGallery variant name to match the control name (upper-case). -->
+    <appMagic:controlVariant name="imageGalleryHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Image" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight " isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, %CONTROL.ID%!Height, %CONTROL.ID%!Width-60)" isExpr="true" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="ImageGallerySample" location="data/ImageGallery/ImageGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+    
+    <appMagic:controlVariant name="imageGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Image" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="Width" defaultValue="344" />
+        <appMagic:overrideProperty name="Height" defaultValue="643" />
+        <appMagic:overrideProperty name="Layout" defaultValue="Layout!Vertical" isExpr="true" />
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, %CONTROL.ID%!Height, %CONTROL.ID%!Width-60)" isExpr="true" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="ImageGallerySample" location="data/ImageGallery/ImageGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="imageGalleryWithCaptionHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Image" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Title" isExpr="true" />
+            <appMagic:rule name="Size" value="%PARENTCONTROL.ID%!TemplateHeight/15" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!White" isExpr="true" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0.8)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %CONTROL.ID%!Height" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/4" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, %CONTROL.ID%!Height, %CONTROL.ID%!Width-60)" isExpr="true" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="ImageGallerySample" location="data/ImageGallery/ImageGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="imageGalleryWithCaptionVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Image" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Title" isExpr="true" />
+            <appMagic:rule name="Size" value="%PARENTCONTROL.ID%!TemplateHeight/15" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!White" isExpr="true" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0.8)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %CONTROL.ID%!Height" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/4" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="Width" defaultValue="344" />
+        <appMagic:overrideProperty name="Height" defaultValue="643" />
+        <appMagic:overrideProperty name="Layout" defaultValue="Layout!Vertical" isExpr="true" />
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, %CONTROL.ID%!Height, %CONTROL.ID%!Width-60)" isExpr="true" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="ImageGallerySample" location="data/ImageGallery/ImageGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="imageGalleryWithTextHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Image" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Title" isExpr="true" />
+            <appMagic:rule name="Size" value="%PARENTCONTROL.ID%!TemplateHeight/20" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!White" isExpr="true" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0.8)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %PARENTCONTROL.ID%!TemplateHeight/9 - %CONTROL.ID%!Height - 1" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/6" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Subtitle" isExpr="true" />
+            <appMagic:rule name="Size" value="%PARENTCONTROL.ID%!TemplateHeight/30" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!White" isExpr="true" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0.8)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %CONTROL.ID%!Height" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/9" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, %CONTROL.ID%!Height, %CONTROL.ID%!Width-60)" isExpr="true" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="ImageGallerySample" location="data/ImageGallery/ImageGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="imageGalleryWithTextVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Image" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Title" isExpr="true" />
+            <appMagic:rule name="Size" value="%PARENTCONTROL.ID%!TemplateHeight/20" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!White" isExpr="true" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0.8)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %PARENTCONTROL.ID%!TemplateHeight/9 - %CONTROL.ID%!Height - 1" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/6" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="Subtitle" isExpr="true" />
+            <appMagic:rule name="Size" value="%PARENTCONTROL.ID%!TemplateHeight/30" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!White" isExpr="true" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0.8)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %CONTROL.ID%!Height" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/9" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+      <appMagic:overrideProperties>
+        <appMagic:overrideProperty name="Width" defaultValue="344" />
+        <appMagic:overrideProperty name="Height" defaultValue="643" />
+        <appMagic:overrideProperty name="Layout" defaultValue="Layout!Vertical" isExpr="true" />
+        <appMagic:overrideProperty name="TemplateSize" defaultValue="If(%CONTROL.ID%!Layout = Layout!Horizontal, %CONTROL.ID%!Height, %CONTROL.ID%!Width-60)" isExpr="true" />
+        <appMagic:overrideProperty name="Items">
+          <appMagic:sampleDataSource name="ImageGallerySample" location="data/ImageGallery/ImageGallerySample.xlsx"/>
+        </appMagic:overrideProperty>
+      </appMagic:overrideProperties>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="webSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!Title" isExpr="true" />
+            <appMagic:rule name="Size" value="13" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(0, 68, 204, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="4" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="4" />
+            <appMagic:rule name="PaddingLeft" value="5" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="28" />
+            <appMagic:rule name="OnSelect" value="Launch(Url)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Description##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!Description" isExpr="true" />
+            <appMagic:rule name="LineHeight" value="1.3" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="PaddingTop" value="5" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="5" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="28" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="52" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+    
+    <appMagic:controlVariant name="newsSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!Title" isExpr="true" />
+            <appMagic:rule name="Size" value="12" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(0, 68, 204, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="4" />
+            <appMagic:rule name="PaddingLeft" value="5" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="42" />
+            <appMagic:rule name="OnSelect" value="Launch(Url)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Description##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!Description" isExpr="true" />
+            <appMagic:rule name="LineHeight" value="1.3" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="PaddingTop" value="5" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="5" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="28" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="69" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Source##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!Source&amp;&quot; &quot;&amp;DateValue(ThisItem!Date)" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="5" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="94" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="15" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="imageSearchGalleryHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Thumbnail!MediaUrl" isExpr="true" />
+            <appMagic:rule name="ImagePosition" value="ImagePosition!Fill" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="225" />
+            <appMagic:rule name="Height" value="160" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="videoSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!Thumbnail!MediaUrl" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="125" isExpr="true" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="125" />
+            <appMagic:rule name="Height" value="75" />
+            <appMagic:rule name="BorderColor" value="RGBA(255, 185, 0, 1)" isExpr="true" />
+            <appMagic:rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+            <appMagic:rule name="BorderThickness" value="3" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0)" isExpr="true" />
+            <appMagic:rule name="Visible" value="If(ThisItem!IsSelected,true,false)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!Title" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="125" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="275" isExpr="true" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+    
+     <appMagic:controlVariant name="youTubeSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!snippet!thumbnails!medium!url" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="125" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="125" />
+            <appMagic:rule name="Height" value="75" />
+            <appMagic:rule name="BorderColor" value="RGBA(192, 0, 0, 1)" isExpr="true" />
+            <appMagic:rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+            <appMagic:rule name="BorderThickness" value="3" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0)" isExpr="true" />
+            <appMagic:rule name="Visible" value="If(ThisItem!IsSelected,true,false)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!snippet!title" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="125" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="275" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+   <appMagic:controlVariant name="youTubePlaylistGalleryHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!snippet!thumbnails!medium!url" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="127" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+         <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="127" />
+            <appMagic:rule name="Height" value="75" />
+            <appMagic:rule name="BorderColor" value="RGBA(192, 0, 0, 1)" isExpr="true" />
+            <appMagic:rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+            <appMagic:rule name="BorderThickness" value="3" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0)" isExpr="true" />
+            <appMagic:rule name="Visible" value="If(ThisItem!IsSelected,true,false)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!snippet!title" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+            <appMagic:rule name="PaddingLeft" value="0" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="75" />
+            <appMagic:rule name="Width" value="136" />
+            <appMagic:rule name="Height" value="105" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <!-- Coursera -->
+    <appMagic:controlVariant name="courseraSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!largeIcon" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="125" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="125" />
+            <appMagic:rule name="Height" value="75" />
+            <appMagic:rule name="BorderColor" value="RGBA(0, 104, 176, 1)" isExpr="true" />
+            <appMagic:rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+            <appMagic:rule name="BorderThickness" value="3" />
+            <appMagic:rule name="Fill" value="RGBA(0, 0, 0, 0)" isExpr="true" />
+            <appMagic:rule name="Visible" value="If(ThisItem!IsSelected,true,false)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="125" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="275" />
+            <appMagic:rule name="Height" value="75" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <!-- Facebook -->
+    <appMagic:controlVariant name="faceBookFriendsVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!picture!data!url" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="180" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="facebookAlbumsHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="First(ThisItem!images)!source" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="3 * %PARENTCONTROL.ID%!TemplateHeight/4" isExpr="true" />
+            <appMagic:rule name="PaddingRight" value="10" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Caption##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - %PARENTCONTROL.ID%!TemplateHeight/4" isExpr="true"/>
+            <appMagic:rule name="Text" value="ThisItem!name" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight/4" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <!-- Instagram -->
+    <appMagic:controlVariant name="instagramFollowingVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!profile_picture" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Username##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!full_name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!username" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="40" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+    
+    <appMagic:controlVariant name="instagramSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!profile_picture" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Username##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!full_name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!username" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="40" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="instagramMyLikesAndFeedHorizontal">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!images!standard_resolution!url" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="225" />
+            <appMagic:rule name="Height" value="160" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Image" localizedName="##variantControl_SmallImage##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="ThisItem!user!profile_picture" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="164" />
+            <appMagic:rule name="Width" value="25" />
+            <appMagic:rule name="Height" value="25" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Username##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!user!username" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="X" value="25" />
+            <appMagic:rule name="Y" value="164" />
+            <appMagic:rule name="Width" value="152" />
+            <appMagic:rule name="Height" value="25" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!caption!text" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="0" />
+            <appMagic:rule name="PaddingLeft" value="0" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="189" />
+            <appMagic:rule name="Width" value="225" />
+            <appMagic:rule name="Height" value="92" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+    
+  <!--Twitter -->
+    
+  <appMagic:controlVariant name="twitterSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="Substitute(ThisItem!profile_image_url,&quot;_normal.&quot;,&quot;_400x400.&quot;)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Username##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="&quot;@&quot; &amp;ThisItem!screen_name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="40" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+  
+  <appMagic:controlVariant name="twitterFollowingVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="Substitute(ThisItem!profile_image_url,&quot;_normal.&quot;,&quot;_400x400.&quot;)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Name##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="10" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="180" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_ScreenName##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="&quot;@&quot; &amp;ThisItem!screen_name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="10" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="40" />
+            <appMagic:rule name="Width" value="180" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <!-- Yammer -->
+    <appMagic:controlVariant name="yammerSearchGalleryVertical">
+      <appMagic:controls>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="Image" value="Substitute(Substitute(ThisItem!mugshot_url_template,&quot;{width}&quot;,&quot;400&quot;),&quot;{height}&quot;,&quot;400&quot;)" isExpr="true" />
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="80" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Username##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!name" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Bottom" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="Text" value="ThisItem!job_title" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="PaddingLeft" value="10" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="X" value="80" />
+            <appMagic:rule name="Y" value="40" />
+            <appMagic:rule name="Width" value="320" />
+            <appMagic:rule name="Height" value="40" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <!--Office 365-->
+    <appMagic:controlVariant name="office365DateGallery">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+            <appMagic:rule name="Text" value="Day(ThisItem!Value+Today())" isExpr="true" />
+            <appMagic:rule name="Size" value="15" />
+            <appMagic:rule name="PaddingTop" value="23" />
+            <appMagic:rule name="PaddingBottom" value="5" />
+            <appMagic:rule name="Color" value="If(ThisItem!IsSelected, Color!White, ThisItem!Value = 0, RGBA(218, 59, 1, 1), Color!Gray)" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Normal" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true" />
+            <appMagic:rule name="BorderColor" value="RGBA(200, 200, 200, 1)"  isExpr="true" />
+            <appMagic:rule name="BorderThickness" value="1" />
+            <appMagic:rule name="Fill" value="If(ThisItem!IsSelected, RGBA(218, 59, 1, 1), RGBA(0,0,0,0))" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="13" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="25" />
+            <appMagic:rule name="Text" value="Upper(Text(Today()+ThisItem!Value,&quot;ddd&quot;))" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Semibold" isExpr="true" />
+            <appMagic:rule name="Color" value="If(ThisItem!IsSelected, Color!White, ThisItem!Value = 0, RGBA(218, 59, 1, 1), Color!Gray)" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Center" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="office365ItemGallery">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+            <appMagic:rule name="Text" value="ThisItem!Subject" isExpr="true" />
+            <appMagic:rule name="PaddingLeft" value="80" />
+            <appMagic:rule name="PaddingRight" value="115" />
+            <appMagic:rule name="Size" value="12" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Normal" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!Black" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="BorderThickness" value="1" />
+            <appMagic:rule name="Fill" value="If(ThisItem!IsSelected, Color!WhiteSmoke, RGBA(0,0,0,0))" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="80" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+            <appMagic:rule name="Text" value="Text(DateTimeValue(ThisItem!Start), DateTimeFormat!ShortTime) &amp; &quot;&#xA;&quot; &amp; Text(DateTimeValue(ThisItem!End), DateTimeFormat!ShortTime)" isExpr="true" />
+            <appMagic:rule name="PaddingLeft" value="15" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Normal" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Left" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+            <appMagic:rule name="LineHeight" value="1.5" />
+          </appMagic:rules> 
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##O365Meeting_Location##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="%PARENTCONTROL.ID%!TemplateWidth - 115" isExpr="True"/>
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="115" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+            <appMagic:rule name="Text" value="ThisItem!Location!DisplayName" isExpr="true" />
+            <appMagic:rule name="PaddingRight" value="15" />
+            <appMagic:rule name="PaddingLeft" value="15" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Normal" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Left" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - 1" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="1" />
+            <appMagic:rule name="Fill" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="office365ContactGallery">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Name##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth - 1" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true"/>
+            <appMagic:rule name="Text" value="ThisItem!DisplayName" isExpr="true" />
+            <appMagic:rule name="PaddingLeft" value="%PARENTCONTROL.ID%!TemplateHeight + 5" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="8" />
+            <appMagic:rule name="Size" value="11" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Left" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Fill" value="If(ThisItem!IsSelected, Color!WhiteSmoke, RGBA(0, 0, 0, 0))" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Image" localizedName="##variantControl_Image##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="5" />
+            <appMagic:rule name="Y" value="5" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateHeight - 10" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight - 10" isExpr="true" />
+            <appMagic:rule name="Fill" value="Color!LightGray" isExpr="true" />
+            <appMagic:rule name="Image" value="If(!IsBlank(First(EmailAddresses)) &amp;&amp; !IsBlank(Office365!UserPhoto(First(EmailAddresses)!Address)), Office365!UserPhoto(First(EmailAddresses)!Address))" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight/2 - 5" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth - 60" isExpr="true" />
+            <appMagic:rule name="Height" value="20" isExpr="true" />
+            <appMagic:rule name="Text" value="ThisItem!JobTitle" isExpr="true" />
+            <appMagic:rule name="Size" value="9" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Normal" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Left" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - 1" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="1" />
+            <appMagic:rule name="Fill" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+    <appMagic:controlVariant name="office365MailGallery">
+      <appMagic:controls>
+        <appMagic:control template="Label" localizedName="##variantControl_Body##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth - 1" isExpr="true" />
+            <appMagic:rule name="Height" value="%PARENTCONTROL.ID%!TemplateHeight" isExpr="true" />
+            <appMagic:rule name="PaddingTop" value="68" />
+            <appMagic:rule name="PaddingLeft" value="20" />
+            <appMagic:rule name="PaddingRight" value="20" />
+            <appMagic:rule name="Text" value="ThisItem!BodyPreview" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Fill" value="If(ThisItem!IsSelected, Color!WhiteSmoke, RGBA(0, 0, 0, 0))" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Title##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="0" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="40" />
+            <appMagic:rule name="PaddingTop" value="10" />
+            <appMagic:rule name="PaddingLeft" value="20" />
+            <appMagic:rule name="PaddingRight" value="20" />
+            <appMagic:rule name="Text" value="ThisItem!From!EmailAddress!Name" isExpr="true" />
+            <appMagic:rule name="Size" value="16" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="Color!Black" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Left" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##variantControl_Subtitle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="40" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="25" isExpr="true" />
+            <appMagic:rule name="PaddingLeft" value="20" />
+            <appMagic:rule name="PaddingRight" value="20" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="Text" value="ThisItem!Subject" isExpr="true" />
+            <appMagic:rule name="Size" value="11" />
+            <appMagic:rule name="FontWeight" value="If(ThisItem!IsRead, FontWeight!Lighter, FontWeight!Semibold)" isExpr="true" />
+            <appMagic:rule name="Color" value="If(ThisItem!IsRead, Color!Black, RGBA(0, 112, 192, 1))" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="LineHeight" value="2" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Label" localizedName="##O365Mail_DateTime##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="%PARENTCONTROL.ID%!TemplateWidth - 105" isExpr="true" />
+            <appMagic:rule name="Y" value="15" />
+            <appMagic:rule name="Width" value="100" />
+            <appMagic:rule name="Height" value="25" />
+            <appMagic:rule name="PaddingTop" value="0" />
+            <appMagic:rule name="PaddingLeft" value="0" />
+            <appMagic:rule name="PaddingRight" value="20" />
+            <appMagic:rule name="Text" value="If(DateValue(ThisItem!DateTimeReceived) = Today(), Text(DateTimeValue(ThisItem!DateTimeReceived), DateTimeFormat!ShortTime), Text(DateValue(ThisItem!DateTimeReceived), DateTimeFormat!ShortDate))" isExpr="true" />
+            <appMagic:rule name="Size" value="10" />
+            <appMagic:rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+            <appMagic:rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+            <appMagic:rule name="VerticalAlign" value="VerticalAlign!Top" isExpr="true" />
+            <appMagic:rule name="Align" value="Align!Right" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+        <appMagic:control template="Rectangle" localizedName="##variantControl_Rectangle##">
+          <appMagic:rules>
+            <appMagic:rule name="X" value="0" />
+            <appMagic:rule name="Y" value="%PARENTCONTROL.ID%!TemplateHeight - 1" isExpr="true" />
+            <appMagic:rule name="Width" value="%PARENTCONTROL.ID%!TemplateWidth" isExpr="true" />
+            <appMagic:rule name="Height" value="1" />
+            <appMagic:rule name="Fill" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+          </appMagic:rules>
+        </appMagic:control>
+      </appMagic:controls>
+    </appMagic:controlVariant>
+
+  </appMagic:controlVariants>
+
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Items" output="AllItems"/>
+    <appMagic:propertyDependency input="Items" output="Selected"/>
+    <appMagic:propertyDependency input="Default" output="Selected"/>
+    <appMagic:propertyDependency input="TemplateSize" output="TemplateWidth"/>
+    <appMagic:propertyDependency input="TemplateSize" output="TemplateHeight"/>
+  </appMagic:propertyDependencies>
+</widget>

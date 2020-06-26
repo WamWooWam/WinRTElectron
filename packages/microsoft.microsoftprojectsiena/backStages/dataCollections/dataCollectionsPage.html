@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dataCollectionsPage</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="dataCollectionsPage.css" rel="stylesheet" />
+    <script src="dataCollectionsPage.js"></script>
+</head>
+<body>
+    <div class="dataCollectionsPage">
+
+        <div class="collectionMenu" data-win-control="WinJS.UI.Menu" tabindex="0"
+             data-bind="foreach: collectionOptions.collections">
+            <button class="collectionMenuOptions" type="button" data-win-control="WinJS.UI.MenuCommand" data-bind="
+    winjsControlClass: WinJS.UI.MenuCommand,
+    text: $data,
+    css: { selected: $index() === $parent.collectionOptions.selected },
+    click: $parent.onClickCollectionOption.bind($parent, $index())"></button>
+        </div>
+
+        <div class="dataCollectionsNamesList">
+            <div class="dataCollectionslistHeader" data-bind="text: AppMagic.AuthoringStrings.ExistingDataCollectionsHeader"></div>
+
+            <div class="noCollectionsContainer" data-bind="visible: collectionOptions.collections.length === 0">
+                <div data-bind="text: AppMagic.AuthoringStrings.DataCollectionsPageNoCollections"></div>
+            </div>
+
+            <div class="dataCollectionslist" data-bind="foreach: collectionOptions.collections">
+                <div class="dataCollectionslistItem" data-bind="
+                        css: { selected: $index() === $parent.collectionOptions.selected },
+                        click: $parent.onClickCollectionOption.bind($parent, $index())">
+                    <div class="dataCollectionslistItemName" data-bind="text: $data">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="paneSplitter"></div>
+        <div class="dataCollectionsPreview">
+            <div class="dataCollectionsPreviewHeader" data-bind="text: AppMagic.AuthoringStrings.DataCollectionsPreview, visible: dataViewerViewModel.viewers.length > 0"></div>
+            <div class="depthBand" data-bind="visible: dataViewerViewModel.viewers.length > 0 ">
+                <span class="depthRoot" data-bind="
+                css: { 'clickableDepth': dataViewerViewModel.viewers.length > 1 },
+                text: (dataViewerViewModel.viewers.length > 0) ? dataViewerViewModel.viewers[0].name : '', click: onClickDepthLevel.bind($data, 0)">
+                </span>
+                <!-- ko foreach: dataViewerViewModel.viewers -->
+                <!-- ko if: $index() > 0 -->
+                <span class="depthLevelcaret" data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.rightTriangle"></span>
+                <span class="depthLevel" data-bind="
+                    css: { 'clickableDepth': $index() !== $parent.dataViewerViewModel.viewers.length - 1 },
+                    text: name, click: $parent.onClickDepthLevel.bind($parent, $index())">
+                </span>
+                <!-- /ko -->
+                <!-- /ko -->
+            </div>
+
+            <!-- ko if: collectionOptions.collections.length > 0 -->
+            <div class="dataCollectionsPanorama" data-bind="foreach: dataViewerViewModel.viewers">
+                <div class="viewer" data-bind="
+                visible: $index() >= $parent.dataViewerViewModel.viewers.length - 1,
+                css: {
+                    'expandedViewer': true,
+                },
+                property: { viewModel: $data },
+                winjsControl: '/controls/objectViewer/objectViewerControl.html'">
+                </div>
+            </div>
+            <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,282 @@
+﻿/* Colors */
+/* Misc styles */
+.visualIntellisense .container {
+  margin: 10px 0px;
+  width: 100%;
+}
+.visualIntellisense .container.scroll {
+  height: 160px;
+  overflow-y: auto;
+}
+.visualIntellisense .container.center {
+  /* Center content within element. */
+  text-align: center;
+  line-height: 50px;
+}
+.visualIntellisense .imageList {
+  height: 40px;
+  /* Center content within element. */
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+}
+.visualIntellisense .imageList .imageItem {
+  background-origin: border-box;
+  float: left;
+  height: 30px;
+  margin-left: 20px;
+  width: 30px;
+}
+.visualIntellisense .imageList .imageItem.selected {
+  box-sizing: border-box;
+  background-color: #2A2A2A;
+  /*Onyx*/
+  border: solid 2px #FFFFFF;
+  /*Steed*/
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .visualIntellisense .imageList .imageItem.selected {
+    background-color: Highlight;
+  }
+}
+.visualIntellisense .imageList .imageItem.borderStyleImage,
+.visualIntellisense .imageList .imageItem.borderStyleImage.selected {
+  box-sizing: border-box;
+  border-width: 1px;
+}
+.visualIntellisense .container .textItem,
+.visualIntellisense .container .imageTextItem,
+.visualIntellisense .container .checkboxTextItem {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+  font-size: 11pt;
+  padding: 0px 20px;
+  width: 100%;
+  /* TASK 95897: High Conrast black on white Icons not visible*/
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .visualIntellisense .container .textItem,
+  .visualIntellisense .container .imageTextItem,
+  .visualIntellisense .container .checkboxTextItem {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}
+.visualIntellisense .container .textItem,
+.visualIntellisense .container .imageTextItem.pen,
+.visualIntellisense .container .checkboxTextItem {
+  height: 40px;
+  line-height: 40px;
+}
+.visualIntellisense .container .checkboxTextItem {
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+}
+.visualIntellisense .container .imageTextItem {
+  height: 50px;
+  line-height: 50px;
+}
+.visualIntellisense .imageList .imageItem {
+  -ms-high-contrast-adjust: none;
+  /* to make icons visible in High Contrast mode*/
+  /* TASK 95897: High Conrast black on white Icons not visible*/
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .visualIntellisense .imageList .imageItem {
+    background-color: #000000;
+    color: #FFFFFF;
+  }
+}
+.visualIntellisense .container .textItem:hover,
+.visualIntellisense .container .imageTextItem:hover,
+.visualIntellisense .imageList .imageItem:hover {
+  background-color: #777777;
+  /*Storm*/
+}
+@media all and (-ms-high-contrast: active) {
+  .visualIntellisense .container .textItem:hover,
+  .visualIntellisense .container .imageTextItem:hover,
+  .visualIntellisense .imageList .imageItem:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+.visualIntellisense .container .textItem:focus,
+.visualIntellisense .container .imageTextItem:focus,
+.visualIntellisense .imageList .imageItem:focus {
+  outline: none;
+  background-color: #777777;
+  /*Storm*/
+}
+@media all and (-ms-high-contrast: active) {
+  .visualIntellisense .container .textItem:focus,
+  .visualIntellisense .container .imageTextItem:focus,
+  .visualIntellisense .imageList .imageItem:focus {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+.visualIntellisense .container .textItem.selected,
+.visualIntellisense .container .imageTextItem.selected {
+  background-color: #966596;
+  /*Tincture*/
+}
+@media all and (-ms-high-contrast: active) {
+  .visualIntellisense .container .textItem.selected,
+  .visualIntellisense .container .imageTextItem.selected {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+.visualIntellisense .container .imageTextItem div,
+.visualIntellisense .container .checkboxTextItem div {
+  display: inline-block;
+  float: left;
+  margin: 0px 0px 0px 20px;
+  vertical-align: middle;
+}
+.visualIntellisense .container .imageTextItem img {
+  float: left;
+  height: 30px;
+  padding: 10px 0px;
+  width: 50px;
+}
+.visualIntellisense .container .imageTextItem.pen img {
+  height: 20px;
+  width: 15px;
+}
+.visualIntellisense .container .checkboxTextItem input[type=checkbox] {
+  float: left;
+  height: 20px;
+  margin-right: 0px;
+  padding: 10px 0px;
+  width: 17px;
+}
+input[type="range"].valueSlider {
+  height: 45px;
+  margin: 5px 10px 5px 0px;
+  outline: none;
+  padding: 0px;
+  width: 340px;
+}
+/*Range control colors.*/
+input[type=range].valueSlider,
+input[type=range].valueSlider::-ms-track {
+  background-color: transparent;
+}
+/*Thumb - Normal*/
+input[type=range].valueSlider::-ms-thumb {
+  width: 11px;
+  background-color: #FFFFFF;
+  /*Steed*/
+}
+/*Thumb - Disabled*/
+input[type=range].valueSlider:disabled::-ms-thumb {
+  width: 11px;
+  background-color: #A6A6A6;
+  /*Stone*/
+}
+input[type=range].valueSlider::-ms-tooltip {
+  display: none;
+}
+/*Rest State*/
+input[type=range].valueSlider::-ms-fill-lower {
+  background-color: #6F3F6F !important;
+  /*Nightshade*/
+}
+input[type=range].valueSlider::-ms-fill-upper {
+  background-color: #C2C2C2 !important;
+  /*Ash*/
+}
+/*Hover State*/
+input[type=range].valueSlider:hover::-ms-fill-lower {
+  background-color: #6F3F6F !important;
+  /*Nightshade*/
+}
+input[type=range].valueSlider:hover::-ms-fill-upper {
+  background-color: #D9D9D9 !important;
+  /*Ash*/
+}
+/*Active State*/
+input[type=range].valueSlider:active::-ms-fill-lower {
+  background-color: #966596 !important;
+  /*Tincture*/
+}
+input[type=range].valueSlider:active::-ms-fill-upper {
+  background-color: #E3E3E3 !important;
+  /*Ash*/
+}
+/*Override the out of focus styles. Applying the same style as of rest state*/
+input[type=range].valueSlider:not(focus)::-ms-fill-lower {
+  background-color: #6F3F6F;
+  /*Nightshade*/
+}
+input[type=range].appmagic-slider:not(focus)::-ms-fill-upper {
+  background-color: #777777;
+  /*Storm*/
+}
+.valueTextBoxContainer {
+  height: 50px;
+  width: 45px;
+  display: inline-block;
+  vertical-align: top;
+}
+input[type="text"].valueTextBox {
+  border: 0px;
+  height: 30px;
+  margin: 10px 10px 10px 0px;
+  min-width: 50px;
+  text-align: center;
+  vertical-align: middle;
+  width: 50px;
+}
+.colorsContainer {
+  margin-top: 10px;
+}
+.colorsDiv {
+  display: inline;
+  /* display: Inline to wrap the MRU color in the same line */
+  margin-top: 10px;
+  text-align: left;
+}
+.colorsDiv:focus {
+  outline: none;
+}
+.colorsDiv .colorRow {
+  margin-left: 20px;
+}
+.colorRow {
+  display: inline-block;
+  box-sizing: border-box;
+  height: 40px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+}
+.colorDiv {
+  border: 1px solid #A6A6A6;
+  /*Stone*/
+  box-sizing: border-box;
+  display: inline-block;
+  /* display: Inline-block to preserve the height and width */
+  height: 30px;
+  margin-right: 11.8px;
+  width: 30px;
+  background-origin: border-box;
+  -ms-high-contrast-adjust: none;
+  /* In High Contrast modes this allows the color squares to show the correct color, rather than the HC default background.*/
+}
+.colorDiv:focus {
+  outline: none;
+}
+.colorDiv:hover,
+.colorDiv.selected {
+  border: 2px solid #FFFFFF;
+  /*Steed*/
+}
+.recentlyUsedContainer {
+  /* display: Inline to wrap it up along the solid colors */
+  display: inline;
+}
+.recentlyUsedContainer .colorRow {
+  outline: none;
+}

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>restServiceKeyConfig</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="restServiceKeyConfig.css" rel="stylesheet" />
+    <script src="restServiceKeyConfig.js"></script>
+</head>
+<body>
+    <div class="rest-service-key-config">
+        <div class="rest-service-key-config-line0" data-bind="foreach: userVariables">
+            <div class="userVariableName" data-bind="text: $data.title"></div>
+            <input tabindex="0" class="userVariableTextBox" data-bind="attr: { type: $data.inputtype, variableName: $data.name }, value: $data.value, valueUpdate: ['keyup', 'input']" data-appmagic-initialfocus="true" />
+        </div>
+
+        <div class="rest-service-key-config-disclaimer-note" data-bind="text: AppMagic.AuthoringStrings.RestServiceKeyConfigDisclaimerNote"></div>
+        <div class="rest-service-key-config-help-container link" tabindex="0" data-bind="clickOrEnter: onHelpLinkClick">
+            <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.RestServiceKeyConfigHelpText"></span>
+            <span class="icon">&#xE2AB;</span>
+        </div>
+        <div class="rest-service-key-config-buttons">
+            <button class="service-config-button-apply backstage-button" data-bind="disable: !isConnectEnabled,
+                                                        text: AppMagic.AuthoringStrings.BackStageKeyUpdateText,
+                                                        clickOrEnter: onClickConnect" tabindex="0"></button>
+            <button class="service-config-button-clear backstage-button" data-bind="visible: isClearVisible,
+                                                        disable: !isClearEnabled,
+                                                        text: AppMagic.AuthoringStrings.BackStageKeyClearText,
+                                                        clickOrEnter: onClickClear" tabindex="0"></button>
+        </div>
+    </div>
+</body>
+</html>

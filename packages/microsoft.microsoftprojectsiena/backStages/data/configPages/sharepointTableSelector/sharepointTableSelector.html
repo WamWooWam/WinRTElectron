@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Table Selector</title>
+
+    <link href="sharepointTableSelector.css" rel="stylesheet" />
+    <script src="sharepointTableSelector.js"></script>
+</head>
+<body>
+    <div class="fragment table-selector">
+        <div class="table-selector-controls">
+            <label data-bind="text: AppMagic.AuthoringStrings.BackStageLabelSelectAll,
+                                click: selectAllTables"></label>
+            <label data-bind="text: AppMagic.AuthoringStrings.BackStageLabelUnselectAll,
+                                click: unselectAllTables"></label>
+        </div>
+
+        <div class="table-selector-tables">
+            <table>
+                <tbody data-bind="foreach: tables">
+                    <tr class="table-selector-table">
+                        <td><input type="checkbox" data-bind="checked: isSelected" /></td>
+                        <td><label data-bind="text: tableName"></label></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table-selector-import-container">
+            <button class="table-selector-import-button backstage-button" type="submit"
+                    data-bind="text: AppMagic.AuthoringStrings.BackStageFlyoutSaveButtonText,
+                                click: importTables"></button>
+            <button class="table-selector-cancel-button backstage-button" type="reset"
+                    data-bind="text: AppMagic.AuthoringStrings.BackStageFlyoutCancelButtonText,
+                                click: reset"></button>
+        </div>
+    </div>
+</body>
+</html>

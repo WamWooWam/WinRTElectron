@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Azure Config</title>
+
+    <link href="azureConfig.css" rel="stylesheet" />
+    <script src="azureConfig.js"></script>
+</head>
+<body>
+    <div class="fragment ams-pane">
+        <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageAMSTitle"></div>
+
+        <div class="azure-config-prop">
+            <input class="urlInput" type="text" data-bind="attr: { placeholder: AppMagic.AuthoringStrings.AmsURLPlaceholder }, value: serviceUrl, event: { keypress: handleKeypress }, valueUpdate: ['keyup', 'input']" />
+            <div class="searchButton" data-bind="click: searchAzure" />
+        </div>
+
+        <div class="azure-config-prop">
+            <input class="urlInput" type="text" data-bind="attr: { placeholder: AppMagic.AuthoringStrings.AmsAppKeyPlaceholder }, value: appKey, event: { keypress: handleKeypress }, valueUpdate: ['keyup', 'input']" />
+        </div>
+
+        <div class="ams-config-import-container">
+            <button class="ams-config-import backstage-button" type="submit"
+                    data-bind="text: AppMagic.AuthoringStrings.BackstageConnectButtonText,
+                               click: searchAzure"></button>
+        </div>
+
+        <progress class="ams-connection-wait" data-bind="visible: isWaitVisible"></progress>
+
+        <div class="azure-config-table" data-bind="property: { viewModel: tableSelector },
+                        visible: !isWaitVisible && tableSelectorVisible,
+                        winjsControl: '/backStages/data/configPages/tableSelector/tableSelector.html'"></div>
+
+        <div class="azure-config-failure failure" data-bind="visible: isErrorVisible">
+            <ul class="failure-messages" data-bind="foreach: errorMessages">
+                <li data-bind="text: $data" unselectable="off"></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

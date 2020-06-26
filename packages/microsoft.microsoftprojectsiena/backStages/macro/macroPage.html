@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>macroPage</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="macroPage.css" rel="stylesheet" />
+    <script src="macroPage.js"></script>
+</head>
+<body>
+    <div class="macroPage">
+
+        <div class="existingMacrosList">
+            <div class="existingMacrosHeader header" data-bind="text: AppMagic.AuthoringStrings.ExistingNamedExpressionsHeader"></div>
+
+            <div class="scrollBox macroList" data-bind="foreach: macroListValues">
+                <div class="macroListItem" data-bind="event: { click: $parent.handleMacroClick.bind($parent, $index) }, css: { selectedItem: $parent.currentIndex === $index() }">
+                    <div class="macroListHeading" data-bind="visible: $index() !== $parent.currentIndex || !$parent.currentIndexEditing, text: name, event: { click: $parent.handleNameClick.bind($parent, $index) }, clickBubble: false"></div>
+                    <!-- ko if: $parent.currentIndexEditing && $parent.currentIndex === $index() -->
+                    <input type="text" class="macroListHeadingEditor" data-bind="valueUpdate: 'afterkeydown', value: $parent.nameEditValue, event: { keyup: $parent.handleNameEditKeyup.bind($parent), keydown: $parent.handleNameEditKeydown.bind($parent) }, clickBubble: false" />
+                    <div class="squiggles" id="macroSquiggles" data-bind="visible: $parent.squiggleVisible, style: { width: $parent.squiggleWidth }"></div>
+                    <!-- /ko -->
+                    <div class="macroListBody" data-bind="foreach: script"><span data-bind="text: text, css: { highlight: highlight }"></span></div>
+                    <img class="delButton" data-bind="clickBubble: false, visible: $parent.currentIndex === $index(), event: { click: $parent.handleDeleteClick.bind($parent, $index) }, attr: { src: '/images/trashcan_20x20.svg' }" />
+                </div>
+            </div>
+
+        </div>
+
+        <div class="paneSplitter"></div>
+
+        <div class="macrosRulesList">
+            <div class="macroRuleHeader header">
+                <div class="macroName" data-bind="visible: ruleViewerValues.length !== 0, text: macroName"></div>
+                <div class="macroRuleUsedIn" data-bind="visible: ruleViewerValues.length !== 0, text: AppMagic.AuthoringStrings.MacroRuleUsedInHeader"></div>
+            </div>
+
+            <div class="scrollBox ruleList" data-bind="foreach: ruleViewerValues">
+                <div class="ruleViewerItem">
+                    <span class="ruleViewerHeading" data-bind="text: name, event: { click: $parent.handleRuleHeadingClick.bind($parent, $index) }"></span>
+                    <div class="ruleViewerBody" data-bind="foreach: script"><span data-bind="text: text, css: { highlight: highlight }"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

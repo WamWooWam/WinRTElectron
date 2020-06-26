@@ -1,0 +1,115 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ */
+/* Colors */
+/* Misc styles */
+.data-connection {
+  margin-bottom: 25px;
+}
+.data-connection.highlight {
+  background-color: #f4f4f4;
+}
+.data-connection-header-container {
+  display: -ms-grid;
+  -ms-grid-rows: auto;
+  -ms-grid-columns: 1fr auto auto;
+  margin: 0px 10px 0px 10px;
+}
+.data-connection-header-container .data-connection-refresh-button,
+.data-connection-header-container .data-connection-remove-button {
+  background-color: #643964;
+  box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  display: -ms-grid;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  width: 24px;
+  height: 24px;
+}
+.data-connection-header-container .data-connection-refresh-button:hover,
+.data-connection-header-container .data-connection-remove-button:hover,
+.data-connection-header-container .data-connection-refresh-button:active,
+.data-connection-header-container .data-connection-remove-button:active {
+  background-color: #824a82;
+}
+.data-connection-header-container .data-connection-refresh-button {
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  margin-right: 5px;
+}
+.data-connection-header-container .data-connection-remove-button {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
+}
+.data-connection-header-container .data-connection-header {
+  -ms-grid-column: 1;
+  height: 35px;
+  /*
+        Flexbox is used to implement pretty path truncation, where the parent path is truncated
+        before the filename is truncated.
+    */
+  /* Center content within element. */
+  display: flex;
+  align-items: center;
+  /* Prevent the path from extending beyond the header. */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -ms-grid;
+  -ms-grid-columns: 20px 10px 1fr 10px;
+}
+.data-connection-header-container img {
+  -ms-grid-column: 1;
+  display: -ms-grid;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+  height: 20px;
+  width: 20px;
+  line-height: 35px;
+}
+.data-connection-header div,
+.data-connection .data-source-selector-menu .tableItem {
+  color: #000000;
+  font-family: "Segoe UI";
+  font-size: 10pt;
+  height: 20px;
+  vertical-align: middle;
+  -ms-grid-column: 3;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.data-connection-header .data-connection-name {
+  -ms-grid-column: 3;
+  height: 35px;
+  line-height: 35px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  /* Give the first label a shrink factor of 1 so that it truncates before the second label. */
+  -ms-flex: 0 1 auto;
+}
+.data-connection .data-source-selector-menu .data-source-selector-button:hover,
+.data-connection .data-source-selector-menu .data-source-selector-button:active,
+.data-connection .data-source-selector-menu .data-source-selector-button:hover:active {
+  background-color: #777777;
+  color: #000000;
+}
+.data-connection .data-source-selector-menu .data-source-selector-button.selected-data-source,
+.data-connection .data-source-selector-menu .data-source-selector-button.selected-data-source:active {
+  background-color: #e1d7e2;
+  color: #000000;
+}
+.data-connection .data-source-selector-menu .tableItem {
+  padding-left: 35px;
+  min-height: 35px;
+  line-height: 35px;
+}
+.data-connection .data-source-selector-menu .tableItem:hover {
+  background-color: #c8c8c8;
+}
+.data-connection .data-source-selector-menu .tableItem:active,
+.data-connection .data-source-selector-menu .tableItem.selected-data-source {
+  background-color: #e1d7e2;
+}

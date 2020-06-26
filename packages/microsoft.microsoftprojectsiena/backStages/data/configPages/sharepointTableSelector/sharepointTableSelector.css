@@ -1,0 +1,68 @@
+﻿.table-selector {
+    margin-right: 30px;
+}
+
+.table-selector-controls {
+    margin: 10px 0 10px 0;
+
+    /* Label4 */
+    font-family: 'Segoe UI';
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.table-selector-controls label {
+    margin: 0 30px 0 0;
+}
+
+.table-selector-tables {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.table-selector-table {
+    color: #2A2A2A; /* Onyx */
+    margin: 0 0 20px 0;
+}
+
+.table-selector-table td label {
+    color: #2A2A2A; /* Onyx */
+
+    /* ListItem1 */
+    font-family: 'Segoe UI';
+    font-weight: 400;
+    font-size: 10pt;
+}
+
+.table-selector-import-container {
+    margin-top: 20px;
+    display: -ms-grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: auto 5px auto; 
+}
+
+.table-selector-import-container .table-selector-import-button {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1; 
+}
+
+.table-selector-import-container .table-selector-cancel-button {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3; 
+}
+
+.table-selector-tables .table-selector-table input[type=checkbox] {
+    outline: 1px solid rgba(185, 185, 185, 1); /* Silver */
+    margin-left: 0px;
+    width: 13px;
+    height: 13px;
+}
+
+.table-selector-title {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    font-size: 15pt;
+    color: #824A82; /*Fandango*/
+}

@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--This XML file contains all the default or static files that should be
+published, for example images. Output Folder hierarchy should be described
+as follows:
+For each item, an attribute describes whether it's a folder or a file.
+For each folder, a folder name is given. For each file, a source path is
+given relative to AppX folder-->
+<ResourceFiles>
+
+  <!--Any changes that are made to the languages must be done in the following places
+    PublishConstants.xml, AuthoringTool resources folder, priconfig.xml
+    These must always be in sync or the authoring tool or published apps might not
+    work correctly with the added languages. -->
+  <item type="folder" name="resources" >
+    <item type="folder" name="en-US">
+      <item type="file" sourcePath="publish\resources\LangPack-en-us\Strings.resjson"/>
+    </item>
+    <item type="folder" name="ja-JP">
+      <item type="file" sourcePath="publish\resources\LangPack-ja-jp\Strings.resjson"/>
+    </item>
+    <item type="folder" name="de-DE">
+      <item type="file" sourcePath="publish\resources\LangPack-de-de\Strings.resjson"/>
+    </item>
+    <item type="folder" name="fr-FR">
+      <item type="file" sourcePath="publish\resources\LangPack-fr-FR\Strings.resjson"/>
+    </item>
+    <item type="folder" name="es-ES">
+      <item type="file" sourcePath="publish\resources\LangPack-es-es\Strings.resjson"/>
+    </item>
+    <item type="folder" name="pt-BR">
+      <item type="file" sourcePath="publish\resources\LangPack-pt-br\Strings.resjson"/>
+    </item>
+    <item type="folder" name="it-IT">
+      <item type="file" sourcePath="publish\resources\LangPack-it-it\Strings.resjson"/>
+    </item>
+    <item type="folder" name="ru-RU">
+      <item type="file" sourcePath="publish\resources\LangPack-ru-ru\Strings.resjson"/>
+    </item>
+    <item type="folder" name="ko-KR">
+      <item type="file" sourcePath="publish\resources\LangPack-ko-kr\Strings.resjson"/>
+    </item>
+    <item type="folder" name="zh-CN">
+      <item type="file" sourcePath="publish\resources\LangPack-zh-cn\Strings.resjson"/>
+    </item>
+    <item type="folder" name="zh-TW">
+      <item type="file" sourcePath="publish\resources\LangPack-zh-tw\Strings.resjson"/>
+    </item>
+  </item>
+
+  <!--The XML hierarchy represents the filesystem hierarchy of the target folder-->
+  <!--JavaScript code section-->
+  <item type="folder" name="js" >
+    <item type="folder" name="winjs">
+      <item type="folder" name="en-us">
+        <item type="file" sourcePath="publish\js\winjs\en-us\ui.strings.js"/>
+      </item>
+      <item type="file" sourcePath="publish\js\winjs\base.min.js"/>
+      <item type="file" sourcePath="publish\js\winjs\ui.min.js"/>
+    </item>
+    <!--Currently, there are many dependencies in our code that can
+     be removed in the published application.
+     For example, contracts, debug etc. are not needed.
+     TASK - 75476 - Unify code and share as much as possible.-->
+    <item type="file" sourcePath="js\common\animation.js" />
+    <item type="file" sourcePath="js\common\impexWorkerController.js" />
+    <item type="file" sourcePath="openSource\unmodified\knockout\knockout-3.2.0.js" />
+    <item type="file" sourcePath="js\Core.js" />
+    <item type="file" sourcePath="js\Core.Knockout.js" />
+    <item type="file" sourcePath="js\AppMagic.Common.js" />
+    <item type="file" sourcePath="js\AppMagic.UI.js" />
+    <item type="file" sourcePath="js\AppMagic.Services.js" />
+    <item type="file" sourcePath="js\AppMagic.Controls.js" />
+    <item type="file" sourcePath="js\AppMagic.Common.Windows.js" />
+    <item type="file" sourcePath="js\AppMagic.Worker.js" />
+    <item type="file" sourcePath="js\common\cssRuleUtility.js" />
+    <item type="file" sourcePath="js\common\dialog.js" />
+    <item type="file" sourcePath="js\common\domUtility.js" />
+    <item type="file" sourcePath="js\common\globalization.js" />
+    <item type="file" sourcePath="js\common\domUtility.js" />
+    <item type="file" sourcePath="js\utility.js" />
+    <item type="file" sourcePath="js\xml.js" />
+    <item type="file" sourcePath="js\common\requirementsManager.js" />
+    <item type="file" sourcePath="js\common\controlManager.js" />
+    <item type="file" sourcePath="js\common\converters.js" />
+    <item type="file" sourcePath="js\common\modelValueConstrainers.js" />
+    <item type="file" sourcePath="js\common\runtimebase.js" />
+    <item type="file" sourcePath="js\extends.js" />
+    <item type="file" sourcePath="js\functions\aggregateFunctions.js" />
+    <item type="file" sourcePath="js\functions\behaviorFunctions.js" />
+    <item type="file" sourcePath="js\functions\collectionFunctions.js" />
+    <item type="file" sourcePath="js\functions\dateTimeFunctions.js" />
+    <item type="file" sourcePath="js\functions\informationFunctions.js" />
+    <item type="file" sourcePath="js\functions\mathFunctions.js" />
+    <item type="file" sourcePath="js\functions\membershipFunctions.js" />
+    <item type="file" sourcePath="js\functions\screenFunctions.js" />
+    <item type="file" sourcePath="js\functions\sharedFunctions.js" />
+    <item type="file" sourcePath="js\functions\solverFunctions.js" />
+    <item type="file" sourcePath="js\functions\textFunctions.js" />
+    <item type="file" sourcePath="publish\js\ai.0.js" />
+    <item type="file" sourcePath="publish\js\AppMagic.PublishedApp.Common.js" />
+    <item type="file" sourcePath="publish\js\AppMagic.PublishedApp.Web.js" />
+    <item type="file" sourcePath="publish\js\AppMagic.PublishedApp.Windows.js" />
+    <item type="file" sourcePath="publish\js\canvas.js" />
+    <item type="file" sourcePath="publish\js\screen.js" />
+    <item type="file" sourcePath="publish\js\runtime.js" />
+    <item type="file" sourcePath="publish\js\uiUtility.js" />
+    <item type="file" sourcePath="publish\js\inlineEditText.js" />
+    <item type="file" sourcePath="js\Core.Polyfill.js" />
+
+    <item type="file" sourcePath="js\common\visualIntellisenseConstants.js" />
+    <item type="file" sourcePath="controls\common\ruleValueEditor\ruleValueEditor.js" />
+    <item type="file" sourcePath="js\common\ruleValue.js" />
+    <item type="file" sourcePath="js\common\RESTWorkerController.js" />
+    <item type="file" sourcePath="js\common\viewModels\dialogButtonViewModel.js" />
+    <item type="file" sourcePath="js\common\viewModels\notificationViewModel.js" />
+    <item type="file" sourcePath="js\common\viewModels\progressIndicatorViewModel.js" />
+
+    <!-- TASK 99218 - Set up proper localization pipeline for published web apps -->
+    <item type="file" sourcePath="publish\resources\LangPack-en-US\strings.js" />
+
+    <!-- Common section-->
+    <item type="folder" name="common">
+      <item type="file" sourcePath="js\common\platformHelpers.js" />
+      <item type="file" sourcePath="js\common\workerDispatcher.js" />
+      <item type="file" sourcePath="js\common\RESTWorker.js" />
+      <item type="file" sourcePath="js\common\impexWorker.js" />
+      <item type="file" sourcePath="js\common\collectionZipUtilities.js" />
+      <item type="file" sourcePath="js\common\constants.js" />
+    </item>
+  </item>
+
+  <!--Services section.-->
+  <item type="folder" name="services">
+    <item type="file" sourcePath="services\utility.js" />
+    <item type="file" sourcePath="services\results.js" />
+  </item>
+
+  <!-- Additional libraries we use -->
+  <item type="folder" name="openSource">
+    <item type="folder" name="unmodified">
+      <item type="folder" name="cryptojs">
+        <item type="folder" name="components">
+          <item type="file" sourcePath="openSource\unmodified\cryptojs\components\enc-base64-min.js" />
+        </item>
+        <item type="folder" name="rollups">
+          <item type="file" sourcePath="openSource\unmodified\cryptojs\rollups\hmac-sha1.js" />
+          <item type="file" sourcePath="openSource\unmodified\cryptojs\rollups\hmac-sha256.js" />
+        </item>
+      </item>
+      <item type="folder" name="sax">
+        <item type="file" sourcePath="openSource\unmodified\sax\sax.js" />
+      </item>
+      <item type="folder" name="caja">
+        <item type="file" sourcePath="openSource\unmodified\caja\html-sanitizer.js" />
+      </item>
+      <item type="folder" name="jszip">
+        <item type="file" sourcePath="openSource\unmodified\jszip\jszip.js" />
+        <item type="file" sourcePath="openSource\unmodified\jszip\jszip-deflate.js" />
+        <item type="file" sourcePath="openSource\unmodified\jszip\jszip-inflate.js" />
+        <item type="file" sourcePath="openSource\unmodified\jszip\jszip-load.js" />
+      </item>
+      <item type="folder" name="sugarjs">
+        <item type="file" sourcePath="openSource\unmodified\sugarjs\sugar-1.4.1.js" />
+      </item>
+      <item type="folder" name="polymer">
+        <item type="file" sourcePath="openSource\unmodified\polymer\pointerevents.min.js" />
+      </item>
+    </item>
+  </item>
+
+  <!--Image files go here-->
+  <item type="folder" name="images">
+    <item type="file" sourcePath="publish\images\logo.png" />
+    <item type="file" sourcePath="publish\images\smalllogo.png" />
+    <item type="file" sourcePath="publish\images\splashscreen.png" />
+    <item type="file" sourcePath="publish\images\storelogo.png" />
+    <item type="file" sourcePath="publish\images\widelogo.png" />
+    <item type="file" sourcePath="publish\images\notificationlogo.png" />
+    <item type="file" sourcePath="images\backarrow_white.svg" />
+  </item>
+
+  <!--Css Files go here-->
+  <item type="folder" name="css">
+    <item type="folder" name="winjs">
+      <item type="file" sourcePath="publish\css\winjs\ui-dark.css" />
+    </item>
+    <item type="file" sourcePath="publish\css\default.css" />
+    <item type="file" sourcePath="css\ctrllib.css" />
+    <item type="file" sourcePath="css\canvas.css" />
+  </item>
+
+  <!--Fonts go here-->
+  <item type="folder" name="fonts">
+    <item type="file" sourcePath="publish\fonts\Symbols.ttf" />
+  </item>
+
+  <!-- Files for controls -->
+  <item type="folder" name="controls">
+    <item type="folder" name="common">
+      <item type="folder" name="seekBar">
+        <item type="folder" name="css">
+          <item type="file" sourcePath="controls\common\seekBar\css\seekBar.css" />
+        </item>
+        <item type="folder" name="images">
+          <item type="file" sourcePath="controls\common\seekBar\images\seekBarThumb.svg" />
+          <item type="file" sourcePath="controls\common\seekBar\images\seekBarThumbSelected.svg" />
+        </item>
+        <item type="folder" name="js">
+          <item type="file" sourcePath="controls\common\seekBar\js\seekBar.js" />
+        </item>
+      </item>
+      <item type="folder" name="dialog">
+        <item type="file" sourcePath="controls\common\dialog\authDialogBody.css" />
+        <item type="file" sourcePath="controls\common\dialog\authDialogBody.html" />
+        <item type="file" sourcePath="controls\common\dialog\authDialogBody.js" />
+        <item type="file" sourcePath="controls\common\dialog\dialog.css" />
+        <item type="file" sourcePath="controls\common\dialog\messageDialogBody.css" />
+        <item type="file" sourcePath="controls\common\dialog\messageDialogBody.js" />
+        <item type="file" sourcePath="controls\common\dialog\waitDialogBody.css" />
+        <item type="file" sourcePath="controls\common\dialog\waitDialogBody.js" />
+      </item>
+      <item type ="folder" name="notification">
+        <item type="file" sourcePath="controls\common\notification\notification.css" />
+        <!-- TASK 93476 - Remove notification.html once sharepoint notification host is moved to dialog infrastructure and no longer a WinJS.UI.HtmlControl -->
+        <item type="file" sourcePath="controls\common\notification\notification.html" />
+        <item type="file" sourcePath="controls\common\notification\notification.js" />
+      </item>
+      <item type ="folder" name="progressIndicator">
+        <item type="file" sourcePath="controls\common\progressIndicator\progressIndicator.css" />
+        <item type="file" sourcePath="controls\common\progressIndicator\progressIndicator.html" />
+        <item type="file" sourcePath="controls\common\progressIndicator\progressIndicator.js" />
+      </item>
+    </item>
+  </item>
+
+  <!-- Copy files for creating proper AppX Packages -->
+  <item type="folder" name="deployment">
+    <item type="file" sourcePath="publish\deployment\priconfig.xml" />
+  </item>
+
+</ResourceFiles>

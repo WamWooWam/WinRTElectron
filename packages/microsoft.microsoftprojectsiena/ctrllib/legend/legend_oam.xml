@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/legend"
+        name="legend"
+        jsClass="AppMagic.Controls.Legend"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[LEGEND
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/legend.css" />
+    <require type="javascript" src="/ctrllib/charts/js/Charts.js" />
+    <require type="other" src="data/LegendSample.xlsx" authoringOnly="true" />
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+
+  <content>
+    <![CDATA[
+    <ul class="appmagic-legend-container"
+      data-bind="
+      style: {
+        fontFamily: properties.Font,
+        color: autoProperties.Color, 
+        fontSize: properties.Size,
+        fontWeight: properties.FontWeight,
+        fontStyle: properties.Italic,
+      },
+      css: { 
+        disabled: viewState.disabled
+      }"/> 
+  ]]>
+  </content>
+  <properties>
+    <!-- Data -->
+    <property name="Items" localizedName="##legend_Items##" datatype="Array" direction="in" isPrimaryInputProperty="true">
+      <title>legend items</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##legend_Items_DisplayName##</appMagic:displayName>
+      <appMagic:sampleDataSource name="LegendSample" location="data/LegendSample.xlsx"/>
+      <properties>
+        <property name="Value" localizedName="##legend_Value##" datatype="String">
+        </property>
+      </properties>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_itemsicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##legend_Items_Tooltip##</appMagic:tooltip>
+    </property>
+
+    <!-- Design -->
+    <property name="Fill" localizedName="##legend_Fill##" datatype="Themes" direction="in" defaultValue="Themes!Vivid" isExpr="true" >
+      <title>Fill</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>themes</appMagic:helperUI>
+      <appMagic:displayName>##legend_Fill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/fillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##legend_Fill_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <appMagic:includeProperty name="Color">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty> />
+    <appMagic:includeProperty name="DisabledColor" defaultValue="RGBA(186, 186, 186, 1)" />
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="%CONTROL.ID%!BorderColor" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="%CONTROL.ID%!BorderColor" />
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(0, 0, 0, 0)" />
+    <appMagic:includeProperty name="Font">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Size" datatype="Number" defaultValue="11" converter="ptConverter">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="FontWeight" datatype="FontWeight" defaultValue="FontWeight!Normal" isExpr="true">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Italic" />
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" />
+    <appMagic:includeProperty name="Height" defaultValue="40" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="1" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="1" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+
+  </appMagic:includeProperties>
+</widget>

@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="iframeHost.js"></script>
+    <link href="iframeHost.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <script type="text/javascript">
+        // Manages the communication between a YouTubePlayer object and IframeMedia objects through an IframeMediaChannel object.
+        function YouTubeHost() {
+            this._apiReady = false;
+            this._player = new NullYouTubePlayer();
+
+            this._autoHide = true;
+            this._showControls = true;
+
+            this._timeUpdateIntervalHandle = null;
+            this._channel = new AppMagic.Controls.IframeMediaChannel(this._onPortMessage.bind(this));
+        }
+
+        // Interval in milliseconds to send updates on the currentTime/duration values.
+        YouTubeHost.prototype.TimeUpdateInterval = 500;
+
+        // Notifies IframeMedia of the current time and duration.
+        // This notification occurs on a timer while the video is playing.
+        YouTubeHost.prototype._postTimeUpdate = function () {
+            var message = {
+                command: "time update event",
+                data: {
+                    currentTime: this._player.currentTime,
+                    duration: this._player.duration,
+                },
+            };
+
+            this._channel.postMessage(message);
+        };
+
+        // Starts the timer to notify IframeMedia of the current time.
+        YouTubeHost.prototype._startTimeUpdateInterval = function () {
+            if (!this._timeUpdateIntervalHandle) {
+                this._timeUpdateIntervalHandle = setInterval(this._postTimeUpdate.bind(this), this.TimeUpdateInterval);
+            }
+        };
+
+        YouTubeHost.prototype._stopTimeUpdateInterval = function () {
+            clearInterval(this._timeUpdateIntervalHandle);
+            this._timeUpdateIntervalHandle = null;
+        };
+
+        YouTubeHost.prototype.setAutoHide = function (value) {
+            this._autoHide = value;
+            this._recreatePlayer();
+        };
+
+        YouTubeHost.prototype.notifyYouTubeAPIReady = function () {
+            this._apiReady = true;
+            this._recreatePlayer();
+        };
+
+        YouTubeHost.prototype._createPlayerIframe = function (videoId) {
+            var element = document.createElement("iframe");
+            element.src =
+                "http://www.youtube.com/embed/" +
+                (videoId === null ? "" : videoId) +
+                "?enablejsapi=1&showinfo=0&modestbranding=1&rel=0" +
+                "&autohide=" + (this._autoHide ? "1" : "0") + // Auto-hide both seek bar and controls.
+                "&controls=" + (this._showControls ? "2" : "0"); // Load controls after user initiates playback.
+
+            element.setAttribute("frameborder", "0");
+            return element;
+        };
+
+        YouTubeHost.prototype._replacePlayer = function (player) {
+            player.captureState(this._player);
+            this._player.dispose();
+            this._player = player;
+        };
+
+        // Replaces the current player with a new YouTubePlayer.
+        YouTubeHost.prototype._recreatePlayer = function () {
+            if (!this._apiReady)
+                return;
+
+            // Temporarily load the null player. We will use this player until
+            // the new YouTube player is ready.
+            this._stopTimeUpdateInterval();
+            this._replacePlayer(new NullYouTubePlayer());
+
+            // Create a new player. We can't use it until we receive the onReady event.
+            var iframe = this._createPlayerIframe(this._player.videoId);
+            document.body.appendChild(iframe);
+
+            var player = new YT.Player(iframe);
+            player.addEventListener("onReady", function () {
+                var newPlayer = new YouTubePlayer(player);
+                this._replacePlayer(newPlayer);
+
+                newPlayer.addEventListener("onError", function () {
+                    this._channel.postMessage({ command: "error event" });
+                }.bind(this));
+
+                newPlayer.addEventListener("onStateChange", function (evt) {
+                    switch (evt.data) {
+                        case YT.PlayerState.ENDED:
+                            // Check the time to avoid propagating the spurious ended events that YouTube fires
+                            // when loading a video.
+                            if (player.getDuration() > 0 && player.getCurrentTime() >= player.getDuration()) {
+                                this._channel.postMessage({ command: "ended event" });
+                            }
+                            break;
+                        case YT.PlayerState.PAUSED:
+                            this._channel.postMessage({ command: "paused event" });
+                            break;
+                        case YT.PlayerState.PLAYING:
+                            this._channel.postMessage({ command: "playing event" });
+                            break;
+                    }
+
+                    this._startTimeUpdateInterval();
+                    this._postTimeUpdate();
+                }.bind(this));
+            }.bind(this));
+        };
+
+        // Handles a message sent from the IframeMedia channel.
+        YouTubeHost.prototype._onPortMessage = function (message) {
+            switch (message.command) {
+                case "play":
+                    this._player.play();
+                    break;
+
+                case "pause":
+                    this._player.pause();
+                    break;
+
+                case "load":
+                    if (this._player.videoId !== message.value.mediaId ||
+                        this._player.startTime !== message.value.startTime) {
+                        this._player.load(message.value);
+                        this._channel.postMessage({ command: "loaded event" });
+                    }
+                    break;
+
+                case "dispose":
+                    this._player.dispose();
+                    this._player = new NullYouTubePlayer();
+                    break;
+
+                case "set showControls":
+                    if (this._showControls !== message.value) {
+                        this._showControls = message.value;
+                        this._recreatePlayer();
+                    }
+                    break;
+                case "set autoHide":
+                    this.setAutoHide(message.value);
+                    break;
+
+                case "set currentTime":
+                    if (this._player.currentTime !== message.value) {
+                        // If video is ready, just seek. Otherwise, reload the video.
+                        var state = this._player.getPlayerState();
+                        if (state === YT.PlayerState.PLAYING || state === YT.PlayerState.PAUSED) {
+                            this._player.currentTime = message.value;
+                        } else {
+                            this._player.load({ mediaId: this._player.videoId, startTime: message.value });
+                        }
+                    }
+                    break;
+            }
+        };
+
+        // Wraps a YT.Player object that is in the ready state.
+        function YouTubePlayer(player) {
+            this._player = player;
+            this._videoId = null;
+
+            Object.defineProperties(this, {
+                currentTime: {
+                    get: function () {
+                        // Prevent undefined being returned
+                        return player.getCurrentTime() || 0; 
+                    },
+                    set: function (value) {
+                        player.seekTo(value);
+                    },
+                },
+
+                duration: {
+                    get: function () {
+                        // Prevent undefined being returned
+                        return player.getDuration() || 0;
+                    },
+                },
+
+                playing: {
+                    get: function () {
+                        switch (player.getPlayerState()) {
+                            case YT.PlayerState.PLAYING:
+                            case YT.PlayerState.BUFFERING:
+                                return true;
+                        }
+
+                        return false;
+                    }.bind(this),
+                },
+
+                videoId: {
+                    get: function () {
+                        return this._videoId;
+                    }.bind(this),
+                },
+
+                volume: {
+                    get: function () {
+                        return player.getVolume();
+                    },
+                    set: function (value) {
+                        player.setVolume(value);
+                    },
+                },
+            });
+        }
+
+        YouTubePlayer.prototype.addEventListener = function (eventName, listener) {
+            this._player.addEventListener(eventName, listener);
+        };
+
+        YouTubePlayer.prototype.captureState = function (player) {
+            if (player.videoId !== null) {
+                this._videoId = player.videoId;
+                this._player.cueVideoById({ videoId: player.videoId, startSeconds: player.currentTime });
+            }
+
+            if (player.playing) {
+                this._player.playVideo();
+            }
+
+            if (player.volume !== null) {
+                this._player.setVolume(player.volume);
+            }
+        };
+
+        YouTubePlayer.prototype.dispose = function () {
+            // This removes the iframe from the DOM.
+            this._player.destroy();
+            this._player = null;
+        };
+
+        YouTubePlayer.prototype.load = function (options) {
+            this._videoId = options.mediaId;
+            this._startTime = options.startTime;
+
+            // Stop any previous video from playing. This is needed otherwise the player enters a state
+            // where the new video will refuse to play, even when the YouTube UI is used to start the video.
+            this._player.clearVideo();
+
+            // Seek to the beginning otherwise the seek bar will be at an arbitrary location with the
+            // new video.
+            this._player.seekTo(0);
+
+            // Start the new video at the specified time.
+            this._player.cueVideoById({ videoId: this._videoId, startSeconds: this._startTime });
+        };
+
+        YouTubePlayer.prototype.pause = function () {
+            this._player.pauseVideo();
+        };
+
+        YouTubePlayer.prototype.play = function () {
+            this._player.playVideo();
+        };
+
+        YouTubePlayer.prototype.getPlayerState = function () {
+            return this._player.getPlayerState();
+        }
+
+        // Represents a null YT.Player object.
+        function NullYouTubePlayer() {
+            this.currentTime = 0;
+            this.duration = 0;
+            this.playing = false;
+            this.videoId = null;
+            this.volume = null;
+        }
+
+        NullYouTubePlayer.prototype.captureState = function (player) {
+            this.currentTime = player.currentTime;
+            this.duration = player.duration;
+            this.playing = player.playing;
+            this.videoId = player.videoId;
+            this.volume = player.volume;
+        };
+
+        NullYouTubePlayer.prototype.dispose = function () {
+        };
+
+        NullYouTubePlayer.prototype.load = function (options) {
+            this.videoId = options.mediaId;
+            this.currentTime = options.startTime;
+        };
+
+        NullYouTubePlayer.prototype.pause = function () {
+            this.playing = false;
+        };
+
+        NullYouTubePlayer.prototype.play = function () {
+            this.playing = true;
+        };
+
+        NullYouTubePlayer.prototype.getPlayerState = function () {
+            return YT.PlayerState.UNSTARTED;
+        }
+
+        var _host = new YouTubeHost();
+
+        function onYouTubeIframeAPIReady() {
+            _host.notifyYouTubeAPIReady();
+        }
+    </script>
+
+    <script src="http://www.youtube.com/iframe_api"></script>
+</body>
+</html>

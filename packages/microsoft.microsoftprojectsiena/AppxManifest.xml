@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Package IgnorableNamespaces="build" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build">
+  <Identity Name="Microsoft.MicrosoftProjectSiena" Version="1.5.1411.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" ProcessorArchitecture="x64" />
+  <Properties>
+    <DisplayName>Microsoft "Project Siena"</DisplayName>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Logo>images\store_logo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="EN-US" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <Extensions>
+        <Extension Category="windows.fileTypeAssociation" StartPage="default.html">
+          <FileTypeAssociation Name=".siena">
+            <DisplayName>Project Siena</DisplayName>
+            <Logo>images\logo.png</Logo>
+            <EditFlags OpenIsSafe="true" />
+            <SupportedFileTypes>
+              <FileType>.siena</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
+      <m2:VisualElements DisplayName="Microsoft &quot;Project Siena&quot;" Description="Project Siena" BackgroundColor="#7C017C" ForegroundText="light" ToastCapable="true" Square150x150Logo="images\logo.png" Square30x30Logo="images\small_logo.png">
+        <m2:DefaultTile ShortName="Microsoft Project Siena" Wide310x150Logo="images\wide_logo.png">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+            <m2:ShowOn Tile="wide310x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:InitialRotationPreference>
+          <m2:Rotation Preference="landscape" />
+        </m2:InitialRotationPreference>
+        <m2:SplashScreen BackgroundColor="#7C017C" Image="images\splash_screen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="videosLibrary" />
+    <Capability Name="musicLibrary" />
+    <Capability Name="picturesLibrary" />
+    <Capability Name="enterpriseAuthentication" />
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClient" />
+    <Capability Name="sharedUserCertificates" />
+    <DeviceCapability Name="webcam" />
+    <DeviceCapability Name="location" />
+    <DeviceCapability Name="microphone" />
+  </Capabilities>
+  <Dependencies>
+    <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.17018" />
+    <PackageDependency Name="Microsoft.VCLibs.120.00" MinVersion="12.0.21005.1" />
+  </Dependencies>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>CLRHost.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Common.TelemetryProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Common.LocalizationHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Common.TelemetrySession" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Common.LanguageHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.CharacterUtils" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.BindingHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlVariantChildInfo" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ServiceLocalizedInfoTemplate" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.IntellisenseContext" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.EntityDuplicator" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Texl.Span" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.NamedScript" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlCodeFragment" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ColorTable" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Constants" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ScriptContext" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.PublishResult" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ServiceTemplate" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.DocumentProperties" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Document" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.DocumentFactory" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ServiceLanguageDictionaryTemplate" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ServiceFunctionTemplate" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlProperty" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlPropertyCache" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.UndoManager" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.CompositeControlChildInfo" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.PublishContext" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.PropertyRuleCategoryHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.FunctionCategoryProvider" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.NameMapBuilder" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlPropertyState" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Publish.PublishFactory" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.DataLocalizationHelper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ScreenTemplateFactory" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.CommandBarControlProperties" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlRequirement" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.ControlTemplate" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.TaggedScriptContext" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.TemplateNames" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Importers.DictionaryWrapper" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Importers.ControlImporter" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Importers.StaticDataImport" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Importers.ServiceImporterUtils" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Authoring.Importers.CommonControlProperties" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Importers.InstallAppDownloaderUtils" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.AppMagic.Importers.LocalMediaImporter" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.ApplicationInsights.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.ApplicationInsights.Telemetry.WindowsStore.Configuration" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.ApplicationInsights.Telemetry.WindowsStore.ApplicationInsightsModule" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.ApplicationInsights.Telemetry.WindowsStore.ClientAnalyticsChannel" ThreadingModel="both" />
+        <ActivatableClass ActivatableClassId="Microsoft.ApplicationInsights.Telemetry.WindowsStore.ClientAnalyticsSession" ThreadingModel="both" />
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  <build:Metadata>
+    <build:Item Name="VisualStudio" Version="12.0" />
+    <build:Item Name="OperatingSystem" Version="6.3.9600.16384 (winblue_rtm.130821-1623)" />
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="12.0.30501.0" />
+    <build:Item Name="ProjectGUID" Value="7f84f4fc-b3cf-4075-925a-3124afe2f6d3" />
+    <build:Item Name="MakePri.exe" Version="6.3.9600.17298 (winblue.141024-1500)" />
+  </build:Metadata>
+</Package>

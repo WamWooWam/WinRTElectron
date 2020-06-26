@@ -1,0 +1,598 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>canvasControl</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="canvasControl.css" rel="stylesheet" />
+    <script src="canvasControl.js"></script>
+</head>
+<body>
+    <div class="canvas" data-bind="
+            event: {mousedown: handleCanvasPointerDown.bind($data)},
+            style: {
+                    backgroundColor: backgroundColor,
+                    backgroundImage: backgroundImage,
+                    backgroundSize: imagePosition.size,
+                    backgroundRepeat: imagePosition.repeat,
+                    backgroundPosition: imagePosition.position,
+                    outlineColor: cssOutlineColor
+            }">
+        <!--
+            For nested canvases, we need the controlContainer to have a higher z-index to place it above the .fill container for the gallery 
+            so that the gallery template can be selected on click.
+        -->
+        <div class="controlContainer" data-bind="
+            foreach: visuals,
+            style: {
+                zIndex: AppMagic.Constants.zIndex.topmost + (isNested ? 1 : 0)}">
+            <div class="contentContainer" data-bind="visible: visible, style: { zIndex: cssZindex }, event: {mousedown: lazyCanvasBind('handlePointerDown', 'visual')}">
+                <!--
+                The underlying control is stored as a property on the VisualViewModel.
+                We data-bind the following virtual element to that property.
+                -->
+                <!-- ko dom: controlElement -->
+                <!-- /ko -->
+                <div class="fill" data-bind="
+                    visible: (visualVisible && !selected && !AppMagic.context.documentViewModel.isPreview) || canvasIsManipulating,
+                    style: {
+                        left: bounds.x + 'px',
+                        top: bounds.y + 'px',
+                        width: cssBounds.width,
+                        height: cssBounds.height}"></div>
+            </div>
+        </div>
+        <!--
+        If the canvas is nested, we do not want to display the visual elements in this sub-tree.
+        -->
+        <!-- ko if: !isNested -->
+        <div class="nestedCanvasContainer" data-bind="
+            foreach: screenParentVisuals,
+            css: { visualLabelsVisible: AppMagic.context.documentViewModel.canvasManager.visualLabelsVisible }">
+            <div class="nestedCanvas" data-bind="
+                style: {
+                    left: (x + nestedX) + 'px',
+                    top: (y + nestedY) + 'px'
+                },
+                css: {
+                    selected: descendantSelected
+                },
+                visible: !AppMagic.context.documentViewModel.isPreview">
+                <div class="canvasBorder left" data-bind="
+                    visible: descendantSelected && !(directChildCanvasSelected.length > 0),
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + nestedX) + 'px',
+                        top: (y + nestedY) + 'px',
+                        width: '0px',
+                        height: nestedHeight + 'px'}"></div>
+                <div class="canvasBorder top" data-bind="
+                    visible: descendantSelected && !(directChildCanvasSelected.length > 0),
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x  + nestedX) + 'px',
+                        top: (y + nestedY) + 'px',
+                        width: nestedWidth + 'px',
+                        height: '0px'}"></div>
+                <div class="canvasBorder right" data-bind="
+                    visible: descendantSelected && !(directChildCanvasSelected.length > 0),
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + nestedX + nestedWidth) + 'px',
+                        top: (y + nestedY) + 'px',
+                        width: '0px',
+                        height: nestedHeight + 'px'}"></div>
+                <div class="canvasBorder bottom" data-bind="
+                    visible: descendantSelected && !(directChildCanvasSelected.length > 0),
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + nestedX) + 'px',
+                        top: (y + nestedY + nestedHeight) + 'px',
+                        width: nestedWidth + 'px',
+                        height: '0px'}"></div>
+                <div class="dragger left" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + nestedX + adornerCss.negativeValue) + 'px',
+                        top: (y + nestedY + adornerCss.negativeValue) + 'px',
+                        width: adornerCss.positiveValue + 'px',
+                        height: (nestedHeight + (adornerCss.positiveValue * 2)) + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handleNestedCanvasPointerDown', 'drag')}">
+                </div>
+                <div class="dragger top" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x  + nestedX) + 'px',
+                        top: (y + nestedY + adornerCss.negativeValue) + 'px',
+                        width: nestedWidth + 'px',
+                        height: adornerCss.positiveValue + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handleNestedCanvasPointerDown', 'drag')}">
+                </div>
+                <div class="dragger right" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + nestedX + nestedWidth) + 'px',
+                        top: (y + nestedY + adornerCss.negativeValue) + 'px',
+                        width: adornerCss.positiveValue + 'px',
+                        height: (nestedHeight + (adornerCss.positiveValue * 2)) + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handleNestedCanvasPointerDown', 'drag')}">
+                </div>
+                <div class="dragger bottom" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + nestedX) + 'px',
+                        top: (y + nestedY + nestedHeight) + 'px',
+                        width: nestedWidth + 'px',
+                        height: adornerCss.positiveValue + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handleNestedCanvasPointerDown', 'drag')}">
+                </div>
+                <div class="resizer nw" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + adornerCss.marginValue) + 'px',
+                        left: (x + nestedX + adornerCss.marginValue) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'nw')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft: adornerCss.marginInnerValue + 'px',
+                            marginTop: adornerCss.marginInnerValue + 'px',
+                            borderTopWidth: adornerCss.borderValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer n" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + adornerCss.marginValue) + 'px',
+                        left: (x + nestedX + (nestedWidth / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'n')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginTop: adornerCss.marginInnerValue + 'px',
+                            marginLeft: adornerCss.marginInnerValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer ne" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + adornerCss.marginValue) + 'px',
+                        left: (x + nestedX + nestedWidth) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'ne')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginRight: adornerCss.marginInnerValue + 'px',
+                            marginTop: adornerCss.marginInnerValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer w" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + (nestedHeight / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        left: (x + nestedX + adornerCss.marginValue) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'w')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft:adornerCss.marginInnerValue + 'px',
+                            marginTop:adornerCss.marginInnerValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer e" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + (nestedHeight / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        left: (x + nestedX + nestedWidth) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'e')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft: adornerCss.marginInnerValue + 'px',
+                            marginTop:adornerCss.marginInnerValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer sw" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + nestedHeight) + 'px',
+                        left: (x + nestedX + adornerCss.marginValue) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'sw')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft:adornerCss.marginInnerValue + 'px',
+                            marginBottom:adornerCss.marginInnerValue + 'px',
+                            borderTopWidth: adornerCss.borderValue + 'px',
+                            borderLeftWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer s" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + nestedHeight) + 'px',
+                        left: (x + nestedX + (nestedWidth / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 's')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginBottom: adornerCss.marginInnerValue + 'px',
+                            marginLeft:adornerCss.marginInnerValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer se" data-bind="
+                    visible: directChildCanvasSelected.length > 0,
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + nestedY + nestedHeight) + 'px',
+                        left: (x + nestedX + nestedWidth) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleNestedCanvasResizeDown', 'se')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginRight: adornerCss.marginInnerValue + 'px',
+                            marginBottom:adornerCss.marginInnerValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px',
+                            borderLeftWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="visualContainer" data-bind="
+                css: {
+                    descendantSelected: !AppMagic.context.documentViewModel.isPreview
+                        && owner.parent
+                        && (owner.descendantCanvasSelected.indexOf(id) >= 0 || owner.descendantCanvasSelected.indexOf(childCanvasId) >= 0),
+                    outlineIncompatible: owner.descendantOutlineIncompatible,
+                    preview: AppMagic.context.documentViewModel.isPreview,
+                    selected: selected && !AppMagic.context.documentViewModel.isPreview,
+                    visualLabelsVisible: AppMagic.context.documentViewModel.canvasManager.visualLabelsVisible,
+                },
+                foreach: screenVisuals,
+                style: {
+                    /* This is required to keep nested canvas selection working with the presence of the nested Gallery Template control's view
+                       (ideally they would share the same DOM, but further refactoring is necessary). Setting the z-index does not adversely affect
+                       the screen canvas. */
+                    zIndex: AppMagic.Constants.zIndex.topmost
+                }">
+            <div class="visual" data-bind="
+                element: _visualElement,
+                attr: { 'appmagic-visual-name': name },
+                property: { viewModel: $data },
+                visible: visible,
+                css: {
+                    selected: selected,
+                    outlineIncompatible: outlineIncompatible,
+                    descendantSelected: descendantSelected && !AppMagic.context.documentViewModel.isPreview
+                }">
+                
+                <!-- ko if: groupBorderVisible -->
+                <div class="groupBorder left" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + adornerCss.negativeValue) + 'px',
+                        top: (y + adornerCss.negativeValue) + 'px',
+                        height: (bounds.height + (adornerCss.positiveValue * 2)) + 'px'}">
+                </div>
+                <div class="groupBorder top" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + adornerCss.negativeValue) + 'px',
+                        top: (y + adornerCss.negativeValue) + 'px',
+                        width: (bounds.width + (adornerCss.positiveValue * 2)) + 'px'}">
+                </div>
+                <div class="groupBorder right" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + bounds.width + adornerCss.positiveValue) + 'px',
+                        top: (y + adornerCss.negativeValue) + 'px',
+                        height: (bounds.height + (adornerCss.positiveValue * 2)) + 'px'}">
+                </div>
+                <div class="groupBorder bottom" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + adornerCss.negativeValue) + 'px',
+                        top: (y + bounds.height + adornerCss.positiveValue) + 'px',
+                        width: (bounds.width + (adornerCss.positiveValue * 2)) + 'px'}">
+                </div>
+                <!-- /ko -->
+
+                <div class="dragger left" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + adornerCss.negativeValue) + 'px',
+                        top: (y + adornerCss.negativeValue) + 'px',
+                        width: adornerCss.positiveValue + 'px',
+                        height: (bounds.height + (adornerCss.positiveValue * 2)) + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handlePointerDown', 'drag')}">
+                </div>
+                <div class="dragger top" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: x + 'px',
+                        top: (y + adornerCss.negativeValue) + 'px',
+                        width: bounds.width + 'px',
+                        height: adornerCss.positiveValue + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handlePointerDown', 'drag')}">
+                </div>
+                <div class="dragger right" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: (x + bounds.width) + 'px',
+                        top: (y + adornerCss.negativeValue) + 'px',
+                        width: adornerCss.positiveValue + 'px',
+                        height: (bounds.height + (adornerCss.positiveValue * 2)) + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handlePointerDown', 'drag')}">
+                </div>
+                <div class="dragger bottom" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: x + 'px',
+                        top: (y + bounds.height) + 'px',
+                        width: bounds.width + 'px',
+                        height: adornerCss.positiveValue + 'px'},
+                    event: {
+                        mousedown: lazyCanvasBind('handlePointerDown', 'drag')}">
+                </div>
+
+                <div class="resizer nw" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + adornerCss.marginValue) + 'px',
+                        left: (x + adornerCss.marginValue) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'nw')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft: adornerCss.marginInnerValue + 'px',
+                            marginTop: adornerCss.marginInnerValue + 'px',
+                            borderTopWidth: adornerCss.borderValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer n" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + adornerCss.marginValue) + 'px',
+                        left: (x + (bounds.width / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'n')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginTop: adornerCss.marginInnerValue + 'px',
+                            marginLeft: adornerCss.marginInnerValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer ne" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + adornerCss.marginValue) + 'px',
+                        left: (x + bounds.width) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'ne')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginRight: adornerCss.marginInnerValue + 'px',
+                            marginTop: adornerCss.marginInnerValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer w" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + (bounds.height / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        left: (x + adornerCss.marginValue) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'w')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft:adornerCss.marginInnerValue + 'px',
+                            marginTop:adornerCss.marginInnerValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer e" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + (bounds.height / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        left: (x + bounds.width) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'e')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft: adornerCss.marginInnerValue + 'px',
+                            marginTop:adornerCss.marginInnerValue + 'px',
+                            borderRightWidth: adornerCss.borderValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer sw" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + bounds.height) + 'px',
+                        left: (x + adornerCss.marginValue) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'sw')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginLeft:adornerCss.marginInnerValue + 'px',
+                            marginBottom:adornerCss.marginInnerValue + 'px',
+                            borderTopWidth: adornerCss.borderValue + 'px',
+                            borderLeftWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer s" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + bounds.height) + 'px',
+                        left: (x + (bounds.width / 2) - (adornerCss.dimensionValue / 2)) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 's')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginBottom: adornerCss.marginInnerValue + 'px',
+                            marginLeft:adornerCss.marginInnerValue + 'px',
+                            width: adornerCss.sizeValue + 'px',
+                            height: adornerCss.sizeValue + 'px'}">
+                    </div>
+                </div>
+                <div class="resizer se" data-bind="
+                    style: {
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        top: (y + bounds.height) + 'px',
+                        left: (x + bounds.width) + 'px',
+                        height: adornerCss.dimensionValue + 'px',
+                        width: adornerCss.dimensionValue + 'px'},
+                    event: {mousedown: lazyCanvasBind('handleResizeDown', 'se')}, css: {hidden: canvasAdornersHidden}">
+                    <div class="inner" data-bind="
+                        style: {
+                            marginRight: adornerCss.marginInnerValue + 'px',
+                            marginBottom:adornerCss.marginInnerValue + 'px',
+                            borderBottomWidth: adornerCss.borderValue + 'px',
+                            borderLeftWidth: adornerCss.borderValue + 'px'}">
+                    </div>
+                </div>
+                <div class="label" data-bind="
+                    style: { 
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                        left: x + 'px',
+                        top: (y + bounds.height - 4) + 'px',
+                        width: bounds.width + 'px' 
+                    },
+                    event: {
+                        click: lazyCanvasBind('handleLabelClick'),
+                        pointermove: lazyCanvasBind('stopErrorAndLabelDragging'),
+                        pointerdown: lazyCanvasBind('stopErrorAndLabelDragging')
+                    },
+                    ">
+                    <div class="label-text" data-bind="text: name"></div>
+                </div>
+                <img class="errorIcon" src="/images/warning_sign.svg" data-bind="
+                    event: {
+                        click: lazyCanvasBind('handleErrorIconClick'),
+                        pointermove: lazyCanvasBind('stopErrorAndLabelDragging'),
+                        pointerdown: lazyCanvasBind('stopErrorAndLabelDragging')
+                    },
+                    style: {
+                        left: (x + errorCss.offset) + 'px',
+                        top: (y + errorCss.offset) + 'px',
+                        width: errorCss.size + 'px',
+                        height: errorCss.size + 'px',
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                    },
+                    attr: {
+                        title: errorMessage
+                    },
+                    visible: hasErrors && !AppMagic.context.documentViewModel.isPreview && isErrorWithinParentContainer
+                    " />
+            </div>
+        </div>
+        <!-- /ko -->
+        <img class="errorIcon" src="/images/warning_sign.svg" data-bind="
+                    style: {
+                        marginLeft: owner.errorCss.offset + 'px',
+                        marginTop: owner.errorCss.offset + 'px',
+                        width: owner.errorCss.size + 'px',
+                        height: owner.errorCss.size + 'px',
+                        zIndex: AppMagic.Constants.zIndex.topmost,
+                    },
+                    attr: {
+                        title: owner.errorMessage
+                    },
+                    visible: owner.errorVisible
+                    " />
+        <!-- This SVG element contains all the non-interactive alignment guides. -->
+        <svg
+             xmlns="http://www.w3.org/2000/svg" version="1.1"
+             class="guideContainer"
+             data-bind="
+                visible: selectionBox.visible || snapper.visible,
+                style: {
+                    strokeWidth: AppMagic.context.documentViewModel.zoom.adornerScale,
+                    strokeDasharray: (5 * AppMagic.context.documentViewModel.zoom.adornerScale).toString() + 'px, ' + (2 * AppMagic.context.documentViewModel.zoom.adornerScale).toString() + 'px',
+                    zIndex: AppMagic.Constants.zIndex.topmost,
+                }">
+            <path class="alignment" data-bind="attr: { d: snapper.paths.alignment.data }"></path>
+            <path class="spacing" data-bind="attr: { d: snapper.paths.spacing.data }"></path>
+            <path class="triangle" data-bind="attr: { d: snapper.paths.triangles.data }"></path>
+
+            <path class="selectionBox" data-bind="attr: { d: selectionBox.path, visibility: selectionBox.visible ? 'visible' : 'hidden' }"></path>
+        </svg>
+
+        <!--
+            zIndex needs to be the same as zIndex for controlContainer above, 
+            otherwise we won't be able to click the addVisualText inside galleries 
+        -->
+        <div class="addVisualText"
+             data-bind="visible: addVisualVisible,
+                        css: { nested: isNested, nonNested: !isNested },
+                        click: handleAddVisualClicked,
+                        clickBubble: false,
+                        text: AppMagic.AuthoringStrings.AddVisualScreenText,
+                        style: { zIndex: AppMagic.Constants.zIndex.topmost + (isNested ? 1 : 0), }">
+        </div>
+
+        <div class="disabledCover" data-bind="event: { mousedown: handleDisabledCoverMouseDown.bind($data) }, style: { zIndex: AppMagic.Constants.zIndex.topmost }"></div>
+    </div>
+</body>
+</html>

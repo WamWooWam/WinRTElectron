@@ -1,0 +1,12 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Notification control CSS
+ *
+ */
+
+.notification-control {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}

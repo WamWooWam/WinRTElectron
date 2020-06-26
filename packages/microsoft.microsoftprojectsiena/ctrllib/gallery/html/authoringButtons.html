@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html>
+<body>
+    <script type="text/html" id="appmagic-template-gallery-authoringbuttons">
+        <!--
+            zIndex for these buttons needs to be the same as zIndex for nested controlContainer, 
+            otherwise the button may be hidden under the gallery's controls 
+        -->
+        <div class="controlAuthoringButtons appmagic-gallery-authoringbuttons"
+            data-bind="
+                visible: (nestedTemplate.parentVisualSelected) && !isPublishOrPreview,
+                style: { zIndex: AppMagic.Constants.zIndex.topmost + 1 }">
+            <div class="button" data-bind="css: { active: nestedTemplate.selected }">
+                <div class="frame addVisualButton" data-bind="{ click: onClickEditTemplateButton,
+                    attr: { title: AppMagic.AuthoringStrings.EditGalleryTooltip } }" />
+            </div>
+        </div>
+    </script>
+</body>
+</html>

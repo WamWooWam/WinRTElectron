@@ -1,0 +1,198 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>AppMagic</title>
+
+    <script src="//microsoft.microsoftprojectsiena.shim/dist/shim.js"></script>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- This should be the first JS file loaded before any non-system library -->
+    <script src="/js/authoring/config.js" type="text/javascript"></script>
+
+    <!-- Azure AD Graph -->
+    <script src="/openSource/modified/aadgraph/aadgraph.js"></script>
+    <script src="/openSource/modified/aadgraph/utility.js"></script>
+
+    <!-- CryptoJS -->
+    <script src="/openSource/unmodified/cryptojs/rollups/hmac-sha1.js"></script>
+    <script src="/openSource/unmodified/cryptojs/rollups/hmac-sha256.js"></script>
+    <script src="/openSource/unmodified/cryptojs/components/enc-base64-min.js"></script>
+
+    <!-- Knockout -->
+    <script src="/openSource/unmodified/knockout/knockout-3.2.0.js"></script>
+
+    <!-- Sax -->
+    <script src="/openSource/unmodified/sax/sax.js"></script>
+
+    <!-- Caja -->
+    <script src="/openSource/unmodified/caja/html-sanitizer.js"></script>
+
+    <!-- JSZip -->
+    <script src="/openSource/unmodified/jszip/jszip.js"></script>
+    <script src="/openSource/unmodified/jszip/jszip-deflate.js"></script>
+    <script src="/openSource/unmodified/jszip/jszip-inflate.js"></script>
+    <script src="/openSource/unmodified/jszip/jszip-load.js"></script>
+
+    <!-- Sugarjs - for parsing/formatting dates-->
+    <script src="/openSource/unmodified/sugarjs/sugar-1.4.1.js"></script>
+
+    <!-- AuthoringTool references -->
+    <link href="/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="/css/canvas.css" rel="stylesheet" type="text/css" />
+    <link href="/css/appBar.css" rel="stylesheet" type="text/css" />
+
+    <script src="/js/extends.js"></script>
+    <script src="/js/common/constants.js"></script>
+    <script src="/js/utility.js"></script>
+    <script src="/js/common/converters.js"></script>
+    <script src="/js/authoring/modelExtensions.js"></script>
+    <script src="/js/common/promiseQueue.js"></script>
+    <script src="/js/Core.js"></script>
+    <script src="/js/Core.Knockout.js"></script>
+    <script src="/js/AppMagic.Common.js"></script>
+    <script src="/js/AppMagic.UI.js"></script>
+    <script src="/js/AppMagic.Services.js"></script>
+    <script src="/js/AppMagic.Controls.js"></script>
+    <script src="/js/AppMagic.Common.Windows.js"></script>
+    <script src="/js/AppMagic.Authoring.js"></script>
+    <script src="/js/common/cssRuleUtility.js"></script>
+    <script src="/js/common/domUtility.js"></script>
+    <script src="/js/common/globalization.js"></script>
+    <script src="/js/common/viewModels/dialogButtonViewModel.js"></script>
+    <script src="/js/common/viewModels/notificationViewModel.js"></script>
+    <script src="/js/common/viewModels/progressIndicatorViewModel.js"></script>
+    <script src="/js/common/impexWorkerController.js"></script>
+    <script src="/js/common/runtimebase.js"></script>
+    <script src="/js/common/platformHelpers.js"></script>
+    <script src="/js/common/RESTWorkerController.js"></script>
+    <script src="/js/authoring/runtime.js"></script>
+    <script src="/js/functions/aggregateFunctions.js"></script>
+    <script src="/js/functions/behaviorFunctions.js"></script>
+    <script src="/js/functions/collectionFunctions.js"></script>
+    <script src="/js/functions/dateTimeFunctions.js"></script>
+    <script src="/js/functions/informationFunctions.js"></script>
+    <script src="/js/functions/mathFunctions.js"></script>
+    <script src="/js/functions/membershipFunctions.js"></script>
+    <script src="/js/functions/screenFunctions.js"></script>
+    <script src="/js/functions/sharedFunctions.js"></script>
+    <script src="/js/functions/solverFunctions.js"></script>
+    <script src="/js/functions/textFunctions.js"></script>
+
+    <!-- Dependency initialization -->
+    <script src="/js/default.js"></script>
+    <script src="/js/authoring/navigator.js"></script>
+    <script src="/js/authoring/uiUtility.js"></script>
+    <script src="/js/authoring/inlineEditText.js"></script>
+    <script src="/js/utility.js"></script>
+    <script src="/js/common/dialog.js"></script>
+    <script src="/js/xml.js"></script>
+    <script src="/js/common/requirementsManager.js"></script>
+    <script src="/js/common/controlManager.js"></script>
+    <script src="/js/common/visualIntellisenseConstants.js"></script>
+    <script src="/js/authoring/authoringRequirementsManager.js"></script>
+    <script src="/js/authoring/authoringControlManager.js"></script>
+    <script src="/js/common/animation.js"></script>
+    <script src="/js/common/modelValueConstrainers.js"></script>
+    <script src="/js/common/RESTConfigImportHandler.js"></script>
+    <script src="/js/authoring/controlsImporter.js"></script>
+    <script src="/services/utility.js"></script>
+    <script src="/services/results.js"></script>
+    <script src="/controls/Intellisense/ruleTextBoxBase.js"></script>
+    <script src="/controls/common/ruleValueEditor/ruleValueEditor.js"></script>
+    <script src="/js/common/ruleValue.js"></script>
+    <script src="/js/common/math.js"></script>
+
+    <script src="/viewModels/azureViewModel.js"></script>
+    <script src="/viewModels/backStageViewModel.js"></script>
+    <script src="/viewModels/blankPageViewModel.js"></script>
+    <script src="/viewModels/commandBarViewModel.js"></script>
+    <script src="/viewModels/canvasViewModel.js"></script>
+    <script src="/viewModels/clipboardManager.js"></script>
+    <script src="/viewModels/configurationViewModel.js"></script>
+    <script src="/viewModels/controlGalleryViewModel.js"></script>
+    <script src="/viewModels/connectionManager.js"></script>
+    <script src="/viewModels/connectionViewModel.js"></script>
+    <script src="/viewModels/importedRestConfigViewModel.js"></script>
+    <script src="/viewModels/entityDropDownViewModel.js"></script>
+    <script src="/viewModels/tableSelectorViewModel.js"></script>
+    <script src="/viewModels/excelConfigViewModel.js"></script>
+    <script src="/viewModels/azureConfigViewModel.js"></script>
+    <script src="/viewModels/rssConfigViewModel.js"></script>
+    <script src="/viewModels/restConfigViewModel.js"></script>
+    <script src="/viewModels/restErrorPanelViewModel.js"></script>
+    <script src="/viewModels/restServicePackageImportConfigViewModel.js"></script>
+    <script src="/viewModels/sharePointConfigViewModel.js"></script>
+    <script src="/viewModels/dataCollectionsViewModel.js"></script>
+    <script src="/viewModels/dataConnectionsViewModel.js"></script>
+    <script src="/viewModels/dataRuleFlyout.js"></script>
+    <script src="/viewModels/embeddedMediaViewModel.js"></script>
+    <script src="/viewModels/zoomViewModel.js"></script>
+    <script src="/viewModels/documentViewModel.js"></script>
+    <script src="/viewModels/behaviorRuleFlyout.js"></script>
+    <script src="/viewModels/dataSourceManager.js"></script>
+    <script src="/viewModels/pageNavigator.js"></script>
+    <script src="/viewModels/appBarViewModel.js"></script>
+    <script src="/viewModels/functionDiscoveryPanel.js"></script>
+    <script src="/viewModels/intellisenseViewModel.js"></script>
+    <script src="/viewModels/publishViewModel.js"></script>
+    <script src="/viewModels/ruleValueFactory.js"></script>
+    <script src="/viewModels/ruleFactory.js"></script>
+    <script src="/viewModels/ruleButtonManager.js"></script>
+    <script src="/viewModels/ruleButtonPanel.js"></script>
+    <script src="/viewModels/screenWidget.js"></script>
+    <script src="/viewModels/zdataControlViewModel.js"></script>
+    <script src="/viewModels/shellControlGalleryViewModel.js"></script>
+    <script src="/viewModels/visualSnapper.js"></script>
+    <script src="/viewModels/ruleDecorationManager.js"></script>
+    <script src="/viewModels/undoManager.js"></script>
+    <script src="/viewModels/waitViewModel.js"></script>
+
+    <!-- Context must be loaded after the view models are loaded, since it is a global object that depends on the view models. -->
+    <script src="/js/authoring/context.js"></script>
+
+    <!-- Test hooks must be loaded last.  This should be removed for production.  -->
+    <script src="/js/authoring/testhooks.js"></script>
+</head>
+
+<body role="application">
+    <div id="rootGrid" class="rootGrid" data-bind="shortcut: { provider: globalShortcuts, descendants: false, capture: true, enabled: shellShortcutsEnabled }">
+        <span id="textRangeClientRectsFixerElement">measurement text</span>
+
+        <div class="notificationHost" data-win-control="WinJS.UI.HtmlControl"
+             data-win-options="{ uri: '/controls/common/notification/notification.html' }"></div>
+        <div class="fullscreenHost">
+            <div class="firstLaunch" data-bind="visible: visible">
+                <!-- ko if: visible -->
+                <video class="helpVideo" data-bind="videosrc: videoSrc, event: { ended: _onEnded, error: handleSkipTour }" autoplay="autoplay" poster="images/firstrunposterimage.png" controls></video>
+                <!-- /ko -->
+                <button type="button" class="skipTour" data-bind="text: AppMagic.AuthoringStrings.SkipTour, click: handleSkipTour.bind($data)"></button>
+            </div>
+        </div>
+        <div id="content">
+            <div id="contentHost" data-win-control="AppMagic.AuthoringTool.Navigator" data-win-options="{home:'/pages/blank/blankPage.html'}"></div>
+        </div>
+
+        <!-- The ordering matters because we want panels and flyouts to appear on top of other UI -->
+        <div id="configurationHost" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri:'/controls/configuration/configurationControl.html'}"></div>
+        <div class="commandBarHost" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri:'/controls/commandBar/commandBar.html'}"></div>
+        <div id="controlGalleryHost" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri:'/controls/controlGallery/controlGallery.html'}"></div>
+        <div id="appBar" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri:'/controls/appBar/appBarControl.html'}"></div>
+        <div id="restErrorPanelHost" data-win-control="WinJS.UI.HtmlControl" data-win-options="{uri:'/controls/restErrorPanel/restErrorPanel.html'}"></div>
+
+        <!-- Need to hide/show the backStageHost and waitHost container otherwise it might get the input events. -->
+        <div class="backStageHost"
+             data-win-control="WinJS.UI.HtmlControl"
+             data-win-options="{uri:'/controls/backStage/backStage.html'}"
+             data-bind="visible: AppMagic.context.documentViewModel.backStage.visible">
+        </div>
+        <div id="waitHost"
+             data-win-control="WinJS.UI.HtmlControl"
+             data-win-options="{uri:'/controls/wait/waitControl.html'}">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿Jx.delayDefine(Mail,"Announcer",function(){"use strict";Mail.Announcer=function(n,t,i){t=t||"status";i=i||"polite";n.classList.add("hidden");Mail.setAttribute(n,"role",t);Mail.setAttribute(n,"aria-live",i);this._host=n};Mail.Announcer.prototype.dispose=function(){this._host=null};Mail.Announcer.prototype.speak=function(n){var t=this._host;t.title=n;t.innerText=n}})

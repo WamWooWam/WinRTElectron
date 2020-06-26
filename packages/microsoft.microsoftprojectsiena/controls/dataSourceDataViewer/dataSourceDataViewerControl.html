@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>dataSourceDataViewerControl</title>
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <link href="dataSourceDataViewerControl.css" rel="stylesheet" />
+    <script src="dataSourceDataViewerControl.js"></script>
+</head>
+<body>
+    <div class="dataSourceDataViewerControl">
+        <div class="depthBandContainer" data-bind="if: showDepthBand">
+            <div class="depthBandHelp">
+                <div class="typeIndicatorHelpLabel" data-bind="text: AppMagic.AuthoringStrings.DepthTypeIndicatorHelpLabel"></div>
+                <div class="helpLink" data-bind="text: AppMagic.AuthoringStrings.DataViewerHelpUrlText, click: onClickHelpLink"></div>
+            </div>
+            <div class="depthBand">
+                <span class="typeIndicatorLeft" data-bind="text: viewers[0].data.typeIndicatorLeft"></span><span
+                class="depthRoot" data-bind="
+                css: { 'clickableDepth': viewers.length > 1 },
+                text: viewers[0].name, click: onClickDepthLevel.bind($data, 0)"></span><span
+                class="typeIndicatorRight" data-bind="text: viewers[0].data.typeIndicatorRight"></span><!-- ko foreach: viewers --><!-- ko if: $index() > 0 --><span
+                class="depthLevelCaret" data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.rightTriangle"></span><span
+                class="typeIndicatorLeft" data-bind="text: data.typeIndicatorLeft"></span><span
+                class="depthLevel" data-bind="
+                css: { 'clickableDepth': $index() !== $parent.viewers.length - 1 },
+                text: name, click: $parent.onClickDepthLevel.bind($parent, $index())"></span><span
+                class="typeIndicatorRight" data-bind="text: data.typeIndicatorRight"></span><!-- /ko --><!-- /ko --></div>
+        </div>
+        <div class="viewersGrid" data-bind="foreach: viewers">
+            <div class="viewer" data-bind="
+                visible: $index() >= $parent.viewers.length - 1,
+                css: {
+                    'expandedViewer': true,                    
+                },
+                property: { viewModel: $data },
+                winjsControl: '/controls/objectViewer/objectViewerControl.html'">
+            </div>
+        </div>
+        </div>
+</body>
+</html>

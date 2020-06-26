@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/text"
+        name="text"
+        jsClass="AppMagic.Controls.Text"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[TEXT
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/text.css" />
+    <require type="javascript" src="js/text.js" />
+  </requires>
+  
+  <appMagic:capabilities 
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+  
+  <content>
+    <![CDATA[
+  <div class="appmagic-textbox"
+   appmagic-control="__WID__">
+  <textarea 
+    appmagic-control="__WID__textarea"
+    class="appmagic-textarea"
+    data-bind="
+      value: properties.Text,
+      css: { 
+        'appmagic-texthide' : properties.Mode() === 'singleline' || properties.Mode() === 'password',
+        underline: properties.Underline,
+        strikethrough: properties.Strikethrough
+      },
+      event: {
+        click: behaviors.OnSelect,
+        change: behaviors.OnChange },
+        attr: { title: properties.Tooltip,
+                placeholder: properties.HintText},
+      style: {
+        fontFamily: properties.Font,
+        fontSize: properties.Size,
+        color: autoProperties.Color,
+        fontWeight: properties.FontWeight,
+        fontStyle: properties.Italic,
+        textAlign: properties.Align,
+        lineHeight: properties.LineHeight
+      },
+      disable: viewState.disabled" >
+  </textarea>
+  <input
+    appmagic-control="__WID__textbox"
+    class="appmagic-text"    
+    data-bind="{
+      attr: { type: properties.Mode() === 'password' ? 'password' : 'text',
+              title: properties.Tooltip,
+              placeholder: properties.HintText},
+      css: { 
+        'appmagic-texthide' : properties.Mode() === 'multiline', 
+        'appmagic-text-hide-clear-button': !properties.Clear(),
+        underline: properties.Underline,
+        strikethrough: properties.Strikethrough
+      },
+      value: properties.Text,
+      event: {
+        click: behaviors.OnSelect,
+        change: behaviors.OnChange },
+      style: {
+        fontFamily: properties.Font,
+        fontSize: properties.Size,
+        color: autoProperties.Color,
+        fontWeight: properties.FontWeight,
+        fontStyle: properties.Italic,
+        textAlign: properties.Align,
+        lineHeight: properties.LineHeight,
+        paddingTop: properties.PaddingTop,
+        paddingRight: properties.PaddingRight,
+        paddingBottom: properties.PaddingBottom,
+        paddingLeft: properties.PaddingLeft,
+      },
+      disable: viewState.disabled }" >
+  </input>
+  </div>
+    ]]>     
+  </content>
+  
+  <properties>
+    <property name="Default" localizedName="##text_Default##" datatype="String" defaultValue="##Text_DefaultValue_Default##" isExpr="true" editable="true" direction="in">
+      <title>Initial text</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##text_Default_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_texticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##text_Default_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Text" localizedName="##text_Text##" datatype="String" direction="out" isPrimaryOutputProperty="true">
+      <title>Output Text</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_texticon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="Mode" localizedName="##text_Mode##" datatype="TextMode" defaultValue="TextMode!SingleLine" isExpr="true">
+      <title>Textbox Mode</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>TextMode</appMagic:helperUI>
+      <appMagic:displayName>##text_Mode_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_modeicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##text_Mode_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Clear" localizedName="##text_Clear##" datatype="Boolean" defaultValue="true">
+      <title>Clear Button</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##text_Clear_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_clearicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>4</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##text_Clear_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="LineHeight" localizedName="##text_LineHeight##" datatype="Number" defaultValue="1.2">
+      <title>Line Height</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##text_LineHeight_DisplayName##</appMagic:displayName>
+      <appMagic:helperUI>lineWidth</appMagic:helperUI>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_heighticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:group>paragraph</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##label_LineHeight_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="HintText" localizedName="##text_HintText##"  datatype="String">
+      <title>Hint text</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##text_HintText_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_texticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##text_HintText_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Design -->
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(186, 186, 186, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="%CONTROL.ID%!HoverBorderColor" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 15%)" />
+    <appMagic:includeProperty name="BorderStyle" defaultValue="BorderStyle!Solid">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness" defaultValue="2">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Color">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledColor" defaultValue="RGBA(186, 186, 186, 1)" />
+    <appMagic:includeProperty name="PressedColor" defaultValue="%CONTROL.ID%!Color" />
+    <appMagic:includeProperty name="HoverColor" defaultValue="%CONTROL.ID%!Color" />
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(255, 255, 255, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(242, 242, 242, 1)" />
+    <appMagic:includeProperty name="PressedFill" defaultValue="%CONTROL.ID%!Fill" />
+    <appMagic:includeProperty name="HoverFill" defaultValue="%CONTROL.ID%!Fill" />
+    <appMagic:includeProperty name="Font">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Size">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="FontWeight">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Italic" />
+    <appMagic:includeProperty name="Underline" />
+    <appMagic:includeProperty name="Strikethrough" />
+    <appMagic:includeProperty name="Align">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingTop" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingRight" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingBottom" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingLeft" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" />
+    <appMagic:includeProperty name="Height" defaultValue="40" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnChange" direction="in" />
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    
+    <!--Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="30" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="10" />
+  </appMagic:includeProperties>
+  
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Default" output="Text"/>
+  </appMagic:propertyDependencies>
+</widget>

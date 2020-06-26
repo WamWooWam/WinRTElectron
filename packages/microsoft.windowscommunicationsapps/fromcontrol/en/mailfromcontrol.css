@@ -1,0 +1,14 @@
+﻿.fromControl-wrapper{display:-ms-flexbox;}.fromControl-wrapper[data-multipleaccount="false"] .fromControl-customLayout>.fromControl-dropArrow{display:none;}
+.fromControl-wrapper .fromControl-customLayout{border:2px solid transparent;margin-left:-2px;outline-style:none;-ms-flex:0 1 auto;display:-ms-flexbox;width:100%;}.fromControl-wrapper .fromControl-customLayout>.fromControl-label{display:none;}
+.fromControl-wrapper .fromControl-customLayout>.fromControl-tileElement{margin-bottom:8px;margin-right:2px;min-width:40px;}
+.fromControl-wrapper .fromControl-customLayout>.fromControl-textArea{margin-bottom:4px;margin-left:8px;margin-right:5px;margin-top:-4px;-ms-flex:0 1 auto;overflow:hidden;white-space:nowrap;width:100%;}.fromControl-wrapper .fromControl-customLayout>.fromControl-textArea>.fromControl-nameElement{font-weight:200;font-size:21.33333px;letter-spacing:0.02em;line-height:27px;padding-bottom:2px;padding-top:1px;color:#000000;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-top:-1px;margin-bottom:1px;}
+.fromControl-wrapper .fromControl-customLayout>.fromControl-textArea>.fromControl-emailElement{color:#666666;display:inline-block;font-weight:300;height:20px;margin-top:-4px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:calc((100% - 15px));font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
+.fromControl-wrapper .fromControl-customLayout>.fromControl-textArea>.fromControl-dropArrow{display:none;}
+.fromControl-wrapper .fromControl-customLayout.interactive>.fromControl-textArea>.fromControl-dropArrow{display:inline-block;margin-top:-4px;color:#666666;font-family:"Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;padding-left:5px;padding-right:0px;vertical-align:top;}
+.fromControl-wrapper .fromControl-customLayout.interactive:hover>.fromControl-textArea>.fromControl-nameElement{color:#333333;}
+.fromControl-wrapper .fromControl-customLayout.interactive:hover>.fromControl-textArea>.fromControl-emailElement{color:#999999;}
+.fromControl-wrapper .fromControl-customLayout.interactive:hover>.fromControl-textArea>.fromControl-dropArrow{color:#999999;}
+.fromControl-wrapper .fromControl-customLayout.interactive:hover.active>.fromControl-textArea>.fromControl-nameElement{color:#666666;}
+.fromControl-wrapper .fromControl-customLayout.interactive:hover.active>.fromControl-textArea>.fromControl-emailElement{color:#cccccc;}
+.fromControl-wrapper .fromControl-customLayout.interactive:hover.active>.fromControl-textArea>.fromControl-dropArrow{color:#cccccc;}
+div.fromControl-dropDown{border-color:#0072c6 !important;margin:0 !important;}div.fromControl-dropDown>button{color:#000000;font-family:inherit;font-weight:300;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}

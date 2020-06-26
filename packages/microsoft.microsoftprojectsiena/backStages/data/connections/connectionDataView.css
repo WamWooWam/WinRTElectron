@@ -1,0 +1,73 @@
+﻿/* Colors */
+/* Misc styles */
+.data-connection {
+  height: 100%;
+}
+.data-connection .data-connection-controls {
+  display: -ms-flexbox;
+  -ms-flex-direction: row;
+  -ms-flex-align: center;
+  display: -ms-grid;
+  -ms-grid-columns: 1fr 28px;
+}
+.data-connection .data-connection-controls .pane-header {
+  font-family: 'Segoe UI';
+  font-weight: lighter;
+  font-size: 15pt;
+  color: #824a82;
+  line-height: 35px;
+  margin-bottom: 10px;
+}
+.data-connection .data-connection-controls .data-connection-control-button {
+  background-color: #643964;
+  box-sizing: border-box;
+  -ms-grid-column: 1;
+  -ms-grid-column-align: end;
+  width: 28px;
+  height: 28px;
+  min-width: 0px;
+  min-height: 0px;
+  border: 4px solid transparent;
+  border-radius: 50%;
+}
+.data-connection .data-connection-controls .data-connection-refresh-button {
+  -ms-grid-column: 1;
+  margin-right: 5px;
+}
+.data-connection .data-connection-controls .data-connection-remove-button {
+  -ms-grid-column: 2;
+}
+.data-connection .data-connection-controls .data-connection-control-button .data-connection-control-button-image {
+  display: -ms-grid;
+  -ms-grid-row-align: center;
+  -ms-grid-column-align: center;
+}
+.data-connection .data-connection-controls .data-connection-control-button:hover,
+.data-connection .data-connection-controls .data-connection-control-button:active {
+  background-color: #824a82;
+}
+progress .data-connection-wait {
+  width: 375px;
+}
+.data-connection-error {
+  padding: 20px 0px 20px 25px;
+  width: 100%;
+  text-align: left;
+}
+.data-connection-type-menu:focus {
+  outline: none;
+}
+.data-connection .data-connection-type-menu .data-connection-type-option.selected,
+.data-connection .data-connection-type-menu .data-connection-type-option.selected:hover {
+  background-color: #966596;
+  color: #ffffff;
+}
+.data-connection .data-connection-type-menu .data-connection-type-option:hover,
+.data-connection .data-connection-type-menu .data-connection-type-option:active,
+.data-connection .data-connection-type-menu .data-connection-type-option:hover:active {
+  background-color: #777777;
+  color: #ffffff;
+}
+.data-connection-table {
+  height: calc(100% - 100px);
+}

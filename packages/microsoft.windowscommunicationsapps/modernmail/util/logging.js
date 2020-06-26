@@ -1,0 +1,1 @@
+﻿(function(){"use strict";Mail.log=Mail.writeProfilerMark=function(n,t){Jx.mark(n+(t||""))};Mail.LogEvent={start:",StartTM,Mail",stop:",StopTM,Mail"}})()

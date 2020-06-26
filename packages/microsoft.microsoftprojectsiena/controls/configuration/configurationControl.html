@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>configurationControl</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="configurationControl.css" rel="stylesheet" />
+    <script src="configurationControl.js"></script>
+</head>
+<body>
+    <div class="configurationControl" class="fragment"
+         data-bind="
+            visible: !AppMagic.context.documentViewModel.isPreview && layoutState !== 'collapsed',
+            style: {
+                visibility: cssVisibility,
+                width: configurationCtrlCssWidth
+            }
+        ">
+        <!-- ko with: ruleFilter -->
+        <div class="divFilter">
+            <input type="text"
+                   id="ruleFilter"
+                   class="filter"
+                   spellcheck="false"
+                   data-bind="value: text, valueUpdate: 'keyup', attr: { placeholder: AppMagic.AuthoringStrings.FindRule }, css: { editable: editable },
+                           event: {
+                                focus: handleFocus.bind($data), blur: handleBlur.bind($data), input: handleInputChange.bind($data),
+                                mousedown: function ($data, evt) { return AppMagic.AuthoringTool.Utility.focusOnMouseDown(evt); }
+                           }, clickBubble: false" />
+        </div>
+        <!-- /ko -->
+
+        <div class="ruleList">
+            <div data-bind="visible: ruleFilter.view === 'category', foreach: (renderedOnce && ruleFilter.view === 'category') ? ruleCategories : []">
+                <!-- ko if: rules.length > 0 -->
+                <div class="category" data-bind="text: name"></div>
+                <div data-bind="foreach: $parent.collapsedCategories[categoryId]() ? [topGroup] : groups">
+                    <div class="group" data-bind="visible: id !== Microsoft.AppMagic.Authoring.PropertyGroup.none,
+                                                  text: displayName"></div>
+                    <div data-bind="foreach: rules">
+                        <div class="rule" data-bind="
+                                property: { rule: $data, isChildRule: false, view: 'category', configurationVM: $parents[2] },
+                                winjsControl: '/controls/intellisense/expressRuleTextBox.html',
+                                viewTrigger: [{
+                                    data: $parents[2].ruleFilter.view === 'category' ? $data : null,
+                                    trigger: $parents[2].focusRuleTrigger
+                                    }, {
+                                    data: $parents[2].ruleFilter.view === 'category' ? $data : null,
+                                    trigger: $parents[2].scrollIntoViewTrigger
+                                    }]
+                         "></div>
+                    </div>
+                    <!-- ko if: ($parent.categoryId === 1) && !($parents[1].collapsedCategories[$parent.categoryId]()) -->
+                    <div data-bind="foreach: $parent.childRules">
+                        <!-- ko if: group === ($parent.id) -->
+                        <div class="rule" data-bind="
+                            property: { rule: $data, isChildRule: true, view: 'category', configurationVM: $parents[2] },
+                            winjsControl: '/controls/intellisense/expressRuleTextBox.html'
+                            ">
+                        </div>
+                        <!-- /ko -->
+                    </div>
+                    <!-- /ko -->
+                </div>
+
+                <!-- ko if: categoryId === 0 -->
+                <div data-bind="foreach: $parent.collapsedCategories[categoryId]() ? topChildRules : childRules">
+                    <div class="rule" data-bind="
+                        property: { rule: $data, isChildRule: true, view: 'category', configurationVM: $parents[1] },
+                        winjsControl: '/controls/intellisense/expressRuleTextBox.html'
+                        ">
+                    </div>
+                </div>
+                <!-- /ko -->
+
+                <div class="more">
+                    <img class="errorIcon" src="/images/warning_sign.svg" data-bind="visible: $parent.getHasMoreErrors(categoryId)" />
+                    <div class="img" data-bind="visible: hasMoreRules, css: { collapsedCategories: $parent.collapsedCategories[categoryId]() }, click: $parent.changeCategoryView.bind($parent, categoryId), clickBubble: false"></div>
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <div class="buttomPadding"></div>
+        </div>
+
+        <div class="ruleList filterView" data-bind="visible: ruleFilter.view === 'all'">
+            <div data-bind="foreach: (renderedOnce && ruleFilter.view === 'all') ? ruleFilter.filteredRules : []">
+                <div class="rule" data-bind="
+                    property: { rule: $data, isChildRule: false, view: 'all', configurationVM: $parent },
+                    winjsControl: '/controls/intellisense/expressRuleTextBox.html',
+                    viewTrigger: [{
+                        data: $parent.ruleFilter.view === 'all' ? $data : null,
+                        trigger: $parent.focusRuleTrigger
+                    }],
+                    ">
+                </div>
+            </div>
+            <div data-bind="foreach: renderedOnce ? ruleFilter.filteredChildRules : []">
+                <div class="rule" data-bind="property: { rule: $data, isChildRule: true, view: 'all', configurationVM: $parent }, winjsControl: '/controls/intellisense/expressRuleTextBox.html'"></div>
+            </div>
+
+            <div class="buttomPadding"></div>
+        </div>
+    </div>
+</body>
+</html>

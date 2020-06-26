@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="checkboxicon" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="80px" height="40px" viewBox="0 0 80 40" enable-background="new 0 0 80 40" xml:space="preserve">
+<rect id="bkgfilltransparent_1_" x="27.143" y="7.133" opacity="0" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="0.9987" stroke-miterlimit="10" width="25.692" height="25.732"/>
+<path id="square_1_" fill="#FFFFFF" d="M52.835,32.865H27.143V7.133h25.692V32.865z M55.463,4.506H24.516v30.988h30.947V4.506z"/>
+<path id="check_2_" fill="#FFFFFF" d="M32.668,20.542l-0.558-0.606c-0.148-0.162-0.141-0.414,0.02-0.563l1.622-1.504
+	c0.073-0.069,0.17-0.105,0.27-0.105c0.113,0,0.217,0.044,0.292,0.124l4.447,4.792l7.656-9.845c0.077-0.097,0.19-0.152,0.313-0.152
+	c0.091,0,0.174,0.03,0.247,0.084l1.745,1.356c0.085,0.064,0.136,0.16,0.149,0.266c0.014,0.105-0.015,0.21-0.08,0.292l-9.83,12.637
+	L32.668,20.542z"/>
+</svg>

@@ -1,0 +1,301 @@
+﻿.dp-flyout {
+    padding: 0 0 18px 0 !important;
+    border: solid 2px black;
+    margin-left: 0;
+    margin-right: 0;
+    overflow: hidden !important;
+    display: block !important;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.dp-flyout .dp-jump {
+    color: #000000;
+    text-align: center;
+    margin-top: 6px;
+    margin-bottom: 1px;
+}
+
+.dp-flyout .dp-today {
+    padding: 10px 20px;
+}
+
+.dp-flyout .dp-today:hover {
+    color: #757576;
+}
+
+.dp-flyout .timelineArrow.left {
+    top: 15px;
+}
+
+.dp-flyout .timelineArrow.right {
+    top: 15px;
+}
+
+.dp-flyout .dp-flyoutEater {
+    display: none;
+}
+
+.dp-host {
+    box-sizing: border-box;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.dp-host .timelineScroller {
+    position: absolute;
+}
+
+.dp-host .grid {
+    top: 0;
+    width: 100%;
+    position: absolute;
+}
+
+.dp-host .header {
+    font-size: 26.66667px;
+    letter-spacing: 0.02em;
+    line-height: 32px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+    font-weight: 300;
+    color: #000000;
+    text-align: center;
+    margin-top: 14px;
+}
+
+.dp-host .dayNames {
+    display: flex;
+    width: 100%;
+    padding: 0;
+}
+
+.dp-host .dayName {
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    width: 39px;
+    margin-top: 14px;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.dp-host .monthGrid {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.dp-host .days {
+    position: relative;
+    width: 273px;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dp-host .day {
+    position: relative;
+    width: 39px;
+    height: 30px;
+    border-top: 1px solid #e6e6e6;
+    background-color: #ffffff;
+    text-align: center;
+    padding-top: 9px;
+}
+
+.dp-host .day:hover {
+    color: #757576;
+}
+
+.dp-host .daysEnd {
+    width: 273px;
+    height: 0;
+    border-top: 1px solid #e6e6e6;
+}
+
+.dp-host .previous,.dp-host .next {
+    background-color: #ffffff;
+    color: #999999;
+}
+
+.dp-host .previous:hover,.dp-host .next:hover {
+    color: #000000;
+}
+
+.dp-host .day.highlightDate {
+    background-color: #e8e7ea;
+}
+
+.dp-host .day.highlightDate.hasEvents {
+    border-bottom: 9px solid #dcdbde;
+}
+
+.dp-host .day.today {
+    background-color: #757576;
+    color: #ffffff;
+}
+
+.dp-host .day.today:hover {
+    color: #e8e7ea;
+}
+
+.dp-host .hasEvents {
+    height: 18px;
+    padding-bottom: 3px;
+    border-bottom: 9px solid #f2f2f2;
+}
+
+.dp-host .day.today.hasEvents {
+    border-bottom: 9px solid #909091;
+}
+
+.dp-host .previous.hasEvents,.dp-host .next.hasEvents {
+    color: #999999;
+    border-bottom-color: #f2f2f2;
+}
+
+.dp-host .yearGrid {
+    padding-left: 18px;
+    padding-right: 18px;
+}
+
+.dp-host .months {
+    position: relative;
+    width: 280px;
+    background-color: #ffffff;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.dp-host .month {
+    position: relative;
+    width: 86px;
+    height: 32px;
+    background-color: #ffffff;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding: 8px 1px 0 1px;
+    margin: 5px 2.5px 0 2.5px;
+}
+
+.dp-host .month:hover {
+    color: #757576;
+}
+
+.dp-host .month.highlightDate {
+    background-color: #e8e7ea;
+}
+
+.dp-host .month.today {
+    background-color: #757576;
+    color: #ffffff;
+}
+
+.dp-host .month.today:hover {
+    color: #e8e7ea;
+}
+
+.dp-host .focused {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    font-size: 0;
+}
+
+.dp-host .hasEvents .focused {
+    top: 0;
+    bottom: -9px;
+}
+
+.dp-pick-0 .dp-host {
+    box-sizing: border-box;
+    width: 313px;
+    height: 337px;
+}
+
+.dp-pick-1 .dp-host {
+    box-sizing: border-box;
+    width: 316px;
+    height: 257px;
+}
+
+.dp-pick-1 .header {
+    margin-bottom: 10px;
+}
+
+@media (-ms-high-contrast) {
+    .dp-today:hover {
+        color: highlight;
+    }
+
+    .dp-host .dayNames {
+        border-bottom: 0;
+    }
+
+    .dp-host .day:hover {
+        color: highlight;
+        border-color: windowtext;
+    }
+
+    .dp-host .day.highlightDate {
+        background-color: highlighttext;
+        color: highlight;
+        border-color: windowtext;
+    }
+
+    .dp-host .day.highlightDate:hover {
+        color: windowtext;
+    }
+
+    .dp-host .day.today {
+        border-color: windowtext;
+        background-color: highlight;
+        color: highlighttext;
+    }
+
+    .dp-host .day.today:hover {
+        color: windowtext;
+    }
+
+    .dp-host .month.highlightDate {
+        background-color: highlighttext;
+        color: highlight;
+    }
+
+    .dp-host .month.highlightDate:hover {
+        color: windowtext;
+    }
+
+    .dp-host .month.today {
+        background-color: highlight;
+        color: highlighttext;
+    }
+
+    .dp-host .month.today:hover {
+        color: windowtext;
+    }
+
+    .dp-host .month:hover {
+        color: highlight;
+    }
+
+    .dp-host .previous,.dp-host .next {
+        color: graytext;
+        border-color: windowtext;
+    }
+
+    .dp-host .previous:hover,.dp-host .next:hover {
+        color: highlight;
+    }
+}

@@ -1,0 +1,14 @@
+﻿.win-settingsflyout .win-header{background-color:#5133ab;}.win-settingsflyout .win-header .win-backbutton:hover:active{color:#5133ab;}
+.win-settingsflyout .win-header .icon{background-image:url('/ModernPeople/images/CalendarIcon-30.png');background-size:100% 100%;}
+.win-settingsflyout .win-content a,.win-settingsflyout .win-content a:visited{color:#5133ab;}
+.win-settingsflyout .win-content input[type=text]{box-sizing:border-box;}
+.win-settingsflyout .win-content .calendar-toggle{margin-bottom:10px;}.win-settingsflyout .win-content .calendar-toggle input[type=range]::-ms-fill-lower{background-color:#5133ab;}
+.win-settingsflyout .win-content .calendar-toggle input[type=range]:hover::-ms-fill-lower{background-color:rgba(82, 52, 173, 0.8);}
+.win-settingsflyout .win-content .calendar-toggle input[type=range]:active::-ms-fill-lower{background-color:rgba(82, 52, 173, 0.6);}
+.win-settingsflyout .win-content .calendar-toggle .win-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.win-settingsflyout .win-content .section{display:block;margin-bottom:25px;}
+.win-settingsflyout .win-content .color-table{margin:0 0 25px;width:180px;}.win-settingsflyout .win-content .color-table option:checked{color:#ffffff !important;background-color:#5133ab;}
+.win-settingsflyout .win-content .color-table option:active{color:#000000 !important;}
+.win-settingsflyout .win-content .calendar-account{margin-bottom:35px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.win-settingsflyout .win-content .calendar-account:not(:first-child){margin-top:35px;}
+.win-settingsflyout .win-content .calendar-account .signature-option{margin-top:5px;}
+.win-settingsflyout .win-content .calendar-account h3{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}

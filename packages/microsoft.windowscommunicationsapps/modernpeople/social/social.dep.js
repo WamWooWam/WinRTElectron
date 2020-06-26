@@ -1,0 +1,1 @@
+﻿(function(){var t=window.People.RecentActivity.UI.Host,n=window.People.RecentActivity.UI.Share;t.HostedControl=function(){};n.ShareLayout=function(){};n.ShareLayout.prototype.render=function(){};n.ShareLayout.prototype.dispose=function(){}})()

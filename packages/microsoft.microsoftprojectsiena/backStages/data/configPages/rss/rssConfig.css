@@ -1,0 +1,56 @@
+﻿
+.rss-config-prop label {
+    display: inline-block;
+    padding: 0px 5px 0px 0px;
+
+    width: 85px;
+
+    text-align: right;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+input[type=text].rss-config-url-textbox:-ms-input-placeholder {
+    color: #777777; /* Storm */
+}
+
+.rss-config-prop input {
+    border: 1px solid #363636 !important;      /* Abyss */
+    color: rgba(0, 0, 0, 1);        /* Ink */
+    display: inline-block;
+    margin: 0 0 10px 0;
+
+    box-sizing: border-box;
+    height: 35px;
+    width: 300px;
+
+    vertical-align: middle;
+
+    /* Body1 */
+    font-family: "Segoe UI";
+    font-weight: normal;
+    font-size: 10pt;
+}
+
+    .rss-config-prop input::selection {
+        background-color: rgba(124, 1, 124, 1);     /* Spellbound */
+        color: rgba(255, 255, 255, 1);              /* Steed */
+    }
+
+.rss-config-import-container {
+    margin-top: 10px;
+}
+
+.rss-config-import {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+}
+
+.rss-pane .pane-header {
+    font-family: 'Segoe UI';
+    font-weight: lighter;
+    font-size: 15pt;
+    color: #824A82; /*Fandango*/ 
+    line-height: 35px;
+    margin-bottom: 30px;
+}

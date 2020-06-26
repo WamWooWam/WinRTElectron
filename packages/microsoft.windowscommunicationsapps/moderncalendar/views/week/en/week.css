@@ -1,0 +1,558 @@
+﻿.weekview {
+    font-weight: 400;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding-bottom: 15px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    color: #5e5c5e;
+    background-color: #e8e7ea;
+}
+
+.weekview .dp-anchor {
+    position: absolute;
+    visibility: hidden;
+    left: 60px;
+    top: 119px;
+}
+
+@media (max-width: 320px) {
+    .weekview {
+        display:none;
+    }
+}
+
+.weekview .week {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto 1fr;
+    z-index: 0;
+}
+
+.weekview .header {
+    color: #5e5c5e;
+    margin-top: 40px;
+    margin-left: 60px;
+    margin-right: 0;
+}
+
+.weekview .header .dateAnchor {
+    display: -ms-inline-grid;
+    grid-template-columns: 1fr 64px;
+    grid-template-rows: 1fr;
+}
+
+.weekview .header .dateAnchor.hover {
+    color: #7a787a;
+}
+
+.weekview .header .dateAnchor.active {
+    color: #b1afb2;
+}
+
+.weekview .header .dateAnchor .anchorText {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    font-weight: 200;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-block;
+}
+
+.weekview .header .dateAnchor .dateChevron {
+    grid-column: 2;
+    grid-row: 1;
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+    font-size: 27px;
+    font-weight: 200;
+    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+    padding-left: 20px;
+    padding-right: 0;
+    padding-top: 9px;
+    padding-bottom: 7px;
+    display: none;
+}
+
+.weekview .header .activeAnchor .dateChevron {
+    display: inline-block;
+}
+
+.dp-flyout.weekviewPicker {
+    margin-top: 0px;
+}
+
+.weekview .days {
+    grid-row: 2;
+    display: flex;
+    padding-left: 50px;
+    padding-right: 0;
+}
+
+.weekview .days>.date {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #5e5c5e;
+    flex: 1 0px;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+    padding: 5px 0 6px 0;
+    padding-left: 15px;
+    padding-right: 0;
+}
+
+.weekview .days>.today {
+    background-color: #757576;
+    color: #ffffff;
+}
+
+.weekview .allDay {
+    grid-row: 3;
+    position: relative;
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+    color: #ffffff;
+    overflow: hidden;
+    display: flex;
+    padding-left: 50px;
+    padding-right: 0;
+}
+
+.weekview .allDay>.events {
+    flex: 1 0px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    min-height: 28px;
+    display: grid;
+    position: relative;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+}
+
+.weekview .allDay>.events>.container {
+    z-index: 0;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.weekview .allDaySpacer {
+    grid-row: 4;
+    display: flex;
+    height: 1px;
+}
+
+@media (-ms-high-contrast) {
+    .weekview .allDaySpacer {
+        display: none;
+    }
+}
+
+.weekview .allDaySpacer .margin {
+    width: 50px;
+}
+
+.weekview .allDaySpacer>.events {
+    flex: 1 0px;
+    height: 1px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+}
+
+.weekview .grid {
+    grid-row: 5;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-y: snapInterval(0px, 60px);
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    display: flex;
+}
+
+.weekview .hours {
+    height: 1440px;
+    width: 50px;
+    background-color: #e8e7ea;
+    color: #5e5c5e;
+}
+
+.weekview .hours>.hour {
+    position: relative;
+    box-sizing: border-box;
+    height: 60px;
+    border-bottom: 1px solid #ffffff;
+    padding-left: 0;
+    padding-right: 2px;
+    font-feature-settings: "kern" 1,"ss20" 1,"dlig" 1,"smcp";
+    text-align: center;
+    overflow: hidden;
+}
+
+.weekview .hours>.hour .trim {
+    position: relative;
+    overflow: hidden;
+    width: 50px;
+    height: 41px;
+    padding-top: 18px;
+}
+
+.weekview .grid>.events {
+    position: relative;
+    height: 1440px;
+    box-sizing: border-box;
+    flex: 1 auto;
+    background-image: url("../../WeekBackground.png");
+    -ms-high-contrast-adjust: none;
+    color: #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+    z-index: 0;
+}
+
+.weekview .allDay>.events.weekend {
+    border-bottom-color: #ffffff;
+}
+
+.weekview .grid>.events>.container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    margin-top: -1px;
+    margin-left: -1px;
+    margin-right: 0;
+    z-index: 0;
+    opacity: 0;
+}
+
+@media (-ms-high-contrast) {
+    .weekview .events {
+        background-color: transparent;
+    }
+}
+
+.weekview .timeIndicator {
+    width: calc((100% + 1px));
+    left: -1px;
+}
+
+.weekview .timeIndicator .clock {
+    left: -50px;
+}
+
+.weekview .focusArea {
+    width: calc((100% + 2px));
+    height: 59px;
+    position: absolute;
+    margin-top: 1px;
+}
+
+@media (-ms-high-contrast:none) {
+    .weekview .events[data-state='pressed'],.weekview .focusArea[data-state='pressed'] {
+        background-color: #c8c8c8;
+    }
+
+    .weekview .allDay .more:hover {
+        color: fadeIn(#666666, 20%);
+    }
+
+    .weekview .allDay .more[data-state='pressed'] {
+        color: fadeOut(#666666, 20%);
+    }
+}
+
+@media (-ms-high-contrast:none) {
+    .weekview .allDay .weekend {
+        background-color: #dfdee1;
+    }
+
+    .weekview .allDay[data-state='pressed'],.weekview .hours [data-state='pressed'],.weekview .weekend[data-state='pressed'],.weekview .weekend .focusArea[data-state='pressed'] {
+        background-color: #bcbcbc;
+    }
+}
+
+.weekview.workweek .weekend {
+    display: none;
+}
+
+.weekview .glyph {
+    box-sizing: border-box;
+    min-width: 7px;
+    height: 100%;
+}
+
+.weekview .glyphInner {
+    width: 100%;
+    height: 100%;
+}
+
+.weekview [data-status="free"] .glyphInner {
+    background-color: rgba(255, 255, 255, 0.6);
+}
+
+.weekview [data-status="tentative"] .glyphInner {
+    background-image: url('../../Tentative.png');
+    background-color: transparent;
+    background-repeat: repeat;
+    -ms-high-contrast-adjust: none;
+}
+
+.weekview [data-status="outOfOffice"] .glyphInner,.weekview [data-status="workingElsewhere"] .glyphInner {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.weekview .allDay .event {
+    box-sizing: border-box;
+    position: relative;
+    width: calc((100% + 2px));
+    height: 31px;
+    border: 1px solid #ffffff;
+    border-top-color: #e8e7ea;
+    background-color: #ffffff;
+    margin-left: -1px;
+    margin-right: 0;
+    margin-bottom: -1px;
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    grid-template-rows: 1fr;
+}
+
+.weekview .allDay>.events.weekend .event {
+    border-top-color: #dfdee1;
+}
+
+.weekview .allDay>.events.weekend .event:first-child {
+    border-top-color: #ffffff;
+}
+
+.weekview .allDay .event:first-child {
+    margin-top: -1px;
+    border-top-color: #ffffff;
+}
+
+.weekview .allDay .startTime {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    grid-column: 2;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 0;
+    -ms-font-feature-settings: "smcp";
+}
+
+.weekview .allDay .subject {
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    grid-column: 3;
+    padding-top: 3px;
+    padding-left: 7px;
+    padding-right: 8px;
+}
+
+.weekview .allDay .endTime {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    grid-column: 4;
+    padding-top: 3px;
+    padding-left: 0;
+    padding-right: 8px;
+    -ms-font-feature-settings: "smcp";
+}
+
+.weekview .allDay .more {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-weight: 300;
+    color: #666666;
+    position: relative;
+    width: calc((100% - 10px));
+    flex: 1 auto;
+    padding-top: 3px;
+    padding-bottom: 5px;
+    padding-left: 14px;
+    padding-right: 0;
+}
+
+.weekview .grid .event {
+    border: 1px solid #ffffff;
+    border-left: 1px solid #ffffff;
+    border-right: 0;
+    background-color: #ffffff;
+    display: flex;
+    align-self: start;
+    margin-left: 0;
+    margin-right: 1px;
+    z-index: 0;
+}
+
+.weekview .grid .event.short {
+    border-color: transparent;
+    background: transparent;
+}
+
+.weekview .grid .event.short .details {
+    background: #ffffff;
+}
+
+.weekview .grid .event.hasPreviousEvent {
+    border-top-color: #e8e7ea;
+}
+
+.weekview .grid .details {
+    box-sizing: border-box;
+    height: 100%;
+    flex: 1 1 auto;
+    padding-top: 8px;
+    padding-left: 7px;
+    padding-right: 8px;
+}
+
+.weekview .grid .details,.weekview .grid .subject {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.weekview .grid .subject {
+    font-weight: 600;
+}
+
+.weekview .grid .location {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #666666;
+}
+
+.weekview .grid .location,.weekview .grid .subject {
+    padding-top: 5px;
+    margin-top: -5px;
+    padding-bottom: 1px;
+    margin-bottom: -2px;
+}
+
+.weekview .grid .short .details {
+    padding-top: 3px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.weekview .grid .weekend {
+    background-image: url("../../WeekendBackground.png");
+    -ms-high-contrast-adjust: none;
+}
+
+.weekview .overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+@media (-ms-high-contrast:none) {
+    .weekview .overlay:hover,.weekview [data-state]>.overlay {
+        background-color: rgba(255, 255, 255, 0.13);
+    }
+}
+
+@media (-ms-high-contrast) {
+    .weekview {
+        color: windowtext;
+    }
+
+    .weekview .days>.today {
+        background-color: highlight;
+        border-color: windowtext;
+        color: highlighttext;
+    }
+
+    .weekview .grid .short.event .details {
+        background-color: window;
+    }
+
+    .weekview .grid .short.event,.weekview .grid .event {
+        background-color: window;
+        border: 1px solid windowtext;
+    }
+
+    .weekview .grid .event.hasPreviousEvent {
+        border-top-color: windowtext;
+    }
+
+    .weekview .grid .weekend,.weekview .grid>.events {
+        border-color: windowtext;
+        background-image: linear-gradient(window 59px, windowtext 59px);
+        background-size: 1px 60px;
+    }
+
+    .weekview .event {
+        background-color: window;
+        border: 1px solid windowtext;
+    }
+
+    .weekview .grid .details,.weekview .grid .subject,.weekview .grid .location {
+        color: windowtext !important;
+    }
+
+    .weekview [data-status="outOfOffice"] .glyphInner,.weekview [data-status="workingElsewhere"] .glyphInner,.weekview [data-status="busy"] .glyphInner {
+        background-color: windowtext;
+    }
+
+    .weekview [data-status="tentative"] .glyphInner {
+        background-image: linear-gradient(135deg, window 25%, windowtext 25%, windowtext 50%, window 50%, window 75%, windowtext 75%);
+        background-size: 10px 10px;
+        box-sizing: border-box;
+    }
+
+    .weekview [data-status="free"] .glyphInner {
+        background-color: window;
+        border-left: 0;
+        border-right: 1px solid windowtext;
+    }
+
+    .weekview .timeIndicator .clock {
+        background-color: highlight;
+        color: highlighttext;
+    }
+
+    .weekview .timeIndicator .line {
+        border-color: highlight;
+        background-color: transparent;
+    }
+}

@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/inkControl"
+        name="inkControl"
+        jsClass="AppMagic.Controls.InkControl"
+        version="1.0"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[INK
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/inkControl.css" />
+    <require type="javascript" src="js/inkControl.js" />
+    <require type="markup" src="/controls/common/ruleValueEditor/ruleValueEditor.html" />
+    <require type="other" src="/controls/common/ruleValueEditor/ruleValueEditor.css" />
+    <require type="other" src="/images/pencommandbarcoloricon.svg" />
+    <require type="other" src="/images/pen_erase_icon.svg" />
+    <require type="other" src="/images/pen_draw_icon.svg" />
+    <require type="other" src="/images/datarule_clearicon.svg" />
+  </requires>
+  
+  <appMagic:capabilities 
+    contextualViewsEnabled="true" 
+    autoBorders="true"
+    />
+  
+  <content> 
+     <![CDATA[
+    <div
+      class="appmagic-inkControl" data-bind="style: {
+          backgroundColor: properties.Fill,
+        },
+        attr: { title: properties.Tooltip }">
+      <div class="canvasDiv">
+        <canvas class="appmagic-inkControl-draw-canvas" data-bind="attr: { width: properties.Width, height: properties.Height }"></canvas>
+      </div>
+      <div class="appmagic-inkControl-commandBar" data-bind="visible: properties.ShowControls">
+        
+        <div class="appmagic-inkControl-commandBar-penModes">
+          <div class="button" data-bind="click: function (data, evt) { handleModeClicked('draw', data); }, css: { active: properties.Mode() === 'draw' }">
+            <div class="icon">
+               <img src="../../images/pen_draw_icon.svg" />
+            </div>
+          </div>
+          <div class="button" data-bind="click: function (data, evt) { handleModeClicked('erase', data); }, css: { active: properties.Mode() === 'erase'}">
+            <div class="icon">
+               <img src="../../images/pen_erase_icon.svg" />
+            </div>
+          </div>
+          <div class="button" data-bind="click: function (data, evt) { handleClearClicked(data); }">
+            <div class="icon">
+               <img src="../../images/datarule_clearicon.svg" />
+            </div>
+          </div>
+          <div class="splitter"></div>
+        </div>
+        
+        <!-- "handleButtonClicked" is wrapped in the function closure because with "handleButtonClicked.bind($data, 'propertyName')", controlContext gets passed as 'this' parameter -->
+        <!-- As we need to access the methods in inkControl.js, we dont want to pass controlControl as this parameter. So, we specify bound function in initControlContext as this.handleButtonClicked.bind(this) -->
+        
+        <div class="appmagic-inkControl-commandBar-buttons" data-bind="foreach: _commandBarButtons">
+          <div class="button" data-bind="visible: visible, click: function (data, evt) { $parent.handleButtonClicked($data.propertyName, $parent, evt); }, css: { active: $parent.isShowingPropertyFlyout($data.propertyName, $parent)}">
+            <div class="icon">
+             <!-- ko if: $data.propertyName !== 'Size' && $data.propertyName !== 'More'-->
+               <img data-bind="attr: {src: image}" />
+             <!-- /ko -->
+             
+             <!-- ko if: $data.propertyName === 'Color' -->
+             <div class="colorBar" data-bind="style: { backgroundColor: $parent.properties.Color}"></div>
+             <!-- /ko -->
+             
+             <!-- ko if: $data.propertyName === 'Size' -->
+               <div data-bind="text: $parent.properties.Size() || 0"></div>
+             <!-- /ko -->
+             
+             <!-- ko if: $data.propertyName === 'More' -->
+              <span data-bind="text: AppMagic.AuthoringTool.SegoeGlyphs.more"></span>
+             <!-- /ko -->
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="appmagic-inkControl-commandBar-disabled" data-bind="visible: isDisabled"></div>
+      <div class="appmagic-inkControl-flyout" data-win-control="WinJS.UI.Flyout" tabindex="0">
+       <!-- ko if: !(_isOverFlowButtonClicked()) -->
+        <div class="appmagic-inkControl-flyoutContent" tabindex="0">
+          <!-- ko if: _isOverflowPropertyClicked() -->
+            <div class="appmagic-inkControl-propertyName" data-bind="text: _currentProperty()"></div>
+          <!-- /ko -->
+
+          <div data-bind="observableProperty: { rule: rule }, winjsControl: '/controls/common/ruleValueEditor/ruleValueEditor.html'"></div>
+        </div>
+       <!-- /ko -->
+       
+       <!-- ko if: _isOverFlowButtonClicked() -->
+        <div class="appmagic-inkControl-flyoutContent" tabindex="0">
+          <!-- ko foreach: _overflowProperties -->
+            <div class="appmagic-inkControl-flyoutMenuItem" data-bind="click: function (data, evt) { $parent.handlePropertyClicked($data.propertyName, $parent); }">
+              <div data-bind="text: propertyName"></div>
+            </div>
+          <!-- /ko -->
+        </div>
+       <!-- /ko -->
+      </div>
+    </div>
+    ]]>
+  </content>
+  
+  <properties>
+    <property name="RecognizedText" localizedName="##inkControl_RecognizedText##" datatype="String" defaultValue="" direction="out">
+      <title>Recognized Text</title>
+      <appMagic:category>Data</appMagic:category>
+    </property>
+    <property name="Strokes" localizedName="##inkControl_Strokes##" datatype="PenImage" direction="out">
+      <title>Strokes output </title>
+      <appMagic:category>Data</appMagic:category>
+    </property>
+    <property name="Image" localizedName="##inkControl_Image##" datatype="Image" direction="out" isPrimaryOutputProperty="true">
+      <title>Image output </title>
+      <appMagic:category>Data</appMagic:category>
+    </property>
+    <!-- Hiding DefaultStrokes property due to crashes because of bug in Windows.UI.Input.Inking.dll. Related bugs: 104328 & 102217 -->
+    <property name="DefaultStrokes" localizedName="##inkControl_DefaultStrokes##" datatype="PenImage" direction="in" defaultValue="" converter="encodeImageUrl" format="uri" hidden="true">
+      <title>Image content</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##inkControl_DefaultStrokes_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_defaultstrokesicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>false</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_DefaultStrokes_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Clear" localizedName="##inkControl_Clear##" datatype="Boolean" direction="in" defaultValue="false">
+      <title>Clear</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_Clear_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_clearicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_Clear_Tooltip##</appMagic:tooltip>
+    </property>
+    <!-- Task: 90908 Enum -->
+    <property name="Mode" localizedName="##inkControl_Mode##" datatype="PenMode" direction="in" isExpr="true" defaultValue="PenMode!Draw">
+      <title>Mode</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>penMode</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_Mode_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/pen_draw_icon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>3</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_Mode_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Color" localizedName="##inkControl_Color##" datatype="Color" direction="in" isExpr="true" defaultValue="RGBA(0, 0, 0, 1)" converter="argbConverter">
+      <title>Color</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_Color_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/pencoloricon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+        <appMagic:group>pen</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_Color_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Input" localizedName="##inkControl_Input##" datatype="Number" direction="in" defaultValue="7">
+      <title>Input device Type</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>penType</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_Input_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/mode_icon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>50</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_Input_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Size" localizedName="##inkControl_Size##" datatype="Number" direction="in" defaultValue="2" minimum="0" maximum="200">
+      <title>Pen size</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>penThickness</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_Size_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+        <appMagic:group>pen</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_Size_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="SelectionColor" localizedName="##inkControl_SelectionColor##" datatype="Color" direction="in" isExpr="true" defaultValue="RGBA(255, 203, 0, 1)" converter="argbConverter">
+      <title>Selection Color</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_SelectionColor_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/rulebutton_color.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>4</appMagic:position>
+        <appMagic:group>pen</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_SelectionColor_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="SelectionThickness" localizedName="##inkControl_SelectionThickness##" datatype="Number" direction="in" defaultValue="5">
+      <title>Selection thickness</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>penThickness</appMagic:helperUI>
+      <appMagic:displayName>##inkControl_SelectionThickness_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>27</appMagic:position>
+        <appMagic:group>pen</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##inkControl_SelectionThickness_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Design -->
+    <appMagic:includeProperty name="Fill">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle" defaultValue="BorderStyle!Solid">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness" defaultValue="2">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Width" defaultValue="368" nullDefault="0">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Height" defaultValue="230" nullDefault="0">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="ShowControls" defaultValue="false">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    
+    <!--Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="32" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="245" />
+  </appMagic:includeProperties>
+  
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="DefaultStrokes" output="RecognizedText"/>
+    <appMagic:propertyDependency input="DefaultStrokes" output="Strokes"/>
+    <appMagic:propertyDependency input="Clear" output="RecognizedText"/>
+    <appMagic:propertyDependency input="Clear" output="Strokes"/>
+  </appMagic:propertyDependencies>
+</widget>

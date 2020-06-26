@@ -1,0 +1,4 @@
+﻿body.modernCanvas .modernCanvas-content{padding-top:10px;}
+body.modernCanvas.skinny>.modernCanvas-content{padding-top:15px;}
+body.modernCanvas.skinny>.modernCanvas-visible{padding-left:60px;}
+body.modernCanvas.snap>.modernCanvas-visible{padding-left:20px;}

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="bingTranslator"
+        restServiceConnectorId="{FAC08358-F679-480B-A214-84354F46CEB6}"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[BING TRANSLATOR
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Image" name="Logo">
+      <rules>
+        <rule name="Height" value="20" />
+        <rule name="Width" value="20" />
+        <rule name="Image" value="BingLogo" dataSourceLocation="ctrllib/bingControls/images/BingLogo.png" isExpr="true" />
+        <rule name="ImagePosition" value="ImagePosition!Fit" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="20" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="20" />
+        <rule name="Width" value="578" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Bold" isExpr="true" />
+        <rule name="Color" value="RGBA(180, 180, 180, 1)" isExpr="true" />
+        <rule name="Text" value="##BingTranslate_Title##" />
+        <rule name="PaddingRight" value="10" />
+      </rules>
+    </control>
+    <control metaDataId="%InputText.ID%" template="Text" name="InputText">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="73" />
+        <rule name="Height" value="180" />
+        <rule name="Width" value="294" />
+        <rule name="Mode" value="TextMode!MultiLine" />
+        <rule name="Default" value="##BingTranslate_DefaultText##" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="Fill" value="RGBA(0, 0, 0, 0)" isExpr="true" />
+      </rules>
+    </control>
+    <control template="Label" name="ToLanguageLabel">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="26" />
+        <rule name="Width" value="174" />
+        <rule name="Text" value="##BingTranslator_Translateto##" />
+        <rule name="PaddingLeft" value="0" />
+        <rule name="Size" value="12" />
+        <rule name="Color" value="RGBA(127, 127, 127, 1)" isExpr="true" />
+      </rules>
+    </control>
+    <control metaDataId="%LanguagesDropDown.ID%" template="Dropdown" name="LanguagesDropDown">
+      <rules>
+        <rule name="X" value="174" />
+        <rule name="Y" value="30" />
+        <rule name="Height" value="30" />
+        <rule name="Width" value="120" />
+        <rule name="Size" value="11" />
+        <rule name="Items" value="%RESTServiceName%!TranslateLanguages()" isExpr="true"/>
+        <rule name="Color" value="RGBA(51, 51, 51, 1)" isExpr="true" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="PaddingTop" value="5" />
+        <rule name="PaddingBottom" value="5" />
+      </rules>
+    </control>
+    <control template="Label" name="TranslatedText">
+      <rules>
+        <rule name="X" value="304" />
+        <rule name="Y" value="73" />
+        <rule name="Height" value="180" />
+        <rule name="Width" value="294" />
+        <rule name="BorderStyle" value="BorderStyle!Solid" isExpr="true"/>
+        <rule name="BorderThickness" value="2" />
+        <rule name="BorderColor" value="RGBA(200, 200, 200, 1)" isExpr="true" />
+        <rule name="Text" value="%RESTServiceName%!Translate(%InputText.ID%!Text, %LanguagesDropDown.ID%!Selected!Value)" isExpr="true"/>
+      </rules>
+    </control>
+  </controls>
+</composition>

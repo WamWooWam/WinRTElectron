@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>restErrorPanel</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="restErrorPanel.css" rel="stylesheet" />
+    <script src="restErrorPanel.js"></script>
+</head>
+<body>
+    <div data-bind="foreach: errors" tabindex="0">
+        <div class="restErrorPanel">
+            <img class="restErrorPanelIcon" src="../../images/warning_sign.svg" />
+            <div class="restErrorDescription" data-bind="text: $data, attr: {title: $data}"></div>
+            <button class="restErrorDismissButton" data-bind="text: AppMagic.AuthoringStrings.RestErrorDismissButtonText, event: { click: $parent.dismissError.bind($parent, $index()) }" tabindex="0"></button>
+            <button class="restErrorDismissAllButton" data-bind="text: AppMagic.AuthoringStrings.RestErrorDismissAllButtonText, event: { click: $parent.dismissAllErrors.bind($parent) }" tabindex="0"></button>
+            <div class="restErrorCount" data-bind="text: AppMagic.AuthoringStrings.RestErrorCountText + $parent.errors.length"></div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,223 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/button"
+        name="button"
+        jsClass="AppMagic.Controls.Button"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[BUTTON
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="/ctrllib/common/css/button.css" />
+    <require type="javascript" src="/ctrllib/common/js/button.js" />
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoFill="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+
+  <content>
+    <![CDATA[
+      <div class="appmagic-button-container" data-bind="
+          event: { 
+              click: handleClick,
+              mousedown: handleMouseDown,
+              mouseup: handleMouseUp,
+              mouseout: handleMouseOut
+          }">
+          <div class="appmagic-button" data-bind="
+          style: {
+              fontFamily: properties.Font,
+              fontSize: properties.Size,
+              color: autoProperties.Color,
+              fontWeight: properties.FontWeight,
+              fontStyle: properties.Italic,
+              textAlign: properties.Align,
+              paddingTop: properties.PaddingTop,
+              paddingRight: properties.PaddingRight, 
+              paddingBottom: properties.PaddingBottom, 
+              paddingLeft: properties.PaddingLeft,
+          },
+          css: { 
+              top: properties.VerticalAlign() === 'top',
+              middle: properties.VerticalAlign() === 'middle',
+              bottom: properties.VerticalAlign() === 'bottom',
+              left: properties.Align() === 'left',
+              right: properties.Align() === 'right',
+              center: properties.Align() === 'center',
+              justify: properties.Align() === 'justify',
+              disabled: viewState.disabled,
+              underline: properties.Underline,
+              strikethrough: properties.Strikethrough
+          },
+          attr: { title: properties.Tooltip }">
+              <div class= "appmagic-button-label" tabIndex="-1" spellcheck="false"
+                   data-bind="inlineEditText: properties.Text">
+              </div>
+          </div>
+      </div>
+    ]]>
+  </content>
+
+  <properties>
+    <property name="Pressed" localizedName="##button_Pressed##" datatype="Boolean" direction="out" defaultValue="false" isPrimaryOutputProperty="true">
+      <title>The pressed state of the button.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:helperUI>boolean</appMagic:helperUI>
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>52</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Text" defaultValue="##Button_DefaultValue_Text##" isExpr="true" isPrimaryInputProperty="true">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>false</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Design -->
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor" defaultValue="ColorFade(%CONTROL.ID%!Fill, -15%)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, -20%)" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 20%)" />
+    <appMagic:includeProperty name="BorderStyle" defaultValue="BorderStyle!None">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Color" defaultValue="RGBA(255, 255, 255, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledColor" defaultValue="RGBA(186, 186, 186, 1)" />
+    <appMagic:includeProperty name="PressedColor" defaultValue="%CONTROL.ID%!Color" />
+    <appMagic:includeProperty name="HoverColor" defaultValue="%CONTROL.ID%!Color" />
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill" defaultValue="RGBA(0, 176, 240, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(119, 119, 119, 1)" />
+    <appMagic:includeProperty name="PressedFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, -30%)" />
+    <appMagic:includeProperty name="HoverFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, 30%)" />
+    <appMagic:includeProperty name="Font">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Size">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="FontWeight" defaultValue="FontWeight!Semibold">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Italic" />
+    <appMagic:includeProperty name="Underline" />
+    <appMagic:includeProperty name="Strikethrough" />
+    <appMagic:includeProperty name="Align" defaultValue="Align!Center">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingTop" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingRight" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingBottom" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingLeft" defaultValue="5">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="VerticalAlign" defaultValue="VerticalAlign!Middle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" />
+    <appMagic:includeProperty name="Height" defaultValue="40" />
+
+    <!-- Behavior -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="5" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="5" />
+
+  </appMagic:includeProperties>
+</widget>

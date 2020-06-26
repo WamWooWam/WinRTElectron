@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<composition
+        name="compositeColumnChart"
+        version="1.0"
+        xmlns="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[COMPOSITE COLUMN CHART
+      Control description here.]]>
+  </description>
+
+  <controls>
+    <control template="Label" name="Title">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="0" />
+        <rule name="Height" value="25" />
+        <rule name="Width" value="400" />
+        <rule name="Size" value="14" />
+        <rule name="Align" value="Align!Center" isExpr="true" />
+        <rule name="VerticalAlign" value="VerticalAlign!Middle" isExpr="true" />
+        <rule name="FontWeight" value="FontWeight!Lighter" isExpr="true" />
+        <rule name="Color" value="RGBA(69, 69, 69, 1)" isExpr="true" />
+        <rule name="Text" value="##chart_DefaultText##" />
+      </rules>
+    </control>
+    <control metaDataId="%ColumnChart.ID%" template="BarChart" name="ColumnChart" isPrimaryControl="true">
+      <rules>
+        <rule name="X" value="0" />
+        <rule name="Y" value="30" />
+      </rules>
+    </control>
+    <control template="Legend" name="Legend">
+      <rules>
+        <rule name="X" value="40" />
+        <rule name="Y" value="440" />
+        <rule name="Height" value="80" />
+        <rule name="Width" value="320" />
+        <rule name="Items" value="%ColumnChart.ID%!SeriesLabels" isExpr="true"/>
+        <rule name="Fill" value="%ColumnChart.ID%!Fill" />
+      </rules>
+    </control>
+  </controls>
+</composition>

@@ -1,0 +1,13 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic BarChart control CSS
+ *
+ */
+
+/* Set the rotation of the X axis labels to the middle of the left edge of the bounding box */
+.flotr-grid-label-x {
+    -webkit-transform-origin:0% 50%;
+    -ms-transform-origin:0% 50%;
+    transform-origin:0% 50%;
+}

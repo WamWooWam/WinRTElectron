@@ -1,0 +1,19 @@
+﻿.share-pvLoading{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;font-weight:300;display:-ms-flexbox;-ms-flex-direction:row;margin-top:33px;margin-bottom:40px;}
+.share-pvClose{padding-left:20px;font-weight:400;}
+.share-pvLoading progress{height:20px;width:20px;padding-right:5px;}
+.share-preview{max-height:145px;margin-top:19px;margin-bottom:21px;display:-ms-flexbox;-ms-flex-direction:row;-ms-flex-align:start;}
+.hiddenShare-preview{visibility:hidden;position:absolute;left:800px;}
+progress.share-loadImage{height:32px;width:32px;padding:50px 72px;}
+.imgPreview{vertical-align:middle;display:table;}
+#share-pvFlipView.win-flipview{height:145px;width:210px;text-align:center;margin-bottom:12px;float:left;}
+div.share-noImage{height:143px;width:208px;background-color:#f0f0f0;border:1px solid #e3e3e3;text-align:center;}
+div.share-noImageTxt{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;font-weight:300;padding:45px 40px 0px 40px;}
+#sharePVTextArea{-ms-flex:1 1 auto;max-height:147px;margin-top:-2px;overflow:hidden;}
+#sharePVImgArea{margin-right:20px;margin-left:0;}
+.win-template{background-color:rgba(0, 0, 0, 0.15);}
+#share-pvFlipView .win-navright{margin-left:-39px;width:39px;visibility:visible !important;opacity:1 !important;}
+#share-pvFlipView .win-navleft{width:39px;visibility:visible !important;opacity:1 !important;}
+#share-pvFlipView .leftNotVisible,#share-pvFlipView .rightNotVisible{opacity:0 !important;}
+#shareTitle{font-size:21.33333px;letter-spacing:0.02em;line-height:27px;padding-bottom:2px;padding-top:1px;font-weight:300;color:#000000;-ms-user-select:text;margin-bottom:-2px;margin-top:-1px;}
+#shareUrl{font-weight:300;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;color:#0072c6;-ms-user-select:text;}
+#shareDescription{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;-ms-user-select:text;font-weight:300;-ms-text-overflow:ellipsis;}

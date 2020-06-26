@@ -1,0 +1,266 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>objectViewerControl</title>
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <link href="objectViewerControl.css" rel="stylesheet" />
+    <script src="objectViewerControl.js"></script>
+
+    <script type="text/html" id="object-viewer-control-grid-cell-text-template">
+        <div unselectable="off" data-bind="text: $parents[1].data.getCellValue(new AppMagic.AuthoringTool.ObjectViewer.CellPosition($parentContext.$data, $data))"></div>
+    </script>
+    <script type="text/html" id="object-viewer-control-grid-cell-image-template">
+        <img src="#" data-bind="
+            style: {
+                maxWidth: AppMagic.Constants.Controls.ObjectViewerControl.GridCellImageMaxWidthPixels.toString() + 'px',
+                maxHeight: AppMagic.Constants.Controls.ObjectViewerControl.GridCellImageMaxHeightPixels.toString() + 'px',
+            },
+            attr: {
+                src: $parents[1].data.getImageSrc(new AppMagic.AuthoringTool.ObjectViewer.CellPosition($parentContext.$data, $data), $element),
+            }" />
+    </script>
+    <script type="text/html" id="object-viewer-control-grid-cell-button-template">
+        <button class="descendIntoObjectOrArrayButton" data-bind="
+            click: function (arg, evt) {
+                $parents[1].onClickCellArrayOrObject(new AppMagic.AuthoringTool.ObjectViewer.CellPosition($parentContext.$data, $data), evt);
+            }"></button>
+    </script>
+    <script type="text/html" id="object-viewer-control-grid-cell-media-template">
+        <div class="media-cell">
+            <img class="media-icon" src="/images/object_viewer_media_icon.svg" />
+            <div data-bind="text: AppMagic.AuthoringStrings.ObjectViewerControl_MediaIconLabel"></div>
+        </div>
+    </script>
+    <script type="text/html" id="object-viewer-control-grid-cell-none-template">
+    </script>
+</head>
+<body>
+    <div class="objectViewerControl">
+        <div class="objectViewerControlBackgroundLeft"></div>
+
+        <!-- We use the hiddenGrid DOM element to calculate initial widths of
+            columns. We want to initially auto width-size the first 100 columns
+            and 100 rows. We also use this section to force the loading of the
+            caret icon. If we don't force this loading, then IE has a bug where
+            it will not render the caret image until the descend-button is
+            hovered. -->
+        <div class="hiddenGrid">
+            <div class="hiddenGridHeader"></div>
+            <img src="/images/table_icon.svg" />
+        </div>
+
+        <div class="objectViewerGrid">
+            <div class="objectViewerGridHeaders" data-bind="style: {
+                msGridColumns: msGridColumnsStyle
+                }">
+                <!-- The style binding for objectViewerGridHeader directly below assigns -ms-grid-column css property using 1-based indexing, hence the +1. -->
+                <!-- ko foreach: shownCellsInfo.colsShown -->
+                <div class="objectViewerGridHeader" data-bind="
+                    style: {
+                        paddingLeft: AppMagic.Constants.Controls.ObjectViewerControl.GridCellHeaderPaddingLeftRightPixels.toString() + 'px',
+                        paddingRight: AppMagic.Constants.Controls.ObjectViewerControl.GridCellHeaderPaddingLeftRightPixels.toString() + 'px',
+                        msGridColumn: ($data * 2 + 2).toString(),
+                    },
+                    css: { clickableHeader: $parent.isShowingTypeConvertibleData },
+                    click: $parent.onClickGridHeader.bind($parent)
+                    ">
+                    <div class="gridHeaderText" data-bind="
+                        text: $parent.data.tableHeaders[$data].name"></div><div class="gridHeaderDropDown" data-bind="
+                        visible: $parent.isShowingTypeConvertibleData && $data !== $parent.shownCellsInfo.addColumn,
+                        style: {
+                            marginLeft: AppMagic.Constants.Controls.ObjectViewerControl.GridHeaderDownCaretMarginLeftPixels.toString() + 'px',
+                            width: AppMagic.Constants.Controls.ObjectViewerControl.GridHeaderDownCaretWidthPixels.toString() + 'px',
+                        }">&#xE0A1;</div>
+                </div>
+                <div class="objectViewerGridColWidthResizer resizingEnabled" data-bind="
+                    style: {
+                        msGridColumn: ($data * 2 + 3).toString(),
+                    },
+                    event: {
+                        MSPointerDown: function (args, evt) {
+                            $parent.onMSPointerDownResizeColWidth.bind($parent)(args, evt);
+                            return true;
+                        }
+                    }">
+                    <div class="objectViewerGridColWidthResizerInner"></div>
+                </div>
+                <!-- /ko -->
+                <!-- We use objectViewerGridLastColPlaceholder because we want
+                    to make objectViewerGridHeaders include the width of the
+                    unrealized headers in its scrollable width, otherwise
+                    objectViewerGridHeaders would have a scrollable width of
+                    only up to and not more than the farthest right realized
+                    cell. -->
+                <div class="objectViewerGridLastColPlaceholder" data-bind="style: {
+                    msGridColumn: (data.tableHeaders.length * 2 + 3).toString(),
+                }"></div>
+                <!-- ko with: addColumnContext -->
+                <div class="objectViewerGridHeader editCellBorder" data-bind="
+                        style: {
+                            msGridColumn: (position.column * 2 + 2).toString(),
+                            msGridRow: (position.row * 2 + 1).toString()
+                        }
+                        ">
+                </div>
+                <div class="objectViewerGridHeader editCell" data-bind="
+                        style: {
+                            paddingTop: AppMagic.Constants.Controls.ObjectViewerControl.GridCellPaddingTopBottomPixels.toString() + 'px',
+                            paddingBottom: AppMagic.Constants.Controls.ObjectViewerControl.GridCellPaddingTopBottomPixels.toString() + 'px',
+                            paddingLeft: AppMagic.Constants.Controls.ObjectViewerControl.GridCellHeaderPaddingLeftRightPixels.toString() + 'px',
+                            paddingRight: AppMagic.Constants.Controls.ObjectViewerControl.GridCellHeaderPaddingLeftRightPixels.toString() + 'px',
+                            msGridColumn: (position.column * 2 + 2).toString(),
+                            msGridRow: (position.row * 2 + 1).toString()
+                        }
+                        ">
+                    <div contenteditable="true" data-bind="
+                            event: { keydown: onKeyDown },
+                            hasFocus: hasFocus,
+                            contentEditableText: observableName
+                            "></div>
+                </div>
+                <!-- /ko -->
+            </div>
+
+            <div class="objectViewerGridCells" data-bind="
+                style: {
+                    msGridColumns: msGridColumnsStyle,
+                    msGridRows: msGridRowsStyle,
+                }">
+                <!-- We make the placeholder 1px, otherwise, when there are no rows, the grid will not have a scroll bar when there are a lot of headers. -->
+                <div class="object-viewer-grid-last-row-placeholder" data-bind="style: {
+                    msGridColumn: (data.tableHeaders.length * 2 + 1).toString(),
+                    msGridRow: (data.tableRows.length * 2 + 1).toString(),
+                    height: data.tableRows.length === 0 ? '1px' : '0px',
+                    }">
+                </div>
+                <!-- ko if: data.canEdit -->
+                <!-- Left border. -->
+                <div class="objectViewerGridColWidthResizer leftBorder" data-bind="style: { msGridRowSpan: (data.tableRows.length * 2 - 2).toString() }">
+                    <div class="objectViewerGridColWidthResizerInner"></div>
+                </div>
+                <div class="objectViewerGridColWidthResizer leftBorder placeholder" data-bind="style: { msGridRow: (data.tableRows.length * 2 - 2).toString() }">
+                    <div class="objectViewerGridColWidthResizerInner"></div>
+                </div>
+
+                <!-- ko foreach: shownCellsInfo.colsShown -->
+                <div class="objectViewerGridColWidthResizer resizingEnabled" data-bind="
+                            css: {
+                                placeholder: $data === $parent.shownCellsInfo.addColumn,
+                            },
+                            style: {
+                                msGridColumn: ($data * 2 + 3).toString(),
+                                msGridRowSpan: ($parent.data.tableRows.length * 2 - 2).toString(),
+                            },
+                            event: {
+                                MSPointerDown: function (args, evt) {
+                                    $parent.onMSPointerDownResizeColWidth.bind($parent)(args, evt);
+                                    return true;
+                                }
+                            }">
+                    <div class="objectViewerGridColWidthResizerInner"></div>
+                </div>
+                <!-- /ko -->
+                <!-- Column separators for the placeholder row. -->
+                <!-- ko foreach: shownCellsInfo.colsShown -->
+                <div class="objectViewerGridColWidthResizer placeholder" data-bind="
+                            style: {
+                                msGridColumn: ($data * 2 + 3).toString(),
+                                msGridRow: ($parent.data.tableRows.length * 2 - 2).toString(),
+                            }">
+                    <div class="objectViewerGridColWidthResizerInner"></div>
+                </div>
+                <!-- /ko -->
+                <!-- Row separators for the Add Column. -->
+                <!-- ko foreach: shownCellsInfo.rowsShown -->
+                <div class="objectViewerGridRowHeightResizer placeholder" data-bind="
+                            style: {
+                                msGridColumn: ($parent.data.tableHeaders.length * 2 - 1).toString(),
+                                msGridRow: ($data * 2 + 2).toString(),
+                            }">
+                    <div class="objectViewerGridRowHeightResizerInner"></div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko foreach: shownCellsInfo.rowsShown -->
+                <div class="objectViewerGridRowHeightResizer" data-bind="
+                        css: {
+                            placeholder: $data === $parent.shownCellsInfo.placeholderRow,
+                        },
+                        style: {
+                            msGridRow: ($data * 2 + 2).toString(),
+                            msGridColumnSpan: ($parent.data.tableHeaders.length * 2 - ($parent.data.canEdit ? 1 : 0)).toString(),
+                        },
+                        event: {
+                            MSPointerDown: $parent.onMSPointerDownResizeRowHeight.bind($parent)
+                        }">
+                    <div class="objectViewerGridRowHeightResizerInner"></div>
+                </div>
+                <!-- ko foreach: $parent.shownCellsInfo.colsShown -->
+                <div class="objectViewerGridCell" data-bind="
+                            click: $parents[1].onClickCell.bind($parents[1], new AppMagic.AuthoringTool.ObjectViewer.CellPosition($parentContext.$data, $data)),
+                            contextmenu: {
+                                provider: $parents[1].rowContextMenu,
+                                alignment: 'left',
+                                placement: 'bottom',
+                                commandData: new AppMagic.AuthoringTool.ObjectViewer.CellPosition($parentContext.$data, $data),
+                                disabled: !$parents[1].data.canEdit || $parents[1].shownCellsInfo.placeholderRow === $parentContext.$data,
+                            },
+                            style: {
+                                paddingTop: AppMagic.Constants.Controls.ObjectViewerControl.GridCellPaddingTopBottomPixels.toString() + 'px',
+                                paddingBottom: AppMagic.Constants.Controls.ObjectViewerControl.GridCellPaddingTopBottomPixels.toString() + 'px',
+                                msGridColumn: ($data * 2 + 2).toString(),
+                                msGridRow: ($parentContext.$data * 2 + 1).toString(),
+                            },
+                            template: { name: $parents[1].getCellTemplate(new AppMagic.AuthoringTool.ObjectViewer.CellPosition($parentContext.$data, $data)) }">
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko with: editCellContext -->
+                <div class="objectViewerGridCell editCellBorder expandBorder" data-bind="
+                        style: {
+                            msGridColumn: (position.column * 2 + 2).toString(),
+                            msGridRow: (position.row * 2 + 1).toString()
+                        }
+                        ">
+                </div>
+                <div class="objectViewerGridCell editCell" data-bind="
+                        style: {
+                            paddingTop: AppMagic.Constants.Controls.ObjectViewerControl.GridCellPaddingTopBottomPixels.toString() + 'px',
+                            paddingBottom: AppMagic.Constants.Controls.ObjectViewerControl.GridCellPaddingTopBottomPixels.toString() + 'px',
+                            msGridColumn: (position.column * 2 + 2).toString(),
+                            msGridRow: (position.row * 2 + 1).toString()
+                        }
+                        ">
+                    <div contenteditable="true" data-bind="
+                            event: { keydown: onKeyDown, blur: commit },
+                            contentEditableText: observableValue
+                            "></div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+
+        <div class="objectViewerMenu" data-win-control="WinJS.UI.Menu" tabindex="0" data-bind="contextmenuprovider: columnContextMenu, foreach: columnCommands">
+            <button type="button"
+                    data-win-control="WinJS.UI.MenuCommand"
+                    data-bind="
+                    winjsControlClass: WinJS.UI.MenuCommand,
+                    click: $parent.onColumnCommand.bind($parent, $parent.columnContextMenu.commandData, $data),
+                    text: name
+                    "></button>
+        </div>
+
+        <div class="objectViewerMenu" data-win-control="WinJS.UI.Menu" tabindex="0" data-bind="contextmenuprovider: rowContextMenu">
+            <button type="button"
+                    data-win-control="WinJS.UI.MenuCommand"
+                    data-bind="
+                    winjsControlClass: WinJS.UI.MenuCommand,
+                    click: onRemoveRow.bind($data, rowContextMenu.commandData),
+                    text: AppMagic.AuthoringStrings.ObjectViewerControl_RemoveRow
+                    "></button>
+        </div>
+    </div>
+</body>
+</html>

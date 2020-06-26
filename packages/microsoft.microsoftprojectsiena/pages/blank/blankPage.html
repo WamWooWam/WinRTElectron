@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>blankPage</title>
+
+    <!-- WinJS references -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link href="blankPage.css" rel="stylesheet" />
+    <script src="blankPage.js"></script>
+</head>
+<body>
+    <div id="blankPage" class="fragment" data-bind="shortcut: { provider: blankPageShortcuts }, css: { preview: isPreview }, event: { mousedown: handleCanvasMouseDown.bind($data) } " ondragstart="return false;">
+        <div id="canvasGrid" data-bind="
+            css: {
+                isLoading: AppMagic.context.isLoading,
+                preview: isPreview,
+                selected: selection.canvas === null && selection.visuals.length === 0,
+            }">
+            <div id="canvasSizer">
+                <div id="canvasScaler" data-bind="style: { width: canvasWidth, height: canvasHeight }">
+                    <div id="workspaceCanvas" data-bind="winjsControl: '/controls/screenCanvasContainer/screenCanvasContainer.html'"></div>
+                </div>
+            </div>
+            <div class="bottom-space"></div>
+            <div class="right-space"></div>
+        </div>
+        <div id="blankPageHeader" class="header" data-bind="visible: !isPreview">
+            <div id="screenDropDown" class="visualDropDown" data-bind="css: {listVisible: screenDropDown.visualDropDownVisible}, visible: !AppMagic.context.shellViewModel.smallLayout">
+                <div class="visualLabel">
+                    <input type="text" tabindex="0" class="visualLabelText" data-bind="value: screenDropDown.entityNameTextBox.name, valueUpdate: 'keyup',
+                                                                          attr: { readonly: screenDropDown.entityNameTextBox.readOnly },
+                                                                          clickOrEnter: screenDropDown.handleArrowClick.bind(screenDropDown),
+                                                                          event: {
+                                                                            keydown: screenDropDown.entityNameTextBox.handleKeyDown.bind(screenDropDown.entityNameTextBox),
+                                                                            blur: screenDropDown.entityNameTextBox.handleBlur.bind(screenDropDown.entityNameTextBox),
+                                                                            mousedown: function ($data, evt) { return AppMagic.AuthoringTool.Utility.focusOnMouseDown(evt); }
+                                                                          }">
+
+                    <div class="visualDropArrow" data-bind="click: screenDropDown.handleArrowClick.bind(screenDropDown)">
+                        <img src="../../images/dropdownarrow_icon.svg" />
+                    </div>
+                </div>
+                <div id="screenDropDownList" class="visualList" data-bind="foreach: screens">
+                    <div class="visualListItem" data-bind="text: name , click: $parent.screenDropDown.handleScreenClicked.bind($parent.screenDropDown, $data), css: { selected: ($data === $parent.screenDropDown.currentScreen) }"></div>
+                </div>
+            </div>
+
+            <!-- Drop down of all the visuals. -->
+            <div id="visualDropDown" class="visualDropDown" data-bind="css: {listVisible: visualDropDown.visualDropDownVisible}, visible: (visualDropDown.selectedScreenCanvas.visuals.length > 0) && !AppMagic.context.shellViewModel.smallLayout">
+                <div class="visualLabel">
+                    <input type="text" class="visualLabelText" data-bind="value: visualDropDown.entityNameTextBox.name, valueUpdate: 'keyup',
+                                                                          attr: { readonly: visualDropDown.entityNameTextBox.readOnly },
+                                                                          clickOrEnter: visualDropDown.handleArrowClick.bind(visualDropDown),
+                                                                          event: {
+                                                                            keydown: visualDropDown.entityNameTextBox.handleKeyDown.bind(visualDropDown.entityNameTextBox),
+                                                                            blur: visualDropDown.entityNameTextBox.handleBlur.bind(visualDropDown.entityNameTextBox),
+                                                                            mousedown: function ($data, evt) { return AppMagic.AuthoringTool.Utility.focusOnMouseDown(evt); }
+                                                                          }">
+
+                    <div class="visualDropArrow" data-bind="click: visualDropDown.handleArrowClick.bind(visualDropDown)">
+                        <img src="../../images/dropdownarrow_icon.svg" />
+                    </div>
+                </div>
+                <div id="visualDropDownList" class="visualList">
+                    <!-- ko with: visualDropDown.selectedNestedCanvas -->
+                    <!-- ko foreach: sortedVisuals -->
+                    <div class="visualListItem" data-bind="text: name, click: $parents[1].visualDropDown.selectVisual.bind($parents[1].visualDropDown, $data), css: { selected: ($data === $parents[1].visualDropDown.currentVisual) }"></div>
+                    <!-- /ko -->
+                    <div class="visualListDivider" data-bind="visible: visuals.length > 0"></div>
+                    <!-- /ko -->
+                    <!-- ko foreach: visualDropDown.selectedVisualChildVisuals -->
+                    <div class="visualListItem" data-bind="text: name, click: $parent.visualDropDown.selectVisual.bind($parent.visualDropDown, $data), css: { selected: ($data === $parent.visualDropDown.currentVisual) }"></div>
+                    <!-- /ko -->
+                    <div class="visualListDivider" data-bind="visible: visualDropDown.selectedVisualChildVisuals.length > 0"></div>
+                    <!-- ko foreach: visualDropDown.selectedScreenCanvas.sortedVisuals -->
+                    <div class="visualListItem" data-bind="text: name , click: $parent.visualDropDown.selectVisual.bind($parent.visualDropDown, $data), css: { selected: ($data === $parent.visualDropDown.currentVisual) }"></div>
+                    <!-- /ko -->
+                </div>
+            </div>
+            <div id="headerAddVisualButton" data-bind="clickOrEnter: handleAddVisual.bind($data)">
+                <img class="addVisual" tabindex="0" src="/images/addvisualicon.svg" data-bind="attr: { title: AppMagic.AuthoringStrings.AddVisualButtonTooltip }" />
+            </div>
+        </div>
+    </div>
+</body>
+</html>

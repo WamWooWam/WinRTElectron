@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/slider"
+        name="slider"
+        jsClass="AppMagic.Controls.Slider"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[SLIDER
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/slider.css" />
+    <require type="javascript" src="js/slider.js" />
+    <require type="javascript" src="js/sliderViewModel.js" />
+  </requires>
+
+  <appMagic:capabilities
+    contextualViewsEnabled="true"
+    autoBorders="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+
+  <content>
+    <![CDATA[
+  <div
+    class="appmagic-slider"
+      data-bind="{
+        style: {
+          height: properties.Height() + 'px',
+          width: properties.Width() + 'px',
+        },
+        attr: { title: properties.Tooltip },
+        disable: controlContext.viewState.disabled(),
+        event: { click: railClick },
+      }" >
+    <div
+      class="appmagic-slider-near-rail"
+        data-bind="{
+          style: {
+            backgroundColor: controlContext.ValueFill,
+            left: nearRail.left() + 'px',
+            top: nearRail.top() + 'px',
+            width: nearRail.width() + 'px',
+            height: nearRail.height() + 'px',
+          },
+          css: {
+            disabled: controlContext.viewState.disabled,
+          },
+        }">
+    </div>
+    <div
+      class="appmagic-slider-far-rail"
+        data-bind="{
+          style: {
+            backgroundColor: controlContext.RailFill,
+            left: farRail.left() + 'px',
+            top: farRail.top() + 'px',
+            width: farRail.width() + 'px',
+            height: farRail.height() + 'px',
+          },
+          css: {
+            disabled: controlContext.viewState.disabled,
+          },
+        }">
+    </div>
+    <div
+      class="appmagic-slider-handle"
+        data-bind="{
+          style: {
+            backgroundColor: handleBackgroundColor,
+            left:   handle.left() + 'px',
+            top:    handle.top() + 'px',
+            width:  handle.width() + 'px',
+            height: handle.height() + 'px',
+          },
+          css: {
+            disabled: controlContext.viewState.disabled,
+          },
+          event: { pointerdown: onPointerDown }
+        }" touch-action="none">
+    </div>
+  </div>
+  ]]>
+  </content>
+
+  <!-- The Min, Max and Default properties have to be placed in Min, Max and Default order. Evaluation VIA modelValueConstrainer guarantees
+       that Min < Max and Default stays within Min and Max. However the values must be known for the evaluation to work. -->
+  <!-- Place holder values for appMagic:category - We'll work with design/PM to agree on the right values. -->
+  <properties>
+    <property name="Min" localizedName="##slider_Min##" datatype="Number" defaultValue="0" nullDefault="0">
+      <title>Slider minimum value.</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##slider_Min_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_minicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>42</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_Min_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Max" localizedName="##slider_Max##" datatype="Number" defaultValue="100" nullDefault="100">
+      <title>Slider maximum value</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##slider_Max_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_maxicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>43</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_Max_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Default" localizedName="##slider_Default##" datatype="Number" defaultValue="0" editable="true" direction="in" nullDefault="0">
+      <title>Slider value</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##slider_Default_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_defaulticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>41</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_Default_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Value" localizedName="##slider_Value##" datatype="Number" direction="out" nullDefault="0" computeValue="Clamp(##slider_Default##, ##slider_Min##, ##slider_Max##)" isPrimaryOutputProperty="true">
+      <title>Slider value</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_valueicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <property name="ValueFill" localizedName="##slider_ValueFill##" datatype="Color" defaultValue="RGBA(0, 176, 240, 1)" isExpr="true" converter="argbConverter">
+      <title>Slider Left Rail Color Behavior</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_ValueFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/fillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>2</appMagic:position>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_ValueFill_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="RailFill" localizedName="##slider_RailFill##" datatype="Color" defaultValue="RGBA(186, 186, 186, 1)" isExpr="true" converter="argbConverter">
+      <title>Slider Right Rail Color Behavior</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_RailFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/fillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>5</appMagic:position>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_RailFill_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="HandleFill" localizedName="##slider_HandleFill##" datatype="Color" defaultValue="RGBA(69, 69, 69, 1)" isExpr="true" converter="argbConverter">
+      <title>Slider Handle Fill Behavior</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_HandleFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/fillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>3</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:group>fill</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_HandleFill_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="HandleHoverFill" localizedName="##slider_HandleHoverFill##" datatype="Color" defaultValue="%CONTROL.ID%!HandleFill" isExpr="true" converter="argbConverter">
+      <title>Slider Handle Fill Behavior</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_HandleHoverFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/desingrule_hoverfillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>18</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_HandleHoverFill_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="HandleActiveFill" localizedName="##slider_HandleActiveFill##" datatype="Color" defaultValue="%CONTROL.ID%!HandleFill" isExpr="true" converter="argbConverter">
+      <title>Slider Handle Fill Behavior</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_HandleActiveFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_pressedfillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>19</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_HandleActiveFill_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="HandleSize" localizedName="##slider_HandleSize##" datatype="Number" defaultValue="20" nullDefault="0">
+      <title>Slider Handle Size</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##slider_HandleSize_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_widthicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>22</appMagic:position>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_HandleSize_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Layout" localizedName="##slider_Layout##" datatype="Layout" defaultValue="Layout!Horizontal" isExpr="true">
+      <title>Layout i.e. "horizontal", "vertical"</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>layout</appMagic:helperUI>
+      <appMagic:displayName>##slider_Layout_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_layouticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>10</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##slider_Layout_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="RailHoverFill" localizedName="##slider_RailHoverFill##" datatype="Color" isExpr="true" defaultValue="ColorFade(%CONTROL.ID%!RailFill, 15%)" converter="argbConverter">
+      <title>Rail Hover backgroundColor</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_RailHoverFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/desingrule_hoverfillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:position>8</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+    <property name="ValueHoverFill" localizedName="##slider_ValueHoverFill##" datatype="Color" isExpr="true" defaultValue="ColorFade(%CONTROL.ID%!ValueFill, 15%)" converter="argbConverter">
+      <title>Value Hover backgroundColor</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>color</appMagic:helperUI>
+      <appMagic:displayName>##slider_ValueHoverFill_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/desingrule_hoverfillicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:position>9</appMagic:position>
+      </appMagic:commandBar>
+    </property>
+  </properties>
+
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="ShowValue">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>15</appMagic:position>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, -30%)" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 30%)" />
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Design -->
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" nullDefault="0" />
+    <appMagic:includeProperty name="Height" defaultValue="20" nullDefault="0" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="1" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="1" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="40" />
+
+    <!-- Behavior -->
+    <appMagic:includeProperty name="OnChange" direction="in" />
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+  </appMagic:includeProperties>
+
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Min" output="Value"/>
+    <appMagic:propertyDependency input="Max" output="Value"/>
+    <appMagic:propertyDependency input="Default" output="Value"/>
+  </appMagic:propertyDependencies>
+</widget>

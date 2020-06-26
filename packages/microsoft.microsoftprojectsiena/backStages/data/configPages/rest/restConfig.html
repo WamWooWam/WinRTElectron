@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>REST Config</title>
+
+    <link href="restConfig.css" rel="stylesheet" />
+    <script src="restConfig.js"></script>
+</head>
+<body>
+    <div class="rest-config fragment">
+        <div class="configure-tab-container">
+            <!-- ko if: isImportConfigFileViewVisible -->
+            <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageRESTTitleImportConfig"></div>
+            <div class="import-file-view" data-bind="visible: isImportConfigFileViewVisible">
+                <div class="import-file-view-line-0">
+                    <span data-bind="click: onClickImportConfigFile">
+                        <!--
+                        We cannot trigger the click handler if the input element is
+                        disabled, therefore we wrap it with a span.
+                        -->
+                        <input class="rest-config-file-textbox" type="text" data-bind="
+                          value: restConfigFilePath,
+                          attr: { placeholder: AppMagic.AuthoringStrings.RestConfigConnectionPlaceholder }" disabled="disabled" />
+                    </span>
+                </div>
+
+                <div class="button-container">
+                    <button class="rest-config-import backstage-button" type="submit" data-bind="
+                        text: AppMagic.AuthoringStrings.BackStageFlyoutSaveButtonText,
+                        click: onClickImportConfigFile,
+                        visible: !showKeyConfig"></button>
+                </div>
+
+                <div class="dc-help-container link" data-bind="click: showConfigConnectionView">
+                    <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.RestConfigureConnectionLabel"></span>
+                    <span class="icon">&#xE2AB;</span>
+                </div>
+                <!-- ko if: showKeyConfig -->
+                <div class="import-keys-view">
+                    <div class="rest-service-key-config-note" data-bind="text: AppMagic.AuthoringStrings.RestServiceKeyConfigNote"></div>
+                    <div class="rest-service-key-page" data-bind="
+                             property: { viewModel: serviceKeyConfigViewModel },
+                             winjsControl: '/backStages/data/configPages/rest/restServiceKeyConfig.html'">
+                    </div>
+                </div>
+                <!-- /ko -->
+
+            </div>
+            <!-- /ko -->
+            <!-- ko if: !isImportConfigFileViewVisible -->
+            <div class="pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageRESTTitleImportUrl"></div>
+
+            <div class="import-url-view" data-bind="visible: isConfigConnectionViewVisible">
+                <div class="rest-config-line-0">
+                    <input class="rest-config-url-textbox" type="text" data-bind="
+                       value: endpointUrl,
+                       attr: { placeholder: AppMagic.AuthoringStrings.RestURLPlaceholder },
+                       event: { keypress: handleKeypress },
+                       valueUpdate: ['keyup', 'input'],
+                       hasfocus: inputHasFocus" />
+                </div>
+
+                <div class="rest-config-line-1">
+                    <input class="rest-config-enable-headers-checkbox" type="checkbox" data-bind="checked: isHeadersEnabled" />
+                    <div class="rest-config-enable-headers-label" data-bind="text: AppMagic.AuthoringStrings.BackStageEnableHeaders"></div>
+                </div>
+
+                <!-- Header Key properties -->
+                <div class="request-headers" data-bind="visible: isHeadersEnabled, foreach: headerKeyValuePairs">
+                    <div class="request-header">
+                        <div class="request-header-line">
+                            <input class="request-header-textbox" type="text" data-bind="
+                            value: headerKey,
+                            attr: { placeholder: AppMagic.AuthoringStrings.BackStageRestHKeyNamePlaceholder },
+                            event: { keypress: $parent.handleKeypress.bind($parent) }" />
+                            <div class="delete-header-button" data-bind="
+                            click: $parent.onClickDeleteHeader.bind($parent, $index())">
+                                <img class="
+                                button-image" src="/images/trashcan_20x20.svg" />
+                            </div>
+                        </div>
+                        <div class="request-header-line">
+                            <input class="request-header-textbox" type="text" data-bind="
+                            value: headerValue,
+                            attr: { placeholder: AppMagic.AuthoringStrings.BackStageRestHKeyValuePlaceholder },
+                            event: { keypress: $parent.handleKeypress.bind($parent) }" />
+                        </div>
+                    </div>
+                </div>
+                <!-- End of Header Key properties -->
+
+                <button class="add-header-button" data-bind="visible: isHeadersEnabled,
+                    text: AppMagic.AuthoringStrings.BackStageRestAddAHeader,
+                    click: onClickAddHeader"></button>
+
+                <div class="button-container">
+                    <button class="rest-config-import backstage-button" type="submit" data-bind="
+                        text: AppMagic.AuthoringStrings.BackStageFlyoutSaveButtonText,
+                        click: addDataSource"></button>
+                </div>
+
+                <div class="rest-config-failure failure" data-bind="visible: isErrorVisible">
+                    <ul class="failure-messages" data-bind="foreach: errorMessages">
+                        <li data-bind="text: $data" unselectable="off"></li>
+                    </ul>
+                </div>
+
+                <div class="dc-help-container link" data-bind="click: showImportConfigFileView">
+                    <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.RestImportConfigFileLabel"></span>
+                    <span class="icon">&#xE2AB;</span>
+                </div>
+            </div>
+
+
+            <!-- /ko -->
+        </div>
+    </div>
+</body>
+</html>

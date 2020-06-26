@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/image"
+        name="image"
+        jsClass="AppMagic.Controls.Image"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[TEXT
+      Control description here.]]>
+  </description>
+
+  <requires>
+    <require type="css" src="css/image.css" />
+    <require type="javascript" src="js/image.js" />
+  </requires>
+  
+  <appMagic:capabilities 
+    contextualViewsEnabled="true" 
+    autoBorders="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+  
+  <content>
+    <![CDATA[
+  <div
+    class="appmagic-image"
+    data-bind="{
+      style: {
+          backgroundColor: autoProperties.Fill,
+          paddingTop: properties.PaddingTop, 
+          paddingRight: properties.PaddingRight, 
+          paddingBottom: properties.PaddingBottom, 
+          paddingLeft: properties.PaddingLeft, 
+          height: (modelProperties.Height.modelObservable() - modelProperties.PaddingBottom.modelObservable() - modelProperties.PaddingTop.modelObservable()) + 'px',
+          width: (modelProperties.Width.modelObservable() - modelProperties.PaddingLeft.modelObservable() - modelProperties.PaddingRight.modelObservable()) + 'px',
+          opacity: properties.Transparency() >= 1 ? '0' : 1 - properties.Transparency(),
+          visibility: properties.Transparency() >= 1 ? 'hidden' : ''
+        },
+        visible: properties.Visible,
+        attr: { title:properties.Tooltip },
+        event: { click: onClickHandler } }" >
+          <div class="appmagic-image-inner" data-bind="{
+            style: {
+              backgroundSize: properties.ImagePosition().size,
+              backgroundRepeat: properties.ImagePosition().repeat,
+              backgroundPosition: properties.ImagePosition().position,
+              backgroundImage: imageUrl,
+          } }">
+          </div>
+  </div>
+  ]]>
+  </content>
+  
+  <properties>
+    <property name="Image" localizedName="##image_Image##" datatype="Image" defaultValue="SampleImage" converter="encodeImageUrl" isExpr="true" isPrimaryInputProperty="true" isPrimaryOutputProperty="true">
+      <title>Image content</title>
+      <appMagic:autoBind>true</appMagic:autoBind>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##image_Image_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_imageicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##CommonProperties_Image_Tooltip##</appMagic:tooltip>
+      <appMagic:sampleDataSource name="SampleImage" location="images/SampleImage.svg"/>
+    </property>
+    <property name="Transparency" localizedName="##image_Transparency##" datatype="Number" defaultValue="0">
+      <title>Image transparency</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:displayName>##image_Transparency_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_transparencyicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>1</appMagic:position>
+        <appMagic:group>options</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##image_Transparency_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="ImagePosition" localizedName="##image_ImagePosition##" datatype="ImagePosition" defaultValue="ImagePosition!Fill" isExpr="true" converter="imagePositionConverter">
+      <title>Image stretch style</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>imagePosition</appMagic:helperUI>
+      <appMagic:displayName>##image_ImagePosition_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_imagepositionicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>12</appMagic:position>
+        <appMagic:group>imagePosition</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##CommonProperties_ImagePosition_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="X">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Y">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Width" defaultValue="100">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Height" defaultValue="100">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Fill">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(119, 119, 119, 1)" />
+    <appMagic:includeProperty name="PressedFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, -20%)" />
+    <appMagic:includeProperty name="HoverFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, 20%)" />
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, -20%)" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 20%)" />
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingTop">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingRight">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingBottom">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingLeft">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior Properties -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnSelect" direction="in" />
+    
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="minimumWidth" defaultValue="1" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="1" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+  </appMagic:includeProperties>
+</widget>

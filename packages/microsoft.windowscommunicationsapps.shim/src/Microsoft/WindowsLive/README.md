@@ -1,0 +1,1 @@
+Here lies the code for the Windows Live shim. It's not intended to be 100% complete or accurate, just good enough to make the apps run and work, so expect a lot of bodges and hacky code from here on.

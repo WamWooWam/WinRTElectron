@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_flows "http://ns.adobe.com/Flows/1.0/">
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+]>
+<svg version="1.1" id="find_x5F_40x40" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+	 x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+<path id="bkgfillborder_x5F_transparent_1_" opacity="0" fill-rule="evenodd" clip-rule="evenodd" stroke="#000000" stroke-width="0.8374" stroke-miterlimit="10" d="
+	M20.107,2.768c9.505,0,17.242,7.729,17.242,17.234s-7.737,17.233-17.242,17.233c-9.497,0-17.234-7.729-17.234-17.233
+	S10.611,2.768,20.107,2.768z"/>
+<path id="circle_7_" fill-rule="evenodd" clip-rule="evenodd" d="M20.107,0.306c-10.878,0-19.696,8.818-19.696,19.696
+	c0,10.879,8.818,19.696,19.696,19.696c10.879,0,19.704-8.817,19.704-19.696C39.812,9.125,30.986,0.306,20.107,0.306z M20.107,2.768
+	c9.505,0,17.242,7.729,17.242,17.234s-7.737,17.233-17.242,17.233c-9.497,0-17.234-7.729-17.234-17.233S10.611,2.768,20.107,2.768z"
+	/>
+<line id="findhandle" fill="none" stroke="#000000" stroke-width="3.3694" stroke-linecap="round" x1="12.607" y1="27.439" x2="17.843" y2="22.155"/>
+<path id="findcircleinterior" opacity="0" d="M27.691,19.098c-0.737,2.997-3.769,4.83-6.768,4.093
+	c-2.998-0.74-4.827-3.77-4.092-6.769c0.743-2.998,3.768-4.833,6.77-4.094C26.597,13.067,28.433,16.099,27.691,19.098"/>
+<path id="findcircle" fill="none" stroke="#000000" stroke-width="2.0224" stroke-linecap="round" d="M27.691,19.098
+	c-0.737,2.997-3.769,4.83-6.768,4.093c-2.998-0.74-4.827-3.77-4.092-6.769c0.743-2.998,3.768-4.833,6.77-4.094
+	C26.597,13.067,28.433,16.099,27.691,19.098z"/>
+</svg>

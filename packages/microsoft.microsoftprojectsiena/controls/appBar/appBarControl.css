@@ -1,0 +1,556 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic AppBar CSS
+ *
+ */
+/* Colors */
+/* Misc styles */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+.screenListContainer {
+  -ms-grid-column: 2;
+  display: -ms-grid;
+  height: 130px;
+  max-height: 130px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.screenList.previewMode {
+  margin-left: 18px;
+}
+.screenList {
+  padding-top: 19px;
+  max-height: 90px;
+  vertical-align: middle;
+  white-space: nowrap;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.dropIndicatorContainer {
+  display: -ms-grid;
+  height: 80px;
+  width: 18px;
+  margin-top: 5px;
+  margin-bottom: -10px;
+  -ms-grid-columns: 1fr auto 1fr;
+  -ms-grid-rows: 1fr;
+}
+.dropIndicator {
+  width: 3px;
+  height: 80px;
+  -ms-grid-column: 2;
+}
+.overTarget .dropIndicator,
+.dropIndicator.overTarget {
+  background-color: rgba(120, 120, 120, 0.6);
+}
+@media all and (-ms-high-contrast: active) {
+  .overTarget .dropIndicator,
+  .dropIndicator.overTarget {
+    background-color: Highlight;
+  }
+}
+.screenTemplateItem {
+  width: 160px;
+  height: 80px;
+  background-color: #eeeeee;
+  /* Gris */
+  display: table-cell;
+  position: relative;
+  border: 5px;
+  border-style: solid;
+  border-color: transparent;
+  margin-right: 20px;
+  vertical-align: top;
+  text-align: center;
+}
+@media all and (-ms-high-contrast: active) {
+  .screenTemplateItem {
+    border-color: Window;
+  }
+}
+.screenTemplateItemHighContrastOutline {
+  height: 100%;
+  Width: 100%;
+}
+@media all and (-ms-high-contrast: active) {
+  .screenTemplateItemHighContrastOutline {
+    outline: 1px solid WindowText;
+  }
+}
+@media all and (-ms-high-contrast: active) {
+  .screenTemplateItemHighContrastOutline:hover,
+  .screenTemplateItem.currentScreen .screenTemplateItemHighContrastOutline,
+  .screenTemplateItemHighContrastOutline:hover .currentScreen {
+    outline: 1px solid Highlight;
+  }
+}
+.screenTemplateItem.currentScreen {
+  border-color: #966596;
+  /* Tincture */
+}
+@media all and (-ms-high-contrast: active) {
+  .screenTemplateItem.currentScreen {
+    border-color: Highlight;
+  }
+}
+.screenTemplateItem:hover,
+.screenTemplateItem:active,
+.screenTemplateItem:focus {
+  border-color: #777777;
+  /* Storm */
+  border-width: 5px;
+  border-style: solid;
+  outline: none;
+}
+@media all and (-ms-high-contrast: active) {
+  .screenTemplateItem:hover,
+  .screenTemplateItem:active,
+  .screenTemplateItem:focus {
+    border-color: Highlight;
+  }
+}
+.screenTemplateIconArea {
+  height: 25px;
+  max-height: 25px;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.removeScreenButton {
+  display: inline;
+  float: right;
+  margin-top: 2px;
+  margin-right: 2px;
+  height: 22px;
+  width: 22px;
+  background-image: url("../../images/screenCloseIcon.svg");
+  background-size: contain;
+}
+@media all and (-ms-high-contrast: active) {
+  .removeScreenButton {
+    background-image: url("../../images/screenCloseIcon.svg");
+    background-color: WindowText;
+  }
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .removeScreenButton {
+    background-color: Window;
+  }
+}
+.removeScreenButton:hover {
+  background-image: url("../../images/screenCloseIconHover.svg");
+}
+@media all and (-ms-high-contrast: active) {
+  .removeScreenButton:hover {
+    background-image: url("../../images/screenCloseIcon.svg");
+    background-color: Highlight;
+  }
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .removeScreenButton:hover {
+    background-image: url("../../images/screenCloseIconHover.svg");
+    background-color: Highlight;
+  }
+}
+.removeScreenButton:active {
+  background-image: url("../../images/screenCloseIconClick.svg");
+}
+.screenTemplateTextContainer {
+  box-sizing: border-box;
+  padding: 7px 10px 5px 10px;
+  font-family: 'Segoe UI Semibold';
+  font-weight: 600;
+  font-size: 11pt;
+  text-overflow: ellipsis;
+  text-align: center;
+  overflow: hidden;
+  color: #966596;
+  width: 160px;
+  height: 30px;
+  white-space: nowrap;
+}
+.screenTemplateText {
+  color: black;
+  font-family: 'Segoe UI';
+  font-weight: 600;
+  font-size: 10pt;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.screenTemplateIconArea .errorIcon {
+  margin-top: 7px;
+  margin-left: 7px;
+  display: inline;
+  float: left;
+}
+.topAppBarGrid {
+  width: 100%;
+  height: 130px;
+  padding: 0px 0px 0px 0px;
+  display: -ms-grid;
+  -ms-grid-columns: auto 1fr auto;
+  -ms-grid-rows: 1fr;
+  background-color: #000000;
+  /* Ink */
+  font-family: 'Segoe UI';
+  font-size: 10pt;
+  font-weight: 300;
+}
+.topAppBarAddScreenButton {
+  text-align: center;
+  display: inline-block;
+  min-width: 125px;
+  min-height: 130px;
+  background-color: #000000;
+  /* Ink */
+}
+.topAppBarAddScreenButton:active,
+.topAppBarAddScreenButton.topAppBarAddScreenButton:focus,
+.topAppBarAddScreenButton.topAppBarAddScreenButton:hover {
+  background-color: #3c3c3c;
+  outline: none;
+}
+.cmdButtonContainer {
+  margin-left: 0px;
+  margin-right: 0px;
+  display: -ms-flexbox;
+  -ms-flex-align: center;
+}
+.cmdButtonContainer.left {
+  -ms-grid-column: 1;
+}
+.cmdButtonContainer.right {
+  -ms-grid-column: 3;
+}
+#cmdFileSeparator {
+  background-color: #2a2a2a;
+  /* Onyx */
+  height: 100%;
+  width: 1px;
+  margin: 0px;
+}
+#cmdPlay {
+  -ms-grid-column: 3;
+}
+#cmdPlayFlyout {
+  min-width: 50px;
+}
+#bottomAppBar {
+  padding-bottom: 10px;
+}
+.appBarFlyout.win-ui-light {
+  background-color: transparent;
+  color: white;
+  padding: 0px;
+  border: none;
+  min-width: 170px;
+  /* Position the flyout relative to where WinJS would place it. */
+  margin-left: 0px;
+  margin-top: 1px;
+}
+@media all and (-ms-high-contrast: active) {
+  .appBarFlyout.win-ui-light {
+    border: 1px solid WindowText;
+  }
+}
+.appBarFlyout .itemContainer {
+  background-color: #202020;
+  color: white;
+  min-width: 170px;
+}
+.appBarFlyoutItem {
+  min-height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  line-height: 38px;
+  font-size: 10pt;
+}
+.appBarFlyoutItem:hover,
+.appBarFlyoutItem.selected {
+  background-color: #3c3c3c;
+}
+@media all and (-ms-high-contrast: active) {
+  .appBarFlyoutItem:hover,
+  .appBarFlyoutItem.selected {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+}
+.topAppBarButton {
+  border-style: none;
+  text-align: left;
+  display: inline-block;
+  min-width: 125px;
+  min-height: 130px;
+  background-color: #000000;
+  /* Ink */
+}
+.topAppBarButton:hover,
+.topAppBarButton:active,
+.topAppBarButton:focus,
+.topAppBarButton.active:hover,
+.topAppBarButton.win-hidefocus:hover {
+  background-color: #3c3c3c;
+  outline: none;
+}
+.topAppBarButton.win-hidefocus {
+  background-color: transparent;
+}
+.topAppBarButtonIcon {
+  height: 38px;
+  width: 38px;
+  display: block;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  margin-right: auto;
+}
+.topAppBarAddScreenButtonIcon {
+  height: 33px;
+  width: 33px;
+  display: block;
+  border-style: none;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 39px;
+  color: black;
+}
+.topAppBarDesignButtonIcon {
+  height: 33px;
+  width: 33px;
+  display: block;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: #ffffff;
+  /* Ghost */
+  border-width: 2px;
+  margin-top: 39px;
+  margin-bottom: 5px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media all and (-ms-high-contrast: black-on-white) {
+  .topAppBarDesignButtonIcon {
+    background-color: #000000;
+  }
+}
+.topAppBarIcon {
+  margin-top: 35px;
+  margin-left: 20px;
+  margin-bottom: 8px;
+}
+.topAppBarFileButtonIcon {
+  width: 26px;
+  height: 32px;
+}
+.topAppBarDataButtonIcon {
+  width: 22px;
+  height: 32px;
+}
+.topAppBarHelpButtonIcon {
+  width: 18px;
+  height: 32px;
+}
+#spacer {
+  width: 3px;
+  height: 100%;
+  background-color: #ffffff;
+  /* Ghost */
+}
+.topAppBarMenuItemText {
+  margin-left: 20px;
+  font-family: "Segoe UI";
+  font-size: 10pt;
+}
+.designPreviewButton {
+  text-align: center;
+}
+.topAppBarTwirl {
+  margin-top: 61px;
+  margin-bottom: auto;
+  margin-right: 20px;
+  transform: rotate(180deg);
+}

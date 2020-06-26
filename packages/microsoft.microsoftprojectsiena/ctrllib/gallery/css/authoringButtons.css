@@ -1,0 +1,12 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic Gallery control CSS
+ *
+ */
+
+.appmagic-gallery-authoringbuttons {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+}

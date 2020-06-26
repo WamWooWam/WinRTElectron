@@ -1,0 +1,255 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Cut the Rope</title>
+    
+    <script src="//zeptolabuklimited.cuttherope.shim/dist/shim.js"></script>
+    
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- CutTheRope references -->
+    <link href="/css/ctr.css" rel="stylesheet" />
+    <link href="/css/default.css" rel="stylesheet" />
+
+    <script src="scripts/sm2.js" type="text/javascript"></script>
+    <script src="scripts/libraries.js" type="text/javascript"></script>
+    <script src="scripts/jquery.nanoscroller.min.js" type="text/javascript"></script>
+    <script src="scripts/ctr.js" type="text/javascript"></script>
+
+    <script src="/js/xbox/Strings.js"></script>
+    <script src="/js/xbox/XboxUtils.js"></script>
+    <script src="/js/xbox/Player.js"></script>
+    <script src="/js/xbox/Leaderboard.js"></script>
+    <script src="/js/xbox/Achievements.js"></script>
+
+    <script src="/js/MarkedUp.js"></script>
+    <script src="/js/default.js"></script>
+</head>
+<body class="ctrCursor">
+<div id="lang">
+    <style  type="text/css">
+        .hideBeforeLoad, #loaderWindow, #popupWindow { display: none; }  
+    </style>
+    
+    <div id="gameContainer" class="hideBeforeLoad" >
+        <div id="gameArea">
+            <canvas id="c"></canvas>
+            <div id="loadingPanel" class="panel"></div>
+            <div id="startBackground" class="panel"></div>
+            <div id="menuBackground" class="panel"></div>
+            <div id="levelBackground" class="panel">
+                <canvas id="levelCanvas"></canvas>
+                <div id="levelTape" class="levelTape"></div>
+            </div>
+            <div id="shadowPanel" class="panel">
+                <canvas id="shadowCanvas"></canvas>
+            </div>
+            <div id="menuPanel" class="panel seethrough">
+                <div class="panelContent">
+                    <div id="menuLogo" ></div>
+                    <div id="menuBtnVbox" class="fBtnVBox">
+                        <div id="playBtn" class="fBtn"><img src="" /></div>
+                        <div id="leaderboardsBtn" class="fBtn disabled"><div id="leaderboardIcon"></div></div>
+                        <div id="achievementsBtn" class="fBtn disabled"><div id="achievementsIcon"></div></div>
+                    </div>
+                </div>
+                <div id="optionsBtn" class="fBtn"><img src="" /></div>
+                <div id="miniOptionsMenu">
+                    <div id="optionSd" style="display:none"></div>
+                    <div id="optionHd" style="display:none"></div>
+                    <div id="optionSound" class="ctrPointer" ></div>
+                    <div id="optionMsg"></div>
+                </div>
+
+                <div id="signInControl">
+                    <div id="gamerPictureBorder"></div>
+                    <div id="gamerPicture"></div>
+                    <div id="signInInfo">
+                        <div id="signInMessage"></div>
+                        <div id="signOutButton" class="ctrPointer"></div>
+                        <div id="signInButton" class="ctrPointer"></div>
+                    </div>
+                    <div id="xboxLiveBtn" class="ctrPointer"></div>
+                </div>
+            </div>
+
+            <div id="boxPanel" class="panel seethrough">
+                <canvas id="boxCanvas" width="1024" height="576"></canvas>
+                <div id="boxUpgradePrompt"></div>
+                <div id="boxUpgradePlate" class="ctrPointer"></div>
+                <div id="boxUpgradeButton" class="fBtn ctrPointer"></div>
+                <div id="boxScore" class="hideFromMouse"><img src="" /></div>
+                <div id="boxNavBack">
+                    <div class="boxNavDisabled"></div>
+                </div>
+                <div id="boxNavForward">
+                    <div></div>
+                </div>
+                <div id="boxBack" class="bBtn"></div>
+            </div>
+            <div id="levelPanel" class="panel">
+                <div id="levelScore">
+                    <img src="" /></div>
+                <div id="levelBack" class="bBtn">
+                </div>
+                <div id="levelOptions"></div>
+                <div id="levelResults">
+                    <div id="resultStatus"><img src="" /></div>
+                    <div class="starCase">
+                        <div id="resultStar1" class=""></div>
+                        <div id="resultStar2" class=""></div>
+                        <div id="resultStar3" class=""></div>
+                    </div>
+                    <div id="resultTicker">
+                        <img id="resultTickerLabel" />
+                        <img id="resultTickerValue" />
+                        <img id="resultTickerMessage" />
+                    </div>
+                    <div class="line"></div>
+                    <div id="resultScore"></div>
+                    <div class="btnCase">
+                        <div id="replayBtn" class="sBtn"><img src="" /></div>
+                        <div id="lrMenuBtn" class="sBtn"><img src="" /></div>
+                        <div id="nextBtn" class="sBtn"><img src="" /></div>
+                    </div>
+                    <div id="resultImproved"></div>
+                </div>
+            </div>
+
+            <div id="gameCompletePanel" class="panel">
+                <div id="congrats"></div>
+                <div id="finalScore"><img src="" /></div>
+                <div id="finalShareBtn" class="mBtn"><img src="" /><div id="ffb"></div></div>
+                <div id="gameCompleteBack" class="bBtn"></div>
+            </div>
+            <div id="leaderboardPanel" class="panel">
+                <div class="list-content list-selector">
+                    <div id="leaderboardLeft" class="list-left-arrow ctrPointer"></div>
+                    <div id="leaderboardTitle" class="list-title"></div>
+                    <div id="leaderboardRight" class="list-right-arrow ctrPointer"></div>
+                </div>        
+                <div id="lb-header" class="list-content list-header">
+                    <div id="lb-name"></div>
+                    <div id="lb-score"></div>
+                </div>
+                <div class="scrollable list-scrollable list-content">
+                    <div class="content">
+                        <div id="leaderboardLoading" style="text-align:center"></div>
+                    </div>
+                </div>
+                <div id="leaderboardBack" class="bBtn"></div>
+            </div>
+            <div id="achievementsPanel" class="panel">
+                <div  id="ach-list" class="scrollable list-scrollable list-content">
+                    <div class="content"></div>
+                </div>
+                <div id="achievementsBack" class="bBtn"></div>
+            </div>
+            <div id="d" class="panel ctrPointer">
+                <img id="dmsg" />
+                <div id="dframe">
+                    <div id="dpic"></div>
+                </div>
+                <div id="dshareBtn" class="fBtn"><img src="" /><div id="dfb"></div></div>
+            </div>
+            <div id="gameBtnTray">
+                <div id="gameMsg" class="allSound"></div>
+                <div id="gameSound" class="ctrPointer allSound"></div>
+                <div id="gameRestartBtn" class="ctrPointer"></div>
+                <div id="gameMenuBtn" class="ctrPointer"></div>
+            </div>
+            <div id="levelMenu">
+                <div class="fBtnVBox">
+                    <div id="continueBtn" class="fBtn"><img src="" /></div>
+                    <div id="skipBtn" class="fBtn"><img src="" /></div>
+                    <div id="selectBtn" class="fBtn"><img src="" /></div>
+                    <div id="menuBtn" class="fBtn"><img src="" /></div>
+                </div>
+            </div>
+
+            <div id="boxCutter">
+            </div>
+            <div id="tapeRoll">
+            </div>
+            <div id="video"></div>
+            <div id="fadeToBlack" class="panel"></div>
+        </div>  
+        <canvas id="e"></canvas>
+        <div id="popupWindow">
+            <div class="popupOuterFrame">
+                <div class="popupInnerFrame" id="slowComputer">
+                    <div class="fBtn" id="slowComputerBtn"><img src="" /></div>
+                </div>
+                <div class="popupInnerFrame" id="resetGame">
+                    <div id="resetText"></div>
+                    <div class="mBtn" id="resetYesBtn"><img src="" /></div>
+                    <div class="mBtn" id="resetNoBtn"><img src="" /></div>
+                    <div id="resetHoldYes"></div>
+                </div>
+                <div class="popupInnerFrame" id="missingStars">
+                    <div id="missingLine1"></div>
+                    <div id="missingCount"><div id="missingStar"></div></div>
+                    <div id="missingLine2"></div>
+                    <div id="missingLine3"></div>
+                    <div class="mBtn" id="missingOkBtn"></div>
+                </div>
+                <div class="popupInnerFrame" id="payDialog">
+                    <div id="payMessage"></div>
+                    <div id="payImg" class="ctrPointer"></div>
+                    <div class="fBtn" id="payBtn"></div>
+                    <div class="options-x ctrPointer" id="payClose"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="snapView">
+        <img id="snapLogo" src="/images/page/snap-logo.png" />
+    </div>
+    <div id="settingsDiv" data-win-control="WinJS.UI.SettingsFlyout" aria-label="Game settings flyout"
+            data-win-options="{width:'narrow'}">
+        <div class="win-header">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+            <div class="win-label" id="settingsLabel">Settings</div>
+        </div>
+        <div class="win-content" id="settingButtons">
+            <label id="musicLabel"></label>
+            <div id="musicBtn" data-win-control="WinJS.UI.ToggleSwitch"></div>
+
+            <label id="soundLabel"></label>
+            <div id="soundBtn" data-win-control="WinJS.UI.ToggleSwitch"></div>
+
+            <div id="cutSettings">
+                <input type="radio" id="dragCut" name="cutRadio" /><label id="dragCutLabel"></label><br />
+                <input type="radio" id="clickCut" name="cutRadio" /><label id="clickCutLabel"></label>
+            </div>
+            
+            <label id="langLabel"></label>
+            <select id="langSelect" name="langSelect" size="4" class="settingSection">
+                <option value="0">English</option>
+                <option value="1">Français</option>
+                <option value="2">Deutsch</option>
+                <option value="3">Pусский</option>
+            </select>
+
+            <button id="resetBtn"></button>
+        </div>
+    </div>
+    <div id="aboutDiv" data-win-control="WinJS.UI.SettingsFlyout" aria-label="About settings flyout" data-win-options="{width:'narrow'}">
+        <div class="win-header">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+            <div class="win-label">About</div>
+        </div>
+        <div class="win-content" id="aboutContent">
+            <img src="images\page\zeptologo.png" alt="ZeptoLab Logo" />
+            <p>Cut the Rope version <span id="version"></span></p>
+            <p>&copy; 2012 <a href="http://zeptolab.com/">ZeptoLab</a></p>
+            <p>All rights reserved. ZeptoLab, Cut the Rope, Om Nom and Feed with Candy are the trademarks of ZeptoLab.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

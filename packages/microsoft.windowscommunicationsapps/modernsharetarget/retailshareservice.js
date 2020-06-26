@@ -1,0 +1,1 @@
+﻿Share.RetailShareService=function(){};Share.RetailShareService.prototype.initiateShare=function(n){n.mailMessage.canDelete&&n.mailMessage.deleteObject();n.shareOperation.reportCompleted()};Share.RetailShareService.prototype.cancelShare=function(){}

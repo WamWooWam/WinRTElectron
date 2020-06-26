@@ -1,0 +1,103 @@
+﻿.phase1Upsell {
+    max-height: 580px;
+    max-width: 500px;
+    line-height: normal;
+    padding-left: 5px;
+    margin-left: -5px;
+    padding-right: 10px;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+}
+
+.phase1Upsell .upsell-flex {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.phase1Upsell .upsell-flexless {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.upsell-instructions {
+    font-weight: 600;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    letter-spacing: normal;
+    color: #000000;
+    cursor: default;
+    margin-top: 5px;
+}
+
+.upsell-more {
+    padding-bottom: 13px;
+    padding-left: 10px;
+    margin-left: -10px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto;
+}
+
+.upsell-moreIconContainer {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.upsell-moreIcon {
+    font-family: "Segoe UI Symbol";
+    color: #707070;
+    font-weight: normal;
+    font-size: 40px;
+    height: 40px;
+    margin-left: -6px;
+}
+
+.upsell-moreText {
+    margin-left: 7px;
+    margin-top: 10px;
+    font-weight: 300;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    letter-spacing: normal;
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.upsell-dismiss {
+    float: left;
+    font-weight: 400;
+}
+
+.phase1Upsell .upsell-dismiss {
+    margin-top: 17px;
+}
+
+.phase2Upsell .upsell-dismiss {
+    margin-left: -5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.upsell-accounts-container {
+    overflow: visible;
+    margin-top: 10px;
+}
+
+.phase2Upsell {
+    line-height: normal;
+    padding-bottom: 16px;
+}
+
+.phase2Upsell .upsell-instructions {
+    padding-bottom: 10px;
+}

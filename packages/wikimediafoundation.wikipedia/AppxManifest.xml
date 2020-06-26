@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Package IgnorableNamespaces="build" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build">
+  
+  <Identity Name="WikimediaFoundation.Wikipedia" Version="1.1.0.37" Publisher="CN=2180B9A4-DDFD-4BFD-8D7E-EADC9C394EF5" ProcessorArchitecture="neutral"/>
+  <Properties>
+    <DisplayName>Wikipedia</DisplayName>
+    <PublisherDisplayName>Wikimedia Foundation</PublisherDisplayName>
+    <Logo>images\storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="EN-US"/>
+    <Resource m2:Scale="100"/>
+    
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <Extensions>
+        <Extension Category="windows.search"/>
+      </Extensions>
+      <m2:VisualElements DisplayName="Wikipedia" Description="Wikipedia Mobile for Windows 8" BackgroundColor="#ffffff" ForegroundText="dark" Square150x150Logo="win8-tile.png" Square30x30Logo="win8-small-tile.png">
+        <m2:DefaultTile Wide310x150Logo="win8-wide-tile.png">
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo"/>
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="images\splashscreen.png"/>
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient"/>
+  </Capabilities>
+  <Dependencies>
+    <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.17018"/>
+  </Dependencies>
+  <build:Metadata>
+    <build:Item Name="VisualStudio" Version="12.0"/>
+    <build:Item Name="VisualStudioEdition" Value="Microsoft Visual Studio Community 2013"/>
+    <build:Item Name="OperatingSystem" Version="6.3.9600.16384 (winblue_rtm.130821-1623)"/>
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="12.0.31101.0"/>
+    <build:Item Name="ProjectGUID" Value="a947dc84-923c-48c6-9187-59e643af9cba"/>
+    <build:Item Name="MakePri.exe" Version="6.3.9600.17298 (winblue.141024-1500)"/>
+  </build:Metadata>
+</Package>

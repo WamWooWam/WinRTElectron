@@ -1,0 +1,69 @@
+﻿.win-appbar.customDarkAppBar {
+    background-color: rgba(42, 42, 42, 1.0); /* Onyx */
+}
+
+.lightAppBarCommand,
+.lightAppBarCommand .win-commandimage,
+button.lightAppBarCommand:hover:active,
+button.lightAppBarCommand:-ms-keyboard-active,
+button.lightAppBarCommand:active {
+    color: white;
+}
+
+    .lightAppBarCommand .win-commandring,
+    .lightAppBarCommand:active .win-commandring {
+        background-color: transparent;
+        border-color: white;
+    }
+
+    button.lightAppBarCommand:hover:active .win-commandring,
+    button.lightAppBarCommand:-ms-keyboard-active .win-commandring {
+        background-color: white;
+        border-color: white;
+        color: transparent;
+    }
+
+    button.lightAppBarCommand:hover:active .win-commandicon,
+    button.lightAppBarCommand:-ms-keyboard-active .win-commandicon {
+        background-color: white;
+        border-color: white;
+        color: white;
+    }
+
+    button.lightAppBarCommand:hover:active .win-commandimage,
+    button.lightAppBarCommand:-ms-keyboard-active .win-commandimage {
+        color: black;
+    }
+
+    button.lightAppBarCommand:focus .win-label,
+    button.lightAppBarCommand.win-hidefocus:focus .win-label,
+    button.lightAppBarCommand:hover:active .win-label,
+    button.lightAppBarCommand:-ms-keyboard-active .win-label {
+        background-color: transparent;
+        border-color: white;
+        color: white;
+    }
+
+button.lightAppBarCommand:hover .win-commandring {
+    background-color: rgba(255, 255, 255, .25);
+    border-color: white;
+}
+
+button.lightAppBarCommand:focus {
+    border-color: cyan;
+}
+
+button.lightAppBarCommand.win-hidefocus:focus {
+    border-color: transparent;
+}
+
+button.lightAppBarCommand:hover:active win-commandimage,
+button.lightAppBarCommand:-ms-keyboard-active .win-commandimage {
+    color: transparent;
+}
+
+button.lightAppBarCommand[aria-checked=true] .win-commandimage,
+button.lightAppBarCommand[aria-checked=true]:active .win-commandimage,
+button.lightAppBarCommand[aria-checked=true]:hover .win-commandimage {
+    color: transparent;
+}

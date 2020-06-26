@@ -1,0 +1,8 @@
+﻿.peekbar{color:white;width:100%;z-index:1001;-ms-touch-select:none;line-height:15px;text-align:right;vertical-align:middle;position:-ms-device-fixed;}
+.peekbar-long{width:100%;height:15px;left:0px;}
+.peekbar-tab{width:40px;height:27px;left:auto;right:46px;text-align:center;}
+.peekbar-cuelayout{font-family:"Segoe UI Command";font-size:21px;}
+.peekbar-long .peekbar-cuelayout{padding-right:53px;}
+.peekbar-tab .peekbar-cuelayout{padding-right:0;padding-top:12px;}
+@media (-ms-high-contrast){.peekbar-bottom .peekbar{border-top:solid 2px;} .peekbar-top .peekbar{border-bottom:solid 2px;} .peekbar-tab{right:44px;border-left:solid 2px;border-right:solid 2px;}}.peekbar-top .peekbar{top:0;}
+.peekbar-bottom .peekbar{bottom:0;}

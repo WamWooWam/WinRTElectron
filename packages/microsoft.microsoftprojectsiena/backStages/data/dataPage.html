@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>dataPage</title>
+
+    <link href="dataPage.css" rel="stylesheet" />
+    <script src="dataPage.js"></script>
+</head>
+<body>
+    <div class="data-sources-page fragment">
+
+        <div class="existing-sources-pane">
+            <div class="existing-sources-pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageExistingSourcesHeader"></div>
+            <div class="no-existing-sources-message" data-bind="visible: connectionListViewModel.allConnections.length === 0">
+                <div data-bind="text: AppMagic.AuthoringStrings.BackStageNoExistingSourcesMessage"></div>
+            </div>
+            <div class="data-connection-items">
+                <div class="data-sources-list-container" data-bind="with: connectionListViewModel">
+                    <div class="data-sources-list" data-bind="foreach: allConnections">
+                        <div class="data-source-group-container">
+                            <div class="data-source-group-placeholder"></div>
+                            <!-- ko if: groupType === AppMagic.Authoring.BackStage.ConnectionType.RestService -->
+                            <div class="data-source-group" data-bind="
+                              property: { viewModel: $data, parentViewModel: $parent },
+                              winjsControl: '/backStages/data/restConnections/restConnectionView.html'">
+                            </div>
+                            <!-- /ko-->
+                            <!-- ko if: groupType === AppMagic.Authoring.BackStage.ConnectionType.DataSourceGroup -->
+                            <div class="data-source-group" data-bind="
+                              property: { viewModel: $data, parentViewModel: $parent },
+                              winjsControl: '/backStages/data/connections/connectionView.html'">
+                            </div>
+                            <!-- /ko-->
+                            <!-- ko if: groupType === AppMagic.Authoring.BackStage.ConnectionType.LocalTableConnection -->
+                            <div class="data-source-group" data-bind="
+                              property: { viewModel: $data, parentViewModel: $parent },
+                              winjsControl: '/backStages/data/cloudTableConnections/cloudTableConnectionView.html'">
+                            </div>
+                            <!-- /ko-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="addDataSource backstage-button" data-bind="disable: isAddDataButtonDisabled, text: AppMagic.AuthoringStrings.BackStageAddADataSource, click: notifyClickAdd.bind($data)"></button>
+        </div>
+
+        <div class="paneSplitter"></div>
+        <div class="add-sources-pane-container" data-bind="visible: isAddDataSourcesPaneVisible || connectionListViewModel.allConnections.length === 0">
+            <div class="dc-types-pane">
+                <div class="dc-types-pane-header" data-bind="text: AppMagic.AuthoringStrings.BackStageDCTypesHeader"></div>
+                <div class="dc-types-container"
+                     data-bind="foreach: connectionTypes">
+                    <div class="dc-type"
+                         data-bind="click: $parent.clickConnectionType.bind($parent),
+    css: { selected: selected }">
+                        <img src="#" data-bind="attr: { src: icon }" />
+                        <span data-bind="text: title"></span>
+                    </div>
+                </div>
+                <div class="dc-help-container link" data-bind="click: showHelp">
+                    <span class="link-text" data-bind="text: AppMagic.AuthoringStrings.BackStageHelpLabel"></span>
+                    <span class="icon">&#xE2AB;</span>
+                </div>
+            </div>
+            <div class="paneSplitter" data-bind="visible: selectedType !== null"></div>
+            <div class="dc-type-config-pane" data-bind="with: selectedType">
+                <div class="dc-type-config"
+                     data-bind="
+    property: { viewModel: pageVM },
+    winjsControl: pageUrl"></div>
+            </div>
+        </div>
+        <div class="dataViewer" data-bind="visible: !isAddDataSourcesPaneVisible">
+            <!-- ko if: !selectedConnectionIsStale && selectedConnectionViewModel && selectedConnectionViewModel.groupType === AppMagic.Authoring.BackStage.ConnectionType.DataSourceGroup -->
+            <div class="dataView" data-bind="
+                             property: { viewModel: selectedConnectionViewModel },
+                             winjsControl: '/backStages/data/connections/connectionDataView.html'">
+            </div>
+            <!-- /ko-->
+            <!-- ko if: !selectedConnectionIsStale && selectedConnectionViewModel && selectedConnectionViewModel.groupType === AppMagic.Authoring.BackStage.ConnectionType.RestService -->
+            <div class="dataView" data-bind="
+                             property: { viewModel: selectedConnectionViewModel, parentViewModel: $data},
+                             winjsControl: '/backStages/data/restConnections/restConnectionDataView.html'">
+            </div>
+            <!-- /ko-->
+            <!-- ko if: !selectedConnectionIsStale && selectedConnectionViewModel && selectedConnectionViewModel.groupType === AppMagic.Authoring.BackStage.ConnectionType.LocalTableConnection -->
+            <div class="dataView" data-bind="
+                             property: { viewModel: selectedConnectionViewModel, parentViewModel: $data},
+                             winjsControl: '/backStages/data/cloudTableConnections/cloudTableConnectionDataView.html'">
+            </div>
+            <!-- /ko-->
+
+        </div>
+    </div>
+</body>
+</html>

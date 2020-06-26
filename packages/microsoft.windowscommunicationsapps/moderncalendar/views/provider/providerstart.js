@@ -1,0 +1,1 @@
+﻿document.addEventListener("DOMContentLoaded",function(){Jx.mark("CalendarProvider.DOMContentLoaded,StartTA,Calendar");Jx.app=new Jx.Application(Jx.AppId.calendar,true);Jx.root=new Calendar.ProviderPage;Jx.mark("CalendarProvider.DOMContentLoaded,StopTA,Calendar")},false)

@@ -1,0 +1,600 @@
+﻿/*
+ * Copyright (C) Microsoft Corporation.  All rights reserved.
+ *
+ * AppMagic VideoPlayback control CSS
+ *
+ */
+.display-flexbox {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+/* Sets the flex-box to use a vertical orientation */
+.flex-direction-vertical {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+}
+/* Sets the flex-box to use a horizontal orientation */
+.flex-direction-horizontal {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  -moz-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  /* Older Safari - previous flex-box model */
+}
+/* Justify styles - justify aligns the alignment in the direction of the orientation 
+    So for a vertical orientation, flex-justify-center would center the content vertically */
+.flex-justify-start {
+  -ms-justify-content: flex-start;
+  -webkit-justify-content: flex-start;
+  -moz-justify-content: flex-start;
+  justify-content: flex-start;
+  -ms-flex-pack: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-center {
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-justify-end {
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-self-align-start {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+}
+.flex-self-align-center {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.flex-self-align-end {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  -moz-align-self: flex-end;
+  align-self: flex-end;
+}
+/* Align styles - align sets the content perpendicular to the orientation.
+    So for a vertical orientation, flex-align-center would center the content horizontally */
+.flex-align-start {
+  -ms-flex-item-align: flex-start;
+  -webkit-align-items: flex-start;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-start;
+  align-items: flex-start;
+  -ms-flex-align: start;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: start;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-center {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-end {
+  -ms-flex-item-align: flex-end;
+  -webkit-align-items: flex-end;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: flex-end;
+  align-items: flex-end;
+  -ms-flex-align: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: end;
+  /* Older Safari - previous flex box model */
+}
+.flex-align-stretch {
+  -ms-flex-item-align: stretch;
+  -webkit-align-items: stretch;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: stretch;
+  align-items: stretch;
+  -ms-flex-align: strech;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: strech;
+  /* Older Safari - previous flex box model */
+}
+.flex-direction-row {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+}
+.flex-wrap-wrap {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+}
+/* flex-fixed uses 0 for flex-grow and flex-shrink, so it won't be resized */
+.flex-fixed {
+  -ms-flex: 0 0 auto;
+  -moz-box-flex: 0 0 auto;
+  -webkit-box-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+/* flex-fill uses 1 for flex-grow and flex-shrink, so the flex-box will size this to fill*/
+.flex-fill {
+  -ms-flex: 1 1 auto;
+  -moz-box-flex: 1 1 auto;
+  -webkit-box-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+/* flex-shrink uses 0 for flex-grow and 1 for flex-shrink, so the flex-box becomes inflexible when there is some free space left but will shrink to its minimum when there is not enough space */
+.flex-shrink {
+  -ms-flex: 0 1 auto;
+  -moz-box-flex: 0 1 auto;
+  -webkit-box-flex: 0 1 auto;
+  flex: 0 1 auto;
+}
+/* TASK 99717: Create converters that allow taking more than one property as parameter
+   so that the text-decoration property can be set inline. */
+.decorations.underline {
+  text-decoration: underline;
+}
+.decorations.strikethrough {
+  text-decoration: line-through;
+}
+.decorations.underline.strikethrough {
+  text-decoration: underline line-through;
+}
+/* TASK: 101890: Specify border-radius to work around IE rendering artifacts around border and background-color. */
+.workaround-border-background-artifacts {
+  border-radius: 0.1px;
+}
+.appmagic-video-playback {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  /*Steed*/
+}
+.appmagic-video-playback,
+.appmagic-video-playback-grid,
+.appmagic-video-playback-controls-container {
+  width: 100%;
+  height: 100%;
+}
+.appmagic-video-playback-disabled {
+  background-color: #BABABA;
+  /*Wolf*/
+}
+.appmagic-video-playback-grid {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+}
+.fullscreen-grid {
+  position: absolute;
+}
+.appmagic-video-playback-grid .icon {
+  border: 2px solid white;
+  border-radius: 50%;
+  /* Circular border around icon. */
+  background-size: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.appmagic-video-playback-grid .icon:hover {
+  background-color: #00B0F0;
+  /*Aquarius*/
+}
+.appmagic-video-playback-grid input {
+  height: 10px;
+  padding: 0px;
+}
+.appmagic-video-playback-video {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  width: 100%;
+  height: 100%;
+}
+.appmagic-video-playback-controls-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.appmagic-video-playback-controls-container.overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Cloak */
+}
+.appmagic-video-playback-controls {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  width: 90%;
+  height: 85px;
+}
+.appmagic-video-playback-controls,
+.appmagic-video-playback-volume-container {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.75s;
+}
+.appmagic-video-playback-grid-hover .appmagic-video-playback-controls,
+.appmagic-video-playback-volume-container-click,
+.appmagic-video-playback-grid-hover .appmagic-video-playback-button-play-pause {
+  opacity: 1;
+  visibility: visible;
+}
+.appmagic-video-playback-seekbar {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+  width: 100%;
+}
+.appmagic-video-playback-seekbar-controls {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  -moz-align-self: flex-start;
+  align-self: flex-start;
+  width: 100%;
+  height: 65px;
+}
+.appmagic-video-playback-button-play-pause-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: center;
+  -webkit-justify-content: center;
+  -moz-justify-content: center;
+  justify-content: center;
+  -ms-flex-pack: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: center;
+  /* Older Safari - previous flex box model */
+  -ms-flex: 5;
+  -moz-box-flex: 5;
+  -webkit-box-flex: 5;
+  flex: 5;
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  width: 100%;
+}
+.appmagic-video-playback-button-play-pause {
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.25s;
+  background-image: url(../../../controls/playback/images/iconPlay.svg);
+  background-size: 100%;
+  min-height: 75px;
+  min-width: 75px;
+  max-height: 125px;
+  max-width: 125px;
+  border: 5px solid white;
+  border-radius: 50%;
+  /* Added to cover up the clipped border around arrow when resizing. */
+  box-sizing: border-box;
+}
+.appmagic-video-playback-button-play-pause:hover {
+  background-color: rgba(213, 213, 213, 0.14);
+  /* Token */
+}
+.appmagic-video-playback-button-play-pause.largeIcon {
+  height: 125px !important;
+  width: 125px !important;
+  border-width: 7px;
+}
+.appmagic-video-playback-button-play-pause.playing {
+  background-image: url(../../../controls/playback/images/iconPause.svg);
+}
+.appmagic-video-playback-timer-label {
+  font-family: "Segoe UI";
+  font-weight: normal;
+  font-size: 11pt;
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.appmagic-video-playback-seekbar-current-time,
+.appmagic-video-playback-seekbar-duration-seprator,
+.appmagic-video-playback-seekbar-duration {
+  line-height: 30px;
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+}
+.appmagic-video-playback-button-volume-container {
+  -ms-flex: 1;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  flex: 1;
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  -moz-justify-content: flex-end;
+  justify-content: flex-end;
+  -ms-flex-pack: end;
+  /* IE10 - previous flex box model */
+  -webkit-box-pack: end;
+  /* Older Safari - previous flex box model */
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  margin-right: 15px;
+}
+.appmagic-video-playback-button-volume {
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../controls/playback/images/iconVolume.svg);
+}
+.appmagic-video-playback-button-volume.muted {
+  background-image: url(../../../controls/playback/images/iconVolumeMuted.svg);
+}
+.appmagic-video-playback-volume-container {
+  display: -ms-flexbox;
+  /* Internet Explorer 10 */
+  display: -moz-box;
+  /* FireFox */
+  display: -webkit-box;
+  /* Safari */
+  display: -webkit-flex;
+  /* -flex is the current specification for Safari */
+  display: flex;
+  /* W3C */
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  -moz-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-orient: vertical;
+  /* Older Safari - previous flex-box model */
+  /* Place the volume container div right above the volume button. */
+  position: absolute;
+  bottom: 68px;
+  background-color: #f2f2f2;
+  /*Wisp*/
+  height: 163px;
+  width: 38px;
+}
+.appmagic-video-playback-volume-top {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  -ms-flex-item-align: center;
+  -webkit-align-items: center;
+  /* keep all items centered in the axis perpendicular to the flex direction */
+  -moz-align-items: center;
+  align-items: center;
+  -ms-flex-align: center;
+  /* IE10 - previous flex box model */
+  -webkit-box-align: center;
+  /* Older Safari - previous flex box model */
+  padding: 6px 0px;
+  width: 100%;
+  height: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url(../../../controls/playback/images/iconVolumeBlack.svg);
+}
+.appmagic-video-playback-volume-top.muted {
+  background-image: url(../../../controls/playback/images/iconVolumeMutedBlack.svg);
+}
+.appmagic-video-volume-slider-divider {
+  margin-left: 8px;
+  margin-right: 8px;
+  border-bottom: 1px solid #d9d9d9;
+}
+input[type=range].appmagic-video-playback-slider-volume {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  -webkit-appearance: slider-vertical;
+  /* show vertical slider in chrome and safari */
+  writing-mode: bt-lr;
+  height: 110px;
+  width: 100%;
+  margin: 0px;
+}
+input[type=range].appmagic-video-playback-slider-volume::-ms-track {
+  background-color: transparent;
+}
+input[type=range].appmagic-video-playback-slider-volume::-ms-fill-lower {
+  background-color: #00B0F0;
+  /*Aquarius*/
+}
+input[type=range].appmagic-video-playback-slider-volume.muted::-ms-fill-lower {
+  background-color: #777777;
+  /*Storm*/
+}
+input[type=range].appmagic-video-playback-slider-volume::-ms-fill-upper {
+  background-color: #C2C2C2 !important;
+  /*Ash*/
+}
+input[type=range].appmagic-video-playback-slider-volume::-ms-thumb {
+  background-color: #333333;
+  /*Black Suede*/
+}
+.appmagic-video-playback-button-fullscreen {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  -moz-align-self: center;
+  align-self: center;
+  width: 30px;
+  height: 30px;
+  background-image: url(../../../ctrllib/videoPlayback/images/iconFullscreen.svg);
+}
+.appmagic-video-playback-button-fullscreen.fullscreen-collapsed-icon {
+  background-image: url(../../../ctrllib/videoPlayback/images/iconFullscreenCollapse.svg);
+}
+.appmagic-video-playback-controls-hide {
+  display: none;
+  transition-property: opacity;
+  transition-duration: 0.25s;
+}
+.appmagic-video-playback-iframe,
+.appmagic-video-playback-iframe-disabled {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+.appmagic-video-playback-iframe-disabled {
+  display: none;
+}
+.appmagic-video-playback-iframe-disabled.active {
+  /* Give it some alpha so that IE treats it as clickable. */
+  background-color: rgba(0, 0, 0, 0.01);
+  display: block;
+}

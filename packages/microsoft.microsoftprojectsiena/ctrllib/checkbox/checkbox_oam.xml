@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<widget xmlns="http://openajax.org/metadata"
+        spec="1.0"
+        id="http://microsoft.com/appmagic/checkbox"
+        name="checkbox"
+        jsClass="AppMagic.Controls.Checkbox"
+        version="1.4.1"
+        xmlns:appMagic="http://schemas.microsoft.com/appMagic">
+
+  <author name="Microsoft AppMagic"/>
+
+  <license type="text/html" >
+    <![CDATA[<p>TODO:  Need license text here.</p>]]>
+  </license>
+
+  <description>
+    <![CDATA[CHECKBOX
+      Control description here.]]>
+  </description>
+  
+  <requires>
+    <require type="css" src="css/checkbox.css" />
+    <require type="javascript" src="js/checkbox.js" />
+  </requires>
+  
+  <appMagic:capabilities 
+    contextualViewsEnabled="true" 
+    autoBorders="true"
+    autoFill="true"
+    autoPointerViewState="true"
+    autoDisabledViewState="true"
+  />
+  
+  <content>
+    <![CDATA[
+  <div
+    class="appmagic-checkbox-control"
+    data-bind="{
+      style: {
+        paddingTop: properties.PaddingTop, 
+        paddingRight: properties.PaddingRight, 
+        paddingBottom: properties.PaddingBottom, 
+        paddingLeft: properties.PaddingLeft, 
+      },
+      attr: { title:properties.Tooltip }}" >
+      <!-- click class is defined for label/checkbox control to enable the label to select/deselect the checkbox control -->
+      <label class="checkbox-label click" data-bind ="{ css: { top: properties.VerticalAlign() === 'top', middle: properties.VerticalAlign() === 'middle', bottom: properties.VerticalAlign() === 'bottom' }}">
+        <input
+          appmagic-control="__WID__"
+          type="checkbox"
+          class="appmagic-checkbox click"
+          data-bind="{
+            disable: viewState.disabled,
+            checked: properties.Value,
+            style: { height:properties.CheckboxSize, width: properties.CheckboxSize },
+            event: {
+              change: handleChange } }"/>
+        <div
+          style="padding-left: 10px;"
+          tabIndex="-1"
+          class="appmagic-checkbox-label"
+          spellcheck="false"
+          data-bind="{
+            inlineEditText: properties.Text,
+            style: {
+              fontFamily: properties.Font,
+              fontSize: properties.Size,
+              color: autoProperties.Color,
+              fontWeight: properties.FontWeight,
+              fontStyle: properties.Italic
+            },
+            css: {
+              underline: properties.Underline,
+              strikethrough: properties.Strikethrough
+            }
+          }">
+        </div>
+     </label>
+  </div>
+  ]]>
+    </content>
+  
+  <properties>
+    <property name="Default" localizedName="##checkbox_Default##" datatype="Boolean" editable="true" defaultValue="false" direction="in">
+      <title>Checkbox default value</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:displayName>##checkbox_Default_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_defaulticon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##checkbox_Default_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="Value" localizedName="##checkbox_Value##" datatype="Boolean" direction="out" isPrimaryOutputProperty="true">
+      <title>Checkbox value</title>
+      <appMagic:category>data</appMagic:category>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/datarule_valueicon.svg</appMagic:path>
+        </appMagic:icon>
+      </appMagic:commandBar>
+    </property>
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <property name="OnCheck" localizedName="##checkbox_OnCheck##" datatype="Boolean" defaultValue="false" direction="in">
+      <title>Checkbox checked behavior</title>
+      <appMagic:category>behavior</appMagic:category>
+      <appMagic:displayName>##checkbox_OnCheck_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/behaviorrule_oncheckedicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>0</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##checkbox_OnCheck_Tooltip##</appMagic:tooltip>
+    </property>
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <property name="OnUncheck" localizedName="##checkbox_OnUncheck##" datatype="Boolean" defaultValue="false" direction="in">
+      <title>Checkbox unchecked behavior</title>
+      <appMagic:category>behavior</appMagic:category>
+      <appMagic:displayName>##checkbox_OnUncheck_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/behaviorrule_onuncheckedicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:position>1</appMagic:position>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##checkbox_OnUncheck_Tooltip##</appMagic:tooltip>
+    </property>
+    <property name="CheckboxSize" localizedName="##checkbox_CheckboxSize##" datatype="Number" defaultValue="20" converter="pxConverter">
+      <title>Checkbox Size</title>
+      <appMagic:category>design</appMagic:category>
+      <appMagic:helperUI>fontSize</appMagic:helperUI>
+      <appMagic:displayName>##checkbox_CheckboxSize_DisplayName##</appMagic:displayName>
+      <appMagic:commandBar>
+        <appMagic:icon>
+          <appMagic:path>/images/designrule_checkboxsizeicon.svg</appMagic:path>
+        </appMagic:icon>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+        <appMagic:position>99</appMagic:position>
+        <appMagic:group>sizePosition</appMagic:group>
+      </appMagic:commandBar>
+      <appMagic:tooltip>##checkbox_CheckboxSize_Tooltip##</appMagic:tooltip>
+    </property>
+  </properties>
+  
+  <appMagic:includeProperties>
+    <!-- Data -->
+    <appMagic:includeProperty name="Text" defaultValue="##Checkbox_DefaultValue_Text##" isExpr="true" isPrimaryInputProperty="true">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Tooltip">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Design -->
+    <!-- TASK: 97748: With the new autoBorders flag, we can remove this section and auto generate it at import time. -->
+    <appMagic:includeProperty name="BorderColor">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledBorderColor" defaultValue="RGBA(56, 56, 56, 1)" />
+    <appMagic:includeProperty name="PressedBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, -30%)" />
+    <appMagic:includeProperty name="HoverBorderColor" defaultValue="ColorFade(%CONTROL.ID%!BorderColor, 30%)" />
+    <appMagic:includeProperty name="BorderStyle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="BorderThickness">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Color" defaultValue="RGBA(69, 69, 69, 1)">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledColor" defaultValue="RGBA(186, 186, 186, 1)" />
+    <appMagic:includeProperty name="PressedColor" defaultValue="RGBA(0, 176, 240, 1)" />
+    <appMagic:includeProperty name="HoverColor" defaultValue="RGBA(0, 176, 240, 1)" />
+    <appMagic:includeProperty name="Fill">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="DisabledFill" defaultValue="RGBA(0, 0, 0, 0)" />
+    <appMagic:includeProperty name="PressedFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, -30%)" />
+    <appMagic:includeProperty name="HoverFill" defaultValue="ColorFade(%CONTROL.ID%!Fill, 30%)" />
+    <appMagic:includeProperty name="Font">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Size">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="FontWeight" defaultValue="FontWeight!Semibold">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Italic" />
+    <appMagic:includeProperty name="Underline" />
+    <appMagic:includeProperty name="Strikethrough" />
+    <appMagic:includeProperty name="PaddingTop">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingRight">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingBottom">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="PaddingLeft">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="VerticalAlign" defaultValue="VerticalAlign!Middle">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+        <appMagic:isInOverflow>true</appMagic:isInOverflow>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <appMagic:includeProperty name="X" />
+    <appMagic:includeProperty name="Y" />
+    <appMagic:includeProperty name="Width" defaultValue="150" />
+    <appMagic:includeProperty name="Height" defaultValue="40" />
+    <appMagic:includeProperty name="Visible">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    <appMagic:includeProperty name="Disabled">
+      <appMagic:commandBar>
+        <appMagic:visible>true</appMagic:visible>
+      </appMagic:commandBar>
+    </appMagic:includeProperty>
+    
+    <!-- Behavior -->
+    <!-- TASK: 85476: Do Behavior properties make sense as input only? -->
+    <appMagic:includeProperty name="OnSelect" direction="in"/>
+    
+    <!-- Hidden properties -->
+    <appMagic:includeProperty name="maximumHeight" defaultValue="768" />
+    <appMagic:includeProperty name="maximumWidth" defaultValue="1366" />
+    <appMagic:includeProperty name="minimumHeight" defaultValue="35" />
+    <appMagic:includeProperty name="minimumWidth" defaultValue="100" />
+  </appMagic:includeProperties>
+  
+  <!--Property Dependencies -->
+  <appMagic:propertyDependencies>
+    <appMagic:propertyDependency input="Default" output="Value"/>
+  </appMagic:propertyDependencies>
+</widget>

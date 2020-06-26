@@ -1,0 +1,40 @@
+﻿/* Colors */
+/* Misc styles */
+.appmagic-slider {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+.appmagic-slider-near-rail {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.appmagic-slider-near-rail.disabled {
+  background-color: #bababa !important;
+}
+.appmagic-slider-far-rail {
+  position: absolute;
+}
+.appmagic-slider-far-rail.disabled {
+  background-color: #bababa !important;
+}
+.appmagic-slider-handle {
+  overflow: hidden;
+  position: absolute;
+}
+.appmagic-slider-handle.disabled {
+  background-color: #888888 !important;
+}
+.appmagic-slider-numbertip {
+  background-color: white;
+  color: black;
+  overflow: auto;
+  position: absolute;
+  display: inline-block;
+  border: 1px solid #cccccc;
+  padding: 1px 5px 2px 5px;
+  text-align: center;
+  font-size: 10pt;
+  line-height: 1.2;
+}
