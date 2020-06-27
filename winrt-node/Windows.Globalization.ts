@@ -122,6 +122,9 @@ export namespace Globalization {
 
             // hardcoded en_GB >:3
             private static KNWON_FORMATS_TABLE = {
+                "month day year": (d: Date) => {
+                    return `${d.getDate()} ${DateTimeFormatter.MONTHS[d.getMonth()]} ${d.getFullYear()}`
+                },
                 "year": (d: Date) => {
                     return `${d.getFullYear()}`
                 },
@@ -139,9 +142,6 @@ export namespace Globalization {
                 },
                 "month year": (d: Date) => {
                     return `${DateTimeFormatter.MONTHS[d.getMonth()]} ${d.getFullYear()}`
-                },
-                "month day year": (d: Date) => {
-                    return `${d.getDate()} ${DateTimeFormatter.MONTHS[d.getMonth()]} ${d.getFullYear()}`
                 },
                 "day month.full year": (d: Date) => {
                     return `${d.getDate()} ${DateTimeFormatter.MONTHS[d.getMonth()]} ${d.getFullYear()}`

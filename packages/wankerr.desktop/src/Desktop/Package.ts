@@ -107,8 +107,8 @@ export class PackageReader {
         visualElements.displayName = element.getAttribute("DisplayName");
         visualElements.description = element.getAttribute("Description");
         visualElements.foregroundText = <ForegroundText>element.getAttribute("ForegroundText");
-        visualElements.backgroundColor = element.getAttribute("BackgroundColor");        
-        
+        visualElements.backgroundColor = element.getAttribute("BackgroundColor");
+
         if (visualElements.square150x150Logo = element.getAttribute("Square150x150Logo"))
             visualElements.square150x150Logo = "//" + packageName + "/" + visualElements.square150x150Logo;
 
@@ -116,8 +116,14 @@ export class PackageReader {
             visualElements.square30x30Logo = "//" + packageName + "/" + visualElements.square30x30Logo;
 
         var defaultTileElement = element.querySelector("DefaultTile");
-        visualElements.defaultTile = PackageReader.readDefaultTile(packageName, defaultTileElement);
-        PackageReader.processText(visualElements.defaultTile, resources);
+        if (defaultTileElement !== null) {
+            visualElements.defaultTile = PackageReader.readDefaultTile(packageName, defaultTileElement);
+            PackageReader.processText(visualElements.defaultTile, resources);
+        }
+        else {
+            visualElements.defaultTile = new ApplicationDefaultTile();
+            visualElements.defaultTile.shortName = visualElements.displayName;
+        }
 
         var splashScreenElement = element.querySelector("SplashScreen");
         visualElements.splashScreen = PackageReader.readSplashScreen(packageName, splashScreenElement);

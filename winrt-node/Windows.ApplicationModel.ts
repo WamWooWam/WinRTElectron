@@ -1,33 +1,38 @@
 // <ref src="Windows.Foundation.ts"/>
 
 import { EventTarget } from "./Windows.Foundation";
-import { isInWWA } from "./util";
+import { isInWWA, getCurrentPackageName } from "./util";
 import * as fs from "fs"
 import * as path from "path"
-import { remote } from "electron"
+import * as _ from 'lodash'
+
+const { remote } = require("electron");
+const supportedLanguages = ["en-gb", "en-us", "en", "generic"]; // this should be detected from the system
 
 export class ResourceLoader {
     private static loader: ResourceLoader;
-    private static languages: Map<string, any>;
-    private count: number;
+    private languages: Map<string, any>;
 
     constructor(packageName: string = null) {
-        this.count = 0;
-        let basePath = path.join(remote.app.getAppPath(), "packages", packageName ?? ApplicationModel.Package.current.id.name, "resources");
         try {
-            let files = fs.readdirSync(basePath);
-            for (const file of files) {
-                if (path.extname(file) == ".json") {
-                    let language = JSON.parse(fs.readFileSync(path.join(basePath, file), "utf-8"));
-                    this.languageMap.set(path.basename(file, ".json"), language);
+            this.languages = new Map();
+            let basePath = path.join(remote.app.getAppPath(), "packages", packageName ?? ApplicationModel.Package.current.id.name, "resources");
+
+            for (const language of supportedLanguages) {
+                let filePath = path.join(basePath, language + ".json");
+                if (fs.existsSync(filePath)) {
+                    let parsedLanguage = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+                    this.languages.set(language, parsedLanguage);
                 }
             }
         }
-        catch { }
+        catch (e) {
+            console.error(e);
+        }
     }
 
     get languageMap(): Map<string, any> {
-        return ResourceLoader.languages ?? (ResourceLoader.languages = new Map());
+        return this.languages ?? (this.languages = new Map());
     }
 
     static getForCurrentView() {
@@ -56,7 +61,7 @@ export class ResourceLoader {
 
         let string = null;
 
-        for (const language of ResourceLoader.languages) {
+        for (const language of this.languages) {
             if (string != null)
                 break;
 
@@ -84,6 +89,84 @@ const Loader = ResourceLoader;
 export namespace ApplicationModel {
     export namespace Resources {
         export const ResourceLoader = Loader;
+
+        export namespace Core {
+            export class ResourceMap {
+                private __baseObject: any;
+
+                constructor(baseObject?: any) {
+                    if (!baseObject) {
+                        baseObject = {};
+
+                        let basePath = path.join(remote.app.getAppPath(), "packages", ApplicationModel.Package.current.id.name, "resources");
+                        for (const language of supportedLanguages) {
+                            let filePath = path.join(basePath, language + ".json");
+                            if (fs.existsSync(filePath)) {
+                                let parsedLanguage = JSON.parse(fs.readFileSync(filePath, "utf-8"));
+                                _.merge(baseObject, parsedLanguage);
+                            }
+                        }
+                    }
+
+                    this.__baseObject = baseObject;
+
+                    return Object.assign(this, this.__baseObject);
+                }
+
+                getSubtree(tree: string) {
+                    return new ResourceMap(this[tree]);
+                }
+
+                getValue(key: string) {
+                    var splits = key.split("/");
+                    var name = splits[splits.length - 1];
+                    var subsplits = splits.slice(0, splits.length - 1);
+                    if (subsplits.length == 0) {
+                        subsplits = ["resources"];
+                    }
+
+                    let string = null;
+                    let json = this.__baseObject;
+                    for (const split of subsplits) {
+                        if (json === undefined || split == null || split == "")
+                            continue;
+
+                        json = json[split];
+                    }
+
+                    string = json[name];
+                    console.log(`resources:got string ${string} for ${key}`);
+                    return string;
+                }
+
+                first() {
+                    return { hasCurrent: false };
+                }
+            }
+
+            export class ResourceManager {
+                private static _current: ResourceManager;
+
+                static get current(): ResourceManager {
+                    return ResourceManager._current ?? (ResourceManager._current = new ResourceManager());
+                }
+
+                mainResourceMap: ResourceMap;
+                appResourceMaps: Map<string, ResourceMap>;
+
+                constructor() {
+                    this.mainResourceMap = new ResourceMap();
+                }
+            }
+
+            export class ResourceContext {
+                static getForCurrentView() {
+                    return new ResourceContext();
+                }
+
+                qualifierValues: any = {};
+            }
+        }
     }
     export namespace Activation {
         export enum ActivationKind {
@@ -202,9 +285,7 @@ export namespace ApplicationModel {
     export class PackageId {
         constructor(version: PackageVersion) {
             this.version = version;
-            var getUrl = isInWWA() ? location.pathname.split("/")[1] : location.hostname;
-            console.log(getUrl);
-            this.name = getUrl;
+            this.name = getCurrentPackageName();;
         }
 
         public readonly version: PackageVersion;

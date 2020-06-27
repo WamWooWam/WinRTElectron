@@ -4,7 +4,7 @@ module.exports = [
     {
         entry: "./shim.ts",
         mode: "production",
-        devtool: 'source-map',
+        devtool: 'inline-source-map',
         module: {
             rules: [
                 {

@@ -144,35 +144,35 @@
 }
 
 .charms-bar-search > .charms-bar-image {
-    background-image: url(/static/images/search-outline.png);
+    background-image: url(/static/charms/search-outline.png);
 }
 .charms-bar-share > .charms-bar-image {
-    background-image: url(/static/images/share-outline.png);
+    background-image: url(/static/charms/share-outline.png);
 }
 .charms-bar-start > .charms-bar-image {
-    background-image: url(/static/images/windows-outline.png);
+    background-image: url(/static/charms/windows-outline.png);
 }
 .charms-bar-devices > .charms-bar-image {
-    background-image: url(/static/images/devices-outline.png);
+    background-image: url(/static/charms/devices-outline.png);
 }
 .charms-bar-settings > .charms-bar-image {
-    background-image: url(/static/images/settings-outline.png);
+    background-image: url(/static/charms/settings-outline.png);
 }
 
 .charms-bar-open > .charms-bar-items > .charms-bar-search > .charms-bar-image {
-    background-image: url(/static/images/search.png);
+    background-image: url(/static/charms/search.png);
 }
 .charms-bar-open > .charms-bar-items > .charms-bar-share > .charms-bar-image {
-    background-image: url(/static/images/share.png);
+    background-image: url(/static/charms/share.png);
 }
 .charms-bar-open > .charms-bar-items > .charms-bar-start > .charms-bar-image {
-    background-image: url(/static/images/windows.png);
+    background-image: url(/static/charms/windows.png);
 }
 .charms-bar-open > .charms-bar-items > .charms-bar-devices > .charms-bar-image {
-    background-image: url(/static/images/devices.png);
+    background-image: url(/static/charms/devices.png);
 }
 .charms-bar-open > .charms-bar-items > .charms-bar-settings > .charms-bar-image {
-    background-image: url(/static/images/settings.png);
+    background-image: url(/static/charms/settings.png);
 }
 
 .charms-bar-clock {

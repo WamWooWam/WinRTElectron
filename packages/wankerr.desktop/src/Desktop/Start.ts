@@ -3,6 +3,10 @@ import { CoreWindow } from "./CoreWindow";
 import { CharmsBar } from "./CharmsBar";
 
 import "./start.css"
+import { Package, PackageIdentity, PackageProperties } from "./Package";
+import { Application, ApplicationVisualElements, ApplicationSplashScreen } from "./Application";
+import { uuidv4 } from "winrt-node/util";
+import { PackageRegistry } from "./PackageRegistry";
 
 export class Start {
     private static _start: Start;
@@ -16,6 +20,7 @@ export class Start {
     private hideAllElement: HTMLElement;
 
     private tiles: Array<Tile>;
+    private _testPackage: Package;
 
     constructor() {
         document.body.style.backgroundColor = "#180053";
@@ -68,7 +73,43 @@ export class Start {
     }
 
     launchAppFromUri(url: string) {
-                
+        if (!this._testPackage) {
+            let pack = new Package(null);
+            pack.identity = new PackageIdentity();
+            pack.properties = new PackageProperties();
+
+            pack.identity.name = "TestPackage";
+            pack.identity.publisher = "Test Publisher";
+            pack.identity.version = "1.0.0.0";
+
+            pack.properties.displayName = "Test Package";
+            pack.properties.publisherDisplayName = "Test Publisher";
+            pack.properties.logo = "/static/app/storelogo.png"
+            pack.path = null;
+
+            PackageRegistry.registerPackage(pack);
+
+            this._testPackage = pack;
+        }
+
+        let app = new Application();
+        app.id = "TestAppID-" + uuidv4();
+        app.startPage = url;
+        app.visualElements = new ApplicationVisualElements();
+        app.visualElements.displayName = "TestApp";
+        app.visualElements.description = "This is an app";
+        app.visualElements.foregroundText = "light";
+        app.visualElements.backgroundColor = "#464646";
+        app.visualElements.square150x150Logo = "/static/app/logo.png";
+        app.visualElements.square30x30Logo = "/static/app/smalllogo.png";
+
+        app.visualElements.splashScreen = new ApplicationSplashScreen();
+        app.visualElements.splashScreen.image = "/static/app/splashscreen.png";
+
+        this._testPackage.applications.set(app.id, app);
+
+        let window = CoreWindow.createMainWindow(this._testPackage, app);
+        window.activate();
     }
 
     removeTile(tile: Tile) {

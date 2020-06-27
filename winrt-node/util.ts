@@ -19,15 +19,19 @@ export function randstr(length: number) {
 
 export function isInWWA() {
     try {
-        return typeof window == "object" && window.self !== window.top;
+        return typeof window == "object" && window.self !== window.top && !globalThis.require;
     } catch (e) {
         return true;
     }
 }
 
 export function uuidv4() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
         return v.toString(16);
     });
+}
+
+export function getCurrentPackageName() {
+    return window.location.hostname;
 }

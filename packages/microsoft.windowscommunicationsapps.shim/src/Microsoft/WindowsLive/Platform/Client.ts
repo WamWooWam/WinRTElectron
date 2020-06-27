@@ -4,12 +4,14 @@ import { AccountManager } from "./AccountManager";
 import { PeopleManager } from "./PeopleManager";
 import { MailManager } from "./MailManager";
 import { CalendarManager } from "./CalendarManager";
+import { FolderManager } from "./FolderManager";
 
 export class Client extends EventTarget {
     private _calendarManager: CalendarManager;
     private _accountManager: AccountManager;
     private _peopleManager: PeopleManager;
     private _mailManager: MailManager;
+    private _folderManager: FolderManager;
     private _dbRequest: IDBRequest;
     private _db: IDBDatabase;
 
@@ -28,6 +30,7 @@ export class Client extends EventTarget {
         this._peopleManager = new PeopleManager(this);
         this._mailManager = new MailManager(this);
         this._calendarManager = new CalendarManager(this);
+        this._folderManager = new FolderManager(this);
 
         return new Proxy(this, new ShimProxyHandler());
     }
@@ -67,6 +70,10 @@ export class Client extends EventTarget {
 
     public get mailManager(): MailManager {
         return new Proxy(this._mailManager, new ShimProxyHandler());
+    }
+
+    public get folderManager(): FolderManager {
+        return new Proxy(this._folderManager, new ShimProxyHandler());
     }
 
     public get isMock(): boolean {

@@ -16,15 +16,7 @@ export namespace UI.WebUI {
 
         static init() {
             if (WebUIApplication.source == null) {
-                WebUIApplication.source = new EventTarget();
-
-                if (!isInWWA()) {
-                    self.addEventListener("DOMContentLoaded", () => {
-                        setTimeout(() => {
-                            WebUIApplication.dispatchEvent(new WebUILaunchActivatedEvent(ApplicationModel.Activation.ActivationKind.launch))
-                        }, 1000);
-                    })
-                }
+                WebUIApplication.source = new EventTarget();               
             }
 
             ipcRenderer.on("WinRTLifecycle", function (ev, ...data) {

@@ -173,7 +173,12 @@ var AppMagic;
                         for (var qualifier in languageResource)
                             if (languageResource.hasOwnProperty(qualifier) && languageResource[qualifier].qualifierName === "Language") {
                                 this[this._resourceTree.concat("Language")] = languageResource[qualifier].qualifierValue;
-                                typeof Microsoft != "undefined" && typeof Microsoft.AppMagic != "undefined" && typeof Microsoft.AppMagic.Common != "undefined" && typeof Microsoft.AppMagic.Common.LocalizationHelper != "undefined" && typeof Microsoft.AppMagic.Common.LocalizationHelper.currentUILanguageName != "undefined" && (Microsoft.AppMagic.Common.LocalizationHelper.currentUILanguageName = languageResource[qualifier].qualifierValue);
+                                typeof Microsoft != "undefined" && 
+                                typeof Microsoft.AppMagic != "undefined" &&
+                                typeof Microsoft.AppMagic.Common != "undefined" && 
+                                typeof Microsoft.AppMagic.Common.LocalizationHelper != "undefined" &&
+                                typeof Microsoft.AppMagic.Common.LocalizationHelper.currentUILanguageName != "undefined" &&
+                                (Microsoft.AppMagic.Common.LocalizationHelper.currentUILanguageName = languageResource[qualifier].qualifierValue);
                                 break
                             }
                     }

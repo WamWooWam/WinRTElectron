@@ -37,7 +37,7 @@ export class SettingsPaneHandler extends BaseIpcHandlder {
                     .append([
                         $d("<div>").addClass("charms-pane-info-text").append([
                             $d("<p>").text(app.visualElements.displayName),
-                            $d("<p>").appendText(`By ${app}`)
+                            $d("<p>").appendText(`By ${pack.properties.publisherDisplayName}`)
                         ]),
                         this.listElement = $d("<ul>").addClass("charms-pane-list")
                     ]),

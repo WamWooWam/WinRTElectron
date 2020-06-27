@@ -79,9 +79,7 @@ export class AppSwitcher {
         else {
             if (!(x > 0 && x <= 35)) {
                 this.endGesture();
-            }
-
-            
+            }            
         }
     }
 
@@ -106,9 +104,5 @@ export class AppSwitcher {
         }
 
         this._appSwitcherOverlayElement.classList.remove("hidden");
-    }
-
-    private showCharmsLightOverlay() {
-
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Package IgnorableNamespaces="build" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:wb="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build">
   
-  <Identity Name="Microsoft.BingNews1" Version="3.0.4.336" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" ProcessorArchitecture="x86"/>
+  <Identity Name="Microsoft.BingNews" Version="3.0.4.336" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" ProcessorArchitecture="x86"/>
   <Properties>
     <DisplayName>ms-resource:BrandedAppTitle</DisplayName>
     <Description>ms-resource:NewsAppDesc</Description>

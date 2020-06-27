@@ -4,7 +4,9 @@ import { Contact } from "./Contact"
 import { AccountsResource } from "./AccountsResource"
 import { MailResource } from "./MailResource"
 import { Collection } from "./Utils";
-import { ShimProxyHandler, Enumerable } from "winrt-node/Windows.Foundation"
+import { ShimProxyHandler, Enumerable, Uri } from "winrt-node/Windows.Foundation"
+import { AccountServerConnectionSettings } from "./AccountServerConnectionSettings"
+import { Windows } from "winrt-node"
 
 export class Account extends PlatformObject {
     constructor(id: string) {
@@ -27,6 +29,11 @@ export class Account extends PlatformObject {
     @Enumerable(true)
     public get displayName(): string {
         return "Wan Kerr Co. Ltd.";
+    }
+
+    @Enumerable(true)
+    public get userDisplayName(): string {
+        return "Thomas May";
     }
 
     @Enumerable(true)
@@ -88,7 +95,14 @@ export class Account extends PlatformObject {
     }
 
     getServerByType(t: WindowsLive.Platform.ServerType) {
-        return t == WindowsLive.Platform.ServerType.imap ? "imap.gmail.com" : null;
+        switch (t) {
+            case WindowsLive.Platform.ServerType.imap:
+                return new AccountServerConnectionSettings(new Uri("imap://imap.gmail.com"), "993", WindowsLive.Platform.ServerType.imap);
+            case WindowsLive.Platform.ServerType.smtp:
+                return new AccountServerConnectionSettings(new Uri("smtp://smtp.gmail.com"), "465", WindowsLive.Platform.ServerType.smtp);
+            default:
+                return null;
+        }
     }
 
     getResourceByType(r: WindowsLive.Platform.ResourceType) {

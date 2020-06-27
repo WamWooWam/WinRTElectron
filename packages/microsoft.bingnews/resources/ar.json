@@ -1,0 +1,975 @@
+{
+  "Platform": {
+    "aboutLabel": "حول",
+    "accept": "قبول",
+    "Add": "إضافة",
+    "addMoreFilters": "إضافة/إزالة المزيد من المصافي",
+    "advertisement": "إعلان",
+    "AppIsPersonalized": "تم تخصيص {0}. ",
+    "appRestart": "(طلب إعادة تشغيل التطبيق)",
+    "AppTitle": "التطبيق",
+    "appVersion": "الإصدار {0}",
+    "ArticleHeaderSubscriptionMessage": "اشتراك",
+    "ArticleLinkLabelText": "عرض المقال",
+    "ArticleSubscriptionMessage": "الاشتراك للوصول غير المحدود",
+    "ArticleTextSizeLarge": "كبير",
+    "ArticleTextSizeMedium": "متوسط",
+    "ArticleTextSizeMenuLabel": "حجم النص",
+    "ArticleTextSizeSmall": "صغير",
+    "ArticleTextSizeXLarge": "كبير جدًا",
+    "ArticleTextStyleMenuLabel": "نمط النص",
+    "ArticleUnavailableOffline": "هذا المقال غير متوفر في حالة عدم الاتصال بالإنترنت.",
+    "AverageMarketCharacterSizePx": "8",
+    "brand": "MSN",
+    "Calendar": "التقويم",
+    "cancel": "إلغاء",
+    "catastrophicError": "هناك مشكلة في التطبيق. يرجى إعادة التشغيل.",
+    "changeMarketTo": "{0} ({1})",
+    "changeSettings": "تغيير الإعدادات",
+    "changesFromAppSettings": "يمكنك إجراء هذه التغييرات في أي وقت باستخدام إعدادات التطبيق",
+    "clearFiltersLabel": "إعادة تعيين عوامل التصفية",
+    "ClickToOpenL2": "تحديد لإظهار subChannel",
+    "close": "إغلاق",
+    "closeAppButton": "إغلاق التطبيق",
+    "ConnectMicrosoftAccount": "الاتصال بحساب Microsoft",
+    "ConnectMyMicrosoftAccount": "الاتصال بحساب Microsoft الخاص بي",
+    "ConnectToMicrosoft": "الاتصال بـ Microsoft",
+    "createAccountButton": "إنشاء حساب >",
+    "credentialMessage": "أدخل اسم المستخدم وكلمة المرور للوصول إلى {0}.",
+    "credentialsInvalid": "بيانات اعتماد غير صالحة. يرجى إعادة المحاولة.",
+    "creditsLink": "التصديقات",
+    "DaysAgo": "قبل {0}‏ أيام",
+    "decline": "رفض",
+    "Delete": "حذف",
+    "demoModeTitle": "هذه الميزة غير متاحة في وضع العرض التوضيحي.",
+    "demoMode_label": "وضع العرض التوضيحي",
+    "demoMode_lastUpdated": "استمتع بجولة في التطبيق في وضع العرض التوضيحي.",
+    "Dismiss": "رفض",
+    "entitlementsInvalid": "عذرًا، لا يتضمن اشتراكك هذا الجهاز.",
+    "featured": "متميز",
+    "feedbackButtonLabel": "ملاحظات",
+    "feedbackCommentQuestion": "ما الذي يمكننا القيام به لتحسين التطبيق؟",
+    "feedbackDislikeIcon": "😩",
+    "feedbackDislikeLabel": "لم يعجبني",
+    "feedbackLikeIcon": "😊",
+    "feedbackLikeLabel": "أعجبني",
+    "feedbackOfflineMessage": "يبدو أنك غير متصل فيرجى إعادة المحاولة بعد الاتصال بالإنترنت.",
+    "feedbackPrivacyStatementLabel": "بيان الخصوصية",
+    "feedbackQ1option1": "جيد جدًا",
+    "feedbackQ1option2": "جيد",
+    "feedbackQ1option3": "المتوسط",
+    "feedbackQ1option4": "ضعيف",
+    "feedbackQ1option5": "ضعيف جدًا",
+    "feedbackQ2option1": "سأوصي بالتأكيد",
+    "feedbackQ2option2": "ربما أوصي",
+    "feedbackQ2option3": "ربما أوصي وربما لا",
+    "feedbackQ2option4": "ربما لا أوصي",
+    "feedbackQ2option5": "لن أوصي بالتأكيد",
+    "feedbackQuestion1": "كيف تقيّم هذا التطبيق؟",
+    "feedbackQuestion2": "ما مدى احتمالية توصيتك بهذا التطبيق لأحد الأصدقاء؟",
+    "feedbackSubmitButtonLabel": "إرسال",
+    "feedbackThankYou": "شكرًا على ملاحظاتك!",
+    "filmstrip": "شريط سينما",
+    "FilterAll": "عرض الجميع",
+    "FilterBy": "التصفية حسب:",
+    "filterMenu": "قائمة التصفية",
+    "forceUpdate": "لم يعد هذا الإصدار من {0} مدعومًا فيرجى التحديث إلى آخر إصدار.",
+    "forgotPasswordButton": "هل نسيت كلمة المرور >",
+    "freeformTextWarning": "شكرًا لقضاء الوقت في إضافة ملاحظاتك. يُرجى مراعاة عدم تقديم أي معلومات شخصية.",
+    "GoBack": "الرجوع للخلف",
+    "GyrometerOffAriaLabel": "إيقاف تنظيف المستشعر التلقائي",
+    "GyrometerOnAriaLabel": "تشغيل تنظيف المستشعر التلقائي",
+    "HelpLabel": "تعليمات",
+    "HoursAgo": "قبل {0}‏ ساعات",
+    "imageAttribution": "نسبة الصورة",
+    "ImageCount": "الصورة {0} من {1}",
+    "impressum": "Impressum",
+    "invalidEntry": "لا توجد نتائج. يرجى المحاولة مرة أخرى.",
+    "InvalidSubscriptionMessage": "تم تأمين المقالة التي تحاول قراءتها. يُرجى الحصول على اشتراك صالح.",
+    "L2Opened": "تم إظهار SubChannels",
+    "LabelChangeTheseSettings": "تغيير هذه الإعدادات",
+    "LabelClickToChange": "انقر هنا لتغيير الإعدادات",
+    "LabelModifySettings": "تعديل الإعدادات",
+    "LabelOff": "إيقاف",
+    "LabelOn": "تشغيل",
+    "LabelPrivacyStatement": "بيان الخصوصية",
+    "LabelTapToChange": "انقر هنا لتغيير الإعدادات",
+    "languageSetting": "اختيار إصدار",
+    "lca_privacy": "بيان الخصوصية",
+    "lca_serviceAgreement": "شروط الاستخدام",
+    "Loading": "جارٍ التحميل",
+    "LocationCannotBeFound": "لا يمكن إيجاد موقعك. قم بتغيير أذوناتك للسماح لـ \"الأخبار\" باستخدام موقعك.",
+    "Login": "تسجيل الدخول",
+    "loginPrompt": "إدخال حساب {0} الخاص بك",
+    "loginPromptContentLocked": "تم تأمين المقالة التي تحاول قراءتها. يُرجى تسجيل الدخول.",
+    "Logout": "تسجيل خروج",
+    "marketChangePrompt": "يرجي غلق التطبيق ثم إعادة فتحه حتى يسرى مفعول التغييرات التي تم إجراؤها على تفضيلات المحتوى.",
+    "marketError": "ليس هذا التطبيق متاحًا في سوقك.",
+    "marketSelDialogMsg": "تقوم الآن بعرض محتوى من {0} ({1}). ويمكنك تغيير هذا الخيار في أي وقت من رمز الإعدادات.",
+    "marketSelDialogMsgOpt": "تقوم الآن بعرض محتوى من {0} ({1}). ويمكنك تغيير هذا الإعداد في التطبيق في أي وقت.",
+    "marketSelDialogTitle": "ما المحتوى واللغة التي تود مشاهدتهما؟",
+    "marketSelDialogTitleOpt": "من أين تريد عرض المحتوى؟",
+    "mediaPlaybackButtonsAriaLabel": "أزرار التشغيل",
+    "mediaPlaybackContentRegionAriaLabel": "تشغيل الوسائط",
+    "mediaPlaybackControlsAriaLabel": "أدوات التحكم في التشغيل",
+    "mediaPlaybackControlsLayerAriaLabel": "أدوات التحكم في التشغيل",
+    "mediaPlaybackEnterFullScreenAriaLabel": "العرض على كامل الشاشة",
+    "mediaPlaybackLeaveFullScreenAriaLabel": "إيقاف العرض على كامل الشاشة",
+    "mediaPlaybackMinimalAriaLabel": "جار تشغيله حاليًا",
+    "mediaPlaybackNextButtonAriaLabel": "التالي",
+    "mediaPlaybackPauseButtonAriaLabel": "إيقاف مؤقت",
+    "mediaPlaybackPlayButtonAriaLabel": "تشغيل",
+    "mediaPlaybackPreviousButtonAriaLabel": "السابق",
+    "mediaPlaybackSeekBarAriaLabel": "شريط البحث",
+    "mediaPlaybackSeekBarThumbAriaLabel": "منزلق شريط البحث",
+    "mediaPlaybackShareAriaLabel": "مشاركة",
+    "mediaPlaybackTimeIndicatorAriaLabel": "مؤشر وقت التشغيل",
+    "MessageAccessingMSAinfo": "الوصول إلى معلومات حساب Microsoft.",
+    "MessageAccountConnect1": "لتمكين التخصيص والمزامنة عبر الأجهزة، صِل حساب Microsoft الخاص بك في إعدادات الكمبيوتر.",
+    "MessageAccountConnect2": "لتمكين التخصيص والمزامنة عبر الأجهزة، {0}.",
+    "MessageAdSettingsLocation": "حدد \"إعلانات Microsoft\" في الإعدادات للتحكم في تخصيص الإعلانات في هذا التطبيق. ",
+    "MessageAdSettingsOff": "أنت لا تتلقى إعلانات مخصصة. حدد \"إعلانات Microsoft\" في الإعلانات للحصول على إعلانات مخصصة.",
+    "MessageAdSettingsOn1": "تستخدم إعلانات Microsoft معلوماتك لتخصيص الإعلانات. حدد \"إعلانات Microsoft\" في الإعدادات لإيقاف تشغيل هذه الميزة. ",
+    "MessageAdSettingsOn2": "تستخدم إعلانات Microsoft معلوماتك لتخصيص الإعلانات. حدد \"إعلانات Microsoft\" في الإعدادات لإيقاف تشغيل الإعلانات المخصصة. ",
+    "MessageConfiguredMSAinfo": "تم التكوين باستخدام معلومات حساب Microsoft.",
+    "MessageConnect": "اتصال",
+    "MessageConnectAccount": "توصيل الحساب",
+    "MessageConnectMicrosoftAccount": "صِل حساب Microsoft الخاص بك",
+    "MessageCustomizedMSAinfo": "تم التخصيص باستخدام معلومات حساب Microsoft.",
+    "MessageMSAConnectionDescription": "سيؤدي هذا إلى مزامنة المعلومات بين هذا التطبيق وحساب Microsoft الخاص بك لتخصيص هذه التجربة وتجارب Microsoft الأخرى عبر أجهزتك.",
+    "MessageMSASignIn": "لتمكين التخصيص والمزامنة عبر الأجهزة، قم بتسجيل الدخول إلى حساب Microsoft الخاص بك. ",
+    "MessageOptimizedMSAinfo": "تم التحسين باستخدام معلومات حساب Microsoft.",
+    "MessagePersonalize": "استخدم المعلومات من هذا التطبيق والمقترنة بحساب Microsoft لتخصيص هذه التجربة وتجارب Microsoft الأخرى.",
+    "MessagePersonalizedMSAinfo": "تم التشخيص باستخدام معلومات حساب Microsoft.",
+    "MessagePersonalizeSettings": "تشخيص الإعدادات",
+    "MessagePrivacySettings": "إعدادات الخصوصية",
+    "MessagePrivacyUpdateButton": "لمعرفة المزيد",
+    "MessagePrivacyUpdateCloseButton": "رفض",
+    "MessagePrivacyUpdated": "لقد قمنا بتحديث سياسة الخصوصية.",
+    "MessagePrivacyUpdateLink": "لمعرفة المزيد",
+    "MessagePrivacyUpdateNotif": "نحن نقوم بتحديث سياسة الخصوصية.",
+    "MessageRoam": "مزامنة إعدادات هذا التطبيق عبر أجهزتي.  ",
+    "MessageTermsAndPrivacyUpdated": "لقد قمنا بتحديث شروط الاستخدام وبيان الخصوصية.",
+    "MessageTermsAndPrivacyUpdateNotif": "نقوم الآن بتحديث شروط الاستخدام وبيان الخصوصية.",
+    "MessageTermsUpdateButton": "لمعرفة المزيد",
+    "MessageTermsUpdateCloseButton": "رفض",
+    "MessageTermsUpdated": "لقد قمنا بتحديث شروط الاستخدام.",
+    "MessageTermsUpdateLink": "لمعرفة المزيد",
+    "MessageTermsUpdateNotif": "إننا نقوم بتحديث شروط الاستخدام.",
+    "MessageUsingMSAinfo": "استخدام معلومات حساب Microsoft.",
+    "MicrosoftAccount": "Microsoft",
+    "MicrosoftAdvertisingPrivacyLinkText": "بيان خصوصية إعلانات Microsoft.",
+    "MicrosoftAdvertisingSettingsText": "للتحكم وإضفاء الطابع الشخصي، راجع",
+    "MinsAgo": "قبل {0}‏ دقائق",
+    "More": "المزيد",
+    "MoreArticles": "المقالات التالية",
+    "MoreFrom": "المزيد من",
+    "MSAccountNameLabel": "اسم الحساب",
+    "MSAConnectionRemoveLink": "إزالة",
+    "MSAConnectLabel": "اتصال",
+    "NextArticle": "المقالة التالية",
+    "nextButton": "العنصر التالي",
+    "noInternetButton": "إعادة المحاولة",
+    "noInternetDescription": "يرجى فحص الاتصال بالإنترنت.",
+    "noInternetTitle": "لستَ متصلاً بالإنترنت.",
+    "noThanks": "لا شكرًا",
+    "offLabel": "إيقاف التشغيل",
+    "offline_label": "غير متصل",
+    "offline_lastUpdated": "آخر تحديث {0}",
+    "offline_noContent": "ليس هذا المحتوى متوفرًا عند عدم الاتصال.",
+    "offline_problem": "صادف التطبيق مشكلة فلا يمكنه تحميل المحتوى.",
+    "okButton": "موافق",
+    "OneDayAgo": "قبل يوم واحد",
+    "OneHourAgo": "قبل ساعة واحدة",
+    "OneMinAgo": "قبل دقيقة",
+    "open": "فتح",
+    "OpenInBrowser": "العرض في المستعرض",
+    "optionsTitle": "خيارات",
+    "other": "أخرى",
+    "otherButton": "أسواق أخرى",
+    "overLimitMessage": "قد يستخدم {0} كمية كبيرة من البيانات لبعض ميزاته. وحسب المقاييس يكون اتصالك قد جاز حدود البيانات مما قد يؤدي إلى ترتب الرسوم عليه",
+    "Page": "الصفحة {0}",
+    "PageOf": "الصفحة {0} من {1}",
+    "password": "كلمة المرور",
+    "passwordInput": "كلمة المرور",
+    "Pause": "إيقاف مؤقت",
+    "PaywallCardByAuthor": "بواسطة {0}",
+    "PaywallCardDay": "يوم",
+    "PaywallCardGrowlMessage": "لقد استخدمت +{0} من {1}+ من الرموز المميزة من {2} {3}.",
+    "PaywallCardHour": "ساعة",
+    "PaywallCardMonth": "شهر",
+    "PaywallCardQuotaReachedMessage": "يمكنك أن تتابع الاستمتاع بما يصل إلى {0} من الرموز المميزة لكل {1} أو تشترك لتتمتع بوصول غير محدود.",
+    "PaywallcardReadArticle": "قراءة المقالة",
+    "PaywallCardSignIn": "تسجيل الدخول",
+    "PaywallCardSubscribe": "اشتراك",
+    "PaywallCardThisHour": "هذه الساعة",
+    "PaywallCardThisMonth": "هذه الشهر",
+    "PaywallCardThisWeek": "هذا الأسبوع",
+    "PaywallCardThisYear": "هذه السنة",
+    "PaywallCardToday": "اليوم",
+    "PaywallCardUnlimitedAccess": "اشتراك لوصول غير محدود",
+    "PaywallCardWeek": "أسبوع",
+    "PaywallCardYear": "سنة",
+    "PhotosynthControlsHiddenAriaLabel": "عناصر تحكم بانوراما مخفية",
+    "PhotosynthControlsVisibleAriaLabel": "عناصر تحكم بانوراما مرئية",
+    "pinToStart": "تثبيت بشاشة البدء",
+    "Play": "تشغيل",
+    "poweredBy": "مشغل بواسطة {0}",
+    "PreviousArticle": "المقالة السابقة",
+    "previousButton": "العنصر السابق",
+    "privacyPolicy": "سياسة الخصوصية",
+    "progressAlertAriaLabel": "تنبيه",
+    "readingList": "محفوظة",
+    "refresh": "تحديث",
+    "RegionCurrentLocation": "الموقع الحالي",
+    "RegionSelectLabel": "تحديث مصادر إقليمية لمدينتك",
+    "RegionSelectNone": "(بلا)",
+    "RelatedArticles": "مقالات ذات صلة",
+    "Resources": {
+      "LanguageID": "1",
+      "Language_af": "الأفريقانية",
+      "Language_am": "الأمهرية",
+      "Language_ar": "العربية",
+      "Language_arn-Latn": "المابودونجونية",
+      "Language_as": "الأساميزية",
+      "Language_az": "الأذرية (اللاتينية)",
+      "Language_az-Cyrl": "الأذربيجانية (السيريلية)",
+      "Language_az-Latn": "الأذريبجانية (اللاتينية)",
+      "Language_ba-Cyrl": "الباشقورية",
+      "Language_be": "البيلاروسية",
+      "Language_bg": "البلغارية",
+      "Language_bn": "البنغالية",
+      "Language_bn-bd": "البنغالية (بنغلاديش)",
+      "Language_bn-in": "البنغالية (الهند)",
+      "Language_br-Latn": "البريتانية",
+      "Language_bs": "البوسنية (اللاتينية)",
+      "Language_bs-Cyrl": "البوسنية (السيريلية)",
+      "Language_bs-Latn": "البوسنية (اللاتينية)",
+      "Language_ca": "الكتالانية",
+      "Language_ca-ES-valencia": "البلنسية",
+      "Language_chr": "الشيروكي",
+      "Language_chr-Cher": "الشيروكية (شيروكي)",
+      "Language_co-Latn": "الكورسيكانية",
+      "Language_cs": "التشيكية",
+      "Language_cy": "الويلزية",
+      "Language_da": "الدانمركية",
+      "Language_de": "الألمانية",
+      "Language_dsb": "صوربيا السفلى",
+      "Language_dv": "الديفيهية",
+      "Language_el": "اليونانية",
+      "Language_en": "الإنجليزية",
+      "Language_es": "الإسبانية",
+      "Language_et": "الإستونية",
+      "Language_eu": "الباسكية",
+      "Language_fa": "الفارسية",
+      "Language_ff-Latn": "الفولانية",
+      "Language_fi": "الفنلندية",
+      "Language_fil-Latn": "الفلبينية",
+      "Language_fo": "الفاروية",
+      "Language_fr": "الفرنسية",
+      "Language_fy": "الفريزية",
+      "Language_ga": "الأيرلندية",
+      "Language_gd": "الاسكتلندية الغالية",
+      "Language_gd-Latn": "الاسكتلندية الغالية",
+      "Language_gl": "الغليشيانية",
+      "Language_gsw": "الألسشيانية",
+      "Language_gu": "الجيوجاراتية",
+      "Language_ha": "الهاوسا (اللاتينية)",
+      "Language_ha-Latn": "الهاوسا (اللاتينية)",
+      "Language_he": "العبرية",
+      "Language_hi": "الهندية",
+      "Language_hr": "الكرواتية",
+      "Language_hsb": "صوربيا العليا",
+      "Language_hu": "المجرية",
+      "Language_hy": "الأرمنية",
+      "Language_id": "الإندونيسية",
+      "Language_ig": "الإيجبو",
+      "Language_ig-Latn": "الإيجبو",
+      "Language_is": "الأيسلندية",
+      "Language_it": "الإيطالية",
+      "Language_iu-Latn": "الإنكتيتوتية (اللاتينية)",
+      "Language_ja": "اليابانية",
+      "Language_ka": "الجورجية",
+      "Language_kk": "الكازاخية",
+      "Language_kl": "الغرينلاندية",
+      "Language_km": "الخميرية",
+      "Language_kn": "الكانادية",
+      "Language_ko": "الكورية",
+      "Language_kok": "الكونكانية",
+      "Language_ku": "الكردية",
+      "Language_ku-Arab": "الكردية الأوسطية",
+      "Language_ky": "القرغيزية",
+      "Language_ky-Cyrl": "القرغيزية",
+      "Language_lb": "اللكسمبورجية",
+      "Language_lo": "اللاوو",
+      "Language_lt": "الليتوانية",
+      "Language_lv": "اللاتفية",
+      "Language_mi-Latn": "الماورية",
+      "Language_mk": "المقدونية",
+      "Language_ml": "المالايالامية",
+      "Language_mn": "المنغولية (السيريلية)",
+      "Language_mn-Cyrl": "المنغولية (السيريلية)",
+      "Language_mr": "الماراثية",
+      "Language_ms": "الماليزية",
+      "Language_mt": "المالطية",
+      "Language_nb": "النرويجية (بوكمال)",
+      "Language_ne": "النيبالية",
+      "Language_nl": "الهولندية",
+      "Language_nn": "النرويجية (نينورسك)",
+      "Language_nso": "سيسوتو سا ليبوا",
+      "Language_oc-Latn": "الأوكسيتانية",
+      "Language_or": "اللغة الأورية",
+      "Language_pa": "البنجابية (الجورموخية)",
+      "Language_pa-Arab": "البنجابية (العربية)",
+      "Language_pl": "البولندية",
+      "Language_prs": "داري",
+      "Language_prs-arab": "داري",
+      "Language_ps": "الباشتو",
+      "Language_pt": "البرتغالية",
+      "Language_pt-br": "البرتغالية (البرازيل)",
+      "Language_pt-pt": "البرتغالية (البرتغال)",
+      "Language_quc-Latn": "الكيشية",
+      "Language_qut": "الكيشية",
+      "Language_quz-Latn": "الكويتشوا",
+      "Language_ro": "الرومانية",
+      "Language_ru": "الروسية",
+      "Language_rw": "الكينيارواندية",
+      "Language_sa-Deva": "السنسكريتية",
+      "Language_sah-Cyrl": "الساخيّة",
+      "Language_sd-Arab": "السندية (العربية)",
+      "Language_se-Latn": "سامي الشمالية",
+      "Language_si": "السنهالية",
+      "Language_sk": "السلوفاكية",
+      "Language_sl": "السلوفانية",
+      "Language_sma-Latn": "سامي الجنوبية",
+      "Language_smj-Latn": "سامي اللولية",
+      "Language_smn-Latn": "سامي الإنارية",
+      "Language_sms-Latn": "سامي السكولتية",
+      "Language_sq": "الألبانية",
+      "Language_sr-Cyrl": "الصربية (السيريلية)",
+      "Language_sr-cyrl-ba": "الصربية (السيريلية, البوسنة والهرسك)",
+      "Language_sr-Latn": "الصربية (اللاتينية)",
+      "Language_sv": "السويدية",
+      "Language_sw": "السواحيلية",
+      "Language_syr-Syrc": "السريانية",
+      "Language_ta": "التاميلية",
+      "Language_te": "التيلوجو",
+      "Language_tg-Cyrl": "الطاجيكية (السيريلية)",
+      "Language_th": "التايلاندية",
+      "Language_ti": "التيغرينية",
+      "Language_tk-Latn": "التركمانية (اللاتينية)",
+      "Language_tn": "الستسوانا",
+      "Language_tr": "التركية",
+      "Language_tt": "التترية",
+      "Language_tt-Cyrl": "التترية (السيريلية)",
+      "Language_tzm-Latn": "التمازيغية (اللاتينية)",
+      "Language_ug": "الأويغورية",
+      "Language_ug-Arab": "الأويغورية",
+      "Language_uk": "الأوكرانية",
+      "Language_ur": "الأوردية",
+      "Language_uz-Cyrl": "الأوزبكية (السيريلية)",
+      "Language_uz-Latn": "الأوزبكية (اللاتينية)",
+      "Language_vi": "الفيتنامية",
+      "Language_wo-Latn": "الولوفية",
+      "Language_xh": "الخوسا",
+      "Language_yo": "اليوروبا",
+      "Language_yo-Latn": "اليوروبا",
+      "Language_zh-Hans": "الصينية (المبسطة)",
+      "Language_zh-Hant": "الصينية (التقليدية)",
+      "Language_zu": "الزولو",
+      "MarketInfoDisplayNameFormat": "{0} - {1}",
+      "Region_Display_AD": "أندورا",
+      "Region_Display_AE": "الإمارات العربية المتحدة",
+      "Region_Display_AF": "أفغانستان",
+      "Region_Display_AG": "أنتيغوا وبربودا",
+      "Region_Display_AI": "أنغويلا",
+      "Region_Display_AL": "ألبانيا",
+      "Region_Display_AM": "أرمينيا",
+      "Region_Display_AO": "أنغولا",
+      "Region_Display_AR": "الأرجنتين",
+      "Region_Display_AS": "ساموا الأمريكية",
+      "Region_Display_AT": "النمسا",
+      "Region_Display_AU": "أستراليا",
+      "Region_Display_AW": "أروبا",
+      "Region_Display_AZ": "أذربيجان",
+      "Region_Display_BA": "البوسنة والهرسك",
+      "Region_Display_BB": "بربادوس",
+      "Region_Display_BD": "بنغلاديش",
+      "Region_Display_BE": "بلجيكا",
+      "Region_Display_BF": "بوركينافاسو",
+      "Region_Display_BG": "بلغاريا",
+      "Region_Display_BH": "البحرين",
+      "Region_Display_BI": "بوروندي",
+      "Region_Display_BJ": "بنن",
+      "Region_Display_BM": "برمودا",
+      "Region_Display_BN": "بروناي",
+      "Region_Display_BO": "بوليفيا",
+      "Region_Display_BQ": "بونيه",
+      "Region_Display_BR": "البرازيل",
+      "Region_Display_BS": "البهاما",
+      "Region_Display_BT": "بوتان",
+      "Region_Display_BW": "بوتسوانا",
+      "Region_Display_BY": "بيلاروس",
+      "Region_Display_BZ": "بليز",
+      "Region_Display_CA": "كندا",
+      "Region_Display_CC": "جزر كوكوس كيلنج",
+      "Region_Display_CD": "الكنغو (DRC)",
+      "Region_Display_CF": "جمهورية أفريقيا الوسطى",
+      "Region_Display_CG": "الكونغو",
+      "Region_Display_CH": "سويسرا",
+      "Region_Display_CI": "Côte d'Ivoire \"كوت ديفوار\"",
+      "Region_Display_CK": "جزر كوك",
+      "Region_Display_CL": "تشيلي",
+      "Region_Display_CM": "الكاميرون",
+      "Region_Display_CN": "الصين",
+      "Region_Display_CO": "كولومبيا",
+      "Region_Display_CR": "كوستاريكا",
+      "Region_Display_CS": "صربيا ومونتينيغرو (سابقًا)",
+      "Region_Display_CV": "جزر الرأس الأخضر (Cape Verde)",
+      "Region_Display_CW": "كوراساو",
+      "Region_Display_CX": "جزيرة الكريسماس",
+      "Region_Display_CY": "قبرص",
+      "Region_Display_CZ": "جمهورية التشيك",
+      "Region_Display_DE": "ألمانيا",
+      "Region_Display_DJ": "جيبوتي",
+      "Region_Display_DK": "الدنمارك",
+      "Region_Display_DM": "دومينيكا",
+      "Region_Display_DO": "جمهورية الدومينيكان",
+      "Region_Display_DZ": "الجزائر",
+      "Region_Display_EC": "الإكوادور",
+      "Region_Display_EE": "إستونيا",
+      "Region_Display_EG": "مصر",
+      "Region_Display_ER": "إريتريا",
+      "Region_Display_ES": "أسبانيا",
+      "Region_Display_ET": "أثيوبيا",
+      "Region_Display_FI": "فنلندا",
+      "Region_Display_FK": "جزر فوكلاند (Islas Malvinas)",
+      "Region_Display_FM": "ميكرونيزيا",
+      "Region_Display_FO": "جزر فيرو",
+      "Region_Display_FR": "فرنسا",
+      "Region_Display_GA": "الغابون",
+      "Region_Display_GB": "المملكة المتحدة",
+      "Region_Display_GD": "جرانادا",
+      "Region_Display_GE": "جورجيا",
+      "Region_Display_GF": "جيانا الفرنسية",
+      "Region_Display_GG": "غويرنسي",
+      "Region_Display_GH": "غانا",
+      "Region_Display_GL": "غرينلاند",
+      "Region_Display_GM": "غامبيا",
+      "Region_Display_GN": "غينيا",
+      "Region_Display_GP": "غوادلوب",
+      "Region_Display_GQ": "غينيا الاستوائية",
+      "Region_Display_GR": "اليونان",
+      "Region_Display_GT": "غواتيمالا",
+      "Region_Display_GU": "جوام",
+      "Region_Display_GW": "غينيا بيساو",
+      "Region_Display_GY": "غويانا",
+      "Region_Display_HK": "هونغ كونغ SAR",
+      "Region_Display_HN": "هندوراس",
+      "Region_Display_HR": "كرواتيا",
+      "Region_Display_HT": "هايتي",
+      "Region_Display_HU": "هنغاريا",
+      "Region_Display_ID": "إندونيسيا",
+      "Region_Display_IE": "إيرلندا",
+      "Region_Display_IL": "إسرائيل والسلطة الفلسطينية",
+      "Region_Display_IN": "الهند",
+      "Region_Display_IQ": "العراق",
+      "Region_Display_IR": "إيران",
+      "Region_Display_IS": "أيسلندا",
+      "Region_Display_IT": "إيطاليا",
+      "Region_Display_JE": "جيرسي",
+      "Region_Display_JM": "جامايكا",
+      "Region_Display_JO": "الأردن",
+      "Region_Display_JP": "اليابان",
+      "Region_Display_KE": "كينيا",
+      "Region_Display_KG": "قيرقيزتان",
+      "Region_Display_KH": "كمبوديا",
+      "Region_Display_KI": "كيريباتي",
+      "Region_Display_KM": "جزر القمر",
+      "Region_Display_KN": "سانت كيتس ونيفيس",
+      "Region_Display_KR": "كوريا",
+      "Region_Display_KW": "الكويت",
+      "Region_Display_KY": "جزر كيمان",
+      "Region_Display_KZ": "كازاخستان",
+      "Region_Display_LA": "لاوس",
+      "Region_Display_LB": "لبنان",
+      "Region_Display_LC": "سانت لوشا",
+      "Region_Display_LI": "ليشتنشتاين",
+      "Region_Display_LK": "سريلانكا",
+      "Region_Display_LR": "ليبيريا",
+      "Region_Display_LS": "ليسوتو",
+      "Region_Display_LT": "لتوانيا",
+      "Region_Display_LU": "لكسمبورج",
+      "Region_Display_LV": "لاتفيا",
+      "Region_Display_LY": "ليبيا",
+      "Region_Display_MA": "المغرب",
+      "Region_Display_MC": "موناكو",
+      "Region_Display_MD": "مولدافا",
+      "Region_Display_ME": "مونتينيغرو",
+      "Region_Display_MF": "سان مارتن",
+      "Region_Display_MG": "مدغشقر",
+      "Region_Display_MH": "جزر مارشال",
+      "Region_Display_MK": "جمهورية مقدونيا اليوغسلافية السابقة",
+      "Region_Display_ML": "مالي",
+      "Region_Display_MM": "ميانمار",
+      "Region_Display_MN": "منغوليا",
+      "Region_Display_MO": "ماكاو SAR",
+      "Region_Display_MP": "جزر ماريانا الشمالية",
+      "Region_Display_MQ": "جزر المارتينيك",
+      "Region_Display_MR": "موريتانيا",
+      "Region_Display_MS": "مونتسيرات",
+      "Region_Display_MT": "مالطا",
+      "Region_Display_MU": "موريشيوس",
+      "Region_Display_MV": "جزر المالديف",
+      "Region_Display_MW": "مالاوي",
+      "Region_Display_MX": "المكسيك",
+      "Region_Display_MY": "ماليزيا",
+      "Region_Display_MZ": "موزنبيق",
+      "Region_Display_NA": "ناميبيا",
+      "Region_Display_NC": "كالدونيا الجديدة",
+      "Region_Display_NE": "نيجر",
+      "Region_Display_NF": "جزيرة نورفولك",
+      "Region_Display_NG": "نيجيريا",
+      "Region_Display_NI": "نيكاراجوا",
+      "Region_Display_NL": "هولندا",
+      "Region_Display_NO": "النرويج",
+      "Region_Display_NP": "نيبال",
+      "Region_Display_NR": "ناورو",
+      "Region_Display_NU": "نييوي",
+      "Region_Display_NZ": "نيوزيلندا",
+      "Region_Display_OM": "عُمان",
+      "Region_Display_PA": "بنما",
+      "Region_Display_PE": "بيرو",
+      "Region_Display_PF": "بولينيزيا الفرنسية",
+      "Region_Display_PG": "بابوا غينيا الجديدة",
+      "Region_Display_PH": "الفلبين",
+      "Region_Display_PK": "باكستان",
+      "Region_Display_PL": "بولندا",
+      "Region_Display_PM": "سان بيير ومكويلون",
+      "Region_Display_PN": "جزر بيتكيرن",
+      "Region_Display_PR": "بورتو ريكو",
+      "Region_Display_PT": "البرتغال",
+      "Region_Display_PW": "بالاو",
+      "Region_Display_PY": "باراجواي",
+      "Region_Display_QA": "قطر",
+      "Region_Display_RE": "روينيون",
+      "Region_Display_RO": "رومانيا",
+      "Region_Display_RS": "صربيا",
+      "Region_Display_RU": "روسيا",
+      "Region_Display_RW": "رواندا",
+      "Region_Display_SA": "السعودية",
+      "Region_Display_SB": "جزر سليمان",
+      "Region_Display_SC": "سيشل",
+      "Region_Display_SD": "السودان",
+      "Region_Display_SE": "السويد",
+      "Region_Display_SG": "سنغافورة",
+      "Region_Display_SH": "سانت هيلينا و أسينشين و تريستان دا كونا",
+      "Region_Display_SI": "سلوفينيا",
+      "Region_Display_SK": "سلوفاكيا",
+      "Region_Display_SL": "سيراليون",
+      "Region_Display_SM": "سان مارينو",
+      "Region_Display_SN": "السنغال",
+      "Region_Display_SO": "الصومال",
+      "Region_Display_SR": "سورينام",
+      "Region_Display_SS": "جنوب السودان",
+      "Region_Display_ST": "ساو تومي وبرينسيبي",
+      "Region_Display_SV": "السلفادور",
+      "Region_Display_SX": "سانت مارتن",
+      "Region_Display_SY": "سوريا",
+      "Region_Display_SZ": "سوازيلاند",
+      "Region_Display_TC": "جزر توركس وكايكوس",
+      "Region_Display_TD": "تشاد",
+      "Region_Display_TG": "توجو",
+      "Region_Display_TH": "تايلاند",
+      "Region_Display_TJ": "طاجيكستان",
+      "Region_Display_TK": "توكيلو",
+      "Region_Display_TL": "تيمور ليشتي",
+      "Region_Display_TM": "تركمانستان",
+      "Region_Display_TN": "تونس",
+      "Region_Display_TR": "تركيا",
+      "Region_Display_TT": "ترينداد وتوباجو",
+      "Region_Display_TV": "توفالو",
+      "Region_Display_TW": "تايوان",
+      "Region_Display_TZ": "تنزانيا",
+      "Region_Display_UA": "أوكرانيا",
+      "Region_Display_UG": "أوغندا",
+      "Region_Display_US": "الولايات المتحدة",
+      "Region_Display_UY": "أوروجواي",
+      "Region_Display_UZ": "أوزبكستان",
+      "Region_Display_VA": "هولي سي (مدينة الفاتيكان)",
+      "Region_Display_VC": "سانت فنسنت وجزر غرينادين",
+      "Region_Display_VE": "فنزويلا",
+      "Region_Display_VG": "جزر فيرجن البريطانية",
+      "Region_Display_VI": "جزر فيرجن التابعة للولايات المتحدة",
+      "Region_Display_VN": "فيتنام",
+      "Region_Display_VU": "فانواتو",
+      "Region_Display_WF": "جزر والس وفوتانا",
+      "Region_Display_WS": "ساموا",
+      "Region_Display_XE": "سانت أوستاتيوس",
+      "Region_Display_XS": "سابا",
+      "Region_Display_YE": "اليمن",
+      "Region_Display_YT": "مايوت",
+      "Region_Display_ZA": "جنوب أفريقيا",
+      "Region_Display_ZM": "زامبيا",
+      "Region_Display_ZW": "زمبابوي"
+    },
+    "restart": "إعادة التشغيل",
+    "retry": "إعادة المحاولة",
+    "roamingMessage": "قد يستخدم {0} كمية كبيرة من البيانات لبعض ميزاته. لاحظ أنك قيد التجوال الآن مما قد يترتب عليه الرسوم المناسبة.",
+    "row": "صف",
+    "scrollLeftAriaLabel": "تمرير لليسار",
+    "scrollRightAriaLabel": "تمرير لليمين",
+    "semanticZoomContainer": "حاوية التكبير الدلالي",
+    "sendFeedbackButtonLabel": "إرسال تعليقات",
+    "ShareArticleHeader": "مشاركة",
+    "ShareArticleText": "مشاركة هذه المقالة",
+    "Slide": "صورة",
+    "Slideshow": "عرض الشرائح",
+    "SnappedMessage": "سيتاح وضع المحاذاة عما قريب.",
+    "SortBy": "الفرز حسب",
+    "sortLabel": "فرز",
+    "sortText": "فرز",
+    "sponsoredBy": "الجهة الراعية",
+    "standardErrorButton": "حاول مرة أخرى",
+    "standardErrorDescription": "طرأت مشكلة فالرجاء إعادة المحاولة.",
+    "standardErrorTitle": "فشل تحميل هذه الصفحة.",
+    "submit": "إرسال",
+    "subscribeButton": "اشتراك",
+    "subscribeInstructions": "إدخال اسم المستخدم وكلمة المرور",
+    "subscribeNow": "اشترك الآن واحصل على:",
+    "subscribePanoButton": "الاشتراك لوصول غير محدود",
+    "subscribePrompt": "محتوى خاص بالمشترك فقط",
+    "swipeDownToolTip": "اسحب لأسفل للتحديد",
+    "swipeLeftToolTip": "اسحب لليسار للتحديد",
+    "swipeRightToolTip": "اسحب لليمين للتحديد",
+    "TermsOfUse": "شروط الاستخدام",
+    "TextStylePrimary": "أولي",
+    "TextStyleSecondary": "ثانوي",
+    "timeIndicatorTextFormat": "{0} / {1}",
+    "TitleAccountSettings": "الحساب",
+    "TitleAccountsSettings": "الحساب",
+    "TitleAdSettings": "إعدادات الإعلان",
+    "TitleConfiguration": "تكوين",
+    "TitleCustomization": "تخصيص",
+    "TitleMicrosoftAccount": "حساب Microsoft",
+    "TitleMSAConnectedDescription": "متصل بحساب Microsoft الخاص بك",
+    "TitleMSAConnectionDescription": "اتصل بحساب Microsoft الخاص بك",
+    "TitlePersonalization": "تشخيص",
+    "TitlePersonalizationSettings": "تخصيص",
+    "TitlePersonalize": "تخصيص",
+    "TitlePersonalizedAdSettings": "إعدادات الإعلانات المخصصة",
+    "TitlePersonalizedAdvertisingSettings": "إعدادات الإعلانات المخصصة",
+    "TitlePersonalizeSettings": "إعدادات التشخيص",
+    "TitlePrivacySettings": "الخصوصية",
+    "TitlePrivacyStatementNew": "بيان الخصوصية (جديد)",
+    "TitleRoam": "مزامنة عبر الأجهزة",
+    "TitleTermsNew": "شريط الاستخدام (جديدة)",
+    "unpinFromStart": "إزالة التثبيت من القائمة \"ابدأ\"",
+    "Unsnap": "عدم الإلصاق",
+    "update": "التحديث الآن",
+    "updateMessage": "يتوفر إصدار جديد من {0}. قم بالتحديث الآن لتستفيد من أحدث التغييرات",
+    "updateMessage_button1": "تحديث",
+    "updateMessage_button2": "لاحقًا",
+    "updateTitle": "التحديث متوفر",
+    "userName": "اسم المستخدم",
+    "userNameInput": "عنوان البريد الإلكتروني أو اسم المستخدم",
+    "validateError": "يتعذر علينا تسجيل دخولك. يرجى إعادة المحاولة لاحقًا.",
+    "videoClusterLabel": "مقاطع فيديو متميزة",
+    "videoConnectErrorText": "يُرجى الاتصال بالإنترنت والمحاولة مرة أخرى",
+    "videoCountdownText": "الأعلى بعد {0}",
+    "videoGeoErrorText": "الفيديو غير متوفر للموقع الحالي",
+    "videoItemLabel": "فيديو",
+    "videoLoadErrorText": "نواجه مشكلات أثناء تحميل هذا الفيديو، يُرجى المحاولة مرة أخرى لاحقًا",
+    "VideosClusterLabel": "ملفات الفيديو",
+    "viewing": "جار العرض",
+    "WeekNum": "الأسبوع {0}",
+    "win8Brand": "Windows 8",
+    "win8Share": "إذا كان لديك {0} أو {1}، {2}",
+    "win8ShareBrowser": " خلاف ذلك، يفتح {0}",
+    "win8ShareBrowserLink": "انقر هنا.",
+    "win8ShareLink": "فافتح هذا في {0}.",
+    "win8ShareTitle": "{0} - {1}",
+    "winPhone8Brand": "Windows Phone 8"
+  },
+  "resources": {
+    "1DayAgo": "قبل يوم واحد",
+    "1HourAgo": "قبل ساعة واحدة",
+    "1MinAgo": "قبل دقيقة",
+    "About": "حول ",
+    "Add": "إضافة",
+    "AddASection": "إضافة مقطع",
+    "AddCategory": "إضافة فئة",
+    "Added": "تمت الإضافة",
+    "AddSectionButton": "إضافة كمقطع",
+    "AddSource": "إضافة مصدر",
+    "AddSourceDesc": "أضف مصادر الأخبار المفضلة عليك",
+    "AddSourceTile": "إضافة لوحة مصدر",
+    "AddThisSource": "إضافة المصدر",
+    "AddTopic": "إضافة موضوع",
+    "AddTopicDesc": "أضف مقاطعك المفضلة لمشاهدة آخر الأخبار",
+    "AddTopicsInLang": "Sections can be added in {0} only.",
+    "AllSources": "جميع المصادر",
+    "APNews": "AP News",
+    "APNewsBigStory": "AP Big Story",
+    "AppSearchHint": "البحث في الأخبار",
+    "AppTitle": "الأخبار",
+    "Articles": "مقالات",
+    "ArticleUnavailableOffline": "لا يتاح هذا المحتوى دون اتصال.",
+    "BigStories": "Big Stories",
+    "BingDaily": "الأخبار من MSN",
+    "BingNews": "الأخبار من MSN",
+    "BingWorldwide": "Bing‏ حول العالم",
+    "BrandedAppTitle": "الأخبار من MSN",
+    "BreakingNews": "أخبار عاجلة",
+    "BrowseSourceTile": "استعراض المصادر",
+    "cancel": "إلغاء الأمر",
+    "CantShare": "هذا المقال لا يمكن مشاركته.",
+    "Catalog": "دليل",
+    "catBusiness": "أعمال",
+    "Categories": "الفئات",
+    "CategoriesTab": "المقاطع الرئيسية",
+    "Category": "الفئة",
+    "CategoryPage": "Category Page",
+    "CategorySearchBoxGhost": "إدخال فئة هنا",
+    "catEntertainment": "الترفيه",
+    "catHealth": "الصحة",
+    "catLocal": "محلي",
+    "catNational": "وطني",
+    "catPolitics": "سياسة",
+    "catRegional": "إقليمي",
+    "catSports": "الرياضة",
+    "catUS": "الولايات المتحدة",
+    "catWorld": "العالم",
+    "ChangeLocationButtonText": "تغيير الموقع",
+    "ClearHistory": "مسح المصادر الأكثر زيارة",
+    "ClearHistoryInstruction": "مسح محفوظات مصادر الأخبار",
+    "ClearSelection": "مسح التحديد",
+    "Close": "إغلاق",
+    "Content": "المحتوى",
+    "CouldNotValidateRSS": "عذرًا، عنوان URL لـ RSS الذي تحاول إدخاله لا يعمل. يُرجى المحاولة مرة أخرى. ",
+    "CurrentLocationButtonText": "الموقع الحالي",
+    "CustomizationAddButtonContent": "اسحب المقاطع وأسقطها لتنظيم الأخبار من MSN أو انقر هنا لإضافة مقاطع أو إزالتها",
+    "CustomizationCategoriesButton": "انتقاءات المحررين",
+    "CustomizationCategoriesButtonContent": "أهم الموضوعات من أفضل الموارد، اختاره فريقنا",
+    "CustomizationHintText": "إضافة محتوى أو إزالته، أو سحب وإفلات لإعادة ترتيب المقاطع في الأخبار من MSN",
+    "CustomizationInternationalButton": "أخبار دولية",
+    "CustomizationInternationalButtonContent": "أهم العناوين من كل أنحاء العالم",
+    "CustomizationSourcesButton": "المصادر",
+    "CustomizationSourcesButtonContent": "تقارير من منظمات عن أهم الموضوعات",
+    "CustomizationTopicsButton": "الموضوعات",
+    "CustomizationTopicsButtonContent": "شركات أو مشاهير أو أية مشكلات في الأخبار",
+    "Customize": "تخصيص",
+    "CustomizeYourNews": "تخصيص أخبارك",
+    "DataAdapterTest": "DataAdapterTest",
+    "DaysAgo": "قبل {0}‏ أيام",
+    "DefaultSnappedStringAdd": "إلغاء المحاذاة لإضافة مصدر",
+    "DefaultSnappedStringBrowse": "إلغاء المحاذاة لاستعراض مصدر",
+    "DevelopingStory": "إعداد قصص",
+    "Dismiss": "رفض",
+    "DownloadComplete": "كامل",
+    "Downloaded": "‏‏تم التنزيل",
+    "Downloading": "تنزيل",
+    "DownloadingArticles": "تنزيل المقالات",
+    "DownloadingArticlesError": "تعذر تنزيل محتوى ما. لإعادة المحاولة، اضغط على \"تحديث\".",
+    "DownloadingArticlesErrorOffline": "تعذر تنزيل محتوى ما.",
+    "EditorPickHeader": "خيارات المحرر",
+    "EditTopics": "تخصيص",
+    "Empty": " ",
+    "EnglishWorldWide": "‏‏حول العالم (الإنجليزية)",
+    "Explore": "استكشاف",
+    "Featured": "متميز",
+    "FeaturedSource": "مصدر متميز",
+    "FeaturedSources": "مصادر متميزة",
+    "FeaturedStory": "القصة المتميزة",
+    "FeaturedVideosClusterTitle": "أشهر ملفات الفيديو",
+    "Feedback": "ملاحظات",
+    "Follow": "المتابعة",
+    "FollowTopic": "إضافة موضوع",
+    "ForbidFramingError": "لا يمكن عرض هذه الصفحة في تطبيق الأخبار.",
+    "FREWelcomeMessageHeading": "انتقاء الفئات التي تثير اهتمامك",
+    "FREWelcomeMessageText": "إن محررينا في الأخبار من MSN قاموا بانتقاء أحدث الأخبار من أعلى المصادر وتنظيمها لك خصيصًا. حدد الفئات التي تثير اهتمامك أدناه.",
+    "GetStarted": "بدء التشغيل",
+    "GetStartedDismiss": "قم بإزالة هذه اللوحة.  انتقل إلى الخطوات التالية لمزيد من التلميحات عن المحتوى والتعليمات",
+    "GetStartedIntro": "متابعة كل ما هو جديد من خلال أفضل مصادر الأخبار، كل هذا في مكان واحد",
+    "GetStartedManage": "الضغط أو النقر هنا للإضافة أو الإزالة",
+    "GetStartedPersonalizeDesc": "الحصول على الأخبار التي تهتم بها على الشاشة الرئيسية",
+    "GetStartedSources": "إضافة مصادرك المفضلة",
+    "GetStartedSourcesDesc": "التمتع بوصول سهل إلى الأخبار التي تثق فيها من شاشتك الرئيسية",
+    "GetStartedTour": "قم بجولة",
+    "GetStartedTourDesc": "اكتشف كيفية متابعة الصور التي تهمك",
+    "GoTo": "الانتقال إلى {0}",
+    "Headlines": "العناوين",
+    "Help": "تعليمات",
+    "Home": "الصفحة الرئيسية",
+    "HoursAgo": "قبل {0}‏ ساعات",
+    "iframeErrorMessage": "لا يمكن عرض هذه الصفحة في تطبيق الأخبار",
+    "ImageCredits": "© حقوق ملكية الصور",
+    "Impressum": "Impressum",
+    "InternationalBingDailyTab": "الإصدارات الدولية",
+    "InternationalEdition": "الإصدار الدولي",
+    "InternationalEditions": "الإصدارات الدولية",
+    "langArabic": "Arabic",
+    "langBrazilianPortuguese": "Brazilian Portuguese",
+    "langCatalan": "Catalan",
+    "langChineseSimplified": "Chinese Simplified",
+    "langChineseTraditional": "Chinese Traditional",
+    "langDutch": "Dutch",
+    "langEnglish": "English",
+    "langFinnish": "Finnish",
+    "langFrench": "French",
+    "langGerman": "German",
+    "langItalian": "Italian",
+    "langJapanese": "Japanese",
+    "langKorean": "Korean",
+    "langNorwegian": "Norwegian",
+    "langRussian": "Russian",
+    "langSpanish": "Spanish",
+    "langSwedish": "Swedish",
+    "LastUpdated": "آخر تحديث: {0}",
+    "LastUpdatedBingDaily": "اكتمال التنزيل. تاريخ التحديث الأخير: {0}.",
+    "Library": "مكتبة",
+    "LocalSourcesAllLocations": "كل المواقع",
+    "LocalSourcesAllTileTitle": "كل المصادر المحلية",
+    "LocalSourcesTileChangeLocation": "تغيير المدينة",
+    "LocalSourcesTileSubtitle": "الأخبار المحلية",
+    "LocalSourcesTileTitle": "الأخبار المحلية",
+    "ManageCategories": "إدارة الفئات",
+    "MaxSourcesReached": "وصلت إلى {0} من {1} مصادر ولإضافة جميع هذه المصادر يجب إزالة بعضها أولاً.",
+    "MicrosoftCorp": "Microsoft Corporation",
+    "MinsAgo": "قبل {0}‏ دقائق",
+    "MoreFrom": "المزيد من {0}",
+    "MoreFromTheWeb": "أخبار من الويب",
+    "MoreSources": "مصادر إضافية",
+    "MoreTopics": "إضافة مقطع",
+    "MoreTopicsDescription": "إضافة المقاطع الجديدة.",
+    "MoreTopicsLabel": "مواضيع أكثر",
+    "MSNNow": "MSN‏ الآن",
+    "MustUpgrade": "تتوفر هذه البيانات فقط في أحدث إصدار من التطبيق. يرجى الترقية.",
+    "MyCategories": "الفئات",
+    "MyNews": "أخباري",
+    "MySelectedCategories": "فئاتي",
+    "MySelectedSources": "مصادري",
+    "MySelectedTopics": "موضوعاتي",
+    "MySources": "المصادر",
+    "MyTopics": "الموضوعات",
+    "MyTrends": "شائع الآن",
+    "News": "الأخبار",
+    "NewsAppDesc": "تطبيق الأخبار",
+    "NewsResults": "نتائج الأخبار",
+    "Newsstand": "كشك الجرائد",
+    "NextSteps": "الخطوات التالية",
+    "NoResults": "عذرًا، تعذر علينا إيجاد ما تبحث عنه. يُرجى المحاولة مرة أخرى.",
+    "NoResultsMessage": "لاتوجد نتائج.",
+    "NoResultsMessage2": "جرب موضوع أخبار آخر.",
+    "NoSourceResultsMessage": "لا نتائج أخيرة لهذا المصدر.",
+    "NoSourceResultsMessage2": "",
+    "NoTopicResultsMessage": "لا نتائج أخيرة لهذا المقطع.",
+    "NoTopicResultsMessage2": "",
+    "NoTopicResultsMessageOffline": "يرجى الاتصال بالإنترنت لعرض آخر أخبار هذا القسم.",
+    "NowAddSection": "تمت إضافة {0} كمقطع في الأخبار من MSN.",
+    "NowFollowing": "",
+    "NowFollowingSource": "You have added {0} to your Sources.",
+    "NowFollowingSources": "You have added {0} new sources.",
+    "NowFollowingTopic": "You have added {0} to your Sections.",
+    "NowPinningAPNews": "",
+    "NowPinningCategory": "",
+    "NowPinningSource": "",
+    "NowPinningTopic": "",
+    "NowRemoveSection": "تمت إزالة {0} كمقطع في الأخبار من MSN.",
+    "NowUnfollowingSource": "You have removed {0} from your Sources.",
+    "NowUnfollowingSources": "You have removed {0} sources.",
+    "NowUnfollowingTopic": "You have removed {0} from your Sections.",
+    "NowUnpinningAPNews": "",
+    "NowUnpinningCategory": "",
+    "NowUnpinningSource": "",
+    "NowUnpinningTopic": "",
+    "OfflineSync": "قراءة المقالات في وضع عدم الاتصال",
+    "OpenInBrowser": "العرض في المستعرض",
+    "Pano": "Pano",
+    "PinCategory": "تثبيت",
+    "PinExceeded": "لقد ثبّتّ أكبر عدد ممكن من العناصر. يرجى إزالة عنصر واحد أو أكثر قبل تثبيت أية عناصر جديدة.",
+    "PinSource": "تثبيت",
+    "PinTopic": "تثبيت",
+    "PleaseConnectToInternet": "يرجى الاتصال بالإنترنت لعرض المحتوى.",
+    "PopularTopics": "الموضوعات الشائعة",
+    "PrefetchLabelOff": "إيقاف",
+    "PrefetchLabelOn": "تشغيل",
+    "PreviewOff": "Turn Preview Off",
+    "PreviewOn": "Turn Preview On",
+    "PromoteTopic": "Promote",
+    "Publications": "المنشورات",
+    "ReadArticle": "قراءة المقال",
+    "Refresh": "تحديث",
+    "Remove": "إزالة",
+    "RemoveSectionButton": "إزالة كمقطع",
+    "RemoveSectionsTextLabel": "تحديد قسم واحد أو أكثر لإزالته",
+    "RemoveThisSource": "إزالة المصدر",
+    "RemoveTopics": "إزالة",
+    "ResourceNotFoundError": "يتعذر العثور على الصفحة التي تبحث عنها. عد إلى الصفحة السابقة باستخدام زر الرجوع.",
+    "RetailModeHeroAbstract": "Take a tour of the app to find out how to stay up-to-date with the latest news from the sources you trust",
+    "RetailModeHeroHeadline": "Welcome to MSN News",
+    "Reuters": "Reuters",
+    "Reuters24HoursInNews": "24 Hours in News",
+    "ReutersAllSlideshows": "All Slideshows",
+    "ReutersTopNews": "أهم الأخبار",
+    "ReutersVideo": "Video",
+    "RSSSourcePage": "RSS Source Page",
+    "RssValidatorCallToAction": "إضافة مواجز RSS مع عناوين URL مصادر صالحة",
+    "RssValidatorError": "عنوان URL غير صالح، يرجى إعادة المحاولة",
+    "RssValidatorPlaceholder": "إدخال أو لصق عنوان URL هنا",
+    "RssValidatorProgress": "جارٍ التحقق من عنوان URL...",
+    "SciTechCategoryLabel": "العلوم والتقنية",
+    "SearchCharmPlaceholderText": "البحث عن الأخبار",
+    "SearchTopicsInLang": "You can search for sections in {0} only.",
+    "SemanticZoomHeroClusterTitle": "الأخبار من MSN",
+    "SettingUp": "يرجى الانتظار أثناء تحضير التطبيق لأول مرة.",
+    "ShareInstr": "افتح مقالاً تريد مشاركته ثم أعد المحاولة.",
+    "ShareLink": "انقر هنا",
+    "ShareText": "لقراءة هذه المقالة، {0}.",
+    "SnappedAppTitle": "الأخبار",
+    "SortByCategory": "الفرز حسب: الفئة",
+    "SortByTitle": "الفرز حسب: العنوان",
+    "Source": "المصدر",
+    "SourceBlockListed": "أزيل {0} بطلب من الناشر.",
+    "SourcePage": "المصادر",
+    "Sources": "المصادر",
+    "SourcesBlockListed": "كان بعض مصادرك قد أزيل بطلب من الناشرين.",
+    "SourcesClusterTitle": "المصادر",
+    "SourcesDuplicateRSS": "موجز RSS الذي أدخلته موجود بالفعل في المصادر",
+    "SourceSearchResultsCategory": "نتائج البحث",
+    "SourcesExceeded": "Your Sources list is full. Please remove one or more sources before adding new ones.",
+    "SourcesMostVisited": "الأكثر زيارة",
+    "SourcesRecent": "حديث",
+    "Spotlight": "تسليط الضوء",
+    "Suggestions": "مقترحات",
+    "TileToggleAdded": "تمت الإضافة",
+    "Today": "اليوم",
+    "TodayHeroClusterName": "اليوم",
+    "Topic": "الموضوع",
+    "TopicFlyoutLabelText": "إضافة مقطع",
+    "TopicFlyoutPlaceholderText": "أدخل موضوع الأخبار",
+    "TopicSearchBoxGhost": "إدخال موضوع هنا",
+    "TopicsExceeded": "قائمة المقاطع ممتلئة فقبل إضافة مقاطع جديدة يجب إزالة مقطع أو أكثر من القائمة الحالية.",
+    "TopNews": "أهم الأخبار",
+    "TopStory": "خبر بارز",
+    "Trending": "الاتجاهات",
+    "TypeASource": "كتابة مصدر أو عنوان URL لـ RSS لاستكشافه",
+    "TypeSourceOrRSS": "كتابة مصدر أو عنوان URL لـ RSS لإضافته",
+    "TypeSourceTopicOrRSS": "اكتب موضوعًا، أو مصدرًا، أو عنوان URL لـ RSS لإضافته",
+    "Unfollow": "وقف المتابعة",
+    "Unfollowing": "",
+    "UnfollowTopic": "إزالة الموضوع",
+    "UnpinCategory": "إلغاء التثبيت",
+    "UnpinSource": "إلغاء التثبيت",
+    "UnpinTopic": "إلغاء التثبيت",
+    "VideoNavEntryPointTitle": "فيديو",
+    "ViewFullArticle": "View full article",
+    "WelcomeToBingNews": "مرحبًا بك في الأخبار من MSN",
+    "WelcomeToNews": "مرحبًا بك في الأخبار",
+    "WhatsNew": "الجديد",
+    "WorldWide": "على مستوى العالم",
+    "Worldwide1": "",
+    "WritersExceeded": "Your Writers list is full. Please remove one or more writers before adding new ones.",
+    "YourTopics": "موضوعاتك"
+  }
+}

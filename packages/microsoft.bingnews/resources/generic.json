@@ -1,0 +1,570 @@
+{
+  "Files": {
+    "AppFeatures.xml": "AppFeatures.xml",
+    "AppStitch.xml": "AppStitch.xml",
+    "articleReader": {
+      "newsArticleReaderPage.js": "articleReader\\newsArticleReaderPage.js"
+    },
+    "BaseNewsApp.targets": "BaseNewsApp.targets",
+    "bingDaily": {
+      "bingDaily.html": "bingDaily\\bingDaily.html",
+      "bingDaily.js": "bingDaily\\bingDaily.js",
+      "clusterHandlers.js": "bingDaily\\clusterHandlers.js",
+      "lazyBingDaily.html": "bingDaily\\lazyBingDaily.html"
+    },
+    "builtinPartners": {
+      "helpersArticleReader.js": "builtinPartners\\helpersArticleReader.js"
+    },
+    "bundle": {
+      "orchestration.js": "bundle\\orchestration.js",
+      "providers.js": "bundle\\providers.js"
+    },
+    "cannedData": {
+      "FREOffline.json": "cannedData\\FREOffline.json",
+      "FREOfflineClustersDefinition.json": "cannedData\\FREOfflineClustersDefinition.json",
+      "offline.json": "cannedData\\offline.json"
+    },
+    "common": {
+      "ArticleReader": {
+        "css": {
+          "Content.css": "common\\ArticleReader\\css\\Content.css"
+        },
+        "html": {
+          "ArticleReaderPage.html": "common\\ArticleReader\\html\\ArticleReaderPage.html"
+        }
+      },
+      "css": {
+        "common-deferred.css": "common\\css\\common-deferred.css",
+        "common.css": "common\\css\\common.css",
+        "dynamicpano.css": "common\\css\\dynamicpano.css",
+        "dynamicpartners.css": "common\\css\\dynamicpartners.css"
+      },
+      "DynamicPano": {
+        "html": {
+          "DynamicPano.html": "common\\DynamicPano\\html\\DynamicPano.html",
+          "PaywallCard.html": "common\\DynamicPano\\html\\PaywallCard.html"
+        }
+      },
+      "EntityCollection": {
+        "html": {
+          "EntityCollectionFragment.html": "common\\EntityCollection\\html\\EntityCollectionFragment.html"
+        },
+        "providers": {
+          "RichBrowse": {
+            "EntityCollection.html": "common\\EntityCollection\\providers\\RichBrowse\\EntityCollection.html"
+          }
+        }
+      },
+      "FeaturedCluster": {
+        "html": {
+          "FeaturedClusterTemplates.html": "common\\FeaturedCluster\\html\\FeaturedClusterTemplates.html"
+        }
+      },
+      "fonts": {
+        "AppExSymbol-Regular.ttf": "Common\\fonts\\AppExSymbol-Regular.ttf"
+      },
+      "Hero": {
+        "html": {
+          "HeroLayouts.html": "common\\Hero\\html\\HeroLayouts.html"
+        }
+      },
+      "html": {
+        "bdiReportFragment.html": "Common\\html\\bdiReportFragment.html",
+        "configurationFragment.html": "Common\\html\\configurationFragment.html",
+        "feedbackFragment.html": "Common\\html\\feedbackFragment.html",
+        "platform.html": "Common\\html\\platform.html",
+        "PrivacySettings.html": "Common\\html\\PrivacySettings.html"
+      },
+      "images": {
+        "app_update.png": "Common\\images\\app_update.png",
+        "beak_nav_asset.png": "Common\\images\\beak_nav_asset.scale-100.png",
+        "customizationItemLarge.png": "Common\\images\\customizationItemLarge.png",
+        "customizationItemMedium.png": "Common\\images\\customizationItemMedium.png",
+        "customizationItemSmall.png": "Common\\images\\customizationItemSmall.png",
+        "imagePlaceHolder_dark.svg": "Common\\images\\imagePlaceHolder_dark.svg",
+        "imagePlaceHolder_light.svg": "Common\\images\\imagePlaceHolder_light.svg",
+        "key.svg": "Common\\images\\key.svg",
+        "keyHCBlack.svg": "Common\\images\\keyHCBlack.svg",
+        "keyHCWhite.svg": "Common\\images\\keyHCWhite.svg",
+        "mic.png": "Common\\images\\mic.png",
+        "Microsoft_Logo.png": "Common\\images\\Microsoft_Logo.png",
+        "Pattern_15x15.png": "Common\\images\\Pattern_15x15.png",
+        "snap_placeholder.png": "Common\\images\\snap_placeholder.png",
+        "tilePlaceHolder_dark.svg": "Common\\images\\tilePlaceHolder_dark.svg",
+        "tilePlaceHolder_light.svg": "Common\\images\\tilePlaceHolder_light.svg",
+        "update.png": "Common\\images\\update.png",
+        "world_dark.png": "Common\\images\\world_dark.png",
+        "wsj_key.svg": "Common\\images\\wsj_key.svg"
+      },
+      "js": {
+        "ads.js": "common\\js\\ads.js",
+        "articlereader.js": "common\\js\\articlereader.js",
+        "auth.js": "common\\js\\auth.js",
+        "autosuggest.js": "common\\js\\autosuggest.js",
+        "bdiReportFragment.js": "common\\js\\bdiReportFragment.js",
+        "controls.js": "common\\js\\controls.js",
+        "dynamicArticleReader.js": "common\\js\\dynamicArticleReader.js",
+        "dynamicpano.js": "common\\js\\dynamicpano.js",
+        "dynamicPanoDataProvider.js": "common\\js\\dynamicPanoDataProvider.js",
+        "dynamicpartners.js": "common\\js\\dynamicpartners.js",
+        "feedbackFragment.js": "common\\js\\feedbackFragment.js",
+        "mdialogad.js": "common\\js\\mdialogad.js",
+        "mediaplayback.js": "common\\js\\mediaplayback.js",
+        "navigation.js": "common\\js\\navigation.js",
+        "newscluster.js": "common\\js\\newscluster.js",
+        "search.js": "common\\js\\search.js",
+        "services.js": "common\\js\\services.js",
+        "slideshow.js": "common\\js\\slideshow.js",
+        "uiconfig.js": "common\\js\\uiconfig.js",
+        "utilities.js": "common\\js\\utilities.js"
+      },
+      "MediaPlayback": {
+        "html": {
+          "MediaPlayback.html": "common\\MediaPlayback\\html\\MediaPlayback.html",
+          "ThirdPartyPlayerPage.html": "common\\MediaPlayback\\html\\ThirdPartyPlayerPage.html"
+        },
+        "Resources": {
+          "black.mp4": "common\\MediaPlayback\\Resources\\black.mp4",
+          "GripperHover_fullscreen.svg": "common\\MediaPlayback\\Resources\\GripperHover_fullscreen.svg",
+          "GripperHover_inline.svg": "common\\MediaPlayback\\Resources\\GripperHover_inline.svg",
+          "GripperPressed_fullscreen.svg": "common\\MediaPlayback\\Resources\\GripperPressed_fullscreen.svg",
+          "GripperPressed_inline.svg": "common\\MediaPlayback\\Resources\\GripperPressed_inline.svg",
+          "GripperRest_fullscreen.svg": "common\\MediaPlayback\\Resources\\GripperRest_fullscreen.svg",
+          "GripperRest_inline.svg": "common\\MediaPlayback\\Resources\\GripperRest_inline.svg"
+        }
+      },
+      "PhotosynthView": {
+        "PhotosynthView.html": "common\\PhotosynthView\\PhotosynthView.html"
+      },
+      "SlideShow": {
+        "html": {
+          "GenericSlideshowPage.html": "common\\SlideShow\\html\\GenericSlideshowPage.html",
+          "ImageModuleTemplates.html": "common\\SlideShow\\html\\ImageModuleTemplates.html",
+          "SlideshowPage.html": "common\\SlideShow\\html\\SlideshowPage.html"
+        }
+      },
+      "Table": {
+        "html": {
+          "TableTemplates.html": "common\\Table\\html\\TableTemplates.html"
+        }
+      },
+      "WebPicks": {
+        "html": {
+          "GroupPage.html": "common\\WebPicks\\html\\GroupPage.html",
+          "Templates.html": "common\\WebPicks\\html\\Templates.html"
+        }
+      },
+      "WebWorkers": {
+        "PlatformWebWorker.js": "Common\\WebWorkers\\PlatformWebWorker.js"
+      }
+    },
+    "Configuration": {
+      "configuration.sqlite": "Configuration\\configuration.sqlite"
+    },
+    "css": {
+      "articleReader.css": "css\\articleReader.css",
+      "categories.css": "css\\categories.css",
+      "categoryPage.css": "css\\categoryPage.css",
+      "default-deferred.css": "css\\default-deferred.css",
+      "default.css": "css\\default.css",
+      "myTopics.css": "css\\myTopics.css",
+      "newsSlideshow.css": "css\\newsSlideshow.css",
+      "newsStand.css": "css\\newsStand.css",
+      "partners.css": "css\\partners.css",
+      "search.css": "css\\search.css",
+      "settings.css": "css\\settings.css",
+      "social.css": "css\\social.css",
+      "sourcesGalleryPano.css": "css\\sourcesGalleryPano.css",
+      "today-deferred.css": "css\\today-deferred.css",
+      "today.css": "css\\today.css"
+    },
+    "Customization": {
+      "categoriesTabs.js": "Customization\\categoriesTabs.js",
+      "MarketSelectorControl.js": "Customization\\MarketSelectorControl.js",
+      "SelectionPage.css": "Customization\\SelectionPage.css",
+      "SelectionPage.html": "Customization\\SelectionPage.html",
+      "SelectionPage.js": "Customization\\SelectionPage.js",
+      "selectionPageProvider.js": "Customization\\selectionPageProvider.js",
+      "tilesPanel.html": "Customization\\tilesPanel.html",
+      "tilesPanel.js": "Customization\\tilesPanel.js"
+    },
+    "default.html": "default.html",
+    "defaultLazy.html": "defaultLazy.html",
+    "DevelopingNews": {
+      "DevelopingNewsControl.js": "DevelopingNews\\DevelopingNewsControl.js"
+    },
+    "dynamicPano": {
+      "dynamicPano.html": "dynamicPano\\dynamicPano.html",
+      "dynamicPanoPage.js": "dynamicPano\\dynamicPanoPage.js"
+    },
+    "DynamicPano.targets": "DynamicPano.targets",
+    "html": {
+      "aboutSettings.html": "html\\aboutSettings.html",
+      "categoryPage.html": "html\\categoryPage.html",
+      "emptyPage.html": "html\\emptyPage.html",
+      "myTopics.html": "html\\myTopics.html",
+      "newsSlideshow.html": "html\\newsSlideshow.html",
+      "rssSourcePage.html": "html\\rssSourcePage.html",
+      "search.html": "html\\search.html",
+      "settingSettings.html": "html\\settingSettings.html",
+      "social.html": "html\\social.html",
+      "templates-launch.html": "html\\templates-launch.html",
+      "templates.html": "html\\templates.html"
+    },
+    "images": {
+      "APLogo.svg": "images\\APLogo.svg",
+      "AP_pin.png": "images\\AP_pin.scale-100.png",
+      "badge.png": "images\\badge.scale-100.png",
+      "Customization_Large.png": "images\\Customization_Large.png",
+      "Customization_Medium.png": "images\\Customization_Medium.png",
+      "Customization_Medium_Popular.png": "images\\Customization_Medium_Popular.png",
+      "Customization_Small.png": "images\\Customization_Small.png",
+      "defaultSource.png": "images\\defaultSource.png",
+      "featuredAP.png": "images\\featuredAP.png",
+      "featuredHoistAP.png": "images\\featuredHoistAP.png",
+      "featuredHoistNYT.png": "images\\featuredHoistNYT.png",
+      "featuredHoistWSJ.png": "images\\featuredHoistWSJ.png",
+      "featuredNYT.png": "images\\featuredNYT.png",
+      "featuredWSJ.png": "images\\featuredWSJ.png",
+      "large.png": "images\\large.scale-100.png",
+      "logo.png": "images\\logo.scale-100.png",
+      "logoCategory.png": "images\\logoCategory.scale-100.png",
+      "logoSource.png": "images\\logoSource.scale-100.png",
+      "logoTopic.png": "images\\logoTopic.scale-100.png",
+      "NYT_pin.png": "images\\NYT_pin.scale-100.png",
+      "rss_icon_1.4.png": "images\\rss_icon_1.4.png",
+      "rss_icon_1.8.png": "images\\rss_icon_1.8.png",
+      "rss_icon_1.png": "images\\rss_icon_1.png",
+      "small.png": "images\\small.scale-100.png",
+      "smallCategory.png": "images\\smallCategory.scale-100.png",
+      "smallSource.png": "images\\smallSource.scale-100.png",
+      "smallTopic.png": "images\\smallTopic.scale-100.png",
+      "splash.png": "images\\splash.scale-100.png",
+      "store.png": "images\\store.scale-100.png",
+      "tiny.png": "images\\tiny.scale-100.png",
+      "tinyCategory.png": "images\\tinyCategory.scale-100.png",
+      "tinySource.png": "images\\tinySource.scale-100.png",
+      "tinyTopic.png": "images\\tinyTopic.scale-100.png",
+      "wide.png": "images\\wide.scale-100.png",
+      "wideCategory.png": "images\\wideCategory.scale-100.png",
+      "wideSource.png": "images\\wideSource.scale-100.png",
+      "wideTopic.png": "images\\wideTopic.scale-100.png",
+      "wsj_pin.png": "images\\wsj_pin.scale-100.png"
+    },
+    "js": {
+      "algoNewsProvider.js": "js\\algoNewsProvider.js",
+      "bindings.js": "js\\bindings.js",
+      "categoryPage.js": "js\\categoryPage.js",
+      "constants.js": "js\\constants.js",
+      "coreUtilities.js": "js\\coreUtilities.js",
+      "customization.js": "js\\customization.js",
+      "data": {
+        "bing.js": "js\\data\\bing.js"
+      },
+      "default.js": "js\\default.js",
+      "emptyPage.js": "js\\emptyPage.js",
+      "globalization.js": "js\\globalization.js",
+      "logger.js": "js\\logger.js",
+      "msapp-error.js": "js\\msapp-error.js",
+      "myTopics.js": "js\\myTopics.js",
+      "newsAutoSuggest.js": "js\\newsAutoSuggest.js",
+      "newsBasePage.js": "js\\newsBasePage.js",
+      "newsControls.js": "js\\newsControls.js",
+      "newsSecondaryTile.js": "js\\newsSecondaryTile.js",
+      "newsSlideshow.js": "js\\newsSlideshow.js",
+      "newsUtilities.js": "js\\newsUtilities.js",
+      "newsUtilitiesPinning.js": "js\\newsUtilitiesPinning.js",
+      "partnerHelpers.js": "js\\partnerHelpers.js",
+      "personalization.js": "js\\personalization.js",
+      "processListener.js": "js\\processListener.js",
+      "rssSourcePage.js": "js\\rssSourcePage.js",
+      "search.js": "js\\search.js",
+      "sourceBasePage.js": "js\\sourceBasePage.js",
+      "sourcesContentBasePage.js": "js\\sourcesContentBasePage.js",
+      "sourcesGalleryProvider.js": "js\\sourcesGalleryProvider.js",
+      "state.js": "js\\state.js",
+      "StateMachines.js": "js\\StateMachines.js",
+      "telemetry.js": "js\\telemetry.js",
+      "topEdgy.js": "js\\topEdgy.js"
+    },
+    "MarketConfiguration.xml": "MarketConfiguration.xml",
+    "Microsoft.Bing.AppEx.Telemetry": {
+      "Doc.Platform.Telemetry.xml": "Microsoft.Bing.AppEx.Telemetry\\Doc.Platform.Telemetry.xml"
+    },
+    "Microsoft.PlayerFramework.Js": {
+      "css": {
+        "Default-base.css": "Microsoft.PlayerFramework.Js\\css\\Default-base.css",
+        "Default-dark.css": "Microsoft.PlayerFramework.Js\\css\\Default-dark.css",
+        "Default-light.css": "Microsoft.PlayerFramework.Js\\css\\Default-light.css",
+        "Entertainment-base.css": "Microsoft.PlayerFramework.Js\\css\\Entertainment-base.css",
+        "Entertainment-dark.css": "Microsoft.PlayerFramework.Js\\css\\Entertainment-dark.css",
+        "Entertainment-light.css": "Microsoft.PlayerFramework.Js\\css\\Entertainment-light.css",
+        "Universal-base.css": "Microsoft.PlayerFramework.Js\\css\\Universal-base.css",
+        "Universal-dark.css": "Microsoft.PlayerFramework.Js\\css\\Universal-dark.css",
+        "Universal-light.css": "Microsoft.PlayerFramework.Js\\css\\Universal-light.css"
+      },
+      "images": {
+        "thumb-dark.png": "Microsoft.PlayerFramework.Js\\images\\thumb-dark.png",
+        "thumb-light.png": "Microsoft.PlayerFramework.Js\\images\\thumb-light.png"
+      },
+      "js": {
+        "DynamicTextTrack.js": "Microsoft.PlayerFramework.Js\\js\\DynamicTextTrack.js",
+        "InteractiveViewModel.js": "Microsoft.PlayerFramework.Js\\js\\InteractiveViewModel.js",
+        "MediaPlayer.js": "Microsoft.PlayerFramework.Js\\js\\MediaPlayer.js",
+        "PlayerFramework.js": "Microsoft.PlayerFramework.Js\\js\\PlayerFramework.js",
+        "plugins": {
+          "AudioSelectorPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\AudioSelectorPlugin.js",
+          "BufferingPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\BufferingPlugin.js",
+          "CaptionSelectorPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\CaptionSelectorPlugin.js",
+          "ChaptersPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\ChaptersPlugin.js",
+          "ControlPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\ControlPlugin.js",
+          "DisplayRequestPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\DisplayRequestPlugin.js",
+          "ErrorPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\ErrorPlugin.js",
+          "LoaderPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\LoaderPlugin.js",
+          "MediaPackPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\MediaPackPlugin.js",
+          "PlaylistPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\PlaylistPlugin.js",
+          "PlayTimeTrackingPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\PlayTimeTrackingPlugin.js",
+          "PluginBase.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\PluginBase.js",
+          "PositionTrackingPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\PositionTrackingPlugin.js",
+          "SystemTransportControlsPlugin.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\SystemTransportControlsPlugin.js",
+          "TrackingPluginBase.js": "Microsoft.PlayerFramework.Js\\js\\plugins\\TrackingPluginBase.js"
+        },
+        "ui": {
+          "Button.js": "Microsoft.PlayerFramework.Js\\js\\ui\\Button.js",
+          "ControlPanel.js": "Microsoft.PlayerFramework.Js\\js\\ui\\ControlPanel.js",
+          "Indicator.js": "Microsoft.PlayerFramework.Js\\js\\ui\\Indicator.js",
+          "Meter.js": "Microsoft.PlayerFramework.Js\\js\\ui\\Meter.js",
+          "Slider.js": "Microsoft.PlayerFramework.Js\\js\\ui\\Slider.js"
+        }
+      }
+    },
+    "Microsoft.PlayerFramework.Js.Advertising": {
+      "css": {
+        "Advertising.css": "Microsoft.PlayerFramework.Js.Advertising\\css\\Advertising.css"
+      },
+      "js": {
+        "AdHandlerPlugin.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\AdHandlerPlugin.js",
+        "AdPayloadHandlerPluginBase.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\AdPayloadHandlerPluginBase.js",
+        "AdPlayerFactoryPlugin.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\AdPlayerFactoryPlugin.js",
+        "AdPlayerFactoryPluginBase.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\AdPlayerFactoryPluginBase.js",
+        "AdSchedulerPlugin.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\AdSchedulerPlugin.js",
+        "Advertisement.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\Advertisement.js",
+        "FreeWheelPlugin.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\FreeWheelPlugin.js",
+        "MastSchedulerPlugin.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\MastSchedulerPlugin.js",
+        "MediaPlayerAdapter.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\MediaPlayerAdapter.js",
+        "VmapSchedulerPlugin.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VmapSchedulerPlugin.js",
+        "VpaidAdapter.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VpaidAdapter.js",
+        "VpaidAdPlayerBase.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VpaidAdPlayerBase.js",
+        "VpaidLinearAdViewModel.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VpaidLinearAdViewModel.js",
+        "VpaidNonLinearAdPlayers.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VpaidNonLinearAdPlayers.js",
+        "VpaidNonLinearAdViewModel.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VpaidNonLinearAdViewModel.js",
+        "VpaidVideoAdPlayer.js": "Microsoft.PlayerFramework.Js.Advertising\\js\\VpaidVideoAdPlayer.js"
+      }
+    },
+    "MicrosoftAdvertising.ini": "MicrosoftAdvertising.ini",
+    "msapp-error.html": "msapp-error.html",
+    "MySources": {
+      "mySourcesPage.html": "MySources\\mySourcesPage.html",
+      "mySourcesPage.js": "MySources\\mySourcesPage.js",
+      "providers.js": "MySources\\providers.js"
+    },
+    "NewsApp.targets": "NewsApp.targets",
+    "nytshared": {
+      "fonts": {
+        "NYT_Icons.ttf": "nytshared\\fonts\\NYT_Icons.ttf"
+      },
+      "images": {
+        "gray_sub.svg": "nytshared\\images\\gray_sub.svg",
+        "HC": {
+          "NYTLock.svg": "nytshared\\images\\HC\\NYTLock.svg",
+          "NYT_Arts.svg": "nytshared\\images\\HC\\NYT_Arts.svg",
+          "NYT_Autos.svg": "nytshared\\images\\HC\\NYT_Autos.svg",
+          "NYT_black_t-bg.svg": "nytshared\\images\\HC\\NYT_black_t-bg.svg",
+          "NYT_Blogs.svg": "nytshared\\images\\HC\\NYT_Blogs.svg",
+          "NYT_Books.svg": "nytshared\\images\\HC\\NYT_Books.svg",
+          "NYT_Business.svg": "nytshared\\images\\HC\\NYT_Business.svg",
+          "NYT_Classifieds.svg": "nytshared\\images\\HC\\NYT_Classifieds.svg",
+          "NYT_DealBooks.svg": "nytshared\\images\\HC\\NYT_DealBooks.svg",
+          "NYT_DiningWine.svg": "nytshared\\images\\HC\\NYT_DiningWine.svg",
+          "NYT_FashionStyle.svg": "nytshared\\images\\HC\\NYT_FashionStyle.svg",
+          "NYT_Health.svg": "nytshared\\images\\HC\\NYT_Health.svg",
+          "NYT_History.svg": "nytshared\\images\\HC\\NYT_History.svg",
+          "NYT_HomeGarden.svg": "nytshared\\images\\HC\\NYT_HomeGarden.svg",
+          "NYT_Lock.svg": "nytshared\\images\\HC\\NYT_Lock.svg",
+          "NYT_Logo.svg": "nytshared\\images\\HC\\NYT_Logo.svg",
+          "NYT_Magazine.svg": "nytshared\\images\\HC\\NYT_Magazine.svg",
+          "NYT_MoreMail.svg": "nytshared\\images\\HC\\NYT_MoreMail.svg",
+          "NYT_Movies.svg": "nytshared\\images\\HC\\NYT_Movies.svg",
+          "NYT_NewYork.svg": "nytshared\\images\\HC\\NYT_NewYork.svg",
+          "NYT_Obituaries.svg": "nytshared\\images\\HC\\NYT_Obituaries.svg",
+          "NYT_Opinions.svg": "nytshared\\images\\HC\\NYT_Opinions.svg",
+          "NYT_Photos.svg": "nytshared\\images\\HC\\NYT_Photos.svg",
+          "NYT_Politics.svg": "nytshared\\images\\HC\\NYT_Politics.svg",
+          "NYT_RealEstate.svg": "nytshared\\images\\HC\\NYT_RealEstate.svg",
+          "NYT_Saved.svg": "nytshared\\images\\HC\\NYT_Saved.svg",
+          "NYT_Science.svg": "nytshared\\images\\HC\\NYT_Science.svg",
+          "NYT_Settings.svg": "nytshared\\images\\HC\\NYT_Settings.svg",
+          "NYT_Sports.svg": "nytshared\\images\\HC\\NYT_Sports.svg",
+          "NYT_SundayReview.svg": "nytshared\\images\\HC\\NYT_SundayReview.svg",
+          "NYT_Technology.svg": "nytshared\\images\\HC\\NYT_Technology.svg",
+          "NYT_Theater.svg": "nytshared\\images\\HC\\NYT_Theater.svg",
+          "NYT_Travel.svg": "nytshared\\images\\HC\\NYT_Travel.svg",
+          "NYT_US.svg": "nytshared\\images\\HC\\NYT_US.svg",
+          "NYT_WeddingCeleb.svg": "nytshared\\images\\HC\\NYT_WeddingCeleb.svg",
+          "NYT_World.svg": "nytshared\\images\\HC\\NYT_World.svg"
+        },
+        "NYTBlack.png": "nytshared\\images\\NYTBlack.png",
+        "NYTLock.svg": "nytshared\\images\\NYTLock.svg",
+        "NYTWhite.png": "nytshared\\images\\NYTWhite.png",
+        "NYT_Arts.svg": "nytshared\\images\\NYT_Arts.svg",
+        "NYT_Autos.svg": "nytshared\\images\\NYT_Autos.svg",
+        "NYT_black_t-bg.svg": "nytshared\\images\\NYT_black_t-bg.svg",
+        "NYT_Blogs.svg": "nytshared\\images\\NYT_Blogs.svg",
+        "NYT_Books.svg": "nytshared\\images\\NYT_Books.svg",
+        "NYT_Business.svg": "nytshared\\images\\NYT_Business.svg",
+        "NYT_Classifieds.svg": "nytshared\\images\\NYT_Classifieds.svg",
+        "NYT_DealBooks.svg": "nytshared\\images\\NYT_DealBooks.svg",
+        "NYT_DiningWine.svg": "nytshared\\images\\NYT_DiningWine.svg",
+        "NYT_FashionStyle.svg": "nytshared\\images\\NYT_FashionStyle.svg",
+        "NYT_Health.svg": "nytshared\\images\\NYT_Health.svg",
+        "NYT_History.svg": "nytshared\\images\\NYT_History.svg",
+        "NYT_HomeGarden.svg": "nytshared\\images\\NYT_HomeGarden.svg",
+        "NYT_Lock.svg": "nytshared\\images\\NYT_Lock.svg",
+        "NYT_Logo.svg": "nytshared\\images\\NYT_Logo.svg",
+        "NYT_logo_black.png": "nytshared\\images\\NYT_logo_black.png",
+        "NYT_logo_long_black.svg": "nytshared\\images\\NYT_logo_long_black.svg",
+        "NYT_logo_white.png": "nytshared\\images\\NYT_logo_white.png",
+        "NYT_Magazine.svg": "nytshared\\images\\NYT_Magazine.svg",
+        "NYT_MoreMail.svg": "nytshared\\images\\NYT_MoreMail.svg",
+        "NYT_Movies.svg": "nytshared\\images\\NYT_Movies.svg",
+        "NYT_NewYork.svg": "nytshared\\images\\NYT_NewYork.svg",
+        "NYT_new_logo_black.png": "nytshared\\images\\NYT_new_logo_black.png",
+        "NYT_Obituaries.svg": "nytshared\\images\\NYT_Obituaries.svg",
+        "NYT_Opinions.svg": "nytshared\\images\\NYT_Opinions.svg",
+        "NYT_Photos.svg": "nytshared\\images\\NYT_Photos.svg",
+        "NYT_Politics.svg": "nytshared\\images\\NYT_Politics.svg",
+        "NYT_RealEstate.svg": "nytshared\\images\\NYT_RealEstate.svg",
+        "NYT_Saved.svg": "nytshared\\images\\NYT_Saved.svg",
+        "NYT_Science.svg": "nytshared\\images\\NYT_Science.svg",
+        "NYT_Settings.svg": "nytshared\\images\\NYT_Settings.svg",
+        "NYT_Sports.svg": "nytshared\\images\\NYT_Sports.svg",
+        "NYT_SundayReview.svg": "nytshared\\images\\NYT_SundayReview.svg",
+        "NYT_Technology.svg": "nytshared\\images\\NYT_Technology.svg",
+        "NYT_Theater.svg": "nytshared\\images\\NYT_Theater.svg",
+        "NYT_Travel.svg": "nytshared\\images\\NYT_Travel.svg",
+        "NYT_US.svg": "nytshared\\images\\NYT_US.svg",
+        "NYT_WeddingCeleb.svg": "nytshared\\images\\NYT_WeddingCeleb.svg",
+        "NYT_World.svg": "nytshared\\images\\NYT_World.svg"
+      },
+      "nyt-launch.js": "nytshared\\nyt-launch.js",
+      "nyt.js": "nytshared\\nyt.js",
+      "nytBlogsPano.html": "nytshared\\nytBlogsPano.html",
+      "nytBlogsPano.js": "nytshared\\nytBlogsPano.js",
+      "nytCategoryPano.css": "nytshared\\nytCategoryPano.css",
+      "nytCategoryPano.html": "nytshared\\nytCategoryPano.html",
+      "nytCategoryPano.js": "nytshared\\nytCategoryPano.js",
+      "nytEntityClusterConfig.js": "nytshared\\nytEntityClusterConfig.js",
+      "nytEntityClusterConfig.xml": "nytshared\\nytEntityClusterConfig.xml",
+      "nytSavedArticles.html": "nytshared\\nytSavedArticles.html",
+      "nytSavedArticles.js": "nytshared\\nytSavedArticles.js",
+      "nytTheme.css": "nytshared\\nytTheme.css"
+    },
+    "OpenSource": {
+      "localytics": {
+        "localytics.js": "OpenSource\\localytics\\localytics.js"
+      }
+    },
+    "pages": {
+      "FRECustomizeHome": {
+        "FRECustomizeHome.css": "pages\\FRECustomizeHome\\FRECustomizeHome.css",
+        "FRECustomizeHome.html": "pages\\FRECustomizeHome\\FRECustomizeHome.html",
+        "FRECustomizeHome.js": "pages\\FRECustomizeHome\\FRECustomizeHome.js"
+      },
+      "SourcesPage": {
+        "SourcesPage.css": "pages\\SourcesPage\\SourcesPage.css",
+        "SourcesPage.html": "pages\\SourcesPage\\SourcesPage.html",
+        "SourcesPage.js": "pages\\SourcesPage\\SourcesPage.js"
+      }
+    },
+    "Panorama": {
+      "SemanticZoomPanorama.js": "Panorama\\SemanticZoomPanorama.js"
+    },
+    "Platform": {
+      "PlatformConfiguration.xml": "Platform\\PlatformConfiguration.xml"
+    },
+    "prefetch": {
+      "bingDailyPrefetch.js": "prefetch\\bingDailyPrefetch.js",
+      "PrefetchManager.js": "prefetch\\PrefetchManager.js"
+    },
+    "sqlite3.dll": "sqlite3.dll",
+    "State": {
+      "StateManager.js": "State\\StateManager.js"
+    },
+    "tests": {
+      "UITests": {
+        "DefaultCategoryVerificationTest.js": "tests\\UITests\\DefaultCategoryVerificationTest.js",
+        "WebControlTest.js": "tests\\UITests\\WebControlTest.js",
+        "WebControlTestUtilities.js": "tests\\UITests\\WebControlTestUtilities.js"
+      }
+    },
+    "wsjshared": {
+      "fonts": {
+        "WSJ_Icons.ttf": "wsjshared\\fonts\\WSJ_Icons.ttf"
+      },
+      "images": {
+        "dotted_grey_ccc.gif": "wsjshared\\images\\dotted_grey_ccc.gif",
+        "dotted_white_ccc.gif": "wsjshared\\images\\dotted_white_ccc.gif",
+        "gray_sub.svg": "wsjshared\\images\\gray_sub.svg",
+        "key.svg": "wsjshared\\images\\key.svg",
+        "keyHCBlack.svg": "wsjshared\\images\\keyHCBlack.svg",
+        "keyHCWhite.svg": "wsjshared\\images\\keyHCWhite.svg",
+        "marketplace.svg": "wsjshared\\images\\marketplace.svg",
+        "marketplaceHC.svg": "wsjshared\\images\\marketplaceHC.svg",
+        "money.svg": "wsjshared\\images\\money.svg",
+        "moneyHC.svg": "wsjshared\\images\\moneyHC.svg",
+        "opinion.svg": "wsjshared\\images\\opinion.svg",
+        "opinionHC.svg": "wsjshared\\images\\opinionHC.svg",
+        "WallStreetJournalBlack.png": "wsjshared\\images\\WallStreetJournalBlack.png",
+        "WallStreetJournalWhite.png": "wsjshared\\images\\WallStreetJournalWhite.png",
+        "whatsnews.svg": "wsjshared\\images\\whatsnews.svg",
+        "whatsnewsHC.svg": "wsjshared\\images\\whatsnewsHC.svg",
+        "WSJLogoBlack.png": "wsjshared\\images\\WSJLogoBlack.png",
+        "WSJLogoWhite.png": "wsjshared\\images\\WSJLogoWhite.png",
+        "WSJ_Live_bw.svg": "wsjshared\\images\\WSJ_Live_bw.svg",
+        "WSJ_Live_color.svg": "wsjshared\\images\\WSJ_Live_color.svg",
+        "WSJ_Live_white.svg": "wsjshared\\images\\WSJ_Live_white.svg",
+        "WSJ_Logo_black.svg": "wsjshared\\images\\WSJ_Logo_black.svg",
+        "WSJ_Logo_black_short.svg": "wsjshared\\images\\WSJ_Logo_black_short.svg",
+        "WSJ_Logo_white.svg": "wsjshared\\images\\WSJ_Logo_white.svg"
+      },
+      "transform.xml": "wsjshared\\transform.xml",
+      "wsj.js": "wsjshared\\wsj.js",
+      "wsjCategoryPano.html": "wsjshared\\wsjCategoryPano.html",
+      "wsjCategoryPano.js": "wsjshared\\wsjCategoryPano.js",
+      "wsjEntityClusterConfig.js": "wsjshared\\wsjEntityClusterConfig.js",
+      "wsjEntityClusterConfig.xml": "wsjshared\\wsjEntityClusterConfig.xml",
+      "wsjPano.css": "wsjshared\\wsjPano.css",
+      "wsjTheme.css": "wsjshared\\wsjTheme.css",
+      "wsjZoomCategoryPano.html": "wsjshared\\wsjZoomCategoryPano.html"
+    }
+  },
+  "MicrosoftAdvertising": {
+    "UIStrings": {
+      "AdSettings_CommandText": "Microsoft Advertising",
+      "AdSettings_Flyout_OptedOut_Message1": "Tha thu a' diùltadh sanasachd phearsantaichte o Microsoft an-dràsta fhèin. Briog ",
+      "AdSettings_Flyout_OptedOut_Message2": " airson barrachd fiosrachaidh air na roghainnean.",
+      "AdSettings_Flyout_OptedOut_Message_Here": "an-seo",
+      "AdSettings_Flyout_OptInSwitch_Header": "Cleachdaidh Microsoft Advertising am fiosrachadh agam ach am faigh mi sanasachd phearsantaichte san aplacaid seo.",
+      "AdSettings_Flyout_OptInSwitch_Off": "Chan eil",
+      "AdSettings_Flyout_OptInSwitch_On": "Tha",
+      "AdSettings_Flyout_Privacy": "Aithris na prìobhaideachd",
+      "AdSettings_Flyout_SectionName": "Roghainnean na sanasachd",
+      "AdSettings_Flyout_SignInPrompt1": "Chan eil thu clàraichte a-staigh an-dràsta fhèin. ",
+      "AdSettings_Flyout_SignInPrompt2": " airson sanasachd phearsantaichte a chur an comas san aplacaid seo.",
+      "AdSettings_Flyout_SignInPrompt_SignIn": "Clàraich a-steach",
+      "AdSettings_Flyout_SignInPrompt_SignOut": "Clàraich a-mach",
+      "AdSettings_Flyout_StatusUnknown_Message": "Chan eil fiosrachadh a' chunntais Microsoft agad ri làimh an-dràsta fhèin.",
+      "AdSettings_Flyout_Title": "Sanasachd"
+    }
+  }
+}

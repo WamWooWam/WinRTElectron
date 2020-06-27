@@ -1,8 +1,8 @@
 export * as Windows from "./Windows"
 export * as MSApp from "./MSApp"
+
 import * as Windows from "./Windows"
 import * as MSApp from "./MSApp"
-import { ipcRenderer } from "electron";
 
 const globalThis = (() => {
     if (typeof self !== 'undefined') {
@@ -17,7 +17,7 @@ const globalThis = (() => {
 if (globalThis.document)
     globalThis["msMatchMedia"] = typeof globalThis["msMatchMedia"] === "function" ? globalThis["msMatchMedia"] : window.matchMedia;
 
-globalThis["toStaticHTML"] = function(html){
+globalThis["toStaticHTML"] = function(html) {
     return html; // imagine sanitising OMEGALUL
 }
 
@@ -28,9 +28,7 @@ globalThis["setImmediate"] = typeof setImmediate === 'function' ? setImmediate :
 };
 globalThis["msSetImmediate"] = setImmediate;
 globalThis["Debug"] = {
-    write: function (str) {
-        console.log(str);
-    }
+    write: console.log
 }
 globalThis["Windows"] = Windows;
 globalThis["MSApp"] = MSApp;

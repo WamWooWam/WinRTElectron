@@ -1,5 +1,6 @@
 import { URL } from "url"
 import * as _ from "lodash"
+import * as path from 'path'
 
 export class IAsyncOperation<T> extends Promise<T> {
     done(t: any, c: any) {
@@ -30,7 +31,34 @@ export class IAsyncAction extends Promise<void> {
 }
 
 export class Uri {
+    private _url: URL;
+    private _rawUri: string;
 
+    constructor(url: string, baseUrl?: string) {
+        this._url = new URL(url, baseUrl);
+        this._rawUri = url;
+    }
+
+    get absoluteCanonicalUri(): string { return this._url.toString(); }
+    get absoluteUri(): string { return this._url.toString(); }
+    get displayIri(): string { return decodeURI(this._url.toString()); }
+    get displayUri(): string { return decodeURI(this._url.toString()); }
+    get domain(): string { return this._url.hostname; }
+    get extension(): string { return path.extname(this._url.pathname); }
+    get fragment(): string { return this._url.hash; }
+    get host(): string { return this._url.host; }
+    get password(): string { return this._url.password; }
+    get path(): string { return this._url.pathname; }
+    get port(): string { return this._url.port; }
+    get query(): string { return this._url.search; }
+    get rawUri(): string { return this._rawUri; }
+    get schemeName(): string { return this._url.protocol; }
+    get suspicious(): boolean { return false; }
+    get userName(): string { return this._url.username; }
+
+    toString(): string {
+        return this._url.toString();
+    }
 }
 
 export class IsFakeWWA {

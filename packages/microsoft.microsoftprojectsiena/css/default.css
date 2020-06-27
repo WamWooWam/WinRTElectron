@@ -113,7 +113,7 @@ html, body {
     font-size: 11pt;
     grid-column: 2;
     grid-row: 4;
-    grid-column-align: end;
+    justify-self: end;
 }
 
 /*

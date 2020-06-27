@@ -34,29 +34,20 @@ export namespace Networking {
         }
 
         export class NetworkInformation {
-            private static source: EventTarget;
-
-            static ensureSource() {
-                if (NetworkInformation.source == null) {
-                    NetworkInformation.source = new EventTarget();
-                }
-            }
-
+            private static source: EventTarget = new EventTarget();
+            
             static addEventListener(event: string, handler: EventListenerOrEventListenerObject) {
                 console.log("adding event handler for: " + event)
-                NetworkInformation.ensureSource();
                 NetworkInformation.source.addEventListener(event, handler);
             }
 
             static removeEventListener(event: string, handler: EventListenerOrEventListenerObject) {
                 console.log("removing event handler for: " + event)
-                NetworkInformation.ensureSource();
                 NetworkInformation.source.removeEventListener(event, handler);
             }
 
             static dispatchEvent(ev: Event) {
                 console.log("dispatching: " + ev.type)
-                NetworkInformation.ensureSource();
                 NetworkInformation.source.dispatchEvent(ev)
             }
 

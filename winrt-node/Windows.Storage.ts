@@ -1,7 +1,10 @@
 import { StorageFolder } from "./Windows.Storage.FileSystem";
+import { ApplicationModel } from "./Windows.ApplicationModel";
+import { getCurrentPackageName } from "./util";
 export * from "./Windows.Storage.FileSystem"
 
 const { remote } = require("electron");
+const path = require('path');
 const app = remote.app;
 
 export class ApplicationData {
@@ -9,62 +12,194 @@ export class ApplicationData {
         return new ApplicationData();
     }
     public get roamingSettings(): ApplicationDataContainer {
-        return self.localStorage != undefined ? new LocalStorageBackedContainer("roamingSettings") : new WebWorkerBackedContainer("roamingSettings");
+        return self.localStorage !== undefined ? new LocalStorageBackedContainer("roamingSettings") : new WebWorkerBackedContainer("roamingSettings");
     }
     public get localSettings(): ApplicationDataContainer {
-        return self.localStorage != undefined ? new LocalStorageBackedContainer("roamingSettings") : new WebWorkerBackedContainer("roamingSettings");
+        return self.localStorage !== undefined ? new LocalStorageBackedContainer("localSettings") : new WebWorkerBackedContainer("localSettings");
     }
 
     public get localCacheFolder(): StorageFolder {
-        return StorageFolder.getFolderFromPathSync(app.getPath("cache"));
+        return StorageFolder.getFolderFromPathSync(path.join(app.getPath("userData"), "packages", getCurrentPackageName(), "cache"));
     }
 
     public get localFolder(): StorageFolder {
-        return StorageFolder.getFolderFromPathSync(app.getPath("userData") + "/local");
+        return StorageFolder.getFolderFromPathSync(path.join(app.getPath("userData"), "packages", getCurrentPackageName(), "local"));
     }
 
     public get roamingFolder(): StorageFolder {
-        return StorageFolder.getFolderFromPathSync(app.getPath("userData") + "/roaming");
+        return StorageFolder.getFolderFromPathSync(path.join(app.getPath("userData"), "packages", getCurrentPackageName(), "roaming"));
     }
 
     public get temporaryFolder(): StorageFolder {
-        return StorageFolder.getFolderFromPathSync(app.getPath("temp"));
+        return StorageFolder.getFolderFromPathSync(path.join(app.getPath("userData"), "packages", getCurrentPackageName(), "temp"));
     }
 }
 
 class ApplicationDataValueContainer {
-    get(key: string) {
-        return this[key];
+
+    __baseContainer: ApplicationDataContainer;
+
+    constructor(mutated: ApplicationDataContainer) {
+        this.__baseContainer = mutated;
     }
 
-    set(key: string, value: any){
-        return this[key] = value;
+    get(key: string) {
+        return this.__baseContainer.lookup(key);
+    }
+
+    set(key: string, value: any) {
+        this.__baseContainer.set(key, value);
+    }
+
+    hasKey(key: string) {
+        return this.__baseContainer.lookup(key) !== null;
+    }
+
+    remove(key: string) {
+        return this.__baseContainer.remove(key);
+    }
+}
+
+class ApplicationDataValueProxy implements ProxyHandler<ApplicationDataValueContainer> {
+    get(target: ApplicationDataValueContainer, p: PropertyKey, receiver: any): any {
+        if (p in target) {
+            return target[p];
+        }
+
+        console.log(`getting ${String(p)} from ${target.__baseContainer.name}`);
+
+        return target.get(String(p));
+    }
+
+    set(target: ApplicationDataValueContainer, p: PropertyKey, value: any, receiver: any): boolean {
+        console.log(`setting ${String(p)} to ${value} in ${target.__baseContainer.name}`);
+        target.set(String(p), value);
+
+        return true;
     }
 }
 
 export abstract class ApplicationDataContainer {
-    protected name: string;
-    protected containers: Map<string, ApplicationDataContainer>
+    name: string;
 
+    protected containers: Map<string, ApplicationDataContainer>
     protected _values: Map<string, any>;
+    private _valueContainer: ApplicationDataValueContainer;
 
     public get values() {
-        return Object.assign(new ApplicationDataValueContainer(), Object.fromEntries(this._values));
+        return this._valueContainer ?? (this._valueContainer = new Proxy(new ApplicationDataValueContainer(this), new ApplicationDataValueProxy()));
     }
+
     public locality: ApplicationDataLocality;
 
     constructor(name) {
         this.name = name;
         this._values = new Map<string, any>();
-        this.containers = new Map<string, WebWorkerBackedContainer>();
+        this.containers = new Map<string, ApplicationDataContainer>();
         this.locality = name.includes("local") ? ApplicationDataLocality.local : ApplicationDataLocality.roaming;
     }
 
+    abstract mutated(): void;
     abstract lookup(key: string): any;
     abstract set(key: string, value: any): void
     abstract remove(key: string): void;
     abstract createContainer(name: string, disposition: ApplicationDataCreateDisposition): ApplicationDataContainer;
     abstract deleteContainer(name: string): void;
+}
+
+
+export class WebWorkerBackedContainer extends ApplicationDataContainer {
+
+    constructor(name: string) {
+        super(name)
+
+        // let data = localStorage.getItem(name);
+        // if (data !== null) {
+        //     this.values = new Map(JSON.parse(data));
+        // }
+
+        // localStorage.setItem(name, JSON.stringify([...this.values]));
+    }
+
+    mutated() {
+
+    }
+
+    lookup(key: string): any {
+        return this._values.get(key);
+    }
+
+    set(key: string, value: any) {
+        this._values.set(key, value);
+        this.mutated();
+    }
+
+    remove(key: string) {
+        this._values.delete(key);
+        this.mutated();
+    }
+
+    createContainer(name: string, disposition: ApplicationDataCreateDisposition) {
+        var storage = new WebWorkerBackedContainer(this.name + "." + name);
+        return this.containers.has(name) ? this.containers.get(name) : this.containers.set(name, storage).get(name);
+    }
+
+    deleteContainer(name: string) {
+        this.containers.delete(name);
+        //localStorage.removeItem(this.name + "." + name);
+    }
+}
+
+export class LocalStorageBackedContainer extends ApplicationDataContainer {
+    constructor(name: string) {
+        super(name);
+
+        let data = localStorage.getItem(name);
+        if (data !== null) {
+            this._values = new Map(JSON.parse(data));
+        }
+
+        localStorage.setItem(this.name, JSON.stringify([...this._values]));
+    }
+
+    mutated() {
+        const jsonData = JSON.stringify([...this._values]);
+        console.log(`${this.name}: ${jsonData}`);
+        localStorage.setItem(this.name, jsonData);
+    }
+
+    lookup(key: string): any {
+        return this._values.get(key);
+    }
+
+    set(key: string, value: any) {
+        this._values.set(key, value);
+        this.mutated();
+    }
+
+    remove(key: string) {
+        this._values.delete(key);
+        this.mutated();
+    }
+
+    createContainer(name: string, disposition: ApplicationDataCreateDisposition) {
+        var storage = new LocalStorageBackedContainer(this.name + "." + name);
+        return this.containers.has(name) ? this.containers.get(name) : this.containers.set(name, storage).get(name);
+    }
+
+    deleteContainer(name: string) {
+        this.containers.delete(name);
+        localStorage.removeItem(this.name + "." + name);
+    }
+}
+
+
+export namespace Streams {
+    export class RandomAccessStreamReference {
+        static createFromStream() {
+
+        }
+    }
 }
 
 export enum ApplicationDataCreateDisposition {
@@ -79,7 +214,7 @@ export enum ApplicationDataLocality {
     localCache
 }
 
-export namespace AccessCache { 
+export namespace AccessCache {
     export enum AccessCacheOptions {
         none,
         disallowUserInput,
@@ -93,7 +228,7 @@ export namespace AccessCache {
     }
 }
 
-export namespace Compression { 
+export namespace Compression {
     export enum CompressAlgorithm {
         invalidAlgorithm,
         nullAlgorithm,
@@ -121,7 +256,7 @@ export enum FileAttributes {
     temporary = 256,
     locallyIncomplete = 512,
 }
-export namespace FileProperties { 
+export namespace FileProperties {
     export enum PhotoOrientation {
         unspecified,
         normal,
@@ -195,7 +330,7 @@ export enum NameCollisionOption {
     replaceExisting,
     failIfExists,
 }
-export namespace Pickers { 
+export namespace Pickers {
     export enum PickerLocationId {
         documentsLibrary,
         computerFolder,
@@ -212,7 +347,7 @@ export namespace Pickers {
         list,
         thumbnail,
     }
-    export namespace Provider { 
+    export namespace Provider {
         export enum AddFileResult {
             added,
             alreadyAdded,
@@ -238,88 +373,5 @@ export enum StorageItemTypes {
 }
 
 export class BasicProperties {
-    
-}
 
-export class WebWorkerBackedContainer extends ApplicationDataContainer {
-
-    constructor(name: string) {
-        super(name)
-
-        // let data = localStorage.getItem(name);
-        // if (data !== null) {
-        //     this.values = new Map(JSON.parse(data));
-        // }
-
-        // localStorage.setItem(name, JSON.stringify([...this.values]));
-    }
-
-    lookup(key: string): any {
-        return this._values.get(key);
-    }
-
-    set(key: string, value: any) {
-        this._values.set(key, value);
-    }
-
-    remove(key: string) {
-        this._values.delete(key);
-        //localStorage.setItem(name, JSON.stringify([...this.values]));
-    }
-
-    createContainer(name: string, disposition: ApplicationDataCreateDisposition) {
-        var storage = new WebWorkerBackedContainer(this.name + "." + name);
-        return this.containers.has(name) ? this.containers.get(name) : this.containers.set(name, storage).get(name);
-    }
-
-    deleteContainer(name: string) {
-        this.containers.delete(name);
-        //localStorage.removeItem(this.name + "." + name);
-    }
-}
-
-export class LocalStorageBackedContainer extends ApplicationDataContainer {
-    constructor(name: string) {
-        super(name);
-
-        let data = localStorage.getItem(name);
-        if (data !== null) {
-            this._values = new Map(JSON.parse(data));
-        }
-
-        localStorage.setItem(this.name, JSON.stringify([...this._values]));
-    }
-
-    lookup(key: string): any {
-        return this._values.get(key);
-    }
-
-    set(key: string, value: any) {
-        this._values.set(key, value);
-        localStorage.setItem(this.name, JSON.stringify([...this._values]));
-    }
-
-    remove(key: string) {
-        this._values.delete(key);
-        localStorage.setItem(this.name, JSON.stringify([...this._values]));
-    }
-
-    createContainer(name: string, disposition: ApplicationDataCreateDisposition) {
-        var storage = new LocalStorageBackedContainer(this.name + "." + name);
-        return this.containers.has(name) ? this.containers.get(name) : this.containers.set(name, storage).get(name);
-    }
-
-    deleteContainer(name: string) {
-        this.containers.delete(name);
-        localStorage.removeItem(this.name + "." + name);
-    }
-}
-
-
-export namespace Streams {
-    export class RandomAccessStreamReference {
-        static createFromStream() {
-            
-        }
-    }
 }

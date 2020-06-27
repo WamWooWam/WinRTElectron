@@ -93,9 +93,13 @@ export class Tile {
     }
 
     private constructFront() {
+        let tileVisual = document.createElement("div");
+        tileVisual.classList.add("tile-visual", "tile-visual-visible");
+        this.tileFront.appendChild(tileVisual);
+
         let tileFrontImageContainer = document.createElement("div");
         tileFrontImageContainer.classList.add("tile-front-image-container");
-        this.tileFront.appendChild(tileFrontImageContainer);
+        tileVisual.appendChild(tileFrontImageContainer);
 
         let tileImageUrl = this.app.visualElements.square150x150Logo;
 
@@ -126,7 +130,7 @@ export class Tile {
                 tileFrontText.style.color = "black";
             }
 
-            this.tileFront.appendChild(tileFrontText);
+            tileVisual.appendChild(tileFrontText);
         }
     }
 

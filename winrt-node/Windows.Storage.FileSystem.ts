@@ -3,7 +3,7 @@ import { randstr } from "./util";
 import { ApplicationModel } from "./Windows.ApplicationModel";
 import { BasicProperties, StorageItemTypes, NameCollisionOption, CreationCollisionOption } from "./Windows.Storage"
 
-const fs = require("fs");
+const fs = require('fs');
 const _path = require("path");
 
 export abstract class StorageItem {
@@ -81,21 +81,15 @@ export class StorageFolder extends StorageItem {
                 return;
             }
 
-            fs.exists(this.path, (exists: boolean) => {
-                if (!exists) {
-                    fs.mkdir(this.path, "0777", (error) => {
-                        if (error && error.code != "EEXIST")
-                            throw error; // we dont want to be throwing if the condition we're checking for is actually true
-
-                        this.exists = true;
-                        res(this);
-                    })
-                }
-                else {
-                    this.exists = true;
-                    res(this)
-                }
-            })
+            if(fs.existsSync(this.path)) {
+                this.exists = true;
+                res(this)
+            }
+            else {
+                fs.mkdirSync(this.path, { recursive: true })
+                this.exists = true;
+                res(this);
+            }
         })
     }
 
