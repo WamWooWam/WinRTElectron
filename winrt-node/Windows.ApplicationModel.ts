@@ -5,6 +5,7 @@ import { isInWWA, getCurrentPackageName } from "./util";
 import * as fs from "fs"
 import * as path from "path"
 import * as _ from 'lodash'
+import { ipcRenderer } from "electron";
 
 const { remote } = require("electron");
 const supportedLanguages = ["en-gb", "en-us", "en", "generic"]; // this should be detected from the system
@@ -219,9 +220,15 @@ export namespace ApplicationModel {
             closedByUser,
         }
 
-        // export class SplashScreen {
+        export class SplashScreen extends EventTarget {
+            constructor() {
+                super();
 
-        // }
+                ipcRenderer.once("splash-screen-dismissed", () => {
+                    this.dispatchEvent(new CustomEvent("dismissed"));
+                });
+            }
+        }
     }
 
     export namespace Background {
@@ -285,7 +292,7 @@ export namespace ApplicationModel {
     export class PackageId {
         constructor(version: PackageVersion) {
             this.version = version;
-            this.name = getCurrentPackageName();;
+            this.name = getCurrentPackageName();
         }
 
         public readonly version: PackageVersion;

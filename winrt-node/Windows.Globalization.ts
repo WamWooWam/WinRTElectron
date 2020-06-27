@@ -76,6 +76,10 @@ export namespace Globalization {
         }
     }
 
+    export class GeographicRegion {
+            
+    }
+
     export namespace DateTimeFormatting {
 
         export enum DayFormat {

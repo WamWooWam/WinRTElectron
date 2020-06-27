@@ -21,7 +21,7 @@ globalThis["toStaticHTML"] = function(html) {
     return html; // imagine sanitising OMEGALUL
 }
 
-globalThis["msWriteProfilerMark"] = function (...args) { console.info("profiler:" + args[0]) };
+globalThis["msWriteProfilerMark"] = function (...args) { console.info("profiler:" + args[0]); performance.mark(args[0]) };
 globalThis["setImmediate"] = typeof setImmediate === 'function' ? setImmediate : (...args) => {
     args.splice(1, 0, 0);
     setTimeout.apply(null, args);

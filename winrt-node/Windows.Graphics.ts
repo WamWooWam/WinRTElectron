@@ -21,6 +21,10 @@ export namespace Graphics {
             static get resolutionScale() {
                 return ResolutionScale.scale100Percent;
             }
+
+            static addEventListener(event: string, handler: Function) {
+                console.warn(`DisplayProperties::addEventListener ${event}`)
+            }
         }
 
         export enum ResolutionScale {

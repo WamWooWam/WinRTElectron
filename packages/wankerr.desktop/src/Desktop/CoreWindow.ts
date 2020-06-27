@@ -232,6 +232,7 @@ export class CoreWindow {
 
     private doFadeOut() {
         this._frame.send("WinRTLifecycle", this._suspended ? "resuming" : "activated");
+        this._frame.send("splash-screen-dismissed", "cocks");
         this._suspended = false;
 
         this._splash.classList.add("invisible");

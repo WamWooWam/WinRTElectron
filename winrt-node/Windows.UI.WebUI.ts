@@ -4,7 +4,7 @@
 import { ApplicationModel } from "./Windows.ApplicationModel"
 import { EventTarget } from "./Windows.Foundation";
 import { isInWWA } from "./util";
-import { ipcRenderer } from "electron";
+import { ipcRenderer, TouchBarScrubber } from "electron";
 
 export namespace UI.WebUI {
     export class WebUIApplication {
@@ -89,6 +89,7 @@ export namespace UI.WebUI {
         public readonly kind: number;
         public readonly activatedOperation: ActivatedOperation;
         public readonly detail: WebUILaunchActivatedEventArgs[];
+        public readonly splashScreen: ApplicationModel.Activation.SplashScreen;
 
         constructor(kind: ApplicationModel.Activation.ActivationKind) {
             super("activated")
@@ -96,6 +97,7 @@ export namespace UI.WebUI {
             this.kind = kind;
             this.activatedOperation = new ActivatedOperation();
             this.detail = [new WebUILaunchActivatedEventArgs(this.activatedOperation)]
+            this.splashScreen = new ApplicationModel.Activation.SplashScreen();
         }
 
     }
