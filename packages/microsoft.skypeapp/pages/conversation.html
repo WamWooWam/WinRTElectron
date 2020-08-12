@@ -1,0 +1,74 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Conversation</title>
+    <link href="conversation.css" rel="stylesheet">
+    <link href="conversationHeader.css" rel="stylesheet">
+    <script src="conversation.js"></script>
+    <script src="/js/ui/conversation/callError.js"></script>
+    <script src="/js/ui/conversation/conversationStateMachine.js"></script>
+    <script src="/js/ui/conversation/conversationSharedState.js"></script>
+    <script src="/js/vm/conversation/conversationVM.js"></script>
+    
+    
+    <!-- conversation page preloads -->
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,conversation page preloads")</script>
+    <link href="/controls/conversation/chatLog.css" rel="stylesheet" />
+    <script src="/controls/conversation/chatLog.js"></script> 
+    <script src="/controls/conversation/chatInput.js"></script>     
+    <script src="/controls/conversation/chat.js"></script> 
+    <script src="/controls/conversation/typingIndicator.js"></script>
+    <script src="/controls/conversation/templateProvider.js"></script>
+    <script src="/js/ui/conversation/chatLogLiveAriaNarrator.js"></script>
+    <script src="/controls/listStyleNavigation.js"></script>
+
+    <script src="/controls/phoneListMenu.js"></script>
+    <script src="/js/data/sms.js"></script>
+    <!-- liveConversation control preloads -->
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,liveConversation page preloads")</script>
+
+    <!--controls-->
+    <script src="/controls/conversation/conversationChatHandler.js"></script>   
+    <script src="/controls/conversation/conversationProfileInfo.js"></script>
+    <script src="/controls/conversation/liveGroupConversation.js"></script>
+    <script src="/controls/conversation/conversationRingingPanel.js"></script>
+</head>
+<body>
+    <div class="fragment conversation" role="heading" data-win-bind="
+                GROUP:sharedState.isDialog MvvmJS.Binding.toggleClassNegative;
+                SHOWINGFULLLIVE:sharedState.isInFullLive MvvmJS.Binding.toggleClass;
+                x:sharedState.state MvvmJS.Binding.bindConversationStateClass;
+                EMERGENCY:sharedState.isEmergencyContact MvvmJS.Binding.toggleClass;
+                BLOCKED:sharedState.isBlocked MvvmJS.Binding.toggleClass;
+                NONMEMBER:sharedState.isMember MvvmJS.Binding.toggleClassNegative;
+                CHATOPENINLIVE:sharedState.isChatOpenInLive MvvmJS.Binding.toggleClass;
+                CHATHIDDEN:hideChat MvvmJS.Binding.toggleClass;
+                this['aria-label']:  callConnectionWindowAriaLabel WinJS.Binding.setAttribute;">
+        <!-- GROUP -- for now.(chatlog temporary solution);
+            CHATOPENINLIVE -- temporary solution(fileTransferMessage)  -->
+
+        <header class="animRegion animGroup1" data-win-bind="NORMALHEADER:this.sharedState.isEmergencyContact MvvmJS.Binding.toggleClassNegative;">
+            <button id="atConversationBackButton" data-win-bind="click:navigateBack MvvmJS.Binding.event;" class="backbutton backbutton-conversationHeader win-backbutton" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="6"></button>
+            <div class="wrapper">
+                <h1 class="name" data-win-bind="innerHTML: sharedState.name;FORCELTR:sharedState.isPstnOnly MvvmJS.Binding.toggleClass"></h1>
+            </div>
+        </header>
+
+        <!--Conversation Ringing panel Control-->
+        <!--Ringing panel should be above ProfileInfo bug #7482-->
+        <div class="ringingPanelContainer" data-win-control="explicit"></div>
+
+        <!-- Profile informations: actions, status, avatar -->
+        <div class="profileInfo" data-win-control="explicit"></div>
+
+        <!--Live Conversation Control-->
+        <div class="liveGroupConversationContainer" data-win-control="explicit"></div>
+
+        <!--Chat Control-->
+        <div class="chatContainer animRegion animGroup4 animFromRight" data-win-control="explicit"></div>
+    </div>
+</body>
+</html>

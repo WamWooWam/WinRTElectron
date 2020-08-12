@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Package IgnorableNamespaces="build" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:wb="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build">
+  
+  <Identity Name="Microsoft.SkypeApp" Publisher="CN=Skype Software Sarl, O=Microsoft Corporation, L=Luxembourg, S=Luxembourg, C=LU" Version="3.1.0.1016" ProcessorArchitecture="x86"/>
+  <Properties>
+    <DisplayName>Skype</DisplayName>
+    <Description>Skype</Description>
+    <PublisherDisplayName>Skype</PublisherDisplayName>
+    <Logo>images\s_logo_50x50.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="EN-US"/>
+    <Resource Language="EN-GB"/>
+    <Resource wb:Scale="100"/>
+    
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <wb:VisualElements BackgroundColor="#00AFF0" Description="Skype" DisplayName="Skype" ForegroundText="light" Square150x150Logo="images\s_logo.png" Square30x30Logo="images\skypeSmall.png" ToastCapable="true">
+        <wb:DefaultTile DefaultSize="wide310x150Logo" ShortName="Skype" Square70x70Logo="images\Square70x70.png" Wide310x150Logo="images\skype_wide_logo.png">
+          <wb:ShowNameOnTiles>
+            <wb:ShowOn Tile="square150x150Logo"/>
+          </wb:ShowNameOnTiles>
+        </wb:DefaultTile>
+        <wb:SplashScreen BackgroundColor="#00AFF0" Image="images\Splash.png"/>
+        <wb:LockScreen BadgeLogo="images\s_logo_24x24.png" Notification="badgeAndTileText"/>
+        <wb:InitialRotationPreference>
+          <wb:Rotation Preference="landscape"/>
+          <wb:Rotation Preference="landscapeFlipped"/>
+          <wb:Rotation Preference="portrait"/>
+          <wb:Rotation Preference="portraitFlipped"/>
+        </wb:InitialRotationPreference>
+        <wb:ApplicationView MinWidth="width320"/>
+      </wb:VisualElements>
+      <Extensions>
+        <Extension Category="windows.protocol">
+          <Protocol Name="skype" wb:DesiredView="useHalf">
+            <DisplayName>Skype protocol</DisplayName>
+          </Protocol>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="tel" wb:DesiredView="useMinimum">
+            <DisplayName>Tel protocol</DisplayName>
+          </Protocol>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="sms" wb:DesiredView="useLess">
+            <DisplayName>SMS protcol</DisplayName>
+          </Protocol>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="message-skype-com" wb:DesiredView="useLess"/>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="message-messenger" wb:DesiredView="useLess"/>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="audiocall-messenger" wb:DesiredView="useMinimum"/>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="videocall-messenger" wb:DesiredView="useMore"/>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="audiocall-skype-com" wb:DesiredView="useMinimum"/>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="videocall-skype-com" wb:DesiredView="useMore"/>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="default.html">
+          <BackgroundTasks>
+            <Task Type="audio"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="js\backgroundTasks\pushNotificationBackgroundTask.js">
+          <BackgroundTasks>
+            <Task Type="pushNotification"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="js\backgroundTasks\keepAliveBackgroundTask.js">
+          <BackgroundTasks>
+            <Task Type="timer"/>
+            <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="js\backgroundTasks\userAccountStateChanged.js">
+          <BackgroundTasks>
+            <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="js\backgroundTasks\refreshChannelUriBackgroundTask.js">
+          <BackgroundTasks>
+            <Task Type="timer"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" StartPage="js\backgroundTasks\controlChannelTrigger.js">
+          <BackgroundTasks>
+            <Task Type="controlChannel"/>
+          </BackgroundTasks>
+        </Extension>
+        <wb:Extension Category="windows.lockScreenCall"/>
+        <wb:Extension Category="windows.contact">
+          <wb:Contact>
+            <wb:ContactLaunchActions>
+              <wb:LaunchAction DesiredView="useMinimum" Verb="call">
+                <wb:ServiceId>skype.com</wb:ServiceId>
+                <wb:ServiceId>outlook.com</wb:ServiceId>
+                <wb:ServiceId>telephone</wb:ServiceId>
+              </wb:LaunchAction>
+              <wb:LaunchAction DesiredView="useMore" Verb="videoCall">
+                <wb:ServiceId>skype.com</wb:ServiceId>
+                <wb:ServiceId>outlook.com</wb:ServiceId>
+              </wb:LaunchAction>
+              <wb:LaunchAction DesiredView="useLess" Verb="message">
+                <wb:ServiceId>skype.com</wb:ServiceId>
+                <wb:ServiceId>outlook.com</wb:ServiceId>
+                <wb:ServiceId>telephone</wb:ServiceId>
+              </wb:LaunchAction>
+            </wb:ContactLaunchActions>
+          </wb:Contact>
+        </wb:Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClientServer"/>
+    <Capability Name="internetClient"/>
+    <Capability Name="privateNetworkClientServer"/>
+    <DeviceCapability Name="microphone"/>
+    <DeviceCapability Name="webcam"/>
+  </Capabilities>
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>LibWrap.dll</Path>
+        <ActivatableClass ActivatableClassId="WinRTPlatform.VideoSchemeHandler" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Chat" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ChatMessage" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ContactSearch" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Transfer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.WrSkyLib" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Search" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Account" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.AccessSession" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Video" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.EXTPROPKEY" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VectGIString" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.IMCache" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Message" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.SkyMetadata" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Contact" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.AccountManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VectInt" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.CallMember" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ContactGroup" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Binary" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VectBool" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Voicemail" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VectGIFilename" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Alert" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ConversationMatch" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Conversation" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.UIEventRunner" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Sms" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.AvatarManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.StatsEventAttributeContainer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VectUnsignedInt" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Call" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ConversationSearch" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ChatMember" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VideoMessage" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ContactSearchMatch" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Metatag" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.PROPKEY" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Build" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ContentItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Filename" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.ObjectInterface" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VM.UnreadCountQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.VM.RecentsQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.SubstringFinder" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.MediaDocument" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.PriceQuote" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="LibWrap.Participant" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.PerfTrack.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.PerfTrack.PerfTrackLogger" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>MicrosoftAdvertising.dll</Path>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.Advertisement" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.VASTAdPlacement" ThreadingModel="STA"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.VASTAdvertisement" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.VASTAdEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.SdkInfoProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdPlacement" ThreadingModel="STA"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdErrorEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.RendererOptions" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  <Dependencies>
+    <PackageDependency Name="Microsoft.VCLibs.120.00" MinVersion="12.0.21005.1"/>
+    <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.17018"/>
+  </Dependencies>
+  <build:Metadata>
+    <build:Item Name="VisualStudio" Version="12.0"/>
+    <build:Item Name="OperatingSystem" Version="6.3.9600.16384 (winblue_rtm.130821-1623)"/>
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="12.0.31101.0"/>
+    <build:Item Name="ProjectGUID" Value="{891b4a59-3057-494b-94c6-ec585442acf1}"/>
+    <build:Item Name="MakePri.exe" Version="6.3.9600.17298 (winblue.141024-1500)"/>
+  </build:Metadata>
+</Package>

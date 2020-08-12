@@ -1,0 +1,1 @@
+﻿(function(){"use strict";var a=Windows.UI.WebUI.WebUIBackgroundTaskInstance.current;a.succeeded=true;close()})()

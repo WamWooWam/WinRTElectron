@@ -1,0 +1,39 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="conversationCallingAnimation.css" rel="stylesheet" />
+    <script src="/js/vm/conversation/conversationCallingAnimationVM.js"></script>
+</head>
+    <body>
+        <div class="callAnimation">
+            <div class="bgLayerCallStarting"></div>
+            <div class="bgLayerNoise"></div>
+            <div class="participant ANIMATE" data-win-bind="EMERGENCY:isEmergencyContact MvvmJS.Binding.toggleClass;">
+                <div class="emergencyContent" data-win-bind="innerText:emergencyContent"></div>
+                <div class='ringingAnimation'>
+                    <div class="avatarCircleContainer">
+                        <div class="radGrad radGradLrg"></div>
+                        <div class="radGrad radGradMid"></div>
+                        <div class="radGrad radGradSml"></div>
+                        <div class="radGrad circleMain"></div>
+                        <div class="circleSmall circleSmallOne"></div>
+                        <div class="smallCircleMirror">
+                            <div class="circleSmall circleSmallTwo"></div>
+                        </div>
+                    </div>
+                    <div class="avatarContainer">
+                        <div class="avatarImage"></div>
+                        <div class="avatarMask"></div>
+                    </div>
+                    <div class="connectingArrows">
+                        <div class="bgTint"></div>
+                        <div class="connectingIcon">&#xE605;</div>
+                    </div>
+                </div>
+            </div>   
+        </div>
+    </body>
+</html>

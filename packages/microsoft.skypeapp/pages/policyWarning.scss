@@ -1,0 +1,305 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../css/global.scss";
+
+div.page section.navigationContainer > div > div.policyWarning.fragment {
+	-ms-grid-rows: 1fr;
+	header {
+		-ms-grid-columns: 120px 1fr 15px 40px;
+
+		@media #{$vertical} {
+			-ms-grid-columns: 60px 1fr;
+		}
+	}
+
+	&.SKYPEDISABLED {
+		header {
+			display: none;
+		}
+	}
+}
+
+div.policyWarning.fragment {
+	display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    height: 100%;
+	font-size: 26.67px;
+	font-weight: 200;
+	background: -ms-linear-gradient(top, #00aff0 0%,#02a9e9 17%,#0898d5 42%,#127cb4 73%,#1d5e91 100%);
+
+	a.retryButton {
+		display: none;	
+		font-size: 18px;
+		padding: 5px 30px 5px 30px;
+		color: #00AEEF;
+		background-color: #fff;
+		position: absolute;
+		bottom: 20px;
+		right: 30px;
+
+		body.RTL & {
+			right: auto;
+			left: 30px;
+		}
+
+		&:hover {
+			color: #0182b3;
+		}
+
+		&:active {
+			color: #015c80;
+		}
+
+		@media #{$highContrast} {
+			color: #fff;
+			border: 1px solid #fff;
+		}
+	}
+
+	div.disabledMessage {
+		-ms-grid-column-align: center;
+		-ms-grid-row-align: center;
+		display: none;
+		text-align: center;
+		color: #fff;
+		line-height: 30px;
+	}
+
+	&.SKYPEDISABLED {
+		background: #00AEEF;
+
+		div.disabledMessage,
+		a.retryButton,
+		div.logo {
+			display: block;
+		}
+
+		div.protectionLayer,
+		div.bottomHolder {
+			display: none;
+		}
+	}
+
+	div.retryingMessage {
+		-ms-grid-column-align: center;
+		-ms-grid-row-align: center;
+		display: none;
+		color: #fff;
+		text-align: center;
+
+		progress {
+			color: #fff;
+		}
+
+		div.message {
+			margin-top: 20px;
+		}
+    }
+
+	&.RETRYING {
+		div.retryingMessage {
+			display: block;
+		}
+
+		div.disabledMessage,
+		a.retryButton {
+			display: none;
+		}
+	}	
+
+	div.logo {
+		display: none;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: url("/images/svg/logo_white.svg");
+        width: 310px;
+        height: 136px;
+		transform: scale(0.5);
+		transform-origin: 130px 100px;
+
+		body.RTL & {
+			left: auto;
+			right: 0px;
+		}
+
+		
+		@media screen and (-ms-high-contrast: active) {
+			-ms-high-contrast-adjust: none;
+		}
+	}
+
+	header { /* for now duplicated from conversation and liveGroupConversation !!! */
+		position: absolute;
+		color: #fff;
+		width: auto;
+		height: 120px;
+		font-size: 14.66px;
+		overflow: hidden;
+		-ms-grid-columns: 120px 1fr;
+		left: 0;		
+		z-index: 999; /* avoid conflict with callAnimation bgLayerCallStarting*/
+		-ms-grid-row: 1;
+        display: -ms-grid;
+        -ms-grid-columns: 120px 1fr 1fr 40px;
+        -ms-grid-rows: 1fr;
+        overflow: visible;
+        line-height: normal;
+
+		body.RTL & {
+			left: auto;
+			right: 0;
+		}
+
+		/* for now duplicated from page */
+		button.backbutton { 
+			-ms-grid-column: 1;
+            margin-left: 39px;
+            margin-right: 39px; /* for RTL */
+            margin-top: 59px;
+		}
+
+		h1.name {
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			@media #{$vertical} {
+				margin-right: 0px;
+				max-width: calc(100vw - 120px);
+			}
+		}
+
+		span.callStatus {
+			margin-top: 71px;
+			-ms-grid-column: 4;
+			display: block;
+			@media #{$vertical} {
+				-ms-grid-column: 2;
+				display: inline-block;
+			}
+		}
+
+		@media #{$vertical} {
+			div.callStatusContainer {
+				margin-top: 52px;
+			}
+		}
+	}
+
+	div.bottomHolder {
+		-ms-grid-row-align: end;
+		display: -ms-grid;
+		-ms-grid-columns: 1fr;
+		-ms-grid-rows: auto auto;
+		margin-bottom: 32px;
+
+		div.actions {
+			-ms-grid-row: 2;
+			-ms-grid-column-align: center;
+			-ms-grid-row-align: center;
+			transition: opacity 0.3s linear 0s;
+
+			@media #{$vertical} {
+				margin-bottom: 15px;
+			}
+
+			a {
+				position: relative;
+				z-index: 100;
+				display: inline-block;
+				height: 60px;
+				width: 60px;
+				border-radius: 50%;
+				margin: 0px 22.5px;
+				font-family: "Skype UI Symbol";
+				font-size: 60px;
+				line-height: normal;
+				text-align: center;
+				opacity: .9;
+				color: #fff;
+				border-color: #fff;
+				box-shadow: 0 0 0 5px rgba(0,0,0,0.1);	
+				background-color: rgba(0, 175, 240, 1);									
+
+				&.hangUp {
+					background-color: rgba(232, 17, 35, 1);
+					&:hover {
+						background-color: rgba(208, 15, 31, 1);
+					}
+					&:active {
+						background-color: rgba(162, 12, 24, 1);
+					}
+				}
+
+				@media #{$vertical} {
+					height: 40px;
+					width: 40px;
+					margin: 0px 10px;
+					font-size: 40px;
+				}			
+			}
+		}
+	} /* bottomHolder */
+
+	div.protectionLayer {
+        width: 100vw;
+		height: 100vh;
+        background-color: rgba(0,0,0,0.5);
+        display: -ms-grid;
+		-ms-grid-rows: 1fr;
+		-ms-grid-columns: 1fr;
+		position: relative;
+		z-index: 999;	
+
+		div.messageWrapper {
+			-ms-grid-column-align: center;
+			-ms-grid-row-align: center;
+			width: 100%;
+			background-color: #00AEEF;
+			color: #fff;
+			padding-top: 100px;
+			min-height: 200px;			
+			text-align: center;
+
+			div.contentWrapper {
+				height: 100%;
+				text-align: right;
+				display: inline-block;
+				line-height: 30px;
+				padding: 20px;
+
+				a.okButton {
+					margin-top: 40px;
+					margin-bottom: 40px;
+					font-size: 18px;
+					padding: 5px 30px 5px 30px;
+					color: #00AEEF;
+					display: inline-block;					
+					background-color: #fff;
+
+					&:hover {
+						color: #0182b3;
+					}
+
+					&:active {
+						color: #015c80;
+					}
+
+					@media #{$highContrast} {
+						color: #fff;
+						border: 1px solid #fff;
+					}
+				}
+
+				body.RTL & {
+					text-align: left;
+				}
+			}
+
+			@media #{$highContrast} {
+				border: 2px solid #fff;
+			}
+		}
+    }
+}

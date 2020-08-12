@@ -1,4 +1,4 @@
-import { UI } from "./Windows.UI";
+import { UI as MSAppImpl } from "./Windows.UI";
 
 export function getViewOpener() {
     return null;

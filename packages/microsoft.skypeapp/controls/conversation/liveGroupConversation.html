@@ -1,0 +1,138 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LiveGroupConversation</title>
+    <link href="liveGroupConversation.css" rel="stylesheet">
+    <script src="liveGroupConversation.js"></script>
+
+    <script src="/js/libVideoHelper.js"></script>
+    <script src="/js/conversation/activeSpeakerManager.js"></script>
+    <script src="/js/ui/conversation/conversationAllParticipantsLayout.js"></script>
+    <script src="/js/ui/conversation/conversation1to1Layout.js"></script>
+    <script src="/js/ui/conversation/conversationPresentationLayout.js"></script>
+    <script src="/js/ui/conversation/conversationNoParticipantLayout.js"></script>
+    <script src="/js/ui/conversation/conversationPinnedLayout.js"></script>
+    <script src="/js/ui/conversation/conversationLayoutStreamWrapper.js"></script>
+    <script src="/js/ui/conversation/conversationLayoutManager.js"></script>
+
+    <script src="/controls/conversation/conversationGestureHandler.js"></script>
+    <script src="/controls/conversation/messageNotification.js"></script>
+    <script src="/controls/conversation/callStatus.js"></script>
+    <script src="/controls/conversation/conversationParticipantManager.js"></script>
+    <script src="/controls/conversation/conversationParticipant.js"></script>
+    <script src="/controls/conversation/conversationParticipantStream.js"></script>
+    <script src="/controls/conversation/myselfVideoDragHandler.js"></script>
+    <script src="/controls/conversation/conversationMyselfVideo.js"></script>
+    <script src="/controls/conversation/conversationCallingAnimation.js"></script>
+    <script src="/controls/conversation/participantList.js"></script>
+    <script src="/controls/conversation/liveAriaRegion.js"></script>
+    <script src="/js/conversation/immersiveModeHandler.js"></script>
+    <script src="/js/vm/conversation/liveGroupConversationVM.js"></script>
+    <script src="/js/vm/conversation/messageNotificationVM.js"></script>
+</head>
+<body>
+    <div class="fragment liveGroupConversation" role="heading" data-win-bind="
+        LIVERECOVERING:recoveryMode MvvmJS.Binding.toggleClass;VIDEOCALL:isReceivingVideo MvvmJS.Binding.toggleClass;ISGROUP:sharedState.isDialog MvvmJS.Binding.toggleClassNegative;
+        x:sharedState.state MvvmJS.Binding.bindConversationStateClass; IMMERSIVE:sharedState.immersiveMode MvvmJS.Binding.toggleClass; 
+        PARTICIPANTSINITIALIZED:participantInitialized MvvmJS.Binding.toggleClass;">
+
+        <div class="ariaLiveContainer" aria-live="polite" role="heading"></div>
+        <div class="immersiveFocusStore" role="heading"></div>
+
+        <!-- header with back button and call status -->
+        <header>
+            <button id="atLiveConversationBackButton" data-win-bind="click:navigateBack MvvmJS.Binding.event;" class="backbutton backbutton-light win-backbutton immersiveIgnore" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="6"></button>
+            <div class="callStatusContainer" data-win-control="explicit"><!-- call status control --></div>
+        </header>
+
+        <!-- immersive mode logo -->
+        <div class="logo"></div>
+
+
+        <!-- Call animations control -->
+        <div class="callAnimationContainer VISIBLE" data-win-control="explicit"></div>
+
+        <div class="protectionLayer galleryProtection" role="checkbox" style="text-indent: 10%;">&nbsp;</div>
+        <!-- text-indent: 10% style and the innerHTML of protectionLayer is a workaround for #974/Win8:960036 -->
+
+        <div class="viewport" data-win-bind="MYSELFVIDEOVISIBLE:previewVisible MvvmJS.Binding.toggleClass; SWITCHING:isSwitchingCamera MvvmJS.Binding.toggleClass; ROSTERVISIBLE:rosterItemsCount MvvmJS.Binding.toggleClass; PRESENTATIONSPEAKERVISIBLE:presentationSpeakerVisible MvvmJS.Binding.toggleClass">
+
+            <div class="gallery">
+                <div class="stage"></div>
+                <div class="presentation"></div>
+                <div class="ribbon FORCELTR">
+                    <div class="background">
+                        <div class="roster gestureIgnore"></div>
+                        <div class="presentationSpeaker"></div>
+                        <div class="myselfVideo immersiveIgnore" tabindex="2" role="img" data-win-res="{attributes: { 'aria-label' : 'aria_call_connection_myvideo' }}"
+                             data-win-control="Skype.UI.Conversation.ConversationMyselfVideo"
+                             data-win-bind="VISIBLE:previewVisible MvvmJS.Binding.toggleClass;
+                                                winControl:myselfVideoControl MvvmJS.Binding.out;
+                                                space:switchCamera MvvmJS.Binding.keyup;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Group avatar that is placed in middly instead of participants when group call ends -->
+            <div class="avatarCont groupAvatarCont"></div>
+        </div>
+
+        <!-- incomming chat messages notification popup -->
+        <div class="chatNewMsgNotifContainer"></div>
+
+        <!-- action buttons -->
+        <div class="bottomHolder">
+            <div class="actions">
+                <button id="atConversationCallingVideoButton" tabindex="1" class="camera immersiveStopper" role="button" data-win-bind="disabled:isOnHold;click:sendVideo MvvmJS.Binding.event; innerHTML:cameraIcon;HIDDEN:cameraHidden MvvmJS.Binding.toggleClass;this['aria-label']:videoMainSwitchButtonArialLabel WinJS.Binding.setAttribute">&#xE103;</button>
+                <button id="atConversationCallingDialpadButton" tabindex="1" class="dialpad immersiveStopper" role="button" data-win-bind="click:showDialPad MvvmJS.Binding.event;HIDDEN:contextMenuHidden MvvmJS.Binding.toggleClassNegative;this['aria-label']:dialpadMenuItemLabel WinJS.Binding.setAttribute">&#xE104;</button>
+                <button id="atConversationCallingToggleChatButton" tabindex="1" class="chat immersiveStopper" role="button" data-win-bind="click:toggleChat MvvmJS.Binding.event;HIDDEN:chatHidden MvvmJS.Binding.toggleClass;this['aria-label']:imMenuItemLabel WinJS.Binding.setAttribute">&#xE300;</button>
+                <button id="atConversationCallingMuteAudioButton" tabindex="1" class="mute immersiveStopper" role="button" data-win-bind="disabled:isOnHold;click:muteCall MvvmJS.Binding.event; innerHTML:muteIcon;this['aria-label']:audioSwitchButtonArialLabel WinJS.Binding.setAttribute">&#xE106;</button>
+                <button id="atConversationCallingContextMenuButton" tabindex="1" class="contextualMenu immersiveStopper" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_call_connection_more' }}" data-win-bind="click:showContextMenu MvvmJS.Binding.event;HIDDEN:contextMenuHidden MvvmJS.Binding.toggleClass">&#xE415;</button>
+                <button id="atConversationCallingHangUpButton" tabindex="1" class="hangUp immersiveStopper" data-win-bind="click:hangUp MvvmJS.Binding.event" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_call_connection_endcall' }}" href="#">&#xE101;</button>
+            </div>
+        </div>
+
+        <!-- Flyout MENUS -->
+        <div class="liveConversationContextualMenu" data-win-control="WinJS.UI.Menu" data-win-bind="winControl:contextMenu MvvmJS.Binding.out">
+            <button class="atToggleChatContextMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'chat'}" data-win-bind="click:toggleChatFromCallMenu MvvmJS.Binding.event; winControl.label: imMenuItemLabel"></button>
+            <button class="atShowDialpadContextMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'dialpad'}" data-win-bind="click:showDialPadFromCallMenu MvvmJS.Binding.event; winControl.label: dialpadMenuItemLabel"></button>
+            <button class="atShowParticipantsContextMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-bind="click:showParticipantListFromMenu MvvmJS.Binding.event; HIDDEN:participantListHidden MvvmJS.Binding.toggleClass; winControl.label: participantListMenuItemLabel"></button>
+            <button class="atAddParticipantContextMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-bind="click:showAddParticipants MvvmJS.Binding.event; winControl.label: addParticipantsMenuItemLabel"></button>
+            <button class="atFileTransferContextMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-bind="click:sendFiles MvvmJS.Binding.event; HIDDEN:fileTransferInapplicable MvvmJS.Binding.toggleClass; winControl.label: sendFilesMenuItemLabel"></button>
+        </div>
+        <div class="liveConversationCameraMenu" data-win-control="WinJS.UI.Menu" data-win-bind="winControl:cameraMenu MvvmJS.Binding.out">
+            <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'camOff'}" data-win-bind="click:turnOffVideo MvvmJS.Binding.event; winControl.label: camOffMenuItemLabel"></button>
+            <button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:'camSwitch'}" data-win-bind="click:switchCamera MvvmJS.Binding.event; winControl.label: camSwitchMenuItemLabel"></button>
+        </div>
+
+        <!-- central messages -->
+        <div class="muteMessage centerMessage" data-win-bind="VISIBLE:showMuted MvvmJS.Binding.toggleTemporaryClass" data-tmp-class-timeout="3000">
+            <img src="/images/svg/Large_Mute_245x245.svg" />
+            <div class="message" data-win-res="{ textContent: 'liveconversation_mutemessage' }"></div>
+        </div>
+        <div class="videoOffMessage centerMessage" data-win-bind="VISIBLE:showVideoOff MvvmJS.Binding.toggleTemporaryClass" data-tmp-class-timeout="3000">
+            <img src="/images/svg/Large_VideoOff_245x245.svg" />
+            <div class="message" data-win-res="{ textContent: 'liveconversation_videooff' }"></div>
+        </div>
+        <div class="remotelyOnHoldMessage centerMessage">
+            <img src="/images/svg/CallOnHold.svg" />
+            <div class="message" data-win-res="{ textContent: 'liveconversation_remotelyonholdmessage' }"></div>
+        </div>
+        <div class="locallyOnHoldMessage centerMessage kb-accessible" tabindex="7" role="button" data-win-bind="click:resume MvvmJS.Binding.event">
+            <embed aria-hidden="true" tabindex="-1" class="locallyOnHoldImage" src="/images/svg/Resume.svg" type="image/svg+xml" />
+            <div class="message" data-win-res="{ textContent: 'liveconversation_resumecall' }"></div>
+        </div>
+        <div class="recoveringMessage sideToSideMessage">
+            <progress class="win-ring"></progress>
+            <div tabindex="-1" class="message" data-win-res="{ textContent: 'liveconversation_recovering' }"></div>
+        </div>
+
+        <div class="participantListPanel" data-win-control="Skype.UI.Conversation.ParticipantListPanel" data-win-bind="winControl:participantListPanel MvvmJS.Binding.out"></div>
+        
+        <div class="liveConversationAriaRegion" data-win-control="Skype.UI.Conversation.LiveAriaRegion" data-win-bind="winControl:liveAriaRegionControl MvvmJS.Binding.out;" style=" display:none;"></div>
+    </div>
+</body>
+</html>

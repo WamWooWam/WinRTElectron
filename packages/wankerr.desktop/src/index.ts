@@ -10,15 +10,15 @@ import "./index.css"
 
 const { remote } = require("electron");
 
-window.addEventListener("load", async () => {    
-    let promises = [];
+window.addEventListener("DOMContentLoaded", () => {
     let packagesPath = path.join(remote.app.getAppPath(), "packages");
     let packages = fs.readdirSync(packagesPath);
 
     for (const packagePath of packages) {
-        if(fs.existsSync(path.join(packagesPath, packagePath, "AppxManifest.xml"))){
-            let pack = await PackageReader.readPackage(path.basename(packagePath));
-            PackageRegistry.registerPackage(pack)
+        if (fs.existsSync(path.join(packagesPath, packagePath, "AppxManifest.xml"))) {
+            let reader = new PackageReader(path.basename(packagePath))
+            let pack = reader.readPackage();
+            PackageRegistry.registerPackage(pack);
         }
     }
 

@@ -1,0 +1,27 @@
+﻿#call-phones {
+    padding: 7px 17px;
+    box-sizing: border-box;
+    color: #ffffff;
+    background: #00aff0 url('../images/callphones_250x510_background.png') no-repeat;
+}
+
+#call-phones > p {
+    font-size: 21px;
+    color: #ffffff;
+    line-height: 1.35;
+}
+
+#call-phones > div {
+    -ms-flex-align: center;
+    display: -ms-flexbox;
+    font-size: 12px;
+    height: 30px;
+    margin: 14px 0;
+}
+
+#call-phones > div > span:last-child {
+    padding-left: 5px;
+    font-size: 30px;
+    display: inline-block;
+    margin-top: -7px;
+}

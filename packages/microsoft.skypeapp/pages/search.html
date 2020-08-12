@@ -1,0 +1,50 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- List own styles and scripting -->
+    <link href="search.css" rel="stylesheet">
+    <script src="search.js"></script>
+    <script src="/js/data/searchInfo.js"></script>
+    <script src="/js/data/directorySearch.js"></script>
+    <script src="/js/vm/searchVM.js"></script>
+    <link href="/controls/peopleList.css" rel="stylesheet">
+</head>
+<body>
+    <div class="fragment search" data-win-bind="x:status MvvmJS.Binding.bindClass">
+        
+        <div class="info animRegion animGroup3">
+            <div class="notStarted" data-win-res="{textContent: 'search_notstarted_placeholder'}" ></div>
+            <div class="noResult">
+                <div data-win-bind="innerHTML: currentSearchLabel"></div>
+                <button tabindex="5" id="atSearchDirectoryButton" data-win-bind="click: searchDirectory MvvmJS.Binding.event" class="text" data-win-res="{ textContent: 'search_directory_search_button' }"></button>
+            </div>
+        </div>
+        
+        <div class="progressBar" data-win-bind="SEARCHING:isSearching MvvmJS.Binding.toggleClass">
+            <progress class="win-ring win-medium"></progress>
+        </div>
+        <div id="headerTemplate" data-win-control="WinJS.Binding.Template" style="display: none">
+            <div class="simpleHeaderItem">
+                <h2 data-win-bind="innerHTML: title"></h2>
+            </div>
+        </div>
+        <div tabindex="4" id="atSearchResultUserList" class="contacts list kb-scrollTarget animRegion animGroup3" data-win-control="WinJS.UI.ListView"
+             data-win-options="{ 
+    itemTemplate: MvvmJS.UI.TemplateSelector.renderItem, 
+    selector: {
+        type: MvvmJS.UI.TemplateSelector.PropertySelector,
+        property: 'source',
+        pattern: '/templates.html#{0}SearchItem',
+    }, 
+    groupHeaderTemplate: headerTemplate, 
+    groupHeaderTapBehavior: WinJS.UI.GroupHeaderTapBehavior.none,
+    selectionMode: 'none'
+}"
+             data-win-bind="winControl.itemDataSource: list.dataSource; winControl.groupDataSource: list.groups.dataSource;">
+        </div>
+    </div>
+</body>
+</html>

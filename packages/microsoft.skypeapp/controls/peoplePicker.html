@@ -1,0 +1,41 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- List own styles and scripting -->
+    <link href="peoplePicker.css" rel="stylesheet">
+    <script src="/controls/peopleList.js"></script>
+</head>
+<body>
+    <div style="height: inherit;" class="picker-accessWrap">
+        <header>
+            <h1 data-win-bind="textContent: title"></h1>
+        </header>
+        <div class="contactList tab-accessible" data-win-control="Skype.UI.PeopleList"
+             data-win-options="{ selectionMode: 'multi', tapBehavior: 'toggleSelect' }"
+            tabindex="1" role="heading"
+            ></div>
+        <div class="selectedContactsContainer">
+            <div class="selectedContacts list">
+            </div>
+            <button id="atPeoplePickerAddButton" class="text add tab-accessible" tabindex="2" data-win-bind="disabled:selectedContactsSource.length MvvmJS.Binding.not" data-win-res="{ textContent: 'people_picker_add_button' }" />
+            <button id="atPeoplePickerCancelButton" class="cancel tab-accessible" tabindex="3" data-win-res="{ textContent: 'people_picker_cancel_button' }" />
+        </div>
+    </div>
+    <!-- Templates -->
+    <div class="selectedContactTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="item">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+            <div class="content">
+                <div class="name" data-win-bind="innerHTML:name MvvmJS.Binding.unsafeHTML; FORCELTR:isPstnOnly MvvmJS.Binding.toggleClass;"></div>
+                <div class="moodMessage">
+                    <span class="availability" data-win-bind="AVAILABLE:isAvailable MvvmJS.Binding.toggleClass"></span>
+                    <span class="presence" data-win-bind="innerHTML:formattedMoodInline MvvmJS.Binding.unsafeHTML"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="logout.css" rel="stylesheet">
+	<script src="logout.js"></script>
+    <script src="/js/vm/logoutPageVM.js"></script>
+</head>
+<body>
+    <div class="logout fragment" data-win-bind="this['aria-label']:infoPanelTitle  WinJS.Binding.setAttribute;" role="heading">
+        <div class="logo">
+            <img src="/images/svg/logo_white.svg" width="284" height="126" />
+        </div>
+
+        <div class="infoPanel animRegion animGroup2">
+            <h2 class="infoPanelTitle" data-win-bind="innerHTML:infoPanelTitle MvvmJS.Binding.unsafeHTML"></h2>
+
+            <div class="signInPanel">
+                <div class="contactWrapper">
+                    <img id="skypeAvatarImg" alt="" src="/images/blank_1x1.png" data-win-bind="src:avatar" />
+                    <div data-win-bind="innerHTML:name MvvmJS.Binding.unsafeHTML" class="name"></div>
+                    <div data-win-bind="innerHTML:email MvvmJS.Binding.unsafeHTML" class="email"></div>
+                </div>
+                <button class="text signInButton" data-win-bind="click:login MvvmJS.Binding.event" data-win-res="{textContent: 'sign_in'}"></button>
+            </div>
+
+            <div class="footNote">
+                <h3 data-win-res="{textContent: 'logout_footnote_title'}"></h3>
+                <p data-win-bind="innerHTML:footNoteBody MvvmJS.Binding.unsafeHTML"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

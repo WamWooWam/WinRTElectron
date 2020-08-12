@@ -1,0 +1,34 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="login.css" rel="stylesheet">
+	<script src="login.js"></script>
+</head>
+<body>
+	<div class="login fragment">
+		<div class="logo">
+            <img src="/images/svg/logo_white.svg" width="284" height="126"/>
+		</div>
+
+        <div class="win-ring c-progress f-indeterminate-local f-progress-large" tabindex="0" role="progressbar">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="infoPanel">
+            <h2 class="errorTitle hidden"></h2>
+            <div class="error hidden">
+                <div class="icon"></div>
+                <div class="message"></div>
+            </div>
+            <button class="text retryButton hidden" data-win-res="{textContent: 'login_general_button_title'}"></button>
+            <button id="btn-getskype" class="text retryButton getSkypeButton hidden" data-win-res="{textContent: 'login_general_button_get_skype'}"></button>
+        </div>
+	</div>
+</body>
+</html>

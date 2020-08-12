@@ -79,7 +79,7 @@ export class CoreWindow {
 
         this._frame = document.createElement("webview");
         this._frame.nodeintegration = true;
-        this._frame.webpreferences = "webSecurity=no";
+        this._frame.disablewebsecurity = true;
         this._frame.classList.add("core-window-frame");
 
         this._frame.addEventListener("did-start-loading", () => { this._frame.openDevTools() });

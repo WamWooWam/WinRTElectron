@@ -28,7 +28,7 @@ export class PeopleManager extends Manager {
 
     createContact(account: Account) {
         let contact = new Contact(this)
-        contact.accountId = account.objectId;
+        contact.account = account;
         return contact;
     }
 

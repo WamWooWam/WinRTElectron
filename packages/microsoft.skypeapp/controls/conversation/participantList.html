@@ -1,0 +1,36 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConversationParticipantList</title>
+    <link href="participantList.css" rel="stylesheet">
+    <script src="/js/vm/conversation/participantListVM.js"></script>
+</head>
+<body>
+    <div class="participantListContents" data-win-control="Skype.UI.TabConstrainer" data-win-bind="this['aria-label']:panelAriaLabel  WinJS.Binding.setAttribute;">
+        <div class="clickEater"></div>
+        <header>
+            <button id="atParticipantListBackButton" tabindex="2" data-win-bind="click:hide MvvmJS.Binding.event;" class="backbutton backbutton-light backbutton-small win-backbutton tab-accessible immersiveIgnore" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="6"></button>
+            <div class="wrapper">
+                <h1 class="name tab-accessible" tabindex="1" data-win-bind="innerHTML: sharedState.name"></h1>
+                <div class="participantCount tab-accessible" role="heading" tabindex="1" data-win-bind="innerText: participantCount"></div>
+            </div>
+        </header>
+
+        <div class="listsWrapper">
+            <div class="listHeader tab-accessible" tabindex="1" role="heading" data-win-bind="innerText: liveParticipantsHeader;VISIBLE:liveParticipantsHeader MvvmJS.Binding.toggleClass"></div>
+            <div class="participantsInCall repeater" data-win-control="WinJS.UI.Repeater" data-win-options="{ template: participantListItemTemplate, swipeBehavior : 'none'}" data-win-bind="winControl.data:liveParticipants MvvmJS.Binding.wbind;winControl:participantsInCall MvvmJS.Binding.out">
+            </div>
+
+            <div class="listHeader tab-accessible" tabindex="1" role="heading" data-win-bind="innerText: nonLiveParticipantsHeader;VISIBLE:nonLiveParticipantsHeader MvvmJS.Binding.toggleClass"></div>
+            <div class="participantsNotInCall repeater" data-win-control="WinJS.UI.Repeater" data-win-options="{ template: participantListItemTemplate, swipeBehavior : 'none'}" data-win-bind="winControl.data:nonLiveParticipants MvvmJS.Binding.wbind;winControl:participantsNotInCall MvvmJS.Binding.out">
+            </div>
+        </div>
+
+        <div class="participantListButtonContainer">
+            <button class="addParticipantsButton tab-accessible" tabindex="1" id="atParticipantListAddParticipantButton" role="button" data-win-bind="click:showAddParticipants MvvmJS.Binding.event" data-win-res="{textContent: 'liveconversation_participant_list_add_participants_button'}" />
+        </div>
+    </div>
+</body>
+</html>

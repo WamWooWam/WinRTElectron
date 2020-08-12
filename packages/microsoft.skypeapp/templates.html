@@ -1,0 +1,180 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="/js/mvvmjs/ui/fx.js"></script>
+    <script src="/js/mvvmjs/controls/templateSelector.js"></script>
+</head>
+<body>
+    <!-- templates for message.detail.type -->
+    <div data-templateid="text" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus;"></div>
+    </div>
+    <div data-templateid="sms" data-win-control="WinJS.Binding.Template">
+        <div class="ico sms"></div>
+        <div class="text sms" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus"></div>
+    </div>
+    <div data-templateid="call" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MvvmJS.UI.TemplateSelector" data-win-bind="winControl.model:details WinJS.Binding.defaultBind"
+            data-win-options="{ selector: {
+		                            type: MvvmJS.UI.TemplateSelector.PropertySelector,
+		                            property: 'status',
+		                            pattern: '/templates.html#{0}',
+	                            },
+	                            animate: 'default' }">
+        </div>
+    </div>
+    <div data-templateid="unknown" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTML"></div>
+    </div>
+    <div data-templateid="blocked" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTML"></div>
+    </div>
+    <div data-templateid="initialAuthRequest" data-win-control="WinJS.Binding.Template">
+        <div class="text auth" data-win-bind="innerHTML:details.authRequestMessage WinJS.Binding.defaultBind"></div>
+    </div>
+    <div data-templateid="auth" data-win-control="WinJS.Binding.Template">
+        <div class="text auth" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus"></div>
+    </div>
+    <div data-templateid="authorized" data-win-control="WinJS.Binding.Template">
+        <div class="text authorized" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTML"></div>
+    </div>
+    <div data-templateid="file" data-win-control="WinJS.Binding.Template">
+        <div class="text file" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus"></div>
+    </div>
+    <div data-templateid="group" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus"></div>
+    </div>
+    <div data-templateid="contacts" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus"></div>
+    </div>
+    <div data-templateid="voicemail" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTML"></div>
+    </div>
+    <div data-templateid="videomessage" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details.infoMsg MvvmJS.Binding.unsafeHTML"></div>
+    </div>
+    <div data-templateid="group" data-win-control="WinJS.Binding.Template">
+        <div class="text" data-win-bind="innerHTML: details MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus"></div>
+    </div>
+
+    <!-- templates for message.detail.type(call).status -->
+    <div data-templateid="current" data-win-control="WinJS.Binding.Template">
+        <div class="call current">
+            <span class="icon"></span>
+            <span class="duration callMsg" data-win-bind="innerHTML:formattedDuration"></span>
+        </div>
+    </div>
+    <div data-templateid="starting" data-win-control="WinJS.Binding.Template">
+        <div class="call starting">
+            <span class="icon"></span>
+            <span class="callMsg" data-win-res="{ textContent: 'recent_startingcall' }"></span>
+        </div>
+    </div>
+    <div data-templateid="incoming" data-win-control="WinJS.Binding.Template">
+        <div class="call incoming">
+            <span class="icon"></span>
+            <span class="callMsg" data-win-bind="innerHTML:callMsgText"></span>
+        </div>
+    </div>
+    <div data-templateid="done" data-win-control="WinJS.Binding.Template">
+        <div class="call done" data-win-bind="x:callType MvvmJS.Binding.bindClassUppercased">
+            <span class="icon"></span>
+            <span class="callMsg" data-win-bind="innerHTML:callMsgText;dotted:formattedDuration MvvmJS.Binding.toggleClass"></span>
+            <span class="callMsgDetail" data-win-bind="innerHTML:formattedDuration"></span>
+        </div>
+    </div>
+    <div data-templateid="canJoin" data-win-control="WinJS.Binding.Template">
+        <div class="call canJoin">
+            <span class="callMsg" data-win-bind="innerHTML:callMsgText"></span>
+        </div>
+    </div>
+    <div data-templateid="missed" data-win-control="WinJS.Binding.Template">
+        <div class="call missed">
+            <span class="icon"></span>
+            <span class="callMsg" data-win-res="{ textContent: 'recent_missedcall' }"></span>
+        </div>
+    </div>
+    <div data-templateid="noanswer" data-win-control="WinJS.Binding.Template">
+        <div class="call noanswer">
+            <span class="wrapper">
+                <span class="icon"></span>
+                <span class="callMsg dotted" data-win-res="{ textContent: 'recent_call' }"></span>
+            </span>
+            <span class="callMsgDetail" data-win-res="{ textContent: 'recent_noanswer' }"></span>
+        </div>
+    </div>
+    <div data-templateid="busy" data-win-control="WinJS.Binding.Template">
+        <div class="call busy">
+            <span class="wrapper">
+                <span class="icon"></span>
+                <span class="callMsg dotted" data-win-res="{ textContent: 'recent_call' }"></span>
+            </span>
+            <span class="callMsgDetail" data-win-res="{ textContent: 'recent_busy' }"></span>
+        </div>
+    </div>
+    <div data-templateid="declined" data-win-control="WinJS.Binding.Template">
+        <div class="call declined">
+            <span class="wrapper">
+                <span class="icon"></span>
+                <span class="callMsg dotted" data-win-res="{ textContent: 'recent_call' }"></span>
+            </span>
+            <span class="callMsgDetail" data-win-res="{ textContent: 'recent_noanswer' }"></span>
+        </div>
+    </div>
+    <div data-templateid="hold" data-win-control="WinJS.Binding.Template">
+        <div class="call hold">
+            <span class="icon"></span>
+            <span class="duration callMsg" data-win-bind="innerHTML:formattedDuration"></span>
+        </div>
+    </div>
+
+    <div data-templateid="localDialogSearchItem" data-win-control="WinJS.Binding.Template">
+        <div class="contactWrapper local" data-win-bind="NAMEMATCH:searchInfo.matchInName MvvmJS.Binding.toggleClass;BLOCKED:isBlocked MvvmJS.Binding.toggleClass;">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle;DEFAULTAVATAR:isDefaultAvatar MvvmJS.Binding.toggleClass;">
+                <div class="overlay"></div>
+            </div>
+            <div class="title name" data-win-bind="innerHTML:searchInfo.name MvvmJS.Binding.unsafeHTML; FORCELTR:isPstnOnly MvvmJS.Binding.toggleClass;"></div>
+            <div class="title matchedName" data-win-bind="innerHTML:searchInfo.title MvvmJS.Binding.unsafeHTML"></div>
+            <div class="detail status" data-win-bind="presence: presence MvvmJS.Binding.setAttribute">
+                <div class="presence"></div>
+                <span data-win-bind="innerHTML: formattedMoodInline MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus" class="mood"></span>
+            </div>
+            <div class="detail matchedInfo" data-win-bind="innerHTML:searchInfo.description MvvmJS.Binding.unsafeHTML"></div>
+        </div>
+    </div>
+    <div data-templateid="localGroupSearchItem" data-win-control="WinJS.Binding.Template">
+        <div class="contactWrapper local" data-win-bind="BLOCKED:isBlocked MvvmJS.Binding.toggleClass;">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle;DEFAULTAVATAR:isDefaultAvatar MvvmJS.Binding.toggleClass;">
+                <div class="overlay"></div>
+            </div>
+            <div class="title name" data-win-bind="innerHTML:searchInfo.title MvvmJS.Binding.unsafeHTML"></div>
+            <div class="detail " data-win-bind="innerHTML:searchInfo.description MvvmJS.Binding.unsafeHTML"></div>
+        </div>
+    </div>
+
+    <div data-templateid="directorySpinnerSearchItem" data-win-control="WinJS.Binding.Template">
+        <div class="action win-interactive">
+            <progress class="win-ring"></progress>
+        </div>
+    </div>
+    <div data-templateid="directorySearchButtonSearchItem" data-win-control="WinJS.Binding.Template">
+        <div class="action win-interactive">
+            <button tabindex="5" id="atSearchDirectoryButton" data-win-bind="click: run MvvmJS.Binding.event" class="text" data-win-res="{ textContent: 'search_directory_search_button' }"></button>
+        </div>
+    </div>
+    <div data-templateid="directorySearchItem" data-win-control="WinJS.Binding.Template">
+        <div class="contactWrapper" data-win-bind="BLOCKED:isBlocked MvvmJS.Binding.toggleClass;">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle;">
+            </div>
+            <div data-win-bind="innerHTML: searchInfo.title" class="title name"></div>
+            <div class="detail status">
+                <span class="statusInfo" data-win-bind="innerHTML:statusInfo"></span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

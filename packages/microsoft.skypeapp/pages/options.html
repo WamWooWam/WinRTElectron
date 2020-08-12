@@ -1,0 +1,105 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!doctype HTML>
+<html>
+    <head>
+        <script src="/pages/options.js"></script>
+        <script src="/controls/conversation/conversationMyselfVideo.js"></script>
+        <script src="/js/vim/capturer.js"></script> <!-- TODO: remove coupling  -->
+
+        <link href="/pages/options.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="optionsPage">
+            <div data-win-control="WinJS.UI.SettingsFlyout" class="optionsSettingsFlyout" data-win-options="{settingsCommandId:'options',width:'wide'}">
+                <div class="win-ui-dark win-header">
+                    <button onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+                    <div class="win-label" data-win-res="{ textContent: 'options'}"></div>
+                    <span class="logo"></span>
+                </div>
+                <div class="win-content">
+                    <h3 id="audio_heading" data-win-res="{ textContent: 'options_audio'}" role="heading"></h3>
+                    <div class="item av options_microphone">
+                        <label id="options_microphone_label" data-win-res="{ textContent: 'options_microphone'}"></label>
+                        <div class="volumeLevel" data-value="0"></div>
+                        <select aria-label="setting" aria-labelledby="audio_heading options_microphone_label"></select>
+                    </div>
+                    <div class="item av options_speakers">
+                        <label id="options_speakers_label" data-win-res="{ textContent: 'options_speakers' }"></label>
+						<button class="playButton removeDefaultStyles" id="optionsPlayButton" aria-labelledby="audio_heading options_speakers_label optionsPlayButton" data-win-res="{attributes: { 'aria-label' : 'aria_options_check_speakers'}}"></button>
+                        <div class="volumeLevel" data-value="0"></div>
+                        <select aria-label="setting" aria-labelledby="audio_heading options_speakers_label"></select>
+                    </div>
+
+                    <h3 id="video_heading" data-win-res="{ textContent: 'options_video'}" role="heading"></h3>
+                    <div class="item options_camera">
+                        <label id="options_camera_label" data-win-res="{ textContent: 'options_camera'}"></label>
+                        <select aria-label="setting" aria-labelledby="video_heading options_camera_label"></select>
+                    </div>
+                    <div class="myselfVideo" data-win-options="{ videoWidth: 267, fixedVideoSize: true, preventCameraSwitching: true }" data-win-control="Skype.UI.Conversation.ConversationMyselfVideo"></div>
+                    <div class="item options_incoming_video">
+                        <label id="options_incoming_video_label" data-win-res="{ textContent: 'options_incoming_video'}"></label>
+                        <select aria-label="setting" aria-labelledby="video_heading options_incoming_video_label"></select>
+                    </div>
+
+                    <h3 id="privacy_heading" data-win-res="{ textContent: 'options_privacy'}" role="heading"></h3>
+                    <div class="item privacy_accept_calls">
+                        <label id="privacy_accept_calls_label" data-win-res="{ textContent: 'options_who_can_call'}"></label>
+                        <select aria-label="setting" aria-labelledby="privacy_heading privacy_accept_calls_label"></select>
+                    </div>
+                    <div class="item privacy_accept_skypein_calls">
+                        <label id="privacy_accept_skypein_calls_label" data-win-res="{ textContent: 'options_who_can_call_skype'}"></label>
+                        <select aria-label="setting" aria-labelledby="privacy_heading privacy_accept_skypein_calls_label"></select>
+                    </div>
+                    <div class="item privacy_accept_im">
+                        <label id="privacy_accept_im_label" data-win-res="{ textContent: 'options_who_can_im'}"></label>
+                        <select aria-label="setting" aria-labelledby="privacy_heading privacy_accept_im_label"></select>
+                    </div>
+                    <div class="item clearhistory">
+                        <label id="clearhistory_label" data-win-res="{ textContent: 'options_clear_history'}"></label>
+                        <button class="text" data-win-res="{ textContent: 'options_clear_history_button'}" aria-labelledby="privacy_heading clearhistory_label"></button>
+                    </div>
+                    <div class="toggle item personal_ads">
+                        <label id="personal_ads_label" data-win-res="{ textContent: 'options_personal_info'}"></label>
+                        <div data-win-control="WinJS.UI.ToggleSwitch" aria-labelledby="privacy_heading personal_ads_label"></div>
+                    </div>
+                
+                    <h3 id="calls_heading" data-win-res="{ textContent: 'options_calls'}" role="heading"></h3>
+                    <div class="toggle item answer_automatically">                        
+                        <div data-win-control="WinJS.UI.ToggleSwitch" aria-labelledby="calls_heading"></div>
+                    </div>
+                    <div class="toggle item answer_automatically_video">
+                        <div data-win-control="WinJS.UI.ToggleSwitch" aria-labelledby="calls_heading"></div>
+                    </div>
+                    <div class="item emergency_country">
+                        <label id="emergency_country_label" data-win-res="{ textContent: 'options_emergency_my_country'}"></label>
+                        <select aria-label="setting" aria-labelledby="calls_heading emergency_country_label"></select>
+                    </div>
+                    <div class="emergency_info_container EMPTY">
+                        <div class="item emergency_info nocall ">
+                            <div class="icon"></div>
+                            <div class="content">
+                                <h3 data-win-res="{ textContent: 'options_no_emergency'}"></h3>
+                                <p data-win-res="{textContent: 'options_no_emergency_content'}"></p>
+                            </div>
+                        </div>
+                        <div class="item emergency_info limited">
+                            <div class="content">
+                                <p data-win-res="{ innerHTML: 'options_limited_emergency_content'}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 data-win-res="{ textContent: 'options_notifications_title'}" role="heading"></h3>
+                    <div class="imSoundsWrapper">
+                        <div class="toggle item options_notifications_imsound">
+                            <div data-win-control="WinJS.UI.ToggleSwitch" aria-label="setting" aria-labelledby="calls_heading"></div>
+                        </div>
+                        <div class="toggle item options_notifications_imsound_current_chat">
+                            <div data-win-control="WinJS.UI.ToggleSwitch" aria-label="setting" aria-labelledby="calls_heading"></div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

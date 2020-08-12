@@ -1,0 +1,188 @@
+﻿.no-ads {
+    overflow: hidden;
+	width: 100%;
+    height: 510px;
+	font-family: "Segoe UI";
+    color: #333534;
+    line-height: 1.4;
+    padding: 0;
+    padding: 0;
+    -ms-transition: all 0.25s ease-in-out;
+    -ms-transform: translate3d(100%, 0, 0);
+}
+
+/* why??? */
+/*.panorama-with-error > .no-ads {
+    -ms-transition: all 1s ease-in-out;
+}*/
+
+.panorama-ad-grid > .no-ads {
+    height: 540px;
+}
+
+.no-ads.noanim {
+  -ms-transition: all 0.0s ease-in-out;
+  -ms-transform: translate3d(0, 0, 0);
+}
+
+.no-ads.active {
+  -ms-transform: translate3d(0, 0, 0);
+}
+
+.no-ads > div {
+    display: block;
+    padding-top: 20px;
+    cursor: pointer;
+    min-height: 100%;
+    box-sizing: border-box;
+}
+
+.side-padd {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.no-ads-title {
+    line-height: 1.4;
+    word-spacing: -1px;
+    margin: 0;
+    padding: 20px 0;
+    text-decoration: none;
+    font-weight: normal;
+    font-size: 20.8px;
+    font-family: "Segoe UI Semilight";
+    color: #00AFF0;
+    white-space: normal;
+}
+
+.no-ads-avatar {
+    margin: 28px 0 0 9px;
+    position: relative;
+}
+
+.reduce-padd .no-ads-avatar {
+    margin-top: 11px;
+}
+
+.big-avatar {
+    background: url('../images/circleavatar_175px.png') no-repeat;
+    background-position-x: center;
+    width: 216px;
+    height: 178px;
+}
+
+.no-ads-circle {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 57px;
+    height: 57px;
+    background: url('../images/skype_premium_60x60px.png') no-repeat;
+}
+
+.no-ads-text {
+    font-size: 14.2px;
+    padding: 40px 0 37px;
+    margin: 0;
+    word-spacing: -1px;
+}
+
+.reduce-padd .no-ads-text {
+    padding: 23px 0 20px;
+}
+
+div.hub.fragment div.surface .no-ads-text {
+    white-space: normal;
+}
+
+.cta-button, .cta-button:hover {
+    display: block;
+    font-size: 14.6px;
+    text-decoration: none;
+    text-align: center;
+    color: #ffffff;
+    background-color: #68217A;
+    padding: 8px 10px 10px;
+    border-radius: 25px;
+    background-clip: padding-box;
+}
+
+.no-ads-cta {
+    margin: 10px 0;
+    cursor: pointer; 
+}
+
+.no-ads-avatar + .no-ads-cta {
+    margin: 55px 0 0;
+}
+
+.reduce-padd .no-ads-cta {
+    margin: 0;
+}
+
+.reduce-padd .no-ads-avatar + .no-ads-cta {
+    margin: 39px 0 0;
+}
+
+.no-ads-cta > span {
+    background-image: url('../images/arrow_17x17.png');
+    background-repeat: no-repeat;
+    background-position-y: 50%;
+    background-position-x: 100%;
+    padding-right: 34px;
+    display: inline-block;
+    min-height: 17px;
+    white-space: normal;
+    letter-spacing: 1px;
+    word-spacing: -1px;
+}
+
+body.RTL .no-ads-cta > span {
+    background-image: url('../images/arrow_17x17_rtl.png');
+    background-position-x: 0;
+    padding-right: 0;
+    padding-left: 34px;
+}
+
+.no-ads-close-wrap {
+    width: 22px;
+    height: 22px;
+    padding: 10px 10px 14px 13px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+body.RTL .no-ads-close-wrap {
+    right: auto;
+    left: 0;
+}
+
+.creative-container .no-ads-close-wrap {
+    display: none;
+}
+
+.no-ads-close-wrap > .no-ads-close {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    background-image: url('../images/close_button.png');
+    background-repeat: no-repeat;
+    background-position: 0 0; 
+}
+
+.no-ads-close-wrap > .no-ads-close:hover {
+    background-position: 0 100%;
+}
+
+.image-replace {
+    display: block;
+    border: 0;
+    text-indent: -999em;
+    overflow: hidden;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    text-align: left;
+    direction: ltr;
+    *line-height: 0;
+}

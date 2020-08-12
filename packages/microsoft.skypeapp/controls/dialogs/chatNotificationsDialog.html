@@ -1,0 +1,19 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ChatNotificationsDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="chatNotificationsDialog.js"></script>
+</head>
+<body>
+    <div id="chatNotificationsDialog" class="dialogFlyout" data-win-control="WinJS.UI.Flyout" data-win-bind="x:vm.extraClass MvvmJS.Binding.bindClass; this['aria-label']:vm.title WinJS.Binding.setAttribute">
+        <div id="chatNotificationsDialogTitle" class="description" data-win-bind="textContent: vm.title"></div>
+        <div class="action">
+            <div data-win-control="WinJS.UI.ToggleSwitch" data-win-bind="change:chatNotificationsStateChange MvvmJS.Binding.event; winControl.checked:vm.notificationsEnabled;"></div>
+        </div>
+    </div>
+</body>
+</html>

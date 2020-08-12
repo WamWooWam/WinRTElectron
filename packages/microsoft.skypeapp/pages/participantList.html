@@ -1,0 +1,31 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- List own styles and scripting -->
+    <link href="/pages/participantList.css" rel="stylesheet">
+    <script src="/pages/participantList.js"></script>
+</head>
+<body>
+    <div class="fragment participantList" role="heading">
+        <header>
+            <button class="backbutton backbutton-dark win-backbutton" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="3"></button>
+            <div class="wrapper animRegion animGroup2">
+                <h2 class="title animRegion animGroup2" data-win-bind="innerHTML:conversationWrapper.name unsafeHTML"></h2>
+                <h1 class="title animRegion animGroup2"></h1>        
+            </div>
+        </header>
+        <div class="participants animRegion animGroup3">
+            <div data-win-control="WinJS.UI.ListView"
+             data-win-options="{
+                layout: { type: WinJS.UI.GridLayout }, 
+                itemTemplate: groupParticipantItemTemplate,
+                selectionMode: 'single'
+             }"
+            data-win-bind="winControl.itemDataSource: participants.dataSource" tabindex="1"></div>
+        </div>
+    </div>
+</body>
+</html>

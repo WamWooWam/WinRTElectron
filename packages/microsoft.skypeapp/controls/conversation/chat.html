@@ -1,0 +1,47 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConversationChat</title>
+    <link href="chat.css" rel="stylesheet">
+    <script src="chat.js"></script>
+    <script src="/js/vm/conversation/chatVM.js"></script>
+    <script src="/js/vm/conversation/chatInputVM.js"></script>  <!--for now to get events-->
+    <script src="/controls/conversation/textarea.js"></script>  <!--for now to get events-->
+</head>
+<body>
+    <div class="chat" data-win-bind="
+        x:buddyStatusClass MvvmJS.Binding.bindClass;
+        CLOSEDINLIVE:closedInLive MvvmJS.Binding.toggleClass;
+        CANRESENDREQUEST:canResendRequest MvvmJS.Binding.toggleClass;
+        EMERGENCY:sharedState.isEmergencyContact MvvmJS.Binding.toggleClass;
+        LIVE:sharedState.isInFullLive MvvmJS.Binding.toggleClass;
+        ISEDITINGMESSAGE:isEditingMessage MvvmJS.Binding.toggleClass;
+        aria:closedInLive MvvmJS.Binding.toggleAriaHidden;">
+
+        <div class="resendRequest HIDDENINLIVE" tabindex="8" role="heading">
+            <div class="columnWrapper">
+                <span class="text" data-win-bind="innerHTML:resendRequestText MvvmJS.Binding.unsafeHTML"></span> <span class="link kb-accessible" tabindex="8" role="button" data-win-res="{textContent: 'authrequest_resend_action'}" data-win-bind="click:sendAuthRequest MvvmJS.Binding.event"></span>
+            </div>
+        </div>
+
+        <div class="inviteContact HIDDENINLIVE" tabindex="8" data-win-bind="this['aria-label']:buddyStatusAria WinJS.Binding.setAttribute" role="heading">
+            <h2 class="name"><span data-win-bind="innerHTML: requestContactName MvvmJS.Binding.unsafeHTML"></span></h2>
+            <button tabindex="8" id="atConversationAddToContactsButton" class="text" data-win-res="{textContent: 'authrequest_add_to_contacts'}" data-win-bind="click:sendAuthRequest MvvmJS.Binding.event"></button>
+        </div>
+
+        <div class="noMessagesContainer HIDDENINLIVE" tabindex="8" role="heading">
+            <div class="noMessages">
+                <div class="content" data-win-bind="innerHTML:noMessageslaceholder;PSTNONLY:sharedState.isPstnOnly MvvmJS.Binding.toggleClass"></div>
+            </div>
+        </div>
+
+        <!--ChatLog control-->
+        <div class="chatLogContainer" data-win-control="explicit" tabindex="8" role="region" aria-label="" data-win-bind="tabindex:chatLogTabIndex MvvmJS.Binding.setAttribute"></div>
+
+        <!--Chat input control-->
+        <div class="inputsContainer" data-win-control="explicit"></div>
+    </div>
+</body>
+</html>

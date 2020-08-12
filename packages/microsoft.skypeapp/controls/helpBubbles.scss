@@ -1,0 +1,334 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../css/global.scss";
+
+@mixin arrowTopLeft {
+
+  div.bubbleBordersWrapper div.arrowBorder {
+    top: 5px;
+    left: 5px;
+    body.RTL & {
+      left: auto;
+      right: 5px;
+    }
+  }
+
+  div.arrow {
+    top: 5px;
+    left: 5px;
+    body.RTL & {
+      left: auto;
+      right: 5px;
+    }
+  }
+
+  div.arrow::after {
+    transform: rotate(-45deg);
+    body.RTL & {
+      transform: rotate(45deg);
+    }
+  }
+}
+
+@mixin arrowTop {
+  div.bubbleBordersWrapper div.arrowBorder,
+  div.arrow {
+    bottom: auto;
+    left: 50%;
+    margin-left: -40px;
+    body.RTL & {
+      right: 50%;
+      margin-right: -40px;
+      left: auto;
+      margin-left: 0;
+    }
+  }
+  div.bubbleBordersWrapper div.arrowBorder {
+    top: -30px;
+  }
+
+  div.arrow {
+    top: -30px;
+  }
+
+  div.arrow::after {
+    transform: rotate(0deg);
+  }
+}
+
+@mixin arrowBottom {
+  div.bubbleBordersWrapper div.arrowBorder,
+  div.arrow {
+    top: auto;
+    left: 50%;
+    margin-left: -40px;
+    body.RTL & {
+      right: 50%;
+      margin-right: -40px;
+      left: auto;
+      margin-left: 0;
+    }
+  }
+
+  div.bubbleBordersWrapper div.arrowBorder {
+    bottom: -30px;
+  }
+
+  div.arrow {
+    bottom: -20px;
+  }
+
+  div.arrow::after {
+    transform: rotate(180deg);
+  }
+}
+
+@mixin arrowRight {
+  div.arrow,
+  div.bubbleBordersWrapper div.arrowBorder {
+    left: auto;
+    top: 50%;
+    margin-top: -40px;
+  }
+
+  div.bubbleBordersWrapper div.arrowBorder {
+    right: -30px;
+  }
+
+  div.arrow {
+    right: -20px;
+  }
+
+  div.arrow::after {
+    transform: rotate(90deg);
+  }
+}
+
+@mixin arrowLeft {
+  div.arrow,
+  div.bubbleBordersWrapper div.arrowBorder {
+    top: 50%;
+    margin-top: -40px;
+    left: -30px;
+  }
+
+  div.arrow::after {
+    transform: rotate(-90deg);
+  }
+}
+
+#helpBubbles {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+    
+  &:empty,
+  div.page.login & {
+    display: none;
+  }
+
+  div.helpBubble {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    color: #fff;
+
+    z-index: 1000; /* ??? */
+
+    border-radius: 50%;
+    @media screen and (-ms-high-contrast: active) {
+      color: WindowText; /* to achieve borders around number tiles */
+    }
+
+    /* bubble position, for arrow positions use mixins, default top-left */
+    &.ADDCONTACT {
+      top: 85px;
+      left: 455px;
+
+      body.RTL & {
+        left: auto;
+        right: 455px;
+      }
+      @include arrowTopLeft;
+    }
+
+    &.APPBAR {
+      bottom: 100px;
+      left: 50%;
+      margin-left: -130px;
+      @include arrowBottom;
+    }
+
+    &.ANIMATE_OUT {
+      animation-name: helpBubbleOut;
+      animation-duration: 0.23s;
+      animation-delay: 0.1s;
+	  animation-fill-mode: both;
+    }
+
+    div.bubbleBordersWrapper {
+      width: 260px;
+      height: 260px;
+      position: absolute;
+      opacity: 0.1;
+
+      top: -5px;
+      left: -5px;
+      body.RTL & {
+        left: auto;
+        right: -5px;
+      }
+
+      @media screen and (-ms-high-contrast: active) {
+        opacity: 1;
+      }
+
+      div.bubbleBorder {
+        width: 260px;
+        height: 260px;
+        border-radius: 50%;
+        background-color: #000;
+        animation-name: helpBubbleIn;
+        animation-duration: 1s;
+        animation-fill-mode: both;
+        @media screen and (-ms-high-contrast: active) {
+          background-color: WindowText;
+        }
+      }
+
+      div.arrowBorder {
+        position: absolute;
+        z-index: -1;
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background-color: #000;
+        animation-name: helpSmallBubbleIn;
+        animation-duration: 0.33s;
+        animation-fill-mode: both;
+        animation-delay: 1s;
+        @media screen and (-ms-high-contrast: active) {
+          background-color: window;
+        }
+      }
+    }
+
+    div.arrow {
+      position: absolute;
+      animation-name: helpSmallBubbleIn;
+      animation-duration: 0.33s;
+      animation-fill-mode: both;
+      animation-delay: 1s;
+      z-index: 1000;
+    }
+
+    div.arrow::after {
+      padding: 5px;
+      width: 60px;
+      height: 60px;
+      font-size: 60px;
+      content: "\E41B";
+      display: inline-block;
+      font-family: "Skype UI Symbol";
+      position: relative;
+      line-height: normal;
+      border-radius: 50%;
+      color: #00aff0;
+      background-color: #fff;
+      text-align: center;
+      @media screen and (-ms-high-contrast: active) {
+        color: window;
+        background-color: WindowText;
+      }
+    }
+
+    div.cw {
+      width: 250px;
+      height: 250px;
+      display: -ms-grid;
+      -ms-grid-rows: 1fr;
+      -ms-grid-columns: 1fr;
+      background-color: #00aff0;
+      border-radius: 50%;
+      z-index: 500;
+
+      animation-name: helpBubbleIn;
+      animation-duration: 1s;
+      animation-fill-mode: both;
+
+      div.text {
+        text-align: center;
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        -ms-grid-row-align: center;
+        -ms-grid-column-align: center;
+        padding: 40px;
+        font-weight: 200;
+        font-size: 21.5px; /* 16pt */
+        line-height: 26px;
+        width: 160px;
+        word-wrap: break-word;
+        word-break: keep-all;
+      }
+    }
+
+  }
+}
+
+@keyframes helpBubbleIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.6) scaleY(0.6) scaleZ(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scaleX(0.6) scaleY(0.6) scaleZ(1);
+    animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+  }
+  75% {
+    opacity: 0.7;
+    transform: scaleX(1.14) scaleY(1.14) scaleZ(1);
+    animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+
+@keyframes helpSmallBubbleIn {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.6) scaleY(0.6) scaleZ(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scaleX(0.6) scaleY(0.6) scaleZ(1);
+    animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+  }
+  70% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 1;
+    transform: scaleX(1.14) scaleY(1.14) scaleZ(1);
+    animation-timing-function: cubic-bezier(0.33, 0, 0, 1);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1) scaleZ(1);
+  }
+}
+
+@keyframes helpBubbleOut {
+  0% {
+    opacity: 1;
+    transform: scaleX(1) scaleY(1) scaleZ(1);
+    animation-timing-function: cubic-bezier(1, 0, 0.78, 1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleX(0.5) scaleY(0.5) scaleZ(1);
+  }
+}

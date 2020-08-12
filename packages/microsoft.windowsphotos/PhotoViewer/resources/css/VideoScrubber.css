@@ -1,0 +1,41 @@
+﻿.videoScrubber-videoScrubberBar{background-color:transparent;padding-left:0px;padding-right:0px;width:100%;}
+.videoScrubber-content{position:absolute;width:100%;opacity:1;}
+.mediaPlaybackControlsLayer{direction:ltr;height:100%;position:absolute;width:100%;}
+.mediaPlaybackSeekBarThumbToolTip{background-color:rgba(0, 0, 0, 0.3);opacity:0;padding:5px 10px 3px 10px;position:absolute;white-space:nowrap;}
+.mediaPlaybackControlsBackdrop{background:rgba(0, 0, 0, 0.3);bottom:0px;height:28px;position:absolute;width:100%;}
+.mediaPlaybackControlsTapEater{opacity:0;bottom:0px;position:absolute;width:100%;height:75px;}
+.mediaPlaybackSeekBar{position:absolute;bottom:13px;left:80px;right:80px;}
+.mediaPlaybackSeekBarRail{position:absolute;left:0px;height:3px;width:100%;bottom:0px;opacity:1;background-color:rgba(255, 255, 255, 0.35);}
+.mediaPlaybackSeekBarProgress{background-color:#000000;left:0px;height:3px;width:100%;opacity:1;bottom:0px;position:absolute;}
+.mediaPlaybackCurrentTimeIndicator{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:400;font-size:12px;color:#ffffff;text-align:center;position:absolute;left:-40px;top:-10px;width:30px;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-size:14.5px;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-size:13.66px;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(hy,ka){font-size:12.5px;}
+.mediaPlaybackCurrentTimeIndicator:-ms-lang(ja,km,zh-hans){font-size:12.66px;}
+.mediaPlaybackTotalTimeIndicator{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:400;font-size:12px;color:#ffffff;position:absolute;right:-45px;top:-10px;width:35px;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-size:14.5px;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-size:13.66px;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(hy,ka){font-size:12.5px;}
+.mediaPlaybackTotalTimeIndicator:-ms-lang(ja,km,zh-hans){font-size:12.66px;}
+.mediaPlaybackSeekBarThumb{position:absolute;left:0px;bottom:28px;height:40px;width:40px;background-size:100%;opacity:1;}
+.seekBarRaised{bottom:76px;}
+.backDropExpanded{height:88px;}
+@media (-ms-high-contrast) {.mediaPlaybackSeekBarProgress:-ms-lang(af,am,ar,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fa,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,he,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ku,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pa-arab,pl,prs,pt,quc,quz,ro,ru,rw,sd,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,ug,uk,ur,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu){-ms-high-contrast-adjust:none;background-color:Highlight;} .mediaPlaybackSeekBarRail:-ms-lang(af,am,ar,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fa,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,he,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ku,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pa-arab,pl,prs,pt,quc,quz,ro,ru,rw,sd,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,ug,uk,ur,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu){-ms-high-contrast-adjust:none;background-color:ActiveBorder;}}

@@ -1,0 +1,19 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../css/global.scss";
+
+div.page section.navigationContainer {
+    visibility: visible;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    background-color: black;
+}
+
+#retailMovie {
+    outline: none;
+    width: 100%;
+    background-color: black;
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center;
+}

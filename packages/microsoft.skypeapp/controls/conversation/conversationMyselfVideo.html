@@ -1,0 +1,20 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="conversationMyselfVideo.css" rel="stylesheet">
+    <script src="/js/libVideoHelper.js"></script>
+    <script src="/controls/conversation/myselfVideoDragHandler.js"></script>
+    <script src="/js/vm/conversation/conversationMyselfVideoVM.js"></script>
+</head>
+<body>
+    <div class="rotationContainer" data-win-bind="style.width:containerWidth;click:onVideoPreviewClicked MvvmJS.Binding.event;">
+        <div class="conversationMyselfVideo immersiveIgnore" tabindex="-1" data-win-bind="x:switchingCameraClass MvvmJS.Binding.bindClass;VISIBLE:isControlInitialized MvvmJS.Binding.toggleClass;style.width:containerWidth;style.height:containerHeight;">
+            <video class="pip immersiveIgnore" aria-hidden="true" tabindex="-1" msrealtime="true"
+                   data-win-bind="error:onVideoError MvvmJS.Binding.event;VISIBLE:isVideoVisible MvvmJS.Binding.toggleClass"></video>
+        </div>
+    </div>
+</body>
+</html>

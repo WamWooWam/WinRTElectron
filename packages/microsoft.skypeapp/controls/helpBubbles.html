@@ -1,0 +1,28 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="helpBubbles.css" rel="stylesheet">
+    <script src="/js/vm/helpBubblesVM.js"></script>
+    <script src="/controls/helpBubbles.js"></script>
+</head>
+    <body>
+        <div class="bubbles"></div>
+        <div class="template" data-win-control="WinJS.Binding.Template">
+            <div class="helpBubble">
+                <div class="bubbleBordersWrapper">
+                    <div class="arrowBorder"></div>
+                    <div class="bubbleBorder"></div>
+                </div>
+                <div class="arrow"></div>
+                <div class="cw" role="note" data-win-bind="this['aria-label']:aria WinJS.Binding.setAttribute">
+                    <div class="text">
+                        <span data-win-bind="textContent: text" aria-hidden="true"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

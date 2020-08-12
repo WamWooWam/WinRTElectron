@@ -4,7 +4,7 @@ import { Client } from "./Client";
 import { MailMessage } from "./MailMessage";
 import { Collection } from "./Utils";
 import { WindowsLive } from "../Enums";
-import { ShimProxyHandler } from "winrt-node/Windows.Foundation";
+import { ShimProxyHandler } from "winrt-node/ShimProxyHandler";
 import { uuidv4 } from "winrt-node/util";
 import { Windows } from "winrt-node";
 import { Account } from "./Account";

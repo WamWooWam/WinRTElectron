@@ -1,0 +1,443 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Skype</title>
+
+    <script src="//microsoft.skypeapp.shim/dist/shim.js" rel="stylesheet"></script>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,StartTM")</script>
+
+    <!-- anything that is needed before the main app entrypoint -->
+    <script src="/js/log.js"></script>
+    <script src="/js/diagnostics/etw.js"></script>
+    <script src="/js/diagnostics/perfTrack.js"></script>
+    <script src="/js/application/bootstrapper.js"></script>
+    <script src="/js/retailMode.js"></script>
+    <script src="/js/libraryManager.js"></script>
+    
+    <!-- app entry point -->
+    <script src="/js/default.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,css")</script>
+    <link href="/css/default.css" rel="stylesheet" />
+    <link href="/css/page.css" rel="stylesheet" />
+    <link href="/css/conversationItems.css" rel="stylesheet" />
+    <link href="/css/emoticons.css" rel="stylesheet" />
+    <link href="/emoticons/emoticons.css" rel="stylesheet" />
+    <link href="/css/flags.css" rel="stylesheet" />
+    
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,general")</script>
+    <script src="/js/globalization.js"></script>
+    <script src="/js/utilities.js"></script>
+    
+    <script src="/js/ui/page.js"></script>
+    <script src="/js/ui/control.js"></script>
+
+    <script src="/js/disposable.js"></script>
+    <script src="/js/eventMixing.js"></script>
+    <script src="/js/globalextensions.js"></script>
+    <script src="/js/mvvmjs/observable.js"></script>
+    <script src="/js/mvvmjs/utilities.js"></script>    
+    <script src="/js/winjsuiextensions.js"></script>
+    
+    <!-- lazy -->
+    <script src="/controls/tabConstrainer.js"></script>
+    <script src="/controls/tabConstrainerLite.js"></script>
+    <script src="/controls/appBarHint.js"></script>
+
+    <script src="/js/mvvmjs/weakRefTable.js"></script>
+    <script src="/js/uiUtil.js"></script><!-- ui util must be before device manager #4071 -->
+    <script src="/js/mvvmjs/binding/bindingExtensions.js"></script>
+    <script src="/js/mvvmjs/binding/bindingListExtensions.js"></script>
+    <script src="/js/mvvmjs/binding/constrainedListProjection.js"></script>
+    <script src="/js/mvvmjs/binding/mappedListProjection.js"></script>
+    
+    <!-- lazy, should be initialized after UI is ready, specific prio 10 -->
+    <script src="/js/ui/globalKeyboardManager.js"></script>
+
+    <!-- statistics -->
+    <script src="/js/statistics/statisticsReporter.js"></script>
+    <!-- prio 10 -->
+    <script src="/js/statistics/appSizeReporter.js"></script>
+
+ 
+    <script src="/js/version.js"></script>
+    <script src="/js/upgrade.js"></script> 
+
+    <script src="/js/application/policy.js"></script>
+    <script src="/js/application/policyManager.js"></script>
+    
+    <!-- change to lazy, instance prop -->
+    <script src="/js/SSOTokenRequestManager.js"></script> 
+    
+    <script src="/js/loginManager.js"></script>
+    <script src="/js/application/backgroundState.js"></script>
+
+    <!-- state related part, we could he just empty state, providers to come into play later P5 -->    
+    <script src="/js/application/deviceManager.js"></script>
+    <script src="/js/application/providers/nullProvider.js"></script>
+    <script src="/js/application/providers/orientationProvider.js"></script>
+    <script src="/js/application/viewStateProvider.js"></script>
+    <script src="/js/application/keyboardVisibilityProvider.js"></script>
+    <script src="/js/application/searchProvider.js"></script>
+
+    <script src="/js/application/viewState.js"></script>
+    <script src="/js/ui/conversation/conversationStateEnum.js"></script>
+    <script src="/js/application/conversationState.js"></script>
+    <script src="/js/application/globalState.js"></script>
+    <script src="/js/application/state.js"></script>
+
+
+    <script src="/js/userPermissions.js"></script>
+
+    <script src="/js/lazyInitializedControl.js"></script>
+    <script src="/controls/dialogs.js"></script>
+    <script src="/controls/menu.js"></script>
+    <script src="/js/data/helpBubblesModel.js"></script>
+    <script src="/js/helpBubblesStarter.js"></script>
+    <script src="/controls/eventNotification.js"></script>
+    <script src="/js/eventNotification/eventNotificationQueue.js"></script>
+    <script src="/js/eventNotification/eventNotificationManager.js"></script>
+    
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,emoticonPicker")</script>
+    <!-- we need to implement it as lazy + renderCopy(including css, etc.) -->
+    
+    <script async="async" src="/emoticons/emoticons.js"></script>
+    <script async="async" src="/controls/emoticonPicker.js"></script>
+    
+
+    <!-- non conversation specific -->
+    <script src="/controls/searchBoxPanel.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,notifications")</script>
+    <!-- parsers: all to be lazy -->
+    <script src="/js/notifications/parsers/parserBase.js"></script>
+    <script src="/js/notifications/parsers/msnParserBase.js"></script>
+    <script src="/js/notifications/parsers/msnCntParser.js"></script>
+    <script src="/js/notifications/parsers/msnSdgParser.js"></script>
+    <script src="/js/notifications/parsers/msnOutParser.js"></script>
+    <script src="/js/notifications/parsers/callNotificationParser.js"></script>
+    <script src="/js/notifications/parsers/abchNotificationParser.js"></script>
+    <script src="/js/notifications/raw.js"></script>
+    
+    <script src="/js/notifications/wnsChannelRegistration.js"></script>
+    <script src="/js/notifications/notifications.js"></script>
+    <script src="/js/notifications/toasts/callToast.js"></script>
+    <script src="/js/notifications/tiles.js"></script>
+    <script src="/js/notifications/toasts.js"></script>
+    <script src="/js/notifications/imCache.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,navigation")</script>
+    <!-- navigation -->
+    <script src="/js/navigation/page.js"></script>
+    <script src="/js/navigation/activation.js"></script>
+    <script src="/js/navigation/animation.js"></script>
+    <!-- lazy -->
+    <script src="/js/application/startupComponents/lockscreenStartupComponent.js"></script>
+    <script src="/js/vm/lockScreenCallVM.js"></script>
+
+    <script src="/js/application/applicationSuspending.js"></script>
+    <script src="/js/application/loginHandlerManager.js"></script>
+
+    <script src="/js/notifications/newMessageNotifier.js"></script>
+    <script src="/js/notifications/abchNotificationCache.js"></script>
+    <script src="/js/notifications/abchNotification.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,mix")</script>
+
+    <script src="/js/callManager.js"></script>
+    <script src="/js/appconfig.js"></script>
+    <script src="/js/libHelper.js"></script>
+    <script src="/js/utilities.js"></script>
+    <script src="/js/actions.js"></script>
+    
+    <!-- lazy -->
+    <script src="/js/URIHandler.js"></script>
+    <script src="/js/backgroundTasks/backgroundTasksManager.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,data")</script>
+
+    <!-- data -->
+    <script src="/js/data/contactsRepository.js"></script>
+    <script src="/js/data/messages.js"></script>
+    <script src="/js/data/messageFactory.js"></script>
+    <script src="/js/data/avatarUpdater.js"></script>
+    <script src="/js/data/contactWrapper.js"></script>
+    <script src="/js/data/conversationWrappers.js"></script>
+    <script src="/js/data/conversationsRepository.js"></script>
+    <script src="/js/data/contactListProjection.js"></script>
+    <!-- lazy -->
+    <script src="/js/data/favoriteConversationsRepository.js"></script>
+    <script src="/js/data/recentConversations.js"></script>
+    <script src="/js/data/recentCallConversation.js"></script>
+    <script src="js/data/queryConversationRepository.js"></script>
+    <script src="/js/data/recentConversationsRepository.js"></script>
+
+    <!-- used by several files, lazy? -->
+    <script src="/js/mvvmjs/binding/selectableList.js"></script>
+    <script src="/js/data/countriesRepository.js"></script>
+
+    <script src="/js/data/optionsWrapper.js"></script>
+    <script src="/js/sounds.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,controls")</script>
+    <!-- controls-->
+    <script src="/js/navigation.js"></script>
+    <script src="/controls/presenceBar.js"></script>
+    <script src="/controls/avatar.js"></script>
+    
+    <!-- lazy -->
+    <script src="/js/data/transferWrapper.js"></script>
+    <script src="/controls/fileTransferMessage.js"></script>
+    <script src="/controls/fileTransfer.js"></script>
+    <script src="/controls/fileTransferGroup.js"></script>
+
+    <script src="/controls/callNotifications.js"></script>
+    <link href="/controls/callNotifications.css" rel="stylesheet" />
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,vm")</script>
+    <!-- lazy -->
+    <script src="/js/vm/hubRecentsVM.js"></script>
+    <script src="/controls/conversationSwitcher.js"></script>
+
+    <!-- change to lazy, ondemand subscripion, ping Tomas -->
+    <script src="/js/videoStateMachine.js"></script>
+    <script src="/js/sendVideoManager.js"></script>
+    
+    <!-- rename it pls -->
+    <script src="/js/mvvmjs/ui/fx.js"></script>
+    <script src="/js/mvvmjs/controls/templateSelector.js"></script>
+    
+    <!-- lazy -->
+    <script src="/controls/about.js"></script>
+    <script src="/controls/help.js"></script>
+    <script src="/js/settings.js"></script>
+    
+    <!-- lazy -->
+    <script src="/js/data/emergencyCalling.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,ads")</script>
+    <script src="/MSAdvertisingJS/ads/ad.js"></script>
+    <script src="/SkypeAdSDK/js/Ads.js"></script>
+
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,filetransfer")</script>
+    <!-- review after FT code update -->
+    <script src="/js/fileTransferTempStorage.js"></script>
+    <script src="/js/fileTransferManager.js"></script>
+    <script src="/js/fileTransferHelper.js"></script>
+    <script src="/js/accessTokenManager.js"></script>
+    <script src="/js/videoMessageEntitlementsManager.js"></script>
+
+    <!-- lazy-->
+    <script src="/js/vm/countryInputVM.js"></script>
+
+
+    <!-- controls -->
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,controls preloads")</script>
+    <script src="/controls/mePanel.js"></script>
+
+    <!-- lazy -->
+    <script src="/controls/conversation/videoMessageDialog.js"></script>
+    <script src="/controls/peoplePicker.js"></script>
+   
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,appbar preloads")</script>
+    <script src="/controls/appBar.js"></script>
+    <script src="/js/ui/appBar/commandsSet.js"></script>
+    <script src="/js/ui/appBar/favoriteRemoveCommandSet.js"></script>
+    <script src="/js/ui/appBar/contactsCommandsSet.js"></script>
+    <script src="/js/ui/appBar/conversationSwitcherCommandsSet.js"></script>
+    <script src="/js/ui/appBar/participantListCommandsSet.js"></script>
+    <script src="/js/ui/appBar/conversationCommandsSet.js"></script>
+    <script src="/js/ui/appBar/unreadCommandsSet.js"></script>
+    
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,StopTM")</script>
+</head>
+<body>
+    <div class="page">
+        <div class="callNotifications" data-win-control="Skype.UI.CallNotifications"></div>
+        <div id="eventNotificationsLiveRegion" aria-live="assertive" aria-relevant="additions" role="heading" style="display: none;"></div>
+        <div id="eventNotifications"></div>
+        <div id="helpBubbles" aria-live="polite" aria-relevant="additions"></div>
+
+        <section class="navigationContainer" data-win-control="Skype.UI.NavigationContainer">
+            <!-- pages will be loaded here -->
+        </section>
+
+        <div id="searchBoxPanel" data-win-control="Skype.UI.SearchBoxPanel"></div>
+        <div id="skypeDialogs" data-win-control="Skype.UI.Dialogs"></div>
+        <div id="skypeMenuContainer"></div>
+        <div id="skypeAppBar" data-win-control="Skype.UI.AppBar"></div>
+
+        <div class="conversationSwitcher" data-win-control="Skype.UI.ConversationSwitcher" data-win-bind="POPULATED:hasUnread MvvmJS.Binding.toggleClass"></div>
+
+        <div id="emoticonPicker" data-win-control="Skype.UI.EmoticonPicker"></div>
+
+        <div id="mePanel" data-win-control="Skype.UI.MePanel"></div>
+
+        <!-- appbar hint -->
+        <div class="appBarHint" data-win-control="Skype.UI.AppBarHint" data-win-res="{title: 'appbar_hint_tooltip'}" role="button"></div>
+    </div>
+
+    <!-- templates -->
+    <div class="accountContactTemplate" id="accountContactTemplate" data-win-control="WinJS.Binding.Template" >
+        <div class="contactWrapper">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUrl MvvmJS.Binding.urlStyle;"></div>
+            <div data-win-bind="innerHTML:name MvvmJS.Binding.unsafeHTML" class="name"></div>
+            <div data-win-bind="innerHTML:username MvvmJS.Binding.unsafeHTML" class="username"></div>
+        </div>
+    </div>
+
+    <div class="accountContactTemplate" id="suggestedAccountContactTemplate" data-win-control="WinJS.Binding.Template"  data-win-options="{extractChild: true}">
+        <div class="contactWrapper" data-win-bind="this['aria-label']:ariaLabel WinJS.Binding.setAttribute">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUrl MvvmJS.Binding.urlStyle;"></div>
+            <div data-win-bind="innerHTML:name MvvmJS.Binding.unsafeHTML" class="name"></div>
+            <div data-win-bind="innerHTML:username MvvmJS.Binding.unsafeHTML" class="username"></div>
+        </div>
+    </div>
+
+    <div id="recentItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="item" data-pos="" data-win-bind="UNREAD:isUnread MvvmJS.Binding.toggleClass; BLOCKED:isBlocked MvvmJS.Binding.toggleClass; DIALOG:conversation.isDialog MvvmJS.Binding.toggleClass; PSTN:conversation.isPstnContact MvvmJS.Binding.toggleClass;">
+            <div class="content">
+                <div class="win-template">
+                    <div class="avatar" data-win-bind="backgroundImage:conversation.avatarUri MvvmJS.Binding.urlStyle; DEFAULTAVATAR:conversation.isDefaultAvatar MvvmJS.Binding.toggleClass; BLOCKED:conversation.isBlocked MvvmJS.Binding.toggleClass">
+                        <div class="protectionLayer"></div>
+                        <div class="presence" data-win-bind="x:conversation.presence MvvmJS.Binding.bindClassUppercased"></div>
+                    </div>
+                    <div class="detailsFrame" data-win-bind="x:message.type MvvmJS.Binding.bindClassUppercased">
+                        <div style="display: none" data-win-bind="innerHTML:formattedAriaUnreadLabel MvvmJS.Binding.unsafeHTML"></div>
+                        <div class="name" data-win-bind="innerHTML:conversation.formattedNameInline MvvmJS.Binding.unsafeHTML; FORCELTR:conversation.isPstnOnly MvvmJS.Binding.toggleClass;"></div>
+                        <div class="message">
+                            <div class="ellipsisContainer" data-win-control="MvvmJS.UI.TemplateSelector" data-win-bind="winControl.model:message WinJS.Binding.defaultBind"
+                                 data-win-options="{ selector: {
+		                                    type: MvvmJS.UI.TemplateSelector.PropertySelector,
+		                                    property: 'type',
+		                                    pattern: '/templates.html#{0}',
+	                                    },
+	                                    animate: 'tileUpdate' }">
+                            </div>
+                        </div>
+                        <div class="time"><span data-win-bind="innerHTML:formattedMessageFooter"></span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="hubRecentItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="item" data-pos="" data-win-bind="UNREAD:item.isUnread MvvmJS.Binding.toggleClass;LARGE:isLarge MvvmJS.Binding.toggleClass;bigEmoticons:isLarge MvvmJS.Binding.toggleClass; BLOCKED:isBlocked MvvmJS.Binding.toggleClass; DIALOG:item.conversation.isDialog MvvmJS.Binding.toggleClass; PSTN:item.conversation.isPstnContact MvvmJS.Binding.toggleClass;">
+            <div class="content">
+                <div class="win-template">
+                    <div class="avatar" data-win-bind="backgroundImage:item.conversation.avatarUri MvvmJS.Binding.urlStyle; DEFAULTAVATAR:item.conversation.isDefaultAvatar MvvmJS.Binding.toggleClass; BLOCKED:item.conversation.isBlocked MvvmJS.Binding.toggleClass;">
+                        <div class="protectionLayer"></div>
+                        <div class="presence" data-win-bind="x:item.conversation.presence MvvmJS.Binding.bindClassUppercased"></div>
+                    </div>
+                    <div class="detailsFrame" data-win-bind="x:item.message.type MvvmJS.Binding.bindClassUppercased">
+                        <div style="display: none" data-win-bind="innerHTML:item.formattedAriaUnreadLabel MvvmJS.Binding.unsafeHTML"></div>
+                        <div class="name" data-win-bind="innerHTML:item.conversation.formattedNameInline MvvmJS.Binding.unsafeHTML; FORCELTR:item.conversation.isPstnOnly MvvmJS.Binding.toggleClass;"></div>
+                        <div class="message">
+                            <div class="ellipsisContainer" data-win-control="MvvmJS.UI.TemplateSelector" data-win-bind="winControl.model:item.message WinJS.Binding.defaultBind"
+                                 data-win-options="{ selector: {
+		                                    type: MvvmJS.UI.TemplateSelector.PropertySelector,
+		                                    property: 'type',
+		                                    pattern: '/templates.html#{0}',
+	                                    },
+	                                    animate: 'tileUpdate' }">
+                            </div>
+                        </div>
+                        <div class="time"><span data-win-bind="innerHTML:item.formattedMessageFooter"></span></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div id="appBarRecentItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="item" data-pos="" data-win-bind="UNREAD:item.isUnread MvvmJS.Binding.toggleClass; BLOCKED:isBlocked MvvmJS.Binding.toggleClass; DIALOG:item.conversation.isDialog MvvmJS.Binding.toggleClass; PSTN:item.conversation.isPstnContact MvvmJS.Binding.toggleClass;">
+            <div class="content">
+                <div class="win-template">
+                    <div class="avatar" data-win-bind="backgroundImage:item.conversation.avatarUri MvvmJS.Binding.urlStyle; DEFAULTAVATAR:item.conversation.isDefaultAvatar MvvmJS.Binding.toggleClass; BLOCKED:item.conversation.isBlocked MvvmJS.Binding.toggleClass">
+                        <div class="protectionLayer"></div>
+                        <div class="presence" data-win-bind="x:item.conversation.presence MvvmJS.Binding.bindClassUppercased"></div>
+                    </div>
+                    <div class="detailsFrame" data-win-bind="x:item.message.type MvvmJS.Binding.bindClassUppercased">
+                        <div style="display: none" data-win-bind="innerHTML:item.formattedAriaUnreadLabel MvvmJS.Binding.unsafeHTML"></div>
+                        <div class="name" data-win-bind="innerHTML:item.conversation.formattedNameInline MvvmJS.Binding.unsafeHTML; FORCELTR:item.conversation.isPstnOnly MvvmJS.Binding.toggleClass;"></div>
+                        <div class="message">
+                            <div class="ellipsisContainer" data-win-control="MvvmJS.UI.TemplateSelector" data-win-bind="winControl.model:item.message WinJS.Binding.defaultBind"
+                                 data-win-options="{ selector: {
+		                                    type: MvvmJS.UI.TemplateSelector.PropertySelector,
+		                                    property: 'type',
+		                                    pattern: '/templates.html#{0}',
+	                                    },
+	                                    animate: 'tileUpdate' }">
+                            </div>
+                        </div>
+                        <div class="time"><span data-win-bind="innerHTML:item.formattedMessageFooter"></span></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="peopleItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="item" data-win-bind="AVAILABLE:isAvailable MvvmJS.Binding.toggleClass; title:name; BLOCKED:isBlocked MvvmJS.Binding.toggleClass; this['aria-label']:identity Skype.UI.Hub.contactAriaLabel; ">
+            <div class="avatar" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle;"></div>
+            <div class="content" data-win-bind="DEFAULTAVATAR:isDefaultAvatar MvvmJS.Binding.toggleClass">
+                <div class="presenceNameWrapper">
+                    <div class="presence"></div>
+                    <div class="name" data-win-bind="innerHTML:name MvvmJS.Binding.unsafeHTML; FORCELTR:isPstnOnly  MvvmJS.Binding.toggleClass;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="groupParticipantItemTemplate" data-win-control="WinJS.Binding.Template"> <!-- same layout as peopleItemTemplate above -->
+        <div class="item" data-win-bind="AVAILABLE:conversation.isAvailable MvvmJS.Binding.toggleClass; title: conversation.name; BLOCKED:conversation.isBlocked MvvmJS.Binding.toggleClass; this['aria-label']:conversation Skype.UI.ParticipantList.participantAriaLabel">
+            <div class="avatar" data-win-bind="backgroundImage:conversation.avatarUri MvvmJS.Binding.urlStyle">
+                <div class="overlay"></div>
+            </div>
+            <div class="content" data-win-bind="DEFAULTAVATAR:conversation.isDefaultAvatar MvvmJS.Binding.toggleClass">
+                <div class="presenceNameWrapper">
+                    <div class="presence"></div>
+                    <div class="name" data-win-bind="innerHTML:conversation.name MvvmJS.Binding.unsafeHTML; FORCELTR:conversation.isPstnOnly MvvmJS.Binding.toggleClass"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="countryListItemTemplate" data-win-control="WinJS.Binding.Template" data-win-options="{extractChild: true}">
+        <div data-win-bind="this['aria-label']:label WinJS.Binding.setAttribute">
+            <div class="checkCont">&#xE081;</div>
+            <div class="nameContainer">
+                <div class="countryName" data-win-bind="innerText: name"></div><div class="prefixContainer"> (<span class="prefix" data-win-bind="innerText: prefix"></span>)</div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="participantListItemTemplate" data-win-control="WinJS.Binding.Template" data-win-options="{extractChild: true}">
+        <div class="participantItem tab-accessible" role="heading" aria-haspopup="true" tabindex="1" data-win-bind="this['participant-id']: participant.id WinJS.Binding.setAttribute;keydown:keyPress MvvmJS.Binding.event;click:showParticipantMenu MvvmJS.Binding.event;HAS_MENU:hasMenu MvvmJS.Binding.toggleClass">
+            <div class="participantName" data-win-bind="innerHTML:participant.name MvvmJS.Binding.unsafeHTML;this['title']: participant.name WinJS.Binding.setAttribute"></div>
+            <div class="participantStatus" data-win-bind="innerText: participantStatus"></div>
+            <div class="menuIndicator"><span></span><span class="ariaMenuLabel" data-win-bind="textContent: menuLabel"></span></div>
+        </div>
+    </div>
+
+    <!-- Application cover used to make sure we won't show any private date when APP is activated at LockScreen -->
+    <div id="applicationLockScreenCover">
+        <div class="logo">
+            <img src="/images/svg/logo_white.svg" width="284" height="126" />
+        </div>
+    </div>
+</body>
+</html>

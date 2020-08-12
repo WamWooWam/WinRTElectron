@@ -1,0 +1,112 @@
+﻿
+#loading-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 540px;
+	box-sizing: border-box;
+	margin: 0 auto;
+	padding-top: 157px;
+	overflow: hidden;
+    position: absolute;
+    background-color: #f3f7fa;
+    transition: opacity 1s cubic-bezier(0, 0, 1, 1);
+}
+
+#circles{
+	width: 253px; 
+	height: 253px;
+	margin-left: -10px;
+	position: relative;
+	border-radius: 50%;
+	animation-name: spin;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-duration: 8s;
+}
+
+.circle {
+	border-radius: 50%;
+	float: left;
+	position: absolute;
+	background: rgba(40, 154, 221, .05);
+	overflow: hidden;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-duration: 8s;
+}
+
+.circle-shrink {
+	animation-name: shrink;
+	top: -191px;
+	left: -203px;
+	width: 468px;
+	height: 468px;
+}
+
+.circle-grow {
+	animation-name: grow;
+	top: 57px;
+	left: 67px;
+	width: 308px;
+	height: 308px;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes shrink {
+	from {
+		width: 468px;
+		height: 468px;
+
+		top: -191px; /*(253/6 - radio)*/
+		left: -203px; /*radio/3*/
+	}
+
+	50% {
+		top: -112px; /* 253/6 - radio*/
+		left: -123px; /* */
+		width: 308px;
+		height: 308px;
+	}
+
+	to {
+		width: 468px;
+		height: 468px;
+
+		top: -191px; /*(253/6 - radio)*/
+		left: -203px; /*radio/3*/
+	}
+}
+
+@keyframes grow {
+	from {
+		top: 57px;
+		left: 67px;
+		width: 308px;
+		height: 308px;
+	}
+
+	50% {
+		width: 468px;
+		height: 468px;
+
+		top: -17px; /*(253/6 - radio)*/
+		left: -20px; /*radio/3*/
+	}
+
+	to {
+		top: 57px;
+		left: 67px;
+		width: 308px;
+		height: 308px;
+	}
+}

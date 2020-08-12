@@ -1,0 +1,23 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>InputDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="inputDialog.js"></script>
+</head>
+<body>
+    <div id="inputDialog" class="dialogFlyout NOHEADING" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event; this['aria-label']: vm.title WinJS.Binding.setAttribute">
+        <div class="description" data-win-bind="textContent: vm.title"></div>
+        <input id="inputDialogInpput" type="text" role="textbox" aria-labelledby="inputDialogInputDescription inputDialogInpput" class="dark" data-win-bind="value: vm.inputText MvvmJS.Binding.twoway; maxLength: vm.maxLength;keyup:checkDisabled MvvmJS.Binding.event" />
+        <div role="heading" id="inputDialogInputDescription" style="visibility:hidden; position:absolute" data-win-bind="textContent: vm.ariaInputLabel"></div>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atInputDialogOkButton" role="button" class="text" data-win-bind="textContent: vm.okTitle; click:okAction MvvmJS.Binding.event; disabled: vm.okDisabled"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

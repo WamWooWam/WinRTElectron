@@ -1,0 +1,28 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- List own styles and scripting -->
+    <link href="/controls/emoticonPicker.css" rel="stylesheet" />
+    <script src="/js/emoticonTranslationMap.js"></script>
+    <script src="/js/vm/emoticonPickerVM.js"></script>
+</head>
+<body>
+    <div id="emoticonTemplate" data-win-control="WinJS.Binding.Template">
+        <img data-win-bind="src: file Skype.UI.EmoticonPicker.imagePath; alt: id;this['aria-label']:emoticon Skype.UI.EmoticonPicker.emoticonAriaLabel;" />
+    </div>
+
+    <div data-win-control="Skype.UI.TabConstrainer" data-win-control="Skype.UI.TabConstrainer" data-win-options="{hasSelfFocus: true}" class="picker-accessWrap" data-win-res="{attributes: { 'aria-label' : 'emoticon_picker_title' }}" role="heading">
+        <button class=" backbutton backbutton-light-protected win-backbutton tab-accessible" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="2"></button>
+        <h1 data-win-res="{textContent: 'emoticon_picker_title'}"></h1>
+        <div class="emoticonsList tab-accessible"
+             data-win-options="{itemTemplate: emoticonTemplate, layout: { type: WinJS.UI.GridLayout, orientation: 'vertical' }, selectionMode: 'none'}"
+             data-win-bind="winControl.itemDataSource: emoticonsData.dataSource MvvmJS.Binding.listBind"
+             data-win-control="WinJS.UI.ListView"
+             tabindex="1">
+        </div>
+    </div>
+</body>
+</html>

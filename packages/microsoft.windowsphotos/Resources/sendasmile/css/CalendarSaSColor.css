@@ -1,0 +1,12 @@
+﻿#sasLoadSpinner{color:#5133ab;}
+#sasTitle,#sasBackButton{color:#ffffff;border-color:#ffffff;}
+#sasBackButton:hover{background-color:rgba(255, 255, 255, 0.19999999999999995);}
+#sasBackButton:hover:active{background-color:#ffffff;border-color:#ffffff;color:#5133ab;}
+#sasHeader{background-color:#5133ab;}
+#sasAppIcon{background-image:url('/ModernPeople/images/CalendarIcon-30.png');height:30px;width:30px;top:32px;}
+#sasAppIcon:-ms-lang(af,am,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pl,pt,quc,quz,ro,ru,rw,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,uk,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu):not(:-ms-lang(pa-arab)){right:40px;}
+#sasAppIcon:-ms-lang(ar,fa,he,ku,pa-arab,prs,sd,ug,ur){left:40px;}
+#FMSContainer input[onclick^="plugin0.next"]{background-color:#5133ab;border-color:#5133ab;color:#ffffff;}
+#FMSContainer input[onclick^="plugin0.next"]:hover{background-color:rgba(81, 51, 171, 0.87);border-color:rgba(81, 51, 171, 0.87);}
+#FMSContainer input[onclick^="plugin0.next"]:disabled{background-color:rgba(202, 202, 202, 0.4);border-color:rgba(0, 0, 0, 0.08);color:rgba(0, 0, 0, 0.4);}
+#FMSContainer input[onclick^="plugin0.next"]:hover:active{background-color:#000000;border-color:transparent;color:#ffffff;}

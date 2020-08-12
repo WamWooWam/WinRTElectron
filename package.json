@@ -4,8 +4,12 @@
   "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
-    "electron": "^8.2.5",
-    "typescript": "^3.9.2"
+    "deep-rename-keys": "^0.2.1"
+  },
+  "devDependencies": {
+    "electron-packager": "^15.0.0",
+    "typescript": "^3.9.2",
+    "electron": "^9.1.0"
   },
   "scripts": {
     "start": "electron ."

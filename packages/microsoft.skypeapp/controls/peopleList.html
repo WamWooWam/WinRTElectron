@@ -1,0 +1,66 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,peopleList page preloads")</script>
+        <link href="/controls/peopleList.css" rel="stylesheet">
+        <meta charset="utf-8">
+    </head>
+<body>
+
+    <div class="zoomContainer" data-win-control="WinJS.UI.SemanticZoom" data-win-options="{ enableButton: true }">
+
+        <div class="contacts list"
+            data-win-control="WinJS.UI.ListView"
+            data-win-bind="
+                winControl.itemDataSource: _dataSource.contacts.dataSource;
+                winControl.groupDataSource: _groupedContacts
+            "
+            tabindex="1">
+        </div>
+        <div class="alphabet list" data-win-control="WinJS.UI.ListView"
+            data-win-bind="winControl.itemDataSource: _dataSource.letters.groups.dataSource"
+            tabindex="2">
+        </div>
+    </div>
+
+
+    <!-- Templates -->
+    <div id="templates">
+        <div class="contactItemTemplate" data-templateid="contact" data-win-control="WinJS.Binding.Template" data-win-options="{extractChild: true}">
+            <div class="itemWrapper">
+                <div class="contactWrapper" data-win-bind="BLOCKED:conversation.isBlocked MvvmJS.Binding.toggleClassDelayed; this['aria-label']:conversation Skype.UI.PeopleList.contactAriaLabel; ">
+                    <div class="avatar" data-win-bind="backgroundImage:conversation.avatarUri MvvmJS.Binding.urlStyleDelayed;DEFAULTAVATAR:conversation.isDefaultAvatar MvvmJS.Binding.toggleClassDelayed">
+                        <div class="overlay"></div>
+                    </div>
+                    <div data-win-bind="innerHTML:conversation.name MvvmJS.Binding.unsafeHTML; FORCELTR:conversation.isPstnOnly MvvmJS.Binding.toggleClassDelayed;" class="title name"></div>
+                    <div class="detail status" data-win-bind="presence: conversation.presence MvvmJS.Binding.setAttributeDelayed">
+                        <div class="presence"></div>
+                        <span data-win-bind="innerHTML: conversation.formattedMoodInline MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocusDelayed" class="mood" aria-label=""></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="contactLetterTemplate" data-win-control="WinJS.Binding.Template" data-win-options="{extractChild: true, bindingInitializer: WinJS.Binding.oneTime}">
+            <div class="itemWrapper">
+                <div class="letterWrapper" data-win-bind="title: nameLowerCased">
+                    <div class="letter">
+                        <div data-win-bind="innerText: nameLowerCased"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alphabetLetterTemplate" data-templateid="alphabetLetter" data-win-control="WinJS.Binding.Template">
+            <div class="letterWrapper" data-win-bind="title: nameLowerCased">
+                <div class="letter" data-win-bind="used:contactsCount MvvmJS.Binding.toggleClass">
+                    <div data-win-bind="innerText: nameLowerCased"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

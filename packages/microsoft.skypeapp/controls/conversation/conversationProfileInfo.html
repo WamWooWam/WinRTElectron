@@ -1,0 +1,89 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConversationProfileInfo</title>
+    <link href="conversationProfileInfo.css" rel="stylesheet">
+    <script src="/js/vm/conversation/conversationProfileInfoVM.js"></script>
+</head>
+<body>
+    <div class="profile" data-onchange="selectedContact"
+         data-win-bind="DIALOG:sharedState.isDialog MvvmJS.Binding.toggleClass;EMERGENCY:sharedState.isEmergencyContact MvvmJS.Binding.toggleClass;PSTN:sharedState.isPstnContact MvvmJS.Binding.toggleClass;ECHO:sharedState.isEchoService MvvmJS.Binding.toggleClass;
+                        MESSENGER:sharedState.isMessengerContact MvvmJS.Binding.toggleClass;GROUP:sharedState.isDialog MvvmJS.Binding.toggleClassNegative;
+                        ACTIVE:isActive MvvmJS.Binding.toggleClass;LYNC:sharedState.isLyncContact MvvmJS.Binding.toggleClass;
+                        x:sharedState.state MvvmJS.Binding.bindConversationStateClass">
+        <!-- Avatar -->
+        <div class="avatar"></div>
+
+        <!-- Conversation Name -->
+        <div class="conversationNameContainer">
+            <div class="conversationName" data-win-bind="innerHTML:sharedState.name;FORCELTR:isPstnOnly MvvmJS.Binding.toggleClass"></div>
+        </div>
+
+        <!-- Dialog-->
+        <div class="status dialog" role="complementary" tabindex="7" data-win-bind="AVAILABLE:isAvailable MvvmJS.Binding.toggleClass">
+            <span class="ariaHelper" data-win-bind="innerHTML:sharedState.name"></span>
+            <span class="ariaHelper" data-win-bind="innerText:presenceAriaLabel"></span>
+            <div class="presence"></div>
+            <div class="moodMessageContainer">
+                <div class="moodMessage" data-win-bind="innerHTML:moodMessage MvvmJS.Binding.unsafeHTML"></div>
+            </div>
+            <div class="location">
+                <span class="timeInfo" data-win-bind="innerText:timeInfo"></span>
+                <span class="locationInfo" data-win-bind="innerText:locationInfo"></span>
+            </div>
+        </div>
+
+        <!-- Emergency Please clean code below at first possible oportunity-->
+        <div class="status emergency" data-win-bind="restriction:restrictionType MvvmJS.Binding.setAttribute">
+            <div class="wrapper">
+                <div class="noCountry" role="complementary" tabindex="7">
+                    <span class="ariaHelper" data-win-bind="innerHTML:sharedState.name"></span>
+                    <div class="content" data-win-res="{ textContent: 'dialer_emergency_no_country'}"></div>
+                    <button tabindex="7" class="text selectCountry" data-win-res="{ textContent: 'conversation_profile_select_country'}" data-win-bind="click:changeCountry MvvmJS.Binding.event"></button>
+                </div>
+                <div class="restrictedCountry" role="complementary" tabindex="7">
+                    <span class="ariaHelper" data-win-bind="innerHTML:sharedState.name"></span>
+                    <div class="info" data-win-bind="innerText:emergencyCountryName"></div>
+                    <div class="icon"></div>
+                    <h3 data-win-res="{ textContent: 'options_no_emergency'}"></h3>
+                    <div class="content" data-win-res="{ textContent: 'options_no_emergency_content'}"></div>
+                    <button tabindex="7" class="text changeCountry" data-win-res="{ textContent: 'conversation_profile_change_country'}" data-win-bind="click:changeCountry MvvmJS.Binding.event"></button>
+                </div>
+                <div class="allowedCountry" role="complementary" tabindex="7">
+                    <span class="ariaHelper" data-win-bind="innerHTML:sharedState.name"></span>
+                    <div class="info" data-win-bind="innerText:emergencyCountryName"></div>
+                    <div class="content" data-win-res="{ innerHTML: 'conversation_profile_limited_emergency_content'}"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Group -->
+        <div class="status group" role="complementary" tabindex="7">
+            <span class="ariaHelper" data-win-bind="innerHTML:sharedState.name"></span>
+            <a tabindex="7" class="participantCount kb-accessible" data-win-bind="click:showParticipantsList MvvmJS.Binding.event;innerText:participantCount; disabled: disabled"></a>
+        </div>
+
+        <!-- Actions -->
+        <div class="actionButtons">
+            <button id="atConversationVideoCallButton" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_profile_info_videocall_button' }}" class="videocall" data-win-bind="click:videoCall MvvmJS.Binding.event;DISABLED:callingDisabled MvvmJS.Binding.toggleClass;NOSENDVIDEO:videoSendDisabled MvvmJS.Binding.toggleClass" tabindex="7">&#xE102;</button>
+            <button id="atConversationAudioCallButton" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_profile_info_call_button' }}" class="call" data-win-bind="click:call MvvmJS.Binding.event;DISABLED:callingDisabled MvvmJS.Binding.toggleClass;NOSENDAUDIO:audioCallDisabled MvvmJS.Binding.toggleClass" tabindex="7">&#xE100;</button>
+            <button id="atConversationJoinCallButton" role="button" aria-haspopup="true" data-win-res="{title: 'profile_info_join_call_button',textContent: 'profile_info_join_call_button'}" class="joincallbutton" data-win-bind="click:doJoinGroupCall MvvmJS.Binding.event" tabindex="7"></button>
+            <button id="atConversationMoreButton" role="button" aria-haspopup="true" data-win-res="{attributes: { 'aria-label' : 'aria_profile_info_plus_button' }}" class="more" data-win-bind="click:doMore MvvmJS.Binding.event;HIDDEN:moreButtonDisabled MvvmJS.Binding.toggleClass" tabindex="7">&#xE108</button>
+        </div>
+
+        <!-- Menu -->
+        <div class="conversationCallMenu" data-win-control="Skype.UI.PhoneListMenu" data-win-bind="winControl:callMenu MvvmJS.Binding.out"></div>
+        <div class="conversationJoinCallMenu" data-win-control="WinJS.UI.Menu" data-win-bind="winControl:joinCallMenu MvvmJS.Binding.out" data-win-res="{attributes: { 'aria-label' : 'aria_profile_info_join_call_button' }}">
+            <button class="joinCallMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-res="{ textContent: 'profile_info_join_call_menu_audio', attributes: { 'aria-label' : 'aria_profile_info_join_call_menu_audio' }}" data-win-bind="click:call MvvmJS.Binding.event;disabled:audioCallDisabled"></button>
+            <button class="joinCallWithVideoMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-res="{ textContent: 'profile_info_join_call_menu_video', attributes: { 'aria-label' : 'aria_profile_info_join_call_menu_video' }}" data-win-bind="click:videoCall MvvmJS.Binding.event;disabled:videoSendDisabled"></button>
+        </div>‏
+        <div class="conversationMoreMenu" data-win-control="WinJS.UI.Menu" data-win-bind="winControl:moreMenu MvvmJS.Binding.out" data-win-res="{attributes: { 'aria-label' : 'aria_profile_info_plus_button' }}">
+            <button class="ftMoreMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-res="{ textContent: 'plus_menu_item_send_files', attributes: { 'aria-label' : 'aria_plus_menu_item_send_files' }}" data-win-bind="click:showSendFile MvvmJS.Binding.event;HIDDEN:fileTransferInapplicable MvvmJS.Binding.toggleClass"></button>
+            <button class="sendVideoMessage" data-win-control="WinJS.UI.MenuCommand" data-win-res="{ textContent: 'plus_menu_item_send_videomessage', attributes: { 'aria-label' : 'aria_plus_menu_item_send_videomessage' }}" data-win-bind="click:sendVideoMessage MvvmJS.Binding.event;HIDDEN:sendVideoMessageMenuItemHidden MvvmJS.Binding.toggleClass;disabled:sendVideoMessageMenuItemEnabled MvvmJS.Binding.not"></button>
+            <button class="addParticipantMoreMenuItem" data-win-control="WinJS.UI.MenuCommand" data-win-res="{ textContent: 'plus_menu_item_add_participants', attributes: { 'aria-label' : 'aria_plus_menu_item_add_participants' }}" data-win-bind="click:showAddParticipants MvvmJS.Binding.event"></button>
+        </div>
+    </div>
+</body>
+</html>

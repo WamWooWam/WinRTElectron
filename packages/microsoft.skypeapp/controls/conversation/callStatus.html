@@ -1,0 +1,19 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CallStatus control</title>
+    <link href="callStatus.css" rel="stylesheet">
+    <script src="/js/vm/conversation/callStatusVM.js"></script>
+</head>
+<body>
+    <div class="callStatusWrapper">
+        <h1 class="name" tabindex="7" data-win-bind="innerHTML: sharedState.name;FORCELTR:isPstnOnly MvvmJS.Binding.toggleClass;CHATOPENINLIVE:sharedState.isChatOpenInLive MvvmJS.Binding.toggleClass;this['aria-label']:liveConversationAriaTitle WinJS.Binding.setAttribute"></h1>
+        <div class="details" data-win-bind="NUMBEROFPARTVISIBLE:isNumberOfParticipantsVisible MvvmJS.Binding.toggleClass">
+            <span class="immersiveIgnore numberOfParticipants" role="link" tabindex="7" data-win-bind="innerText: numberOfParticipantsInLive;this['aria-label']:numberOfParticipantsInLiveAria WinJS.Binding.setAttribute"></span>
+            <span class="callStatus" tabindex="7" data-win-bind="innerText: headerCallStatus;this['aria-label']:liveConversationAriaStatus WinJS.Binding.setAttribute"></span>
+        </div>
+    </div>
+</body>
+</html>

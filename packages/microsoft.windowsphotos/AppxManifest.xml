@@ -1,0 +1,542 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+    <Identity Name="microsoft.windowsphotos" ProcessorArchitecture="x64" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="16.4.4204.712" />
+    <Properties>
+        <Framework>false</Framework>
+        <DisplayName>ms-resource:///photo/residAppName</DisplayName>
+        <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+        <Description>ms-resource:///photo/residAppDescription</Description>
+        <Logo>ModernPhoto\Images\storelogo.png</Logo>
+    </Properties>
+    <Resources>
+        <Resource Language="en-us" />
+        <Resource Language="af" />
+        <Resource Language="am" />
+        <Resource Language="ar" />
+        <Resource Language="as" />
+        <Resource Language="az-latn" />
+        <Resource Language="be" />
+        <Resource Language="bg" />
+        <Resource Language="bn-bd" />
+        <Resource Language="bn-in" />
+        <Resource Language="bs" />
+        <Resource Language="ca" />
+        <Resource Language="ca-es-valencia" />
+        <Resource Language="cs" />
+        <Resource Language="cy" />
+        <Resource Language="da" />
+        <Resource Language="de" />
+        <Resource Language="el" />
+        <Resource Language="en-gb" />
+        <Resource Language="es" />
+        <Resource Language="et" />
+        <Resource Language="eu" />
+        <Resource Language="fa" />
+        <Resource Language="fi" />
+        <Resource Language="fil-latn" />
+        <Resource Language="fr" />
+        <Resource Language="ga" />
+        <Resource Language="gd-latn" />
+        <Resource Language="gl" />
+        <Resource Language="gu" />
+        <Resource Language="ha-latn" />
+        <Resource Language="he" />
+        <Resource Language="hi" />
+        <Resource Language="hr" />
+        <Resource Language="hu" />
+        <Resource Language="hy" />
+        <Resource Language="id" />
+        <Resource Language="ig-latn" />
+        <Resource Language="is" />
+        <Resource Language="it" />
+        <Resource Language="iu-latn" />
+        <Resource Language="ja" />
+        <Resource Language="ka" />
+        <Resource Language="kk" />
+        <Resource Language="km" />
+        <Resource Language="kn" />
+        <Resource Language="ko" />
+        <Resource Language="kok" />
+        <Resource Language="ku-arab" />
+        <Resource Language="ky-cyrl" />
+        <Resource Language="lb" />
+        <Resource Language="lt" />
+        <Resource Language="lv" />
+        <Resource Language="mi-latn" />
+        <Resource Language="mk" />
+        <Resource Language="ml" />
+        <Resource Language="mn-cyrl" />
+        <Resource Language="mr" />
+        <Resource Language="ms" />
+        <Resource Language="mt" />
+        <Resource Language="nb" />
+        <Resource Language="ne" />
+        <Resource Language="nl" />
+        <Resource Language="nn" />
+        <Resource Language="nso" />
+        <Resource Language="or" />
+        <Resource Language="pa" />
+        <Resource Language="pa-arab" />
+        <Resource Language="pl" />
+        <Resource Language="prs-arab" />
+        <Resource Language="pt-br" />
+        <Resource Language="pt-pt" />
+        <Resource Language="qut-latn" />
+        <Resource Language="quz" />
+        <Resource Language="ro" />
+        <Resource Language="ru" />
+        <Resource Language="rw" />
+        <Resource Language="sd-arab" />
+        <Resource Language="si" />
+        <Resource Language="sk" />
+        <Resource Language="sl" />
+        <Resource Language="sq" />
+        <Resource Language="sr-cyrl-ba" />
+        <Resource Language="sr-cyrl-cs" />
+        <Resource Language="sr-latn" />
+        <Resource Language="sv" />
+        <Resource Language="sw" />
+        <Resource Language="ta" />
+        <Resource Language="te" />
+        <Resource Language="tg-cyrl" />
+        <Resource Language="th" />
+        <Resource Language="ti" />
+        <Resource Language="tk-latn" />
+        <Resource Language="tn" />
+        <Resource Language="tr" />
+        <Resource Language="tt-cyrl" />
+        <Resource Language="ug-arab" />
+        <Resource Language="uk" />
+        <Resource Language="ur" />
+        <Resource Language="uz-latn" />
+        <Resource Language="vi" />
+        <Resource Language="wo" />
+        <Resource Language="xh" />
+        <Resource Language="yo-latn" />
+        <Resource Language="zh-hans" />
+        <Resource Language="zh-hant" />
+        <Resource Language="zu" />
+    </Resources>
+    <Prerequisites>
+        <OSMinVersion>6.2.1</OSMinVersion>
+        <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+    </Prerequisites>
+    <Capabilities>
+        <Capability Name="picturesLibrary" />
+        <Capability Name="internetClientServer" />
+        <Capability Name="privateNetworkClientServer" />
+        <Capability Name="removableStorage" />
+    </Capabilities>
+    <Applications>
+        <Application Id="Microsoft.WindowsLive.ModernPhotos" StartPage="ModernPhoto\PhotosApplication\PhotosApplication.htm">
+            <VisualElements DisplayName="ms-resource:///photo/residAppName" Logo="ModernPhoto\Images\squarelogo.png" SmallLogo="ModernPhoto\Images\smalllogo.png" Description="ms-resource:///photo/residAppDescription" ForegroundText="light" BackgroundColor="#008299">
+                <DefaultTile 
+                    ShortName="ms-resource:///photo/residAppName" 
+                    ShowName="allLogos" 
+                    WideLogo="ModernPhoto\Images\widelogo.png" />
+                <SplashScreen Image="ModernPhoto\Images\splashscreen.png" />
+            </VisualElements>
+            <Extensions>
+                <Extension Category="windows.search" StartPage="ModernPhoto\PhotosApplication\PhotosApplication.htm" />
+                <Extension Category="windows.backgroundTasks" StartPage="ModernPhoto\PhotosBackgroundTaskWorker\PhotosBackgroundTaskWorker.js">
+                    <BackgroundTasks>
+                        <Task Type="systemEvent" />
+                    </BackgroundTasks>
+                </Extension>
+                <Extension Category="windows.backgroundTasks" StartPage="ModernPhoto\PhotosBackgroundTaskWorker\PhotosTileUpdaterBackgroundTask.js">
+                    <BackgroundTasks>
+                        <Task Type="systemEvent" />
+                    </BackgroundTasks>
+                </Extension>
+                <Extension Category="windows.autoPlayContent">
+                    <AutoPlayContent>
+                        <LaunchAction Verb="storageDevice" ActionDisplayName="ms-resource:///photo/residAutoplayDisplayText" ContentEvent="CameraMemoryOnArrival" />
+                        <LaunchAction Verb="storageDeviceWithPhotos" ActionDisplayName="ms-resource:///photo/residAutoplayDisplayText" ContentEvent="ShowPicturesOnArrival" />
+                        <LaunchAction Verb="storageDeviceWithVideos" ActionDisplayName="ms-resource:///photo/residAutoplayDisplayText" ContentEvent="PlayVideoFilesOnArrival" />
+                    </AutoPlayContent>
+                </Extension>
+                <Extension Category="windows.autoPlayDevice">
+                    <AutoPlayDevice>
+                        <LaunchAction Verb="wpdImage" ActionDisplayName="ms-resource:///photo/residAutoplayDisplayText" DeviceEvent="WPD\ImageSource" />
+                        <LaunchAction Verb="wpdVideo" ActionDisplayName="ms-resource:///photo/residAutoplayDisplayText" DeviceEvent="WPD\VideoSource" />
+                    </AutoPlayDevice>
+                </Extension>
+                <Extension Category="windows.fileTypeAssociation" StartPage="ModernPhoto\PhotosApplication\PhotosApplication.htm">
+                    <FileTypeAssociation Name="imagetypes">
+                        <Logo>ModernPhoto\Images\Icon.png</Logo>
+                        <SupportedFileTypes>
+                            <FileType>.jpg</FileType>
+                            <FileType>.jpe</FileType>
+                            <FileType>.jpeg</FileType>
+                            <FileType>.jfif</FileType>
+                            <FileType>.png</FileType>
+                            <FileType>.bmp</FileType>
+                            <FileType>.dib</FileType>
+                            <FileType>.tif</FileType>
+                            <FileType>.tiff</FileType>
+                            <FileType>.wdp</FileType>
+                            <FileType>.gif</FileType>
+                            <FileType>.jxr</FileType>
+                            <FileType>.mpo</FileType>
+                            <FileType>.hdp</FileType>
+                        </SupportedFileTypes>
+                    </FileTypeAssociation>
+                </Extension>
+                <Extension Category="windows.fileTypeAssociation" StartPage="ModernPhoto\PhotosApplication\PhotosApplication.htm">
+                    <FileTypeAssociation Name="rawtypes">
+                        <Logo>ModernPhoto\Images\Icon.png</Logo>
+                        <SupportedFileTypes>
+                            <FileType>.3fr</FileType>
+                            <FileType>.ari</FileType>
+                            <FileType>.arw</FileType>
+                            <FileType>.bay</FileType>
+                            <FileType>.cr2</FileType>
+                            <FileType>.crw</FileType>
+                            <FileType>.cap</FileType>
+                            <FileType>.dcf</FileType>
+                            <FileType>.dcs</FileType>
+                            <FileType>.dcr</FileType>
+                            <FileType>.dng</FileType>
+                            <FileType>.drf</FileType>
+                            <FileType>.eip</FileType>
+                            <FileType>.erf</FileType>
+                            <FileType>.fff</FileType>
+                            <FileType>.iiq</FileType>
+                            <FileType>.k25</FileType>
+                            <FileType>.kdc</FileType>
+                            <FileType>.mef</FileType>
+                            <FileType>.mos</FileType>
+                            <FileType>.mrf</FileType>
+                            <FileType>.mrw</FileType>
+                            <FileType>.nef</FileType>
+                            <FileType>.nrw</FileType>
+                            <FileType>.orf</FileType>
+                            <FileType>.pef</FileType>
+                            <FileType>.ptx</FileType>
+                            <FileType>.pxn</FileType>
+                            <FileType>.r3d</FileType>
+                            <FileType>.raf</FileType>
+                            <FileType>.raw</FileType>
+                            <FileType>.rwl</FileType>
+                            <FileType>.rw2</FileType>
+                            <FileType>.rwz</FileType>
+                            <FileType>.sr2</FileType>
+                            <FileType>.srf</FileType>
+                            <FileType>.srw</FileType>
+                            <FileType>.x3f</FileType>
+                        </SupportedFileTypes>
+                    </FileTypeAssociation>
+                </Extension>
+                <Extension Category="windows.fileTypeAssociation" StartPage="ModernPhoto\PhotosApplication\PhotosApplication.htm">
+                    <FileTypeAssociation Name="videotypes">
+                        <Logo>ModernPhoto\Images\Icon.png</Logo>
+                        <SupportedFileTypes>
+                            <FileType>.3g2</FileType>
+                            <FileType>.3gp2</FileType>
+                            <FileType>.3gp</FileType>
+                            <FileType>.3gpp</FileType>
+                            <FileType>.m4v</FileType>
+                            <FileType>.mp4v</FileType>
+                            <FileType>.mp4</FileType>
+                            <FileType>.mov</FileType>
+                            <FileType>.mpe</FileType>
+                            <FileType>.mpeg</FileType>
+                            <FileType>.mpg</FileType>
+                            <FileType>.mts</FileType>
+                            <FileType>.wm</FileType>
+                            <FileType>.wmv</FileType>
+                            <FileType>.avi</FileType>
+                            <FileType>.m2t</FileType>
+                            <FileType>.m2ts</FileType>
+                            <FileType>.mod</FileType>
+                            <FileType>.mmv</FileType>
+                        </SupportedFileTypes>
+                    </FileTypeAssociation>
+                </Extension>
+                <Extension Category="windows.fileTypeAssociation" StartPage="ModernPhoto\PhotosApplication\PhotosApplication.htm">
+                    <FileTypeAssociation Name="sidecartypes">
+                        <Logo>ModernPhoto\Images\Icon.png</Logo>
+                        <SupportedFileTypes>
+                            <FileType>.thm</FileType>
+                            <FileType>.wav</FileType>
+                            <FileType>.xmp</FileType>
+                        </SupportedFileTypes>
+                    </FileTypeAssociation>
+                </Extension>
+                <Extension Category="windows.fileOpenPicker">
+                    <FileOpenPicker>
+                        <SupportedFileTypes>
+                            <FileType>.jpg</FileType>
+                            <FileType>.jpe</FileType>
+                            <FileType>.jpeg</FileType>
+                            <FileType>.jfif</FileType>
+                            <FileType>.png</FileType>
+                            <FileType>.bmp</FileType>
+                            <FileType>.dib</FileType>
+                            <FileType>.tif</FileType>
+                            <FileType>.tiff</FileType>
+                            <FileType>.wdp</FileType>
+                            <FileType>.gif</FileType>
+                            <FileType>.jxr</FileType>
+                            <FileType>.mpo</FileType>
+                            <FileType>.hdp</FileType>
+                            <FileType>.3fr</FileType>
+                            <FileType>.ari</FileType>
+                            <FileType>.arw</FileType>
+                            <FileType>.bay</FileType>
+                            <FileType>.cr2</FileType>
+                            <FileType>.crw</FileType>
+                            <FileType>.cap</FileType>
+                            <FileType>.dcf</FileType>
+                            <FileType>.dcs</FileType>
+                            <FileType>.dcr</FileType>
+                            <FileType>.dng</FileType>
+                            <FileType>.drf</FileType>
+                            <FileType>.eip</FileType>
+                            <FileType>.erf</FileType>
+                            <FileType>.fff</FileType>
+                            <FileType>.iiq</FileType>
+                            <FileType>.k25</FileType>
+                            <FileType>.kdc</FileType>
+                            <FileType>.mef</FileType>
+                            <FileType>.mos</FileType>
+                            <FileType>.mrf</FileType>
+                            <FileType>.mrw</FileType>
+                            <FileType>.nef</FileType>
+                            <FileType>.nrw</FileType>
+                            <FileType>.orf</FileType>
+                            <FileType>.pef</FileType>
+                            <FileType>.ptx</FileType>
+                            <FileType>.pxn</FileType>
+                            <FileType>.r3d</FileType>
+                            <FileType>.raf</FileType>
+                            <FileType>.raw</FileType>
+                            <FileType>.rwl</FileType>
+                            <FileType>.rw2</FileType>
+                            <FileType>.rwz</FileType>
+                            <FileType>.sr2</FileType>
+                            <FileType>.srf</FileType>
+                            <FileType>.srw</FileType>
+                            <FileType>.x3f</FileType>
+                            <FileType>.3g2</FileType>
+                            <FileType>.3gp2</FileType>
+                            <FileType>.3gp</FileType>
+                            <FileType>.3gpp</FileType>
+                            <FileType>.m4v</FileType>
+                            <FileType>.mp4v</FileType>
+                            <FileType>.mp4</FileType>
+                            <FileType>.mov</FileType>
+                            <FileType>.mpe</FileType>
+                            <FileType>.mpeg</FileType>
+                            <FileType>.mpg</FileType>
+                            <FileType>.mts</FileType>
+                            <FileType>.wm</FileType>
+                            <FileType>.wmv</FileType>
+                            <FileType>.avi</FileType>
+                            <FileType>.m2t</FileType>
+                            <FileType>.m2ts</FileType>
+                            <FileType>.mod</FileType>
+                            <FileType>.mmv</FileType>
+                        </SupportedFileTypes>
+                    </FileOpenPicker>
+                </Extension>
+            </Extensions>
+        </Application>
+    </Applications>
+    <Extensions>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>Microsoft.WindowsLive.ClientAccessLibrary.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.ClientAccessLibrary.LibraryManager" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>Microsoft.WindowsLive.ClientAccessLibrary.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.ClientAccessLibrary.VideoStreamingSchemeHandler" ThreadingModel="MTA" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.proxyStub">
+            <ProxyStub ClassId="EEF937BE-9962-4A9B-87EA-24909A14B768">
+                <Path>Microsoft.WindowsLive.ClientAccessLibrary.dll</Path>
+                <Interface Name="Microsoft.WindowsLive.ClientAccessLibrary.ISourceChangedHandler" InterfaceId="9e3437aa-0cf7-4315-ba98-f398d281e5a6" />
+                <Interface Name="Microsoft.WindowsLive.ClientAccessLibrary.ISourcePropertiesChangedHandler" InterfaceId="37B94A9A-662F-47DA-A1AF-7609F792FEC0" />
+                <Interface Name="Microsoft.WindowsLive.ClientAccessLibrary.IUserReadyHandler" InterfaceId="8dfd2a03-bcac-40a8-8745-ef7d64dcec15" />
+                <Interface Name="Microsoft.WindowsLive.ClientAccessLibrary.IPlatformReadyHandler" InterfaceId="b6ad8020-74e3-45fa-99cd-4b8542220680" />
+                <Interface Name="__FIAsyncOperationCompletedHandler_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CISourceProperties" InterfaceId="8cbb12a4-daf6-5f46-a970-97924a4f4f96" />
+                <Interface Name="__FIAsyncOperationProgressHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CISourceProperties_UINT32" InterfaceId="4a90fbab-7701-5dd0-8cb6-920f666c0b85" />
+                <Interface Name="__FIAsyncOperationWithProgressCompletedHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CISourceProperties_UINT32" InterfaceId="479e7dac-7d3b-5e48-a621-88528360f6fa" />
+                <Interface Name="__FIAsyncOperationProgressHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CIItemDataStream_UINT32" InterfaceId="c959926c-3ab9-5066-b920-404807c42792" />
+                <Interface Name="__FIAsyncOperationWithProgressCompletedHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CIItemDataStream_UINT32" InterfaceId="56b8809b-d681-56d8-b8db-7c851e58072c" />
+                <Interface Name="__FIAsyncOperationProgressHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CIItemSocialMetadata_UINT32" InterfaceId="cf834a99-a26a-59b2-b18b-3e4ae74503b8" />
+                <Interface Name="__FIAsyncOperationWithProgressCompletedHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CIItemSocialMetadata_UINT32" InterfaceId="6e82d209-a607-591f-a87b-779a230a0dea" />
+                <Interface Name="__FIAsyncOperationProgressHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CIItemMetadata_UINT32" InterfaceId="785bff1a-a102-5ed6-8fc5-18cf77a38169" />
+                <Interface Name="__FIAsyncOperationWithProgressCompletedHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CIItemMetadata_UINT32" InterfaceId="3dab0047-4317-5d77-9408-eef8c9eff2ab" />
+                <Interface Name="__FIAsyncOperationProgressHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CISyncChanges_UINT32" InterfaceId="cc4ed692-e589-5076-aa9c-ba4a8f25ba87" />
+                <Interface Name="__FIAsyncOperationWithProgressCompletedHandler_2___FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CISyncChanges_UINT32" InterfaceId="05b6fcbb-4f22-5142-b1cc-a9a583fe8f7e" />
+                <Interface Name="__FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__CWorker__CMetadataQuery" InterfaceId="4dc53dad-3731-5045-884a-a124bd4e2bc6" />
+                <Interface Name="__FIVectorView_1_Microsoft__CWindowsLive__CClientAccessLibrary__CWorker__CDataStreamQuery" InterfaceId="093e3037-1609-53e4-a0ad-2c2ee4e5ba56" />
+                <Interface Name="__FIAsyncOperationCompletedHandler_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CCreateMailTemplateProperties" InterfaceId="707a08a3-1e0e-51db-92ce-93961bb28a28" />
+                <Interface Name="__FIAsyncOperationCompletedHandler_1_Microsoft__CWindowsLive__CClientAccessLibrary__COperation__CUploadItemProperties" InterfaceId="8135a7e4-8255-5c15-92dc-28e183b20219" />
+                <Interface Name="__FIAsyncOperationCompletedHandler_1_Windows__CData__CJson__CIJsonValue" InterfaceId="bffa46c1-0a24-56af-8b12-48519ff73670" />
+            </ProxyStub>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>WindowsLive.Photo.App.dll</Path>
+                <ActivatableClass ActivatableClassId="WindowsLive.Photo.App.DataProvider" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Etw.Providers.PhotoAppProvider" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="WindowsLive.Photo.App.Import.ImportDataProvider" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>shared\bici.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.Bici" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.DatapointValueList" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.TransactionContext" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.TransactionId" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>ModernShared\ErrorReporting\ErrorReporting.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Shared.Telemetry.ErrorReporting" ThreadingModel="MTA" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.proxyStub">
+            <ProxyStub ClassId="3c20f953-30a9-406c-a60b-e59383c0c2d4">
+                <Path>ModernShared\ErrorReporting\ErrorReporting.dll</Path>
+                <Interface InterfaceId="79a28913-f905-4b9e-8254-ac9d9cc76bcb" Name="IErrorReporting" />
+            </ProxyStub>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>wlcore.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Etw.Session" ThreadingModel="STA" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>wlcore.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Jx" ThreadingModel="STA" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>wlcore.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Cid.CidFormatter" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>Microsoft.PerfTrack.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.PerfTrack.PerfTrackLogger" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>WindowsLive.Photo.Viewer.dll</Path>
+                <ActivatableClass ActivatableClassId="WindowsLive.Photo.Viewer.Commanding.CommandManager" ThreadingModel="STA" />
+                <ActivatableClass ActivatableClassId="WindowsLive.Photo.Viewer.DataModel.Hub" ThreadingModel="STA" />
+                <ActivatableClass ActivatableClassId="WindowsLive.Photo.Viewer.DataModel.Formatting" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Etw.Providers.PhotoViewerProvider" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.proxyStub">
+            <ProxyStub ClassId="9C3ED1BC-9E9E-421C-A867-B66E788382E3">
+                <Path>WindowsLive.Photo.Viewer.dll</Path>
+                <Interface Name="WindowsLive.Photo.Viewer.DataModel.IObject" InterfaceId="7E0DD731-4791-4C1A-8CA2-C2B172F2E25A" />
+                <Interface Name="WindowsLive.Photo.Viewer.DataModel.IObjectCollection" InterfaceId="4C305D17-020F-473b-94BF-B7BA81E92EF0" />
+                <Interface Name="WindowsLive.Photo.Viewer.DataModel.IObjectGetPropertiesHandler" InterfaceId="4A1E86B6-6924-4143-820C-2271FA82386E" />
+                <Interface Name="__FIAsyncOperationCompletedHandler_1_IInspectable" InterfaceId="3f08262e-a2e1-5134-9297-e9211f481a2d" />
+                <Interface Name="__FIAsyncOperationCompletedHandler_1_WindowsLive__CPhoto__CViewer__CDataModel__CIObjectGetBlobOperationResult" InterfaceId="71a544c6-a873-5b2d-afd3-ff099cf2e82e" />
+                <Interface Name="WindowsLive.Photo.Viewer.DataProvider.ICollectionChangedHandler" InterfaceId="79b8b161-ff08-4d38-81f9-12ae56099ae7" />
+                <Interface Name="WindowsLive.Photo.Viewer.DataProvider.IProviderItemsChangedHandler" InterfaceId="472f0966-115b-4b02-8157-26e217cee877" />
+            </ProxyStub>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>Microsoft.WindowsLive.Platform.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.LiveComm.FirstRun" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Client" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.DirectPushNotificationTask" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.DirectPushKeepAliveTask" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.ManualPushNotificationTask" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.ManualPushKeepAliveTask" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Private.ClientManagerProvider" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.OnlineIdConnectedStateChangeTask" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.ServicingCompleteTask" ThreadingModel="MTA" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.VerbBackgroundTask" ThreadingModel="MTA" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.outOfProcessServer">
+            <OutOfProcessServer ServerName="Microsoft.WindowsLive.Platform.Server">
+                <Path>LiveComm.exe</Path>
+                <Instancing>singleInstance</Instancing>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Service.RemoteProcess" />
+            </OutOfProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.proxyStub">
+            <ProxyStub ClassId="3F0E13A0-4667-4C78-84B0-9BB753C5EF0E">
+                <Path>Microsoft.WindowsLive.Platform.dll</Path>
+                <Interface InterfaceId="5F333224-DB8B-4A5D-8294-136963C37A6C" Name="IContactSynchronizationPrivate" />
+                <Interface InterfaceId="A2AA2A99-3081-41AC-935B-2070F3C744BC" Name="ILivePlatformRemoteUserFactory" />
+                <Interface InterfaceId="FCDCFE93-A860-448F-9F59-40E7D85609BC" Name="ILivePlatformRemoteUser" />
+                <Interface InterfaceId="D6C4144A-21BD-4385-BAC2-7F2F1C53DE89" Name="ILivePlatformRemoteUserCallback" />
+                <Interface InterfaceId="A7E197EA-F5A0-4028-9D8B-1E909B157BF7" Name="ILivePlatformRemoteUserCollection" />
+                <Interface InterfaceId="A0BA40C3-0231-4C69-B33D-36F181F09F4E" Name="ILivePlatformRestartCallback" />
+                <Interface InterfaceId="8BCEC5DB-850C-469F-862F-8AE7AB6C33FC" Name="ILivePlatformVerb" />
+                <Interface InterfaceId="09B06684-A2BF-4F62-9A77-D1B04F3187CA" Name="ILivePlatformVerbManager" />
+                <Interface InterfaceId="C02321F7-A955-40E5-99F0-67E58E088AB1" Name="ILivePlatformSuspendResumeHandler" />
+                <Interface InterfaceId="10A3C2A2-0BCE-4FE2-94BC-F757CD5A5890" Name="ILivePlatformClientVisibility" />
+                <Interface InterfaceId="F2CAF5A9-6237-401D-A8F6-08A553F00C8F" Name="ILivePlatformPropertyBag" />
+                <Interface InterfaceId="F6794DDC-B81A-42B8-817C-C9C5B7309AA1" Name="ILivePlatformObjectWithSite" />
+                <Interface InterfaceId="24D38301-B637-48A4-87FF-C5AA37C7B4A5" Name="ILivePlatformService" />
+                <Interface InterfaceId="946B3A75-7908-4422-AAEC-0848CE3E5D0F" Name="ILivePlatformServiceProvider" />
+                <Interface InterfaceId="FFE41672-09AD-426E-8516-BD8F20665BDC" Name="ILivePlatformServiceSink" />
+                <Interface InterfaceId="2B7B0B00-5A8C-43A0-923A-BD301CE1E641" Name="ILivePlatformServiceSite" />
+                <Interface InterfaceId="236D2810-8F38-4A3F-A962-76671AE05706" Name="ILivePlatformVerbHandler" />
+                <Interface InterfaceId="146579FD-2F9F-4F33-8D16-E3AEEB5E01F8" Name="IStoreCacheViewRpc" />
+                <Interface InterfaceId="1D5D7A91-57AF-4357-A059-0C5BBDE930A6" Name="IStoreIndexViewCallbackRpc" />
+                <Interface InterfaceId="45FEC7E0-5423-41A9-9D8A-49E44EB04AEC" Name="IStoreIndexViewRpc" />
+                <Interface InterfaceId="822C098A-6362-4ECE-BB8B-B1644AEA0DDB" Name="IStoreObjectManagerAttachRpc" />
+                <Interface InterfaceId="5D18B906-9491-4068-BC9A-EC2DF95D0038" Name="IStoreObjectManagerRpc" />
+                <Interface InterfaceId="5BF07B22-C7D9-4D0D-AEA0-A8F5F9B157E4" Name="IStoreObjectViewCallbackRpc" />
+            </ProxyStub>
+        </Extension>
+        <Extension Category="windows.activatableClass.proxyStub">
+            <ProxyStub ClassId="3F0E13A0-4667-4C78-84B0-9BB753C5EF0E">
+                <Path>Microsoft.WindowsLive.Platform.dll</Path>
+                <Interface InterfaceId="FCFF04A5-FD25-4067-92AD-D5E68E8713D3" Name="IClient" />
+                <Interface InterfaceId="6856F702-1773-42B2-B9FE-7B016B287620" Name="IClientServices" />
+                <Interface InterfaceId="1B90E109-764C-497C-B263-42B4CF9077F7" Name="IDisposable" />
+                <Interface InterfaceId="441A3458-5FA4-47A1-8901-BA0DB7904AE3" Name="IObject" />
+                <Interface InterfaceId="9277EF55-3AAA-4DBF-91D7-333EC929BDDE" Name="ICollection" />
+                <Interface InterfaceId="7E4DFA6D-DDC6-4102-9D04-41329B11F469" Name="IAccountManager" />
+                <Interface InterfaceId="EFD894E3-B4E3-47BE-AE33-775EBA39EC4C" Name="IAccount" />
+                <Interface InterfaceId="3784BDD8-0A96-4AB2-9B75-44D3341013B8" Name="IAccountResource" />
+                <Interface InterfaceId="B13DD99F-6A9C-4E64-AD46-A960ACDF48E2" Name="IMailManager" />
+                <Interface InterfaceId="D65F1BC5-07F6-4445-A75F-492F4B5A7F2F" Name="IMailMessage" />
+                <Interface InterfaceId="B3A9D3C0-9C7D-46D9-9097-5D2002F86C7E" Name="IMailAttachment" />
+            </ProxyStub>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>Microsoft.WindowsLive.Launch.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Config.Shared.SuiteUpdate" ThreadingModel="both" />
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Config.Shared.Feedback" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+        <Extension Category="windows.activatableClass.inProcessServer">
+            <InProcessServer>
+                <Path>Microsoft.WindowsLive.Shared.Market.dll</Path>
+                <ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Market" ThreadingModel="both" />
+            </InProcessServer>
+        </Extension>
+    </Extensions>
+    <Dependencies>
+        <PackageDependency Name="Microsoft.VCLibs.110.00" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" MinVersion="11.0.0.0" />
+        <PackageDependency Name="Microsoft.WinJS.1.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" />
+    </Dependencies>
+</Package>

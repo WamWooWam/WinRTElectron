@@ -1,0 +1,9 @@
+﻿body{margin:0;padding:0;font-family:"Segoe UI", Tahoma, Verdana, Arial, sans-serif;color:rgba(42, 42, 42, 1);}
+.singleLineText{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.typeSizeLarge{font-size:56px;letter-spacing:0.02em;line-height:64px;padding-bottom:11px;padding-top:5px;}
+.typeSizeMedium{font-size:26.66667px;letter-spacing:0.04em;line-height:32px;padding-bottom:5px;padding-top:3px;}
+.typeSizeNormal{font-size:14.66667px;letter-spacing:0.05em;line-height:20px;}
+.typeSizeSmall{font-size:12px;letter-spacing:0.04em;line-height:20px;}
+.typeSizeSmall p, .typeSizeSmall ul, .typeSizeNormal p, .typeSizeNormal ul{padding-bottom:20px;}
+.typeForAuthoring{font-family:Calibri, Verdana, Arial, Helvetica, sans-serif;font-size:16px;line-height:20px;}
+.typeForAuthoring p{margin-bottom:20px;}

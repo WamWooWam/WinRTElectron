@@ -1,0 +1,27 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BlockContactDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="blockContactDialog.js"></script>
+</head>
+<body>
+    <div id="blockContactDialog" class="dialogFlyout" data-win-control="WinJS.UI.Flyout" data-win-bind="x:vm.extraClass MvvmJS.Binding.bindClass; keypress:keyPress MvvmJS.Binding.event; this['aria-label']:vm.title WinJS.Binding.setAttribute">
+        <div class="description" data-win-bind="textContent: vm.title"></div>
+        <div>
+            <input id="removeCheckbox" type="checkbox" role="checkbox" data-win-bind="checked:vm.remove MvvmJS.Binding.twoway; disabled:vm.disableRemove; this['aria-label']:vm.ariaRemoveTitle WinJS.Binding.setAttribute" /><label for="removeCheckbox" data-win-bind="textContent: vm.removeTitle"></label>
+        </div>
+        <div>
+            <input id="spamCheckbox" type="checkbox" role="checkbox" data-win-bind="checked:vm.spam MvvmJS.Binding.twoway; this['aria-label']:vm.ariaSpamTitle WinJS.Binding.setAttribute" /><label for="spamCheckbox" data-win-bind="textContent: vm.spamTitle"></label>
+        </div>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atblockContactDialogOkButton" role="button" class="text" data-win-bind="textContent: vm.okTitle; click:okAction MvvmJS.Binding.event; this['aria-label']:vm.ariaOkTitle WinJS.Binding.setAttribute"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

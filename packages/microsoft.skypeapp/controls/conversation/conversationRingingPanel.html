@@ -1,0 +1,34 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConversationRingingPanel</title>
+    <link href="conversationRingingPanel.css" rel="stylesheet">
+    <script src="/controls/conversation/conversationCallingAnimation.js"></script>
+    <script src="/js/vm/conversation/conversationRingingPanelVM.js"></script>
+</head>
+<body>
+    <div class="ringingPanel" data-win-bind="this['aria-label']:panelAriaLabel  WinJS.Binding.setAttribute;">
+        <header>
+            <button id="atRingingPanelBackButton" data-win-bind="click:navigateBack MvvmJS.Binding.event;" class="backbutton backbutton-light win-backbutton" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="6"></button>
+            <div class="wrapper">
+                <h1 class="name" data-win-bind="innerHTML: conversationName;"></h1>
+                <div class="callStatus" data-win-bind="innerText: headerCallStatus"></div>
+            </div>
+        </header>
+
+        <!-- Call animations control -->
+        <div class="callAnimationContainer VISIBLE" data-win-control="explicit"></div>
+
+        <!-- action buttons -->
+        <div class="bottomHolder">
+            <div class="incomingCallActionButtons">
+                <button id="atConversationVideoCallAnswerButton" tabindex="1" class="answerVideo" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_notification_answer_video' }}" data-win-bind="click:answerVideo MvvmJS.Binding.event;HIDDEN:answerVideoDisabled MvvmJS.Binding.toggleClass">&#xE102;</button>
+                <button id="atConversationAudioCallAnswerButton" tabindex="1" class="answer" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_notification_answer' }}" data-win-bind="click:answer MvvmJS.Binding.event">&#xE100;</button>
+                <button id="atConversationRejectAnswerButton" tabindex="1" class="hangUp" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_notification_decline' }}" data-win-bind="click:reject MvvmJS.Binding.event">&#xE101;</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -4,7 +4,8 @@ import { Contact } from "./Contact"
 import { AccountsResource } from "./AccountsResource"
 import { MailResource } from "./MailResource"
 import { Collection } from "./Utils";
-import { ShimProxyHandler, Enumerable, Uri } from "winrt-node/Windows.Foundation"
+import { Enumerable, Uri } from "winrt-node/Windows.Foundation"
+import { ShimProxyHandler } from "winrt-node/ShimProxyHandler"
 import { AccountServerConnectionSettings } from "./AccountServerConnectionSettings"
 import { Windows } from "winrt-node"
 

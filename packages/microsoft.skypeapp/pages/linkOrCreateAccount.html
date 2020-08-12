@@ -1,0 +1,123 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../js/statistics/omnitureReporter.js"></script>
+
+	<link href="linkOrCreateAccount.css" rel="stylesheet">
+	<script src="linkOrCreateAccount.js"></script>
+</head>
+<body>
+	<div class="fragment linkOrCreateAccount">
+        <div class="logo">
+            <img src="/images/svg/logo_white.svg" />
+        </div>
+	    
+        <div class="msaLoginInfo">
+            <span id="msaLoginEmail"></span>
+            <a id="msaLoginChangeLink" class="link" role="link" data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_account_change_link'}" tabindex="3"></a>
+        </div>
+
+	    <div class="startUsingSkype animRegion animGroup2 hidden" data-win-res="{attributes: { 'aria-label' : 'linkOrCreateAccount_startUsingSkype_existingSkypeUser_title' }}" role="heading">
+	        <div class="existingUser">
+                <h2 data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_existingSkypeUser_title'}"></h2>
+			    <p data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_existingSkypeUser_text'}"></p>
+            </div>
+
+	        <div class="newUser">
+	            <h2 data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_newSkypeUser_title'}"></h2>
+	            <p data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_newSkypeUser_text'}"></p>
+	        </div>
+            <button class="text existingUser" role="button" data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_existingSkypeUser_button'}" tabindex="1"></button>
+	        <button class="text newUser" role="button" data-win-res="{textContent: 'linkOrCreateAccount_startUsingSkype_newSkypeUser_button'}" tabindex="2"></button>
+	    </div>
+	    
+        <button class="backbutton backbutton-light win-backbutton animRegion animGroup1 hidden" role="button" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="99"></button>
+
+	    <div class="linkSkypeAccount animRegion animGroup2 hidden">
+	        <h2 class="controlTitle" data-win-res="{textContent: 'linkOrCreateAccount_skypeUserCredentials_title'}"></h2>
+
+	        <div class="error hidden" tabindex="1" role="heading">
+	            <div class="icon"></div>
+	            <div class="message"></div>
+	        </div>
+
+	        <div class="selectSkypeAccount remindSkypeAccount animRegion animGroup2 hidden" tabindex="-1" role="heading">
+                <p class="title"></p>
+	            <div class="accountsList" data-win-control="WinJS.UI.ListView" tabindex="1"
+                    data-win-options="{itemTemplate: select('#suggestedAccountContactTemplate'), selectionMode:'none', layout: {type: WinJS.UI.ListLayout}}"
+                    data-win-bind="winControl.itemDataSource:suggestedAccounts.dataSource;">
+                </div>
+                <button class="text" role="button" tabindex="2"></button>
+	        </div>
+
+	        <div class="skypeUserCredentials accountUserCredentials animRegion animGroup2 hidden" tabindex="-1" role="heading">
+                <div id="accountContact" class="hidden" tabindex="2" role="heading"></div>
+	            <input id="username" type="text" class="dark" placeholder="Skype name" tabindex="2" data-win-res="{placeholder: 'linkOrCreateAccount_skypeUserCredentials_skype_name'}"/>
+	            <input id="password" type="password" class="dark" placeholder="Password" tabindex="2" data-win-res="{placeholder: 'linkOrCreateAccount_skypeUserCredentials_password'}"/>
+
+	            <div class="actions">
+	                <button class="text" tabindex="2" data-win-res="{textContent: 'linkOrCreateAccount_skypeUserCredentials_sign_in'}"></button>
+	                <a class="problems" tabindex="2" href="#" role="button" data-win-res="{textContent: 'linkOrCreateAccount_skypeUserCredentials_login_lost_psw', attributes: { 'aria-label' : 'linkOrCreateAccount_skypeUserCredentials_login_lost_psw' }}"></a>
+	            </div>
+	        </div>
+	    
+	        <div class="mergeAccounts animRegion animGroup2 hidden" data-win-res="{attributes: {'aria-label' : 'linkOrCreateAccount_mergeAccounts_title' }}" role="heading">
+                <div id="liveIdAvatar"><img id="liveIdAvatarImg" alt="" src="/images/blank_1x1.png"/></div>
+                <div id="plusSign"><a class="join">&#xE415;</a></div>
+	            <div id="skypeAvatar"><img id="skypeAvatarImg" alt="" src="/images/blank_1x1.png"/></div>
+                <div tabindex="1" id="accountsAriaLabel" role="heading"></div>
+                <div id="liveIdLogo"></div>
+	            <div id="skypeLogo"></div>
+                <div id="liveIdUsername"></div>
+                <div id="skypeUsername"></div>
+	            <p id="mergeAccountsNote"></p>
+                <div class="actions">
+	                <button class="text" data-win-res="{textContent: 'linkOrCreateAccount_mergeAccounts_confirm_button'}" tabindex="2" role="button"></button>
+	                <a class="cancelMerge link" data-win-res="{textContent: 'linkOrCreateAccount_mergeAccounts_cancel_button'}" tabindex="2" role="link"></a>
+	            </div>
+	        </div>
+	    
+	        <div class="accountAlreadyLinked animRegion animGroup2 hidden" data-win-res="{attributes: {'aria-label' : 'linkOrCreateAccount_accountAlreadyLinked_title' }}" tabindex="-1" role="heading">
+	            <p data-win-res="{textContent: 'linkOrCreateAccount_accountAlreadyLinked_help_title'}"></p>
+                <ul class="noSignOut">
+                    <li class="winLogout noSignOut"><span data-win-res="{innerHTML: 'linkOrCreateAccount_accountAlreadyLinked_logout_windows'}"></span></li>
+                    <li class="switchMSA signOut"><span  data-win-res="{innerHTML: 'linkOrCreateAccount_accountAlreadyLinked_switch_msa'}"></span></li>
+                    <li class="switchSkype"><span data-win-res="{innerHTML: 'linkOrCreateAccount_accountAlreadyLinked_switch_skype'}"></span></li>
+                    <li class="createSkype noSignOut"><span  data-win-res="{innerHTML: 'linkOrCreateAccount_accountAlreadyLinked_create_skype'}"></span></li>
+                    <li class="createSkype signOut"><span  data-win-res="{innerHTML: 'linkOrCreateAccount_accountAlreadyLinked_create_skype_signout'}"></span></li>
+                    <li class="winLogout signOut"><span  data-win-res="{innerHTML: 'linkOrCreateAccount_accountAlreadyLinked_logout_windows'}"></span></li>
+                </ul>
+	            <a class="helpLink link" role="link" tabindex="2" data-win-res="{textContent: 'linkOrCreateAccount_accountAlreadyLinked_help_link'}"></a>
+	        </div>
+	    </div>
+        
+	    <div class="createNewAccount animRegion animGroup2 hidden">
+	        <h2 class="controlTitle" data-win-res="{textContent: 'linkOrCreateAccount_acceptTermsOfUse_title'}"></h2>
+
+	        <div class="error hidden">
+	            <div class="icon"></div>
+	            <div class="message"></div>
+	        </div>
+
+            <div class="acceptTermsOfUse hidden" data-win-res="{attributes: { 'aria-label' : 'linkOrCreateAccount_acceptTermsOfUse_title' }}" tabindex="-1" role="heading">
+                <p aria-hidden="true" data-win-res="{textContent: 'linkOrCreateAccount_acceptTermsOfUse_text'}"></p>
+
+                <ul>
+                    <li role="presentation">
+                        <input type="checkbox" id="allowSpam" checked="checked" role="checkbox" data-win-res="{attributes: { 'aria-label' : 'linkOrCreateAccount_acceptTermsOfUse_by_email_checkbox_aria' }}" /><label aria-hidden="true" for="allowSpam" data-win-res="{textContent: 'linkOrCreateAccount_acceptTermsOfUse_by_email_checkbox'}"></label>
+                    </li>
+                    <li role="presentation">
+                        <input type="checkbox" id="allowSms" role="checkbox" data-win-res="{attributes: { 'aria-label' : 'linkOrCreateAccount_acceptTermsOfUse_by_sms_checkbox_aria' }}" /><label aria-hidden="true" for="allowSms" data-win-res="{textContent: 'linkOrCreateAccount_acceptTermsOfUse_by_sms_checkbox'}"></label>
+                    </li>
+                </ul>
+
+                <p id="confirmationText"></p>
+
+                <button class="text" role="button" data-win-res="{textContent: 'linkOrCreateAccount_acceptTermsOfUse_confirm_button', attributes: { 'aria-label' : 'linkOrCreateAccount_acceptTermsOfUse_confirm_button_aria' }}"></button>
+            </div>
+	    </div>
+	</div>
+</body>
+</html>

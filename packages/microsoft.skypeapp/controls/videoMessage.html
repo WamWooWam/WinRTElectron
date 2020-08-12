@@ -1,0 +1,27 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="videoMessage.css" rel="stylesheet">
+</head>
+<body>
+    <div class="video" draggable="false" data-win-bind="ERROR:inReceiveError MvvmJS.Binding.toggleClass; THUMBAVAILABLE:thumbnailUrl MvvmJS.Binding.toggleClass; ISINCOMING:isIncoming MvvmJS.Binding.toggleClass; y:formattedStatus MvvmJS.Binding.bindClass;">
+        <div class="previewContainer" draggable="false">
+            <div class="preview" draggable="false" data-win-bind="space:playback MvvmJS.Binding.keyup;" data-win-res="{attributes: { 'aria-label' : 'aria_chat_videomessage_preview_text' }}" role="button">
+                <img src="" data-win-bind="src:thumbnailUrl;" alt="" draggable="false" class="thumbnail" />
+                <a class="play" data-win-res="{attributes: { 'aria-label' : 'aria_chat_videomessage_preview_text' }}"></a>
+                <div class="icon">
+                    <div class="image" draggable="false"></div>
+                    <p class="errors" data-win-bind="textContent: errorCode MvvmJS.Binding.localize"></p>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <span class="status" data-win-bind="textContent: statusCode MvvmJS.Binding.localize"></span>
+        </div>
+        <progress max="100" data-win-bind="value: progress"></progress>
+    </div>
+</body>
+</html>

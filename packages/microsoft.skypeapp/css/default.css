@@ -1,0 +1,1075 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+@font-face{
+    font-family:'Skype UI Symbol';
+    font-weight:normal;
+    src:url("/fonts/SkypeUISymbol-Regular.ttf") format("embedded-opentype")
+}
+@font-face{
+    font-family:'Skype UI Symbol';
+    font-weight:bold;
+    src:url("/fonts/SkypeUISymbol-Bold.ttf") format("embedded-opentype")
+}
+:-ms-lang(ar,dv,fa,he,ku-Arab,pa-Arab,prs,ps,sd-Arab,syr,ug,ur,qps-plocm).win-backbutton::before,button.backbutton::before{
+    content:"\E41C";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+body.RTL button.win-backbutton::before,body.RTL button.backbutton::before{
+    content:"\E41D"
+}
+div.chat div.log div.node[type=file] div.message div.body::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text.file::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.text.file::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.text.file::before{
+    content:"\E306";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.chat div.log div.node div.message.initialAuthRequest div.body div.text::before,div.chat div.log div.node div.message.auth div.body::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text.auth::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.text.auth::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.text.auth::before{
+    content:"\E201";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.chat div.log div.node div.message.auth div.authorized::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text.authorized::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.text.authorized::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.text.authorized::before{
+    content:"\E202";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.ico.sms::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.ico.sms::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.ico.sms::before{
+    content:"\E60B";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div span.icon,div.fragment.dialer div.categoryContainer.recents div.item div.message div span.icon,div.fragment.allHistory div.recents.win-listview div.item div.message div span.icon,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div span.icon{
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.incoming span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.incoming span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.incoming span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.incoming span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.current span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.current span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.current span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.current span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.starting span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.starting span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.starting span.icon::before,div.chat div.log div.node.notification.UNKNOWNCALL div.iconContainer span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.starting span.icon::before{
+    content:"\E100";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.hold span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.hold span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.hold span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.hold span.icon::before{
+    content:"\E40f";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done.UNKNOWN span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done.UNKNOWN span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done.UNKNOWN span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done.UNKNOWN span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done span.icon::before,div.chat div.log div.node.notification div.iconContainer span.icon::before{
+    content:"\E101";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.missed span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.missed span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.missed span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.missed span.icon::before,div.chat div.log div.node.notification.MISSED div.iconContainer span.icon::before{
+    content:"\E10D";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done.OUTGOING span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done.OUTGOING span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done.OUTGOING span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done.OUTGOING span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.noanswer span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.noanswer span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.noanswer span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.noanswer span.icon::before,div.chat div.log div.node.notification.NOANSWER div.iconContainer span.icon::before,div.chat div.log div.node.notification.OUTGOINGCALL div.iconContainer span.icon::before{
+    content:"\E10F";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done.INCOMING span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done.INCOMING span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done.INCOMING span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done.INCOMING span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.declined span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.declined span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.declined span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.declined span.icon::before,div.chat div.log div.node.notification.DECLINED div.iconContainer span.icon::before,div.chat div.log div.node.notification.INCOMINGCALL div.iconContainer span.icon::before{
+    content:"\E10E";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.busy span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.busy span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.busy span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.busy span.icon::before,div.chat div.log div.node.notification.BUSY div.iconContainer span.icon::before{
+    content:"\E10F";
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+body.RTL h1.title.link::after,body.RTL button.title.link::after{
+    content:"\E420"
+}
+div.fragment.allHistory button.title.link::after,div.fragment.dialer h1.title.link::after,div.fragment.allHistory button.title.link::after,div.fragment.contacts button.title.link::after,div.fragment.dialer button.title.link::after{
+    content:"\E41E"
+}
+body h1.title.link.plus:after,body button.title.link.plus:after{
+    content:"\E415"
+}
+div.message div.call.canJoin{
+    color:#00AFF0
+}
+@media screen and (-ms-high-contrast: active){
+    div.message div.call.canJoin{
+        color:#8080FF
+    }
+}
+@media screen and (-ms-high-contrast: black-on-white){
+    div.message div.call.canJoin{
+        color:#00009f
+    }
+}
+@media screen and (-ms-high-contrast: white-on-black){
+    div.message div.call.canJoin{
+        color:#FFFF00
+    }
+}
+div.fragment.hub div.categoryContainer.recents div.item.LARGE div.message div.call.canJoin span.callMsg{
+    margin-left:0px
+}
+.animRegion{
+    opacity:0
+}
+.animRegion.animSnapOnly{
+    opacity:1
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    .animRegion.animSnapOnly{
+        opacity:0
+    }
+}
+html{
+    cursor:default
+}
+a[href]{
+    cursor:pointer
+}
+.preventTextLinks a[href],.preventTextLinks a[href]:hover{
+    text-decoration:none;
+    cursor:default
+}
+div.clickEater{
+    display:none;
+    position:fixed;
+    right:0;
+    top:0;
+    width:auto;
+    height:100vh;
+    background-color:#000;
+    opacity:0;
+    z-index:900
+}
+div.page{
+    position:relative
+}
+button.title{
+    display:inline;
+    background-color:transparent;
+    border:0px;
+    padding:0;
+    min-height:0;
+    min-width:0;
+    font-weight:normal
+}
+button.title:hover:active{
+    color:#33353a;
+    background-color:transparent
+}
+div.page.hub section.navigationContainer,div.page.contacts section.navigationContainer,div.page.allHistory section.navigationContainer,div.page.addPeople section.navigationContainer,div.page.search section.navigationContainer,div.page.dialer section.navigationContainer{
+    background-color:#fff
+}
+div.page.conversation section.navigationContainer{
+    background-color:#000
+}
+progress.win-ring{
+    width:60px;
+    height:60px;
+    color:#00aff0
+}
+div.fragment>header div.bgCloud{
+    opacity:0;
+    transition:0.5s opacity linear
+}
+div.page.hub div.fragment.hub>header div.bgCloud,div.page.dialer div.fragment.dialer>header div.bgCloud,div.page.allHistory div.fragment.allHistory>header div.bgCloud,div.page.contacts div.fragment.contacts>header div.bgCloud{
+    position:absolute;
+    right:0;
+    opacity:1
+}
+@media screen and (min-aspect-ratio: 1 / 1) and (min-width: 1080px){
+    div.page.hub div.fragment.hub>header div.bgCloud,div.page.dialer div.fragment.dialer>header div.bgCloud,div.page.allHistory div.fragment.allHistory>header div.bgCloud,div.page.contacts div.fragment.contacts>header div.bgCloud{
+        width:400px;
+        height:112px;
+        background:url(/images/bgCloudTop.png) no-repeat
+    }
+}
+@media screen and (min-aspect-ratio: 1 / 1) and (max-width: 1079px){
+    div.page.allHistory div.fragment.allHistory>header div.bgCloud,body.RTL div.page.allHistory div.fragment.allHistory>header div.bgCloud,div.page.contacts div.fragment.contacts>header div.bgCloud,body.RTL div.page.contacts div.fragment.contacts>header div.bgCloud,div.page.dialer div.fragment.dialer>header div.bgCloud,body.RTL div.page.dialer div.fragment.dialer>header div.bgCloud{
+        display:none
+    }
+    div.page.hub div.fragment.hub>header div.bgCloud{
+        background:url(/images/bgCloudTopFill.png) no-repeat right;
+        width:410px;
+        height:100px
+    }
+    div.page.hub div.fragment.hub>header div.presenceContainer span.mood{
+        display:none
+    }
+    div.page.hub div.fragment.hub>header div.presenceContainer span.presence{
+        margin-right:-20px;
+        margin-top:18px
+    }
+}
+div.page.hub div.fragment.hub>header div.bgCloud{
+    width:732px
+}
+body.RTL div.page.hub div.fragment.hub>header div.bgCloud,body.RTL div.page.dialer div.fragment.dialer>header div.bgCloud,body.RTL div.page.allHistory div.fragment.allHistory>header div.bgCloud,body.RTL div.page.contacts div.fragment.contacts>header div.bgCloud{
+    right:auto;
+    left:0;
+    transform:scaleX(-1)
+}
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 759px){
+    div.page.allHistory div.fragment.allHistory>header div.bgCloud,body.RTL div.page.allHistory div.fragment.allHistory>header div.bgCloud,div.page.contacts div.fragment.contacts>header div.bgCloud,body.RTL div.page.contacts div.fragment.contacts>header div.bgCloud,div.page.dialer div.fragment.dialer>header div.bgCloud,body.RTL div.page.dialer div.fragment.dialer>header div.bgCloud{
+        display:none
+    }
+    div.page.hub div.fragment.hub>header div.bgCloud{
+        background:url(/images/svg/small_crop_radgrad.svg) no-repeat top right;
+        width:320px;
+        height:100px
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1) and (min-width: 760px){
+    div.page.allHistory div.fragment.allHistory>header div.bgCloud,body.RTL div.page.allHistory div.fragment.allHistory>header div.bgCloud,div.page.contacts div.fragment.contacts>header div.bgCloud,body.RTL div.page.contacts div.fragment.contacts>header div.bgCloud,div.page.dialer div.fragment.dialer>header div.bgCloud,body.RTL div.page.dialer div.fragment.dialer>header div.bgCloud{
+        display:none
+    }
+    div.page.hub div.fragment.hub>header div.bgCloud{
+        background:url(/images/bgCloudTopVertical.png) no-repeat;
+        width:320px;
+        height:100px
+    }
+}
+body,h1.title,button.title,input[type=email]:focus,input[type=email]:active,input[type=number]:focus,input[type=number]:active,input[type=tel]:focus,input[type=tel]:active,input[type=url]:focus,input[type=url]:active,input[type=search]:focus,input[type=search]:active,.win-textarea:focus,.win-textarea:active,select:focus,select:active,.preventTextLinks a[href],.preventTextLinks a[href]:hover,#mePanel textarea.mood:focus,div.peoplePicker,div.optionsSettingsFlyout div.item.emergency_info.limited div.content strong,div.chat div.log,div.chat div.log div.node.notification.genericNotification div.message div.body strong,div.chat div.log div.node.notification[type="blocked"] div.message div.body strong,div.fragment.dialer div.categoryContainer.emergencyCall div.allowedCountry div.content strong,div.loginToSkype.fragment input{
+    color:#33353A
+}
+@media screen and (-ms-high-contrast: active){
+    body,h1.title,button.title,input[type=text]:focus,input[type=text]:active,input[type=password]:focus,input[type=password]:active,input[type=email]:focus,input[type=email]:active,input[type=number]:focus,input[type=number]:active,input[type=tel]:focus,input[type=tel]:active,input[type=url]:focus,input[type=url]:active,input[type=search]:focus,input[type=search]:active,.win-textarea:focus,.win-textarea:active,select:focus,select:active,.preventTextLinks a[href],.preventTextLinks a[href]:hover,#mePanel textarea.mood:focus,div.peoplePicker,div.optionsSettingsFlyout div.item.emergency_info.limited div.content strong,div.chat div.log,div.chat div.log div.node.notification.genericNotification div.message div.body strong,div.chat div.log div.node.notification[type="blocked"] div.message div.body strong,div.fragment.dialer div.categoryContainer.emergencyCall div.allowedCountry div.content strong,div.loginToSkype.fragment input{
+        color:WindowText
+    }
+}
+div.fragment header h2.title,div.fragment.allHistory header div.wrapper.DEFAULTVIEW button.title.filterAll,div.fragment.allHistory header div.wrapper.UNREADVIEW button.title.filterUnread,div.fragment.contacts header div.wrapper.DEFAULTVIEW button.title.filterAll,div.fragment.contacts header div.wrapper.ONLINEVIEW button.title.filterOnline,div.fragment.contacts header div.wrapper.GROUPSVIEW button.title.filterGroups,div.fragment.addPeople header h1.title,div.fragment.search header h1.title,div.fragment.participantList header h1.title{
+    color:#0095cc
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.contacts header div.wrapper.DEFAULTVIEW button.title.filterAll,div.fragment.contacts header div.wrapper.ONLINEVIEW button.title.filterOnline,div.fragment.contacts header div.wrapper.GROUPSVIEW button.title.filterGroups{
+        max-width:calc(100% - 50px);
+        text-align:left
+    }
+}
+@media screen and (-ms-high-contrast: active){
+    div.fragment.allHistory header div.wrapper.DEFAULTVIEW button.title.filterAll,div.fragment.allHistory header div.wrapper.UNREADVIEW button.title.filterUnread,div.fragment.contacts header div.wrapper.DEFAULTVIEW button.title.filterAll,div.fragment.contacts header div.wrapper.ONLINEVIEW button.title.filterOnline,div.fragment.contacts header div.wrapper.GROUPSVIEW button.title.filterGroups{
+        font-weight:600
+    }
+}
+button.backbutton{
+    background:transparent;
+    font-family:"Skype UI Symbol";
+    font-weight:bold
+}
+button.backbutton::before{
+    content:"\E41C"
+}
+body.RTL button.backbutton::before{
+    content:"\E41D"
+}
+@media screen and (max-width: 400px){
+    button.backbutton{
+        font-size:10pt;
+        height:30px;
+        line-height:26px;
+        width:30px;
+        vertical-align:-0.37em
+    }
+}
+button.backbutton.backbutton-small{
+    font-size:10pt;
+    height:30px;
+    line-height:26px;
+    width:30px;
+    vertical-align:-0.37em
+}
+button.backbutton.backbutton-dark{
+    border-color:#33353a;
+    color:#33353a
+}
+button.backbutton.backbutton-dark:hover{
+    background-color:#d9ecf4;
+    border-color:#0182b3;
+    color:#0182b3
+}
+button.backbutton.backbutton-dark:active,button.backbutton.backbutton-dark:hover:active,button.backbutton.backbutton-dark:-ms-keyboard-active{
+    color:#fff;
+    background-color:#015c80;
+    border-color:#015c80
+}
+button.backbutton.backbutton-light{
+    color:#fff;
+    border-color:#fff
+}
+button.backbutton.backbutton-light:hover{
+    background-color:rgba(0,0,0,0.15)
+}
+button.backbutton.backbutton-light:active,button.backbutton.backbutton-light:hover:active,button.backbutton.backbutton-light:-ms-keyboard-active{
+    background:#fff;
+    border-color:#fff;
+    color:rgba(0,0,0,0.7)
+}
+button.backbutton.backbutton-blue{
+    box-shadow:none;
+    text-shadow:none;
+    border-color:#0095cc;
+    color:#0095cc
+}
+button.backbutton.backbutton-blue:hover{
+    background-color:rgba(0,149,204,0.15)
+}
+button.backbutton.backbutton-blue:active,button.backbutton.backbutton-blue:hover:active,button.backbutton.backbutton-blue:-ms-keyboard-active{
+    color:#fff;
+    background-color:#0095cc
+}
+button.backbutton.backbutton-light-protected{
+    color:#fff;
+    border-color:#fff;
+    box-shadow:0px 1px 1px rgba(0,0,0,0.25);
+    text-shadow:0px 1px 1px rgba(0,0,0,0.25)
+}
+button.backbutton.backbutton-light-protected:hover{
+    background-color:rgba(0,0,0,0.15)
+}
+button.backbutton.backbutton-light-protected:active,button.backbutton.backbutton-light-protected:hover:active,button.backbutton.backbutton-light-protected:-ms-keyboard-active{
+    background:#fff;
+    border-color:#fff;
+    color:rgba(0,0,0,0.7)
+}
+@media screen and (-ms-high-contrast: active){
+    button.backbutton.backbutton-light-protected:focus{
+        outline:1px solid WindowText
+    }
+}
+button.backbutton.backbutton-conversationHeader{
+    color:#fff;
+    border-color:#fff;
+    box-shadow:0px 1px 1px rgba(0,0,0,0.25);
+    text-shadow:0px 1px 1px rgba(0,0,0,0.25)
+}
+button.backbutton.backbutton-conversationHeader:hover{
+    background-color:rgba(0,0,0,0.15)
+}
+button.backbutton.backbutton-conversationHeader:active,button.backbutton.backbutton-conversationHeader:hover:active,button.backbutton.backbutton-conversationHeader:-ms-keyboard-active{
+    background:#fff;
+    border-color:#fff;
+    color:rgba(0,0,0,0.7)
+}
+@media screen and (-ms-high-contrast: active){
+    button.backbutton.backbutton-conversationHeader:focus{
+        outline:1px solid WindowText
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.conversation.fragment>header.NORMALHEADER button.backbutton.backbutton-conversationHeader{
+        box-shadow:none;
+        text-shadow:none;
+        border-color:#0095cc;
+        color:#0095cc
+    }
+    div.conversation.fragment>header.NORMALHEADER button.backbutton.backbutton-conversationHeader:hover{
+        background-color:rgba(0,149,204,0.15)
+    }
+    div.conversation.fragment>header.NORMALHEADER button.backbutton.backbutton-conversationHeader:active,div.conversation.fragment>header.NORMALHEADER button.backbutton.backbutton-conversationHeader:hover:active,div.conversation.fragment>header.NORMALHEADER button.backbutton.backbutton-conversationHeader:-ms-keyboard-active{
+        color:#fff;
+        background-color:#0095cc
+    }
+}
+button.backbutton.backbutton-videoMessage{
+    color:#fff;
+    border-color:#fff
+}
+button.backbutton.backbutton-videoMessage:hover{
+    background-color:rgba(0,0,0,0.15)
+}
+button.backbutton.backbutton-videoMessage:active,button.backbutton.backbutton-videoMessage:hover:active,button.backbutton.backbutton-videoMessage:-ms-keyboard-active{
+    background:#fff;
+    border-color:#fff;
+    color:rgba(0,0,0,0.7)
+}
+div.videoMessageDialog.PLAYBACK>header>button.backbutton.backbutton-videoMessage{
+    box-shadow:0px 1px 1px rgba(0,0,0,0.25);
+    text-shadow:0px 1px 1px rgba(0,0,0,0.25)
+}
+@media screen and (-ms-high-contrast: active){
+    div.videoMessageDialog.PLAYBACK>header>button.backbutton.backbutton-videoMessage:focus{
+        outline:1px solid WindowText
+    }
+}
+button.backbutton.backbutton-videoMessage:hover{
+    border-color:#fff;
+    background-color:#fff;
+    color:rgba(0,0,0,0.7)
+}
+@media screen and (-ms-high-contrast: active){
+    body div.fragment button{
+        background-color:ButtonFace;
+        color:ButtonText;
+        border:2px solid ButtonText
+    }
+    body div.fragment button:hover:not([disabled]){
+        background-color:Highlight;
+        color:HighlightText
+    }
+    body div.fragment button[disabled]{
+        border-color:GrayText;
+        color:GrayText
+    }
+}
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.message,div.fragment.dialer div.categoryContainer.recents div.item div.message,div.fragment.dialer div.categoryContainer.recents div.item div.time,div.fragment.allHistory div.noUnread{
+    color:#6E6E73
+}
+div.fragment.hub>header div.presenceBar,div.fragment.contacts div.win-item div.contactWrapper div.status span.mood{
+    color:#7b7c7e
+}
+a[href],a[href]:hover,div.fragment.dialer div.dialpad div.numbers>div div.title,div.dialpadKeys div.numbers>button.number div.numberInnerCont div.title,div.dialogFlyout.DIALPAD div.toneHistory{
+    color:#0095cc
+}
+div.fragment.hub div.categoryContainer.recents div.item.UNREAD div.name,div.fragment.hub div.categoryContainer.recents div.item.UNREAD div.name a,div.fragment.allHistory header div.wrapper>button.title.filterUnread span.unreadCountNoCircle,div.fragment.allHistory div.recents.win-listview div.item.UNREAD div.name,div.fragment.allHistory div.recents.win-listview div.item.UNREAD div.name a,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item.UNREAD div.name,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item.UNREAD div.name a{
+    color:#FF8C00
+}
+@media screen and (-ms-high-contrast: active){
+    div.fragment.hub div.categoryContainer.recents div.item.UNREAD div.name,div.fragment.hub div.categoryContainer.recents div.item.UNREAD div.name a,div.fragment.allHistory header div.wrapper>button.title.filterUnread span.unreadCountNoCircle,div.fragment.allHistory div.recents.win-listview div.item.UNREAD div.name,div.fragment.allHistory div.recents.win-listview div.item.UNREAD div.name a,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item.UNREAD div.name,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item.UNREAD div.name a{
+        color:-ms-hotlight
+    }
+}
+@media screen and (-ms-high-contrast: active){
+    div.fragment.hub div.categoryContainer.recents div.item.UNREAD div.name,div.fragment.allHistory div.recents.win-listview div.item.UNREAD div.name,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item.UNREAD div.name{
+        -ms-high-contrast-adjust:none
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    input[type=text]:focus,input[type=text]:active,input[type=password]:focus,input[type=password]:active,input[type=email]:focus,input[type=email]:active,input[type=number]:focus,input[type=number]:active,input[type=tel]:focus,input[type=tel]:active,input[type=url]:focus,input[type=url]:active,input[type=search]:focus,input[type=search]:active,textarea:focus,textarea:active,.win-textarea:focus,.win-textarea:active,select:focus,select:active{
+        color:#fff
+    }
+    option{
+        color:#33353A
+    }
+    div.profile div.status div.moodMessage,div.profile.GROUP div.status.group a.participantCount{
+        color:#7b7c7e
+    }
+}
+h1.title>span.onlineCount,button.title>span.onlineCount{
+    color:#7FBA00
+}
+div.fragment.hub>header div.presenceBar span.presence,div.fragment.participantList div.participants div.item div.content div.presence,div.win-listview.contacts.list div.status div.presence{
+    background-image:url(/images/presenceOnlineOnWhite.png);
+    -ms-high-contrast-adjust:none;
+    width:8px;
+    height:8px
+}
+div.peoplePicker div.selectedContacts.list div.item span.availability.AVAILABLE,div.fragment.hub div.categoryContainer.favorites div.item div.content.DEFAULTAVATAR div.presence,div.fragment.hub div.categoryContainer.people div.item div.content.DEFAULTAVATAR div.presence,div.fragment.participantList div.participants div.item div.content.DEFAULTAVATAR div.presence,div.profile div.status.dialog div.presence,div.profile div.status.group div.presence,#mePanel ul.statusContainer span.presence{
+    background-image:url(/images/presenceOnlineOnBlue.png);
+    -ms-high-contrast-adjust:none;
+    width:8px;
+    height:8px
+}
+div.fragment.hub div.categoryContainer.favorites div.item div.content div.presence,div.fragment.hub div.categoryContainer.people div.item div.content div.presence{
+    background-image:url(/images/presenceOnlineOnPeople.png);
+    -ms-high-contrast-adjust:none;
+    width:8px;
+    height:9px
+}
+div.fragment.hub>header div.presenceBar span.presence.INVISIBLE,#mePanel ul.statusContainer li.selected[data-presence="invisible"] span.presence{
+    background-image:url(/images/presenceInvisible.png);
+    width:8px;
+    height:8px
+}
+h1,div.fragment.contacts div.win-groupheader h2.group-title,div.fragment.contacts div.win-item div.favouriteWrapper div.name,div.videoMessageDialog>div.video>div.time{
+    font-size:56px;
+    line-height:64px;
+    font-weight:200;
+    letter-spacing:0px
+}
+h2,div.fragment.dialer header div.dialerInputContainer input.dialerInput{
+    font-size:40px;
+    line-height:48px;
+    font-weight:200
+}
+div.peoplePicker div.alphabet div.letter div,div.fragment.contacts div.alphabet div.letter div,div.contacts div.letter div{
+    font-size:38px;
+    font-weight:100;
+    line-height:normal
+}
+h1.title,button.title,div.page header div.name,div.fragment header h1,div.fragment header button:not(.backbutton),div.fragment.upgrade div.inner h1,div.chat div.inviteContact h2,div.chat div.log div.node.notification div.message div.body span,div.chat div.noMessages,div.chat div.log div.node.notification div.iconContainer span.icon,div.chat div.log div.node.unsupported div.iconContainer span.icon,div.fragment.conversation div.liveGroupConversation div.recoveringMessage,div.dialpadDialog div.toneHistory,div.dialpadKeys div.numbers>button div.icon,div.fragment.hub div.categoryContainer h1.header,div.fragment.dialer div.categoryContainer h1.header,div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput,div.fragment.dialer div.dialpad div.numbers>div div.icon,div.fragment.dialer div.accountInfo div.item div.balance,div.fragment.contacts div.noContacts,div.fragment.allHistory div.noUnread,div.callNotifications button.notification div.content div.name,#emoticonPicker h1,#mePanel .signOutPanel>h2.title,div.dialogFlyout div.description,div.dialogFlyout.AUTHREQUEST div.reqDesc div.reqDescContent,div.videoMessageDialog>header>div.title,div.videoMessageDialog>div.overlay>div.content>p,div.videoMessageDialog>div.video>div.lookingGood>p,div.videoMessage div.video.THUMBAVAILABLE .description .name,div.fragment.search div.info,div.profile div.conversationNameContainer div.conversationName{
+    font-size:26.67px;
+    line-height:34px;
+    font-weight:200;
+    letter-spacing:0px
+}
+div.chat div.log div.node.unsupported div.iconContainer span.icon{
+    font-weight:bold
+}
+div.fragment.linkOrCreateAccount div.contactWrapper div.name,div.profile div.actions a.actionTitle,div.profile div.status.group div.name,div.profile div.status.emergency div.restrictedCountry h3,div.profile div.status.emergency div.allowedCountry div.content strong,div.fragment.hub div.categoryContainer.recents div.item.LARGE div.message,div.welcomeLCM>div.message>p,div.fragment.contacts div.win-item div.contactWrapper div.name,div.fragment.addPeople div.win-item div.contactWrapper div.name,div.fragment.search div.win-item div.contactWrapper div.name,div.fragment.search div.win-item div.contactWrapper div.matchedName,div.contacts div.letter div.tiny,div.alphabet div.letter div.tiny,div.selectedContacts.list div.item div.content .name,div.peoplePicker div.contacts.list div.contactWrapper div.name,div.fragment header h1.FONT-MEDIUM,div.dialogFlyout h2.title,div.videoMessageDialog>div.video>input,div.videoMessageDialog>div.video>div.lookingGood>h3,div.profile div.status div.moodMessage,div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification:not(.genericNotification) div.message div.body span,div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification div.iconContainer span.icon,div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.unsupported div.iconContainer span.icon,div.fragment.hub div.categoryContainer.recents div.item div.name{
+    font-size:21.5px;
+    line-height:32px;
+    font-weight:200
+}
+div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification div.iconContainer span.icon,div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.unsupported div.iconContainer span.icon{
+    font-size:15px
+}
+body,h2.title,div.login.fragment input,textarea,input[type=text],input[type=password],.win-menu button.win-command,div.chat div.log div.node p,div.chat div.log div.node div.message h3.name,div.chat div.log div.node.notification.genericNotification div.message div.body span,div.chat div.log div.node.notification[type="blocked"] div.message div.body span,div.chat div.textbox textarea,div.profile div.status div.loginType,div.profile div.status.emergency div.restrictedCountry div.info,div.profile div.status.emergency div.restrictedCountry div.content,div.callStatusWrapper div.callStatus,div.conversation header div.callStatus,div.fragment.conversation div.liveGroupConversation div.muteMessage div.message,div.fragment.hub div.categoryContainer.recents div.item div.message,div.fragment.hub div.categoryContainer.favorites div.item div.name,div.fragment.hub div.categoryContainer.people div.item div.name,div.fragment.hub div.categoryContainer div.itemsPlaceholder div.text,div.fragment.hub div.linksContainer div.title,div.fragment.hub div.linksContainer div.callPhones label,div.fragment.allHistory header div.wrapper>h1.title.filterUnread span.unreadCountNoCircle,div.fragment.allHistory header div.wrapper>button.title.filterUnread span.unreadCountNoCircle,div.fragment.allHistory div.recents.win-listview div.item div.name,div.fragment.allHistory div.recents.win-listview div.item div.message,div.fragment.contacts header div.wrapper>button.title.filterOnline span.onlineCount,div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput,div.fragment.dialer div.categoryContainer.recents div.item div.name,div.fragment.dialer div.categoryContainer.emergencyCall div.content,div.fragment.dialer div.categoryContainer.emergencyCall,div.fragment.dialer div.categoryContainer.accountInfo div.item div.header,div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState div,div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.text,div.fragment.participantList div.participants div.item div.content div.name,div.callNotifications button.notification div.content div.notetext,div.callNotifications div.notificationWrapper.ongoing button.notification div.name,div.callNotifications div.multipleOngoingNotification div.notificationWrapper.ongoing button.notification div.status,#skypeAppBar .skype-placeholder,div.optionsSettingsFlyout div.item.emergency_info p,div.dialogFlyout.NOHEADING div.description,div.fragment.search div.contacts div.simpleHeaderItem h2,div.fragment.allHistory div.noUnread,div.welcomeLCM>div.message.small>p,div.chat div.log div.node[type="file"] div.message div.heading,div.fragment.conversation div.liveGroupConversation div.locallyOnHoldMessage div.message.FONT-MEDIUM,div.fragment.conversation div.liveGroupConversation div.remotelyOnHoldMessage div.message.FONT-MEDIUM,div.fragment header h1.FONT-SMALLER,div.videoMessageDialog>div.overlay>div.content>h3,div.videoMessageDialog>div.video>textarea,div.profile div.status.group a.participantCount{
+    font-size:14.66px;
+    line-height:20px;
+    font-weight:300
+}
+h1.title>span.unread,button.title>span.unread,div.fragment.upgrade div.inner p.hint,div.chat div.inputs div.textboxMessages,div.chat div.log div.node div.message time,div.chat div.log div.typingIndicator span.text,div.chat div.noMessages time,div.chat div.inputs div.channelButton,div.dialpadKeys div.numbers>button div.title,div.fragment.hub div.categoryContainer.recents div.item div.time,div.fragment.allHistory div.recents.win-listview div.item div.time,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.time,#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.label,div.fragment.dialer div.dialpad div.numbers>div div.title,div.fragment.dialer div.categoryContainer.accountInfo div.item div.message,div.fragment.dialer div.categoryContainer.recents div.item div.message,div.fragment.dialer div.categoryContainer.recents div.item div.time,div.selectedContacts.list div.item div.content .moodMessage,div.fileTransfer div.file div.info,div.fileTransferGroup div.file div.info,div.videoMessage div.info,div.fragment.conversation div.liveGroupConversation div.locallyOnHoldMessage div.message.FONT-SMALL,div.fragment.conversation div.liveGroupConversation div.remotelyOnHoldMessage div.message.FONT-SMALL,div.callNotifications div.notificationWrapper button.notification div.status span.text.FONT-SMALL,div.fragment header h1.FONT-SMALL{
+    font-size:12px;
+    line-height:20px;
+    font-weight:300
+}
+.win-menu button.win-command{
+    line-height:18px
+}
+@media screen and (max-aspect-ratio: 1 / 1) and (max-height: 1023px), screen and (max-aspect-ratio: 1 / 1) and (min-height: 1024px) and (max-width: 499px){
+    div.login.fragment h2.errorTitle{
+        font-size:26.67px;
+        line-height:34px;
+        font-weight:200;
+        letter-spacing:0px
+    }
+    div.peoplePicker header h1{
+        font-size:40px;
+        line-height:54px;
+        font-weight:200;
+        padding-top:43px
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.chat div.log div.node.notification div.message div.body span,div.chat div.log div.node.notification div.iconContainer span.icon,div.chat div.log div.node.unsupported div.iconContainer span.icon,div.fragment.contacts div.letter div,div.fragment.contacts div.alphabet div.letter div,div.peoplePicker div.alphabet div.letter div,div.peoplePicker div.letter div,div.fragment.conversation div.liveGroupConversation div.recoveringMessage,div.chat div.noMessages,div.dialogFlyout.AUTHREQUEST div.reqDesc div.reqDescContent,div.videoMessageDialog>div.video>div.lookingGood>p{
+        font-size:21.5px;
+        line-height:32px;
+        font-weight:200
+    }
+    h1.title,button.title,div.page header div.name,div.fragment header h1:not(.name),div.fragment header button:not(.backbutton),div.fragment.upgrade div.inner h1,div.chat div.inviteContact h2,div.chat div.log div.node.notification div.message div.body span,div.chat div.noMessages,div.fragment.conversation div.liveGroupConversation div.recoveringMessage,div.dialpadDialog div.toneHistory,div.dialpadKeys div.numbers>button div.icon,div.fragment.hub div.categoryContainer h1.header,div.fragment.dialer div.categoryContainer h1.header,div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput,div.fragment.dialer div.dialpad div.numbers>div div.icon,div.fragment.dialer div.accountInfo div.item div.balance,div.fragment.contacts div.noContacts,div.fragment.allHistory div.noUnread,div.callNotifications button.notification div.content div.name,#mePanel .signOutPanel>h2.title,div.dialogFlyout div.description,div.dialogFlyout.AUTHREQUEST div.reqDesc div.reqDescContent,div.videoMessageDialog>header>div.title,div.videoMessageDialog>div.overlay>div.content>p,div.videoMessageDialog>div.video>div.lookingGood>p,div.videoMessage div.video.THUMBAVAILABLE .description .name,div.fragment.search div.info,div.profile div.conversationNameContainer div.conversationName{
+        font-size:21.33px
+    }
+    div.profile div.status div.moodMessage,div.profile.GROUP div.status.group a.participantCount,body.KEYBOARDUP div.chat div.noMessages,div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput,div.fragment.dialer div.accountInfo div.item div.balance,div.fragment.search div.contacts div.contactWrapper h2,div.videoMessageDialog>div.video>div.lookingGood>h3{
+        font-size:14.66px;
+        line-height:20px;
+        font-weight:300
+    }
+    div.chat div.log div.node.notification div.iconContainer span.icon,div.chat div.log div.node.unsupported div.iconContainer span.icon{
+        font-size:15px;
+        font-weight:bold
+    }
+}
+@media screen and (max-width: 400px){
+    #emoticonPicker h1,div.fragment header h1.name{
+        font-size:21.33px
+    }
+}
+@media screen and (max-width: 560px){
+    div.logout h2.infoPanelTitle{
+        font-size:26.67px;
+        line-height:34px;
+        font-weight:200;
+        letter-spacing:0px
+    }
+}
+div.fragment.hub div.categoryContainer.recents div.item.LARGE div.message div.text::before{
+    line-height:20px
+}
+div.allHistory.fragment div.recents div.item div.message div.text::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.text::before{
+    line-height:14px
+}
+div.fragment.hub div.categoryContainer.recents div.item div.message div.call.current span.duration,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.current span.duration,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.current span.duration{
+    min-width:2.5em
+}
+a.button{
+    cursor:default
+}
+h1.title.link:hover,button.title.link:hover,a.button:hover{
+    color:#0182b3
+}
+@media screen and (-ms-high-contrast: active){
+    h1.title.link:hover,button.title.link:hover{
+        font-weight:600
+    }
+}
+h1.title.link.active,h1.title.link span:not(.unread):active,button.title.link:active,button.title.link span:not(.unread):active,a.button:active{
+    color:#015c80
+}
+h1.title.link::after,button.title.link::after{
+    width:20px;
+    height:20px;
+    font-size:20px;
+    margin-left:15px;
+    margin-right:15px;
+    content:"\E421";
+    display:inline-block;
+    font-family:"Skype UI Symbol";
+    position:relative;
+    top:-2px;
+    line-height:normal;
+    border-radius:50%;
+    color:#fff;
+    background-color:#00aff0;
+    text-align:center
+}
+h1.title.link:hover::after,button.title.link:hover::after{
+    background-color:#0182b3
+}
+h1.title.link.active::after,button.title.link.active::after,button.title.link:active::after{
+    background-color:#015c80
+}
+h1.title.UNREAD::after,h1.title:not(.UNREAD)>span.unread,button.title.UNREAD::after,button.title:not(.UNREAD)>span.unread{
+    display:none
+}
+h1.title>span.unread,button.title>span.unread{
+    width:20px;
+    height:20px;
+    display:inline-block;
+    color:#fff;
+    margin-left:15px;
+    margin-right:15px;
+    border-radius:50%;
+    text-align:center;
+    background-color:#ff892d;
+    position:relative;
+    top:-3px
+}
+h1.title.link:hover>span.unread,button.title.link:hover>span.unread{
+    background-color:#e57b28
+}
+h1.title.link.active>span.unread,h1.title.link.UNREAD:active>span.unread,h1.title.link:active>span.unread h1.title.link>span.unread:active,button.title.link.active>span.unread,button.title.link.UNREAD:active>span.unread,button.title.link:active>span.unread button.title.link>span.unread:active{
+    background-color:#b2601f;
+    color:#fff
+}
+h1.title>span.onlineCount,h1.title>span.unreadCountNoCircle,button.title>span.onlineCount,button.title>span.unreadCountNoCircle{
+    margin-left:2px;
+    margin-right:2px;
+    display:inline-block
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    h1.title>span.unread,h1.title.link::after,button.title>span.unread,button.title.link::after{
+        margin-left:10px;
+        margin-right:10px
+    }
+    div.fragment.dialer h1.title.link::after,div.fragment.dialer button.title.link::after{
+        background-color:#fff;
+        color:#00aff0
+    }
+    div.fragment.dialer h1.title.link:hover::after,div.fragment.dialer button.title.link:hover::after{
+        background-color:rgba(255,255,255,0.85)
+    }
+    div.fragment.allHistory header div.wrapper.UNREADVIEW h1.title.link.filterUnread::after,div.fragment.allHistory header div.wrapper.UNREADVIEW button.title.link.filterUnread::after,div.fragment.contacts header div.wrapper.ONLINEVIEW button.title.link.filterOnline::after{
+        margin-left:3px;
+        margin-right:3px
+    }
+}
+@media screen and (-ms-high-contrast: active){
+    h1.title.link:after,h1.title>span.unread,button.title.link:after,button.title>span.unread{
+        background-color:ButtonFace;
+        color:ButtonText;
+        border:2px solid ButtonText
+    }
+    h1.title.link:after:hover:not([disabled]),h1.title>span.unread:hover:not([disabled]),button.title.link:after:hover:not([disabled]),button.title>span.unread:hover:not([disabled]){
+        background-color:Highlight;
+        color:HighlightText
+    }
+    h1.title.link:after[disabled],h1.title>span.unread[disabled],button.title.link:after[disabled],button.title>span.unread[disabled]{
+        border-color:GrayText;
+        color:GrayText
+    }
+    h1.title.link:hover::after,h1.title:hover>span.unread,button.title.link:hover::after,button.title:hover>span.unread{
+        box-shadow:0px 0px 0px 5px WindowText
+    }
+}
+.actionButtons>a{
+    direction:ltr
+}
+.placeholder{
+    background-size:50px 50px;
+    background-color:#efefef;
+    background-image:-ms-linear-gradient(45deg, rgba(255,255,255,0.2) 25%, transparent 25%, transparent 50%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.2) 75%, transparent 75%, transparent)
+}
+body.RTL .FORCELTR{
+    direction:ltr !important;
+    text-align:right !important
+}
+div.conversationSwitcher{
+    position:absolute;
+    top:0;
+    left:100vw;
+    width:0;
+    height:100vh;
+    z-index:990;
+    opacity:0;
+    display:none
+}
+body.RTL div.conversationSwitcher{
+    left:0
+}
+div.page.conversation div.conversationSwitcher.POPULATED,div.page.dialer div.conversationSwitcher.POPULATED,div.page.contacts div.conversationSwitcher.POPULATED,div.page.participantList div.conversationSwitcher.POPULATED{
+    transition:opacity 0.5s linear 0s;
+    opacity:1;
+    display:block
+}
+.win-menu button[role="menugroupheader"]:hover{
+    background-color:transparent
+}
+.menu-item-header{
+    color:gray
+}
+.menu-item-primary{
+    margin-right:5px
+}
+.menu-item-secondary{
+    color:gray
+}
+.menu-item-default{
+    font-weight:bold
+}
+div.win-menu{
+    background-color:#00aff0;
+    border:2px solid #fff;
+    color:#fff
+}
+div.win-menu button{
+    color:#fff
+}
+div.win-menu button:hover,div.win-menu button:focus{
+    background-color:#009cd7
+}
+div.win-menu button:hover:active,div.win-menu button:active,div.win-menu button:checked{
+    background-color:#007aa7
+}
+div.win-menu button:disabled,.win-menu button:disabled:active{
+    color:rgba(255,255,255,0.5)
+}
+div.callNotifications{
+    position:absolute;
+    z-index:2147483638;
+    top:0px;
+    right:-700px;
+    width:645px;
+    overflow:visible;
+    -ms-transition:right 0.3s ease-out 0
+}
+div.callNotifications.ACTIVE{
+    right:0px;
+    display:block
+}
+body.RTL div.callNotifications.ACTIVE{
+    right:auto;
+    left:0
+}
+div.conversationSwitcher.RECENTSOPENED ~ div.callNotifications.ACTIVE div.notificationWrapper.ongoing{
+    display:none
+}
+#mePanel{
+    display:none;
+    position:fixed;
+    right:0px;
+    top:0px;
+    width:320px;
+    bottom:0px;
+    overflow:hidden;
+    background-color:#00aff0;
+    z-index:991;
+    opacity:0
+}
+body.RTL #mePanel{
+    right:auto;
+    left:0;
+    border-left:0
+}
+#mePanel.VISIBLE{
+    display:block
+}
+body.RTL #mePanel div.clickEater{
+    right:0;
+    left:320px
+}
+@media screen and (-ms-high-contrast: active){
+    #mePanel{
+        border-left:2px solid WindowText
+    }
+    bodyRTL #mePanel{
+        border-left:0;
+        border-right:2px solid WindowText
+    }
+    #mePanel div.clickEater{
+        -ms-high-contrast-adjust:none
+    }
+}
+div.fragment.hub>header div.presenceBar div.avatar,div.fragment.hub div.item div.avatar,div.fragment.allHistory div.item div.avatar,div.fragment.contacts div.win-item div.contactWrapper div.avatar,div.fragment.addPeople div.win-item div.contactWrapper div.avatar,div.fragment.search div.win-item div.contactWrapper div.avatar,div.callNotifications button.notification div.avatar,div.conversationSwitcher div.item div.avatar,div.chat div.log div.node div.avatar div.img,div.peoplePicker div.win-item div.contactWrapper div.avatar,div.fragment.participantList div.participants div.item div.avatar,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.avatar{
+    background-origin:padding-box;
+    background-clip:padding-box;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-position:center center
+}
+div.profile div.status div.moodMessage span.emoticon,div.profile div.status div.moodMessage span.flag{
+    margin-top:-2px
+}
+div.fragment.hub>header div.presenceBar span.mood span.emoticon,div.fragment.hub>header div.presenceBar span.mood span.flag,div.fragment.hub div.categoryContainer.recents div.item div.message span.emoticon,div.fragment.hub div.categoryContainer.recents div.item div.message span.flag,div.fragment.allHistory div.recents div.item div.message span.emoticon,div.fragment.allHistory div.recents div.item div.message span.flag,div.chat div.log div.message span.emoticon,div.chat div.log div.message span.flag,div.contacts.list div.contactWrapper div.status span.mood span.emoticon,div.contacts.list div.contactWrapper div.status span.mood span.flag,div.contacts.list div.contactWrapper div.status>span.flag{
+    margin-top:-4px
+}
+div.fragment.hub div.categoryContainer.recents div.item.LARGE div.name span.emoticon,div.fragment.hub div.categoryContainer.recents div.item.LARGE div.message span.emoticon,div.fragment.hub div.categoryContainer.recents div.item.LARGE div.name span.flag,div.fragment.hub div.categoryContainer.recents div.item.LARGE div.message span.flag{
+    margin-top:-6px
+}
+button.text{
+    background-color:#0095cc;
+    border:0px;
+    color:white;
+    cursor:default;
+    padding:0px 30px 0px 30px;
+    height:40px;
+    border-radius:20px
+}
+button.text:hover{
+    background-color:#008cc0
+}
+button.text:active{
+    background-color:#007aa8
+}
+button.text[disabled]{
+    background-color:#009dd8;
+    color:#66cff6;
+    cursor:auto
+}
+button.text.cancel{
+    background-color:#93999D
+}
+button.text.cancel:hover{
+    background-color:#7A7F82
+}
+button.text.cancel:active{
+    background-color:#4b4e51
+}
+button.text.cancel[disabled]{
+    background-color:#93999D
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.chat div.inviteContact button.text,div.dialogFlyout.AUTHREQUEST div.actions button,div.chat div.log div.node div.confirmAuthRequest div.controls button{
+        padding-left:20px;
+        padding-right:20px
+    }
+}
+div.avatarImageBase{
+    align-self:center;
+    justify-self:center;
+    background-size:cover;
+    background-position:center center;
+    width:100%;
+    height:100%
+}
+@media screen and (-ms-high-contrast: active){
+    div.avatarImageBase{
+        -ms-high-contrast-adjust:none
+    }
+}
+#searchForContact{
+    position:relative
+}
+#skypeAppBar div.win-appbar,div.win-settingsflyout{
+    z-index:2147483641
+}
+.win-flyout{
+    z-index:2147483643
+}
+.win-flyoutmenuclickeater{
+    z-index:2147483642
+}
+.win-appbarclickeater{
+    z-index:2147483640
+}
+.win-tooltip{
+    z-index:2147483642
+}
+#skypeAppBar input.skype-placeholder,#skypeAppBar input.appBarSearchInput{
+    border:none;
+    height:40px;
+    display:inline-block;
+    width:calc(100% - 60px);
+    box-sizing:border-box;
+    padding:0 6px;
+    margin:0;
+    vertical-align:top
+}
+body.RTL #skypeAppBar input.skype-placeholder,body.RTL #skypeAppBar input.appBarSearchInput{
+    right:0px
+}
+#skypeAppBar input.appBarSearchInput{
+    position:relative;
+    z-index:5
+}
+#skypeAppBar input.skype-placeholder{
+    position:absolute;
+    left:0;
+    z-index:0;
+    display:none
+}
+#skypeAppBar .TRANSPARENT{
+    border-color:transparent;
+    background:transparent;
+    color:transparent
+}
+#skypeAppBar .TRANSPARENT:-ms-placeholder{
+    color:transparent
+}
+#skypeAppBar input.skype-placeholder[disabled='disabled']{
+    background:rgba(255,255,255,0.9)
+}
+#skypeAppBar input.skype-placeholder[disabled='disabled']:hover,#skypeAppBar input.skype-placeholder[disabled='disabled']:active{
+    background:#FFF
+}
+#skypeAppBar input.skype-placeholder.ACTIVEINPUT{
+    display:inline-block
+}
+#skypeAppBar input.skype-placeholder:-ms-placeholder{
+    color:rgba(0,0,0,0.6)
+}
+#searchForContact button{
+    vertical-align:middle;
+    border:none
+}
+div.fragment.participantList div.participants>div.win-listview div.win-selectioncheckmark,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.favoritesList div.win-selected div.win-selectioncheckmark{
+    font-family:"Skype UI Symbol";
+    font-weight:bold;
+    font-size:20px;
+    padding-top:4px;
+    max-width:20px;
+    max-height:20px;
+    overflow:hidden
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.favoritesList div.win-selected div.win-selectioncheckmark{
+        padding-top:15px;
+        width:10px;
+        height:15px;
+        padding-right:11px
+    }
+    body.RTL div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.favoritesList div.win-selected div.win-selectioncheckmark{
+        padding-left:11px
+    }
+}
+.win-listview .win-focusedoutline{
+    outline-color:#000;
+    border:2px solid #FFF;
+    box-sizing:border-box
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.callNotifications{
+        width:320px
+    }
+}
+@media screen and (-ms-high-contrast: active){
+    #skypeAppBar .appBarSearchInput{
+        border:1px solid WindowText
+    }
+}
+textarea,input[type=number],input[type=text],input[type=password]{
+    box-sizing:border-box;
+    border:2px solid #68cef5;
+    color:#93999d
+}
+textarea::selection,input[type=number]::selection,input[type=text]::selection,input[type=password]::selection,input[type=number]::selection{
+    background:#0095CC;
+    color:#fff
+}
+textarea:hover,input[type=number]:hover,input[type=text]:hover,input[type=password]:hover{
+    border:2px solid #00aff0;
+    color:#93999d
+}
+textarea::-ms-clear,input[type=number]::-ms-clear,input[type=text]::-ms-clear,input[type=password]::-ms-clear{
+    background-color:#e7f6fd
+}
+textarea:active,textarea:focus,input[type=number]:active,input[type=number]:focus,input[type=text]:active,input[type=text]:focus,input[type=password]:active,input[type=password]:focus{
+    border:2px solid #00aff0;
+    background-color:#e7f6fd;
+    color:#33353a
+}
+textarea:-ms-input-placeholder,input[type=number]:-ms-input-placeholder,input[type=text]:-ms-input-placeholder,input[type=password]:-ms-input-placeholder{
+    color:#93999d
+}
+textarea[disabled],input[type=number][disabled],input[type=text][disabled],input[type=password][disabled]{
+    border:2px solid rgba(0,0,0,0.2);
+    background-color:transparent;
+    color:rgba(0,0,0,0.2)
+}
+textarea.dark,input[type=number].dark,input[type=text].dark,input[type=password].dark{
+    border-width:0px;
+    background-color:rgba(255,255,255,0.9)
+}
+textarea.dark:hover,textarea.dark::-ms-clear,textarea.dark:active,textarea.dark:focus,input[type=number].dark:hover,input[type=number].dark::-ms-clear,input[type=number].dark:active,input[type=number].dark:focus,input[type=text].dark:hover,input[type=text].dark::-ms-clear,input[type=text].dark:active,input[type=text].dark:focus,input[type=password].dark:hover,input[type=password].dark::-ms-clear,input[type=password].dark:active,input[type=password].dark:focus{
+    background-color:#FFF
+}
+textarea[disabled].dark,input[type=number][disabled].dark,input[type=text][disabled].dark,input[type=password][disabled].dark{
+    border:2px solid rgba(255,255,255,0.3);
+    background-color:transparent;
+    color:rgba(255,255,255,0.3)
+}
+div.dialogFlyout input[type=checkbox]::-ms-check{
+    outline:none;
+    border:none
+}
+div.dialogFlyout input[type=checkbox]:hover:active::-ms-check{
+    background-color:#fff;
+    color:#000
+}
+div.dialogFlyout input[type=checkbox]:-ms-keyboard-active::-ms-check{
+    background-color:#fff
+}
+button.removeDefaultStyles{
+    font-weight:normal;
+    min-height:auto;
+    max-height:none;
+    min-width:auto;
+    border:none;
+    background:none;
+    padding:0px;
+    background-color:transparent
+}
+@media screen and (-ms-high-contrast: active){
+    input[type=text]{
+        border-color:WindowText
+    }
+    textarea,input[type=number],input[type=text],input[type=password],textarea:-ms-input-placeholder,input[type=number]:-ms-input-placeholder,input[type=text]:-ms-input-placeholder,input[type=password]:-ms-input-placeholder{
+        color:WindowText
+    }
+}
+section.win-flyoutmenuclickeater{
+    opacity:0.01;
+    background-color:rgba(0,0,0,0)
+}
+a.meInnerLink{
+    color:gray
+}
+a.meInnerLink.navigable{
+    color:#0095cc
+}
+.win-listview :not(.win-footprint).win-itembox{
+    background-color:transparent
+}
+div#applicationLockScreenCover{
+    position:absolute;
+    background-color:#00aff0;
+    top:0px;
+    left:0px;
+    width:100vw;
+    height:100vh;
+    display:none;
+    grid-template-rows:1fr;
+    grid-template-columns:1fr;
+    z-index:2147483647
+}
+div#applicationLockScreenCover.VISIBLE{
+    display:grid;
+}
+div#applicationLockScreenCover div.logo{
+    justify-items:center;
+    align-items:center;
+    width:350px;
+    overflow:hidden;
+    height:175px;
+    text-align:center
+}
+div#applicationLockScreenCover div.logo img{
+    margin-top:15px;
+    width:284px;
+    height:126px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div#applicationLockScreenCover div.logo img{
+        width:180px;
+        height:80px
+    }
+}
+ 

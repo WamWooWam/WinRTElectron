@@ -31,6 +31,7 @@ export class Tile {
     private tileContainerElement: HTMLDivElement;
     private tileContainerPostElement: HTMLDivElement;
     private tileElement: HTMLDivElement;
+    private tileVisuals: Array<HTMLElement>
     private showTextSizes: Array<TileSize>
 
     tileGroup: HTMLElement;
@@ -45,6 +46,7 @@ export class Tile {
         this.tileContainerPostElement = <HTMLDivElement>tileContainerElement.nextElementSibling;
         this.tileSizeString = tileContainerElement.dataset.tileSize ?? "square150x150Logo";
         this.tileSize = TileSize[this.tileSizeString];
+        this.tileVisuals = []
 
         let packName = tileContainerElement.dataset.packageName;
         let appName = tileContainerElement.dataset.id;
@@ -88,18 +90,17 @@ export class Tile {
         this.tileBack.style.cssText = `background: ${tileColour};`
 
         this.constructFront();
+        this.updateLiveTile();
 
         this.tileContainerElement.addEventListener("click", this.onTileClicked.bind(this));
     }
 
     private constructFront() {
-        let tileVisual = document.createElement("div");
-        tileVisual.classList.add("tile-visual", "tile-visual-visible");
-        this.tileFront.appendChild(tileVisual);
+        let tileDefaultVisual = document.createElement("div");
+        tileDefaultVisual.classList.add("tile-visual", "tile-visual-visible");
 
-        let tileFrontImageContainer = document.createElement("div");
-        tileFrontImageContainer.classList.add("tile-front-image-container");
-        tileVisual.appendChild(tileFrontImageContainer);
+        let tileVisualImageContainer = document.createElement("div");
+        tileVisualImageContainer.classList.add("tile-front-image-container");
 
         let tileImageUrl = this.app.visualElements.square150x150Logo;
 
@@ -115,23 +116,27 @@ export class Tile {
             tileImageUrl = this.app.visualElements.defaultTile.square310x310Logo;
         }
 
-        let tileFrontImage = document.createElement("img");
-        tileFrontImage.src = tileImageUrl;
-        tileFrontImage.classList.add("tile-front-image");
-        tileFrontImage.classList.add(this.tileSizeString);
-        tileFrontImageContainer.appendChild(tileFrontImage);
+        let tileVisualImage = document.createElement("img");
+        tileVisualImage.src = tileImageUrl;
+        tileVisualImage.classList.add("tile-front-image");
+        tileVisualImage.classList.add(this.tileSizeString);
+        tileVisualImageContainer.appendChild(tileVisualImage);
+        tileDefaultVisual.appendChild(tileVisualImageContainer);
 
         if (this.tileSize != TileSize.square70x70Logo && this.showTextSizes.includes(this.tileSize)) {
-            let tileFrontText = document.createElement("p");
-            tileFrontText.innerText = this.app.visualElements.displayName;
-            tileFrontText.classList.add("tile-front-text");
+            let tileVisualText = document.createElement("p");
+            tileVisualText.innerText = this.app.visualElements.displayName;
+            tileVisualText.classList.add("tile-front-text");
 
-            if(this.app.visualElements.foregroundText == "dark"){
-                tileFrontText.style.color = "black";
+            if (this.app.visualElements.foregroundText == "dark") {
+                tileVisualText.style.color = "black";
             }
 
-            tileVisual.appendChild(tileFrontText);
+            tileDefaultVisual.appendChild(tileVisualText);
         }
+
+        this.tileFront.appendChild(tileDefaultVisual);
+        this.tileVisuals.push(tileDefaultVisual);
     }
 
     private constructBack() {
@@ -141,6 +146,25 @@ export class Tile {
 
     private constructCoreWindow() {
         window.location.hash = this.pack.identity.name + "/" + this.app.id;
+    }
+
+    private updateLiveTile() {
+        let url = this.app.visualElements.defaultTile.tileUpdateUrl;
+        if (url) {
+            url = url.replace(/{(\w+)}/g, (m, s) => {
+                s = s.toLowerCase();
+                switch (s) {
+                    case "language":
+                        return "en-gb";
+                }
+
+                return s;
+            })
+
+            fetch(url, { mode: "cors" }).then((resp) => {
+                console.log(resp);
+            })
+        }
     }
 
     reset() {

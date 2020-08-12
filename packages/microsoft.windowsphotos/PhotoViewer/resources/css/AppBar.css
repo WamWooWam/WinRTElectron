@@ -1,0 +1,11 @@
+﻿#appBar-deleteFlyout{width:300px;visibility:hidden;padding-top:15px;}
+#appBar-deleteFlyout-button{bottom:20px;position:absolute;}
+#appBar-deleteFlyout-button:-ms-lang(af,am,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pl,pt,quc,quz,ro,ru,rw,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,uk,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu):not(:-ms-lang(pa-arab)){right:20px;}
+#appBar-deleteFlyout-button:-ms-lang(ar,fa,he,ku,pa-arab,prs,sd,ug,ur){left:20px;}
+#appBar-deleteFlyout-div{margin-bottom:46px;}
+#BottomAppBar{background-color:#000000;}
+#TopAppBar{background-color:rgba(0, 0, 0, 0);}
+#TopAppBar #backButton-button{background-color:rgba(29, 29, 29, 0.3);}
+#TopAppBar #backButton-button:hover,#TopAppBar #backButton-button:active{background-color:rgba(84, 84, 84, 0.39);}
+#TopAppBar #backButton-button:hover:active{background-color:#ffffff;color:#000000;}
+button.noHyphens.win-command .win-label{-ms-hyphens:manual;}

@@ -1,0 +1,2057 @@
+﻿span.emoticon.smile,
+span.emoticon.sad,
+span.emoticon.laugh,
+span.emoticon.cool,
+span.emoticon.surprised,
+span.emoticon.wink,
+span.emoticon.cry,
+span.emoticon.sweat,
+span.emoticon.speechless,
+span.emoticon.kiss,
+span.emoticon.tongueout,
+span.emoticon.blush,
+span.emoticon.wonder,
+span.emoticon.sleepy,
+span.emoticon.dull,
+span.emoticon.inlove,
+span.emoticon.eg,
+span.emoticon.fingerscrossed,
+span.emoticon.yawn,
+span.emoticon.puke,
+span.emoticon.doh,
+span.emoticon.angry,
+span.emoticon.wasntme,
+span.emoticon.party,
+span.emoticon.worry,
+span.emoticon.mmm,
+span.emoticon.nerdy,
+span.emoticon.lipssealed,
+span.emoticon.hi,
+span.emoticon.facepalm,
+span.emoticon.devil,
+span.emoticon.angel,
+span.emoticon.envy,
+span.emoticon.wait,
+span.emoticon.hug,
+span.emoticon.makeup,
+span.emoticon.giggle,
+span.emoticon.clap,
+span.emoticon.think,
+span.emoticon.bow,
+span.emoticon.rofl,
+span.emoticon.whew,
+span.emoticon.happy,
+span.emoticon.smirk,
+span.emoticon.nod,
+span.emoticon.shake,
+span.emoticon.waiting,
+span.emoticon.emo,
+span.emoticon.yes,
+span.emoticon.no,
+span.emoticon.handshake,
+span.emoticon.highfive,
+span.emoticon.heart,
+span.emoticon.lalala,
+span.emoticon.heidy,
+span.emoticon.flower,
+span.emoticon.rain,
+span.emoticon.sun,
+span.emoticon.tumbleweed,
+span.emoticon.music,
+span.emoticon.bandit,
+span.emoticon.tmi,
+span.emoticon.coffee,
+span.emoticon.pizza,
+span.emoticon.cash,
+span.emoticon.muscle,
+span.emoticon.cake,
+span.emoticon.beer,
+span.emoticon.drink,
+span.emoticon.dance,
+span.emoticon.ninja,
+span.emoticon.star,
+span.emoticon.headbang,
+span.emoticon.swear,
+span.emoticon.drunk,
+span.emoticon.poolparty,
+span.emoticon.rock,
+span.emoticon.smoke,
+span.emoticon.bug,
+span.emoticon.toivo,
+span.emoticon.wfh,
+span.emoticon.priidu,
+span.emoticon.mail,
+span.emoticon.time,
+span.emoticon.movie,
+span.emoticon.phone,
+span.emoticon.talk,
+span.emoticon.call,
+span.emoticon.punch,
+span.emoticon.skype,
+span.emoticon.brokenheart,
+span.emoticon.mooning,
+span.emoticon.oliver,
+span.emoticon.bertlett,
+span.emoticon.mlt,
+span.emoticon.taur,
+span.emoticon.talktothehand,
+span.emoticon.idea,
+span.emoticon.sheep,
+span.emoticon.cat,
+span.emoticon.bike,
+span.emoticon.dog {
+	display: inline-block;
+	vertical-align: middle;
+	color: transparent;
+	font-size: 0;
+}
+span.emoticon.smile span.emoSprite,
+span.emoticon.sad span.emoSprite,
+span.emoticon.laugh span.emoSprite,
+span.emoticon.cool span.emoSprite,
+span.emoticon.surprised span.emoSprite,
+span.emoticon.wink span.emoSprite,
+span.emoticon.cry span.emoSprite,
+span.emoticon.sweat span.emoSprite,
+span.emoticon.speechless span.emoSprite,
+span.emoticon.kiss span.emoSprite,
+span.emoticon.tongueout span.emoSprite,
+span.emoticon.blush span.emoSprite,
+span.emoticon.wonder span.emoSprite,
+span.emoticon.sleepy span.emoSprite,
+span.emoticon.dull span.emoSprite,
+span.emoticon.inlove span.emoSprite,
+span.emoticon.eg span.emoSprite,
+span.emoticon.fingerscrossed span.emoSprite,
+span.emoticon.yawn span.emoSprite,
+span.emoticon.puke span.emoSprite,
+span.emoticon.doh span.emoSprite,
+span.emoticon.angry span.emoSprite,
+span.emoticon.wasntme span.emoSprite,
+span.emoticon.party span.emoSprite,
+span.emoticon.worry span.emoSprite,
+span.emoticon.mmm span.emoSprite,
+span.emoticon.nerdy span.emoSprite,
+span.emoticon.lipssealed span.emoSprite,
+span.emoticon.hi span.emoSprite,
+span.emoticon.facepalm span.emoSprite,
+span.emoticon.devil span.emoSprite,
+span.emoticon.angel span.emoSprite,
+span.emoticon.envy span.emoSprite,
+span.emoticon.wait span.emoSprite,
+span.emoticon.hug span.emoSprite,
+span.emoticon.makeup span.emoSprite,
+span.emoticon.giggle span.emoSprite,
+span.emoticon.clap span.emoSprite,
+span.emoticon.think span.emoSprite,
+span.emoticon.bow span.emoSprite,
+span.emoticon.rofl span.emoSprite,
+span.emoticon.whew span.emoSprite,
+span.emoticon.happy span.emoSprite,
+span.emoticon.smirk span.emoSprite,
+span.emoticon.nod span.emoSprite,
+span.emoticon.shake span.emoSprite,
+span.emoticon.waiting span.emoSprite,
+span.emoticon.emo span.emoSprite,
+span.emoticon.yes span.emoSprite,
+span.emoticon.no span.emoSprite,
+span.emoticon.handshake span.emoSprite,
+span.emoticon.highfive span.emoSprite,
+span.emoticon.heart span.emoSprite,
+span.emoticon.lalala span.emoSprite,
+span.emoticon.heidy span.emoSprite,
+span.emoticon.flower span.emoSprite,
+span.emoticon.rain span.emoSprite,
+span.emoticon.sun span.emoSprite,
+span.emoticon.tumbleweed span.emoSprite,
+span.emoticon.music span.emoSprite,
+span.emoticon.bandit span.emoSprite,
+span.emoticon.tmi span.emoSprite,
+span.emoticon.coffee span.emoSprite,
+span.emoticon.pizza span.emoSprite,
+span.emoticon.cash span.emoSprite,
+span.emoticon.muscle span.emoSprite,
+span.emoticon.cake span.emoSprite,
+span.emoticon.beer span.emoSprite,
+span.emoticon.drink span.emoSprite,
+span.emoticon.dance span.emoSprite,
+span.emoticon.ninja span.emoSprite,
+span.emoticon.star span.emoSprite,
+span.emoticon.headbang span.emoSprite,
+span.emoticon.swear span.emoSprite,
+span.emoticon.drunk span.emoSprite,
+span.emoticon.poolparty span.emoSprite,
+span.emoticon.rock span.emoSprite,
+span.emoticon.smoke span.emoSprite,
+span.emoticon.bug span.emoSprite,
+span.emoticon.toivo span.emoSprite,
+span.emoticon.wfh span.emoSprite,
+span.emoticon.priidu span.emoSprite,
+span.emoticon.mail span.emoSprite,
+span.emoticon.time span.emoSprite,
+span.emoticon.movie span.emoSprite,
+span.emoticon.phone span.emoSprite,
+span.emoticon.talk span.emoSprite,
+span.emoticon.call span.emoSprite,
+span.emoticon.punch span.emoSprite,
+span.emoticon.skype span.emoSprite,
+span.emoticon.brokenheart span.emoSprite,
+span.emoticon.mooning span.emoSprite,
+span.emoticon.oliver span.emoSprite,
+span.emoticon.bertlett span.emoSprite,
+span.emoticon.mlt span.emoSprite,
+span.emoticon.taur span.emoSprite,
+span.emoticon.talktothehand span.emoSprite,
+span.emoticon.idea span.emoSprite,
+span.emoticon.sheep span.emoSprite,
+span.emoticon.cat span.emoSprite,
+span.emoticon.bike span.emoSprite,
+span.emoticon.dog span.emoSprite {
+	display: block;
+}
+
+
+span.emoticon.smile span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/smile_20_anim.png);
+	transform: translateY(-200px);
+	background-size: 20px 1040px;
+}
+span.emoticon.sad span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/sadsmile_20_anim.png);
+	transform: translateY(-240px);
+	background-size: 20px 1240px;
+}
+span.emoticon.laugh span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/bigsmile_20_anim.png);
+	transform: translateY(-160px);
+	background-size: 20px 1520px;
+}
+span.emoticon.cool span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/cool_20_anim.png);
+	transform: translateY(-380px);
+	background-size: 20px 740px;
+}
+span.emoticon.surprised span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/surprised_20_anim.png);
+	transform: translateY(-320px);
+	background-size: 20px 1340px;
+}
+span.emoticon.wink span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/wink_20_anim.png);
+	transform: translateY(-320px);
+	background-size: 20px 700px;
+}
+span.emoticon.cry span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/crying_20_anim.png);
+	transform: translateY(-720px);
+	background-size: 20px 980px;
+}
+span.emoticon.sweat span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/sweating_20_anim.png);
+	transform: translateY(-280px);
+	background-size: 20px 1360px;
+}
+span.emoticon.speechless span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/speechless_20_anim.png);
+	transform: translateY(-220px);
+	background-size: 20px 1320px;
+}
+span.emoticon.kiss span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/kiss_20_anim.png);
+	transform: translateY(-380px);
+	background-size: 20px 1180px;
+}
+span.emoticon.tongueout span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/tongueout_20_anim.png);
+	transform: translateY(-240px);
+	background-size: 20px 960px;
+}
+span.emoticon.blush span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/blushing_20_anim.png);
+	transform: translateY(-140px);
+	background-size: 20px 1360px;
+}
+span.emoticon.wonder span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/wondering_20_anim.png);
+	transform: translateY(-220px);
+	background-size: 20px 1380px;
+}
+span.emoticon.sleepy span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/sleepy_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1420px;
+}
+span.emoticon.dull span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/dull_20_anim.png);
+	transform: translateY(-220px);
+	background-size: 20px 1520px;
+}
+span.emoticon.inlove span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/inlove_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1240px;
+}
+span.emoticon.eg span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/evilgrin_20_anim.png);
+	transform: translateY(-1000px);
+	background-size: 20px 1540px;
+}
+span.emoticon.fingerscrossed span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/fingerscrossed_20_anim.png);
+	transform: translateY(-100px);
+	background-size: 20px 1260px;
+}
+span.emoticon.yawn span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/yawning_20_anim.png);
+	transform: translateY(-380px);
+	background-size: 20px 1460px;
+}
+span.emoticon.puke span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/puking_20_anim.png);
+	transform: translateY(-500px);
+	background-size: 20px 1560px;
+}
+span.emoticon.doh span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/doh_20_anim.png);
+	transform: translateY(-600px);
+	background-size: 20px 1180px;
+}
+span.emoticon.angry span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/angry_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 2260px;
+}
+span.emoticon.wasntme span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/itwasntme_20_anim.png);
+	transform: translateY(-360px);
+	background-size: 20px 1500px;
+}
+span.emoticon.party span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/party_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1400px;
+}
+span.emoticon.worry span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/worried_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1100px;
+}
+span.emoticon.mmm span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/mmm_20_anim.png);
+	transform: translateY(-500px);
+	background-size: 20px 1840px;
+}
+span.emoticon.nerdy span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/nerd_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 940px;
+}
+span.emoticon.lipssealed span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/lipssealed_20_anim.png);
+	transform: translateY(-160px);
+	background-size: 20px 980px;
+}
+span.emoticon.hi span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/hi_20_anim.png);
+	transform: translateY(-140px);
+	background-size: 20px 1120px;
+}
+span.emoticon.facepalm span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/facepalm_20_anim.png);
+	transform: translateY(-1320px);
+	background-size: 20px 1520px;
+}
+span.emoticon.devil span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/devil_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1320px;
+}
+span.emoticon.angel span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/angel_20_anim.png);
+	transform: translateY(-580px);
+	background-size: 20px 1660px;
+}
+span.emoticon.envy span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/envy_20_anim.png);
+	transform: translateY(-320px);
+	background-size: 20px 1340px;
+}
+span.emoticon.wait span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/wait_20_anim.png);
+	transform: translateY(-260px);
+	background-size: 20px 880px;
+}
+span.emoticon.hug span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/hug_20_anim.png);
+	transform: translateY(-200px);
+	background-size: 20px 1500px;
+}
+span.emoticon.makeup span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/makeup_20_anim.png);
+	transform: translateY(-1020px);
+	background-size: 20px 2140px;
+}
+span.emoticon.giggle span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/giggle_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 880px;
+}
+span.emoticon.clap span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/clapping_20_anim.png);
+	transform: translateY(-100px);
+	background-size: 20px 780px;
+}
+span.emoticon.think span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/thinking_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1160px;
+}
+span.emoticon.bow span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/bow_20_anim.png);
+	transform: translateY(-600px);
+	background-size: 20px 1180px;
+}
+span.emoticon.rofl span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/rofl_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1600px;
+}
+span.emoticon.whew span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/whew_20_anim.png);
+	transform: translateY(-120px);
+	background-size: 20px 1000px;
+}
+span.emoticon.happy span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/happy_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1380px;
+}
+span.emoticon.smirk span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/smirk_20_anim.png);
+	transform: translateY(-520px);
+	background-size: 20px 1060px;
+}
+span.emoticon.nod span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/nod_20_anim.png);
+	transform: translateY(-600px);
+	background-size: 20px 1000px;
+}
+span.emoticon.shake span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/shake_20_anim.png);
+	transform: translateY(-200px);
+	background-size: 20px 1000px;
+}
+span.emoticon.waiting span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/waiting_20_anim.png);
+	transform: translateY(-200px);
+	background-size: 20px 1000px;
+}
+span.emoticon.emo span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/emo_20_anim.png);
+	transform: translateY(-200px);
+	background-size: 20px 1060px;
+}
+span.emoticon.yes span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/yes_20_anim.png);
+	transform: translateY(-300px);
+	background-size: 20px 780px;
+}
+span.emoticon.no span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/no_20_anim.png);
+	transform: translateY(-300px);
+	background-size: 20px 1080px;
+}
+span.emoticon.handshake span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/handshake_20_anim.png);
+	transform: translateY(-260px);
+	background-size: 20px 1220px;
+}
+span.emoticon.highfive span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/highfive_20_anim.png);
+	transform: translateY(-180px);
+	background-size: 20px 740px;
+}
+span.emoticon.heart span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/heart_20_anim.png);
+	transform: translateY(-160px);
+	background-size: 20px 320px;
+}
+span.emoticon.lalala span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/lalala_20_anim.png);
+	transform: translateY(-300px);
+	background-size: 20px 380px;
+}
+span.emoticon.heidy span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/heidy_20_anim.png);
+	transform: translateY(-480px);
+	background-size: 20px 1480px;
+}
+span.emoticon.flower span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/flower_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1640px;
+}
+span.emoticon.rain span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/rain_20_anim.png);
+	transform: translateY(-60px);
+	background-size: 20px 580px;
+}
+span.emoticon.sun span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/sunshine_20_anim.png);
+	transform: translateY(-120px);
+	background-size: 20px 520px;
+}
+span.emoticon.tumbleweed span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/tumbleweed_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 620px;
+}
+span.emoticon.music span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/music_20_anim.png);
+	transform: translateY(-600px);
+	background-size: 20px 1080px;
+}
+span.emoticon.bandit span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/bandit_20_anim.png);
+	transform: translateY(-160px);
+	background-size: 20px 2020px;
+}
+span.emoticon.tmi span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/tmi_20_anim.png);
+	transform: translateY(-360px);
+	background-size: 20px 1100px;
+}
+span.emoticon.coffee span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/coffee_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 540px;
+}
+span.emoticon.pizza span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/pizza_20_anim.png);
+	transform: translateY(-480px);
+	background-size: 20px 1800px;
+}
+span.emoticon.cash span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/cash_20_anim.png);
+	transform: translateY(-220px);
+	background-size: 20px 520px;
+}
+span.emoticon.muscle span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/muscle_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1160px;
+}
+span.emoticon.cake span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/cake_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1980px;
+}
+span.emoticon.beer span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/beer_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1500px;
+}
+span.emoticon.drink span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/drink_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1240px;
+}
+span.emoticon.dance span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/dancing_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 4100px;
+}
+span.emoticon.ninja span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/ninja_20_anim.png);
+	transform: translateY(-380px);
+	background-size: 20px 2420px;
+}
+span.emoticon.star span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/star_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1260px;
+}
+span.emoticon.headbang span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/headbang_20_anim.png);
+	transform: translateY(-340px);
+	background-size: 20px 1400px;
+}
+span.emoticon.swear span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/swear_20_anim.png);
+	transform: translateY(-120px);
+	background-size: 20px 1520px;
+}
+span.emoticon.drunk span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/drunk_20_anim.png);
+	transform: translateY(-400px);
+	background-size: 20px 960px;
+}
+span.emoticon.poolparty span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/poolparty_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1740px;
+}
+span.emoticon.rock span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/rock_20_anim.png);
+	transform: translateY(-100px);
+	background-size: 20px 220px;
+}
+span.emoticon.smoke span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/smoking_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1280px;
+}
+span.emoticon.bug span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/bug_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1540px;
+}
+span.emoticon.toivo span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/toivo_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1660px;
+}
+span.emoticon.wfh span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/wfh_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1560px;
+}
+span.emoticon.priidu span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/priidu_20_anim.png);
+	transform: translateY(-1000px);
+	background-size: 20px 1220px;
+}
+span.emoticon.mail span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/mail_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1060px;
+}
+span.emoticon.time span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/time_20_anim.png);
+	transform: translateY(-360px);
+	background-size: 20px 1180px;
+}
+span.emoticon.movie span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/movie_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1080px;
+}
+span.emoticon.phone span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/phone_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1760px;
+}
+span.emoticon.talk span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/talking_20_anim.png);
+	transform: translateY(-820px);
+	background-size: 20px 920px;
+}
+span.emoticon.call span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/call_20_anim.png);
+	transform: translateY(-60px);
+	background-size: 20px 900px;
+}
+span.emoticon.punch span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/punch_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 860px;
+}
+span.emoticon.skype span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/skype_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 20px;
+}
+span.emoticon.brokenheart span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/brokenheart_20_anim.png);
+	transform: translateY(-1000px);
+	background-size: 20px 2080px;
+}
+span.emoticon.mooning span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/mooning_20_anim.png);
+	transform: translateY(-300px);
+	background-size: 20px 900px;
+}
+span.emoticon.oliver span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/oliver_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 1260px;
+}
+span.emoticon.bertlett span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/bartlett_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 1580px;
+}
+span.emoticon.mlt span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/malthe_20_anim.png);
+	transform: translateY(0px);
+	background-size: 20px 1320px;
+}
+span.emoticon.taur span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/dull_tauri_20_anim.png);
+	transform: translateY(-1060px);
+	background-size: 20px 1480px;
+}
+span.emoticon.talktothehand span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/talktothehand_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 1220px;
+}
+span.emoticon.idea span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/idea_20_anim.png);
+	transform: translateY(-1100px);
+	background-size: 20px 2360px;
+}
+span.emoticon.sheep span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/sheep_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 2200px;
+}
+span.emoticon.cat span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/cat_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 2380px;
+}
+span.emoticon.bike span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/bike_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 140px;
+}
+span.emoticon.dog span.emoSprite {
+	background-image: url(/images/emoticons/20_anim/dog_20_anim.png);
+	transform: translateY(-20px);
+	background-size: 20px 1060px;
+}
+
+
+div.bigEmoticons span.emoticon.smile span.emoSprite { background-image: url(/images/emoticons/30/smile_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.sad span.emoSprite { background-image: url(/images/emoticons/30/sadsmile_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.laugh span.emoSprite { background-image: url(/images/emoticons/30/bigsmile_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.cool span.emoSprite { background-image: url(/images/emoticons/30/cool_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.surprised span.emoSprite { background-image: url(/images/emoticons/30/surprised_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.wink span.emoSprite { background-image: url(/images/emoticons/30/wink_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.cry span.emoSprite { background-image: url(/images/emoticons/30/crying_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.sweat span.emoSprite { background-image: url(/images/emoticons/30/sweating_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.speechless span.emoSprite { background-image: url(/images/emoticons/30/speechless_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.kiss span.emoSprite { background-image: url(/images/emoticons/30/kiss_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.tongueout span.emoSprite { background-image: url(/images/emoticons/30/tongueout_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.blush span.emoSprite { background-image: url(/images/emoticons/30/blushing_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.wonder span.emoSprite { background-image: url(/images/emoticons/30/wondering_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.sleepy span.emoSprite { background-image: url(/images/emoticons/30/sleepy_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.dull span.emoSprite { background-image: url(/images/emoticons/30/dull_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.inlove span.emoSprite { background-image: url(/images/emoticons/30/inlove_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.eg span.emoSprite { background-image: url(/images/emoticons/30/evilgrin_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.fingerscrossed span.emoSprite { background-image: url(/images/emoticons/30/fingerscrossed_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.yawn span.emoSprite { background-image: url(/images/emoticons/30/yawning_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.puke span.emoSprite { background-image: url(/images/emoticons/30/puking_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.doh span.emoSprite { background-image: url(/images/emoticons/30/doh_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.angry span.emoSprite { background-image: url(/images/emoticons/30/angry_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.wasntme span.emoSprite { background-image: url(/images/emoticons/30/itwasntme_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.party span.emoSprite { background-image: url(/images/emoticons/30/party_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.worry span.emoSprite { background-image: url(/images/emoticons/30/worried_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.mmm span.emoSprite { background-image: url(/images/emoticons/30/mmm_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.nerdy span.emoSprite { background-image: url(/images/emoticons/30/nerd_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.lipssealed span.emoSprite { background-image: url(/images/emoticons/30/lipssealed_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.hi span.emoSprite { background-image: url(/images/emoticons/30/hi_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.facepalm span.emoSprite { background-image: url(/images/emoticons/30/facepalm_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.devil span.emoSprite { background-image: url(/images/emoticons/30/devil_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.angel span.emoSprite { background-image: url(/images/emoticons/30/angel_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.envy span.emoSprite { background-image: url(/images/emoticons/30/envy_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.wait span.emoSprite { background-image: url(/images/emoticons/30/wait_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.hug span.emoSprite { background-image: url(/images/emoticons/30/hug_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.makeup span.emoSprite { background-image: url(/images/emoticons/30/makeup_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.giggle span.emoSprite { background-image: url(/images/emoticons/30/giggle_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.clap span.emoSprite { background-image: url(/images/emoticons/30/clapping_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.think span.emoSprite { background-image: url(/images/emoticons/30/thinking_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.bow span.emoSprite { background-image: url(/images/emoticons/30/bow_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.rofl span.emoSprite { background-image: url(/images/emoticons/30/rofl_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.whew span.emoSprite { background-image: url(/images/emoticons/30/whew_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.happy span.emoSprite { background-image: url(/images/emoticons/30/happy_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.smirk span.emoSprite { background-image: url(/images/emoticons/30/smirk_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.nod span.emoSprite { background-image: url(/images/emoticons/30/nod_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.shake span.emoSprite { background-image: url(/images/emoticons/30/shake_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.waiting span.emoSprite { background-image: url(/images/emoticons/30/waiting_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.emo span.emoSprite { background-image: url(/images/emoticons/30/emo_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.yes span.emoSprite { background-image: url(/images/emoticons/30/yes_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.no span.emoSprite { background-image: url(/images/emoticons/30/no_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.handshake span.emoSprite { background-image: url(/images/emoticons/30/handshake_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.highfive span.emoSprite { background-image: url(/images/emoticons/30/highfive_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.heart span.emoSprite { background-image: url(/images/emoticons/30/heart_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.lalala span.emoSprite { background-image: url(/images/emoticons/30/lalala_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.heidy span.emoSprite { background-image: url(/images/emoticons/30/heidy_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.flower span.emoSprite { background-image: url(/images/emoticons/30/flower_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.rain span.emoSprite { background-image: url(/images/emoticons/30/rain_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.sun span.emoSprite { background-image: url(/images/emoticons/30/sunshine_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.tumbleweed span.emoSprite { background-image: url(/images/emoticons/30/tumbleweed_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.music span.emoSprite { background-image: url(/images/emoticons/30/music_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.bandit span.emoSprite { background-image: url(/images/emoticons/30/bandit_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.tmi span.emoSprite { background-image: url(/images/emoticons/30/tmi_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.coffee span.emoSprite { background-image: url(/images/emoticons/30/coffee_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.pizza span.emoSprite { background-image: url(/images/emoticons/30/pizza_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.cash span.emoSprite { background-image: url(/images/emoticons/30/cash_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.muscle span.emoSprite { background-image: url(/images/emoticons/30/muscle_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.cake span.emoSprite { background-image: url(/images/emoticons/30/cake_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.beer span.emoSprite { background-image: url(/images/emoticons/30/beer_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.drink span.emoSprite { background-image: url(/images/emoticons/30/drink_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.dance span.emoSprite { background-image: url(/images/emoticons/30/dancing_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.ninja span.emoSprite { background-image: url(/images/emoticons/30/ninja_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.star span.emoSprite { background-image: url(/images/emoticons/30/star_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.headbang span.emoSprite { background-image: url(/images/emoticons/30/headbang_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.swear span.emoSprite { background-image: url(/images/emoticons/30/swear_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.drunk span.emoSprite { background-image: url(/images/emoticons/30/drunk_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.poolparty span.emoSprite { background-image: url(/images/emoticons/30/poolparty_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.rock span.emoSprite { background-image: url(/images/emoticons/30/rock_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.smoke span.emoSprite { background-image: url(/images/emoticons/30/smoking_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.bug span.emoSprite { background-image: url(/images/emoticons/30/bug_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.toivo span.emoSprite { background-image: url(/images/emoticons/30/toivo_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.wfh span.emoSprite { background-image: url(/images/emoticons/30/wfh_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.priidu span.emoSprite { background-image: url(/images/emoticons/30/priidu_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.mail span.emoSprite { background-image: url(/images/emoticons/30/mail_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.time span.emoSprite { background-image: url(/images/emoticons/30/time_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.movie span.emoSprite { background-image: url(/images/emoticons/30/movie_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.phone span.emoSprite { background-image: url(/images/emoticons/30/phone_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.talk span.emoSprite { background-image: url(/images/emoticons/30/talking_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.call span.emoSprite { background-image: url(/images/emoticons/30/call_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.punch span.emoSprite { background-image: url(/images/emoticons/30/punch_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.skype span.emoSprite { background-image: url(/images/emoticons/30/skype_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.brokenheart span.emoSprite { background-image: url(/images/emoticons/30/brokenheart_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.mooning span.emoSprite { background-image: url(/images/emoticons/30/mooning_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.oliver span.emoSprite { background-image: url(/images/emoticons/30/oliver_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.bertlett span.emoSprite { background-image: url(/images/emoticons/30/bartlett_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.mlt span.emoSprite { background-image: url(/images/emoticons/30/malthe_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.taur span.emoSprite { background-image: url(/images/emoticons/30/dull_tauri_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.talktothehand span.emoSprite { background-image: url(/images/emoticons/30/talktothehand_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.idea span.emoSprite { background-image: url(/images/emoticons/30/idea_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.sheep span.emoSprite { background-image: url(/images/emoticons/30/sheep_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.cat span.emoSprite { background-image: url(/images/emoticons/30/cat_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.bike span.emoSprite { background-image: url(/images/emoticons/30/bike_30.png); 	background-size: 30px 30px;
+}
+div.bigEmoticons span.emoticon.dog span.emoSprite { background-image: url(/images/emoticons/30/dog_30.png); 	background-size: 30px 30px;
+}
+
+
+div.bigEmoticons80 span.emoticon.smile span.emoSprite { background-image: url(/images/emoticons/80/smile_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.sad span.emoSprite { background-image: url(/images/emoticons/80/sadsmile_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.laugh span.emoSprite { background-image: url(/images/emoticons/80/bigsmile_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.cool span.emoSprite { background-image: url(/images/emoticons/80/cool_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.surprised span.emoSprite { background-image: url(/images/emoticons/80/surprised_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.wink span.emoSprite { background-image: url(/images/emoticons/80/wink_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.cry span.emoSprite { background-image: url(/images/emoticons/80/crying_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.sweat span.emoSprite { background-image: url(/images/emoticons/80/sweating_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.speechless span.emoSprite { background-image: url(/images/emoticons/80/speechless_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.kiss span.emoSprite { background-image: url(/images/emoticons/80/kiss_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.tongueout span.emoSprite { background-image: url(/images/emoticons/80/tongueout_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.blush span.emoSprite { background-image: url(/images/emoticons/80/blushing_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.wonder span.emoSprite { background-image: url(/images/emoticons/80/wondering_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.sleepy span.emoSprite { background-image: url(/images/emoticons/80/sleepy_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.dull span.emoSprite { background-image: url(/images/emoticons/80/dull_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.inlove span.emoSprite { background-image: url(/images/emoticons/80/inlove_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.eg span.emoSprite { background-image: url(/images/emoticons/80/evilgrin_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.fingerscrossed span.emoSprite { background-image: url(/images/emoticons/80/fingerscrossed_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.yawn span.emoSprite { background-image: url(/images/emoticons/80/yawning_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.puke span.emoSprite { background-image: url(/images/emoticons/80/puking_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.doh span.emoSprite { background-image: url(/images/emoticons/80/doh_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.angry span.emoSprite { background-image: url(/images/emoticons/80/angry_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.wasntme span.emoSprite { background-image: url(/images/emoticons/80/itwasntme_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.party span.emoSprite { background-image: url(/images/emoticons/80/party_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.worry span.emoSprite { background-image: url(/images/emoticons/80/worried_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.mmm span.emoSprite { background-image: url(/images/emoticons/80/mmm_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.nerdy span.emoSprite { background-image: url(/images/emoticons/80/nerd_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.lipssealed span.emoSprite { background-image: url(/images/emoticons/80/lipssealed_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.hi span.emoSprite { background-image: url(/images/emoticons/80/hi_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.facepalm span.emoSprite { background-image: url(/images/emoticons/80/facepalm_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.devil span.emoSprite { background-image: url(/images/emoticons/80/devil_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.angel span.emoSprite { background-image: url(/images/emoticons/80/angel_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.envy span.emoSprite { background-image: url(/images/emoticons/80/envy_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.wait span.emoSprite { background-image: url(/images/emoticons/80/wait_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.hug span.emoSprite { background-image: url(/images/emoticons/80/hug_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.makeup span.emoSprite { background-image: url(/images/emoticons/80/makeup_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.giggle span.emoSprite { background-image: url(/images/emoticons/80/giggle_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.clap span.emoSprite { background-image: url(/images/emoticons/80/clapping_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.think span.emoSprite { background-image: url(/images/emoticons/80/thinking_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.bow span.emoSprite { background-image: url(/images/emoticons/80/bow_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.rofl span.emoSprite { background-image: url(/images/emoticons/80/rofl_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.whew span.emoSprite { background-image: url(/images/emoticons/80/whew_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.happy span.emoSprite { background-image: url(/images/emoticons/80/happy_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.smirk span.emoSprite { background-image: url(/images/emoticons/80/smirk_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.nod span.emoSprite { background-image: url(/images/emoticons/80/nod_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.shake span.emoSprite { background-image: url(/images/emoticons/80/shake_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.waiting span.emoSprite { background-image: url(/images/emoticons/80/waiting_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.emo span.emoSprite { background-image: url(/images/emoticons/80/emo_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.yes span.emoSprite { background-image: url(/images/emoticons/80/yes_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.no span.emoSprite { background-image: url(/images/emoticons/80/no_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.handshake span.emoSprite { background-image: url(/images/emoticons/80/handshake_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.highfive span.emoSprite { background-image: url(/images/emoticons/80/highfive_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.heart span.emoSprite { background-image: url(/images/emoticons/80/heart_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.lalala span.emoSprite { background-image: url(/images/emoticons/80/lalala_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.heidy span.emoSprite { background-image: url(/images/emoticons/80/heidy_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.flower span.emoSprite { background-image: url(/images/emoticons/80/flower_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.rain span.emoSprite { background-image: url(/images/emoticons/80/rain_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.sun span.emoSprite { background-image: url(/images/emoticons/80/sunshine_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.tumbleweed span.emoSprite { background-image: url(/images/emoticons/80/tumbleweed_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.music span.emoSprite { background-image: url(/images/emoticons/80/music_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.bandit span.emoSprite { background-image: url(/images/emoticons/80/bandit_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.tmi span.emoSprite { background-image: url(/images/emoticons/80/tmi_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.coffee span.emoSprite { background-image: url(/images/emoticons/80/coffee_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.pizza span.emoSprite { background-image: url(/images/emoticons/80/pizza_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.cash span.emoSprite { background-image: url(/images/emoticons/80/cash_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.muscle span.emoSprite { background-image: url(/images/emoticons/80/muscle_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.cake span.emoSprite { background-image: url(/images/emoticons/80/cake_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.beer span.emoSprite { background-image: url(/images/emoticons/80/beer_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.drink span.emoSprite { background-image: url(/images/emoticons/80/drink_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.dance span.emoSprite { background-image: url(/images/emoticons/80/dancing_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.ninja span.emoSprite { background-image: url(/images/emoticons/80/ninja_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.star span.emoSprite { background-image: url(/images/emoticons/80/star_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.headbang span.emoSprite { background-image: url(/images/emoticons/80/headbang_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.swear span.emoSprite { background-image: url(/images/emoticons/80/swear_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.drunk span.emoSprite { background-image: url(/images/emoticons/80/drunk_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.poolparty span.emoSprite { background-image: url(/images/emoticons/80/poolparty_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.rock span.emoSprite { background-image: url(/images/emoticons/80/rock_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.smoke span.emoSprite { background-image: url(/images/emoticons/80/smoking_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.bug span.emoSprite { background-image: url(/images/emoticons/80/bug_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.toivo span.emoSprite { background-image: url(/images/emoticons/80/toivo_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.wfh span.emoSprite { background-image: url(/images/emoticons/80/wfh_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.priidu span.emoSprite { background-image: url(/images/emoticons/80/priidu_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.mail span.emoSprite { background-image: url(/images/emoticons/80/mail_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.time span.emoSprite { background-image: url(/images/emoticons/80/time_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.movie span.emoSprite { background-image: url(/images/emoticons/80/movie_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.phone span.emoSprite { background-image: url(/images/emoticons/80/phone_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.talk span.emoSprite { background-image: url(/images/emoticons/80/talking_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.call span.emoSprite { background-image: url(/images/emoticons/80/call_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.punch span.emoSprite { background-image: url(/images/emoticons/80/punch_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.skype span.emoSprite { background-image: url(/images/emoticons/80/skype_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.brokenheart span.emoSprite { background-image: url(/images/emoticons/80/brokenheart_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.mooning span.emoSprite { background-image: url(/images/emoticons/80/mooning_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.oliver span.emoSprite { background-image: url(/images/emoticons/80/oliver_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.bertlett span.emoSprite { background-image: url(/images/emoticons/80/bartlett_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.mlt span.emoSprite { background-image: url(/images/emoticons/80/malthe_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.taur span.emoSprite { background-image: url(/images/emoticons/80/dull_tauri_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.talktothehand span.emoSprite { background-image: url(/images/emoticons/80/talktothehand_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.idea span.emoSprite { background-image: url(/images/emoticons/80/idea_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.sheep span.emoSprite { background-image: url(/images/emoticons/80/sheep_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.cat span.emoSprite { background-image: url(/images/emoticons/80/cat_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.bike span.emoSprite { background-image: url(/images/emoticons/80/bike_80.png); 	background-size: 80px 80px;
+}
+div.bigEmoticons80 span.emoticon.dog span.emoSprite { background-image: url(/images/emoticons/80/dog_80.png); 	background-size: 80px 80px;
+}
+
+
+@keyframes smile {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1020px); }
+}
+span.emoticon.smile span.emoSprite {
+	animation: smile 2.184s steps(51) 0 infinite forwards;
+	height: 1040px;
+}
+
+@keyframes sad {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1220px); }
+}
+span.emoticon.sad span.emoSprite {
+	animation: sad 2.604s steps(61) 0 infinite forwards;
+	height: 1240px;
+}
+
+@keyframes laugh {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1500px); }
+}
+span.emoticon.laugh span.emoSprite {
+	animation: laugh 3.192s steps(75) 0 infinite forwards;
+	height: 1520px;
+}
+
+@keyframes cool {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-720px); }
+}
+span.emoticon.cool span.emoSprite {
+	animation: cool 1.554s steps(36) 0 infinite forwards;
+	height: 740px;
+}
+
+@keyframes surprised {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1320px); }
+}
+span.emoticon.surprised span.emoSprite {
+	animation: surprised 2.814s steps(66) 0 infinite forwards;
+	height: 1340px;
+}
+
+@keyframes wink {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-680px); }
+}
+span.emoticon.wink span.emoSprite {
+	animation: wink 1.47s steps(34) 0 infinite forwards;
+	height: 700px;
+}
+
+@keyframes cry {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-960px); }
+}
+span.emoticon.cry span.emoSprite {
+	animation: cry 2.058s steps(48) 0 infinite forwards;
+	height: 980px;
+}
+
+@keyframes sweat {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1340px); }
+}
+span.emoticon.sweat span.emoSprite {
+	animation: sweat 2.856s steps(67) 0 infinite forwards;
+	height: 1360px;
+}
+
+@keyframes speechless {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1300px); }
+}
+span.emoticon.speechless span.emoSprite {
+	animation: speechless 2.772s steps(65) 0 infinite forwards;
+	height: 1320px;
+}
+
+@keyframes kiss {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1160px); }
+}
+span.emoticon.kiss span.emoSprite {
+	animation: kiss 2.478s steps(58) 0 infinite forwards;
+	height: 1180px;
+}
+
+@keyframes tongueout {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-940px); }
+}
+span.emoticon.tongueout span.emoSprite {
+	animation: tongueout 2.016s steps(47) 0 infinite forwards;
+	height: 960px;
+}
+
+@keyframes blush {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1340px); }
+}
+span.emoticon.blush span.emoSprite {
+	animation: blush 2.856s steps(67) 0 infinite forwards;
+	height: 1360px;
+}
+
+@keyframes wonder {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1360px); }
+}
+span.emoticon.wonder span.emoSprite {
+	animation: wonder 2.898s steps(68) 0 infinite forwards;
+	height: 1380px;
+}
+
+@keyframes sleepy {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1400px); }
+}
+span.emoticon.sleepy span.emoSprite {
+	animation: sleepy 2.982s steps(70) 0 infinite forwards;
+	height: 1420px;
+}
+
+@keyframes dull {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1500px); }
+}
+span.emoticon.dull span.emoSprite {
+	animation: dull 3.192s steps(75) 0 infinite forwards;
+	height: 1520px;
+}
+
+@keyframes inlove {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1220px); }
+}
+span.emoticon.inlove span.emoSprite {
+	animation: inlove 2.604s steps(61) 0 infinite forwards;
+	height: 1240px;
+}
+
+@keyframes eg {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1520px); }
+}
+span.emoticon.eg span.emoSprite {
+	animation: eg 3.234s steps(76) 0 infinite forwards;
+	height: 1540px;
+}
+
+@keyframes fingerscrossed {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1240px); }
+}
+span.emoticon.fingerscrossed span.emoSprite {
+	animation: fingerscrossed 2.646s steps(62) 0 infinite forwards;
+	height: 1260px;
+}
+
+@keyframes yawn {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1440px); }
+}
+span.emoticon.yawn span.emoSprite {
+	animation: yawn 3.066s steps(72) 0 infinite forwards;
+	height: 1460px;
+}
+
+@keyframes puke {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1540px); }
+}
+span.emoticon.puke span.emoSprite {
+	animation: puke 3.276s steps(77) 0 infinite forwards;
+	height: 1560px;
+}
+
+@keyframes doh {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1160px); }
+}
+span.emoticon.doh span.emoSprite {
+	animation: doh 2.478s steps(58) 0 infinite forwards;
+	height: 1180px;
+}
+
+@keyframes angry {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2240px); }
+}
+span.emoticon.angry span.emoSprite {
+	animation: angry 4.746s steps(112) 0 infinite forwards;
+	height: 2260px;
+}
+
+@keyframes wasntme {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1480px); }
+}
+span.emoticon.wasntme span.emoSprite {
+	animation: wasntme 3.15s steps(74) 0 infinite forwards;
+	height: 1500px;
+}
+
+@keyframes party {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1380px); }
+}
+span.emoticon.party span.emoSprite {
+	animation: party 2.94s steps(69) 0 infinite forwards;
+	height: 1400px;
+}
+
+@keyframes worry {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1080px); }
+}
+span.emoticon.worry span.emoSprite {
+	animation: worry 2.31s steps(54) 0 infinite forwards;
+	height: 1100px;
+}
+
+@keyframes mmm {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1820px); }
+}
+span.emoticon.mmm span.emoSprite {
+	animation: mmm 3.864s steps(91) 0 infinite forwards;
+	height: 1840px;
+}
+
+@keyframes nerdy {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-920px); }
+}
+span.emoticon.nerdy span.emoSprite {
+	animation: nerdy 1.974s steps(46) 0 infinite forwards;
+	height: 940px;
+}
+
+@keyframes lipssealed {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-960px); }
+}
+span.emoticon.lipssealed span.emoSprite {
+	animation: lipssealed 2.058s steps(48) 0 infinite forwards;
+	height: 980px;
+}
+
+@keyframes hi {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1100px); }
+}
+span.emoticon.hi span.emoSprite {
+	animation: hi 2.352s steps(55) 0 infinite forwards;
+	height: 1120px;
+}
+
+@keyframes facepalm {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1500px); }
+}
+span.emoticon.facepalm span.emoSprite {
+	animation: facepalm 3.192s steps(75) 0 infinite forwards;
+	height: 1520px;
+}
+
+@keyframes devil {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1300px); }
+}
+span.emoticon.devil span.emoSprite {
+	animation: devil 2.772s steps(65) 0 infinite forwards;
+	height: 1320px;
+}
+
+@keyframes angel {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1640px); }
+}
+span.emoticon.angel span.emoSprite {
+	animation: angel 3.486s steps(82) 0 infinite forwards;
+	height: 1660px;
+}
+
+@keyframes envy {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1320px); }
+}
+span.emoticon.envy span.emoSprite {
+	animation: envy 2.814s steps(66) 0 infinite forwards;
+	height: 1340px;
+}
+
+@keyframes wait {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-860px); }
+}
+span.emoticon.wait span.emoSprite {
+	animation: wait 1.848s steps(43) 0 infinite forwards;
+	height: 880px;
+}
+
+@keyframes hug {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1480px); }
+}
+span.emoticon.hug span.emoSprite {
+	animation: hug 3.15s steps(74) 0 infinite forwards;
+	height: 1500px;
+}
+
+@keyframes makeup {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2120px); }
+}
+span.emoticon.makeup span.emoSprite {
+	animation: makeup 4.494s steps(106) 0 infinite forwards;
+	height: 2140px;
+}
+
+@keyframes giggle {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-860px); }
+}
+span.emoticon.giggle span.emoSprite {
+	animation: giggle 1.848s steps(43) 0 infinite forwards;
+	height: 880px;
+}
+
+@keyframes clap {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-760px); }
+}
+span.emoticon.clap span.emoSprite {
+	animation: clap 1.638s steps(38) 0 infinite forwards;
+	height: 780px;
+}
+
+@keyframes think {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1140px); }
+}
+span.emoticon.think span.emoSprite {
+	animation: think 2.436s steps(57) 0 infinite forwards;
+	height: 1160px;
+}
+
+@keyframes bow {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1160px); }
+}
+span.emoticon.bow span.emoSprite {
+	animation: bow 2.478s steps(58) 0 infinite forwards;
+	height: 1180px;
+}
+
+@keyframes rofl {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1580px); }
+}
+span.emoticon.rofl span.emoSprite {
+	animation: rofl 3.36s steps(79) 0 infinite forwards;
+	height: 1600px;
+}
+
+@keyframes whew {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-980px); }
+}
+span.emoticon.whew span.emoSprite {
+	animation: whew 2.1s steps(49) 0 infinite forwards;
+	height: 1000px;
+}
+
+@keyframes happy {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1360px); }
+}
+span.emoticon.happy span.emoSprite {
+	animation: happy 2.898s steps(68) 0 infinite forwards;
+	height: 1380px;
+}
+
+@keyframes smirk {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1040px); }
+}
+span.emoticon.smirk span.emoSprite {
+	animation: smirk 2.226s steps(52) 0 infinite forwards;
+	height: 1060px;
+}
+
+@keyframes nod {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-980px); }
+}
+span.emoticon.nod span.emoSprite {
+	animation: nod 2.1s steps(49) 0 infinite forwards;
+	height: 1000px;
+}
+
+@keyframes shake {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-980px); }
+}
+span.emoticon.shake span.emoSprite {
+	animation: shake 2.1s steps(49) 0 infinite forwards;
+	height: 1000px;
+}
+
+@keyframes waiting {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-980px); }
+}
+span.emoticon.waiting span.emoSprite {
+	animation: waiting 2.1s steps(49) 0 infinite forwards;
+	height: 1000px;
+}
+
+@keyframes emo {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1040px); }
+}
+span.emoticon.emo span.emoSprite {
+	animation: emo 2.226s steps(52) 0 infinite forwards;
+	height: 1060px;
+}
+
+@keyframes yes {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-760px); }
+}
+span.emoticon.yes span.emoSprite {
+	animation: yes 1.638s steps(38) 0 infinite forwards;
+	height: 780px;
+}
+
+@keyframes no {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1060px); }
+}
+span.emoticon.no span.emoSprite {
+	animation: no 2.268s steps(53) 0 infinite forwards;
+	height: 1080px;
+}
+
+@keyframes handshake {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1200px); }
+}
+span.emoticon.handshake span.emoSprite {
+	animation: handshake 2.562s steps(60) 0 infinite forwards;
+	height: 1220px;
+}
+
+@keyframes highfive {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-720px); }
+}
+span.emoticon.highfive span.emoSprite {
+	animation: highfive 1.554s steps(36) 0 infinite forwards;
+	height: 740px;
+}
+
+@keyframes heart {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-300px); }
+}
+span.emoticon.heart span.emoSprite {
+	animation: heart 0.672s steps(15) 0 infinite forwards;
+	height: 320px;
+}
+
+@keyframes lalala {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-360px); }
+}
+span.emoticon.lalala span.emoSprite {
+	animation: lalala 0.798s steps(18) 0 infinite forwards;
+	height: 380px;
+}
+
+@keyframes heidy {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1460px); }
+}
+span.emoticon.heidy span.emoSprite {
+	animation: heidy 3.108s steps(73) 0 infinite forwards;
+	height: 1480px;
+}
+
+@keyframes flower {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1620px); }
+}
+span.emoticon.flower span.emoSprite {
+	animation: flower 3.444s steps(81) 0 infinite forwards;
+	height: 1640px;
+}
+
+@keyframes rain {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-560px); }
+}
+span.emoticon.rain span.emoSprite {
+	animation: rain 1.218s steps(28) 0 infinite forwards;
+	height: 580px;
+}
+
+@keyframes sun {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-500px); }
+}
+span.emoticon.sun span.emoSprite {
+	animation: sun 1.092s steps(25) 0 infinite forwards;
+	height: 520px;
+}
+
+@keyframes tumbleweed {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-600px); }
+}
+span.emoticon.tumbleweed span.emoSprite {
+	animation: tumbleweed 1.302s steps(30) 0 infinite forwards;
+	height: 620px;
+}
+
+@keyframes music {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1060px); }
+}
+span.emoticon.music span.emoSprite {
+	animation: music 2.268s steps(53) 0 infinite forwards;
+	height: 1080px;
+}
+
+@keyframes bandit {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2000px); }
+}
+span.emoticon.bandit span.emoSprite {
+	animation: bandit 4.242s steps(100) 0 infinite forwards;
+	height: 2020px;
+}
+
+@keyframes tmi {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1080px); }
+}
+span.emoticon.tmi span.emoSprite {
+	animation: tmi 2.31s steps(54) 0 infinite forwards;
+	height: 1100px;
+}
+
+@keyframes coffee {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-520px); }
+}
+span.emoticon.coffee span.emoSprite {
+	animation: coffee 1.134s steps(26) 0 infinite forwards;
+	height: 540px;
+}
+
+@keyframes pizza {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1780px); }
+}
+span.emoticon.pizza span.emoSprite {
+	animation: pizza 3.78s steps(89) 0 infinite forwards;
+	height: 1800px;
+}
+
+@keyframes cash {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-500px); }
+}
+span.emoticon.cash span.emoSprite {
+	animation: cash 1.092s steps(25) 0 infinite forwards;
+	height: 520px;
+}
+
+@keyframes muscle {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1140px); }
+}
+span.emoticon.muscle span.emoSprite {
+	animation: muscle 2.436s steps(57) 0 infinite forwards;
+	height: 1160px;
+}
+
+@keyframes cake {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1960px); }
+}
+span.emoticon.cake span.emoSprite {
+	animation: cake 4.158s steps(98) 0 infinite forwards;
+	height: 1980px;
+}
+
+@keyframes beer {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1480px); }
+}
+span.emoticon.beer span.emoSprite {
+	animation: beer 3.15s steps(74) 0 infinite forwards;
+	height: 1500px;
+}
+
+@keyframes drink {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1220px); }
+}
+span.emoticon.drink span.emoSprite {
+	animation: drink 2.604s steps(61) 0 infinite forwards;
+	height: 1240px;
+}
+
+@keyframes dance {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-4080px); }
+}
+span.emoticon.dance span.emoSprite {
+	animation: dance 8.61s steps(204) 0 infinite forwards;
+	height: 4100px;
+}
+
+@keyframes ninja {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2400px); }
+}
+span.emoticon.ninja span.emoSprite {
+	animation: ninja 5.082s steps(120) 0 infinite forwards;
+	height: 2420px;
+}
+
+@keyframes star {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1240px); }
+}
+span.emoticon.star span.emoSprite {
+	animation: star 2.646s steps(62) 0 infinite forwards;
+	height: 1260px;
+}
+
+@keyframes headbang {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1380px); }
+}
+span.emoticon.headbang span.emoSprite {
+	animation: headbang 2.94s steps(69) 0 infinite forwards;
+	height: 1400px;
+}
+
+@keyframes swear {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1500px); }
+}
+span.emoticon.swear span.emoSprite {
+	animation: swear 3.192s steps(75) 0 infinite forwards;
+	height: 1520px;
+}
+
+@keyframes drunk {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-940px); }
+}
+span.emoticon.drunk span.emoSprite {
+	animation: drunk 2.016s steps(47) 0 infinite forwards;
+	height: 960px;
+}
+
+@keyframes poolparty {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1720px); }
+}
+span.emoticon.poolparty span.emoSprite {
+	animation: poolparty 3.654s steps(86) 0 infinite forwards;
+	height: 1740px;
+}
+
+@keyframes rock {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-200px); }
+}
+span.emoticon.rock span.emoSprite {
+	animation: rock 0.462s steps(10) 0 infinite forwards;
+	height: 220px;
+}
+
+@keyframes smoke {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1260px); }
+}
+span.emoticon.smoke span.emoSprite {
+	animation: smoke 2.688s steps(63) 0 infinite forwards;
+	height: 1280px;
+}
+
+@keyframes bug {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1520px); }
+}
+span.emoticon.bug span.emoSprite {
+	animation: bug 3.234s steps(76) 0 infinite forwards;
+	height: 1540px;
+}
+
+@keyframes toivo {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1640px); }
+}
+span.emoticon.toivo span.emoSprite {
+	animation: toivo 3.486s steps(82) 0 infinite forwards;
+	height: 1660px;
+}
+
+@keyframes wfh {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1540px); }
+}
+span.emoticon.wfh span.emoSprite {
+	animation: wfh 3.276s steps(77) 0 infinite forwards;
+	height: 1560px;
+}
+
+@keyframes priidu {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1200px); }
+}
+span.emoticon.priidu span.emoSprite {
+	animation: priidu 2.562s steps(60) 0 infinite forwards;
+	height: 1220px;
+}
+
+@keyframes mail {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1040px); }
+}
+span.emoticon.mail span.emoSprite {
+	animation: mail 2.226s steps(52) 0 infinite forwards;
+	height: 1060px;
+}
+
+@keyframes time {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1160px); }
+}
+span.emoticon.time span.emoSprite {
+	animation: time 2.478s steps(58) 0 infinite forwards;
+	height: 1180px;
+}
+
+@keyframes movie {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1060px); }
+}
+span.emoticon.movie span.emoSprite {
+	animation: movie 2.268s steps(53) 0 infinite forwards;
+	height: 1080px;
+}
+
+@keyframes phone {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1740px); }
+}
+span.emoticon.phone span.emoSprite {
+	animation: phone 3.696s steps(87) 0 infinite forwards;
+	height: 1760px;
+}
+
+@keyframes talk {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-900px); }
+}
+span.emoticon.talk span.emoSprite {
+	animation: talk 1.932s steps(45) 0 infinite forwards;
+	height: 920px;
+}
+
+@keyframes call {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-880px); }
+}
+span.emoticon.call span.emoSprite {
+	animation: call 1.89s steps(44) 0 infinite forwards;
+	height: 900px;
+}
+
+@keyframes punch {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-840px); }
+}
+span.emoticon.punch span.emoSprite {
+	animation: punch 1.806s steps(42) 0 infinite forwards;
+	height: 860px;
+}
+
+@keyframes skype {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(0px); }
+}
+span.emoticon.skype span.emoSprite {
+	animation: skype 0.042s steps(0) 0 infinite forwards;
+	height: 20px;
+}
+
+@keyframes brokenheart {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2060px); }
+}
+span.emoticon.brokenheart span.emoSprite {
+	animation: brokenheart 4.368s steps(103) 0 infinite forwards;
+	height: 2080px;
+}
+
+@keyframes mooning {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-880px); }
+}
+span.emoticon.mooning span.emoSprite {
+	animation: mooning 1.89s steps(44) 0 infinite forwards;
+	height: 900px;
+}
+
+@keyframes oliver {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1240px); }
+}
+span.emoticon.oliver span.emoSprite {
+	animation: oliver 2.646s steps(62) 0 infinite forwards;
+	height: 1260px;
+}
+
+@keyframes bertlett {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1560px); }
+}
+span.emoticon.bertlett span.emoSprite {
+	animation: bertlett 3.318s steps(78) 0 infinite forwards;
+	height: 1580px;
+}
+
+@keyframes mlt {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1300px); }
+}
+span.emoticon.mlt span.emoSprite {
+	animation: mlt 2.772s steps(65) 0 infinite forwards;
+	height: 1320px;
+}
+
+@keyframes taur {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1460px); }
+}
+span.emoticon.taur span.emoSprite {
+	animation: taur 3.108s steps(73) 0 infinite forwards;
+	height: 1480px;
+}
+
+@keyframes talktothehand {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1200px); }
+}
+span.emoticon.talktothehand span.emoSprite {
+	animation: talktothehand 2.562s steps(60) 0 infinite forwards;
+	height: 1220px;
+}
+
+@keyframes idea {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2340px); }
+}
+span.emoticon.idea span.emoSprite {
+	animation: idea 4.956s steps(117) 0 infinite forwards;
+	height: 2360px;
+}
+
+@keyframes sheep {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2180px); }
+}
+span.emoticon.sheep span.emoSprite {
+	animation: sheep 4.62s steps(109) 0 infinite forwards;
+	height: 2200px;
+}
+
+@keyframes cat {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-2360px); }
+}
+span.emoticon.cat span.emoSprite {
+	animation: cat 4.998s steps(118) 0 infinite forwards;
+	height: 2380px;
+}
+
+@keyframes bike {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-120px); }
+}
+span.emoticon.bike span.emoSprite {
+	animation: bike 0.294s steps(6) 0 infinite forwards;
+	height: 140px;
+}
+
+@keyframes dog {
+	0% 	 { transform: translateY(0px); }
+	100% 	 { transform: translateY(-1040px); }
+}
+span.emoticon.dog span.emoSprite {
+	animation: dog 2.226s steps(52) 0 infinite forwards;
+	height: 1060px;
+}
+
+
+

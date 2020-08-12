@@ -1,0 +1,1101 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+div.fragment.dialer {
+    width: 100%;
+    height: 100%
+}
+
+div.page.dialer div.fragment.dialer header {
+    width: 100%;
+    background-color: #00aff0;
+    grid-template-rows: 1fr 50px;
+    overflow: visible;
+    line-height: normal;
+    position: relative
+}
+
+@media screen and (max-width: 400px) {
+    div.page.dialer div.fragment.dialer header {
+        grid-template-columns:60px 1fr
+    }
+}
+
+div.fragment.dialer header div.wrapper {
+    display: none
+}
+
+div.page.dialer div.fragment.dialer div.viewport {
+    grid-row: 1 / span 2;
+    overflow-y: hidden;
+    overflow-x: auto;
+    -ms-overflow-style: none
+}
+
+div.page section.navigationContainer>div.ANIMATIONDONE div.fragment.dialer div.viewport {
+    overflow-x: auto;
+    overflow-y: auto
+}
+
+div.page section.navigationContainer>div.ANIMATIONDONE div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput {
+    position: fixed
+}
+
+div.fragment.dialer div.dialerInputContainer input::-ms-clear {
+    margin-top: 9px;
+    background-color: #66cff6;
+    color: #fff;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    box-shadow: none
+}
+
+@media screen and (max-width: 400px) {
+    div.fragment.dialer div.dialerInputContainer input::-ms-clear {
+        margin-top:5px;
+        width: 30px;
+        height: 30px
+    }
+}
+
+div.fragment.dialer div.dialerInputContainer input::-ms-clear:hover {
+    background-color: #0095cc
+}
+
+div.fragment.dialer div.dialerInputContainer input::-ms-clear:hover:active {
+    background-color: #0082b3
+}
+
+div.fragment.dialer div.surface {
+    white-space: nowrap;
+    height: 100%;
+    margin-top: 50px;
+    font-size: 0;
+    padding-left: 120px;
+    padding-right: 120px
+}
+
+div.fragment.dialer div.categoryContainer {
+    white-space: normal;
+    display: inline-block;
+    vertical-align: top;
+    box-sizing: border-box;
+    height: calc(100vh - 50px - 60px);
+    margin-right: 40px;
+    font-size: 0
+}
+
+body.RTL div.fragment.dialer div.categoryContainer {
+    margin-right: 0;
+    margin-left: 40px
+}
+
+body.RTL div.fragment.dialer div.categoryContainer.dialerInputs {
+    margin-right: 0
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo {
+    padding-top: 178px;
+    width: 240px
+}
+
+div.fragment.dialer.EMERGENCY div.categoryContainer.accountInfo {
+    display: none
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall,div.fragment.dialer div.categoryContainer.recents {
+    padding-top: 126px
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall {
+    display: none;
+    width: 240px
+}
+
+div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall {
+    display: inline-block
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall {
+        max-width:640px;
+        padding-left: 20px;
+        padding-right: 20px;
+        display: block
+    }
+}
+
+div.fragment.dialer div.categoryContainer.recents {
+    margin-right: 20px
+}
+
+div.fragment.dialer div.categoryContainer h1.header {
+    margin-top: 12px;
+    margin-bottom: 14px;
+    margin-left: 14px;
+    margin-right: 20px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.fragment.dialer div.categoryContainer h1.header {
+        margin-left:20px;
+        margin-right: 20px
+    }
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall h1.header {
+    margin-left: 0;
+    margin-right: 0
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.emergencyCountry div.countryInputcontainer a.countryNameCont div.knob {
+    background-image: url("/images/dropDownIdle.png")
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.emergencyCountry div.countryInputcontainer a.countryNameCont div.knob:hover {
+    background-image: url("/images/dropDownHover.png")
+}
+
+div.fragment.dialer div.dialpad {
+    width: 326px;
+    display: grid;
+    grid-template-rows: 110px 70px 394px 85px;
+    grid-template-columns: 1fr
+}
+
+div.fragment.dialer header div.dialerInputContainer {
+    grid-row: 1;
+    grid-column: 2;
+    position: relative;
+    width: 100%;
+    height: 80px;
+    border: 0;
+    background-color: transparent;
+    line-height: normal
+}
+
+div.fragment.dialer header div.dialerInputContainer input.dialerInput {
+    padding: 0;
+    height: 60px;
+    letter-spacing: 0;
+    line-height: normal;
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    width: calc(100% - 100px);
+    margin-top: 45px;
+    margin-left: -10px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.fragment.dialer header div.dialerInputContainer input.dialerInput {
+        margin-top:20px;
+        width: calc(100% - 70px)
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.fragment.dialer header div.dialerInputContainer input.dialerInput {
+        margin-top:27px;
+        height: 40px;
+        font-size: 20px;
+        width: calc(100% - 62px);
+        margin-left: -7px
+    }
+}
+
+body.RTL div.fragment.dialer header div.dialerInputContainer input.dialerInput {
+    direction: ltr
+}
+
+div.fragment.dialer header div.dialerInputContainer input.dialerInput:-ms-input-placeholder {
+    color: #66cff6
+}
+
+div.fragment.dialer header div.countrySelectorContainer {
+    grid-row: 2;
+    grid-column: 2
+}
+
+div.fragment.dialer header div.countrySelectorContainer div.countryInput div.inputCont {
+    display: none
+}
+
+div.fragment.dialer header div.countrySelectorContainer div.countryInput a.countryNameCont div.countryName {
+    color: #fff
+}
+
+div.fragment.dialer header div.countrySelectorContainer div.countryInput {
+    width: calc(100% - 100px);
+    height: 40px
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.emergencyCountry {
+    width: 100%
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.emergencyCountry div.countryInputcontainer div.inputCont {
+    display: none
+}
+
+div.fragment.dialer.EMERGENCY div.dialpad div.countrySelectorContainer div.countryInput {
+    display: none
+}
+
+div.fragment.dialer div.dialpad div.numbersContainer {
+    grid-row: 3;
+    grid-column: 1;
+    background-color: #E7F1F5;
+    box-sizing: border-box;
+    padding: 2px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.numbersContainer {
+        background-color: WindowText
+    }
+}
+
+div.fragment.dialer div.dialpad div.numbersContainer div.numbers {
+    display: grid;
+    grid-template-columns: 106px 110px 106px;
+    grid-template-rows: 96px 98px 98px 98px;
+    direction: ltr
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number {
+    background-color: #fff;
+    outline-style: none
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number:focus div.numberInnerCont {
+    box-shadow: inset 0 0 0 2px #000
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.numbers>div.number:focus div.numberInnerCont {
+        box-shadow: inset 0 0 0 5px Windowtext
+    }
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="1"] {
+    grid-column: 1;
+    grid-row: 1
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="2"] {
+    grid-column: 2;
+    grid-row: 1;
+    margin: 0px 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="3"] {
+    grid-column: 3;
+    grid-row: 1
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="4"] {
+    grid-column: 1;
+    grid-row: 2;
+    margin-top: 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="5"] {
+    grid-column: 2;
+    grid-row: 2;
+    margin: 2px 2px 0
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="6"] {
+    grid-column: 3;
+    grid-row: 2;
+    margin-top: 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="7"] {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="8"] {
+    grid-column: 2;
+    grid-row: 3;
+    margin: 2px 2px 0
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="9"] {
+    grid-column: 3;
+    grid-row: 3;
+    margin-top: 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="*"] {
+    grid-column: 1;
+    grid-row: 4;
+    margin-top: 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="0"] {
+    grid-column: 2;
+    grid-row: 4;
+    margin: 2px 2px 0
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number[data-key="#"] {
+    grid-column: 3;
+    grid-row: 4;
+    margin-top: 2px
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number div.numberInnerCont {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100%;
+    background-color: #fff
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number:hover div.numberInnerCont {
+    background-color: rgba(0,149,204,0.15);
+    color: #000
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.numbers>div.number:hover div.numberInnerCont {
+        background-color: Highlight;
+        color: window
+    }
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number div.numberInnerCont div.icon {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: center;
+    position: relative;
+    top: -9px;
+    font-weight: 300
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number div.numberInnerCont div.title {
+    grid-row: 1;
+    grid-column: 1;
+    align-self: center;
+    justify-self: end;
+    position: relative;
+    top: -21px;
+    font-weight: 400
+}
+
+div.fragment.dialer div.dialpad div.numbers>div.number:hover div.numberInnerCont div.title {
+    color: #000
+}
+
+div.fragment.dialer div.dialpad div.actionButtons {
+    grid-row: 4;
+    grid-column: 1;
+    background-color: #fff;
+    margin-right: 1px;
+    text-align: center
+}
+
+div.fragment.dialer div.dialpad div.actionButtons>div {
+    display: inline-block;
+    color: #fff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-family: "Skype UI Symbol";
+    font-size: 60px;
+    line-height: normal;
+    text-align: center;
+    margin-top: 16px;
+    margin-right: 35px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.actionButtons>div {
+        border: 1px solid windowtext;
+        box-shadow: inset 0px 0px 0px 1px windowtext;
+        color: -ms-hotlight
+    }
+}
+
+body:not(.RTL) div.fragment.dialer div.dialpad div.actionButtons>div:last-child {
+    margin-right: 0px
+}
+
+body.RTL div.fragment.dialer div.dialpad div.actionButtons>div:first-child {
+    margin-right: 0px
+}
+
+div.fragment.dialer div.dialpad div.actionButtons>div.DISABLED {
+    opacity: 0.4
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.actionButtons>div.DISABLED {
+        opacity: 1;
+        border: 1px solid GrayText;
+        box-shadow: none;
+        color: GrayText
+    }
+}
+
+div.fragment.dialer div.dialpad div.actionButtons>div.call,div.fragment.dialer div.dialpad div.actionButtons>div.sms {
+    background-color: #00aff0
+}
+
+div.fragment.dialer div.dialpad div.actionButtons>div.call:not(.DISABLED):hover,div.fragment.dialer div.dialpad div.actionButtons>div.sms:not(.DISABLED):hover {
+    background-color: #009dd8
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.actionButtons>div.call:not(.DISABLED):hover,div.fragment.dialer div.dialpad div.actionButtons>div.sms:not(.DISABLED):hover {
+        background-color: Highlight;
+        border: 1px solid windowtext;
+        box-shadow: inset 0px 0px 0px 1px windowtext;
+        color: window
+    }
+}
+
+div.fragment.dialer div.dialpad div.actionButtons>div.call:not(.DISABLED):active,div.fragment.dialer div.dialpad div.actionButtons>div.sms:not(.DISABLED):active {
+    background-color: #007aa8
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.dialpad div.actionButtons>div.call:focus,div.fragment.dialer div.dialpad div.actionButtons>div.sms:focus {
+        outline: 3px solid windowText
+    }
+}
+
+@media screen and (-ms-high-contrast: active) and (max-aspect-ratio: 1 / 1) {
+    div.fragment.dialer div.dialpad div.actionButtons>div.call:focus,div.fragment.dialer div.dialpad div.actionButtons>div.sms:focus {
+        outline:1px solid windowText
+    }
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry {
+    margin-top: 10px
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry h3 {
+    grid-column: 2;
+    grid-row: 1;
+    margin-top: 5px;
+    margin-bottom: 0;
+    color: #e81123
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall h1.header {
+    margin-bottom: 28px
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall h3 {
+    margin-bottom: 10px
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry div.wrapper {
+    grid-column: 1;
+    grid-row: 1
+}
+
+body.RTL div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry div.wrapper {
+    text-align: right
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry div.wrapper div.icon {
+    margin-left: auto;
+    margin-right: 0;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    right: 0;
+    font-family: "Skype UI Symbol";
+    font-size: 30px;
+    line-height: normal;
+    text-align: center;
+    color: #fff;
+    background-color: #e81123
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry div.icon::before {
+    content: "\E600"
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry div.content {
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    color: #6e6e6e
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.allowedCountry {
+    margin-top: 10px
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.allowedCountry div.content {
+    color: #93999d
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.allowedCountry div.content strong {
+    font-weight: normal
+}
+
+div.fragment.dialer div.categoryContainer.emergencyCall div.emergencyNote>div.HIDDEN {
+    display: none
+}
+
+div.fragment.dialer div.categoryContainer.recents div.recentsList {
+    height: 100%;
+    position: relative;
+    top: -5px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.recentsList div.win-surface {
+    margin-left: 0;
+    margin-right: 0
+}
+
+div.fragment.dialer div.categoryContainer.recents div.recentsList div.win-container {
+    width: 300px;
+    height: 100px;
+    margin-left: 0;
+    margin-right: 0
+}
+
+div.fragment.dialer div.categoryContainer.recents div.recentsList .win-listlayout div.win-container {
+    width: 100%
+}
+
+body.RTL div.fragment.dialer div.categoryContainer.recents div.recentsList {
+    left: 5px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder {
+    display: block;
+    width: 300px;
+    box-sizing: border-box;
+    left: 20px
+}
+
+div.fragment.dialer div.categoryContainer.recents.POPULATED div.itemsPlaceholder {
+    display: none
+}
+
+body.RTL div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder {
+    left: 0;
+    right: 20px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.win-listview div.win-container:hover {
+    outline: none
+}
+
+div.fragment.dialer div.categoryContainer.recents div.win-listview div.win-focusedoutline {
+    left: 2px;
+    top: 2px;
+    width: calc(100% - 4px);
+    height: calc(100% - 4px);
+    outline-width: 2px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.categoryContainer.recents div.win-listview div.win-focusedoutline {
+        left: 5px;
+        top: 5px;
+        width: calc(100% - 10px);
+        height: calc(100% - 10px);
+        outline-width: 5px
+    }
+}
+
+div.fragment.dialer div.categoryContainer.recents div.win-listview div.win-horizontal {
+    overflow-x: hidden
+}
+
+div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.iconContainer {
+    background-color: #e7f1f5;
+    background-image: url(/images/svg/bg_hub_recents.svg);
+    background-size: cover;
+    box-sizing: border-box;
+    padding: 21px 36px;
+    height: 180px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.icon {
+    color: #FFF;
+    width: 50px;
+    height: 50px;
+    overflow: visible;
+    margin-bottom: 9px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.icon::before {
+    content: "\E30b";
+    font-family: "Skype UI Symbol";
+    font-size: 64px;
+    font-weight: bold;
+    position: relative;
+    top: 22px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.text {
+    margin-top: 14px;
+    color: #6e6e73
+}
+
+div.fragment.dialer div.categoryContainer div.itemsContainer div.item {
+    position: relative;
+    box-sizing: border-box;
+    background-color: #fff
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.fragment.dialer div.categoryContainer div.itemsContainer div.item {
+        vertical-align:top
+    }
+}
+
+div.fragment.dialer div.categoryContainer div.item div.content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px 0 16px
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.content {
+    padding-right: 20px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.categoryContainer.accountInfo div.item div.content div.status:hover a {
+        color: Highlight
+    }
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.content {
+    padding: 15px 25px 12px 15px
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.header {
+    font-weight: 700;
+    margin-bottom: 1px
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance.disabled {
+    opacity: .5
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance>div.get,div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance.ACTIVE>div.status {
+    display: block
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance>div.status,div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance.ACTIVE>div.get {
+    display: none
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance>div>a {
+    font-weight: 400
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance>div.status:hover>a {
+    color: #0182b3
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance>div.status:active>a {
+    color: #015c80
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState {
+    color: #ff8c00;
+    margin-top: 10px
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState>div {
+    display: none;
+    height: 42px;
+    box-sizing: border-box;
+    padding-top: 6px;
+    position: relative;
+    left: -10px
+}
+
+body.RTL div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState>div {
+    left: auto;
+    right: -15px
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState>div.VISIBLE {
+    display: block
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState>div>div {
+    display: inline-block;
+    word-wrap: break-word;
+    width: 170px
+}
+
+div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState>div>div.icon {
+    font-family: "Skype UI Symbol";
+    font-size: 44px;
+    position: relative;
+    top: 7px;
+    float: left;
+    width: 44px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.content {
+    height: 80px;
+    border: 0;
+    display: grid;
+    grid-template-columns: 1fr 70px;
+    grid-template-rows: 1fr
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.detailsFrame {
+    grid-column: 1;
+    grid-row: 1
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: end;
+    margin-top: 5px
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call {
+    padding: 0;
+    min-height: 0;
+    min-width: 0;
+    font-weight: normal;
+    border: 0;
+    font-family: "Skype UI Symbol";
+    font-weight: normal;
+    font-size: 40px;
+    background-color: #00aff0;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: normal;
+    text-align: center
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call {
+        box-sizing: content-box;
+        background-color: ButtonFace;
+        color: ButtonText;
+        border: 2px solid ButtonText
+    }
+
+    div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call:hover:not([disabled]) {
+        background-color: Highlight;
+        color: HighlightText
+    }
+
+    div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call[disabled] {
+        border-color: GrayText;
+        color: GrayText
+    }
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.content.DISABLED div.buttonFrame div.call {
+    opacity: 0.4
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call:hover {
+    background-color: #009dd8
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call:hover {
+        background-color: Highlight;
+        border: 1px solid windowtext;
+        box-shadow: inset 0px 0px 0px 1px windowtext;
+        color: window
+    }
+}
+
+div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.call:active {
+    background-color: #00aff0
+}
+
+@media screen and (max-width: 400px) {
+    div.page.dialer section.navigationContainer>div>div.fragment.dialer {
+        grid-template-rows:110px 1fr
+    }
+
+    div.page.dialer section.navigationContainer>div>div.fragment>header button.backbutton {
+        margin-top: 35px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.fragment.dialer header {
+        background-color:#00aff0
+    }
+
+    div.fragment.dialer header div.wrapper {
+        display: block
+    }
+
+    div.fragment.dialer header div.wrapper h2.title,div.fragment.dialer header div.wrapper h1.title.newCallView,div.fragment.dialer header div.wrapper h1.title.recentCallsView {
+        color: #fff
+    }
+
+    div.fragment.dialer header div.wrapper h1.title.newCallView:hover,div.fragment.dialer header div.wrapper h1.title.recentCallsView:hover {
+        color: rgba(255,255,255,0.85)
+    }
+
+    div.page.dialer div.fragment.dialer div.viewport {
+        grid-row: 2 / span 1;
+        overflow-x: hidden;
+        overflow-y: auto;
+        -ms-overflow-style: none
+    }
+
+    div.page section.navigationContainer>div.ANIMATIONDONE div.fragment.dialer div.viewport {
+        overflow-x: hidden;
+        overflow-y: auto
+    }
+
+    div.fragment.dialer div.surface {
+        margin-top: 0;
+        padding-left: 0;
+        padding-right: 0
+    }
+
+    div.fragment.dialer div.categoryContainer {
+        display: block;
+        height: auto;
+        margin-right: 0;
+        margin-top: -18px
+    }
+
+    div.fragment.dialer.RECENTCALLSVIEW div.categoryContainer.dialerInputs,div.fragment.dialer.RECENTCALLSVIEW div.categoryContainer.accountInfo,div.fragment.dialer.RECENTCALLSVIEW.EMERGENCY div.categoryContainer.emergencyCall {
+        display: none
+    }
+
+    div.fragment.dialer.DEFAULTVIEW div.categoryContainer.recents {
+        visibility: hidden;
+        position: absolute;
+        left: -1000px;
+        top: 0px
+    }
+
+    body.RTL div.fragment.dialer div.categoryContainer,body.RTL div.fragment.dialer div.categoryContainer.dialerInputs {
+        margin-right: auto;
+        margin-left: auto
+    }
+
+    div.fragment.dialer div.categoryContainer.recents {
+        padding-top: 30px;
+        margin-left: 0;
+        margin-right: 0
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo,body.RTL div.fragment.dialer div.categoryContainer.accountInfo,div.fragment.dialer div.categoryContainer.emergencyCall,body.RTL div.fragment.dialer div.categoryContainer.emergencyCall {
+        padding-top: 0;
+        width: 100%;
+        overflow-y: auto;
+        margin-top: 17px;
+        height: auto
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo,body.RTL div.fragment.dialer div.categoryContainer.accountInfo,div.fragment.dialer div.categoryContainer.emergencyCall,body.RTL div.fragment.dialer div.categoryContainer.emergencyCall {
+        margin-top: 40px;
+        margin-right: auto;
+        margin-left: auto
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo,div.fragment.dialer div.categoryContainer.emergencyCall,div.fragment.dialer div.categoryContainer.recents {
+        max-width: 640px;
+        margin-left: auto;
+        margin-right: auto
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo,body.RTL div.fragment.dialer div.categoryContainer.accountInfo {
+        padding-left: 0;
+        padding-right: 0
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall,body.RTL div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall {
+        overflow-y: visible
+    }
+
+    div.fragment.dialer div.dialpad {
+        width: 320px;
+        display: grid;
+        grid-template-rows: 45px 49px 381px 85px;
+        margin-left: calc(50% - 160px)
+    }
+
+    body.RTL div.fragment.dialer div.dialpad {
+        margin-right: calc(50% - 160px)
+    }
+
+    div.fragment.dialer div.dialpad div.dialerInputContainer,div.fragment.dialer div.dialpad div.countrySelectorContainer {
+        background-color: #00aff0
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput {
+        width: calc(100% - 20px)
+    }
+
+    div.fragment.dialer div.dialpad div.dialerInputContainer {
+        padding-top: 5px
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer {
+        padding-top: 4px
+    }
+
+    div.page section.navigationContainer>div.ANIMATIONDONE div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput {
+        position: relative
+    }
+
+    div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput {
+        border-width: 0;
+        width: 290px;
+        height: 40px;
+        margin-left: 15px;
+        margin-right: 15px
+    }
+
+    div.fragment.dialer div.dialpad div.dialerInputContainer input.dialerInput:-ms-input-placeholder {
+        border-width: 0;
+        background-color: #e7f6fd
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput,body.RTL div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput {
+        margin-left: 3px;
+        margin-right: 3px
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput a.countryNameCont div.countryName {
+        color: #fff
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput:hover a.countryNameCont div.countryName {
+        color: rgba(255,255,255,0.85)
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput a.countryNameCont div.knob {
+        background-image: url("/images/dropDownWhiteIdle.png")
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput a.countryNameCont:hover div.knob {
+        background-image: url("/images/dropDownWhiteHover.png")
+    }
+
+    div.fragment.dialer div.dialpad div.countrySelectorContainer div.countryInput a.countryNameCont:active div.knob {
+        background-image: url("/images/dropDownWhiteActive.png")
+    }
+
+    div.fragment.dialer div.dialpad div.numbersContainer div.numbers {
+        display: grid;
+        grid-template-columns: 104px 108px 104px;
+        grid-template-rows: 92px 95px 95px 95px
+    }
+
+    div.fragment.dialer div.dialpad div.actionButtons>div {
+        width: 45px;
+        height: 45px;
+        font-size: 45px;
+        margin-top: 20px
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.itemsContainer {
+        width: auto;
+        margin-left: 20px
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item.balance {
+        margin-bottom: 8px
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item {
+        width: 300px;
+        display: inline-block
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item div.header {
+        margin-bottom: 0
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item div.content {
+        padding-top: 0;
+        padding-bottom: 7px
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item.subscriptions div.content {
+        padding-bottom: 0
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance {
+        margin-top: 0;
+        margin-bottom: 0
+    }
+
+    div.fragment.dialer div.categoryContainer.accountInfo div.item div.balance>div>a {
+        font-weight: 600
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall>* {
+        position: relative
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall>h1.header {
+        color: #000
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall>h3 {
+        font-weight: 600
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall>div.emergencyCountry {
+        width: 100%
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall>div.emergencyCountry>p {
+        margin-top: 0
+    }
+
+    div.fragment.dialer.EMERGENCY div.categoryContainer.emergencyCall>div.emergencyNote p {
+        margin-bottom: 0
+    }
+
+    div.fragment.dialer div.categoryContainer.recents div.recentsList {
+        height: 100%
+    }
+
+    div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder {
+        width: 280px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-right: 0px
+    }
+
+    body.RTL div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder {
+        margin-left: 0px;
+        margin-right: 20px
+    }
+
+    div.fragment.dialer header div.wrapper>h1.title {
+        display: none
+    }
+
+    div.fragment.dialer header div.wrapper>h1.title.newCallView,div.fragment.dialer.RECENTCALLSVIEW header div.wrapper>h1.title.recentCallsView {
+        display: inline-block
+    }
+
+    div.fragment.dialer div.surface div.categoryContainer.accountInfo {
+        max-height: none
+    }
+}

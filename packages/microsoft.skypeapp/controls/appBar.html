@@ -1,0 +1,33 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="/controls/appBar.css" rel="stylesheet" />
+    <link href="conversationSwitcher.css" rel="stylesheet" />
+    <script src="/js/vm/conversationSwitcherCommandsSetVM.js"></script>
+</head>
+<body>
+    <div id="appBarTop">
+        <div class="appBarConversationSwitcher">
+            <div class="recentsContainer" data-win-bind="POPULATED:conversations.length MvvmJS.Binding.toggleClass; OVERLIMIT:hasConversationsOverLimit MvvmJS.Binding.toggleClass;">
+                <div class="appBarLogo" data-win-bind="click:navigateToHub MvvmJS.Binding.event">
+                    <button class=" icon removeDefaultStyles" data-win-res="{attributes: { 'aria-label' : 'aria_appbar_home' }}"></button>
+                    <div class="label" data-win-res="{ textContent: 'appbar_home' }"></div>
+                </div>
+                <div class="recents"
+                     data-win-control="WinJS.UI.ListView"
+                     data-win-options="{ selectionMode: 'none', itemTemplate: appBarRecentItemTemplate }"
+                     data-win-bind="winControl.itemDataSource: conversations.dataSource MvvmJS.Binding.wbind;style.width:conversations.length Skype.UI.AppBar.Binding.recentsWidth">
+                </div>
+                <div class="appBarRecentsLink" data-win-bind="click:navigateToAllHistory MvvmJS.Binding.event">
+                    <button class="icon removeDefaultStyles" data-win-res="{attributes: { 'aria-label' : 'aria_appbar_all_recent' }}"></button>
+                    <div class="label" data-win-res="{ textContent: 'aria_recent_recent_tab' }"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="appBar"></div>
+    <div id="addMenu"></div>
+</body>
+</html>

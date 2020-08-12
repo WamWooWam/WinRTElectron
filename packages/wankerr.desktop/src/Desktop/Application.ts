@@ -27,6 +27,7 @@ export class ApplicationDefaultTile {
     wide310x150Logo: string;
     square310x310Logo: string;
     showNameOnTiles: string[] = [];
+    tileUpdateUrl: string;
 }
 
 export class ApplicationSplashScreen {

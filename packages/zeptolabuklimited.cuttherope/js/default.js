@@ -128,7 +128,6 @@
 
                 // attempt to sign-in
                 ZL.Player.signIn();
-
             }));
             
             // ctr-winjs-test MarkedUp account

@@ -1,0 +1,35 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NameWithNumberDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="/controls/countryInput.js"></script>
+    <script src="nameWithNumberDialog.js"></script>
+</head>
+<body>
+    <div id="nameWithNumberDialog" class="dialogFlyout ADDNUMBER" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event; this['aria-label']: vm.title WinJS.Binding.setAttribute;">
+        <div class="description" data-win-bind="textContent: vm.title"></div>
+        <div class="nameCont" data-win-bind="HIDDEN:vm.nameHidden MvvmJS.Binding.toggleClass">
+            <div class="nameLegend" data-win-res="{textContent: 'savenumber_panel_name_legend'}"></div>
+            <input role="textbox" type="text" class="dark" id="contactName" data-win-bind="value: vm.contactName MvvmJS.Binding.twoway; keyup:updateOkButton MvvmJS.Binding.event" data-win-res="{ placeholder: 'savenumber_panel_name_placeholder', attributes: { 'aria-label' : 'aria_add_number_dialog_name_label' }}" />
+        </div>
+        <select id="contactNumberType" data-win-bind="value: vm.contactNumberType  MvvmJS.Binding.twoway; this['aria-label']:  vm.ariaContactNumberType WinJS.Binding.setAttribute">
+            <option data-win-res="{text: 'contact_type_mobile'}" value="mobile"></option>
+            <option data-win-res="{text: 'contact_type_home'}" value="home"></option>
+            <option data-win-res="{text: 'contact_type_office'}" value="office"></option>
+            <option data-win-res="{text: 'contact_type_other'}" value="other"></option>
+        </select>
+        <div role="combobox" class="countryInput" data-win-control="Skype.UI.CountryInput" data-win-bind="HIDDEN:vm.numberHidden MvvmJS.Binding.toggleClass; winControl.viewModel:countryInputModel MvvmJS.Binding.out; tabIndex: vm.autofocus; this['aria-label']:  countryInputModel.ariaCountryNameLabel WinJS.Binding.setAttribute"
+            data-win-options="{placeholder: 'aria_country_input_number_label', hiderClass: 'ADDNUMBER', maxLength: 70}">
+        </div>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atNameWithNumberDialogOkButton" class="text" data-win-bind="textContent: vm.okTitle; click:okAction MvvmJS.Binding.event; disabled: vm.okDisabled"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

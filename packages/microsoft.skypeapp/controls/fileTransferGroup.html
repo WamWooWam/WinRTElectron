@@ -1,0 +1,24 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="fileTransferGroup.css" rel="stylesheet">
+</head>
+<body>
+    <div class="fileTransferGroup" data-win-bind="this['aria-label']:ariaLabel  WinJS.Binding.setAttribute;" role="button">
+        <div class="file" data-win-bind="ISINCOMING:isIncoming MvvmJS.Binding.toggleClass; x:statusClass MvvmJS.Binding.bindClass;this:cancelActionEl MvvmJS.Binding.out">
+            <div class="icon">
+                <div class="image"></div>
+                <div class="protection"></div>
+            </div>
+            <div class="description">
+                <p class="name" data-win-bind="innerText: fileName"></p>
+                <div class="info"><span class="size" data-win-bind="innerText:fileSize Skype.UI.Util.getFormattedFileSizeConverter;"></span><span class="status" data-win-bind="innerText:statusString; title:statusString;VISIBLE:statusString MvvmJS.Binding.toggleClass"></span> <span class="tCancel" data-win-res="{ textContent: 'transfer_outgoing_cancel' }"></span></div>
+            </div>
+            <progress max="100" data-win-bind="VISIBLE:isInProgress MvvmJS.Binding.toggleClass; value: percentTransferred;"></progress>
+        </div>
+    </div>
+</body>
+</html>

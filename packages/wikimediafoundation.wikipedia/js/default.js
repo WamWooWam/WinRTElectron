@@ -396,7 +396,8 @@
                     prop: 'langlinks',
                     titles: title,
                     lllimit: 250,
-                    format: 'json'
+                    format: 'json',
+                    origin: '*'
                 },
                 success: function (data) {
                     var langlinks = [];
@@ -429,7 +430,8 @@
                 url: url,
                 data: {
                     action: 'sitematrix',
-                    format: 'json'
+                    format: 'json',
+                    origin: '*'
                 },
                 success: function (data) {
                     var langlinks = [];
@@ -519,7 +521,7 @@
             e.detail.setPromise(new WinJS.Promise(function (completeDispatch, errorDispatch, progressDispatch) {
 
                 // This refers to a local package file that contains a sample JSON response. You can update the Uri to a service that supports this standard in order to see suggestions come from a web service.  In order for the updated Uri to work it must also be included in the ApplicationContentUriRules in the manifest
-                var suggestionUri = baseProtocol() + "//" + state.current().lang + ".wikipedia.org/w/api.php?action=opensearch&namespace=0&suggest=&search=";
+                var suggestionUri = baseProtocol() + "//" + state.current().lang + ".wikipedia.org/w/api.php?origin=*&action=opensearch&namespace=0&suggest=&search=";
                 // If you are using a webservice,the query string should be encoded into the URI. See example below:
                 suggestionUri += encodeURIComponent(e.detail.queryText);
 
@@ -586,7 +588,8 @@
                 srwhat: 'text',
                 srsearch: query,
                 srlimit: 21,
-                format: 'json'
+                format: 'json',
+                origin: '*'
             },
             success: function (data) {
                 $('#spinner').hide();
@@ -650,7 +653,8 @@
                 action: 'mobileview',
                 page: title,
                 sections: 'all',
-                format: 'json'
+                format: 'json',
+                origin: '*'
             },
             success: function (data) {
                 $('#spinner').hide();
@@ -785,7 +789,8 @@
             data: {
                 action: 'featuredfeed',
                 feed: feed,
-                feedformat: 'atom'
+                feedformat: 'atom',
+                origin: '*'
             },
             success: function (data, textstatus, request) {
                 if (request.responseXML) {
@@ -898,7 +903,8 @@
                     meta: 'allmessages',
                     ammessages: 'mainpage',
                     amenableparser: 1,
-                    format: 'json'
+                    format: 'json',
+                    origin: '*'
                 },
                 success: function (data, status, xhr) {
                     var title = 'Main Page';
@@ -925,7 +931,8 @@
                     action: 'query',
                     list: 'recentchanges',
                     rctoponly: 1,
-                    format: 'json'
+                    format: 'json',
+                    origin: '*'
                 },
                 success: function (data) {
                     complete(data.query.recentchanges);
@@ -1075,6 +1082,7 @@
                 };
                 list.push(listItem);
                 var preload = new Image();
+                preload.crossOrigin = "anonymous"
                 preload.src = image;
                 preload.onload = function () {
                     var squared = makeSquareImage(preload);
@@ -1165,6 +1173,7 @@
                 };
                 list.push(listItem);
                 var preload = new Image();
+                preload.crossOrigin = "anonymous"
                 preload.src = image;
                 preload.onload = function () {
                     var fit = makeFitImage(preload, imageWidth, imageHeight);
@@ -1328,7 +1337,8 @@
                 iiprop: 'url',
                 iiurlwidth: 600,
                 iiurlheight: 600,
-                format: 'json'
+                format: 'json',
+                origin: '*'
             },
             success: function (data) {
                 var imageinfo;

@@ -6,9 +6,10 @@ import * as fs from "fs"
 import * as path from "path"
 import * as _ from 'lodash'
 import { ipcRenderer } from "electron";
+import * as ContactsImpl from "./Windows.ApplicationModel.Contacts"
 
 const { remote } = require("electron");
-const supportedLanguages = ["en-gb", "en-us", "en", "generic"]; // this should be detected from the system
+const supportedLanguages = ["en-gb", "en-us", "en", "generic"]; // this should be detected from the system. KEEP IN SYNC WITH index.ts!!
 
 export class ResourceLoader {
     private static loader: ResourceLoader;
@@ -80,7 +81,7 @@ export class ResourceLoader {
             string = json[name];
         }
 
-        console.log(`resources:got string ${string} for ${resource}`);
+        console.debug(`resources:got string ${string} for ${resource}`);
         return string;
     }
 }
@@ -88,6 +89,9 @@ export class ResourceLoader {
 const Loader = ResourceLoader;
 
 export namespace ApplicationModel {
+
+    export const Contacts = ContactsImpl;
+
     export namespace Resources {
         export const ResourceLoader = Loader;
 

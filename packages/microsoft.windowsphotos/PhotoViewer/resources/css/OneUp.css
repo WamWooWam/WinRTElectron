@@ -1,0 +1,47 @@
+﻿.oneUp-fillContainerDiv{position:absolute;width:100%;height:100%;}
+.oneUp-fullOpaque{opacity:1;}
+.oneUp-noOpaque{opacity:0;}
+.oneUp-fadeInOutTransition{-ms-transition-property:opacity;-ms-transition-delay:0.032s;-ms-transition-duration:0.25s;-ms-transition-timing-function:ease-in;}
+.oneUp-flipViewContainer[aria-hidden="true"]{visibility:hidden;}
+.oneUp-flipViewContainer[aria-hidden="false"]{visibility:visible;}
+#oneUp-componentDiv{outline-style:none;}
+#oneUp-enterExitDiv{z-index:200;background-color:#000000;}
+#oneUp-flipViewContainer{outline:none;position:absolute;width:100%;height:100%;}
+#oneUp-flipViewContainer[mode="slideshow"] .win-navbutton{display:none;}
+#oneUp-slideshowInputCaptureDiv{z-index:150;background-color:rgba(255, 0, 0, 0);cursor:none;-ms-high-contrast-adjust:none;}
+#oneUp-setAsOverlayDiv{background-color:rgba(0, 0, 0, 0.54);display:-ms-grid;-ms-grid-columns:1fr auto 1fr;-ms-grid-rows:1fr auto 1fr;}
+#oneUp-setAsOverlayDiv[aria-hidden="true"]{display:none;}
+#oneUp-setAsOverlayText{font-size:26.66667px;letter-spacing:0.02em;line-height:32px;padding-bottom:5px;padding-top:3px;font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:200;-ms-grid-row:2;-ms-grid-column:2;color:#ffffff;}
+#oneUp-setAsOverlayText:-ms-lang(ar,fa,he,hy,km,ko,ku,ml,or,pa-arab,prs,sd,si,ta,te,ug,ur){font-size:26.66px;}
+#oneUp-setAsOverlayText:-ms-lang(ja){font-size:27.66px;font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(kn,pa):not(:-ms-lang(pa-arab)){font-size:26.6px;line-height:46px;padding-bottom:1px;}
+#oneUp-setAsOverlayText:-ms-lang(th){font-size:28px;font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+#oneUp-setAsOverlayText:-ms-lang(zh-hans,zh-hant){font-size:27.5px;}
+#oneUp-setAsOverlayText:-ms-lang(am,ar,as,be,bg,bn,el,fa,gu,he,hi,hy,ja,ka,kk,km,ko,kok,ku,ky-cyrl,ml,mn-cyrl,mr,ne,or,pa-arab,prs,ru,sd,si,sr-cyrl,te,tg-cyrl,th,ti,tt-cyrl,ug,uk,ur,zh-hant){line-height:35.4px;}
+#oneUp-setAsOverlayText:-ms-lang(ta){line-height:34px;padding-bottom:0px;padding-top:6px;font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(zh-hans){line-height:35px;font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(am,ar,as,be,bg,bn,el,fa,gu,he,hi,hy,ja,ka,kk,km,ko,kok,ku,ky-cyrl,ml,mn-cyrl,mr,ne,or,pa-arab,prs,ru,sd,si,sr-cyrl,te,tg-cyrl,th,ti,tt-cyrl,ug,uk,ur,zh-hans,zh-hant){padding-bottom:3.6px;padding-top:1px;}
+#oneUp-setAsOverlayText:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-setAsOverlayText:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+#oneUp-flipViewContainer .photoViewer-zoomButton{color:rgba(255, 255, 255, 0.8);background-color:rgba(29, 29, 29, 0.3);}
+#oneUp-flipViewContainer .photoViewer-zoomButton:hover{color:White;background-color:rgba(73, 73, 73, 0.8);}
+#oneUp-flipViewContainer .photoViewer-zoomButton:active{color:Black;background-color:rgba(229, 229, 229, 0.8);}
+#oneUp-flipViewContainer .win-navbutton{color:rgba(255, 255, 255, 0.8);background-color:rgba(29, 29, 29, 0.3);}
+#oneUp-flipViewContainer .win-navbutton:hover{color:White;background-color:rgba(73, 73, 73, 0.8);}
+#oneUp-flipViewContainer .win-navbutton:active{color:Black;background-color:rgba(229, 229, 229, 0.8);}
+.oneUp-itemContainer{outline:none;position:relative;height:100%;width:100%;}
+.oneUp-item{-ms-grid-column-align:center;-ms-grid-row-align:center;-ms-grid-row-span:1;-ms-grid-column-span:1;-ms-grid-columns:1fr;-ms-grid-rows:1fr;}
+video.oneUp-item{height:100%;width:100%;}
+.oneUp-item-placeholder{background-color:#404040;}
+.oneUp-failureElement{text-align:left;position:relative;padding-top:10px;padding-left:15px;padding-right:15px;}
+.oneUp-failureElement:-ms-lang(ar,fa,he,ku,pa-arab,prs,sd,ug,ur){text-align:right;}
+.oneUp-zoomElement{overflow:scroll;-ms-content-zooming:zoom;-ms-zoom-animation:default;-ms-scroll-rails:none;-ms-overflow-style:none;-ms-content-zoom-limit-min:100%;-ms-content-zoom-limit-max:100%;-ms-scroll-limit-x-min:50%;-ms-scroll-limit-y-min:50%;}
+.oneUp-zoomElement[zoomMode="determineBehavior"]{-ms-content-zoom-limit-min:98%;-ms-content-zoom-limit-max:110%;-ms-content-zoom-snap-type:mandatory;-ms-content-zoom-snap-points:snaplist(100%);}
+.oneUp-zoomElement[zoomMode="oz"]{-ms-content-zoom-limit-min:100%;-ms-content-zoom-limit-max:300%;}
+.oneUp-zoomElement[zoomMode="sezo"]{-ms-content-zoom-limit-min:98%;-ms-content-zoom-limit-max:98%;}
+.oneUp-gridElement{display:-ms-grid;-ms-grid-column:1;-ms-grid-row:1;-ms-grid-columns:1fr;-ms-grid-rows:1fr;position:relative;height:100%;width:100%;}

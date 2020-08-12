@@ -1,4 +1,4 @@
-import { Windows } from "winrt-node";
+import { Windows } from 'winrt-node';
 
 export class MarketInfo {
     static defaultMarket: MarketInfo;

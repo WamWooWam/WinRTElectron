@@ -1,0 +1,27 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <link href="countryInput.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="countryInputcontainer">
+            <div class="inputCont">
+                <button role="combobox" class="imageActionElement removeDefaultStyles" data-win-bind="innerText: countryCode; this['aria-label']: countryName WinJS.Binding.setAttribute"></button>
+                <input type="number" class="dark" data-win-bind="placeholder: placeholder; value: input MvvmJS.Binding.twoway; maxLength: maxLength; HIDDEN:countryInputHidden MvvmJS.Binding.toggleClass" />
+            </div>
+            <a  class="countryNameCont kb-accessible"  role="combobox"  data-win-bind="HIDDEN:countryInputHidden MvvmJS.Binding.toggleClassNegative; this['aria-label']: ariaEmergencyCountryNameLabel WinJS.Binding.setAttribute" tabindex="1">
+                <div class="countryName" data-win-bind="innerText: countryName"></div>
+                <div class="knob"></div>
+            </a>
+            <div tabindex="1" class="countriesList kb-accessible" data-win-control="WinJS.UI.ListView"
+                data-win-options="{ itemTemplate: countryListItemTemplate, swipeBehavior : 'none',
+	                                tapBehavior: 'directSelect', selectionMode: 'single', selection: 'none', 
+	                                layout: { type: WinJS.UI.ListLayout } }"
+                data-win-bind="winControl.itemDataSource: countriesData.dataSource MvvmJS.Binding.listBind; NOPREFIX:hidePrefix MvvmJS.Binding.toggleClass">
+            </div>            
+        </div>
+    </body>
+</html>

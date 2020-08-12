@@ -1,45 +1,45 @@
-export class Jx {
-    startSession() {
-        console.log("jx::startSession");
+export class Jx  {
+    etw(hstrEventName: string): void {
+        console.warn('shimmed function Jx.etw');
     }
 
-    flushSession() {
-        console.log("jx::flushSession");
+    ptStart(hstrName: string, hstrKey: string): void {
+        console.warn('shimmed function Jx.ptStart');
     }
 
-    fault(...args) {
-        console.log("jx::fault", args);
+    ptStop(hstrName: string, hstrKey: string): void {
+        console.warn('shimmed function Jx.ptStop');
     }
 
-    erRegisterFile(...args) {
-        console.log("jx::erRegisterFile", args);
+    ptStopData(hstrName: string, hstrKey: string, dw1: number, dw2: number, dw3: number, dw4: number, dw5: number, hstrData1: string, hstrData2: string): void {
+        console.warn('shimmed function Jx.ptStopData');
     }
 
-    ptStopResize(...args) {
-        console.log("jx::ptStopResize", args);
+    ptStopLaunch(timePoint: number, kind: number): void {
+        console.warn('shimmed function Jx.ptStopLaunch');
     }
 
-    ptStopResume(...args) {
-        console.log("jx::ptStopResume", args);
+    ptStopResume(timePoint: number): void {
+        console.warn('shimmed function Jx.ptStopResume');
     }
 
-    ptStopLaunch(...args) {
-        console.log("jx::ptStopLaunch", args);
+    ptStopResize(timePoint: number, isMajorChange: Boolean, isRotate: Boolean, logicalWidth: number, logicalHeight: number): void {
+        console.warn('shimmed function Jx.ptStopResize');
     }
 
-    ptStopData(...args) {
-        console.log("jx::ptStopData", args);
+    erRegisterFile(hstrFilePath: string): void {
+        console.warn('shimmed function Jx.erRegisterFile');
     }
 
-    ptStop(...args) {
-        console.log("jx::ptStop", args);
+    fault(hstrScenarioName: string, hstrErrorLocationId: string, hrFaultCode: number): void {
+        console.warn('shimmed function Jx.fault');
     }
 
-    ptStart(...args) {
-        console.log("jx::ptStart", args);
+    startSession(): void {
+        console.warn('shimmed function Jx.startSession');
     }
 
-    etw(...args) {
-        console.log("jx::etw", args);
+    flushSession(): void {
+        console.warn('shimmed function Jx.flushSession');
     }
 }

@@ -1,0 +1,23 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="/controls/help.css" rel="stylesheet">
+</head>
+<body>
+    <div class="help panel" data-win-control="WinJS.UI.SettingsFlyout" data-win-res="{attributes: { 'aria-label' : 'help_label' }}"  data-win-options="{ settingsCommandId: 'help', width: 'wide' }">
+        <div class="win-ui-dark win-header">
+            <button tabindex="2001" class="win-backbutton" onclick="WinJS.UI.SettingsFlyout.show()"></button>
+            <div class="win-label" data-win-res="{ textContent: 'help_label' }"></div>
+            <span class="logo"></span>
+        </div>
+        <div class="win-content">
+            <div class="subtitle" data-win-res="{ innerHTML: 'help_subtitle' }"></div>
+            <button tabindex="2002" class="learnHow removeDefaultStyles" role="link" class="link" data-win-bind="innerHTML:help_learn_how_text"></button>
+            <button tabindex="2003" class="support removeDefaultStyles" role="link" class="link" data-win-bind="innerHTML:help_support_text"></button>
+            <button tabindex="2004" class="community removeDefaultStyles" role="link" class="link" data-win-bind="innerHTML:help_community_text"></button>
+        </div>
+    </div>
+</body>
+</html>

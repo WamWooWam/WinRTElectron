@@ -1,0 +1,165 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!dOcTyPe html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link href="dialer.css" rel="stylesheet" />
+	<script src="dialer.js"></script>
+	<script src="/js/vm/dialerVM.js"></script>
+	<script src="/controls/countryInput.js"></script>
+</head>
+<body>
+	<div role="heading" class="fragment dialer" data-win-bind="EMERGENCY:inputIsEmergencyNumber MvvmJS.Binding.toggleClass" data-win-res="{attributes: { 'aria-label' : 'aria_dialer_window_label' }}">
+	<!-- templates -->
+	<div id="dialerItemTemplate" data-win-control="WinJS.Binding.Template">
+		<div class="item kb-accessible" data-pos="">
+			<div class="content" data-win-bind="DISABLED:conversation.isBlocked MvvmJS.Binding.toggleClass;">
+				<div class="detailsFrame">
+					<div class="name" data-win-bind="innerHTML:conversation.name MvvmJS.Binding.unsafeHTMLdeactivateAnchorFocus; FORCELTR:conversation.isPstnOnly MvvmJS.Binding.toggleClass;"></div>
+					<div class="message">
+						<div class="ellipsisContainer">
+							<div data-win-control="MvvmJS.UI.TemplateSelector" data-win-bind="winControl.model:message.details WinJS.Binding.defaultBind"
+								 data-win-options="{ selector: { 
+														type: MvvmJS.UI.TemplateSelector.PropertySelector, 
+														property: 'status',
+														pattern: '/templates.html#{0}' 
+													 }
+												   }">
+						   </div>
+						</div>
+
+					</div>
+					<div class="time" data-win-bind="innerText:formattedMessageFooter"></div>
+				</div>
+				<div class="buttonFrame">
+					<div class="call">&#xE100;</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<header>
+			<button class="backbutton backbutton-light win-backbutton animRegion animGroup1" id="atDialerBackButton" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="6"></button>
+			<div class="dialerInputContainer animRegion animGroup2">
+				<input id="atDialerPhoneNumberInput" maxlength="100" role="textbox" class="dialerInput" type="text" placeholder="" data-win-bind="value: dialerInputValue MvvmJS.Binding.twoway" data-win-res="{ placeholder: 'dialer_inputbox_placeholder', attributes: { 'aria-label' : 'aria_dialer_textbox' }}" tabindex="1" />
+			</div>
+			<div class="countrySelectorContainer animRegion animGroup3">
+				<div class="countryInput" tabindex="1"></div><!-- country input control -->
+			</div>
+		</header>
+		<div class="viewport">
+			<div class="surface">
+				<div class="categoryContainer dialerInputs">
+					<div class="dialpad">
+						<div id="atDialerDialPad" data-win-res="{attributes: { 'aria-label' : 'aria_dialer_dialpad' }}" class="numbersContainer animRegion animGroup3">
+							<div class="numbers">
+								<div id="atDialerDialpadKey1" role="button" tabindex="2" class="number" data-key="1"><div class="numberInnerCont"><div class="icon">1</div><div class="title"></div></div></div>
+								<div id="atDialerDialpadKey2" role="button" tabindex="2" class="number" data-key="2"><div class="numberInnerCont"><div class="icon">2</div><div class="title">ABC</div></div></div>
+								<div id="atDialerDialpadKey3" role="button" tabindex="2" class="number" data-key="3"><div class="numberInnerCont"><div class="icon">3</div><div class="title">DEF</div></div></div>
+								<div id="atDialerDialpadKey4" role="button" tabindex="2" class="number" data-key="4"><div class="numberInnerCont"><div class="icon">4</div><div class="title">GHI</div></div></div>
+								<div id="atDialerDialpadKey5" role="button" tabindex="2" class="number" data-key="5"><div class="numberInnerCont"><div class="icon">5</div><div class="title">JKL</div></div></div>
+								<div id="atDialerDialpadKey6" role="button" tabindex="2" class="number" data-key="6"><div class="numberInnerCont"><div class="icon">6</div><div class="title">MNO</div></div></div>
+								<div id="atDialerDialpadKey7" role="button" tabindex="2" class="number" data-key="7"><div class="numberInnerCont"><div class="icon">7</div><div class="title">PQRS</div></div></div>
+								<div id="atDialerDialpadKey8" role="button" tabindex="2" class="number" data-key="8"><div class="numberInnerCont"><div class="icon">8</div><div class="title">TUV</div></div></div>
+								<div id="atDialerDialpadKey9" role="button" tabindex="2" class="number" data-key="9"><div class="numberInnerCont"><div class="icon">9</div><div class="title">WXYZ</div></div></div>
+								<div id="atDialerDialpadKey*" role="button" tabindex="2" class="number" data-key="*"><div class="numberInnerCont"><div class="icon">*</div></div></div>
+								<div id="atDialerDialpadKey0" role="button" tabindex="2" class="number" data-key="0"><div class="numberInnerCont"><div class="icon">0</div><div class="title">+</div></div></div>
+								<div id="atDialerDialpadKey#" role="button" tabindex="2" class="number" data-key="#"><div class="numberInnerCont"><div class="icon">#</div></div></div>
+							</div>
+						</div>
+						<div class="actionButtons animRegion animGroup3">
+							<div class="call kb-accessible" id="atDialerDialpadCallButton" role="button" tabindex="2" data-win-bind="DISABLED:canNotCall MvvmJS.Binding.toggleClass; this['aria-label']:callButtonLabel WinJS.Binding.setAttribute; this['aria-disabled']:canNotCall WinJS.Binding.setAttribute;">&#xE100;</div>
+							<div class="sms kb-accessible" id="atDialerDialpadSMSButton" role="button" tabindex="2" data-win-bind="DISABLED:canNotSms MvvmJS.Binding.toggleClass; this['aria-label']:smsButtonLabel WinJS.Binding.setAttribute; this['aria-disabled']:canNotSms WinJS.Binding.setAttribute;">&#xE300;</div>
+						</div>
+					</div>      
+				</div>
+
+				<div class="categoryContainer emergencyCall animRegion animGroup3 animFromRight">
+					<h1 class="header" data-win-res="{ textContent: 'dialer_emergency_title'}"></h1>
+					<h3 data-win-res="{ textContent: 'dialer_your_country'}"></h3>
+					<div class="emergencyCountry" tabindex="3"></div><!-- country input control -->
+					<div class="emergencyNote">
+                        <div class="noCountry" data-win-bind="HIDDEN:hidePickEmergencyCountry MvvmJS.Binding.toggleClass">
+                            <p data-win-res="{ innerHTML: 'dialer_emergency_no_country'}"></p>
+                        </div>
+                        <div role="complementary" tabindex="3" class="allowedCountry" data-win-bind="HIDDEN:hideEmergencyCountryAllowed MvvmJS.Binding.toggleClass">
+                            <div class="content" data-win-res="{ innerHTML: 'dialer_limited_emergency_content'}"></div>
+                        </div>
+                        <div role="complementary" tabindex="3" class="restrictedCountry" data-win-bind="HIDDEN:hideEmergencyCountryRestricted MvvmJS.Binding.toggleClass">
+                            <div class="wrapper"><div class="icon"></div></div>
+                            <h3 data-win-res="{ textContent: 'options_no_emergency'}"></h3>
+                            <div class="content" data-win-res="{ textContent: 'options_no_emergency_content'}"></div>
+                        </div>
+					</div>
+				</div>
+				<div role="complementary" class="categoryContainer accountInfo animRegion animGroup3 animFromRight">
+					<div class="itemsContainer">
+						<div class="item balance">
+							<div class="content" tabindex="3" role="link">
+								<div class="header" data-win-res="{ innerText: 'dialer_accountinfo_payasyougo' }"></div>
+								<div class="message">
+                                    <div class="mainMessage" data-win-bind="innerHTML: payAsYouGoRateString"></div>
+								</div>
+								<div class="balance" data-win-bind="ACTIVE:balanceAmount MvvmJS.Binding.toggleClass">
+									<div class="status" id="atDialerPayAsYouGoBalance">
+										<a href="#" draggable="false" id="atDialerPayAsYouGoBalanceAmount" class="button amount kb-accessible" data-win-bind="innerText: balanceAmountFormatted" tabindex="-1" data-win-res="{attributes: { 'aria-label' : 'aria_dialer_balance_label' }}" >
+										</a>
+									</div>
+									<div class="get">
+										<a href="#" draggable="false" class="button kb-accessible" data-win-bind="innerText: buyCreditLabel" tabindex="-1"></a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="item subscriptions">
+							<div class="content" tabindex="3" role="link">
+								<div class="header" data-win-res="{ innerText: 'dialer_accountinfo_paymonthly' }"></div>
+								<div class="message">
+                                    <div class="mainMessage" data-win-bind="innerHTML: subscriptionRateString"></div>
+								</div>
+								<div class="balance" data-win-bind="ACTIVE:activeSubscriptionLabel MvvmJS.Binding.toggleClass">
+									<div class="status">
+										<a href="#" draggable="false" id="ATDialerSubscriptions" class="button unit kb-accessible" data-win-bind="innerText: activeSubscriptionLabel" tabindex="-1"></a>
+									</div>
+									<div class="get">
+										<a href="#" draggable="false" class="button SubsBtn kb-accessible"  data-win-bind="innerText: getSubscriptionLabel" tabindex="-1"></a>
+									</div>
+
+								</div>
+								<div class="exceptionState">
+									<div data-win-bind="VISIBLE:expiringSubscriptionLabel MvvmJS.Binding.toggleClass">
+										<div class="icon">&#xE601;</div>
+										<div class="unit" data-win-bind="innerText: expiringSubscriptionLabel"></div>
+									</div>
+									<div data-win-bind="VISIBLE:expiredSubscriptionLabel MvvmJS.Binding.toggleClass">
+										<div class="icon">&#xE601;</div>
+										<div class="unit" data-win-bind="innerText: expiredSubscriptionLabel"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="categoryContainer recents animRegion animGroup4 animFromRight" data-win-bind="POPULATED:haveRecentCalls MvvmJS.Binding.toggleClass">
+					<h1 id="atDialerRecentCallListHeader" class="header" data-win-res="{ innerText: 'dialer_recent_calls_title' , attributes: { 'aria-label' : 'aria_dialer_recent_call_heading' }}"></h1>
+					<div class="itemsPlaceholder">
+						<div class="iconContainer">
+							<div class="icon"></div>
+						</div>
+						<div class="text" data-win-res="{ textContent: 'dialer_recent_calls_placeholder' }"></div>
+					</div>
+					
+					<div class="recentsList kb-accessible" data-lazy-win-control="WinJS.UI.ListView"
+							data-win-options="{  layout: { type: WinJS.UI.GridLayout }, itemTemplate: dialerItemTemplate, selectionMode: 'none' }"
+						 data-win-bind="winControl.itemDataSource:recentCalls.dataSource MvvmJS.Binding.wbind;" tabindex="4"
+						>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

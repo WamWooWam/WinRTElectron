@@ -1,0 +1,290 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+#appBar button.win-command {
+    border-width: 1px;
+    margin-top: 1px
+}
+
+#appBar button.INVISIBLE {
+    display: none
+}
+
+#appBar button:hover:active,#appBar button[type=button]:hover:active,#appBar button.win-command:focus {
+    outline-color: transparent;
+    border-style: dashed;
+    border-color: white
+}
+
+.win-appbar {
+    background-color: #0095CC
+}
+
+#appBar .win-commandring {
+    border-color: #fff
+}
+
+#appBar button[aria-checked=true] .win-commandring {
+    background-color: #fff
+}
+
+#appBar button[aria-checked=true] .win-commandring .win-commandimage {
+    color: #0095CC
+}
+
+#appBar .win-label {
+    color: #fff
+}
+
+#appBar hr.win-command {
+    background-color: #fff
+}
+
+#appBar .win-commandimage {
+    color: #fff;
+    font-family: "Skype UI Symbol";
+    font-size: 40px;
+    line-height: normal;
+    text-align: center
+}
+
+#skypeAppBar .win-appbar.win-top {
+    /* height:160px */
+}
+
+#skypeAppBar .appBarConversationSwitcher {
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 160px
+}
+
+#skypeAppBar .skype-placeholder[disabled] {
+    color: #93999d
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer {
+    position: relative;
+    padding-left: 120px;
+    padding-right: 15px;
+    display: inline-block
+}
+
+body.RTL #skypeAppBar .appBarConversationSwitcher div.recentsContainer {
+    padding-left: 15px;
+    padding-right: 120px
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.win-viewport {
+    overflow: visible
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink,#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo {
+    position: absolute;
+    text-align: center;
+    top: 0;
+    height: 100%;
+    box-sizing: border-box
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink {
+    width: 140px
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo {
+    width: 120px;
+    left: 0
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink {
+    right: 0;
+    display: none
+}
+
+body.RTL #skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo {
+    right: 0;
+    left: auto
+}
+
+body.RTL #skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink {
+    right: auto;
+    left: 0
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink {
+    right: 0;
+    display: none
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo .icon {
+    margin-top: 74px;
+    line-height: 20px;
+    overflow: visible;
+    background-color: transparent
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink .icon {
+    margin: 60px auto 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #FFF
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink:hover .icon {
+    background: #e5e4f8
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink:hover div.label {
+    color: #e5e4f8
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink:active .icon,#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink.active .icon {
+    background: #00374d
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink:active div.label,#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink.active div.label {
+    color: #00374d
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer.OVERLIMIT {
+    padding-right: 140px
+}
+
+body.RTL #skypeAppBar div.appBarConversationSwitcher div.recentsContainer.OVERLIMIT {
+    padding-right: 120px;
+    padding-left: 140px
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer.OVERLIMIT div.appBarRecentsLink {
+    display: block
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo .icon::before {
+    font-family: "Skype UI Symbol";
+    font-weight: bold;
+    content: "\E001";
+    font-size: 40px;
+    color: #FFF
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo:hover .icon::before,#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo:hover div.label {
+    color: #e5e4f8
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo:active .icon::before,#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo.active .icon::before,#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo:active div.label,#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo.active div.label {
+    color: #00374d
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink button.icon::before {
+    font-family: "Skype UI Symbol";
+    font-weight: bold;
+    color: #FFF;
+    font-size: 24px;
+    content: "\E421";
+    color: #0095cc;
+    vertical-align: middle;
+    line-height: 44px
+}
+
+body.RTL #skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink .icon::before {
+    content: "\E420"
+}
+
+#skypeAppBar .appBarConversationSwitcher div.recentsContainer div.win-listview.recents {
+    margin-top: 20px;
+    height: 140px
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.label {
+    color: #FFF;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 5px;
+    overflow: hidden
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarLogo div.label {
+    margin-top: 9px
+}
+
+#skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink div.label {
+    margin-top: 10px;
+    line-height: normal
+}
+
+#searchForContact {
+    text-align: left;
+    white-space: nowrap;
+    padding-top: 24px;
+    max-width: 1120px;
+    margin: 0 auto
+}
+
+#appBar #searchForContact button {
+    padding: 0;
+    box-sizing: border-box
+}
+
+#appBar #searchForContact .win-commandicon {
+    margin: 0;
+    height: 40px;
+    width: 60px;
+    border: none
+}
+
+#appBar #searchForContact .win-commandimage {
+    background: #00aff0;
+    height: inherit;
+    width: inherit;
+    margin: inherit
+}
+
+#appBar #searchForContact .win-commandimage::after {
+    font-family: "Skype UI Symbol";
+    font-weight: bold;
+    font-size: 16.2pt;
+    content: "\E419";
+    line-height: 40px;
+    overflow: hidden;
+    top: -4px;
+    position: relative
+}
+
+body.RTL #appBar #searchForContact .win-commandimage::after {
+    content: "\E418"
+}
+
+#appBar #skypeBar_favourite .win-commandimage {
+    color: #fff;
+    font-family: "Skype UI Symbol";
+    font-weight: bold
+}
+
+#appBar #skypeBar_favourite.down .win-commandring .win-commandimage {
+    color: #00aff0
+}
+
+@media screen and (-ms-high-contrast: active) {
+    #appBar .win-label {
+        color: WindowText
+    }
+
+    #appBar button[aria-checked=true] .win-commandimage {
+        color: #0095cc
+    }
+
+    #appBar button[aria-checked=true]:hover>.win-commandring {
+        border-color: window
+    }
+
+    #appBar button[aria-checked=true]:hover>.win-commandring>.win-commandimage {
+        color: window
+    }
+
+    #appBar button[aria-checked=true]:focus .win-commandring .win-commandimage {
+        color: window
+    }
+
+    #skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink .icon {
+        border: 1px solid
+    }
+}

@@ -1,0 +1,219 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../../css/global.scss";
+
+div.participantListContents {
+    background-color: #00aff0;
+    height: 100%;
+    color: #fff;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 120px 1fr 92px;    
+
+    header {
+        -ms-grid-row: 1;
+        position: static;
+        -ms-grid-columns: 60px 1fr;
+        display: -ms-grid !important; /* for now*/
+        button.backbutton {
+            margin-top: 35px;
+            margin-left: 20px;
+
+            body.RTL & {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+        }
+
+        div.wrapper {
+            margin-top: 30px;
+
+            h1.name {  /*code duplication use some mixin */
+                margin-right: 15px;
+                overflow: hidden;
+                overflow-y: visible;
+                max-width: calc(100% - 20px);
+                text-overflow: ellipsis;
+                white-space: nowrap;
+                display: inline-block;
+                
+                body.RTL & {
+                    margin-right: 0;
+                    margin-left: 15px;
+                }
+
+                @media screen and (-ms-high-contrast: active) {
+                    background-color: Window;
+                }
+            }
+
+            div.participantCount {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                padding-right: 10px;
+
+                body.RTL & {
+                    padding: 0 0 0 10px;
+                }
+            }
+        }
+    }
+
+    div.listsWrapper {
+        -ms-grid-row: 2;
+        overflow-y: auto;
+
+        div.listHeader {            
+            margin-top: 35px;
+            margin-left: 20px;
+            margin-right: 0;
+            display: none;
+            font-size: 26.67px;
+            line-height: 1;
+            font-weight: lighter;
+
+            &:first-child {
+                margin-top: 15px;
+            }
+
+            body.RTL & {
+                margin-left: 0;
+                margin-right: 20px;
+            }
+        
+            &.VISIBLE {
+                display: block;
+            }
+        }
+
+        div.repeater {
+            margin-top: 25px;
+            height: auto;
+
+            div.win-container {
+                outline: none; // it's there for some reason
+            }
+
+            div.participantItem {
+                display: -ms-grid;
+                -ms-grid-columns: 55fr 45fr 60px;
+                padding-left: 20px;
+                padding-right: 0;
+                font-size: 14.66px;
+                line-height: 40px;
+
+                body.RTL & {
+                    padding-left: 0;
+                    padding-right: 20px;
+                }
+
+				div.participantName {
+                    -ms-grid-column: 1;
+					overflow: hidden;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+				}
+
+                div.participantStatus {
+                    -ms-grid-column: 2;
+					-ms-grid-column-align: end;
+					width: 100%;
+					text-overflow: ellipsis;
+					white-space: nowrap;
+					overflow: hidden;
+					text-align: right;
+                }
+
+				div.menuIndicator {
+                    -ms-grid-column: 3;
+					text-align: center;
+
+					span.ariaMenuLabel {
+						display: none;
+					}
+				}
+
+				&.HAS_MENU {
+					div.menuIndicator span::after {
+					    font-family: "Skype UI Symbol";
+				        font-weight: bold;
+						content: "\E421";
+					}
+				}
+
+				body.RTL &.HAS_MENU {
+					div.menuIndicator span::after {
+					    font-family: "Skype UI Symbol";
+				        font-weight: bold;
+						content: "\E420";
+					}
+				}
+
+                &:hover {
+                    background-color: rgba(0,0,0,0.1);
+                    @media screen and (-ms-high-contrast: active) {
+                        background-color: Highlight;
+                        color: window;
+                    }
+                }
+            }
+        }
+    }
+
+    div.participantMenu {
+        margin-left: 20px;
+    }
+
+    div.participantListButtonContainer {
+        display: -ms-flexbox;
+        -ms-grid-row: 3;
+
+        button.addParticipantsButton {            
+            display: block;
+            border-radius: 25px;
+            margin: auto auto 20px auto;
+            color: #fff;
+            min-width: 148px;
+            max-width: 198px;
+            background: transparent;
+            height: 44px;
+            font-weight: normal;
+            border: 2px solid #fff;
+            font-size: 11pt;
+            font-family: "Segoe UI", "Ebrima", "Nirmala UI", "Gadugi", "Segoe UI Emoji", "Segoe UI Symbol", "Meiryo UI", "Leelawadee UI", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Javanese Text", "Cambria Math";
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding: 0 10px;
+            
+            &:hover {
+                background-color: rgba(255,255,255,0.1);
+            }
+
+            @media screen and (-ms-high-contrast: active) {
+                box-shadow: 0px 0px 0px 5px windowtext;
+                border: 0;
+                height: 52px;
+                color: -ms-hotlight; 
+
+                &:hover {
+                    background-color: Highlight;
+                    color: window;
+                }
+            }
+        }
+    }    
+}
+
+div.clickEater.participantList {        
+    left: 320px;        
+
+    body.RTL & {
+        left: 0;
+        right: 320px;
+    }
+
+    @media #{$vertical} and (max-width: 401px) {
+        left: 401px; /* when app width < 400px participant list width is 400px max */
+    }
+}

@@ -1,0 +1,25 @@
+﻿.playTo-fillContainerW{position:relative;width:100%;}
+#playTo-container{height:100%;width:100%;position:relative;}
+#playTo-contents{height:calc(100% - 140px);margin-top:20px;position:relative;width:100%;}
+#playTo-thumbsStripContainer{height:100%;width:100%;}
+.playTo-item{position:absolute;height:calc(100% - 6px);width:calc(100% - 6px);top:0px;border-color:rgba(0, 0, 0, 0);border-width:3px;border-style:solid;float:left;}
+.playTo-item:-ms-lang(af,am,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pl,pt,quc,quz,ro,ru,rw,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,uk,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu):not(:-ms-lang(pa-arab)){left:0px;}
+.playTo-item:-ms-lang(ar,fa,he,ku,pa-arab,prs,sd,ug,ur){float:right;right:0px;}
+.playTo-currentPlayToItem{border-color:#008299;}
+.playTo-currentPlayToVideoItem{background-color:rgba(0, 0, 0, 0.6);}
+.playTo-errorItem{background-color:rgba(0, 0, 0, 0.66);}
+.playTo-errorMaskOverlay{position:absolute;top:0px;width:100%;height:100%;}
+.playTo-errorMaskOverlay:-ms-lang(af,am,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pl,pt,quc,quz,ro,ru,rw,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,uk,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu):not(:-ms-lang(pa-arab)){left:0px;}
+.playTo-errorMaskOverlay:-ms-lang(ar,fa,he,ku,pa-arab,prs,sd,ug,ur){right:0px;}
+.playTo-errorOverlay[aria-hidden="true"]{visibility:hidden;}
+.playTo-errorOverlay[aria-hidden="false"]{visibility:visible;}
+.playTo-errorTextDiv{-ms-high-contrast-adjust:none;margin-left:20px;margin-right:20px;margin-top:28px;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
+.playTo-errorTextDiv:-ms-lang(ar,fa,ja,ku,pa-arab,prs,sd,ug,ur){font-size:15.33px;}
+.playTo-errorTextDiv:-ms-lang(hi,kn,kok,mr,ne,or,pa,ta):not(:-ms-lang(pa-arab)){font-size:14.66px;}
+.playTo-errorTextDiv:-ms-lang(km,zh-hans,zh-hant){font-size:15.5px;}
+.playTo-errorTextDiv:-ms-lang(ml){font-size:14.5px;}
+.playTo-errorTextDiv:-ms-lang(si){font-size:16.33px;padding-bottom:1px;}
+.playTo-errorTextDiv:-ms-lang(ja,si){line-height:19px;}
+.playTo-errorTextDiv:-ms-lang(ja,km,te){padding-bottom:2px;}
+.playTo-errorTextDiv:-ms-lang(kn,pa,ta):not(:-ms-lang(pa-arab)){padding-bottom:3px;padding-top:3px;}
+@media screen and (-ms-high-contrast) {.playTo-errorTextDiv:-ms-lang(af,am,ar,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fa,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,he,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ku,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pa-arab,pl,prs,pt,quc,quz,ro,ru,rw,sd,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,ug,uk,ur,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu){-ms-high-contrast-adjust:none;color:white;} .playTo-currentPlayToItem:-ms-lang(af,am,ar,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fa,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,he,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ku,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pa-arab,pl,prs,pt,quc,quz,ro,ru,rw,sd,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,ug,uk,ur,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu){-ms-high-contrast-adjust:none;z-index:102;border-color:Highlight;} .playTo-errorItem:-ms-lang(af,am,ar,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fa,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,he,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ku,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pa-arab,pl,prs,pt,quc,quz,ro,ru,rw,sd,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,ug,uk,ur,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu){-ms-high-contrast-adjust:none;}}#playTo-bottomPane{position:relative;height:152px;width:100%;}

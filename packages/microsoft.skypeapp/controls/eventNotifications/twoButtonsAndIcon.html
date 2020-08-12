@@ -1,0 +1,21 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="/controls/eventNotification.css" rel="stylesheet" />
+</head>
+    <body>
+        <div class="notificationContent">
+            <div data-win-bind="this['aria-label']:ariaCompoundText WinJS.Binding.setAttribute" role="dialog">
+                <span data-win-bind="this['aria-label']:aria WinJS.Binding.setAttribute"></span>
+                <div class="icon" data-win-bind="innerHTML: icon"></div>
+                <div class="text" data-win-bind="innerHTML: text"></div>
+                <div class="actions">
+                    <button tabindex="1" role="button" class="text immersiveIgnore cantBeBlured" data-win-bind="this['aria-label']:leftButtonAria WinJS.Binding.setAttribute; textContent: leftButtonLabel; click:leftButtonHandler MvvmJS.Binding.event"></button>
+                    <button tabindex="1" role="button" class="text immersiveIgnore cantBeBlured" data-win-bind="this['aria-label']:rightButtonAria WinJS.Binding.setAttribute; textContent: rightButtonLabel; click:rightButtonHandler MvvmJS.Binding.event"></button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

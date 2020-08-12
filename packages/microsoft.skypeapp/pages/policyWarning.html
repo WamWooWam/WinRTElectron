@@ -1,0 +1,49 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="policyWarning.css" rel="stylesheet">
+    <script src="policyWarning.js"></script>
+    <script src="/js/vm/policyWarningVM.js"></script>
+    <title>Policy warning</title>
+</head>
+<body>
+    <div class="policyWarning fragment" data-win-bind="SKYPEDISABLED:skypeDisabled MvvmJS.Binding.toggleClass;RETRYING:isRetrying  MvvmJS.Binding.toggleClass">
+        <header class="animRegion animGroup1">
+            <button id="atLiveConversationBackButton" data-win-bind="click:navigateBack MvvmJS.Binding.event;" class="backbutton backbutton-light win-backbutton" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}"></button>
+            <h1 class="name" data-win-bind="innerHTML: conversationName"></h1>
+            <span class="callStatus" data-win-res="{ innerText: 'policy_dialog_callstatus_text'}"></span>
+        </header>
+
+        <div class="logo"></div>
+
+        <a class="retryButton" href="#" data-win-bind="click:retry MvvmJS.Binding.event;" role="button" data-win-res="{ innerText: 'policy_dialog_skype_retry_button_text'}" tabindex="1"></a>
+
+        <!-- action buttons -->
+        <div class="bottomHolder">
+            <div class="actions" >
+                <a class="camera" role="button">&#xE103;</a>
+                <a class="mute" role="button">&#xE106;</a>
+                <a class="contextualMenu" role="button">&#xE30C;</a>
+                <a class="hangUp" role="button">&#xE101;</a>
+            </div>
+        </div>
+
+        <div class="protectionLayer">
+            <div class="messageWrapper">
+                <div class="contentWrapper animRegion animGroup2">
+                    <div class="message" data-win-bind="innerText:dialogBodyText"></div><br />
+                    <a class="okButton" data-win-bind="click:navigateBack MvvmJS.Binding.event;" role="button" data-win-res="{ innerText: 'policy_dialog_skype_ok_button_text'}"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="disabledMessage animRegion animGroup2" data-win-res="{ textContent: 'policy_dialog_skype_blocked_body_text' }"></div> 
+
+        <div class="retryingMessage">
+            <progress class="win-ring"></progress>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+﻿.photoviewer-settings-pane input[type=range]::-ms-fill-lower{background-color:#008299;}
+.photoviewer-settings-pane input[type=range]:hover::-ms-fill-lower{background-color:#2392a7;}
+.photoviewer-settings-pane input[type=range]:active::-ms-fill-lower{background-color:#32b8d0;}
+#settings-title{background-color:#008299;color:#ffffff;padding-top:32px;}
+.settings-title-text{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:calc((100% - 78px));}
+.win-ui-light .win-backbutton #settings-about-backbutton,.win-ui-light .win-backbutton #settings-help-backbutton,.win-ui-light .win-backbutton #settings-photoSettings-backbutton{color:#ffffff;}
+.settings-title-appIcon{position:absolute;top:25px;width:46px;height:46px;}
+.settings-title-appIcon:-ms-lang(af,am,as,az-latn,be,bg,bn,bs,ca,ca-es-valencia,cs,cy,da,de,el,en,es,et,eu,fi,fil-latn,fr,ga,gd-latn,gl,gu,ha-latn,hi,hr,hu,hy,id,ig-latn,is,it,iu-latn,ja,ka,kk,km,kn,ko,kok,ky-cyrl,lb,lt,lv,mi-latn,mk,ml,mn-cyrl,mr,ms,mt,nb,ne,nl,nn,nso,or,pa,pl,pt,quc,quz,ro,ru,rw,si,sk,sl,sq,sr-cyrl,sr-latn,sv,sw,ta,te,tg-cyrl,th,ti,tk-latn,tn,tr,tt-cyrl,uk,uz-latn,vi,wo,xh,yo-latn,zh-hans,zh-hant,zu):not(:-ms-lang(pa-arab)){right:32px;}
+.settings-title-appIcon:-ms-lang(ar,fa,he,ku,pa-arab,prs,sd,ug,ur){left:32px;}
+.settings-subtitle{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-top:0px;font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:600;padding-bottom:7px;}
+.settings-subtitle:-ms-lang(ar,fa,ja,ku,pa-arab,prs,sd,ug,ur){font-size:15.33px;}
+.settings-subtitle:-ms-lang(hi,kn,kok,mr,ne,or,pa,ta):not(:-ms-lang(pa-arab)){font-size:14.66px;}
+.settings-subtitle:-ms-lang(km,zh-hans,zh-hant){font-size:15.5px;}
+.settings-subtitle:-ms-lang(ml){font-size:14.5px;}
+.settings-subtitle:-ms-lang(si){font-size:16.33px;font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(ja,si){line-height:19px;}
+.settings-subtitle:-ms-lang(kn,pa,ta):not(:-ms-lang(pa-arab)){padding-top:3px;}
+.settings-subtitle:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.settings-subtitle:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-subtitle:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-top:0px;font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:300;padding-bottom:7px;}
+.settings-text:-ms-lang(ar,fa,ja,ku,pa-arab,prs,sd,ug,ur){font-size:15.33px;}
+.settings-text:-ms-lang(hi,kn,kok,mr,ne,or,pa,ta):not(:-ms-lang(pa-arab)){font-size:14.66px;}
+.settings-text:-ms-lang(km,zh-hans,zh-hant){font-size:15.5px;}
+.settings-text:-ms-lang(ml){font-size:14.5px;}
+.settings-text:-ms-lang(si){font-size:16.33px;font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(ja,si){line-height:19px;}
+.settings-text:-ms-lang(kn,pa,ta):not(:-ms-lang(pa-arab)){padding-top:3px;}
+.settings-text:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.settings-text:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.settings-text:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.settings-text input{padding-bottom:9px;}
+.settings-account-removeButton{margin-top:7px;margin-bottom:25px;}
+#settings-account-signoutInfo{padding-top:7px;}
+.settings-account-confirmationText{color:#ff3000;}
+.settings-accounts-options{font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;padding-left:5px;padding-right:5px;}
+.settings-accounts-options:-ms-lang(hy,ka){font-size:12.5px;}
+.settings-accounts-options:-ms-lang(ja,km,zh-hans){font-size:12.66px;}
+.settings-accounts-options:-ms-lang(si){font-size:14.5px;}
+.settings-accounts-options:-ms-lang(zh-hant){font-size:13.66px;line-height:19px;}
+.settings-accounts-options:-ms-lang(ja,si){line-height:18px;}
+.settings-accounts-options:-ms-lang(ja,kn,pa,si,ta):not(:-ms-lang(pa-arab)){padding-bottom:2px;}
+.settings-accounts-options:-ms-lang(km,zh-hant){padding-bottom:1px;}
+.settings-accounts-options:-ms-lang(kn,pa,ta):not(:-ms-lang(pa-arab)){padding-top:2px;}
+.settings-toggle{width:190px;}
+.settings-about-block{padding-top:0;padding-bottom:39px;}
+.settings-help-contents{height:100%;width:100%;}
+#settings-help-progressRing{width:30px;height:30px;-ms-progress-appearance:ring;}

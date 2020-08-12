@@ -1,0 +1,116 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!dOcTyPe html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,hub,StartTM")</script>
+    <link href="hub.css" rel="stylesheet">
+    <script src="hub.js"></script>
+    <script src="/js/vm/hubPeopleVM.js"></script>
+    <script src="/js/vm/hubFavoritesVM.js"></script>
+    <link href="/controls/peoplePicker.css" rel="stylesheet" />
+    <script>msWriteProfilerMark("SkypeDebugETW:scriptloading,hub,StopTM")</script>
+</head>
+<body>
+    <div role="heading" data-win-res="{attributes: { 'aria-label' : 'aria_hub_window_label' }}" class="fragment hub">
+        <header>
+            <div class="bgCloud"></div>
+            <div class="logoAndLinks animRegion animGroup1">
+                <img aria-hidden="true" class="logo" src="/images/svg/logo-blue.svg" draggable="false" height="60" width="137" alt="Skype logo" />
+                <div class="linksContainer">
+                    <div class="callPhones">
+                        <button id="atDialButton" class="call" tabindex="8" data-win-res="{attributes: { 'aria-label' : 'aria_hub_button_dialer_label', title: 'hub_button_dialer_label' }}">&#xE100;</button>
+                    </div>
+                    <div class="callPhones newChat">
+                        <button id="atNewChatButton" class="newChat" tabindex="8" data-win-res="{attributes: { 'aria-label' : 'aria_hub_button_newchat_label', title: 'hub_button_newchat_label' }}">&#xE20B;</button>
+                    </div>
+                    <div class="searchContacts" >
+                        <button id="atSearchContactsButton" role="button" class="search" tabindex="9" data-win-res="{attributes: { 'aria-label' : 'aria_hub_search_contacts_button_label', title: 'hub_button_search_contacts_label' }}">&#xE406;</button>
+                    </div>
+                </div>
+            </div>
+            <div id="atMeContainer" role="button" class="presenceBar animRegion animGroup4 animFromRight kb-accessible" data-win-control="Skype.UI.PresenceBar" tabindex="7">
+                <div class="presenceContainer">
+                    <span class="mood"></span>
+                </div>
+              <div class="avatar">
+                <span class="presence"></span>
+              </div>
+            </div>
+        </header>
+        <div class="viewport kb-scrollTarget">
+            <div class="surface">
+                <div class="categoryContainer recents animRegion animGroup2">
+                    <div id="atHubRecentHeader">
+                        <button class="title" id="atHubRecentLink"
+                            data-win-bind="link:hasConversationsOverLimit MvvmJS.Binding.toggleClass; role:hasConversationsOverLimit MvvmJS.Binding.toogleHeaderButtonRole; UNREAD:hasUnread MvvmJS.Binding.toggleClass; this['aria-label']:formattedAriaHubRecentLabel WinJS.Binding.setAttribute; title: formattedAriaHubRecentLabel" 
+                            tabindex="1"><span data-win-res="{ textContent: 'hub_categorytitle_recent' }"></span><span
+                                id="atNumberOfRecentUnread" class="unread" data-win-bind="innerText:formattedUnreadCount"></span></button>
+                    </div>
+                    <div id="atHubRecentList" data-win-res="{attributes: { 'aria-label' : 'aria_hub_recent_list' }}" class="itemsContainer" data-win-bind="POPULATED:hasItems MvvmJS.Binding.toggleClass">
+                        <div class="itemsPlaceholder">
+                            <div class="iconContainer">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="text" data-win-res="{ textContent: 'hub_placeholder_recent' }"></div>
+                        </div>
+                        <div id="hubRecents" class="recentsList kb-accessible" data-win-control="WinJS.UI.ListView"
+                             data-win-options="{ itemTemplate: hubRecentItemTemplate, selectionMode: 'none', layout: { type: WinJS.UI.ListLayout } }"
+                             data-win-bind="winControl.itemDataSource:conversations.dataSource MvvmJS.Binding.wbind; TABINDEX2:hasItems MvvmJS.Binding.toggleTabIndex" tabindex="-1">
+                        </div>
+                    </div>
+                </div>
+
+                <div tabindex="2" class="categoryContainer displayAdsContainer animRegion animGroup2"></div>
+                
+                <div tabindex="2" class="categoryContainer welcomeLCM animRegion animGroup2" role="banner">
+                    <div class="message">
+                        <p class="title"><p/>
+                        <p class="text"></p>
+                    </div>
+                </div>
+
+                <div class="categoryContainer favorites animRegion animGroup3 animFromRight" data-win-bind="HIDEFAVORITES:hideFavorites MvvmJS.Binding.toggleClass;">
+                    <div id="atHubFavoritesHeader">
+                        <button class="title plus" id="atHubFavoritesButton" role="link" data-win-bind="link:canAddToFavorites MvvmJS.Binding.toggleClass;"
+                            data-win-res="{ textContent: 'hub_categorytitle_favorites', title: 'aria_hub_favorites_heading', attributes: { 'aria-label' : 'aria_hub_favorites_heading' } }" 
+                            tabindex="3"></button>
+                    </div>
+                    <div id="atHubFavoritesList" data-win-res="{attributes: { 'aria-label' : 'hub_categorytitle_favorites' }}" class="itemsContainer" data-win-bind="POPULATED:favorites.length MvvmJS.Binding.toggleClass">
+                        <div class="itemsPlaceholder">
+                            <div class="iconContainer">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="text" data-win-res="{ textContent: 'hub_placeholder_favorites' }"></div>
+                        </div>
+                        <div id="hubFavorites" class="favoritesList" data-win-control="WinJS.UI.ListView"
+                             data-win-options="{ itemTemplate: peopleItemTemplate, selectionMode: 'multi', layout: { type: WinJS.UI.GridLayout } }"
+                             data-win-bind="winControl.itemDataSource:favorites.dataSource; TABINDEX4:favorites.length MvvmJS.Binding.toggleTabIndex" tabindex="-1">
+                        </div>
+                    </div>
+                </div>
+                <div class="categoryContainer people animRegion animGroup3 animFromRight">
+                    <div id="atHubPeopleHeader">
+                        <button class="title link" id="atHubPeopleLink" 
+                            data-win-res="{ textContent: 'hub_categorytitle_people', title: 'aria_hub_people_heading' ,attributes: { 'aria-label' : 'aria_hub_people_heading' }}" 
+                            tabindex="5" role="link"></button>
+                    </div>
+                    <div id="atHubPeopleList" data-win-res="{attributes: { 'aria-label' : 'hub_categorytitle_people' }}" class="itemsContainer" data-win-bind="POPULATED:people.length MvvmJS.Binding.toggleClass">
+                        <div class="itemsPlaceholder">
+                            <div class="iconContainer">
+                                <div class="icon"></div>
+                            </div>
+                            <div class="text" data-win-res="{ textContent: 'hub_placeholder_people' }"></div> 
+                        </div>
+                        <div id="hubPeople" class="peopleList kb-accessible" data-win-control="WinJS.UI.ListView"
+                             data-win-options="{ itemTemplate: peopleItemTemplate, selectionMode: 'none', layout: { type: WinJS.UI.GridLayout } }"
+                             data-win-bind="winControl.itemDataSource:people.dataSource; TABINDEX6:people.length MvvmJS.Binding.toggleTabIndex" tabindex="-1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

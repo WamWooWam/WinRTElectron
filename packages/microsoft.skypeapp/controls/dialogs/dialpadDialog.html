@@ -1,0 +1,18 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DialpadDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="dialpadDialog.js"></script>
+    <script src="/controls/dialpad.js"></script>
+</head>
+<body>
+    <div id="dialpadDialog" class="dialogFlyout DIALPAD" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event">
+        <div class="toneHistory"><div class="inner"></div></div>
+        <div class="dialpadKeys" data-win-control="Skype.UI.Dialpad"></div>
+    </div>
+</body>
+</html>

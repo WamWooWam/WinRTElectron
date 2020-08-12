@@ -1,0 +1,27 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConversationChat</title>
+    <link href="chatLog.css" rel="stylesheet">
+    <script src="chatLog.js"></script>
+    <script src="/js/vm/videoMessageVM.js"></script>
+    <script src="/js/data/videoMessageWrapper.js"></script>
+    <script src="/controls/videoMessage.js"></script>
+    <script src="/js/vm/fileTransferBaseVM.js"></script>
+    <script src="/js/vm/fileTransferMessageVM.js"></script>
+    <script src="/js/vm/fileTransferVM.js"></script>
+    <script src="/js/vm/fileTransferGroupVM.js"></script>
+</head>
+<body>
+    <div class="chatLog log">
+        <!--Messages-->
+        <div class="messagesContainer gestureIgnore">
+            <!--Typing indicator control - part of messages to make sure it moves with messages -->
+            <div class="typingIndicatorControl"></div>
+        </div>
+        <div class="ariaLiveContainer" aria-live="assertive" role="listitem"></div>
+    </div>
+</body>
+</html>

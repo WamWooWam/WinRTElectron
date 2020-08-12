@@ -1,0 +1,161 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../../css/global.scss";
+
+div.ringingPanel {
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    height: 100%;
+
+    div.callAnimationContainer {
+        width:100%;
+        height: 100%;
+        background: -ms-linear-gradient(top, #00aff0 0%,#02a9e9 17%,#0898d5 42%,#127cb4 73%,#1d5e91 100%);
+
+        div.callAnimation {
+            div.participant div.ringingAnimation {
+                transform: scale(0.7, 0.7); /* we need smaller animation for ringing panel */
+            }
+            div.bgLayerCallStarting {
+                display: none;  /* initial animation is not used for panel */
+            }
+        }
+    }
+    
+    div.bottomHolder {
+        -ms-grid-row-align: end;
+        display: -ms-grid;
+        -ms-grid-columns: 1fr;
+        -ms-grid-rows: auto auto;
+        margin-bottom: 20px;
+
+        div.incomingCallActionButtons {
+            -ms-grid-row: 2;
+            -ms-grid-column-align: center;
+            -ms-grid-row-align: center;
+            transition: opacity 0.3s linear 0s;
+
+            button {
+                /* to override button */
+                min-width: 10px;
+                padding: 0px;
+                font-weight: normal;
+                border-width: 0px;
+
+                z-index: 100;
+                display: inline-block;
+                height: 60px;
+                width: 60px;
+                border-radius: 50%;
+                margin: 0px 18px;
+                font-family: "Skype UI Symbol";
+                font-size: 60px;
+                line-height: normal;
+                text-align: center;
+                opacity: .9;
+                color: #fff;
+                border-color: #fff;
+                box-shadow: 0 0 0 5px rgba(0,0,0,0.1);	
+                
+                &.HIDDEN {
+                    display: none;
+                }	
+                
+                &:hover {
+                    opacity: 0.8;
+                    @media #{$highContrast} {
+                        background-color: Highlight;
+                        color: window;
+                    }
+                }	
+
+                &.answer, &.answerVideo  {
+                    background-color: rgba(127, 186, 0, 1);
+                    &:hover {
+                        background-color: rgba(127, 186, 0, 1);
+                    }
+                    &:active {
+                        background-color: rgba(89, 130, 0, 1);
+                    }
+                }
+
+                &.hangUp {
+                    background-color: rgba(232, 17, 35, 1);
+                    &:hover {
+                        background-color: rgba(208, 15, 31, 1);
+                    }
+                    &:active {
+                        background-color: rgba(162, 12, 24, 1);
+                    }
+                }
+
+                @media #{$highContrast} {
+                    box-shadow: 0 0 0 5px WindowText;
+                    color: -ms-hotlight;
+                }
+
+                @media #{$highContrastVertical} {
+                    box-shadow: none;
+                    border: 1px solid WindowText;
+                }
+            } /* button */
+        } /* div.incomingCallActionButtons */
+    } /* bottomHolder */	
+
+    header {
+        color: #fff;
+        width: 100%;
+        height: 120px;
+        overflow: hidden;
+        z-index: 999;
+        display: -ms-grid;
+        -ms-grid-columns: 90px 1fr;
+        -ms-grid-rows: 1fr;
+        overflow: visible;
+        line-height: normal;
+
+        button.backbutton {
+            margin-left: 39px;
+            margin-right: 39px; /* for RTL */
+            margin-top: 59px;
+        }
+
+        div.wrapper {
+            margin-top: 62px;
+            -ms-grid-column: 2;
+            position: relative;
+
+	        h1.name {
+		        margin-right: 15px;
+		        overflow: hidden;
+		        max-width: calc(100% - 20px);
+		        text-overflow: ellipsis;
+		        white-space: nowrap;
+		        display: inline-block;	
+				
+		        body.RTL & {
+			        margin-right: 0;
+			        margin-left: 15px;
+		        }
+
+		        @media screen and (-ms-high-contrast: active) {
+			        background-color: Window;
+		        }			
+	        }
+
+	        div.callStatus {
+		        bottom: 6px;
+		        
+		        @media screen and (-ms-high-contrast: active) {
+			        background-color: Window;
+		        }					
+	        }
+
+            @media #{$vertical} {
+                margin-top: 55px
+            }
+        }
+    }
+}

@@ -1,4 +1,5 @@
-import { EventTarget, ShimProxyHandler, Enumerable } from "winrt-node/Windows.Foundation";
+import { EventTarget, Enumerable } from "winrt-node/Windows.Foundation";
+import { ShimProxyHandler } from "winrt-node/ShimProxyHandler";
 
 //
 // was Windows.Collections not a thing at this stage?

@@ -1,0 +1,206 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head></head>
+<body>
+    <div class="chatMessageTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node init list-selectable" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle">
+                    <div class="protectionLayer"></div>
+                </div>
+                <div class="border"></div>
+            </div>
+            <div class="message">
+                <h3 class="name"><a class="kb-accessible" data-win-bind="innerHTML:name"></a></h3>
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="edited"></div>
+                <div class="body" data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></div>
+            </div>
+        </div>
+    </div>
+    <div class="chatMessageFollowTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node light init list-selectable" role="listitem">
+            <div class="message">
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="edited"></div>
+                <div class="body" data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></div>
+            </div>
+        </div>
+    </div>
+    <div class="chatMessageUnsupportedTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node unsupported list-selectable" role="listitem">
+            <div class="iconContainer"><span class="icon"></span></div>
+            <div class="message">
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="body"><span class="name" data-win-bind="innerHTML: name"></span><span class="text" data-win-bind="innerHTML:message"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="dateTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node dateHeader" data-date="">
+            <div data-win-bind="innerHTML: label "></div>
+        </div>
+    </div>
+    <div class="chatMessageNotificationTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node notification list-selectable" data-win-bind="x:notificationtype MvvmJS.Binding.bindClassUppercased" role="listitem">
+            <div class="iconContainer"><span class="icon"></span></div>
+            <div class="message">
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="body"><span data-win-bind="innerText:notification"></span><span class="msgDetail" data-win-bind="innerHTML:notificationdetail"></span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notificationTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node notification list-selectable genericNotification" role="listitem">
+            <div class="message">
+                <div class="body"><span data-win-bind="innerHTML:notification MvvmJS.Binding.unsafeHTML"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="authMessageTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node init list-selectable" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+                <div class="border"></div>
+            </div>
+            <div class="message auth">
+                <h3 class="name" data-win-bind="innerHTML:name"></h3>
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="body" data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></div>
+            </div>
+        </div>
+    </div>
+    <div class="authMessageFollowTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node light init list-selectable" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+            </div>
+            <div class="message auth">
+                <h3 class="name" data-win-bind="innerHTML:name"></h3>
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="body" data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></div>
+            </div>
+        </div>
+    </div>
+    <div class="initialAuthRequestMessageTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node init list-selectable" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+                <div class="border"></div>
+            </div>
+            <div class="message initialAuthRequest">
+                <h3 class="name" data-win-bind="innerHTML:name"></h3>
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="body confirmAuthRequest">
+                    <div class="text" data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></div>
+                    <div class="controls">
+                        <button tabindex="-1" class="text accept navigable" data-win-res="{textContent: 'authrequest_accept_button'}" data-win-bind="click:accept MvvmJS.Binding.event"></button>
+                        <button tabindex="-1" class="text decline cancel navigable" data-win-res="{textContent: 'authrequest_decline_button'}" data-win-bind="click:decline MvvmJS.Binding.event"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="initialAuthRequestMessageFollowTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node light init list-selectable" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+            </div>
+            <div class="message initialAuthRequest">
+                <div class="body confirmAuthRequest">
+                    <div class="text" data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></div>
+                    <div class="controls">
+                        <button tabindex="-1" class="text accept navigable" data-win-res="{textContent: 'authrequest_accept_button'}" data-win-bind="click:accept MvvmJS.Binding.event"></button>
+                        <button tabindex="-1" class="text decline cancel navigable" data-win-res="{textContent: 'authrequest_decline_button'}" data-win-bind="click:decline MvvmJS.Binding.event"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="noMessagesContainer">
+        <div class="noMessages">
+            <div class="content"></div>
+        </div>
+    </div>
+
+    <div class="rateCallQualityTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="rateCallQualityNode list-selectable" role="listitem" data-win-res="{attributes: { 'aria-label' : 'aria_chat_callqualityrating_rate_0' }}">
+            <label data-win-res="{innerHTML: 'conversation_ratecallquality_rate_0'}"></label>
+            <div tabindex="-1" class="rating navigable" data-win-control="WinJS.UI.Rating"></div>
+        </div>
+    </div>
+
+    <div class="fileTransferTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node list-selectable complex" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+                <div class="border"></div>
+            </div>
+            <div class="message">
+                <h3 class="name"><a class="kb-accessible" data-win-bind="innerHTML:name"></a></h3>
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="heading">
+                    <span class="icon"></span>
+                    <span data-win-bind="innerText: message"></span>
+                </div>
+                <div class="fileTransferMessage complexControl" data-win-control="Skype.UI.FileTransferMessage" data-win-bind="winControl.objectId: objectId; winControl.files: files;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fileTransferFollowTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node light list-selectable complex" role="listitem">
+            <div class="message">
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="heading">
+                    <span class="icon"></span>
+                    <span data-win-bind="innerText: message"></span>
+                </div>
+                <div class="fileTransferMessage complexControl" data-win-control="Skype.UI.FileTransferMessage" data-win-bind="winControl.objectId: objectId; winControl.files: files;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="videoMessageTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node list-selectable complex" role="listitem">
+            <div class="avatar">
+                <div class="img" data-win-bind="backgroundImage:avatarUri MvvmJS.Binding.urlStyle"></div>
+                <div class="border"></div>
+            </div>
+            <div class="message">
+                <h3 class="name"><a class="kb-accessible" data-win-bind="innerHTML:name"></a></h3>
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="heading">
+                    <span class="icon"></span>
+                </div>
+                <div class="videoMessage complexControl" data-win-control="Skype.UI.VideoMessage" data-win-bind="winControl.libMsgId: message.libMsgId;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="videoMessageFollowTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node light list-selectable complex" role="listitem">
+            <div class="message">
+                <time data-win-bind="innerHTML: time"></time>
+                <div class="heading">
+                    <span class="icon"></span>
+                </div>
+                <div class="videoMessage complexControl" data-win-control="Skype.UI.VideoMessage" data-win-bind="winControl.libMsgId: message.libMsgId;"></div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="chatMessageBlockTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="node notification list-selectable" role="listitem">
+            <div class="message">
+                <div class="body"><span data-win-bind="innerHTML:message MvvmJS.Binding.unsafeHTML"></span></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

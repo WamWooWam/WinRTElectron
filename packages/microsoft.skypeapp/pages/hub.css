@@ -1,0 +1,620 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+div.fragment.hub{
+    height:100%;
+    position:relative
+}
+div.fragment.hub header{
+    position:relative
+}
+div.fragment.hub header div.logoAndLinks{
+    position:relative;
+    grid-column:2;
+    display:grid;
+    grid-template-columns:137px 1fr;
+    min-width:550px
+}
+@media screen and (max-width: 560px){
+    div.fragment.hub header div.logoAndLinks{
+        grid-column:1;
+        grid-template-columns:1fr
+    }
+}
+div.fragment.hub header div.logoAndLinks img.logo{
+    grid-column:1;
+    margin-top:50px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub header div.logoAndLinks img.logo{
+        margin-top:26px
+    }
+}
+@media screen and (max-width: 560px){
+    div.fragment.hub header div.logoAndLinks img.logo{
+        display:none;
+        visibility:hidden
+    }
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer{
+    display:grid;
+    grid-column:2;
+    grid-template-columns:70px 70px 70px;
+    height:40px;
+    margin:60px 32px 0
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub header div.logoAndLinks div.linksContainer{
+        margin-top:34px
+    }
+}
+@media screen and (max-width: 560px){
+    div.fragment.hub header div.logoAndLinks div.linksContainer{
+        grid-column:1;
+        margin:34px 20px 0
+    }
+}
+@media screen and (max-width: 400px){
+    div.fragment.hub header div.logoAndLinks div.linksContainer{
+        height:30px;
+        display:grid;
+        grid-template-columns:45px 45px 45px;
+        margin:20px 20px 0
+    }
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones{
+    grid-column:1
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat{
+    grid-column:2
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts{
+    grid-column:3
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button,div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button,div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button{
+    padding:0;
+    min-height:0;
+    min-width:0;
+    font-weight:normal;
+    border:0;
+    font-family:"Skype UI Symbol" !important;
+    font-weight:normal;
+    font-size:40px;
+    background-color:#00aff0;
+    color:#fff;
+    display:inline-block;
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    /* line-height:normal; */
+    text-align:center;
+    position:relative;
+    z-index:101
+}
+@media screen and (-ms-high-contrast: active){
+    div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button,div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button,div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button{
+        box-sizing:content-box;
+        background-color:ButtonFace;
+        color:ButtonText;
+        border:2px solid ButtonText
+    }
+    div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button:hover:not([disabled]),div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button:hover:not([disabled]),div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button:hover:not([disabled]){
+        background-color:Highlight;
+        color:HighlightText
+    }
+    div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button[disabled],div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button[disabled],div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button[disabled]{
+        border-color:GrayText;
+        color:GrayText
+    }
+}
+@media screen and (max-width: 400px){
+    div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button,div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button,div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button{
+        font-size:10pt;
+        height:30px;
+        line-height:26px;
+        width:30px;
+        font-size:30px;
+        line-height:normal
+    }
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button:hover,div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button:hover,div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button:hover{
+    background-color:#0182b3;
+    color:#fff
+}
+div.fragment.hub header div.logoAndLinks div.linksContainer div.callPhones>button:active,div.fragment.hub header div.logoAndLinks div.linksContainer div.searchContacts>button:active,div.fragment.hub header div.logoAndLinks div.linksContainer div.newChat>button:active{
+    background-color:#015c80;
+    color:#fff
+}
+div.fragment.hub header div.presenceBar{
+    grid-column:3;
+    align-self:end;
+    text-align:right;
+    margin-top:53px;
+    position:relative;
+    left:10px
+}
+body.RTL div.fragment.hub header div.presenceBar{
+    text-align:left;
+    left:auto;
+    right:10px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub header div.presenceBar{
+        margin-top:31px
+    }
+}
+@media screen and (max-width: 560px){
+    div.fragment.hub header div.presenceBar{
+        left:0
+    }
+    body.RTL div.fragment.hub header div.presenceBar{
+        left:auto;
+        right:0
+    }
+}
+@media screen and (max-width: 400px){
+    div.fragment.hub header div.presenceBar{
+        margin-top:16px
+    }
+}
+div.fragment.hub header div.presenceBar div.presenceContainer{
+    display:inline-block;
+    vertical-align:top;
+    height:24px;
+    position:relative;
+    top:16px;
+    z-index:1
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub header div.presenceBar div.presenceContainer{
+        position:absolute;
+        right:5px
+    }
+    body.RTL div.fragment.hub header div.presenceBar div.presenceContainer{
+        right:auto;
+        left:5px
+    }
+}
+div.fragment.hub header div.presenceBar span.presence{
+    display:inline-block;
+    left:-5px;
+    bottom:-5px;
+    border-radius:50%;
+    border:5px solid #fff;
+    position:absolute
+}
+body.RTL div.fragment.hub header div.presenceBar span.presence{
+    left:auto;
+    right:-5px
+}
+div.fragment.hub header div.presenceBar span.mood{
+    color:#6e6e73;
+    display:inline-block;
+    max-width:200px;
+    height:100%;
+    white-space:nowrap;
+    text-overflow:ellipsis;
+    overflow:hidden;
+    margin-right:-5px
+}
+body.RTL div.fragment.hub header div.presenceBar span.mood{
+    margin-right:0;
+    margin-left:-5px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub header div.presenceBar span.mood{
+        display:none
+    }
+}
+div.fragment.hub header div.presenceBar span.mood>a{
+    color:#939598
+}
+div.fragment.hub header div.presenceBar span.mood:hover,div.fragment.hub header div.presenceBar span.mood:hover>a{
+    color:#0182b3
+}
+div.fragment.hub header div.presenceBar span.mood:active,div.fragment.hub header div.presenceBar span.mood:active>a{
+    color:#015c80
+}
+div.fragment.hub header div.presenceBar div.avatar{
+    display:inline-block;
+    position:relative;
+    top:-3px;
+    width:40px;
+    height:40px;
+    border:10px solid #fff;
+    border-radius:50%
+}
+div.fragment.hub header div.presenceBar div.avatar:hover::before{
+    content:' ';
+    display:block;
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.15);
+    border-radius:50%
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub header div.presenceBar div.avatar{
+        border-width:7px;
+        right:3px
+    }
+    body.RTL div.fragment.hub header div.presenceBar div.avatar{
+        right:0;
+        left:3px
+    }
+}
+@media screen and (max-width: 400px){
+    div.fragment.hub header div.presenceBar div.avatar{
+        width:30px;
+        height:30px
+    }
+}
+div.fragment.hub div.viewport{
+    overflow-x:auto;
+    height:100%;
+    overflow-y:hidden;
+    position:relative;
+    z-index:10
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.viewport{
+        overflow-x:hidden;
+        overflow-y:auto
+    }
+}
+div.fragment.hub div.surface{
+    white-space:nowrap;
+    font-size:0;
+    height:100%;
+    margin-left:100px
+}
+body.RTL div.fragment.hub div.surface{
+    margin-right:100px
+}
+div.fragment.hub div.surface.ADCONTAINERVISIBLE.ADRENDERED,div.fragment.hub div.surface.LCMVISIBLE{
+    margin-left:100px
+}
+body.RTL div.fragment.hub div.surface.ADCONTAINERVISIBLE.ADRENDERED,body.RTL div.fragment.hub div.surface.LCMVISIBLE{
+    margin-right:100px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface,div.fragment.hub div.surface.LCMVISIBLE,body.RTL div.fragment.hub div.surface,body.RTL div.fragment.hub div.surface.LCMVISIBLE{
+        height:auto;
+        margin-left:0;
+        margin-right:0
+    }
+}
+div.fragment.hub div.surface div.categoryContainer{
+    display:inline-block;
+    vertical-align:top;
+    white-space:normal;
+    height:100%
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer{
+        display:block;
+        height:auto
+    }
+}
+div.fragment.hub div.surface div.categoryContainer button.title{
+    display:inline-block;
+    margin-left:20px;
+    margin-right:20px;
+    margin-top:10px;
+    margin-bottom:14px;
+    line-height:36px
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer{
+    height:calc(100vh - 180px)
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder{
+    display:block;
+    overflow:hidden
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.iconContainer{
+    background:#e7f1f5;
+    height:270px;
+    padding:21px 36px;
+    box-sizing:border-box
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.iconContainer{
+        height:140px;
+        background:linear-gradient(to right, #e7f1f5 140px, #f3f8fa 140px)
+    }
+    body.RTL div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.iconContainer{
+        background:linear-gradient(to right, #f3f8fa 140px, #e7f1f5 140px)
+    }
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.text{
+    margin-top:14px;
+    margin-right:20px;
+    color:#6e6e73
+}
+body.RTL div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.text{
+    margin-left:20px;
+    margin-right:0px
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.icon{
+    color:#FFF;
+    width:50px;
+    height:50px;
+    overflow:visible;
+    margin-bottom:9px
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.icon::before{
+    font-family:"Skype UI Symbol";
+    font-size:64px;
+    font-weight:bold;
+    position:relative;
+    top:40px
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer .win-focusedoutline{
+    left:2px;
+    top:2px;
+    width:calc(100% - 4px);
+    height:calc(100% - 4px)
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer>div.win-listview{
+    visibility:hidden;
+    width:270px;
+    overflow:visible
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer div.itemsContainer>div.win-listview{
+        height:0px
+    }
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer.POPULATED div.itemsPlaceholder{
+    display:none
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer.POPULATED>div.win-listview{
+    height:100%;
+    visibility:visible
+}
+div.fragment.hub div.surface div.categoryContainer div.itemsContainer:not(.POPULATED)>div.win-listview{
+    position:absolute !important;
+    top:0px
+}
+div.fragment.hub div.surface div.categoryContainer.displayAdsContainer{
+    display:none;
+    box-sizing:border-box;
+    padding-top:60px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.displayAdsContainer{
+        display:none
+    }
+}
+div.fragment.hub div.surface div.categoryContainer.welcomeLCM{
+    display:none;
+    box-sizing:border-box;
+    padding-top:60px;
+    margin-right:40px
+}
+body.RTL div.fragment.hub div.surface div.categoryContainer.welcomeLCM{
+    margin-right:0;
+    margin-left:20px
+}
+div.fragment.hub div.surface div.categoryContainer.welcomeLCM>div.message{
+    padding:5px 20px 5px 20px;
+    width:250px;
+    box-sizing:border-box;
+    background-color:#d7f2fb;
+    background-position:bottom right;
+    background-repeat:no-repeat;
+    color:#0095CC;
+    word-wrap:break-word
+}
+div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.itemsPlaceholder{
+    box-sizing:border-box;
+    width:280px;
+    height:100%;
+    margin-left:20px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.itemsPlaceholder{
+        width:auto
+    }
+}
+div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.itemsPlaceholder div.icon::before{
+    content:"\E30b"
+}
+body.RTL div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.itemsPlaceholder{
+    margin-left:auto;
+    margin-right:20px
+}
+div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.itemsPlaceholder div.iconContainer{
+    background-image:url(/images/svg/bg_hub_recents.svg);
+    background-size:cover
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.itemsPlaceholder div.iconContainer{
+        background:linear-gradient(to right, #e7f1f5 280px, #f3f8fa 280px)
+    }
+}
+@media screen and (min-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.recents{
+        max-width:640px;
+        overflow:hidden
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.recents{
+        width:100%;
+        margin:0
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer{
+        height:auto
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents div.win-container{
+        height:90px;
+        width:320px
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents .win-listlayout div.win-container{
+        width:100%
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents .win-surface.win-gridlayout{
+        margin:0
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents div.itemsPlaceholder div.iconContainer{
+        width:280px;
+        padding-top:0;
+        background-image:none
+    }
+}
+div.fragment.hub div.surface div.categoryContainer.people.NOPEOPLE{
+    display:none
+}
+div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder div.iconContainer{
+    background-image:url(/images/svg/bg_hub_people.svg);
+    background-size:cover
+}
+div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder div.icon::before{
+    content:"\E201"
+}
+div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder div.itemsContainer div.item{
+    width:135px;
+    height:135px
+}
+div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer>div.win-listview.peopleList{
+    min-width:135px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer>div.win-listview.peopleList{
+        height:auto
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.people>div:first-child{
+        margin-top:10px
+    }
+    div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer{
+        margin-bottom:20px
+    }
+}
+div.fragment.hub div.surface div.categoryContainer.favorites.HIDEFAVORITES{
+    display:none
+}
+div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder div.icon::before{
+    content:"\E40a"
+}
+div.fragment.hub div.surface div.categoryContainer.recents,div.fragment.hub div.surface div.categoryContainer.favorites,div.fragment.hub div.surface div.categoryContainer.people{
+    margin-right:40px
+}
+div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer.POPULATED,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer.POPULATED,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer.POPULATED{
+    width:auto
+}
+body.RTL div.fragment.hub div.surface div.categoryContainer.recents,body.RTL div.fragment.hub div.surface div.categoryContainer.favorites,body.RTL div.fragment.hub div.surface div.categoryContainer.people{
+    margin-right:0;
+    margin-left:40px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.recents,div.fragment.hub div.surface div.categoryContainer.favorites,div.fragment.hub div.surface div.categoryContainer.people{
+        padding-right:0;
+        padding-left:0
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents div.itemsPlaceholder,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder,div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder{
+        width:auto;
+        margin-left:20px
+    }
+    body.RTL div.fragment.hub div.surface div.categoryContainer.recents div.itemsPlaceholder,body.RTL div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder,body.RTL div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder{
+        margin-left:auto;
+        margin-right:20px
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.recentsList,div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.favoritesList,div.fragment.hub div.surface div.categoryContainer.recents div.itemsContainer div.peopleList,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.recentsList,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.favoritesList,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.peopleList,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.recentsList,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.favoritesList,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.peopleList{
+        width:100%
+    }
+    div.fragment.hub div.surface div.categoryContainer.recents .win-viewport.win-vertical,div.fragment.hub div.surface div.categoryContainer.favorites .win-viewport.win-vertical,div.fragment.hub div.surface div.categoryContainer.people .win-viewport.win-vertical{
+        line-height:0px
+    }
+}
+div.fragment.hub div.surface div.categoryContainer.favorites button.title,div.fragment.hub div.surface div.categoryContainer.people button.title{
+    margin-left:0;
+    margin-right:0
+}
+div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder,div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder{
+    width:270px;
+    height:100%
+}
+div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.item,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.item{
+    width:270px;
+    height:270px;
+    color:#fff;
+    border:0
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.favorites,div.fragment.hub div.surface div.categoryContainer.people{
+        width:calc(100% - 20px)
+    }
+    div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer{
+        height:auto
+    }
+    div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.win-container,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.item,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.win-container,div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.item{
+        width:140px;
+        height:140px;
+        touch-action:double-tap-zoom pan-y pinch-zoom
+    }
+    div.fragment.hub div.surface div.categoryContainer.favorites button.title,div.fragment.hub div.surface div.categoryContainer.people button.title{
+        margin-left:20px;
+        margin-right:20px
+    }
+    div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder,div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder{
+        width:auto
+    }
+    div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder div.iconContainer,div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder div.iconContainer{
+        height:140px;
+        width:280px;
+        background-image:url(/images/svg/bg_hub_people140.svg)
+    }
+    body.RTL div.fragment.hub div.surface div.categoryContainer.favorites div.itemsPlaceholder div.iconContainer,body.RTL div.fragment.hub div.surface div.categoryContainer.people div.itemsPlaceholder div.iconContainer{
+        background-image:url(/images/svg/bg_hub_people140rtl.svg)
+    }
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    body.RTL div.fragment.hub div.surface div.categoryContainer.favorites>div.itemsContainer.POPULATED{
+        margin-right:0px
+    }
+}
+@media screen and (min-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.favorites.MANY div.itemsContainer div.item{
+        width:135px;
+        height:135px;
+        color:#fff;
+        border:0
+    }
+}
+@media screen and (min-aspect-ratio: 1 / 1){
+    div.fragment.hub div.surface div.categoryContainer.people div.itemsContainer div.item{
+        width:135px;
+        height:135px;
+        color:#fff;
+        border:0
+    }
+}
+div.fragment.hub div.surface.ADCONTAINERVISIBLE div.categoryContainer.displayAdsContainer,div.fragment.hub div.surface.LCMVISIBLE div.categoryContainer.welcomeLCM{
+    display:inline-block
+}
+div.fragment.hub div.surface.ADRENDERED div.categoryContainer.displayAdsContainer{
+    margin-right:40px
+}
+body.RTL div.fragment.hub div.surface.ADRENDERED div.categoryContainer.displayAdsContainer{
+    margin-right:0;
+    margin-left:20px
+}
+@media screen and (-ms-high-contrast: active){
+    div.fragment.hub>header div.presenceBar:hover div.presenceContainer{
+        font-weight:700
+    }
+    div.fragment.hub>header div.presenceBar div.avatar{
+        border-color:transparent;
+        -ms-high-contrast-adjust:none
+    }
+    div.fragment.hub>header div.presenceBar:hover div.avatar::before{
+        background:none;
+        box-shadow:0px 0px 0px 5px WindowText
+    }
+    div.fragment.hub div.categoryContainer div.itemsPlaceholder div.iconContainer{
+        border:1px solid WindowText
+    }
+}
+ 

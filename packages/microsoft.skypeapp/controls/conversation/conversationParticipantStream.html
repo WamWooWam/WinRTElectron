@@ -1,0 +1,30 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ConversationParticipantStream</title>
+    <link href="conversationParticipantStream.css" rel="stylesheet" />
+    <script src="/js/vm/conversation/conversationParticipantStreamVM.js"></script>
+</head>
+<body>
+    <div class="conversationParticipantStream skype-skipdispose" role="heading" tabindex="7" data-win-bind="VIDEOISSTARTING:isVideoRunning MvvmJS.Binding.toggleClass;
+         SPEAKING:isSpeaking MvvmJS.Binding.toggleClass;VIDEOISVISIBLE:isVideoVisible MvvmJS.Binding.toggleClass;x:participantStatus MvvmJS.Binding.bindClass;VIDEOISRECOVERING:isRecovering MvvmJS.Binding.toggleClass;
+         this['aria-label']:participantLabel WinJS.Binding.setAttribute">
+        <div class="videoAndAvatarContainer">
+            <div class="participant" aria-hidden="true">
+                <div class="participantStatusIcon" aria-hidden="true"></div>
+                <progress class="win-ring"></progress>
+                <div class="avatarCont" aria-hidden="true"></div>
+            </div>
+            <div class="videoParticipant">
+                <!-- style="width: 10px; height: 10px;" because #6382 -->
+                <video class="videoView" aria-hidden="true" style="width: 10px; height: 10px;" msrealtime="true" data-win-bind="error:videoError MvvmJS.Binding.event"></video>
+            </div>
+        </div>
+        <div class="name" aria-hidden="true"><div data-win-bind="innerHTML:participantName MvvmJS.Binding.unsafeHTML;this['title']: participantName WinJS.Binding.setAttribute"></div></div>
+        <div class="participantStatusLabel" data-win-bind="innerText:participantStatusLabel"></div>
+    </div>
+</body>
+</html>

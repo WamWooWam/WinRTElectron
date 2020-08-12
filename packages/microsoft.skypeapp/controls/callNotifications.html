@@ -1,0 +1,37 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!dOcTyPe html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="conversationSwitcher.css" rel="stylesheet" />
+    <script src="/controls/dynamicFontSize.js"></script>
+
+</head>
+<body>
+    <div class="ongoingNotification">
+        <div class="notificationWrapper ongoing">
+            <button class="notification removeDefaultStyles" tabindex="1" role="button">
+                <div class="avatar"></div>
+                <div class="name"></div>
+                <div class="status">
+                    <span class="icon"></span>
+                    <span class="text" data-win-control="Skype.UI.DynamicFontSize" data-win-options="{'steps': {10: 'FONT-SMALL'}, 'observe': true, 'automeasure': true}"></span>
+                </div>
+            </button>
+            <button class="mute removeDefaultStyles" role="button" tabindex="1" data-win-res="{attributes: {'aria-label' : 'aria_call_connection_mute'}}">&#xE106;</button>
+            <button class="hangup removeDefaultStyles" role="button" tabindex="1" data-win-res="{attributes: {'aria-label' : 'aria_call_connection_endcall'}}">&#xE101;</button>
+        </div>
+    </div>
+    <div class="multipleOngoingNotification">
+        <div class="notificationWrapper ongoing" role="button">
+            <button class="notification removeDefaultStyles" tabindex="1">
+                <div class="status">
+                    <span class="icon"></span>
+                    <span class="text"></span>
+                </div>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

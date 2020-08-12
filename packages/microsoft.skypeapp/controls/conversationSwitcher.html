@@ -1,0 +1,21 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!dOcTyPe html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link href="conversationSwitcher.css" rel="stylesheet" />
+    <script src="/js/vm/conversationSwitcherButtonVM.js"></script>
+
+</head>
+<body>
+    <div class="buttonContainer">
+        <div class="button animRegion" data-win-bind="UNREAD:hasUnread MvvmJS.Binding.toggleClass;NEWUNREAD:hasNewUnread MvvmJS.Binding.toggleClass;">
+            <img class="buttonCorona" aria-hidden="true" src="/images/svg/buttonCorona.svg" />
+            <button class="buttonCenter removeDefaultStyles" id="atConversationSwitcherButton" role="button" data-win-bind="UNREAD:hasUnread MvvmJS.Binding.toggleClass;NEWUNREAD:hasNewUnread MvvmJS.Binding.toggleClass; this['aria-label']:formattedAriaUnreadCountLabel WinJS.Binding.setAttribute; title: formattedAriaUnreadCountLabel MvvmJS.Binding.wbind; x:hasUnread MvvmJS.Binding.suppressTabIndex">
+                <div class="unreadCount" data-win-bind="innerText:formattedUnreadCount"></div>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

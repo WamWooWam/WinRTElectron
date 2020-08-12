@@ -1,0 +1,41 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConversationChatInput</title>
+    <link href="chatInput.css" rel="stylesheet">
+    <script src="chatInput.js"></script>
+    <script src="/js/data/sms.js"></script>
+    <script src="/js/vm/conversation/chatInputVM.js"></script>
+</head>
+<body>
+    <div class="chatInput">
+        <div class="inputs" data-win-bind="SMSCHANNEL:smsModeOn MvvmJS.Binding.toggleClass;
+            DISABLED:disabled MvvmJS.Binding.toggleClass;
+            NOSMSPHONE:hasAnySmsPhone MvvmJS.Binding.toggleClassNegative;
+            SINGLEPHONE:hasOnlyOnePhone MvvmJS.Binding.toggleClass;
+            PSTN:sharedState.isPstnContact MvvmJS.Binding.toggleClass;
+            SHOWINGFULLLIVE:sharedState.isInFullLive MvvmJS.Binding.toggleClass;
+            x:sharedState.state MvvmJS.Binding.bindConversationStateClass;
+            HIDDEN:isHidden MvvmJS.Binding.toggleClass;
+            KEYBOARDUP:isShowingKeyboard MvvmJS.Binding.toggleClass;
+            click:handleLinkClick MvvmJS.Binding.event">
+            <div class="channelButton"><span tabindex="5" class="sms kb-accessible" role="combobox" data-win-bind="this['aria-label']:channelButtonAriaLabel WinJS.Binding.setAttribute;click:showPhoneMenu MvvmJS.Binding.event"><span data-win-bind="innerHTML: caption" aria-hidden="true">Skype</span> <span class="icon" role="combobox" aria-hidden="true">&#xE41E;</span></span></div>
+            <span data-win-bind="innerText:channelButtonFlickAriaLabel Skype.UI.Util.stripHtmlMarkup" tabindex="-1" class="channelAriaElement">Skype</span>
+            <div class="textboxMessages">
+                <span class="textboxMsg3" data-win-bind="innerText:sms.price" dir="ltr"></span>
+            </div>
+            <div class="textbox">
+                <textarea id="atConversationTextArea" disabled="disabled" tabindex="4"></textarea>
+                <div class="inputDisabled" data-win-bind="innerHTML: inputDisabledMessage"></div>
+                <button tabindex="4" class="smiley removeDefaultStyles" data-win-res="{attributes: { 'aria-label' : 'aria_chat_emoticon_button' }}" data-win-bind="disabled: disabled">&#xE30D;</button>
+                <div tabindex="4" class="notification notInGroup" data-win-res="{textContent: 'chatitem_you_left'}" role="heading"></div>
+                <div tabindex="4" class="notification serverBasedChat" data-win-bind="innerHTML:serverBasedChatInfo; VISIBLE:isP2PMigrated MvvmJS.Binding.toggleClass" role="heading"></div>
+                <div tabindex="4" class="notification disabled" data-win-res="{textContent: 'conversation_blocked_inputs'}" role="heading"></div>
+            </div>
+        </div>
+        <div class="smsBtnMenu"></div>
+    </div>
+</body>
+</html>

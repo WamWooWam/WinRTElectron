@@ -1,5 +1,5 @@
 import { PlatformObject } from "./PlatformObject";
-import { ShimProxyHandler } from "winrt-node/Windows.Foundation";
+import { ShimProxyHandler } from "winrt-node/ShimProxyHandler";
 
 export class Person extends PlatformObject {
     constructor() {

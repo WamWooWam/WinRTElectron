@@ -4,6 +4,7 @@ import { ApplicationModel } from "./Windows.ApplicationModel";
 import { BasicProperties, StorageItemTypes, NameCollisionOption, CreationCollisionOption } from "./Windows.Storage"
 
 const fs = require('fs');
+const fsp = require('fs').promises;
 const _path = require("path");
 
 export abstract class StorageItem {
@@ -34,7 +35,12 @@ export class StorageFile extends StorageItem {
     }
 
     deleteAsync(options: any): IAsyncAction {
-        throw new Error("Method not implemented.");
+        return new IAsyncOperation((res, rej) => {
+            fs.unlink(this.path, (err) => {
+                if(err) rej(err);
+                res();
+            })
+        });
     }
     getBasicPropertiesAsync(): IAsyncOperation<BasicProperties> {
         throw new Error("Method not implemented.");
@@ -158,7 +164,12 @@ export class StorageFolder extends StorageItem {
     }
 
     deleteAsync(options: any): IAsyncAction {
-        throw new Error("Method not implemented.");
+        return new IAsyncOperation((res, rej) => {
+            fs.unlink(this.path, (err) => {
+                if(err) rej(err);
+                res();
+            })
+        });
     }
 
     getBasicPropertiesAsync(): IAsyncOperation<BasicProperties> {
@@ -188,17 +199,19 @@ export class PathIO {
 
     private static readPackageFileAsync(uri: URL, path: string): IAsyncOperation<Response> {
         return new IAsyncOperation((res, rej) => {
-            let url = PathIO.extractPackageUrl(path, uri);
+            fs.exists(path, (exists: boolean) => {
+                if (!exists) {
+                    rej();
+                }
 
-            fetch(url.toString())
-                .then(r => {
-                    if (!r.ok) {
-                        throw new Error("File not found!")
+                fs.readFile(path, (error, buffer) => {
+                    if (error) {
+                        rej(error);
+                        return;
                     }
-
-                    res(r);
+                    res(buffer);
                 })
-                .catch(e => rej(e))
+            })
         });
     }
 

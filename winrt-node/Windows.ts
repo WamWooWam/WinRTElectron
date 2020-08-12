@@ -1,10 +1,10 @@
 export * from "./Windows.ApplicationModel"
-import * as FouncationTemp from "./Windows.Foundation"
+export * as Foundation from "./Windows.Foundation"
 export * from "./Windows.Globalization"
 import * as CryptographyTemp from "./Windows.Security.Cryptography"
 import * as OnlineIdTemp from "./Windows.Security.Authentication.OnlineId"
 export * from "./Windows.System"
-import * as StorageTemp from "./Windows.Storage"
+export * as Storage from "./Windows.Storage"
 export * from "./Windows.Devices"
 export * from "./Windows.Networking"
 export * from "./Windows.Graphics"
@@ -12,7 +12,6 @@ export * from "./Windows.Media"
 import * as UITemp from "./Windows.UI"
 import * as WebUITemp from "./Windows.UI.WebUI"
 
-export const Foundation = FouncationTemp;
 
 export namespace UI {
     export const WebUI = WebUITemp.UI.WebUI;
@@ -37,5 +36,3 @@ export namespace Security{
 
     export const Cryptography = CryptographyTemp.Security.Cryptography;
 }
-
-export const Storage = StorageTemp;

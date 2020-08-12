@@ -1,0 +1,146 @@
+﻿.ad-container-header {
+    font-size: 14px;
+    overflow: hidden;
+}
+
+.ad-container-content {
+    padding: 0;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.creative {
+    background-color: #f9fbfc; /*or f3f5f6*/
+}
+
+.panorama-ad {
+    height: 540px;
+    -ms-grid-rows: auto;
+}
+
+.panorama-ad-grid {
+    height: 540px;
+    -ms-grid-rows: auto auto;
+}
+
+.creative-container,
+.creative-container > .creative {
+    height: 540px;
+}
+
+.panorama-ad-error {
+    height: 270px;
+    -ms-transition: height 0s ease-in-out;
+}
+
+.panorama-with-error {
+    -ms-transition: height 0.25s ease-in-out;
+}
+
+.panorama-with-error > .ad-view {
+    -ms-grid-row: 1 !important;
+}
+
+.ads-footer {
+    width: 100%;
+    height: 30px;
+    background-color: #808080;
+    text-align: left;
+    -ms-flex-pack: center;
+    -ms-flex-direction: column;
+    /*-ms-transition: opacity 1s ease-in-out;*/
+    opacity: 0;
+    position: relative;
+    display: none;
+    overflow: hidden;
+}
+
+.ads-footer.house-ad-footer {
+    background-color: #00aff0    
+}
+
+.panorama-ad.ads-rendered .rdparty-ad-footer,
+.panorama-ad.ads-rendered .house-ad-footer {
+    display: -ms-flexbox;
+    opacity: 1;
+}
+
+.panorama-ad .rdparty-ad-footer > .premium-footer-btn {
+    display: block;
+}
+
+.panorama-ad .ads-footer,
+.panorama-ad .ads-footer > button,
+.panorama-ad-grid.panorama-ad-from-nogrid .ads-footer {
+    min-height: 30px;
+    height: 30px;
+}
+
+.panorama-ad-grid .ads-footer,
+.panorama-ad-grid .ads-footer > button {
+    min-height: 20px;
+    height: 20px;
+    line-height: 1;
+}
+
+.panorama-ad-grid.panorama-ad-from-nogrid .ads-footer > button {
+    margin-top: 10px;
+}
+
+.panorama-ad-grid.panorama-ad-error .ads-footer > button,
+.panorama-ad-grid.panorama-with-error .ads-footer > button {
+    margin-top: 0;
+}
+
+.panorama-ad-grid.panorama-ad-from-nogrid .ads-footer {
+    top: -10px;
+}
+
+.panorama-ad-grid.panorama-ad-error .ads-footer,
+.panorama-ad-grid.panorama-with-error .ads-footer,
+.panorama-ad-grid .ads-footer,
+.panorama-with-error .ads-footer {
+    min-height: 20px;
+    height: 20px;
+}
+
+.panorama-ad-grid .ads-footer,
+.panorama-ad-grid.panorama-with-error .ads-footer {
+    top: 0;
+}
+
+.panorama-ad-grid.panorama-ad-error .ads-footer {
+    top: 0;
+}
+
+.ads-footer > button {
+    width: 100%;
+    font-size: 9px;
+    font-family: 'Segoe UI';
+    display: none;
+    box-sizing: border-box;
+    padding: 0 15px;
+    border: none;
+    text-align: left;
+}
+
+.ads-footer > button,
+.ads-footer > button:hover,
+.ads-footer > button:disabled,
+.ads-footer > button:active {
+    color: #ffffff !important;
+    background: transparent !important;
+}
+
+.ad-view {
+    -ms-transition: opacity 1s ease-in-out;
+    opacity: 0;
+    margin-bottom: 20px;
+}
+
+.ad-view-active {
+    opacity: 1;
+}

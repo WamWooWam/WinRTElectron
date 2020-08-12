@@ -1,0 +1,30 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AuthRequestDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="authRequestDialog.js"></script>
+</head>
+<body>
+    <div id="authRequestDialog" class="dialogFlyout AUTHREQUEST" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event">
+        <div class="reqDesc">
+            <div class="reqDescContent">
+                <div class="avatar" data-win-bind="backgroundImage: vm.avatarUri MvvmJS.Binding.urlStyle"></div>
+                <div class="title" data-win-bind="textContent: vm.title"></div>
+            </div>
+        </div>
+        <div class="reqContent">
+            <textarea data-win-bind="value: vm.inputText MvvmJS.Binding.twoway; maxLength: vm.maxLength; focus:autoselect MvvmJS.Binding.event"></textarea>
+        </div>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atAuthRequestDialogOkButton" class="text" data-win-bind="textContent: vm.okTitle; click:okAction MvvmJS.Binding.event"></button>
+                <button id="atAuthRequestDialogCancelButton" class="text cancel" data-win-bind="textContent: vm.cancelTitle; click:cancelAction MvvmJS.Binding.event"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

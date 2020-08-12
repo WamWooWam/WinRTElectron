@@ -27,6 +27,25 @@ export namespace Graphics {
             }
         }
 
+        export class DisplayInformation {
+            private static instance: DisplayInformation;
+            static getForCurrentView() {
+                return DisplayInformation.instance ?? (DisplayInformation.instance = new DisplayInformation());
+            }
+
+            get currentOrientation() : DisplayOrientations {
+                return DisplayOrientations.landscape;
+            }
+        }
+        
+        export enum DisplayOrientations {
+            none,
+            landscape = 1,
+            portrait = 2,
+            landscapeFlipped = 4,
+            portraitFlipped = 8
+        }
+
         export enum ResolutionScale {
             invalid = 0,
             scale100Percent = 100,

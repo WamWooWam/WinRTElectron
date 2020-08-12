@@ -1,0 +1,1 @@
+This tool generates templates from `.winmd` files. It's messy, requiring one to add the file as a reference to the project, modify the code to point to it, build, deploy and run, buuut it gets the job done ¯\\\_(ツ)_/¯

@@ -1,5 +1,6 @@
 /// <ref src="Windows.Foundation.ts"/>
-import { EventTarget, ShimProxyHandler, Rect, Collections, IAsyncOperation, Enumerable } from "./Windows.Foundation"
+import { EventTarget, Rect, Collections, IAsyncOperation, Enumerable } from "./Windows.Foundation"
+import { ShimProxyHandler } from "./ShimProxyHandler";
 import promiseIpc from "electron-promise-ipc"
 import { uuidv4 } from "./util";
 import { IpcHelper } from "./IpcHelper";

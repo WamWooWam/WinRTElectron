@@ -1,0 +1,22 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TextareaDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="textareaDialog.js"></script>
+</head>
+<body>
+    <div id="textareaDialog" class="dialogFlyout" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event; this['arial-label']: vm.title WinJS.Binding.setAttribute">
+        <div class="description" data-win-bind="textContent: vm.title"></div>
+        <textarea role="textbox" aria-multiline="true" data-win-bind="value: vm.inputText  MvvmJS.Binding.twoway; maxLength: vm.maxLength;"></textarea>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atTextareaDialogOkButton" role="button" class="text" data-win-bind="textContent: vm.okTitle; click:okAction MvvmJS.Binding.event"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

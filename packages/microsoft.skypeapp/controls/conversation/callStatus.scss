@@ -1,0 +1,78 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../../css/global.scss";
+div.callStatusWrapper {
+	display: -ms-grid;
+	-ms-grid-columns: 100%;
+	h1.name {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		display: inline-block;			
+		-ms-grid-row: 1;
+
+		@media #{$horizontal} {
+			.CHATOPENINLIVE:not(.PRELIVE) & {
+				max-width: calc(100% - 320px);
+			}
+		}
+
+		@media #{$vertical} {
+			margin-right: 0;
+		}
+		@media screen and (-ms-high-contrast: active) {
+			background-color: Window;
+		}			
+	}
+
+	div.details {
+		-ms-grid-row: 2;
+		display:inline-block;
+		margin-top: 12px;
+		pointer-events: all;
+
+		span.numberOfParticipants {
+			display: none;
+			margin-right: 20px;
+
+			&:hover {
+				color: #66cff6;
+			}
+
+			body.RTL & {
+				margin-left: 20px;
+				margin-right: 0;
+			}
+
+			&::after {
+				padding-left: 5px;
+				font-family: "Skype UI Symbol";
+				font-weight: bold;
+				content: "\E421";
+
+				body.RTL & {
+					content: "\E420";
+					padding-left: 0;
+					padding-right: 5px;
+				}
+			}
+
+			@media screen and (-ms-high-contrast: active) {
+				color: -ms-hotlight;
+
+				&:hover {
+					color: Highlight;
+				}
+			}
+		}
+
+		&.NUMBEROFPARTVISIBLE {
+			span.numberOfParticipants {
+				display: inline-block;
+			}
+		}
+		@media screen and (-ms-high-contrast: active) {
+			background-color: Window;
+		}					
+	}
+}

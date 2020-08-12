@@ -1,0 +1,57 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="mePanel.css" rel="stylesheet">
+</head>
+<body>
+    <div data-win-control="Skype.UI.TabConstrainer" class="mePanel-accessWrap" data-win-options="{ariaLabel: 'mePanel'}">
+        <div class="clickEater"></div>
+        <div class="avatar myAvatar kb-accessible tab-accessible" data-win-res="{attributes: { 'aria-label' : 'aria_me_picture'}}" tabindex="5" role="button" ></div>
+        <button class="close backbutton backbutton-light-protected win-backbutton tab-accessible" tabindex="6" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}"></button>
+        <span class="name"></span>
+        <span class="email"></span>
+        <div class="moodSpaceContainer">
+            <div class="moodOuterContainer">
+                <div class="moodContainer">
+                    <textarea class="dark mood tab-accessible" maxlength="200" data-win-res="{placeholder: 'mepanel_enter_mood_message'}" tabindex="7" role="textbox">
+                </textarea>
+                    <input class="emoticonPicker kb-accessible tab-accessible" role="button" type="image" src="/images/svg/smiley.svg" tabindex="8" data-win-res="{attributes: { 'aria-label' : 'aria_me_mood_message_emoticon_label' }}"/>
+                </div>
+            </div>
+        </div>
+        <ul class="statusContainer">
+            <li class="selected" data-presence="online">
+                <span class="presence"></span>
+                <button data-win-res="{textContent: 'contact_status_available'}" tabindex="1" class="tab-accessible removeDefaultStyles" role="radio"></button>
+            </li>
+            <li data-presence="invisible">
+                <span class="presence"></span>
+                <button data-win-res="{textContent: 'contact_status_invisible'}" tabindex="2" class="tab-accessible removeDefaultStyles" role="radio"></button>
+            </li>
+        </ul>
+        <ul class="linksContainer">
+            <li class="account tab-accessible" tabindex="3" aria-labelledby="mainAccount" role="button">
+                <span class=" ico" aria-hidden="true">
+                    &#xE200
+                </span><a class="label account" aria-hidden="true" tabindex="-1" id="mainAccount" href="#" draggable="false" data-win-res="{textContent: 'mepanel_my_account'}"></a>
+            </li>
+            <li class="signOut tab-accessible" tabindex="4" aria-labelledby="mainSignOut" role="button">
+                <span class="ico" aria-hidden="true">&#xE60D</span><a class="label signOut" aria-hidden="true" tabindex="-1" id="mainSignOut" href="#" draggable="false" data-win-res="{textContent: 'mepanel_sign_out_button'}"></a>
+            </li>
+        </ul>
+
+        <!-- lazy init? -->
+        <div class="signOutPanel hidden">
+            <button class="closeSignOutPanel backbutton backbutton-light-protected win-backbutton tab-accessible" tabindex="4"></button>
+            <h2 class="title win-label" data-win-res="{ textContent: 'mepanel_signout_title'}"></h2>
+            <span data-win-res="{ textContent: 'mepanel_signout_your_account'}"></span>
+            <div class="accountContact"></div>
+            <p data-win-res="{ textContent: 'mepanel_signout_info'}"></p>
+            <p data-win-res="{ textContent: 'mepanel_signout_help'}"></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TwoButtonDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="twoButtonDialog.js"></script>
+</head>
+<body>
+    <div id="twoButtonDialog" class="dialogFlyout NOHEADING" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event;  this['aria-label']: vm.question WinJS.Binding.setAttribute">
+        <h2 class="title" data-win-bind="textContent: vm.title"></h2>
+        <div class="description" data-win-bind="textContent: vm.question"></div>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atOption1Button" class="text" data-win-bind="textContent: vm.option1; click:okAction MvvmJS.Binding.event"></button>
+                <button id="atOption2Button" class="text" data-win-bind="textContent: vm.option2; click:cancelAction MvvmJS.Binding.event"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

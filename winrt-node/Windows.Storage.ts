@@ -164,7 +164,6 @@ export class LocalStorageBackedContainer extends ApplicationDataContainer {
 
     mutated() {
         const jsonData = JSON.stringify([...this._values]);
-        console.log(`${this.name}: ${jsonData}`);
         localStorage.setItem(this.name, jsonData);
     }
 

@@ -1,0 +1,163 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+#searchBoxPanel{
+    display:none;
+    position:absolute;
+    height:160px;
+    width:100%;
+    right:0px;
+    top:0px;
+    background-color:#00aff0;
+    z-index:102;
+}
+#searchBoxPanel.VISIBLE{
+    display:block
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel{
+        height:120px
+    }
+}
+@media screen and (max-width: 400px){
+    #searchBoxPanel{
+        height:95px
+    }
+}
+#searchBoxPanel header{
+    display:grid;
+    grid-template-columns:120px 1fr 40px;
+    background-color:#00aff0
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel header{
+        grid-template-columns:70px 1fr 40px
+    }
+}
+@media screen and (max-width: 400px){
+    #searchBoxPanel header{
+        grid-template-columns:60px 1fr 20px
+    }
+}
+#searchBoxPanel header button.backbutton{
+    grid-column:1;
+    grid-row:1;
+    margin-left:39px;
+    margin-right:39px;
+    margin-top:59px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel header button.backbutton{
+        margin-left:20px;
+        margin-right:20px;
+        margin-top:35px
+    }
+}
+#searchBoxPanel header div.wrapper{
+    grid-column:2;
+    grid-row:1;
+    margin-top:40px
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel header div.wrapper{
+        margin-top:30px
+    }
+}
+#searchBoxPanel header div.wrapper div.searchBox{
+    display:-ms-grid;
+    grid-template-columns:1fr auto;
+    -ms-grid-rows:auto;
+    position:relative;
+    width:100%;
+    height:80px;
+    border:0;
+    background-color:transparent;
+    line-height:normal
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel header div.wrapper div.searchBox{
+        height:40px
+    }
+}
+#searchBoxPanel header div.wrapper div.searchBox input{
+    padding:0;
+    height:80px;
+    font-size:56px;
+    font-weight:200;
+    letter-spacing:0;
+    line-height:normal;
+    background-color:transparent;
+    border:0;
+    margin-top:-10px;
+    color:#fff;
+    width:calc(100% - 80px)
+}
+#searchBoxPanel header div.wrapper div.searchBox input:-ms-input-placeholder{
+    color:rgba(255,255,255,0.4)
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel header div.wrapper div.searchBox input{
+        width:calc(100% - 60px);
+        height:60px;
+        font-size:40px;
+        margin-top:-8px
+    }
+}
+@media screen and (max-width: 400px){
+    #searchBoxPanel header div.wrapper div.searchBox input{
+        width:calc(100% - 40px);
+        height:40px;
+        margin-top:-5px;
+        font-size:26.67px
+    }
+}
+#searchBoxPanel header div.wrapper div.searchBox .win-searchbox-button{
+    width:80px;
+    height:80px;
+    margin-left:15px;
+    font-family:"Skype UI Symbol";
+    font-size:80px;
+    line-height:normal;
+    border-style:none;
+    text-align:center;
+    color:rgba(255,255,255,0.4);
+    background-color:transparent
+}
+@media screen and (max-aspect-ratio: 1 / 1){
+    #searchBoxPanel header div.wrapper div.searchBox .win-searchbox-button{
+        width:40px;
+        height:40px;
+        margin-top:-15px
+    }
+}
+@media screen and (max-width: 400px){
+    #searchBoxPanel header div.wrapper div.searchBox .win-searchbox-button{
+        margin-top:-5px;
+        font-size:50px
+    }
+}
+body.RTL #searchBoxPanel header div.wrapper div.searchBox .win-searchbox-button{
+    margin-right:15px;
+    margin-left:0
+}
+#searchBoxPanel header div.wrapper div.searchBox .win-searchbox-button::before{
+    content:"\E406"
+}
+#searchBoxPanel header div.wrapper div.searchBox .win-searchbox-button-input-focus{
+    background-color:transparent;
+    color:#fff
+}
+body.RTL #searchBoxPanel{
+    right:auto;
+    left:0;
+    border-left:0
+}
+@media screen and (-ms-high-contrast: active){
+    #searchBoxPanel{
+        border-left:2px solid WindowText
+    }
+    bodyRTL #searchBoxPanel{
+        border-left:0;
+        border-right:2px solid WindowText
+    }
+}
+ 

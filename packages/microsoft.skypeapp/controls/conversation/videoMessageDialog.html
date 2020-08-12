@@ -1,0 +1,68 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- List own styles and scripting -->
+    <link href="videoMessageDialog.css" rel="stylesheet">
+    <script src="/js/data/videoMessageWrapper.js"></script>
+    <script src="/js/vim/capturer.js"></script>
+    <script src="/js/vim/thumbnailFactory.js"></script>
+
+    <script src="/js/vm/conversation/videoMessageDialogVM.js"></script>
+</head>
+<body>
+    <div class="videoMessageDialogContainer">
+        <div class="videoMessageDialog" data-win-control="Skype.UI.TabConstrainerLite" data-win-bind="x:mode MvvmJS.Binding.bindClass; x:state MvvmJS.Binding.bindClass; ISOUTGOING:isOutgoing MvvmJS.Binding.toggleClass;">
+            <div id="videoMessageDialogAriaLive" aria-live="assertive" aria-relevant="additions" style="display:none" role="heading"></div>
+            <header>
+                <button class="backbutton backbutton-videoMessage win-backbutton tab-accessible" tabindex="2" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}"></button>
+                <div class="title" data-win-bind="innerHTML:formattedTitle MvvmJS.Binding.unsafeHTML"></div>
+            </header>
+            <div class="video">
+                <video data-win-bind="
+                    canplay:canplay MvvmJS.Binding.event;canplaythrough: MvvmJS.Binding.event;durationchange:durationchange MvvmJS.Binding.event;emptied:emptied MvvmJS.Binding.event;ended:ended MvvmJS.Binding.event;loadeddata:loadeddata MvvmJS.Binding.event;
+                    error:error MvvmJS.Binding.event;
+                    loadedmetadata:loadedmetadata MvvmJS.Binding.event;loadstart:loadstart MvvmJS.Binding.event;pause:pause MvvmJS.Binding.event;play:play MvvmJS.Binding.event;playing:playing MvvmJS.Binding.event;progress:progress MvvmJS.Binding.event;ratechange:ratechange MvvmJS.Binding.event;
+                    seeked:seeked MvvmJS.Binding.event;seeking:seeking MvvmJS.Binding.event;stalled:stalled MvvmJS.Binding.event;suspend:suspend MvvmJS.Binding.event;timeupdate:timeupdate MvvmJS.Binding.event;waiting:waiting MvvmJS.Binding.event;"></video>
+                <div class="protectionLayerTop"></div>
+                <div class="protectionLayerBottom"></div>
+                <div class="time" data-win-bind="innerText:formattedTime"></div>
+                <progress class="win-ring PREPARE_PLAYBACK"></progress>
+
+                <div class="lookingGood PREPARE">
+                    <h3 data-win-res="{textContent: 'videomessage_dialog_lookinggood_title'}"></h3>
+                    <p data-win-res="{textContent: 'videomessage_dialog_lookinggood_text'}"></p>
+                </div>
+            </div>
+            <div class="actions">
+                <button tabindex="1" class="tab-accessible kb-accessible control cameraSwitch PREPARE" data-win-bind="click:switchCamera MvvmJS.Binding.event; ENABLED:canSwitchCamera MvvmJS.Binding.toggleClass; disabled: cameraSwitchBtnEnabled MvvmJS.Binding.not" data-win-res="{attributes:{'aria-label': 'aria_videomessage_dialog_button_switch_camera'}}"></button>
+                <button tabindex="1" class="tab-accessible kb-accessible control record PREPARE" data-win-bind="click:record MvvmJS.Binding.event;" data-win-res="{attributes:{'aria-label': 'aria_videomessage_dialog_button_record'}}"></button>
+                <button tabindex="1" class="tab-accessible kb-accessible control record RECORDING" data-win-bind="click:stop MvvmJS.Binding.event;" data-win-res="{attributes:{'aria-label': 'aria_videomessage_dialog_button_stop'}}"></button>
+                <button tabindex="1" class="tab-accessible kb-accessible control x PREPARE" data-win-res="{attributes:{'aria-label': 'aria_videomessage_dialog_button_cancel'}}"></button>
+
+                <button tabindex="1" class="tab-accessible kb-accessible text RECORDED" data-win-bind="click:send MvvmJS.Binding.event;" data-win-res="{textContent: 'videomessage_dialog_button_send'}"></button>
+                <button tabindex="1" class="tab-accessible kb-accessible text RECORDED cancel" data-win-res="{textContent: 'videomessage_dialog_button_cancel'}"></button>
+                <button tabindex="1" class="tab-accessible kb-accessible text reply PLAYBACK" data-win-bind="click:reply MvvmJS.Binding.event; CANNOT_REPLAY:replyAction.isApplicable MvvmJS.Binding.toggleClassNegative; disabled:replyAction.isEnabled MvvmJS.Binding.not" data-win-res="{textContent: 'videomessage_dialog_button_reply'}"></button>
+            </div>
+            <div class="overlay PREMIUM">
+                <div class="content">
+                    <h3 data-win-res="{textContent: 'videomessage_dialog_premiumup_title'}"></h3>
+                    <p data-win-res="{textContent: 'videomessage_dialog_premiumup_text'}"></p>
+                    <button class="text tab-accessible" tabindex="1" data-win-bind="click:buyPremium MvvmJS.Binding.event" data-win-res="{textContent: 'videomessage_dialog_premiumup_button_confirm'}"></button>
+                    <button class="text cancel tab-accessible" tabindex="1" data-win-res="{textContent: 'videomessage_dialog_button_cancel'}"></button>
+                </div>
+            </div>
+
+            <div class="overlay ERROR">
+                <div class="content" role="dialog" data-win-bind="this['aria-label']: errorMessage WinJS.Binding.setAttribute">
+                    <p data-win-bind="innerText: errorMessage"></p>
+                    <button class="text retry SEND tab-accessible" tabindex="1" data-win-res="{textContent: 'videomessage_dialog_button_retry'}"></button>
+                    <button class="text cancel tab-accessible" tabindex="1" data-win-res="{textContent: 'videomessage_dialog_button_cancel'}"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

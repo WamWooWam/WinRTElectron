@@ -1,0 +1,25 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>MessageNotification</title>
+    <link href="messageNotification.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="messageBubbleContainer" data-win-bind="VISIBLE:visible MvvmJS.Binding.toggleClass;NEWMESSAGE:resetPulse MvvmJS.Binding.toggleTemporaryClass" data-tmp-class-timeout="2000">
+        <div class="protectionsWrapper" style="">
+            <div class="avatarProtection" style=""></div>
+            <div class="messageBubbleProtection" style=""></div>
+        </div>
+        <div class="avatar"></div>
+        <div class="messageCircleContainer">
+            <div class="messageBubbleCircle"></div>
+            <div class="messageBubble">
+                <div class="messageText" data-win-bind="innerHTML:message;x:textSize MvvmJS.Binding.bindClass;x:bigEmoticons MvvmJS.Binding.bindClass"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

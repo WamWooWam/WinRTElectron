@@ -1,0 +1,134 @@
+﻿.primaryFontLight{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:200;}.primaryFontLight:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}.primaryFontLight:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}.primaryFontLight:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:300;}
+.primaryFontSemilight:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.primaryFontSemilight:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemilight:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:400;}
+.primaryFontNormal:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.primaryFontNormal:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontNormal:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:600;}
+.primaryFontSemibold:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.primaryFontSemibold:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontSemibold:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold{font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-weight:700;}
+.primaryFontBold:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+.primaryFontBold:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.primaryFontBold:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.singleLineText{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.typeSizeLarge{font-size:56px;letter-spacing:0;line-height:64px;padding-bottom:11px;padding-top:5px;}
+.typeSizeLarge:-ms-lang(gu,kn,pa):not(:-ms-lang(pa-arab)){font-size:54px;}
+.typeSizeLarge:-ms-lang(am,ar,as,be,bg,bn,el,fa,gu,he,hi,hy,ja,ka,kk,km,ko,kok,ku,ky-cyrl,ml,mn-cyrl,mr,ne,or,pa-arab,prs,ru,sd,si,sr-cyrl,te,tg-cyrl,th,ti,tt-cyrl,ug,uk,ur,zh-hans,zh-hant){line-height:74px;}
+.typeSizeLarge:-ms-lang(kn,pa):not(:-ms-lang(pa-arab)){line-height:93.25px;padding-bottom:2.75px;padding-top:4px;}
+.typeSizeLarge:-ms-lang(ta){line-height:65px;padding-bottom:0px;padding-top:15px;}
+.typeSizeLarge:-ms-lang(am,ar,as,be,bg,bn,el,fa,he,hi,hy,ja,ka,kk,km,ko,kok,ku,ky-cyrl,ml,mn-cyrl,mr,ne,or,pa-arab,prs,ru,sd,si,sr-cyrl,te,tg-cyrl,th,ti,tt-cyrl,ug,uk,ur,zh-hans,zh-hant){padding-bottom:5px;padding-top:0px;}
+.typeSizeLarge:-ms-lang(gu){padding-bottom:4px;padding-top:1px;}
+.typeSizeMedium{font-size:26.66667px;letter-spacing:0.02em;line-height:32px;padding-bottom:5px;padding-top:3px;}
+.typeSizeMedium:-ms-lang(ar,fa,he,hy,km,ko,ku,ml,or,pa-arab,prs,sd,si,ta,te,ug,ur){font-size:26.66px;}
+.typeSizeMedium:-ms-lang(ja){font-size:27.66px;}
+.typeSizeMedium:-ms-lang(kn,pa):not(:-ms-lang(pa-arab)){font-size:26.6px;line-height:46px;padding-bottom:1px;}
+.typeSizeMedium:-ms-lang(th){font-size:28px;}
+.typeSizeMedium:-ms-lang(zh-hans,zh-hant){font-size:27.5px;}
+.typeSizeMedium:-ms-lang(am,ar,as,be,bg,bn,el,fa,gu,he,hi,hy,ja,ka,kk,km,ko,kok,ku,ky-cyrl,ml,mn-cyrl,mr,ne,or,pa-arab,prs,ru,sd,si,sr-cyrl,te,tg-cyrl,th,ti,tt-cyrl,ug,uk,ur,zh-hant){line-height:35.4px;}
+.typeSizeMedium:-ms-lang(ta){line-height:34px;padding-bottom:0px;padding-top:6px;}
+.typeSizeMedium:-ms-lang(zh-hans){line-height:35px;}
+.typeSizeMedium:-ms-lang(am,ar,as,be,bg,bn,el,fa,gu,he,hi,hy,ja,ka,kk,km,ko,kok,ku,ky-cyrl,ml,mn-cyrl,mr,ne,or,pa-arab,prs,ru,sd,si,sr-cyrl,te,tg-cyrl,th,ti,tt-cyrl,ug,uk,ur,zh-hans,zh-hant){padding-bottom:3.6px;padding-top:1px;}
+.typeSize16pt{font-size:21.33333px;letter-spacing:0.02em;line-height:26.66667px;padding-bottom:2px;padding-top:1px;}
+.typeSize16pt:-ms-lang(ka){line-height:27px;}
+.typeSizeNormal{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
+.typeSizeNormal:-ms-lang(ar,fa,ja,ku,pa-arab,prs,sd,ug,ur){font-size:15.33px;}
+.typeSizeNormal:-ms-lang(hi,kn,kok,mr,ne,or,pa,ta):not(:-ms-lang(pa-arab)){font-size:14.66px;}
+.typeSizeNormal:-ms-lang(km,zh-hans,zh-hant){font-size:15.5px;}
+.typeSizeNormal:-ms-lang(ml){font-size:14.5px;}
+.typeSizeNormal:-ms-lang(si){font-size:16.33px;padding-bottom:1px;}
+.typeSizeNormal:-ms-lang(ja,si){line-height:19px;}
+.typeSizeNormal:-ms-lang(ja,km,te){padding-bottom:2px;}
+.typeSizeNormal:-ms-lang(kn,pa,ta):not(:-ms-lang(pa-arab)){padding-bottom:3px;padding-top:3px;}
+.typeSizeSmall{font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
+.typeSizeSmall:-ms-lang(hy,ka){font-size:12.5px;}
+.typeSizeSmall:-ms-lang(ja,km,zh-hans){font-size:12.66px;}
+.typeSizeSmall:-ms-lang(si){font-size:14.5px;}
+.typeSizeSmall:-ms-lang(zh-hant){font-size:13.66px;line-height:19px;}
+.typeSizeSmall:-ms-lang(ja,si){line-height:18px;}
+.typeSizeSmall:-ms-lang(ja,kn,pa,si,ta):not(:-ms-lang(pa-arab)){padding-bottom:2px;}
+.typeSizeSmall:-ms-lang(km,zh-hant){padding-bottom:1px;}
+.typeSizeSmall:-ms-lang(kn,pa,ta):not(:-ms-lang(pa-arab)){padding-top:2px;}
+.typeForAuthoring{font-family:Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;font-size:16px;font-weight:400;letter-spacing:normal;line-height:20px;padding-bottom:0px;padding-top:0px;}
+.typeForAuthoring:-ms-lang(am,ti){font-family:Ebrima,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",sans-serif;}
+.typeForAuthoring:-ms-lang(ar,fa,ku,pa-arab,prs,sd,ug,ur){font-family:Tahoma,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(as,bn){font-family:"Shonar Bangla",Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(gu){font-family:Shruti,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(he){font-family:Arial,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(hi,kok,mr,ne){font-family:Utsaah,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;font-size:16.33px;}
+.typeForAuthoring:-ms-lang(ja){font-family:Meiryo,Calibri,"Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(km){font-family:DaunPenh,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;font-size:26px;line-height:32px;}
+.typeForAuthoring:-ms-lang(kn){font-family:Tunga,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI","Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(ko){font-family:"Malgun Gothic",Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;font-size:15.66px;}
+.typeForAuthoring:-ms-lang(ml){font-family:Kartika,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(or){font-family:Kalinga,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;padding-bottom:3px;}
+.typeForAuthoring:-ms-lang(si){font-family:"Iskoola Pota",Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(ta){font-family:Vijaya,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(te){font-family:Vani,Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(th){font-family:"Browallia New",Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;font-size:26.66px;line-height:29px;}
+.typeForAuthoring:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI",Calibri,"Segoe UI",Meiryo,"Microsoft JhengHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI",Calibri,"Segoe UI",Meiryo,"Microsoft YaHei UI","Malgun Gothic","Khmer UI","Nirmala UI",Tunga,"Lao UI",Ebrima,sans-serif;}
+.typeForAuthoring:-ms-lang(ar,fa,he,ja,ku,ml,pa-arab,prs,sd,te,ug,ur){font-size:15.33px;}
+.typeForAuthoring:-ms-lang(hy,pa):not(:-ms-lang(pa-arab)){font-size:14.66px;}
+.typeForAuthoring:-ms-lang(si,zh-hant){line-height:19px;}
+.typeForAuthoring:-ms-lang(gu,kn){padding-bottom:4px;}
+.typeForAuthoring:-ms-lang(ja,zh-hant){padding-bottom:1px;}
+.typeForAuthoring:-ms-lang(km,ml,or){padding-bottom:2px;}
+.typeForAuthoring:-ms-lang(as,bn,ja,si,ta){padding-top:1px;}
+.typeForAuthoring:-ms-lang(gu,km,kn){padding-top:4px;}
+.typeForAuthoring:-ms-lang(hi,kok,ml,mr,ne){padding-top:2px;}
+.typeForAuthoring:-ms-lang(or,pa,te):not(:-ms-lang(pa-arab)){padding-top:3px;}
+body{margin:0;padding:0;font-family:"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;font-feature-settings:"kern" 1;color:#000000;cursor:default;}
+body:-ms-lang(am,ti){font-family:Ebrima,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(as,bn,gu,hi,km,kok,ml,mr,ne,or,te){font-family:"Nirmala UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(ja){font-family:"Meiryo UI","Segoe UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(kn){font-family:Tunga,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI","Lao UI",Leelawadee;}
+body:-ms-lang(ko){font-family:"Malgun Gothic","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(pa):not(:-ms-lang(pa-arab)){font-family:Raavi,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(si){font-family:"Iskoola Pota","Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(ta){font-family:Latha,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI","Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(th){font-family:Leelawadee,"Segoe UI","Meiryo UI","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI";}
+body:-ms-lang(zh-hans){font-family:"Microsoft YaHei UI","Segoe UI","Meiryo UI","Microsoft JhengHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+body:-ms-lang(zh-hant){font-family:"Microsoft JhengHei UI","Segoe UI","Meiryo UI","Microsoft YaHei UI","Malgun Gothic",Ebrima,"Khmer UI",Latha,"Nirmala UI",Tunga,"Lao UI",Leelawadee;}
+.typeSizeSmall p,.typeSizeSmall ul,.typeSizeNormal p,.typeSizeNormal ul{padding-bottom:20px;}
+.typeForAuthoring p{margin-bottom:20px;}
+.errorLinkDarkBg{color:#ff8033;}.errorLinkDarkBg:hover{color:#ff9442;}
+.errorLinkDarkBg:active,.errorLinkDarkBg:hover:active{color:#ffa750;}
+.win-appbar .win-command .win-label{word-wrap:break-word;word-break:keep-all;}

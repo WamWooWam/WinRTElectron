@@ -7,6 +7,14 @@
     transform-style: preserve-3d;
 }
 
+.tile:hover {
+    transition: transform 0.05s ease-in-out;
+}
+
+.tile:hover:active {
+    transform: scale3d(0.985, 0.985, 0.985);
+}
+
 .moving>.tile {
     width: 100%;
     height: 100%;

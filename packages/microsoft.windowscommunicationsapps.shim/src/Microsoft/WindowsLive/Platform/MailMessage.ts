@@ -2,7 +2,8 @@ import { PlatformObject } from "./PlatformObject";
 import { Foundation } from "winrt-node/Windows";
 import { MailBody } from "./MailBody";
 import { WindowsLive } from "../Enums";
-import { Shim, ShimProxyHandler, Enumerable } from "winrt-node/Windows.Foundation";
+import { Shim, Enumerable } from "winrt-node/Windows.Foundation";
+import { ShimProxyHandler } from "winrt-node/ShimProxyHandler";
 import { uuidv4 } from "winrt-node/util";
 import { Microsoft } from "../../../../../microsoft.xbox/Microsoft.Xbox";
 

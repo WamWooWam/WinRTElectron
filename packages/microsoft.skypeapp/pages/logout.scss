@@ -1,0 +1,150 @@
+﻿/*! Copyright (c) Microsoft. All rights reserved. */
+
+@import "../css/global.scss";
+
+div.page section.navigationContainer > div > div.logout.fragment {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr 50vh 80px;
+    -ms-grid-columns: 100%;
+    background-color: #00aff0;
+    height: 100%;
+    width: 100%;
+    color: white;
+
+    @media #{$vertical} {
+        -ms-grid-rows: 111px auto 1fr;
+    }
+
+    a[href] {
+        color: white;
+        font-weight: 600;
+    }
+
+    /* Grid layout */
+    div.logo {
+        -ms-grid-row: 1;
+        -ms-grid-row-align: center;
+        text-align: center;
+        vertical-align: middle;
+        display: block;
+        overflow: hidden;
+        @media #{$vertical} {
+            margin: 0 40px;
+            text-align: left;
+            width: 100%;
+            -ms-grid-column-align: center;
+
+            body.RTL & {
+                text-align: right;
+            }
+        }
+
+        @media #{$vertical} and (min-width: 581px) { //not very nice solution. We're going to have a meeting with the designers regarding app sizes. To avoid those kinds of issues in the future.           
+            max-width: 500px;            
+        }
+
+        @media #{$vertical} and (max-width: 581px) {
+            max-width: calc(100% - 80px);
+        }
+
+        img {            
+            width: 284px;
+            height: 126px;
+
+            @media #{$vertical} {
+                margin-top: 18px;
+                width: 100px;
+                height: 45px;
+            }
+        }
+
+    }
+
+    div.infoPanel {
+        -ms-grid-row: 2;
+        -ms-grid-row-align: start;
+
+        @media screen and (min-width: 600px) {
+            -ms-grid-column-align: center;
+            max-width: 600px;
+        }
+        @media #{$vertical} {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        h2.infoPanelTitle {
+            display: inline-block;
+            margin-bottom: 40px;
+            width: 100%;
+
+            span.wrapper {
+                max-width: 100%;
+                display: inline-block;
+                white-space: nowrap;
+                vertical-align: bottom;
+                span {
+                    vertical-align: bottom;
+                    display: inherit;
+                    white-space: inherit;
+                    max-width: inherit;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                }
+            }
+        }
+
+        div.signInPanel {
+            margin-bottom: 40px;
+            div.contactWrapper {
+                display: -ms-grid;
+                height: 75px;
+                margin-bottom: 20px;
+                -ms-grid-rows: 2fr;
+
+                -ms-grid-columns: 75px 1fr;
+
+                div.avatar {
+                    -ms-grid-rowspan: 2;
+                    -ms-grid-column: 1;
+                    background-size: cover;
+                }
+
+                div.name {
+                    margin-top: 7px;
+                    -ms-grid-column: 2;
+                    -ms-grid-row-align:start;
+                }               
+
+                div.email {
+                    margin-bottom: 13px;
+                    -ms-grid-column: 2;
+                    -ms-grid-row-align:end;
+                }
+                div.name,
+                div.email {
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space:nowrap;
+                    text-indent: 15px;
+                }
+
+                @media #{$vertical} {
+                    -ms-grid-columns: 40px 1fr;
+                    height: 40px;
+
+                    div.name {
+                        margin-top: 0;
+                    }
+                    div.email {
+                        margin-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        div.footNote {
+            max-width: 500px;
+        }
+    }
+}

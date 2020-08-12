@@ -1,0 +1,21 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SearchBoxPanel</title>
+    <link href="searchBoxPanel.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <button id="atSearchResultBackButton" class="backbutton backbutton-light win-backbutton" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="6"></button>
+        <div class="wrapper">
+            <div class="searchBox" data-win-control="WinJS.UI.SearchBox"
+                    data-win-res="{winControl: {placeholderText: 'search_box_placeholder'}}"
+                    data-win-options="{ searchHistoryDisabled : true,  focusOnKeyboardInput : false }"
+                    data-win-bind="winControl.focusOnKeyboardInput: typeToSearchEnabled;">
+            </div>
+        </div>
+    </header>
+</body>
+</html>

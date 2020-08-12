@@ -1,0 +1,21 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ConfirmDialog</title>
+    <link href="/controls/dialogs.css" rel="stylesheet" />
+    <script src="dialogBase.js"></script>
+    <script src="confirmDialog.js"></script>
+</head>
+<body>
+    <div id="confirmDialog" class="dialogFlyout NOHEADING" data-win-control="WinJS.UI.Flyout" data-win-bind="keypress:keyPress MvvmJS.Binding.event; this['aria-label']: vm.title WinJS.Binding.setAttribute">
+        <div class="description" data-win-bind="textContent: vm.title"></div>
+        <div class="actions">
+            <div class="actionsContent">
+                <button id="atConfirmDialogOkButton" role="button" class="text" data-win-bind="textContent: vm.okTitle; click:okAction MvvmJS.Binding.event; this['aria-label']:vm.okTitle WinJS.Binding.setAttribute"></button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

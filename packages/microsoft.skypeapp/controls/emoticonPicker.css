@@ -1,0 +1,140 @@
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+/* Copyright (c) Microsoft. All rights reserved. */
+#emoticonPicker {
+    z-index: 1000;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    visibility: hidden;
+    background-color: rgba(0,0,0,0.8)
+}
+
+#emoticonPicker.VISIBLE {
+    visibility: visible
+}
+
+#emoticonPicker .picker-accessWrap {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 100px 1fr;
+    height: inherit
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    #emoticonPicker .picker-accessWrap {
+        grid-template-columns:80px 1fr
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #emoticonPicker .picker-accessWrap {
+        grid-template-columns:60px 1fr;
+        grid-template-rows: 100px 1fr
+    }
+}
+
+#emoticonPicker .picker-accessWrap button.backbutton {
+    grid-row: 1;
+    grid-column: 1
+}
+
+#emoticonPicker .picker-accessWrap button.backbutton:hover {
+    opacity: 0.8
+}
+
+#emoticonPicker .picker-accessWrap h1 {
+    grid-row: 1;
+    grid-column: 2;
+    box-sizing: border-box;
+    padding-top: 62px;
+    color: white
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    #emoticonPicker .picker-accessWrap h1 {
+        padding-top:32px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 600px) {
+    #emoticonPicker .picker-accessWrap h1 {
+        max-width:240px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden
+    }
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList {
+    height: 100%;
+    grid-row: 2;
+   grid-column: 1 / span 2;
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport {
+    -ms-scroll-limit-x-max: 0;
+    -ms-scroll-limit-y-max: 21474836.47px
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface {
+    margin: 12px 0 0 22px
+}
+
+body.RTL #emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface {
+    margin: 12px 22px 0 0
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 600px) {
+    #emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface {
+        margin:0 0 0 11px
+    }
+
+    body.RTL #emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface {
+        margin: 0 11px 0 0
+    }
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container:hover {
+    outline: 5px solid highlight
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container .win-itembox {
+    padding: 7px;
+    box-sizing: border-box
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 600px) {
+    #emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container .win-itembox {
+        padding:2px
+    }
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container .win-item {
+    overflow: visible;
+    width: 60px;
+    height: 60px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 600px) {
+    #emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container .win-item {
+        width:40px;
+        height: 40px
+    }
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container .win-item img {
+    display: block;
+    width: inherit;
+    height: inherit;
+    transition-property: height, width;
+    transition-duration: 1s;
+    transition-delay: 1s !important
+}
+
+#emoticonPicker .picker-accessWrap .emoticonsList .win-viewport .win-surface .win-container .win-item img:hover {
+    opacity: 0.9
+}

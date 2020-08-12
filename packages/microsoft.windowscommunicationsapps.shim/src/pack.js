@@ -1,4 +1,5 @@
 
-import * as WindowsLiveImpl from "./Microsoft.WindowsLive";
+import * as MSWindowsLiveImpl from "./Microsoft.WindowsLive";
 import "winrt-node"
-globalThis["Microsoft"] = { WindowsLive: WindowsLiveImpl.WindowsLive }
+
+globalThis["Microsoft"] = { WindowsLive: MSWindowsLiveImpl.WindowsLive }

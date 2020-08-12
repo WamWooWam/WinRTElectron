@@ -1,0 +1,33 @@
+﻿<!-- Copyright (c) Microsoft. All rights reserved. -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- List own styles and scripting -->
+    <link href="contacts.css" rel="stylesheet">
+    <script src="/js/vm/allPeopleVM.js"></script>
+    <script src="/controls/peopleList.js"></script>
+    <script src="contacts.js"></script>
+</head>
+<body>
+    <div role="heading" class="fragment contacts animRegion animGroup3" data-win-res="{attributes: { 'aria-label' : 'aria_people_window_label' }}" data-win-bind="EMPTY:hasNoItems MvvmJS.Binding.toggleClass">
+        <header>
+            <div class="bgCloud"></div>
+            <button id="atContactsBackButton" class="backbutton backbutton-dark win-backbutton animRegion animGroup1" data-win-res="{attributes: { 'aria-label' : 'aria_back_button_short' }}" tabindex="3"></button>
+            <div class="wrapper animRegion animGroup2" data-win-bind="_activeViewAsClassName:activeView MvvmJS.Binding.bindClass">
+                <h2 class="title" data-win-res="{ textContent: 'allpeople_title' }"></h2>
+                <button role="radio" class="title filterAll link kb-accessible" data-win-bind="this['aria-label']:ariaFilterAll WinJS.Binding.setAttribute;" tabindex="4"><span data-win-res="{ textContent: 'allpeople_filtertitle_all' }"></span></button>
+                <button role="radio" class="title filterOnline link kb-accessible" data-win-bind="ONLINE:online.contacts.length MvvmJS.Binding.toggleClass; this['aria-label']:ariaFilterOnline WinJS.Binding.setAttribute;" tabindex="4">
+                    <span data-win-res="{ textContent: 'allpeople_filtertitle_available' }" class="onlineLabel"></span>
+                    <span class="onlineCount" data-win-bind="innerText:online.formattedLength"></span>
+                </button>
+                <button role="radio" class="title filterGroups link kb-accessible" data-win-bind="GROUPS:groups.contacts.length MvvmJS.Binding.toggleClass; this['aria-label']:ariaFilterGroups WinJS.Binding.setAttribute;" tabindex="4"><span data-win-res="{ textContent: 'allpeople_filtertitle_groups' }"></span></button>
+                <button role="button" class="addContactButoon removeDefaultStyles animRegion animGroup1" data-win-res="{attributes: { 'aria-label' : 'appbar_add_contact', title: 'add_contact_tooltip' }}" tabindex="4">&#xE201;</button>
+            </div>
+        </header>
+        <div id="atContactsPeopleList" class="contactList kb-scrollTarget" data-win-control="Skype.UI.PeopleList" data-win-bind="winControl.itemsDataSource: items"></div>
+        <div class="noContacts" data-win-res="{textContent: 'allpeople_nocontacts'}" tabindex="1"></div>
+    </div>
+</body>
+</html>
