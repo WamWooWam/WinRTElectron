@@ -1,0 +1,141 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+a, a:hover, a:hover:active
+{
+    color: #747474
+}
+button, input[type=button], input[type=reset], input[type=submit] {
+    min-height: 1px;
+    min-width: 1px
+}
+.hubNavigationContainer button, .dashboardPivots button, .immersivePivots button, .hubNavigationContainer input[type=button], .hubNavigationContainer input[type=reset], .hubNavigationContainer input[type=submit]
+{
+    padding: 2px 12px 2px 12px
+}
+button, button:hover, button:hover:active, button:disabled {
+    background-color: transparent;
+    border-color: transparent
+}
+button[type=submit]:hover {
+    background-color: #295c03;
+    border-color: #295c03
+}
+.win-listview .win-container.win-selected:hover {
+    background-color: transparent
+}
+.win-listview.win-selectionstylefilled .win-selected button, .win-listview.win-selectionstylefilled .win-selected input[type=button], .win-listview.win-selectionstylefilled .win-selected input[type=reset], .win-listview.win-selectionstylefilled .win-selected input[type=text], .win-listview.win-selectionstylefilled .win-selected input[type=password], .win-listview.win-selectionstylefilled .win-selected input[type=email], .win-listview.win-selectionstylefilled .win-selected input[type=number], .win-listview.win-selectionstylefilled .win-selected input[type=tel], .win-listview.win-selectionstylefilled .win-selected input[type=url], .win-listview.win-selectionstylefilled .win-selected input[type=search], .win-listview.win-selectionstylefilled .win-selected input::-ms-check, .win-listview.win-selectionstylefilled .win-selected textarea, .win-listview.win-selectionstylefilled .win-selected .win-textarea, .win-listview.win-selectionstylefilled .win-selected select {
+    background-color: transparent
+}
+.win-listview .win-item.win-selected, .win-listview .win-item.win-selected:hover, .companionSearchTermsList .win-focused
+{
+    background-color: rgba(255,255,255,.15)
+}
+.win-listview .win-focusedoutline, .nowPlayingPlaylistGalleryView .win-vertical .win-focusedoutline, .nowPlayingPlaylistGallerySnapped .win-vertical .win-focusedoutline, .musicPage .win-vertical .win-focusedoutline, .inboxPage .win-vertical .win-focusedoutline
+{
+    outline: #fff solid 2px;
+    border-style: none
+}
+.win-vertical .win-focusedoutline
+{
+    outline: #000 solid 2px;
+    border-style: none
+}
+body:not(.showKeyboardFocus) .win-vertical .win-focusedoutline
+{
+    outline-color: transparent
+}
+.win-command.iconButtonVertical, .win-command.iconButtonVertical:hover:focus, .win-command.iconButtonVertical:active, .win-command.iconButtonVertical:focus, .collectionMusicSongsGallery.win-ui-dark .win-container:hover, .win-command.playPauseIconButton, .win-command.playPauseIconButton:hover:focus, .win-command.playPauseIconButton:focus, .win-command.playPauseIconButton:active, .win-command.appBarIconButton:hover:focus, .win-command.appBarIconButton:active, .win-command.appBarIconButton:focus, button.win-command.appBarIconButton, button.win-command.appBarIconButton:hover:focus, button.win-command.appBarIconButton:active, button.win-command.appBarIconButton:focus, button.win-command.iconButton, button.win-command.iconButton:hover:focus, button.win-command.iconButton:active, button.win-command.iconButton:focus
+{
+    outline-style: none;
+    border-color: transparent;
+    background-clip: padding-box;
+    border: 0
+}
+.win-ui-light .dialogButton:active:hover, .win-ui-light .dialogButton.defaultButton, .win-ui-light .dialogButton.defaultButton:hover, .win-ui-light .dialogButton.defaultButton:active, .win-ui-light .dialogButton.defaultButton:active:hover
+{
+    background-clip: padding-box
+}
+@media(min-width: 481px) and (max-width: 1023px)
+{
+    button.win-command .win-label
+    {
+        display: inherit
+    }
+    button.win-command .win-commandicon
+    {
+        margin: inherit
+    }
+}
+@media screen and (min-width: 768px)
+{
+    button.win-command.iconButton .win-label
+    {
+        display: block
+    }
+}
+.win-ui-dark.shellBackButtonContainer
+{
+    width: 40px;
+    height: 40px;
+    padding: 20px;
+    position: relative
+}
+.collectionMusicSongsGallery.win-ui-dark.win-template, .win-appbar .win-ui-dark button:hover:active
+{
+    background-color: transparent
+}
+button.iconButton.win-command:focus, button.iconButton.win-command:active
+{
+    border-color: transparent
+}
+#html_immersiveLayout.win-ui-dark
+{
+    background-color: transparent
+}
+.win-backbutton
+{
+    width: 40px;
+    height: 40px
+}
+.win-backbutton:focus
+{
+    outline: 0
+}
+html[dir=rtl] .iconButton
+{
+    writing-mode: rl-tb
+}
+html[dir=ltr] .iconButton
+{
+    writing-mode: lr-tb
+}
+.win-selectionborder.win-selectionborderbottom
+{
+    top: inherit
+}
+.win-selectionborder.win-selectionborderright
+{
+    left: inherit
+}
+.win-selectionborder.win-selectionborderleft
+{
+    right: inherit
+}
+.win-ui-dark .win-listview .win-viewport.win-vertical .win-container {
+    background-color: transparent
+}
+.win-backdrop
+{
+    background-color: transparent
+}
+.win-ui-light {
+    background-color: transparent
+}
+.win-ui-dark {
+    background-color: transparent
+}
+.win-backbutton:disabled, .win-backbutton:disabled:active, .win-navigation-backbutton:disabled, .win-navigation-backbutton:disabled:active, .mediaBrowser2.snapped .win-navigation-backbutton {
+    display: none
+}
+body:-ms-lang(pa-Arab), .win-type-xx-large:-ms-lang(pa-Arab), .win-type-x-large:-ms-lang(pa-Arab), .win-type-large:-ms-lang(pa-Arab), .win-type-medium:-ms-lang(pa-Arab), .win-type-small:-ms-lang(pa-Arab), .win-type-x-small:-ms-lang(pa-Arab), .win-type-xx-small:-ms-lang(pa-Arab), input:-ms-lang(pa-Arab), textarea:-ms-lang(pa-Arab), .win-textarea:-ms-lang(pa-Arab), button:-ms-lang(pa-Arab), select:-ms-lang(pa-Arab), option:-ms-lang(pa-Arab) {
+    font-family: "Segoe UI","Ebrima","Nirmala UI","Gadugi","Segoe UI Symbol","Meiryo UI","Khmer UI","Tunga","Lao UI","Raavi","Iskoola Pota","Latha","Leelawadee","Microsoft YaHei UI","Microsoft JhengHei UI","Malgun Gothic","Estrangelo Edessa","Microsoft Himalaya","Microsoft New Tai Lue","Microsoft PhagsPa","Microsoft Tai Le","Microsoft Yi Baiti","Mongolian Baiti","MV Boli","Myanmar Text","Cambria Math"
+}

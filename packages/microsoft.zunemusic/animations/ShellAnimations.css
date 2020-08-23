@@ -1,0 +1,128 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.backButtonFadeIn, .mainHeaderShow
+{
+    animation-name: fadeIn;
+    animation-duration: 500ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.backButtonFadeOut, .mainHeaderHide
+{
+    animation-name: fadeOut;
+    animation-duration: 500ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.animFadingNavigationContainer
+{
+    transition-property: opacity;
+    transition-duration: 110ms;
+    transition-timing-function: cubic-bezier(0,0,1,1)
+}
+.animHideModifierControlPopup
+{
+    animation-name: fadeOut;
+    animation-duration: 200ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: forwards
+}
+.modifierPopupBackground
+{
+    opacity: 0;
+    transform: scaleY(0);
+    transition-property: transform,opacity;
+    transition-duration: 600ms,200ms;
+    transition-timing-function: cubic-bezier(.21,1,.19,.98),cubic-bezier(0,0,1,1)
+}
+.modifierPopupBackgroundFinal
+{
+    opacity: 1;
+    transform: scaleY(1)
+}
+.modifierPopupScrollerFinal
+{
+    opacity: 1
+}
+.animModifierPopupEntrySlideIntoPlace
+{
+    transition-property: transform;
+    transition-duration: 100ms;
+    transition-timing-function: cubic-bezier(.21,1,.19,.98)
+}
+.modifierShow
+{
+    animation-name: modifierShowKeys;
+    animation-duration: 1200ms;
+    animation-delay: 800ms;
+    animation-timing-function: cubic-bezier(.16,.99,.22,.99);
+    animation-fill-mode: both
+}
+@keyframes modifierShowKeys
+{
+    0%
+    {
+        transform: translateX(50px);
+        opacity: 0
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+.primaryPanelModifier .modifierShow
+{
+    animation-name: primaryModifierShowKeys;
+    animation-duration: 800ms;
+    animation-delay: 300ms;
+    animation-timing-function: cubic-bezier(.16,.99,.22,.99);
+    animation-fill-mode: both
+}
+@keyframes primaryModifierShowKeys
+{
+    0%
+    {
+        transform: translateX(125px);
+        opacity: 0
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+.modifierHide
+{
+    animation-name: modifierHideKeys;
+    animation-duration: 500ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(.16,.99,.22,.99);
+    animation-fill-mode: both
+}
+@keyframes modifierHideKeys
+{
+    0%
+    {
+        transform: translateX(-125px);
+        opacity: 0
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+.adCompanion
+{
+    transition-property: transform opacity;
+    transition-duration: 550ms;
+    transition-delay: 167ms;
+    transition-timing-function: cubic-bezier(.1,.9,.2,1);
+    opacity: 0
+}
+.adCompanionSlideIn
+{
+    transform: translateX(-40px);
+    opacity: 1
+}
+html[dir=rtl] .adCompanionSlideIn
+{
+    transform: translateX(40px)
+}

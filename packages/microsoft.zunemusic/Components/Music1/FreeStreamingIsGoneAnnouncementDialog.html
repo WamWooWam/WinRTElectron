@@ -1,0 +1,83 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Free Streaming Is Gone Announcement Dialog</title>
+
+    <script src="/group_1_merged.js"></script>
+    <script src="/Components/Music1/FreeStreamingIsGoneAnnouncementDialog.js"></script>
+</head>
+<body>
+    
+    <div data-ent-templateid="dialogContentTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dialogContent-freeStreamingIsGoneAnnouncement">
+
+            
+            <div class="freeStreamingIsGoneAnnouncement-title" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+
+            
+            <div class="freeStreamingIsGoneAnnouncement-description" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_BODY MS.Entertainment.Formatters.formatStringId;">
+            </div>
+
+            <div class="freeStreamingIsGoneAnnouncement-columns" data-win-bind="showFreeGiveAways: showFreeGiveAways MS.Entertainment.Utilities.toggleClassName">
+                
+                <div class="columns-getMusicPass">
+                    <div class="getMusicPass-image acc-preserveBackground"></div>
+
+                    <div class="getMusicPass-title text-weightHeavy" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_MUSIC_PASS_TITLE MS.Entertainment.Formatters.formatStringId;
+                                    label: IDS_MUSIC_FREE_STREAM_CHANGED_MUSIC_PASS_TITLE MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                    <div class="getMusicPass-description text-bodyContent" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_MUSIC_PASS_BODY MS.Entertainment.Formatters.formatStringId;"></div>
+
+                    <div class="getMusicPass-action">
+                        <button class="button-primary acc-keyboardFocusTarget defaultButton win-focusable ent-control" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_MUSIC_PASS_ACTION MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onGetMusicPassClicked"></button>
+                    </div>
+                </div>
+
+                
+                <div class="columns-freeGiveAways" data-win-bind="removeFromDisplay: showFreeGiveAways MS.Entertainment.Utilities.toggleClassNameNegate">
+                    <div class="freeGiveAways-icon icon icon-xbox-explore"></div>
+
+                    <div class="freeGiveAways-title text-weightHeavy" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_FREEBIES_TITLE MS.Entertainment.Formatters.formatStringId;
+                                        label: IDS_MUSIC_FREE_STREAM_CHANGED_MUSIC_PASS_TITLE MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                    <div class="freeGiveAways-description text-bodyContent" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_FREEBIES_BODY MS.Entertainment.Formatters.formatStringId;"></div>
+
+                    <div class="freeGiveAways-action">
+                        <button class="button-primary acc-keyboardFocusTarget win-focusable ent-control" data-win-bind="textContent: String.id.IDS_MUSIC_FREE_STREAM_CHANGED_FREEBIES_ACTION MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onShowFreeGiveAwaysClicked"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+        <div id="musicDialog_freeStreamingIsGoneAnnouncement" class="musicDialog musicDialog_freeStreamingIsGoneAnnouncement wecDialog win-ui-dark">
+            
+            <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground">
+            </div>
+
+            
+            <div class="overlayContainer dialogContainerBackground" data-ent-member="overlayContainer" data-ent-areaname="musicBrandDialogContainer" role="dialog" aria-label="">
+                <div class="dialogContainer" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+                    <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();" class="dialogForm">
+                        
+                        <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer" style="-ms-grid-row: 3;">
+                        </div>
+
+                        <div class="dialogFooter">
+                            
+                            <div class="dialogFooter-disclaimer text-xxSmall" data-win-bind="textContent: String.id.IDS_MUSIC_UPSELL_DIALOG_MUSIC_PASS_DISCLAIMER MS.Entertainment.Formatters.formatStringId;"></div>
+
+                            
+                            <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,164 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=10">
+
+    <script>
+        window.msWriteProfilerMark("ent:Startup.ScriptsStart,StartTM");
+
+        // Warm up the DLLs used by our app ASAP.
+        new Worker("/WarmupCode.js");
+
+        // Save App start time in a global object, it's needed for PerfTrack instrumentation
+        this.PerfTrack = { 
+            LaunchInformation: {
+                getStartTime: (function _perfTrackLaunchInformation_getStartTimeClosure() {
+                    var startTime = new Date();
+                    return function _perfTrackLaunchInformation_getStartTimeWorker() {
+                        return startTime;
+                    };
+                })()
+            }
+        };
+
+        window.isVideoApp1 = true;
+    </script>
+    
+    <link rel="stylesheet" type="text/css" href="//Microsoft.WinJS.2.0/css/ui-light.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/ui-overrides.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/DefaultStyles.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Shell.css">
+    <link rel="stylesheet" type="text/css" href="/Animations/animations.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Animations.css">
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Animations/ShellAnimations.css">
+    <link rel="stylesheet" type="text/css" href="/Components/Playback/Controls/PlaybackControl.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/TransportControls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/NowPlaying.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/ClosedCaption.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Settings.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/App.css">
+
+
+    
+     
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MovieDetails_merged.js"></script><script src="/SearchResultsPage_merged.js"></script><script src="/TvDetails_merged.js"></script>
+    <script src="/framework/DashboardRefresherService.js"></script>
+    <script src="/framework/iaservice.js"></script>
+    <script src="/framework/navigation.js"></script>
+    <script src="/framework/featureEnablement.js"></script>
+    <script src="/controls/featuredContent.js"></script>
+    <script src="/framework/data/xhr.js"></script>
+    <script src="/components/shell/snappedmode.js"></script>
+    <script src="/framework/data/xboxlive.js"></script>
+    <script src="/controls/templateselector.js"></script>
+    <script src="/viewmodels/home/featuredViewModel.js"></script>
+    <script src="/viewmodels/home/spotlightviewmodel.js"></script>
+    <script src="/components/shell/shellkeyboardshortcuts.js"></script>
+    <script src="/animations/hubstripanimations.js"></script>
+    <script src="/controls/hub.js"></script>
+    <script src="/components/shell/adcontrol.js"></script>
+    <script src="/controls/videoad.js"></script>
+    <script src="/controls/thumbnailbutton.js"></script>
+    <script src="/controls/failedpanel.js"></script>
+    <script src="/viewmodels/command.js"></script>
+    <script src="/controls/libraryfeaturedcontent.js"></script>
+    <script src="/framework/launchappaction.js"></script>
+    <script src="/controls/dashboard.js"></script>
+    <script src="/controls/mediaitemthumbnail.js"></script>
+    <script src="/controls/gallerythumbnail.js"></script>
+    <script src="/components/inlinedetails/baseinlinedetails.js"></script>
+    <script src="/controls/appbar/removeoverlay.js"></script>
+    <script src="/controls/flyout.js"></script>
+    <script src="/framework/searchaction.js"></script>
+    <script src="/viewmodels/search/searchcontractviewmodel.js"></script>
+    <script src="/controls/messagebox.js"></script>
+    <script src="/framework/videoserviceidentifiers.js"></script>
+    <script src="/Components/Dashboard/DashboardViewModel.js"></script>
+    <script src="/components/video/VideoDashboardViewModel.js"></script>
+    <script src="/components/video/HubDashboardViewModel.js"></script>
+    <script src="/components/video/MovieDashboardViewModel.js"></script>
+    <script src="/components/video/TvDashboardViewModel.js"></script>
+    <script src="/Components/Video/VideoFeatures.js"></script>
+    <script src="/viewmodels/video/videospotlight.js"></script>
+    <script src="/viewmodels/video/videohubcollectionpanel.js"></script>
+    <script src="/components/video/videoia.js"></script>
+    <script src="/Components/Video/VideoStartupIA.js"></script>
+    <script src="/Components/BaseTransferNotificationHandler.js"></script>
+    <script src="/Components/Video/TransferNotificationHandler.js"></script>
+
+    
+    <script src="/main.js"></script>
+    
+
+    
+    <script>
+        window.msWriteProfilerMark("ent:Startup.ScriptsStart,StopTM");
+    </script>
+
+</head>
+<body>
+    
+    <div id="htmlUnsnapped" class="hideFromDisplay">
+        <div class="mainParentGrid" data-win-automationid="contentContainer">            
+
+            
+            <div class="mainContentGrid" style="-ms-grid-row: 2" id="pageContainer" data-win-automationid="pageContainer" role="main"></div>
+
+            
+            <header class="mainHeader" data-ent-id="MainHeader" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{controlName: 'mainHeader'}">
+
+                    
+                    <div class="navigationWrapper tranFadeShort" data-win-automationid="navigationWrapper" data-ent-id="NavigationWrapper">
+                        <div class="navigationContainer" data-win-automationid="navigationContainer">
+                            <div class="win-ui-dark ui-hitTestArea shellBackButtonContainer hideFromDisplay" data-ent-id="BackButton" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{controlName: 'backButton'}" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage" onclick="MS.Entertainment.UI.Application.Helpers.navigateBack()">
+                                <button class="win-backbutton acc-keyboardFocusTarget" data-win-automationid="shellBackButton" type="button" tabindex="0">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                
+                    
+                    <div class="appNotifications" data-win-control="MS.Entertainment.UI.Framework.BindingBlock">
+                        <div class="appInfoNotification" data-win-automationid="appNotification" data-win-control="MS.Entertainment.UI.Controls.InfoNotification" data-ent-id="AppInfoNotification">
+                        </div>
+                        <div class="appCriticalNotification" data-win-automationid="appCriticalNotification" data-win-control="MS.Entertainment.UI.Controls.CriticalNotification" data-ent-id="AppCriticalNotification">
+                        </div>
+                    </div>
+
+                    <div class="dashboardTitle-searchIcon searchBoxIcon win-ui-dark" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{
+                            accessibilityStringId: String.id.IDS_SEARCH_BUTTON,
+                            icon: WinJS.UI.AppBarIcon.find
+                        }" onclick="MS.Entertainment.UI.Shell.showSearchFlyout();">
+                    </div>
+            </header>
+        </div>
+    </div>
+
+    
+    <div id="htmlSnapped" class="hideFromDisplay"></div>
+
+    
+    <div class="extendedSplashScreen">
+        
+        <img class="extendedSplashScreenImage" src="/Images/Tiles/XBL_VIDEO_620x300_A.png" onload="">
+        <div class="extendedSplashScreenProgressContainer">
+            <progress class="extendedSplashScreenProgress win-medium win-ring"></progress>
+            <div class="extendedSplashScreenTitle"></div>
+            <div class="extendedSplashScreenMessage"></div>
+        </div>
+    </div>
+
+    <div id="delayedStartupContainer" class="removeFromDisplay"></div>
+
+    
+    <div class="bottomAppBar " data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom',layout:'custom'}" data-win-automationid="bottomAppBar">
+        <div data-ent-id="BottomAppBar" data-win-control="MS.Entertainment.UI.Controls.BottomAppBar">
+        </div>
+    </div>
+</body>
+</html>

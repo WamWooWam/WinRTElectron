@@ -1,0 +1,79 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/Controls/Music2/NowPlayingVisualization.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="NowPlayingVisualization" data-win-control="WinJS.Binding.Template">
+        <div class="visualizationLayer artContainer" data-ent-member="artContainer">
+            <div class="nowPlaying-imageSubContainer" data-ent-member="_nowPlayingImage1SubContainer">
+                <img class="nowPlaying-image control-image ent-control state-emptyImage hideFromDisplay" data-ent-member="_nowPlayingImage1" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="nowPlaying-backgroundImageShow" data-ent-hideanimation="nowPlaying-backgroundImageHide" data-win-options="{
+                        applyImageAsBackground: true,
+                        clearSrcOnEmptyTarget: true,
+                        desiredSize: { height: 1080,
+                        errorImage: MS.Entertainment.UI.ImagePaths.transparent } }">
+            </div>
+
+            <div class="nowPlaying-imageSubContainer" data-ent-member="_nowPlayingImage2SubContainer">
+                <img class="nowPlaying-image control-image ent-control state-emptyImage hideFromDisplay" data-ent-member="_nowPlayingImage2" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="nowPlaying-backgroundImageShow" data-ent-hideanimation="nowPlaying-backgroundImageHide" data-win-options="{
+                        applyImageAsBackground: true,
+                        clearSrcOnEmptyTarget: true,
+                        desiredSize: { height: 1080 },
+                        errorImage: MS.Entertainment.UI.ImagePaths.transparent  }">
+            </div>
+
+            <div class="nowPlaying-videoSubContainer hideFromDisplay" data-ent-member="_nowPlayingVideoSubContainer" data-ent-showanimation="nowPlaying-backgroundImageShow" data-ent-hideanimation="nowPlaying-backgroundImageHide">
+                <div class="nowPlaying-VideoHost" data-ent-member="_nowPlayingVideoHost"></div>
+            </div>
+            <div class="nowPlayingLargeArtBlackOverlay"></div>
+        </div>
+
+        <div class="nowPlayingVisualization-overlay" data-ent-enteranimation="overlay-enterAnimation">
+
+                <div class="overlay-background"></div>
+
+                <div class="overlay-content">
+                    <div class="content-relatedItem hideFromDisplay" data-ent-member="_relatedMediaContainer" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-hideanimation="nowPlayingControlsFadeOut">
+
+                        <div class="relatedItem-title text-metadata" data-win-bind="textContent: relatedMediaTitle;"></div>
+
+                        <div class="relatedItem-primaryText text-heroItemTitle" data-win-bind="
+                                textContent: relatedMediaItem.name;
+                                hideFromDisplay: relatedMediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+
+                        <div class="relatedItem-secondaryText text-nowPlayingMetadata" data-win-bind="
+                                textContent: relatedMediaItem.artist.name;
+                                hideFromDisplay: relatedMediaItem.artist.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+                    </div>
+
+                    <div class="content-currentItem" data-ent-member="_nowPlayingMetadata" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                        <div class="currentItem-primaryText text-nowPlayingTitle maxLines-two" data-win-bind="
+                                textContent: dataContext.mediaItem.name;
+                                hideFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+
+                        <div class="currentItem-secondaryText text-nowPlayingMetadata maxLines-two">
+                            <span class="secondaryText-metadata metadata_artist" data-win-bind="
+                                     textContent: dataContext.mediaItem.artist.name;
+                                     removeFromDisplay: dataContext.mediaItem.artist.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></span>
+
+                            <span class="secondaryText-separator icon" data-win-bind="
+                                    textContent: MS.Entertainment.UI.Icon.bullet MS.Entertainment.Formatters.formatIcon;
+                                    removeFromDisplay: dataContext.mediaItem.album.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></span>
+
+                            <span class="secondaryText-metadata metadata_album" data-win-bind="
+                                    textContent: dataContext.mediaItem.album.name;
+                                    removeFromDisplay: dataContext.mediaItem.album.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></span>
+                        </div>
+
+                        <div class="currentItem-duration text-nowPlayingMetadata maxLines-one" data-win-bind="
+                                textContent: dataContext.playbackPositionText;
+                                hideFromDisplay: dataContext.mediaItem MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
+    

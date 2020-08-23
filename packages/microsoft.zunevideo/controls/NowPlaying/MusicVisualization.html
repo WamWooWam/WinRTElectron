@@ -1,0 +1,45 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Music Visualization</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/Animations.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Controls/ImageCollage.js"></script>
+    <script src="/Controls/NowPlaying/ShapeVisualizationEngine.js"></script>
+
+    <script src="/Components/Music/PurchaseMusic.js"></script>
+    <script src="/Components/Music/PurchaseActions.js"></script>
+    <script src="/ViewModels/PurchaseFlow/musicSmartBuyStateHandlers.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="Template" data-win-control="WinJS.Binding.Template">
+         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
+            <defs>
+                <filter id="ColorFilter">
+                    
+                    <fecolormatrix type="saturate" in="SourceGraphic" values="0.05" result="saturate"></fecolormatrix>
+                    <feflood flood-opacity=".54" result="blackFlood"></feflood>
+                    
+                    <feflood id="ColorFilterFlood" result="colorFlood"></feflood>
+                    
+                    
+                    <feblend in="saturate" in2="colorFlood" mode="multiply" result="colorResult"></feblend>
+                </filter>
+            </defs>
+        </svg>
+
+        <div class="visualizationLayer nowPlayingBackdrop" data-ent-member="backdrop" data-win-bind="style.backgroundColor: backdropColor;">
+        </div>
+        <div class="visualizationLayer artContainer" data-ent-member="artContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl">
+        </div>
+        <div class="nowPlayingLargeArtTransitionOverlay tranFadeLong" data-ent-member="transitionOverlay">
+        </div>
+        <div class="visualizationLayer tranFadeLong shapeVisualizationLayer" data-ent-member="shapeVisualizationContainer">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cloud Match Icon Dialog</title>
+        <script src="/Controls/editbox.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="cloudMatchIconTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="cloudEducationInfoContent">
+                
+                <div class="text-bodyContent" data-win-bind="textContent:String.id.IDS_MUSIC_CLOUD_ICON_SUB_HEADER MS.Entertainment.Formatters.formatStringId;
+                                    label: IDS_MUSIC_CLOUD_ICON_SUB_HEADER MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+                <div class="cloudEducationTable">
+
+                    <div class="cloudEducationTableCol1" data-ent-member="iconColumn1">
+
+                        
+                        <div class="cloudLegendIcon streamingOnly acc-preserveBackground"></div>
+
+                        <div class="cloudLegendLabel cloudLegendIconLabel text-weightHeavy" data-win-bind="textContent:String.id.IDS_MUSIC_CLOUD_ICON_STREAM_HEADER MS.Entertainment.Formatters.formatStringId;
+                                            label: IDS_MUSIC_CLOUD_ICON_STREAM_HEADER MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                        <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: streamingParagraphOneText;"></div>
+
+                        <div class="cloudLegendDescription text-bodyContent" data-win-bind="innerHTML: streamingParagraphTwoText; label: streamingParagraphTwoText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    </div>
+
+                    <div class="cloudEducationTableCol2" data-ent-member="iconColumn2">
+                        
+                        <div class="cloudLegendIcon localAndStreaming acc-preserveBackground"></div>
+
+                        <div class="cloudLegendLabel cloudLegendIconLabel text-weightHeavy" data-win-bind="textContent:String.id.IDS_MUSIC_CLOUD_ICON_CLOUD_HEADER MS.Entertainment.Formatters.formatStringId;
+                                            label: IDS_MUSIC_CLOUD_ICON_CLOUD_HEADER MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+                        
+                        <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: cloudParagraphOneText; label: cloudParagraphOneText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    </div>
+
+                    <div class="cloudEducationTableCol3" data-ent-member="iconColumn3">
+                        
+                        <div class="cloudLegendIcon"></div>
+
+                        <div class="cloudLegendLabel cloudLegendIconLabel text-weightHeavy" data-win-bind="textContent:String.id.IDS_MUSIC_CLOUD_ICON_NONE_HEADER MS.Entertainment.Formatters.formatStringId;
+                                            label: IDS_MUSIC_CLOUD_ICON_NONE_HEADER MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+                        
+                        <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: noneParagraphOneText; label: noneParagraphOneText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="cloudMatchIcon wecDialog wecDialog_cloud" data-win-automationid="wecDialog">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground"></div>
+
+                
+                <div class="overlayContainer dialogContainerBackground" data-win-bind="style.top: top; style.bottom: bottom;" data-ent-member="overlayContainer" data-ent-areaname="cloudMatchIconDialogContainer" role="dialog" aria-label="">
+
+                    <div class="dialogContainer win-ui-light" data-win-bind="style.left: left; style.right: right;" data-ent-member="dialogContainer">
+                        <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();">
+
+                            
+                            <div class="dialogCaption" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;"></div>
+
+                            
+                            <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer"></div>
+                
+                            
+                            <div class="dialogFooter"> 
+
+                                
+                                <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

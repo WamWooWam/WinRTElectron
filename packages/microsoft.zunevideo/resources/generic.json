@@ -1,0 +1,527 @@
+{
+  "Files": {
+    "animations": {
+      "animations.css": "animations\\animations.css",
+      "HubStripAnimations.js": "animations\\HubStripAnimations.js",
+      "ShellAnimations.css": "animations\\ShellAnimations.css",
+      "SocialAnimations.js": "animations\\SocialAnimations.js"
+    },
+    "Classic": {
+      "DelayedStageThreeStartup.html": "Classic\\DelayedStageThreeStartup.html",
+      "Main.html": "Classic\\Main.html"
+    },
+    "Components": {
+      "Accounts": {
+        "AcceptTermsOfService.js": "Components\\Accounts\\AcceptTermsOfService.js",
+        "AccountProvisioningDialog.html": "Components\\Accounts\\AccountProvisioningDialog.html",
+        "AccountProvisioningDialog.js": "Components\\Accounts\\AccountProvisioningDialog.js"
+      },
+      "Dashboard": {
+        "DashboardViewModel.js": "Components\\Dashboard\\DashboardViewModel.js"
+      },
+      "Immersive": {
+        "Shared": {
+          "BaseImmersiveOverviewSummary.js": "Components\\Immersive\\Shared\\BaseImmersiveOverviewSummary.js",
+          "BaseImmersiveSummary.js": "Components\\Immersive\\Shared\\BaseImmersiveSummary.js",
+          "MoreGalleryControl.html": "Components\\Immersive\\Shared\\MoreGalleryControl.html",
+          "MoreGalleryControl.js": "Components\\Immersive\\Shared\\MoreGalleryControl.js",
+          "RelatedGridItems.html": "Components\\Immersive\\Shared\\RelatedGridItems.html",
+          "RelatedGridItems.js": "Components\\Immersive\\Shared\\RelatedGridItems.js",
+          "RelatedItems.html": "Components\\Immersive\\Shared\\RelatedItems.html",
+          "RelatedItems.js": "Components\\Immersive\\Shared\\RelatedItems.js"
+        },
+        "Video": {
+          "CastAndCrew.js": "Components\\Immersive\\Video\\CastAndCrew.js",
+          "CastAndCrewMore.html": "Components\\Immersive\\Video\\CastAndCrewMore.html",
+          "CriticReviewMore.html": "Components\\Immersive\\Video\\CriticReviewMore.html",
+          "Episodes.js": "Components\\Immersive\\Video\\Episodes.js",
+          "EpisodesMore.html": "Components\\Immersive\\Video\\EpisodesMore.html",
+          "Extras.js": "Components\\Immersive\\Video\\Extras.js",
+          "ExtrasMore.html": "Components\\Immersive\\Video\\ExtrasMore.html",
+          "MoreVideoOverview.html": "Components\\Immersive\\Video\\MoreVideoOverview.html",
+          "MovieHero.html": "Components\\Immersive\\Video\\MovieHero.html",
+          "MovieHero.js": "Components\\Immersive\\Video\\MovieHero.js",
+          "MovieImmersiveTemplates.html": "Components\\Immersive\\Video\\MovieImmersiveTemplates.html",
+          "MovieOverview.js": "Components\\Immersive\\Video\\MovieOverview.js",
+          "TVHero.html": "Components\\Immersive\\Video\\TVHero.html",
+          "TVHero.js": "Components\\Immersive\\Video\\TVHero.js",
+          "TVImmersiveTemplates.html": "Components\\Immersive\\Video\\TVImmersiveTemplates.html",
+          "TVOverview.js": "Components\\Immersive\\Video\\TVOverview.js",
+          "VideoHero.js": "Components\\Immersive\\Video\\VideoHero.js"
+        },
+        "Immersive.html": "Components\\Immersive\\Immersive.html",
+        "Immersive.js": "Components\\Immersive\\Immersive.js",
+        "ImmersiveNavStub.html": "Components\\Immersive\\ImmersiveNavStub.html"
+      },
+      "ImmersiveDetails": {
+        "InformationArchitecture.js": "Components\\ImmersiveDetails\\InformationArchitecture.js",
+        "SnappedDetails.html": "Components\\ImmersiveDetails\\SnappedDetails.html",
+        "SnappedDetails.js": "Components\\ImmersiveDetails\\SnappedDetails.js",
+        "SnappedMovieDetails.html": "Components\\ImmersiveDetails\\SnappedMovieDetails.html",
+        "SnappedMovieDetails.js": "Components\\ImmersiveDetails\\SnappedMovieDetails.js",
+        "SnappedTvEpisodeDetails.html": "Components\\ImmersiveDetails\\SnappedTvEpisodeDetails.html",
+        "SnappedTvEpisodeDetails.js": "Components\\ImmersiveDetails\\SnappedTvEpisodeDetails.js"
+      },
+      "InlineDetails": {
+        "ActionButtonsControl.html": "Components\\InlineDetails\\ActionButtonsControl.html",
+        "BaseInlineDetails.js": "Components\\InlineDetails\\BaseInlineDetails.js",
+        "MusicAlbumInlineDetails.html": "Components\\InlineDetails\\MusicAlbumInlineDetails.html",
+        "MusicAlbumInlineDetails.js": "Components\\InlineDetails\\MusicAlbumInlineDetails.js",
+        "MusicArtistInlineDetails.html": "Components\\InlineDetails\\MusicArtistInlineDetails.html",
+        "MusicArtistInlineDetails.js": "Components\\InlineDetails\\MusicArtistInlineDetails.js",
+        "MusicPlaylistInlineDetails.html": "Components\\InlineDetails\\MusicPlaylistInlineDetails.html",
+        "MusicPlaylistInlineDetails.js": "Components\\InlineDetails\\MusicPlaylistInlineDetails.js",
+        "TvEpisodeInlineDetails.html": "Components\\InlineDetails\\TvEpisodeInlineDetails.html",
+        "TvEpisodeInlineDetails.js": "Components\\InlineDetails\\TvEpisodeInlineDetails.js",
+        "TvSeriesInlineDetails.html": "Components\\InlineDetails\\TvSeriesInlineDetails.html",
+        "TvSeriesInlineDetails.js": "Components\\InlineDetails\\TvSeriesInlineDetails.js",
+        "VideoInlineDetailsDemo.html": "Components\\InlineDetails\\VideoInlineDetailsDemo.html",
+        "VideoInlineDetailsDemo.js": "Components\\InlineDetails\\VideoInlineDetailsDemo.js"
+      },
+      "Music": {
+        "Music.html": "Components\\Music\\Music.html",
+        "MusicCollection.js": "Components\\Music\\MusicCollection.js",
+        "MusicPageHost.html": "Components\\Music\\MusicPageHost.html",
+        "MusicPages.js": "Components\\Music\\MusicPages.js",
+        "MusicPagesVertical.html": "Components\\Music\\MusicPagesVertical.html",
+        "MusicPanels.html": "Components\\Music\\MusicPanels.html",
+        "MusicSharedTemplatesControls.js": "Components\\Music\\MusicSharedTemplatesControls.js"
+      },
+      "Playback": {
+        "Controls": {
+          "PlaybackControl.css": "Components\\Playback\\Controls\\PlaybackControl.css",
+          "PlaybackControl.html": "Components\\Playback\\Controls\\PlaybackControl.html"
+        },
+        "Netstats": {
+          "VideoNetstats.js": "Components\\Playback\\Netstats\\VideoNetstats.js"
+        },
+        "Playlist": {
+          "NewPlaylistOverlay.html": "Components\\Playback\\Playlist\\NewPlaylistOverlay.html",
+          "NewPlaylistOverlay.js": "Components\\Playback\\Playlist\\NewPlaylistOverlay.js"
+        },
+        "IndivWorker.js": "Components\\Playback\\IndivWorker.js",
+        "VideoScrubber.js": "Components\\Playback\\VideoScrubber.js"
+      },
+      "Search": {
+        "SearchSharedTemplates.html": "Components\\Search\\SearchSharedTemplates.html",
+        "SearchView.js": "Components\\Search\\SearchView.js",
+        "VideoSearchView.js": "Components\\Search\\VideoSearchView.js"
+      },
+      "Settings": {
+        "Settings.js": "Components\\Settings\\Settings.js",
+        "SettingsAbout.html": "Components\\Settings\\SettingsAbout.html",
+        "SettingsAccount.html": "Components\\Settings\\SettingsAccount.html",
+        "SettingsCaptions.html": "Components\\Settings\\SettingsCaptions.html",
+        "SettingsFeedback.html": "Components\\Settings\\SettingsFeedback.html",
+        "SettingsPreferences.html": "Components\\Settings\\SettingsPreferences.html"
+      },
+      "shell": {
+        "AdControl.html": "Components\\shell\\AdControl.html",
+        "AdControl.js": "Components\\shell\\AdControl.js",
+        "appNotification.html": "Components\\shell\\appNotification.html",
+        "BackButtonService.js": "Components\\shell\\BackButtonService.js",
+        "ContentNotificationList.html": "Components\\shell\\ContentNotificationList.html",
+        "DeepLinkActions.js": "Components\\shell\\DeepLinkActions.js",
+        "DragDataService.js": "Components\\shell\\DragDataService.js",
+        "FrontHubStrip.html": "Components\\shell\\FrontHubStrip.html",
+        "FrontHubStrip.js": "Components\\shell\\FrontHubStrip.js",
+        "GalleryHubStrip.html": "Components\\shell\\GalleryHubStrip.html",
+        "GalleryHubStrip.js": "Components\\shell\\GalleryHubStrip.js",
+        "ListNotification.js": "Components\\shell\\ListNotification.js",
+        "PrimaryNavigationButton.js": "Components\\shell\\PrimaryNavigationButton.js",
+        "ShellKeyboardShortcuts.js": "Components\\shell\\ShellKeyboardShortcuts.js",
+        "SnappedMode.html": "Components\\shell\\SnappedMode.html",
+        "SnappedMode.js": "Components\\shell\\SnappedMode.js"
+      },
+      "Video": {
+        "AppbarActions.js": "Components\\Video\\AppbarActions.js",
+        "AppServices.js": "Components\\Video\\AppServices.js",
+        "CriticReviewControls.js": "Components\\Video\\CriticReviewControls.js",
+        "DemoDashboardViewModel.js": "Components\\Video\\DemoDashboardViewModel.js",
+        "EmptyHome.html": "Components\\Video\\EmptyHome.html",
+        "FeaturedMoviesView.html": "Components\\Video\\FeaturedMoviesView.html",
+        "FeaturedTvView.html": "Components\\Video\\FeaturedTvView.html",
+        "HubDashboardViewModel.js": "Components\\Video\\HubDashboardViewModel.js",
+        "InteractiveTVHelper.js": "Components\\Video\\InteractiveTVHelper.js",
+        "MovieDashboardViewModel.js": "Components\\Video\\MovieDashboardViewModel.js",
+        "NewMoviesView.html": "Components\\Video\\NewMoviesView.html",
+        "NewTvView.html": "Components\\Video\\NewTvView.html",
+        "PreviewBrowse.html": "Components\\Video\\PreviewBrowse.html",
+        "PreviewBrowse.js": "Components\\Video\\PreviewBrowse.js",
+        "PurchaseVideo.js": "Components\\Video\\PurchaseVideo.js",
+        "RentalExpirationService.js": "Components\\Video\\RentalExpirationService.js",
+        "TransferNotificationHandler.js": "Components\\Video\\TransferNotificationHandler.js",
+        "TvDashboardViewModel.js": "Components\\Video\\TvDashboardViewModel.js",
+        "TvSeriesHeaderControl.html": "Components\\Video\\TvSeriesHeaderControl.html",
+        "TvSeriesHeaderControl.js": "Components\\Video\\TvSeriesHeaderControl.js",
+        "VideoCloudCollectionService.js": "Components\\Video\\VideoCloudCollectionService.js",
+        "VideoCollection.html": "Components\\Video\\VideoCollection.html",
+        "VideoCollection.js": "Components\\Video\\VideoCollection.js",
+        "VideoCollectionPanels.html": "Components\\Video\\VideoCollectionPanels.html",
+        "VideoCollectionTemplates.html": "Components\\Video\\VideoCollectionTemplates.html",
+        "VideoDashboardViewModel.js": "Components\\Video\\VideoDashboardViewModel.js",
+        "VideoFeatures.js": "Components\\Video\\VideoFeatures.js",
+        "VideoFullScreenNowPlaying.html": "Components\\Video\\VideoFullScreenNowPlaying.html",
+        "VideoFullScreenNowPlaying.js": "Components\\Video\\VideoFullScreenNowPlaying.js",
+        "VideoIA.js": "Components\\Video\\VideoIA.js",
+        "VideoMarketplaceTemplates.html": "Components\\Video\\VideoMarketplaceTemplates.html",
+        "VideoPanels.html": "Components\\Video\\VideoPanels.html",
+        "VideoSearchTemplates.html": "Components\\Video\\VideoSearchTemplates.html",
+        "VideoSharedTemplatesControls.js": "Components\\Video\\VideoSharedTemplatesControls.js",
+        "VideoSpotlightView1.html": "Components\\Video\\VideoSpotlightView1.html",
+        "VideoStartupIA.js": "Components\\Video\\VideoStartupIA.js",
+        "VideoStartupTemplates.html": "Components\\Video\\VideoStartupTemplates.html"
+      },
+      "Video_Win": {
+        "EpisodeDetails.html": "Components\\Video_Win\\EpisodeDetails.html",
+        "MovieDetails.html": "Components\\Video_Win\\MovieDetails.html",
+        "MoviesStore.html": "Components\\Video_Win\\MoviesStore.html",
+        "SearchResultsPage.html": "Components\\Video_Win\\SearchResultsPage.html",
+        "TvDetails.html": "Components\\Video_Win\\TvDetails.html",
+        "TvStore.html": "Components\\Video_Win\\TvStore.html",
+        "VideoCollection.html": "Components\\Video_Win\\VideoCollection.html",
+        "VideoCollectionDelayedScripts.html": "Components\\Video_Win\\VideoCollectionDelayedScripts.html",
+        "VideoMarketplacePageTemplate.html": "Components\\Video_Win\\VideoMarketplacePageTemplate.html"
+      },
+      "BaseTransferNotificationHandler.js": "Components\\BaseTransferNotificationHandler.js",
+      "Marketplace.html": "Components\\Marketplace.html",
+      "Marketplace.js": "Components\\Marketplace.js"
+    },
+    "controls": {
+      "AppBar": {
+        "BottomAppBar.html": "controls\\AppBar\\BottomAppBar.html",
+        "BottomAppBar.js": "controls\\AppBar\\BottomAppBar.js",
+        "BottomProgressBar.html": "controls\\AppBar\\BottomProgressBar.html",
+        "BottomProgressBar.js": "controls\\AppBar\\BottomProgressBar.js",
+        "RemoveOverlay.html": "controls\\AppBar\\RemoveOverlay.html",
+        "RemoveOverlay.js": "controls\\AppBar\\RemoveOverlay.js"
+      },
+      "Music": {
+        "ArtistImageCollage.js": "controls\\Music\\ArtistImageCollage.js",
+        "PlaylistImageCollage.js": "controls\\Music\\PlaylistImageCollage.js"
+      },
+      "NowPlaying": {
+        "HomeNowPlayingTile.html": "controls\\NowPlaying\\HomeNowPlayingTile.html",
+        "HomeNowPlayingTile.js": "controls\\NowPlaying\\HomeNowPlayingTile.js",
+        "MusicVisualization.html": "controls\\NowPlaying\\MusicVisualization.html",
+        "MusicVisualization.js": "controls\\NowPlaying\\MusicVisualization.js",
+        "NowPlaying.html": "controls\\NowPlaying\\NowPlaying.html",
+        "NowPlaying.js": "controls\\NowPlaying\\NowPlaying.js",
+        "NowPlayingMetadata.html": "controls\\NowPlaying\\NowPlayingMetadata.html",
+        "NowPlayingMetadata.js": "controls\\NowPlaying\\NowPlayingMetadata.js",
+        "NowPlayingOverlays.html": "controls\\NowPlaying\\NowPlayingOverlays.html",
+        "NowPlayingPlaylist.html": "controls\\NowPlaying\\NowPlayingPlaylist.html",
+        "NowPlayingPlaylist.js": "controls\\NowPlaying\\NowPlayingPlaylist.js",
+        "NowPlayingTransportControls.html": "controls\\NowPlaying\\NowPlayingTransportControls.html",
+        "NowPlayingTransportControls.js": "controls\\NowPlaying\\NowPlayingTransportControls.js",
+        "SnappedNowPlaying.html": "controls\\NowPlaying\\SnappedNowPlaying.html",
+        "SnappedNowPlaying.js": "controls\\NowPlaying\\SnappedNowPlaying.js",
+        "SnappedNowPlayingMetadata.html": "controls\\NowPlaying\\SnappedNowPlayingMetadata.html",
+        "SnappedNowPlayingMetadata.js": "controls\\NowPlaying\\SnappedNowPlayingMetadata.js",
+        "SnappedNowPlayingPlaylist.js": "controls\\NowPlaying\\SnappedNowPlayingPlaylist.js",
+        "SnappedNowPlayingPlaylistFlipView.js": "controls\\NowPlaying\\SnappedNowPlayingPlaylistFlipView.js"
+      },
+      "TransportControls": {
+        "SeekBar.html": "controls\\TransportControls\\SeekBar.html",
+        "SeekBar.js": "controls\\TransportControls\\SeekBar.js",
+        "TimelineEvent.html": "controls\\TransportControls\\TimelineEvent.html",
+        "TimelineEvent.js": "controls\\TransportControls\\TimelineEvent.js",
+        "TransportControls.html": "controls\\TransportControls\\TransportControls.html",
+        "VideoScrub.html": "controls\\TransportControls\\VideoScrub.html",
+        "VideoScrub.js": "controls\\TransportControls\\VideoScrub.js",
+        "VolumeBar.html": "controls\\TransportControls\\VolumeBar.html",
+        "VolumeBar.js": "controls\\TransportControls\\VolumeBar.js"
+      },
+      "Video": {
+        "ChooseDownloadQuality.html": "controls\\Video\\ChooseDownloadQuality.html",
+        "RentalOptionsDialog.html": "controls\\Video\\RentalOptionsDialog.html",
+        "RentalOptionsDialog.js": "controls\\Video\\RentalOptionsDialog.js",
+        "SeasonModifier.html": "controls\\Video\\SeasonModifier.html",
+        "SeasonModifier.js": "controls\\Video\\SeasonModifier.js",
+        "TvEpisodeDownloadStatus.js": "controls\\Video\\TvEpisodeDownloadStatus.js",
+        "VideoDownloadItem.html": "controls\\Video\\VideoDownloadItem.html",
+        "VideoDownloadItem.js": "controls\\Video\\VideoDownloadItem.js",
+        "VideoDownloadManager.html": "controls\\Video\\VideoDownloadManager.html",
+        "VideoNowPlayingOverlays.html": "controls\\Video\\VideoNowPlayingOverlays.html",
+        "VideoNowPlayingOverlays.js": "controls\\Video\\VideoNowPlayingOverlays.js",
+        "VideoPostRoll.html": "controls\\Video\\VideoPostRoll.html",
+        "VideoPostRoll.js": "controls\\Video\\VideoPostRoll.js",
+        "WatchProgress.html": "controls\\Video\\WatchProgress.html",
+        "WatchProgress.js": "controls\\Video\\WatchProgress.js"
+      },
+      "Video_Win": {
+        "AudioTrackPickerControl.html": "controls\\Video_Win\\AudioTrackPickerControl.html",
+        "AudioTrackPickerControl.js": "controls\\Video_Win\\AudioTrackPickerControl.js",
+        "ClosedCaptionPickerControl.html": "controls\\Video_Win\\ClosedCaptionPickerControl.html",
+        "ClosedCaptionPickerControl.js": "controls\\Video_Win\\ClosedCaptionPickerControl.js",
+        "DeviceLimitError.html": "controls\\Video_Win\\DeviceLimitError.html",
+        "EpisodeDetails.js": "controls\\Video_Win\\EpisodeDetails.js",
+        "LanguagePicker.html": "controls\\Video_Win\\LanguagePicker.html",
+        "VideoWinNowPlayingOverlays.html": "controls\\Video_Win\\VideoWinNowPlayingOverlays.html"
+      },
+      "actionList.html": "controls\\actionList.html",
+      "ArcProgress.html": "controls\\ArcProgress.html",
+      "ArcProgress.js": "controls\\ArcProgress.js",
+      "controls.css": "controls\\controls.css",
+      "Dashboard.html": "controls\\Dashboard.html",
+      "Dashboard.js": "controls\\Dashboard.js",
+      "DashboardPanel.html": "controls\\DashboardPanel.html",
+      "Dialog.html": "controls\\Dialog.html",
+      "EditBox.html": "controls\\EditBox.html",
+      "EditBox.js": "controls\\EditBox.js",
+      "ErrorDialog.html": "controls\\ErrorDialog.html",
+      "FailedPanel.html": "controls\\FailedPanel.html",
+      "FailedPanel.js": "controls\\FailedPanel.js",
+      "FeaturedContent.js": "controls\\FeaturedContent.js",
+      "FlipView.html": "controls\\FlipView.html",
+      "FlipView.js": "controls\\FlipView.js",
+      "Flyout.html": "controls\\Flyout.html",
+      "Flyout.js": "controls\\Flyout.js",
+      "GalleryControl.html": "controls\\GalleryControl.html",
+      "GalleryThumbnail.js": "controls\\GalleryThumbnail.js",
+      "Hub.html": "controls\\Hub.html",
+      "Hub.js": "controls\\Hub.js",
+      "HubStrip.html": "controls\\HubStrip.html",
+      "HubStrip.js": "controls\\HubStrip.js",
+      "iconbutton.html": "controls\\iconbutton.html",
+      "ImageCollage.html": "controls\\ImageCollage.html",
+      "ImageCollage.js": "controls\\ImageCollage.js",
+      "ImmersiveLayout.html": "controls\\ImmersiveLayout.html",
+      "ImmersiveLayout.js": "controls\\ImmersiveLayout.js",
+      "LibraryFeaturedContent.html": "controls\\LibraryFeaturedContent.html",
+      "LibraryFeaturedContent.js": "controls\\LibraryFeaturedContent.js",
+      "Link.html": "controls\\Link.html",
+      "LoadingControl.js": "controls\\LoadingControl.js",
+      "ManageFoldersPage.html": "controls\\ManageFoldersPage.html",
+      "MediaImageCollage.js": "controls\\MediaImageCollage.js",
+      "MediaItemThumbnail.js": "controls\\MediaItemThumbnail.js",
+      "MessageBox.html": "controls\\MessageBox.html",
+      "MessageBox.js": "controls\\MessageBox.js",
+      "MessageLinkBox.html": "controls\\MessageLinkBox.html",
+      "MessageLinkBox.js": "controls\\MessageLinkBox.js",
+      "Modifier.html": "controls\\Modifier.html",
+      "ModifierGalleryPage.html": "controls\\ModifierGalleryPage.html",
+      "ModifierGalleryPage.js": "controls\\ModifierGalleryPage.js",
+      "Music8Dashboard.html": "controls\\Music8Dashboard.html",
+      "Overlay.html": "controls\\Overlay.html",
+      "PivotControls.html": "controls\\PivotControls.html",
+      "PleaseResizeDialog.js": "controls\\PleaseResizeDialog.js",
+      "PopOver.html": "controls\\PopOver.html",
+      "SearchFlyout.html": "controls\\SearchFlyout.html",
+      "SearchFlyout.js": "controls\\SearchFlyout.js",
+      "ShowMore.html": "controls\\ShowMore.html",
+      "SignInControl.html": "controls\\SignInControl.html",
+      "SignInControl.js": "controls\\SignInControl.js",
+      "StarRatingControl.html": "controls\\StarRatingControl.html",
+      "templateSelector.js": "controls\\templateSelector.js",
+      "thumbnailButton.html": "controls\\thumbnailButton.html",
+      "thumbnailButton.js": "controls\\thumbnailButton.js",
+      "ToggleModifier.html": "controls\\ToggleModifier.html",
+      "ToggleModifier.js": "controls\\ToggleModifier.js",
+      "UpgradeTile.html": "controls\\UpgradeTile.html",
+      "UpgradeTile.js": "controls\\UpgradeTile.js",
+      "UserFeedbackDialog.html": "controls\\UserFeedbackDialog.html",
+      "VideoAd.html": "controls\\VideoAd.html",
+      "VideoAd.js": "controls\\VideoAd.js",
+      "WebHost.html": "controls\\WebHost.html",
+      "WebHost.js": "controls\\WebHost.js",
+      "WebHostDialog.html": "controls\\WebHostDialog.html",
+      "WebHostDialog.js": "controls\\WebHostDialog.js",
+      "WebHostMessage.js": "controls\\WebHostMessage.js"
+    },
+    "Fonts": {
+      "segxmvr.woff": "Fonts\\segxmvr.woff",
+      "segxsym.woff": "Fonts\\segxsym.woff"
+    },
+    "Framework": {
+      "data": {
+        "ObservableArrayVirtualListAdapter.js": "Framework\\data\\ObservableArrayVirtualListAdapter.js",
+        "xboxLive.js": "Framework\\data\\xboxLive.js",
+        "xhr.js": "Framework\\data\\xhr.js"
+      },
+      "abTestingUtilities.js": "Framework\\abTestingUtilities.js",
+      "abTests.js": "Framework\\abTests.js",
+      "CoreFX_TSHelpers.js": "Framework\\CoreFX_TSHelpers.js",
+      "DashboardRefresherService.js": "Framework\\DashboardRefresherService.js",
+      "DeviceGroupService.js": "Framework\\DeviceGroupService.js",
+      "featureEnablement.js": "Framework\\featureEnablement.js",
+      "fileActivationHandler.js": "Framework\\fileActivationHandler.js",
+      "IAService.js": "Framework\\IAService.js",
+      "IdVision.js": "Framework\\IdVision.js",
+      "launchAppAction.js": "Framework\\launchAppAction.js",
+      "navigation.js": "Framework\\navigation.js",
+      "PlaybackErrorDisplayService.js": "Framework\\PlaybackErrorDisplayService.js",
+      "ProgressNotificationService.js": "Framework\\ProgressNotificationService.js",
+      "searchaction.js": "Framework\\searchaction.js",
+      "shiftDashboardAction.js": "Framework\\shiftDashboardAction.js",
+      "videoServiceIdentifiers.js": "Framework\\videoServiceIdentifiers.js",
+      "VideoTileManager.js": "Framework\\VideoTileManager.js"
+    },
+    "Images": {
+      "GenericIcons": {
+        "actor_placeholder.png": "Images\\GenericIcons\\actor_placeholder.png",
+        "cast_placeholder.png": "Images\\GenericIcons\\cast_placeholder.png",
+        "ico_74x_GenericVideo_Large.png": "Images\\GenericIcons\\ico_74x_GenericVideo_Large.scale-100.png",
+        "ico_74x_GenericVideo_LargeMovie.png": "Images\\GenericIcons\\ico_74x_GenericVideo_LargeMovie.scale-100.png",
+        "ico_74x_GenericVideo_Medium.png": "Images\\GenericIcons\\ico_74x_GenericVideo_Medium.scale-100.png",
+        "ico_74x_GenericVideo_Small.png": "Images\\GenericIcons\\ico_74x_GenericVideo_Small.scale-100.png",
+        "ico_GenericVideo_L3_Hero.png": "Images\\GenericIcons\\ico_GenericVideo_L3_Hero.scale-100.png",
+        "ico_GenericVideo_Wide.png": "Images\\GenericIcons\\ico_GenericVideo_Wide.scale-100.png"
+      },
+      "ListStripes": {
+        "ListStripesDark.png": "Images\\ListStripes\\ListStripesDark.scale-100.png"
+      },
+      "LoadingCardTemplateBg": {
+        "LoadingCardTemplateBg_Video.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_Video.scale-100.png",
+        "LoadingCardTemplateBg_VideoOther.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoOther.scale-100.png",
+        "LoadingCardTemplateBg_VideoOtherRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoOtherRTL.scale-100.png",
+        "LoadingCardTemplateBg_VideoRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoRTL.scale-100.png",
+        "LoadingCardTemplateBg_VideoSquare.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoSquare.scale-100.png",
+        "LoadingCardTemplateBg_VideoSquareRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoSquareRTL.scale-100.png"
+      },
+      "NowPlaying": {
+        "now_playing_mask.png": "Images\\NowPlaying\\now_playing_mask.png"
+      },
+      "ThirdParty": {
+        "ico_RottenTomatoes_CertifiedFresh.png": "Images\\ThirdParty\\ico_RottenTomatoes_CertifiedFresh.png",
+        "ico_RottenTomatoes_Fresh.png": "Images\\ThirdParty\\ico_RottenTomatoes_Fresh.png",
+        "ico_RottenTomatoes_Rotten.png": "Images\\ThirdParty\\ico_RottenTomatoes_Rotten.png"
+      },
+      "Tiles": {
+        "VideoIcon.png": "Images\\Tiles\\VideoIcon.png",
+        "Video_Movie_Resume_2x2.png": "Images\\Tiles\\Video_Movie_Resume_2x2.scale-100.png",
+        "Video_Tv_Resume_2x2.png": "Images\\Tiles\\Video_Tv_Resume_2x2.scale-100.png",
+        "XBL_VIDEO_150x150_A.png": "Images\\Tiles\\XBL_VIDEO_150x150_A.scale-100.png",
+        "XBL_VIDEO_30x30_A.png": "Images\\Tiles\\XBL_VIDEO_30x30_A.scale-100.png",
+        "XBL_VIDEO_310x150_C.png": "Images\\Tiles\\XBL_VIDEO_310x150_C.scale-100.png",
+        "XBL_VIDEO_310x310_A.png": "Images\\Tiles\\XBL_VIDEO_310x310_A.scale-100.png",
+        "XBL_VIDEO_50x50_A.png": "Images\\Tiles\\XBL_VIDEO_50x50_A.png",
+        "XBL_VIDEO_620x300_A.png": "Images\\Tiles\\XBL_VIDEO_620x300_A.scale-100.png",
+        "XBL_VIDEO_70x70_A.png": "Images\\Tiles\\XBL_VIDEO_70x70_A.scale-100.png"
+      },
+      "TransportControls": {
+        "leaf_default.png": "Images\\TransportControls\\leaf_default.png",
+        "leaf_touch.png": "Images\\TransportControls\\leaf_touch.png"
+      },
+      "VideoRatings": {
+        "video_poland_ratings_12.png": "Images\\VideoRatings\\video_poland_ratings_12.scale-100.png",
+        "video_poland_ratings_16.png": "Images\\VideoRatings\\video_poland_ratings_16.scale-100.png",
+        "video_poland_ratings_18.png": "Images\\VideoRatings\\video_poland_ratings_18.scale-100.png",
+        "video_poland_ratings_7.png": "Images\\VideoRatings\\video_poland_ratings_7.scale-100.png",
+        "video_poland_ratings_no_restriction.png": "Images\\VideoRatings\\video_poland_ratings_no_restriction.scale-100.png"
+      },
+      "WebDialogResize": {
+        "RotateResizeIcon.png": "Images\\WebDialogResize\\RotateResizeIcon.scale-100.png"
+      },
+      "AppBar_gradient.png": "Images\\AppBar_gradient.png",
+      "img_not_found.png": "Images\\img_not_found.png",
+      "immersive_details_background_gradient.png": "Images\\immersive_details_background_gradient.png",
+      "immersive_details_viewMore_background_gradient.png": "Images\\immersive_details_viewMore_background_gradient.png",
+      "link_asset.png": "Images\\link_asset.png",
+      "loading_image.png": "Images\\loading_image.png",
+      "notification_retry_ring_dark.png": "Images\\notification_retry_ring_dark.png",
+      "notification_retry_ring_light.png": "Images\\notification_retry_ring_light.png",
+      "notification_retry_spinner_dark.png": "Images\\notification_retry_spinner_dark.png",
+      "notification_retry_spinner_light.png": "Images\\notification_retry_spinner_light.png",
+      "squareLoading.png": "Images\\squareLoading.png",
+      "standard_card_square_art_overlay.png": "Images\\standard_card_square_art_overlay.png",
+      "streaming_dark.png": "Images\\streaming_dark.png",
+      "streaming_light.png": "Images\\streaming_light.png",
+      "transparent.png": "Images\\transparent.png",
+      "x8_300x250_ad_error.png": "Images\\x8_300x250_ad_error.png",
+      "x8_300x600_ad_error.png": "Images\\x8_300x600_ad_error.png"
+    },
+    "MSAdvertisingJS": {
+      "ads": {
+        "ad.js": "MSAdvertisingJS\\ads\\ad.js",
+        "bootstrap.html": "MSAdvertisingJS\\ads\\bootstrap.html",
+        "bootstrap.js": "MSAdvertisingJS\\ads\\bootstrap.js",
+        "ormma.js": "MSAdvertisingJS\\ads\\ormma.js",
+        "VASTAd.js": "MSAdvertisingJS\\ads\\VASTAd.js"
+      }
+    },
+    "Styles": {
+      "Animations.css": "Styles\\Animations.css",
+      "App.css": "Styles\\App.css",
+      "ClosedCaption.css": "Styles\\ClosedCaption.css",
+      "DefaultStyles.css": "Styles\\DefaultStyles.css",
+      "Images.css": "Styles\\Images.css",
+      "NowPlaying.css": "Styles\\NowPlaying.css",
+      "Settings.css": "Styles\\Settings.css",
+      "Shell.css": "Styles\\Shell.css",
+      "TransportControls.css": "Styles\\TransportControls.css",
+      "ui-overrides.css": "Styles\\ui-overrides.css"
+    },
+    "ViewModels": {
+      "Home": {
+        "FeaturedViewModel.js": "ViewModels\\Home\\FeaturedViewModel.js",
+        "SpotlightViewModel.js": "ViewModels\\Home\\SpotlightViewModel.js"
+      },
+      "Immersive": {
+        "ImmersiveViewModels.js": "ViewModels\\Immersive\\ImmersiveViewModels.js"
+      },
+      "Music": {
+        "MusicHubCollectionPanel.js": "ViewModels\\Music\\MusicHubCollectionPanel.js"
+      },
+      "Search": {
+        "NewSearchViewModel.js": "ViewModels\\Search\\NewSearchViewModel.js",
+        "SearchContractViewModel.js": "ViewModels\\Search\\SearchContractViewModel.js",
+        "SearchViewModel.js": "ViewModels\\Search\\SearchViewModel.js",
+        "VideoSearchTemplates1.js": "ViewModels\\Search\\VideoSearchTemplates1.js",
+        "VideoSearchViewModel.js": "ViewModels\\Search\\VideoSearchViewModel.js"
+      },
+      "Video": {
+        "MovieImmersiveViewModel.js": "ViewModels\\Video\\MovieImmersiveViewModel.js",
+        "TvImmersiveViewModel.js": "ViewModels\\Video\\TvImmersiveViewModel.js",
+        "VideoCollectionTemplates.js": "ViewModels\\Video\\VideoCollectionTemplates.js",
+        "VideoCollectionViewModel.js": "ViewModels\\Video\\VideoCollectionViewModel.js",
+        "VideoHubCollectionPanel.js": "ViewModels\\Video\\VideoHubCollectionPanel.js",
+        "VideoMarketplaceTemplates.js": "ViewModels\\Video\\VideoMarketplaceTemplates.js",
+        "VideoMarketplaceViewModel.js": "ViewModels\\Video\\VideoMarketplaceViewModel.js",
+        "VideoSpotlight.js": "ViewModels\\Video\\VideoSpotlight.js"
+      },
+      "Video_Win": {
+        "EpisodeDetailsViewModel.js": "ViewModels\\Video_Win\\EpisodeDetailsViewModel.js"
+      },
+      "Command.js": "ViewModels\\Command.js"
+    },
+    "AppxManifest.xml": "AppxManifest.xml",
+    "config.json": "config.json",
+    "delayedStageFourStartup.html": "delayedStageFourStartup.html",
+    "delayedStageThreeStartup.html": "delayedStageThreeStartup.html",
+    "EntCommon.dll": "EntCommon.dll",
+    "EntPlat.dll": "EntPlat.dll",
+    "EntSyncFx.dll": "EntSyncFx.dll",
+    "fileActivationStartup.html": "fileActivationStartup.html",
+    "gnsdk_fp.dll": "gnsdk_fp.dll",
+    "group_1_merged.js": "group_1_merged.js",
+    "group_2_merged.js": "group_2_merged.js",
+    "launchToCollectionStartup.html": "launchToCollectionStartup.html",
+    "LiveIdChange.js": "LiveIdChange.js",
+    "main.html": "main.html",
+    "main.js": "main.js",
+    "main_merged.js": "main_merged.js",
+    "Microsoft.Entertainment.Instrumentation.Providers.dll": "Microsoft.Entertainment.Instrumentation.Providers.dll",
+    "Microsoft.Entertainment.winmd": "Microsoft.Entertainment.winmd",
+    "Microsoft.Media.AdaptiveStreaming.dll": "Microsoft.Media.AdaptiveStreaming.dll",
+    "Microsoft.Media.AdaptiveStreaming.winmd": "Microsoft.Media.AdaptiveStreaming.winmd",
+    "Microsoft.PerfTrack.dll": "Microsoft.PerfTrack.dll",
+    "Microsoft.PerfTrack.winmd": "Microsoft.PerfTrack.winmd",
+    "MicrosoftAdvertising.dll": "MicrosoftAdvertising.dll",
+    "MicrosoftAdvertising.winmd": "MicrosoftAdvertising.winmd",
+    "MovieDetails_merged.js": "MovieDetails_merged.js",
+    "MoviesStore_merged.js": "MoviesStore_merged.js",
+    "msapp-error.html": "msapp-error.html",
+    "msapp-error.js": "msapp-error.js",
+    "NowPlaying_merged.js": "NowPlaying_merged.js",
+    "SearchResultsPage_merged.js": "SearchResultsPage_merged.js",
+    "TvDetails_merged.js": "TvDetails_merged.js",
+    "TvStore_merged.js": "TvStore_merged.js",
+    "updateapp.html": "updateapp.html",
+    "UpdateApp.js": "UpdateApp.js",
+    "Version.json": "Version.json",
+    "VideoCollection_merged.js": "VideoCollection_merged.js",
+    "VideoMarketplacePageTemplate_merged.js": "VideoMarketplacePageTemplate_merged.js",
+    "WarmupCode.js": "WarmupCode.js"
+  }
+}

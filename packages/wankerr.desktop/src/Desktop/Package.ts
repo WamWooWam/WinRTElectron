@@ -172,14 +172,14 @@ export class PackageReader {
 
             var showName = element.getAttribute("ShowName");
             if (showName === "allLogos") {
-                defaultTile.showNameOnTiles.push("square150x150Logo");
-                defaultTile.showNameOnTiles.push("wide310x150Logo");
+                defaultTile.showNameOnTiles.push("square150x150");
+                defaultTile.showNameOnTiles.push("wide310x150");
             }
             else if (showName == "logoOnly") {
-                defaultTile.showNameOnTiles.push("square150x150Logo");
+                defaultTile.showNameOnTiles.push("square150x150");
             }
             else if (showName == "wideLogoOnly") {
-                defaultTile.showNameOnTiles.push("wide310x150Logo");
+                defaultTile.showNameOnTiles.push("wide310x150");
             }
         }
         else {
@@ -188,7 +188,8 @@ export class PackageReader {
             defaultTile.square310x310Logo = this.fixupUrl(element.getAttribute("Square310x310Logo"));
 
             for (const showOnElement of element.querySelectorAll("ShowOn")) {
-                defaultTile.showNameOnTiles.push(showOnElement.getAttribute("Tile"));
+                let tile = showOnElement.getAttribute("Tile");
+                defaultTile.showNameOnTiles.push(tile.substr(0, tile.length - 4));
             }
         }
 

@@ -1,0 +1,54 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Local Grovel Info</title>
+        <script src="/Controls/editbox.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="localGrovelInfoTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="localGrovelInfoContentContainer">
+                <div class="localGrovelInfoContent">
+
+                    <div>
+                        <div class="cloudLegendDescription regularText" data-win-bind="textContent: addMusicDialogBodyText;
+                                            label: addMusicDialogBodyText MS.Entertainment.Framework.AccUtils.setAriaAttribute"></div>
+
+                        <a class="localGrovelInfoLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-automationid="localGrovelLearnMoreAboutLibrariesLink" data-win-options="{stringId:String.id.IDS_MUSIC_CLOUD_ADD_MUSIC_DIALOG_LINK}" data-ent-member="moreAboutLibrariesWebLink"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="localGrovelInfo wecDialog" data-win-automationid="wecDialog">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground"></div>
+
+                
+                <div class="overlayContainer dialogContainerBackground" data-win-bind="style.top: top; style.bottom: bottom" data-ent-member="overlayContainer" data-ent-areaname="localGrovelInfoDialogContainer" role="dialog" aria-label="">
+
+                    <div class="dialogContainer win-ui-light" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+
+                        <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();">
+
+                            
+                            <div class="dialogCaption text-medium" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;" style="-ms-grid-row: 1; -ms-grid-column: 2"></div>
+
+                            
+                            <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer" style="-ms-grid-row: 2; -ms-grid-column: 2"></div>
+                
+                            
+                            <div style="-ms-grid-row: 3; -ms-grid-column: 2" class="dialogFooter"> 
+
+                                
+                                <div style="-ms-grid-column: 2" class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

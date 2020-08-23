@@ -1,0 +1,29 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Image Collage</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/Animations.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="Template" data-win-control="WinJS.Binding.Template">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
+            <defs>
+                <filter id="Desaturate">
+                    <fecolormatrix type="saturate" in="SourceGraphic" values="0.6"></fecolormatrix>
+                </filter>
+            </defs>
+        </svg>
+        <div class="visualizationLayer" data-ent-member="backdrop" data-win-bind="style.backgroundColor: backdropColor;">
+        </div>
+        <div class="visualizationLayer artContainer" data-ent-member="artContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl">
+        </div>
+        <div class="visualizationLayer" data-ent-member="wallContainer">
+        </div>
+    </div>
+</body>
+</html>

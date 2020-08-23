@@ -1,0 +1,19 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Playlist Dialog</title>
+
+    
+    <script src="/main_merged.js"></script>
+    <script src="/Components/Playback/Playlist/NewPlaylistOverlay.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="newPlaylistDialogTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="playlistEdit" data-ent-member="_playlistEdit" data-win-control="MS.Entertainment.UI.Controls.EditBox" data-win-options="{ editType: MS.Entertainment.UI.Controls.EditBox.EditTypes.text, maxLength: 20, size: 20 }">
+        </div>
+
+        <div class="label" data-ent-member="_duplicateMessage" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="hidden: duplicateMessageVisible MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+    </div>
+</body>
+</html>

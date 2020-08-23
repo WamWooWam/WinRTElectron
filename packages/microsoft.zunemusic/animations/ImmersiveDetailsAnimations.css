@@ -1,0 +1,222 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.immersiveDetailsHide, .immersiveHeroImageExit
+{
+    animation-name: immersiveDetailsHideKeys;
+    animation-duration: 167ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsHideKeys
+{
+    0%
+    {
+        opacity: 1
+    }
+    100%
+    {
+        opacity: 0
+    }
+}
+.immersiveDetailsShow
+{
+    animation-name: immersiveDetailsShowKeys;
+    animation-duration: 750ms;
+    animation-timing-function: cubic-bezier(.16,.99,.22,.99);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsShowKeys
+{
+    0%
+    {
+        opacity: 0
+    }
+    100%
+    {
+        opacity: 1
+    }
+}
+.immersiveHeroImageEnter {
+    animation-name: immersiveDetailsShowKeys;
+    animation-duration: 3500ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: forwards
+}
+.immersiveDetailsOverviewHide
+{
+    animation-name: immersiveDetailsOverviewHide;
+    animation-duration: 333ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(.25,.1,.25,1);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsOverviewHide
+{
+    0%
+    {
+        transform: translateX(0%)
+    }
+    100%
+    {
+        transform: translateX(100%)
+    }
+}
+.nowPlayingResize
+{
+    transition-property: width;
+    transition-duration: 1500ms;
+    transition-timing-function: cubic-bezier(.16,.99,.22,.99)
+}
+.immersiveDetailsOverviewShow
+{
+    animation-name: immersiveDetailsOverviewShow;
+    animation-duration: 1500ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(.16,.99,.22,.99);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsOverviewShow
+{
+    0%
+    {
+        transform: translateX(100%)
+    }
+    100%
+    {
+        transform: translateX(0%)
+    }
+}
+.immersiveDetailsFeatureHide
+{
+    animation-name: immersiveDetailsFeatureHide;
+    animation-duration: 333ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(.25,.1,.25,1);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsFeatureHide
+{
+    0%
+    {
+        transform: translateY(0)
+    }
+    100%
+    {
+        transform: translateY(300px)
+    }
+}
+.immersiveDetailsFeatureShow
+{
+    animation-name: immersiveDetailsFeatureShowKeys;
+    animation-duration: 3200ms;
+    animation-timing-function: cubic-bezier(.16,.99,.22,.99);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsFeatureShowKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: translateX(150px)
+    }
+    46%
+    {
+        opacity: 0;
+        transform: translateX(150px)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+.immersiveDetailsBackgroundHide
+{
+    animation-name: immersiveDetailsBackgroundHide;
+    animation-duration: 350ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsBackgroundHide
+{
+    0%
+    {
+        opacity: 1
+    }
+    100%
+    {
+        opacity: 0
+    }
+}
+.immersiveDetailsBackgroundShow
+{
+    animation-name: immersiveDetailsBackgroundShowKeys;
+    animation-duration: 3200ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: forwards
+}
+@keyframes immersiveDetailsBackgroundShowKeys
+{
+    0%
+    {
+        opacity: 0
+    }
+    46%
+    {
+        opacity: 0
+    }
+    60%
+    {
+        opacity: 1
+    }
+    100%
+    {
+        opacity: 1
+    }
+}
+.immersiveDetailsFeaturedImageShow
+{
+    animation-name: immersiveDetailsFeaturedImageShowKeys;
+    animation-duration: 3200ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: both
+}
+@keyframes immersiveDetailsFeaturedImageShowKeys
+{
+    0%
+    {
+        opacity: 0
+    }
+    60%
+    {
+        opacity: 0
+    }
+    80%
+    {
+        opacity: 1
+    }
+    100%
+    {
+        opacity: 1
+    }
+}
+.immersiveBackgroundImageShow
+{
+    animation-name: immersiveBackgroundImageShowKeys;
+    animation-duration: 3200ms;
+    animation-delay: 1920ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: both
+}
+@keyframes immersiveBackgroundImageShowKeys
+{
+    0%
+    {
+        opacity: 0
+    }
+    100%
+    {
+        opacity: .15
+    }
+}

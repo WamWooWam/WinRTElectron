@@ -20,11 +20,11 @@
     height: 100%;
 }
 
-.tile-container.wide310x150Logo {
+.tile-container.wide310x150 {
     grid-column-end: span 4;
 }
 
-.tile-container.square310x310Logo {
+.tile-container.square310x310 {
     grid-row-end: span 4;
     grid-column-end: span 4;
 }
@@ -36,7 +36,7 @@
     transform-style: preserve-3d;
 }
 
-.tile-container.square70x70Logo {
+.tile-container.square70x70 {
     grid-row-end: span 1;
     grid-column-end: span 1;
 }
@@ -80,11 +80,11 @@
     max-height: 120px;
 }
 
-.tile-front-image.square70x70Logo {
+.tile-front-image.square70x70 {
     max-height: 50px;
 }
 
-.tile-front-image.square310x310Logo {
+.tile-front-image.square310x310 {
    max-height: 246px;
 }
 

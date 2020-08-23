@@ -1,0 +1,110 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>TransportControls</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/TransportControls.css" />
+    <link rel="stylesheet" type="text/css" href="/Animations/ControlsAnimations.css" />
+    <link rel="stylesheet" type="text/css" href="/Animations/Animations.css" />
+</head>
+<body>
+    <div data-ent-templateid="transportControlsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="appBarTransportControlsContainer"
+             style="display: -ms-grid; -ms-grid-columns: auto auto auto auto auto auto; -ms-grid-rows: auto;">
+
+            
+            <div style="-ms-grid-row: 1; -ms-grid-column: 1;"
+                data-ent-member="_skipBackButton"
+                data-win-control="MS.Entertainment.UI.Controls.ActionListButton"
+                data-win-options="{tabIndex: 0}"
+                data-win-bind="winControl.isDisabled: skipBackDisabled;
+                               winControl.action: _skipBackAction;
+                               winControl.holdAction: _skipBackHoldAction">
+            </div>
+
+            
+            <div style="-ms-grid-row: 1; -ms-grid-column: 2;"
+                 class="appBarPlayPauseButton"
+                 data-ent-member="_playPauseButton"
+                 data-win-control="MS.Entertainment.UI.Controls.ActionListButton"
+                 data-win-options="{tabIndex: 0}"
+                 data-win-bind="winControl.isDisabled: isDisabled;
+                               winControl.action: _playPauseAction">
+            </div>
+
+            
+            <div style="-ms-grid-row: 1; -ms-grid-column: 3;"
+                data-ent-member="_skipNextButton"
+                data-win-control="MS.Entertainment.UI.Controls.ActionListButton"
+                data-win-options="{tabIndex: 0}"
+                data-win-bind="winControl.isDisabled: skipForwardDisabled;
+                               winControl.action: _skipForwardAction;
+                               winControl.holdAction: _skipForwardHoldAction">
+            </div>
+            
+            
+            <div class="appBarVolumeButton"
+                style="-ms-grid-row: 1; -ms-grid-column: 4;"
+                data-ent-member="_volumeButton"
+                data-win-control="MS.Entertainment.UI.Controls.ActionListButton"
+                data-win-options="{tabIndex: 0}"
+                data-win-bind="removeFromDisplay: volumeVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                               winControl.isDisabled: volumeDisabled;
+                               winControl.action: _volumeAction;
+                               winControl.holdAction: _volumeHoldAction">
+            </div>
+
+            
+            <div style="-ms-grid-row: 1; -ms-grid-column: 5;"
+                data-ent-member="_smartGlassButton"
+                data-win-control="MS.Entertainment.UI.Controls.ActionListButton"
+                data-win-options="{tabIndex: 0, isToggleButton: true}"
+                data-win-bind="removeFromDisplay: smartGlassVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                               winControl.isDisabled: smartGlassDisabled;
+                               winControl.isChecked: smartGlassActive;
+                               winControl.action: _smartGlassAction">
+            </div>
+            
+            
+            <div class="appBarTransportControlsMessage"
+                 style="-ms-grid-row: 1; -ms-grid-column: 1; -ms-grid-column-span: 6;"
+                 data-win-control="MS.Entertainment.UI.Framework.UserControl"
+                 data-win-bind="winControl.visibility : messageVisible"
+                 data-ent-hideanimation="xboxControlsHide"
+                 data-ent-showanimation="xboxControlsShow">
+                <div class="appBarTransportControlsMessageTitle label" 
+                     data-win-control="MS.Entertainment.UI.Controls.Label"
+                     data-win-options="{wrap: false}" 
+                     data-win-bind="winControl.text: messageTitle;">
+                </div>
+                <div class="appBarTransportControlsMessageSubTitle label" 
+                     data-win-control="MS.Entertainment.UI.Controls.Label"
+                     data-win-options="{wrap: false}" 
+                     data-win-bind="winControl.text: messageSubTitle;">
+                </div>
+            </div>
+
+            
+            <div class="appBarTransportControlsXboxContainer" style="-ms-grid-row: 1; -ms-grid-column: 5;"
+                 data-win-bind="removeFromDisplay: xboxVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                <div data-ent-member="_xboxButton"
+                    data-win-control="MS.Entertainment.UI.Controls.ActionListButton"
+                    data-win-options="{tabIndex: 0, isToggleButton: false}"
+                    data-win-bind="removeFromDisplay: xboxVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                                   winControl.isDisabled: xboxDisabled;
+                                   winControl.action: _xboxAction;
+                                   winControl.isChecked: xboxJoined;">
+                </div>
+            </div>
+            
+
+            
+            <div class="appBarPlaybackOptionsMenu"
+                 style="-ms-grid-row: 1; -ms-grid-column: 6;"
+                 data-ent-member="_playbackOptionsContainer">
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

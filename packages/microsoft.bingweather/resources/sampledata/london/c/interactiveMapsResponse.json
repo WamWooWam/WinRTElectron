@@ -1,0 +1,69 @@
+{
+    "MapTypes": [
+        {
+            "Alpha": "1",
+            "Height": "272",
+            "MapBounds": {
+                "East": "16.0",
+                "North": "58.0",
+                "South": "43.0",
+                "West": "-16.0"
+            },
+            "MapSubType": "today",
+            "MapType": "temperature",
+            "PredictionTime": "030713060000",
+            "SnapTime": "030713120000",
+            "Url": "ms-appx:///resources/sampledata/london/c/images/temperature.png",
+            "Width": "364"
+        },
+        {
+            "Alpha": "0.8",
+            "Height": "272",
+            "MapBounds": {
+                "East": "16.0",
+                "North": "58.0",
+                "South": "43.0",
+                "West": "-16.0"
+            },
+            "MapSubType": "forecast",
+            "MapType": "precipitation",
+            "PredictionTime": "030713060000",
+            "SnapTime": "030713120000",
+            "Url": "ms-appx:///resources/sampledata/london/c/images/precipitation.png",
+            "Width": "364"
+        },
+        {
+            "Alpha": "1",
+            "Height": "543",
+            "MapBounds": {
+                "East": "16.0",
+                "North": "58.0",
+                "South": "43.0",
+                "West": "-16.0"
+            },
+            "MapSubType": "observation",
+            "MapType": "satellite",
+            "PredictionTime": "030713090100",
+            "SnapTime": "030713030100",
+            "Url": "ms-appx:///resources/sampledata/london/c/images/satellite.png",
+            "Width": "728"
+        },
+        {
+            "Alpha": "1",
+            "Height": "272",
+            "MapBounds": {
+                "East": "16.0",
+                "North": "58.0",
+                "South": "43.0",
+                "West": "-16.0"
+            },
+            "MapSubType": "forecast",
+            "MapType": "clouds",
+            "PredictionTime": "030713060000",
+            "SnapTime": "030713120000",
+            "Url": "ms-appx:///resources/sampledata/london/c/images/clouds.png",
+            "Width": "364"
+        }
+    ],
+    "RegionName": "europe"
+}

@@ -1,0 +1,1510 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.nowPlayingContainer
+{
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    overflow: hidden;
+    -ms-grid-row-span: 2
+}
+.nowPlayingControl
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+.nowPlayingTileBackground
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0% 0%;
+    left: 0;
+    top: 0;
+    overflow: hidden
+}
+.nowPlayingOverlay
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 50px 1fr auto auto;
+    background-position: 0 0;
+    background-size: cover
+}
+.musicOverlay .nowPlayingOverlay
+{
+    background-image: none
+}
+.nowPlayingBrandingContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 38px auto;
+    -ms-grid-rows: 68px 40px
+}
+@media screen and (min-height: 1200px)
+{
+    .nowPlayingBrandingContainer
+    {
+        -ms-grid-rows: 88px 40px
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .nowPlayingBrandingContainer
+    {
+        -ms-grid-rows: 147px 40px
+    }
+}
+.nowPlayingBranding
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 20px auto;
+    -ms-grid-rows: auto;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start
+}
+.nowPlayingBrandingIcon
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    width: 40px;
+    height: 40px;
+    margin-top: 11px;
+    -ms-grid-row-align: start;
+    unicode-bidi: bidi-override
+}
+.nowPlayingBrandingLabel
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+    margin-top: -24px
+}
+.xboxBranding
+{
+    display: -ms-grid;
+    margin-left: 20px;
+    margin-top: 20px;
+    -ms-grid-columns: auto 12px auto
+}
+.xboxIconContainer {
+    width: 44px;
+    height: 45px;
+    position: relative;
+    opacity: 0
+}
+.xboxTitleContainer {
+    -ms-grid-column: 3;
+    opacity: 0
+}
+.xboxIconMask {
+    position: absolute;
+    width: 42px;
+    height: 43px;
+    overflow: hidden;
+    border-radius: 50%;
+    left: 1px;
+    top: 1px;
+    z-index: 0
+}
+.xboxIconMaskAntialiasing {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0
+}
+.xboxIcon {
+    width: 82px;
+    height: 43px;
+    opacity: 1;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0
+}
+.showBranding .xboxIcon {
+    animation-name: xboxIconTransformEnterKeys;
+    animation-duration: 5500ms;
+    animation-timing-function: cubic-bezier(.16,1,.29,.99);
+    animation-fill-mode: both
+}
+@keyframes xboxIconTransformEnterKeys
+{
+    0%
+    {
+        transform: translateX(0)
+    }
+    27%
+    {
+        transform: translateX(-35px)
+    }
+    100%
+    {
+        transform: translateX(-35px)
+    }
+}
+.hideBranding .xboxIcon
+{
+    animation-name: xboxIconTransformExitKeys;
+    animation-duration: 1000ms;
+    animation-timing-function: cubic-bezier(.71,.01,.84,0);
+    animation-fill-mode: both
+}
+@keyframes xboxIconTransformExitKeys
+{
+    0%
+    {
+        transform: translateX(-35px)
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+.showBranding .xboxIconContainer, .showBranding .xboxTitleContainer
+{
+    animation-name: xboxIconContainerEnterKeys,xboxIconOpacityKeys;
+    animation-duration: 5500ms,5500ms;
+    animation-timing-function: cubic-bezier(.21,.84,.49,.95),linear;
+    animation-fill-mode: both
+}
+.showBranding .xboxTitleContainer
+{
+    animation-name: xboxTitleContainerEnterKeys,xboxIconOpacityKeys
+}
+@keyframes xboxIconContainerEnterKeys
+{
+    0%
+    {
+        transform: translateX(30px)
+    }
+    27%
+    {
+        transform: translateX(0)
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+@keyframes xboxTitleContainerEnterKeys
+{
+    0%
+    {
+        transform: translateX(-30px)
+    }
+    27%
+    {
+        transform: translateX(0)
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+@keyframes xboxIconOpacityKeys
+{
+    0%
+    {
+        opacity: 0
+    }
+    14%
+    {
+        opacity: 1
+    }
+    78%
+    {
+        opacity: 1
+    }
+    100%
+    {
+        opacity: 1
+    }
+}
+.hideBranding .xboxIconContainer, .hideBranding .xboxTitleContainer
+{
+    animation-name: xboxIconContainerExitKeys,xboxIconOpacityExitKeys;
+    animation-duration: 1000ms,1000ms;
+    animation-timing-function: cubic-bezier(.51,.05,.79,.14),linear;
+    animation-fill-mode: both
+}
+.hideBranding .xboxTitleContainer
+{
+    animation-name: xboxTitleContainerExitKeys,xboxIconOpacityExitKeys;
+    animation-duration: 850ms,850ms
+}
+@keyframes xboxIconContainerExitKeys
+{
+    0%
+    {
+        transform: translateX(0)
+    }
+    100%
+    {
+        transform: translateX(0)
+    }
+}
+@keyframes xboxTitleContainerExitKeys
+{
+    0%
+    {
+        transform: translateX(0)
+    }
+    100%
+    {
+        transform: translateX(-30px)
+    }
+}
+@keyframes xboxIconOpacityExitKeys
+{
+    0%
+    {
+        opacity: 1
+    }
+    100%
+    {
+        opacity: 0
+    }
+}
+.nowPlayingOverlay .seekBarControl
+{
+    -ms-grid-row: 3
+}
+.musicOverlay .seekBarControl
+{
+    -ms-grid-row: 2;
+    -ms-grid-row-align: end
+}
+.metadataContainer
+{
+    display: -ms-flexbox;
+    -ms-grid-row-align: end
+}
+.opportunityContainer
+{
+    display: -ms-grid;
+    bottom: 0
+}
+.opportunityContentContainer
+{
+    display: -ms-grid;
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center
+}
+.opportunityIconButton
+{
+    -ms-grid-column: 2
+}
+.opportunityIconButton .iconButton .win-command, .music2 .opportunityIconButton button.iconButton.win-command
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    width: inherit;
+    height: inherit;
+    overflow: visible
+}
+.opportunityIconButton .iconButton .win-commandimage
+{
+    width: inherit;
+    height: inherit
+}
+.opportunityTitle
+{
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: start
+}
+.opportunitySubTitle
+{
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: start;
+    min-height: 60px;
+    max-height: 4.09em
+}
+.dashboardHost .opportunityContainer
+{
+    -ms-grid-columns: 29px 1fr 29px;
+    -ms-grid-rows: 50px 1fr 50px
+}
+.dashboardHost .opportunityContentContainer
+{
+    -ms-grid-rows: 140px auto auto
+}
+.dashboardHost .opportunityIconButton
+{
+    -ms-grid-row: 1;
+    width: 140px;
+    height: 140px
+}
+.dashboardHost .opportunityIconButton.icon-play
+{
+    -ms-transform: translate(-54px)
+}
+.dashboardHost .opportunityIconButton.icon-smartDJ
+{
+    -ms-transform: translate(-25px)
+}
+.dashboardHost .opportunityIconButton.icon-playlist
+{
+    -ms-transform: translate(-31px)
+}
+.dashboardHost .opportunityIconButton button .win-commandring, .dashboardHost .opportunityIconButton button:hover .win-commandring, .dashboardHost .opportunityIconButton button:active .win-commandring, .dashboardHost .opportunityIconButton button:disabled.win-command .win-commandring, .dashboardHost .opportunityIconButton button:disabled.win-command:active .win-commandring
+{
+    width: 140px;
+    height: 140px;
+    border: 0
+}
+.dashboardHost .opportunityIconButton .iconButton .win-commandimage
+{
+    width: inherit;
+    height: inherit
+}
+.dashboardHost .opportunityTitle
+{
+    -ms-grid-row: 2;
+    margin-left: -4px;
+    margin-right: -4px;
+    max-height: 230px;
+    max-width: 635px
+}
+.dashboardHost .opportunitySubTitle
+{
+    -ms-grid-row: 3
+}
+@media screen and (max-height: 800px)
+{
+    .dashboardHost .opportunityContainer
+    {
+        -ms-grid-rows: 0 1fr 30px
+    }
+    .dashboardHost .opportunityTitle
+    {
+        max-height: 155px;
+        margin-top: -20px
+    }
+}
+.immersiveNowPlayingColumn
+{
+    width: 440px
+}
+.immersiveNowPlayingColumn .immersiveFrame
+{
+    -ms-grid-rows: auto 1fr 15px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2)
+}
+.snapped .immersivePlaylist .headingRow, .immersiveNowPlayingColumn .immersiveFrame>.headingRow
+{
+    margin-bottom: 0
+}
+.immersiveNowPlayingColumn .headingRow, .snapped .immersivePlaylist .headingRow
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    border: none
+}
+.immersiveNowPlayingColumn .headingRow
+{
+    width: calc(100% - 75px)
+}
+.snapped .immersivePlaylist .headingRow
+{
+    padding: 0 50px;
+    width: calc(100% - 100px)
+}
+html[dir=ltr] .immersiveNowPlayingColumn .headingRow
+{
+    padding-left: 50px;
+    padding-right: 25px
+}
+html[dir=rtl] .immersiveNowPlayingColumn .headingRow
+{
+    padding-right: 50px;
+    padding-left: 25px
+}
+.immersiveNowPlayingColumn .nowPlayingPlaylistGalleryHeader
+{
+    -ms-grid-columns: 50px 0 1fr 25px
+}
+.snapped .immersivePlaylist .nowPlayingPlaylistGalleryHeader
+{
+    -ms-grid-columns: 50px 0 1fr 50px
+}
+.immersiveNowPlayingColumn .nowPlayingPlaylistGalleryHeader .nowPlayingPlaylistTitle, .snapped .immersivePlaylist .nowPlayingPlaylistGalleryHeader .nowPlayingPlaylistTitle
+{
+    padding: 0
+}
+.immersiveNowPlayingColumn .nowPlayingPlaylistGalleryHeader .smartDJIcon, .snapped .immersivePlaylist .nowPlayingPlaylistGalleryHeader .smartDJIcon
+{
+    display: none
+}
+html[dir=ltr] .immersiveNowPlayingColumn .nowPlayingPlaylistGalleryView.verticalListGutter, html[dir=rtl] .immersiveNowPlayingColumn .nowPlayingPlaylistGalleryView.verticalListGutter, .nowPlayingPlaylistGalleryView.verticalListHost .win-vertical .win-item>div
+{
+    margin: 0
+}
+.immersiveNowPlayingColumn .verticalListHost.verticalListGutter .win-vertical .win-surface
+{
+    width: 100%
+}
+.nowPlayingPlaylistGalleryView.verticalListHost .win-vertical .win-container
+{
+    max-width: 100%;
+    margin: 0;
+    padding: 0
+}
+.nowPlayingPlaylistGalleryView.verticalListHost .verticalListCellMain
+{
+    display: -ms-grid;
+    -ms-grid-columns: 50px 1fr auto 0 0 50px
+}
+.nowPlayingPlaylistGalleryView.verticalListHost .verticalListStatusIcon.iconButton
+{
+    padding: 7px 0
+}
+.nowPlayingPlaylistGalleryView.verticalListHost .win-selectioncheckmark
+{
+    padding-left: 22px;
+    padding-right: 22px
+}
+.nowPlayingPlaylistGalleryView.verticalListHost .inPlaceDetailsItemActions
+{
+    margin-top: 0;
+    -ms-grid-column: 3
+}
+.immersiveDetails .opportunityContainer
+{
+    -ms-grid-columns: 60px 1fr 60px;
+    -ms-grid-rows: 1fr
+}
+.snapped .opportunityContainer, .immersiveDetails .opportunityContainer
+{
+    bottom: 320px;
+    height: 300px
+}
+@media screen and (min-height: 1080px)
+{
+    .snapped .opportunityContainer, .immersiveDetails .opportunityContainer
+    {
+        bottom: 400px;
+        height: 500px
+    }
+}
+.snapped .opportunityContentContainer, .immersiveDetails .opportunityContentContainer
+{
+    -ms-grid-rows: auto auto 40px;
+    -ms-grid-row: 1
+}
+.immersiveDetails .opportunityTitle
+{
+    -ms-grid-row: 1
+}
+.immersiveDetails .opportunitySubTitle
+{
+    -ms-grid-row: 2;
+    margin-left: -4px;
+    margin-right: -4px;
+    max-height: 152px;
+    margin-bottom: 10px
+}
+@media screen and (min-height: 1080px)
+{
+    .immersiveDetails .opportunitySubTitle
+    {
+        max-height: 305px
+    }
+}
+.immersiveDetails .opportunityIconButton
+{
+    -ms-grid-row: 3;
+    width: 40px;
+    height: 40px
+}
+.immersiveDetails .opportunityIconButton .iconButton .win-commandicon.win-commandring
+{
+    width: 40px;
+    height: 40px
+}
+.snapped .opportunityContainer
+{
+    -ms-grid-columns: 30px 1fr 30px;
+    -ms-grid-rows: 1fr;
+    height: 400px
+}
+.snapped .opportunityTitle
+{
+    -ms-grid-row: 1;
+    max-width: 260px
+}
+.snapped .opportunitySubTitle
+{
+    -ms-grid-row: 2;
+    max-height: 213px;
+    margin-left: -4px;
+    margin-right: -4px;
+    max-width: 260px;
+    line-height: normal
+}
+.snapped .opportunityIconButton
+{
+    -ms-grid-row: 3;
+    width: 40px;
+    height: 40px;
+    margin-top: 10px
+}
+.snapped .opportunityIconButton button.win-command.iconButton, .snapped .opportunityIconButton button.win-command.iconButton .win-commandring
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    width: 40px;
+    height: 40px;
+    margin: 0
+}
+.immersiveDetails .opportunityIconButton .iconButton .win-command
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    overflow: visible
+}
+.nowPlayingTransportControls
+{
+    width: 100%;
+    height: auto;
+    top: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 10px;
+    padding-bottom: 30px
+}
+.musicOverlay .nowPlayingTransportControls
+{
+    padding-bottom: 10px
+}
+.nowPlayingLargeArtColorOverlay {
+    height: 100%;
+    width: 100%;
+    opacity: .5;
+    position: absolute
+}
+.nowPlayingLargeArtBlackOverlay
+{
+    height: 100%;
+    width: 100%;
+    opacity: .6;
+    position: absolute
+}
+.nowPlayingLargeArtTransitionOverlay
+{
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition-property: opacity;
+    transition-duration: 4s
+}
+.nowPlayingBackdrop
+{
+    transition-property: opacity;
+    transition-duration: 4s
+}
+.nowPlayingPlaylistGrid
+{
+    display: -ms-grid;
+    -ms-grid-columns: 120px 595px 1fr;
+    -ms-grid-rows: 1fr;
+    width: 100vw;
+    height: 100vh
+}
+.snapped .nowPlayingPlaylistGrid
+{
+    display: -ms-grid;
+    -ms-grid-columns: 0 1fr 0;
+    -ms-grid-rows: 1fr;
+    width: 100vw;
+    height: 100vh
+}
+.nowPlayingPlaylistControl
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    width: 595px;
+    margin-left: 10%;
+    margin-right: 10%
+}
+.snapped .nowPlayingPlaylistControl
+{
+    margin-left: 0;
+    margin-right: 0
+}
+@media screen and (min-height: 1080px)
+{
+    .nowPlayingPlaylistControl
+    {
+        margin-left: 20%;
+        margin-right: 20%
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .nowPlayingPlaylistControl
+    {
+        margin-left: 25%;
+        margin-right: 25%
+    }
+}
+.opacity0
+{
+    opacity: 0
+}
+.opacity10
+{
+    opacity: .1
+}
+.hideNowPlayingButton
+{
+    margin-bottom: 44px;
+    margin-left: 55px;
+    margin-right: 55px
+}
+@media screen and (min-height: 1080px)
+{
+    .hideNowPlayingButton
+    {
+        margin-bottom: 50px
+    }
+}
+.app-newmusic .hideNowPlayingButton {
+    display: none
+}
+.hideNowPlayingButton button.win-command
+{
+    width: 50px;
+    height: 50px;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.hideNowPlayingButton button.win-command .win-commandicon
+{
+    -ms-grid-row: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.hideNowPlayingButton button.win-command .win-commandicon, .hideNowPlayingButton button.win-command .win-commandimage
+{
+    width: 40px;
+    height: 40px
+}
+.hideNowPlayingButton button.win-command .win-label
+{
+    display: none
+}
+.nowPlayingMetadata
+{
+    display: block;
+    margin-bottom: 56px
+}
+@media screen and (min-height: 1080px)
+{
+    .nowPlayingMetadata
+    {
+        margin-bottom: 63px
+    }
+}
+.immersiveDetailsContainer .homeNowPlayingPlayButton, .homeHubNowPlayingTile .nowPlayingPlaylistGrid
+{
+    display: none
+}
+.homeNowPlayingPlayButton button.iconButton.win-command, .homeNowPlayingErrorButton button.iconButton.win-command
+{
+    width: 40px;
+    height: 50px
+}
+.homeNowPlayingPlayButton .iconButton .win-commandicon.win-commandring, .homeNowPlayingErrorButton .iconButton .win-commandicon.win-commandring, .homeNowPlayingPlayButton .iconButton .win-commandicon.win-commandimage, .homeNowPlayingErrorButton .iconButton .win-commandicon.win-commandimage
+{
+    width: 40px;
+    height: 40px
+}
+.musicVisualizationContainer, .musicVisualization, .nowPlayingOverlaysContainer
+{
+    height: 100%
+}
+.video .nowPlayingOverlaysContainer
+{
+    height: 100vh
+}
+.nowPlayingBackground
+{
+    z-index: 0
+}
+.musicVisualizationContainer
+{
+    z-index: 1
+}
+.nowPlayingOverlaysContainer
+{
+    z-index: 3
+}
+.musicVisualization
+{
+    position: relative;
+    overflow: hidden;
+    width: 100%
+}
+.nowPlayingMetadataContainer
+{
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 60px 1fr 60px;
+    -ms-grid-rows: auto auto 60px 30px
+}
+.engage .metadataContainer
+{
+    display: none
+}
+.musicOverlay .nowPlayingMetadataMainTitle, .musicOverlay .nowPlayingMetadataSubTitle, .musicOverlay .nowPlayingMetadataTime
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+.engage .homeNowPlayingPlayButton
+{
+    display: none
+}
+.nowPlayingMetadataMainTitle, .nowPlayingMetadataSubTitle, .nowPlayingMetadataTime, .nowPlayingMetadataShowPlaylistButton
+{
+    -ms-grid-column: 2;
+    margin: 0
+}
+.nowPlayingMetadataMainTitle
+{
+    -ms-grid-row: 1
+}
+.snapped .nowPlayingMetadataMainTitle
+{
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+.nowPlayingMetadataSubTitle
+{
+    -ms-grid-row: 2;
+    margin-top: 2px
+}
+.snapped .nowPlayingMetadataSubTitle
+{
+    text-overflow: ellipsis;
+    overflow: hidden;
+    padding-bottom: 8px
+}
+.nowPlayingMetadataTime
+{
+    -ms-grid-row: 3;
+    direction: ltr
+}
+html[dir=rtl] .nowPlayingMetadataTime
+{
+    -ms-grid-column-align: start
+}
+.nowPlayingMetadataShowPlaylistButton
+{
+    display: none;
+    -ms-grid-row: 3;
+    -ms-grid-column-align: start;
+    margin-top: 30px;
+    margin-bottom: -10px;
+    margin-left: 0;
+    margin-right: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: none
+}
+.snapped .nowPlayingMetadataShowPlaylistButton
+{
+    margin-top: -10px;
+    -ms-grid-row: 4
+}
+.nowPlayingMetadataArt
+{
+    border-width: 2px;
+    border-style: solid;
+    width: 194px;
+    height: 194px
+}
+.nowPlayingPlaylistGallery
+{
+    height: 100%;
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 108px;
+    -ms-grid-rows: auto 30px 1fr 20px
+}
+.immersivePlaylist .nowPlayingPlaylistGallery
+{
+    -ms-grid-rows: 0 20px 1fr 20px
+}
+.snapped .immersivePlaylist .nowPlayingPlaylistGallery
+{
+    -ms-grid-columns: 1fr 75px;
+    -ms-grid-rows: auto 30px 1fr 20px
+}
+.nowPlayingPlaylistGalleryHeader
+{
+    height: 40px;
+    display: -ms-grid;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2;
+    -ms-grid-columns: auto 0 1fr 50px;
+    padding: 0
+}
+.nowPlayingPlaylistNameContainer
+{
+    height: 40px;
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto 15px auto 50px;
+    margin-top: 68px
+}
+.nowPlayingPlaylistNameContainer .nowPlayingPlaylistTitle
+{
+    margin-top: 5px
+}
+.nowPlayingPlaylistGalleryHeader .listDivider
+{
+    margin-top: 11px;
+    margin-bottom: 24px
+}
+.nowPlayingPlaylistGallerySnapped
+{
+    width: 100%;
+    height: 100%
+}
+.nowPlayingPlaylistCloseButton
+{
+    position: relative;
+    margin-bottom: 10px
+}
+.nowPlayingPlaylistGalleryViewSnapped
+{
+    height: 100%;
+    width: 100%;
+    margin: 0
+}
+.nowPlayingPlaylistGalleryViewSnappedFlipView
+{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0
+}
+.nowPlayingPlaylistGalleryView .win-item, .nowPlayingPlaylistGalleryViewSnapped .win-item
+{
+    margin: 0;
+    height: 70px;
+    width: 100%;
+    border-width: 0
+}
+.nowPlayingPlaylistGalleryViewSnapped .win-item
+{
+    height: 80px
+}
+.nowPlayingPlaylistGalleryViewSnapped .nowPlayingPlaylistEntrySubTitle1
+{
+    transform: translateY(-9px)
+}
+.nowPlayingPlaylistGalleryView .win-listview-browse, .nowPlayingPlaylistGalleryViewSnapped .win-listview-browse
+{
+    height: 100%;
+    width: 100%
+}
+.playlistItemTemplate
+{
+    margin: 0;
+    height: 100%;
+    width: 100%
+}
+.playlistItemTemplate .icon.inlineGlyph
+{
+    margin-top: 16px
+}
+.playlistItemTemplate .mediaStatusIconContainer
+{
+    margin-left: 5px
+}
+html[dir=rtl] .playlistItemTemplate .mediaStatusIconContainer
+{
+    margin-left: 0;
+    margin-right: 5px
+}
+.playlistItemTemplateSnappedFlipView
+{
+    text-align: center;
+    height: 145px;
+    width: 320px
+}
+.nowPlayingPlaylistEntryMetadata
+{
+    padding: 10px 0 10px 0;
+    margin: 0 48px 0 0;
+    border-width: 0;
+    border-style: solid
+}
+.snapped .nowPlayingPlaylistEntryMetadata
+{
+    margin: 0 30px 0 0
+}
+.snappedPlaylist .nowPlayingPlaylistEntryMetadata
+{
+    border-style: none
+}
+html[dir=rtl] .nowPlayingPlaylistEntryMetadata
+{
+    margin: 0 0 0 48px
+}
+html[dir=rtl] .snapped .nowPlayingPlaylistEntryMetadata
+{
+    margin: 0 0 0 30px
+}
+.nowPlayingPlaylistEntryMainTitle, .nowPlayingPlaylistEntrySubTitle1
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+.nowPlayingPlaylistGalleryViewSnapped .nowPlayingPlaylistEntryMetadata
+{
+    margin-right: 0
+}
+html[dir=rtl] .nowPlayingPlaylistGalleryViewSnapped .nowPlayingPlaylistEntryMetadata
+{
+    margin-right: 0;
+    margin-left: 20px
+}
+.nowPlayingPlaylistEntryDuration
+{
+    padding: 3px 0 0 0;
+    direction: ltr
+}
+.nowPlayingPlaylistEntryArt
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden
+}
+.homeHubNowPlayingTile
+{
+    position: relative;
+    top: 4px;
+    width: 145px;
+    height: 215px
+}
+html[dir=ltr].music1 .homeHubNowPlayingTile, html[dir=ltr].video .homeHubNowPlayingTile
+{
+    left: 0;
+    margin-right: 5px
+}
+html[dir=rtl].music1 .homeHubNowPlayingTile, html[dir=rtl].video .homeHubNowPlayingTile
+{
+    right: 0;
+    margin-left: 5px
+}
+.homeNowPlayingTile
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0
+}
+.homeNowPlayingTilePoster
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: -ms-grid;
+    -ms-grid-columns: 10px 1fr 10px;
+    -ms-grid-rows: 10px 120px 5px 2px 4px 16px
+}
+.companionHomeNowPlayingTileContainer
+{
+    width: 100%;
+    height: 100%
+}
+.homeNowPlayingTilePoster.companion
+{
+    -ms-grid-columns: 15px 1fr 15px;
+    -ms-grid-rows: 15px 1fr 15px
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible
+{
+    -ms-grid-columns: 30px 1fr 30px;
+    -ms-grid-rows: 20px 1fr 20px
+}
+.homeNowPlayingTilePoster.companion.fullBleedTileVisible
+{
+    display: none
+}
+.homeNowPlayingTilePoster.companion .nowPlayingTileBackground
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 6
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .nowPlayingTileBackground
+{
+    -ms-grid-row-span: 3
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .nowPlayingTileBackground:after
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+.homeNowPlayingTilePoster .homeNowPlayingArtAndTextContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 1fr;
+    -ms-grid-rows: auto 5px 1fr
+}
+.games .homeNowPlayingTilePoster .homeNowPlayingArtAndTextContainer img, .video .homeNowPlayingTilePoster .homeNowPlayingArtAndTextContainer img
+{
+    height: 110px
+}
+.video .homeNowPlayingTilePoster .homeNowPlayingArtAndTextContainer img.tvThumbnailVisible
+{
+    height: 90px
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingArtAndTextContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    -ms-grid-rows: 1fr
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .homeNowPlayingArtAndTextContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    position: absolute;
+    bottom: 21px
+}
+.homeNowPlayingArt
+{
+    width: 145px;
+    overflow: hidden;
+    text-align: center
+}
+.video .homeNowPlayingTilePoster .homeNowPlayingArt.artCollapsed
+{
+    display: none
+}
+.homeNowPlayingTilePoster .homeNowPlayingArt
+{
+    height: 100%;
+    text-align: left;
+    margin-right: 10px
+}
+html[dir=rtl] .homeNowPlayingTilePoster .homeNowPlayingArt
+{
+    margin-right: 0;
+    margin-left: 10px
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingArt
+{
+    width: auto;
+    min-width: 197px;
+    height: auto;
+    text-align: left;
+    margin-right: 15px;
+    overflow: hidden
+}
+html[dir=rtl] .homeNowPlayingTilePoster.companion .homeNowPlayingArt
+{
+    margin-right: 0;
+    margin-left: 15px
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingArt img
+{
+    height: 305px
+}
+.homeNowPlayingArt .artThumbnailContainer
+{
+    width: auto;
+    height: 100%
+}
+.video .homeNowPlayingArt .artThumbnailContainer
+{
+    max-width: 200px
+}
+body:not(.companion) .homeNowPlayingMetadata
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    padding-left: 15px;
+    padding-right: 15px
+}
+.homeNowPlayingMetadataTextContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto 1fr auto;
+    -ms-grid-columns: 1fr
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .homeNowPlayingMetadataTextContainer
+{
+    width: 541px;
+    -ms-grid-rows: auto auto auto
+}
+.homeNowPlayingTilePoster .homeNowPlayingMetadataTitle.label
+{
+    margin-top: 2px;
+    white-space: normal;
+    max-height: 60px
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingMetadataTitle.label
+{
+    margin-top: 16px;
+    max-height: 110px
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .homeNowPlayingMetadataTitle.label
+{
+    margin-top: 4px;
+    max-height: 74px;
+    overflow: hidden
+}
+.homeNowPlayingTilePoster .homeNowPlayingMetadataSubTitle
+{
+    margin-top: 2px;
+    white-space: normal;
+    max-height: 35px
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingMetadataSubTitle
+{
+    margin-top: 13px;
+    max-width: 80%;
+    max-height: 34px
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .homeNowPlayingMetadataSubTitle
+{
+    margin-top: 3px
+}
+.homeNowPlayingTilePoster.companion.musicVisualizationVisible .homeNowPlayingMetadataArtist
+{
+    margin-top: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 51px;
+    max-width: 410px
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingMetadataGenre
+{
+    margin-top: 7px;
+    max-height: 80px
+}
+.blackAlphaGradient
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: linear-gradient(180deg,rgba(0,0,0,0) 35%,rgba(0,0,0,1) 96%)
+}
+.homeNowPlayingTilePoster .seasonEpisodeNumber
+{
+    margin-top: 2px;
+    margin-bottom: 4px
+}
+.homeNowPlayingTilePoster .homeNowPlayingMetadataTimeContainer
+{
+    display: -ms-grid;
+    direction: ltr;
+    -ms-grid-columns: 100%;
+    max-width: 200px
+}
+.companionFullBleedNowPlayingTile .homeNowPlayingTimeAndProgressContainer, .homeNowPlayingTilePoster.companion .homeNowPlayingTimeAndProgressContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: end;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 30px;
+    -ms-grid-rows: auto auto
+}
+.homeNowPlayingTilePoster.companion .homeNowPlayingTimeAndProgressContainer
+{
+    position: relative;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 2
+}
+.companionFullBleedNowPlayingTile .homeNowPlayingMetadataClockAndDuration, .homeNowPlayingTilePoster.companion .homeNowPlayingMetadataClockAndDuration
+{
+    -ms-grid-column-align: end;
+    max-width: 120px;
+    margin-bottom: 21px
+}
+.homeNowPlayingTilePoster .homeNowPlayingMetadataClock
+{
+    -ms-grid-column-align: start
+}
+.homeNowPlayingTilePoster .homeNowPlayingMetadataDuration
+{
+    -ms-grid-column-align: end
+}
+.companionFullBleedNowPlayingTile .bottomProgress, .homeNowPlayingTilePoster .bottomProgress
+{
+    position: relative;
+    width: 100%;
+    max-width: 200px;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    border: none
+}
+.companionFullBleedNowPlayingTile .bottomProgress, .homeNowPlayingTilePoster.companion .bottomProgress
+{
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 2;
+    height: 5px;
+    max-width: none
+}
+.companionFullBleedNowPlayingTile
+{
+    display: none
+}
+.companionFullBleedNowPlayingTile.fullBleedTileVisible
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    width: 100%;
+    height: 100%
+}
+.companionFullBleedNowPlayingTile .contentContainer
+{
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr auto
+}
+.companionFullBleedNowPlayingTile img, .companionFullBleedNowPlayingTile .imageOverlay, .companionFullBleedNowPlayingTile .tiledBackground
+{
+    -ms-grid-row-span: 2
+}
+.companionFullBleedNowPlayingTile .imageOverlay, .companionFullBleedNowPlayingTile .tiledBackground
+{
+    width: 100%;
+    height: 100%
+}
+.companionFullBleedNowPlayingTile .tiledBackground
+{
+    background-size: auto 100%;
+    background-position: center center;
+    background-repeat: repeat-x
+}
+.companionFullBleedNowPlayingTile .textContainer
+{
+    -ms-grid-row-align: end;
+    display: -ms-grid;
+    -ms-grid-columns: 30px 1fr 30px;
+    -ms-grid-rows: auto auto 25px
+}
+.companionFullBleedNowPlayingTile .textContainer .primaryText, .companionFullBleedNowPlayingTile .textContainer .secondaryText
+{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.companionFullBleedNowPlayingTile .textContainer .secondaryText
+{
+    margin-top: 2px;
+    max-width: 410px
+}
+.xboxXenonBackground
+{
+    display: none
+}
+.xboxXenonBackground.xboxXenonBackgroundVisible
+{
+    position: absolute;
+    width: 100%;
+    height: 505px;
+    display: -ms-grid;
+    -ms-grid-columns: 30px 1fr 30px;
+    -ms-grid-rows: 1fr 30px
+}
+@media screen and (min-height: 1080px)
+{
+    .xboxXenonBackground.xboxXenonBackgroundVisible
+    {
+        height: 675px
+    }
+}
+.xboxXenonBackground .textContainer
+{
+    -ms-grid-row-align: end
+}
+.xboxXenonBackground .textContainer .secondaryText
+{
+    margin-top: 2px
+}
+.homeHubNowPlayingLarge
+{
+    position: relative;
+    left: 0;
+    width: 235px;
+    height: 505px
+}
+@media screen and (min-height: 1080px)
+{
+    .homeHubNowPlayingLarge
+    {
+        height: 675px
+    }
+}
+body:not(.companion) .homeHubNowPlayingLarge
+{
+    margin-top: 11px
+}
+.homeNowPlayingTile.large
+{
+    display: -ms-grid;
+    -ms-grid-columns: 20px 195px 20px;
+    -ms-grid-rows: 15px auto 15px 1fr 20px
+}
+.homeNowPlayingTile.large .nowPlayingTileBackground, .homeNowPlayingTile.large .homeNowPlayingMetadata, .homeNowPlayingTile.large .homeNowPlayingMetadataClock, .homeNowPlayingTile.large .nowPlayingOverlay
+{
+    position: relative
+}
+.homeNowPlayingTile.large .homeNowPlayingMetadataClock, .homeNowPlayingTile.large .homeNowPlayingPlayButton, .homeNowPlayingTile.large .homeNowPlayingErrorButton
+{
+    margin-left: 10px;
+    margin-right: 10px
+}
+.homeNowPlayingTile.large .homeNowPlayingArtLarge, .homeNowPlayingTile.large .homeNowPlayingTile .nowPlayingTileBackground
+{
+    width: 195px
+}
+.homeNowPlayingArtLarge
+{
+    height: calc(100% - 8px);
+    overflow: hidden;
+    text-align: center
+}
+.homeNowPlayingTile.large .homeNowPlayingMetadata
+{
+    bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 6px
+}
+.offline .homeNowPlayingTile.large .homeNowPlayingMetadata .win-commandicon.win-commandring
+{
+    margin-left: 8px
+}
+html[dir=rtl] .homeNowPlayingTile.large .homeNowPlayingMetadata .win-commandicon.win-commandring
+{
+    margin-left: 0;
+    margin-right: 8px
+}
+.homeNowPlayingTile.large .homeNowPlayingMetadataTitle
+{
+    margin-top: 6px;
+    padding-bottom: 2px
+}
+.homeNowPlayingTile.large .nowPlayingTileBackground
+{
+    height: 100%
+}
+.homeNowPlayingTile.large .nowPlayingTileBackground.musicVisualizationVisible
+{
+    height: 267px
+}
+.homeNowPlayingTile.large .bottomProgress
+{
+    position: relative;
+    height: 3px;
+    bottom: auto
+}
+.companionNowPlayingTile
+{
+    position: relative;
+    width: 591px;
+    height: 335px;
+    margin-top: 4px
+}
+.shapeVisualizationEngine
+{
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+.shapeVisualizationEngine .spriteContainer, .shapeVisualizationEngine .shapeContainer
+{
+    position: absolute
+}
+.shapeVisualizationEngine .sprite
+{
+    transition-property: -ms-transform;
+    position: absolute;
+    transition-duration: 12500ms;
+    transition-timing-function: cubic-bezier(.2,.97,1,1);
+    animation-name: nodeAnimKeys;
+    animation-fill-mode: both;
+    animation-duration: 12500ms
+}
+.shapeVisualizationEngine .debugCellContainer
+{
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+.shapeVisualizationEngine .debugCell
+{
+    border: 1px solid #666;
+    position: absolute
+}
+.closedCaptionsOn, .mtcButtonOn
+{
+    color: rgba(7,255,0,1) !important
+}
+.closedCaptionsWithTransportControlsShowing
+{
+    opacity: .4
+}
+@keyframes nodeAnimKeys {
+    0% {
+        opacity: 0
+    }
+    45% {
+        opacity: .09
+    }
+    100% {
+        opacity: 0
+    }
+}
+@media screen and (-ms-high-contrast)
+{
+    .blackAlphaGradient
+    {
+        display: none
+    }
+}

@@ -1,0 +1,22 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SeekBar</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/SeekBar.css">
+    
+    <script src="/main_merged.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="videoScrubTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="videoScrubContainer">
+            <div class="videoScrubThumbnail" data-ent-member="videoScrubThumbnail" data-win-bind="hidden : videoScrubActive MS.Entertainment.Utilities.toggleClassNameNegate;">
+            </div>
+            <div class="videoScrubOverlay" data-win-bind="hidden : videoScrubActive MS.Entertainment.Utilities.toggleClassNameNegate;">
+            </div>
+            <div class="scrubPositionText seekBarFont" data-ent-member="scrubPositionText">
+                0:00</div>
+        </div>
+    </div>
+</body>
+</html>

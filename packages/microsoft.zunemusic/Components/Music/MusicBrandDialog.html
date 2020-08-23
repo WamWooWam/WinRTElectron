@@ -1,0 +1,56 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Music Branded Dialog</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="dialogContentTemplate" data-win-control="WinJS.Binding.Template">
+        <span class="musicBrandText text-bodyContent" data-win-bind="innerText: description;" data-win-automationid="wecMessageBoxMessage"></span>
+
+        <div class="musicBrandActionLink" data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-win-bind="
+                winControl.action: actionLink;
+                removeFromDisplay: actionLink MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{wrap: true}">
+        </div>
+    </div>
+
+    <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="musicDialog wecDialog win-ui-dark" data-win-automationid="wecDialog" data-ent-member="musicDialog">
+            
+            <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground">
+            </div>
+
+            
+            <div class="overlayContainer dialogContainerBackground" data-ent-member="overlayContainer" data-ent-areaname="musicBrandDialogContainer" role="dialog" aria-label="">
+                <div class="dialogContainer" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+                    <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();" class="dialogForm">
+                        <div class="dialogContainer-branding">
+                            <div class="dialogXenonTitle">
+                                <div class="icon inlineGlyphSolid dialogXenonTitleIcon acc-preserveBackground icon-xenon" data-ent-member="_xenonTitleIcon">
+                                </div>
+                                <div class="label dialogXenonTitleLabel text-appTitle" data-ent-member="_xenonTitle">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="dialogCaption text-medium" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;" style="-ms-grid-row: 2;">
+                        </div>
+
+                        
+                        <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer" style="-ms-grid-row: 3;">
+                        </div>
+
+                        
+                        <div class="dialogFooter" style="-ms-grid-row: 4;">
+                            <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

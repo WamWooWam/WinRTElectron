@@ -1,0 +1,52 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Error Dialog Template</title>
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="errorDialogTemplate" data-win-control="WinJS.Binding.Template">
+
+            <div class="dialogContent-errorContent">
+
+                
+                <div class="errorContent-subtitle removeFromDisplay" data-win-bind="innerText: subTitle; removeFromDisplay: subTitle MS.Entertainment.Utilities.toggleClassNameOnEmptyString" data-win-automationid="wecErrorDialogSubtitle" data-ent-pagetag-name="ErrorTitle" data-ent-pagetag-value="innerText"></div>
+
+                
+                <div class="errorContent-description" data-win-bind="innerText: description" data-ent-member="errorDialogDescription" data-win-automationid="wecErrorDialogDescription" data-ent-pagetag-name="ErrorDescription" data-ent-pagetag-value="innerText"></div>
+
+                
+                <div class="errorContent-link webLinkContainer voice-logicalTarget" data-ent-event="click: onWebLinkClick;" data-win-bind="voicePhrase: webLinkText;
+                                    voiceConfidence: webLinkVoiceConfidence;
+                                    removeFromDisplay: showLinks MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-voice="{
+                         phrase: getContext('element').voicePhrase,
+                         confidence: getContext('element').voiceConfidence,
+                         targetElement: select('.voice-visualTarget'),
+                    }">
+                    <a class="voice-visualTarget" data-win-bind="textContent: webLinkText" data-ent-event="click: onWebLinkClick; keydown: onWebLinkClick" data-ent-member="errorDialogWebLink" data-win-automationid="wecErrorDialogLink" tabindex="0" target="_blank"></a>
+                </div>
+
+                
+                <div class="errorContent-feedbackLink webLinkContainer voice-logicalTarget" type="button" data-win-bind="
+                    voicePhrase: feedbackLinkText;
+                    voiceConfidence: webLinkVoiceConfidence;
+                    removeFromDisplay: showLinks MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-event="click: onFeedbackLinkClick" data-ent-member="errorDialogFeedbackLink" data-win-automationid="wecErrorDialogFeedbackLink" data-win-voice="{
+                         phrase: getContext('element').voicePhrase,
+                         confidence: getContext('element').voiceConfidence,
+                         targetElement: select('.voice-visualTarget'),
+                    }">
+                    <a data-win-bind="textContent: feedbackLinkText" class="voice-visualTarget" tabindex="0"></a>
+                </div>
+
+                
+                <div class="errorContent-errorCode text-xxSmall" data-win-bind="removeFromDisplay: showErrorCodeInContent MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-member="errorDialogErrorCode">
+                    <div data-win-bind="textContent: errorCode" data-win-automationid="wecErrorDialogErrorCode" data-ent-pagetag-name="ErrorCode" data-ent-pagetag-value="textContent"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>

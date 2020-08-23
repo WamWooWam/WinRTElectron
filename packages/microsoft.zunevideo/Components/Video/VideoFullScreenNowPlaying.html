@@ -1,0 +1,50 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Full screen Now Playing</title>
+    <script src="/Framework/abTestingUtilities.js"></script>
+    <script src="/Framework/abTests.js"></script>
+    <script src="/Controls/Video/VideoPostRoll.js"></script>
+    <script src="/Controls/Video/WatchProgress.js"></script>
+    <script src="/Components/Video/VideoFullScreenNowPlaying.js"></script>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+</head>
+
+<body>
+    
+    
+    
+    <div class="navigationHost fillParent control-videoFullScreenNowPlaying win-ui-dark" data-win-control="MS.Entertainment.Video.VideoFullScreenNowPlaying" data-win-options="{
+            processChildren: true,
+            deferInitialization: true,
+        }" data-win-automationid="videoFullScreenNowPlaying">
+
+        
+        
+        
+        <div data-win-control="MS.Entertainment.UI.Framework.BindingBlock" class="fillParent">
+
+            <div data-ent-member="_container" class="pageContainer">
+                
+                <div class="videoFullScreenNowPlaying-spinner" data-win-bind="removeFromDisplay: showSpinner MS.Entertainment.Utilities.toggleClassNameNegate;
+                                    this['videoFullScreenNowPlaying-spinner']: showSpinner MS.Entertainment.Utilities.toggleClassName">
+                        <div class="videoFullScreenNowPlaying-spinnerContainer">
+                            <progress class="videoFullScreenNowPlaying-progressControl win-ring win-medium">
+                            </progress>
+
+                            <div class="videoFullScreenNowPlaying-progressLabel text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_VIDEO_STARTING_SMOOTH}">
+                            </div>
+                        </div>
+                </div>
+
+                
+                <div class="videoFullScreenNowPlaying-nowPlayingHostContainer nowPlayingContainer win-ui-dark" data-ent-member="_nowPlayingHostContainer"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

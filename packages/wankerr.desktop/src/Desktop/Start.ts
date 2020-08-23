@@ -7,6 +7,7 @@ import { Package, PackageIdentity, PackageProperties } from "./Package";
 import { Application, ApplicationVisualElements, ApplicationSplashScreen } from "./Application";
 import { uuidv4 } from "winrt-node/util";
 import { PackageRegistry } from "./PackageRegistry";
+import { TileGroup } from "./TileGroup";
 
 export class Start {
     private static _start: Start;
@@ -19,7 +20,7 @@ export class Start {
     private showAllElement: HTMLElement;
     private hideAllElement: HTMLElement;
 
-    private tiles: Array<Tile>;
+    private tileGroups: TileGroup[];
     private _testPackage: Package;
 
     constructor() {
@@ -30,18 +31,22 @@ export class Start {
         this.tilesElement = <HTMLElement>document.querySelector(".start-tiles");
         this.showAllElement = <HTMLElement>document.querySelector(".start-show-all-button");
         this.hideAllElement = <HTMLElement>document.querySelector(".start-hide-all-button");
-        this.tiles = [];
+        this.tileGroups = [];
 
         if (this.showAllElement && this.hideAllElement) {
             this.showAllElement.addEventListener("click", this.showAllApps.bind(this));
             this.hideAllElement.addEventListener("click", this.hideAllApps.bind(this));
         }
 
-        let tileElements = this.tilesElement.querySelectorAll(".tile-container");
-        for (let i = 0; i < tileElements.length; i++) {
-            let tile = <HTMLDivElement>tileElements.item(i);
-            this.tiles.push(new Tile(tile));
+        let tileGroupElements = this.tilesElement.querySelectorAll(".start-tile-group");
+        for (let i = 0; i < tileGroupElements.length; i++) {
+            let tileGroupElement = <HTMLDivElement>tileGroupElements.item(i);
+            let tileGroup = new TileGroup(tileGroupElement);
+            this.tileGroups.push(tileGroup);
         }
+
+        window.addEventListener("resize", this.layout.bind(this));
+        this.layout();
 
         let charms = CharmsBar.getInstance();
     }
@@ -120,6 +125,13 @@ export class Start {
     restoreTile(tile: Tile) {
         var tileContainer = tile.tileGroup != null ? tile.tileGroup.querySelector(".tile-group-tiles") : this.tilesElement;
         tileContainer.insertBefore(tile.rootElement, tile.postElement);
+    }
+
+    layout() {
+        for (let i = 0; i < this.tileGroups.length; i++) {
+            const tileGroup = this.tileGroups[i];
+            tileGroup.layout();
+        }
     }
 
     hide() {

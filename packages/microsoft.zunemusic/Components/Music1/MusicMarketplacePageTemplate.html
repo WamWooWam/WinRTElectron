@@ -1,0 +1,502 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html data-ent-waypoint="3">
+    <head>
+        <title>New Music Marketplace Page Template</title>
+        
+        <link rel="stylesheet" type="text/css" href="/styles/images.css">
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MusicMarketplacePageTemplate_merged.js"></script>
+        <script src="/MSAdvertisingJS/ads/ad.js"></script>
+        <script src="/msadvertisingjs/ads/VASTAd.js"></script>
+    </head>
+
+    <body>
+        <div data-ent-templateid="marketplacePageBody" data-win-control="WinJS.Binding.Template">
+
+            
+            
+            
+            <div data-ent-templateid="marketplaceAlbumTemplate" data-win-control="WinJS.Binding.Template" class="template-marketplaceAlbumTemplate">
+                <div class="control-verticalItemTile" data-win-bind="verticalItemTile_explicit: data.isExplicit MS.Entertainment.Utilities.toggleClassName;">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image ent-delayInitialize control-image ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 150, height: 150 },
+                                errorImage: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                addLoadedClassToParent: true }" data-win-bind="winControl.target: data" data-ent-pagecontent="target">
+                    </div>
+
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle">
+                            <span>
+                                
+                                <span class="verticalItemTile-icon icon icon-xSmall ent-delayInitialize ent-control win-disposable" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                                      enableDelayInitialization: true,
+                                      allowAnimations: false,
+                                      preventHideDuringInitialize: true,
+                                      hideSiblingsIfNotEmpty: true,
+                                      hideIfEmpty: true }" data-win-bind="winControl.mediaItem: data WinJS.Binding.oneTime"></span>
+                                <span class="verticalItemTile-inCollectionIcon icon icon-xSmall inCollectionIcon win-disposable control-tooltip" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                        removeFromDisplay: data.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        textContent: MS.Entertainment.UI.Icon.musicInCollection MS.Entertainment.Formatters.formatIcon;
+                                        title: String.id.IDS_MARKETPLACE_TOOLTIP_IN_COLLECTION MS.Entertainment.Formatters.formatStringId;"></span>
+                            </span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="data.name" data-win-bind="textContent: data.name WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: data.artist.name WinJS.Binding.oneTime;"></div>
+                        <div class="content-explicitIndicator control-metadata metadata_explicit" data-win-bind="title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Album_ExplicitIndicator">
+                            <div class="removeFromDisplay" data-win-bind="textContent: data.explicitAriaString WinJS.Binding.oneTime;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            
+            <div data-win-control="WinJS.Binding.Template" data-ent-templateid="marketplaceTopAlbumTemplate" class="templateid-topAlbum">
+                <div class="control-horizontalItemTile horizontalItemTile_numbered" data-win-bind="horizontalItemTile_explicit: data.isExplicit MS.Entertainment.Utilities.toggleClassName;">
+                    <div class="horizontalItemTile-imageContainer">
+                        <div class="horizontalItemTile-imagePlaceholder"></div>
+                        <img class="horizontalItemTile-image control-image ent-delayInitialize acc-preserveBackground ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: data WinJS.Binding.oneTime;" data-win-options="{
+                                desiredImageSize: { width: 75, height: 75 },
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.missingAlbum75,
+                                errorImage: MS.Entertainment.UI.ImagePaths.missingAlbum75,
+                                addLoadedClassToParent: true }" data-ent-pagecontent="target">
+                    </div>
+                    <div class="horizontalItemTile-itemCount text-numeralLarge text-fixedWidthNumerals" data-win-bind="textContent: index MS.Entertainment.Formatters.formatDecimalNumberIncrementOneTime;"></div>
+                    <div class="horizontalItemTile-content">
+                        <div class="content-itemTitle text-itemTitle maxLines-two placeholderItem">
+                            <span>
+                                
+                                <span class="horizontalItemTile-icon icon icon-xSmall ent-delayInitialize ent-control win-disposable" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true,
+                                        hideSiblingsIfNotEmpty: true,
+                                        hideIfEmpty: true }" data-win-bind="winControl.mediaItem: data WinJS.Binding.oneTime"></span>
+                                <span class="horizontalItemTile-inCollectionIcon icon icon-xSmall inCollectionIcon ent-control win-disposable control-tooltip" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                        removeFromDisplay: data.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        textContent: MS.Entertainment.UI.Icon.musicInCollection MS.Entertainment.Formatters.formatIcon;
+                                        title: String.id.IDS_MARKETPLACE_TOOLTIP_IN_COLLECTION MS.Entertainment.Formatters.formatStringId;"></span>
+                            </span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="data.name" data-win-bind="textContent: data.name WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="content-metadata text-metadata maxLines-one" data-win-bind="textContent: data.artist.name WinJS.Binding.oneTime;"></div>
+                        <div class="content-explicitIndicator control-metadata metadata_explicit" data-win-bind="title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Album_ExplicitIndicator">
+                            <div class="removeFromDisplay" data-win-bind="textContent: data.explicitAriaString WinJS.Binding.oneTime;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            
+            <div data-ent-templateid="templateid-marketplaceTopSong" data-win-control="WinJS.Binding.Template" class="templateid-marketplaceTopSong">
+                <div class="control-verticalListItem">
+
+                    <div class="verticalListItem-flexColumns">
+                        <div class="verticalListItem-songTrack text-metadata maxLines-one" data-ent-placeholderdatapath="track" data-win-bind="textContent: index MS.Entertainment.Formatters.formatDecimalNumberIncrement;"></div>
+
+                        <div class="verticalListItem-primaryColumnContainer" data-win-bind="primaryColumnContainer_explicit: data.isExplicit MS.Entertainment.Utilities.toggleClassName;">
+                            <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                            <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    defaultButtonClass: 'iconActionButton'}"></div>
+                            <div class="verticalListItem-explicitIndicator control-metadata metadata_explicit" data-win-bind="title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Track_ExplicitIndicator">
+                                <div class="removeFromDisplay" data-win-bind="textContent: data.explicitAriaString WinJS.Binding.oneTime;"></div>
+                            </div>
+                        </div>
+
+                        <div class="verticalListItem-artistName text-metadata maxLines-one" data-win-bind="textContent: data.artist.name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-albumName text-metadata maxLines-one" data-win-bind="textContent: data.album.name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-durationString text-metadata ui-durationString maxLines-one" data-win-bind="textContent: data.durationString WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-releaseYear text-metadata maxLines-one" data-win-bind="textContent: data.releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                        <div class="verticalListItem-genreName text-metadata maxLines-one" data-win-bind="textContent: data.genreName WinJS.Binding.oneTime"></div>
+                    </div>
+
+                    
+                    <div class="verticalListItem-icons">
+                        <button class="icons-statusIcon icon glyph win-command win-global iconButton ent-delayInitialize ent-control win-disposable acc-keyboardFocusTarget" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MusicMediaStatusIcon" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    preventHideDuringInitialize: true,
+                                    allowAnimations: false,
+                                    showInCollectionState: true,
+                                    showExplicit: true,
+                                    showMediaRights: true }" data-win-bind="winControl.mediaInstance: data WinJS.Binding.oneTime;">
+                            <span class="mediaStatusIconContainer"></span>
+                            <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            
+            
+            <div data-ent-templateid="marketplaceTopArtist" data-win-control="WinJS.Binding.Template" class="templateid-marketplaceTopArtist">
+                <div class="control-verticalItemTile verticalItemTile_topArtist">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image ent-delayInitialize control-image ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: true,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 150, height: 150 },
+                                errorImage: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                addLoadedClassToParent: true }" data-win-bind="winControl.target: data" data-ent-pagecontent="target">
+                    </div>
+
+                    <div class="verticalItemTile-itemCount">
+                        <div class="itemCount-background"></div>
+                        <div class="itemCount-label text-numeralLarge text-fixedWidthNumerals" data-win-bind="textContent: index MS.Entertainment.Formatters.formatDecimalNumberIncrementOneTime;"></div>
+                    </div>
+
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle">
+                            <span>
+                                
+                                <span class="verticalItemTile-icon icon icon-xSmall ent-delayInitialize ent-control win-disposable" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    hideSiblingsIfNotEmpty: true,
+                                    hideIfEmpty: true }" data-win-bind="winControl.mediaItem: data WinJS.Binding.oneTime"></span>
+                                <span class="verticalItemTile-inCollectionIcon icon icon-xSmall inCollectionIcon ent-control win-disposable control-tooltip" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                        removeFromDisplay: data.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        textContent: MS.Entertainment.UI.Icon.musicInCollection MS.Entertainment.Formatters.formatIcon;
+                                        title: String.id.IDS_MARKETPLACE_TOOLTIP_IN_COLLECTION MS.Entertainment.Formatters.formatStringId;"></span>
+                            </span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="data.name" data-win-bind="textContent: data.name WinJS.Binding.oneTime;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            
+            <div data-ent-templateid="artistDiscographyAlbumTemplate" data-win-control="WinJS.Binding.Template" class="templateid-artistDiscographyAlbum">
+                <div class="control-verticalItemTile" data-win-bind="verticalItemTile_explicit: data.isExplicit MS.Entertainment.Utilities.toggleClassName;">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image ent-delayInitialize control-image ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 150, height: 150 },
+                                errorImage: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                addLoadedClassToParent: true }" data-win-bind="winControl.target: data" data-ent-pagecontent="target">
+                    </div>
+
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle">
+                            <span>
+                                
+                                <span class="verticalItemTile-icon icon icon-xSmall ent-delayInitialize ent-control win-disposable" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true,
+                                        hideSiblingsIfNotEmpty: true,
+                                        hideIfEmpty: true }" data-win-bind="winControl.mediaItem: data WinJS.Binding.oneTime"></span>
+                                <span class="verticalItemTile-inCollectionIcon icon icon-xSmall inCollectionIcon ent-control win-disposable control-tooltip" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                        removeFromDisplay: data.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        textContent: MS.Entertainment.UI.Icon.musicInCollection MS.Entertainment.Formatters.formatIcon;
+                                        title: String.id.IDS_MARKETPLACE_TOOLTIP_IN_COLLECTION MS.Entertainment.Formatters.formatStringId;"></span>
+                            </span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="data.name" data-win-bind="textContent: data.name WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: data.releaseYear WinJS.Binding.oneTime;"></div>
+                        <div class="content-explicitIndicator control-metadata metadata_explicit" data-win-bind="title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Album_ExplicitIndicator">
+                            <div class="removeFromDisplay" data-win-bind="textContent: data.explicitAriaString WinJS.Binding.oneTime;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            
+            
+            <div data-ent-templateid="templateid-artistDiscographySongNumbered" data-win-control="WinJS.Binding.Template" class="templateid-artistDiscographySongNumbered">
+                <div class="control-verticalListItem">
+
+                    <div class="verticalListItem-flexColumns">
+                        <div class="verticalListItem-songTrack text-metadata maxLines-one" data-ent-placeholderdatapath="track" data-win-bind="textContent: index MS.Entertainment.Formatters.formatDecimalNumberIncrement;"></div>
+
+                        <div class="verticalListItem-primaryColumnContainer" data-win-bind="primaryColumnContainer_explicit: data.isExplicit MS.Entertainment.Utilities.toggleClassName;">
+                            <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                            <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    defaultButtonClass: 'iconActionButton'}"></div>
+                            <div class="verticalListItem-explicitIndicator control-metadata metadata_explicit" data-win-bind="title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Track_ExplicitIndicator">
+                                <div class="removeFromDisplay" data-win-bind="textContent: data.explicitAriaString WinJS.Binding.oneTime;"></div>
+                            </div>
+                        </div>
+
+                        <div class="verticalListItem-albumName text-metadata maxLines-one" data-win-bind="textContent: data.album.name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-durationString text-metadata ui-durationString maxLines-one" data-win-bind="textContent: data.durationString WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-releaseYear text-metadata maxLines-one" data-win-bind="textContent: data.releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                        <div class="verticalListItem-genreName text-metadata maxLines-one" data-win-bind="textContent: data.genreName WinJS.Binding.oneTime"></div>
+                    </div>
+
+                    
+                    <div class="verticalListItem-icons">
+                        <button class="icons-statusIcon icon glyph win-command win-global iconButton ent-delayInitialize ent-control win-disposable acc-keyboardFocusTarget" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MusicMediaStatusIcon" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    preventHideDuringInitialize: true,
+                                    allowAnimations: false,
+                                    showInCollectionState: true,
+                                    showExplicit: true,
+                                    showMediaRights: true }" data-win-bind="winControl.mediaInstance: data WinJS.Binding.oneTime;">
+                            <span class="mediaStatusIconContainer"></span>
+                            <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            
+            
+            
+            <div data-ent-templateid="templateid-artistDiscographySong" data-win-control="WinJS.Binding.Template" class="templateid-artistDiscographySong">
+                <div class="control-verticalListItem">
+
+                    <div class="verticalListItem-flexColumns">
+                        <div class="verticalListItem-primaryColumnContainer" data-win-bind="primaryColumnContainer_explicit: data.isExplicit MS.Entertainment.Utilities.toggleClassName;">
+                            <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                            <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    defaultButtonClass: 'iconActionButton'}"></div>
+                            <div class="verticalListItem-explicitIndicator control-metadata metadata_explicit" data-win-bind="title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Track_ExplicitIndicator">
+                                <div class="removeFromDisplay" data-win-bind="textContent: data.explicitAriaString WinJS.Binding.oneTime;"></div>
+                            </div>
+                        </div>
+
+                        <div class="verticalListItem-albumName text-metadata maxLines-one" data-win-bind="textContent: data.album.name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-durationString text-metadata ui-durationString maxLines-one" data-win-bind="textContent: data.durationString WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-releaseYear text-metadata maxLines-one" data-win-bind="textContent: data.releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                        <div class="verticalListItem-genreName text-metadata maxLines-one" data-win-bind="textContent: data.genreName WinJS.Binding.oneTime"></div>
+                    </div>
+
+                    
+                    <div class="verticalListItem-icons">
+                        <button class="icons-statusIcon icon glyph win-command win-global iconButton ent-delayInitialize ent-control win-disposable acc-keyboardFocusTarget" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MusicMediaStatusIcon" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    preventHideDuringInitialize: true,
+                                    allowAnimations: false,
+                                    showInCollectionState: true,
+                                    showExplicit: true,
+                                    showMediaRights: true }" data-win-bind="winControl.mediaInstance: data WinJS.Binding.oneTime;">
+                            <span class="mediaStatusIconContainer"></span>
+                            <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            
+            
+            
+            <div class="page-gallery gallery_marketplace" data-win-bind="adsState_enabled: adsEnabled MS.Entertainment.Utilities.toggleClassName">
+                
+                <div class="gallery-header control-navHeader ent-control win-disposable" data-ent-type="marketplaceHeader" data-ent-areaname="marketplacePageHeader" data-win-control="MS.Entertainment.UI.Controls.HeaderControl" data-win-bind="winControl.dataContext: this;
+                    winControl.className: view MS.Entertainment.Utilities.appendClassName;">
+
+                    <div class="navHeader-container">
+                        <button class="navHeader-backButton acc-keyboardFocusTarget" type="button" data-ent-member="_backButton" data-win-control="WinJS.UI.BackButton"></button>
+
+                        <div class="navHeader-title text-navHeaderTitle" data-win-bind="textContent: title"></div>
+                        <div class="navHeader-titleActionButton" data-win-control="WinJS.UI.Tooltip" data-win-bind="winControl.innerHTML: dataContext.headerActions.item0.title;">
+                            <button class="win-focusable ent-delayInitialize icon ent-control" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="
+                                    label: dataContext.headerActions.item0.title MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    textContent: dataContext.headerActions.item0.icon;
+                                    winControl.action: dataContext.headerActions.item0;
+                                    hideFromDisplay: dataContext.headerActions.item0 MS.Entertainment.Utilities.toggleClassNameNegate"></button>
+                        </div>
+
+
+                        <div class="navHeader-buttonsContainer">
+                            
+                            <div class="navHeader-pivotsContainer">
+                                <div class="navHeader-buttons staticColumns removeFromDisplay ent-control win-disposable" role="tablist" data-win-control="MS.Entertainment.UI.Controls.HeaderPivotControl" data-ent-member="_pivotsButtons" data-win-bind="winControl.selectionManager: dataContext.pivotsSelectionManager" data-win-options="{
+                                    itemTemplate: select('.template-navHeaderButtonHost')
+                                }">
+                                    
+                                    
+                                    <div>
+                                        <button class="template-navHeaderButton win-focusable hideFromDisplay" type="button" role="tab" tabindex="-1" data-win-bind="
+                                            selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                            controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                            hideFromDisplay: data.label MS.Entertainment.Utilities.toggleClassNameOnEmptyString">
+                                            <span class="navHeaderButton-text text-metadata" data-win-bind="textContent: data.label"></span>
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button class="template-navHeaderButton win-focusable hideFromDisplay" type="button" role="tab" tabindex="-1" data-win-bind="
+                                            selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                            controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                            hideFromDisplay: data.label MS.Entertainment.Utilities.toggleClassNameOnEmptyString">
+                                            <span class="navHeaderButton-text text-metadata" data-win-bind="textContent: data.label"></span>
+                                        </button>
+                                    </div>
+
+                                    <div>
+                                        <button class="template-navHeaderButton win-focusable hideFromDisplay" type="button" role="tab" tabindex="-1" data-win-bind="
+                                            selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                            controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                            hideFromDisplay: data.label MS.Entertainment.Utilities.toggleClassNameOnEmptyString">
+                                            <span class="navHeaderButton-text text-metadata" data-win-bind="textContent: data.label"></span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                
+                                <div class="navHeader-pivotsDropDown staticColumns removeFromDisplay" data-ent-member="_pivotsDropDown">
+                                    <div class="modifierControl acc-keyboardFocusTarget win-focusable modifierSelectedItem text-filterTitle templatelessModifierControl ent-control win-disposable" role="button" data-win-control="MS.Entertainment.UI.Controls.TemplatelessModifier" data-win-bind="
+                                        winControl.selectionManager: dataContext.pivotsSelectionManager" data-win-options="{
+                                        useSelectionManagerDataSourceAsItems: true,
+                                        allowAnimations: false,
+                                        tabIndex: 0,
+                                        popupStyle: ['theme-lx'],
+                                        identifier: 'primary'}" data-win-automationid="primaryPanelFilter">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="navHeader-sortsContainer" data-ent-member="_sortsContainer">
+                                <div class="navHeader-flexBoxClipper"></div>
+                                
+                                <div class="navHeader-modifiers navHeader-primaryModifiers">
+                                    <div class="modifierControl acc-keyboardFocusTarget win-focusable modifierSelectedItem text-filterTitle templatelessModifierControl ent-control win-disposable" role="button" data-win-control="MS.Entertainment.UI.Controls.TemplatelessModifier" data-win-bind="
+                                        winControl.selectionManager: dataContext.modifierSelectionManager" data-win-options="{
+                                        useSelectionManagerDataSourceAsItems: true,
+                                        tabIndex: 0,
+                                        allowAnimations: false,
+                                        popupStyle: ['theme-lx'],
+                                        identifier: 'primary'}" data-win-automationid="primaryPanelModifier">
+                                    </div>
+                                </div>
+
+                                
+                                <div class="navHeader-modifiers navHeader-secondaryModifiers">
+                                    <div class="modifierControl acc-keyboardFocusTarget win-focusable modifierSelectedItem text-filterTitle templatelessModifierControl ent-control win-disposable" role="button" data-win-control="MS.Entertainment.UI.Controls.TemplatelessModifier" data-win-bind="
+                                        winControl.selectionManager: dataContext.secondaryModifierSelectionManager" data-win-options="{
+                                        useSelectionManagerDataSourceAsItems: true,
+                                        minItems: 2,
+                                        tabIndex: 0,
+                                        allowAnimations: false,
+                                        popupStyle: ['theme-lx'],
+                                        identifier: 'secondary'}" data-win-automationid="secondaryPanelModifier">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="gallery-content">
+                    <div class="content-viewStateControl control-viewStateControl ent-control win-disposable" data-ent-areaname="marketplacePageBody" data-win-control="MS.Entertainment.UI.Controls.ViewStateControlWithAds" data-win-bind="winControl.dataContext: this;
+                            winControl.className: view MS.Entertainment.Utilities.appendClassName" data-win-options="{ hideFromDisplayReadyElement: true }">
+                        <div class="viewStateControl-layoutRoot">
+                            <div class="viewStateControl-notifications removeFromDisplay" data-ent-member="_notificationsElement" data-win-automationid="ViewState_Container">
+
+                                
+                                
+                                
+                                <div data-ent-member="_loadingElement" data-win-automationid="Page_Loading" class="notifications-loadingContainer removeFromDisplay">
+                                    <progress class="win-large win-ring"></progress>
+                                </div>
+
+                                
+                                
+                                
+                                <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="notifications-errorContainer removeFromDisplay">
+                                    <div class="errorContainer-title text-bodyPanelMessagingHeader hideFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.title;
+                                        hideFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    <div class="errorContainer-subTitle text-bodyPanelMessagingSecondary maxLines-one hideFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                        hideFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                </div>
+                            </div>
+
+                            
+                            
+                            
+                            <div class="viewStateControl-content hideFromDisplay" data-ent-member="_readyElement">
+
+                                
+                                
+                                
+                                <div class="control-shrinkAndStayHeaderControl" data-win-control="MS.Entertainment.UI.Controls.ShrinkAndStayHeaderControl">
+
+                                    
+                                    
+                                    
+                                    <div data-win-control="MS.Entertainment.UI.Controls.GalleryHost" class="content-gallery control-galleryHost ent-control win-disposable" data-win-bind="winControl.dataContext: dataContext" data-win-automationid="collectionPageGalleryHost">
+                                        <div class="control-gallery ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ListViewModelGalleryControl" data-win-options="{
+                                                layoutOptions: {
+                                                    header: select('[data-ent-type=marketplaceHeader]')
+                                                },
+                                                shrinkAndStayHeader: true,
+                                                enableDelayInitialization: true,
+                                                focusFirstItemOnPageLoad: true }" data-ent-member="_galleryControl"></div>
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="shrinkAndStayHeaderControl-dropDownHeader">
+                                        <button class="dropDownHeader-backButton acc-keyboardFocusTarget" type="button" data-win-control="WinJS.UI.BackButton"></button>
+                                        <div class="dropDownHeader-title text-navHeaderTitle maxLines-one" data-win-bind="
+                                                textContent: dataContext.title;
+                                                hideFromDisplay: dataContext.title MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+                                        <div class="dropDownHeader-actionButton" data-win-control="WinJS.UI.Tooltip" data-win-bind="winControl.innerHTML: dataContext.headerActions.item0.title;">
+                                            <button class="actionButton-button icon win-focusable ent-delayInitialize ent-control" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="
+                                                        label: dataContext.headerActions.item0.title MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                                        textContent: dataContext.headerActions.item0.icon;
+                                                        winControl.action: dataContext.headerActions.item0;
+                                                        hideFromDisplay: dataContext.headerActions.item0 MS.Entertainment.Utilities.toggleClassNameNegate"></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-ad ent-control win-disposable" data-win-control="MS.Entertainment.UI.Components.Shell.AdControl" data-win-options="{
+                        ad: MS.Entertainment.UI.Components.Shell.AdControl.AdIds.musicDashboard,
+                        template: 'Components/Shell/AdControl.html#templateid-musicAdControl'}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

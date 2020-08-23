@@ -1,0 +1,54 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Snapped Movie Details Template</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/ViewModels/PurchaseFlow/VideoSmartBuyStateEngine.js"></script>
+    <script src="/Components/ImmersiveDetails/SnappedMovieDetails.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../Controls/Controls.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/ImmersiveDetails.css">
+</head>
+<body>
+    <div data-ent-templateid="movieOverviewTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="movieDetailsOverviewSnapped" data-win-control="MS.Entertainment.Pages.SnappedMovieDetailsOverview" data-win-bind="winControl.mediaItem: dataContext.modelItem;" data-win-automationid="movieDetailOverview">
+        </div>
+    </div>
+    <div data-ent-templateid="movieDetailsOverviewTemplate" data-win-control="WinJS.Binding.Template">
+        
+        <div class="snappedDetailsOverview">
+            <div class="snappedDetailsOverviewDetailsBlock">
+                
+                <div class="metaDataContainer">
+                        
+                        <div class="imageContainer">
+                            <div data-win-control="MS.Entertainment.UI.Controls.MediaItemThumbnail" data-win-bind="winControl.mediaItem: mediaItem" data-win-options="{imageWidth: '100px', imageHeight: 'auto', showNotifications: false}">
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="textContainer">
+                            <p data-win-bind="textContent: mediaItem.genre MS.Entertainment.Formatters.formatGenresList;
+                                              removeFromDisplay: mediaItem.genre MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                            <p data-win-bind="textContent: mediaItem.studioName;
+                                              removeFromDisplay: mediaItem.studioName MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                            <p data-win-bind="textContent: mediaItem.duration MS.Entertainment.Formatters.formatDurationFromDate;
+                                              removeFromDisplay: mediaItem.duration MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                            <p data-win-bind="textContent: mediaItem.releaseDate MS.Entertainment.Formatters.formatYearFromDate;
+                                              removeFromDisplay: mediaItem.releaseDate MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                            <p data-win-bind="textContent: mediaItem.rating;
+                                              removeFromDisplay: mediaItem.rating MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                        </div>
+                </div>
+
+                
+                <div class="snappedDetailsOverviewDescription text-bodyContent" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true}" data-win-bind="winControl.text: mediaItem.description;">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

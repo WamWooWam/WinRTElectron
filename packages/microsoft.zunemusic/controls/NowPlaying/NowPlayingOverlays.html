@@ -1,0 +1,84 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NowPlaying</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    
+    <script src="/Controls/NowPlaying/NowPlayingPlaylist.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingMetadata.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingTransportControls.js"></script>
+    <script src="/Controls/ImmersiveLayout.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="nowPlayingTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingOverlaysContainer" data-ent-member="_overlaysContainer" style="display: -ms-grid; -ms-grid-columns: 1fr; -ms-grid-rows: 1fr;">
+
+            <div class="nowPlayingOverlay acc-preserveBackground acc-backgroundTransparent hideFromDisplay" style="-ms-grid-row-align: stretch; -ms-grid-column-align: stretch;" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-member="_nowPlayingOverlayContainer">
+
+                <div class="homeNowPlayingPlayButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-ent-member="_homeNowPlayingPlayButton" data-win-options="{icon: MS.Entertainment.UI.Icon.play, accessibilityStringId: MS.Entertainment.UI.Controls.TransportControls.playButtonStringId}" data-win-bind="removeFromDisplay : playIconVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                <div class="seekBarControl" data-ent-member="_seekBar" data-win-control="MS.Entertainment.UI.Controls.SeekBar" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                </div>
+
+                <div class="nowPlayingTransportControls acc-backgroundTransparent" data-win-control="MS.Entertainment.UI.Controls.NowPlayingTransportControls" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-member="_transportControls" data-win-bind="hidden: seekBarManipulating MS.Entertainment.Utilities.toggleClassName;">
+                </div>
+
+                <div class="metadataContainer" style="-ms-flex-direction: column; -ms-grid-row: 4;" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                    <div data-ent-member="_metadataControl" class="nowPlayingMetadata" data-win-control="MS.Entertainment.UI.Controls.NowPlayingMetadata">
+                    </div>
+                </div>
+            </div>
+
+            <div class="visualizationLayer opportunityContainer" aria-hidden="true" data-ent-member="_opportunityContainer" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+
+                <div class="opportunityContentContainer">
+                    <div class="opportunityIconButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                            winControl.icon: currentOpportunity.icon;
+                            winControl.iconPressed: currentOpportunity.iconPressed;
+                            winControl.hideDefaultRing: currentOpportunity.hideDefaultRing;
+                            winControl.isDisabled: currentOpportunity.action.isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                            WinControl.className: currentOpportunity.iconClassName MS.Entertainment.Utilities.appendClassName;
+                            WinControl.className: currentOpportunity.previousIconClassName MS.Entertainment.Utilities.removeClassName;
+                            removeFromDisplay: currentOpportunity.icon MS.Entertainment.Utilities.toggleClassNameOnEmptyString;" data-win-options="{ tabIndex: -1 }" data-ent-event="click: opportunityButtonClick">
+                    </div>
+
+                    <div class="opportunityTitle text-breakWord" data-win-bind="
+                            textContent: currentOpportunity.title MS.Entertainment.Formatters.formatStringOrEmpty;" data-ent-event="click: opportunityButtonClick">
+                    </div>
+
+                    <div class="opportunitySubTitle text-breakWord" data-win-bind="
+                            textContent: currentOpportunity.subTitle MS.Entertainment.Formatters.formatStringOrEmpty;" data-ent-event="click: opportunityButtonClick">
+                    </div>
+                </div>
+            </div>
+
+            <div class="nowPlayingBrandingContainer">
+                <div class="nowPlayingBranding removeFromDisplay tranFadeShort acc-preserveBackground" dir="ltr" data-ent-member="_brandingContainer" style="-ms-grid-column-align: stretch" data-ent-showanimation="showBranding" data-ent-hideanimation="hideBranding">
+                    <div class="xboxIconContainer" data-ent-showanimation="showBranding" data-ent-hideanimation="hideBranding">
+                        <div class="xboxIconMask">
+                            <div class="xboxIcon acc-preserveBackground acc-backgroundTransparent"></div>
+                        </div>
+                        <div class="xboxIconMaskAntialiasing acc-preserveBackground acc-backgroundTransparent"></div>
+                    </div>
+                    <div class="xboxTitleContainer nowPlayingBrandingLabel text-appTitle" data-ent-member="brandingTitle" data-ent-showanimation="showBranding" data-ent-hideanimation="hideBranding"></div>
+                </div>
+            </div>
+
+            <div class="nowPlayingPlaylistGrid hideFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="trackListFadeOut" data-ent-showanimation="trackListFadeIn" data-ent-member="_playlistContainer">
+                <div data-ent-member="_playlistControl" class="nowPlayingPlaylistControl">
+                </div>
+            </div>
+
+            <div class="hideFromDisplay" style="-ms-grid-row-align: end; -ms-grid-column-align: end;" data-ent-member="_resizeButton" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.IconButton" class="hideNowPlayingButton" data-win-options="{icon: MS.Entertainment.UI.Icon.screenNormal, accessibilityStringId: String.id.IDS_NOW_PLAYING_DETAILS_BUTTON}" data-win-bind="opacity10: seekBarManipulating MS.Entertainment.Utilities.toggleClassName;
+                                    winControl.icon: resizeButtonIcon" data-ent-event="click: hideButtonClick">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,76 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>SeekBar</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/SeekBar.css">
+    
+    <script src="/main_merged.js"></script>
+    
+    <script src="/Controls/TransportControls/VideoScrub.js"></script>
+    <script src="/Controls/TransportControls/TimelineEvent.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="seekBarTemplate" data-win-control="WinJS.Binding.Template">
+
+        <div class="seekBarContainer" data-ent-member="_seekBarContainer">            
+            <div role="slider" data-ent-id="seekBarTrack" data-ent-member="_track" data-win-bind="label: IDS_TRANSPORT_CONTROLS_SEEKBAR_LABEL MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId" class="seekBarTrack seekBarTrackBackground seekBarAnimation acc-keyboardFocusTarget" tabindex="0">
+                    <div data-ent-member="seekBarFill" class="seekBarFill"></div>
+            </div>
+            <div class="seekBarScroller seekBarAnimation hidden" data-ent-member="_scroller" data-win-bind="hidden: thumbVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                
+                <div style="width: 200%; height: 0px;">
+                    <div class="seekBarThumbText seekBarFont seekBarAnimation text-metadata acc-preserveBackground" data-ent-member="_thumbText"></div>
+                    <div class="seekBarThumb seekBarAnimation" data-ent-id="seekBarThumb" data-ent-member="_thumb">
+                    </div>
+                </div>
+            </div>
+
+            <div class="textContainer seekBarAnimation" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="winControl.visibility : metadataVisible;
+                                seekBarOffsetUp: isManipulating MS.Entertainment.Utilities.toggleClassName;">
+                <div class="nowPlayingText seekBarFont label text-metadata" data-ent-member="_nowPlayingText" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="textContent: nowPlayingText;">
+                </div>
+                <div class="videoProgressText">
+                    <div class="seekBarPositionText seekBarFont seekBarAnimation text-metadata text-fixedWidthNumerals" data-win-bind="textContent: seekBarPositionText;">
+                        0:00</div>
+                    <div class="seekBarDurationText seekBarFont seekBarAnimation text-metadata text-fixedWidthNumerals" data-win-bind="textContent: seekBarDurationText;">
+                        /0:00</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="playbackSeekBarTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="control-seekBar" data-ent-member="_seekBarContainer">            
+            <div role="slider" data-ent-id="seekBarTrack" data-ent-member="_track" data-win-bind="label: IDS_TRANSPORT_CONTROLS_SEEKBAR_LABEL MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId" class="seekBar-track">
+                    <div data-ent-member="seekBarFill" class="seekBar-fill"></div>
+            </div>
+
+            <div class="seekBar-metadata" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility : metadataVisible;
+                                seekBarOffsetUp: isManipulating MS.Entertainment.Utilities.toggleClassName;">
+                <div class="metadata-nowPlayingText label text-metadata" data-ent-member="_nowPlayingText" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="textContent: nowPlayingText;">
+                </div>
+
+                <div class="metadata-positionText text-metadata text-fixedWidthNumerals" data-win-bind="textContent: seekBarPositionText;">
+                    0:00
+                </div>
+
+                <div class="metadata-durationText text-metadata text-fixedWidthNumerals" data-win-bind="textContent: seekBarDurationText;">
+                    0:00
+                </div>
+            </div>
+
+            <div class="seekBar-scroller hidden" data-ent-member="_scroller" data-win-bind="hidden: thumbVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                
+                <div class="seekBar-thumbContainer">
+                    <div class="thumbContainer-thumbText text-metadata acc-preserveBackground" data-ent-member="_thumbText"></div>
+
+                    <div class="thumbContainer-thumb acc-keyboardFocusTarget" data-ent-id="seekBarThumb" data-ent-member="_thumb" role="slider" tabindex="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Star Rating Control Template</title>   
+        <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script>
+
+    </head>
+    <body>
+        <div data-ent-templateid="starRatingControlTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="control-starRating" data-win-bind="disabled: disabled MS.Entertainment.Utilities.toggleClassName">
+                
+                <div class="emptyFocusableItem win-focusable" aria-label="" tabindex="-1"></div>
+
+                <div class="mediaRatingControl win-focusable acc-keyboardFocusTarget" data-win-control="WinJS.UI.Rating" data-win-bind="winControl.averageRating: averageRating;
+                                    winControl.userRating: userRating;
+                                    winControl.disabled: disabled" data-win-options="{ tooltipStrings : [] }" data-ent-event="change: _ratingChangedHandler" data-ent-member="_ratingsControl"></div>
+
+                <div class="ratingInfo" data-win-bind="removeFromDisplay: ratingInfoVisible MS.Entertainment.Utilities.toggleClassNameNegate">
+                    <div class="part-totalRatings" data-win-bind="textContent: averageRatingCount MS.Entertainment.Formatters.formatNumberOfRatings;
+                                       removeFromDisplay: userRating MS.Entertainment.Utilities.toggleClassName"></div>
+                    <div class="part-userRatedIndicator" data-win-bind="textContent: String.id.IDS_DETAILS_RATING_USERRATED MS.Entertainment.Formatters.formatStringId;
+                                       removeFromDisplay: userRating  MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

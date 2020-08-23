@@ -1,0 +1,94 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html data-ent-waypoint="1">
+    <head>
+        <title>FUE Template</title>
+
+        
+        <link rel="stylesheet" type="text/css" href="/styles/images.css">
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/FUEPageTemplate_merged.js"></script>
+    </head>
+
+    <body>
+        <div data-ent-templateid="body" data-win-control="WinJS.Binding.Template">
+            <div class="page-firstRun ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.FUEPage" data-win-bind="winControl.dataContext: this">
+
+                <div class="firstRun-layoutRoot">
+                    <div class="firstRun-background">
+                        <img class="firstRun-backgroundImage hideFromDisplay ent-control win-disposable" aria-hidden="true" data-win-control="MS.Entertainment.UI.Framework.ImageControl" data-ent-member="_image1" data-win-bind="winControl.target: dataContext.image1;" data-ent-showanimation="firstRun-backgroundImageShow" data-ent-hideanimation="firstRun-backgroundImageHide" data-win-options="{
+                                imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                desiredImageSize: {width: 1366, height: 768},
+                                defaultImagePath: 'String.empty',
+                                applyImageAsBackground: true }">
+
+                        <img class="firstRun-backgroundImage hideFromDisplay ent-control win-disposable" aria-hidden="true" data-win-control="MS.Entertainment.UI.Framework.ImageControl" data-ent-member="_image2" data-win-bind="winControl.target: dataContext.image2;" data-ent-showanimation="firstRun-backgroundImageShow" data-ent-hideanimation="firstRun-backgroundImageHide" data-win-options="{
+                                imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                desiredImageSize: {width: 1366, height: 768},
+                                defaultImagePath: 'String.empty',
+                                applyImageAsBackground: true }">
+                    </div>
+
+                    <div class="firstRun-content">
+                        <div class="firstRun-title" data-win-bind="innerHTML: title"></div>
+                        <div class="firstRun-subTitle" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_PAGE_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+
+                        <div class="firstRun-actions">
+                            
+                            <div class="actions-action action_collection">
+                                <div class="action-header header_collection">
+                                    <div class="header-icon icon icon-firstRunHeader" data-win-bind="textContent: MS.Entertainment.UI.Icon.mediaMusic MS.Entertainment.Formatters.formatIcon"></div>
+                                    <div class="header-title" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_COLLECTION_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                </div>
+                                <div class="action-body body_collection" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_COLLECTION_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                <button class="action-button button_collection button-primary acc-keyboardFocusTarget" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_COLLECTION_BUTTON MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onCollectionClick"></button>
+                            </div>
+
+                            
+                            <div class="actions-action action_radio" data-win-bind="removeFromDisplay: dataContext.showRadioAndExploreAction MS.Entertainment.Utilities.toggleClassNameNegate">
+                                <div class="action-header header_radio">
+                                    <div class="header-icon icon icon-firstRunHeader" data-win-bind="textContent: MS.Entertainment.UI.Icon.smartDjNoRing MS.Entertainment.Formatters.formatIcon"></div>
+                                    <div class="header-title" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_RADIO_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                </div>
+                                <div class="action-body body_radio" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_RADIO_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                <button class="action-button button_radio button-primary acc-keyboardFocusTarget" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_RADIO_BUTTON MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onRadioClick"></button>
+                            </div>
+
+                            
+                            <div class="actions-action action_explore" data-win-bind="removeFromDisplay: dataContext.showRadioAndExploreAction MS.Entertainment.Utilities.toggleClassNameNegate">
+                                <div class="action-header header_explore">
+                                    <div class="header-icon icon icon-firstRunHeader" data-win-bind="textContent: MS.Entertainment.UI.Icon.explore MS.Entertainment.Formatters.formatIcon"></div>
+                                    <div class="header-title" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_EXPLORE_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                </div>
+                                <div class="action-body body_explore" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_EXPLORE_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                <button class="action-button button_explore button-primary acc-keyboardFocusTarget" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_EXPLORE_BUTTON MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onExploreClick"></button>
+                            </div>
+
+                            
+                            <div class="actions-action action_goPremium removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.showGoPremiumAction MS.Entertainment.Utilities.toggleClassNameNegate">
+                                <div class="action-header header_goPremium">
+                                    <div class="header-icon icon icon-firstRunHeader" data-win-bind="textContent: MS.Entertainment.UI.Icon.explore MS.Entertainment.Formatters.formatIcon"></div>
+                                    <div class="header-title" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_GO_PREMIUM_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                </div>
+                                <div class="action-body body_goPremium" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_GO_PREMIUM_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                <button class="action-button button_goPremium button-primary acc-keyboardFocusTarget" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_GO_PREMIUM_BUTTON MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onGoPremiumClick"></button>
+                            </div>
+
+                            
+                            <div class="actions-action action_oneDrive removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.showOneDriveAction MS.Entertainment.Utilities.toggleClassNameNegate;
+                                  action_goPremiumShown: dataContext.showGoPremiumAction MS.Entertainment.Utilities.toggleClassName">
+                                <div class="action-header header_oneDrive">
+                                    <div class="header-icon icon icon-firstRunHeader" data-win-bind="textContent: MS.Entertainment.UI.Icon.oneDrive MS.Entertainment.Formatters.formatIcon"></div>
+                                    <div class="header-title" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_CLOUDV2_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                </div>
+                                <div class="action-body body_oneDrive" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_CLOUDV2_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                <button class="action-button button_oneDrive button-primary acc-keyboardFocusTarget" data-win-bind="textContent: String.id.IDS_MUSIC_WELCOME_CLOUDV2_BUTTON MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onOneDriveGetMoreInfoClick"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

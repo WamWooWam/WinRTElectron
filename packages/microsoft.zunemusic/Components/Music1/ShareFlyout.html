@@ -1,0 +1,205 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Share Flyout</title>
+    <link rel="stylesheet" type="text/css" href="//Microsoft.WinJS.2.0/css/ui-light.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/ui-overrides.css">
+    <link rel="stylesheet" type="text/css" href="/controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/app.css">
+
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <script src="/WinJS/debugconsole.js"></script>
+    <script src="/framework/idVision.js"></script>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/group_3_merged.js"></script>
+    <script src="/framework/LaunchAppAction.js"></script>
+    <script src="/Components/Music1/CreateWebPlaylistAction.js"></script>
+    <script src="/Components/Music1/MultiArtistTopSongsQuery.js"></script>
+    <script src="/Controls/EditBox.js"></script>
+    <script src="/ViewModels/Music1/ShareTargetViewModel.js"></script>
+    <script src="/ViewModels/Music1/ShareTargetMain.js"></script>
+</head>
+<body>
+    
+    
+    
+    
+    <div data-ent-templateid="navHeaderButtonTemplate" data-win-control="WinJS.Binding.Template" data-win-options="{ disableOptimizedProcessing: true }" class="template-navHeaderButtonHost">
+        <button class="template-navHeaderButton win-focusable hideFromDisplay" type="button" role="tab" tabindex="-1" data-win-bind="
+                hideFromDisplay: data.label MS.Entertainment.Utilities.toggleClassNameOnEmptyString;
+                selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;">
+            <span class="navHeaderButton-text text-metadata" data-win-bind="textContent: data.label"></span>
+        </button>
+    </div>
+      
+    
+    
+    
+    <div data-ent-templateid="shareFlyoutArtistTemplate" data-win-control="WinJS.Binding.Template" class="templateid-shareFlyoutArtistTemplate">
+        <div class="control-verticalListItem verticalListItem_shareFlyout">
+            <div class="verticalListItem-imageContainer acc-preserveBackground">
+                <img class="verticalListItem-image hideFromDisplay ent-delayInitialize acc-preserveBackground control-image ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-options="{
+                        enableDelayInitialization: true,
+                        loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                        hide: MS.Entertainment.Utilities.doNothing,
+                        allowAnimations: false,
+                        preventHideDuringInitialize: true,
+                        applyImageAsBackground: true,
+                        desiredImageSize: { width: 65, height: 65 },
+                        errorImage: '',
+                        defaultImagePath: '' }" data-win-bind="winControl.target: data" data-ent-pagecontent="target">
+            </div>
+            <div class="verticalListItem-artistName text-shareFlyout maxLines-one" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+            <div class="verticalListItem-genreName text-shareFlyout maxLines-one" data-win-bind="textContent: data.genreName WinJS.Binding.oneTime"></div>
+
+            <button class="verticalListItem-removeIcon win-focusable ent-delayInitialize ent-control" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.removeFromList" data-win-options="{enableDelayInitialization: true}" data-win-bind="
+                        label: data.webPlaylistRemoveLabel MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        textContent: MS.Entertainment.UI.Icon.close MS.Entertainment.Formatters.formatIcon;
+                        winControl.actionParameter: this;"></button>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="shareFlyoutSongTemplate" data-win-control="WinJS.Binding.Template" class="templateid-shareFlyoutSongTemplate">
+        <div class="control-verticalListItem verticalListItem_shareFlyout mediatype-song">
+            <div class="verticalListItem-songTitle text-shareFlyout maxLines-one" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+            <div class="verticalListItem-artistName text-shareFlyout maxLines-one" data-win-bind="textContent: data.artist.name WinJS.Binding.oneTime"></div>
+
+            <button class="verticalListItem-removeIcon win-focusable ent-delayInitialize ent-control" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.removeFromList" data-win-options="{enableDelayInitialization: true}" data-win-bind="
+                        label: data.webPlaylistRemoveLabel MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        textContent: MS.Entertainment.UI.Icon.close MS.Entertainment.Formatters.formatIcon;
+                        winControl.actionParameter: this;"></button>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="shareFlyoutAlternateURLTemplate" data-win-control="WinJS.Binding.Template" class="templateid-shareFlyoutAlternateURLTemplate">
+        <div class="template-shareFlyoutAlternateURL">
+            <a class="shareFlyoutAlternateURL-name text-shareFlyout maxLines-one" data-win-bind="textContent: name; href: url"></a>
+            <div class="shareFlyoutAlternateURL-description text-shareFlyout maxLines-one" data-win-bind="textContent: description;"></div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div class="page-gallery gallery_shareFlyout">
+        <div class="gallery-header">
+
+            
+            <div class="header-navHeader control-navHeader ent-control win-disposable" data-ent-areaname="sharePageFlyout" data-win-control="MS.Entertainment.UI.Controls.HeaderControl" data-win-bind="winControl.dataContext: dataContext">
+
+                <div class="navHeader-container">
+
+                    
+                    <div class="navHeader-editBox" data-win-control="MS.Entertainment.UI.Controls.EditBoxWithSubmit" data-win-automationid="ShareFlyoutEditBox" data-win-bind="
+                            winControl.submit: dataContext.onCreatePlaylistInvoke;
+                            winControl.textUpdated: dataContext.updatePendingTitle;
+                            winControl.value: dataContext.title;
+                            winControl.defaultString: dataContext.title;
+                            winControl.disabled: dataContext.isCreatePlaylistDisabled;" data-win-options="{
+                            accessibleNameStringId: String.id.IDS_PLAYLIST_NAME_TITLE,
+                            submitButtonStringId: String.id.IDS_MUSIC_SHARE_CREATE_PLAYLIST_LABEL,
+                            editType: MS.Entertainment.UI.Controls.EditBox.EditTypes.text,
+                            maxLength: MS.Entertainment.UI.Controls.CreatePlaylistFlyout.getMaxTitleLength
+                        }">
+                    </div>
+
+                    
+                    <div class="navHeader-pivots">
+                        <div class="navHeader-buttons staticColumns ent-control win-disposable" role="tablist" data-win-control="MS.Entertainment.UI.Controls.HeaderPivotControl" data-ent-member="_pivotsButtons" data-win-bind="winControl.selectionManager: dataContext.pivotsSelectionManager" data-win-options="{
+                                dividers: false,
+                                itemTemplate: select('.template-navHeaderButtonHost')
+                            }">
+
+                            
+                            
+                            <div>
+                                <button class="template-navHeaderButton win-focusable hideFromDisplay" type="button" role="tab" tabindex="-1" data-win-bind="
+                                    selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    hideFromDisplay: data.label MS.Entertainment.Utilities.toggleClassNameOnEmptyString">
+                                <span class="navHeaderButton-text" data-win-bind="textContent: data.label"></span>
+                                </button>
+                            </div>
+                            <div>
+                                <button class="template-navHeaderButton win-focusable hideFromDisplay" type="button" role="tab" tabindex="-1" data-win-bind="
+                                    selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    hideFromDisplay: data.label MS.Entertainment.Utilities.toggleClassNameOnEmptyString">
+                                <span class="navHeaderButton-text" data-win-bind="textContent: data.label"></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="gallery-content">
+            <div class="content-viewStateControl control-viewStateControl ent-control win-disposable" data-ent-areaname="collectionPageBody" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ useRemoveFromDisplay: false, delayInitializeDataContext: true }">
+
+                <div class="viewStateControl-layoutRoot">
+                    <div class="viewStateControl-notifications" data-win-automationid="ViewState_Container">
+
+                        
+                        
+                        
+                        <div data-ent-member="_loadingElement" data-win-automationid="Page_Loading" class="notifications-loadingContainer shareFlyout-loadingContainer">
+                            <progress class="loadingContainer-ring win-medium win-ring"></progress>
+                            <div class="loadingContainer-textContainer">
+                                <div class="textContainer-primary text-shareFlyout maxLines-one" data-win-bind="textContent: dataContext.loadingHeader;
+                                        removeFromDisplay:dataContext.loadingHeader MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="textContainer-secondary text-shareFlyout maxLines-one" data-win-bind="textContent: String.id.IDS_MUSIC_SHARE_LOADING_FINDING_MUSIC_SUB MS.Entertainment.Formatters.formatStringId;
+                                        removeFromDisplay:dataContext.loadingHeader MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                        <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="notifications-errorContainer shareFlyout-errorContainer">
+                            <div class="textContainer-primary text-shareFlyoutErrorTitle maxLines-one" data-win-bind="textContent:dataContext.viewStateViewModel.title;
+                                     removeFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            <div class="textContainer-secondary text-shareFlyout maxLines-one" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                     removeFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                            <div class="errorContainer-alternateURLContainer" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: dataContext.defaultSites" data-win-options="{ itemTemplate: select('.templateid-shareFlyoutAlternateURLTemplate') }">
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    
+                    
+                    <div class="viewStateControl-content" data-ent-member="_readyElement">
+
+                        
+                        
+                        
+                        <div data-win-control="MS.Entertainment.UI.Controls.GalleryHost" class="control-galleryHost ent-control win-disposable" data-win-options="{delayInitializeChildren: true}" data-win-bind="winControl.dataContext: dataContext" data-win-automationid="collectionPageGalleryHost">
+                            <div class="control-gallery ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ListViewModelGalleryControl" data-win-bind="winControl.listViewModel: dataContext" data-win-options="{ enableDelayInitialization: true }" data-ent-member="_galleryControl"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div class="gallery-footer">
+            
+            <a class="footer-feedbackLink" href="microsoftmusic://feedback/?url=" data-automationid="Share_Feedback_Link" type="button" data-win-bind="textContent: String.id.IDS_MUSIC_SHARE_FEEDBACK MS.Entertainment.Formatters.formatStringId;
+                              href: dataContext.feedbackUrl"></a>
+
+            
+            <div class="footer-partnerImage acc-preserveBackground" data-win-bind="label: IDS_MUSIC_SHARE_PARTNERS_LABEL MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+        </div>
+    </div>
+</body>
+</html>

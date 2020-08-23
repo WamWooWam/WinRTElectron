@@ -1,0 +1,119 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Now Playing Playlist Template</title>
+    <link rel="Stylesheet" type="text/css" href="/styles/Galleries.css">
+    <link rel="stylesheet" type="text/css" href="/styles/NowPlaying.css">
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/Thumbnailbutton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Controls/FlipView.js"></script>
+    <script src="/Components/Playback/Playlist/NewPlaylistOverlay.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingPlaylistMusic1Templates.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingPlaylistMusic2Templates.js"></script>
+    <script src="/Controls/NowPlaying/SnappedNowPlayingPlaylist.js"></script>
+</head>
+<body>
+    
+    <div data-ent-templateid="nowPlayingPlaylistTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingPlaylistGallery" data-ent-member="_root">
+
+            <div class="nowPlayingPlaylistGalleryHeader" data-ent-member="_header">
+                <div class="icon smartDJIcon smartDJNowPlaying removeFromDisplay" style="-ms-grid-column: 1;" data-ent-member="_smartDJButton"></div>
+                <div class="nowPlayingPlaylistTitle text-xxSmall label" style="-ms-grid-column: 3; -ms-grid-row-align: center;" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: false}" data-win-bind="winControl.text: playlistTitle;">
+                </div>
+            </div>
+            
+            
+            <div class="nowPlayingPlaylistGalleryView collectionMusic" data-ent-member="galleryView" data-win-control="MS.Entertainment.UI.Controls.ListViewModelGalleryControl" data-win-options="{
+                    forceInteractive: true,
+                    selectionStyleFilled: true,
+                    delayHydrateLibraryId: true,
+                    backdropColor: 'transparent',
+                    mediaType: 'track',
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.single,
+                    swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.select,
+                    invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                    invokeHelperFactory: MS.Entertainment.UI.Controls.GalleryControlInvocationHelper.create,
+                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                }">
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="snappedPlaylistTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-ent-member="_playlistControl" class="snappedPlaylist" data-win-control="MS.Entertainment.UI.Controls.NowPlayingPlaylistSnapped" data-win-bind="winControl.playbackSession: dataContext;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="nowPlayingPlaylistTemplateSnapped" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingPlaylistGallerySnapped">
+            
+            <div class="nowPlayingPlaylistGalleryViewSnapped collectionMusic" data-ent-member="_galleryView" data-win-control="MS.Entertainment.UI.Controls.ListViewModelGalleryControl" data-win-options="{
+                    forceInteractive: true,
+                    focusFirstItemOnPageLoad: true,
+                    selectionStyleFilled: true,
+                    delayHydrateLibraryId: true,
+                    backdropColor: 'transparent',
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.single,
+                    swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.select,
+                    invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                    invokeHelperFactory: MS.Entertainment.UI.Controls.GalleryControlInvocationHelper.create,
+                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly
+                }">
+            </div>
+        </div>
+    </div>
+    
+    <div data-ent-templateid="nowPlayingPlaylistFlipViewTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionMusic nowPlayingPlaylistGalleryViewSnappedFlipView" data-ent-member="_galleryView" data-win-control="MS.Entertainment.UI.Controls.FlipView" data-win-options="{itemTemplate: '/Controls/NowPlaying/NowPlayingPlaylist.html#playlistItemTemplateSnappedFlipView'}">
+        </div>
+    </div>
+    
+    <div data-ent-templateid="playlistItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="playlistItemTemplate" style="display: -ms-grid; -ms-grid-columns: 30px 1fr; -ms-grid-rows: 1fr">
+            <button class="icon inlineGlyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                    enableDelayInitialization: true,
+                    preventHideDuringInitialize: true,
+                    allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance;" style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-align: center; -ms-grid-row-align: start;">
+                <span class="mediaStatusIconContainer text-xSmall"></span>
+                <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+            </button>
+            <div class="nowPlayingPlaylistEntryMetadata" style="display: -ms-grid; -ms-grid-columns: 1fr 50px; -ms-grid-rows: 1fr 1fr; -ms-grid-column: 2; -ms-grid-column-align: stretch; -ms-grid-row-align: stretch;">
+                <div class="nowPlayingPlaylistEntryMainTitle placeholderItem text-listItem" style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-align: stretch; -ms-grid-row-align: center;" data-win-bind="textContent: name;" data-ent-placeholderdatapath="name"></div>
+                <div class="nowPlayingPlaylistEntrySubTitle1 text-metadata" style="-ms-grid-column: 1; -ms-grid-row: 2; -ms-grid-column-align: stretch; -ms-grid-row-align: center;" data-win-bind="textContent: artistName;"></div>
+                <div class="nowPlayingPlaylistEntryDuration text-metadata" style="-ms-grid-column: 2; -ms-grid-row: 1; -ms-grid-column-align: end; -ms-grid-row-align: center;" data-win-bind="textContent: duration MS.Entertainment.Formatters.formatTrackDuration;"></div>
+            </div>
+        </div>
+    </div>
+    
+    <div data-ent-templateid="playlistItemTemplateSnappedFlipView" data-win-control="WinJS.Binding.Template">
+        <div class="playlistItemTemplateSnappedFlipView">
+            <div class="nowPlayingPlaylistEntryArt" data-win-control="MS.Entertainment.UI.Controls.MediaItemThumbnail" data-win-bind="winControl.mediaItem: instance;" data-win-options="{imageWidth: '145px', imageHeight: '145px'}">
+            </div>
+        </div>
+    </div>
+    
+    <div data-ent-templateid="playlistItemTemplateSnapped" data-win-control="WinJS.Binding.Template">
+        <div class="playlistItemTemplate" style="display: -ms-grid; -ms-grid-columns: 1fr; -ms-grid-rows: 1fr">
+            
+            <div class="nowPlayingPlaylistEntryMetadata" style="display: -ms-grid; -ms-grid-columns: 30px 1fr 20px; -ms-grid-rows: 36px 1fr; -ms-grid-column: 1; -ms-grid-column-align: stretch; -ms-grid-row-align: start;">
+                <button class="icon inlineGlyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                        enableDelayInitialization: true,
+                        preventHideDuringInitialize: true,
+                        allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance;" style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-align: center; -ms-grid-row-align: start;">
+                    <span class="mediaStatusIconContainer text-xSmall"></span>
+                    <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                </button>
+
+                <div class="nowPlayingPlaylistEntryMainTitle text-small text-weightBold" style="-ms-grid-column: 2; -ms-grid-row: 1; -ms-grid-column-align: stretch; -ms-grid-row-align: start;" data-win-bind="textContent: name;"></div>
+                <div class="nowPlayingPlaylistEntrySubTitle1 tranSnappedPlaylistIndent text-metadata" style="-ms-grid-column: 2; -ms-grid-row: 2; -ms-grid-column-align: stretch; -ms-grid-row-align: start;" data-win-bind="textContent: artistName;"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,1096 @@
+{
+  "Bing.Maps.Javascript": {
+    "resources": {
+      "L_AddStop_Text": "add destination",
+      "L_aerialEnableTilt_Text": "show angled view",
+      "L_aerialShowLabels_Text": "show labels",
+      "L_ApproximateLocation_Text": "Location is approximate",
+      "L_AtleastTwoWaypointsRequiredError_Text": "At least two waypoints are required to calculate directions.",
+      "L_AvoidHighways_Text": "Avoid highways",
+      "L_AvoidMotorways_Text": "Avoid motorways",
+      "L_AvoidTolls_Text": "Avoid toll roads",
+      "L_BingLogoTooltip_Text": "Bing Maps",
+      "L_BingSearchGoTooltip_Text": "Search on Bing",
+      "L_BingSearchWatermark_Text": "Search on Bing",
+      "L_BuyTickets_Text": "Buy Tickets from {0}",
+      "L_CalendarDays_Text": "S,M,T,W,T,F,S",
+      "L_CalendarMonths_Text": "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec",
+      "L_CarModeToolTip_Text": "Driving",
+      "L_Clear_Text": "Clear",
+      "L_compassHeadingLabels_Text": "N~|~NE~|~E~|~SE~|~S~|~SW~|~W~|~NW~|",
+      "L_compassNorthLabel_Text": "N",
+      "L_compassTooltip_Text": "Click to pan in any direction",
+      "L_CongestionChargeZoneEnterTwo_Text": "&nbsp,Applies Monday to Friday - 7am to 6pm.",
+      "L_CongestionChargeZoneEnter_Text": "Entering Congestion Charge Zone.",
+      "L_CongestionChargeZoneExit_Text": "Leaving Congestion Charge Zone.",
+      "L_CongestionChargeZoneTooltip_Text": "Entering Congestion Charge Zone. Applies Monday to Friday - 7am to 6pm.",
+      "L_coverageInfoBoxClickBlue_Text": "Click inside the blue area",
+      "L_coverageInfoBoxNotAvailable_Text": "Streetside is not available here",
+      "L_coverageInfoBoxZoomOut_Text": "Zoom out to see Streetside coverage",
+      "L_currentIconTooltip_Text": "Return to last location",
+      "L_DirectionsAddressCityLocation_Text": "Business, address, or landmark",
+      "L_DirectionsDisclaimer_Text": "These directions are subject to the {0} and for informational purposes only. No guarantee is made regarding their completeness or accuracy. Construction projects, traffic, or other events may cause actual conditions to differ from these results. Map and traffic data &copy; {year} NAVTEQ&trade;.",
+      "L_DirectionsGetDirections_Text": "Go",
+      "L_DirectionsMenuReverse_Text": "Reverse",
+      "L_DirectionsMenuRoundtrip_Text": "Round-trip",
+      "L_DirectionsTaskTitle_Text": "Directions",
+      "L_DirectionsTripLengthTooLong_Text": "Driving directions are not available for a route of this length.",
+      "L_DisambiguationGeneralMessageb2b_Text": "By \"{0}\", did you mean:",
+      "L_DisambiguationGeneralMessage_Text": "Did you mean:",
+      "L_DisambiguationMessageFromMbing_Text": "Did you mean from:",
+      "L_DisambiguationMessageToMbing_Text": "Did you mean to:",
+      "L_DistanceUnitFeetShort_Text": "ft",
+      "L_DistanceUnitKm_Text": "km",
+      "L_DistanceUnitMeters_Text": "m",
+      "L_DistanceUnitMilesShortText_Text": "mi",
+      "L_DragSummaryToolTip_Text": "{0} ({1} {2} / {3})",
+      "L_DragToolTip_Text": "Drag to modify your route",
+      "L_DrivingDirectionNotAvailable_Text": "We can't find a driving route for the locations you entered. Check the locations you entered, and try again.",
+      "L_ellipsis_Text": "…",
+      "L_EmptyWaypointError_Text": "One or more waypoints have a missing address or location.",
+      "L_ExceedMaxTransitWaypointLimitError_Text": "The maximum waypoint limit of 2 for transit routes has been exceeded.",
+      "L_ExceedMaxWaypointLimitError_Text": "The maximum waypoint limit of {0} has been exceeded.",
+      "L_exitButton_Text": "Exit",
+      "L_FirstOrLastStoppointIsViaError_Text": "Either the first or last waypoint is a via point, which is not allowed.",
+      "L_GoBackToThePreviousRoute_Text": "go back to the previous route",
+      "L_HideOptions_Text": "hide options",
+      "L_HighConfidenceSingularTeaserMessage_Text": "We found {0} more result for ",
+      "L_HighConfidenceTeaserMessage_Text": "We found {0} more results for ",
+      "L_invalidcredentials_text": "Invalid Credentials. Sign up for a developer account at: <a href=\"http://www.microsoft.com/maps/developers\">http://www.microsoft.com/maps/developers</a>",
+      "L_KmSettings_Text": "Km",
+      "L_loadingError_Text": "There was an error loading streetside.",
+      "L_mapTypeAerialDescription_Text": "A detailed look from above",
+      "L_mapTypeAerialName_Text": "Aerial",
+      "L_mapTypeAutoDescription_Text": "Switches to the best map style as you zoom",
+      "L_mapTypeAutoName_Text": "Automatic",
+      "L_mapTypeBirdsEyeDescription_Text": "A better angle of aerial photography",
+      "L_mapTypeBirdsEyeName_Text": "Bird's eye",
+      "L_mapTypeCollinsBartDescription_Text": "Detailed maps for Greater London",
+      "L_mapTypeCollinsBartName_Text": "London Street Map",
+      "L_mapTypeOrdnanceSurveyDescription_Text": "Maps for outdoor life",
+      "L_mapTypeOrdnanceSurveyName_Text": "Ordnance Survey Map",
+      "L_mapTypeRoadDescription_Text": "A standard road map",
+      "L_mapTypeRoadName_Text": "Road",
+      "L_microsoftcopyright_text": "© {year} Microsoft Corporation",
+      "L_MilesSettings_Text": "Miles",
+      "L_Next_Text": "Next",
+      "L_OneClickDirectionsHeader_Text": "Or, choose a highway:",
+      "L_OrDragTheRoute_Text": "&nbsp,or drag the route",
+      "L_PopupEmail_Text": "Email",
+      "L_Previous_Text": "Previous",
+      "L_privacyReporting_Text": "Report",
+      "L_RemoveVia_Text": "Remove",
+      "L_RerouteBasedOnTraffic_Text": "rerouted based on traffic",
+      "L_RideAndExitAt_Text": "Ride for {0} and exit at",
+      "L_rotateLeftTooltip_Text": "Rotate left",
+      "L_rotateRightTooltip_Text": "Rotate right",
+      "L_RouteErrorServerBusy_Text": "Driving directions are temporarily unavailable. Please try again",
+      "L_RouteOptions_Text": "Options",
+      "L_RouteOverviewDriving_Text": "{0}, {1} driving",
+      "L_RouteOverviewOther_Text": "{0}, {1}",
+      "L_RouteOverviewWalking_Text": "{0}, {1} walking",
+      "L_RouteSummaryLink_Text": "{0} to {1}: ",
+      "L_RouteTimeInCurrentTrafficCondition_Text": "{0} with traffic ",
+      "L_SaveYourDestinationHistory_Text": "Save your destination history",
+      "L_scaleBarFeet_Text": "{num} feet",
+      "L_scaleBarKilometers_Text": "{num} km",
+      "L_scaleBarMeters_Text": "{num} m",
+      "L_scaleBarMiles_Text": "{num} miles",
+      "L_scaleBarYards_Text": "{num} yds",
+      "L_ScheduledArrival_Text": "{0}, arrival",
+      "L_ScheduledDeparture_Text": "{0}, departure",
+      "L_SeeTrafficBasedRoute_Text": "view route based on traffic",
+      "L_SelectDisambiguation_Text": "Select",
+      "L_SendMobile_Text": "Mobile",
+      "L_SendTo_Text": "Send to",
+      "L_ShowOptions_Text": "show options",
+      "L_TakeBus_Text": "Take the bus",
+      "L_TakeTrain_Text": "Take the train",
+      "L_TakeTube_Text": "Take the tube",
+      "L_TermsOfUse_Text": "Microsoft&reg; Service Agreement",
+      "L_TimeAM_Text": "am",
+      "L_TimeInHr_Text": "{0} hr",
+      "L_TimeLessThanOneHr_Text": "{0} min",
+      "L_TimeLessThanOneMin_Text": "< 1 min",
+      "L_TimeMoreThanOneHr_Text": "{0} hr {1} min",
+      "L_TimePM_Text": "pm",
+      "L_TrafficAccident_Text": "Accident",
+      "L_TrafficCongestion_Text": "Congestion",
+      "L_TrafficDisabledVehicle_Text": "Disabled Vehicle",
+      "L_TrafficLegendFast_Text": "Fast",
+      "L_TrafficLegendSlow_Text": "Slow",
+      "L_TrafficMassTransit_Text": "Mass Transit",
+      "L_TrafficMiscellaneous_Text": "Miscellaneous",
+      "L_TrafficNotAvailableInOblique_Text": "Traffic isn't available in bird's eye view",
+      "L_TrafficOtherNews_Text": "Other News",
+      "L_TrafficPlannedEvent_Text": "Planned Event",
+      "L_TrafficPopupCenterMapHere_Text": "Center map here",
+      "L_TrafficPopupDateFormat_Text": "M/d/yyyy h:mm tt",
+      "L_TrafficPopupDescription_Text": "Description",
+      "L_TrafficPopupDetour_Text": "Detour",
+      "L_TrafficPopupEstEndTime_Text": "Est. end time",
+      "L_TrafficPopupLane_Text": "Lane",
+      "L_TrafficPopupLocation_Text": "Location",
+      "L_TrafficPopupSeverity_Text": "Severity",
+      "L_TrafficPopupStartTime_Text": "Start time",
+      "L_TrafficPopupZoomToIncident_Text": "Zoom to incident",
+      "L_TrafficRoadHazard_Text": "Road Hazard",
+      "L_TrafficScheduledConstruction_Text": "Scheduled Construction",
+      "L_TrafficSeverityMinor_Text": "Minor",
+      "L_TrafficSeverityModerate_Text": "Moderate",
+      "L_TrafficSeveritySerious_Text": "Serious",
+      "L_TrafficUnavailable_Text": "Traffic is temporarily unavailable",
+      "L_TrafficUnScheduledContruction_Text": "Unscheduled Construction",
+      "L_TrafficUpdatedTimeFormat_Text": "HH:mm:ss",
+      "L_TrafficUpdated_Text": "Updated",
+      "L_TrafficWeather_Text": "Weather",
+      "L_TrafficZoomIn_Text": "Zoom in for traffic details",
+      "L_TransitCostWithCurrency_Text": "${0}",
+      "L_TransitDefaultTitle_Text": "Transit Schedule",
+      "L_TransitDirectionNoAvailableTransitTrip_Text": "We can't find a transit route for the locations you entered. Check the locations you entered or try a different date/time.",
+      "L_TransitDirectionNoSolution_Text": "We can't find a transit route for the locations you entered. Check the locations you entered, and try again.",
+      "L_TransitDirectionNotAvailable_Text": "We can't find a transit route for the locations you entered. Check the locations you entered, and try again.",
+      "L_TransitDirectionOutOfTransitBounds_Text": "We can't find a transit route between the locations you entered.",
+      "L_TransitDirectionTooClose_Text": "The transit trip is too short. Try using walking directions instead.",
+      "L_TransitDisclaimer_Text": "These directions are subject to the Microsoft® Service Agreement and for informational purposes only. No guarantee is made regarding their completeness or accuracy. Contains public sector information licensed under the Open Government License v.1.0.",
+      "L_TransitExcludeAirLineLabel_Text": "Exclude Air Line",
+      "L_TransitExcludeBulletTrain_Text": "Exclude Bullet Train",
+      "L_TransitExcludeExpressLabel_Text": "Exclude Express Train",
+      "L_TransitIncludeBulletTrain_Text": "Include Bullet Train",
+      "L_TransitItineraryTitle_Text": "TRANSIT ROUTE {0}",
+      "L_TransitModeToolTip_Text": "Transit",
+      "L_TransitNotAvailableWarning_Text": "There's no transit information for this location. Please choose another method of transportation.",
+      "L_TransitOptionArriveBy_Text": "Arrive by",
+      "L_TransitOptionDepartAt_Text": "Depart at",
+      "L_TransitOptionLastTrain_Text": "Last train",
+      "L_TransitOptionsTitle_Text": "ROUTES",
+      "L_TransitRouteErrorServerBusy_Text": "Transit directions are temporarily unavailable. Please try again",
+      "L_transitRouteLabel_Text": "Route: ",
+      "L_transitRoutesLabel_Text": "Routes: ",
+      "L_TransitRouteToolTipTransfer_Text": "Transfer: {0}",
+      "L_TransitRouteToolTipWalking_Text": "Walking: {0} ",
+      "L_TransitScheduleDeparts_Text": "DEPARTS",
+      "L_TransitScheduleRoutes_Text": "ROUTE",
+      "L_TransitScheduleUnavailable_Text": "Schedule information is unavailable at this stop for the time specified.",
+      "L_TransitSortByLabel_Text": "Sort by:",
+      "L_TransitSortByOptionMinimizeMoney_Text": "Cheapest fare",
+      "L_TransitSortByOptionMinimizeTime_Text": "Quickest route",
+      "L_TransitSortByOptionMinimizeTransfers_Text": "Fewest transfers",
+      "L_TransitStopFormat_Text": "{0} - {1}",
+      "L_TransitSummaryStartEndTime_Text": "{0} - {1}",
+      "L_TransitTrainLineCom_Text": "www.thetrainline.com",
+      "L_TransitTripLengthTooLong_Text": "Transit directions are not available for a route of this length.",
+      "L_TransitUpdateSchedule_Text": "Update",
+      "L_TubeModeToolTip_Text": "Transport: Now with Tube!",
+      "L_VenueMapExplorerTooltip_Text": "View {0} Map",
+      "L_VenueMaps_Directory_Text": "DIRECTORY",
+      "L_VenueMaps_HideCategories_Text": "Hide  Categories",
+      "L_VenueMaps_Other_Text": "Other",
+      "L_VenueMaps_ShowCategories_Text": "Show Categories",
+      "L_VenueMaps_SortByAlpha_Text": "Businesses A-Z",
+      "L_VenueMaps_SortByLevel_Text": "Level",
+      "L_VenueMaps_ToolTip_Text": "View {0} map",
+      "L_VersionMismatchMessage_Text": "A new version of Bing Maps SDK is available",
+      "L_VersionNotSupportedMessage_Text": "This version of Bing Maps SDK is not supported",
+      "L_ViaList_Text": "via {0} ",
+      "L_viewAllButton_Text": "view all businesses",
+      "L_WalkingDirectionNotAvailable_Text": "We can't find a walking route for the locations you entered. Check the locations you entered, and try again.",
+      "L_WalkingDirectionsSidewalkWarning_Text": "Caution:  This route may not contain sidewalks or pedestrian paths.",
+      "L_WalkingDirectionsTripLengthTooLong_Text": "Walking directions are not available for a route of this length. Try driving directions instead.",
+      "L_WalkingDistanceFrom_Text": "Walk {0} ",
+      "L_WalkingInstruction_Text": "to {0}",
+      "L_WalkingModeToolTip_Text": "Walking",
+      "L_WalkingRouteErrorServerBusy_Text": "Walking directions are temporarily unavailable. Please try again",
+      "L_WaypointDisambiguationError_Text": "One or more waypoints need to be disambiguated.",
+      "L_WaypointViaEro_Text": "Via ",
+      "L_WebsiteLink_Text": "Website",
+      "L_world_Text": "World",
+      "L_zoomInTooltip_Text": "Zoom in",
+      "L_zoomOutTooltip_Text": "Zoom out",
+      "L_zoomSliderTooltip_Text": "Move slider to zoom in or out"
+    }
+  },
+  "Files": {
+    "AppConfiguration.xml": "AppConfiguration.xml",
+    "AppFeatures.xml": "AppFeatures.xml",
+    "common": {
+      "ArticleReader": {
+        "css": {
+          "Content.css": "common\\ArticleReader\\css\\Content.css"
+        },
+        "html": {
+          "ArticleReaderPage.html": "common\\ArticleReader\\html\\ArticleReaderPage.html"
+        }
+      },
+      "css": {
+        "common.css": "common\\css\\common.css",
+        "delayedCommon.css": "common\\css\\delayedCommon.css",
+        "dynamicpano.css": "common\\css\\dynamicpano.css",
+        "photosynthview.css": "common\\css\\photosynthview.css"
+      },
+      "DynamicPano": {
+        "html": {
+          "DynamicPano.html": "common\\DynamicPano\\html\\DynamicPano.html",
+          "PaywallCard.html": "common\\DynamicPano\\html\\PaywallCard.html"
+        }
+      },
+      "EntityCollection": {
+        "html": {
+          "EntityCollectionFragment.html": "common\\EntityCollection\\html\\EntityCollectionFragment.html"
+        },
+        "providers": {
+          "RichBrowse": {
+            "EntityCollection.html": "common\\EntityCollection\\providers\\RichBrowse\\EntityCollection.html"
+          }
+        }
+      },
+      "FeaturedCluster": {
+        "html": {
+          "FeaturedClusterTemplates.html": "common\\FeaturedCluster\\html\\FeaturedClusterTemplates.html"
+        }
+      },
+      "fonts": {
+        "AppExSymbol-Regular.ttf": "Common\\fonts\\AppExSymbol-Regular.ttf"
+      },
+      "Hero": {
+        "html": {
+          "HeroLayouts.html": "common\\Hero\\html\\HeroLayouts.html"
+        }
+      },
+      "html": {
+        "bdiReportFragment.html": "Common\\html\\bdiReportFragment.html",
+        "configurationFragment.html": "Common\\html\\configurationFragment.html",
+        "feedbackFragment.html": "Common\\html\\feedbackFragment.html",
+        "platform.html": "Common\\html\\platform.html",
+        "PrivacySettings.html": "Common\\html\\PrivacySettings.html"
+      },
+      "images": {
+        "app_update.png": "Common\\images\\app_update.png",
+        "beak_nav_asset.png": "Common\\images\\beak_nav_asset.scale-100.png",
+        "customizationItemLarge.png": "Common\\images\\customizationItemLarge.png",
+        "customizationItemMedium.png": "Common\\images\\customizationItemMedium.png",
+        "customizationItemSmall.png": "Common\\images\\customizationItemSmall.png",
+        "imagePlaceHolder_dark.svg": "Common\\images\\imagePlaceHolder_dark.svg",
+        "imagePlaceHolder_light.svg": "Common\\images\\imagePlaceHolder_light.svg",
+        "key.svg": "Common\\images\\key.svg",
+        "keyHCBlack.svg": "Common\\images\\keyHCBlack.svg",
+        "keyHCWhite.svg": "Common\\images\\keyHCWhite.svg",
+        "mic.png": "Common\\images\\mic.png",
+        "Microsoft_Logo.png": "Common\\images\\Microsoft_Logo.png",
+        "Pattern_15x15.png": "Common\\images\\Pattern_15x15.png",
+        "snap_placeholder.png": "Common\\images\\snap_placeholder.png",
+        "tilePlaceHolder_dark.svg": "Common\\images\\tilePlaceHolder_dark.svg",
+        "tilePlaceHolder_light.svg": "Common\\images\\tilePlaceHolder_light.svg",
+        "update.png": "Common\\images\\update.png",
+        "world_dark.png": "Common\\images\\world_dark.png",
+        "wsj_key.svg": "Common\\images\\wsj_key.svg"
+      },
+      "js": {
+        "ads.js": "common\\js\\ads.js",
+        "articlereader.js": "common\\js\\articlereader.js",
+        "autosuggest.js": "common\\js\\autosuggest.js",
+        "collection.js": "common\\js\\collection.js",
+        "controls.js": "common\\js\\controls.js",
+        "dynamicArticleReader.js": "common\\js\\dynamicArticleReader.js",
+        "dynamicpano.js": "common\\js\\dynamicpano.js",
+        "dynamicPanoDataProvider.js": "common\\js\\dynamicPanoDataProvider.js",
+        "ecv.js": "common\\js\\ecv.js",
+        "feedbackFragment.js": "common\\js\\feedbackFragment.js",
+        "filters.js": "common\\js\\filters.js",
+        "mediaplayback.js": "common\\js\\mediaplayback.js",
+        "navigation.js": "common\\js\\navigation.js",
+        "newscluster.js": "common\\js\\newscluster.js",
+        "photosynthview.js": "common\\js\\photosynthview.js",
+        "search.js": "common\\js\\search.js",
+        "services.js": "common\\js\\services.js",
+        "slideshow.js": "common\\js\\slideshow.js",
+        "table.js": "common\\js\\table.js",
+        "uiconfig.js": "common\\js\\uiconfig.js",
+        "utilities.js": "common\\js\\utilities.js",
+        "utils.js": "common\\js\\utils.js"
+      },
+      "MediaPlayback": {
+        "html": {
+          "MediaPlayback.html": "common\\MediaPlayback\\html\\MediaPlayback.html",
+          "ThirdPartyPlayerPage.html": "common\\MediaPlayback\\html\\ThirdPartyPlayerPage.html"
+        },
+        "Resources": {
+          "black.mp4": "common\\MediaPlayback\\Resources\\black.mp4",
+          "GripperHover_fullscreen.svg": "common\\MediaPlayback\\Resources\\GripperHover_fullscreen.svg",
+          "GripperHover_inline.svg": "common\\MediaPlayback\\Resources\\GripperHover_inline.svg",
+          "GripperPressed_fullscreen.svg": "common\\MediaPlayback\\Resources\\GripperPressed_fullscreen.svg",
+          "GripperPressed_inline.svg": "common\\MediaPlayback\\Resources\\GripperPressed_inline.svg",
+          "GripperRest_fullscreen.svg": "common\\MediaPlayback\\Resources\\GripperRest_fullscreen.svg",
+          "GripperRest_inline.svg": "common\\MediaPlayback\\Resources\\GripperRest_inline.svg"
+        }
+      },
+      "PhotosynthView": {
+        "PhotosynthView.html": "common\\PhotosynthView\\PhotosynthView.html"
+      },
+      "SlideShow": {
+        "html": {
+          "GenericSlideshowPage.html": "common\\SlideShow\\html\\GenericSlideshowPage.html",
+          "ImageModuleTemplates.html": "common\\SlideShow\\html\\ImageModuleTemplates.html",
+          "SlideshowPage.html": "common\\SlideShow\\html\\SlideshowPage.html"
+        }
+      },
+      "Table": {
+        "html": {
+          "TableTemplates.html": "common\\Table\\html\\TableTemplates.html"
+        }
+      },
+      "WebPicks": {
+        "html": {
+          "GroupPage.html": "common\\WebPicks\\html\\GroupPage.html",
+          "Templates.html": "common\\WebPicks\\html\\Templates.html"
+        }
+      },
+      "WebWorkers": {
+        "PlatformWebWorker.js": "Common\\WebWorkers\\PlatformWebWorker.js"
+      }
+    },
+    "Configuration": {
+      "configuration.sqlite": "Configuration\\configuration.sqlite"
+    },
+    "css": {
+      "default.css": "css\\default.css",
+      "historical.css": "css\\historical.css",
+      "interactivemaps.css": "css\\interactivemaps.css",
+      "mapsflyout.css": "css\\mapsflyout.css",
+      "secondaryPanos.css": "css\\secondaryPanos.css",
+      "skipano.css": "css\\skipano.css",
+      "skiResortsECV.css": "css\\skiResortsECV.css",
+      "tianQiStyles.css": "css\\tianQiStyles.css"
+    },
+    "default.html": "default.html",
+    "html": {
+      "aboutFlyout.html": "html\\aboutFlyout.html",
+      "delayedTemplate.html": "html\\delayedTemplate.html",
+      "mapsTemplate.html": "html\\mapsTemplate.html",
+      "secondaryTemplates.html": "html\\secondaryTemplates.html",
+      "settingsFlyout.html": "html\\settingsFlyout.html",
+      "templates.html": "html\\templates.html"
+    },
+    "images": {
+      "autoSuggest": {
+        "search.png": "images\\autoSuggest\\search.png",
+        "searchCharm.png": "images\\autoSuggest\\searchCharm.png",
+        "searchCharmSki.png": "images\\autoSuggest\\searchCharmSki.png"
+      },
+      "badge.png": "images\\badge.scale-100.png",
+      "heroraindrop.png": "images\\heroraindrop.png",
+      "largelogo.png": "images\\largelogo.scale-100.png",
+      "logo.png": "images\\logo.scale-100.png",
+      "mapsFlyout": {
+        "a_clear.gif": "images\\mapsFlyout\\a_clear.gif",
+        "dopplerlegend.png": "images\\mapsFlyout\\dopplerlegend.png",
+        "preciplegend.png": "images\\mapsFlyout\\preciplegend.png"
+      },
+      "panoramaBackgrounds": {
+        "11.jpg": "images\\panoramaBackgrounds\\11.jpg"
+      },
+      "providerLogos": {
+        "accuweather.png": "images\\providerLogos\\accuweather.png",
+        "foreca.png": "images\\providerLogos\\foreca.png",
+        "holidayWeather.png": "images\\providerLogos\\holidayWeather.png",
+        "kweather.png": "images\\providerLogos\\kweather.png",
+        "wdt.png": "images\\providerLogos\\wdt.png",
+        "weather2travel.png": "images\\providerLogos\\weather2travel.png",
+        "weatherdotcom.png": "images\\providerLogos\\weatherdotcom.png",
+        "weathertrends.png": "images\\providerLogos\\weathertrends.png",
+        "wolframalpha.png": "images\\providerLogos\\wolframalpha.png"
+      },
+      "raindrop.png": "images\\raindrop.png",
+      "skiElevationTriangles.svg": "images\\skiElevationTriangles.svg",
+      "skiResorts": {
+        "genericNearbyResortImage.jpg": "images\\skiResorts\\genericNearbyResortImage.jpg"
+      },
+      "skycodes": {
+        "30x30": {
+          "1.png": "images\\skycodes\\30x30\\1.png",
+          "11.png": "images\\skycodes\\30x30\\11.png",
+          "12.png": "images\\skycodes\\30x30\\12.png",
+          "13_41_46.png": "images\\skycodes\\30x30\\13_41_46.png",
+          "17.png": "images\\skycodes\\30x30\\17.png",
+          "19.png": "images\\skycodes\\30x30\\19.png",
+          "19b.png": "images\\skycodes\\30x30\\19b.png",
+          "19c.png": "images\\skycodes\\30x30\\19c.png",
+          "1b.png": "images\\skycodes\\30x30\\1b.png",
+          "20.png": "images\\skycodes\\30x30\\20.png",
+          "20b.png": "images\\skycodes\\30x30\\20b.png",
+          "20c.png": "images\\skycodes\\30x30\\20c.png",
+          "23.png": "images\\skycodes\\30x30\\23.png",
+          "25.png": "images\\skycodes\\30x30\\25.png",
+          "25b.png": "images\\skycodes\\30x30\\25b.png",
+          "26.png": "images\\skycodes\\30x30\\26.png",
+          "27.png": "images\\skycodes\\30x30\\27.png",
+          "27b.png": "images\\skycodes\\30x30\\27b.png",
+          "29.png": "images\\skycodes\\30x30\\29.png",
+          "29b.png": "images\\skycodes\\30x30\\29b.png",
+          "31.png": "images\\skycodes\\30x30\\31.png",
+          "31b.png": "images\\skycodes\\30x30\\31b.png",
+          "34_33.png": "images\\skycodes\\30x30\\34_33.png",
+          "40.png": "images\\skycodes\\30x30\\40.png",
+          "43.png": "images\\skycodes\\30x30\\43.png",
+          "44.png": "images\\skycodes\\30x30\\44.png",
+          "5.png": "images\\skycodes\\30x30\\5.png",
+          "7.png": "images\\skycodes\\30x30\\7.png",
+          "9.png": "images\\skycodes\\30x30\\9.png",
+          "9b.png": "images\\skycodes\\30x30\\9b.png",
+          "9c.png": "images\\skycodes\\30x30\\9c.png"
+        },
+        "48x48": {
+          "1.png": "images\\skycodes\\48x48\\1.png",
+          "11.png": "images\\skycodes\\48x48\\11.png",
+          "12.png": "images\\skycodes\\48x48\\12.png",
+          "13_41_46.png": "images\\skycodes\\48x48\\13_41_46.png",
+          "17.png": "images\\skycodes\\48x48\\17.png",
+          "19.png": "images\\skycodes\\48x48\\19.png",
+          "19b.png": "images\\skycodes\\48x48\\19b.png",
+          "19c.png": "images\\skycodes\\48x48\\19c.png",
+          "1b.png": "images\\skycodes\\48x48\\1b.png",
+          "20.png": "images\\skycodes\\48x48\\20.png",
+          "20b.png": "images\\skycodes\\48x48\\20b.png",
+          "20c.png": "images\\skycodes\\48x48\\20c.png",
+          "23.png": "images\\skycodes\\48x48\\23.png",
+          "25.png": "images\\skycodes\\48x48\\25.png",
+          "25b.png": "images\\skycodes\\48x48\\25b.png",
+          "26.png": "images\\skycodes\\48x48\\26.png",
+          "27.png": "images\\skycodes\\48x48\\27.png",
+          "27b.png": "images\\skycodes\\48x48\\27b.png",
+          "29.png": "images\\skycodes\\48x48\\29.png",
+          "29b.png": "images\\skycodes\\48x48\\29b.png",
+          "31.png": "images\\skycodes\\48x48\\31.png",
+          "31b.png": "images\\skycodes\\48x48\\31b.png",
+          "34_33.png": "images\\skycodes\\48x48\\34_33.png",
+          "40.png": "images\\skycodes\\48x48\\40.png",
+          "43.png": "images\\skycodes\\48x48\\43.png",
+          "44.png": "images\\skycodes\\48x48\\44.png",
+          "5.png": "images\\skycodes\\48x48\\5.png",
+          "7.png": "images\\skycodes\\48x48\\7.png",
+          "9.png": "images\\skycodes\\48x48\\9.png",
+          "9b.png": "images\\skycodes\\48x48\\9b.png",
+          "9c.png": "images\\skycodes\\48x48\\9c.png"
+        },
+        "66x62": {
+          "1.png": "images\\skycodes\\66x62\\1.png",
+          "11.png": "images\\skycodes\\66x62\\11.png",
+          "12.png": "images\\skycodes\\66x62\\12.png",
+          "13_41_46.png": "images\\skycodes\\66x62\\13_41_46.png",
+          "17.png": "images\\skycodes\\66x62\\17.png",
+          "19.png": "images\\skycodes\\66x62\\19.png",
+          "19b.png": "images\\skycodes\\66x62\\19b.png",
+          "19c.png": "images\\skycodes\\66x62\\19c.png",
+          "1b.png": "images\\skycodes\\66x62\\1b.png",
+          "20.png": "images\\skycodes\\66x62\\20.png",
+          "20b.png": "images\\skycodes\\66x62\\20b.png",
+          "20c.png": "images\\skycodes\\66x62\\20c.png",
+          "23.png": "images\\skycodes\\66x62\\23.png",
+          "25.png": "images\\skycodes\\66x62\\25.png",
+          "25b.png": "images\\skycodes\\66x62\\25b.png",
+          "26.png": "images\\skycodes\\66x62\\26.png",
+          "27.png": "images\\skycodes\\66x62\\27.png",
+          "27b.png": "images\\skycodes\\66x62\\27b.png",
+          "29.png": "images\\skycodes\\66x62\\29.png",
+          "29b.png": "images\\skycodes\\66x62\\29b.png",
+          "31.png": "images\\skycodes\\66x62\\31.png",
+          "31b.png": "images\\skycodes\\66x62\\31b.png",
+          "34_33.png": "images\\skycodes\\66x62\\34_33.png",
+          "40.png": "images\\skycodes\\66x62\\40.png",
+          "43.png": "images\\skycodes\\66x62\\43.png",
+          "44.png": "images\\skycodes\\66x62\\44.png",
+          "5.png": "images\\skycodes\\66x62\\5.png",
+          "7.png": "images\\skycodes\\66x62\\7.png",
+          "9.png": "images\\skycodes\\66x62\\9.png",
+          "9b.png": "images\\skycodes\\66x62\\9b.png",
+          "9c.png": "images\\skycodes\\66x62\\9c.png"
+        },
+        "89x89": {
+          "1.png": "images\\skycodes\\89x89\\1.png",
+          "11.png": "images\\skycodes\\89x89\\11.png",
+          "12.png": "images\\skycodes\\89x89\\12.png",
+          "13_41_46.png": "images\\skycodes\\89x89\\13_41_46.png",
+          "17.png": "images\\skycodes\\89x89\\17.png",
+          "19.png": "images\\skycodes\\89x89\\19.png",
+          "19b.png": "images\\skycodes\\89x89\\19b.png",
+          "19c.png": "images\\skycodes\\89x89\\19c.png",
+          "1b.png": "images\\skycodes\\89x89\\1b.png",
+          "20.png": "images\\skycodes\\89x89\\20.png",
+          "20b.png": "images\\skycodes\\89x89\\20b.png",
+          "20c.png": "images\\skycodes\\89x89\\20c.png",
+          "23.png": "images\\skycodes\\89x89\\23.png",
+          "25.png": "images\\skycodes\\89x89\\25.png",
+          "25b.png": "images\\skycodes\\89x89\\25b.png",
+          "26.png": "images\\skycodes\\89x89\\26.png",
+          "27.png": "images\\skycodes\\89x89\\27.png",
+          "27b.png": "images\\skycodes\\89x89\\27b.png",
+          "29.png": "images\\skycodes\\89x89\\29.png",
+          "29b.png": "images\\skycodes\\89x89\\29b.png",
+          "31.png": "images\\skycodes\\89x89\\31.png",
+          "31b.png": "images\\skycodes\\89x89\\31b.png",
+          "34_33.png": "images\\skycodes\\89x89\\34_33.png",
+          "40.png": "images\\skycodes\\89x89\\40.png",
+          "43.png": "images\\skycodes\\89x89\\43.png",
+          "44.png": "images\\skycodes\\89x89\\44.png",
+          "5.png": "images\\skycodes\\89x89\\5.png",
+          "7.png": "images\\skycodes\\89x89\\7.png",
+          "9.png": "images\\skycodes\\89x89\\9.png",
+          "9b.png": "images\\skycodes\\89x89\\9b.png",
+          "9c.png": "images\\skycodes\\89x89\\9c.png"
+        }
+      },
+      "smalllogo.png": "images\\smalllogo.scale-100.png",
+      "splash.png": "images\\splash.scale-100.png",
+      "store.png": "images\\store.scale-100.png",
+      "tinylogo.png": "images\\tinylogo.scale-100.png",
+      "weathermaps": {
+        "maps_thumb.png": "images\\weathermaps\\maps_thumb.png",
+        "maps_thumb_active.png": "images\\weathermaps\\maps_thumb_active.png",
+        "maps_thumb_hover.png": "images\\weathermaps\\maps_thumb_hover.png",
+        "pushpin.png": "images\\weathermaps\\pushpin.png"
+      },
+      "weather_placeholder.png": "images\\weather_placeholder.png",
+      "widelogo.png": "images\\widelogo.scale-100.png",
+      "worldweather": {
+        "arrow-bottomright.png": "images\\worldweather\\arrow-bottomright.png",
+        "arrow-topleft.png": "images\\worldweather\\arrow-topleft.png",
+        "landscape": {
+          "africa-ltr.png": "images\\worldweather\\landscape\\africa-ltr.png",
+          "africa-rtl.png": "images\\worldweather\\landscape\\africa-rtl.png",
+          "asia-ltr.png": "images\\worldweather\\landscape\\asia-ltr.png",
+          "asia-rtl.png": "images\\worldweather\\landscape\\asia-rtl.png",
+          "europe-ltr.png": "images\\worldweather\\landscape\\europe-ltr.png",
+          "europe-rtl.png": "images\\worldweather\\landscape\\europe-rtl.png",
+          "northamerica-ltr.png": "images\\worldweather\\landscape\\northamerica-ltr.png",
+          "northamerica-rtl.png": "images\\worldweather\\landscape\\northamerica-rtl.png",
+          "oceania-ltr.png": "images\\worldweather\\landscape\\oceania-ltr.png",
+          "oceania-rtl.png": "images\\worldweather\\landscape\\oceania-rtl.png",
+          "southamerica-ltr.png": "images\\worldweather\\landscape\\southamerica-ltr.png",
+          "southamerica-rtl.png": "images\\worldweather\\landscape\\southamerica-rtl.png",
+          "worldmap.png": "images\\worldweather\\landscape\\worldmap.png"
+        },
+        "portrait": {
+          "africa.png": "images\\worldweather\\portrait\\africa.png",
+          "asia.png": "images\\worldweather\\portrait\\asia.png",
+          "europe.png": "images\\worldweather\\portrait\\europe.png",
+          "northamerica.png": "images\\worldweather\\portrait\\northamerica.png",
+          "oceania.png": "images\\worldweather\\portrait\\oceania.png",
+          "southamerica.png": "images\\worldweather\\portrait\\southamerica.png",
+          "worldmap.png": "images\\worldweather\\portrait\\worldmap.png"
+        }
+      }
+    },
+    "js": {
+      "app.js": "js\\app.js",
+      "chart.js": "js\\chart.js",
+      "default.js": "js\\default.js",
+      "delayedBasePage.js": "js\\delayedBasePage.js",
+      "dummyTask.js": "js\\dummyTask.js",
+      "errorCodes.js": "js\\errorCodes.js",
+      "freutility.js": "js\\freutility.js",
+      "geocodeCache.js": "js\\geocodeCache.js",
+      "geocodeLocation.js": "js\\geocodeLocation.js",
+      "geocodePolygonSearch.js": "js\\geocodePolygonSearch.js",
+      "jquery.js1": "js\\jquery.js1",
+      "jqueryuiAll_c.js1": "js\\jqueryuiAll_c.js1",
+      "locationSuggest.js": "js\\locationSuggest.js",
+      "locationTracking.js": "js\\locationTracking.js",
+      "mapsFlyoutUI.js": "js\\mapsFlyoutUI.js",
+      "predict.js": "js\\predict.js",
+      "processListener.js": "js\\processListener.js",
+      "search.js": "js\\search.js",
+      "settingsManager.js": "js\\settingsManager.js",
+      "settingsUI.js": "js\\settingsUI.js",
+      "share.js": "js\\share.js",
+      "topEdgy.js": "js\\topEdgy.js",
+      "weather.js": "js\\weather.js",
+      "weatherConfigs.js": "js\\weatherConfigs.js",
+      "weatherServices.js": "js\\weatherServices.js",
+      "weatherUtilities.js": "js\\weatherUtilities.js"
+    },
+    "lib": {
+      "UserInteractionCrunched.js": "lib\\UserInteractionCrunched.js"
+    },
+    "MarketConfiguration.xml": "MarketConfiguration.xml",
+    "Microsoft.Bing.AppEx.Telemetry": {
+      "Doc.Platform.Telemetry.xml": "Microsoft.Bing.AppEx.Telemetry\\Doc.Platform.Telemetry.xml"
+    },
+    "MicrosoftAdvertising.ini": "MicrosoftAdvertising.ini",
+    "panoramas": {
+      "articlereader": {
+        "articleReaderPage.html": "panoramas\\articlereader\\articleReaderPage.html",
+        "articleReaderPage.js": "panoramas\\articlereader\\articleReaderPage.js"
+      },
+      "dailyforecast": {
+        "dailyForecast.html": "panoramas\\dailyforecast\\dailyForecast.html",
+        "dailyForecast.js": "panoramas\\dailyforecast\\dailyForecast.js"
+      },
+      "home": {
+        "home.html": "panoramas\\home\\home.html",
+        "home.js": "panoramas\\home\\home.js"
+      },
+      "myplaces": {
+        "favoritesTemplate.html": "panoramas\\myplaces\\favoritesTemplate.html",
+        "MyPlaces.html": "panoramas\\myplaces\\MyPlaces.html",
+        "MyPlaces.js": "panoramas\\myplaces\\MyPlaces.js"
+      },
+      "photosynthviewer": {
+        "photosynthViewer.html": "panoramas\\photosynthviewer\\photosynthViewer.html",
+        "photosynthViewer.js": "panoramas\\photosynthviewer\\photosynthViewer.js"
+      },
+      "search": {
+        "searchPage.html": "panoramas\\search\\searchPage.html",
+        "searchPage.js": "panoramas\\search\\searchPage.js"
+      },
+      "SkiResorts": {
+        "SkiResorts.html": "panoramas\\SkiResorts\\SkiResorts.html",
+        "SkiResorts.js": "panoramas\\SkiResorts\\SkiResorts.js"
+      },
+      "slideshow": {
+        "SlideshowPage.html": "panoramas\\slideshow\\SlideshowPage.html",
+        "SlideshowPage.js": "panoramas\\slideshow\\SlideshowPage.js"
+      },
+      "tianqi": {
+        "template.html": "panoramas\\tianqi\\template.html"
+      },
+      "weathermaps": {
+        "BaseMap": {
+          "baseMap.js": "panoramas\\weathermaps\\BaseMap\\baseMap.js",
+          "baseMapController.js": "panoramas\\weathermaps\\BaseMap\\baseMapController.js"
+        },
+        "Common": {
+          "mapUtilities.js": "panoramas\\weathermaps\\Common\\mapUtilities.js"
+        },
+        "MapControls": {
+          "Legend.js": "panoramas\\weathermaps\\MapControls\\Legend.js",
+          "MapsTopBar.js": "panoramas\\weathermaps\\MapControls\\MapsTopBar.js",
+          "SeekBar.js": "panoramas\\weathermaps\\MapControls\\SeekBar.js",
+          "TimeStamp.js": "panoramas\\weathermaps\\MapControls\\TimeStamp.js",
+          "ZoomControl.js": "panoramas\\weathermaps\\MapControls\\ZoomControl.js"
+        },
+        "MapLayers": {
+          "CanvasLayer": {
+            "CanvasDataManager.js": "panoramas\\weathermaps\\MapLayers\\CanvasLayer\\CanvasDataManager.js",
+            "CanvasImageRenderer.js": "panoramas\\weathermaps\\MapLayers\\CanvasLayer\\CanvasImageRenderer.js",
+            "CanvasLayer.js": "panoramas\\weathermaps\\MapLayers\\CanvasLayer\\CanvasLayer.js"
+          },
+          "LabelsLayer": {
+            "LabelsTileLayer.js": "panoramas\\weathermaps\\MapLayers\\LabelsLayer\\LabelsTileLayer.js"
+          },
+          "MapLayer.js": "panoramas\\weathermaps\\MapLayers\\MapLayer.js"
+        },
+        "WeatherMaps.html": "panoramas\\weathermaps\\WeatherMaps.html",
+        "WeatherMaps.js": "panoramas\\weathermaps\\WeatherMaps.js"
+      },
+      "worldweather": {
+        "locationGroups.json": "panoramas\\worldweather\\locationGroups.json",
+        "mapsTemplate.html": "panoramas\\worldweather\\mapsTemplate.html",
+        "WorldWeather.html": "panoramas\\worldweather\\WorldWeather.html",
+        "WorldWeather.js": "panoramas\\worldweather\\WorldWeather.js"
+      }
+    },
+    "photosynth": {
+      "css": {
+        "style.css": "photosynth\\css\\style.css"
+      },
+      "js": {
+        "jspanoviewer.js": "photosynth\\js\\jspanoviewer.js"
+      }
+    },
+    "Platform": {
+      "PlatformConfiguration.xml": "Platform\\PlatformConfiguration.xml"
+    },
+    "resources": {
+      "countryRegionCodes.json": "resources\\countryRegionCodes.json",
+      "countryToMapRegion.json": "resources\\countryToMapRegion.json",
+      "sampledata": {
+        "beijing": {
+          "c": {
+            "historicalWeather.json": "resources\\sampledata\\beijing\\c\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\beijing\\c\\overview.json"
+          }
+        },
+        "london": {
+          "c": {
+            "historicalWeather.json": "resources\\sampledata\\london\\c\\historicalWeather.json",
+            "images": {
+              "basemapAerial.jpg": "resources\\sampledata\\london\\c\\images\\basemapAerial.jpg",
+              "basemapWeatherLight.jpg": "resources\\sampledata\\london\\c\\images\\basemapWeatherLight.jpg",
+              "clouds.png": "resources\\sampledata\\london\\c\\images\\clouds.png",
+              "labelsWeatherDark.png": "resources\\sampledata\\london\\c\\images\\labelsWeatherDark.png",
+              "labelsWeatherLight.png": "resources\\sampledata\\london\\c\\images\\labelsWeatherLight.png",
+              "precipitation.png": "resources\\sampledata\\london\\c\\images\\precipitation.png",
+              "satellite.png": "resources\\sampledata\\london\\c\\images\\satellite.png",
+              "temperature.png": "resources\\sampledata\\london\\c\\images\\temperature.png"
+            },
+            "interactiveMapsResponse.json": "resources\\sampledata\\london\\c\\interactiveMapsResponse.json",
+            "overview.json": "resources\\sampledata\\london\\c\\overview.json"
+          },
+          "f": {
+            "historicalWeather.json": "resources\\sampledata\\london\\f\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\london\\f\\overview.json"
+          }
+        },
+        "seoul": {
+          "c": {
+            "historicalWeather.json": "resources\\sampledata\\seoul\\c\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\seoul\\c\\overview.json"
+          },
+          "f": {
+            "historicalWeather.json": "resources\\sampledata\\seoul\\f\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\seoul\\f\\overview.json"
+          }
+        },
+        "taipei": {
+          "c": {
+            "historicalWeather.json": "resources\\sampledata\\taipei\\c\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\taipei\\c\\overview.json"
+          },
+          "f": {
+            "historicalWeather.json": "resources\\sampledata\\taipei\\f\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\taipei\\f\\overview.json"
+          }
+        },
+        "tokyo": {
+          "c": {
+            "historicalWeather.json": "resources\\sampledata\\tokyo\\c\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\tokyo\\c\\overview.json"
+          },
+          "f": {
+            "historicalWeather.json": "resources\\sampledata\\tokyo\\f\\historicalWeather.json",
+            "overview.json": "resources\\sampledata\\tokyo\\f\\overview.json"
+          }
+        }
+      }
+    },
+    "sqlite3.dll": "sqlite3.dll",
+    "WeatherControls": {
+      "clusters": {
+        "entityClusterProvider.js": "WeatherControls\\clusters\\entityClusterProvider.js",
+        "heroClusterControl.js": "WeatherControls\\clusters\\heroClusterControl.js",
+        "interactiveMapsClusterControl.js": "WeatherControls\\clusters\\interactiveMapsClusterControl.js"
+      },
+      "core": {
+        "ClusterControls.js": "WeatherControls\\core\\ClusterControls.js",
+        "Models.js": "WeatherControls\\core\\Models.js",
+        "Utilities.js": "WeatherControls\\core\\Utilities.js",
+        "ViewBlocks.js": "WeatherControls\\core\\ViewBlocks.js",
+        "ViewControls.js": "WeatherControls\\core\\ViewControls.js",
+        "weatherBasePage.js": "WeatherControls\\core\\weatherBasePage.js"
+      },
+      "views": {
+        "mapsViewBlock.js": "WeatherControls\\views\\mapsViewBlock.js",
+        "secondaryViews.js": "WeatherControls\\views\\secondaryViews.js"
+      }
+    }
+  },
+  "MicrosoftAdvertising": {
+    "UIStrings": {
+      "AdSettings_CommandText": "Microsoft Advertising",
+      "AdSettings_Flyout_OptedOut_Message1": "Tha thu a' diùltadh sanasachd phearsantaichte o Microsoft an-dràsta fhèin. Briog ",
+      "AdSettings_Flyout_OptedOut_Message2": " airson barrachd fiosrachaidh air na roghainnean.",
+      "AdSettings_Flyout_OptedOut_Message_Here": "an-seo",
+      "AdSettings_Flyout_OptInSwitch_Header": "Cleachdaidh Microsoft Advertising am fiosrachadh agam ach am faigh mi sanasachd phearsantaichte san aplacaid seo.",
+      "AdSettings_Flyout_OptInSwitch_Off": "Chan eil",
+      "AdSettings_Flyout_OptInSwitch_On": "Tha",
+      "AdSettings_Flyout_Privacy": "Aithris na prìobhaideachd",
+      "AdSettings_Flyout_SectionName": "Roghainnean na sanasachd",
+      "AdSettings_Flyout_SignInPrompt1": "Chan eil thu clàraichte a-staigh an-dràsta fhèin. ",
+      "AdSettings_Flyout_SignInPrompt2": " airson sanasachd phearsantaichte a chur an comas san aplacaid seo.",
+      "AdSettings_Flyout_SignInPrompt_SignIn": "Clàraich a-steach",
+      "AdSettings_Flyout_SignInPrompt_SignOut": "Clàraich a-mach",
+      "AdSettings_Flyout_StatusUnknown_Message": "Chan eil fiosrachadh a' chunntais Microsoft agad ri làimh an-dràsta fhèin.",
+      "AdSettings_Flyout_Title": "Sanasachd"
+    }
+  },
+  "resources": {
+    "About": "About",
+    "AccuWeather": "AccuWeather",
+    "accuweatherUrl": "http://www.accuweather.com",
+    "AddButtonTitle": "Add",
+    "Africa": "Africa",
+    "Afternoon Cloudy": "Afternoon Cloudy",
+    "Afternoon Ice ": {
+      " Snow": "Aft. Ice/Snow"
+    },
+    "Afternoon Rain": "Afternoon Rain",
+    "Afternoon Snow": "Afternoon Snow",
+    "AirportImpact": "Кашњење летова",
+    "Alert Bar Heading": "Alert",
+    "AlertShort": "ALERT {0}",
+    "AlertShortWithCount": "ALERT {0} {1} more",
+    "AlertWarning": "ALERT {0} from {1} to {2}",
+    "AlertWarningWithCount": "ALERT {0} from {1} to {2} {3} more",
+    "AM Thunderstorms": "AM T-Storms",
+    "appFeedbackTitle": "Weather Application Feedback",
+    "AppTitle": "Време",
+    "Asia": "Asia/Middle East",
+    "Barometer": "Барометар",
+    "BingAttribution": "Powered by",
+    "Blizzard": "Blizzard",
+    "BlizzardCredits": "Blizzard {0}",
+    "Blowing Snow": "Blowing Snow",
+    "BlowingSnowCredits": "Blowing Snow {0}",
+    "C": "C",
+    "CCDailyAttribution": "Current conditions, daily forecasts by",
+    "CCDailyMapsAttribution": "Current conditions, daily forecasts and maps by",
+    "CelsiusSetting": "Celsius",
+    "Clear": "Clear",
+    "ClearButtonTitle": "Clear",
+    "ClearCredits": "Clear {0}",
+    "clearSearchHistoryButton": "Clear History",
+    "CloseButtonLabel": "Close",
+    "CloudCover": "Облачност",
+    "Cloudy": "Cloudy",
+    "Cloudy ": {
+      " Afternoon Sun": "Cloudy/Aft. Sun",
+      " Windy": "Cloudy / Windy"
+    },
+    "CloudyCredits": "Cloudy {0}",
+    "CouldNotLoadAlertsData": "Unable to fetch alerts data.",
+    "CouldNotLoadDataMsg": "Unable to refresh data.",
+    "Current": "Bing Време",
+    "CurrentLocDataNotAvailable": "Weather data not available for your current location. Please enter your location manually or try again later.",
+    "DataAttribution": "Data provided by",
+    "DefaultShortNameForPinFlyout": "Време",
+    "Dewpoint": "Dew Point",
+    "DisplayUnits": "Units",
+    "DopplerRadar": "Доплер радар",
+    "Drizzle": "Drizzle",
+    "DrizzleCredits": "Drizzle {0}",
+    "DustCloudyCredits": "Dust Cloudy {0}",
+    "Duststorms": "Duststorms",
+    "DustyClearCredits": "Dusty Clear {0}",
+    "EnterLocation": "Enter Location",
+    "ErrorInFRE": "Unable to get weather data for your current location. Please try again later.",
+    "Europe": "Europe",
+    "F": "F",
+    "FahrenheitSetting": "Фаренхајт",
+    "Fair": "Fair",
+    "favHighLowText": "High / Low",
+    "Favorites": "Favorites",
+    "FavoriteTileErrorMsg": "There was a problem. Please try again.",
+    "FeelsLike": "Feels like {0}",
+    "Flurries": "Flurries",
+    "Fog": "Fog",
+    "FogCredits": "Fog {0}",
+    "Foreca": "Foreca",
+    "forecaUrl": "http://www.foreca.com",
+    "Freezing": "Freezing",
+    "Freezing Drizzle": "Freezing Drizzle",
+    "Freezing Rain": "Freezing Rain",
+    "FreezingRainCredits": "Freezing Rain {0}",
+    "FrigidCredits": "Frigid {0}",
+    "FromText": "From",
+    "FromToText": "From {0} to {1}",
+    "GraphDays": "{0} days",
+    "GraphHoursPerDay": "{0} сати/дан",
+    "Hazy Sunshine": "Hazy Sunshine",
+    "HeavyRainCredits": "Heavy Rain {0}",
+    "HighLowText": "{0}/{1}",
+    "HistoricalWeather": "Historical Weather",
+    "HistoricDataAttribution": "Historic conditions by",
+    "HistoricLengthWithUnit": "{0} {1}",
+    "Home": "Home",
+    "Hot and Humid": "Hot and Humid",
+    "HourlyForecast": "Прогноза на сат",
+    "HourlyForecastFeelsLikeTitle": "Субјективни осећај",
+    "HourlyForecastForecastTitle": "Временска прогноза",
+    "HourlyForecastPrecipChanceTitle": "Могућност падавина",
+    "HourlyForecastTimeTitle": "Време",
+    "Humidity": "Âëŕćíîńň ",
+    "HWAttribution": "Historical Weather by",
+    "Ice ": {
+      " Snow": "Ice / Snow"
+    },
+    "ImageCredits": "Image Credits",
+    "iMap Weather": "WDT",
+    "imap weatherUrl": "http://www.wdtinc.com",
+    "InterstateForecast": "Стање на путевима",
+    "Isolated Thunderstorms": "Isolated T-Storms",
+    "KilometresPerHour": "{0} km/h",
+    "LastUpdatedDataTime": "Last Updated at {0}",
+    "LeftText": "Light",
+    "LegendName": "Падавине",
+    "lessDailyConditionsDataText": "Less",
+    "Light Showers": "Light Showers",
+    "LightShowersCredits": "Light Showers {0}",
+    "LocalTime": "Локално време",
+    "LocationDetectionFailed": "Unable to detect your current location. Try entering your location manually.",
+    "LocationDisabledError": "Location detection is turned off. Use the Settings menu to turn it on.",
+    "LocationPinnedToStart": "Unpin the location from the Start screen before setting it as default.",
+    "LocationSearchFetchError": "Error querying location suggestions.",
+    "LocDetectionUnknownError": "An unknown error occurred while detecting your location. Please try again later.",
+    "Maps": "Мапе",
+    "MaxFavoritesLimitReached": "Your Favorites list is full. Please remove a location before adding a new one.",
+    "MaxPinnedLocationsLimitReached": "You have pinned the maximum number of locations. Please unpin a location before pinning a new one.",
+    "MilesPerHour": "{0} м/сат",
+    "Month1": "јануар",
+    "Month10": "октобар",
+    "Month11": "новембар",
+    "Month12": "децембар",
+    "Month2": "фебруар",
+    "Month3": "март",
+    "Month4": "април",
+    "Month5": "мај",
+    "Month6": "јун",
+    "Month7": "јул",
+    "Month8": "август",
+    "Month9": "септембар",
+    "MonthlyMaxTemp": "Max. Temp.",
+    "MonthlyMinTemp": "Min. Temp.",
+    "MonthlyRainfall": "Киша",
+    "MonthlyRainyDays": "Rainy Days",
+    "MonthlySeaTemp": "Темп. мора",
+    "MonthlySnowDays": "Снежни дани",
+    "MonthlySunshine": "Сунчано",
+    "MonthShort1": "ЈАН",
+    "MonthShort10": "ОКТ",
+    "MonthShort11": "НОВ",
+    "MonthShort12": "ДЕЦ",
+    "MonthShort2": "ФЕБ",
+    "MonthShort3": "МАР",
+    "MonthShort4": "АПР",
+    "MonthShort5": "мај",
+    "MonthShort6": "ЈУН",
+    "MonthShort7": "ЈУЛ",
+    "MonthShort8": "АВГ",
+    "MonthShort9": "СЕП",
+    "More Alerts": "још",
+    "moreDailyConditionsDataText": "Још",
+    "Morning Fog ": {
+      " Afternoon Sun": "AM Fog/Aft. Sun",
+      " Cloudy": "AM Fog/Cloudy"
+    },
+    "Morning Ice ": {
+      " Snow": "AM Ice/Snow"
+    },
+    "Morning Rain": "Morning Rain",
+    "Morning Snow": "Morning Snow",
+    "Mostly Cloudy": "Mostly Cloudy",
+    "Mostly Sunny": "Mostly Sunny",
+    "MostlyCloudyCredits": "Mostly Cloudy {0}",
+    "Multiple Alerts Heading": "Упозорења",
+    "MyPlaces": "Places",
+    "National": "Национална",
+    "nextDailyConditionsDataText": "Next",
+    "NoInternetConnectionError": "You are not connected to the Internet. Please check your Internet connection and try again.",
+    "NoInternetConnectionInfo": "Internet connection is unavailable.",
+    "NoInternetOnSettingChange": "Settings updated. Please connect to the Internet to confirm your changes.",
+    "NorthAmerica": "North America",
+    "NoSearchResults": "No results matched your search.",
+    "Oceania": "Australia/Pacific",
+    "Overview": "OVERVIEW",
+    "Partly Cloudy": "Partly Cloudy",
+    "PartlyCloudyCredits": "Partly Cloudy {0}",
+    "PinButtonTitle": "Pin",
+    "PM Thunderstorms": "PM T-Storms",
+    "Precipitation": "Падавине",
+    "prevDailyConditionsDataText": "Previous",
+    "PrivacyStatement": "Privacy Statement",
+    "Publisher": "Microsoft Corporation",
+    "Rain": "Киша",
+    "Rain ": {
+      " Snow": "Rain / Snow",
+      " Windy": "Rain / Windy"
+    },
+    "Rain turning to Snow": "Rain to Snow",
+    "RainCredits": "Rain {0}",
+    "RainfallFilter": "Киша",
+    "RainSnowCredits": "Rain and Snow {0}",
+    "RecentSearches": "Recent Searches",
+    "Regional": "Регионална",
+    "RemoveButtonTitle": "Remove",
+    "RemoveLocButtonTitle": "Remove Location",
+    "RetryButtonLabel": "Retry",
+    "RightText": "Heavy",
+    "Satellite": "Сателитска",
+    "Scattered Flurries": "Scattered Flurries",
+    "Scattered Thunderstorms": "Scatt'd T-Storms",
+    "ScatteredCloudsCredits": "Scattered Clouds {0}",
+    "ScatteredFlurriesCredits": "Scattered Flurries {0}",
+    "searchboxInvalidEntry": "Invalid location",
+    "searchboxPlaceHolderTest": "Enter location",
+    "SearchHistory": "Search History",
+    "SeeMoreTruncatedText": "See more...",
+    "SetDefaultButtonTitle": "Set as Default",
+    "SetDefaultMaxLimitReached": "Your Favorites list is full. Please remove a location before setting a new one as your default.",
+    "Settings": "Settings",
+    "SevereWeatherAlerts": "Упозорења на временске непогоде",
+    "Showers": "Showers",
+    "Showers ": {
+      " Clear": "Showers/Clear"
+    },
+    "Single Alert Heading": "Alert",
+    "Sleet": "Sleet",
+    "Smoke": "Smoke",
+    "SnappedAppTitle": "Bing Време",
+    "SnapTime": "{0} Local Time",
+    "Snow": "Снег",
+    "Snow ": {
+      " Windy": "Snow / Windy"
+    },
+    "Snow Showers": "Snow Showers",
+    "Snow Showers ": {
+      " Sun": "Snow/Sun"
+    },
+    "Snow turning to Rain": "Snow to Rain",
+    "SnowCredits": "Snow {0}",
+    "SnowDaysFilter": "Снежни дани",
+    "SouthAmerica": "South America",
+    "SpeedUnitsInKMPHWithDirection": "{0} {1} kmph",
+    "SpeedUnitsInMPHWithDirection": "{0} {1} mph",
+    "Sunny ": {
+      " Windy": "Sunny / Windy"
+    },
+    "Sunny (Clear)": "Sunny (Clear)",
+    "SunshineAndSeaTempAttribution": "Sunshine & Sea temp by",
+    "SunshineAttribution": "Sunshine by",
+    "SunshineFilter": "Сунчано",
+    "SunshineSeaTempAttribution": "Sunshine & Sea temperature data by",
+    "Temperature": "Температурна",
+    "TemperatureFilter": "Температурна",
+    "TemperatureWithDegreeCelsius": "{0}°C",
+    "TemperatureWithDegreeFahrenheit": "{0}°F",
+    "TemperatureWithDegreeFahrenheit.comment": "temperature value with degree symbol and fahrenheit unit",
+    "TemperatureWithDegreeUnit": "{0}°",
+    "TermsOfUse": "Terms of Use",
+    "Thunderstorms": "Thunderstorms",
+    "ThunderstormsCredits": "Thunderstorms {0}",
+    "ToText": "to",
+    "Travel": "Туристичка",
+    "UnitInCentimetres": "{0} cm",
+    "UnitInDays": "{0} days",
+    "UnitInHourPerDay": "{0} hr/day",
+    "UnitInHoursPerDay": "{0} сати/дан",
+    "UnitInInches": "{0} у",
+    "UnitInKilometres": "{0} км",
+    "UnitInMiles": "{0} mi",
+    "UnitInMillibars": "{0} mb",
+    "UnitInPercentage": "{0}%",
+    "UnknownCredits": "Unknown {0}",
+    "UnpinButtonTitle": "Unpin",
+    "UntilText": "until",
+    "UvIndex": "УВ индекс",
+    "Visibility": "Видљивост",
+    "Weather Underground": "Weather Underground",
+    "weather undergroundUrl": "http://www.wunderground.com",
+    "Weather.com": "weather.com",
+    "weather.comUrl": "http://www.weather.com",
+    "weather2travelUrl": "http://www.weather2travel.com",
+    "WeatherDataNotAvailable": "Weather data not available for this location. Please try again later or enter a different location.",
+    "WeatherDotComForecastAttributionUrlSuffix": "?par=bing&site=winapp8&cm_ven=bing&cm_cat=winapp8&cm_pla=search-us&cm_ite=wx-tenday",
+    "WeatherDotComMapsAttribution": "View interactive maps at {0}",
+    "WeatherDotComMapsAttributionUrlPrefix": "http://bing.weather.com/weather/map/interactive/",
+    "WeatherDotComMapsAttributionUrlSuffix": "?par=bing&site=winapp8&cm_ven=bing&cm_cat=winapp8&cm_pla=search-us&cm_ite=wx-Imap",
+    "WeatherDotComSeeMoreText": "See more from weather.com",
+    "Wind": "Ветар",
+    "Windy": "Windy",
+    "WindyCredits": "Windy {0}",
+    "Wolfram|Alpha": "Wolfram|Alpha",
+    "wolfram|alphaUrl": "http://www.wolframalpha.com",
+    "World": "World",
+    "WorldWeather": "World Weather",
+    "WorldWeatherTitle": "World Weather"
+  }
+}

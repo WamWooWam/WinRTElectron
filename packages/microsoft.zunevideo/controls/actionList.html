@@ -1,0 +1,95 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>actionList</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/Flyout.js"></script>
+
+    <link rel="stylesheet" href="/Controls/Controls.css">    
+    <link rel="stylesheet" href="/Animations/animations.css"> 
+    <link rel="stylesheet" href="/Animations/ControlsAnimations.css"> 
+</head>
+<body>
+    <div data-ent-templateid="actionListTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: visibleSet" data-win-options="{ itemTemplate: 'Controls/actionList.html#actionListItemTemplateContainer',
+                                 containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                 animateIn: false }">
+        </div>
+    </div>
+
+    <div data-ent-templateid="actionListItemTemplateContainer" data-win-control="WinJS.Binding.Template">
+        <div class="actionListButton voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-win-options="{ tabIndex: 0 }" data-win-bind="
+                winControl.action: action;
+                winControl.className: action.iconInfo.className MS.Entertainment.Utilities.appendClassName;
+                winControl.voicePhrase: action.voicePhrase;
+                winControl.voiceConfidence: action.voiceConfidence;
+                winControl.voicePhoneticPhrase: action.voicePhoneticPhrase;" data-win-voice="{
+                phrase: getContext('element').winControl.voicePhrase,
+                confidence: getContext('element').winControl.voiceConfidence,
+                handler: getContext('element').winControl.onClickWithContext,
+                targetElement: select('.voice-visualTarget'),
+                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+            }">
+        </div>
+    </div>
+
+    <div data-ent-templateid="actionListItemTemplate" data-win-control="WinJS.Binding.Template">
+        <button type="button" class="win-command win-global appBarIconButton win-focusable" tabindex="-1" data-ent-member="_button" data-ent-event="click: onClickPreProcess">
+
+            <span class="win-commandicon win-commandring" data-ent-member="ringSpan">
+                <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                <span data-ent-member="iconSpanPressed" class="win-commandimage iconSpanPressed"></span>  
+                <span data-ent-member="iconSpan" class="win-commandimage iconSpan"></span>
+                <span class="win-commandimage toggleIndicator removeFromDisplay" data-ent-member="toggleIndicator"></span>
+            </span>
+
+            <span data-ent-member="linkLabel" class="appBarIconLabel win-label actionButtonLabel label wrap voice-visualTarget">
+            </span>
+
+            
+            <div class="win-tile-focusindicator"></div>
+        </button>
+
+        <div data-ent-member="_flyoutElement"></div>
+    </div>
+
+    <div data-ent-templateid="actionListOverflowSeparator" data-win-control="WinJS.Binding.Template">
+        <hr class="actionListHRSeparator">
+    </div>
+
+    <div data-ent-templateid="actionListOverflowItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.FlyOutActionLink" data-win-options="{overrideStyle: 'actionButtonFlyoutButton win-focusable'}" data-win-bind="winControl.action: action">
+        </div>
+    </div>
+
+    <div data-ent-templateid="playbackOptionsItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.PersistentFlyOutActionLink" data-win-options="{overrideStyle: 'playbackOptionFlyoutButton'}" data-win-bind="winControl.action: action;
+                            removeFromDisplay: action.isVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="playbackOptionsComboItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="playbackOptionComboContainer" data-win-control="MS.Entertainment.UI.Controls.ComboLinkContainer" data-win-bind="removeFromDisplay: action.isVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+            <div class="playbackOptionComboTitle" data-win-control="MS.Entertainment.UI.Controls.PersistentFlyOutActionComboLink" data-win-bind="winControl.action: action;">
+                <div class="icon inlineGlyph label" data-win-bind="textContent: MS.Entertainment.UI.Icon.closedCaption MS.Entertainment.Formatters.formatIcon;">
+                </div>
+            </div>
+            <div class="comboUnavailableLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="removeFromDisplay: action.isComboBoxEnabled MS.Entertainment.Utilities.toggleClassName;
+                                textContent: String.id.IDS_TRANSPORT_CONTROLS_CLOSED_CAPTION_NOT_AVAILABLE MS.Entertainment.Formatters.formatStringId;">
+            </div>
+            <select class="comboSelect" data-win-bind="removeFromDisplay: action.isComboBoxEnabled MS.Entertainment.Utilities.toggleClassNameNegate; winControl.dataSource: action.availableLanguages; onchange: action.onChange" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{ applyPanelTemplate: MS.Entertainment.UI.Controls.TransportControls.applySelectBoxChanged, applyItemTemplate: MS.Entertainment.UI.Controls.TransportControls.applySelectBoxOptionTemplate,
+                itemTemplate: '/Controls/actionList.html#languagesOption'}">
+            </select>
+        </div>
+    </div>
+
+    
+    <option data-win-control="WinJS.Binding.Template" data-ent-templateid="languagesOption">
+    
+    
+</body>
+</html>

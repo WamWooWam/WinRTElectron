@@ -1,0 +1,251 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Now Playing Page Template</title>
+
+    
+    <link rel="stylesheet" type="text/css" href="/styles/images.css">
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+    <script src="/ViewModels/Music/BaseNowPlayingViewModel.js"></script>
+    <script src="/ViewModels/Music1/NowPlayingViewModel.js"></script>
+
+    
+    <script src="/Controls/Music/BaseNowPlayingVisualization.js"></script>
+    <script src="/Controls/Music1/NowPlayingControl.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="nowPlayingPage" data-win-control="WinJS.Binding.Template">
+
+        
+        
+        
+        <div data-ent-templateid="nowPlayingSnappedSongTemplate" data-win-control="WinJS.Binding.Template" class="templateid-nowPlayingSnappedSongTemplate">
+            <div class="control-verticalListItem verticalListItem_snapped">
+                
+                <div class="verticalListItem-flexColumns">
+                    <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                    <div class="verticalListItem-artistName text-metadata maxLines-one" data-win-bind="textContent: data.artistName WinJS.Binding.oneTime"></div>
+                    <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                        winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                        allowAnimations: false,
+                        preventHideDuringInitialize: true,
+                        defaultButtonClass: 'iconActionButton'}"></div>
+                </div>
+
+                
+                <div class="verticalListItem-icons">
+                    <button class="icons-statusIcon icon glyph win-command win-global iconButton ent-delayInitialize ent-control win-disposable acc-keyboardFocusTarget" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MusicMediaStatusIcon" data-win-options="{
+                            enableDelayInitialization: true,
+                            preventHideDuringInitialize: true,
+                            allowAnimations: false,
+                            showInCollectionState: true,
+                            showMediaRights: true,
+                            showExplicit: true,
+                            inNowPlaying: true }" data-win-bind="
+                            winControl.key: key WinJS.Binding.oneTime;
+                            winControl.mediaInstance: data WinJS.Binding.oneTime;" data-ent-pagecontent="mediaInstance">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="nowPlayingSongTemplate" data-win-control="WinJS.Binding.Template" class="template-nowPlayingSongTemplate">
+            <div class="control-verticalListItem">
+                
+                <div class="verticalListItem-flexColumns">
+                    <div class="verticalListItem-primaryColumnContainer">
+                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                        <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                                    winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    defaultButtonClass: 'iconActionButton'}"></div>
+                    </div>
+                    <div class="verticalListItem-artistName text-metadata maxLines-one" data-win-bind="textContent: data.artistName WinJS.Binding.oneTime"></div>
+                    <div class="verticalListItem-albumName text-metadata maxLines-one" data-win-bind="textContent: data.albumName WinJS.Binding.oneTime"></div>
+                    <div class="verticalListItem-durationString text-metadata ui-durationString maxLines-one" data-win-bind="textContent: data.durationString WinJS.Binding.oneTime"></div>
+                    <div class="verticalListItem-releaseYear text-metadata maxLines-one" data-win-bind="textContent: data.releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    <div class="verticalListItem-genreName text-metadata maxLines-one" data-win-bind="textContent: data.genreName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListItem-icons">
+                    <button class="icons-statusIcon icon glyph win-command win-global iconButton ent-delayInitialize ent-control win-disposable acc-keyboardFocusTarget" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MusicMediaStatusIcon" data-win-options="{
+                            enableDelayInitialization: true,
+                            preventHideDuringInitialize: true,
+                            allowAnimations: false,
+                            showInCollectionState: true,
+                            showMediaRights: true,
+                            showExplicit: true,
+                            inNowPlaying: true }" data-win-bind="
+                            winControl.key: key WinJS.Binding.oneTime;
+                            winControl.mediaInstance: data WinJS.Binding.oneTime;" data-ent-pagecontent="mediaInstance">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        
+        
+        
+        <div class="page-nowPlaying">
+            
+            <div class="ent-control win-disposable" data-ent-areaname="nowPlayingPageHeader" data-win-control="MS.Entertainment.UI.Controls.ActionableNowPlayingVisualization" data-win-bind="winControl.dataContext: this.nowPlayingVisualization" data-win-options="{
+                    fallbackImage: MS.Entertainment.UI.ImagePaths.missingArtNowPlaying,
+                    delayInitializeDataContext: true }">
+                <div class="control-nowPlayingVisualization" data-win-bind="
+                        stateEmptyList: dataContext.count  MS.Entertainment.Utilities.toggleClassNameNegate">
+                    <div class="nowPlayingVisualization-imageContainer" data-ent-member="_nowPlayingImageContainer">
+                        <div class="imageContainer-imageSubContainer" data-ent-member="_nowPlayingImage1SubContainer">
+                            <img class="imageSubContainer-image ent-delayInitialize control-image ent-control win-disposable state-emptyImage hideFromDisplay" aria-hidden="true" data-ent-member="_nowPlayingImage1" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="image-backgroundImageShow" data-ent-hideanimation="image-backgroundImageHide" data-win-options="{
+                                    clearSrcOnEmptyTarget: true,
+                                    applyImageAsBackground: true,
+                                    desiredSize: { height: 360 } }">
+                        </div>
+
+                        <div class="imageContainer-imageSubContainer" data-ent-member="_nowPlayingImage2SubContainer">
+                            <img class="imageSubContainer-image ent-delayInitialize control-image ent-control win-disposable state-emptyImage hideFromDisplay" aria-hidden="true" data-ent-member="_nowPlayingImage2" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="image-backgroundImageShow" data-ent-hideanimation="image-backgroundImageHide" data-win-options="{
+                                    clearSrcOnEmptyTarget: true,
+                                    applyImageAsBackground: true,
+                                    desiredSize: { height: 360 } }">
+                        </div>
+                    </div>
+
+                    <div class="nowPlayingVisualization-overlay">
+                        <div class="overlay-content">
+                            <div class="content-currentItem">
+                                <div class="currentItem-primaryText text-nowPlayingTitle" data-win-bind="
+                                       textContent: dataContext.mediaItem.name;
+                                       hideFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+
+                                <div class="currentItem-secondaryText">
+                                    <div class="secondaryText-text secondaryText-artist text-nowPlayingMetadata" tabindex="0" role="button" data-ent-member="_artistMetadata" data-ent-event="click: _metadataClick; keydown: _metadataKeyDown" data-win-bind="
+                                            textContent: dataContext.mediaItem.artist.name;
+                                            hideFromDisplay: dataContext.mediaItem.artist.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+
+                                    <div class="secondaryText-text secondaryText-separator icon" data-win-bind="
+                                            textContent: MS.Entertainment.UI.Icon.bullet MS.Entertainment.Formatters.formatIcon;
+                                            hideFromDisplay: dataContext.mediaItem.album.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                    <div class="secondaryText-text secondaryText-album text-nowPlayingMetadata" data-win-bind="
+                                            textContent: dataContext.mediaItem.album.name;
+                                            hideFromDisplay: dataContext.mediaItem.album.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+                                </div>
+
+                                <div class="currentItem-savePlaylistButton" data-win-automationid="savePlaylistButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-ent-event="click: _clickSaveNowPlaying" data-win-bind="
+                                     winControl.text: String.id.IDS_MUSIC_SAVE_NOW_PLAYING_PLAYLIST MS.Entertainment.Formatters.formatStringId;
+                                     hideFromDisplay: dataContext.hideSavePlaylistButton MS.Entertainment.Utilities.toggleClassName" data-win-options="{ icon: WinJS.UI.AppBarIcon.save }"></div>
+
+                                <div class="currentItem-enterExitButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-ent-event="click: _clickEnterFullScreen" data-win-bind="winControl.text: String.id.IDS_MUSIC_NOW_PLAYING_ENTER_FULLSCREEN_ACTION MS.Entertainment.Formatters.formatStringId;
+                                        hideFromDisplay: dataContext.hideFullScreenButton  MS.Entertainment.Utilities.toggleClassName;" data-win-options="{ icon: MS.Entertainment.UI.Icon.fullScreen }"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="nowPlaying-content">
+                <div class="content-viewStateControl control-viewStateControl ent-control win-disposable" data-ent-areaname="nowPlayingPageBody" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-bind="winControl.dataContext: this" data-win-options="{ 
+                        hideFromDisplayReadyElement: true, 
+                        delayInitializeDataContext: true,
+                        contentOfflineStateEnabled: true }">
+                    <div class="viewStateControl-layoutRoot">
+                        <div class="viewStateControl-notifications removeFromDisplay" data-ent-member="_notificationsElement" data-win-automationid="ViewState_Container">
+                            
+                            
+                            
+                            <div class="page-snapped ent-control win-disposable" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                                <div class="snapped-icon"></div>
+                                
+                                <div class="snapped-hiddenFocusDiv" tabindex="0">
+                                    <div>
+                                        <div class="snapped-primaryText" data-win-bind="textContent: String.id.IDS_WEBHOST_RESIZE_WINDOW_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                        <div class="snapped-secondaryText" data-win-bind="textContent: String.id.IDS_SNAPPED_GO_FULLSCREEN_MESSAGE MS.Entertainment.Formatters.formatStringId;"></div>
+                                    </div>
+                                </div>
+                                <div class="snapped-primaryText" data-win-bind="textContent: String.id.IDS_WEBHOST_RESIZE_WINDOW_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                                <div class="snapped-secondaryText" data-win-bind="textContent: String.id.IDS_SNAPPED_GO_FULLSCREEN_MESSAGE MS.Entertainment.Formatters.formatStringId;"></div>
+                            </div>
+
+                            
+                            
+                            
+                            <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="notifications-errorContainer removeFromDisplay">
+                                <div class="errorContainer-title text-bodyPanelMessagingHeader" data-win-bind="textContent: dataContext.viewStateViewModel.title;
+                                    removeFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="errorContainer-subTitle text-bodyPanelMessagingSecondary maxLines-one" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                    removeFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                
+                                <div class="template-errorActionButton" data-win-control="WinJS.Binding.Template">
+                                    <div class="ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.IconButtonMessageAction" data-win-bind="
+                                            removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                                            winControl.action: action;
+                                            winControl.stringId: titleStringId;
+                                            winControl.subText: subTitleStringId;
+                                            winControl.icon: icon;"></div>
+                                </div>
+
+                                <div class="errorContainer-actions win-ui-dark ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="viewStateActions" data-win-bind="
+                                        removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        winControl.dataSource: dataContext.viewStateViewModel.actions;" data-win-options="{
+                                        itemTemplate: select('.template-errorActionButton'),
+                                        keyboardNavigable: true,
+                                        keyboardNavigationSetTabIndex: false,
+                                        keyboardNavigationManagerClass: MS.Entertainment.Framework.VerticalKeyboardNavigationManager}"></div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+                        <div class="viewStateControl-content hideFromDisplay" data-ent-member="_readyElement">
+                            
+                            
+                            
+                            <div data-win-control="MS.Entertainment.UI.Controls.GalleryHost" data-ent-member="_galleryHost" class="control-galleryHost ent-control win-disposable" data-win-bind="winControl.dataContext: dataContext" data-win-automationid="collectionPageGalleryHost">
+                                <div class="control-gallery ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.NowPlayingGallery" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        focusFirstItemOnPageLoad: true }" data-ent-member="_galleryControl"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>

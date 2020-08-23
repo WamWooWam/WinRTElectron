@@ -1,0 +1,27 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>FlyOut Control Template</title>
+
+        
+        <script src="/main_merged.js"></script>
+
+    </head>
+    <body>
+        <div data-ent-templateid="flyoutTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="actionListFlyout win-menu" data-win-control="WinJS.UI.Flyout" data-ent-member="flyout">
+                <div class="actionListFlexBox" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-member="_subItemsList" data-win-bind="winControl.dataSource: subItems" data-win-automationid="actionListFlyout" data-win-options="{
+                            keyboardNavigable: true,
+                            animateIn: false,
+                            itemTemplate: '/Controls/actionList.html#actionListOverflowItemTemplate', 
+                            separatorTemplate: '/Controls/actionList.html#actionListOverflowSeparator',
+                            playbackOptionsItemTemplate: '/Controls/actionList.html#playbackOptionsItemTemplate',
+                            playbackOptionsComboItemTemplate: '/Controls/actionList.html#playbackOptionsComboItemTemplate', 
+                            selectTemplate: MS.Entertainment.UI.Controls.ActionList.overflowTemplateSelector}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

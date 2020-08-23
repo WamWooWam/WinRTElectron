@@ -1,0 +1,179 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.thumbnailButtonHolder {
+    background-color: #7db231;
+    height: auto;
+    width: auto
+}
+.baseGrid .thumbnailButton .imageHolder
+{
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%
+}
+.baseGrid .thumbnailButton img
+{
+    -ms-grid-column-align: center
+}
+.grid_1RowHeroWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-columns: 670px;
+    -ms-grid-rows: 505px
+}
+.grid_1RowHeroWidescreenTall
+{
+    display: -ms-grid;
+    -ms-grid-columns: 670px;
+    -ms-grid-rows: 675px
+}
+.grid_2RowHeroTopWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-rows: 505px 5px 165px;
+    -ms-grid-columns: 220px 5px 220px 5px 220px
+}
+.grid_2RowHeroTopStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 335px 5px 165px;
+    -ms-grid-columns: 220px 5px 220px
+}
+.grid_2RowWideHeroTopStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 335px 5px 165px;
+    -ms-grid-columns: 220px 5px 220px 5px 220px
+}
+.grid_2RowHeroTopWidescreenWithCard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 335px 5px 165px;
+    -ms-grid-columns: 293px 5px 293px
+}
+.grid_3RowHeroTopWidescreenWithCard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 335px 5px 165px 5px 165px;
+    -ms-grid-columns: 293px 5px 293px
+}
+.grid_2RowHeroBottomWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 335px;
+    -ms-grid-columns: 293px 5px 293px
+}
+.grid_2RowHeroBottomStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 335px;
+    -ms-grid-columns: 220px 5px 220px
+}
+.grid_3RowHeroTopWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-rows: 335px 5px 165px 5px 165px;
+    -ms-grid-columns: 293px 5px 293px
+}
+.grid_3RowHeroTopStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 335px 5px 165px 5px 165px;
+    -ms-grid-columns: 220px 5px 220px
+}
+.grid_3RowHeroBottomStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 165px 5px 335px;
+    -ms-grid-columns: 220px 5px 220px
+}
+.grid_2RowWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-rows: 250px 5px 250px;
+    -ms-grid-columns: 445px
+}
+.grid_2RowStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 250px 5px 250px;
+    -ms-grid-columns: 333px
+}
+.grid_2RowSquare
+{
+    display: -ms-grid;
+    -ms-grid-rows: 250px 5px 250px;
+    -ms-grid-columns: 250px
+}
+.grid_3RowWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 165px 5px 165px;
+    -ms-grid-columns: 293px
+}
+.grid_3RowStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 165px 5px 165px;
+    -ms-grid-columns: 220px
+}
+.grid_3RowSquare
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 165px 5px 165px;
+    -ms-grid-columns: 165px
+}
+.grid_4RowWidescreen
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 165px 5px 165px 5px 165px;
+    -ms-grid-columns: 295px
+}
+.grid_4RowStandard
+{
+    display: -ms-grid;
+    -ms-grid-rows: 165px 5px 165px 5px 165px 5px 165px;
+    -ms-grid-columns: 220px
+}
+.grid_2RowAds
+{
+    display: -ms-grid;
+    -ms-grid-rows: 250px 5px 250px;
+    -ms-grid-columns: 1fr;
+    width: 300px
+}
+.grid_2RowAdsImage
+{
+    height: 250px;
+    margin-left: -16px;
+    margin-right: -16px
+}
+.grid_3RowAds
+{
+    display: -ms-grid;
+    -ms-grid-rows: 205px 5px 210px 5px 250px;
+    -ms-grid-columns: 1fr;
+    width: 300px
+}
+.grid_3RowLarge
+{
+    display: -ms-grid;
+    -ms-grid-rows: 222px 5px 221px 5px 222px;
+    -ms-grid-columns: 1fr;
+    width: 300px
+}
+.baseGrid
+{
+    display: -ms-grid;
+    height: auto;
+    width: auto;
+    -ms-grid-columns: auto 5px auto 5px auto;
+    -ms-grid-rows: 1fr
+}
+.baseGrid2Column
+{
+    display: -ms-grid;
+    height: auto;
+    width: auto;
+    -ms-grid-columns: auto 5px auto;
+    -ms-grid-rows: 1fr
+}

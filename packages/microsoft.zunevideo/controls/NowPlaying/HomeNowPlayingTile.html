@@ -1,0 +1,227 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>HomeNowPlayingTile</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/MovieDetails_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Controls/thumbnailButton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/galleryThumbnail.js"></script>
+    <script src="/Controls/NowPlaying/MusicVisualization.js"></script>
+</head>
+<body>
+
+    
+    <div data-ent-templateid="template" data-win-control="WinJS.Binding.Template">
+        <div data-ent-member="_homeNowPlayingTile" class="homeNowPlayingTile win-ui-dark win-focusable" data-win-bind="style.width: nowPlayingWidth" data-ent-event="click: thumbnailClick" role="button">
+            <div class="homeNowPlayingArt">
+                <div data-win-control="MS.Entertainment.UI.Controls.MediaItemThumbnail" data-win-options="{imageHeight: '215px', showNotifications: false}" data-win-bind="winControl.mediaItem: nowPlayingImageMediaItem">
+                </div>
+            </div>
+
+            <div data-ent-member="_musicVisualizationContainer" class="nowPlayingTileBackground" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility: musicVisualizationVisible" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-hideanimation="nowPlayingControlsFadeOut">
+            </div>
+            
+            <div class="homeNowPlayingMetadataAndProgress">
+
+                <div class="homeNowPlayingPlayButton" style="-ms-grid-column: 2; -ms-grid-row: 3" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: MS.Entertainment.UI.Icon.play, accessibilityStringId: MS.Entertainment.UI.Controls.TransportControls.playButtonStringId}" data-win-bind="removeFromDisplay : playVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                <div class="homeNowPlayingErrorButton" style="-ms-grid-column: 2; -ms-grid-row: 3" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: WinJS.UI.AppBarIcon.important, accessibilityStringId: String.id.IDS_MEDIA_STATUS_PLAYBACK_ERROR_ICON}" data-win-bind="removeFromDisplay : errorVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                <div class="clockAndNowPlayingTextContainer" style="-ms-grid-column: 2; -ms-grid-row: 1">
+
+                    <div class="nowPlayingText" data-win-bind="textContent: String.id.IDS_HOME_NOW_PLAYING MS.Entertainment.Formatters.formatStringId;
+                            removeFromDisplay: progressBarVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                    <div class="homeNowPlayingMetadataClock text-metadata" data-win-bind="textContent: metadataClockAndDuration;
+                            removeFromDisplay: progressBarVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                </div>
+
+                <div class="homeNowPlayingMetadataTitle text-weightBold" style="-ms-grid-column: 2; -ms-grid-row: 5" data-win-bind="textContent: metadataTitle;"></div>
+
+                <div class="homeNowPlayingMetadataSubTitle text-metadata" style="-ms-grid-column: 2; -ms-grid-row: 7" data-win-bind="textContent: metadataSubTitle;"></div>
+
+                <progress data-ent-member="_progressBar" class="bottomProgress" style="-ms-grid-column: 2; -ms-grid-row: 3" max="100" value="0" role="progressbar" data-win-bind="value : progressValue;
+                                         max : progressMax;
+                                         removeFromDisplay: progressBarVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></progress>
+            </div> 
+        </div>
+    </div>
+
+    <div data-ent-templateid="templateLarge" data-win-control="WinJS.Binding.Template">
+        <div data-ent-member="_homeNowPlayingTile" class="homeNowPlayingTile large win-ui-dark win-focusable" data-ent-event="click: thumbnailClick" role="button">
+            
+            <div class="homeNowPlayingArtLarge" style="-ms-grid-column: 2; -ms-grid-row: 2" data-win-control="MS.Entertainment.UI.Controls.MediaItemThumbnail" data-win-options="{imageHeight: 'auto', imageWidth: '100%'}" data-win-bind="winControl.mediaItem: nowPlayingImageMediaItem">
+            </div>
+
+            <div data-ent-member="_musicVisualizationContainer" class="nowPlayingTileBackground" style="-ms-grid-column: 2; -ms-grid-row:  2;" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility: musicVisualizationVisible;
+                    musicVisualizationVisible: musicVisualizationVisible MS.Entertainment.Utilities.toggleClassName;">
+            </div>
+
+            <div class="homeNowPlayingMetadata" style="-ms-grid-column: 2; -ms-grid-row: 2; -ms-grid-row-align: end; z-index: 2">
+                <div class="homeNowPlayingPlayButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: MS.Entertainment.UI.Icon.play, accessibilityStringId: MS.Entertainment.UI.Controls.TransportControls.playButtonStringId}" data-win-bind="removeFromDisplay : playVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                </div>
+                <div class="homeNowPlayingMetadataClock label text-metadata" data-win-bind="textContent: metadataClock;  removeFromDisplay : clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                <progress data-ent-member="_progressBar" class="bottomProgress" max="100" value="0" role="progressbar" data-win-bind="value : progressValue;
+                                   max : progressMax;
+                                   removeFromDisplay : clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></progress>
+            </div>
+
+            <div class="textContainer" style="-ms-grid-column: 2; -ms-grid-row: 4">
+                <div class="homeNowPlayingMetadataSubTitle label text-metadata" data-win-bind="textContent: metadataSubTitle;"></div>
+                <div class="homeNowPlayingMetadataTitle label wrap text-weightBold" data-win-bind="textContent: metadataTitle;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="templatePoster" data-win-control="WinJS.Binding.Template">
+        <div data-ent-member="_homeNowPlayingTile" class="homeNowPlayingTilePoster  win-focusable" data-win-bind="style.width: nowPlayingWidth" data-ent-event="click: thumbnailClick" role="button">
+
+            <div class="homeNowPlayingArtAndTextContainer" style="-ms-grid-column: 2; -ms-grid-row: 2;">
+
+                <div class="homeNowPlayingArt" style="-ms-grid-column: 1; -ms-grid-row: 1;" data-win-bind="artCollapsed: artVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+
+                    
+                    <img class="artThumbnailContainer" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{ desiredImageSize: { height: 110 } }" data-win-bind="winControl.target: nowPlayingImageMediaItem;
+                            tvThumbnailVisible: tvThumbnailVisible MS.Entertainment.Utilities.toggleClassName;">
+                </div>
+
+                
+                <div data-ent-member="_musicVisualizationContainer" class="nowPlayingTileBackground" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility: musicVisualizationVisible"></div>
+
+                
+                <div class="win-template win-ui-dark nowPlayingTransportControlsPlayPauseButton icon-medium" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="winControl.icon: MS.Entertainment.UI.Icon.play MS.Entertainment.Formatters.formatIcon;"></div>
+
+                <div class="homeNowPlayingMetadataTextContainer" style="-ms-grid-column: 2; -ms-grid-row: 3;">
+                    <div class="homeNowPlayingMetadataSubTitle label wrap text-xxSmall text-weightHeavy maxLines-one" style="-ms-grid-row: 1;" data-win-bind="textContent: metadataSubTitle;"></div>
+                    <div class="homeNowPlayingMetadataTitle label text-small" style="-ms-grid-row: 2;" data-win-bind="textContent: metadataTitle;"></div>
+                </div>
+
+            </div>
+
+            <div class="homeNowPlayingMetadataTimeContainer" style="-ms-grid-column: 2; -ms-grid-row: 6;">
+                <div class="homeNowPlayingMetadataClock label text-metadata" data-win-bind="textContent: metadataClock; removeFromDisplay : clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                <div class="homeNowPlayingMetadataDuration label text-metadata" data-win-bind="textContent: metadataDuration;"></div>
+            </div> 
+            
+            <progress data-ent-member="_progressBar" class="bottomProgress" max="100" value="0" style="-ms-grid-column: 2; -ms-grid-row: 4;" role="progressbar" data-win-bind="value : progressValue;
+                               max : progressMax;
+                               removeFromDisplay : clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></progress>
+            
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="templatePosterCompanion" data-win-control="WinJS.Binding.Template">
+        
+        <div class="companionHomeNowPlayingTileContainer win-focusable" data-ent-event="click: thumbnailClick" role="button" data-win-bind="removeFromDisplay: xboxXenonBackgroundVisible MS.Entertainment.Utilities.toggleClassName;">
+
+            
+            <div class="homeNowPlayingTilePoster companion" data-win-bind="style.width: nowPlayingWidth;
+                    musicVisualizationVisible: musicVisualizationVisible MS.Entertainment.Utilities.toggleClassName;
+                    fullBleedTileVisible: fullBleedTileVisible MS.Entertainment.Utilities.toggleClassName;">
+
+                <div class="nowPlayingTileBackground" data-ent-member="_musicVisualizationContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility: musicVisualizationVisible">
+                </div>
+
+                <div class="homeNowPlayingArtAndTextContainer hideFromDisplay" data-win-bind="hideFromDisplay: companionTileContentVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+
+                    <div class="homeNowPlayingArt" style="-ms-grid-column: 1; -ms-grid-row: 1;" data-win-bind="removeFromDisplay: musicVisualizationVisible MS.Entertainment.Utilities.toggleClassName;">
+                        <img style="-ms-grid-column: 1; -ms-grid-row: 1;" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{ desiredImageSize: { height: 305 },
+                                defaultImagePath: '' }" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: nowPlayingImageMediaItem;
+                                gameThumbnailVisible: gameThumbnailVisible MS.Entertainment.Utilities.toggleClassName;
+                                movieThumbnailVisible: movieThumbnailVisible MS.Entertainment.Utilities.toggleClassName;
+                                tvThumbnailVisible: tvThumbnailVisible MS.Entertainment.Utilities.toggleClassName;
+                                removeFromDisplay: musicVisualizationVisible MS.Entertainment.Utilities.toggleClassName;">
+                    </div>
+
+                    <div class="homeNowPlayingMetadataTextContainer" style="-ms-grid-column: 2; -ms-grid-row: 1">
+                        <div class="homeNowPlayingMetadataTitle label text-weightBold" style="-ms-grid-row: 1;" data-win-bind="textContent: metadataTitle;"></div>
+                        <div class="homeNowPlayingMetadataGenre label wrap" style="-ms-grid-row: 2;" data-win-bind="textContent: metadataGenre;
+                                    removeFromDisplay: musicVisualizationVisible MS.Entertainment.Utilities.toggleClassName;"></div>
+                        <div class="homeNowPlayingMetadataArtist label" style="-ms-grid-row: 3;" data-win-bind="textContent: metadataArtist;
+                                    removeFromDisplay: musicVisualizationVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                    </div>
+
+                </div>
+
+                <div class="homeNowPlayingTimeAndProgressContainer" data-win-bind="hideFromDisplay: clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    <div class="homeNowPlayingMetadataClockAndDuration" data-win-bind="textContent: metadataClockAndDuration;"></div>
+                    <progress data-ent-member="_progressBar" class="bottomProgress" max="100" value="0" role="progressbar" data-win-bind="value : progressValue;
+                            max : progressMax;"></progress>
+                </div>
+
+            </div>
+
+            
+            <div class="companionFullBleedNowPlayingTile acc-preserveBackground" data-win-bind="style.width: nowPlayingWidth;
+                    fullBleedTileVisible: fullBleedTileVisible MS.Entertainment.Utilities.toggleClassName;">
+
+                <div class="contentContainer hideFromDisplay" data-win-bind="hideFromDisplay: companionTileContentVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{ desiredImageSize: { width: 591 } }" data-win-bind="winControl.target: fullBleedArtUrl;">
+                    <div class="tiledBackground" data-win-bind="style.backgroundImage: fullBleedTileBackgroundUrl;
+                            removeFromDisplay: fullBleedTileBackgroundUrl MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                    <div class="imageOverlay"></div>
+                    <div class="textContainer" style="-ms-grid-row: 2;">
+                        <div class="primaryText text-medium" style="-ms-grid-column: 2;" data-win-bind="textContent: metadataTitle;
+                                removeFromDisplay: metadataTitle MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="secondaryText" style="-ms-grid-column: 2; -ms-grid-row: 2;" data-win-bind="textContent: metadataGenre;
+                                removeFromDisplay: metadataGenre MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+
+                <div class="homeNowPlayingTimeAndProgressContainer" data-win-bind="hideFromDisplay: clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    <div class="homeNowPlayingMetadataClockAndDuration" data-win-bind="textContent: metadataClockAndDuration;"></div>
+                    <progress data-ent-member="_companionFullBleedProgressBar" class="bottomProgress" max="100" value="0" role="progressbar" data-win-bind="value : progressValue;
+                            max : progressMax;"></progress>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="xboxXenonBackground acc-preserveBackground" data-win-bind="xboxXenonBackgroundVisible: xboxXenonBackgroundVisible MS.Entertainment.Utilities.toggleClassName;">
+            <div class="textContainer" style="-ms-grid-column: 2;">
+                <div class="primaryText" data-win-bind="textContent: metadataTitle;
+                        removeFromDisplay: metadataTitle MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                <div class="secondaryText" data-win-bind="textContent: metadataGenre;
+                        removeFromDisplay: metadataGenre MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <div data-ent-templateid="templateMusicSnapped" data-win-control="WinJS.Binding.Template">
+        <div data-ent-member="_homeNowPlayingTile" class="homeNowPlayingTile win-ui-dark win-focusable" data-win-bind="style.width: nowPlayingWidth" data-ent-event="click: thumbnailClick" role="button">
+
+            <div data-ent-member="_musicVisualizationContainer" class="nowPlayingTileBackground" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility: musicVisualizationVisible">
+            </div>
+
+            <div class="blackAlphaGradient"></div>
+            
+            <div class="homeNowPlayingMetadata">
+
+                <div class="homeNowPlayingPlayButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: MS.Entertainment.UI.Icon.play, accessibilityStringId: MS.Entertainment.UI.Controls.TransportControls.playButtonStringId}" data-win-bind="removeFromDisplay : playVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                </div>
+
+                <progress data-ent-member="_progressBar" class="bottomProgress" max="100" value="0" role="progressbar" data-win-bind="value : progressValue;
+                                     max : progressMax;
+                                     removeFromDisplay : clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></progress>
+                
+                <div class="title label" data-win-bind="textContent: metadataTitle;"></div>
+
+                
+                <div class="subTitle label text-metadata" data-win-bind="textContent: metadataSubTitle;"></div>
+
+                 
+                <div class="metadata label" data-win-bind="textContent: metadataSource;"></div>
+
+                <div class="metadata label" data-win-bind="textContent: metadataClock; removeFromDisplay : clockVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div> 
+            </div> 
+        </div>
+    </div>
+</body>
+</html>

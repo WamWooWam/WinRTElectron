@@ -1,0 +1,25 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+    
+    
+    <div data-ent-templateid="control-searchFlyout" data-win-control="WinJS.Binding.Template">
+        <div class="searchFlyoutContainer">
+
+            <div class="searchFlyoutContainerPromptTitle text-small"
+                 data-win-bind="textContent: String.id.IDS_VIDEO1_SEARCH_PROMPT_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+
+            <div class="searchFlyoutContainerSearchBox"
+                    data-win-control="WinJS.UI.SearchBox"
+                    data-win-automationid="SearchBox"
+                    data-ent-event="querysubmitted: searchQuerySubmitted; suggestionsrequested: searchSuggestionsRequested" 
+                    data-ent-member="_searchBox">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

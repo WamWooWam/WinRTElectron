@@ -1,0 +1,18 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Message Link Box Template</title>   
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="messageLinkBoxTemplate" data-win-control="WinJS.Binding.Template">
+            <span data-win-bind="textContent: description;" style="-ms-grid-row: 1" data-win-automationid="wecMessageLinkBoxMessage"></span>
+            
+            <div class="webLinkContainer">
+                 <a data-win-bind="href: webLink; textContent: webLinkText" style="-ms-grid-row: 4" data-win-automationid="wecMessageLinkBoxLink" target="_blank"></a>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cloud Match Opt In Dialog</title>
+        <script src="/main_merged.js"></script>
+        <script src="/Components/Settings/settings.js"></script>
+        <script src="/Controls/editbox.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="cloudMatchOptInTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="cloudGrovelInfoContent">
+                <div class="cloudInfoImage acc-preserveBackground"></div>
+                <div class="cloudMatchOptInTextContent">
+                    <div class="cloudLegendLabel text-weightHeavy" data-win-bind="textContent: subHeaderString; label: subHeaderString MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: paragraphOneText; label: paragraphOneText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: paragraphTwoText; label: paragraphTwoText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    <div class="text-bodyContent" data-win-bind="textContent: footerText; removeFromDisplay: footerText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;
+                                        label: footerText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+                    <a class="cloudMatchFooterLink" data-win-bind="textContent: footerLinkText; href:footerLinkUrl; removeFromDisplay: footerLinkText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></a>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="cloudMatchOptIn wecDialog wecDialog_cloud" data-win-automationid="wecDialog">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground"></div>
+
+                
+                <div class="overlayContainer dialogContainerBackground" data-win-bind="style.top: top; style.bottom: bottom;" data-ent-member="overlayContainer" data-ent-areaname="cloudMatchOptInDialogContainer" role="dialog" aria-label="">
+
+                    <div class="dialogContainer win-ui-light" data-win-bind="style.left: left; style.right: right;" data-ent-member="dialogContainer">
+                        <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();">
+
+                            
+                            <div class="dialogCaption" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;"></div>
+
+                            
+                            <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer"></div>
+                
+                            
+                            <div class="dialogFooter"> 
+
+                                
+                                <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons"></div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

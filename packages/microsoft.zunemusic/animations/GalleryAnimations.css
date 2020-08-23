@@ -1,0 +1,267 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.thumbnailButtonImageTransition
+{
+    position: relative;
+    transition-property: transform,opacity;
+    transition-duration: 1000ms,530ms;
+    transition-timing-function: cubic-bezier(.2,.97,0,1),cubic-bezier(0,0,1,1)
+}
+@keyframes thumbnailButtonFadeInKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: translateX(300px)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+@keyframes thumbnailButtonFadeOutKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: translateX(-300px)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translateX(0)
+    }
+}
+.thumbnailButtonFadeIn
+{
+    animation-name: thumbnailButtonFadeInKeys;
+    animation-direction: normal;
+    animation-duration: 1ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.thumbnailButtonFadeOut
+{
+    animation-name: thumbnailButtonFadeOutKeys;
+    animation-direction: normal;
+    animation-duration: 1ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.thumbnailButtonTextFade
+{
+    transition-property: opacity;
+    transition-duration: 1470ms;
+    transition-timing-function: cubic-bezier(.09,.08,.48,1)
+}
+.thumbnailButtonTextFade.fadeOut
+{
+    opacity: 0
+}
+.thumbnailButtonTextFade.fadeIn
+{
+    opacity: 1
+}
+.galleryExitBackward
+{
+    animation-name: transitionOutBackwardKeys;
+    transform-origin: center;
+    animation-duration: 500ms;
+    animation-delay: 0;
+    animation-timing-function: cubic-bezier(.89,.11,.98,.53);
+    animation-fill-mode: both
+}
+.galleryExitForward
+{
+    animation-name: transitionOutForwardKeys;
+    transform-origin: center;
+    animation-duration: 350ms;
+    animation-timing-function: cubic-bezier(.89,.11,.98,.53);
+    animation-fill-mode: both
+}
+.galleryEnterForward
+{
+    animation-name: transitionInForwardKeys;
+    transform-origin: center;
+    animation-duration: 250ms;
+    animation-timing-function: cubic-bezier(.18,.78,.08,1);
+    animation-fill-mode: both
+}
+.galleryEnterBackward
+{
+    animation-name: transitionInBackwardKeys;
+    transform-origin: center;
+    animation-duration: 250ms;
+    animation-timing-function: cubic-bezier(.18,.78,.08,1);
+    animation-fill-mode: both
+}
+@keyframes transitionInForwardKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: scale(.85)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+@keyframes transitionInBackwardKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: scale(1.25)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: scale(1)
+    }
+}
+@keyframes transitionOutForwardKeys
+{
+    0%
+    {}
+    100%
+    {
+        opacity: 0;
+        transform: scale(1.25)
+    }
+}
+@keyframes transitionOutBackwardKeys
+{
+    0%
+    {}
+    100%
+    {
+        opacity: 0;
+        transform: scale(.85)
+    }
+}
+.galleryPanelEnter
+{
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: both
+}
+.galleryPanelExit
+{
+    animation-name: fadeOut;
+    animation-duration: 250ms;
+    animation-timing-function: cubic-bezier(0,0,1,1);
+    animation-fill-mode: both
+}
+.inlineDetailsFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(.09,.08,.48,1);
+    animation-fill-mode: both
+}
+.inlineDetailsFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(.09,.08,.48,1);
+    animation-fill-mode: both
+}
+.listViewScrollTransition
+{
+    transition-duration: 300ms;
+    transition-property: transform;
+    transition-timingfunction: cubic-bezier(.24,1,0,.99)
+}
+.listViewElementTransition
+{
+    transition-duration: 300ms;
+    transition-property: transform;
+    transition-timingfunction: cubic-bezier(.24,1,0,.99)
+}
+@keyframes detailsActionButtonFadeInKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: translateY(100px)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+@keyframes detailsActionButtonFadeOutKeys
+{
+    0%
+    {
+        opacity: 1;
+        transform: translateY(0)
+    }
+    100%
+    {
+        opacity: 0;
+        transform: translateY(100px)
+    }
+}
+.detailsActionButtonFadeIn
+{
+    animation-name: detailsActionButtonFadeInKeys;
+    animation-direction: normal;
+    animation-duration: 500ms;
+    animation-timingfunction: ease-in;
+    animation-fill-mode: forwards
+}
+.detailsActionButtonFadeOut
+{
+    animation-name: detailsActionButtonFadeOutKeys;
+    animation-direction: normal;
+    animation-duration: 500ms;
+    animation-timingfunction: ease-out;
+    animation-fill-mode: forwards
+}
+@keyframes detailsActionTextFadeInKeys
+{
+    0%
+    {
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+    100%
+    {
+        opacity: 1;
+        transform: translateY(0)
+    }
+}
+@keyframes detailsActionTextFadeOutKeys
+{
+    0%
+    {
+        opacity: 1;
+        transform: translateY(0)
+    }
+    100%
+    {
+        opacity: 0;
+        transform: translateY(-100px)
+    }
+}
+.detailsActionTextFadeIn
+{
+    animation-name: detailsActionTextFadeInKeys;
+    animation-direction: normal;
+    animation-duration: 500ms;
+    animation-timingfunction: ease-in;
+    animation-fill-mode: forwards
+}
+.detailsActionTextFadeOut
+{
+    animation-name: detailsActionTextFadeOutKeys;
+    animation-direction: normal;
+    animation-duration: 500ms;
+    animation-timingfunction: ease-out;
+    animation-fill-mode: forwards
+}

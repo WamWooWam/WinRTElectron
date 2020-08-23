@@ -1,0 +1,957 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+    <script src="/Controls/Dashboard.js"></script>
+</head>
+<body>
+    
+    <div class="navigationHost dashboardHost" data-win-control="MS.Entertainment.UI.Controls.Dashboard" data-win-options="{ doNotReversePanelsLeftOfHome: true }">
+        
+        <div class="dashboardTitle" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage">
+            <div class="icon inlineGlyphSolid dashboardTitleIcon acc-preserveBackground icon-xenon" data-ent-member="_titleIcon">
+            </div>
+                <div class="label dashboardTitleLabel text-appTitle" data-ent-member="_title">
+                </div>
+        </div>
+        
+        <div class="dashboardContent enterPageOffset2" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage" data-ent-member="_contentScroller" role="region" aria-label="" data-ent-areaname="dashboardScroller" data-ent-event="scroll: onScroll;">
+            
+            <div class="leftSpacer"></div>
+            <div class="leftOfHome" data-ent-member="_leftOfHome">
+            </div>
+            <div class="homeAndToTheRight" data-ent-member="_homeAndToTheRight">
+            </div>
+            
+            <div class="rightSpacer"></div>
+        </div>
+    </div>
+
+    
+        <div data-ent-templateid="linkTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <button class="link acc-keyboardFocusTarget" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled">
+
+                <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                                    winControl.stringId: stringId;
+                                    winControl.numberOfLines: numberOfLines;
+                                    winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel label text-panelHeader">
+                </div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="panelHeaderLinkTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="link panelHeaderLink acc-keyboardFocusTarget win-focusable" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled" data-ent-panelheader="true">
+            
+
+                <div class="actionLinkContainer">
+                    <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                                        winControl.stringId: stringId;
+                                        winControl.numberOfLines: numberOfLines;
+                                        winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel label text-panelHeader">
+                    </div>
+                    <div class="icon icon-medium text-panelHeader" data-win-bind="hideFromDisplay: disabled MS.Entertainment.Utilities.toggleClassName"></div>
+                </div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="closeLinkTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <button class="link closeLink acc-keyboardFocusTarget" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled">
+                <div class="actionLinkContainer">
+                    <div class="icon"></div>
+                </div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="panelActionLinkTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <button class="link panelActionLink panelActionLinkContainer win-focusable" tabindex="-1" data-ent-event="click: onClick" data-ent-member="_button" data-win-bind="disabled: disabled" type="button">
+                <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                        winControl.stringId: stringId;
+                        winControl.numberOfLines: numberOfLines;
+                        winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel panelActionLinkLabel label text-panelHeader">
+                </div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="imageActionLinkTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <button class="link imageActionLink" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled">
+
+                <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageUrl; alt: text" data-win-options="{
+                        loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                        show: MS.Entertainment.Utilities.showElementNoAnimation,
+                        hide: MS.Entertainment.Utilities.doNothing,
+                        allowAnimations: false,
+                        imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                        preventHideDuringInitialize: true}">
+            </button>
+        </div>
+
+        <div data-ent-templateid="comboLinkTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                               winControl.stringId: stringId;
+                               winControl.numberOfLines: numberOfLines;
+                               winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel label text-panelHeader">
+            </div>
+        </div>
+
+        <div data-ent-templateid="comboLinkContainerTemplate" data-win-control="WinJS.Binding.Template">
+        </div>
+
+    
+
+    
+    
+    <div data-ent-templateid="videoHubCollectionPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="libraryVideoContent" data-win-control="MS.Entertainment.UI.Controls.LibraryPersonalFeaturedContent" data-win-bind="
+                winControl.libraryQuery: dataContext.videoQuery;
+                winControl.libraryClicked: dataContext.libraryClicked;
+                winControl.emptyLibraryModel: dataContext.emptyLibraryModel;
+                winControl.panelAction: dataContext.panelAction;
+                winControl.itemsColumns: dataContext.itemsColumns;
+                winControl.hidePanelWhenEmpty: dataContext.hidePanelWhenEmpty;" data-win-automationid="videoHubCollection">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="movieHubCollectionPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="libraryVideoContent" data-win-control="MS.Entertainment.UI.Controls.LibraryMovieFeaturedContent" data-win-bind="
+                winControl.libraryQuery: dataContext.videoQuery;
+                winControl.libraryClicked: dataContext.libraryClicked;
+                winControl.emptyLibraryModel: dataContext.emptyLibraryModel;
+                winControl.panelAction: dataContext.panelAction;
+                winControl.itemsColumns: dataContext.itemsColumns;
+                winControl.hidePanelWhenEmpty: dataContext.hidePanelWhenEmpty;" data-win-automationid="movieHubCollection">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="tvHubCollectionPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="libraryVideoContent" data-win-control="MS.Entertainment.UI.Controls.LibraryTvFeaturedContent" data-win-bind="
+                winControl.libraryQuery: dataContext.videoQuery;
+                winControl.libraryClicked: dataContext.libraryClicked;
+                winControl.emptyLibraryModel: dataContext.emptyLibraryModel;
+                winControl.panelAction: dataContext.panelAction;
+                winControl.itemsColumns: dataContext.itemsColumns;
+                winControl.hidePanelWhenEmpty: dataContext.hidePanelWhenEmpty;" data-win-automationid="tvHubCollection">
+        </div>
+    </div>
+    
+    
+    <div data-ent-templateid="videoHubNewMoviesPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.FeaturedContent" class="featuredMovieContent dashboardHubContent" data-win-options="{ enableClickEvents: true, templates: ['/Components/Video/NewMoviesView.html'] }" data-win-bind="winControl.data: dataContext.viewModel.viewModelData" data-win-automationid="videoHubNewMovies">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoHubFeaturedMoviesPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.FeaturedContent" class="featuredMovieContent dashboardHubContent" data-win-options="{ enableClickEvents: true, templates: ['/Components/Video/FeaturedMoviesView.html'] }" data-win-bind="winControl.data: dataContext.viewModel.viewModelData" data-win-automationid="videoHubFeaturedMovies">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoHubNewTvPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.FeaturedContent" class="featuredTVContent dashboardHubContent" data-win-options="{ enableClickEvents: true, templates: ['/Components/Video/NewTVView.html']}" data-win-bind="winControl.data: dataContext.viewModel.viewModelData" data-win-automationid="videoHubNewTv">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoHubFeaturedTvPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.FeaturedContent" class="featuredTVContent dashboardHubContent" data-win-options="{ enableClickEvents: true, templates: ['/Components/Video/FeaturedTVView.html']}" data-win-bind="winControl.data: dataContext.viewModel.viewModelData" data-win-automationid="videoHubFeaturedTv">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid='videoHubSpotlightPanelTemplate' data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.SpotlightFeaturedContent" class="featuredVideoContent dashboardHubContent" data-win-options="{ enableClickEvents: true }" data-win-bind="winControl.data: dataContext.viewModel.featuredObject" data-win-automationid="spotlightContent">
+
+        
+        
+        
+            <div data-win-control="MS.Entertainment.UI.Framework.BindingBlock" class="bindingBlock removeFromDisplay">
+                <div class="baseGrid">
+
+                
+                <div class="grid_2RowHeroTopWidescreenWithCard" style="-ms-grid-column: 1; -ms-grid-row: 1">
+
+                   
+                    <div style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-span: 3" class="dashboardGridItemContent large" data-win-bind="clickDataContext: bindableItems.item0" data-ent-showanimation="fadeIn">
+                        <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                            <div class="imageContainer" aria-hidden="true">
+                                
+                                <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item0 WinJS.Binding.oneTime" data-win-options="{
+                                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                hide: MS.Entertainment.Utilities.doNothing,
+                                                allowAnimations: false,
+                                                imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                desiredImageSize: {width: 670, height: 330},
+                                                preventHideDuringInitialize: true,
+                                                disableLazyDecode: true,
+                                                defaultImagePath: 'String.empty'}">
+                            </div>
+                            
+                            <div class="content">
+                                <div class="textContainer">
+                                    <div class="primaryTextBg"></div>
+                                    <div class="primaryText label text-spotlightTitle maxLines-two" data-win-bind="textContent: bindableItems.item0.primaryText; removeFromDisplay: bindableItems.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                    <div class="secondaryText label text-spotlightSubtitle" data-win-bind="textContent: bindableItems.item0.secondaryText; removeFromDisplay: bindableItems.item0.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                    <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item0.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                    <div style="-ms-grid-column: 1; -ms-grid-row: 3" class="dashboardGridItemContent nowPlayingLocation" data-win-bind="clickDataContext: bindableItems.item2" data-ent-showanimation="fadeIn">
+                        <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">                
+                            <div class="imageContainer" aria-hidden="true">
+                                
+                                <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item2 WinJS.Binding.oneTime" data-win-options="{
+                                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                hide: MS.Entertainment.Utilities.doNothing,
+                                                allowAnimations: false,
+                                                imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                desiredImageSize: {width: 330, height: 160},
+                                                preventHideDuringInitialize: true,
+                                                disableLazyDecode: true,
+                                                defaultImagePath: 'String.empty'}" width="293">
+                            </div>
+                            
+                            <div class="content">
+                                <div class="textContainer">
+                                    <div class="primaryTextBg"></div>
+                                    <div class="primaryText label text-featuredTitle maxLines-one" data-win-bind="textContent: bindableItems.item2.primaryText; removeFromDisplay: bindableItems.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                    <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item2.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            
+                    
+                    <div class="homeHubNowPlayingTile" style='-ms-grid-column: 1; -ms-grid-row: 3;' data-ent-member="_nowPlaying">
+                    </div>
+
+                   
+                    <div style="-ms-grid-column: 3; -ms-grid-row: 3" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item1" data-ent-showanimation="fadeIn">
+                        <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">                
+                            <div class="imageContainer" aria-hidden="true">
+                                
+                                <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item1 WinJS.Binding.oneTime" data-win-options="{
+                                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                hide: MS.Entertainment.Utilities.doNothing,
+                                                allowAnimations: false,
+                                                imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                desiredImageSize: {width: 330, height: 160},
+                                                preventHideDuringInitialize: true,
+                                                disableLazyDecode: true,
+                                                defaultImagePath: 'String.empty'}" width="293">
+                            </div>
+                            
+                            <div class="content">
+                                <div class="textContainer">
+                                    <div class="primaryTextBg"></div>
+                                    <div class="primaryText label text-featuredTitle maxLines-one" data-win-bind="textContent: bindableItems.item1.primaryText; removeFromDisplay: bindableItems.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                    <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item1.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+                    <div class="part-outOfBandMessagingContainer removeFromDisplay" style="-ms-grid-row: 1; -ms-grid-row-span: 1; -ms-grid-column: 1; -ms-grid-column-span: 3;" data-ent-member="_upgradeContainer"></div>
+                    </div>
+
+                    <div class="dashboardFeaturedSetsColumn removeFromDisplay" data-win-bind="removeFromDisplay: showFeaturedSets MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        
+                        <button class="link panelHeaderLink acc-keyboardFocusTarget win-focusable featuredSetsTitle internalActionLink" data-win-bind="clickDataContext: featuredSets" tabindex="0">
+                            <div class="actionLinkContainer">
+                                <div class="actionLinkLabel label text-panelHeader win-focusable" data-win-bind="textContent: String.id.IDS_VIDEO_DASH_FEATURED_SETS_LC MS.Entertainment.Formatters.formatStringId;">
+                                </div>
+                                <div class="icon icon-medium text-panelHeader" data-win-bind="removeFromDisplay: isOnline MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                            </div>
+                        </button>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item0;
+                                            removeFromDisplay: featuredSets.item0 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item0" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item0.primaryText;
+                                             removeFromDisplay: featuredSets.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item1;
+                                            removeFromDisplay: featuredSets.item1 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item1" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item1.primaryText;
+                                             removeFromDisplay: featuredSets.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item2;
+                                            removeFromDisplay: featuredSets.item2 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item2" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item2.primaryText;
+                                             removeFromDisplay: featuredSets.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>  
+
+                    <div class="dashboardRecommendationsColumn">
+                        
+                        <div class="actionLinkLabel label text-panelHeader recommendationTitle" data-win-bind="textContent: String.id.IDS_VIDEO_RECOMMEND_TITLE_LC MS.Entertainment.Formatters.formatStringId"></div>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item0;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item0" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 160, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item0.primaryText; removeFromDisplay: recommendationItems.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item0.secondaryText; removeFromDisplay: recommendationItems.item0.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item1;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item1" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 160, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item1.primaryText; removeFromDisplay: recommendationItems.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item1.secondaryText; removeFromDisplay: recommendationItems.item1.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item2;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item2" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 160, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item2.primaryText; removeFromDisplay: recommendationItems.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item2.secondaryText; removeFromDisplay: recommendationItems.item2.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                </div>
+            </div>
+        
+        
+        
+            <div data-win-control="MS.Entertainment.UI.Framework.BindingBlock" class="bindingBlock removeFromDisplay">
+                <div class="baseGrid2Column">
+
+                    
+                    <div class="grid_3RowHeroTopWidescreen" style="-ms-grid-column: 1; -ms-grid-row: 1">
+                        
+                        <div style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-span: 3;" class="dashboardGridItemContent large" data-win-bind="clickDataContext: bindableItems.item0" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item0 WinJS.Binding.oneTime" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 770, height: 372},
+                                                    preventHideDuringInitialize: true,
+                                                    disableLazyDecode: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText label text-spotlightTitle maxLines-two" data-win-bind="textContent: bindableItems.item0.primaryText; removeFromDisplay: bindableItems.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                        <div class="secondaryText label text-spotlightSubtitle" data-win-bind="textContent: bindableItems.item0.secondaryText; removeFromDisplay: bindableItems.item0.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                        <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item0.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        <div style="-ms-grid-column: 1; -ms-grid-row: 3" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item2" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">                
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item2 WinJS.Binding.oneTime" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 380, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    disableLazyDecode: true,
+                                                    defaultImagePath: 'String.empty'}" width="293">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText label text-featuredTitle maxLines-one" data-win-bind="textContent: bindableItems.item2.primaryText; removeFromDisplay: bindableItems.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                        <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item2.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        <div style="-ms-grid-column: 3; -ms-grid-row: 3" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item1" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">                
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item1 WinJS.Binding.oneTime" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 380, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    disableLazyDecode: true,
+                                                    defaultImagePath: 'String.empty'}" width="293">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText label text-featuredTitle maxLines-one" data-win-bind="textContent: bindableItems.item1.primaryText; removeFromDisplay: bindableItems.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                        <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item1.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                       
+                        <div style="-ms-grid-column: 1; -ms-grid-row: 5" class="dashboardGridItemContent nowPlayingLocation" data-win-bind="clickDataContext: bindableItems.item4" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">                
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item4 WinJS.Binding.oneTime" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 380, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    disableLazyDecode: true,
+                                                    defaultImagePath: 'String.empty'}" width="293">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText label text-featuredTitle maxLines-one" data-win-bind="textContent: bindableItems.item4.primaryText; removeFromDisplay: bindableItems.item4.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                        <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item4.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="homeHubNowPlayingTile" style='-ms-grid-column: 1; -ms-grid-row: 5;' data-ent-member="_nowPlaying">
+                        </div>
+
+                        
+                        <div style="-ms-grid-column: 3; -ms-grid-row: 5" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item3" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">                
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: bindableItems.item3 WinJS.Binding.oneTime" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 380, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    disableLazyDecode: true,
+                                                    defaultImagePath: 'String.empty'}" width="293">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText label text-featuredTitle maxLines-one" data-win-bind="textContent: bindableItems.item3.primaryText; removeFromDisplay: bindableItems.item3.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                        <div class="icon dashboardTileIcon icon-xxSmall" data-win-bind="textContent: MS.Entertainment.UI.Icon.flexhub MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item3.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="part-outOfBandMessagingContainer removeFromDisplay" style="-ms-grid-row: 1; -ms-grid-row-span: 3; -ms-grid-column: 1; -ms-grid-column-span: 3;" data-ent-member="_upgradeContainer"></div>
+                    </div>
+
+                    <div class="dashboardFeaturedSetsColumn removeFromDisplay" data-win-bind="removeFromDisplay: showFeaturedSets MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        
+                        <button class="link panelHeaderLink acc-keyboardFocusTarget win-focusable featuredSetsTitle internalActionLink" data-win-bind="clickDataContext: featuredSets" tabindex="0">
+                            <div class="actionLinkContainer">
+                                <div class="actionLinkLabel label text-panelHeader win-focusable" data-win-bind="textContent: String.id.IDS_VIDEO_DASH_FEATURED_SETS_LC MS.Entertainment.Formatters.formatStringId;">
+                                </div>
+                                <div class="icon icon-medium text-panelHeader" data-win-bind="removeFromDisplay: isOnline MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                            </div>
+                        </button>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item0;
+                                            removeFromDisplay: featuredSets.item0 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item0" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 330, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item0.primaryText;
+                                             removeFromDisplay: featuredSets.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item1;
+                                            removeFromDisplay: featuredSets.item1 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item1" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 330, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item1.primaryText;
+                                             removeFromDisplay: featuredSets.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item2;
+                                            removeFromDisplay: featuredSets.item2 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item2" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 330, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item2.primaryText;
+                                             removeFromDisplay: featuredSets.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 7; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: featuredSets.item3;
+                                            removeFromDisplay: featuredSets.item3 MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: featuredSets.item3" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 330, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryTextBg"></div>
+                                        <div class="primaryText text-featuredSetCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: featuredSets.item3.primaryText;
+                                             removeFromDisplay: featuredSets.item3.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="-ms-grid-row: 7; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="removeFromDisplay: showFeaturedSetsPlaceholder MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable">
+                                <div class="imageContainer">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 280, height: 160},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                    <div class="dashboardRecommendationsColumn">
+                        
+                        <div class="actionLinkLabel label text-panelHeader recommendationTitle" data-win-bind="textContent: String.id.IDS_VIDEO_RECOMMEND_TITLE_LC MS.Entertainment.Formatters.formatStringId"></div>
+                        <div style="-ms-grid-row: 1; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item0;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item0" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 181, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item0.primaryText; removeFromDisplay: recommendationItems.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item0.secondaryText; removeFromDisplay: recommendationItems.item0.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item1;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item1" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 181, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item1.primaryText; removeFromDisplay: recommendationItems.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item1.secondaryText; removeFromDisplay: recommendationItems.item1.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 5; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item2;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item2" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 181, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item2.primaryText; removeFromDisplay: recommendationItems.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item2.secondaryText; removeFromDisplay: recommendationItems.item2.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        <div style="-ms-grid-row: 7; -ms-grid-column: 1;" class="dashboardGridItemContent" data-win-bind="clickDataContext: recommendationItems.item3;" data-ent-showanimation="fadeIn">
+                            <div class="thumbnailButton win-focusable" role="button" aria-atomic="true">
+                                <div class="imageContainer" aria-hidden="true">
+                                    
+                                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: recommendationItems.item3" data-win-options="{
+                                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                                    hide: MS.Entertainment.Utilities.doNothing,
+                                                    allowAnimations: false,
+                                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                                    desiredImageSize: {width: 181, height: 181},
+                                                    preventHideDuringInitialize: true,
+                                                    defaultImagePath: 'String.empty'}">
+                                </div>
+                                
+                                <div class="content">
+                                    <div class="textContainer">
+                                        <div class="primaryText text-recommendationCardTitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item3.primaryText; removeFromDisplay: recommendationItems.item3.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                        <div class="primaryText reasonText text-recommendationCardSubtitle maxLines-three removeFromDisplay" data-win-bind="textContent: recommendationItems.item3.secondaryText; removeFromDisplay: recommendationItems.item3.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+
+                     
+                </div>
+            </div>
+
+            </div>
+        </div>
+    
+
+    
+
+</body>
+</html>

@@ -1,0 +1,188 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.win-listview {
+    overflow: hidden;
+    height: 400px
+}
+.win-listview .win-surface {
+    position: relative;
+    overflow: visible;
+    width: 100%;
+    height: 100%
+}
+.win-listview>.win-viewport {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 0
+}
+.win-listview>.win-viewport.win-horizontal {
+    overflow-x: auto;
+    overflow-y: hidden
+}
+.win-listview>.win-viewport.win-vertical {
+    overflow-x: hidden;
+    overflow-y: auto
+}
+.win-listview>.win-horizontal .win-container {
+    margin: 4px
+}
+.win-listview>.win-vertical .win-container {
+    margin: 4px 24px 4px 7px
+}
+.win-listview.win-rtl>.win-vertical .win-container {
+    margin: 4px 7px 4px 24px
+}
+.win-listview .win-container {
+    cursor: default;
+    position: absolute
+}
+.win-listview .win-item, .win-dragimage .win-item {
+    overflow: hidden;
+    position: absolute
+}
+.win-listview .win-item:focus {
+    outline-style: none
+}
+.win-dragimage {
+    opacity: .8;
+    overflow: hidden
+}
+.win-dragoverlay {
+    width: 100%;
+    height: 100%;
+    opacity: 0
+}
+.win-dragcount {
+    position: absolute;
+    margin: 12px;
+    padding: 0;
+    vertical-align: top;
+    font-size: 42pt;
+    font-weight: 200;
+    line-height: 26pt
+}
+.win-listview .win-groupheader {
+    position: absolute;
+    top: 0;
+    padding: 10px 10px 10px 2px;
+    cursor: default;
+    overflow: hidden;
+    margin-left: 70px;
+    margin-right: 4px;
+    font-size: 20pt;
+    font-weight: 200;
+    line-height: 1.2
+}
+.win-listview.win-rtl .win-groupheader {
+    margin-left: 4px;
+    margin-right: 70px;
+    padding: 10px 2px 10px 10px
+}
+.win-listview.win-groups>.win-horizontal .win-surface {
+    margin-left: 50px;
+    margin-right: 0
+}
+.win-listview.win-groups.win-rtl>.win-horizontal .win-surface {
+    margin-left: 0;
+    margin-right: 50px
+}
+.win-selectionborder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+.win-selectionbackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0
+}
+.win-selectioncheckmarkbackground {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0
+}
+.win-rtl .win-selectioncheckmarkbackground {
+    left: 0;
+    right: auto
+}
+.win-selectioncheckmark {
+    position: absolute;
+    margin: 0;
+    font-family: Segoe UI Symbol;
+    font-size: 11pt
+}
+.win-rtl .win-selectioncheckmark {
+    left: 0;
+    right: auto
+}
+.win-selectionhint {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    right: 0;
+    font-family: Segoe UI Symbol;
+    font-size: 11pt;
+    opacity: .5
+}
+.win-selectionhint.win-revealed {
+    opacity: 1
+}
+.win-rtl .win-selectionhint {
+    left: 0;
+    right: auto
+}
+.win-listview .win-progress {
+    left: 50%;
+    top: 50%;
+    width: 60px;
+    height: 60px;
+    margin-left: -30px;
+    margin-top: -30px;
+    z-index: 1;
+    position: absolute;
+    -ms-progress-appearance: ring
+}
+.win-flipview {
+    overflow: hidden
+}
+.win-flipview .win-navleft {
+    left: 0%;
+    top: 50%;
+    margin-top: -19px
+}
+.win-flipview .win-navright {
+    left: 100%;
+    top: 50%;
+    margin-left: -69px;
+    margin-top: -19px
+}
+.win-flipview .win-navtop {
+    left: 50%;
+    top: 0%;
+    margin-left: -35px
+}
+.win-flipview .win-navbottom {
+    left: 50%;
+    top: 100%;
+    margin-left: -35px;
+    margin-top: -39px
+}
+.win-flipview .win-navbutton {
+    border: none;
+    width: 69px;
+    height: 39px;
+    z-index: 1;
+    position: absolute;
+    font-family: "Segoe UI Symbol";
+    font-size: 24px;
+    padding: 0;
+    min-width: 0
+}

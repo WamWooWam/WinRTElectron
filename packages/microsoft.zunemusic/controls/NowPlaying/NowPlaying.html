@@ -1,0 +1,25 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html data-ent-waypoint="4">
+<head>
+    <title>NowPlaying</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/NowPlaying_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Controls/NowPlaying/ShapeVisualizationEngine.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingPlaylistMusic2Templates.js"></script>
+    <script src="/Controls/Video_Win/VideoWinNowPlayingOverlays.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="nowPlayingTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingControl" data-ent-member="_nowPlayingContainer" style="display: -ms-grid; -ms-grid-columns: 1fr; -ms-grid-rows: 1fr">
+            <div class="musicVisualizationContainer" data-ent-showanimation="longFadeIn" data-ent-hideanimation="fadeOut" aria-hidden="true" style="-ms-grid-row-align: stretch; -ms-grid-column-align: stretch;" data-ent-member="_musicVisualizationContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{controlName: '_musicVisualizationContainer'}" data-win-bind="winControl.visibility : musicVisualizationVisible">
+            </div>
+            <div style="-ms-grid-row-align: stretch; -ms-grid-column-align: stretch;" class="nowPlayingPlaybackControlContainer" data-ent-member="_playbackContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="winControl.visibility : videoVisible"></div>
+            <div class="nowPlayingOverlaysContainer" style="-ms-grid-row-align: stretch; -ms-grid-column-align: stretch;" data-ent-member="_nowPlayingOverlaysContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{controlName: '_nowPlayingOverlaysContainer'}">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

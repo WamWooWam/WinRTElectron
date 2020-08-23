@@ -1,0 +1,166 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html data-ent-waypoint="2">
+    <head>
+        <title>Radio Collection Content Templates</title>
+
+        
+        <link rel="stylesheet" type="text/css" href="/styles/images.css">
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/RadioPageTemplate_merged.js"></script>
+        <script src="/msadvertisingjs/ads/VASTAd.js"></script>
+    </head>
+
+    <body>
+        <div data-ent-templateid="collectionBody" data-win-control="WinJS.Binding.Template">
+
+            
+            
+            
+            <div data-ent-templateid="collectionRadioTemplate" data-win-control="WinJS.Binding.Template" class="template-collectionRadioTemplate musicPage">
+                <div class="control-verticalItemTile verticalItemTile_artist">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image ent-delayInitialize ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                applyImageAsBackground: true,
+                                desiredImageSize: { width: 150, height: 150 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.missingArtist150,
+                                addLoadedClassToParent: true }" data-win-bind="winControl.target: instance" data-ent-pagecontent="target">
+                    </div>
+
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                        <div class="verticalItemTile-secondaryText text-metadata" data-ent-placeholderdatapath="subtitle" data-win-bind="
+                                textContent: subtitle MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+            
+            
+            <div class="page-radio">
+
+                
+                
+                
+                <div class="radio-disabledRadioState ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.RadioPageView" data-win-bind="removeFromDisplay: this.showRadioUpsell MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    <div class="disabledRadioState-layoutRoot">
+                        <div class="layoutRoot-content">
+                            <div class="content-icon">
+                                <span class="icon" data-win-bind="textContent: MS.Entertainment.UI.Icon.smartDjWithRing MS.Entertainment.Formatters.formatIcon"></span>
+                            </div>
+                            <div class="content-title text-header1Alt" data-win-bind="innerHTML: String.id.IDS_RADIO_FREE_USER_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                            <div class="content-subTitle text-subheader1Alt" data-win-bind="textContent: String.id.IDS_RADIO_FREE_USER_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                            <div class="content-actions">
+                                <button class="button_radio button-primary acc-keyboardFocusTarget" data-win-bind="textContent: String.id.IDS_MUSIC_ACTION_TRY_FOR_FREE MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: onTryForFreeClick; keydown: onTryForFreeClick"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                
+                
+                <div class="removeFromDisplay" data-win-bind="removeFromDisplay: this.showRadioUpsell MS.Entertainment.Utilities.toggleClassName;">
+                    
+                    <div class="radio-header" data-ent-type="radioHeader">
+                        <div class="header-contentContainer" data-ent-areaname="radioPageHeader">
+                            <div class="header-content">
+                                <div class="content-title text-heroTitle" data-win-automationid="Radio_HeaderTitle" data-win-bind="
+                                            textContent: title;
+                                            removeFromDisplay: title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                <div class="content-subTitle text-heroSubTitle" data-win-automationid="Radio_NewStationDescLine1" data-win-bind="
+                                            textContent: subTitle;
+                                            removeFromDisplay: subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                <div class="content-newStationButton ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{automationId: MS.Entertainment.UI.AutomationIds.startRadioStation}" data-win-bind="winControl.action: newStationAction;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="radio-content control-galleryHost" data-ent-areaname="radioPageBody">
+                        <div class="content-viewStateControl control-viewStateControl ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-options="{ hideFromDisplayReadyElement: true }" data-win-bind="
+                                winControl.dataContext: this;
+                                removeFromDisplay: this.showSignIn MS.Entertainment.Utilities.toggleClassName;">
+                            <div class="viewStateControl-layoutRoot">
+                                <div class="viewStateControl-notifications removeFromDisplay" data-ent-member="_notificationsElement" data-win-automationid="ViewState_Container">
+                                    
+                                    
+                                    
+                                    <div data-ent-member="_loadingElement" data-win-automationid="Page_Loading" class="notifications-loadingContainer removeFromDisplay">
+                                        <progress class="win-large win-ring"></progress>
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="notifications-errorContainer removeFromDisplay">
+                                        <div class="errorContainer-title text-bodyPanelMessagingHeader" data-win-bind="textContent: dataContext.viewStateViewModel.title;
+                                            removeFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                        <div class="errorContainer-subTitle text-bodyPanelMessagingSecondary maxLines-one" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                            removeFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                    </div>
+                                </div>
+
+                                
+                                
+                                
+                                <div class="viewStateControl-content hideFromDisplay" data-ent-member="_readyElement">
+
+                                    
+                                    
+                                    
+                                    <div class="control-shrinkAndStayHeaderControl" data-win-control="MS.Entertainment.UI.Controls.ShrinkAndStayHeaderControl">
+
+                                        
+                                        
+                                        
+                                        <div data-win-control="MS.Entertainment.UI.Controls.GalleryHost" class="control-galleryHost ent-control win-disposable" data-win-bind="winControl.dataContext: dataContext">
+                                            <div class="control-gallery ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-win-options="{
+                                                    focusFirstItemOnPageLoad: true,
+                                                    enableDelayInitialization: true,
+                                                    layoutOptions: {
+                                                        header: select('[data-ent-type=radioHeader]'),
+                                                        headerThreshold: 65
+                                                    },
+                                                    shrinkAndStayHeader: true,
+                                                 }" data-ent-member="_galleryControl"></div>
+                                        </div>
+
+                                        
+                                        
+                                        
+                                        <div class="shrinkAndStayHeaderControl-dropDownHeader">
+                                            <button class="dropDownHeader-backButton acc-keyboardFocusTarget" type="button" data-win-control="WinJS.UI.BackButton"></button>
+                                            <div class="dropDownHeader-title text-navHeaderTitle" data-win-bind="
+                                                     textContent: dataContext.title;
+                                                     hideFromDisplay: dataContext.title MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                        
+                        
+
+                        <div class="content-signIn settingsSignIn removeFromDisplay" data-win-bind="removeFromDisplay: this.showSignIn MS.Entertainment.Utilities.toggleClassNameNegate;">
+                            <div class="signIn-label text-bodyPanelMessagingHeader" data-win-bind="textContent: String.id.IDS_RADIO_PAGE_SIGN_IN_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                            <div class="signIn-signInControl settingsSignIn ent-control win-disposable" data-win-automationid="accountSignInButton" data-win-control="MS.Entertainment.UI.Controls.SignInControl" data-win-options="{settings:true}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

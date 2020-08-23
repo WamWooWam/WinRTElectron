@@ -1,0 +1,39 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>WebHostDialog Control Template</title>   
+        <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_1_merged.js"></script>
+        <script src="/Controls/WebHostDialog.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="webHostDialogTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="overlayBackground" data-ent-member="overlayBackground" data-ent-areaname="webHostDialogContainer"></div>
+
+            
+            <div class="overlayContainer dialogContainerBackground webHostOverlayContainer" data-ent-member="overlayContainer" data-ent-areaname="webHostDialogContainer" data-win-bind="style.top: top; style.bottom: bottom" role="dialog" aria-label="">
+
+                <div class="dialogContainer" data-ent-member="dialogContainer" data-win-bind="style.left: left; style.right: right">
+
+                    <div class="removeFromDisplay" data-ent-member="resizeMessageContainer">
+                        <img class="webHostResizeImage" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-member="resizeImage">
+
+                        <div class="label text-small webHostResizeTitle" data-ent-member="resizeMessageTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true, autoResizeFont: false, stringId: String.id.IDS_WEBHOST_RESIZE_WINDOW_TITLE}">
+                        </div>
+
+                        <div class="label text-xSmall webHostResizeMessage" data-ent-member="resizeMessage" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true, autoResizeFont: false, stringId: String.id.IDS_WEBHOST_RESIZE_WINDOW_BODY}">
+                        </div>
+                      
+                        <div class="webHostDialogResizeCancelButtonContainer">
+                            <button class="dialogButton acc-keyboardFocusTarget defaultButton webHostDialogResizeCancelButton" data-ent-event="click: closeClick" data-win-bind="textContent: String.id.IDS_CANCEL_BUTTON MS.Entertainment.Formatters.formatStringId;" type="button"></button>
+                        </div>
+                    </div>
+                    
+                    <div class="overlayContent dialogContent webHostDialogContent" data-ent-member="overlayContent"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

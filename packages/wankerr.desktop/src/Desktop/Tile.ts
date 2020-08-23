@@ -10,10 +10,10 @@ import "./splash-screen.css"
 import { PackageRegistry } from "./PackageRegistry";
 
 export enum TileSize {
-    square70x70Logo,
-    square150x150Logo,
-    wide310x150Logo,
-    square310x310Logo
+    square70x70,
+    square150x150,
+    wide310x150,
+    square310x310
 }
 
 export class Tile {
@@ -26,7 +26,6 @@ export class Tile {
     private wasClicked: boolean;
 
     private tileStyle: string;
-    private tileSize: TileSize;
     private tileSizeString: string;
     private tileContainerElement: HTMLDivElement;
     private tileContainerPostElement: HTMLDivElement;
@@ -35,16 +34,20 @@ export class Tile {
     private showTextSizes: Array<TileSize>
 
     tileGroup: HTMLElement;
+    tileSize: TileSize;
     tileBack: HTMLDivElement;
     tileFront: HTMLDivElement;
     splash: HTMLDivElement;
+    
+    // A fence tile is a tile that appears at the start of a 4x4 block of smaller tiles.
+    isFence: boolean;
 
     constructor(tileContainerElement: HTMLDivElement) {
         this.tileGroup = tileContainerElement.closest(".start-tile-group");
         this.tileContainerElement = tileContainerElement;
         this.tileStyle = tileContainerElement.style.cssText;
         this.tileContainerPostElement = <HTMLDivElement>tileContainerElement.nextElementSibling;
-        this.tileSizeString = tileContainerElement.dataset.tileSize ?? "square150x150Logo";
+        this.tileSizeString = tileContainerElement.dataset.tileSize ?? "square150x150";
         this.tileSize = TileSize[this.tileSizeString];
         this.tileVisuals = []
 
@@ -104,15 +107,15 @@ export class Tile {
 
         let tileImageUrl = this.app.visualElements.square150x150Logo;
 
-        if (this.tileSize === TileSize.wide310x150Logo && this.app.visualElements.defaultTile.wide310x150Logo) {
+        if (this.tileSize === TileSize.wide310x150 && this.app.visualElements.defaultTile.wide310x150Logo) {
             tileImageUrl = this.app.visualElements.defaultTile.wide310x150Logo;
         }
 
-        if (this.tileSize === TileSize.square70x70Logo && this.app.visualElements.defaultTile.square70x70Logo) {
+        if (this.tileSize === TileSize.square70x70 && this.app.visualElements.defaultTile.square70x70Logo) {
             tileImageUrl = this.app.visualElements.defaultTile.square70x70Logo;
         }
 
-        if (this.tileSize === TileSize.square310x310Logo && this.app.visualElements.defaultTile.square310x310Logo) {
+        if (this.tileSize === TileSize.square310x310 && this.app.visualElements.defaultTile.square310x310Logo) {
             tileImageUrl = this.app.visualElements.defaultTile.square310x310Logo;
         }
 
@@ -123,7 +126,7 @@ export class Tile {
         tileVisualImageContainer.appendChild(tileVisualImage);
         tileDefaultVisual.appendChild(tileVisualImageContainer);
 
-        if (this.tileSize != TileSize.square70x70Logo && this.showTextSizes.includes(this.tileSize)) {
+        if (this.tileSize != TileSize.square70x70 && this.showTextSizes.includes(this.tileSize)) {
             let tileVisualText = document.createElement("p");
             tileVisualText.innerText = this.app.visualElements.displayName;
             tileVisualText.classList.add("tile-front-text");

@@ -1,0 +1,312 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html data-ent-waypoint="unique">
+<head>
+    <title>Album metadata edit dialog</title>
+    <script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/group_unique_merged.js"></script>
+</head>
+
+<body>
+    
+    
+    
+    <option class="templateid-genreOption" data-ent-templateid="templateid-genreOption" data-win-control="WinJS.Binding.Template">
+        <div data-win-bind="innerText: this"></div>
+    
+  
+    
+    
+    
+    <option class="templateid-genreDivider" data-ent-templateid="templateid-genreDivider" data-win-control="WinJS.Binding.Template">—————————————————————————
+
+    
+    
+    
+    <div data-ent-templateid="templateid-trackItem" data-win-control="WinJS.Binding.Template" class="templateid-trackItem">
+        <div class="template-trackItem win-focusable">
+
+            
+            
+            
+            <div class="trackItem-trackNumber control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.trackNumber;
+                    state_error: items.trackNumber.hasError MS.Entertainment.Utilities.toggleClassName;">
+                <div class="metadataField-label" data-win-bind="innerText: items.trackNumber.displayName"></div>
+                <input class="metadataField-editBox" type="text" tabindex="-1" data-ent-type="metadataField" data-win-automationid="trackNumberField" data-win-bind="
+                           label: items.trackNumber.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                           maxLength: items.trackNumber.maxLength WinJS.Binding.setAttribute;">
+            </div>
+
+            
+            
+            
+            <div class="trackItem-songTitle control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.name;
+                    state_error: items.name.hasError MS.Entertainment.Utilities.toggleClassName;">
+                <div class="metadataField-label" data-win-bind="innerText: items.name.displayName"></div>
+                <input class="metadataField-editBox" type="text" tabindex="-1" data-ent-type="metadataField" data-win-automationid="trackTitleField" data-win-bind="
+                           label: items.name.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                           maxLength: items.name.maxLength WinJS.Binding.setAttribute;">
+            </div>
+
+            
+            
+            
+            <div class="trackItem-sortTitle control-metadataField metadataField_sortField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="
+                    removeFromDisplay: showSorts MS.Entertainment.Utilities.toggleClassNameNegate;
+                    winControl.dataContext: items.sortName;">
+                <div class="metadataField-label" data-win-bind="innerText: items.sortName.displayName"></div>
+                <input class="metadataField-editBox" type="text" tabindex="-1" data-ent-type="metadataField" data-win-automationid="trackSortTitleField" data-win-bind="
+                           label: items.sortName.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                           maxLength: items.sortName.maxLength WinJS.Binding.setAttribute;">
+            </div>
+
+            
+            
+            
+            <div class="trackItem-songArtist control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.artistName;
+                    state_error: items.artistName.hasError MS.Entertainment.Utilities.toggleClassName;">
+                <div class="metadataField-label" data-win-bind="innerText: items.artistName.displayName"></div>
+                <input class="metadataField-editBox" type="text" tabindex="-1" data-ent-type="metadataField" data-win-automationid="trackArtistField" data-win-bind="
+                           label: items.artistName.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                           maxLength: items.artistName.maxLength WinJS.Binding.setAttribute;">
+            </div>
+
+            
+            
+            
+            <div class="trackItem-sortArtist control-metadataField metadataField_sortField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="
+                    removeFromDisplay: showSorts MS.Entertainment.Utilities.toggleClassNameNegate;
+                    winControl.dataContext: items.sortArtist;">
+                <div class="metadataField-label" data-win-bind="innerText: items.sortArtist.displayName;"></div>
+                <input class="metadataField-editBox" type="text" tabindex="-1" data-ent-type="metadataField" data-win-automationid="trackSortArtistField" data-win-bind="
+                               label: items.sortArtist.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                               maxLength: items.sortArtist.maxLength WinJS.Binding.setAttribute;">
+            </div>
+
+                
+                
+                
+                <div class="trackItem-songGenre control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.genre;
+                    state_error: items.genre.hasError MS.Entertainment.Utilities.toggleClassName;">
+
+                    <div class="metadataField-label" data-win-bind="innerText: items.genre.displayName"></div>
+
+                    <div class="metadataField-editableComboBox control-editableComboBox ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.EditableComboBox" data-ent-type="metadataField" data-win-options="{
+                        itemTemplate: '/Components/Music1/AlbumMetadataEditDialog.html#templateid-genreOption',
+                        dividerItemTemplate: '/Components/Music1/AlbumMetadataEditDialog.html#templateid-genreDivider'
+                        }" data-win-bind="
+                        winControl.editModeIndex: items.genre.customIndex;
+                        winControl.dataContext: items.genre.selectionManager">
+
+                        <select class="editableComboBox-comboBox" tabindex="-1" data-win-automationid="trackGenreField" data-win-bind="
+                                label: items.genre.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></select>
+                        <input class="editableComboBox-editBox" type="text" tabindex="-1" data-win-automationid="trackGenreFieldInput" data-win-bind="
+                               label: items.genre.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                               maxLength: items.genre.maxLength WinJS.Binding.setAttribute;">
+                    </div>
+                </div>
+
+                
+                
+                
+                <div class="trackItem-discNumber control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.disc;
+                    state_error: items.disc.hasError MS.Entertainment.Utilities.toggleClassName;">
+                    <div class="metadataField-label" data-win-bind="innerText: items.disc.displayName"></div>
+                    <input class="metadataField-editBox" type="number" data-ent-type="metadataField" tabindex="-1" data-win-automationid="trackDiscNumberField" data-win-bind="
+                           label: items.disc.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                           maxLength: items.disc.maxLength WinJS.Binding.setAttribute;">
+                </div>
+
+            </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="templateid-metadataEditorDialogContent" data-win-control="WinJS.Binding.Template">
+
+        
+        
+        
+        <div class="template-metadataEditor metadataEditor_album ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ hideFromDisplayReadyElement: true, delayInitializeDataContext: true }">
+            <div class="metadataEditor-viewStateControl" data-win-automationid="viewstate_container">
+
+                
+                
+                
+                <div class="viewStateControl-loadingContainer removeFromDisplay" data-ent-member="_loadingElement" data-win-automationid="Dialog_Loading">
+                    <progress class="win-large win-ring"></progress>
+                </div>
+
+                
+                
+                
+                <div class="viewStateControl-content hideFromDisplay" data-win-automationid="Dialog_Ready" data-ent-member="_readyElement">
+
+                    
+                    
+                    
+                    <div class="content-editor" data-win-automationid="Dialog_Content">
+
+                        <div class="editor-metadata">
+                            
+                            
+                            
+                            <div class="metadata-albumInfo">
+                                <div class="albumInfo-albumArt">
+                                    <div class="albumArt-placeholder"></div>
+                                    <img class="albumArt-image control-image ent-control win-disposable" data-win-automationid="metadataAlbumImage" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-options="{
+                                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                            desiredImageSize: { width: 120, height: 120 },
+                                            applyImageAsBackground: true,
+                                            errorImage: MS.Entertainment.UI.ImagePaths.missingAlbum150,
+                                            defaultImagePath: MS.Entertainment.UI.ImagePaths.missingAlbum150 }" data-win-bind="
+                                            winControl.target: dataContext.items.image.displayValue;
+                                            state_error: dataContext.items.image.hasError MS.Entertainment.Utilities.toggleClassName;">
+
+                                    <button class="albumArt-button ent-control" type="button" tabindex="0" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.editMetadataImage" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-options="{
+                                            enableDelayInitialization: false,
+                                            setTextContent: true
+                                        }" data-win-bind="
+                                            winControl.actionParameter: dataContext.items.image;
+                                            state_error: dataContext.items.image.hasError MS.Entertainment.Utilities.toggleClassName;"></button>
+                                </div>
+                                <div class="albumInfo-editBoxes">
+
+                                    
+                                    
+                                    
+                                    <div class="editBoxes-albumTitle control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: dataContext.items.name;
+                                        state_error: dataContext.items.name.hasError MS.Entertainment.Utilities.toggleClassName;">
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.name.displayName"></div>
+                                        <input class="metadataField-editBox" type="text" data-ent-type="metadataField" data-win-automationid="albumTitleField" data-win-bind="
+                                               label: dataContext.items.name.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                               maxLength: dataContext.items.name.maxLength WinJS.Binding.setAttribute;">
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="editBoxes-sortTitle control-metadataField metadataField_sortField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="
+                                        removeFromDisplay: dataContext.showSorts MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        winControl.dataContext: dataContext.items.sortName;">
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.sortName.displayName"></div>
+                                        <input class="metadataField-editBox" type="text" data-ent-type="metadataField" data-win-automationid="albumSortTitleField" data-win-bind="
+                                               label: dataContext.items.sortName.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                               maxLength: dataContext.items.sortName.maxLength WinJS.Binding.setAttribute;">
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="editBoxes-albumArtist control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: dataContext.items.artistName;
+                                        state_error: dataContext.items.artistName.hasError MS.Entertainment.Utilities.toggleClassName;">
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.artistName.displayName"></div>
+                                        <input class="metadataField-editBox" type="text" data-ent-type="metadataField" data-win-automationid="albumArtistField" data-win-bind="
+                                               label: dataContext.items.artistName.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                               maxLength: dataContext.items.artistName.maxLength WinJS.Binding.setAttribute">
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="editBoxes-sortArtist control-metadataField metadataField_sortField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="
+                                        removeFromDisplay: dataContext.showSorts MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        winControl.dataContext: dataContext.items.sortArtist;">
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.sortArtist.displayName;"></div>
+                                        <input class="metadataField-editBox" type="text" data-ent-type="metadataField" data-win-automationid="albumSortArtistField" data-win-bind="
+                                               label: dataContext.items.sortArtist.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                               maxLength: dataContext.items.sortArtist.maxLength WinJS.Binding.setAttribute">
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="editBoxes-genre control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: dataContext.items.genre;
+                                        state_error: dataContext.items.genre.hasError MS.Entertainment.Utilities.toggleClassName;">
+
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.genre.displayName"></div>
+
+                                        <div class="metadataField-editableComboBox control-editableComboBox ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.EditableComboBox" data-ent-type="metadataField" data-win-options="{
+                                            itemTemplate: '/Components/Music1/AlbumMetadataEditDialog.html#templateid-genreOption',
+                                            dividerItemTemplate: '/Components/Music1/AlbumMetadataEditDialog.html#templateid-genreDivider'
+                                         }" data-win-bind="
+                                            winControl.editModeIndex: dataContext.items.genre.customIndex;
+                                            winControl.dataContext: dataContext.items.genre.selectionManager">
+
+                                            <select class="editableComboBox-comboBox" data-win-automationid="albumGenreField" data-win-bind="
+                                                     label: dataContext.items.genre.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></select>
+                                            <input class="editableComboBox-editBox" type="text" data-win-automationid="albumGenreFieldInput" data-win-bind="
+                                                   label: dataContext.items.genre.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                                   maxLength: dataContext.items.genre.maxLength WinJS.Binding.setAttribute;">
+                                        </div>
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="editBoxes-year control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: dataContext.items.year;
+                                        state_error: dataContext.items.year.hasError MS.Entertainment.Utilities.toggleClassName;">
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.year.displayName"></div>
+                                        <input class="metadataField-editBox" type="number" data-ent-type="metadataField" data-win-automationid="albumReleaseYearField" data-win-bind="
+                                               label: dataContext.items.year.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                               maxLength: dataContext.items.year.maxLength WinJS.Binding.setAttribute;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            
+                            
+                            
+                            <div class="metadata-tracksInfo" data-ent-type="metadataList" data-win-control="MS.Entertainment.UI.Controls.MetadataItemsControl" data-win-options="{
+                                    keyboardNavigable: true,
+                                    keyboardNavigationManagerClass: MS.Entertainment.Framework.FormKeyboardNavigationManager,
+                                    itemTemplate: '/Components/Music1/AlbumMetadataEditDialog.html#templateid-trackItem',
+                                 }" data-win-bind="winControl.dataSource: dataContext.items.tracks.dataSource">
+
+                                <div class="tracksInfo-header">
+                                    <div class="header-trackNumber" data-win-bind="innerText: dataContext.items.firstTrack.items.trackNumber.displayName"></div>
+                                    <div class="header-songTitle" data-win-bind="innerText: dataContext.items.firstTrack.items.name.displayName"></div>
+                                    <div class="header-sortTitle" data-win-bind="
+                                        removeFromDisplay: dataContext.showSorts MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        innerText: dataContext.items.firstTrack.items.sortName.displayName"></div>
+                                    <div class="header-songArtist" data-win-bind="innerText: dataContext.items.firstTrack.items.artistName.displayName"></div>
+                                    <div class="header-sortArtist" data-win-bind="
+                                        removeFromDisplay: dataContext.showSorts MS.Entertainment.Utilities.toggleClassNameNegate;
+                                        innerText: dataContext.items.firstTrack.items.sortArtist.displayName"></div>
+                                    <div class="header-songGenre" data-win-bind="innerText: dataContext.items.firstTrack.items.genre.displayName"></div>
+                                    <div class="header-discNumber" data-win-bind="innerText: dataContext.items.firstTrack.items.disc.displayName"></div>
+                                </div>
+
+                                <div class="tracksInfo-trackItems" data-ent-type="repeaterContainer">
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="editor-errorInfo" aria-live="assertive" data-win-bind="
+                                    textContent: dataContext.lastError.displayMessage;
+                                    removeFromDisplay: dataContext.lastError MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        </div>
+
+                        
+                        
+                        
+                        <div class="editor-contentFooter">
+                            <button class="contentFooter-matchAlbumInfoButton ent-control" type="button" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.editMetadataMatchAlbumInfo" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="winControl.actionParameter.mediaItem: dataContext.album" data-win-options="{
+                                            actionParameter: {
+                                                referenceElement: select('.metadataEditor_album')
+                                            },
+                                            setTextContent: true
+                                    }"></button>
+                            <div class="contentFooter-sortToggleSwitch">
+                                <div class="sortToggleSwitch-label" data-win-bind="textContent: String.id.IDS_MUSIC_EDIT_METADATA_TOGGLE_SORT_FIELDS MS.Entertainment.Formatters.formatStringId;"></div>
+                                <div class="sortToggleSwitch-toggleSwitch" data-win-control="WinJS.UI.ToggleSwitch"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<html>
+    <body>
+        <div data-ent-templateid="upgradeTile"
+            data-win-control="WinJS.Binding.Template">
+            <div class="control-upgradeTileContainer fillParent win-focusable"
+                 data-ent-event="click: handleClick">
+                <img class="part-Image"
+                            data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                            data-win-bind="winControl.target: imageUrl"
+                            data-win-options="{
+                                desiredImageSize: { width: 150, height: 150 },
+                                imageIdType: MS.Entertainment.Data.ImageIdType.image
+                            }" />
+                <div data-win-bind="textContent: bigMessage"
+                    class="part-bigMessage text-medium"></div>
+                <div  data-win-bind="textContent: littleMessage"
+                    class="part-littleMessage text-bodyContent"></div>
+            </div>
+        </div>
+    </body>
+</html>

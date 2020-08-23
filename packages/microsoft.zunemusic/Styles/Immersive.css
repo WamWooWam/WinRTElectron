@@ -1,0 +1,632 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.control-immersiveListViewItem
+{
+    position: relative;
+    display: -ms-grid;
+    -ms-grid-columns: auto 15px 1fr;
+    -ms-grid-rows: 1fr;
+    margin-bottom: 20px;
+    height: 60px
+}
+.control-immersiveListViewItem .part-imageContainer
+{
+    margin: 0;
+    padding: 0
+}
+.control-immersiveListViewItem .part-imageHolder
+{
+    background-size: contain;
+    overflow: hidden
+}
+.control-immersiveListViewItem .part-content, .control-immersiveListViewItem .part-textContainer
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 1
+}
+.immersiveViewMorePopOverContentLayout .win-listview>.win-vertical .win-container
+{
+    margin: 10px 25px;
+    padding: 0
+}
+.music1 .immersiveViewMorePopOverContentLayout .win-listview>.win-vertical .win-container
+{
+    margin: 0 25px
+}
+html[dir=ltr] .control-immersiveListViewItem, html[dir=ltr] .immersiveViewMorePopOverContentLayout .win-listview>.win-vertical .win-container
+{
+    left: 0
+}
+html[dir=rtl] .control-immersiveListViewItem, html[dir=rtl] .immersiveViewMorePopOverContentLayout .win-listview>.win-vertical .win-container
+{
+    right: 0
+}
+.immersiveFrame .textContainer, .immersiveFrame .textContainer p, .immersiveFrame .title
+{
+    margin: 0;
+    padding: 0
+}
+.immersiveHeroContent button:hover, .immersiveHeroContent button:focus, .immersiveHeroContent button:hover:active, .closeButton button:hover, .closeButton button:focus, .closeButton button:hover:active
+{
+    border: none;
+    outline: none
+}
+.notificationContainer .editInput
+{
+    width: 100%;
+    border: none
+}
+.notificationButtonContainer
+{
+    margin: 10px 0
+}
+.notificationButtonContainer .contentNotificationListImagesWrapper .label
+{
+    margin: 0 2px
+}
+.immersiveFullScreen .immersiveHeroContent, .immersiveFullScreen .immersiveFrame, .immersiveFullScreen .immersiveHeroBackgroundImageContainer
+{
+    visibility: hidden
+}
+.immersiveFrame .label
+{
+    border: none
+}
+.immersiveFrame .title
+{
+    white-space: normal;
+    word-wrap: break-word
+}
+.immersiveFrame .invoked .title
+{
+    word-wrap: normal
+}
+.immersiveHeroBackgroundImageContainer
+{
+    height: 100%;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row-span: 2;
+    overflow: hidden;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%;
+    background-size: auto 50%;
+    background-repeat: repeat;
+    background-position: center 25%
+}
+.immersiveHeroBackgroundImageContainer.showGenericIcon
+{
+    background-repeat: no-repeat
+}
+.immersiveHeroBackgroundImageContainer img
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: end
+}
+html[dir=rtl] .immersiveHeroBackgroundImageContainer img
+{
+    -ms-grid-column-align: start
+}
+.immersiveHeroBackgroundImageContainer.mediatype-artist img, html[dir=rtl] .immersiveHeroBackgroundImageContainer.mediatype-artist img
+{
+    -ms-grid-column-align: center
+}
+.music1 .immersiveTwoColumn.firstImmersiveTwoColumn, .music1 .immersiveHeroBackgroundImageContainer
+{
+    min-width: 100vh;
+    width: 100vh
+}
+.snapped .immersiveTwoColumn.firstImmersiveTwoColumn, .snapped .immersiveHeroBackgroundImageContainer
+{
+    min-width: 320px;
+    width: 100vw
+}
+.immersiveHeroContent
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 3;
+    -ms-grid-row-align: end;
+    -ms-grid-layer: 2;
+    padding: 42px 60px
+}
+.immersiveHeroContent>hr
+{
+    border: none;
+    width: 100%;
+    height: 1px
+}
+.immersiveHeroText
+{
+    width: 100%;
+    display: block;
+    margin-top: 10px
+}
+.immersiveHeroPrimaryText
+{
+    width: 100%;
+    word-wrap: break-word
+}
+.immersiveHeroSecondaryText
+{
+    min-height: 25px
+}
+.immersiveSecondaryText
+{
+    min-height: 25px;
+    max-width: 700px
+}
+.immersiveHeroDescriptionText
+{
+    max-height: 105px;
+    overflow: hidden
+}
+.inlineCaretButtonText.text-immersiveHeroSubTitle
+{
+    -ms-grid-row-align: end;
+    -ms-grid-column: 2;
+    margin: 10px 0
+}
+.immersiveTableOfContentsItemContainer .label
+{
+    border: none
+}
+.immersiveHeroActionContainer
+{
+    -ms-grid-row-align: end;
+    -ms-grid-layer: 2
+}
+.immersiveHeroActions
+{
+    -ms-flex-wrap: wrap
+}
+.immersiveHeroActions .horizontalFlow .iconButton
+{
+    width: auto
+}
+.immersiveHeroActions .horizontalFlow
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: auto 10px
+}
+.immersiveHeroActions .horizontalFlow .iconButtonHost
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1
+}
+.immersiveModifierPopup .modifierPopupScroller
+{
+    min-width: 370px
+}
+.immersiveThreeColumn .immersiveFrame .nowPlayingPlaylistGalleryView, .immersiveNowPlayingColumn .nowPlayingPlaylistGalleryView, .musicFullScreenPlaylist .nowPlayingPlaylistGalleryView, .immersiveMoreContentContainer .nowPlayingPlaylistGalleryView
+{
+    -ms-grid-column-align: stretch;
+    -ms-grid-row-align: stretch;
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3
+}
+.overview
+{
+    overflow-y: auto;
+    overflow-x: hidden;
+    outline: none
+}
+.movie .overview .metaDataGrid
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto auto
+}
+.movie .overview .metaDataGrid .metaDataContainer
+{
+    -ms-grid-row: 2
+}
+.movie .overview .metaDataGrid .contextButtonContainer
+{
+    -ms-grid-row: 1
+}
+.movie .overview .control-watchProgress .watchProgress
+{
+    padding-top: 20px
+}
+.tv .nextEpisode
+{
+    margin-top: 20px
+}
+.tv .nextEpisode .control-watchProgress .watchProgress-progressBar
+{
+    height: 10px;
+    width: 100%
+}
+.overview .metaDataContainer
+{
+    height: auto;
+    display: -ms-grid;
+    -ms-grid-columns: auto 15px 1fr;
+    -ms-grid-rows: auto;
+    margin-bottom: 20px;
+    margin-top: 15px
+}
+.overview .metaDataContainer .label
+{
+    white-space: normal
+}
+.overview .subTitle
+{
+    margin-top: 6px;
+    margin-bottom: 6px
+}
+.overview .metaDataContainer>.imageContainer
+{
+    display: -ms-grid;
+    width: auto
+}
+.movie .overview .metaDataContainer>.immersiveHeroPrimaryText
+{
+    margin-bottom: 10px
+}
+.tv .overview .metaDataContainer>.imageContainer
+{
+    max-height: 100px
+}
+.overview .metaDataContainer>.textContainer
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+    margin-top: 8px
+}
+.overview .metaDataContainer>.textContainer p
+{
+    text-overflow: ellipsis
+}
+.movie .overview .metaDataContainer>.textContainer p
+{
+    padding-left: 2px;
+    padding-right: 2px
+}
+.overview.artistOverviewGeneric
+{
+    margin-top: 12px
+}
+.overview.artistOverviewGeneric .metaDataBlock
+{
+    margin-bottom: 30px
+}
+.overview>.actions
+{
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-align: stretch;
+    -ms-flex-pack: start;
+    -ms-flex-wrap: wrap
+}
+.overview .contextButtonContainer
+{
+    height: auto
+}
+html[dir=rtl] .overview .descriptionText
+{
+    direction: ltr
+}
+.overview .contextButtonContainer .verticalBox
+{
+    -ms-flex-direction: row;
+    -ms-flex-wrap: wrap
+}
+.overview .contextButtonContainer .verticalBox .iconButtonHost
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 20px
+}
+.overview .smartDj
+{
+    width: 300px;
+    margin-top: 15px
+}
+.nowPlayingPlaylistGalleryHeader .nowPlayingPlaylistTitle
+{
+    padding-top: 5px;
+    padding-left: 8px
+}
+.snapped .nowPlayingPlaylistGalleryHeader .nowPlayingPlaylistTitle
+{
+    padding-top: 0
+}
+.music .immersiveMoreGalleryView .verticalListCell2nd .secondaryText
+{
+    min-height: 35px
+}
+.immersiveTwoColumn .related
+{
+    display: -ms-grid;
+    -ms-grid-columns: 300px 1fr 25px;
+    -ms-grid-rows: auto 1fr
+}
+.immersiveTwoColumn .related.relatedArtists
+{
+    -ms-grid-columns: 367px 1fr 25px
+}
+.immersiveTwoColumn .related.relatedArtists .horizontalListItem, .immersiveTwoColumn .related.relatedArtists .horizontalListItem .horizontalListItem .win-focusable, .immersiveTwoColumn .related.relatedArtists .imageContainer
+{
+    width: 362px;
+    height: 270px
+}
+.immersiveTwoColumn .related.relatedArtists .imageContainer img
+{
+    min-width: 362px;
+    height: auto
+}
+.immersiveTwoColumn .related.relatedArtists .imageContainer
+{
+    overflow: hidden
+}
+.immersiveTwoColumn .related.relatedArtists .imageAlign
+{
+    float: left;
+    margin-left: 50%
+}
+.immersiveTwoColumn .related.relatedArtists .imageAlign .imageHolder
+{
+    margin-left: -50%
+}
+html[dir=rtl] .immersiveTwoColumn .related.relatedArtists .imageAlign
+{
+    float: right;
+    margin-right: 50%
+}
+html[dir=rtl] .immersiveTwoColumn .related.relatedArtists .imageAlign .imageHolder
+{
+    margin-right: -50%
+}
+.immersiveTwoColumn .related.seasons
+{
+    -ms-grid-columns: 360px 1fr 25px
+}
+.immersiveTwoColumn .related.albums
+{
+    -ms-grid-columns: 350px 1fr 25px
+}
+.immersiveOneColumn .related
+{
+    display: -ms-grid;
+    -ms-grid-columns: 0 1fr 25px;
+    -ms-grid-rows: auto auto
+}
+.immersiveTwoColumn .actions .smartDj
+{
+    margin-top: 10px
+}
+.immersiveTwoColumn .relatedHeroItem
+{
+    position: relative;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    margin: 5px 10px;
+    padding: 15px
+}
+.video .immersiveTwoColumn .relatedHeroItem
+{
+    margin-top: 10px
+}
+.template-moreButton, .immersiveHero-panelHeader, .immersiveOneColumn .relatedHeroItem
+{
+    display: none
+}
+.related.albums .relatedHeroItem .imageContainer, .related.albums .relatedHeroItem .imageContainer img
+{
+    width: 300px;
+    height: 300px
+}
+.related.movies .relatedHeroItem .imageContainer, .related.movies .relatedHeroItem .imageContainer img
+{
+    width: 197px;
+    height: 270px
+}
+.related.seasons .relatedHeroItem .imageContainer, .related.seasons .relatedHeroItem .imageContainer img
+{
+    width: 270px;
+    height: 270px
+}
+.relatedHeroItem .textContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto 1fr;
+    -ms-grid-columns: 1fr;
+    margin-top: 20px
+}
+.relatedHeroItem .textContainer .title
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1
+}
+.relatedHeroItem .textContainer .subTitle
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 1
+}
+.relatedActionContainer
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    margin: 0 17px
+}
+.albums .relatedHeroItem .textContainer .title
+{
+    -ms-grid-row: 1
+}
+.related .relatedListView
+{
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
+    padding-top: 13px
+}
+.related.relatedArtists .relatedListView, .related.movies .relatedListView, .related.albums .relatedListView, .related.seasons .relatedListView
+{
+    padding-top: 18px
+}
+.related .relatedListView .control-immersiveListViewItem
+{
+    padding: 2px;
+    margin-bottom: 16px
+}
+.related.relatedArtists .horizontalListItem .win-focusable
+{
+    position: relative
+}
+.related.relatedArtists .content
+{
+    width: 332px;
+    padding: 6px 15px 8px;
+    position: absolute;
+    left: 0;
+    bottom: 0
+}
+.control-immersiveListViewItem .part-textContainer .inCollectionIcon
+{
+    position: absolute;
+    top: 0
+}
+.control-immersiveListViewItem.album .part-textContainer .inCollectionIcon
+{
+    top: 27px
+}
+.related .control-immersiveListViewItem>.part-textContainer, .seasons .control-immersiveListViewItem>.part-textContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto 1fr;
+    -ms-grid-columns: 1fr auto;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3
+}
+.related .control-immersiveListViewItem .part-textContainer .part-title, .seasons .control-immersiveListViewItem .part-textContainer .part-title
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.related .control-immersiveListViewItem .part-textContainer .part-subTitle, .seasons .control-immersiveListViewItem .part-textContainer .part-subTitle
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 2
+}
+.related .control-immersiveListViewItem .inCollectionIcon, .seasons .control-immersiveListViewItem .inCollectionIcon, .related .control-immersiveListViewItem .part-textContainer .part-tertiaryText, .seasons .control-immersiveListViewItem .part-textContainer .part-tertiaryText
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: center;
+    margin: 0 5px
+}
+.immersiveFrame .win-listview .win-container:hover
+{
+    background: none;
+    border: none;
+    outline: none
+}
+html[dir=ltr] .relatedActionContainer .actionLinkLabel
+{
+    text-align: left
+}
+html[dir=rtl] .relatedActionContainer .actionLinkLabel
+{
+    text-align: right
+}
+.immersiveMoreGalleryView
+{
+    overflow-x: hidden
+}
+.verticalListHost, .immersiveMoreContentContainer, .immersiveMoreGallery, .immersiveMoreGalleryView, .immersiveMoreGalleryView .win-listview
+{
+    height: 100%;
+    width: 100%
+}
+.immersiveMoreGalleryView .win-surface {
+    height: auto;
+    width: 100%
+}
+.immersiveMoreGalleryView .win-item
+{
+    width: 100%;
+    height: 60px;
+    margin: 0
+}
+.immersiveMoreGallery
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto auto 1fr;
+    -ms-grid-columns: 1fr auto
+}
+.immersiveMoreGalleryView
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4
+}
+.immersiveMoreGallery .listHeader
+{
+    margin-bottom: 15px
+}
+.moreGalleryControl .immersiveMoreGallery
+{
+    margin-bottom: 0
+}
+.immersiveMoreGallery .primaryPanelModifier .modifierControl
+{
+    margin: 5px -10px;
+    padding: 10px
+}
+.immersiveViewMorePopOverLayout .win-ui-dark .win-listview .win-container:hover, .nowPlayingPlaylistGalleryView .win-listview .win-container:hover, .immersiveDetails .related .win-template:hover, .closeButton:hover
+{
+    background-color: transparent;
+    opacity: .8;
+    outline: none
+}
+.immersiveViewMorePopOverLayout .win-ui-dark .win-listview .win-container
+{
+    outline: none
+}
+.immersiveDetails-backgroundImage_gradient
+{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: contain;
+    z-index: -1
+}
+.immersiveTitleContainer
+{
+    position: absolute;
+    top: 0
+}
+.immersiveDetails-backgroundImage
+{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    opacity: 0
+}
+@media screen and (-ms-high-contrast)
+{
+    .control-immersiveListViewItem:hover>.part-textContainer>.label, .control-immersiveListViewItem:active:hover>.part-textContainer>.label, .immersiveViewMorePopOverLayout .win-ui-dark .win-listview .win-container:hover, .nowPlayingPlaylistGalleryView .win-listview .win-container:hover, .immersiveDetails .related .win-template:hover, .closeButton:hover, .control-extrasItem:hover, .control-extrasItem:active, .control-extrasItem:active:hover, .relatedHeroItem:hover .imageContainer, .relatedHeroItem:hover .textContainer
+    {
+        opacity: 1
+    }
+    .related.relatedArtists .horizontalListItem.mediatype-artist .imageContainer, .immersiveDetails .related .mediatype-tvSeries, .immersiveDetails .related .mediatype-movie
+    {
+        outline-style: solid;
+        outline-width: 2px
+    }
+}

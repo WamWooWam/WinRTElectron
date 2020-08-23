@@ -1,0 +1,124 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/settings.css">
+        <title>Settings Control Template</title>
+        
+        <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+        
+        <script src="/Components/Settings/Settings.js"></script>
+    </head>
+    <body>
+        
+        
+        <div id="SettingsCaptions" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow', lightDismiss:'false'}">
+            <div class="settingsWrapper win-ui-light" data-win-control="MS.Entertainment.Utilities.CaptionSettingsWrapper">
+                
+                <div class="settingsPanelHeaderBackground"></div>
+                
+                <div class="settingsPanelHeader win-ui-dark">
+                    <button class="win-backbutton" data-win-automationid="captionsBackButton" data-ent-event="click: backToSettings" tabindex="0" data-ent-member="_backButton">
+                    </button>
+                    <div class="settingsPanelTitle label text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_TITLE}">
+                    </div>
+                </div>
+
+                
+                <div class="settingsPanelContent">
+                    
+                    
+                    <div data-ent-member="previewWindowContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="previewCaptionsTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_PREVIEW_TITLE, wrap:true}">
+                        </div>
+                        <div class="cc_layout settingsCaptionPreviewWindow">
+                            <p class="cc_text"><span class="cc_text" data-ent-member="previewText"></span></p>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="resetButtonContainer">
+                        <button class="dialogButton acc-keyboardFocusTarget" type="button" data-ent-event="click: onReset">
+                            <span class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_RESET_TO_DEFAULT}">
+                            </span>
+                        </button>
+                    </div>
+
+                    
+                    <div data-ent-member="characterColorContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="characterColorTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_CHARACTER_COLOR, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsCharColorSelect" data-ent-member="characterColors" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="characterOpacityContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="characterOpacityTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_CHARACTER_OPACITY, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsCharOpacitySelect" data-ent-member="characterOpacity" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="characterEdgeContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="characterEdgeTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_EDGE_ATTRIBUTE, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsCharEdgeSelect" data-ent-member="characterEdges" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="characterSizeContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="characterSizeTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_CHARACTER_SIZE, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsCharSizeSelect" data-ent-member="characterSizes" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="fontStyleContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="fontStyleTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_FONT_STYLE, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsFontStyleSelect" data-ent-member="characterFonts" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="backgroundColorContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="backgroundColorTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_BACKGROUND_COLOR, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsBgColorSelect" data-ent-member="backgroundColors" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="backgroundOpacityContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="backgroundOpacityTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_BACKGROUND_OPACITY, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsBgOpacitySelect" data-ent-member="backgroundOpacity" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="windowColorContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="windowColorTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_WINDOW_COLOR, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsWindowColorSelect" data-ent-member="windowColors" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                    
+                    <div data-ent-member="windowOpacityContainer" class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="windowOpacityTitle label" data-win-options="{stringId:String.id.IDS_SETTINGS_CAPTIONS_WINDOW_OPACITY, wrap:true}">
+                        </div>
+                        <select class="settingsCaptionsSelect" data-win-automationid="settingsCaptionsWindowOpacitySelect" data-ent-member="windowOpacity" data-ent-event="change: captionSettingsChange">
+                        </select>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

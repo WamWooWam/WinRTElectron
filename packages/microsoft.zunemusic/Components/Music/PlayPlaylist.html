@@ -1,0 +1,158 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Play Playlist Overplay</title>
+    </head>
+    <body>
+        
+        
+        
+        <div data-ent-templateid="playlistItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="playlistItem">
+                
+                <div style="-ms-grid-row: 1; -ms-grid-column: 2; -ms-grid-row-span: 2; -ms-grid-row-align: center"
+                    class="verticalListItem">
+                    <div class="playlistImageCollage"
+                         data-win-control="MS.Entertainment.UI.Controls.PlaylistImageCollage"
+                         data-win-options="{
+                            enableDelayInitialization: true, 
+                            size: {width: 60, height: 60},
+                            rows: 2,
+                            columns: 2,
+                            useDynamicLayouts: false}"
+                         data-win-bind="winControl.media: instance WinJS.Binding.oneTime;"
+                         data-win-automationid="playlistImageCollage">
+                    </div>
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div style="-ms-grid-row: 1; -ms-grid-column: 4; -ms-grid-row-align: center"
+                    class="primaryText label clip text-listItem placeholderItem"
+                    data-ent-placeholderdatapath="name"
+                    data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                
+                <div style="-ms-grid-row: 2; -ms-grid-column: 4" 
+                    class="secondaryText label clip text-metadata"
+                    data-win-bind="textContent: count MS.Entertainment.Formatters.formatTracks"></div>
+
+                
+                <div style="-ms-grid-row: 1; -ms-grid-column: 5; -ms-grid-row-align: center" 
+                    class="secondaryText label clip text-metadata"
+                    data-win-bind="textContent: duration MS.Entertainment.Formatters.formatDurationFromDate"></div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="playPlaylistOverlayTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="playPlaylistOverlay win-ui-light fillParent">
+                
+                <div style="-ms-grid-row: 2; -ms-grid-column: 2"
+                    class="label title text-popOverEditTitleLabel"
+                    data-win-bind="textContent: dialogTitle MS.Entertainment.Formatters.formatStringOrStringId"></div>
+                    
+                
+                <div style="-ms-grid-row: 4; -ms-grid-column: 2"
+                    data-ent-member="_playlists"
+                    class="hideFromDisplay">
+                    <div class="playlists fillParent">
+                        
+                        <div style="-ms-grid-row: 1; -ms-grid-row-align: stretch"
+                            class="playlistList"
+                            data-ent-member="_playlistList"
+                            data-win-control="MS.Entertainment.UI.Controls.GalleryControl"
+                            data-win-bind="winControl.dataSource: playlists"
+                            data-ent-event="iteminvoked: onPlaylistInvoked"
+                            data-win-options="{
+                                raisePanelReadyEvents: false,
+                                focusFirstItemOnPageLoad: true,
+                                itemTemplate: 'Components/Music/PlayPlaylist.html#playlistItemTemplate',
+                                tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                                invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.none,
+                                selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                                layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list }">
+                        </div>
+
+                        
+                        <button style="-ms-grid-row: 3"
+                            class="inlineCaretButton acc-keyboardFocusTarget"
+                            data-ent-event="click: onManagePlaylists"
+                            data-win-bind="removeFromDisplay: showManageLink MS.Entertainment.Utilities.toggleClassNameNegate;"
+                            type="button"
+                            role="button">
+                            <div class="inlineCaretButtonText text-xSmall text-weightBold"
+                                style="-ms-grid-column: 1;"
+                                data-win-bind="textContent: String.id.IDS_PLAY_PLAYLIST_OVERLAY_MANAGE_PLAYLIST MS.Entertainment.Formatters.formatStringId"></div>
+                            <div class="inlineCaretButtonIcon text-xxSmall text-weightNormal"
+                                style="-ms-grid-column: 2;"
+                                data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon"></div>
+                        </button>
+                    </div>
+                </div>
+
+                
+                <div style="-ms-grid-row: 4; -ms-grid-column: 2"
+                    data-ent-member="_noPlaylists"
+                    class="hideFromDisplay fillParent">
+                    <div class="noPlaylists fillParent">
+
+                        
+                        <div style="-ms-grid-row: 2"
+                            data-win-control="MS.Entertainment.UI.Controls.Label"
+                            class="label subText"
+                            data-win-options="{wrap: true}"
+                            data-win-bind="textContent: String.id.IDS_PLAY_PLAYLIST_OVERLAY_EMPTY_DESC MS.Entertainment.Formatters.formatStringId">
+                        </div>
+
+                        
+                        <button style="-ms-grid-row: 4"
+                            class="inlineCaretButton acc-keyboardFocusTarget"
+                            data-ent-event="click: onBrowseAlbums"
+                            type="button"
+                            role="button">
+                            <div class="inlineCaretButtonText text-xSmall text-weightBold"
+                                style="-ms-grid-column: 1;"
+                                data-win-bind="textContent: String.id.IDS_PLAY_PLAYLIST_OVERLAY_BROWSE_ALBUMS MS.Entertainment.Formatters.formatStringId"></div>
+                            <div class="inlineCaretButtonIcon text-xxSmall text-weightNormal"
+                                style="-ms-grid-column: 2;"
+                                data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon"></div>
+                        </button>
+
+                        
+                        <button  style="-ms-grid-row: 6"
+                            class="inlineCaretButton acc-keyboardFocusTarget hideFromDisplay"
+                            data-ent-member="_allMusicLink"
+                            data-ent-event="click: onBrowseAllMusic"
+                            type="button"
+                            role="button">
+                            <div class="inlineCaretButtonText text-xSmall text-weightBold"
+                                style="-ms-grid-column: 1;"
+                                data-win-bind="textContent: String.id.IDS_PLAY_PLAYLIST_OVERLAY_BROWSE_ALL_MUSIC MS.Entertainment.Formatters.formatStringId"></div>
+                            <div class="inlineCaretButtonIcon  text-xxSmall text-weightNormal"
+                                style="-ms-grid-column: 2;"
+                                data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon"></div>
+                        </button>
+
+                        
+                        <div style="-ms-grid-row: 8"
+                            data-win-control="MS.Entertainment.UI.Controls.Label"
+                            class="label subText"
+                            data-win-options="{wrap: true}"
+                            data-win-bind="textContent: String.id.IDS_PLAY_PLAYLIST_OVERLAY_IMPORT_DESC MS.Entertainment.Formatters.formatStringId">
+                        </div>
+
+                        
+                        <div  style="-ms-grid-row: 10" 
+                            data-win-control="MS.Entertainment.UI.Controls.IconButton"
+                            data-win-bind="winControl.action: importPlaylistsAction"> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

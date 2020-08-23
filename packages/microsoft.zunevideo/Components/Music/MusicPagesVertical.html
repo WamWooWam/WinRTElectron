@@ -1,0 +1,110 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Music Vertical Page Template</title>
+        <script>
+            window.msWriteProfilerMark("ent:MusicPagesHtml.FileLoad");
+        </script>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Controls/Music/CreatePlaylistFlyout.js"></script>
+        <script src="/Controls/Music/MediaPropertiesFlyout.js"></script>
+        <script src="/Controls/EditBox.js"></script>
+        <script src="/Controls/Music/SelectArtistFlyout.js"></script>
+
+        
+
+        
+        <script src="/components/music/musicPages.js"></script>
+
+        
+        <script src="/ViewModels/CollectionMarketplaceQuery.js"></script>
+        <script src="/ViewModels/Music/MusicViewModel.js"></script>
+        <script src="/ViewModels/Music/LegacyMusicMarketplaceViewModel.js"></script>
+        <script src="/ViewModels/Music/MusicCollectionViewModel.js"></script>
+        <script src="/ViewModels/Music1/Music1CollectionViewModel.js"></script>
+        <script src="/Components/Search/SearchView.js"></script>
+        <script src="/ViewModels/Search/NewSearchViewModel.js"></script>
+        <script src="/ViewModels/Search/MusicSearchViewModel.js"></script>
+        <script src="/ViewModels/Search/SearchViewModel.js"></script>
+        <script src="/ViewModels/Search/MusicHCRResultViewModel.js"></script>
+    </head>
+
+    <body>
+        
+        
+                
+        <div class="navigationHost fillParent musicPage musicPageVertical win-ui-dark" data-win-control="MS.Entertainment.Music.MusicPage" data-win-automationid="musicPage">
+
+            
+            
+            
+            <div data-win-control="MS.Entertainment.UI.Framework.BindingBlock" data-ent-event="galleryFirstPageRendered: handleGalleryFirstPage" class="fillParent">
+                <div data-ent-member="_container" class="pageContainer" data-ent-event="
+                        PanelReady: handlePanelReady;
+                        PanelReset: handlePanelReset" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage">
+
+                    
+                    <div class="pageHeader text-hubTitle text-breakWord" style="-ms-grid-column: 2; -ms-grid-row: 2" data-ent-member="_titleContainer"></div>
+
+                    
+                    <div class="bodyContainer removeFromDisplay" style="-ms-grid-column: 2; -ms-grid-row: 3; -ms-grid-row-span: 2;" data-ent-member="_sideContentContainer" data-win-bind="hideFromDisplay: showSideContentContainer MS.Entertainment.Utilities.toggleClassNameNegate;">             
+                    </div>
+               
+                    
+                    <div class="bodyContainer" style="-ms-grid-column: 2; -ms-grid-row: 3; -ms-grid-row-span: 2;" data-ent-member="_bodyContainer" data-win-bind="hidden: hidePivots MS.Entertainment.Utilities.toggleClassName;" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{
+                                allowAnimations: false,
+                                controlName: 'musicPageBodyContainer'}">
+                
+                        
+                        <div class="primaryPanelModifier collectionMusicModifier musicPageFilter removeFromDisplay" style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-span: 3; -ms-grid-column-align: start" tabindex="-1" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-ent-member="_filterControl" data-win-options="{
+                                useSelectionManagerDataSourceAsItems: true,
+                                allowAnimations: false,
+                                tabIndex: 0,
+                                popupStyle: ['primaryPanelModifierPopup', 'musicPrimaryPanelModifierPopup'],
+                                identifier: 'primary'}" data-win-automationid="primaryPanelFilter">
+                        </div>
+
+                        
+                        <div class="primaryPanelModifier collectionMusicModifier" style="-ms-grid-column: 1; -ms-grid-row: 2; -ms-grid-column-span: 3; -ms-grid-column-align: start" tabindex="-1" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-ent-member="_modifierControl" data-win-options="{
+                                useSelectionManagerDataSourceAsItems: true,
+                                allowAnimations: false,
+                                tabIndex: 0,
+                                popupStyle: ['primaryPanelModifierPopup', 'musicPrimaryPanelModifierPopup'],
+                                identifier: 'primary'}" data-win-automationid="primaryPanelModifier">
+                        </div>
+
+                        <hr style="-ms-grid-row: 3;">
+
+                        
+                        <div class="pageNavigation acc-keyboardFocusTargetAfterSmaller" style="-ms-grid-column: 1; -ms-grid-row: 3" role="tablist" data-ent-member="_pivotControl" data-win-control="MS.Entertainment.UI.Controls.VerticalPivotControl" data-win-options="{                                
+                                allowAnimations: false,
+                                animateIn: false}">
+                        </div>
+                    </div>
+                
+                    
+                    <div class="loadingErrorContainer" style="-ms-grid-column: 4; -ms-grid-row: 2">
+
+                        <div class="panelFragmentProgress removeFromDisplay" data-ent-member="loadingControl">
+                        </div>
+
+                        <div class="panelFragmentFailed panelFragmentContainer hideFromDisplay" data-ent-member="failedControl">
+                        </div>
+                    </div>
+                
+                    
+                    <div class="pageHub" style="-ms-grid-column: 4; -ms-grid-row: 1;" role="tabpanel" data-ent-member="hubContainer">
+                    </div>
+
+                    
+                    <div class="sidebarHost" data-ent-member="_sidebarHost">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

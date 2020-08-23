@@ -1,0 +1,22 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Dialog</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/CollectionPageDelayedScripts_merged.js"></script>
+    <script src="/Controls/LoadingControl.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="removeOverlayTemplate" data-win-control="WinJS.Binding.Template">
+
+        <span class="icon icon-oneDrive removeFromDisplay" data-ent-member="_oneDriveIcon" data-win-bind="textContent: MS.Entertainment.UI.Icon.oneDrive MS.Entertainment.Formatters.formatIcon"></span>
+
+        <div class="label" data-ent-member="_removeDescription" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap:true}"></div>
+
+        <progress data-ent-member="_waitCursor" class="removeOverlayWaitCursor" data-win-control="MS.Entertainment.UI.Controls.LoadingControl" data-win-options="{width: '60px', height: '60px'}"></progress>
+
+    </div>
+</body>
+</html>

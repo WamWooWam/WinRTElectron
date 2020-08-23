@@ -1,0 +1,91 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Link Control Template</title>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="linkTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="control-actionLink link acc-keyboardFocusTarget" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled">
+
+                <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                                    winControl.stringId: stringId;
+                                    winControl.numberOfLines: numberOfLines;
+                                    winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel label text-panelHeader voice-visualTarget">
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="panelHeaderLinkTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="link panelHeaderLink acc-keyboardFocusTarget win-focusable" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled" data-ent-panelheader="true">
+
+                <div class="actionLinkContainer">
+                    <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                                        winControl.stringId: stringId;
+                                        winControl.numberOfLines: numberOfLines;
+                                        winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel label text-panelHeader">
+                    </div>
+                    <div class="icon icon-medium text-weightNormal" data-win-bind="hideFromDisplay: disabled MS.Entertainment.Utilities.toggleClassName"></div>
+                </div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="closeLinkTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="link closeLink acc-keyboardFocusTarget voice-logicalTarget" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled;
+                    voicePhrase: String.id.IDS_CLOSE_BUTTON_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;
+                    voicePhoneticPhrase: String.id.IDS_CLOSE_BUTTON_VUI_PRON MS.Entertainment.Formatters.formatStringIdNoAssert;
+                    voiceConfidence: String.id.IDS_CLOSE_BUTTON_VUI_CONF MS.Entertainment.Formatters.formatStringIdNoAssert;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    pronunciation: getContext('element').voicePhoneticPhrase,
+                    targetElement: select('.voice-visualTarget') }">
+                <div class="actionLinkContainer">
+                    <div class="icon"></div>
+                </div>
+                <div class="voice-visualTarget"></div>
+            </button>
+        </div> 
+
+        <div data-ent-templateid="panelActionLinkTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="link panelActionLink panelActionLinkContainer win-focusable" tabindex="-1" data-ent-event="click: onClick" data-ent-member="_button" data-win-bind="disabled: disabled" type="button">
+                <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                        winControl.stringId: stringId;
+                        winControl.numberOfLines: numberOfLines;
+                        winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel panelActionLinkLabel label text-panelHeader">
+                </div>
+            </button>
+        </div>
+
+        <div data-ent-templateid="imageActionLinkTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="link imageActionLink" data-ent-member="_button" data-ent-event="click: onClick" type="button" data-win-bind="disabled: disabled">
+
+                <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageUrl; alt: text" data-win-options="{
+                        loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                        show: MS.Entertainment.Utilities.showElementNoAnimation,
+                        hide: MS.Entertainment.Utilities.doNothing,
+                        allowAnimations: false,
+                        imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                        preventHideDuringInitialize: true}">
+            </button>
+        </div>
+
+        <div data-ent-templateid="comboLinkTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text;
+                               winControl.stringId: stringId;
+                               winControl.numberOfLines: numberOfLines;
+                               winControl.wrap: wrap" data-ent-member="linkLabel" class="actionLinkLabel label text-panelHeader">
+            </div>
+        </div>
+
+        <div data-ent-templateid="comboLinkContainerTemplate" data-win-control="WinJS.Binding.Template">
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,37 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>ThumbnailButton Control Template</title>
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+        <script src="/Controls/thumbnailButton.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid='thumbnailButtonTemplate' data-win-control="WinJS.Binding.Template">
+            <div class="thumbnailButton win-focusable" data-ent-member="thumbnailButton" data-ent-event="click: clicked; keydown: onKeyDown;">
+                
+                <div class="imageContainer" data-ent-member="imageContainer">
+                    
+                    <div data-ent-member="imageHolder" class="imageHolder">                        
+                    </div>
+                </div>
+
+                
+                <div class="content" data-ent-member="content">
+                    <div class="textContainer" data-ent-member="textContainer">
+                        <div class="primaryText label text-cardTitle" data-ent-member="primaryTextLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: primaryText; removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="secondaryText label text-metadata" data-ent-member="secondaryTextLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: secondaryText; removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="tertiaryText label text-metadata" data-ent-member="tertiaryTextLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: tertiaryText; removeFromDisplay: tertiaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="quaternaryText thumbnailButtonText label text-metadata" data-ent-member="quaternaryTextLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: quaternaryText; removeFromDisplay: quaternaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                    <div class="iconContainer">
+                        <div class="streamingIcon" data-ent-member="streamingIcon" data-win-bind="className: statusIconClass; removeFromDisplay: showStatusIcon MS.Entertainment.Utilities.toggleClassNameNegate">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

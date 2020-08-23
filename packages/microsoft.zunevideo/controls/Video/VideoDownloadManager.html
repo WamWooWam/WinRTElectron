@@ -1,0 +1,50 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/styles/InlineDetails.css">
+        <title>Video Download Manager Dialog Template</title>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MovieDetails_merged.js"></script>
+        <script src="/Animations/animations.js"></script>
+        <script src="/Controls/EditBox.js"></script>
+        <script src="/Controls/MediaItemThumbnail.js"></script>
+        <script src="/Controls/Video/VideoDownloadItem.js"></script>
+
+    </head>
+    <body>
+        <div data-ent-templateid="videoDownloadManagerDialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-ent-member="_contentContainer" class="videoDownloadManagerContent">
+
+                
+                <div class="downloadDetailsEpisodeList" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-ent-member="_galleryControl" data-win-options="{ itemTemplate: '/Components/Video/VideoSharedTemplates.html#tvEpisodeDownloadTemplate',
+                        tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                        slotSize: { width: 645, height: 100 },
+                        itemSize: { width: 645, height: 100 },
+                        suppressInvokeBubble: false,
+                        grouped: false,
+                        forceInteractive: true,
+                        handleFocus: true,
+                        selectionStyleFilled: true,
+                        backdropColor: 'transparent',
+                        layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                        selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                        invokeHelperFactory: MS.Entertainment.UI.Controls.GalleryControlInvocationHelper.create,
+                        invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                        doubleClickBehavior: MS.Entertainment.UI.Controls.GalleryControl.DoubleClickBehavior.none,
+                        preventResizeJitter: false }" data-win-bind="winControl.templateSelectorConstructor: templateSelectorConstructor;
+                        winControl.visibility: showDownloads;">
+                </div>
+
+                <a class="videoDownloadManagerContent-copyingFilesHelpLink label text-xSmall text-weightBold hideFromDisplay" href="http://go.microsoft.com/fwlink/?LinkId=509966" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.visibility: showCopyingFilesHelpLink;" data-win-options="{stringId:String.id.IDS_VIDEO_DOWNLOAD_MANAGER_COPYING_NOT_COMPLETE}">
+                </a>
+
+                
+                <div class="videoDownloadManagerContent-emptyLabel label hideFromDisplay" data-ent-member="_noActiveDownloads" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.visibility: showDownloads MS.Entertainment.Utilities.toggleBoolean;" data-win-options="{stringId:String.id.IDS_VIDEO_DOWNLOAD_MANAGER_NO_DOWNLOADS, wrap:true}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,99 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Download Item Templates</title>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Animations/animations.js"></script>
+        <script src="/Controls/thumbnailButton.js"></script>
+        <script src="/Controls/MediaItemThumbnail.js"></script>
+        <script src="/Controls/GalleryThumbnail.js"></script>
+        <script src="/Controls/Video/VideoDownloadItem.js"></script>
+        <script src="/Components/Video/PurchaseVideo.js"></script>
+        <script src="/Components/Marketplace.js"></script>
+        <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+
+        <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+        <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+        <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+    </head>
+    <body>
+        
+        
+        
+        
+        <div data-ent-templateid="episodeDownloadItemHost" data-win-control="WinJS.Binding.Template">
+            <div class="episodeDownload" data-win-control="MS.Entertainment.UI.Controls.VideoDownloadItem" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                    winControl.titleText: seriesTitle WinJS.Binding.oneTime;" data-win-options="{
+                    enableDelayInitialization: true,
+                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                    preventHideDuringInitialize: true,
+                    imageHolderWidth: '100px',
+                    imageHolderHeight: '100px',
+                    imageWidth: '100px',
+                    imageHeight: '100px'}">
+            </div>
+        </div>
+
+        
+        
+        
+        
+        <div data-ent-templateid="movieDownloadItemHost" data-win-control="WinJS.Binding.Template">
+            <div class="movieDownload" data-win-control="MS.Entertainment.UI.Controls.VideoDownloadItem" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                    winControl.titleText: name WinJS.Binding.oneTime;" data-win-options="{
+                    enableDelayInitialization: true,
+                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                    preventHideDuringInitialize: true,
+                    imageHolderWidth: '58px',
+                    imageHolderHeight: '100px',
+                    imageWidth: '58px',
+                    imageHeight: '100px'}">
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="videoDownloadItemTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="videoDownloadItemTemplate">
+
+            
+            <div class="downloadDetailsVideo">
+
+                
+                <div class="imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-ent-member="_imageControl" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-win-options="{
+                            enableDelayInitialization: true,
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            show: MS.Entertainment.Utilities.showElementNoAnimation,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            desiredImageSize: {width: 100, height: 100},
+                            defaultImagePath: ''}" width="100" height="100"></div>
+
+                
+                <div class="downloadDetailsVideoTitle text-listItem" data-win-bind="textContent: titleText WinJS.Binding.oneTime;"></div>
+
+                
+                <div class="downloadDetailsVideoDescription text-metadata" data-win-bind="textContent: descriptionText;"></div>
+
+                
+                <div class="downloadDetailsVideoButtons inPlaceDetailsItemActions inPlaceDetailsItemActionButtons actions text-xxSmall removeFromDisplay" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: smartBuyStateEngine.currentButtons;
+                            removeFromDisplay: smartBuyStateEngine.currentButtons MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{defaultButtonClass: 'downloadVideoActionButton acc-keyboardFocusTarget showRectOnKeyboardFocus'}">
+                </div>
+
+                
+                <div class="downloadDetailsVideoStatus text-metadata" data-win-bind="textContent: statusText;"></div>
+
+                
+                <div class="downloadDetailsVideoError text-metadata" data-win-bind="textContent: errorText;"></div>
+
+                
+                <progress data-ent-member="_progressBar" data-win-bind="value: downloadProgress;" class="progressBar" max="100" value="0" role="progressbar"></progress>     
+            </div>
+        </div>
+
+    </body>
+</html>

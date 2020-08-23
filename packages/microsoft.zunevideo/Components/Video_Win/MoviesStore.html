@@ -1,0 +1,379 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html data-ent-waypoint="1">
+<head>
+    <title>Video Movies Store Page and Item Templates</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/MoviesStore_merged.js"></script>
+</head>
+
+<body>
+    <div data-ent-templateid="moviesStoreBody" data-win-control="WinJS.Binding.Template">
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" data-win-options="{ disableOptimizedProcessing: true }" class="template-heroCarouselItemHost">
+            <div class="template-heroCarouselItem win-interactive" data-win-bind="clickDataContext: this" role="button" data-ent-pagecontent="clickDataContext">
+                <div class="heroCarouselItem-artworkPlaceholder acc-preserveBackground"></div>
+                <img class="heroCarouselItem-artwork acc-preserveBackground ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageUrl" data-win-options="{
+                            imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                            defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoL3Hero,
+                            applyImageAsBackground: true,
+                            suppressSourceClear: true,
+                            suppressUnload: true }">
+
+                <div class="heroCarouselItem-content">
+                    <div class="content-title text-heroTitle removeFromDisplay" data-win-bind="textContent: primaryText;
+                             removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                    <div class="content-subTitle text-heroSubTitle maxLines-one removeFromDisplay" data-win-bind="textContent: secondaryText;
+                             removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-win-control="WinJS.Binding.Template" class="template-heroCarouselButtonHost">
+            <div class="carouselContainer-jumpButton" data-win-bind="
+                     posinset: position MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                     setsize: totalCount MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                     selected: checked MS.Entertainment.Utilities.toggleClassName;"></div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-movie">
+            <div class="template-movie verticalItemTileModule-item win-focusable" tabindex="-1" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;">
+                <div class="control-verticalItemTile verticalItemTile_movie ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 150, height: 205 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-three" data-win-bind="textContent: primaryText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-featuredSet">
+            <div class="template-featuredSet verticalItemTileModule-item win-focusable" tabindex="-1" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;">
+                <div class="control-verticalItemTile verticalItemTile_featuredSet ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 310, height: 150 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoWide,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoWide,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-one" data-win-bind="textContent: primaryText"></div>
+                        <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-topMovie">
+            <div class="template-topMovie horizontalItemTileModule-item win-focusable" tabindex="-1" data-ent-moduleid="topMovie" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;" role="option">
+                <div class="control-horizontalItemTile horizontalItemTile_movie horizontalItemTile_numbered ui-interactive">
+                    <div class="horizontalItemTile-imageContainer">
+                        <div class="horizontalItemTile-imagePlaceholder"></div>
+                        <img class="horizontalItemTile-image acc-preserveBackground ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this;" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 75, height: 100 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+
+                    <div class="horizontalItemTile-itemCount text-numeralLarge text-fixedWidthNumerals" data-win-bind="textContent: position MS.Entertainment.Formatters.formatDecimalNumber;"></div>
+
+                    <div class="horizontalItemTile-content">
+                        <div class="content-itemTitle text-itemTitle maxLines-two">
+                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: primaryText WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="content-metadata text-metadata maxLines-one" data-win-bind="
+                                removeFromDisplay: releaseDate MS.Entertainment.Utilities.toggleClassNameNegate;">
+                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: releaseDate MS.Entertainment.Formatters.formatYearFromDate;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="templateid-headerNotification" data-win-control="WinJS.Binding.Template" class="templateid-headerNotification">
+            <div class="template-headerNotification">
+                <div class="headerNotification-content">
+                    <div class="content-icon icon" data-win-bind="textContent: icon"></div>
+                    <div class="content-primaryText" data-win-bind="textContent: title"></div>
+                    <div class="content-secondaryText maxLines-one" data-win-bind="textContent: subTitle"></div>
+                    <div class="content-actions ent-control" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithViewModel" data-win-bind="winControl.dataSource: actionArray;" data-win-options="{itemTemplate: select('.templateid-headerNotificationActionItem')}" data-win-automationid="notificationActionList">
+                    </div>
+                </div>
+                <button class="headerNotification-closeButton text-link ent-control" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="
+                            removeFromDisplay: dismissIcon MS.Entertainment.Utilities.toggleClassNameNegate;
+                            winControl.action: dismissActionObject;
+                            textContent: String.id.IDS_CLOSE_BUTTON MS.Entertainment.Formatters.formatStringId;"></button>
+            </div>
+        </div>
+
+        <div class="page-store store_movies" role="group">
+            
+            
+            
+            <div class="control-viewStateControl ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-bind="winControl.dataContext: this" data-win-options="{
+                    hideFromDisplayReadyElement: true,
+                    delayInitializeDataContext: true,
+                    delayInitializeChildren: true }">
+                
+                
+                
+                <div class="viewStateControl-layoutRoot">
+                    <div class="viewStateControl-notificationsContainer removeFromDisplay" data-ent-member="_notificationsElement" data-win-automationid="ViewState_Container">
+
+                        
+                        
+                        
+                        <div data-ent-member="_loadingElement" data-win-automationid="Page_Loading" class="viewStateControl-loadingContainer removeFromDisplay">
+                            <progress class="win-large win-ring"></progress>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="viewStateControl-errorContainer removeFromDisplay">
+                            <div class="text-errorTitle removeFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.title;
+                                removeFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            <div class="text-errorSubTitle removeFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                removeFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                    
+                    
+                    
+                    <div class="viewStateControl-content hideFromDisplay" data-ent-member="_readyElement">
+                        <div class="control-storeHub ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.MoviesStoreHub" data-win-bind="winControl.dataContext: dataContext">
+                            <div data-win-automationid="MoviesStore_Page">
+                                <div data-win-bind="removeFromDisplay: dataContext.heroModule.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReadyOrEmpty;">
+                                    <div class="storeHub-header" data-win-bind="removeFromDisplay: dataContext.heroModule.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                        
+                                        
+                                        
+                                        <div class="header-heroCarousel ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.Carousel" data-ent-member="_heroCarousel" data-ent-event="click: onHeroCarouselInvoke; keydown: onHeroCarouselInvoke;" data-win-bind="winControl.dataSource: dataContext.heroModule.items;">
+                                            <div class="storeHub-carouselContainer">
+                                                <div class="carouselContainer-carousel" data-win-control="WinJS.UI.FlipView" data-win-automationcontainer="module" data-win-automationid="MoviesStore_HeroCarousel" data-win-options="{ itemTemplate: select('.template-heroCarouselItemHost') }" data-ent-event="
+                                                        pageselected: _onPageSelected" data-ent-member="_flipView"></div>
+                                                <div class="carouselContainer-jumpButtons" data-win-bind="
+                                                            removeFromDisplay: jumpButtons MS.Entertainment.Utilities.toggleClassNameOnObservableArrayLengthMoreThanOneNegate;">
+                                                    <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="MoviesStore_HeroCarouselButtons" data-win-options="{
+	                                                            containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+	                                                            itemTemplate: select('.template-heroCarouselButtonHost'),
+	                                                            keyboardNavigable: true,
+                                                                excludeFromContentReady: true }" data-ent-member="_jumpButtonList" role="listbox"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="storeHub-notifications ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: dataContext.notificationList" data-win-options="{
+                                            excludeFromContentReady: true,
+                                            itemTemplate: select('.templateid-headerNotification') }"></div>
+
+                                    
+                                    
+                                    
+                                    <div class="storeHub-modulesContainer">
+
+                                        
+                                        
+                                        
+                                        <div class="module-newMovies template-carouselModule" data-win-automationcontainer="module" data-win-automationid="MoviesStore_NewMoviesModule" data-win-bind="removeFromDisplay: dataContext.newMovies.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.newMovies" data-win-automationid="MoviesStore_NewMovies_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_NEW_MOVIES_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.newMovies.moduleAction.title;
+                                                            title: dataContext.newMovies.moduleAction.title" data-win-automationid="MoviesStore_NewMovies_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule verticalItemTileModule_movie" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="MoviesStore_NewMovies" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-movie'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: MS.Entertainment.UI.Controls.MoviesStoreHub.movieItemSize,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.newMovies.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-featuredMovies template-carouselModule" data-win-automationcontainer="module" data-win-automationid="MoviesStore_FeaturedMoviesModule" data-win-bind="removeFromDisplay: dataContext.featuredMovies.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.featuredMovies" data-win-automationid="MoviesStore_FeaturedMovies_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_FEATURED_MOVIES_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.featuredMovies.moduleAction.title;
+                                                            title: dataContext.featuredMovies.moduleAction.title" data-win-automationid="MoviesStore_FeaturedMovies_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule verticalItemTileModule_movie" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="MoviesStore_FeaturedMovies" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-movie'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: MS.Entertainment.UI.Controls.MoviesStoreHub.movieItemSize,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.featuredMovies.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-featuredSets template-carouselModule" data-win-automationcontainer="module" data-win-automationid="MoviesStore_FeaturedSetsModule" data-win-bind="removeFromDisplay: dataContext.featuredSets.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.featuredSets" data-win-automationid="MoviesStore_FeaturedSets_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_FEATURED_SETS_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.featuredSets.moduleAction.title;
+                                                            title: dataContext.featuredSets.moduleAction.title;" data-win-automationid="MoviesStore_FeaturedSets_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="MoviesStore_FeaturedSets" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-featuredSet'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: 320,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true,
+                                                                excludeFromContentReady: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.featuredSets.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-topSellingMovies template-contentModule" data-win-automationcontainer="module" data-win-automationid="MoviesStore_TopSellingMoviesModule" data-win-bind="removeFromDisplay: dataContext.topSellingMovies.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="contentModule-header" data-win-bind="moduleDataContext: dataContext.topSellingMovies" data-win-automationid="MoviesStore_TopSellingMovies_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_TOP_SELLING_MOVIES_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.topSellingMovies.moduleAction.title;
+                                                            title: dataContext.topSellingMovies.moduleAction.title" data-win-automationid="MoviesStore_TopSellingMovies_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="topMovies-content contentModule-items template-horizontalItemTileModule horizontalItemTileModule_movie">
+                                                <div class="topSellingMovies-list" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;" data-win-automationid="MoviesStore_TopSellingMovies" data-win-options="{
+                                                            delayInitializeChildren: true,
+                                                            enableDelayInitialization: true,
+                                                            itemSize: { width: 318, height: 125 },
+                                                            singleAxis: false,
+                                                            useParentAsScrollContainer: true,
+                                                            virtualize: true,
+                                                            virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.vertical,
+                                                            containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                            itemTemplate: select('.templateid-topMovie'),
+                                                            firstItemTabIndex: 0,
+                                                            keyboardNavigable: true,
+                                                            keyboardNavigationSetTabIndex: true,
+                                                            keyboardNavigationManagerClass: MS.Entertainment.Framework.OnScreenKeyboardNavigationManager,
+                                                            excludeFromContentReady: true, }" data-win-bind="winControl.dataSource: dataContext.topSellingMovies.items;" role="listbox">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+                
+                
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</body>
+</html>

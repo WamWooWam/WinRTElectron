@@ -1,0 +1,208 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>TV Immersive Overview</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Components/video/CriticReviewControls.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="ImmersiveOverview" data-win-control="WinJS.Binding.Template">
+        <div class="tv">
+            <div class="overview hideFromDisplay" data-win-bind="animate: visible MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="enterPage">
+                
+                <div class="nonScrollableItemsContainer smartBuyButtons" data-win-bind="removeFromDisplay: displayActionButtons MS.Entertainment.Utilities.toggleClassNameNegate">
+
+                    
+                    <div class="contextButtonContainer immersiveColumnPadding" tabindex="-1" data-ent-member="_buttonsSeason" data-win-automationid="overviewSmartbuyButtonsContainer" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: viewModel.seasonSmartBuyStateEngine.currentButtons;" data-win-options="{defaultButtonClass: 'immersiveDetailsOverviewActionButton'}"></div>
+
+                    
+                    <div class="contextButtonContainer immersiveColumnPadding" tabindex="-1" data-ent-member="_buttonsEpisode" data-win-automationid="overviewSmartbuyButtonsContainer" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: viewModel.episodeSmartBuyStateEngine.currentButtons;
+                                       removeFromDisplay: episode MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{defaultButtonClass: 'immersiveDetailsOverviewActionButton'}"></div>
+                </div>
+
+                
+                <div class="scrollableItemsContainer verticalScrollContainerAuto" role="group">
+                    
+                    <div class="seasonView" data-ent-member="_seasonView" data-win-bind="removeFromDisplay: episode MS.Entertainment.Utilities.toggleClassName;
+                                       animate: tvOverviewMetadata MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="immersiveFrameFadeIn">
+
+                        
+                        <div class="seasonView-passDisclaimer descriptionText text-bodyContent immersiveColumnPadding" data-win-bind="removeFromDisplay: showSeasonPassDisclaimer MS.Entertainment.Utilities.toggleClassNameNegate;
+                                               textContent: String.id.IDS_VIDEO_SEASON_PASS_EXPLANATION MS.Entertainment.Formatters.formatStringId;">
+                        </div>
+
+                        <div class="metaDataContainer">
+                            <div class="textContainer">
+                                <p class="immersiveColumnPadding" data-win-bind="textContent: tvOverviewMetadata;"></p>
+                            </div>
+                        </div>
+
+                        <div class="contentNotificationList" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: season.contentNotifications"></div>
+
+                        <p class="descriptionText text-bodyContent immersiveColumnPadding" data-win-bind="textContent: season.description;
+                                            removeFromDisplay: season.description MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-automationid="seasonDescriptionText"></p>
+                    </div>
+
+                    
+                    <div class="nextEpisode immersiveColumnPadding" data-ent-member="_episodeView" data-win-bind="removeFromDisplay: episode MS.Entertainment.Utilities.toggleClassNameNegate;">
+
+                        <div class="template-watchNextEpisode">
+                            <div class="watchNextEpisode-clickArea" data-ent-member="_watchNextEpisode" data-ent-event="click: _onClickEpisode;
+                                                keydown: _onKeyDown;" data-ent-member="_episodeButton" tabindex="0" role="button">
+
+                                <div class="watchNextEpisode-episodeNumber label text-episodeTitle" data-win-bind="textContent: episode.formattedEpisodeNumber MS.Entertainment.Formatters.formatAddPeriod; 
+                                                   removeFromDisplay: episode.episodeNumber MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;
+                                                   inlineDetailsPrimaryBold: episode.libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber"></div>
+
+                                <div class="watchNextEpisode-title text-episodeTitle maxLines-one" data-win-bind="textContent: episode.name;
+                                                   removeFromDisplay: episode.name MS.Entertainment.Utilities.toggleClassNameNegate;
+                                                   inlineDetailsPrimaryBold: episode.libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber"></div>
+                            </div>
+
+                            <div class="watchNextEpisode-watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-options="{
+                                    forceShowOnOwned: true,
+                                }" data-win-bind="winControl.viewModel: episode;"></div>
+
+                            <div class="watchNextEpisode-notifications" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: episode.contentNotifications"></div>
+
+                            <div class="watchNextEpisode-metadata text-bodyContent" data-win-bind="textContent: episodeDetails;
+                                              removeFromDisplay: episodeDetails MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+                            <div class="watchNextEpisode-description text-bodyContent" data-win-bind="textContent: episode.description;
+                                               removeFromDisplay: episode.description MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="metaCriticTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="control-metaCritic" data-ent-member="_metaCriticControl" data-win-bind="removeFromDisplay: visible MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-event="click: _onClick;
+                             keydown: _onKeyDown" tabindex="0">
+            <div class="part-metaCriticScore text-metadataAlt" data-win-bind="textContent: mediaItem.criticReview.reviewScore" data-ent-member="_metaCriticScoreDomElement"></div>
+            <div class="part-metaCriticLogo text-metadataAlt">metacritic</div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="tvEpisodeContainer" data-win-control="WinJS.Binding.Template">
+        <div class="episodeContainer" data-win-control="MS.Entertainment.UI.Controls.EpisodeItem" data-win-bind="winControl.mediaItem: instance;"></div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="tvEpisodeExtraContainer" data-win-control="WinJS.Binding.Template">
+        <div class="episodeContainer" data-win-control="MS.Entertainment.UI.Controls.EpisodeItem" data-win-bind="winControl.mediaItem: instance;"></div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="tvEpisodeTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvEpisodeTemplate">
+        <div class="template-episodeListItem win-focusable acc-keyboardFocusTarget ui-interactive voice-logicalTarget" role="button" data-ent-event="click: _onClick;
+                keydown: _onKeyDown" data-win-bind="tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                voicePhrase: mediaItem.voicePhrase;
+                voiceConfidence: mediaItem.voiceConfidence;
+                voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                phrase: getContext('element').voicePhrase,
+                confidence: getContext('element').voiceConfidence,
+                pronunciation: getContext('element').voicePhoneticPhrase,
+                targetElement: select('.voice-visualTarget') }">
+
+            <div class="episodeListItem-episodeNumber text-listItem maxLines-one" data-win-bind="textContent: mediaItem.formattedEpisodeNumber MS.Entertainment.Formatters.formatAddPeriod; 
+                               hideFromDisplay: mediaItem.episodeNumber MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;
+                               inlineDetailsPrimaryBold: mediaItem.libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber"></div>
+
+            <div class="episodeListItem-title label text-listItem maxLines-one voice-visualTarget" data-win-bind="textContent: mediaItem.name MS.Entertainment.UI.Controls.EpisodeList.countRenderedItemsForScrollIntoView; 
+                               inlineDetailsPrimaryBold: mediaItem.libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber"></div>
+
+            <div class="episodeListItem-date" data-win-options="{
+                    enableDelayInitialization: true,
+                    preventHideDuringInitialize: true,
+                    allowAnimations: false }" data-win-control="MS.Entertainment.UI.Controls.TvEpisodeDownloadStatus" data-win-bind="winControl.mediaInstance: mediaItem;
+                                winControl.alternateText: mediaItem.releaseDate MS.Entertainment.Formatters.formatShortDate;" data-ent-member="tvEpisodeDownloadStatusIcon">
+                <span class="mediaStatusIconContainer text-metadata maxLines-one" data-win-bind="removeFromDisplay: showMediaStatusIcon MS.Entertainment.Utilities.toggleClassNameNegate;"></span>
+                <span class="mediaStatusAlternateTextContainer text-metadata maxLines-one" data-win-bind="removeFromDisplay: showMediaStatusIcon MS.Entertainment.Utilities.toggleClassNameNegate;"></span>
+                <span class="removeFromDisplay mediaStatusAriaLabelContainer text-metadata"></span>
+            </div>
+
+            <div class="episodeListItem-duration text-metadata maxLines-one" data-win-bind="textContent: mediaItem.duration MS.Entertainment.Formatters.formatDurationFromDate; 
+                                removeFromDisplay: showDuration MS.Entertainment.Utilities.toggleClassNameNegate;
+                                inlineDetailsPrimaryBold: mediaItem.libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber"></div>
+
+            <div class="episodeListItem-watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-options="{
+                    forceShowOnOwned: true,
+                }" data-win-bind="winControl.viewModel: mediaItem;
+                               removeFromDisplay: mediaItem.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+            
+            <div class="win-tile-focusindicator"></div>
+
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="tvEpisodeListTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvEpisodeListTemplate">
+
+        <div class="tvEpisodeListPanel verticalScrollContainer hideFromDisplay" data-win-bind="animate: visible MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="immersiveFrameFadeIn" data-ent-member="_episodeListPanel" role="listbox">
+            
+            <div class="episodeListTitle label divider immersiveColumnPadding text-subTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId: String.id.IDS_TV_NEW_EPISODE_HEADING}" data-win-bind="removeFromDisplay: showLatestEpisodes MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+            
+            <div class="inlineDetailsEpisodeList latestEpisodeList" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{keyboardNavigable: false,
+                                   itemTemplate: '/Components/Immersive/Video/TVImmersiveTemplates.html#tvEpisodeContainer'}" data-ent-member="_latestEpisodeList" data-win-bind="winControl.dataSource: latestEpisodes;
+                               removeFromDisplay: showLatestEpisodes MS.Entertainment.Utilities.toggleClassNameNegate" tabindex="0"></div>
+
+            
+            <div class="episodeListTitle label divider immersiveColumnPadding text-subTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_DETAILS_EPISODES_LABEL}" data-win-bind="removeFromDisplay: showEpisodesHeading MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+            
+            <div class="inlineDetailsEpisodeList standardEpisodes" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{keyboardNavigable: false,
+                                   itemTemplate: '/Components/Immersive/Video/TVImmersiveTemplates.html#tvEpisodeContainer',
+                                   deferForLongLists: true,
+                                   longListDeferalItemLimit: 30}" data-ent-member="_episodeList" data-win-bind="winControl.dataSource: episodes;
+                               removeFromDisplay: showEpisodes MS.Entertainment.Utilities.toggleClassNameNegate" tabindex="0"></div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="tvExtrasListTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvExtrasListTemplate">
+
+        <div class="tvEpisodeListPanel verticalScrollContainer hideFromDisplay" data-win-bind="animate: visible MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="immersiveFrameFadeIn" data-ent-member="_episodeListPanel" role="listbox">
+
+            
+            <div class="episodeListTitle label divider immersiveColumnPadding text-subTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="removeFromDisplay: showExtraEpisodes MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{stringId: String.id.IDS_TV_SEASON_EXTRAS_HEADING_SC}"></div>
+
+            
+            <div class="inlineDetailsEpisodeList episodeList_seasonExtras" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{keyboardNavigable: false,
+                                   itemTemplate: '/Components/Immersive/Video/TVImmersiveTemplates.html#tvEpisodeExtraContainer',
+                                   deferForLongLists: true,
+                                   longListDeferalItemLimit: 10}" data-ent-member="_extraEpisodeList" data-win-bind="winControl.dataSource: extraEpisodes;
+                               removeFromDisplay: showExtraEpisodes MS.Entertainment.Utilities.toggleClassNameNegate" tabindex="0"></div>
+
+            
+            <div class="episodeListTitle label divider immersiveColumnPadding text-subTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="removeFromDisplay: showSeriesExtras MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{stringId: String.id.IDS_TV_SERIES_EXTRAS_HEADING}" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent"></div>
+
+            
+            <div class="inlineDetailsEpisodeList episodeList_seriesExtras" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{keyboardNavigable: false,
+                                   itemTemplate: '/Components/Immersive/Video/TVImmersiveTemplates.html#tvEpisodeExtraContainer',
+                                   deferForLongLists: true}" data-ent-member="_seriesExtrasList" data-win-bind="winControl.dataSource: seriesExtras;
+                               removeFromDisplay: showSeriesExtras MS.Entertainment.Utilities.toggleClassNameNegate" tabindex="0"></div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Music Hub Page</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/RadioPageTemplate_merged.js"></script><script src="/group_3_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/ViewModels/Command.js"></script>
+    <script src="/ViewModels/Music/MusicHubMusicPanel.js"></script>
+    <script src="/controls/failedpanel.js"></script>
+    <script src="/framework/launchappaction.js"></script>
+    <script src="/Framework/Data/xboxLive.js"></script>
+    <script src="/ViewModels/Music/MusicHubCollectionPanel.js"></script>
+    <script src="/controls/nowplaying/nowplaying.js"></script>
+    <script src="/Controls/LibraryFeaturedContent.js"></script>
+    <script src="/Controls/FeaturedContent.js"></script>
+    <script src="/Controls/Music/MusicFeaturedContent.js"></script>
+    <script src="/Controls/hub.js"></script>
+    <script src="/MSAdvertisingJS/ads/VASTAd.js"></script>
+
+    
+    <script src="/viewmodels/home/dashboardContentViewModel.js"></script>
+    <script src="/viewmodels/home/featuredViewModel.js"></script>
+    <script src="/ViewModels/collectionMarketplaceQuery.js"></script>
+    <script src="/viewmodels/Search/SearchContractViewModel.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="musicHubCollectionPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="libraryMusicContent" data-win-control="MS.Entertainment.UI.Controls.LibraryMusicFeaturedContent" data-win-bind="
+                winControl.libraryQuery: dataContext.musicQuery;
+                winControl.libraryClicked: dataContext.libraryClicked;
+                winControl.emptyLibraryModel: dataContext.emptyLibraryModel;
+                winControl.panelAction: dataContext.panelAction;" data-win-automationid="musicHubCollection">
+        </div>
+    </div>
+    
+    <div data-ent-templateid="musicHubTopAlbumsPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dashboardMyMusic dashboardHubContent win-ui-light" data-ent-member="_content" data-win-automationid="musicHubTopAlbums" data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl" data-win-options="{propertyName: 'mediaType',
+                                raisePanelReady: true,
+                                containerStyle: 'dashboardSmallGridItemSquare',
+                                enableClickEvents: true,
+                                itemSize: MS.Entertainment.Utilities.cardItemSizeWithMargin,
+                                reflowOnWindowSizeChanged: true,
+                                itemTemplates: [{ value: Microsoft.Entertainment.Queries.ObjectType.album, template: '/Components/Music/MusicDashboardTemplates.html#musicTitleArtistTemplate'}]}" data-win-bind="
+                winControl.dataSource: dataContext.viewModel.items;
+                winControl.dataContext: dataContext">
+        </div>
+    </div>
+
+    <div data-ent-templateid="musicHubTopArtistPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dashboardMyMusic dashboardHubContent win-ui-light" data-ent-member="_content" data-win-automationid="musicHubTopArtists" data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl" data-win-options="{propertyName: 'mediaType',
+                                raisePanelReady: true,
+                                containerStyle: 'dashboardSmallGridItemSquare',
+                                enableClickEvents: true,
+                                itemSize: MS.Entertainment.Utilities.cardItemSizeWithMargin,
+                                reflowOnWindowSizeChanged: true,
+                                itemTemplates: [{ value: Microsoft.Entertainment.Queries.ObjectType.person, template: '/Components/Music/MusicDashboardTemplates.html#musicGalleryTitleTemplate'}]}" data-win-bind="
+                winControl.dataSource: dataContext.viewModel.items;
+                winControl.dataContext: dataContext">
+        </div>
+    </div>
+
+
+    <div data-ent-templateid="musicHubNewReleasesPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dashboardMyMusic dashboardHubContent win-ui-light" data-ent-member="_content" data-win-automationid="musicHubNewReleases" data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl" data-win-options="{propertyName: 'mediaType',
+                                raisePanelReady: true,
+                                containerStyle: 'dashboardSmallGridItemSquare',
+                                enableClickEvents: true,
+                                itemSize: MS.Entertainment.Utilities.cardItemSizeWithMargin,
+                                itemTemplates: [{ value: Microsoft.Entertainment.Queries.ObjectType.album, template: '/Components/Music/MusicDashboardTemplates.html#musicTitleArtistTemplate'}]}" data-win-bind="
+                winControl.dataSource: dataContext.viewModel.items;
+                winControl.dataContext: dataContext">
+        </div>
+    </div>
+
+    <div data-ent-templateid="musicHubMusicMarketplacePanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.MusicFeaturedContent" class="featuredMusicContent dashboardHubContent" data-win-options="{
+                    enableClickEvents: true,
+                    templates: [
+                        '/Components/Music/FeaturedMusicView1.html',
+                        '/Components/Music/FeaturedMusicView2.html',
+                        '/Components/Music/FeaturedMusicAdFreeView1.html',
+                        '/Components/Music/FeaturedMusicAdFreeView2.html'
+                    ]
+                }" data-win-bind="winControl.data: dataContext.viewModel.featuredObject" data-win-automationid="musicHubMusicMarketplace">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicHubWelcomePanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.MusicWelcomeView" data-win-automationid="musicWelcomeHub" class="musicWelcomeContent dashboardHubContent" data-win-bind="winControl.dataContext: dataContext;"></div>
+    </div>    
+</body>
+</html>

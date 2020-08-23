@@ -1,0 +1,204 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="baseGrid">
+
+            
+
+            
+            <div class="grid_2RowHeroTopWidescreen"
+                 style="-ms-grid-column: 1; -ms-grid-row: 1;">
+                <div class="homeHubNowPlayingTile win-focusable"
+                     data-ent-member="_dashboardNowPlaying"
+                     style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-span: 5;">
+                </div>
+                <div style="-ms-grid-column: 1; -ms-grid-row: 3; -ms-grid-column-span: 5;">
+                    <div class="win-ui-dark horizontalBox engagePanel"
+                        data-win-control="MS.Entertainment.UI.Controls.ItemsControl"
+                        data-win-bind="winControl.dataSource: smartBuyStateEngine.currentButtons"
+                        data-win-options="{
+                            containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                            itemTemplate: 'Components/Music/MusicDashboardTemplates.html#dashboardEngagePanelButton'}">
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="grid_4RowStandard"
+                 style="-ms-grid-column: 3;">                
+                <div style="-ms-grid-row: 1;"
+                     class="dashboardGridItemContent"
+                     data-win-bind="clickDataContext: bindableItems.item0"
+                     data-ent-showanimation="fadeIn">
+                    <div class="thumbnailButton win-focusable"
+                        data-win-control="MS.Entertainment.UI.Controls.ItemControl"
+                        data-win-bind="
+                            winControl.context: bindableItems.item0;
+                            winControl.disabled: bindableItems.item0.isNotMedia"
+                        role="button"
+                        aria-atomic="true"
+                        data-ent-member="columnTwoFirstItem"
+                        data-ent-pagecontent="context">
+                        <div class="imageContainer"
+                            aria-hidden="true">
+                            
+                            <img class="imageHolder"
+                                 data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                                 data-win-bind="winControl.target: bindableItems.item0.imagePrimaryUrl"
+                                 data-win-options="{
+                                    applyImageAsBackground: true,
+                                    defaultImagePath: '' }"
+                                 width="220"
+                                 height="165"/>
+                        </div>
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"></div>
+                                <div class="primaryText label text-cardTitle"
+                                     data-win-bind="textContent: bindableItems.item0.primaryText;
+                                                    removeFromDisplay: bindableItems.item0.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="secondaryText label text-metadata"
+                                     data-win-bind="textContent: bindableItems.item0.secondaryText;
+                                                    removeFromDisplay: bindableItems.item0.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="icon dashboardTileIcon icon-xxSmall"
+                                     data-win-bind="textContent: MS.Entertainment.UI.Icon.dpadRight MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item0.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="-ms-grid-row: 3;"
+                     class="dashboardGridItemContent"
+                    data-win-bind="clickDataContext: bindableItems.item1"
+                     data-ent-showanimation="fadeIn">
+                    <div class="thumbnailButton win-focusable"
+                        data-win-control="MS.Entertainment.UI.Controls.ItemControl"
+                        data-win-bind="
+                            winControl.context: bindableItems.item1;
+                            winControl.disabled: bindableItems.item1.isNotMedia"
+                        role="button"
+                        aria-atomic="true"
+                        data-ent-member="columnTwoSecondItem"
+                        data-ent-pagecontent="context">
+                        <div class="imageContainer"
+                            aria-hidden="true">
+                            
+                            <img class="imageHolder"
+                                 data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                                 data-win-bind="winControl.target: bindableItems.item1.imagePrimaryUrl"
+                                 data-win-options="{
+                                    applyImageAsBackground: true,
+                                    defaultImagePath: '' }"
+                                 width="220"
+                                 height="165"/>
+                        </div>
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"></div>
+                                <div class="primaryText label text-cardTitle"
+                                     data-win-bind="textContent: bindableItems.item1.primaryText;
+                                                    removeFromDisplay: bindableItems.item1.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="secondaryText label text-metadata"
+                                     data-win-bind="textContent: bindableItems.item1.secondaryText;
+                                                    removeFromDisplay: bindableItems.item1.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="icon dashboardTileIcon icon-xxSmall"
+                                     data-win-bind="textContent: MS.Entertainment.UI.Icon.dpadRight MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item1.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="-ms-grid-row: 5;"
+                     class="dashboardGridItemContent"
+                     data-win-bind="clickDataContext: bindableItems.item2"
+                     data-ent-showanimation="fadeIn">
+                    <div class="thumbnailButton win-focusable"
+                        data-win-control="MS.Entertainment.UI.Controls.ItemControl"
+                        data-win-bind="
+                            winControl.context: bindableItems.item2;
+                            winControl.disabled: bindableItems.item2.isNotMedia"
+                        role="button"
+                        aria-atomic="true"
+                        data-ent-member="columnTwoThirdItem"
+                        data-ent-pagecontent="context">
+                        <div class="imageContainer"
+                            aria-hidden="true">
+                            
+                            <img class="imageHolder"
+                                 data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                                 data-win-bind="winControl.target: bindableItems.item2.imagePrimaryUrl"
+                                 data-win-options="{
+                                    applyImageAsBackground: true,
+                                    defaultImagePath: '' }"
+                                 width="220"
+                                 height="165"/>
+                        </div>
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"></div>
+                                <div class="primaryText label text-cardTitle"
+                                     data-win-bind="textContent: bindableItems.item2.primaryText;
+                                                    removeFromDisplay: bindableItems.item2.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="secondaryText label text-metadata"
+                                     data-win-bind="textContent: bindableItems.item2.secondaryText;
+                                                    removeFromDisplay: bindableItems.item2.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="icon dashboardTileIcon icon-xxSmall"
+                                     data-win-bind="textContent: MS.Entertainment.UI.Icon.dpadRight MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item2.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="-ms-grid-row: 7;"
+                     class="dashboardGridItemContent"
+                     data-win-bind="clickDataContext: bindableItems.item3"
+                     data-ent-showanimation="fadeIn">
+                    <div class="thumbnailButton win-focusable"
+                        data-win-control="MS.Entertainment.UI.Controls.ItemControl"
+                        data-win-bind="
+                            winControl.context: bindableItems.item3;
+                            winControl.disabled: bindableItems.item3.isNotMedia"
+                        role="button"
+                        aria-atomic="true"
+                        data-ent-member="columnTwoFourthItem"
+                        data-ent-pagecontent="context">
+                        <div class="imageContainer"
+                            aria-hidden="true">
+                            
+                            <img class="imageHolder"
+                                 data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                                 data-win-bind="winControl.target: bindableItems.item3.imagePrimaryUrl"
+                                 data-win-options="{
+                                    applyImageAsBackground: true,
+                                    defaultImagePath: '' }"
+                                 width="220"
+                                 height="165"/>
+                        </div>
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"></div>
+                                <div class="primaryText label text-cardTitle"
+                                     data-win-bind="textContent: bindableItems.item3.primaryText;
+                                                    removeFromDisplay: bindableItems.item3.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="secondaryText label text-metadata"
+                                     data-win-bind="textContent: bindableItems.item3.secondaryText;
+                                                    removeFromDisplay: bindableItems.item3.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="icon dashboardTileIcon icon-xxSmall"
+                                     data-win-bind="textContent: MS.Entertainment.UI.Icon.dpadRight MS.Entertainment.Formatters.formatIcon; removeFromDisplay: bindableItems.item3.isFlexHub MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="part-outOfBandMessagingContainer removeFromDisplay"
+                    style="-ms-grid-row-span: 7; -ms-grid-row: 1; -ms-grid-column: 1;"
+                    data-ent-member="_upgradeContainer"></div>
+                <div data-ent-member="outOfBandMessagingContainer" class="part-outOfBandMessagingContainer fillParent removeFromDisplay" style="-ms-grid-row: 1; -ms-grid-row-span: 5;">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

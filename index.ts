@@ -1,4 +1,4 @@
-const { app, protocol, BrowserWindow, shell, ipcMain } = require("electron")
+import { app, protocol, BrowserWindow, shell, ipcMain } from "electron"
 const path = require("path")
 const fs = require('fs')
 const rename = require('deep-rename-keys')

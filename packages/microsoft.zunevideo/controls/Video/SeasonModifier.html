@@ -1,0 +1,42 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src="/Controls/Video/SeasonModifier.js"></script>
+</head>
+    <body>
+
+        
+        
+        
+        
+        <div data-ent-templateid="seasonModifierPopupEntry" data-win-control="WinJS.Binding.Template">
+            <div data-win-control="MS.Entertainment.UI.Controls.SeasonModifierPopupEntry" data-win-bind="winControl.data: this">
+            </div>
+        </div>
+
+        <div data-ent-templateid="seasonModifierPopupEntryTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="modifierPopupEntry win-focusable" data-ent-member="background" data-ent-event="click: onClicked" data-win-automationid="modifierPopupEntry" role="menuitem">
+
+                <div class="modifierEntryImgContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-member="boxArt" data-ent-showanimation="fadeIn" data-win-options="{
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            desiredImageSize: { width: 80, height: 80 },
+                            defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoMedium }" width="80" height="80">
+                </div>
+
+                <div class="modifierEntryTextContainer">
+                    <div class="modifierPopupSeasonLabel text-modifierPopupSeason" data-ent-member="text" data-win-automationid="modifierPopupSeasonLabel">
+                    </div>
+                    <div class="modifierPopupOwnedLabel text-modifierPopupOwned" data-ent-member="ownedEpisodeCount" data-win-automationid="modifierPopupOwnedLabel">
+                    </div>
+                </div>
+
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+    </body>
+</html>

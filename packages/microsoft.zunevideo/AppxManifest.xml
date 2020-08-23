@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Package IgnorableNamespaces="build" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:wb="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build">
+  
+  
+  <Identity Name="Microsoft.ZuneVideo" ProcessorArchitecture="x86" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="2.6.446.0"/>
+  
+  
+  <Properties>
+    <Framework>false</Framework>
+    <DisplayName>ms-resource:IDS_MANIFEST_VIDEO_APP_NAME</DisplayName>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Description>ms-resource:IDS_MANIFEST_VIDEO_APP_DESCRIPTION</Description>
+    <Logo>images\Tiles\XBL_VIDEO_50x50_A.png</Logo>
+  </Properties>
+  
+  
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  
+  
+  <Resources>
+     <Resource wb:Scale="100"/> <Resource Language="en-US"/> <Resource Language="en-GB"/>  
+  </Resources>
+  
+  
+  <Applications>
+    <Application Id="Microsoft.ZuneVideo" StartPage="main.html">
+      <wb:VisualElements DisplayName="ms-resource:IDS_MANIFEST_VIDEO_APP_NAME" Description="ms-resource:IDS_MANIFEST_VIDEO_APP_DESCRIPTION" ForegroundText="light" BackgroundColor="#AC193D" Square150x150Logo="images\Tiles\XBL_VIDEO_150x150_A.png" Square30x30Logo="images\Tiles\XBL_VIDEO_30x30_A.png" ToastCapable="true">
+        <wb:ApplicationView MinWidth="width500"/>
+        <wb:DefaultTile Square70x70Logo="images\Tiles\XBL_VIDEO_70x70_A.png" Wide310x150Logo="images\Tiles\XBL_VIDEO_310x150_C.png" Square310x310Logo="images\Tiles\XBL_VIDEO_310x310_A.png">
+           <wb:TileUpdate Recurrence="daily" UriTemplate="http://cdf-anon.xboxlive.com/{language}/video/feeds/1.2/videolivetile"/>
+          <wb:ShowNameOnTiles>
+            <wb:ShowOn Tile="square150x150Logo"/>
+            <wb:ShowOn Tile="wide310x150Logo"/>
+            <wb:ShowOn Tile="square310x310Logo"/>
+          </wb:ShowNameOnTiles>
+        </wb:DefaultTile>
+        <wb:SplashScreen BackgroundColor="#AC193D" Image="images\Tiles\XBL_VIDEO_620x300_A.png"/>
+        <wb:InitialRotationPreference>
+          <wb:Rotation Preference="landscape"/>
+          <wb:Rotation Preference="landscapeFlipped"/>
+           <wb:Rotation Preference="portrait"/> <wb:Rotation Preference="portraitFlipped"/>
+        </wb:InitialRotationPreference>
+
+     </wb:VisualElements>
+
+     <Extensions>
+       <Extension Category="windows.search" StartPage="main.html">
+       </Extension>
+       
+       <Extension Category="windows.protocol" StartPage="main.html">
+        <Protocol Name="microsoftvideo"/>
+       </Extension>
+ 
+       
+      
+       <Extension Category="windows.backgroundTasks" StartPage="LiveIdChange.js">
+         <BackgroundTasks>
+           <Task Type="systemEvent"/>
+         </BackgroundTasks>
+       </Extension>
+     
+       <Extension Category="windows.fileTypeAssociation" StartPage="main.html"> <FileTypeAssociation Name="fileassociations"> <Logo>Images\Tiles\VideoIcon.png</Logo> <SupportedFileTypes> <FileType>.3g2</FileType> <FileType>.3gp</FileType> <FileType>.3gpp</FileType> <FileType>.avi</FileType> <FileType>.divx</FileType> <FileType>.m2ts</FileType> <FileType>.m2t</FileType> <FileType>.m4v</FileType> <FileType>.mod</FileType> <FileType>.mov</FileType> <FileType>.mp4</FileType> <FileType>.mp4v</FileType> <FileType>.mpe</FileType> <FileType>.mpeg</FileType> <FileType>.mpg</FileType> <FileType>.mpv2</FileType> <FileType>.mts</FileType> <FileType>.tod</FileType> <FileType>.ts</FileType> <FileType>.tts</FileType> <FileType>.wm</FileType> <FileType>.wmv</FileType> <FileType>.xvid</FileType> <FileType>.mkv</FileType> </SupportedFileTypes> </FileTypeAssociation> </Extension>
+    </Extensions>
+
+    <ApplicationContentUriRules>
+      <Rule Type="include" Match="https://*.xbox.com"/>
+      <Rule Type="include" Match="https://*.*.xbox.com"/>
+      <Rule Type="include" Match="https://*.xboxlive.com"/>
+      <Rule Type="include" Match="https://*.*.xboxlive.com"/>
+      <Rule Type="include" Match="https://*.*.*.xboxlive.com"/>
+      <Rule Type="include" Match="https://*.live.com"/>
+      <Rule Type="include" Match="https://*.*.live.com"/>
+      <Rule Type="include" Match="https://*.microsoft.com/"/>
+      <Rule Type="include" Match="https://*.*.microsoft.com/"/>
+      <Rule Type="include" Match="https://*.live-partner.com/"/>
+      <Rule Type="include" Match="https://*.*.live-partner.com/"/>
+      <Rule Type="include" Match="https://commerce.zune.net/"/>
+      <Rule Type="include" Match="https://catalog-ssl.zune.net/"/>
+      <Rule Type="include" Match="https://login.live.com"/>
+      <Rule Type="include" Match="https://live.xbox.com"/>
+      <Rule Type="include" Match="https://buy.live.com"/>
+      <Rule Type="include" Match="https://sc.imp.live.com"/>
+           
+    </ApplicationContentUriRules>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+     <Capability Name="videosLibrary"/> <Capability Name="internetClient"/>
+  </Capabilities>
+
+  <Dependencies>
+     <PackageDependency Name="Microsoft.VCLibs.120.00" MinVersion="12.0.20513.0"/>
+     <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9407.0"/>
+  </Dependencies>
+
+  <Extensions>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>EntPlat.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Application.Application" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Application.ApplicationStatics" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.MediaInfo.MediaInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Infrastructure.ShipAssertProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.Debug" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.ErrorMapper" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.ClosedCaptions.TTMLProcessor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.SignIn" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.UIEventRouter" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.ConcurrentStreamingRestriction" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.PlayReadyHandler" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.ServiceXMLQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.VideoDataItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.VideoDataset" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.VideosQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.TVSeriesQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.TVSeasonsQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.GenresQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.TracksQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.PeopleQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.AlbumsQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.VideoStudiosQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.PlaylistsQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.PlaylistMediaItemsQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.FilesQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.FolderDataItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.FolderDataset" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Queries.FoldersQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Share.SharingManager" ThreadingModel="STA"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Share.SharingMessage" ThreadingModel="STA"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Share.SharingPackage" ThreadingModel="STA"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Social.XboxLIVEDataAgent" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Marketplace.Marketplace" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Avatar.AvatarRendererFactory" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Avatar.ExtensionFactory" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Avatar.Editor.AvatarEditorFactory" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Avatar.PlaybackController.AvatarPlaybackControllerFactory" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.MediaStore" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.Playback.MkvMfByteStreamHandler" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.ApplicationState" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.ApplicationLifetimeManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.FileTransferManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.FileTransferQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.ImageManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Store.ServiceTransferManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Store.ServiceAccountInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.Logging.DataPoint" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Sync.SyncManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.Playback.ConnectedStandbySchemeHandler" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.Playback.FastStartSchemeHandler" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.ClosedCaptionDownloader" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Ads.AdManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Limits.MusicLimitsManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.NotificationManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.AlbumMetadata" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.TrackMetadata" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.CollectionBuildingManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.AppVolumeManager.AppVolume" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Fulfillment.Video.Entitlements" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Fulfillment.Video.Licensing" ThreadingModel="both"/>        
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Service.Requests.Mds.Video.AssetLocationRequest" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Service.Requests.DeviceGroup.DeviceGroupInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Service.Requests.DeviceGroup.DeviceGroupManagement" ThreadingModel="both"/>        
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.Playback.SmoothStreamingPlaybackReporter" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Flighting.FlightService" ThreadingModel="both"/>
+        
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>EntCommon.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Configuration.ConfigurationManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Common.Infrastructure.TunerInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Common.Service.Rfc2046.Mime" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Common.Service.Rfc2046.MimeType" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.FeatureEnablement.FeatureEnablement" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.EndpointManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Util.GlobalizationManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Platform.Playback.MBRByteStreamHandler" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.Entertainment.Instrumentation.Providers.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.CommonTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.LibraryTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.PipelineTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.ServiceEventProviderTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.ShellTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.SyncEventProviderTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.SocialTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.XboxTemplate" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.Common" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.Library" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.Pipeline" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.ServiceEventProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.Shell" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.SyncEventProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.Social" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Entertainment.Instrumentation.Providers.Xbox" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    
+    
+    
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.PerfTrack.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.PerfTrack.PerfTrackLogger" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    
+    <Extension Category="windows.activatableClass.proxyStub">
+      <ProxyStub ClassId="FB06B882-46B8-4625-B239-AF768C8477E3">
+        <Path>entplat.dll</Path>
+        <Interface Name="Microsoft.Entertainment.Interop.ICallbackInvoker" InterfaceId="A2082232-0E67-42E1-8214-1BE73406F067"/>
+      </ProxyStub>
+    </Extension>
+	
+     <Extension Category="windows.activatableClass.inProcessServer"> <InProcessServer> <Path>Microsoft.Media.AdaptiveStreaming.dll</Path> <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.AdaptiveSource" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.AdaptiveSourceManager" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.Manifest" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler" ThreadingModel="both"/> </InProcessServer> </Extension> <Extension Category="windows.activatableClass.proxyStub"> <ProxyStub ClassId="B2596805-D20B-4750-A6AC-0251A1EFA1DE"> <Path>Microsoft.Media.AdaptiveStreaming.dll</Path> <Interface InterfaceId="D733C279-BF63-4eb3-9D7F-6BA5402B621C" Name="ManifestReadyEventHandler"/> <Interface InterfaceId="B0B48161-0DB5-439B-9FF0-200BED06CC48" Name="AdaptiveSourceStatusUpdatedEventHandler"/> <Interface InterfaceId="2D30413E-09B4-4A43-8F8B-C592F1E41B5F" Name="AdaptiveSourceFailedEventHandler"/> <Interface InterfaceId="3D0CDB1E-1E78-4c45-B9CC-04041804AD5A" Name="AdaptiveSourceClosedEventHandler"/> <Interface InterfaceId="63B289C6-5181-4284-90DC-94D03FBE12F2" Name="AdaptiveSourceOpenedEventHandler"/> </ProxyStub> </Extension> <Extension Category="windows.activatableClass.inProcessServer"> <InProcessServer> <Path>MicrosoftAdvertising.dll</Path> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.VASTAdEventArgs" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.VASTAdPlacement" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.VASTAdvertisement" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdPlacement" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.SdkInfo" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.SdkInfoProvider" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdEventArgs" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdErrorEventArgs" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.Advertisement" ThreadingModel="both"/> <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.RendererOptions" ThreadingModel="both"/> </InProcessServer> </Extension>
+  
+    
+  
+  </Extensions>
+</Package>

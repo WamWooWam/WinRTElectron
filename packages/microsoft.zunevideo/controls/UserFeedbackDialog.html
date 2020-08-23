@@ -1,0 +1,81 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/styles/settings.css">
+        <title>User Feedback Dialog Template</title>
+        
+        <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Controls/EditBox.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="userFeedbackDialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-ent-member="_contentContainer" class="settingsFeedbackContent">
+                <div class="settingsPanelContent label" data-ent-member="_descriptionLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap:true}">
+                </div>
+                <div class="settingsPanelContent label" data-ent-member="_lowerDescriptionLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap:true}">
+                </div>
+                <div data-ent-member="_userVoiceContainer" class="settingsUserVoiceLink">
+                    <div class="settingsPanelContent label" data-ent-member="_optionDescriptionLabel" data-win-bind="textContent: String.id.IDS_SETTINGS_FEEDBACK_SUGGESTION_GOTIDEAS MS.Entertainment.Formatters.formatStringId;">
+                    </div>
+                    <a class="settingsWebLinks settingsWebLinkText text-xSmall text-weightBold" tabindex="0" data-win-automationid="userVoiceLink" data-ent-event="click: _showUserVoice; keydown: _showUserVoice" data-win-bind="textContent: userVoiceString">
+                    </a>
+                </div>
+                <div class="settingsFeedbackContent-contentContainer">
+                    <div class="settingsPanelContent removeFromDisplay label" data-ent-member="_optionSASDescriptionLabel" data-win-bind="textContent: String.id.IDS_SETTINGS_FEEDBACK_SAS_TEXT MS.Entertainment.Formatters.formatStringId;">
+                    </div>
+                    <select class="settingsFeedbackSelect" data-ent-member="_issueTypeSelector" data-ent-event="change: _onIssueTypeChange">
+                    </select>
+                    <div class="contentContainer-select removeFromDisplay" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-ent-member="_issueTypeModifier" data-win-options="{
+                            allowAnimations: false,
+                            tabIndex: 0,
+                            identifier: 'feedback',
+                            popupStyle: ['primaryPanelModifierPopup', 'musicPrimaryPanelModifierPopup'],
+                            showDescription: false,
+                            showDropDownArrow: true,
+                            calculateModifierPopoverPosition: false,
+                            minItems: 1 }" data-win-automationid="issueTypeModifier">
+                    </div>
+                </div>
+                <div class="userFeedbackCommentContainer" data-ent-member="_userCommentContainer">
+                    <div class="settingsPanelContent label" data-ent-member="_commentDescription" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_FEEDBACK_COMMENT_DESCRIPTION}">
+                    </div>
+                    <div class="settingsFeedbackCommentBox" data-ent-member="_editControl" data-win-control="MS.Entertainment.UI.Controls.EditBox" data-win-options="{editType: MS.Entertainment.UI.Controls.EditBox.EditTypes.multiLine,
+                                       maxLength: 1024, rows: 6, columns: 6, watermarkText: '',
+                                       showRemainingChars: true, accessibleNameStringId:String.id.IDS_SETTINGS_FEEDBACK_COMMENT_DESCRIPTION}" data-ent-event="keydown: _onKeyDown">
+                    </div>
+                    <div class="settingsPanelContent label removeFromDisplay" data-ent-member="_sharePlaylistURLNote" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true, stringId: String.id.IDS_MUSIC_SHARE_SAS_FEEDBACK_URL_NOTE}">
+                    </div>
+                </div>
+                <div data-ent-member="_bottomContainer" class="webLinkContainer settingsFeedbackBottom voice-logicalTarget" data-ent-event="click: _showPrivacy; keydown: _showPrivacy" data-win-bind="
+                        voicePhrase: privacyStatementLabel;
+                        voiceConfidence: privacyStatementConfidence;
+                        " data-win-voice="{
+                         phrase: getContext('element').voicePhrase,
+                         confidence: getContext('element').voiceConfidence,
+                         targetElement: select('.voice-visualTarget'),
+                    }">
+                    <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold voice-visualTarget" tabindex="0" data-win-automationid="feedbackPrivacyLink" data-win-bind="textContent: privacyStatementLabel;">
+                    </a>
+                </div>
+                <div class="feedbackButtons win-ui-light" data-ent-member="_feedbackButtonContainers">
+                    <button class="dialogButton defaultButton acc-keyboardFocusTarget" type="button" data-ent-event="click: _onSubmit" data-ent-member="_submitButton">
+                        <span class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_FEEDBACK_SUBMIT}">
+                        </span>
+                    </button>
+                    <button class="dialogButton acc-keyboardFocusTarget" type="button" data-ent-event="click: _onCancel">
+                        <span class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_FEEDBACK_CANCEL}">
+                        </span>
+                    </button>
+                    <button class="dialogButton acc-keyboardFocusTarget removeFromDisplay" type="button" data-ent-event="click: _showPrivacy; keydown: _showPrivacy" data-ent-member="_feedbackPrivacyButton">
+                        <span class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_PRIVACY_STATEMENT}">
+                        </span>
+                    </button>
+                </div>  
+                <div class="settingsPanelContent feedbackConnectionError hidden label" data-ent-member="_connectionError" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_FEEDBACK_NOCONNECTION, wrap:true}">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

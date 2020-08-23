@@ -1,0 +1,286 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Startup Templates</title>
+        
+
+        <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css" />
+        <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css" />
+        <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css" />
+    </head>
+    <body>
+        
+        <div data-ent-templateid="dashboardEngagePanelButton" 
+             data-win-control="WinJS.Binding.Template">
+                <div class="actionTile"
+                        data-win-control="MS.Entertainment.UI.Controls.IconButton"
+                        data-win-bind="
+                            removeFromDisplay: panelAction MS.Entertainment.Utilities.toggleClassNameNegate;
+                            winControl.text: panelAction.text MS.Entertainment.Formatters.formatStringOrStringId;
+                            winControl.isDisabled: panelAction.isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                            winControl.automationId: panelAction.automationId;
+                            winControl.action: panelAction;"
+                    data-win-options="{tabIndex: MS.Entertainment.Utilities.optionsAppTypeTabIndexHelper}">
+                </div>
+        </div>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+        <div data-ent-templateid="moviePosterTile" data-win-control="WinJS.Binding.Template">
+            
+            <div class="movieVideoTile videoTile" data-win-automationid="movieItem">
+                <div class="movieVideoTileButton win-focusable voice-logicalTarget"  
+                    role="button"
+                    data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime
+                        voicePhrase: instance.voicePhrase;
+                        voiceConfidence: instance.voiceConfidence;
+                        voicePhoneticPhrase: instance.voicePhoneticPhrase;"
+                    data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase,
+                    }">
+
+                    <img class="imageContainer imageHolder"
+                            data-win-control="MS.Entertainment.UI.Shell.ImageControl" 
+                            data-win-bind="winControl.target: instance WinJS.Binding.oneTime"
+                            data-ent-showanimation="fadeIn"
+                            data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                errorImage: '',
+                                parentStyleIfNotEmpty: 'hideMetadataOverImage',
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 180, height: 245},
+                                defaultImagePath: ''}"
+                            width="180" height="245" />
+
+                    <div class="content">
+                        <div class="textContainer">
+                            <div class="textContainer-notifications">
+                                <div class="primaryText specificLineCount text-cardTitle voice-visualTarget"
+                                    data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                   removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="part-primaryIcon inlineGlyph"
+                                        data-win-bind="textContent: canPlayLocally MS.Entertainment.Formatters.formatIsDownloaded;
+                                            removeFromDisplay: libraryId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;"></div>
+                                <div class="part-primaryText text-metadata maxLines-three" 
+                                        data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItemWithRentalExpiration"
+                                        data-win-options="{
+                                            allowAnimations: false,
+                                            preventHideDuringInitialize: true,
+                                            hideIfEmpty: true }"
+                                        data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;
+                                                    winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="personalFileTileL1Small" data-win-control="WinJS.Binding.Template">
+            
+            <div class="personalVideoTileL1Small videoTile" data-win-automationid="otherVideoItem">
+                <div class="personalVideoTileButton win-focusable"
+                    role="button"
+                    data-win-bind="clickDataContext: instance WinJS.Binding.oneTime">
+
+                    <div class="personalVideoTileContainer">
+                        <img class="imageHolder hideFromDisplay"
+                                data-win-control="MS.Entertainment.UI.Shell.ImageControl" 
+                                data-win-bind="winControl.target: instance WinJS.Binding.oneTime"
+                                data-ent-showanimation="fadeIn"
+                                data-win-options="{
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    errorImage: '',
+                                    parentStyleIfNotEmpty: 'hideMetadataOverImage',
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 160, height: 160},
+                                    defaultImagePath: '',
+                                    applyImageAsBackground: true}"
+                                width="160" height="160" 
+                                style="width: auto; height: 160px;"/>
+
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"
+                                    data-win-bind="removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="primaryText text-cardTitle maxLines-two"
+                                    data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                   removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="personalFileTileL1Large" data-win-control="WinJS.Binding.Template">
+            
+            <div class="personalVideoTileL1Large videoTile" data-win-automationid="otherVideoItem">
+                <div class="personalVideoTileButton win-focusable"
+                    role="button"
+                    data-win-bind="clickDataContext: instance WinJS.Binding.oneTime">
+
+                    <div class="personalVideoTileContainer">
+                        <img class="imageHolder hideFromDisplay"
+                                data-win-control="MS.Entertainment.UI.Shell.ImageControl" 
+                                data-win-bind="winControl.target: instance WinJS.Binding.oneTime"
+                                data-ent-showanimation="fadeIn"
+                                data-win-options="{
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    errorImage: '',
+                                    parentStyleIfNotEmpty: 'hideMetadataOverImage',
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 245, height: 245},
+                                    defaultImagePath: '',
+                                    applyImageAsBackground: true}"
+                                width="245" height="245" 
+                                style="width: auto; height: 245px;"/>
+
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"
+                                    data-win-bind="removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="primaryText text-cardTitle maxLines-two"
+                                    data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                   removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="personalFileTile" data-win-control="WinJS.Binding.Template">
+            
+            <div class="personalVideoTile videoTile" data-win-automationid="otherVideoItem">
+                <div class="personalVideoTileButton win-focusable"
+                    role="button"
+                    data-win-bind="clickDataContext: instance WinJS.Binding.oneTime">
+                </div>
+
+                <div class="imageContainer">
+                    <div class="imageHolder">
+                        <img class="hideFromDisplay"
+                                data-win-control="MS.Entertainment.UI.Shell.ImageControl" 
+                                data-win-bind="winControl.target: instance WinJS.Binding.oneTime"
+                                data-ent-showanimation="fadeIn"
+                                data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 245, height: 245},
+                                    defaultImagePath: '',
+                                    applyImageAsBackground: true}"
+                                width="245" height="245" 
+                                style="width: auto; height: 245px;"/>
+                    </div>
+                </div>
+
+                
+                <div class="content">
+                    <div class="textContainer">
+                        <div class="textContainer-notifications">
+                            <div class="part-primaryIcon inlineGlyph"
+                                data-win-bind="textContent: MS.Entertainment.UI.Icon.fileFolder MS.Entertainment.Formatters.formatIcon;
+                                    removeFromDisplay: folderId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;"></div>
+                            <div class="part-primaryText text-metadata maxLines-three"
+                                data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                    removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="tvSeriesTile" data-win-control="WinJS.Binding.Template">
+            
+            <div class="tvSeriesVideoTile videoTile" data-win-automationid="tvSeriesItem">
+                <div class="tvSeriesVideoTileButton win-focusable voice-logicalTarget"
+                    role="button"
+                    data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime
+                        voicePhrase: instance.voicePhrase;
+                        voiceConfidence: instance.voiceConfidence;
+                        voicePhoneticPhrase: instance.voicePhoneticPhrase;"
+                    data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase,
+                    }">
+
+                    <img class="imageContainer imageHolder"
+                            data-win-control="MS.Entertainment.UI.Shell.ImageControl" 
+                            data-win-bind="winControl.target: instance WinJS.Binding.oneTime"
+                            data-ent-showanimation="fadeIn"
+                            data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                errorImage: '',
+                                parentStyleIfNotEmpty: 'hideMetadataOverImage',
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 245, height: 245},
+                                defaultImagePath: ''}"
+                            width="245" height="245" />
+
+                    <div class="content">
+                        <div class="textContainer">
+                            <div class="textContainer-notifications">
+                                <div class="primaryText specificLineCount text-cardTitle voice-visualTarget"
+                                    data-win-bind="textContent: title WinJS.Binding.oneTime;
+                                                   removeFromDisplay: title MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                                <div class="part-primaryIcon inlineGlyph"
+                                        data-win-bind="textContent: downloadedEpisodesCount MS.Entertainment.Formatters.formatIsDownloaded;
+                                            removeFromDisplay: libraryId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;"></div>
+                                <div class="part-primaryText text-metadata maxLines-two" 
+                                        data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem"
+                                        data-win-options="{
+                                            allowAnimations: false,
+                                            preventHideDuringInitialize: true,
+                                            hideIfEmpty: true, }"
+                                        data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;
+                                                    winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

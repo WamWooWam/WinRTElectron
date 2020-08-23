@@ -1,0 +1,37 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>User Engagement Service Message Template</title>
+    
+    <script src="/main_merged.js"></script>
+    <script src="/Framework/UserEngagementService.js"></script>
+    <script src="/Components/Shell/UserEngagementServiceMessage.js"></script>
+</head>
+<body>
+   
+    <div data-ent-templateid='userEngagementServiceMessage' data-win-control="WinJS.Binding.Template">
+        <div class="userEngagementMessageContainer win-focusable" data-win-automationid="userEngagementMessage" role="button" data-ent-event="click: messageClicked">
+            <div class="userEngagementMessageTop">
+                <div data-ent-member="messageTitle" class="userEngagementMessageTitle">
+                    <div class="userEngagementMessageTitle" data-win-bind="textContent: titleText;
+                                        removeFromDisplay: titleText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                </div>
+                <div class="imageContainer" aria-hidden="true">
+                    
+                    <img class="imageHolder" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageUrl" data-win-options="{defaultImagePath: ''}" width="220">
+                </div>
+            </div>
+            <div class="userEngagementMessageBottom">
+                <div data-ent-member="messageSubTitle" class="userEngagementMessageSubText text-medium">
+                    <div data-win-bind="textContent: subText;
+                                        removeFromDisplay: subText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                </div>
+                <a class="label text-bodyContent userEngagementMessageExternalLink" data-win-bind="textContent: externalLinkLabel;
+                                  removeFromDisplay: externalLinkLabel MS.Entertainment.Utilities.toggleClassNameOnEmptyString;" data-win-automationid="userEngagementMessageExternalLink" data-ent-event="click: linkClicked">
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

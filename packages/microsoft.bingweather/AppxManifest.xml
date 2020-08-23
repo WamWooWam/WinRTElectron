@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Package IgnorableNamespaces="build" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:wb="http://schemas.microsoft.com/appx/2013/manifest" xmlns:build="http://schemas.microsoft.com/developer/appx/2012/build">
+  
+  <Identity Name="Microsoft.BingWeather" Version="3.0.4.336" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" ProcessorArchitecture="x86"/>
+  <Properties>
+    <DisplayName>ms-resource:BrandedAppTitle</DisplayName>
+    <Description>ms-resource:AppDescription</Description>
+    <PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
+    <Logo>images\store.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="EN-US"/>
+    <Resource Language="EN-GB"/>
+    <Resource Language="AR"/>
+    <Resource Language="FR"/>
+    <Resource Language="DE"/>
+    <Resource Language="ID"/>
+    <Resource Language="ES"/>
+    <Resource Language="TH"/>
+    <Resource wb:Scale="100"/>
+    
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" StartPage="js\dummyTask.js">
+          <BackgroundTasks>
+            <Task Type="timer"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.backgroundTasks" EntryPoint="Platform.DataServices.CacheMaintainenceTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
+        <Extension Category="windows.protocol">
+          <Protocol Name="bingweather"/>
+        </Extension>
+      </Extensions>
+      <wb:VisualElements DisplayName="ms-resource:AppTitle" Description="ms-resource:AppDescription" BackgroundColor="#2672EC" ForegroundText="light" Square150x150Logo="images\logo.png" Square30x30Logo="images\smalllogo.png">
+        <wb:DefaultTile Square310x310Logo="images\largelogo.png" Wide310x150Logo="images\widelogo.png" Square70x70Logo="images\tinylogo.png">
+          <wb:TileUpdate Recurrence="hour" UriTemplate="http://service.weather.microsoft.com/appex/DesktopTile/PreInstallLiveTile?lang={language}&amp;region={region}&amp;appid=C98EA5B0842DBB9405BBF071E1DA76512D21FE36&amp;FORM=APXWEA"/>
+          <wb:ShowNameOnTiles>
+            <wb:ShowOn Tile="square150x150Logo"/>
+            <wb:ShowOn Tile="wide310x150Logo"/>
+            <wb:ShowOn Tile="square310x310Logo"/>
+          </wb:ShowNameOnTiles>
+        </wb:DefaultTile>
+        <wb:LockScreen Notification="badgeAndTileText" BadgeLogo="images\badge.png"/>
+        <wb:InitialRotationPreference>
+          <wb:Rotation Preference="portrait"/>
+          <wb:Rotation Preference="landscape"/>
+          <wb:Rotation Preference="portraitFlipped"/>
+          <wb:Rotation Preference="landscapeFlipped"/>
+        </wb:InitialRotationPreference>
+        <wb:SplashScreen Image="images\splash.png"/>
+        <wb:ApplicationView MinWidth="width500"/>
+      </wb:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient"/>
+    <DeviceCapability Name="location"/>
+  </Capabilities>
+  
+  <Extensions>
+    <Extension Category="windows.activatableClass.proxyStub">
+      <ProxyStub ClassId="B2596805-D20B-4750-A6AC-0251A1EFA1DE">
+        <Path>Microsoft.Media.AdaptiveStreaming.dll</Path>
+        <Interface InterfaceId="D733C279-BF63-4eb3-9D7F-6BA5402B621C" Name="ManifestReadyEventHandler"/>
+        <Interface InterfaceId="B0B48161-0DB5-439B-9FF0-200BED06CC48" Name="AdaptiveSourceStatusUpdatedEventHandler"/>
+        <Interface InterfaceId="2D30413E-09B4-4A43-8F8B-C592F1E41B5F" Name="AdaptiveSourceFailedEventHandler"/>
+        <Interface InterfaceId="3D0CDB1E-1E78-4c45-B9CC-04041804AD5A" Name="AdaptiveSourceClosedEventHandler"/>
+        <Interface InterfaceId="63B289C6-5181-4284-90DC-94D03FBE12F2" Name="AdaptiveSourceOpenedEventHandler"/>
+      </ProxyStub>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>CLRHost.dll</Path>
+        <ActivatableClass ActivatableClassId="AppEx.Common.RichBrowse.EntityCollection.RichBrowseProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.PerfTrackLoggerStub" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.QueryService" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Storage.PersonalizedDataService" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.ImageService" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.ListConfigurationItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.ConfigurationManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.BooleanConfigurationItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.DictionaryConfigurationItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.Int32ConfigurationItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.StringConfigurationItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.Manifest.AppManifest" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.Manifest.ProcessListener" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Configuration.Manifest.Channel" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.PlatformUIEvent" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Utilities.AppExUriBuilder" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Utilities.AppExUri" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Utilities.Helpers" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Utilities.Globalization" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Utilities.FailSafeConfiguration" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Utilities.EndOfLifeManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.CacheService" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchQueryServiceOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchError" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.QueryServiceOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchItemStatus" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.BinaryDataArrayTransformer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchItemStatusEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.TransformerData" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.UnitTestPrefetchProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.QueryServiceProgress" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchSubgroupProgress" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.DataServices.PrefetchItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Diagnostics.PlatformEventSourceAccessor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.ResponseData" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Resources.PlatformResourceManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Resources.StringResourceLoader" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Collections" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Instrumentation.InstrumentationManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Identity.UserProfile" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Paywall.MeterStatus" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Paywall.LoginStatus" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Paywall.PaywallManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Networking.NetworkManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Process" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Globalization.Marketization" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Globalization.MarketValidationResponse" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Globalization.MarketInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Globalization.MarketResources" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Notifications" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.ServicesAccessor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Platform.Feedback" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ContentLayoutRegion" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ContentType" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.Impression" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ContentSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.JsonItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.NetworkOperation" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ImpressionView" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.FlightRecorderTestHelper" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.JsonItemValue" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ContentItem" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ImpressionType" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ActionContext" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.DataPointAverage" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ImpressionContent" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.FlightRecorder" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.FlightEventType" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ImpressionNavMethod" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.DataPointInt" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.UserActionOperation" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ContentViewProgress" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.ImpressionSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.JsonDictionary" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.FlightRecorderSettings" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.AppActionOperation" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Bing.AppEx.Telemetry.EventPayload" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.BedrockArticleProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.PrefetchUtils" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.ArticleTransformer" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.GuidProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.AzureArticleProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.DateFormatter" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.AdUnit" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.ReferralDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.ImageResourceDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.FocusImageBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.PageBreakBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.ReferralBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.InlineSlideshowBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.ContentBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.SectionBreakBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.InlineVideoBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.ExternalBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.TitleImageBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Block.InlineImageBlock" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.InterstitialAd" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Title" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.LaunchUriExtraLink" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Webpage" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.SourceDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.GroupedActionDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.VideoDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.ArticleInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.LaunchUriActionAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.SectionBreakAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.FocusImageAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.InlineVideoAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.ReferralAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.ContentAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.ExternalAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.InlineImageAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.BlockAttributes.InlineSlideshowAttributes" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.AdGroup" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.PartnerAds" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.DateDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.ActionDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.ImageDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.InterstitialAdInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.Article" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.Model.WebpageInfo" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.WebpageProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.ArticleReader.DeterminePrefetchStatus" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.NewsCluster.EntityClusterImageProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.NewsCluster.Response.NewsDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.NewsCluster.Response.NewsResponse" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.NewsCluster.Response.ImageDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.JSONCollectionProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Response.GroupDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Response.FilterDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Response.FilterItemDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Response.EntityDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Response.SortDescriptor" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Response.Response" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Query.AttributeFilter" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Query.PageInformation" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.Common.EntityCollection.Query.EntityQuery" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.SkiResorts.SkiResortsProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.PersonalizedData" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.Utilities" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.Shared.WeatherAppConflictResolver" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.GeoPoint" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.PersonalizedDataServiceUtility" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.PersonalizedDataFactory" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="AppEx.WeatherApp.Services.Location" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.SdkInfoProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.UserInfoProvider" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdErrorEventArgs" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.RendererOptions" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.Advertisement" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.WinRT.AdPlacement" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="MicrosoftAdvertising.Shared.JSONWrapper" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.Media.AdaptiveStreaming.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.AdaptiveSource" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.HttpCookie" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.DownloaderRequest" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.DownloaderResponse" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.SmoothSchemeHandler" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.AdaptiveSourceManager" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="Microsoft.Media.AdaptiveStreaming.SmoothByteStreamHandler" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>Microsoft.PerfTrack.dll</Path>
+        <ActivatableClass ActivatableClassId="Microsoft.PerfTrack.PerfTrackLogger" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+    <Extension Category="windows.activatableClass.inProcessServer">
+      <InProcessServer>
+        <Path>SqliteWrapper.dll</Path>
+        <ActivatableClass ActivatableClassId="SqliteWrapper.SqlResults" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="SqliteWrapper.Travel.TravelConnection" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="SqliteWrapper.SqlSpecialResultConfig" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="SqliteWrapper.SqliteConnection" ThreadingModel="both"/>
+        <ActivatableClass ActivatableClassId="SqliteWrapper.SqliteCache" ThreadingModel="both"/>
+      </InProcessServer>
+    </Extension>
+  </Extensions>
+  
+  <Dependencies>
+    <PackageDependency Name="Microsoft.VCLibs.120.00" MinVersion="12.0.21005.1"/>
+    <PackageDependency Name="Microsoft.WinJS.2.0" MinVersion="1.0.9600.0"/>
+  </Dependencies>
+  <build:Metadata>
+    <build:Item Name="VisualStudio" Version="12.0"/>
+    <build:Item Name="OperatingSystem" Version="6.3.9600.16384 (winblue_rtm.130821-1623)"/>
+    <build:Item Name="Microsoft.Build.AppxPackage.dll" Version="12.0.21005.1"/>
+    <build:Item Name="Bing.Maps.JavaScript" Version="1.0"/>
+    <build:Item Name="Microsoft.Media.AdaptiveStreamingClient" Version="1.0"/>
+    <build:Item Name="MSAdvertisingJS" Version="8.1"/>
+    <build:Item Name="makepri.exe" Version="6.3.9600.16384 (winblue_rtm.130821-1623)"/>
+  </build:Metadata>
+</Package>

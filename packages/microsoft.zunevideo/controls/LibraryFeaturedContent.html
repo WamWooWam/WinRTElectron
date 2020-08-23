@@ -1,0 +1,158 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Template for the Hub control</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+
+    <script src="/Controls/thumbnailButton.js"></script>
+    <script src="/Controls/templateSelector.js"></script>
+    <script src="/Framework/launchAppAction.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="noContentPaneDetailsTemplate" data-win-control="WinJS.Binding.Template">
+
+        <div class="iconButtonTwoLine" data-win-control="MS.Entertainment.UI.Controls.IconButtonTwoLine" data-win-bind="
+                winControl.icon: linkIcon;
+                winControl.subText: stringId;
+                winControl.action: linkAction;
+                winControl.stringId: linkStringId">
+        </div>
+    </div>
+
+    <div data-ent-templateid='noContentPaneTemplate' data-win-control="WinJS.Binding.Template">
+        
+        <div class="noContentPane removeFromDisplay" data-ent-member="noContentPane">
+            <div class="noContentTextContainer">
+                <div class="noContentPaneTitle label text-panelHeader" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true}" data-win-bind="winControl.text: title">
+                </div>
+                <div class="noContentPaneDescription label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true}" data-win-bind="winControl.text: description">
+                </div>
+
+                <div class="noContentPaneDetails" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: details;" data-win-options="{itemTemplate: '/Controls/LibraryFeaturedContent.html#noContentPaneDetailsTemplate'}" data-win-automationid="noContentPaneDetails">
+                </div>
+            </div>
+        </div>            
+    </div>
+
+    
+    <div data-ent-templateid='libraryVideoContentTemplate' data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.NoContentPane" class="primaryPanelComponent" data-ent-member="_emptyContent" data-win-bind="winControl.model: emptyLibraryModel" data-win-automationid="videoLibraryEmpty">
+        </div>
+        <div class="dashboardMyVideo dashboardHubContent win-ui-dark" data-ent-member="_content" data-win-automationid="libraryVideoContent" data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl" data-win-options="{ enableClickEvents: true,
+                                 fixedRowCount: 3 }" data-win-bind="winControl.dataSource: items;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid='libraryEmptyContentTemplate' data-win-control="WinJS.Binding.Template">
+        <div class="emptyCollectionPanel">
+            <div class="emptyCollectionText">
+                <div class="label text-emptyPanelHeader" data-win-bind="textContent: titleText;">
+                </div>
+                <div class="label text-emptyPanelDescription" data-win-bind="textContent: descriptionText;">
+                </div>
+            </div>
+            <div class="emptyCollectionButtons">
+                
+                <button class="emptyCollectionButton acc-keyboardFocusTarget voice-logicalTarget win-focusable" data-ent-event="click: signInClickHandler" data-win-bind="removeFromDisplay: showButtonSignIn MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-voice="{ 
+                        phrase: String.id.IDS_APP2_GLOBAL_COMMAND_SIGN_IN_VUI_ALM, 
+                        confidence: String.id.IDS_APP2_GLOBAL_COMMAND_SIGN_IN_VUI_CONF,
+                        targetElement: select('.voice-visualTarget') }">
+                    <span class="emptyCollectionButton-label voice-visualTarget" data-win-bind="textContent: String.id.IDS_APP2_GLOBAL_COMMAND_SIGN_IN_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></span>
+
+                    <div class="win-tile-focusindicator"></div>
+                </button>
+
+                
+                <button class="emptyCollectionButton acc-keyboardFocusTarget voice-logicalTarget win-focusable" data-ent-event="click: browseMoviesClickHandler" data-win-bind="removeFromDisplay: showButtonBrowseMovies MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-voice="{ 
+                        phrase: String.id.IDS_VIDEO2_L1_BROWSE_MOVIES_BUTTON_VUI_ALM, 
+                        confidence: String.id.IDS_VIDEO2_L1_BROWSE_MOVIES_BUTTON_VUI_CONF,
+                        targetElement: select('.voice-visualTarget') }">
+                    <span class="emptyCollectionButton-label voice-visualTarget" data-win-bind="textContent: String.id.IDS_VIDEO2_L1_BROWSE_MOVIES_BUTTON_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></span>
+
+                    <div class="win-tile-focusindicator"></div>
+                </button>
+
+                
+                <button class="emptyCollectionButton acc-keyboardFocusTarget voice-logicalTarget win-focusable" data-ent-event="click: browseTvClickHandler" data-win-bind="removeFromDisplay: showButtonBrowseTv MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-voice="{ 
+                        phrase: String.id.IDS_VIDEO2_L1_BROWSE_TV_BUTTON_VUI_ALM, 
+                        confidence: String.id.IDS_VIDEO2_L1_BROWSE_TV_BUTTON_VUI_CONF,
+                        targetElement: select('.voice-visualTarget') }">
+                    <span class="emptyCollectionButton-label voice-visualTarget" data-win-bind="textContent: String.id.IDS_VIDEO2_L1_BROWSE_TV_BUTTON_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></span>
+
+                    <div class="win-tile-focusindicator"></div>
+                </button>
+
+                
+                <button class="emptyCollectionButton acc-keyboardFocusTarget voice-logicalTarget win-focusable" data-ent-event="click: searchClickHandler" data-win-bind="removeFromDisplay: showButtonSearch MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-voice="{ 
+                        phrase: String.id.IDS_VIDEO2_L1_SEARCH_VIDEOS_BUTTON_VUI_ALM, 
+                        confidence: String.id.IDS_VIDEO2_L1_SEARCH_VIDEOS_BUTTON_VUI_CONF,
+                        targetElement: select('.voice-visualTarget') }">
+                    <span class="emptyCollectionButton-label voice-visualTarget" data-win-bind="textContent: String.id.IDS_VIDEO2_L1_SEARCH_VIDEOS_BUTTON_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></span>
+
+                    <div class="win-tile-focusindicator"></div>
+                </button>
+            </div>
+        </div>   
+    </div>
+
+    
+    <div data-ent-templateid='libraryMovieContentTemplate' data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.NoContentPane" class="primaryPanelComponent" data-ent-member="_emptyContent" data-win-bind="winControl.model: emptyLibraryModel" data-win-automationid="videoLibraryEmpty">
+        </div>
+        <div class="dashboardMyVideo dashboardHubContent win-ui-dark" data-ent-member="_content" data-win-automationid="libraryVideoContent" data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl" data-win-options="{enableClickEvents: true}" data-win-bind="winControl.dataSource: items;">
+        </div>
+        <div class="dashboard-viewMoreRow">
+            <div class="template-moreButton">
+                <div class="moreButton-container" data-win-bind="clickDataContext: panelAction.action;
+                                   removeFromDisplay: viewMoreButtonVisible MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                    <div class="actionTile voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                winControl.action: panelAction.action;
+                                winControl.automationId: panelAction.automationId;
+                                winControl.text: panelAction.title;
+                                winControl.voicePhrase: panelAction.voicePhrase;
+                                winControl.voiceConfidence: panelAction.voiceConfidence;
+                                winControl.voicePhoneticPhrase: panelAction.voicePhoneticPhrase;" data-win-options="{ icon: MS.Entertainment.UI.Icon.moreActions, hideDefaultRing: true }" data-win-voice="{
+                                phrase: getContext('element').winControl.voicePhrase,
+                                confidence: getContext('element').winControl.voiceConfidence,
+                                handler: getContext('element').winControl.onClickWithContext,
+                                targetElement: select('.voice-visualTarget'),
+                                pronunciation: getContext('element').winControl.voicePhoneticPhrase }">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid='libraryTvContentTemplate' data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.NoContentPane" class="primaryPanelComponent" data-ent-member="_emptyContent" data-win-bind="winControl.model: emptyLibraryModel" data-win-automationid="videoLibraryEmpty">
+        </div>
+        <div class="dashboardMyTv dashboardMyVideo dashboardHubContent win-ui-dark" data-ent-member="_content" data-win-automationid="libraryVideoContent" data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl" data-win-options="{enableClickEvents: true}" data-win-bind="winControl.dataSource: items;">
+        </div>
+        <div class="dashboard-viewMoreRow">
+            <div class="template-moreButton">
+                <div class="moreButton-container" data-win-bind="clickDataContext: panelAction.action;
+                                   removeFromDisplay: viewMoreButtonVisible MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                    <div class="actionTile voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                winControl.action: panelAction.action;
+                                winControl.automationId: panelAction.automationId;
+                                winControl.text: panelAction.title;
+                                winControl.voicePhrase: panelAction.voicePhrase;
+                                winControl.voiceConfidence: panelAction.voiceConfidence;
+                                winControl.voicePhoneticPhrase: panelAction.voicePhoneticPhrase;" data-win-options="{ icon: MS.Entertainment.UI.Icon.moreActions, hideDefaultRing: true }" data-win-voice="{
+                                phrase: getContext('element').winControl.voicePhrase,
+                                confidence: getContext('element').winControl.voiceConfidence,
+                                handler: getContext('element').winControl.onClickWithContext,
+                                targetElement: select('.voice-visualTarget'),
+                                pronunciation: getContext('element').winControl.voicePhoneticPhrase }">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

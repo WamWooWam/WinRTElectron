@@ -1,0 +1,105 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/settings.css">
+    <title>Settings Control Template</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+    
+    <script src="/Components/Settings/Settings.js"></script>
+</head>
+<body>
+    
+    
+    <div id="SettingsAbout" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow', lightDismiss:'false'}">
+         
+        
+        <div class="settingsWrapper" role="region" data-win-control="MS.Entertainment.Utilities.AboutSettingsWrapper">
+            
+            <div class="settingsPanelHeaderBackground"></div>
+            
+            <div class="settingsPanelHeader win-ui-dark">
+                <button class="win-backbutton" type="button" data-win-automationid="aboutBackButton" data-ent-event="click: backToSettings" tabindex="0" data-ent-member="_backButton">
+                </button>
+                <div class="settingsPanelTitle label text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_TITLE}">
+                </div>
+            </div>
+            
+            <div class="settingsPanelContent">
+                <div data-win-control="MS.Entertainment.Utilities.SettingsVersion" class="settingsAboutVersion">
+                </div>
+                
+                <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_DESCRIPTION, wrap:true}">
+                </div>
+                
+                <a class="settingsWebLinks settingsWebLinkText text-xSmall text-weightBold" href="http://go.microsoft.com/fwlink/?LinkId=227299" data-win-automationid="wecSettingsLearnLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_LEARN_MORE}">
+                </a>
+
+                
+                <div class="settingsPanelContent-echonestAttribution removeFromDisplay" data-ent-member="settingsAboutEchonestRadioContainer">
+                    <div class="echonestAttribution-text" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_MUSIC_DATA_PROVIDER_ECHONEST, wrap:true}"></div>
+                    <div class="echonestAttribution-image acc-preserveBackground" role="img" data-ent-member="settingsAboutEchonestImage"></div>
+                </div>
+
+                
+                <div class="removeFromDisplay" data-ent-member="copyrights">
+                    <div class="removeFromDisplay" data-ent-member="gracenoteCopyright">
+                        <br>
+                        <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_MUSIC_DATA_PROVIDER_GRACENOTE, wrap:true}">
+                        </div>
+                    </div>
+                    <br>
+                    <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_MUSIC_DATA_PROVIDER_BANDPAGE, wrap:true}">
+                    </div>
+                    <br>
+                    <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_MUSIC_DATA_PROVIDER_ROVI, wrap:true}">
+                    </div>
+                </div>
+
+                
+                <div class="aboutPageTitles text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_SUPPORT}">
+                </div>
+                <br>
+                
+                <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" data-ent-member="helpLink" data-win-automationid="wecSettingsSupportLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_SUPPORT_WEB_LINK}">
+                </a>
+                <br>
+
+                
+                <div class="aboutPageTitles text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_ONLINE_CONTENT}">
+                </div>
+                <br>
+                
+                
+                <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" href="http://go.microsoft.com/fwlink/?LinkId=227294" data-win-automationid="wecSettingsTOSLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_TOS}">
+                </a>
+                <br>
+                <br>
+                
+                <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" href="http://go.microsoft.com/fwlink/?LinkID=259655" data-win-automationid="wecSettingsPrivacyLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_PRIVACY_STATEMENT}">
+                </a>
+                <br>
+                <br>
+                
+                <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" href="http://go.microsoft.com/fwlink/?LinkId=227296" data-win-automationid="wecSettingsCodeLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_CODE_CONDUCT}">
+                </a>
+                <br>
+                <br>
+                
+                <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" href="http://go.microsoft.com/fwlink/?LinkId=227297" data-win-automationid="wecSettingsAboutAdLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ABOUT_ABOUT_ADS}">
+                </a>
+                <br>
+                <br>
+                
+                <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold removeFromDisplay" data-win-automationid="wecSettingsImprintAdLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="imprintLink">
+                </a>
+                <br>
+                
+                <textarea class="removeFromDisplay" data-ent-member="perfTrackLog" readonly="readonly" rows="10" cols="65"></textarea>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

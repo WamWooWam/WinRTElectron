@@ -1,0 +1,29 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+        <title>Now Playing Metadata Template</title>
+    <link rel="stylesheet" type="text/css" href="/styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/thumbnailButton.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="nowPlayingMetadataTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingMetadataContainer">
+            
+            <div class="nowPlayingMetadataMainTitle text-heroTitle maxLines-two" data-ent-member="_mainTitleText"></div>
+
+            <div class="nowPlayingMetadataSubTitle text-bodyContent maxLines-two" data-ent-member="_subTitleText"></div>
+
+            <div class="nowPlayingMetadataTime text-bodyContent maxLines-one text-fixedWidthNumerals" data-ent-member="_timeText"></div>
+
+            <button class="nowPlayingMetadataShowPlaylistButton inlineCaretButton hideFromDisplay acc-keyboardFocusTarget" data-ent-event="click: playlistButtonClick" data-ent-member="_playlistButton" role="button" tabindex="0">
+                <div class="inlineCaretButtonText text-xSmall text-weightBold" style="-ms-grid-column: 1;" data-win-bind="textContent: String.id.IDS_MUSIC_VIEW_PLAYLIST MS.Entertainment.Formatters.formatStringId"></div>
+                <div class="inlineCaretButtonIcon text-xxSmall text-weightNormal" style="-ms-grid-column: 2;" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;"></div>
+            </button>
+
+        </div>
+    </div>
+</body>
+</html>

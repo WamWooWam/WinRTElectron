@@ -1,0 +1,219 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Music Album Inline Details</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Controls/Thumbnailbutton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Components/Music/PurchaseMusic.js"></script>
+    <script src="/Components/Marketplace.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../Controls/Controls.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/InlineDetails.css">
+</head>
+<body>
+
+    
+    
+    
+    <div data-ent-templateid="music2AlbumInlineDetailsTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="musicAlbumInlineDetailsTemplate">
+        <div class="popOverContentContainer">
+
+            <div class="popOver album win-ui-light hideFromDisplay" data-ent-exitanimation="fadeOut" data-ent-member="fragmentContainer">
+                <div class="titleContainer" data-ent-showanimation="enterPage" data-ent-enteranimation="enterPage">
+                    
+                    <div class="title label text-popoverTitle maxLines-three-medium" data-win-bind="
+                                textContent: media.name;
+                                removeFromDisplay: media.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="subTitle label text-metadata" data-win-bind="
+                                textContent: detailString;
+                                removeFromDisplay: detailString MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                </div>
+
+                <div class="leftColumn enterPageOffset2" data-ent-member="_primaryColumn" data-ent-showanimation="enterPage" data-ent-enteranimation="enterPage">
+                    <div class="imageContainer">
+                        <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: media WinJS.Binding.oneTime" data-ent-showanimation="longFadeIn" data-win-options="{
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: true,
+                                    desiredImageSize: MS.Entertainment.Pages.MusicTrackAlbumInlineDetails.artSize,
+                                    defaultImagePath: String.empty,
+                                    bindTargetProperties: true,
+                                    applyImageAsBackground: true,
+                                    parentStyleIfNotEmpty: 'imageContainer_watermarkDisabled'
+                              }" class="imageHolder hideFromDisplay" width="215" height="215">
+                    </div>
+
+                    
+                    <div class="actions" data-ent-member="_actionColumn">
+                        <div class="verticalBox state-orientationVertical">
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item0.title;
+                                        winControl.action: actionButtons.item0;
+                                        removeFromDisplay: actionButtons.item0 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item1.title;
+                                        winControl.action: actionButtons.item1;
+                                        removeFromDisplay: actionButtons.item1 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item2.title;
+                                        winControl.action: actionButtons.item2;
+                                        removeFromDisplay: actionButtons.item2 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item3.title;
+                                        winControl.action: actionButtons.item3;
+                                        removeFromDisplay: actionButtons.item3 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item4.title;
+                                        winControl.action: actionButtons.item4;
+                                        removeFromDisplay: actionButtons.item4 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item5.title;
+                                        winControl.action: actionButtons.item5;
+                                        removeFromDisplay: actionButtons.item5 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+                            <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                        winControl.text: actionButtons.item6.title;
+                                        winControl.action: actionButtons.item6;
+                                        removeFromDisplay: actionButtons.item6 MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{ hideDefaultRing: true, useActionInfo: true }" data-win-voice="{
+                                        phrase: getContext('element').winControl.voicePhrase,
+                                        confidence: getContext('element').winControl.voiceConfidence,
+                                        handler: getContext('element').winControl.onClickWithContext,
+                                        targetElement: select('.voice-visualTarget'),
+                                        pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                    }"></div>
+                        </div>
+                    </div>
+
+                    <div class="musicSubscriptionLink hideFromDisplay" data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.subscriptionSignup" data-ent-member="_subscriptionLink" data-win-bind="hideFromDisplay: showSignupLink MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{
+                                stringId: String.id.IDS_MUSIC_GET_A_SUBSCRIPTION_TEXT,
+                                accessibilityStringId: String.id.IDS_MUSIC_GET_A_SUBSCRIPTION_TEXT,
+                                numberOfLines: 3,
+                                wrap: true }">
+                    </div>
+                </div>
+
+                <div class="rightColumn enterPageOffset2" data-ent-showanimation="enterPage" data-ent-enteranimation="enterPage">
+                    <div class="bodyContainer">
+                       <div data-ent-member="_detailsPanel" class="bodyContainerFirstChild">
+
+                            
+                            <div class="popOverList inlineDetailsTrackList" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-ent-member="_list" data-ent-event="focusin: _onFocusIn; focusout: _onFocusOut;" data-win-options="{ itemTemplate: 'Components/InlineDetails/MusicAlbumInlineDetails.html#music2InlineDetailsTrack',
+                                    slotSize: { width: 380, height: 60 },
+                                    itemSize: { width: 380, height: 60 },
+                                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                                    suppressInvokeBubble: false,
+                                    grouped: false,
+                                    forceInteractive: true,
+                                    layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                                    invokeHelperFactory: MS.Entertainment.UI.Controls.TrackGalleryControlInvocationHelper.createTrackHelper,
+                                    invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                                    swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.none,
+                                    selectionStyleFilled: true,
+                                    delayHydrateLibraryId: true,
+                                    backdropColor: 'transparent'}" data-win-bind="winControl.invocationHelper.album: media">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="loadingContainer listLoadingContainer removeFromDisplay" data-ent-member="listLoadingContainer"></div>
+            </div>
+
+            
+            <div class="panelFragmentLoading panelFragmentContainer musicInlineDetailsPanelFragmentContainer hideFromDisplay" data-ent-member="failedControl">
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="music2InlineDetailsTrack" data-win-control="WinJS.Binding.Template" data-win-automationid="music2InlineDetailsTrack">
+        <div class="inlineDetailsMusicTrack acc-backgroundTransparent voice-logicalTarget" data-win-bind="
+                voicePhrase: voicePhrase;
+                voiceConfidence: voiceConfidence;
+                voicePhoneticPhrase: voicePhoneticPhrase;" data-win-voice="{
+                phrase: getContext('element').voicePhrase,
+                confidence: getContext('element').voiceConfidence,
+                handler: MS.Entertainment.UI.App2.voiceListviewItemClickHandler,
+                targetElement: select('.voice-visualTarget'),
+                pronunciation: getContext('element').voicePhoneticPhrase,
+            }">
+            
+            <div class="immersiveInlineTrackListNumber label text-listItem" data-win-bind="textContent: trackNumber MS.Entertainment.Formatters.formatTrackNumber"></div>
+            
+            <div class="immersiveInlineTrackListName label text-listItem voice-visualTarget" data-win-bind="textContent: name"></div>       
+            
+            <div class="immersiveInlineTrackListDurationStatus">
+                <div class="immersiveInlineTrackListDuration label text-metadata" data-win-bind="textContent: duration MS.Entertainment.Formatters.formatTrackDuration"></div>
+            </div>
+
+            <div class="immersiveInlineTrackListSecondaryInfo">
+                <div class="immersiveInlineTrackListSecondaryInfo-textContainer">
+                    <div class="immersiveInlineTrackListArtistName label text-metadata" data-win-bind="textContent: artistName;"></div>
+                </div>
+            </div>
+            
+            <button class="inlineTrackListStatusIcon icon inlineGlyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-options="{
+                    enableDelayInitialization: true,
+                    preventHideDuringInitialize: true,
+                    allowAnimations: false }" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-bind="winControl.mediaInstance: instance;">
+                <span class="mediaStatusIconContainer text-xSmall"></span>
+                <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+            </button>
+
+            
+            <div class="iconContainer">
+                <div class="icon inCollectionIcon" data-win-bind="textContent: MS.Entertainment.UI.Icon.musicInCollection MS.Entertainment.Formatters.formatIcon;
+                                    removeFromDisplay: libraryId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber"></div>
+                <div class="icon hasMusicVideoIcon" data-win-bind="textContent: MS.Entertainment.UI.Icon.video11 MS.Entertainment.Formatters.formatIcon;
+                                    removeFromDisplay: musicVideoId MS.Entertainment.Utilities.toggleClassNameOnEmptyGuid"></div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Subscription Picker Dialog</title>
+
+    <script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+</head>
+<body>
+    
+    <div data-ent-templateid="dialogContentTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dialogContent-subscriptionSignup">
+            
+            <div data-win-control="WinJS.Binding.Template" class="templateId-subscriptionSignupButton">
+                <button class="subscriptionSignupButton-button dialogButton acc-keyboardFocusTarget defaultButton win-focusable ent-control" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="winControl.action: data.action; winControl.actionParameter: data.subscription;" role="tab" type="button">
+                    <div class="button-content" data-win-bind="textContent: data.title"></div>
+                </button>
+            </div>
+
+            
+            <div class="subscriptionSignup-branding">
+                <div class="branding-icon icon" data-win-bind="textContent: MS.Entertainment.UI.Icon.xenon MS.Entertainment.Formatters.formatIcon"></div>
+                <div class="branding-text" data-win-bind="textContent: String.id.IDS_XBOX_MUSIC_APP_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+            </div>
+
+            
+            <div class="subscriptionSignup-image acc-preserveBackground"></div>
+
+            
+            <div class="subscriptionSignup-caption" data-ent-member="_titleElement"></div>
+
+            
+            <ul class="subscriptionSignup-description">
+                <li class="description-text" data-win-bind="textContent: String.id.IDS_MUSIC_UPSELL_DIALOG_LINE1 MS.Entertainment.Formatters.formatStringId;"></li>
+                <li class="description-text" data-win-bind="textContent: String.id.IDS_MUSIC_UPSELL_DIALOG_LINE2 MS.Entertainment.Formatters.formatStringId;"></li>
+                <li class="description-text" data-win-bind="textContent: String.id.IDS_MUSIC_UPSELL_DIALOG_LINE3 MS.Entertainment.Formatters.formatStringId;"></li>
+            </ul> 
+
+            
+            <div class="dialogButtons subscriptionSignup-buttons ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithViewModel" data-win-automationid="SubscriptionSignup_Offers" data-win-options="{
+                    containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                    itemTemplate: select('.templateId-subscriptionSignupButton'),
+                    keyboardNavigable: true,
+                    firstItemTabIndex: 0
+                }" role="tablist" data-win-bind="winControl.dataSource: buttonItems;">
+            </div>
+
+            
+            <div class="subscriptionSignup-spinner removeFromDisplay" data-ent-member="_loadingElement">
+                <progress class="win-ui-dark win-large win-ring"></progress>
+            </div>
+
+            
+            <div class="subscriptionSignup-error removeFromDisplay" data-ent-member="_errorElement" data-win-bind="textContent: String.id.IDS_SERVICE_UNAVAILABLE_CAPTION MS.Entertainment.Formatters.formatStringId;"></div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="musicDialog musicDialog_subscriptionSignup wecDialog win-ui-dark" data-win-automationid="wecDialog" data-ent-member="musicDialog">
+            
+            <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground">
+            </div>
+
+            
+            <div class="overlayContainer dialogContainerBackground" data-ent-member="overlayContainer" data-ent-areaname="musicBrandDialogContainer" role="dialog" aria-label="">
+                <div class="dialogContainer" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+                    <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();" class="dialogForm">
+                        
+                        <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer" style="-ms-grid-row: 3;">
+                        </div>
+
+                        <div class="dialogFooter">
+                            
+                            <div class="dialogFooter-disclaimer text-xxSmall" data-win-bind="textContent: String.id.IDS_MUSIC_UPSELL_DIALOG_MUSIC_PASS_DISCLAIMER MS.Entertainment.Formatters.formatStringId;"></div>
+
+                            
+                            <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

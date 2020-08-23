@@ -1,0 +1,150 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Failed Panel Controls</title>
+
+    
+    <script src="/main_merged.js"></script>
+    
+    <script src="/Controls/FailedPanel.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="failedPanelDetailsTemplate" data-win-control="WinJS.Binding.Template">
+
+        <div class="iconButtonTwoLine voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButtonTwoLine" data-win-bind="
+                winControl.icon: linkIcon;
+                winControl.text: linkText;
+                winControl.subText: stringId;
+                winControl.action: linkAction;
+                winControl.stringId: linkStringId;
+                winControl.hideDefaultRing: linkHideDefaultRing;
+                winControl.iconPressed: linkIconPressed;
+                voicePhrase: voicePhrase;
+                voicePhoneticPhrase: voicePhoneticPhrase;
+                voiceConfidence: voiceConfidence;" data-win-voice="{
+                phrase: getContext('element').voicePhrase,
+                confidence: getContext('element').voiceConfidence,
+                targetElement: select('.voice-visualTarget'),
+                pronunciation: getContext('element').voicePhoneticPhrase,
+                handler: getContext('element').winControl.onClickWithContext,
+            }">
+        </div>
+
+    </div>
+
+    <div data-ent-templateid="failedPanelLinkDetailsTemplate" data-win-control="WinJS.Binding.Template">
+
+        <div data-win-control="MS.Entertainment.UI.Controls.PanelHeaderActionLink" data-win-bind="
+                winControl.text: linkText;
+                winControl.action: linkAction;
+                winControl.stringId: linkStringId;">
+        </div>
+
+    </div>
+
+    <div data-ent-templateid="failedPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="failedPanelContainer" data-ent-event="click: onPanelClicked" data-ent-member="failedPanelContainer" data-win-bind="className: className MS.Entertainment.Utilities.appendClassName;">
+
+            <div class="failedPanelTextContainer">
+
+                <div class="failedPanelTitle label text-medium" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: primaryStringId;
+                        winControl.text: primaryText">
+                </div>
+
+                <div class="failedPanelMessage label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: secondaryStringId;
+                        winControl.text: secondaryText">
+                </div>
+
+                <div class="failedPanelDetails" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: details;" data-win-options="{itemTemplate: 'Controls/FailedPanel.html#failedPanelDetailsTemplate'}" data-win-automationid="failedPanelDetails">
+                </div>
+                
+                <progress class="loadingRing win-ring win-medium removeFromDisplay" data-win-bind="removeFromDisplay: showLoadingRing MS.Entertainment.Utilities.toggleClassNameNegate"></progress>
+
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="failedPanelWithLinkTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="failedPanelContainer" data-ent-event="click: onPanelClicked" data-ent-member="failedPanelContainer" data-win-bind="className: className MS.Entertainment.Utilities.appendClassName;">
+            <div class="failedPanelTextContainer">
+                <div class="icon failedPanelIcon" data-win-bind="textContent: linkIcon;"></div>
+                <div class="failedPanelTitle label text-medium" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: primaryStringId;
+                        winControl.text: primaryText">
+                </div>
+
+                <div class="failedPanelMessage label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: secondaryStringId;
+                        winControl.text: secondaryText">
+                </div>
+
+                <div class="failedPanelDetails" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: details;" data-win-options="{itemTemplate: 'Controls/FailedPanel.html#failedPanelLinkDetailsTemplate'}" data-win-automationid="failedPanelDetails">
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="failedPanelWithNotificationsTemplate" data-win-control="WinJS.Binding.Template">
+        
+        <div class="failedPanelContainer" data-ent-event="click: onPanelClicked" data-ent-member="failedPanelContainer" data-win-bind="className: className MS.Entertainment.Utilities.appendClassName;">
+
+            <div class="failedPanelNotifications" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: notifications;" data-win-options="{itemTemplate: 'Components/Music/MusicCollectionTemplates.html#verticalNotificationActionTemplate'}" data-win-automationid="failedPanelNotifications">
+            </div>
+
+            <div class="failedPanelTextContainer">
+                <div class="failedPanelTitle label text-medium" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: primaryStringId;
+                        winControl.text: primaryText">
+                </div>
+
+                <div class="failedPanelMessage label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: secondaryStringId;
+                        winControl.text: secondaryText">
+                </div>
+
+                <div class="failedPanelDetails" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: details;" data-win-options="{itemTemplate: 'Controls/FailedPanel.html#failedPanelDetailsTemplate'}" data-win-automationid="failedPanelDetails">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div data-ent-templateid="failedPanelWithQueryTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="failedPanelContainer failedPanelWithQueryContainer" data-ent-event="click: onPanelClicked" data-ent-member="failedPanelContainer" data-win-bind="className: className MS.Entertainment.Utilities.appendClassName;">
+
+            <div class="failedPanelTextContainer">
+
+                <div class="failedPanelTitle label text-medium" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: primaryStringId;
+                        winControl.text: primaryText">
+                </div>
+
+                <div class="failedPanelMessage label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true }" data-win-bind="
+                        winControl.stringId: secondaryStringId;
+                        winControl.text: secondaryText">
+                </div>
+
+                <div class="failedPanelDetails" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: details;" data-win-options="{itemTemplate: 'Controls/FailedPanel.html#failedPanelDetailsTemplate'}" data-win-automationid="failedPanelDetails">
+                </div>
+
+                <progress class="loadingRing win-ring win-medium removeFromDisplay" data-win-bind="removeFromDisplay: showLoadingRing MS.Entertainment.Utilities.toggleClassNameNegate"></progress>
+
+            </div>
+            <div class="failedPanelQuery">
+                <div class="recentPanel-ItemsList" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: queryResults;
+                                   winControl.itemTemplate: itemTemplate;
+                                   winControl.applyItemTemplate: applyAlbumGalleryItemTemplate" data-win-options="{
+                        propertyName: 'mediaType',
+                        fixedRowCount: 2,
+                        fixedColumnCount: 3,
+                        containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow}">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

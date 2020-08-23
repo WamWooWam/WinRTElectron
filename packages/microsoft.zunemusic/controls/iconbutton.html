@@ -1,0 +1,157 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html> 
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Icon Button Control Template</title>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="iconButtonTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <button data-win-control="WinJS.UI.Tooltip" type="button" data-ent-elementonly="true" data-ent-member="_button" data-ent-event="click: onClickPreProcess" data-ent-pagecontent="this" class="win-command win-global iconButton win-focusable win-interactive">
+                <span class="win-commandicon win-commandring" data-ent-member="ringSpan">
+                    <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                    <span data-ent-member="iconSpanPressed" class="win-commandimage iconSpanPressed"></span>
+                    <span data-ent-member="iconSpan" class="win-commandimage iconSpan"></span>
+                </span>
+
+                <span data-ent-member="linkLabel" class="win-label label text-actionTileText maxLines-two wrap voice-visualTarget">
+                </span>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+
+        </div>
+
+        <div data-ent-templateid="iconButtonImageTemplate" data-win-control="WinJS.Binding.Template">
+            <button type="button" data-ent-member="_button" data-ent-event="click: onClickPreProcess" class="win-command win-global iconButton iconImage win-focusable">
+                <span class="imageContainer">
+                    <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-member="_image" data-win-options="{
+                             show: MS.Entertainment.Utilities.showElementNoAnimation,
+                             hide: MS.Entertainment.Utilities.doNothing,
+                             allowAnimations: false,
+                             bindTargetProperties: true }" class="imageHolder hideFromDisplay" width="215" height="215">
+                    <div class="overlay"></div>
+                </span>
+                <span class="win-commandicon win-commandring" data-ent-member="ringSpan" data-ent-bind="removeFromDisplay: action MS.Entertainment.Utilities.toggleClassNameNegate">
+                    <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                    <span data-ent-member="iconSpanPressed" class="win-commandimage iconSpanPressed"></span>
+                    <span data-ent-member="iconSpan" class="win-commandimage iconSpan"></span>
+                </span>
+
+                <span data-ent-member="linkLabel" class="win-label label wrap voice-visualTarget">
+                </span>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+        </div>
+
+        <div data-ent-templateid="iconButtonTwoLineTemplate" data-win-control="WinJS.Binding.Template">
+            <button data-win-control="WinJS.UI.Tooltip" type="button" data-ent-elementonly="true" data-ent-member="_button" data-ent-event="click: onClick" class="win-command win-global iconButton win-focusable">
+
+                <span class="win-commandicon win-commandring" data-ent-member="ringSpan">
+                    <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                    <span data-ent-member="iconSpanPressed" class="win-commandimage iconSpanPressed"></span>
+                    <span data-ent-member="iconSpan" class="win-commandimage iconSpan"></span>
+                </span>
+
+                <span class="textContainer">
+                    <span data-ent-member="linkLabel" class="win-label label wrap voice-visualTarget" data-win-bind="shiftForSubText: subTextVisibility MS.Entertainment.Utilities.toggleClassName;">
+                    </span>
+                    <span data-ent-member="linkSubLabel" class="win-label label subtitle wrap" data-win-bind="removeFromDisplay: subTextVisibility MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    </span>
+                </span>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+        </div>
+
+        <div data-ent-templateid="iconButtonWithWatchProgressTemplate" data-win-control="WinJS.Binding.Template">
+            <button data-win-control="WinJS.UI.Tooltip" type="button" data-ent-elementonly="true" data-ent-member="_button" data-ent-event="click: onClick" class="win-command win-global iconButton win-focusable">
+
+                <span class="win-commandicon win-commandring" data-ent-member="ringSpan">
+                    <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                    <span data-ent-member="iconSpanPressed" class="win-commandimage iconSpanPressed"></span>
+                    <span data-ent-member="iconSpan" class="win-commandimage iconSpan"></span>
+                </span>
+
+                
+                <span data-ent-member="linkLabel" class="win-label label text-actionTileText maxLines-two wrap voice-visualTarget" data-win-bind="shiftForSubText: subTextVisibility MS.Entertainment.Utilities.toggleClassName;">
+                </span>
+
+                
+                <div class="control-watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-bind="winControl.viewModel: mediaItem;" data-win-automationid="watchProgressControl">
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+        </div>
+
+        <div data-ent-templateid="iconButtonMessageActionTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="control-iconButtonMessageAction win-focusable" type="button" data-ent-member="_button" data-ent-event="click: onClick">
+
+                <span class="iconButtonMessageAction-icon icon" data-ent-member="iconSpan"></span>
+
+                <span class="iconButtonMessageAction-content">
+                    <span data-ent-member="linkLabel" class="content-title voice-visualTarget maxLines-one" data-win-bind="shiftForSubText: subTextVisibility MS.Entertainment.Utilities.toggleClassName;">
+                    </span>
+                    <span data-ent-member="linkSubLabel" class="content-subTitle maxLines-one" data-win-bind="removeFromDisplay: subTextVisibility MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    </span>
+                </span>
+
+                
+                <span class="iconButtonMessageAction-parts" data-ent-member="ringSpan">
+                    <span data-ent-member="modifier"></span>
+                    <span data-ent-member="iconSpanPressed"></span>
+                </span>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+        </div>
+
+        <div data-ent-templateid="iconButtonNotificationTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="template-iconButtonNotification win-command win-global iconButton win-focusable" type="button" data-ent-member="_button" data-ent-event="click: onClick">
+
+                <span class="iconButtonNotification-icon win-commandicon win-commandring" data-ent-member="ringSpan">
+                    <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                    <span class="win-commandimage iconSpanPressed" data-ent-member="iconSpanPressed"></span>
+                    <span class="win-commandimage iconSpan" data-ent-member="iconSpan"></span>
+                </span>
+
+                <span class="iconButtonNotification-primaryText voice-visualTarget" data-ent-member="linkLabel" data-win-bind="shiftForSubText: subTextVisibility MS.Entertainment.Utilities.toggleClassName;"></span>
+
+                <span class="iconButtonNotification-secondaryText maxLines-two" data-ent-member="linkSubLabel" data-win-bind="removeFromDisplay: subTextVisibility MS.Entertainment.Utilities.toggleClassNameNegate;"></span>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+        </div>
+
+        <div data-ent-templateid="iconButtonVerticalTemplate" data-win-control="WinJS.Binding.Template">
+            <button type="button" data-ent-member="_button" data-ent-event="click: onClick" class="win-command win-global iconButtonVertical acc-keyboardFocusTarget win-focusable">
+
+                <span class="win-commandicon win-commandring" data-ent-member="ringSpan">
+                    <span class="win-commandimage modifier" data-ent-member="modifier"></span>
+                    <span data-ent-member="iconSpanPressed" class="win-commandimage iconSpanPressed"></span>
+                    <span data-ent-member="iconSpan" class="win-commandimage iconSpan"></span>
+                </span>
+
+                <span data-ent-member="linkLabel" class="win-label label wrap voice-visualTarget">
+                </span>
+            </button>
+
+            <div data-ent-member="_flyoutElement"></div>
+        </div>
+    </body>
+</html>

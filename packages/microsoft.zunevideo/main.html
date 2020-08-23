@@ -1,0 +1,181 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script>
+        window.msWriteProfilerMark("ent:Startup.Document,StartTM");
+        (function () {
+            // Save App start time in a global object, it's needed for PerfTrack instrumentation
+            this.PerfTrack = {
+                LaunchInformation: {
+                    getStartTime: (function _perfTrackLaunchInformation_getStartTimeClosure() {
+                        var startTime = new Date();
+                        return function _perfTrackLaunchInformation_getStartTimeWorker() {
+                            return startTime;
+                        };
+                    })()
+                }
+            };
+        })();
+        window.msWriteProfilerMark("ent:Startup.CSS,StartTM");
+    </script>
+
+    
+        <link rel="stylesheet" type="text/css" href="//Microsoft.WinJS.2.0/css/ui-light.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/ui-overrides.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/DefaultStyles.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Shell.css">
+    <link rel="stylesheet" type="text/css" href="/Animations/animations.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Animations.css">
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Animations/ShellAnimations.css">
+    <link rel="stylesheet" type="text/css" href="/Components/Playback/Controls/PlaybackControl.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/TransportControls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/NowPlaying.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/ClosedCaption.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Settings.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/App.css">
+
+
+    <script>
+        window.msWriteProfilerMark("ent:Startup.CSS,StopTM");
+        window.msWriteProfilerMark("ent:Startup.Scripts,StartTM");
+    </script>
+
+    
+        <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <script src="/main_merged.js"></script>
+    <script>
+        window.msWriteProfilerMark("ent:Startup.Scripts,StopTM");
+    </script>
+</head>
+<body class="app-newvideo video video1 app1">
+    <div data-win-control="WinJS.Binding.Template" data-win-options="{ disableOptimizedProcessing: true}" class="template-pivots">
+        <div class="template-verticalPivotItem" role="presentation">
+            <button data-win-control="WinJS.UI.Tooltip" data-ent-elementonly="true" class="verticalPivotItem-button text-navItem acc-keyboardFocusTarget fillParent win-focusable" data-win-bind="
+                                    selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    owns: data.childIds MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                                    title: data.title;" type="button">
+                <div class="button-icon icon icon-nav" data-win-bind="textContent: data.icon"></div>
+                <div class="button-content" data-win-bind="textContent: data.title"></div>
+            </button>
+        </div>
+    </div>
+
+    <div data-win-control="WinJS.Binding.Template" data-ent-templateid="videoLXBlankPage">
+        <div style="margin-top: 250px;">
+            <button style="margin: 10px; background-color: white; color: black" onclick="MS.Entertainment.UI.Shell.BlankPageHelper.navigateToOtherCollection(this);">
+                <div class="button-content" data-win-bind="textContent: String.id.IDS_VIDEO_LX_COLLECTION_MODIFIER_PERSONAL MS.Entertainment.Formatters.formatStringId;"></div>
+            </button>
+            <button style="margin: 10px; background-color: white; color: black" onclick="MS.Entertainment.UI.Shell.BlankPageHelper.navigateToMovieCollection(this);">
+                <div class="button-content" data-win-bind="textContent: String.id.IDS_VIDEO_LX_COLLECTION_MODIFIER_MOVIES MS.Entertainment.Formatters.formatStringId;"></div>
+            </button>
+            <button style="margin: 10px; background-color: white; color: black" onclick="MS.Entertainment.UI.Shell.BlankPageHelper.navigateToTVCollection(this);">
+                <div class="button-content" data-win-bind="textContent: String.id.IDS_VIDEO_LX_COLLECTION_MODIFIER_TV MS.Entertainment.Formatters.formatStringId;"></div>
+            </button>
+            <div data-win-control="MS.Entertainment.UI.Shell.BlankPageHelper"></div>
+        </div>
+    </div>
+
+    <div class="control-app theme-lx" data-win-automationid="videoAppContainer">
+        <div class="app-navpane" data-win-control="MS.Entertainment.UI.Framework.TabConstrainer" data-win-options="{ assumeTabIndexIsZero: true, enabled: false }" data-win-automationid="navigationPaneContainer" id="navPane">
+
+            
+            <div class="navpane-header text-branding" data-ent-member="_navPaneHeader">
+                <div class="header-logo icon icon-navBranding icon-xbox-xenon" data-ent-member="_appTitleBranding"></div>
+
+                <div class="header-label text-appLogoTitle" data-ent-member="_appTitleLabel"></div>
+
+                <button class="header-toggleButton icon icon-navToggle icon-xbox-toggleMenu" data-win-control="WinJS.UI.Tooltip" data-ent-elementonly="true" data-ent-member="toggleNavMenu" type="button" data-win-automationid="toggleNavMenu" data-win-bind="selected: navPaneToggleState MS.Entertainment.Framework.AccUtils.setAriaAttribute"></button>
+            </div>
+
+            
+            <div class="navpane-search searchInputBox" data-win-automationid="searchInputBoxElement" data-ent-member="searchInputBox" data-win-control="WinJS.UI.SearchBox" data-win-options="{ focusOnKeyboardInput: true, searchHistoryDisabled: true }"></div>
+
+            
+            <div class="navpane-invokeSearch template-verticalPivotItem" role="presentation">
+                <button data-win-control="WinJS.UI.Tooltip" class="verticalPivotItem-button acc-keyboardFocusTarget fillParent win-focusable" data-ent-member="invokeSearchButton" data-win-bind="label: IDS_VIDEO_LX_SEARCH MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;
+                                        title: String.id.IDS_VIDEO_LX_SEARCH MS.Entertainment.Formatters.formatStringId;" type="button">
+                    <div class="button-icon icon icon-search icon-win-find"></div>
+                </button>
+            </div>
+
+            <div class="navpane-invokeSearchSeparator"></div>
+
+            
+            <div class="navpane-content" role="group">
+                
+                <div class="navpane-pivots layout-fillParent ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.DeclarativeVerticalPivotControl" data-win-options="{
+                        allowAnimations: false,
+                        animateIn: false,
+                        itemTemplate: select('.template-pivots'),
+                        keyboardNavigable: true,
+                        dividers: false,
+                        selectedIndex: 0,
+                        reselectWhenAlreadySelected: true,
+                    }" role="tablist" data-win-bind="winControl.selectionManager: pivots;">
+
+                    
+                    <div class="template-verticalPivotItem verticalPivotItem_collection" role="presentation">
+                        <button data-win-control="WinJS.UI.Tooltip" data-ent-elementonly="true" class="verticalPivotItem-button text-navItem acc-keyboardFocusTarget fillParent win-focusable" data-win-bind="
+                                    selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    owns: data.childIds MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                                    title: data.title;" type="button">
+                            <div class="button-icon icon icon-nav" data-win-bind="textContent: data.icon"></div>
+                            <div class="button-content" data-win-bind="textContent: data.title"></div>
+                        </button>
+                    </div>
+                    <div class="template-verticalPivotItem verticalPivotItem_moviesStore" role="presentation">
+                        <button data-win-control="WinJS.UI.Tooltip" data-ent-elementonly="true" class="verticalPivotItem-button text-navItem acc-keyboardFocusTarget fillParent win-focusable" data-win-bind="
+                                    selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    owns: data.childIds MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                                    title: data.title;" type="button">
+                            <div class="button-icon icon icon-nav" data-win-bind="textContent: data.icon"></div>
+                            <div class="button-content" data-win-bind="textContent: data.title"></div>
+                        </button>
+                    </div>
+                    <div class="template-verticalPivotItem verticalPivotItem_tvStore" role="presentation">
+                        <button data-win-control="WinJS.UI.Tooltip" data-ent-elementonly="true" class="verticalPivotItem-button text-navItem acc-keyboardFocusTarget fillParent win-focusable" data-win-bind="
+                                    selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    owns: data.childIds MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                    tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                                    title: data.title;" type="button">
+                            <div class="button-icon icon icon-nav" data-win-bind="textContent: data.icon"></div>
+                            <div class="button-content" data-win-bind="textContent: data.title"></div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="navpane-separator"></div>
+            </div>  
+        </div>
+
+        <div data-win-automationid="sidebarContainer" class="app-sidebar" id="discover">
+        </div>
+
+        <div data-win-automationid="contentContainer" data-win-control="MS.Entertainment.UI.Framework.BindingBlock" id="contentHost" class="app-body state-nomargin">
+        </div>
+
+        <div data-win-automationid="footerContainer" class="app-footer">
+            
+        </div>
+    </div>
+
+    <div id="delayedStartupContainer" class="removeFromDisplay"></div>
+
+    <div class="app-classicContainer hideFromDisplay state-hideOnSnapped">
+    </div>
+
+    <script>
+        window.msWriteProfilerMark("ent:Startup.Document,StopTM");
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Post-Roll Control</title>
+    </head>
+    <body>
+        
+        <div data-ent-templateid="template-videoPostRoll" data-win-control="WinJS.Binding.Template">
+            <div class="control-videoPostRoll win-ui-dark"
+                 data-win-bind="className: viewModel.cssClass MS.Entertainment.Utilities.appendClassName;">
+
+                <div class="videoPostRoll-titleContainer"
+                     data-ent-enteranimation="enterPage"
+                     data-ent-exitanimation="exitPage">
+                        <div class="videoPostRoll-titleIcon icon inlineGlyphSolid acc-preserveBackground icon-xenon"
+                             data-win-bind="textContent: viewModel.titleIcon">
+                        </div>
+                        <div class="videoPostRoll-titleLabel label text-appTitle"
+                             data-win-bind="textContent: viewModel.titleText">
+                        </div>
+                </div>
+
+                <div class="videoPostRoll-messageContainer">
+                    <div class="videoPostRoll-messageText text-postRollBody"
+                         data-win-bind="textContent: viewModel.upsellMessageText">
+                    </div>
+                </div>
+
+                <div class="videoPostRoll-button">
+                    <div class="videoPostRoll-iconButton"
+                         data-win-control="MS.Entertainment.UI.Controls.IconButton"
+                         data-win-automationid="videoPostRollUpsellButton"
+                         data-win-bind="winControl.text: viewModel.upsellButtonText;
+                                        winControl.action: viewModel.upsellButtonAction">
+                    </div>
+                </div>
+
+                <div class="videoPostRoll-items"
+                     data-ent-member="_upsellGallery"
+                     data-win-automationid="postRollVideoContent"
+                     data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl"
+                     data-win-options="{
+                        enableClickEvents: true,
+                        keyboardNavigable: true,
+                        skipSettingWidth: true,
+                        skipSettingHeight: true,
+                        containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                        fixedRowCount: 1,
+                        propertyName: 'mediaType',
+                        itemSize: { width: 260, height: 260 },
+                        itemTemplates: [{ value: Microsoft.Entertainment.Queries.ObjectType.video, template: '/Components/Video/VideoCollectionTemplates.html#moviePostRollTemplate' },
+                                        { value: Microsoft.Entertainment.Queries.ObjectType.tvSeries, template: '/Components/Video/VideoCollectionTemplates.html#tvPostRollTemplate' }]}"
+                     data-win-bind="winControl.dataSource: viewModel.upsellItems;"
+                     tabindex="-1">
+                </div>
+            </div>
+        </div>
+</body>
+</html>

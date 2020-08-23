@@ -1,0 +1,516 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.immersiveDetailsScrollContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto;
+    -ms-grid-rows: 1fr;
+    height: 100vh;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-position: top left;
+    background-size: 100% 100%;
+    overflow-x: auto;
+    overflow-y: hidden
+}
+.immersiveDetailsContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    height: 100vh
+}
+.immersiveDetailsAchievementsContainer, .immersiveDetailsExtrasContainer
+{
+    -ms-grid-columns: auto 1fr;
+    -ms-grid-rows: 120px 1fr;
+    display: -ms-grid;
+    margin-left: 65px;
+    position: relative;
+    height: 100%;
+    width: calc(100vw - 65px)
+}
+.immersiveDetailsExtrasOverviewBackground
+{
+    width: 100%;
+    height: 100%;
+    margin-left: -15px;
+    padding-left: 15px;
+    padding-right: 30px
+}
+.immersiveDetailsExtrasTitle
+{
+    width: auto;
+    min-width: 400px;
+    height: 60px;
+    margin-top: 50px;
+    white-space: nowrap
+}
+.immersiveDetailsNowPlayingInset
+{
+    width: 60%
+}
+.immersiveDetailsExtrasOverview
+{
+    width: 100%;
+    position: relative;
+    margin-top: 8px
+}
+.immersiveDetailsExtrasGallery
+{
+    -ms-grid-column-align: stretch;
+    position: relative;
+    left: 3%;
+    top: 23px
+}
+.immersiveDetailsExtrasType
+{
+    width: 100%;
+    min-height: 60px;
+    border-bottom-style: solid;
+    border-bottom-width: 1px;
+    padding-top: 15px;
+    padding-bottom: 3px;
+    white-space: normal
+}
+.immersiveDetailsExtrasType:last-child
+{
+    border-bottom-style: none
+}
+.immersiveDetailsExtrasDescription
+{
+    display: block;
+    position: relative
+}
+.immersiveDetailsExtrasScrollableArea
+{
+    overflow-y: auto;
+    overflow-x: hidden;
+    clear: left;
+    position: relative;
+    width: 90%;
+    height: calc(100vh - 250px);
+    max-width: 1126px;
+    min-width: 500px;
+    top: 16px
+}
+.movie .overview .rentalExpirationNotification
+{
+    margin-bottom: 20px
+}
+.immersiveDetailsHub
+{
+    position: absolute;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition-property: transform;
+    transition-duration: .66s
+}
+.immersiveDetailsHub .panelFragmentLoading
+{
+    display: none
+}
+.immersiveDetailsHub .panelFragmentWrapper
+{
+    top: -40px
+}
+.immersiveDetailsExtrasOverviewGeneral
+{
+    display: block;
+    position: absolute;
+    width: 100%
+}
+.immersiveDetailsTableOfContents
+{
+    width: calc(100% - 30px);
+    margin-top: 35px;
+    white-space: normal;
+    border: 0 solid;
+    border-top: 1px solid #a9a9a9;
+    float: left;
+    padding-left: 0;
+    padding-top: 10px;
+    padding-right: 0;
+    padding-bottom: 10px;
+    margin: 1px 1px 1px 1px;
+    text-align: left;
+    cursor: pointer
+}
+.immersiveDetailsHubStripNoScroll
+{
+    overflow-x: hidden
+}
+.immersiveDetailsHub .hubStripScroller
+{
+    height: 100%
+}
+.immersiveDetailsHub .panelFragmentContainer
+{
+    height: 100%
+}
+.immersiveDetailsHub .panelFragmentWrapper
+{
+    height: 100%
+}
+.immersiveDetailsHub .panelTitle
+{
+    height: 0
+}
+.immersiveDetailsHub .hubNavigationClippingContainer
+{
+    display: none;
+    z-index: 100;
+    position: absolute
+}
+.snappedDetails .hubNavigationClippingContainer
+{
+    top: -10px;
+    position: relative;
+    left: 10px;
+    width: 100%;
+    -ms-grid-columns: 1fr
+}
+.snappedDetails .hubNavigationTitle, .snappedDetails .hubStripTitleContainer, .snappedDetails .panelModifierContainer
+{
+    display: none
+}
+.snappedDetails .panelContentContainer
+{
+    -ms-grid-rows: 0 0 1fr
+}
+html[dir=rtl] .snappedDetails .hubNavigationClippingContainer
+{
+    left: 0;
+    right: 10px
+}
+.snappedDetails .hubNavigationContainer
+{
+    padding-top: 0;
+    margin-right: 0;
+    margin-left: -10px;
+    -ms-grid-row: 1
+}
+html[dir=rtl] .snappedDetails .hubNavigationContainer
+{
+    margin-right: -10px;
+    margin-left: 0
+}
+.immersiveDetailsOverviewContainer
+{
+    width: 100vw;
+    height: 100vh;
+    display: -ms-grid;
+    -ms-grid-columns: 60% 8% 32%;
+    -ms-grid-rows: 1fr
+}
+.immersiveDetailsOverview
+{
+    padding: 47px 60px 40px 40px;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: stretch;
+    -ms-grid-row-align: stretch;
+    -ms-grid-layer: 2;
+    display: -ms-grid;
+    -ms-grid-rows: auto 1fr;
+    -ms-grid-columns: 1fr
+}
+.immersiveDetailsBackgroundImageHolder
+{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%
+}
+.movieDetailsOverview .immersiveDetailsBackgroundImageHolder
+{
+    height: calc(100% - 120px);
+    padding-top: 60px;
+    padding-bottom: 60px
+}
+.movieDetailsBackgroundImageWrapper
+{
+    position: relative;
+    width: auto;
+    height: 100%;
+    -ms-grid-column-align: center
+}
+.immersiveDetailsTitle
+{
+    margin-right: 40px;
+    word-wrap: normal;
+    white-space: normal
+}
+.immersiveDetailsFeatured
+{
+    height: auto;
+    margin-left: 120px;
+    margin-bottom: 44px;
+    opacity: 0
+}
+html[dir=rtl] .immersiveDetailsFeatured
+{
+    margin-right: 120px;
+    margin-left: 0
+}
+.movieDetailsBackgroundImageWrapper .immersiveDetailsFeatured
+{
+    position: absolute;
+    margin-left: 30px;
+    margin-bottom: 24px;
+    bottom: 0
+}
+.immersiveDetailsFeaturedText
+{
+    width: 100%;
+    display: block
+}
+.immersiveDetailsFeaturedPlay
+{
+    width: 82px;
+    height: 82px;
+    margin-bottom: -8px
+}
+.immersiveDetailsFeaturedPrimaryText, .immersiveDetailsFeaturedSecondaryText
+{
+    width: 100%
+}
+.immersiveDetailsFeaturedSecondaryText
+{
+    margin-bottom: -4px
+}
+.immersiveDetailsOverviewGeneral
+{
+    clear: left;
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: auto auto;
+    -ms-grid-rows: 1fr
+}
+.immersiveDetailsOverviewGeneralNoImage
+{
+    clear: left;
+    padding-top: 10px;
+    margin-top: 10px;
+    width: 100%
+}
+.immersiveDetailsOverviewReviewButtonValue
+{
+    margin-bottom: -10px
+}
+.immersiveDetailsOverviewActivitiesBlock
+{}
+.immersiveDetailsOverviewDetailsBlock
+{
+    overflow-y: auto;
+    margin-top: 45px
+}
+.immersiveDetailsOverviewTextblock
+{
+    margin-left: 22px;
+    margin-bottom: 4px
+}
+.snappedDetailsOverviewGeneral .immersiveDetailsOverviewTextblock
+{
+    margin-left: 12px
+}
+.immersiveDetailsOverviewBold
+{
+    font-weight: bold;
+    margin-right: 10px
+}
+.immersiveDetailsContentRatingThumbnail
+{
+    margin-top: 4px
+}
+.rightAlign
+{
+    text-align: right;
+    float: right;
+    margin-right: 10px
+}
+.leftAlign
+{
+    text-align: left;
+    float: left;
+    margin-left: 10px
+}
+.immersiveDetailsOverviewActionBlock, .immersiveDetailsOverviewTableOfContents
+{
+    bottom: 0;
+    clear: left;
+    padding-top: 15px;
+    padding-bottom: 10px
+}
+.immersiveDetailsOverviewActionButton
+{
+    float: left;
+    width: 45%;
+    height: 50px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    margin: 1px 1px 1px 1px;
+    text-align: left;
+    border: 0 solid;
+    cursor: pointer
+}
+.immersiveDetailsOverviewDescription
+{
+    width: calc(100% - 30px);
+    margin-top: 10px;
+    white-space: normal
+}
+.immersiveDetailsInline
+{
+    display: inline
+}
+.immersiveDetailsInline .label
+{
+    float: left
+}
+.immersiveDetailsGallery
+{
+    display: -ms-grid;
+    -ms-grid-columns: 112px auto;
+    -ms-grid-rows: 1fr
+}
+.immersiveDetailsGalleryHeader
+{
+    position: absolute;
+    top: 25%
+}
+.immersiveDetailsGalleryLine
+{
+    height: 1px;
+    width: 100px
+}
+.immersiveDetailsGalleryTitle
+{
+    position: absolute;
+    width: 60px;
+    right: 0;
+    margin-top: -10px;
+    text-align: right
+}
+.immersiveDetailsHidden
+{
+    display: none
+}
+.snappedDetailsHubStrip
+{
+    padding: 0;
+    height: 100%;
+    width: 320px;
+    margin: 0
+}
+.snappedDetailsHubStrip>.win-template
+{
+    height: 100%
+}
+.snappedDetailsHubStrip .panelTitle
+{
+    height: 0
+}
+.snappedDetailsHubStrip .hubNavigationContainer
+{
+    width: auto;
+    white-space: nowrap
+}
+.movieDetailsOverviewSnapped, .tvEpisodeDetailsOverviewSnapped
+{
+    height: 100%;
+    padding: 0
+}
+.movieDetailsOverviewSnapped>.win-template, .artistDetailsOverviewSnapped>.win-template, .tvEpisodeDetailsOverviewSnapped>.win-template
+{
+    height: 100%
+}
+.snappedDetailsOverview
+{
+    height: 100%;
+    width: 100%
+}
+.snappedDetailsArtistImage
+{
+    -ms-grid-row: 1
+}
+.snappedDetailsTitle
+{
+    -ms-grid-row: 2;
+    overflow: hidden
+}
+.snappedDetailsOverviewGeneral
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 15px 1fr;
+    -ms-grid-rows: 1fr;
+    -ms-grid-row: 4
+}
+.snappedDetailsOverviewReviewButtonValue
+{
+    margin-bottom: -10px
+}
+.snappedDetailsOverviewDetailsBlock
+{
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: auto;
+    -ms-grid-rows: auto auto auto auto 1fr
+}
+.snappedDetailsOverviewDescription
+{
+    margin-bottom: 10px;
+    white-space: normal;
+    -ms-grid-row: 5;
+    -ms-grid-column-align: stretch;
+    -ms-grid-row-align: stretch
+}
+.games .snappedDetailsOverviewDescription
+{
+    margin-top: 19px
+}
+html[dir=rtl] .snappedDetailsOverviewDescription
+{
+    padding-left: 20px;
+    padding-right: 0
+}
+.snappedDetailsRow, .immersiveDetailsRow
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 1fr
+}
+.snappedDetailsInline
+{
+    display: inline
+}
+.snappedDetailsInline .label
+{
+    float: left
+}
+.snappedDetailsOverviewBold
+{
+    margin-right: 5px
+}
+.snappedDetailsHidden
+{
+    display: none
+}
+.snappedPlaylist
+{
+    padding: 0;
+    height: 100%;
+    width: 320px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.buttonsContainer.inPlaceDetailsItemActions
+{
+    -ms-flex-direction: row;
+    -ms-grid-row: 1
+}

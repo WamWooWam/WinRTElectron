@@ -1,0 +1,372 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.music .home, .snappedContainer
+{
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    height: 100%
+}
+.snappedContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto;
+    -ms-grid-rows: auto 1fr auto 98px
+}
+.snappedContainer.snappedIconContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 20px 1fr 20px;
+    -ms-grid-rows: 50vh auto 1fr
+}
+.snappedContainer.videoSnappedMiniView
+{
+    display: -ms-grid;
+    -ms-grid-columns: 20px 1fr 20px;
+    -ms-grid-rows: 40px auto auto 1fr
+}
+.opacity100
+{
+    opacity: 1
+}
+.snappedUnsnapIcon
+{
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: center
+}
+.music .snappedIconContainer .label {
+    -ms-grid-column: 2;
+    -ms-grid-row: 3;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: center
+}
+.snappedUnsnapIcon button.win-command .win-label {
+    display: block
+}
+.snappedUnsnapIcon button.win-command .win-commandicon {
+    margin: 0;
+    transform: rotate(-90deg)
+}
+.snappedAppIcon
+{
+    width: 310px;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100% 100%;
+    background-clip: inherit;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: end;
+    -ms-grid-column-align: center
+}
+.snappedMode>.win-template
+{
+    height: 100%
+}
+.snappedTransition
+{
+    display: -ms-grid;
+    -ms-grid-columns: 20px 1fr 20px;
+    -ms-grid-rows: 50vh auto 1fr;
+    height: 100vh;
+    width: 100vw
+}
+.snappedIconContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 1fr
+}
+.snappedBackgroundImage
+{
+    overflow: hidden;
+    z-index: 0;
+    background-repeat: repeat-x;
+    background-position: top left;
+    background-size: 100% 100%;
+    -ms-grid-row-span: 4;
+    -ms-grid-row-align: stretch;
+    -ms-grid-column-align: stretch
+}
+.snappedNowPlayingProgress
+{
+    width: 100%;
+    transform: translate(0,0);
+    height: 4px
+}
+.snappedNowPlaying
+{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    opacity: 1;
+    transform: translate(0,300px);
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto;
+    -ms-grid-rows: auto auto;
+    -ms-grid-row: 0;
+    -ms-grid-row-align: stretch
+}
+.snappedNowPlaying .title, .snappedNowPlaying .subTitle, .snappedNowPlaying .metadata
+{
+    white-space: normal
+}
+.snappedNowPlaying .homeHubNowPlayingTile
+{
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2
+}
+.snappedIconAppTitle
+{
+    white-space: normal;
+    text-align: center;
+    padding-bottom: 20px;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    -ms-grid-column-align: center
+}
+.videoSnappedMiniView .snappedIconAppTitle
+{
+    -ms-grid-column-align: start
+}
+.videoSnappedMiniView .snappedSubtitle
+{
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: start
+}
+html[dir=rtl] .snapped .musicOverlay .seekBarControl
+{
+    margin-right: 0;
+    margin-left: 0
+}
+.snappedDetails
+{
+    opacity: 0;
+    transform: translate(-320px,0);
+    background-color: rgba(0,0,0,.0001);
+    -ms-grid-row: 2
+}
+.snappedDetailsContentContainer
+{
+    top: 0;
+    height: calc(100% - 12px);
+    overflow-y: auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 9px
+}
+.snappedPlaylist .iconButton
+{
+    transform: translateY(4px)
+}
+.snappedAppBar
+{
+    transform: translate(0,0)
+}
+.snappedNowPlayingFlipView
+{
+    height: 161px;
+    position: relative;
+    margin-top: 20px;
+    background-color: rgba(0,0,0,.0001)
+}
+.snappedNowPlayingThumbnail
+{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2
+}
+.snappedNowPlayingThumbnail .win-template .playbackPipeline
+{
+    width: 100%;
+    height: 240px
+}
+.snappedNowPlayingRatingImageContainer {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: start;
+    -ms-high-contrast-adjust: none;
+    position: relative;
+    z-index: 1
+}
+.snappedVideoRatingImage {
+    height: 27px;
+    width: 27px
+}
+.snappedNowPlayingMetadata
+{
+    margin: 6px 30px 6px 30px;
+    padding-bottom: 19px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1
+}
+.snappedDetailsOverviewMetadata
+{
+    white-space: normal
+}
+.snappedWithExtraData
+{
+    opacity: 1;
+    transform: translate(0,0)
+}
+.snappedDetailsControlVisible
+{
+    opacity: 1;
+    transform: translate(0,0)
+}
+.snappedPlaylistControlVisible
+{
+    opacity: 1;
+    transform: translate(0,0)
+}
+.snappedNowPlayingFlipView #flipperContent .flipper img
+{
+    width: 144px;
+    height: 144px
+}
+.snappedDetailsOverview .textContainer, .snappedDetailsOverview .textContainer p
+{
+    margin: 0;
+    padding: 0
+}
+.snappedDetailsOverview .metaDataContainer
+{
+    width: 100%;
+    height: auto;
+    display: -ms-grid;
+    -ms-grid-columns: auto 1fr;
+    -ms-grid-rows: auto;
+    margin-bottom: 20px
+}
+.snappedDetailsOverview .metaDataContainer>.imageContainer
+{
+    width: 115px
+}
+.snappedDetailsOverview .metaDataContainer>.textContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    margin: 0 0 0 0
+}
+.snappedDetailsOverview .metaDataContainer>.textContainer p
+{
+    text-overflow: ellipsis
+}
+.snapped .appNotifications
+{
+    display: none
+}
+.snapped .nowPlayingPlaylistControl
+{
+    width: auto
+}
+.snapped .musicOverlay .nowPlayingMetadataTime
+{
+    margin-bottom: 40px
+}
+.snapped .musicOverlay .nowPlayingTransportControls
+{
+    padding-bottom: 11px
+}
+.snapped .nowPlayingBrandingContainer
+{
+    -ms-grid-columns: 27px auto;
+    -ms-grid-rows: 64px 40px
+}
+@media screen and (min-height: 1200px)
+{
+    .snapped .nowPlayingBrandingContainer
+    {
+        -ms-grid-rows: 82px 40px
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .snapped .nowPlayingBrandingContainer
+    {
+        -ms-grid-rows: 142px 40px
+    }
+}
+.snapped .nowPlayingBranding
+{
+    -ms-grid-columns: auto 10px auto
+}
+.snapped .nowPlayingBrandingIcon
+{
+    margin-top: 3px
+}
+.snapped .xboxBranding
+{
+    display: -ms-grid;
+    margin-left: 20px;
+    margin-top: 20px;
+    -ms-grid-columns: auto 12px auto
+}
+html[dir=rtl] .snapped .xboxBranding
+{
+    margin-left: 0;
+    margin-right: 20px
+}
+.snapped .xboxIconContainer
+{
+    width: 30px;
+    height: 30px
+}
+.snapped .xboxIconMask
+{
+    width: 30px;
+    height: 30px;
+    left: 1px;
+    top: 1px
+}
+.snapped .immersiveFrame
+{
+    display: none
+}
+html[dir=rtl] .snapped .xboxIconMask
+{
+    right: 1px
+}
+.snapped .xboxIconMaskAntialiasing
+{
+    width: 30px;
+    height: 30px;
+    left: 1px;
+    top: 1px;
+    background-size: contain
+}
+html[dir=rtl] .snapped .xboxIconMaskAntialiasing
+{
+    right: 1px
+}
+.snapped .xboxIcon
+{
+    width: 65px;
+    height: 40px;
+    left: 5px;
+    top: -1px;
+    background-size: contain
+}
+html[dir=rtl] .snapped .xboxIcon
+{
+    right: 5px
+}
+.snapped .nowPlayingBrandingLabel
+{
+    margin-top: -17px
+}
+.snapped .shellBackButtonContainer
+{
+    display: none
+}

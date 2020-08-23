@@ -1,0 +1,101 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Immersive Related</title>
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+</head>
+<body>
+
+    
+    
+    
+    
+    
+    <div data-ent-templateid="dynamicMoreGalleryControlTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="immersiveMoreGallery">
+
+            <div style="-ms-grid-row: 1; -ms-grid-column: 1; -ms-grid-column-span: 2; -ms-grid-column-align: start;" class="primaryPanelModifier immersiveColumnPadding" tabindex="-1" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-win-options="{
+                    tabIndex: 0,
+                    popupStyle: ['primaryPanelModifierPopup immersiveModifierPopup'],
+                    identifier: 'primary'}" data-win-automationid="primaryPanelModifier" data-win-bind="
+                    winControl.descriptionLabelText: dataContext.modifierDescriptionFormatter.result;
+                    winControl.selectionManager: dataContext.modifierSelectionManager;
+                    winControl.items: dataContext.modifierSelectionManager.dataSource">
+            </div>
+
+            <div style="-ms-grid-row: 3; -ms-grid-column: 1;" class="immersiveMoreGalleryView" data-ent-member="_gallery" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-win-options="{
+                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                    suppressInvokeBubble: true,
+                    grouped: false,
+                    forceInteractive: true,
+                    focusFirstItemOnPageLoad: true,
+                    layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list }" data-win-bind="
+                    winControl.itemTemplate: dataContext.selectedTemplate.templateUrl;
+                    winControl.backdropColor: dataContext.selectedTemplate.backdropColor;
+                    winControl.invokeBehavior: dataContext.selectedTemplate.invokeBehavior;
+                    winControl.selectionMode: dataContext.selectedTemplate.selectionMode;
+                    winControl.selectionStyleFilled: dataContext.selectedTemplate.selectionStyleFilled;
+                    winControl.maxSelectionCount: dataContext.selectedTemplate.maxSelectionCount;
+                    winControl.swipeBehavior: dataContext.selectedTemplate.swipeBehavior;
+                    winControl.panelOptions: dataContext.selectedTemplate.panelOptions;
+                    winControl.panelTemplate: dataContext.selectedTemplate.panelTemplateUrl;
+                    winControl.delayHydrateLibraryId: dataContext.selectedTemplate.delayHydrateLibraryId;
+                    winControl.dataSource: dataContext.items;">
+            </div>
+   
+        </div>
+    </div>
+
+    <div data-ent-templateid="MoreGalleryControl" data-win-control="WinJS.Binding.Template">
+        <div class="immersiveMoreGallery">
+            <div style="-ms-grid-row: 1; -ms-grid-column: 1; -ms-grid-row-align: end;" class="primaryPanelModifier immersiveColumnPadding" tabindex="-1" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-win-options="{
+                    tabIndex: 0,
+                    popupStyle: ['primaryPanelModifierPopup immersiveModifierPopup'],
+                    identifier: 'primary'}" data-win-automationid="primaryPanelModifier" data-win-bind="winControl.selectionManager: modifierSelectionManager; winControl.items: modifierSelectionManager.dataSource">
+            </div>
+
+            <div style="-ms-grid-row: 2; -ms-grid-column: 1" class="listHeader label text-listTitle immersiveColumnPadding" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: modifierSelectionManager.selectedItem.columnHeader;">
+            </div>
+
+           <div style="-ms-grid-row: 3;" class="immersiveMoreGalleryView" data-ent-member="_gallery" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-win-options="{ 
+                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                    suppressInvokeBubble: true,
+                    forceInteractive: true,
+                    layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                    focusFirstItemOnPageLoad: true, }" data-win-bind="
+                    winControl.dataSource: galleryItems;
+                    winControl.itemTemplate: itemTemplate;
+                    winControl.panelTemplate: panelTemplate;
+                    winControl.inlineExtraData: inlineExtraData;
+                    winControl.invokeBehavior: invokeBehavior;
+                    winControl.invokeHelperFactory: invokeHelperFactory;">
+            </div>
+   
+        </div>
+    </div>
+
+    <div data-ent-templateid="MoreListControl" data-win-control="WinJS.Binding.Template">
+        <div class="immersiveMoreGallery">
+            <div style="-ms-grid-row: 1; -ms-grid-column: 1; -ms-grid-row-align: end;" class="primaryPanelModifier" tabindex="-1" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-win-options="{
+                    tabIndex: 0,
+                    popupStyle: ['primaryPanelModifierPopup immersiveModifierPopup'],
+                    identifier: 'primary'}" data-win-automationid="primaryPanelModifier" data-win-bind="winControl.selectionManager: modifierSelectionManager; winControl.items: modifierSelectionManager.dataSource">
+            </div>
+
+            <div style="-ms-grid-row: 2; -ms-grid-column: 1" class="listHeader label text-listTitle immersiveColumnPadding" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: modifierSelectionManager.selectedItem.columnHeader;">
+            </div>
+
+           <div style="-ms-grid-row: 3; -ms-grid-column-span: 2;">
+               <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-member="_gallery" data-win-bind="
+                       winControl.dataSource: galleryItems;
+                       winControl.itemTemplate: itemTemplate">
+               </div>
+           </div>
+   
+        </div>
+    </div>
+
+</body>
+</html>

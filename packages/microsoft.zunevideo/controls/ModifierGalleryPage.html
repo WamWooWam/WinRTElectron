@@ -1,0 +1,57 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="/Controls/ModifierGalleryPage.js"></script>
+    <script src="/group_1_merged.js"></script>
+</head>
+<body>
+    <div class="navigationHost fillParent galleryPageHost" data-win-control="MS.Entertainment.UI.Controls.ModifierGalleryPage">
+        <div data-win-control="MS.Entertainment.UI.Framework.BindingBlock" class="fillParent">
+            <div data-ent-member="_container" data-ent-event="PanelReady: handlePanelReady; PanelReset: handlePanelReset;" class="mainHubStrip galleryHubStrip">
+                <div class="hubNavigationClippingContainer">
+                    <div class="enterPageOffset2 hubNavigationModifierContainer" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage">
+                        <div class="hubNavigationContainer" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-win-options="{
+                                popupStyle: 'primaryPanelModifierPopup',
+                                identifier: 'primary' }" data-win-bind="winControl.selectedItem: selectedHubItem;" data-win-automationid="hubNavigationContainer" data-ent-member="galleryModifier">
+                        </div>
+                    </div>  
+                    <div class="hubNavigationTitle label text-hubTitle" data-ent-member="_pageTitle" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage" data-win-bind="textContent: pageTitle">
+                    </div>
+                    <div class="hubNavigationSubTitle label text-hubSubTitle" data-ent-member="_pageSubTitle" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage" data-win-bind="textContent: pageSubTitle">
+                    </div>
+                </div>
+                <div class="hubStripScroller enterPageOffset2" role="tabpanel" data-win-automationid="hubStripScroller" data-ent-enteranimation="enterPage" data-ent-exitanimation="exitPage">
+                    <div class="panelContentContainer">
+                        <div class="panelModifierContainer">
+                            <div class="primaryPanelModifier removeFromDisplay" style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-align: start;" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-ent-member="primaryModifierControl" data-win-options="{
+                                    useSelectionManagerDataSourceAsItems: true,
+                                    popupStyle: 'primaryPanelModifierPopup',
+                                    identifier: 'primary' }" data-win-automationid="primaryPanelModifier">
+                            </div>
+                            <div class="panelModifierSubContainer" style="-ms-grid-column: 3; -ms-grid-row: 1">
+                                <div class="primaryPanelModifier removeFromDisplay" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-win-options="{
+                                        useSelectionManagerDataSourceAsItems: true,
+                                        identifier: 'secondary'
+                                    }" data-ent-member="secondaryModifierControl" data-win-automationid="secondaryPanelModifier">
+                                </div>
+                            </div>
+                        </div>
+                        <div data-ent-member="_scroller" class="panelFragmentWrapper" style="-ms-grid-column: 1; -ms-grid-row: 3;">
+                            <div class="panelFragmentContainer" data-ent-member="_panelContainer">
+                            </div>
+                            <div data-ent-member="_loadingPanel" style="-ms-grid-column: 1; -ms-grid-row: 3" class="panelFragmentLoading panelFragmentContainer hideFromDisplay">
+                                <div class="panelFragmentLoadingProgress" data-ent-member="_loadingProgress">
+                                </div>
+                            </div>
+                            <div class="panelFragmentFailed panelFragmentContainer hideFromDisplay" style="-ms-grid-column: 1; -ms-grid-row: 3" data-ent-member="_failedPanel">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.shareDialog
+{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0
+}
+.shareDialogContentRoot
+{
+    position: absolute;
+    left: 10px;
+    right: 25px;
+    top: 10px;
+    bottom: 25px;
+    font-size: 12px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto auto 1fr 30px
+}
+.messageMetadata
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    position: relative;
+    margin-bottom: 10px
+}
+.messageMetadataDescription
+{
+    position: relative;
+    max-height: 33px;
+    overflow-y: hidden;
+    text-overflow: ellipsis
+}
+.recipientEditBox
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    position: relative;
+    margin-bottom: 5px
+}
+.recipientEditBox .editInput
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 3px;
+    border-style: solid;
+    border-width: 2px;
+    position: relative;
+    width: 100%
+}
+.messageEditBox
+{
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    position: relative;
+    margin-bottom: 5px
+}
+.messageEditBox .editMultiline
+{
+    font-size: 12px;
+    text-align: left;
+    padding: 3px;
+    border-style: solid;
+    border-width: 2px;
+    position: absolute;
+    height: 100%;
+    width: 100%
+}
+.messageButtonSheet
+{
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    position: relative;
+    top: 15px;
+    right: -13px;
+    width: 100%;
+    text-align: right
+}
+.messageButton
+{
+    width: 200px;
+    display: inline;
+    font-weight: bold;
+    font-size: 12px;
+    border-width: 2px;
+    border-style: solid
+}

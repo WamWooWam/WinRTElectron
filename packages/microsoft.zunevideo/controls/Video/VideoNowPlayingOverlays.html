@@ -1,0 +1,60 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NowPlaying</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Framework/abTestingUtilities.js"></script>
+    <script src="/Framework/abTests.js"></script>
+
+    
+    <script src="/Controls/Video/VideoPostRoll.js"></script>
+
+    <script src="/Controls/NowPlaying/NowPlayingPlaylist.js"></script>
+    <script src="/Controls/TransportControls/SeekBar.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingMetadata.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingTransportControls.js"></script>
+    <script src="/Controls/ImmersiveLayout.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="nowPlayingTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingOverlaysContainer" data-ent-member="_overlaysContainer">
+            <div class="nowPlayingOverlay acc-preserveBackground acc-backgroundTransparent hideFromDisplay" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-member="_nowPlayingOverlayContainer">
+
+                <div class="homeNowPlayingPlayButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-ent-member="_homeNowPlayingPlayButton" data-win-options="{icon: MS.Entertainment.UI.Icon.play, accessibilityStringId: MS.Entertainment.UI.Controls.TransportControls.playButtonStringId}" data-win-bind="removeFromDisplay : playIconVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                <div class="seekBarControl hideFromDisplay" data-ent-member="_seekBar" data-win-control="MS.Entertainment.UI.Controls.SeekBar" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                </div>
+
+                <div class="nowPlayingTransportControls acc-backgroundTransparent" data-win-control="MS.Entertainment.UI.Controls.NowPlayingTransportControls" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-member="_transportControls" data-win-bind="hidden: seekBarManipulating MS.Entertainment.Utilities.toggleClassName;">
+                </div>
+
+                <div class="metadataContainer acc-backgroundTransparent" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                    <div data-ent-member="_metadataControl" class="nowPlayingMetadata" data-win-control="MS.Entertainment.UI.Controls.NowPlayingMetadata">
+                    </div>
+                </div>
+            </div>
+
+            <div class="nowPlayingDetailsButtonContainer hideFromDisplay" data-ent-member="_detailsButton" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.IconButton" class="hideNowPlayingButton" data-win-options="{
+                        icon: MS.Entertainment.UI.Icon.details,
+                        accessibilityStringId: String.id.IDS_NOW_PLAYING_DETAILS_BUTTON,
+                        stringId: String.id.IDS_NOW_PLAYING_DETAILS_BUTTON,
+                    }" data-win-bind="opacity10: seekBarManipulating MS.Entertainment.Utilities.toggleClassName;
+                                    winControl.icon: detailsButtonIcon" data-ent-event="click: detailsButtonClick">
+                </div>
+            </div>
+
+            
+            <div class="nowPlayingRatingImageContainer removeFromDisplay" data-ent-member="_ratingImageContainer" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                <img data-win-control="MS.Entertainment.UI.Framework.ImageControl" data-ent-member="_ratingImage" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="winControl.target: videoRatingImage" data-win-options="{
+                     clearSrcOnEmptyTarget: true,
+                     defaultimagepath: 'String.empty' }">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,157 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<html>
+<body>
+    
+    
+    
+    
+    <div data-ent-templateid="nowPlayingFullScreenVisualization"
+            data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingVisualization-imageContainer"
+             data-ent-member="_nowPlayingImageContainer">
+            <div class="imageContainer-imageSubContainer"
+                 data-ent-member="_nowPlayingImage1SubContainer">
+                <img class="imageSubContainer-image ent-delayInitialize control-image ent-control win-disposable hideFromDisplay state-emptyImage"
+                     aria-hidden="true"
+                     data-ent-member="_nowPlayingImage1"
+                     data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                     data-ent-showanimation="image-backgroundImageShow"
+                     data-ent-hideanimation="image-backgroundImageHide"
+                     data-win-options="{
+                        errorImage: MS.Entertainment.UI.ImagePaths.transparent,
+                        hide: MS.Entertainment.Utilities.doNothing,
+                        show: MS.Entertainment.Utilities.doNothing,
+                        clearSrcOnEmptyTarget: true,
+                        applyImageAsBackground: true,
+                        desiredSize: { height: 800 } }" />
+            </div>
+
+            <div class="imageContainer-imageSubContainer"
+                    data-ent-member="_nowPlayingImage2SubContainer">
+                <img class="imageSubContainer-image ent-delayInitialize control-image ent-control win-disposable hideFromDisplay state-emptyImage"
+                     aria-hidden="true"
+                     data-ent-member="_nowPlayingImage2"
+                     data-win-control="MS.Entertainment.UI.Shell.ImageControl"
+                     data-ent-showanimation="image-backgroundImageShow"
+                     data-ent-hideanimation="image-backgroundImageHide"
+                     data-win-options="{
+                        errorImage: MS.Entertainment.UI.ImagePaths.transparent,
+                        hide: MS.Entertainment.Utilities.doNothing,
+                        show: MS.Entertainment.Utilities.doNothing,
+                        clearSrcOnEmptyTarget: true,
+                        applyImageAsBackground: true,
+                        desiredSize: { height: 800 } }" />
+            </div>
+        </div>
+
+        <div class="nowPlayingVisualization-overlay">
+
+            <div class="overlay-backgroundContainer fillParent"
+                 data-ent-enteranimation="overlay-enterAnimation">
+                <div class="overlay-background fillParent"></div>
+            </div>
+
+            <div class="overlay-content">
+                <div class="content-relatedItem"
+                     data-ent-member="_relatedMediaContainer"
+                     data-ent-showanimation="relatedItem-show"
+                     data-ent-hideanimation="relatedItem-hide">
+                    <div class="relatedItem-title text-metadata"
+                         data-win-bind="
+                            textContent: relatedMediaTitle;"></div>
+
+                    <div class="relatedItem-primaryText text-heroItemTitle"
+                         data-win-bind="
+                            textContent: relatedMediaItem.name"></div>
+
+                    <div class="relatedItem-secondaryText text-nowPlayingMetadata"
+                         data-win-bind="
+                            textContent: relatedMediaItem.artist.name"></div>
+                </div>
+
+
+                <div class="content-currentItem">
+                    <div class="currentItem-primaryText text-nowPlayingFullScreenTitle"
+                         data-win-bind="
+                            textContent: dataContext.mediaItem.name;
+                            hideFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+
+                    <div class="currentItem-secondaryText">
+                        <span class="secondaryText-text secondaryText-artist textbase-nowPlayingFullScreenMetadata win-focusable"
+                              tabindex="0"
+                              role="button"
+                              data-ent-event="click: _metadataClick; keydown: _metadataKeyDown"
+                              data-win-bind="
+                                textContent: dataContext.mediaItem.artist.name;
+                                hideFromDisplay: dataContext.mediaItem.artist.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></span>
+
+                        <span class="secondaryText-text secondaryText-separator icon"
+                              data-win-bind="textContent: MS.Entertainment.UI.Icon.bullet MS.Entertainment.Formatters.formatIcon;
+                                hideFromDisplay: dataContext.mediaItem.album.name MS.Entertainment.Utilities.toggleClassNameNegate;"></span>
+
+                        <span class="secondaryText-text secondaryText-album textbase-nowPlayingFullScreenMetadata"
+                              data-win-bind="
+                                textContent: dataContext.mediaItem.album.name;
+                                hideFromDisplay: dataContext.mediaItem.album.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></span>
+                    </div>
+
+                    <div class="currentItem-duration text-nowPlayingMetadata"
+                         data-win-bind="
+                            textContent: dataContext.playbackPositionText;
+                            hideFromDisplay: dataContext.playbackPositionText MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="nowPlayingFullScreen"
+         data-win-control="WinJS.Binding.Template">
+        <div class="control-nowPlayingFullScreen fillParent hideFromDisplay"
+                data-ent-member="_animationContainer"
+                data-ent-enteranimation="nowPlayingFullScreen-show"
+                data-ent-exitanimation="nowPlayingFullScreen-hide">
+
+            <div class="control-nowPlayingVisualization nowPlayingVisualization_fullScreen fillParent hideFromDisplay"
+                 data-win-control="MS.Entertainment.UI.Controls.NowPlayingFullScreenVisualization"
+                 data-ent-loadanimation="nowPlayingFullScreenTrack-show"
+                 data-ent-unloadanimation="nowPlayingFullScreenTrack-hide"
+                 data-win-options="{debugId: 'viz1'}"
+                 data-ent-member="_visualization1"></div>
+
+            <div class="control-nowPlayingVisualization nowPlayingVisualization_fullScreen fillParent hideFromDisplay"
+                 data-win-control="MS.Entertainment.UI.Controls.NowPlayingFullScreenVisualization"
+                 data-ent-loadanimation="nowPlayingFullScreenTrack-show"
+                 data-ent-unloadanimation="nowPlayingFullScreenTrack-hide"
+                 data-win-options="{debugId: 'viz2'}"
+                 data-ent-member="_visualization2"></div>
+
+            <button class="nowPlayingFullScreen-showHiddenElements hideFromDisplay"
+                    data-ent-usage="noUserInteractionRequired"
+                    data-win-bind="label: IDS_MUSIC_NOW_PLAYING_UNHIDE_BUTTONS_NARRATOR MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></button>
+
+            <div class="nowPlayingFullScreen-commonOverlays"
+                 data-ent-enteranimation="overlay-enterAnimation">
+
+                <div class="commonOverlays-transportControls"
+                     data-win-control="MS.Entertainment.UI.Controls.TransportControls"
+                     data-ent-showanimation="fadeIn"
+                     data-ent-hideanimation="fadeOut"
+                     data-win-bind="winControl.playbackSession: dataContext.playbackSession"></div>
+
+                <div class="commonOverlays-exitButton"
+                     data-ent-usage="userInteractionRequired"
+                     data-win-control="MS.Entertainment.UI.Controls.IconButton"
+                     data-ent-event="click: _clickExitNowPlaying"
+                     data-ent-showanimation="fadeIn"
+                     data-ent-hideanimation="fadeOut"
+                     data-win-bind="winControl.text: String.id.IDS_MUSIC_NOW_PLAYING_EXIT_FULLSCREEN_ACTION MS.Entertainment.Formatters.formatStringId;"
+                     data-win-options="{ icon: MS.Entertainment.UI.Icon.screenNormal }"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

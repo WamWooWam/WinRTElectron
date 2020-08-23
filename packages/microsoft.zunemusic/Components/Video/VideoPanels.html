@@ -1,0 +1,141 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Music Panels</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+
+    
+    <script src="/Framework/Data/xhr.js"></script>
+    <script src="/Framework/Data/xboxLive.js"></script>
+    <script src="/Controls/templateSelector.js"></script>
+
+    
+    <script src="/ViewModels/Immersive/ImmersiveViewModels.js"></script>
+    <script src="/ViewModels/Video/VideoCollectionViewModel.js"></script>
+    <script src="/ViewModels/Video/VideoMarketplaceViewModel.js"></script>
+
+    
+    <link rel="Stylesheet" type="text/css" href="../../Styles/Galleries.css">
+
+    <script src="/Components/Video/VideoCollection.js"></script>
+    <script src="/Components/Marketplace.js"></script>
+    <script src="/Components/Video/VideoDetailsUiStateService.js"></script>
+
+</head>
+
+<body>
+
+    
+    <div data-ent-templateid="movieMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage marketplaceMoviePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Marketplace" data-win-options="{ clearItemsDuringQuery: true }" data-win-bind="winControl._groupModifier: dataContext.primaryModifier; 
+                            winControl._sortModifier: dataContext.secondaryModifier; 
+                            winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="tvMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage marketplaceTvPage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Marketplace" data-win-options="{ clearItemsDuringQuery: true }" data-win-bind="winControl._groupModifier: dataContext.primaryModifier; 
+                            winControl._sortModifier: dataContext.secondaryModifier; 
+                            winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="browseByActorTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.BrowseByActorHub" data-win-options="{ clearItemsDuringQuery: true, usePageScrollerChildAsAnimationRoot: true }" data-win-bind="winControl._groupModifier: dataContext.primaryModifier;
+                            winControl._viewModel: dataContext.viewModel;"> </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoSearchTemplate" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage marketplaceVideoSearchPage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.NewVideoSearch" data-win-bind="winControl._viewModel: dataContext.viewModel;
+                           noMarketplace: dataContext.noMarketplace MS.Entertainment.Utilities.toggleClassName">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="video2SearchTemplate" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage marketplaceVideoSearchPage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Video2Search" data-win-bind="winControl._viewModel: dataContext.viewModel;
+                           noMarketplace: dataContext.noMarketplace MS.Entertainment.Utilities.toggleClassName" ;="" data-win-options="{ 
+                initializeWithEmptyItems: true,
+                usePageScrollerChildAsAnimationRoot: true 
+            }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="flexHubMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Marketplace" data-win-options="{ clearItemsDuringQuery: true }" data-win-bind="winControl._groupModifier: dataContext.primaryModifier; 
+                            winControl._sortModifier: dataContext.secondaryModifier; 
+                            winControl._viewModel: dataContext.viewModel; 
+                            winControl.templateSelectorConstructor: dataContext.viewModel.templateSelectorConstructor">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoStudioAndNetworkMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Video2StudioAndNetworkGallery" data-win-options="{
+                clearItemsDuringQuery: true,
+                usePageScrollerChildAsAnimationRoot: true
+             }" data-win-bind="winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoStudioAndNetworkHubTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Marketplace" data-win-options="{ clearItemsDuringQuery: true }" data-win-bind="wincontrol._viewmodel datacontext.viewmodel;
+            ">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="featuredSetsMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Video1FeaturedSets" data-win-options="{
+                clearItemsDuringQuery: true,
+                usePageScroller: false
+             }" data-win-bind="winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="flexHub2MarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Video2FlexHub" data-win-options="{ 
+                clearItemsDuringQuery: true,
+                usePageScrollerChildAsAnimationRoot: true 
+             }" data-win-bind="winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="recommendationsMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Marketplace" data-win-options="{ clearItemsDuringQuery: true }" data-win-bind="winControl._groupModifier: dataContext.primaryModifier; 
+                            winControl._sortModifier: dataContext.secondaryModifier; 
+                            winControl._viewModel: dataContext.viewModel; 
+                            winControl.templateSelectorConstructor: dataContext.viewModel.templateSelectorConstructor">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="recommendations2MarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Video2Recommendations" data-win-options="{ 
+                clearItemsDuringQuery: true,
+                usePageScrollerChildAsAnimationRoot: true
+             }" data-win-bind="winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="watchlistMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage videoMarketplacePage" data-win-control="MS.Entertainment.Pages.Video2Watchlist" data-win-options="{ 
+                clearItemsDuringQuery: true,
+                usePageScrollerChildAsAnimationRoot: true
+             }" data-win-bind="winControl._groupModifier: dataContext.primaryModifier; 
+                            winControl._sortModifier: dataContext.secondaryModifier; 
+                            winControl._viewModel: dataContext.viewModel;">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>BottomAppBar</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/BottomAppBar.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MovieDetails_merged.js"></script>
+
+    
+    <script src="/Controls/AppBar/BottomAppBar.js"></script>
+    <script src="/Controls/thumbnailButton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/galleryThumbnail.js"></script>
+    <script src="/Controls/TransportControls/SeekBar.js"></script>
+    
+</head>
+<body>
+    <div data-ent-templateid="bottomAppBarTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="bottomAppBarContainer win-ui-dark acc-keyboardFocusTarget" data-ent-member="container" data-win-automationid="bottomAppBarContainer" data-ent-event="focusin: _appBarFocused" data-win-bind="videoVisible : thumbnailVisible MS.Entertainment.Utilities.toggleClassName" data-ent-areaname="bottomAppBar">
+                   
+            <div class="appBarActionList" style="-ms-grid-column: 1; -ms-grid-row: 4;" data-ent-member="_actionListContainer"></div>
+
+            <div class="appBarTransportControlsContainer" data-win-bind="removeFromDisplay : appBarTransportControlsContainerVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                <div class="appBarNowPlayingMetadataContainer" style="-ms-grid-column: 1" data-ent-member="_metadataContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{controlName: 'appBarNowPlayingMetadataContainer'}" data-win-bind="winControl.visibility: appBarNowPlayingVisible">
+                </div>
+                <div style="-ms-grid-column: 2" data-ent-member="_transportControlsContainer">
+                </div>
+                <div class="hideFromDisplay" style="-ms-grid-column: 2" data-ent-member="_upsellContainer">
+                </div>               
+            </div>
+
+            
+                <div tabindex="-1" aria-hidden="true" role="menuitem" data-ent-member="_popOverFocusHelper"></div>
+
+            <div class="appBarNowPlayingProgressContainer" style="-ms-grid-column: 2; -ms-grid-column-span: 2; -ms-grid-row: 2;" data-win-bind="removeFromDisplay : appBarNowPlayingProgressVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                <div class="appBarNowPlayingProgressFill" data-win-bind="style.width : progressPercent;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="bottomAppBarNowPlayingMetadataTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="appBarNowPlaying win-focusable" data-ent-member="_appBarNowPlaying" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-options="{controlName: 'appBarNowPlaying'}" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="style.width: nowPlayingWidth" data-ent-event="click: thumbnailClick" role="button" tabindex="0">
+
+            <button class="appBarNowPlayingThumbnail imageButton" type="button" tabindex="-1" style="-ms-grid-column: 1; -ms-grid-row: 1;" data-ent-member="_nowPlayingThumbnail" data-win-bind="removeFromDisplay : thumbnailVisible MS.Entertainment.Utilities.toggleClassNameNegate">
+            </button>
+
+            <div class="appBarNowPlayingArtContainer">
+                <img class="appBarNowPlayingArt" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: nowPlayingImageMediaItem;
+                        removeFromDisplay : artVisible MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{ desiredImageSize: { height: 100, width: 100 } }" data-ent-showanimation="fadeIn">
+            </div>
+                
+            <div class="appBarNowPlayingMetadata" style="-ms-grid-column: 3; -ms-grid-row: 1;">
+
+                <div class="appBarNowPlayingMetadataTitle label text-small" style="-ms-grid-row: 1;" data-ent-member="_titleText">
+                </div>
+                        
+                <div class="metadataArtistAlbum label text-metadata" style="-ms-grid-row: 2;" data-ent-member="_metadataArtistAlbumNameText">
+                </div>
+
+                <div class="metadataSeriesTitle label text-metadata" style="-ms-grid-row: 3;" data-ent-member="_metadataSeriesTitleText">
+                </div>
+
+                <div class="positionDurationContainer" style="-ms-grid-row: 4;" data-win-bind="hideFromDisplay : positionDurationVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                    <div class="metadataPosition label text-metadata text-fixedWidthNumerals" style="-ms-grid-column: 1;" data-win-bind="textContent: positionText;">
+                    </div>
+                    <div class="metadataDuration label text-metadata text-fixedWidthNumerals" style="-ms-grid-column: 2;" data-win-bind="textContent: durationText;">
+                    </div>
+                </div>
+
+                <a style="-ms-grid-row: 5;" class="nowPlayingMoreInfoLink inlineCaretButton acc-keyboardFocusTarget" data-win-automationid="nowPlayingMoreInfoLink" data-win-bind="href: moreInfoClickUrl;
+                        removeFromDisplay: moreInfoClickUrl MS.Entertainment.Utilities.toggleClassNameOnEmptyString;" data-ent-event="click: onMoreInfoClick" target="_blank">
+                    <div class="inlineCaretButtonText" style="-ms-grid-column: 1;" data-win-bind="textContent: moreInfoLinkText"></div>
+                    <div class="inlineCaretButtonIcon" style="-ms-grid-column: 2;" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;"></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

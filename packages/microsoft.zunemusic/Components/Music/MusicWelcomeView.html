@@ -1,0 +1,33 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<body>
+
+    
+    
+    
+    <div data-ent-templateid="welcomePanelTwoColumnTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="welcomePanelContainer">
+
+            <button class="closeButton"
+                type="button"
+                data-ent-member="closeButton"
+                data-ent-event="click: closeButtonClicked"></button>
+
+            <div class="welcomePanelHeader" 
+                 data-win-bind="innerText: dataContext.title"></div>
+
+            <div class="welcomePanelDetails text-xSmall text-breakWord" 
+                 data-win-bind="innerText: dataContext.details"></div>
+
+            <button class="welcomePanelButton"
+                type="button"
+                data-ent-member="welcomePanelButton"
+                data-ent-event="click: welcomePanelButtonClicked"
+                data-win-bind="textContent: dataContext.actionText;"></button>
+
+        </div>
+    </div>
+
+</body>
+</html>

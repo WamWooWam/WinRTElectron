@@ -1,0 +1,123 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Music Panels</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+
+    
+    <script src="/Framework/Data/xhr.js"></script>
+    <script src="/Framework/Data/xboxLive.js"></script>
+    <script src="/Controls/templateSelector.js"></script>
+
+        
+    <script src="/viewModels/collectionMarketplaceQuery.js"></script>
+    <script src="/ViewModels/Music/LegacyMusicMarketplaceViewModel.js"></script>
+
+    
+    <link rel="Stylesheet" type="text/css" href="../../styles/Galleries.css">
+    
+    <script src="/Components/Playback/Playlist/NewPlaylistOverlay.js"></script>
+    <script src="/Components/Marketplace.js"></script>
+    <script src="/Components/Music/MusicCollection.js"></script>
+    <script src="/Components/Search/SearchView.js"></script>
+    <script src="/Components/Search/MusicSearchView.js"></script>
+</head>
+
+<body>
+    
+    <div data-ent-templateid="musicCollectionTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionMusicGallery" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicCollectionAlbumsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionMusicGallery mediatype-album" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'albums' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicCollectionArtistsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionMusicGallery collectionArtistGallery mediatype-artist" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'artists' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicCollectionSongsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage songsGallery win-ui-dark" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'songs' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicCollectionPlaylistsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionPlaylistGallery mediatype-playlist" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'playlists' }">
+        </div>
+    </div>
+
+    <div data-ent-templateid="musicCollectionSmartDJsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionSmartDJGallery mediatype-smartDJ" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'smartDJs' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicCollectionMusicVideosTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionMusicGallery" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'musicVideos' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicMarketplaceTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceBase" data-win-bind="winControl._viewModel: dataContext.viewModel">
+        </div>
+    </div>
+    
+    
+    <div data-ent-templateid="musicMarketplaceListViewModelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceListViewModelGallery" data-win-bind="winControl._viewModel: dataContext.viewModel">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicSearchTemplate" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage musicPage marketplaceMusicPage musicPage_searchGallery" data-win-control="MS.Entertainment.Pages.MusicSearch" data-win-bind="winControl._viewModel: dataContext.viewModel">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="artistAlbums" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceBase" data-win-bind="winControl._viewModel: dataContext.viewModel"></div></div>
+    
+    
+    
+    <div data-ent-templateid="artistMusicVideos" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceBase" data-win-bind="winControl._viewModel: dataContext.viewModel"></div></div>
+    
+
+    
+    <div data-ent-templateid="albumMusicVideos" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceBase" data-win-bind="winControl._viewModel: dataContext.viewModel"></div></div>
+    
+    
+    
+    <div data-ent-templateid="artistActionSearch" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceBase" data-win-bind="winControl._viewModel: dataContext.viewModel" data-win-options="{ view: 'artistActionSearch' }">
+        </div>
+    </div>
+    
+    
+    <div data-ent-templateid="selectPlaylist" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage musicPage collectionPlaylistGallery mediatype-playlist" data-win-control="MS.Entertainment.Pages.MusicCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'playlists' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicFlexHubTemplate" data-win-control="WinJS.Binding.Template">  
+        <div class="marketplacePage musicPage marketplaceMusicPage" data-win-control="MS.Entertainment.Pages.MarketplaceBase" data-win-bind="winControl._viewModel: dataContext.viewModel; winControl.templateSelectorConstructor: dataContext.viewModel.templateSelectorConstructor">
+        </div>
+    </div>
+
+</body>
+
+</html>

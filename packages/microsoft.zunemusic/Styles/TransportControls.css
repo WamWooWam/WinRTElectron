@@ -1,0 +1,110 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.appBarTransportControlsXboxContainer .appBarIconButton
+{
+    overflow: visible
+}
+.appBarTransportControlsMessageTitle, .appBarTransportControlsMessageSubTitle
+{
+    margin: 0 10px 0 0
+}
+.nowPlayingTransportControlsContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 33% 1fr;
+    -ms-grid-rows: auto;
+    margin-left: 0;
+    margin-right: 0;
+    direction: ltr
+}
+.musicOverlay .nowPlayingTransportControlsContainer
+{
+    -ms-grid-columns: 80px 80px 80px 80px;
+    margin-left: 60px;
+    margin-right: 60px;
+    width: 200px
+}
+html[dir=rtl] .musicOverlay .nowPlayingTransportControlsContainer
+{
+    margin-right: 140px
+}
+.nowPlayingTransportControls
+{
+    -ms-grid-row-align: center;
+    -ms-grid-row: 2
+}
+.musicOverlay .nowPlayingTransportControls
+{
+    -ms-grid-row: 3;
+    -ms-grid-row-align: end
+}
+.nowPlayingTransportControlsPlayPauseButton
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    width: 131px;
+    height: 131px;
+    border: 0;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center
+}
+.nowPlayingTransportControlsNext
+{
+    -ms-grid-column: 3
+}
+.nowPlayingTransportControlsPlayPauseButton .label
+{
+    visibility: hidden
+}
+.nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command
+{
+    -ms-grid-columns: 131px 1fr
+}
+.musicOverlay .nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command, .videoAd .nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command
+{
+    -ms-grid-columns: auto 1fr
+}
+.nowPlayingContainer:not(.musicTrack) .nowPlayingTransportControlsSkipButton, .games .nowPlayingContainer .nowPlayingTransportControlsVolume
+{
+    display: none;
+    width: 65px;
+    height: 65px;
+    border: 0;
+    background-position-x: center;
+    outline: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center
+}
+.musicOverlay .nowPlayingTransportControlsPlayPauseButton, .musicOverlay .nowPlayingTransportControlsSkipButton
+{
+    width: 40px;
+    height: 40px;
+    -ms-grid-column-align: start
+}
+.nowPlayingTransportControlsPlayPauseButton:disabled, .nowPlayingTransportControlsSkipButton:disabled
+{
+    opacity: .4
+}
+.nowPlayingTransportControlsPlayPauseButton:hover, .nowPlayingTransportControlsPrevious:hover
+{
+    opacity: .9
+}
+.nowPlayingTransportControlsPause .win-commandimage:before
+{
+    content: ""
+}
+.nowPlayingTransportControlsPlay .win-commandimage:before
+{
+    content: ""
+}
+@media screen and (-ms-high-contrast)
+{
+    .nowPlayingTransportControlsSkipButton .win-commandicon.win-commandring
+    {
+        border-radius: 0%
+    }
+}

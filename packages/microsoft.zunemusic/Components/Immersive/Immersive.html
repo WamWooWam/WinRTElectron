@@ -1,0 +1,109 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Immersive</title>
+        <link rel="stylesheet" type="text/css" href="/styles/ImmersiveDetails.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/Immersive.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/Galleries.css">
+        <link rel="stylesheet" type="text/css" href="/animations/ImmersiveDetailsAnimations.css">
+        <script src="/Controls/Thumbnailbutton.js"></script>
+        <script src="/Controls/MediaItemThumbnail.js"></script>
+        <script src="/Controls/GalleryThumbnail.js"></script>
+        <script src="/Components/Marketplace.js"></script>
+
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/NowPlaying_merged.js"></script><script src="/CollectionPageDelayedScripts_merged.js"></script>
+        <script src="/Controls/app2/PageScroller.js"></script>
+        <script src="/Controls/ImmersiveLayout.js"></script>
+
+        <script src="/Components/Immersive/Shared/BaseImmersiveSummary.js"></script>
+        <script src="/Components/Immersive/Shared/BaseImmersiveOverviewSummary.js"></script>
+        <script src="/Components/Immersive/Shared/Hero.js"></script>
+        <script src="/Components/Immersive/Shared/RelatedItems.js"></script>
+        <script src="/Components/Immersive/Shared/RelatedGridItems.js"></script>
+        <script src="/ViewModels/Immersive/ImmersiveViewModels.js"></script>
+
+        
+        <script src="/Components/Immersive/Music/ArtistOverview.js"></script>
+        <script src="/ViewModels/CollectionMarketplaceQuery.js"></script>
+        <script src="/ViewModels/music/LegacyMusicMarketplaceViewModel.js"></script>
+        <script src="/ViewModels/Music/ArtistImmersiveViewModel.js"></script>
+        <script src="/ViewModels/Music/ArtistAlbumsViewModel.js"></script>
+        <script src="/Controls/NowPlaying/NowPlayingPlaylistMusic2Templates.js"></script>     
+        <script src="/Components/Immersive/Music2/Music2Hero.js"></script>
+
+        
+        <script src="/framework/data/augmenters/videoAugmenters.js"></script>
+        <script src="/Components/Immersive/Video/MovieOverview.js"></script>
+        <script src="/Components/Immersive/Video/TVOverview.js"></script>
+        <script src="/ViewModels/Video/MovieImmersiveViewModel.js"></script>
+        <script src="/ViewModels/Video/TvImmersiveViewModel.js"></script>
+        <script src="/ViewModels/Video/VideoMarketplaceViewModel.js"></script>
+        <script src="/Components/Immersive/Video/CastAndCrew.js"></script>
+        <script src="/Components/Video/CriticReviewControls.js"></script>
+        <script src="/Components/Video/MetaCriticReview.js"></script>
+        <script src="/Components/Immersive/Video/Episodes.js"></script>
+        <script src="/Components/Immersive/Video/Extras.js"></script>
+        <script src="/Components/Immersive/Video/VideoHero.js"></script>
+        <script src="/Components/Immersive/Video/MovieHero.js"></script>
+        <script src="/Components/Immersive/Video/TvHero.js"></script>
+        <script src="/Components/Video/VideoDetailsUiStateService.js"></script>
+
+    </head>
+    <body>
+        <div data-ent-templateid="immersiveMediaPageTitle" data-win-control="WinJS.Binding.Template">
+            <div class="immersiveMediaPageTitle">
+                <div class="immersiveHeroPrimaryText text-immersiveHeroTitle" data-win-bind="textContent: mediaName"></div>
+                </div>
+        </div>
+
+        <div data-ent-templateid="immersivePageTitle" data-win-control="WinJS.Binding.Template">
+            
+            <div class="immersiveMediaPageTitle">
+                <div class="immersiveHeroPrimaryText text-immersiveHeroTitle" data-win-bind="textContent: frameViewModel.primaryText MS.Entertainment.Utilities.useShowHideAnimationsOnValueChange" data-ent-showanimation="enterPage"></div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="immersiveSecondaryPageTitle" data-win-control="WinJS.Binding.Template">
+            <div class="immersiveSecondaryText text-panelHeader" data-win-bind="textContent: frameViewModel.secondaryText"></div>
+        </div>
+
+        <div data-ent-templateid="immersiveTemplate" data-win-control="WinJS.Binding.Template">            
+            <div class="immersiveDetailsScrollContainer" data-ent-member="_scroller" role="region">
+                <img class="immersiveDetails-backgroundImage" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: backgroundImageUri;" data-ent-showanimation="immersiveBackgroundImageShow" data-win-options="{
+                                imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                desiredImageSize: MS.Entertainment.Utilities.immersiveBackgroundArtSize,
+                                applyImageAsBackground: true,
+                                defaultImagePath: 'String.empty'}">
+                <div class="immersiveDetails-backgroundImage_gradient"></div>
+                
+                <div class="immersiveDetailsContainer hideBackground win-ui-dark" role="region" aria-label="" data-win-options="{ useParentAsScrollContainer: true }" data-ent-member="immersiveControl" data-win-control="MS.Entertainment.UI.Controls.ImmersiveLayout" data-ent-hideanimation="immersiveDetailsHide" data-ent-showanimation="immersiveDetailsShow" data-win-bind="winControl.dataSource: frameViewModel.frames">
+                </div>               
+            </div>
+            <div class="immersiveTitleContainer" data-ent-member="_titleContainer"></div>
+            <div data-ent-member="previousPageScroller" class="immersivePreviousPage removeFromDisplay voice-logicalTarget win-voice-disableoverride" data-win-bind="voiceConfidence: _previousVoiceConfidence;
+                        voicePhrase: _previousVoicePhrase; 
+                        voicePhoneticPhrase: _previousVoicePhoneticPhrase" data-win-voice="{
+                         phrase: getContext('element').voicePhrase,
+                         confidence: getContext('element').voiceConfidence,
+                         targetElement: select('.voice-visualTarget'),
+                         pronunciation: getContext('element').voicePhoneticPhrase,
+                 }"> 
+                <div class="voice-visualTarget text-small immersivePreviousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;">
+                </div>
+            </div>
+
+            <div data-ent-member="nextPageScroller" class="immersiveNextPage removeFromDisplay voice-logicalTarget" data-win-bind="voiceConfidence: _nextVoiceConfidence;
+                        voicePhrase: _nextVoicePhrase; 
+                        voicePhoneticPhrase: _nextVoicePhoneticPhrase" data-win-voice="{
+                         phrase: getContext('element').voicePhrase,
+                         confidence: getContext('element').voiceConfidence,
+                         targetElement: select('.voice-visualTarget'),
+                         pronunciation: getContext('element').voicePhoneticPhrase,
+                 }"> 
+                <div class="voice-visualTarget text-small immersiveNextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;">
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

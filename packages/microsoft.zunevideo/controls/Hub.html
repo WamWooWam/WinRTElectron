@@ -1,0 +1,64 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/HubStripAnimations.css">
+        <title>Hub Control Template</title>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+
+        <script src="/Controls/hub.js"></script>
+        <script src="/Controls/FailedPanel.js"></script>
+
+        
+        <script src="/Animations/HubStripAnimations.js"></script>
+    </head>
+    <body>
+        <div class="hubControl" data-win-control="MS.Entertainment.UI.Controls.Hub" data-win-bind="winControl.panels: panels; winControl.id: id"></div>    
+            
+        <div data-ent-templateid="hubControlTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="mainHubStripHub" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: panels" data-win-options="{itemTemplate: '/Controls/Hub.html#panelTemplate', containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow}">
+            </div>
+        </div>
+
+        <div data-ent-templateid="panelTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="panel" data-win-control="MS.Entertainment.UI.Controls.Panel" data-win-bind="winControl.fragmentUrl: fragmentUrl; winControl.title: title; winControl.dataContext: dataContext; winControl.hub: hub; winControl.options: options; winControl.id: id;">
+            </div>
+        </div>
+
+        <div data-ent-templateid="panelControlTemplate" data-win-control="WinJS.Binding.Template">     
+            <div class="panelContainer" data-ent-event="
+                    PanelReady: handlePanelReady;
+                    PanelReset: handlePanelReset" data-ent-member="panelContainer">
+                <div class="panelContentContainer" data-ent-member="panelContentContainer" role="group">
+                    <div class="panelTitle" style="-ms-grid-column: 1; -ms-grid-row: 1" data-win-control="MS.Entertainment.UI.Controls.PanelHeaderActionLink" data-win-options="{animateHubOnTransition: true}" data-win-bind="winControl.text: title; winControl.action: panelAction.action; removeFromDisplay: panelAction.action MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-member="titleLabel">
+                    </div>
+                    <div class="panelModifierContainer" style="-ms-grid-column: 1; -ms-grid-row: 1">                        
+                        <div class="primaryPanelModifier removeFromDisplay" style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-align: start" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-ent-member="primaryModifierControl" data-win-options="{popupStyle: 'primaryPanelModifierPopup', identifier: 'primary'}" data-win-automationid="primaryPanelModifier">
+                        </div>
+                        <div class="panelModifierSubContainer" style="-ms-grid-column: 3; -ms-grid-row: 1">                            
+                            <div class="primaryPanelModifier removeFromDisplay" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-win-options="{identifier: 'secondary', descriptionLabel: String.id.IDS_MODIFIER_PREFIX_SORTBY}" data-ent-member="secondaryModifierControl" data-win-automationid="secondaryPanelModifier">
+                            </div>
+                            <div class="tertiaryPanelModifier removeFromDisplay" style="-ms-grid-column: 5; -ms-grid-row: 1" data-win-control="MS.Entertainment.UI.Controls.ToggleModifier" data-win-options="{identifier: 'tertiary', descriptionLabel: String.id.IDS_MODIFIER_PREFIX_VIEW}" data-ent-member="tertiaryModifierControl" data-win-automationid="tertiaryPanelModifier">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panelFragmentWrapper" style="-ms-grid-column: 1; -ms-grid-row: 3" data-win-bind="noShadow: showShadow MS.Entertainment.Utilities.toggleClassNameNegate">
+                        <div class="panelFragmentContainer" data-ent-member="panelFragmentContainer">
+                        </div>
+                        <div data-ent-member="loadingControl" style="-ms-grid-column: 1; -ms-grid-row: 3" class="panelFragmentLoading panelFragmentContainer">
+                            <div class="panelFragmentLoadingProgress" data-ent-member="loadingLabel">
+                            </div>   
+                        </div>
+                        <div class="panelFragmentFailed panelFragmentContainer" style="-ms-grid-column: 1; -ms-grid-row: 3" data-ent-member="failedControl">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

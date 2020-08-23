@@ -1,0 +1,37 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Rental Options Dialog Template</title>   
+        <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_1_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="rentalOptionsDialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="template-rentalOptionsDialog">
+
+                <div class="rentalOptionsDialog-title text-dialogHeader" data-win-bind="innerText: movieTitle;" data-win-automationid="wecRentalOptionsDialogTitle"></div>
+
+                <div class="rentalOptionsDialog-option option_streaming">
+                    <label class="option-label">
+                        <input class="label-input" type="radio" name="deliveryFormat" value="Streaming" data-ent-member="_streaming" data-ent-event="change: _onDeliveryFormatChange" data-win-automationid="wecRentalOptionsDialogStreamRadioButton">
+
+                        <span class="label-primaryText text-subHeader2" data-win-bind="innerText: String.id.IDS_VIDEO_MOVIE_RENTAL_DIALOG_STREAMING_OPTION MS.Entertainment.Formatters.formatStringId;" data-win-automationid="wecRentalOptionsDialogStreamRadioLabel"></span>
+                    </label>
+                </div>
+
+                <div class="rentalOptionsDialog-option option_download">
+                    <label class="option-label">
+                        <input class="label-input" type="radio" name="deliveryFormat" value="Download" data-ent-member="_download" data-ent-event="change: _onDeliveryFormatChange" data-win-automationid="wecRentalOptionsDialogDownloadRadioButton">
+
+                        <span class="label-primaryText text-subHeader2" data-win-bind="innerText: String.id.IDS_VIDEO_MOVIE_RENTAL_DIALOG_DOWNLOAD_OPTION MS.Entertainment.Formatters.formatStringId;" data-win-automationid="wecRentalOptionsDialogDownloadRadioLabel"></span>
+                    </label>
+                </div>
+
+                <div class="rentalOptionsDialog-primarytext text-metadata" data-win-bind="innerText: String.id.IDS_VIDEO_MOVIE_RENTAL_DIALOG_DISCLAIMER_LINE1 MS.Entertainment.Formatters.formatStringId;" data-win-automationid="wecRentalOptionsDialogDescription1"></div>
+
+                <div class="rentalOptionsDialog-secondarytext text-metadata" data-win-bind="innerText: String.id.IDS_VIDEO_MOVIE_RENTAL_DIALOG_DISCLAIMER_LINE2 MS.Entertainment.Formatters.formatStringId;" data-win-automationid="wecRentalOptionsDialogDescription2"></div>
+            </div>
+        </div>
+    </body>
+</html>

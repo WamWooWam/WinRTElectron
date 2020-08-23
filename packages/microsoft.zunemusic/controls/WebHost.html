@@ -1,0 +1,36 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>WebHost Control Template</title>
+
+        
+        <script src="/main_merged.js"></script>
+        <script src="/Controls/LoadingControl.js"></script>
+        <script src="/Controls/WebHost.js"></script>
+
+    </head>
+    <body>
+        <div data-ent-templateid="webHostPurchasePromptTemplate" data-win-control="WinJS.Binding.Template">
+            <span data-win-bind="innerText: description;" data-win-automationid="webHostPurchasePromptMessage"></span>
+            <br>
+            <br>
+            
+            <div data-ent-member="promptOnPurchaseContainer" class="genericContainer">
+                <div data-ent-member="promptOnPurchase" data-win-control="WinJS.UI.ToggleSwitch" class="webHostPromptOnPurchaseToggle">
+                </div>
+            </div>
+        </div>
+
+        
+         <div data-ent-templateid='webHostTemplate' data-win-control="WinJS.Binding.Template">
+             
+             <iframe class="webHostIFrame" sandbox="allow-scripts allow-forms allow-same-origin" name="webHostIFrame" id="webHostIFrame" data-ent-member="_webIFrame" src=""></iframe>
+            <div>
+                <progress data-ent-member="_webHostWaitCursor" data-win-control="MS.Entertainment.UI.Controls.LoadingControl" data-win-options="{width: '60px', height: '60px'}" style="position: absolute; top: calc(50% - 30px); left: calc(50% - 30px)"></progress>
+            </div>
+
+         </div>
+    </body>
+</html>

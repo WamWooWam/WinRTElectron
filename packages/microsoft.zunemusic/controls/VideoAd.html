@@ -1,0 +1,120 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Video Ad Template</title>
+    </head>
+    <body>
+        <div data-ent-templateid="videoAdTemplate" 
+             data-win-control="WinJS.Binding.Template">
+
+            <div class="videoAd noFreeze" style="background-color: black;"                 
+                 data-ent-event="pointerdown: onPointerDown; pointermove: onPointerMove; keydown: onKeyDown">
+
+                
+                <video width="100%" height="100%"
+                    autoplay="autoplay"
+                    data-ent-member="video"
+                    data-win-bind="src: adVideoUrl; muted: tagMuted; volume: tagVolume"                                   
+                    data-ent-event="playing: onPlaybackPlaying; ended: onPlaybackEnded; error: onPlaybackError; timeupdate: onPlaybackTimeUpdate;">
+                </video>
+
+                
+                <div class="videoAdOverlay win-ui-dark acc-preserveBackground"
+                    data-ent-member="overlay"
+                    data-win-control="MS.Entertainment.UI.Framework.UserControl"
+                    data-ent-hideanimation="nowPlayingControlsFadeOut"
+                    data-ent-showanimation="nowPlayingControlsFadeIn"
+                    role="dialog"
+                    aria-label="">
+
+                    
+                    <div class="videoAdCloseButton"
+                         style="-ms-grid-row: 1"
+                         data-win-automationid="adClose"
+                         data-win-control="MS.Entertainment.UI.Controls.IconButton"
+                         data-win-options="{icon: MS.Entertainment.UI.Icon.close, tabIndex: 3, accessibilityStringId: String.id.IDS_CLOSE_BUTTON}"
+                         data-ent-event="click: onCloseClick">
+                    </div>
+
+                    <div class="videoAdOverlayContentContainer"
+                         style="-ms-grid-row: 2;">
+
+                        
+                        <div class="videoAdText"
+                             style="-ms-grid-column: 2;">
+                            <div style="-ms-grid-row: 1;"
+                                 class="videoAdAdvertisementText"
+                                 data-win-bind="textContent: String.id.IDS_ADVERTISEMENT MS.Entertainment.Formatters.formatStringId;"></div>
+
+                        <div class="text-fixedWidthNumerals"
+                             style="-ms-grid-row: 2; -ms-grid-column: 1;"
+                             data-ent-member="timeLabel"
+                             data-win-bind="textContent: timeRemaining; removeFromDisplay: timeRemaining MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                            <a style="-ms-grid-row: 3;"
+                               class="videoAdLearnMoreLink inlineCaretButton acc-keyboardFocusTarget "
+                               tabindex="1"
+                               data-win-automationid="adLearnMoreLink" 
+                               data-win-bind="href: adClickUrl;
+                                    removeFromDisplay: adClickUrl MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"
+                               data-ent-event="click: onClickLearnMore; keydown: onKeyDownLearnMore">
+                                <div class="inlineCaretButtonText"
+                                     style="-ms-grid-column: 1;"
+                                     data-win-bind="textContent: String.id.IDS_VIDEO_AD_LEARN_MORE MS.Entertainment.Formatters.formatStringId"></div>
+                                <div class="inlineCaretButtonIcon"
+                                     style="-ms-grid-column: 2;"
+                                     data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;"></div>
+                            </a>
+
+                            <a style="-ms-grid-row: 4;"
+                               class="videoAdReasonLink inlineCaretButton acc-keyboardFocusTarget"
+                               tabindex="1"
+                               target="_blank"
+                               data-win-automationid="videoAdReasonLink" 
+                               data-win-bind="href: adReasonClickUrl;
+                                    removeFromDisplay: adReasonClickUrl MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"
+                               data-ent-event="click: onClickAdReason">
+                                <div class="inlineCaretButtonText"
+                                     style="-ms-grid-column: 1;"
+                                     data-win-bind="textContent: String.id.IDS_MUSIC_STREAMING_AD_DESC_LINK MS.Entertainment.Formatters.formatStringId"></div>
+                                <div class="inlineCaretButtonIcon"
+                                     style="-ms-grid-column: 2;"
+                                     data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;"></div>
+                            </a>
+                        </div>
+
+                        
+                        <div class="playPauseIconButton adIconButton"
+                             style="-ms-grid-column: 3;"
+                             data-ent-member="playPauseButton"
+                             data-win-automationid="adPlayPause" 
+                             data-win-control="MS.Entertainment.UI.Controls.IconButton"
+                             data-win-options="{tabIndex: 4}"
+                             data-win-bind="
+                                removeFromDisplay: playing MS.Entertainment.Utilities.toggleClassNameNegate;
+                                nowPlayingTransportControlsPause: paused MS.Entertainment.Utilities.toggleClassNameNegate;
+                                nowPlayingTransportControlsPlay:  paused MS.Entertainment.Utilities.toggleClassName"
+                             data-ent-event="click: onPlayPauseClick">
+                        </div>
+
+                        
+                        <div class="adIconButton"
+                             style="-ms-grid-column: 4;"
+                             data-win-automationid="adUpsell"
+                             data-win-control="MS.Entertainment.UI.Controls.IconButtonTwoLine"
+                             data-win-options="{
+                                icon: MS.Entertainment.UI.Icon.xboxXenonLogo,
+                                stringId: String.id.IDS_VIDEO_AD_UPSELL_LINE_1,
+                                subText: String.id.IDS_VIDEO_AD_UPSELL_LINE_2,
+                                tabIndex: 2,
+                                accessibilityStringId: String.id.IDS_VIDEO_AD_UPSELL_LINE_2 }"
+                             data-ent-event="click: onClickUpSell"
+                             data-ent-member="upsellButton">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

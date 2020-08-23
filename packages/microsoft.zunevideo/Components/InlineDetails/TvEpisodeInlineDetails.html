@@ -1,0 +1,62 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Music Albums Inline Details</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Controls/Thumbnailbutton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+    <script src="/Components/InlineDetails/TvEpisodeInlineDetails.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../../Controls/Controls.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/InlineDetails.css">
+</head>
+<body>
+
+    
+    
+    
+    <div data-ent-templateid="tvEpisodeInlineTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvEpisodeInlineTemplate">
+        <div class="inlineDetailsTvEpisode">
+            <div class="inlineDetailsTvEpisodeNumber text-listItem" data-win-bind="textContent: formattedEpisodeNumber; 
+                               hideFromDisplay: episodeNumber MS.Entertainment.Utilities.toggleClassNameNegate;
+                               inlineDetailsPrimaryBold: libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber" style="-ms-grid-column: 2; -ms-grid-row: 1"></div>
+            <div class="inlineDetailsTvEpisodeTitle text-listItem" data-win-bind="textContent: name; 
+                               inlineDetailsPrimaryBold: libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber" style="-ms-grid-column: 4; -ms-grid-row: 1"></div>
+            <div class="mediaStatusDownloadContainer" data-win-options="{
+                    enableDelayInitialization: true,
+                    preventHideDuringInitialize: true,
+                    allowAnimations: false }" data-win-control="MS.Entertainment.UI.Controls.TvEpisodeDownloadStatus" data-win-bind="winControl.mediaInstance: instance;
+                                winControl.alternateText: releaseDate MS.Entertainment.Formatters.formatShortDate;" style="-ms-grid-column: 4; -ms-grid-row: 2;">
+                <span class="mediaStatusIconContainer text-metadata"></span>
+                <span class="removeFromDisplay mediaStatusAriaLabelContainer text-metadata"></span>
+                <span class="mediaStatusAlternateTextContainer text-metadata"></span>
+            </div>
+            <div class="inlineDetailsTvEpisodeDuration text-metadata" data-win-bind="textContent: duration MS.Entertainment.Formatters.formatDurationFromDate; 
+                                removeFromDisplay: _percentageWatched MS.Entertainment.Utilities.toggleClassName;
+                                inlineDetailsPrimaryBold: libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber" style="-ms-grid-column: 6; -ms-grid-row: 1"></div>
+            <div class="watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-bind="winControl.viewModel: instance;" style="-ms-grid-column: 6; -ms-grid-row: 2; -ms-grid-column-span: 1; -ms-grid-column-align: stretch">
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="tvEpisodeInlineDetailsTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvEpisodeInlineDetailsTemplate">
+        <div data-ent-member="fragmentContainer">
+            
+            <div class="inPlaceDetailsItemActions" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: smartBuyStateEngine.currentButtons" data-win-options="{
+                    defaultButtonClass: 'inlineDetailsOverviewActionButtonEpisode',
+                    tabIndex: 1}">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

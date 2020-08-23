@@ -1,0 +1,85 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Demo Featured</title>
+    <script src="/Components/Music/MusicDemoModel.js"></script>
+    <script src="/Components/InlineDetails/MusicInlineDetailsDemo.js"></script>
+</head>
+<body>
+
+    
+    
+    
+    <div data-ent-templateid="featuredMusicViewDemoTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="featuredMusicViewDemoTemplate">
+
+        <div class="grid_2RowHeroTopDemo demo">
+    
+            
+            <div style="-ms-grid-column: 1; -ms-grid-row: 1; -ms-grid-column-span: 5;" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item0">
+                <div class="thumbnailButton win-focusable" role="button" aria-atomic="true" data-ent-showanimation="fadeIn" onclick="MS.Entertainment.Music.MusicDemo.musicFeaturedClick()">                
+                    <div class="imageClippingContainer" aria-hidden="true">
+                        
+                        <img class="heroImage" data-win-bind="src: MS.Entertainment.UI.ImagePaths.musicDemoFeaturedHero MS.Entertainment.Formatters.setPropertyFromStatic">
+                    </div>
+                    
+                    <div class="content heroItem">
+                        <div class="primaryText label text-xxLarge" data-win-bind="textContent: String.id.IDS_DEMO_MUSIC_MARKETPLACE_FIRST_LINE MS.Entertainment.Formatters.formatStringId"></div>     
+                        <div class="secondaryText label text-medium" data-win-bind="textContent: String.id.IDS_DEMO_MUSIC_MARKETPLACE_SECOND_LINE MS.Entertainment.Formatters.formatStringId"></div>                             
+                    </div>
+                    <div class="heroItemOverlay"></div>
+                </div>
+            </div>
+
+            
+            <div style="-ms-grid-column: 1; -ms-grid-row: 3" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item1">
+                <div class="thumbnailButton win-focusable" role="button" aria-atomic="true" data-ent-showanimation="fadeIn" onclick="MS.Entertainment.Music.MusicDemo.musicFeaturedClick()">                
+                    <div class="imageContainer" aria-hidden="true">
+                        
+                            <img class="imageHolder" data-win-bind="src: MS.Entertainment.UI.ImagePaths.musicDemoFeaturedSmall1 MS.Entertainment.Formatters.setPropertyFromStatic" style="width: 220px; height: 165px;">
+                    </div>
+                    
+                    <div class="content">
+                         <div class="textContainer">
+                             <div class="primaryTextBg"></div>
+                             <div class="primaryText label text-cardTitle">50 Cent</div>
+                        </div>                            
+                    </div>
+                </div>
+            </div>
+            
+            <div style="-ms-grid-column: 3; -ms-grid-row: 3" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item2">
+                <div class="thumbnailButton win-focusable" role="button" aria-atomic="true" data-ent-showanimation="fadeIn" onclick="MS.Entertainment.Music.MusicDemo.musicFeaturedClick()">                
+                    <div class="imageContainer" aria-hidden="true">
+                        
+                            <img class="imageHolder" data-win-bind="src: MS.Entertainment.UI.ImagePaths.musicDemoFeaturedSmall2 MS.Entertainment.Formatters.setPropertyFromStatic" style="width: 220px; height: 165px;">
+                    </div>
+                    
+                    <div class="content">
+                        <div class="textContainer">
+                            <div class="primaryTextBg"></div>
+                            <div class="primaryText label text-cardTitle">Maroon 5</div>
+                        </div>                            
+                   </div>
+                </div>
+            </div>
+
+            <div style="-ms-grid-column: 5; -ms-grid-row: 3" class="dashboardGridItemContent" data-win-bind="clickDataContext: bindableItems.item3">
+                <div class="thumbnailButton win-focusable" role="button" aria-atomic="true" data-ent-showanimation="fadeIn" onclick="MS.Entertainment.Music.MusicDemo.musicFeaturedClick()">
+                        <div class="imageContainer" aria-hidden="true">
+                            
+                            <img class="imageHolder" data-win-bind="src: MS.Entertainment.UI.ImagePaths.musicDemoFeaturedSmall3 MS.Entertainment.Formatters.setPropertyFromStatic" style="width: 220px; height: 165px;">
+                        </div>
+                        
+                        <div class="content">
+                            <div class="textContainer">
+                                <div class="primaryTextBg"></div>
+                                <div class="primaryText label text-cardTitle">Ke$ha</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

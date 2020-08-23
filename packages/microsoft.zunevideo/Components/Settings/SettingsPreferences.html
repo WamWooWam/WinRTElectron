@@ -1,0 +1,248 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/settings.css">
+    
+    <title>Settings Control Template</title>
+    
+    <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_2_merged.js"></script>
+    
+    <script src="/Components/Settings/Settings.js"></script>
+    
+    <script src="/Framework/externalNavigateActions.js"></script>
+    <script src="/Components/Music/CloudMatchIconDialog.js"></script>
+    <script src="/Components/Music/CloudMatchOptInDialog.js"></script>
+</head>
+<body>
+    
+    
+    <div id="SettingsPreferences" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow', lightDismiss:'false'}">
+        
+        
+        <div class="settingsWrapper win-ui-light" role="region" data-win-control="MS.Entertainment.Utilities.PreferenceSettingsWrapper">
+            
+            <div class="settingsPanelHeaderBackground"></div>
+            
+            <div class="settingsPanelHeader win-ui-dark">
+                <button class="win-backbutton" type="button" data-win-automationid="preferencesBackButton" data-ent-event="click: backToSettings" tabindex="0" data-ent-member="_backButton"></button>
+                <div class="settingsPanelTitle label text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_PREFERENCE_TITLE}">
+                </div>
+            </div>
+
+            
+            <div class="settingsPanelContent">
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="libraryPreferences">
+                    
+                    <div class="libraryPreferences">
+                        <div class="libraryPreferencesTitle label text-preferencesGroupHeader" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="libraryPreferencesTitle">
+                        </div>
+                        <div class="libraryPreferencesText label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true}" data-ent-member="libraryPreferencesText">
+                        </div>
+
+                        <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{wrap: true}" data-win-automationid="wecSettingsLearnMoreAboutLibrariesLink" data-ent-event="click: showLocalGrovelDialog; keydown: handleKeyDownForLocalGrovelDialog" data-ent-member="libraryPreferencesWebLink" tabindex="0"></a>
+                        
+                        
+                        <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-event="click: showCloudCollectionIconInfoDialog; keydown: handleKeyDownForCloudCollectionIconInfoDialog" data-win-automationid="wecSettingsCloudCollectionIconInfoLink" data-win-options="{stringId:String.id.IDS_MUSIC_CLOUD_SETTINGS_ICON_INFO_LINK_TEXT, wrap:true}" data-ent-member="cloudIconInfoWebLink" tabindex="0"></a>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="switchUserContainer">
+                    
+                    <div data-win-control="MS.Entertainment.UI.Controls.Label" class="preferenceSwitchUser label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_SETTINGS_SWITCH_USER, wrap:true}">
+                    </div>
+                    <div data-win-control="MS.Entertainment.UI.Controls.Label" class="preferenceCurrentUser label" data-ent-member="currentUserId">
+                    </div>
+                    <div data-win-control="MS.Entertainment.UI.Controls.Label" class="preferenceUserDesc label" data-ent-member="forgetMeDesc" data-win-options="{stringId:String.id.IDS_SETTINGS_SWITCH_USER_DESCRIPTION, wrap:true}">
+                    </div>
+                    <button class="dialogButton defaultButton acc-keyboardFocusTarget" style="margin-top: 10px;" data-ent-event="click: forgetMe" type="button" data-ent-member="forgetMeButton">
+                        <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_FORGET_ME, wrap:true}">
+                        </div>
+                    </button>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="launchToCollectionContainer">
+                    
+                    <div class="genericContainer acc-keyboardFocusTarget">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="launchToCollectionTitle label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_MUSIC_SETTINGS_STARTUP_VIEW_LABEL, wrap:true}">
+                        </div>
+                        <div data-ent-member="launchToCollection" data-win-control="WinJS.UI.ToggleSwitch" class="launchToCollectionToggle" data-ent-event="change: launchToCollectionChange">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="freePlayLimitsContainer">
+                    
+                    <div class="genericContainer">
+                        <div class="label preferenceFreePlayLimitTitle text-preferencesGroupHeader" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_MUSIC_SETTINGS_MONTHLY_LIMIT_TITLE, wrap:true}">
+                        </div>
+                        <div class="label preferenceFreePlayLimitExceeded" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="freePlayLimitsMonthlyLimitExceeded" data-win-options="{stringId:String.id.IDS_MUSIC_SETTINGS_MONTHLY_LIMIT_REACHED, wrap:true}">
+                        </div>
+
+                        <div class="preferenceFreePlayLimitMeterContainer">
+                            <progress class="preferenceFreePlayLimitMeter" data-ent-member="preferenceFreePlayLimitMeter">
+                            </progress>
+                            
+                            <div class="label preferenceFreePlayLimitMeterPercentageLabel" data-ent-member="freePlayLimitsMeterPercentageLabel">
+                            </div>
+                        </div>
+
+                        <div class="label preferenceFreePlayLimitDesc" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="freePlayLimitsMonthlyUsageLabel" data-win-options="{wrap:true}">
+                        </div>
+
+                        <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-event="click: onSubscribe; keydown: handleOnSubscribeKeyDown" data-win-automationid="freePlayLimitsSubscriptionSignup" data-win-options="{stringId:String.id.IDS_MUSIC_STREAMING_PLAY_LIMIT_PREMIUM_ACTION, wrap:true}" tabindex="0">
+                        </a>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="cloudCollectionEnabledSettingsContainer">
+                    
+                    <div class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="cloudCollectionEnabledTitle label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_MUSIC_SETTINGS_CLOUD_MUSIC_TITLE, wrap:true}">
+                        </div>
+
+                        <div data-ent-member="cloudCollectionEnabled" data-win-control="WinJS.UI.ToggleSwitch" data-ent-event="change: cloudCollectionEnabledToggleChange">
+                        </div>
+
+                        <div data-ent-member="cloudMatchSettingContainer">
+                            <div data-ent-member="cloudMatchEnabled" data-win-control="WinJS.UI.ToggleSwitch" data-ent-event="change: cloudMatchEnabledToggleChange">
+                            </div>
+
+                            
+                            <a class="settingsWebLinks settingsWebLinkText label text-xSmall text-weightBold" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-event="click: showCloudCollectionOptInDialog; keydown: handleKeyDownForCloudCollectionOptInDialog" data-win-automationid="wecSettingsCloudCollectionOptInLink" data-win-options="{stringId:String.id.IDS_MUSIC_CLOUD_SETTINGS_MATCH_INFO_LINK_TEXT, wrap:true}" tabindex="0"></a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="downloadSettingsContainer">
+                    <div class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="musicPassDownloadEnabledLabel label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_MUSIC_SETTINGS_MUSIC_PASS_DOWNLOAD_TITLE, wrap:true}">
+                        </div>
+
+                        
+                        <div data-ent-member="musicPassDownloadEnabledSettingsContainer" class="genericContainer">
+                            <div data-ent-member="musicPassDownloadEnabled" data-win-control="WinJS.UI.ToggleSwitch" data-ent-event="change: musicPassDownloadEnabledToggleChange">
+                            </div>
+                        </div>
+
+                        
+                        <div data-ent-member="cloudCollectionOfflineSettingsContainer" class="genericContainer">
+                            <div data-ent-member="cloudCollectionOffline" data-win-control="WinJS.UI.ToggleSwitch" data-ent-event="change: cloudCollectionOfflineToggleChange">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="goOnlineForMetadataContainer">
+                    <div class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="goOnlineForMetadataTitle label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_MUSIC_SETTINGS_MEDIA_INFO_LABEL, wrap:true}"></div>
+
+                        
+                        <div data-ent-member="goOnlineForMetadata" data-win-control="WinJS.UI.ToggleSwitch" class="goOnlineForMetadataToggle" data-ent-event="change: goOnlineForMetadataChange">
+                        </div>
+
+                        
+                        <div class="template-saveMetadataEdit" data-ent-member="saveMetadataEditContainer">
+                            <div class="saveMetadataEdit-toggleSwitch" data-ent-member="saveMetadataEditToggleSwitch" data-win-control="WinJS.UI.ToggleSwitch" data-ent-event="change: saveMetadataEditChange">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="purchasesContainer">
+                    
+                    <div class="preferencePurchasesContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_VIDEO_SETTINGS_PURCHASES_LABEL, wrap:true}">
+                        </div>
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="label" data-win-options="{stringId:String.id.IDS_VIDEO_SETTINGS_PURCHASES_RESTORE_DESCRPTION, wrap:true}">
+                        </div>
+                        <button class="dialogButton defaultButton acc-keyboardFocusTarget" style="margin-top: 10px;" data-ent-event="click: restorePurchases" type="button" data-ent-member="restorePurchaseButton">
+                            <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="restorePurchaseButtonLabel" data-win-options="{stringId:String.id.IDS_VIDEO_SETTINGS_PURCHASES_RESTORE_BUTTON, wrap:true}">
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="promptOnPurchaseContainer">
+                    <div class="genericContainer">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_VIDEO_SETTINGS_PURCHASES_LABEL, wrap:true}">
+                        </div>
+                        <div data-ent-member="promptOnPurchase" data-win-control="WinJS.UI.ToggleSwitch" class="promptOnPurchaseToggle" data-ent-event="change: promptToggleChange">
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup" data-ent-member="downloadQualityContainer">
+                    
+                    <div class="template-downloadQualityContainer genericContainer acc-keyboardFocusTarget">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="downloadQualityContainer-header label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_PREFERENCES_DOWNLOAD_QUALITY_TITLE, wrap:true}">
+                        </div>
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="downloadQualityContainer-header settingsPanelContent label" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_PREFERENCES_DOWNLOAD_QUALITY_QUESTION, wrap:true}">
+                        </div>
+
+                        <div data-ent-member="_optionsContainer" class="downloadQualityContainer-optionsContainer">
+                            <div data-ent-member="_downloadHDContainer" class="optionsContainer-option">
+                                <input class="option-input" type="radio" name="DownloadQuality" value="DownloadHD" data-ent-member="_downloadHD" data-ent-event="click: downloadQualityClicked" data-win-automationid="DownloadQuality_HD">
+                                <span class="option-label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="_downloadHDString" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_PREFERENCES_DOWNLOAD_QUALITY_HD}"></span>
+                            </div>
+                            <div data-ent-member="_downloadSDContainer" class="optionsContainer-option">
+                                <input class="option-input" type="radio" name="DownloadQuality" value="DownloadSD" data-ent-member="_downloadSD" data-ent-event="click: downloadQualityClicked" data-win-automationid="DownloadQuality_SD">
+                                <span class="option-label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="_downloadSDString" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_PREFERENCES_DOWNLOAD_QUALITY_SD_SHORT}"></span>
+                            </div>
+                            <div data-ent-member="_downloadPromptContainer" class="optionsContainer-option">
+                                <input class="option-input" type="radio" name="DownloadQuality" value="DownloadProimpt" data-ent-member="_downloadPrompt" data-ent-event="click: downloadQualityClicked" data-win-automationid="DownloadQuality_Prompt">
+                                <span class="option-label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="_downloadPromptString" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_PREFERENCES_DOWNLOAD_QUALITY_PROMPT_SHORT}"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                
+                <div class="settingsPreferenceGroup">
+                    
+                    <div data-ent-member="streamingQualityContainer" class="template-streamingQualityContainer genericContainer acc-keyboardFocusTarget removeFromDisplay">
+                        <div data-win-control="MS.Entertainment.UI.Controls.Label" class="streamingQualityContainer-header label text-preferencesGroupHeader" data-win-options="{stringId:String.id.IDS_VIDEO_STREAMING_QUALITY_SETTINGS_TITLE, wrap:true}">
+                        </div>
+
+                        <div data-ent-member="streamingQualityOverlayContainer" class="genericContainer">
+                            <div data-win-control="MS.Entertainment.UI.Controls.Label" class="streamingQualityContainer-header settingsPanelContent label" data-win-options="{stringId:String.id.IDS_VIDEO_STREAMING_QUALITY_OVERLAY_BODY, wrap:true}">
+                            </div>
+                            <div data-ent-member="streamingQualityOverlay" data-win-control="WinJS.UI.ToggleSwitch" class="streamingQualityOverlayToggle" data-ent-event="change: streamingQualityOverlayToggleChange">
+                            </div>
+                        </div>
+
+                        
+                        <div data-ent-member="streamingQualityOptionsContainer" class="streamingQualityContainer-optionsContainer">
+                            <div data-win-control="MS.Entertainment.UI.Controls.Label" class="streamingQualityContainer-header settingsPanelContent label" data-win-options="{stringId:String.id.IDS_VIDEO_STREAMING_QUALITY_SELECTOR_BODY, wrap:true}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoBitrateSelectorItemTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="videoBitrateSelectorItemTemplate">
+        <div data-ent-member="_videoBitrateSelectorItemContainer" class="optionsContainer-option">
+            <input class="option-input" type="radio" name="StreamingQuality" data-ent-member="_input" data-ent-event="click: onBitrateSelectorItemClick" data-win-automationid="videoBitrateSelectorItem">
+            <span class="option-label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="_label"></span>
+        </div>
+    </div>
+</body>
+</html>

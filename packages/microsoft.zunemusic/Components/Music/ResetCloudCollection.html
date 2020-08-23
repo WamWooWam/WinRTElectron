@@ -1,0 +1,89 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Reset Cloud Collection Dialog</title>
+</head>
+<body>
+    
+    <div data-ent-templateid="dialogContentTemplate"
+         data-win-control="WinJS.Binding.Template">
+        <div class="dialogContent-resetCloudCollection">
+            <div class="resetCloudCollection-description"
+                 data-win-bind="textContent: String.id.IDS_MUSIC_RESET_COLLECTION_DIALOG_DESCRIPTION MS.Entertainment.Formatters.formatStringId;"></div>
+
+            <div class="resetCloudCollection-checkboxGroup control-checkboxGroup">
+                <div class="checkboxGroup-checkbox">
+                    <input id="deleteMusicPassOption" 
+                           data-ent-member="_deleteMusicPassOption" 
+                           type="checkbox"
+                           data-ent-event="click: _onCheckBoxClicked" />
+                    <label for="deleteMusicPassOption"
+                           data-ent-member="_deleteMusicPassLabel"></label>
+                </div>
+
+                <div class="checkboxGroup-checkbox">
+                    <input id="deletePurchasedOption" 
+                           data-ent-member="_deletePurchasedOption" 
+                           type="checkbox" 
+                           data-ent-event="click: _onCheckBoxClicked" />
+                    <label for="deletePurchasedOption" 
+                           data-ent-member="_deletePurchasedLabel"></label>
+                </div>
+
+                <div class="checkboxGroup-checkbox">
+                    <input id="deletePlaylistsOption" 
+                           data-ent-member="_deletePlaylistsOption" 
+                           type="checkbox" 
+                           data-ent-event="click: _onCheckBoxClicked" />
+                    <label for="deletePlaylistsOption"
+                           data-ent-member="_deletePlaylistsLabel"></label>
+                </div>
+            </div>
+
+            <div class="resetCloudCollection-description"
+                 data-win-bind="textContent: String.id.IDS_MUSIC_RESET_COLLECTION_DIALOG_NOTE MS.Entertainment.Formatters.formatStringId;"></div>
+        </div> 
+    </div>
+
+    
+    <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="musicDialog wecDialog" data-win-automationid="resetCloudCollectionDialog">
+            
+            <div class="overlayBackground"
+                 data-ent-member="overlayBackground"
+                 data-win-automationid="wecDialogBackground"></div>
+
+            
+            <div class="overlayContainer dialogContainerBackground"
+                 data-ent-member="overlayContainer">
+                <div class="dialogContainer"
+                     data-ent-member="dialogContainer">
+
+                    
+                    <div class="dialogCaption" data-win-automationid="resetCloudDialogCaption"
+                         data-win-bind="textContent: title;"></div>
+
+                    
+                    <div class="overlayContent dialogContent"
+                            data-ent-member="overlayContent"
+                            data-win-automationid="resetCloudCollectionDialogContainer"></div>
+
+                    <div class="dialogFooter">
+
+                        
+                        <div class="dialogButtons"
+                             data-ent-member="_buttonList"
+                             data-ent-event="click: _handleButtonClick"
+                             data-win-control="MS.Entertainment.UI.Controls.ItemsControl"
+                             data-win-options="{
+                                itemTemplate: '/Controls/Dialog.html#dialogButtonTemplate', 
+                                applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

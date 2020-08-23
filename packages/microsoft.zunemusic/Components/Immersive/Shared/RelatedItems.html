@@ -1,0 +1,117 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Immersive Related</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+</head>
+<body>
+    
+    
+    
+    <div data-ent-templateid="ImmersiveRelatedItemsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="actions immersiveColumnPadding" data-ent-member="_actionsPanel" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: dataContext.smartBuyStateEngine.currentButtons" data-win-options="{defaultButtonClass: 'iconActionButton'}">
+        </div>
+
+        <div class="related" data-win-bind="winControl.className: className MS.Entertainment.Utilities.appendClassName;">
+
+            <div class="relatedHeroItem" role="button" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                    winControl.context: dataContext.heroActionItem;
+                    label: dataContext.heroItem.heroMediaItem.name MS.Entertainment.Framework.AccUtils.setAriaAttribute;">
+                <div class="imageContainer">
+                    <img class="relatedHeroItemImage" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: dataContext.heroItem.heroMediaItem WinJS.Binding.oneTime;" data-win-options="{
+                            desiredImageSize: { width: 360 },
+                            defaultImagePath: '' }" data-ent-showanimation="fadeIn">
+                </div>
+
+                <div class="textContainer">
+                    <div class="subTitle text-metadata" data-win-bind="textContent: dataContext.heroItem.heroLabel"></div>
+
+                    <div class="title text-medium" data-win-bind="textContent: dataContext.heroItem.heroMediaItem.name"></div>
+                </div>
+            </div>           
+            <div class="relatedActionContainer">
+                <div class="relatedActionLink" data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-win-bind="
+                        winControl.action: dataContext.relatedAction;
+                        winControl.actionParam: dataContext.relatedActionParam;
+                        winControl.stringId: dataContext.relatedActionStringId;
+                        winControl.accessibilityStringId: dataContext.relatedActionAccStringId;
+                        removeFromDisplay: dataContext.relatedAction MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{wrap: true}">
+                </div>
+            </div>
+            <div class="relatedListView" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{keyboardNavigable: true}" data-win-bind="
+                    winControl.itemTemplate: itemTemplate;
+                    winControl.dataSource: dataContext.items">
+            </div>
+
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="ImmersiveRelatedTilesTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="actions immersiveColumnPadding" data-ent-member="_actionsPanel" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: dataContext.smartBuyStateEngine.currentButtons" data-win-options="{defaultButtonClass: 'iconActionButton'}">
+        </div>
+
+        <div class="related immersiveColumnPadding" data-win-bind="winControl.className: className MS.Entertainment.Utilities.appendClassName;">
+
+            
+            <div class="firstPanel" data-win-bind="removeFromDisplay: dataContext.showFirstPanel MS.Entertainment.Utilities.toggleClassNameNegate;">
+                <div class="immersive-panelHeader text-panelHeader" data-win-bind="textContent: dataContext.firstPanelHeader;"></div>
+                <div class="relatedListView" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{
+                        keyboardNavigable: true}" data-win-bind="
+                        winControl.itemTemplate: itemTemplate;
+                        winControl.dataSource: dataContext.firstPanelItems;">
+                </div>
+
+                <div class="template-moreButton" style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                    <div class="moreButton-container" data-win-bind="dataContext: dataContext.firstPanelMoreAction;
+                                       removeFromDisplay: dataContext.firstPanelMoreAction MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                        <div class="actionTile voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="winControl.action: dataContext.firstPanelMoreAction;
+                                           winControl.voicePhrase: dataContext.firstPanelMoreAction.voicePhrase;
+                                           winControl.voicePhoneticPhrase: dataContext.firstPanelMoreAction.voicePhoneticPhrase;
+                                           winControl.voiceConfidence: dataContext.firstPanelMoreAction.voiceConfidence" data-win-options="{ icon: MS.Entertainment.UI.Icon.moreActions, hideDefaultRing: true }" data-win-voice="{   
+                                phrase: getContext('element').winControl.voicePhrase,
+                                confidence: getContext('element').winControl.voiceConfidence,
+                                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                handler: getContext('element').winControl.action.onClickWithContext,
+                                targetElement: select('.voice-visualTarget')
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="secondPanel" data-win-bind="removeFromDisplay: dataContext.showSecondPanel MS.Entertainment.Utilities.toggleClassNameNegate;">
+                <div class="immersive-panelHeader text-panelHeader" data-win-bind="textContent: dataContext.secondPanelHeader;"></div>
+                <div class="relatedListView" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{
+                        keyboardNavigable: true}" data-win-bind="             
+                        winControl.itemTemplate: itemTemplate;       
+                        winControl.dataSource: dataContext.secondPanelItems;">
+                </div>
+
+                <div class="template-moreButton" style="-ms-grid-row: 2; -ms-grid-column: 1;">
+                    <div class="moreButton-container" data-win-bind="dataContext: dataContext.secondPanelMoreAction;
+                                       removeFromDisplay: dataContext.secondPanelMoreAction MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-showanimation="fadeIn">
+                        <div class="actionTile voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="winControl.action: dataContext.secondPanelMoreAction;
+                                           winControl.voicePhrase: dataContext.secondPanelMoreAction.voicePhrase;
+                                           winControl.voicePhoneticPhrase: dataContext.secondPanelMoreAction.voicePhoneticPhrase;
+                                           winControl.voiceConfidence: dataContext.secondPanelMoreAction.voiceConfidence" data-win-options="{ icon: MS.Entertainment.UI.Icon.moreActions, hideDefaultRing: true }" data-win-voice="{ 
+                                phrase: getContext('element').winControl.voicePhrase,
+                                confidence: getContext('element').winControl.voiceConfidence,
+                                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                                handler: getContext('element').winControl.action.onClickWithContext,
+                                targetElement: select('.voice-visualTarget')
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

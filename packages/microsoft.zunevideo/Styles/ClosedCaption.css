@@ -1,0 +1,19 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.cc_layout {
+    height: 100%
+}
+.cc_layout DIV, .cc_layout P {
+    display: inline-block
+}
+.cc_bodyDiv, .cc_textPreview {
+    color: #fff
+}
+.cc_textPreview {
+    background-color: #000
+}
+.cc_region, .cc_regionBody, .cc_bodyDiv {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: inline-block
+}

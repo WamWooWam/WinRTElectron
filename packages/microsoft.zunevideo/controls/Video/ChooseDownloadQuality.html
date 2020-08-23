@@ -1,0 +1,39 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Download Quality Dialog</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+
+</head>
+<body>
+    <div data-ent-templateid="chooseDownloadQualityTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="template-downloadQualityDialogForm">
+
+            <div class="downloadQualityDialogForm-optionsContainer" data-ent-member="_optionsContainer">
+
+                <div data-ent-member="_downloadHDContainer" class="downloadQualityDialogForm-option option_hd" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_TITLE}">
+                    <input type="radio" name="DownloadQuality" value="DownloadHD" data-ent-member="_downloadHD" data-ent-event="click: hdClicked" data-win-automationid="DownloadQuality_HD">
+                    <div class="option-label" data-ent-member="_downloadHDString" data-win-bind="textContent: String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_HD_SIMPLE MS.Entertainment.Formatters.formatStringId;"></div>
+                </div>
+                
+                <div data-ent-member="_downloadSDContainer" class="downloadQualityDialogForm-option option_sd" data-win-options="{stringId:String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_TITLE}">
+                    <input type="radio" name="DownloadQuality" value="DownloadSD" data-ent-member="_downloadSD" data-ent-event="click: sdClicked" data-win-automationid="DownloadQuality_SD">
+                    <div class="option-label" data-ent-member="_downloadSDString" data-win-bind="textContent: String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_SD_SIMPLE MS.Entertainment.Formatters.formatStringId;"></div>
+                </div>
+
+            </div>
+
+            <div class="downloadQualityDialogForm-bodyText removeFromDisplay" data-win-bind="textContent: String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_DOWNLOAD_TIME_DISCLAIMER MS.Entertainment.Formatters.formatStringId;" data-ent-member="_downloadDisclaimer" data-win-options="{wrap:true}">
+            </div>
+
+            <div class="downloadQualityDialogForm-checkbox">
+                <input type="checkbox" name="NeverPromptAgain" value="neverPromptForDownloadQuality" data-ent-member="_neverPrompt" data-ent-event="click: neverPromptClicked" data-win-automationid="NeverPromptDownloadQuality">
+                <span class="checkbox-label" data-win-bind="textContent: String.id.IDS_VIDEO_DETAILS_DOWNLOAD_CHOOSE_NEVER_SHOW MS.Entertainment.Formatters.formatStringId;"></span>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

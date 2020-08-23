@@ -1,0 +1,87 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Manage Folders</title>
+        <script src="/Controls/editbox.js"></script>
+        <script src="/group_1_merged.js"></script>
+
+    </head>
+    <body>
+        <div data-ent-templateid="manageFoldersTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="template-manageFolders">
+                <div data-ent-member="manageFoldersDialogPage">
+                    <div class="manageFolders-content">
+                        <div class="manageFolders-description text-bodyContent" data-win-bind="textContent: String.id.IDS_MANAGE_FOLDERS_DESCRIPTION MS.Entertainment.Formatters.formatStringId;
+                                label: IDS_MANAGE_FOLDERS_DESCRIPTION MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                        <div data-ent-member="_manageFoldersModuleElement" data-ent-event="click: onModuleItemClicked">
+                            <div class="manageFolders-items" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="Explore_ManageFolders" data-win-options="{
+                                    containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                    itemTemplate: '/Controls/ManageFoldersPage.html#removeFolderItemTemplate',
+                                    addFolderTemplate: '/Controls/ManageFoldersPage.html#addFolderItemTemplate',
+                                    keyboardNavigable: true,
+                                    keyboardNavigationSetTabIndex: true,
+                                    selectTemplate: MS.Entertainment.UI.Controls.ManageFolders.folderTemplateSelector}" data-win-bind="winControl.dataSource: items;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="addFolderItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="template-addFolderItem win-focusable ui-interactive" role="button" data-win-bind="clickDataContext: this; 
+                    label: IDS_MANAGE_FOLDERS_ADD_FOLDER_NAR MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;
+                    title: String.id.IDS_MANAGE_FOLDERS_ADD_FOLDER_NAR MS.Entertainment.Formatters.formatStringId;">
+                
+                <div class="addFolderItem-iconContainer">
+                    <div class="addFolderItem-icon icon icon-manageFoldersAction" data-win-bind="textContent: WinJS.UI.AppBarIcon.add MS.Entertainment.Formatters.formatIcon;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="removeFolderItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="template-removeFolderItem win-focusable ui-interactive" role="button" data-win-bind="clickDataContext: this;">
+                <div class="removeFolderItem-icon icon icon-manageFoldersRemove" data-win-bind="textContent: MS.Entertainment.UI.Icon.close MS.Entertainment.Formatters.formatIcon;"></div>
+
+                <div class="removeFolderItem-textContainer">
+                    <div class="removeFolderItem-title text-metadata" data-win-bind="
+                            textContent: String.id.IDS_MANAGE_FOLDERS_EXCLUDE_FOLDER_NAR MS.Entertainment.Formatters.formatStringId;
+                            removeFromDisplay: path MS.Entertainment.Utilities.toggleClassNameOnNonEmptyString;"></div>
+                    <div class="removeFolderItem-name text-subHeader2 maxLines-one" data-win-bind="textContent: name;"></div>
+                    <div class="removeFolderItem-path text-metadata maxLines-one" data-win-bind="textContent: path;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="manageFolders wecDialog" data-win-automationid="wecDialog">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground"></div>
+
+                
+                <div class="overlayContainer dialogContainerBackground" data-win-bind="style.top: top; style.bottom: bottom" data-ent-member="overlayContainer" data-ent-areaname="manageFoldersDialogContainer" role="dialog" aria-label="">
+
+                    <div class="dialogContainer win-ui-light" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+                        <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();">
+
+                            
+                            <div class="dialogCaption text-medium" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;"></div>
+
+                            
+                            <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer"></div>
+                
+                            
+                            <div class="dialogFooter"> 
+
+                                
+                                <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: '/Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,202 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Music Artist Inline Details</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+
+    
+    <script src="/Components/Playback/Playlist/NewPlaylistOverlay.js"></script>
+    <script src="/Components/Music/MusicCollection.js"></script>
+    <script src="/Controls/Thumbnailbutton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Components/Marketplace.js"></script>
+    <script src="/Components/Music/PurchaseMusic.js"></script>
+    <script src="/Controls/Music/ArtistImageCollage.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="../../Controls/Controls.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/InlineDetails.css">
+</head>
+<body>
+
+    
+    
+    
+    <div data-ent-templateid="musicArtistInlineDetailsTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="musicArtistInlineDetailsTemplate">
+        <div class="popOverContentContainer">
+
+            <div class="popOver artist" data-ent-member="fragmentContainer">
+                <div class="leftColumn">
+                    <div class="imageContainer">
+                        <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-member="_image" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent" data-win-bind="winControl.target: media" data-win-options="{
+                                desiredImageSize: {width: 215, height: 215},
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicLarge,
+                                bindTargetProperties: true }" class="imageHolder hideFromDisplay">
+                    </div>
+
+                    
+                    <div class="actions" data-ent-member="_actionsPanel" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: smartBuyStateEngine.currentButtons" data-win-options="{
+                             defaultButtonClass: 'iconActionButton',
+                             replaceInline: true
+                         }">
+                    </div>
+                    <div class="musicSubscriptionLink hideFromDisplay" data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.subscriptionSignup" data-ent-member="_subscriptionLink" data-win-bind="hideFromDisplay: showSignupLink MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{
+                                stringId: String.id.IDS_MUSIC_GET_A_SUBSCRIPTION_TEXT,
+                                accessibilityStringId: String.id.IDS_MUSIC_GET_A_SUBSCRIPTION_TEXT,
+                                numberOfLines: 3,
+                                wrap: true }">
+                    </div>
+                </div>
+
+                
+                <div class="rightColumn popOverPage hideFromDisplay" data-ent-member="_primaryPanel" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent">
+
+                    <div class="titleContainer" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent">
+
+                        
+                        <div class="popOverBackButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{
+                                icon: WinJS.UI.AppBarIcon.back,
+                                accessibilityStringId: String.id.IDS_ACC_BACK_BUTTON}" data-ent-event="click: _onBackButtonClicked">
+                        </div>
+
+                        
+                        <div class="metadata1 title label text-popoverTitle maxLines-three-medium" data-win-bind="
+                                textContent: activeMedia.name;
+                                removeFromDisplay: activeMedia.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                        
+                        <div class="metadata2 secondaryText label removeFromDisplay text-metadata" data-win-bind="
+                                textContent: activeMedia.secondaryText;
+                                removeFromDisplay: activeMedia.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                        
+                        <div class="metadata3 subTitle label text-metadata" data-win-bind="textContent: detailString"></div>
+
+                        
+                        <div class="metadata4 subTitle label text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId: String.id.IDS_DETAILS_EXPLICIT_LABEL}" data-win-bind="removeFromDisplay: activeMedia.isExplicit MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                    </div>
+                    
+                    <div class="contentNotifications" data-win-bind="winControl.source: media.contentNotifications" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent">
+                    </div>
+
+                    <div class="collectionFilter" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent">
+                        <div class="collectionFilterText label text-metadata removeFromDisplay" data-ent-member="_collectionFilterText"></div>
+                        <div class="collectionFilterLink text-metadata removeFromDisplay" data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-ent-member="_collectionFilterLink" data-win-options="{
+                                stringId: String.id.IDS_POPUP_FILTER_SHOW_ALL_LINK,
+                                accessibilityStringId: String.id.IDS_POPUP_FILTER_SHOW_ALL_LINK,
+                                wrap: true }">
+                        </div>
+                    </div>
+                    
+                    <div class="inlineStreamingStatusArea" data-win-bind="inlineDetailsHidden: showStreamingStatus MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent">
+                        <div class="icon inlineGlyphSolid" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlaying MS.Entertainment.Formatters.formatIcon"></div>
+                        <div class="inlineStreamingText label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, clip: false }" data-win-bind="winControl.text: streamingStatusText">
+                        </div>
+                    </div>
+
+                    <div class="listContainerTitle label divider text-subTitle" data-ent-member="_containerTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent">
+                    </div>
+
+                    <div class="bodyContainer">
+                        
+                        <div class="inlineDetailsHidden bodyContainerFirstChild" data-ent-member="_primaryListPanel">
+                            
+                            <div class="popOverPrimaryList popOverList verticalListHost albums" data-ent-member="_list" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-ent-event="iteminvoked: _onPrimaryItemInvoked" data-win-options="{ 
+                                    templateSelectorConstructor: MS.Entertainment.Pages.ArtistPopoverTemplateSelector,
+                                    headerTemplate: 'Components/Music/MusicCollectionTemplates.html#artistPopoverHeaderTemplate',
+                                    itemTemplate: 'Components/Music/MusicSharedTemplates.html#verticalAlbumItemArtistPopoverTemplate',
+                                    suppressInvokeBubble: false,
+                                    pagesToLoad: 1,
+                                    layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                                    headerType: MS.Entertainment.UI.Controls.GalleryControl.HeaderType.inPlace,
+                                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.multi,
+                                    swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.select,
+                                    invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.none,
+                                    selectionStyleFilled: true,
+                                    backdropColor: 'transparent',
+                                    delayHydrateLibraryId: true }"></div>
+                        </div>
+
+                        
+                        <div class="inlineDetailsHidden" data-ent-member="_secondaryListPanel">
+                            
+                            <div class="popOverSecondaryList popOverList tracks inlineDetailsTrackList" data-ent-member="_secondaryList" data-ent-event="iteminvoked: _onSecondaryItemInvoked" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-win-options="{ 
+                                    tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                                    suppressInvokeBubble: false,
+                                    forceInteractive: true,
+                                    pagesToLoad: 1,
+                                    layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.multi,
+                                    swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.select,
+                                    invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                                    invokeHelperFactory: MS.Entertainment.UI.Controls.GalleryControlInvocationHelper.create,
+                                    selectionStyleFilled: true,
+                                    backdropColor: 'transparent',
+                                    delayHydrateLibraryId: true }"></div>
+                        </div>
+
+                        
+                        <div class="loadingContainer listLoadingContainer removeFromDisplay" data-ent-member="listLoadingContainer"></div>
+                        <div class="emptyContainer removeFromDisplay" data-ent-member="emptyContainer">
+                            
+                            <div class="metadata1 title text-popoverTitle maxLines-three-medium" data-win-bind="
+                                    textContent: String.id.IDS_MUSIC_MARKETPLACE_EMPTY_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                            
+                            
+                            <div class="metadata2 secondaryText text-metadata maxLines-three-medium" data-win-bind="
+                                    textContent: String.id.IDS_MARKETPLACE_REGION_EMPTY MS.Entertainment.Formatters.formatStringId;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+            <div class="panelFragmentLoading panelFragmentContainer musicArtistInlineDetailsPanelFragmentContainer hideFromDisplay" data-ent-member="failedControl">
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="musicInlineDetailsTrack" data-win-control="WinJS.Binding.Template" data-win-automationid="musicInlineDetailsTrack">
+        <div class="musicInlineDetailsTopSongs inlineDetailsMusicTrack acc-backgroundTransparent">
+            <div class="immersiveInlineTrackListName label text-listItem" data-win-bind="textContent: name"></div>
+            <div class="immersiveInlineTrackListAlbumName label text-metadata" data-win-bind="textContent: this MS.Entertainment.Formatters.formatAlbumAndArtist"></div>
+            <div class="immersiveInlineTrackListDurationStatus">
+                <div class="immersiveInlineTrackListDuration label text-metadata" style="-ms-grid-column: 1;" data-win-bind="textContent: duration MS.Entertainment.Formatters.formatTrackDuration"></div>
+                
+
+                <div class="icon popOverCloudStateIcon" style="-ms-grid-column: 1; -ms-grid-row: 2;" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                            textContent: cloudIcon WinJS.Binding.oneTime;
+                            style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                            title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+
+            </div>
+            <button class="inlineTrackListStatusIcon icon inlineGlyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-options="{
+                    enableDelayInitialization: true,
+                    preventHideDuringInitialize: true,
+                    allowAnimations: false }" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-bind="winControl.mediaInstance: instance;">
+                <span class="mediaStatusIconContainer text-xSmall"></span>
+                <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+            </button>
+
+            <div class="icon inCollectionIcon" style="-ms-grid-row: 2;" data-win-bind="textContent: MS.Entertainment.UI.Icon.musicInCollection MS.Entertainment.Formatters.formatIcon;
+                                removeFromDisplay: libraryId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber"></div>
+            
+            <div class="inPlaceDetailsItemActions inPlaceDetailsItemActionButtons removeFromDisplay" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                    winControl.eventProxy: eventProxy WinJS.Binding.oneTime;
+                    removeFromDisplay: smartBuyStateEngine.currentButtons MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{defaultButtonClass: 'inlineDetailsOverviewActionButtonTrack acc-keyboardFocusTarget'}">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

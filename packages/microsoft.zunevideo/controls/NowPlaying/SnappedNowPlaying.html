@@ -1,0 +1,84 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>NowPlaying</title>
+    <link rel="stylesheet" type="text/css" href="../../styles/NowPlaying.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/Snapped.css">
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MovieDetails_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+
+    <script src="/Components/Marketplace.js"></script>
+    <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingPlaylist.js"></script>
+    <script src="/Controls/NowPlaying/SnappedNowPlayingPlaylistFlipView.js"></script>
+    <script src="/Controls/NowPlaying/NowPlayingMetadata.js"></script>
+    <script src="/Components/ImmersiveDetails/SnappedDetails.js"></script>
+    <script src="/Controls/NowPlaying/SnappedNowPlayingMetadata.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="template" data-win-control="WinJS.Binding.Template">
+        <div class="snappedContainer" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="winControl.visibility : visible">
+            
+            <div class="snappedBackgroundImage">
+            </div>
+            
+            <div class="snappedNowPlaying snappedNPAnimation" data-win-bind="snappedWithExtraData : detailsVisible MS.Entertainment.Utilities.toggleClassName;">
+                 
+                <div class="snappedNowPlayingRatingImageContainer removeFromDisplay" data-ent-member="_ratingImageContainer" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                    <img class="snappedVideoRatingImage" data-win-control="MS.Entertainment.UI.Framework.ImageControl" data-ent-member="_ratingImage" data-win-bind="winControl.target: videoRatingImage" data-win-options="{
+                        clearSrcOnEmptyTarget: true,
+                        defaultimagepath: 'String.empty' }">
+                </div>
+
+                
+                <div class="snappedNowPlayingThumbnail" data-ent-member="_nowPlayingThumbnail" data-win-bind="removed : videoVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+                </div>
+               
+                
+                <div class="homeHubNowPlayingTile" data-ent-member="_nowPlaying" data-win-control="MS.Entertainment.UI.Controls.HomeNowPlayingTileMusicSnapped" data-win-options="{ isRemoteSession: false }" data-win-bind="
+                         removed : artVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                         label: IDS_HOME_NOW_PLAYING MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId">
+                </div>
+                
+                <div class="snappedNowPlayingMetadata" data-ent-member="_nowPlayingMetadata" data-win-options="{ tertiaryTitleVisible: true }" data-win-control="MS.Entertainment.UI.Controls.SnappedNowPlayingMetadata">
+                </div>
+            </div>
+            
+            <div class="snappedDetails snappedNPAnimation" data-win-control="MS.Entertainment.UI.Controls.SnappedDetails" data-ent-member="_snappedDetails" data-win-automationid="SnappedDetails" data-win-bind="snappedWithExtraData : detailsVisible MS.Entertainment.Utilities.toggleClassName;" data-win-options="{ enableDelayInitialization: true }">
+            </div>
+        </div>
+        
+        <div class="snappedContainer snappedIconContainer hideFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="winControl.visibility : appIconVisible;">
+            
+            <div class="snappedAppIcon" data-ent-event="click: appIconClick" data-win-bind="className: currentAppIconClass;">
+            </div>
+            <div class="snappedIconAppTitle text-snappedPrimary" data-ent-member="appTitleLabel" data-win-control="MS.Entertainment.UI.Controls.Label">
+            </div>
+            <div class="snappedSecondaryText text-snappedSecondary removeFromDisplay" data-ent-member="appSnappedSecondaryText" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="removeFromDisplay: secondaryTextVisible MS.Entertainment.Utilities.toggleClassNameNegate;">
+            </div>
+            <div class="iconButtonHost snappedUnsnapIcon win-ui-dark voice-logicalTarget" data-ent-member="unsnapButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: WinJS.UI.AppBarIcon.download}" data-win-bind="
+                    winControl.action: _unsnapAction; 
+                    removeFromDisplay: unsnapButtonVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                    winControl.voicePhrase: unsnapVoicePhrase;
+                    winControl.voicePhoneticPhrase: unsnapVoicePhoneticPhrase;
+                    winControl.voiceConfidence: unsnapVoiceConfidence;" data-win-voice="{
+                    phrase: getContext('element').winControl.voicePhrase,
+                    pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                    confidence: getContext('element').winControl.voiceConfidence,
+                    handler: getContext('element').winControl.onClickWithContext,
+                    targetElement: select('.voice-visualTarget') }"></div>
+        </div>
+
+        
+        <div class="snappedContainer videoSnappedMiniView hideFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="winControl.visibility : videoMiniSnappedViewVisible;">
+            <div class="snappedIconAppTitle label text-large text-weightHeavy" data-win-bind="textContent: String.id.IDS_SNAPPED_VIDEO_GO_FULLSCREEN_TITLE MS.Entertainment.Formatters.formatStringId">
+            </div>
+            <div class="label snappedSubtitle text-small wrap" data-win-bind="textContent: String.id.IDS_SNAPPED_GO_FULLSCREEN_MESSAGE MS.Entertainment.Formatters.formatStringId;">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

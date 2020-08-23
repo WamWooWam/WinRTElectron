@@ -1,0 +1,7 @@
+[
+    {
+        "id": "microsoft.bingweather",
+        "url": "http://localhost:8080/",
+        "type": "remote"
+    }
+]

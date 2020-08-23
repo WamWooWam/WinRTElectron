@@ -1,0 +1,53 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Immersive Hero</title>
+        <link rel="stylesheet" type="text/css" href="/styles/ImmersiveDetails.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/Immersive.css">
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+        <script src="/Controls/NowPlaying/NowPlaying.js"></script>
+        <script src="/Controls/NowPlaying/NowPlayingPlaylist.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="ImmersiveHero" data-win-control="WinJS.Binding.Template">
+            <div class="immersiveHeroBackgroundImageContainer acc-preserveBackground hideFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-showanimation="immersiveHeroImageEnter" data-ent-hideanimation="immersiveHeroImageExit" data-ent-member="_heroBackground" data-win-bind="winControl.visibility: backgroundVisible;
+                                style.backgroundImage: backgroundFallbackImageUri;
+                                mediaType: mediaTypeClassName MS.Entertainment.Utilities.appendClassName;
+                                showGenericIcon: showGenericIcon MS.Entertainment.Utilities.toggleClassName;">
+                <img data-win-bind="src: backgroundImageUri MS.Entertainment.UI.Controls.ImmersiveHero.loadBackgroundImage;">
+                <div class="immersiveHeroBackgroundImageOverlay acc-preserveBackground" style="-ms-grid-column: 1; -ms-grid-row: 1;" data-win-bind="fullBleed: backgroundFallbackImageUri MS.Entertainment.Utilities.toggleClassNameNegate;
+                                    hideFromDisplay: showGenericIcon MS.Entertainment.Utilities.toggleClassName;">
+                </div>
+            </div>
+            
+            
+            <div class="immersiveHeroContent hideFromDisplay acc-preserveBackground" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="mediaType: mediaTypeClassName MS.Entertainment.Utilities.appendClassName" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage" data-ent-member="_heroContent">
+
+                <div class="immersiveHero-panelHeader text-panelHeader" data-win-bind="textContent: String.id.IDS_MUSIC2_ARTIST_DETAILS_HERO_PANEL_TITLE_UC MS.Entertainment.Formatters.formatStringId;"></div>
+
+                <div class="immersiveHeroActions horizontalBox" data-ent-event="ActionsReady: _handleActionsReady;" data-win-control="MS.Entertainment.Pages.ActionButtonsListControl" data-win-bind="winControl.dataSource: dataContext.buttons" data-win-options="{
+                        containerStyle: 'horizontalFlow',
+                        defaultButtonClass: 'immersiveDetailsOverviewActionButton'}">
+                </div>
+
+                <div class="immersiveHeroText">
+                    
+                    <div class="immersiveHeroPrimaryText text-immersiveHeroTitle" data-win-bind="textContent: dataContext.mediaItem.name;" data-ent-member="_primaryText"></div>
+
+                    
+                    <div class="immersiveHeroSecondaryText text-immersiveHeroSubTitle" data-win-bind="textContent: secondaryText; 
+                                        hideFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                </div>
+            </div>
+
+            
+            <div data-ent-member="playlistHost" class="nowPlayingPlaylistControl hideFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+            </div>
+
+            
+            <div data-ent-member="nowPlayingControlContainer" class="nowPlayingContainer fullScreen hideFromDisplay acc-preserveBackground" style="-ms-grid-column: 1; -ms-grid-column-span: 3;" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-showanimation="nowPlayingControlsFadeIn" data-ent-hideanimation="nowPlayingControlsFadeOut" data-win-options="{ ignoreChildrenInitialization: true }">
+            </div>
+        </div>
+    </body>
+</html>

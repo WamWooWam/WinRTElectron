@@ -1,0 +1,101 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/RadioPageTemplate_merged.js"></script>
+        <script src="/Controls/editbox.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="selectArtistFlyoutHostTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-win-control="MS.Entertainment.UI.Controls.SelectArtistFlyout"></div>
+        </div>
+
+        <div data-ent-templateid="selectArtistFlyoutTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="selectArtistFlyoutGrid">
+                <div class="selectArtistEditBox" data-win-control="MS.Entertainment.UI.Controls.SelectArtistEditBox" data-win-automationid="SelectArtistEditBox" data-ent-member="_editBox" data-win-options="{
+                            editType: MS.Entertainment.UI.Controls.EditBox.EditTypes.text,
+                            maxLength: 256,
+                            autoFocus: true,
+                            accessibleNameStringId: String.id.IDS_SMARTDJ_POPULAR_ARTISTS_ENTRY_TEXT}">
+                    <input class="selectArtistAutoCompleteLabel text-popOverEditTitleLabel acc-preserveBackground" data-ent-member="autoCompleteLabel" tabindex="-1" readonly="true">
+                </div>
+      
+                
+                
+                <div class="selectArtistButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-ent-member="_playButton" data-win-options="{
+                        tabIndex: -1,
+                        hideDefaultRing: true,
+                        allowAnimations: false}">
+                </div>
+
+                <div class="selectArtistGalleryView selectArtistFeaturedGalleryView" data-ent-member="_featuredGallery" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-win-options="{
+                        itemTemplate: 'Controls/Music/SelectArtistFlyout.html#artistItemTemplate',
+                        headerType: MS.Entertainment.UI.Controls.GalleryControl.HeaderType.inPlace,
+                        headerTemplate: 'Controls/Music/SelectArtistFlyout.html#suggestArtistHeaderTemplate',
+                        tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                        suppressInvokeBubble: true,
+                        forceInteractive: true,
+                        layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                        invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                        backdropColor: 'transparent'}">
+                </div>
+                
+                <div class="selectArtistGalleryView selectArtistSuggestedGalleryView" data-ent-member="_suggestedGallery" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-win-options="{
+                        itemTemplate: 'Controls/Music/SelectArtistFlyout.html#suggestArtistItemTemplate',
+                        headerType: MS.Entertainment.UI.Controls.GalleryControl.HeaderType.inPlace,
+                        headerTemplate: 'Controls/Music/SelectArtistFlyout.html#suggestArtistHeaderTemplate',
+                        tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                        suppressInvokeBubble: true,
+                        forceInteractive: true,
+                        hidden: true,
+                        layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                        invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.inline,
+                        backdropColor: 'transparent'}">
+                </div>
+                
+                <div class="selectArtistErrorText text-listItem hideFromDisplay" data-ent-member="_errorText"></div>
+
+                
+                <div class="selectArtistOffline text-listItem hideFromDisplay" data-ent-member="failedControl">
+                </div>
+
+                
+                <input type="button" data-ent-member="OSKHideHelper" aria-hidden="true" style="height: 0px; width: 0px; opacity: 0" tabindex="-1">
+            </div>
+        </div>
+
+        <div data-ent-templateid="artistItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="selectArtistFeaturedListItem">
+                <div class="selectArtistFeatureThumbnail">
+                    <img class="selectArtistFeatureThumbnailImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                            enableDelayInitialization: true,
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: { width: 80, height: 60 },
+                            defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder"></div>
+                </div>
+
+                <div class="selectArtistFeaturedName text-listItem" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+            </div>
+        </div>
+        
+        <div data-ent-templateid="suggestArtistItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="selectArtistSuggestedListItem">
+                <div class="selectArtistSuggestedPrefix text-listItem text-weightHeavy" data-win-bind="textContent: prefix WinJS.Binding.oneTime"></div>
+                <div class="selectArtistSuggestedSuffix text-listItem" data-win-bind="textContent: suffix WinJS.Binding.oneTime"></div>
+                <div class="selectArtistSuggestedRtlPrefix text-listItem text-weightHeavy" data-win-bind="textContent: rtlPrefix WinJS.Binding.oneTime"></div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="suggestArtistHeaderTemplate" data-win-control="WinJS.Binding.Template">            
+            <div class="selectArtistSuggestedListItem">
+                <div class="selectArtistGalleryHeader text-subTitle" data-win-bind="textContent: title WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+    </body>
+</html>

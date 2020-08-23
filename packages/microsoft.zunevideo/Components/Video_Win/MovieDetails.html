@@ -1,0 +1,559 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html data-ent-waypoint="2">
+<head>
+    <title>Movie Details Page and Item Templates</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MovieDetails_merged.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="movieDetailsBody" data-win-control="WinJS.Binding.Template">
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-tvSeriesInBundle">
+            <div class="template-tvSeries verticalItemTileModule-item win-focusable" tabindex="-1" data-ent-moduleid="tvSeries" data-win-bind="
+                    removeFromDisplay: mediaItem MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: mediaItem;">
+                <div class="control-verticalItemTile ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 150, height: 150 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoLarge,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoLarge,
+                                addLoadedClassToParent: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-two" data-win-bind="textContent: primaryText"></div>
+                        <div class="verticalItemTile-secondaryText text-itemTitle maxLines-one" data-win-bind="textContent: secondaryText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-movieInBundle">
+            <div class="template-movie verticalItemTileModule-item win-focusable" tabindex="-1" data-win-bind="
+                    removeFromDisplay: mediaItem MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: mediaItem;">
+                <div class="control-verticalItemTile verticalItemTile_movie ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 150, height: 205 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                addLoadedClassToParent: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-two" data-win-bind="textContent: primaryText;
+                                presale: mediaItem.isPresale MS.Entertainment.Utilities.toggleClassName"></div>
+                        <div class="verticalItemTile-secondaryText text-itemTitle maxLines-one" data-win-bind="textContent: secondaryText"></div>
+                        <div class="verticalItemTile-tertiaryText text-itemTitle maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_BUNDLES_PRE_PURCHASE_ITEM MS.Entertainment.Formatters.formatStringId;
+                                removeFromDisplay: mediaItem.isPresale MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-movie">
+            <div class="template-movie verticalItemTileModule-item win-focusable ent-control" tabindex="-1" data-win-control="WinJS.UI.ItemContainer" data-win-options="{ swipeOrientation: WinJS.UI.Orientation.horizontal, selectionDisabled: true }" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;">
+                <div class="control-verticalItemTile verticalItemTile_movie ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 150, height: 205 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoLargeMovie,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-three" data-win-bind="textContent: name"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-cast">
+            <div class="template-cast horizontalItemTileModule-item win-focusable" tabindex="-1" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;" role="option">
+                <div class="control-horizontalItemTile horizontalItemTile_cast ui-interactive">
+                    <div class="horizontalItemTile-imageContainer">
+                        <div class="horizontalItemTile-imagePlaceholder"></div>
+                        <img class="horizontalItemTile-image acc-preserveBackground ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this;" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 75, height: 75 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoCastPlaceholder,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoCastPlaceholder,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+
+                    <div class="horizontalItemTile-content">
+                        <div class="content-itemTitle text-itemTitle maxLines-one">
+                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="content-metadata text-metadata maxLines-one" data-win-bind="removeFromDisplay: showRole MS.Entertainment.Utilities.toggleClassNameNegate;">
+                            <span class="placeholderItem" data-ent-placeholderdatapath="localizedRole" data-win-bind="textContent: localizedRole WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="content-metadata text-metadata maxLines-one" data-win-bind="removeFromDisplay: showCharacter MS.Entertainment.Utilities.toggleClassNameNegate;">
+                            <span class="placeholderItem" data-ent-placeholderdatapath="character" data-win-bind="textContent: character WinJS.Binding.oneTime;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-rottenTomatoesReview">
+            <div class="template-rottenTomatoes textItemModule-item win-focusable" tabindex="-1" data-ent-moduleid="rottenTomatoes" data-win-bind="clickDataContext: this;" role="option">
+
+                <div class="control-textItemTile textItemTile_rottenTomatoes">
+                    <img class="textItemTile-icon rottenTomatoesReviewItem-icon ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: tomatoIcon;
+                            removeFromDisplay: tomatoIcon MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-showanimation="fadeIn">
+
+                    <div class="textItemTile-title text-subHeader2 maxLines-one">
+                        <span class="placeholderItem" data-ent-placeholderdatapath="criticName" data-win-bind="textContent: criticName;
+                                  removeFromDisplay: criticName MS.Entertainment.Utilities.toggleClassNameNegate"></span>
+                    </div>
+                    <div class="textItemTile-metadata text-metadata maxLines-one">
+                        <span class="placeholderItem" data-ent-placeholderdatapath="metadata" data-win-bind="textContent: metadata;
+                                removeFromDisplay: metadata MS.Entertainment.Utilities.toggleClassNameNegate"></span>
+                    </div>
+                    <div class="textItemTile-content text-bodyContent maxLines-four" data-win-bind="textContent: criticText;
+                             removeFromDisplay: criticText MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+                    <div class="textItemTile-link rottenTomatoesReviewItem-link" data-win-bind="removeFromDisplay: publicationUrl MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        <span class="link-container text-link">
+                            <span data-win-bind="textContent: String.id.IDS_READ_MORE MS.Entertainment.Formatters.formatStringId;"></span>
+                            <span class="icon inlineGlyph icon-inlineAction" data-win-bind="textContent: MS.Entertainment.UI.Icon.inlineLink MS.Entertainment.Formatters.formatIcon;"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="templateid-headerNotification" data-win-control="WinJS.Binding.Template" class="templateid-headerNotification">
+            <div class="template-headerNotification">
+                <div class="headerNotification-content">
+                    <div class="content-icon icon" data-win-bind="textContent: icon"></div>
+                    <div class="content-primaryText" data-win-bind="textContent: title"></div>
+                    <div class="content-secondaryText maxLines-one" data-win-bind="textContent: subTitle"></div>
+                    <div class="content-actions ent-control" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithViewModel" data-win-bind="winControl.dataSource: actionArray;" data-win-options="{itemTemplate: select('.templateid-headerNotificationActionItem')}" data-win-automationid="notificationActionList">
+                    </div>
+                </div>
+                <button class="headerNotification-closeButton text-link ent-control" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="
+                            removeFromDisplay: dismissIcon MS.Entertainment.Utilities.toggleClassNameNegate;
+                            winControl.action: dismissActionObject;
+                            textContent: String.id.IDS_CLOSE_BUTTON MS.Entertainment.Formatters.formatStringId;"></button>
+            </div>
+        </div>
+
+        <div class="page-details details_movie" role="group">
+            
+            
+            
+            <div class="control-viewStateControl ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-bind="winControl.dataContext: this" data-win-options="{
+                    contentOfflineStateEnabled: true,
+                    hideFromDisplayReadyElement: true,
+                    delayInitializeDataContext: true }">
+                
+                
+                
+                <div class="viewStateControl-layoutRoot">
+                    <div class="viewStateControl-notificationsContainer removeFromDisplay" data-ent-member="_notificationsElement" data-win-automationid="ViewState_Container">
+
+                        
+                        
+                        
+                        <div data-ent-member="_loadingElement" data-win-automationid="Page_Loading" class="viewStateControl-loadingContainer removeFromDisplay">
+                            <progress class="win-large win-ring"></progress>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="viewStateControl-errorContainer removeFromDisplay">
+                            <div class="text-errorTitle removeFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.title;
+                                removeFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            <div class="text-errorSubTitle removeFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                removeFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                    
+                    
+                    
+                    <div class="viewStateControl-content hideFromDisplay" data-ent-member="_readyElement">
+                        <div class="control-videoDetails ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.MovieDetails" data-win-bind="winControl.dataContext: dataContext">
+                            <div data-win-automationid="MovieDetails_Page">
+                                <div>
+                                    
+                                    
+                                    
+                                    <div data-ent-member="_headerElement" data-ent-type="movieDetailsHeader" class="videoDetails-header">
+                                        <button class="header-backButton acc-keyboardFocusTarget" type="button" data-ent-member="_backButton" data-win-control="WinJS.UI.BackButton"></button>
+
+                                        <div class="header-artworkContainer">
+                                            <div class="artworkContainer-artworkPlaceholder acc-preserveBackground"></div>
+                                            <img class="artworkContainer-artwork acc-preserveBackground control-image ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: dataContext.mediaItem" data-win-options="{
+                                                    bindTargetProperties: true,
+                                                    desiredImageSize: { width: 290, height: 390 },
+                                                    defaultImagePath: '',
+                                                    addLoadedClassToParent: true,
+                                                    hide: MS.Entertainment.Utilities.doNothing }">
+
+                                            <div class="artworkContainer-watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-bind="winControl.viewModel: dataContext.mediaItem;" data-win-options="{ forceShowOnOwned: true }">
+                                            </div>
+                                        </div>
+
+                                        <div class="header-content">
+                                            <div class="content-title text-detailHeader maxLines-three" data-win-bind="
+                                                    textContent: dataContext.mediaItem.name;
+                                                    removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                            <div class="content-actions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: dataContext.secondaryHeaderButtons" data-win-options="{
+                                                    orientation: 'horizontal',
+                                                    focusFirstItemOnPageLoad: true }"></div>
+
+                                            <div class="content-secondaryContainer">
+                                                <div class="secondaryContainer-details">
+                                                    <div class="details-metadata text-metadata" data-win-bind="
+                                                                textContent: dataContext.parentalRating;
+                                                                removeFromDisplay: dataContext.parentalRating MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-separator" data-win-bind="removeFromDisplay: dataContext.parentalRating MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-metadata text-metadata" data-win-bind="
+                                                                textContent: dataContext.genre;
+                                                                removeFromDisplay: dataContext.genre MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-separator" data-win-bind="removeFromDisplay: dataContext.genre MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-metadata text-metadata" data-win-bind="
+                                                                textContent: dataContext.duration;
+                                                                removeFromDisplay: dataContext.duration MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-separator" data-win-bind="removeFromDisplay: dataContext.duration MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-metadata text-metadata" data-win-bind="
+                                                                textContent: dataContext.primaryLanguage;
+                                                                removeFromDisplay: dataContext.primaryLanguage MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-separator" data-win-bind="removeFromDisplay: dataContext.primaryLanguage MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-metadata text-metadata" data-win-bind="
+                                                                textContent: dataContext.videoDefinitions;
+                                                                removeFromDisplay: dataContext.videoDefinitions MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <div class="details-separator" data-win-bind="removeFromDisplay: dataContext.subtitles MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                    <span class="details-subtitles text-link acc-keyboardFocusTarget" tabindex="0" data-win-bind="
+                                                            textContent: String.id.IDS_VIDEO_LX_DETAILS_HEADER_LINK_SUBTITLES MS.Entertainment.Formatters.formatStringId;
+                                                            removeFromDisplay: dataContext.subtitles MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-event="click: onFooterLinkClicked; keydown: onFooterLinkClicked;"></span>
+
+                                                    <div class="details-icon icon inlineGlyph label closedCaptionSymbol" data-win-bind="
+                                                            textContent: MS.Entertainment.UI.Icon.closedCaption MS.Entertainment.Formatters.formatIcon;
+                                                            removeFromDisplay: dataContext.mediaItem.hasCaptions MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                                </div>
+
+                                                <div class="secondaryContainer-starRating" data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: dataContext.mediaItem;" data-win-options="{
+                                                            disabled: false,
+                                                            ratingInfoVisible: true,
+                                                            disableTransitionAnimations: true,
+                                                            refreshOnThaw: true }"></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="header-info">
+                                            <div class="info-description text-bodyContent">
+                                                <div class="description-text" data-win-control="MS.Entertainment.UI.Controls.ShowMore" data-win-bind="
+                                                            winControl.primaryText: dataContext.mediaItem.description MS.Entertainment.Formatters.formatStringStripHTMLAndDecode;
+                                                            removeFromDisplay: dataContext.mediaItem.description MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-options="{wrap: true, collapsedHeight: 123}"></div>
+                                            </div>
+
+                                            <div class="info-actionsContainer">
+                                                <div class="actionsContainer-actions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: dataContext.primaryHeaderButtons" data-win-options="{
+                                                            orientation: 'horizontal',
+                                                            focusFirstItemOnPageLoad: true }"></div>
+                                                <div class="actionsContainer-language" data-win-control="MS.Entertainment.UI.Controls.Video.LanguagePicker" data-win-bind="winControl.purchaseOptions: dataContext.purchaseOptions;
+                                                         removeFromDisplay: dataContext.mediaItem.inCollection MS.Entertainment.Utilities.toggleClassName;"></div>
+                                            </div>
+
+                                            
+                                            <div class="info-notifications text-bodyContent">
+                                                <div class="notifications-rentalExpiration" data-ent-templateid="contentNotificationListItemTemplate" data-win-bind="removeFromDisplay : dataContext.expirationString MS.Entertainment.Utilities.toggleClassNameNegate">
+                                                    <div class="contentNotificationListItemWrapper">
+                                                        <div class="contentNotificationListIcon icon" data-win-bind="textContent: MS.Entertainment.UI.Icon.inlineError MS.Entertainment.Formatters.formatIcon;"></div>
+                                                        <div class="contentNotificationListItemDescription">
+                                                            <span class="label" data-win-bind="textContent: dataContext.expirationString"></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="notifications-prepurchase" data-win-bind="
+                                                        textContent: dataContext.mediaItemPurchaseDetails;
+                                                        removeFromDisplay: dataContext.mediaItemPurchaseDetails MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                                <div class="notifications-contentNotifications">
+                                                    <div class="contentNotificationList" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: dataContext.mediaItem.contentNotifications;"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="header-divider"></div>
+
+                                        
+                                        
+                                        
+                                        <div class="header-notifications ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: dataContext.notificationList" data-win-options="{
+                                                excludeFromContentReady: true,
+                                                itemTemplate: select('.templateid-headerNotification') }"></div>
+                                        
+                                        
+                                        
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div class="videoDetails-modules">
+                                        
+                                        
+                                        
+                                        <div class="module-bundles template-carouselModule" data-win-automationcontainer="module" data-win-automationid="MovieDetails_BundlesModule" data-win-bind="removeFromDisplay: dataContext.itemsInBundle.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.itemsInBundle" data-win-automationid="MoviesStore_ItemsInBundle_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_BUNDLE_ITEMS_IN_BUNDLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule verticalItemTileModule_movie" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="MovieDetails_BundlesModule" data-win-options="{
+                                                        itemsControlOptions: {
+                                                            delayInitializeChildren: true,
+                                                            enableDelayInitialization: true,
+                                                            containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                            selectTemplate: MS.Entertainment.UI.Controls.MovieDetails.selectTemplate,
+                                                            firstItemTabIndex: 0,
+                                                            getItemSize: MS.Entertainment.UI.Controls.MovieDetails.getItemSize,
+                                                            singleAxis: true,
+                                                            virtualize: true,
+                                                            virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                            useParentAsScrollContainer: true,
+                                                            excludeFromContentReady: true,
+                                                        }
+                                                    }" data-win-bind="winControl.dataSource: dataContext.itemsInBundle.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-similarMovies template-carouselModule" data-win-automationcontainer="module" data-win-automationid="MovieDetails_SimilarMoviesModule" data-win-bind="removeFromDisplay: dataContext.similarMovies.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.similarMovies" data-win-automationid="MovieDetails_SimilarMovies_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_DETAILS_SIMILAR_MOVIES MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule verticalItemTileModule_movie" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="MovieDetails_SimilarMovies" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-movie'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: MS.Entertainment.UI.Controls.MovieDetails.movieItemSize,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true,
+                                                                excludeFromContentReady: true,
+                                                            }
+                                                        }" data-win-bind="winControl.dataSource: dataContext.similarMovies.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-rottenTomatoes template-textItemModule" data-win-automationcontainer="module" data-win-automationid="MovieDetails_RottenTomatoesModule" data-win-bind="removeFromDisplay: dataContext.rottenTomatoes.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="textItemModule-header" data-ent-templateid="collectionTileHeaderTemplate" data-win-bind="moduleDataContext: dataContext.rottenTomatoes" data-win-automationid="MovieDetails_RottenTomatoes_Header" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked;">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_ROTTEN_TOMATOES_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></div>
+                                                    <div class="moduleHeader-actions">
+                                                        <img class="rottenTomatoesReviewItem-icon" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: dataContext.rottenTomatoes.summaryScoreIcon;
+                                                                removeFromDisplay: dataContext.rottenTomatoes.summaryScoreIcon MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-showanimation="fadeIn">
+                                                    </div>
+                                                    <div class="moduleHeader-score text-subHeader maxLines-one" data-win-bind="textContent: dataContext.rottenTomatoes.summaryScoreText;
+                                                            removeFromDisplay: dataContext.rottenTomatoes.summaryScoreText MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.rottenTomatoes.moduleAction.title;" data-win-automationid="MovieDetails_RottenTomatoes_Header" data-ent-pagecontent="this" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="rottenTomatoes-content textItemModule-items" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;" data-win-automationid="MovieDetails_RottenTomatoes_Reviews" data-win-options="{
+                                                    delayInitializeChildren: true,
+                                                    enableDelayInitialization: true,
+                                                    itemSize: { width: 310, height: 175 },
+                                                    singleAxis: false,
+                                                    useParentAsScrollContainer: true,
+                                                    virtualize: true,
+                                                    virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.vertical,
+                                                    containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                    itemTemplate: select('.templateid-rottenTomatoesReview'),
+                                                    firstItemTabIndex: 0,
+                                                    keyboardNavigable: true,
+                                                    keyboardNavigationSetTabIndex: true,
+                                                    keyboardNavigationManagerClass: MS.Entertainment.Framework.OnScreenKeyboardNavigationManager,
+                                                    excludeFromContentReady: true, }" data-win-bind="winControl.dataSource: dataContext.rottenTomatoes.items;" role="listbox">
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-castAndCrew template-contentModule" data-win-automationcontainer="module" data-win-automationid="MovieDetails_CastAndCrewModule" data-win-bind="removeFromDisplay: dataContext.castAndCrew.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="contentModule-header" data-win-bind="moduleDataContext: dataContext.castAndCrew" data-win-automationid="MovieDetails_CastAndCrew_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_CAST_AND_CREW_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="contentModule-items template-horizontalItemTileModule" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="MovieDetails_CastAndCrew" data-win-options="{
+                                                        delayInitializeChildren: true,
+                                                        enableDelayInitialization: true,
+                                                        itemSize: { width: 318, height: 100 },
+                                                        singleAxis: false,
+                                                        useParentAsScrollContainer: true,
+                                                        virtualize: true,
+                                                        virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.vertical,
+                                                        containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                        itemTemplate: select('.templateid-cast'),
+                                                        firstItemTabIndex: 0,
+                                                        keyboardNavigable: true,
+                                                        keyboardNavigationSetTabIndex: true,
+                                                        keyboardNavigationManagerClass: MS.Entertainment.Framework.OnScreenKeyboardNavigationManager,
+                                                        excludeFromContentReady: true,
+                                                        }" data-win-bind="winControl.dataSource: dataContext.castAndCrew.items;" role="listbox"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    
+                                    <div data-ent-member="_footerElement" data-ent-type="movieDetailsFooter" class="videoDetails-footer">
+
+                                        <div class="footer-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_TITLE MS.Entertainment.Formatters.formatStringId;
+                                                            removeFromDisplay: dataContext.isFooterVisible MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                                        <div class="footer-content">
+                                            <div class="content-itemContainer">
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.parentalRating MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_PARENTAL_RATING MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.parentalRating;"></span>
+                                                </div>
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.genre MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_GENRE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.genre;"></span>
+                                                </div>
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.fileSize MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_FILE_SIZE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.fileSize;"></span>
+                                                </div>
+                                            </div>
+                                            <div class="content-itemContainer">
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.releaseDate MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_RELEASE_DATE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.releaseDate;"></span>
+                                                </div>
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.duration MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_DURATION MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.duration;"></span>
+                                                </div>
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.studio MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_STUDIO MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.studio;"></span>
+                                                </div>
+                                            </div>
+                                            <div class="content-itemContainer">
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.primaryLanguage MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_PRIMARY_LANG MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.primaryLanguage;"></span>
+                                                </div>
+                                                <div class="itemContainer-item" data-win-bind="removeFromDisplay: dataContext.subtitles MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                                    <span class="item-title text-itemTitle" data-win-bind="textContent: String.id.IDS_VIDEO_LX_DETAILS_FOOTER_SUBTITLES MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this"></span>
+                                                    <span class="item-metadata text-metadata" data-win-bind="textContent: dataContext.subtitles;"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+                
+                
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</body>
+</html>

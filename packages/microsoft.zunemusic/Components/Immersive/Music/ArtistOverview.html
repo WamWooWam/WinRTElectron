@@ -1,0 +1,111 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Games Immersive Overview</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="ImmersiveOverview" data-win-control="WinJS.Binding.Template">
+        <div class="overview artist win-focusable">
+            <div data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: dataContext.mediaItem.contentNotifications">
+            </div>
+
+            <div class="actions immersiveColumnPadding" data-win-control="MS.Entertainment.Pages.ActionButtonsListControl" data-win-bind="winControl.dataSource: dataContext.smartBuyStateEngine.currentButtons" data-win-options="{selectTemplate: MS.Entertainment.ViewModels.SmartBuyButtons.smartBuyButtonTemplateSelector}">
+            </div>
+
+            <p class="descriptionText text-bodyContent immersiveColumnPadding" data-win-bind="innerHTML: dataContext.description;"></p>
+
+        </div>
+    </div>
+
+    <div data-ent-templateid="ImmersiveHeroSummary" data-win-control="WinJS.Binding.Template">
+        <div class="template-immersiveHeroSummary" data-ent-enteranimation="longFadeIn" data-ent-showanimation="longFadeIn">
+            <img class="immersiveHeroSummary-backgroundImage" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: dataContext.backgroundImageUri;" data-ent-showanimation="longFadeIn" data-win-options="{
+                                    imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                                    desiredImageSize: MS.Entertainment.Utilities.immersiveBackgroundArtSize,
+                                    applyImageAsBackground: true,
+                                    defaultImagePath: 'String.empty'}">
+            <div class="immersiveHeroSummary-container artist overview" data-ent-enteranimation="longFadeIn" data-ent-showanimation="longFadeIn" data-win-bind="state_artistArtAvailable: dataContext.backgroundImageUri MS.Entertainment.Utilities.toggleClassName;" data-ent-event="MSPointerOut: _onPointerOut;" data-ent-member="_container">
+                <div class="immersiveHeroSummary-backgroundAndBioContainer" data-win-bind="state_artistBioAvailable: dataContext.description MS.Entertainment.Utilities.toggleClassName;">
+                    <div class="immersiveHeroSummary-bioBackground" data-ent-member="_bioBackground"></div>
+                    <div class="immersiveHeroSummary-bioContainer" data-ent-event="MSPointerOver: _onFocusIn;">
+                        <h1 class="immersiveHeroSummary-artistTitle text-immersiveHeroTitle maxLines-three" data-win-bind="textContent: dataContext.mediaItem.name"></h1>
+                        <div class="immersiveHeroSummary-descriptionContainer" data-win-control="App2.UI.ScrollViewer" data-ent-event="focusin: _onFocusIn; focusout: _onFocusOut; keydown: _onKeyDown;" data-ent-member="_scrollViewer">
+                            <div>
+                                <p class="descriptionText text-bodyContent immersiveHeroSummary-artistDescription" data-win-bind="innerHTML: dataContext.description;"></p>
+                            </div>
+                        </div>
+                        <div class="immersiveHeroSummary-viewMore voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                hideDefaultRing: true }" data-win-bind="
+                                winControl.action: viewMoreAction;
+                                winControl.voicePhrase: viewMoreAction.voicePhrase;
+                                winControl.voiceConfidence: viewMoreAction.voiceConfidence;
+                                winControl.voicePhoneticPhrase: viewMoreAction.voicePhoneticPhrase;" data-win-voice="{
+                                phrase: getContext('element').winControl.voicePhrase,
+                                confidence: getContext('element').winControl.voiceConfidence,
+                                handler: getContext('element').winControl.onClickWithContext,
+                                targetElement: select('.voice-visualTarget'),
+                                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+                            }">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div data-ent-templateid="ImmersiveOverviewGeneric" data-win-control="WinJS.Binding.Template">
+        <div class="overview artistOverviewGeneric immersiveColumnPadding">
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.name MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_SONG_TITLE_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.name">
+                </div>
+            </div>
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.albumName MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_ALBUM_TITLE_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.albumName">
+                </div>
+            </div>
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.artistName MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_SONG_ARTIST_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.artistName">
+                </div>
+            </div>
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.genreName MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_GENRE_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.genreName"></div>
+            </div>
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.releaseYear MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_RELEASE_YEAR_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.releaseYear"></div>
+            </div>
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.durationString MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_LENGTH_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent ui-durationString" data-win-bind="textContent: dataContext.durationString"></div>
+            </div>
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.trackNumber MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_TRACK_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.trackNumber"></div>
+            </div>
+            
+            <div class="metaDataBlock removeFromDisplay" data-win-bind="removeFromDisplay: dataContext.copyright MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadataTitle label text-metadata" data-win-bind="textContent: String.id.IDS_MUSIC_PROPERTIES_COPYRIGHT_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="metadataText text-bodyContent" data-win-bind="textContent: dataContext.copyright"></div>
+            </div>
+            
+            <div class="contextButtonContainer" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: smartBuyStateEngine.currentButtons" data-win-options="{defaultButtonClass: 'immersiveDetailsOverviewActionButton'}">
+            </div>            
+
+            <div data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: dataContext.contentNotifications">
+            </div>
+                    
+            <p class="descriptionText text-bodyContent" data-win-bind="innerHTML: dataContext.description;
+                              removeFromDisplay: dataContext.description MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+        </div>
+    </div>
+</body>
+</html>

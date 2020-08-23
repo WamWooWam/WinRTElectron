@@ -1,0 +1,279 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.searchContainer>.win-template, .searchContainer
+{
+    height: 100%;
+    width: 100%
+}
+.hcrHubPanel
+{
+    min-width: 0;
+    display: -ms-grid;
+    margin: 4px 80px 0 0;
+    width: 300px;
+    height: calc(100% - 90px);
+    max-height: 684px;
+    -ms-grid-columns: 20px 260px 20px;
+    -ms-grid-rows: 20px auto 10px 1fr auto 20px;
+    outline: none
+}
+html[dir=rtl] .hcrHubPanel
+{
+    margin: 4px 0 0 80px
+}
+.hcrBody
+{
+    display: -ms-grid
+}
+.hcrOutline
+{
+    width: 100%;
+    height: calc(100% + 4px);
+    left: -2px;
+    right: -2px;
+    top: -2px;
+    position: relative
+}
+.searchResultsContainer .panelModifierContainer
+{
+    -ms-grid-columns: auto
+}
+.mainHubStripHub .panelFragmentLoading
+{
+    display: none
+}
+.searchHubStrip .panelContainer
+{
+    min-width: 0
+}
+.galleryViewHubPanel
+{
+    display: -ms-flexbox;
+    border: 0 solid;
+    height: 100%
+}
+.searchGalleryView
+{
+    float: left;
+    border: 0 solid;
+    position: relative;
+    width: 100%;
+    height: calc(100% - 65px);
+    margin-right: 80px
+}
+html[dir=rtl] .searchGalleryView
+{
+    margin-right: 0;
+    margin-left: 80px
+}
+.searchGalleryView .win-listview-browse, .searchGalleryView .win-surface
+{
+    width: 100%
+}
+.searchListView
+{
+    width: 400px;
+    height: 655px;
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 13px;
+    padding-right: 20px;
+    border: 0 solid
+}
+.searchListView .win-listview-browse, .searchListView .win-surface
+{
+    height: 100%;
+    width: 100%
+}
+.message
+{
+    position: absolute;
+    left: 120px;
+    top: 60px;
+    max-width: 80%;
+    border: 0 solid
+}
+.searchGroupHeader
+{
+    display: -ms-grid;
+    -ms-grid-columns: 10px 1fr 10px;
+    -ms-grid-rows: 10px 1fr 10px;
+    position: relative;
+    height: 165px
+}
+.searchGroupHeaderInPlace
+{
+    display: -ms-grid;
+    -ms-grid-columns: 10px 1fr 10px;
+    -ms-grid-rows: 10px 1fr 10px;
+    position: relative;
+    width: 295px;
+    height: 165px;
+    margin-right: 0;
+    margin-left: 0;
+    margin-top: 0
+}
+html[dir=rtl] .searchGroupHeader
+{
+    margin-right: 0;
+    margin-left: 4px
+}
+html[dir=rtl] .searchGroupHeaderInPlace
+{
+    margin-right: 4px;
+    margin-left: 0
+}
+.searchGroupHeaderText
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: end;
+    white-space: normal;
+    word-wrap: break-word
+}
+.searchGroupHeaderInPlaceText
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: end;
+    max-height: 185px;
+    white-space: normal;
+    word-wrap: break-word
+}
+.searchListItem .win-item
+{
+    margin: 0;
+    width: calc(100% + 7px);
+    height: 50px
+}
+.searchSongListItem
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 250px 50px 1fr;
+    border: 0 solid;
+    border-top: 1px solid #a9a9a9
+}
+.searchSongListItem .inlineTrackListName
+{
+    padding-right: 10px
+}
+.HCRCoverArt
+{
+    width: auto;
+    height: auto
+}
+.HCRCoverArt.artistImageCollage
+{
+    width: 260px;
+    height: 260px;
+    padding: 0
+}
+.HCRCoverArt .thumbnailButton
+{
+    padding-right: 4px;
+    padding-bottom: 4px
+}
+.HCRCoverArt .imageHolder
+{
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%
+}
+.HCRCoverArt .imageHolder img
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.HCRInlineDetailsContainer
+{
+    width: 450px
+}
+.HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
+{
+    height: 630px;
+    margin: 0
+}
+.HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
+{
+    width: 450px
+}
+.HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
+{
+    left: 280px
+}
+.searchHubStrip
+{
+    height: 100vh;
+    width: 100vw;
+    display: -ms-grid;
+    -ms-grid-columns: 120px 1fr;
+    -ms-grid-rows: 110px 10px 1fr;
+    -ms-grid-column-span: 2;
+    -ms-grid-row-span: 3
+}
+.searchPage .win-listview>.win-horizontal.win-viewport .win-container
+{
+    width: 295px;
+    height: 165px
+}
+@media screen and (min-height: 1080px)
+{
+    .searchHubStrip
+    {
+        -ms-grid-rows: 120px 25px 1fr
+    }
+}
+@media screen and (min-height: 1200px)
+{
+    .searchHubStrip
+    {
+        -ms-grid-rows: 140px 85px 1fr
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .searchHubStrip
+    {
+        -ms-grid-rows: 200px 125px 1fr
+    }
+}
+.searchHubStrip .hub
+{
+    margin-left: 120px
+}
+html[dir=rtl] .searchHubStrip .hub
+{
+    margin-right: 120px;
+    margin-left: 0
+}
+.searchHubStrip .panelTitle
+{
+    min-width: 0
+}
+@media screen and (max-height: 1049px)
+{
+    .searchListView
+    {
+        height: 435px
+    }
+    .HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
+    {
+        height: 400px
+    }
+    .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer
+    {
+        height: 410px
+    }
+}
+.hiddenItem
+{
+    display: none
+}
+@media screen and (-ms-high-contrast)
+{
+    .hcrHubPanel
+    {
+        outline-style: solid
+    }
+}

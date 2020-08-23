@@ -1,0 +1,58 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>EditBox Control Template</title>
+    
+    <script src="/main_merged.js"></script>
+    <script src="/Controls/editbox.js"></script>
+</head>
+<body>
+    
+    <div data-ent-templateid="editBoxTemplate" data-win-control="WinJS.Binding.Template">
+        <span data-ent-member="container" class="editBox">
+            <input class="editInput win-focusable" data-ent-member="inputControl" data-ent-event="input: onInput; change: onChanged; keypress: onKeyPress; keyup: onKeyUp; focus: onFocus; select: onSelect" data-win-bind="maxlength: maxLength; value: value; disabled: disabled;">
+            <textarea class="editMultiline win-focusable" data-ent-member="textArea" data-ent-event="input: onInput; change: onChanged; keypress: onKeyPress; keyup: onKeyUp; focus: onFocus;" data-win-bind="
+                    rows: rows;
+                    cols: columns;
+                    value: value;
+                    maxlength: maxLength;
+                    select: onSelect;
+                    disabled: disabled;"></textarea>
+            <span class="errorContainer" data-win-bind="removeFromDisplay: hideError MS.Entertainment.Utilities.toggleClassName" data-ent-member="_errorContainer">
+                <span class="icon inlineGlyphSolid">&#xE2A6;</span>
+                <span class="editError text-xSmall" role="alert" aria-atomic="true" data-ent-member="errorControl"></span>
+            </span>
+        </span>
+        <div class="editBoxRemainingCharsText hidden label text-metadata" data-ent-member="_remainingCharsLabel" data-win-control="MS.Entertainment.UI.Controls.Label" aria-live="polite">
+        </div>
+    </div>
+
+    <div data-ent-templateid="editBoxWithSubmitTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="control-editBoxWithSubmit win-ui-light">
+            <div class="editBoxWithSubmit-editBox editBox" data-ent-member="container">
+                <input class="editBox-editInput editInput win-focusable" data-ent-member="inputControl" data-ent-event="input: onInput; change: onChanged; keypress: onKeyPress; keyup: onKeyUp; focus: onFocus; select: onSelect" data-win-bind="maxlength: maxLength; value: value; disabled: disabled;">
+                <textarea class="editBox-editMultiline editMultiline win-focusable" data-ent-member="textArea" data-ent-event="input: onInput; change: onChanged; keypress: onKeyPress; keyup: onKeyUp; focus: onFocus;" data-win-bind="
+                              rows: rows;
+                              cols: columns;
+                              value: value;
+                              maxlength: maxLength;
+                              select: onSelect;
+                              disabled: disabled;"></textarea>
+                <span class="editBox-errorContainer errorContainer" data-win-bind="removeFromDisplay: hideError MS.Entertainment.Utilities.toggleClassName" data-ent-member="_errorContainer">
+                    <span class="icon inlineGlyphSolid">&#xE2A6;</span>
+                    <span class="editError text-xSmall" role="alert" aria-atomic="true" data-ent-member="errorControl"></span>
+                </span>
+            </div>
+
+            <div class="editBoxWithSubmit-remainingCharsText editBoxRemainingCharsText hidden text-metadata" data-ent-member="_remainingCharsLabel" data-win-control="MS.Entertainment.UI.Controls.Label" aria-live="polite">
+            </div>
+
+            <button class="editBoxWithSubmit-button dialogButton defaultButton acc-keyboardFocusTarget" type="button" data-ent-member="_button" data-ent-event="click: onInvoke" data-win-bind="disabled: disabled;">
+                <span class="label" data-win-bind="textContent: submitButtonString; disabled: disabled;" data-win-automationid="submitTextButton"></span>
+            </button>
+        </div>
+    </div>
+</body>
+</html>

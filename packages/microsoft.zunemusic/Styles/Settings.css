@@ -1,0 +1,206 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.win-settingsflyout {
+    z-index: 1001;
+    overflow: auto;
+    border-style: solid;
+    border-width: 2px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: calc(100% - 4px);
+    width: 346px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+    visibility: hidden;
+    overflow: hidden
+}
+.win-settingsflyout.win-wide {
+    width: 646px
+}
+.win-settingsflyout .win-header {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 32px;
+    height: 80px
+}
+.win-settingsflyout .win-backbutton {
+    position: relative;
+    width: 37px;
+    height: 37px;
+    font-size: 11pt;
+    line-height: 32px;
+    margin-top: 2px;
+    border-width: 3px
+}
+.win-settingsflyout .win-header .win-label {
+    display: inline-block;
+    padding-left: 40px;
+    font-size: 20pt;
+    line-height: 33px
+}
+.win-settingsflyout .win-content {
+    overflow: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+    height: calc(100% - 80px)
+}
+.win-settingsflyout:lang(ar), .win-settingsflyout:lang(dv), .win-settingsflyout:lang(fa), .win-settingsflyout:lang(he), .win-settingsflyout:lang(ku-Arab), .win-settingsflyout:lang(pa-Arab), .win-settingsflyout:lang(prs), .win-settingsflyout:lang(ps), .win-settingsflyout:lang(sd-Arab), .win-settingsflyout:lang(syr), .win-settingsflyout:lang(ug), .win-settingsflyout:lang(ur), .win-settingsflyout:lang(qps-plocm) {
+    right: auto;
+    left: 0
+}
+.win-settingsflyout .win-header .win-label:lang(ar), .win-settingsflyout .win-header .win-label:lang(dv), .win-settingsflyout .win-header .win-label:lang(fa), .win-settingsflyout .win-header .win-label:lang(he), .win-settingsflyout .win-header .win-label:lang(ku-Arab), .win-settingsflyout .win-header .win-label:lang(pa-Arab), .win-settingsflyout .win-header .win-label:lang(prs), .win-settingsflyout .win-header .win-label:lang(ps), .win-settingsflyout .win-header .win-label:lang(sd-Arab), .win-settingsflyout .win-header .win-label:lang(syr), .win-settingsflyout .win-header .win-label:lang(ug), .win-settingsflyout .win-header .win-label:lang(ur), .win-settingsflyout .win-header .win-label:lang(qps-plocm) {
+    padding-right: 40px;
+    padding-left: 0
+}
+.settingsWrapper, .offLineAccountPanel, .onlineAccountPanel
+{
+    display: -ms-grid;
+    -ms-grid-columns: 35px 5px 1fr 60px;
+    -ms-grid-rows: 80px 20px 1fr;
+    width: 100%;
+    height: 100%;
+    overflow: auto
+}
+.settingsPanelHeader
+{
+    display: -ms-grid;
+    -ms-grid-columns: 40px 10px 1fr;
+    -ms-grid-rows: auto;
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 3;
+    margin-top: 30px
+}
+.settingsPanelHeaderBackground
+{
+    -ms-grid-column-span: 5
+}
+.settingsPanelBackButton
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1
+}
+html[dir=rtl] .settingsPanelBackButton
+{
+    transform: scaleX(-1)
+}
+.settingsPanelTitle
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 1
+}
+.offLineAccountPanel, .onlineAccountPanel
+{
+    -ms-grid-column-span: 5;
+    -ms-grid-row-span: 3
+}
+.settingsSignIn, .settingsPanelContent
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 3
+}
+.settingsPanelContent
+{
+    margin-top: 18px
+}
+.preferenceSwitchUser
+{
+    margin-bottom: 8px
+}
+.preferenceUserDesc, .preferenceCurrentUser
+{
+    margin-bottom: 20px
+}
+.preferencePurchasesContainer
+{
+    margin-top: 20px
+}
+.genericContainer
+{
+    margin-bottom: 4px;
+    margin-top: 4px
+}
+.genericContainer p
+{
+    margin-bottom: 12px;
+    margin-top: 4px
+}
+.musicCloudGrovelInfoContainer .dialogButton
+{
+    margin-top: 10px
+}
+.settingsFeedbackPanelContentDialog
+{
+    margin-left: 0;
+    margin-top: 0
+}
+.settingsWebLinkText
+{
+    margin-top: 4px;
+    text-decoration: none;
+    display: block
+}
+.accountSettings.settingsWebLinkText
+{
+    margin-top: 20px
+}
+.settingsWebLinkText.removeFromDisplay
+{
+    display: none
+}
+.aboutPageTitles
+{
+    margin-top: 30px;
+    max-height: 80px;
+    overflow: hidden
+}
+.settingsAboutVersion
+{
+    margin-bottom: 10px
+}
+.settingsPreferenceGroup, .settingAccountsButton
+{
+    margin-bottom: 36px
+}
+.libraryPreferencesTitle, .launchToCollectionTitle, .cloudCollectionEnabledTitle, .musicPassDownloadEnabledLabel, .goOnlineForMetadataTitle .oneDrivePreferencesTitle, .resetCloudCollectionTitle
+{
+    margin-bottom: 4px
+}
+.settingsFeedbackContent
+{
+    margin-top: 10px
+}
+.settingsCaptionPreviewWindow
+{
+    margin-top: 6px;
+    margin-bottom: 20px;
+    padding: 20px;
+    font-size: 17pt;
+    height: auto;
+    width: auto;
+    outline: solid 2px #a9a9a9
+}
+.preferenceFreePlayLimitMeterContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto;
+    -ms-grid-columns: 1fr 8px auto
+}
+.preferenceFreePlayLimitMeter
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    width: 100%;
+    height: 20px;
+    border-width: 1px;
+    border-style: solid
+}
+.preferenceFreePlayLimitMeterPercentageLabel
+{
+    -ms-grid-row-align: center;
+    -ms-grid-row: 1;
+    -ms-grid-column: 3
+}

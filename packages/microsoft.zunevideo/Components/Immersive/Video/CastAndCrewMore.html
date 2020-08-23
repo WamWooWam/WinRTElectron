@@ -1,0 +1,18 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Immersive Related</title>
+    <script src="/main_merged.js"></script>
+    <script src="/Components/Immersive/Video/CastAndCrew.js"></script>
+</head>
+<body>
+    <div class="viewMoreScroller" data-win-control="App2.UI.ScrollViewer" data-win-options="{ scrollMode: 'list' }" data-ent-fragmentload="MS.Entertainment.UI.Framework.scrollViewerFocusHelper" role="menu">
+
+        <div class="castAndCrewMore" data-win-control="MS.Entertainment.UI.Controls.CastAndCrewList" data-win-bind="winControl.dataContext.items: this.fullItemList" data-win-options="{
+                itemTemplate: '/Components/Video/VideoMarketplaceTemplates.html#castAndCrewTemplate',
+                isViewMore: true,}"></div>
+    </div>
+</body>
+</html>

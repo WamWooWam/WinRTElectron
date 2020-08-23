@@ -1,0 +1,37 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>TV Series Header Control Template</title>
+        
+        <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Animations/animations.js"></script>
+
+        <script src="/Components/Video/TvSeriesHeaderControl.js"></script>
+        
+        <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+        <link rel="Stylesheet" type="text/css" href="/Styles/InlineDetails.css">
+        <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+        <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+    </head>
+    <body>
+        <div data-ent-templateid="tvSeriesHeaderControlTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="tvSeriesHeaderControl">
+                <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: seriesMediaItem" data-win-automationid="tvSeasonHeaderItem" data-win-options="{
+                        loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                        show: MS.Entertainment.Utilities.showElementNoAnimation,
+                        hide: MS.Entertainment.Utilities.doNothing,
+                        allowAnimations: false,
+                        preventHideDuringInitialize: true,
+                        desiredImageSize: {width: 240, height: 240},
+                        defaultImagePath: ''}" class="imageHolder hideFromDisplay tvSeriesThumbnail" width="215" height="215">
+            </div>
+            <div class="tvSeriesHeaderButtonFrame">
+                <button class="tvSeriesHeaderDetailsButton acc-keyboardFocusTarget" data-ent-event="click: onClick; keydown: onKeyDown;" type="button">
+                    <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: text; winControl.stringId: stringId" data-ent-member="linkLabel">
+                    </div>
+                </button>
+            </div>
+        </div>
+    </body>
+</html>

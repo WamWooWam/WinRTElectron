@@ -1,0 +1,83 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Navigation Controls Templates</title>
+
+        
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+
+        
+        <script src="/main_merged.js"></script>
+    </head>
+
+    <body>
+
+
+        
+        
+        
+        <div data-ent-templateid="verticalPivotButtonTemplate" data-win-control="WinJS.Binding.Template">
+
+            <div class="verticalPivotItem" role="presentation" data-win-bind="
+                    verticalSubPivotItem: data.isRoot MS.Entertainment.Utilities.toggleClassNameNegate">
+
+                <button class="verticalPivotButton acc-keyboardFocusTargetAfterSmaller text-filterItem win-focusable" style="-ms-grid-row:1; -ms-grid-column:1;" role="tab" data-win-control="MS.Entertainment.UI.Shell.PrimaryNavigationButton" data-win-bind="
+                        winControl.index: index;
+                        winControl.data: data;
+                        textContent: data.label MS.Entertainment.Formatters.formatStringOrStringId;
+                        winControl.visibility: data.isDisabled MS.Entertainment.Utilities.toggleBoolean;
+                        selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        expanded: data.expanded MS.Entertainment.Utilities.toggleClassName;
+                        expanded: data.expanded MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        owns: data.childIds MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        level: data.ariaLevel MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;" type="button"></button>
+
+            </div>
+
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="verticalDividerTemplate" data-win-control="WinJS.Binding.Template">
+
+                <div class="verticalPivotDivider"></div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="horizontalPivotButtonTemplate" data-win-control="WinJS.Binding.Template">
+
+            <div class="horizontalPivotItem" role="presentation" data-win-bind="removeFromDisplay: data.isDisabled MS.Entertainment.Utilities.toggleClassName">
+
+                <button class="horizontalPivotButton acc-keyboardFocusTargetAfterSmaller text-filterItem win-focusable" style="-ms-grid-row:1; -ms-grid-column:1;" role="tab" data-win-control="MS.Entertainment.UI.Shell.PrimaryNavigationButton" data-win-bind="
+                        winControl.index: index;
+                        winControl.data: data;
+                        textContent: data.label MS.Entertainment.Formatters.formatStringOrStringId;
+                        selected: data.selected MS.Entertainment.Utilities.toggleClassName;
+                        selected: data.selected MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        expanded: data.expanded MS.Entertainment.Utilities.toggleClassName;
+                        expanded: data.expanded MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        owns: data.childIds MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        controls: data.tabPanelId MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        level: data.ariaLevel MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        tabindex: MS.Entertainment.Utilities.buttonTabIndex" type="button"></button>
+
+            </div>
+
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="horizontalDividerTemplate" data-win-control="WinJS.Binding.Template">
+
+                <div class="verticalPivotDivider"></div>
+        </div>
+
+    </body>
+</html>

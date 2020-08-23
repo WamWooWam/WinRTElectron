@@ -1,0 +1,168 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Shared Templates</title>
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Animations/animations.js"></script>
+        <script src="/Controls/thumbnailButton.js"></script>
+        <script src="/Controls/MediaItemThumbnail.js"></script>
+        <script src="/Controls/GalleryThumbnail.js"></script>
+        <script src="/Components/Video/PurchaseVideo.js"></script>
+        <script src="/Components/video/VideoSharedTemplatesControls.js"></script>
+        <script src="/Components/Marketplace.js"></script>
+        <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+        <script src="/Components/Video/TvSeriesHeaderControl.js"></script>
+        <script src="/Components/Search/SearchView.js"></script>
+        <script src="/Components/Search/VideoSearchView.js"></script>
+        <script src="/ViewModels/Search/SearchViewModel.js"></script>
+        <script src="/viewmodels/search/NewSearchViewModel.js"></script>
+
+        <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+        <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+        <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+    </head>
+    <body>
+        
+        <div data-ent-templateid="videoSearchHCRViewTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="searchHCR movieThumbnail" data-win-automationid="hcrItem">
+
+                <div class="cardThumbnailButton win-focusable">
+
+                    <div class="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 468, height: 468},
+                                    defaultImagePath: ''}" width="265" height="360" style="width: 265px; height: auto;">
+                    </div>
+
+                    <div class="content">
+                        <div class="textContainer primaryTextOnTop">
+                            <div class="secondaryText text-metadata" data-win-bind="textContent: hcrSecondaryText;
+                                                removeFromDisplay: hcrSecondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-one" data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText text-metadata">
+                                <div data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                                <div class="text-metadata" data-win-bind="IDS_VIDEO_IN_COLLECTION_LABEL: inCollection MS.Entertainment.Utilities.toggleTextContentOrEmptyString;
+                                                    removeFromDisplay: inCollection MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="icon smartGlassGem" style="-ms-grid-column: 2;" data-win-bind="textContent: MS.Entertainment.UI.Icon.smartGlassGem MS.Entertainment.Formatters.formatIcon;
+                                                    removeFromDisplay: hasActivities MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="searchGroupHeader" data-win-control="WinJS.Binding.Template">
+            <div class="searchGroupHeader">
+                <div class="searchGroupHeaderText label wrap text-xSmall text-weightHeavy" data-win-control="MS.Entertainment.Pages.SearchResultsGroupHeader" data-win-bind="winControl.groupType: title">
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="searchGroupHeaderInPlace" data-win-control="WinJS.Binding.Template">
+            <div class="searchGroupHeaderInPlace">
+                <div class="searchGroupHeaderInPlaceText label wrap text-weightHeavy" data-win-control="MS.Entertainment.Pages.SearchResultsGroupHeader" data-win-bind="winControl.groupType: title">
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="movieTitleYearTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="movieThumbnail" data-win-automationid="movieItem">
+
+                <div class="cardThumbnailButton win-focusable">
+
+                    <div class="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 234, height: 320},
+                                    defaultImagePath: ''}" width="99" height="135">
+                    </div>
+
+                    <div class="content">
+                        <div class="textContainer primaryTextOnTop">
+                            <div class="secondaryText text-metadata" data-win-bind="textContent: releaseDate MS.Entertainment.Formatters.formatYearFromDate;
+                                                removeFromDisplay: releaseDate MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-three" data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText text-metadata">
+                                <div data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                                <div class="text-metadata" data-win-bind="IDS_VIDEO_IN_COLLECTION_LABEL: inCollection MS.Entertainment.Utilities.toggleTextContentOrEmptyString;
+                                                    removeFromDisplay: inCollection MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="icon smartGlassGem" style="-ms-grid-column: 2;" data-win-bind="removeFromDisplay: hasActivities MS.Entertainment.Utilities.toggleClassNameNegate;
+                                                    textContent: MS.Entertainment.UI.Icon.smartGlassGem MS.Entertainment.Formatters.formatIcon;"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="tvSeriesSeasonTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="tvThumbnail" data-win-automationid="tvSeriesItem">
+
+                <div class="cardThumbnailButton win-focusable">
+                    <div class="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 240, height: 240},
+                                    defaultImagePath: ''}" width="135" height="135">
+                    </div>
+
+                    <div class="content" data-ent-member="content">
+                        <div class="textContainer primaryTextOnTop" data-ent-member="textContainer">
+                            <div class="secondaryText text-metadata" data-ent-member="secondaryTextLabel" data-win-bind="textContent: seasonCount MS.Entertainment.Formatters.formatSeason;
+                                                removeFromDisplay: seasonCount MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-three" data-ent-member="primaryTextLabel" data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText text-metadata">
+                                <div data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                                <div class="text-metadata" data-win-bind="IDS_VIDEO_IN_COLLECTION_LABEL: inCollection MS.Entertainment.Utilities.toggleTextContentOrEmptyString;
+                                                    removeFromDisplay: inCollection MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                <div class="icon smartGlassGem" style="-ms-grid-column: 2;" data-win-bind="removeFromDisplay: hasActivities MS.Entertainment.Utilities.toggleClassNameNegate;
+                                                    textContent: MS.Entertainment.UI.Icon.smartGlassGem MS.Entertainment.Formatters.formatIcon;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

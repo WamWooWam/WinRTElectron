@@ -1,0 +1,109 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/animations.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/ShellAnimations.css">
+        <title>Modifier Control Template</title>
+        
+        <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_1_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="modifierButtonTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-ent-event="click: onClicked; keydown: onKeyDown" data-ent-member="_modifierContainer" data-win-bind="voiceConfidence: voiceConfidence; 
+                                voicePhrase: voicePhrase;
+                                voicePhoneticPhrase: voicePhoneticPhrase;" class="control-modifierActionButton acc-keyboardFocusTarget win-focusable voice-logicalTarget" data-win-voice="{
+                     phrase: getContext('element').voicePhrase,
+                     confidence: getContext('element').voiceConfidence,
+                     pronunciation:getContext('element').voicePhoneticPhrase,
+                     targetElement: select('.voice-visualTarget'),
+                 }" role="button">
+                 <div class="modifierActionButton-title win-label label text-breakWord voice-visualTarget" data-win-bind="textContent: text"></div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+
+            </div>
+        </div>
+
+        <div data-ent-templateid="modifierTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-ent-event="click: onClicked; keydown: onKeyDown" data-ent-member="_modifierContainer" data-win-bind="voiceConfidence: voiceConfidence; 
+                                voicePhrase: voicePhrase;" class="modifierControl acc-keyboardFocusTarget win-focusable voice-logicalTarget" data-win-voice="{
+                     phrase: getContext('element').voicePhrase,
+                     confidence: getContext('element').voiceConfidence,
+                     targetElement: select('.voice-visualTarget'),
+                 }" role="button">
+                <div class="modifierDescription label text-filterDescription" data-win-bind="removeFromDisplay: descriptionLabelVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                                    visualTarget: overrideDescription MS.Entertainment.Utilities.toggleVoiceTarget;" data-ent-member="labelDescription"></div>
+                <div class="modifierSelectedItem label text-filterTitle voice-visualTarget" data-win-bind="visualTarget: overrideDescription MS.Entertainment.Utilities.toggleVoiceTargetNegate;" data-win-automationid="modifierSelectedItem" data-ent-member="labelControl"></div>
+                <div class="dropDownArrowContainer" data-ent-member="dropDownArrow">
+                    <div class="modifierDropDownArrow icon label text-modifierDropDownArrow" data-win-automationid="modifierDropDownArrow" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ text: MS.Entertainment.UI.Icon.downChevron }">
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+
+            </div>
+        </div>
+
+        <div data-ent-templateid="modifierPopupTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="modifierPopupScroller" data-ent-member="scroller" role="menu">
+                <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: '/Controls/Modifier.html#modifierPopupEntry',
+                                        animateIn: false,
+                                        deferForLongLists: true,
+                                        selectTemplate: MS.Entertainment.UI.Controls.ModifierPopup.selectTemplateOverride }" data-ent-member="entryList" data-win-automationid="modifierItemsControl">
+                </div>
+
+            </div>
+        </div>
+
+        <div data-ent-templateid="app2ModifierPopupTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="modifier-header modifierCloseActions">
+                <div class="header-voiceCloseAction modifierBackContainer voice-logicalTarget">
+                    <div class="voice-visualTarget" data-win-bind="textContent: String.id.IDS_CLOSE_BUTTON_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;">
+                    </div>
+                </div>
+
+                <div class="header-gestureCloseAction modifierGestureCloseButton control-buttonClose win-ui-dark ui-hitTestArea " data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: MS.Entertainment.UI.Icon.close, tabIndex: -1}" data-ent-event="click: onCloseClick">
+                </div>
+            </div>
+            <div class="modifierPopupScroller" data-ent-member="scroller" data-win-control="App2.UI.ScrollViewer" data-win-options="{ scrollMode: 'list' }" role="menu">
+                    <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: '/Controls/Modifier.html#modifierPopupEntry',
+                                            animateIn: false,
+                                            deferForLongLists: true,
+                                            selectTemplate: MS.Entertainment.UI.Controls.ModifierPopup.selectTemplateOverride }" data-ent-member="entryList" data-win-automationid="modifierItemsControl">
+                    </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="modifierPopupEntry" data-win-control="WinJS.Binding.Template">
+            <div data-win-control="MS.Entertainment.UI.Controls.ModifierPopupEntry" data-win-bind="winControl.data: this">
+            </div>
+        </div>
+
+        <div data-ent-templateid="modifierPopupEntryWithAdditionalStyles" data-win-control="WinJS.Binding.Template">
+            <div data-win-control="MS.Entertainment.UI.Controls.ModifierPopupEntryAdditionalStyles" data-win-bind="winControl.data: this">
+            </div>
+        </div>
+
+        <div data-ent-templateid="modifierPopupEntryTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="modifierPopupEntry win-focusable voice-logicalTarget" data-ent-member="background" data-ent-event="click: onClicked" data-win-automationid="modifierPopupEntry" data-win-bind="voicePhrase: voicePhrase;
+                                voicePhoneticPhrase: voicePhoneticPhrase;
+                                voiceConfidence: voiceConfidence;" data-win-voice="{
+                     phrase: getContext('element').voicePhrase,
+                     pronunciation: getContext('element').voicePhoneticPhrase,
+                     confidence: getContext('element').voiceConfidence,
+                     targetElement: select('.voice-visualTarget'),
+                 }" role="menuitem">
+                <div class="modifierEntryTextContainer">
+                    <div class="modifierPopupEntryLabel text-modifierPopupEntry voice-visualTarget" data-ent-member="text" data-win-automationid="modifierPopupEntryLabel">
+                    </div>
+                </div>
+
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+    </body>
+</html>

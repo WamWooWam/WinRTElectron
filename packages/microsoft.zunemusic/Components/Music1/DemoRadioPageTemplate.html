@@ -1,0 +1,37 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Demo Radio Collection Content Templates</title>
+    <script src="/ViewModels/Music1/DemoPageViewModels.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="collectionBody" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="WinJS.Binding.Template" class="template-marketingMessage">
+            <div data-win-bind="textContent: this" class="text-small"></div>
+        </div>
+        <div class="page-demoRadio">
+            <div class="demo-header">
+                <div class="header-contentContainer">
+                    <div class="header-hero icon icon-demoHero" data-win-bind="textContent: MS.Entertainment.UI.Icon.smartDjNoRing MS.Entertainment.Formatters.formatIcon">
+                    </div>
+                    <div class="header-content">
+                        <div class="content-title text-heroTitle" data-win-bind="textContent: title">
+                        </div>
+                        <div class="content-subTitle text-heroSubTitle" data-win-bind="
+                                textContent: subTitle MS.Entertainment.Formatters.formatStringOrEmptyOneTime;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-content">
+                <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" class="content-marketingMessages ent-control win-disposable" data-win-bind="winControl.dataSource: marketingMessages" data-win-options="{
+                            itemTemplate: select('.template-marketingMessage')
+                        }">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

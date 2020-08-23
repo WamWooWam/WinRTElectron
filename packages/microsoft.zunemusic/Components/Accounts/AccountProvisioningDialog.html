@@ -1,0 +1,48 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Account Provisioning Dialog Template</title>
+    <script src="/main_merged.js"></script>
+    <script src="/Components/Accounts/AccountProvisioningDialog.js"></script>
+</head>
+<body>
+    
+    <div data-ent-templateid="accountProvisioningDialog" data-win-control="WinJS.Binding.Template">
+        <div class="template-accountProvisioningDialog">
+            <div class="text-xSmall" data-ent-member="_emailAccountContainer"></div>
+            <div class="text-xSmall" data-win-bind="textContent: String.id.IDS_PROVISIONING_EXPLANATION MS.Entertainment.Formatters.formatStringId;"></div>
+            <a class="text-xSmall" role="button" data-ent-member="_alreadyHaveAccountButton" tabindex="0" data-win-bind="textContent: String.id.IDS_PROVISIONING_ALREADY_HAVE_BUTTON MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: alreadyHaveAccountClicked; keydown: alreadyHaveAccountClicked"></a>
+            <div class="text-xSmall removeFromDisplay" data-ent-member="_xboxAccountExplanation">
+            </div>
+            <br>
+            <br>
+            <div class="accountProvisioning-progressContainer">
+                <progress class="win-medium win-ring removeFromDisplay accountProvisioning-progress" data-ent-member="progressSpinner"></progress>
+            </div>
+            <br>
+            <br>
+            <div class="text-xSmall" data-win-bind="textContent: String.id.IDS_PROVISIONING_ACCEPTANCE_DESC MS.Entertainment.Formatters.formatStringId;"></div>
+            <a data-win-bind="textContent: String.id.IDS_PROVISIONING_TOS_LINK MS.Entertainment.Formatters.formatStringId;" tabindex="0" data-ent-event="click: termsOfServiceLinkClicked; keydown: termsOfServiceLinkClicked"></a>
+            <br>
+            <a data-win-bind="textContent: String.id.IDS_PROVISIONING_PRIVACY_LINK MS.Entertainment.Formatters.formatStringId;" tabindex="0" data-ent-event="click: privacyStatementClicked; keydown: privacyStatementClicked"></a>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="childAccountProvisioningDialog" data-win-control="WinJS.Binding.Template">
+        <div class="template-accountProvisioningDialog">
+            <div class="text-xSmall" data-win-bind="textContent: String.id.IDS_PROVISIONING_CHILD_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+            <br>
+            <div class="text-xSmall" data-win-bind="textContent: String.id.IDS_PROVISIONING_CHILD_LIST_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+            <br>
+            <a data-ent-member="_xboxSiteLink" data-win-automationid="childProvisioningWebLink" tabindex="0" data-ent-event="click: xboxSiteLinkClicked; keydown: xboxSiteLinkClicked"></a>
+            <br>
+            <br>
+            <div class="text-xSmall" data-ent-member="_comeBackText"></div>
+            <br>
+            <a data-ent-member="_signInLink" data-win-automationid="childProvisioningSignInLink" tabindex="0" data-ent-event="click: signInClicked; keydown: signInClicked"></a>
+        </div>
+    </div>
+</body>
+</html>

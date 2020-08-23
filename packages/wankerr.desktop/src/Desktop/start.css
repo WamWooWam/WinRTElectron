@@ -94,8 +94,10 @@
 
 .start-tiles {    
     padding-left: 118px;
+    height: 100%;
     display: flex;
     overflow-x: auto;
+    align-items: center;
     -webkit-overflow-scrolling: touch;
 }
 
@@ -113,13 +115,12 @@
 .start-tile-group {
     display: flex;
     flex-direction: column;
-    height: 100%;
     margin-right: 56px;
 }
 
 .tile-group-header {    
     height: 35px;
-    margin: 8px 0;
+    padding: 8px 0;
     font-size: 22px;
     font-weight: 100;
 }
@@ -133,7 +134,7 @@
     grid-column-gap: 4px;
     grid-auto-columns: 60px;
     grid-row-gap: 4px;
-    grid-template-rows: repeat(auto-fit, 60px);
+    grid-template-rows: repeat(auto-fill, 60px);
 
     flex: 1;
 }

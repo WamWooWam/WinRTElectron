@@ -1,0 +1,28 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+html
+{
+    overflow: hidden;
+    -ms-user-select: none
+}
+html, body
+{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    cursor: default;
+    -ms-content-zooming: none;
+    overflow: hidden
+}
+html
+{
+    direction: ltr
+}
+html:lang(ar), html:lang(dv), html:lang(fa), html:lang(he), html:lang(ku-Arab), html:lang(pa-Arab), html:lang(prs), html:lang(ps), html:lang(sd-Arab), html:lang(syr), html:lang(ug), html:lang(ur), html:lang(qps-plocm)
+{
+    direction: rtl
+}
+header, footer, div, span, header, img, button, svg, object
+{
+    z-index: 0
+}

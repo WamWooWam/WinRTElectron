@@ -1,0 +1,122 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Action Buttons Control</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/ExplorePage_merged.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="/Controls/Controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/InlineDetails.css">
+</head>
+<body>
+    <div data-ent-templateid="actionButtonsControlTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="hideFromDisplay verticalBox state-orientationVertical" data-ent-member="_actionButtons" data-win-control="MS.Entertainment.Pages.ActionButtonsListControl" data-win-bind="winControl.dataSource: currentButtons; winControl.applyItemTemplate: applyItemTemplate" data-win-options="{selectTemplate: MS.Entertainment.ViewModels.SmartBuyButtons.smartBuyButtonTemplateSelector}">
+        </div>
+    </div>
+
+    <div data-ent-templateid="actionButtonTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="iconButtonHost voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                winControl.text: title; 
+                winControl.icon: iconInfo.icon;
+                winControl.iconPressed: iconInfo.iconPressed;
+                winControl.adornerMode: iconInfo.adornerMode;
+                winControl.adornerRing: iconInfo.adornerRing;
+                winControl.isToggleButton: iconInfo.isToggleButton;
+                winControl.className: iconInfo.className MS.Entertainment.Utilities.appendClassName;
+                winControl.isDisabled: isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                winControl.tabIndex: tabIndex;
+                winControl.hideDefaultRing: iconInfo.hideDefaultRing;
+                winControl.automationId: automationId;
+                winControl.voicePhrase: voicePhrase;
+                winControl.voiceConfidence: voiceConfidence;
+                winControl.voicePhoneticPhrase: voicePhoneticPhrase;
+                this['win-voice-disableoverride']: voiceDisableOverride MS.Entertainment.Utilities.toggleClassName;
+                winControl.action: this" data-win-voice="{
+                phrase: getContext('element').winControl.voicePhrase,
+                confidence: getContext('element').winControl.voiceConfidence,
+                handler: getContext('element').winControl.onClickWithContext,
+                targetElement: select('.voice-visualTarget'),
+                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+            }">
+        </div>
+    </div>
+
+    <div data-ent-templateid="actionButtonTemplateNoAnimations" data-win-control="WinJS.Binding.Template">
+        <div class="iconButtonHost" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{allowAnimations: false}" data-win-bind="
+                winControl.text: title; 
+                winControl.icon: iconInfo.icon;
+                winControl.iconPressed: iconInfo.iconPressed;
+                winControl.adornerMode: iconInfo.adornerMode;
+                winControl.adornerRing: iconInfo.adornerRing;
+                winControl.isToggleButton: iconInfo.isToggleButton;
+                winControl.className: iconInfo.className MS.Entertainment.Utilities.appendClassName; 
+                winControl.isDisabled: isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                winControl.tabIndex: tabIndex;
+                winControl.hideDefaultRing: iconInfo.hideDefaultRing;
+                winControl.automationId: automationId;
+                winControl.action: this"> 
+        </div>
+    </div>
+
+    <div data-ent-templateid="actionButtonTemplateWithSubtext" data-win-control="WinJS.Binding.Template">
+        <div class="iconButtonHost iconButtonWithSubtext voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButtonTwoLine" data-win-bind="
+                winControl.text: title; 
+                winControl.subTextString: subTitle; 
+                winControl.subTextVisibility: iconInfo.subTextVisibility;
+                winControl.icon: iconInfo.icon;
+                winControl.iconPressed: iconInfo.iconPressed;
+                winControl.adornerMode: iconInfo.adornerMode;
+                winControl.adornerRing: iconInfo.adornerRing;
+                winControl.isToggleButton: iconInfo.isToggleButton;
+                winControl.className: iconInfo.className MS.Entertainment.Utilities.appendClassName;
+                winControl.isDisabled: isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                winControl.tabIndex: tabIndex;
+                winControl.hideDefaultRing: iconInfo.hideDefaultRing;                
+                winControl.automationId: automationId;
+                winControl.voicePhrase: voicePhrase;
+                winControl.voiceConfidence: voiceConfidence;
+                winControl.voicePhoneticPhrase: voicePhoneticPhrase;
+                this['win-voice-disableoverride']: voiceDisableOverride MS.Entertainment.Utilities.toggleClassName;
+                winControl.action: this" data-win-voice="{
+                phrase: getContext('element').winControl.voicePhrase,
+                confidence: getContext('element').winControl.voiceConfidence,
+                handler: getContext('element').winControl.onClickWithContext,
+                targetElement: select('.voice-visualTarget'),
+                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+            }">
+        </div>
+    </div>
+
+    <div data-ent-templateid="actionButtonTemplateWithWatchProgress" data-win-control="WinJS.Binding.Template">
+        <div class="iconButtonHost iconButtonWithWatchProgress voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButtonWithWatchProgress" data-win-bind="
+                winControl.text: title;
+                winControl.mediaItem: mediaItem;
+                winControl.watchProgressVisibility: iconInfo.watchProgressVisibility;
+                winControl.icon: iconInfo.icon;
+                winControl.iconPressed: iconInfo.iconPressed;
+                winControl.adornerMode: iconInfo.adornerMode;
+                winControl.adornerRing: iconInfo.adornerRing;
+                winControl.isToggleButton: iconInfo.isToggleButton;
+                winControl.className: iconInfo.className MS.Entertainment.Utilities.appendClassName;
+                winControl.isDisabled: isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                winControl.tabIndex: tabIndex;
+                winControl.hideDefaultRing: iconInfo.hideDefaultRing;
+                winControl.automationId: automationId;
+                winControl.voicePhrase: voicePhrase;
+                winControl.voiceConfidence: voiceConfidence;
+                winControl.voicePhoneticPhrase: voicePhoneticPhrase;
+                this['win-voice-disableoverride']: voiceDisableOverride MS.Entertainment.Utilities.toggleClassName;
+                winControl.action: this" data-win-voice="{
+                phrase: getContext('element').winControl.voicePhrase,
+                confidence: getContext('element').winControl.voiceConfidence,
+                handler: getContext('element').winControl.onClickWithContext,
+                targetElement: select('.voice-visualTarget'),
+                pronunciation: getContext('element').winControl.voicePhoneticPhrase,
+            }">
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Collection Templates</title>
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Animations/animations.js"></script>
+        <script src="/Controls/thumbnailButton.js"></script>
+        <script src="/Controls/MediaItemThumbnail.js"></script>
+        <script src="/Controls/GalleryThumbnail.js"></script>
+        <script src="/Components/video/VideoSharedTemplatesControls.js"></script>
+        <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+        <script src="/Components/Video/TvSeriesHeaderControl.js"></script>
+
+        <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+        <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+        <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+    </head>
+    <body>
+        
+        
+        
+        
+        
+        <div data-ent-templateid="moviePostRollTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-moviePostRollButtonContainer">
+                <div data-win-control="MS.Entertainment.UI.Controls.MovieGridItem" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.showItemDetails" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                        winControl.primaryText: name WinJS.Binding.oneTime;
+                        winControl.actionParam.dataContext.data: instance WinJS.Binding.oneTime;" data-win-options="{
+                        containerWidth: '195px',
+                        containerHeight: '260px',
+                        imageContainerWidth: '195px',
+                        imageContainerHeight: '260px',
+                        imageHolderWidth: '195px',
+                        imageHolderHeight: '260px',
+                        imageWidth: '195px',
+                        imageHeight: '260px',
+                        contentWidth: '100%',
+                        actionAutomationId: 'postrollMoviePopOver',
+                        actionParam: {
+                            itemConstructor: 'MS.Entertainment.Pages.MovieInlineDetails',
+                            clearBackStack: true,
+                            dataContext: { data: null, location: MS.Entertainment.Pages.BaseMediaInlineDetails.Location.marketplace },
+                        },
+                        }" tabindex="0">
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        
+        
+        <div data-ent-templateid="tvPostRollTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-tvPostRollButtonContainer">
+                <div data-win-control="MS.Entertainment.UI.Controls.TvGridItem" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.showItemDetails" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                        winControl.primaryText: name WinJS.Binding.oneTime;
+                        winControl.actionParam.dataContext.data: instance WinJS.Binding.oneTime;" data-win-options="{
+                        containerWidth: '260px',
+                        containerHeight: '260px',
+                        imageContainerWidth: '260px',
+                        imageContainerHeight: '260px',
+                        imageHolderWidth: '260px',
+                        imageHolderHeight: '260px',
+                        imageWidth: '260px',
+                        imageHeight: '260px',
+                        contentWidth: '100%',
+                        actionAutomationId: 'postrollTvPopOver',
+                        actionParam: {
+                            itemConstructor: 'MS.Entertainment.Pages.TvSeriesInlineDetails',
+                            clearBackStack: true,
+                            dataContext: { data: null, location: MS.Entertainment.Pages.BaseMediaInlineDetails.Location.marketplace },
+                        },
+                        }" tabindex="0">
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="videoTitleDurationTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="otherVideoThumbnail" data-win-automationid="otherVideoItem">
+                <div class="cardThumbnailButton win-focusable" data-win-bind="clickDataContext: instance WinJS.Binding.oneTime">
+
+                    <div class="imageContainer">
+                        <div class="imageHolder">
+                            <img class="hideFromDisplay win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                        hide: MS.Entertainment.Utilities.doNothing,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true,
+                                        desiredImageSize: {width: 240, height: 240},
+                                        defaultImagePath: ''}" width="135" height="135" style="width: auto; height: 135px;">
+                            </div>
+                    </div>
+
+                    <div class="content">
+                        <div class="textContainer">
+                            <div class="secondaryText specificLineCount text-metadata" data-win-bind="textContent: duration MS.Entertainment.Formatters.formatDurationFromDate;
+                                                removeFromDisplay: duration MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-three" data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="tertiaryText specificLineCount text-metadata" data-win-bind="textContent: instance MS.Entertainment.Formatters.formatTVSeasonEpisodeNumber;
+                                                removeFromDisplay: instance MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText specificLineCount text-metadata" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="personalFolderTile" data-win-control="WinJS.Binding.Template">
+            
+            <div class="personalVideoTile personalFolderTile videoTile" data-win-automationid="folderVideoItem">
+                <div class="personalVideoTileButton personalFolderTileButton win-focusable" role="button" data-win-bind="clickDataContext: instance WinJS.Binding.oneTime">
+                </div>
+
+                <div class="imageContainer">
+                    <div class="imageHolder">
+                        <img class="hideFromDisplay win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: instance WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 245, height: 245},
+                                defaultImagePath: '',
+                                applyImageAsBackground: true}" width="245" height="245" style="width: auto; height: 245px;">
+                    </div>
+                </div>
+
+                
+                <div class="content folderTextBg">
+                    <div class="textContainer">
+                        <div class="textContainer-notifications">
+                            <div class="part-primaryIcon inlineGlyph" data-win-bind="textContent: MS.Entertainment.UI.Icon.fileFolder MS.Entertainment.Formatters.formatIcon;
+                                    removeFromDisplay: folderId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;"></div>
+                            <div class="part-primaryText text-metadata maxLines-three" data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                    removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="tvSeasonHeaderTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-win-control="MS.Entertainment.Pages.TvSeriesHeaderControl" data-win-bind="winControl.title: seriesTitle WinJS.Binding.oneTime; 
+                                winControl.episodeClicked: instance WinJS.Binding.oneTime; 
+                                winControl.series: instance WinJS.Binding.oneTime;" data-win-automationid="tvHeader"></div>
+        </div>
+
+    </body>
+</html>

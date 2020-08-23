@@ -1,0 +1,198 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Find Album Info</title>
+        <script src="/Controls/editbox.js"></script>
+        <script src="/Controls/LoadingControl.js"></script>
+        <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="albumItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="albumListItem" data-win-bind="albumListItem_explicit: isExplicit MS.Entertainment.Utilities.toggleClassName">
+                <div class="verticalListThumbnail">
+                    <img class="verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                            enableDelayInitialization: true,
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: { width: 60, height: 60 }}">
+                    <div class="imagePlaceholder"></div>
+                </div>
+
+                <div class="primaryText label clip" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                <div class="secondaryText label clip text-metadata" data-win-bind="textContent: summary WinJS.Binding.oneTime"></div>
+                <div class="content-explicitIndicator control-metadata metadata_explicit" data-win-bind="
+						removeFromDisplay: isExplicit MS.Entertainment.Utilities.toggleClassNameNegate;
+						title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Album_ExplicitIndicator">
+                    <div class="removeFromDisplay" data-win-bind="textContent: explicitAriaString WinJS.Binding.oneTime;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="trackItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="trackListItem">
+                <div class="primaryText primaryText_trackNumber label clip text-listItem" data-win-bind="
+                        textContent: trackNumber MS.Entertainment.Formatters.formatTrackNumber;
+                        unmatchedTrack: isMatched MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                <div class="primaryText primaryText_name label clip text-listItem" data-win-bind="
+                        textContent: name WinJS.Binding.oneTime;
+                        unmatchedTrack: isMatched MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                <div class="trackListItem-explicitIndicator control-metadata metadata_explicit" data-win-bind="
+						removeFromDisplay: isExplicit MS.Entertainment.Utilities.toggleClassNameNegate;
+						title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Track_ExplicitIndicator">
+                    <div class="removeFromDisplay" data-win-bind="textContent: explicitAriaString WinJS.Binding.oneTime;"></div>
+                </div>
+                <div class="matchIcon" data-win-bind="textContent: WinJS.UI.AppBarIcon.accept MS.Entertainment.Formatters.formatIcon; title: String.id.IDS_FAI_MATCH MS.Entertainment.Formatters.formatStringId; removeFromDisplay: isMatched MS.Entertainment.Utilities.toggleClassNameNegate">
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="unmatchedTrackItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="unmatchedTrackListItem">
+                <select data-win-control="MS.Entertainment.Music.FindAlbumInfoDropDown" data-win-bind="winControl.dataSource: this">
+                </select>
+            </div>
+        </div>
+
+        <div data-ent-templateid="matchedTrackItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="matchedTrackListItem">
+                <div class="primaryText label clip text-listItem" data-win-bind="textContent: trackNumber MS.Entertainment.Formatters.formatTrackNumber"></div>
+                <div class="primaryText primaryText_name label clip text-listItem" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                <div class="matchedTrackListItem-explicitIndicator control-metadata metadata_explicit" data-win-bind="
+						removeFromDisplay: isExplicit MS.Entertainment.Utilities.toggleClassNameNegate;
+						title: String.id.IDS_DETAILS_EXPLICIT_LABEL_UC MS.Entertainment.Formatters.formatStringId;" data-win-automationid="Album_ExplicitIndicator">
+                    <div class="removeFromDisplay" data-win-bind="textContent: explicitAriaString WinJS.Binding.oneTime;"></div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="findAlbumInfoTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="findAlbumInfoContentContainer" data-ent-member="_selectAlbumsPages">
+                <div class="label titleLabel" data-win-automationid="wecDialogSubCaption" data-win-bind="
+                         textContent: subTitle;
+                         removeFromDisplay: subTitle MS.Entertainment.Utilities.toggleClassNameOnEmptyString">
+                </div>
+
+                <div class="findAlbumInfoContent">
+
+                    
+                    <div class="searchContainer" data-ent-member="_searchContainer">
+                        <input class="keywords" type="text" data-ent-member="_keywordsEdit" data-win-automationid="keywords" data-ent-event="change: onSearch; keydown: onSearchKeyDown; focus: onSearchFocus; blur: onSearchBlur" data-win-bind="label: IDS_SEARCH_BUTTON MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;">
+                        
+
+                        <div class="searchIcon" data-ent-member="_searchIcon" data-win-bind="
+                                textContent: MS.Entertainment.UI.Icon.search MS.Entertainment.Formatters.formatIcon;
+                                label: IDS_SEARCH_BUTTON MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;" data-win-automationid="searchButton" data-ent-event="click: onSearch" role="button">
+                        </div>
+                    </div>
+
+                    
+                    <div class="albumList" data-ent-member="_albumList" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-ent-event="selectionchanged: onAlbumSelected;" data-win-options="{itemTemplate: 'Components/Music/FindAlbumInfo.html#albumItemTemplate',
+                                           selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.single,
+                                           swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.none,
+                                           invokeBehavior: MS.Entertainment.UI.Controls.GalleryControl.InvokeBehavior.none,
+                                           tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.toggleSelect,
+                                           layout: MS.Entertainment.UI.Controls.GalleryControl.Layout.list,
+                                           backdropColor: 'transparent'}">
+                    </div>
+
+                    <div class="label noAlbumsLabel removeFromDisplay" data-ent-member="_noAlbumsLabel" data-win-bind="textContent: String.id.IDS_FAI_NO_ALBUM_FOUND_ERROR MS.Entertainment.Formatters.formatStringId;"></div>
+
+                    <div class="albumsLoadingControl" data-ent-member="_albumsLoadingControl" data-win-control="MS.Entertainment.Music.FindAlbumInfoLoadingControl">
+                    </div>
+
+                    
+                    <div class="trackListHeader" data-ent-member="_trackColumnHeader" data-win-bind="textContent: String.id.IDS_FAI_SONG_COLUMN_TITLE MS.Entertainment.Formatters.formatStringId;"></div>
+
+                    
+                    <div class="trackList acc-keyboardFocusTarget" tabindex="0" data-ent-member="_trackList" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: tracks" data-win-options="{itemTemplate: 'Components/Music/FindAlbumInfo.html#trackItemTemplate'}" data-win-automationid="trackList">
+                    </div>
+
+                    <div class="noMatchedTracksLabel removeFromDisplay" data-ent-member="_noCloudMatchText" data-win-bind="textContent: String.id.IDS_FAI_NO_STREAMS_MATCHED_ERROR MS.Entertainment.Formatters.formatStringId;">
+                    </div>
+
+                    <div class="tracksLoadingControl" data-ent-member="_tracksLoadingControl" data-win-control="MS.Entertainment.Music.FindAlbumInfoLoadingControl">
+                    </div>
+                </div>
+            </div>
+            <div class="matchTracksPage" data-ent-member="_matchTracksPage">
+                <div class="findAlbumInfoContent">
+
+                    
+                    <div class="unmatchedTracksLabel" data-win-bind="textContent: String.id.IDS_FAI_UNMATCHED_SONGS MS.Entertainment.Formatters.formatStringId;"></div>
+
+                    <div class="unmatchedTrackList" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-member="_unmatchedTracksList" data-win-options="{itemTemplate: 'Components/Music/FindAlbumInfo.html#unmatchedTrackItemTemplate'}" data-win-automationid="unmatchedTrackList">
+                    </div>
+
+                    
+                    <div class="matchedTracksLabel" data-ent-member="_matchedTrackHeader" data-win-bind="textContent: String.id.IDS_FAI_MATCHED_SONGS MS.Entertainment.Formatters.formatStringId;"></div>
+
+                    <div class="matchedTrackList" data-ent-member="_matchedTrackList" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Components/Music/FindAlbumInfo.html#matchedTrackItemTemplate'}" data-win-automationid="matchedTrackList">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="loadingControlTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="loadingControl">
+                <progress class="loadingProgress" data-ent-member="_loadingProgress" data-win-control="MS.Entertainment.UI.Controls.LoadingControl" data-win-options="{ width: '20px', height: '20px' }"></progress>
+
+                <div class="loadingLabel loadingLabel_status label" data-win-bind="
+                        removeFromDisplay: isBusy MS.Entertainment.Utilities.toggleClassNameNegate;
+                        textContent: String.id.IDS_LOADING_STATUS_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+
+                <div class="loadingLabel loadingLabel_notAvailableOffline label" data-ent-member="_loadingOffline" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="
+                        removeFromDisplay: isOffline MS.Entertainment.Utilities.toggleClassNameNegate;
+                        textContent: String.id.IDS_NOT_AVAILABLE_OFFLINE MS.Entertainment.Formatters.formatStringId;"></div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="findAlbumInfo wecDialog" data-win-automationid="wecDialog">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground"></div>
+
+                
+                <div class="overlayContainer dialogContainerBackground" data-win-bind="style.top: top; style.bottom: bottom" data-ent-member="overlayContainer" data-ent-areaname="findAlbumInfoDialogContainer" role="dialog" aria-label="">
+
+                    <div class="dialogContainer win-ui-light" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+                        <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();">
+
+                            
+                            <div class="wecDialog-backButton findAlbumInfoBackButton" data-ent-member="_backButton" data-win-automationid="backButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: WinJS.UI.AppBarIcon.back, tabIndex: 3, accessibilityStringId: String.id.IDS_ACC_BACK_BUTTON}" data-ent-event="click: onBackClick">
+                            </div>
+
+                            
+                            <div class="dialogCaption" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;"></div>
+
+                            
+                            <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer"></div>
+                
+                            
+                            <div class="dialogFooter"> 
+
+                                
+                                <div class="findAlbumInfoSearchAlbums" data-ent-member="_searchAlbumsLink">
+                                    <button class="findAlbumInfoSearchText label acc-keyboardFocusTarget" type="button" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-event="click: onSearchAlbumsClick" data-win-bind="textContent: String.id.IDS_FAI_SEARCH_ALBUM_HINT MS.Entertainment.Formatters.formatStringId;" data-win-automationid="albumNotFoundLink">
+                                    </button>
+                                </div>
+
+                                
+                                <div class="findAlbumInfoSearchAlbums removeFromDisplay" data-ent-member="_bulkMatchLink">
+                                    <button class="findAlbumInfoSearchText label acc-keyboardFocusTarget" type="button" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-event="click: onBulkMatchClick" data-win-bind="textContent: String.id.IDS_FAI_CLOUD_MATCH_BULK_LINK MS.Entertainment.Formatters.formatStringId;" data-win-automationid="bulkMatchLink">
+                                    </button>
+                                </div>
+
+                                
+                                <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

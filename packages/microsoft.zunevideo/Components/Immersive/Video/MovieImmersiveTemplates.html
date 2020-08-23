@@ -1,0 +1,174 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Games Immersive Overview</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/Video/WatchProgress.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="ImmersiveOverview" data-win-control="WinJS.Binding.Template">
+        <div class="movie">
+            <div class="overview hideFromDisplay" data-win-bind="animate: visible MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="enterPage">
+                <div class="nonScrollableItemsContainer">
+                    <div class="contextButtonContainer immersiveColumnPadding" data-ent-member="_buttons" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: smartBuyStateEngine.currentButtons;
+                                            removeFromDisplay: displayActionButtons MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{defaultButtonClass: 'immersiveDetailsOverviewActionButton'}">
+                    </div>
+                    <div class="immersiveColumnPadding ratingContainer" data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: dataContext.mediaItem;
+                                           winControl.disabled: ratingControlDisabled;
+                                           removeFromDisplay: displayStarRatingControl MS.Entertainment.Utilities.toggleClassNameNegate">
+                    </div>
+
+
+                    <div class="rentalExpirationNotification immersiveColumnPadding" data-ent-templateid="contentNotificationListItemTemplate" data-win-bind="removeFromDisplay : dataContext.expirationString MS.Entertainment.Utilities.toggleClassNameNegate">
+                        <div class="contentNotificationListItemWrapper">
+                            <span class="contentNotificationListIcon icon">
+                                &#xE2A6;
+                            </span>
+                            <div class="contentNotificationListItemDescription">
+                                <span class="label" data-win-bind="textContent: dataContext.expirationString">
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="immersiveColumnPadding watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-bind="winControl.viewModel: dataContext.mediaItem;">
+                    </div>
+
+                    <div class="immersiveColumnPadding" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: dataContext.mediaItem.contentNotifications">
+                    </div>
+                </div>
+
+                <div class="scrollableItemsContainer verticalScrollContainerAuto" role="group">
+                    <div class="metaDataContainer immersiveColumnPadding">
+                        <div class="textContainer text-metadata">
+                            <p data-win-bind="textContent: movieOverviewMetadata;"></p>
+                            <div class="icon inlineGlyph label closedCaptionSymbol" data-win-bind="textContent: MS.Entertainment.UI.Icon.closedCaption MS.Entertainment.Formatters.formatIcon;
+                                                removeFromDisplay: dataContext.mediaItem.hasCaptions MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                        </div>
+                    </div>
+                    
+                    <p class="descriptionText text-bodyContent immersiveColumnPadding" data-win-bind="textContent: dataContext.mediaItem.description;
+                                      removeFromDisplay: dataContext.mediaItem.description MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="rottenTomatoesOverviewTemplate" data-win-control="WinJS.Binding.Template">
+        
+        <div class="control-rottenTomatoesOverview immersiveColumnPadding" data-win-bind="removeFromDisplay: visible MS.Entertainment.Utilities.toggleClassNameNegate;
+                            tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;" data-ent-member="_overviewControl" data-ent-event="keydown: _onKeyDown">
+            
+            <div class="rottenTomatoesOverview-scoreDataGrid">
+                <img class="rottenTomatoesOverview-icon" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: tomatoIcon;
+                                    removeFromDisplay: tomatoIcon MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-showanimation="fadeIn" data-ent-event="click: _onClick">
+
+                <div class="rottenTomatoesOverview-percentScore text-subhead2" data-win-bind="textContent: mediaItem.criticReview.reviewScore MS.Entertainment.Formatters.formatPercentage" data-ent-event="click: _onClick"></div>
+            </div>
+
+            <div class="rottenTomatoesOverview-tomatometer text-metadata" data-ent-event="click: _onClick">TOMATOMETER&reg;</div>
+
+            <progress id="percentageProgressBar" class="rottenTomatoesOverview-progressBar" max="100" data-win-bind="value: mediaItem.criticReview.reviewScore;
+                                        removeFromDisplay: mediaItem.criticReview.reviewScore MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-event="click: _onClick" data-ent-member="_scorePercentageProgressBar"></progress>
+
+            <div class="rottenTomatoesOverview-subtitle text-metadataAlt" data-ent-event="click: _onClick;
+                                 keydown: _onKeyDown" data-ent-member="_subtitle" tabindex="0" data-win-bind="textContent: mediaItem.criticReview.reviewScoreCount MS.Entertainment.Formatters.formatNumberOfReviews;
+                                removeFromDisplay: mediaItem.criticReview.reviewScoreCount MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+            
+            <div class="win-tile-focusindicator"></div>
+
+       </div>
+    </div>
+    
+    <div data-ent-templateid="rottenTomatoesReviewTemplate" data-win-control="WinJS.Binding.Template">
+        
+        <div class="control-rottenTomatoesReviewItem win-focusable acc-keyboardFocusTarget" role="listitem" data-ent-event="keydown: _onKeyDown" data-win-bind="tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                            removeFromDisplay: visible MS.Entertainment.Utilities.toggleClassNameNegate">
+
+            <div class="rottenTomatoesReviewItem-scoreDataGrid">
+                <img class="rottenTomatoesReviewItem-icon" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: tomatoIcon;
+                                    removeFromDisplay: tomatoIcon MS.Entertainment.Utilities.toggleClassNameNegate" data-ent-showanimation="fadeIn" data-ent-event="click: _onClick">
+
+                <div class="rottenTomatoesReviewItem-title text-listTitle" data-ent-event="click: _onClick" data-win-bind="textContent: criticReview.criticName;
+                                    removeFromDisplay: criticReview.criticName MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+                <div class="rottenTomatoesReviewItem-subtitle text-metadataAlt" data-ent-event="click: _onClick" data-win-bind="textContent: criticReview.publication;
+                                    removeFromDisplay: criticReview.publication MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+            </div>
+
+            <div class="rottenTomatoesReviewItem-metadata text-metadata" data-win-bind="textContent: criticReview.criticText;
+                                removeFromDisplay: criticReview.criticText MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+
+            
+            <div class="win-tile-focusindicator"></div>
+       </div>
+    </div>
+
+    <div data-ent-templateid="rottenTomatoesCriticReviewItem" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.RottenTomatoesReviewControl" data-win-bind="winControl.criticReview: instance;"></div>
+    </div>
+
+    <div data-ent-templateid="rottenTomatoesImmersivePanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="rottenTomatoesPanel verticalScrollContainer hideFromDisplay" data-win-bind="animate: visible MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="immersiveFrameFadeIn" role="listbox">
+
+            <div data-win-control="MS.Entertainment.UI.Controls.RottenTomatoesOverviewControl" data-win-bind="winControl.mediaItem: dataContext.mediaItem" data-ent-member="rottenTomatoesOverview">
+            </div>
+            
+            <div class="criticListView" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{keyboardNavigable: false,
+                                   itemTemplate: '/Components/Immersive/Video/MovieImmersiveTemplates.html#rottenTomatoesCriticReviewItem' ,
+                                   animateIn: false}" data-ent-member="criticListView" data-win-bind="winControl.dataSource: dataContext.criticReviews">
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="ContributorList" data-win-control="WinJS.Binding.Template">
+        <div class="control-contributorList" data-ent-showanimation="immersiveFrameFadeIn" data-win-bind="removeFromDisplay: boundDataSource MS.Entertainment.Utilities.toggleClassNameNegate">
+            <div class="contributorList-title text-metadataAlt immersiveColumnPadding" data-win-bind="textContent: contributorTitle;"></div>
+
+            <div class="contributorList-items" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-member="listControl" data-win-bind="winControl.itemTemplate: itemTemplate;
+                                winControl.dataSource: boundDataSource">
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div data-ent-templateid="CastAndCrew" data-win-control="WinJS.Binding.Template">
+        <div class="control-castAndCrewList verticalScrollContainerAuto hideFromDisplay" data-win-bind="animate: visible MS.Entertainment.Utilities.forceShowAnimationOnLoad;" data-ent-showanimation="immersiveFrameFadeIn" data-ent-member="_criticReviewList" role="listbox">
+
+            
+            <div class="castAndCrewList-contributorList" data-win-control="MS.Entertainment.UI.Controls.ContributorList" data-ent-member="creatorControl" data-win-bind="winControl.singularTitle: String.id.IDS_VIDEO_CAST_CREATOR MS.Entertainment.Formatters.formatStringId;
+                                winControl.pluralTitle: String.id.IDS_VIDEO_CAST_CREATORS MS.Entertainment.Formatters.formatStringId;
+                                winControl.itemTemplate: itemTemplate;"></div>
+
+            
+            <div class="castAndCrewList-contributorList" data-win-control="MS.Entertainment.UI.Controls.ContributorList" data-ent-member="directorControl" data-win-bind="winControl.singularTitle: String.id.IDS_VIDEO_CAST_DIRECTOR MS.Entertainment.Formatters.formatStringId;
+                                winControl.pluralTitle: String.id.IDS_VIDEO_CAST_DIRECTORS MS.Entertainment.Formatters.formatStringId;
+                                winControl.itemTemplate: itemTemplate;"></div>
+
+            
+            <div class="castAndCrewList-contributorList" data-win-control="MS.Entertainment.UI.Controls.ContributorList" data-ent-member="actorControl" data-win-bind="winControl.singularTitle: String.id.IDS_VIDEO_CAST_ACTOR MS.Entertainment.Formatters.formatStringId;
+                                winControl.pluralTitle: String.id.IDS_VIDEO_CAST_ACTORS MS.Entertainment.Formatters.formatStringId;
+                                winControl.itemTemplate: itemTemplate;"></div>
+
+            
+            <div class="castAndCrewList-contributorList" data-win-control="MS.Entertainment.UI.Controls.ContributorList" data-ent-member="writerControl" data-win-bind="winControl.singularTitle: String.id.IDS_VIDEO_CAST_WRITER MS.Entertainment.Formatters.formatStringId;
+                                winControl.pluralTitle: String.id.IDS_VIDEO_CAST_WRITERS MS.Entertainment.Formatters.formatStringId;
+                                winControl.itemTemplate: itemTemplate;"></div>
+        </div>
+    </div>
+</body>
+</html>

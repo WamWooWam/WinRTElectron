@@ -1,0 +1,50 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Video Panels</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+
+    
+    <script src="/Framework/Data/xhr.js"></script>
+    <script src="/Framework/Data/xboxLive.js"></script>
+    <script src="/Controls/templateSelector.js"></script>
+
+    
+    <script src="/ViewModels/Video/VideoCollectionViewModel.js"></script>
+
+    
+    <link rel="Stylesheet" type="text/css" href="../../Styles/Galleries.css">
+
+    <script src="/Components/Video/VideoCollection.js"></script>
+
+</head>
+
+<body>
+    
+    <div data-ent-templateid="videoCollectionAllTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage videoCollectionPage" data-win-control="MS.Entertainment.Pages.VideoCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'all' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoCollectionMoviesTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage videoCollectionPage videoCollectionMoviesPage" data-win-control="MS.Entertainment.Pages.VideoCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'movies' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoCollectionTVTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage videoCollectionPage videoCollectionTvPage" data-win-control="MS.Entertainment.Pages.VideoCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'tv' }">
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="videoCollectionFolderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="collectionPage videoCollectionPage videoCollectionFolderPage" data-win-control="MS.Entertainment.Pages.VideoCollection" data-win-bind="winControl.dataContext: dataContext" data-win-options="{ view: 'other' }">
+        </div>
+    </div>
+
+</body>
+</html>

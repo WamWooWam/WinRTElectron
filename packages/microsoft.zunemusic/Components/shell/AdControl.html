@@ -1,0 +1,43 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Ad Control Template</title>
+
+        <script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="adControlTemplate" data-win-control="WinJS.Binding.Template">
+
+            <div class="adPlaceholder">
+                <div class="adPlaceholderText" data-win-bind="textContent: String.id.IDS_ADVERTISEMENT MS.Entertainment.Formatters.formatStringId;"></div>
+            </div>
+            <div class="adError removeFromDisplay" data-win-bind="removeFromDisplay: adLoadFailed MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+            <div class="adControl" data-ent-member="adControl" data-win-control="MicrosoftNSJS.Advertising.AdControl" data-win-bind="winControl.applicationId: applicationId; winControl.adUnitId: adUnitId; winControl.countryOrRegion: countryOrRegion; winControl.isAutoRefreshEnabled: isAutoRefreshEnabled;"></div>
+            <div class="win-tile-focusindicator"></div>
+        </div>
+        <div data-ent-templateid="sidebarAdControl" data-win-control="WinJS.Binding.Template">
+            
+            <div class="sidebarAdContainer">
+                <div class="adPlaceholder">
+                    <div class="adPlaceholderText" data-win-bind="textContent: String.id.IDS_ADVERTISEMENT MS.Entertainment.Formatters.formatStringId;"></div>
+                </div>
+                <div class="sidebarAd" data-ent-member="_adControl" data-win-control="MS.Entertainment.UI.Components.Shell.AdControl"></div>
+            </div>
+            <div class="musicSubscriptionLink" data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.subscriptionSignup" data-win-bind="hideFromDisplay: showSignupLink MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-member="_subscriptionLink" data-win-options="{
+                                stringId: String.id.IDS_MUSIC_SUBSCRIPTION_UPSELL_TEXT,
+                                accessibilityStringId: String.id.IDS_MUSIC_SUBSCRIPTION_UPSELL_TEXT,
+                                wrap: true }"></div>
+        </div>
+
+        
+        <div data-ent-templateid="templateid-musicAdControl" data-win-control="WinJS.Binding.Template">
+            <div class="control-ad">
+                <div class="ad-placeholder"></div>
+                <div class="ad-label text-metadata" data-win-bind="textContent: String.id.IDS_ADVERTISEMENT MS.Entertainment.Formatters.formatStringId;"></div>
+                <div class="ad-error removeFromDisplay" data-win-bind="removeFromDisplay: adLoadFailed MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                <div class="ad-adControl" data-ent-member="adControl" data-win-control="MicrosoftNSJS.Advertising.AdControl" data-win-bind="winControl.applicationId: applicationId; winControl.adUnitId: adUnitId; winControl.countryOrRegion: countryOrRegion; winControl.isAutoRefreshEnabled: isAutoRefreshEnabled;"></div>
+            </div>
+        </div>
+    </body>
+</html>

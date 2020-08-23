@@ -1,0 +1,2256 @@
+﻿{
+    "AF": {
+        "region": "Asia",
+        "bounds": {
+            "North": "38.48",
+            "West": "60.46",
+            "South": "29.37",
+            "East": "74.88"
+        }
+    },
+    "DZ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "37.16",
+            "West": "-8.68",
+            "South": "18.96",
+            "East": "11.98"
+        }
+    },
+    "AO": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-4.37",
+            "West": "11.61",
+            "South": "-18.04",
+            "East": "24.10"
+        }
+    },
+    "BH": {
+        "region": "Asia",
+        "bounds": {
+            "North": "26.42",
+            "West": "50.33",
+            "South": "25.53",
+            "East": "50.85"
+        }
+    },
+    "BJ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "12.42",
+            "West": "0.77",
+            "South": "6.14",
+            "East": "3.85"
+        }
+    },
+    "BW": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-17.69",
+            "West": "20.00",
+            "South": "-26.91",
+            "East": "29.37"
+        }
+    },
+    "BV": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-52.66",
+            "West": "0.66",
+            "South": "-56.38",
+            "East": "5.52"
+        }
+    },
+    "BF": {
+        "region": "Africa",
+        "bounds": {
+            "North": "15.08",
+            "West": "-5.52",
+            "South": "9.40",
+            "East": "2.41"
+        }
+    },
+    "BI": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-2.31",
+            "West": "28.99",
+            "South": "-4.47",
+            "East": "30.86"
+        }
+    },
+    "CM": {
+        "region": "Africa",
+        "bounds": {
+            "North": "13.44",
+            "West": "2.07",
+            "South": "0.73",
+            "East": "22.79"
+        }
+    },
+    "CV": {
+        "region": "Africa",
+        "bounds": {
+            "North": "17.83",
+            "West": "-25.97",
+            "South": "14.42",
+            "East": "-22.30"
+        }
+    },
+    "CF": {
+        "region": "Africa",
+        "bounds": {
+            "North": "11.01",
+            "West": "14.42",
+            "South": "2.22",
+            "East": "27.46"
+        }
+    },
+    "TD": {
+        "region": "Africa",
+        "bounds": {
+            "North": "23.45",
+            "West": "13.47",
+            "South": "7.44",
+            "East": "24.00"
+        }
+    },
+    "KM": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-10.84",
+            "West": "43.05",
+            "South": "-12.71",
+            "East": "44.78"
+        }
+    },
+    "CG": {
+        "region": "Africa",
+        "bounds": {
+            "North": "3.70",
+            "West": "11.17",
+            "South": "-5.05",
+            "East": "18.65"
+        }
+    },
+    "CD": {
+        "region": "Africa",
+        "bounds": {
+            "North": "5.39",
+            "West": "12.18",
+            "South": "-13.46",
+            "East": "31.31"
+        }
+    },
+    "CI": {
+        "region": "Africa",
+        "bounds": {
+            "North": "10.75",
+            "West": "-8.60",
+            "South": "4.29",
+            "East": "-2.49"
+        }
+    },
+    "DJ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "12.71",
+            "West": "41.77",
+            "South": "10.91",
+            "East": "43.48"
+        }
+    },
+    "EG": {
+        "region": "Africa",
+        "bounds": {
+            "North": "31.82",
+            "West": "24.70",
+            "South": "22.00",
+            "East": "36.88"
+        }
+    },
+    "GQ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "3.94",
+            "West": "5.08",
+            "South": "-1.97",
+            "East": "11.34"
+        }
+    },
+    "ER": {
+        "region": "Africa",
+        "bounds": {
+            "North": "18.06",
+            "West": "36.44",
+            "South": "12.36",
+            "East": "43.19"
+        }
+    },
+    "ET": {
+        "region": "Africa",
+        "bounds": {
+            "North": "14.89",
+            "West": "32.98",
+            "South": "3.40",
+            "East": "47.99"
+        }
+    },
+    "TF": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-37.32",
+            "West": "49.24",
+            "South": "-51.59",
+            "East": "78.75"
+        }
+    },
+    "GA": {
+        "region": "Africa",
+        "bounds": {
+            "North": "2.32",
+            "West": "8.67",
+            "South": "-4.04",
+            "East": "14.50"
+        }
+    },
+    "GM": {
+        "region": "Africa",
+        "bounds": {
+            "North": "13.83",
+            "West": "-16.87",
+            "South": "13.04",
+            "East": "-13.80"
+        }
+    },
+    "GH": {
+        "region": "Africa",
+        "bounds": {
+            "North": "11.17",
+            "West": "-3.26",
+            "South": "4.64",
+            "East": "1.23"
+        }
+    },
+    "GN": {
+        "region": "Africa",
+        "bounds": {
+            "North": "12.68",
+            "West": "-15.39",
+            "South": "7.19",
+            "East": "-7.64"
+        }
+    },
+    "GW": {
+        "region": "Africa",
+        "bounds": {
+            "North": "12.68",
+            "West": "-16.77",
+            "South": "10.82",
+            "East": "-13.64"
+        }
+    },
+    "IR": {
+        "region": "Asia",
+        "bounds": {
+            "North": "39.78",
+            "West": "44.03",
+            "South": "25.01",
+            "East": "63.33"
+        }
+    },
+    "IQ": {
+        "region": "Asia",
+        "bounds": {
+            "North": "37.38",
+            "West": "38.79",
+            "South": "29.06",
+            "East": "48.62"
+        }
+    },
+    "IL": {
+        "region": "Asia",
+        "bounds": {
+            "North": "33.33",
+            "West": "34.27",
+            "South": "29.48",
+            "East": "35.90"
+        }
+    },
+    "JO": {
+        "region": "Asia",
+        "bounds": {
+            "North": "33.43",
+            "West": "34.90",
+            "South": "29.18",
+            "East": "39.40"
+        }
+    },
+    "KE": {
+        "region": "Africa",
+        "bounds": {
+            "North": "5.42",
+            "West": "33.91",
+            "South": "-4.76",
+            "East": "41.91"
+        }
+    },
+    "KW": {
+        "region": "Asia",
+        "bounds": {
+            "North": "30.18",
+            "West": "45.98",
+            "South": "28.48",
+            "East": "49.14"
+        }
+    },
+    "LB": {
+        "region": "Asia",
+        "bounds": {
+            "North": "34.71",
+            "West": "34.87",
+            "South": "33.05",
+            "East": "36.64"
+        }
+    },
+    "LS": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-28.57",
+            "West": "27.01",
+            "South": "-30.67",
+            "East": "29.47"
+        }
+    },
+    "LR": {
+        "region": "Africa",
+        "bounds": {
+            "North": "8.55",
+            "West": "-11.56",
+            "South": "4.29",
+            "East": "-7.37"
+        }
+    },
+    "LY": {
+        "region": "Africa",
+        "bounds": {
+            "North": "33.29",
+            "West": "9.38",
+            "South": "19.51",
+            "East": "25.36"
+        }
+    },
+    "MG": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-11.87",
+            "West": "43.12",
+            "South": "-25.64",
+            "East": "50.56"
+        }
+    },
+    "MW": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-9.37",
+            "West": "32.67",
+            "South": "-17.13",
+            "East": "35.92"
+        }
+    },
+    "ML": {
+        "region": "Africa",
+        "bounds": {
+            "North": "25.00",
+            "West": "-12.24",
+            "South": "10.15",
+            "East": "4.24"
+        }
+    },
+    "MR": {
+        "region": "Africa",
+        "bounds": {
+            "North": "27.31",
+            "West": "-17.07",
+            "South": "14.72",
+            "East": "-4.82"
+        }
+    },
+    "MU": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-19.61",
+            "West": "56.44",
+            "South": "-21.02",
+            "East": "58.89"
+        }
+    },
+    "YT": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-12.47",
+            "West": "44.87",
+            "South": "-13.15",
+            "East": "45.42"
+        }
+    },
+    "MA": {
+        "region": "Africa",
+        "bounds": {
+            "North": "36.33",
+            "West": "-25.12",
+            "South": "20.71",
+            "East": "3.64"
+        }
+    },
+    "MZ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-10.39",
+            "West": "30.21",
+            "South": "-26.87",
+            "East": "40.89"
+        }
+    },
+    "NA": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-16.96",
+            "West": "11.66",
+            "South": "-28.97",
+            "East": "25.26"
+        }
+    },
+    "NE": {
+        "region": "Africa",
+        "bounds": {
+            "North": "23.53",
+            "West": "0.17",
+            "South": "11.70",
+            "East": "16.00"
+        }
+    },
+    "NG": {
+        "region": "Africa",
+        "bounds": {
+            "North": "13.89",
+            "West": "2.67",
+            "South": "4.24",
+            "East": "14.68"
+        }
+    },
+    "OM": {
+        "region": "Asia",
+        "bounds": {
+            "North": "26.57",
+            "West": "52.00",
+            "South": "16.61",
+            "East": "59.89"
+        }
+    },
+    "PK": {
+        "region": "Asia",
+        "bounds": {
+            "North": "37.10",
+            "West": "60.88",
+            "South": "23.56",
+            "East": "79.30"
+        }
+    },
+    "PS": {
+        "region": "Asia",
+        "bounds": {
+            "North": "0.00",
+            "West": "0.00",
+            "South": "0.00",
+            "East": "0.00"
+        }
+    },
+    "QA": {
+        "region": "Asia",
+        "bounds": {
+            "North": "26.28",
+            "West": "50.71",
+            "South": "24.47",
+            "East": "52.50"
+        }
+    },
+    "RE": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-20.45",
+            "West": "54.31",
+            "South": "-21.93",
+            "East": "56.88"
+        }
+    },
+    "RW": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-1.05",
+            "West": "28.86",
+            "South": "-2.84",
+            "East": "30.90"
+        }
+    },
+    "ST": {
+        "region": "Africa",
+        "bounds": {
+            "North": "2.07",
+            "West": "6.18",
+            "South": "-0.28",
+            "East": "7.80"
+        }
+    },
+    "SA": {
+        "region": "Asia",
+        "bounds": {
+            "North": "32.15",
+            "West": "34.41",
+            "South": "15.89",
+            "East": "55.67"
+        }
+    },
+    "SN": {
+        "region": "Africa",
+        "bounds": {
+            "North": "16.69",
+            "West": "-17.60",
+            "South": "12.24",
+            "East": "-11.36"
+        }
+    },
+    "SC": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-3.44",
+            "West": "53.98",
+            "South": "-5.52",
+            "East": "57.36"
+        }
+    },
+    "SL": {
+        "region": "Africa",
+        "bounds": {
+            "North": "10.00",
+            "West": "-13.36",
+            "South": "6.88",
+            "East": "-10.28"
+        }
+    },
+    "SO": {
+        "region": "Africa",
+        "bounds": {
+            "North": "12.05",
+            "West": "40.99",
+            "South": "-1.69",
+            "East": "51.48"
+        }
+    },
+    "ZA": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-21.98",
+            "West": "12.90",
+            "South": "-35.14",
+            "East": "37.14"
+        }
+    },
+    "SS": {
+        "region": "Africa",
+        "bounds": {
+            "North": "12.23",
+            "West": "24.15",
+            "South": "3.49",
+            "East": "35.34"
+        }
+    },
+    "SH": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-7.83",
+            "West": "-14.50",
+            "South": "-8.08",
+            "East": "-14.22"
+        }
+    },
+    "SD": {
+        "region": "Africa",
+        "bounds": {
+            "North": "23.15",
+            "West": "21.84",
+            "South": "8.68",
+            "East": "38.90"
+        }
+    },
+    "SZ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-25.72",
+            "West": "30.79",
+            "South": "-27.32",
+            "East": "32.14"
+        }
+    },
+    "SY": {
+        "region": "Asia",
+        "bounds": {
+            "North": "37.32",
+            "West": "35.45",
+            "South": "32.31",
+            "East": "42.39"
+        }
+    },
+    "TZ": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-0.98",
+            "West": "29.33",
+            "South": "-11.76",
+            "East": "40.51"
+        }
+    },
+    "TG": {
+        "region": "Africa",
+        "bounds": {
+            "North": "11.14",
+            "West": "-0.15",
+            "South": "6.06",
+            "East": "1.81"
+        }
+    },
+    "TN": {
+        "region": "Africa",
+        "bounds": {
+            "North": "37.60",
+            "West": "7.52",
+            "South": "30.23",
+            "East": "11.61"
+        }
+    },
+    "TR": {
+        "region": "Asia",
+        "bounds": {
+            "North": "42.14",
+            "West": "25.56",
+            "South": "35.81",
+            "East": "44.83"
+        }
+    },
+    "UG": {
+        "region": "Africa",
+        "bounds": {
+            "North": "4.23",
+            "West": "29.57",
+            "South": "-1.48",
+            "East": "35.04"
+        }
+    },
+    "AE": {
+        "region": "Asia",
+        "bounds": {
+            "North": "26.11",
+            "West": "51.42",
+            "South": "22.63",
+            "East": "56.43"
+        }
+    },
+    "YE": {
+        "region": "Asia",
+        "bounds": {
+            "North": "19.00",
+            "West": "41.75",
+            "South": "11.99",
+            "East": "54.80"
+        }
+    },
+    "ZM": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-8.20",
+            "West": "21.99",
+            "South": "-18.08",
+            "East": "33.71"
+        }
+    },
+    "ZW": {
+        "region": "Africa",
+        "bounds": {
+            "North": "-15.61",
+            "West": "25.24",
+            "South": "-22.42",
+            "East": "33.07"
+        }
+    },
+    "AM": {
+        "region": "Asia",
+        "bounds": {
+            "North": "41.30",
+            "West": "43.45",
+            "South": "38.83",
+            "East": "46.63"
+        }
+    },
+    "AZ": {
+        "region": "Asia",
+        "bounds": {
+            "North": "41.93",
+            "West": "44.76",
+            "South": "38.39",
+            "East": "50.91"
+        }
+    },
+    "BD": {
+        "region": "Asia",
+        "bounds": {
+            "North": "26.63",
+            "West": "88.01",
+            "South": "20.54",
+            "East": "92.67"
+        }
+    },
+    "BT": {
+        "region": "Asia",
+        "bounds": {
+            "North": "28.32",
+            "West": "88.76",
+            "South": "26.70",
+            "East": "92.13"
+        }
+    },
+    "IO": {
+        "region": "Asia",
+        "bounds": {
+            "North": "-4.57",
+            "West": "70.12",
+            "South": "-8.02",
+            "East": "73.80"
+        }
+    },
+    "BN": {
+        "region": "Asia",
+        "bounds": {
+            "North": "5.06",
+            "West": "113.81",
+            "South": "3.94",
+            "East": "115.61"
+        }
+    },
+    "KH": {
+        "region": "Asia",
+        "bounds": {
+            "North": "14.69",
+            "West": "102.34",
+            "South": "9.42",
+            "East": "107.63"
+        }
+    },
+    "CN": {
+        "region": "Asia",
+        "bounds": {
+            "North": "55.91",
+            "West": "61.82",
+            "South": "16.49",
+            "East": "140.85"
+        }
+    },
+    "CX": {
+        "region": "Asia",
+        "bounds": {
+            "North": "-9.61",
+            "West": "105.04",
+            "South": "-11.01",
+            "East": "106.05"
+        }
+    },
+    "CC": {
+        "region": "Asia",
+        "bounds": {
+            "North": "-11.44",
+            "West": "96.32",
+            "South": "-12.65",
+            "East": "97.46"
+        }
+    },
+    "GE": {
+        "region": "Asia",
+        "bounds": {
+            "North": "43.59",
+            "West": "40.01",
+            "South": "41.05",
+            "East": "46.74"
+        }
+    },
+    "HK": {
+        "region": "Asia",
+        "bounds": {
+            "North": "22.62",
+            "West": "113.62",
+            "South": "21.83",
+            "East": "114.50"
+        }
+    },
+    "IN": {
+        "region": "Asia",
+        "bounds": {
+            "North": "37.10",
+            "West": "68.10",
+            "South": "8.0",
+            "East": "97.40"
+        }
+    },
+    "ID": {
+        "region": "Asia",
+        "bounds": {
+            "North": "6.37",
+            "West": "94.74",
+            "South": "-11.69",
+            "East": "141.02"
+        }
+    },
+    "JP": {
+        "region": "Asia",
+        "bounds": {
+            "North": "45.72",
+            "West": "114.02",
+            "South": "25.30",
+            "East": "154.62"
+        }
+    },
+    "KZ": {
+        "region": "Asia",
+        "bounds": {
+            "North": "55.44",
+            "West": "46.49",
+            "South": "40.57",
+            "East": "87.32"
+        }
+    },
+    "KR": {
+        "region": "Asia",
+        "bounds": {
+            "North": "38.65",
+            "West": "124.58",
+            "South": "33.10",
+            "East": "131.09"
+        }
+    },
+    "KG": {
+        "region": "Asia",
+        "bounds": {
+            "North": "43.24",
+            "West": "69.28",
+            "South": "39.17",
+            "East": "80.28"
+        }
+    },
+    "LA": {
+        "region": "Asia",
+        "bounds": {
+            "North": "22.50",
+            "West": "100.08",
+            "South": "13.91",
+            "East": "107.70"
+        }
+    },
+    "MO": {
+        "region": "Asia",
+        "bounds": {
+            "North": "22.45",
+            "West": "113.09",
+            "South": "21.93",
+            "East": "114.00"
+        }
+    },
+    "MY": {
+        "region": "Asia",
+        "bounds": {
+            "North": "7.57",
+            "West": "98.78",
+            "South": "0.86",
+            "East": "119.57"
+        }
+    },
+    "MV": {
+        "region": "Asia",
+        "bounds": {
+            "North": "7.49",
+            "West": "71.57",
+            "South": "-1.40",
+            "East": "74.31"
+        }
+    },
+    "MN": {
+        "region": "Asia",
+        "bounds": {
+            "North": "52.15",
+            "West": "87.75",
+            "South": "41.57",
+            "East": "119.92"
+        }
+    },
+    "MM": {
+        "region": "Asia",
+        "bounds": {
+            "North": "28.54",
+            "West": "92.19",
+            "South": "9.52",
+            "East": "101.18"
+        }
+    },
+    "NP": {
+        "region": "Asia",
+        "bounds": {
+            "North": "30.45",
+            "West": "80.06",
+            "South": "26.35",
+            "East": "88.20"
+        }
+    },
+    "KP": {
+        "region": "Asia",
+        "bounds": {
+            "North": "43.01",
+            "West": "124.15",
+            "South": "37.59",
+            "East": "130.72"
+        }
+    },
+    "PH": {
+        "region": "Asia",
+        "bounds": {
+            "North": "18.89",
+            "West": "111.60",
+            "South": "5.39",
+            "East": "133.96"
+        }
+    },
+    "SG": {
+        "region": "Asia",
+        "bounds": {
+            "North": "1.99",
+            "West": "102.73",
+            "South": "0.61",
+            "East": "104.97"
+        }
+    },
+    "LK": {
+        "region": "Asia",
+        "bounds": {
+            "North": "10.15",
+            "West": "79.42",
+            "South": "5.51",
+            "East": "82.30"
+        }
+    },
+    "TW": {
+        "region": "Asia",
+        "bounds": {
+            "North": "26.44",
+            "West": "118.26",
+            "South": "21.83",
+            "East": "122.19"
+        }
+    },
+    "TJ": {
+        "region": "Asia",
+        "bounds": {
+            "North": "41.04",
+            "West": "67.39",
+            "South": "36.67",
+            "East": "75.14"
+        }
+    },
+    "TH": {
+        "region": "Asia",
+        "bounds": {
+            "North": "20.46",
+            "West": "97.34",
+            "South": "5.61",
+            "East": "105.64"
+        }
+    },
+    "TL": {
+        "region": "Asia",
+        "bounds": {
+            "North": "-8.03",
+            "West": "124.03",
+            "South": "-9.59",
+            "East": "127.43"
+        }
+    },
+    "TM": {
+        "region": "Asia",
+        "bounds": {
+            "North": "42.80",
+            "West": "52.42",
+            "South": "35.14",
+            "East": "66.68"
+        }
+    },
+    "UZ": {
+        "region": "Asia",
+        "bounds": {
+            "North": "45.61",
+            "West": "56.00",
+            "South": "37.18",
+            "East": "73.13"
+        }
+    },
+    "VN": {
+        "region": "Asia",
+        "bounds": {
+            "North": "23.39",
+            "West": "102.14",
+            "South": "8.36",
+            "East": "109.52"
+        }
+    },
+    "AS": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-10.92",
+            "West": "-171.19",
+            "South": "-14.69",
+            "East": "-168.05"
+        }
+    },
+    "AU": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-10.68",
+            "West": "101.40",
+            "South": "-44.08",
+            "East": "162.24"
+        }
+    },
+    "CK": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-7.45",
+            "West": "-167.08",
+            "South": "-24.80",
+            "East": "-156.48"
+        }
+    },
+    "FJ": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-16.03",
+            "West": "176.07",
+            "South": "-19.21",
+            "East": "-178.53"
+        }
+    },
+    "PF": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "10.50",
+            "West": "-155.90",
+            "South": "-29.04",
+            "East": "-109.00"
+        }
+    },
+    "GU": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "13.77",
+            "West": "144.17",
+            "South": "13.05",
+            "East": "145.37"
+        }
+    },
+    "HM": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-51.90",
+            "West": "71.34",
+            "South": "-54.93",
+            "East": "75.58"
+        }
+    },
+    "KI": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "12.51",
+            "West": "170.59",
+            "South": "-7.51",
+            "East": "-156.97"
+        }
+    },
+    "MH": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "14.04",
+            "West": "159.90",
+            "South": "5.92",
+            "East": "173.24"
+        }
+    },
+    "FM": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "12.19",
+            "West": "136.69",
+            "South": "0.46",
+            "East": "171.69"
+        }
+    },
+    "NR": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-0.25",
+            "West": "166.61",
+            "South": "-1.04",
+            "East": "167.24"
+        }
+    },
+    "NC": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-17.00",
+            "West": "157.50",
+            "South": "-23.82",
+            "East": "172.65"
+        }
+    },
+    "NZ": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-33.00",
+            "West": "164.80",
+            "South": "-47.60",
+            "East": "178.90"
+        }
+    },
+    "NU": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-17.88",
+            "West": "-170.85",
+            "South": "-20.19",
+            "East": "-168.81"
+        }
+    },
+    "NF": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-28.68",
+            "West": "167.90",
+            "South": "-29.19",
+            "East": "168.36"
+        }
+    },
+    "MP": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "21.38",
+            "West": "142.85",
+            "South": "13.99",
+            "East": "146.90"
+        }
+    },
+    "PW": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "8.15",
+            "West": "133.44",
+            "South": "6.85",
+            "East": "135.56"
+        }
+    },
+    "PG": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "0.50",
+            "West": "140.80",
+            "South": "-12.21",
+            "East": "160.26"
+        }
+    },
+    "PN": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-22.82",
+            "West": "-131.50",
+            "South": "-25.91",
+            "East": "-123.49"
+        }
+    },
+    "WS": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-13.30",
+            "West": "-172.93",
+            "South": "-14.18",
+            "East": "-171.24"
+        }
+    },
+    "SB": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-4.83",
+            "West": "155.02",
+            "South": "-13.00",
+            "East": "171.02"
+        }
+    },
+    "TK": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-6.70",
+            "West": "-174.62",
+            "South": "-12.12",
+            "East": "-169.17"
+        }
+    },
+    "TO": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-14.77",
+            "West": "-177.59",
+            "South": "-22.94",
+            "East": "-171.89"
+        }
+    },
+    "TV": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-3.96",
+            "West": "171.82",
+            "South": "-11.99",
+            "East": "180.00"
+        }
+    },
+    "VU": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-13.00",
+            "West": "163.53",
+            "South": "-22.28",
+            "East": "172.65"
+        }
+    },
+    "WF": {
+        "region": "PacificIslands",
+        "bounds": {
+            "North": "-9.54",
+            "West": "175.90",
+            "South": "-18.06",
+            "East": "-169.90"
+        }
+    },
+    "AX": {
+        "region": "Europe",
+        "bounds": {
+            "North": "60.43",
+            "West": "19.63",
+            "South": "59.97",
+            "East": "20.30"
+        }
+    },
+    "AL": {
+        "region": "Europe",
+        "bounds": {
+            "North": "42.67",
+            "West": "19.23",
+            "South": "39.64",
+            "East": "21.07"
+        }
+    },
+    "AD": {
+        "region": "Europe",
+        "bounds": {
+            "North": "42.66",
+            "West": "1.41",
+            "South": "42.43",
+            "East": "1.79"
+        }
+    },
+    "AT": {
+        "region": "Europe",
+        "bounds": {
+            "North": "49.42",
+            "West": "9.18",
+            "South": "45.96",
+            "East": "17.50"
+        }
+    },
+    "BY": {
+        "region": "Europe",
+        "bounds": {
+            "North": "56.17",
+            "West": "23.18",
+            "South": "51.26",
+            "East": "32.78"
+        }
+    },
+    "BE": {
+        "region": "Europe",
+        "bounds": {
+            "North": "51.51",
+            "West": "2.51",
+            "South": "49.49",
+            "East": "6.41"
+        }
+    },
+    "BA": {
+        "region": "Europe",
+        "bounds": {
+            "North": "45.40",
+            "West": "14.47",
+            "South": "42.38",
+            "East": "21.23"
+        }
+    },
+    "BG": {
+        "region": "Europe",
+        "bounds": {
+            "North": "44.23",
+            "West": "22.36",
+            "South": "41.24",
+            "East": "28.66"
+        }
+    },
+    "HR": {
+        "region": "Europe",
+        "bounds": {
+            "North": "46.55",
+            "West": "13.43",
+            "South": "42.31",
+            "East": "19.45"
+        }
+    },
+    "CY": {
+        "region": "Europe",
+        "bounds": {
+            "North": "35.90",
+            "West": "31.73",
+            "South": "34.39",
+            "East": "34.87"
+        }
+    },
+    "CZ": {
+        "region": "Europe",
+        "bounds": {
+            "North": "51.13",
+            "West": "12.14",
+            "South": "48.45",
+            "East": "18.87"
+        }
+    },
+    "DK": {
+        "region": "Europe",
+        "bounds": {
+            "North": "58.08",
+            "West": "5.63",
+            "South": "54.40",
+            "East": "16.36"
+        }
+    },
+    "EE": {
+        "region": "Europe",
+        "bounds": {
+            "North": "59.74",
+            "West": "21.68",
+            "South": "57.51",
+            "East": "28.21"
+        }
+    },
+    "FO": {
+        "region": "Europe",
+        "bounds": {
+            "North": "62.53",
+            "West": "-7.82",
+            "South": "61.05",
+            "East": "-6.20"
+        }
+    },
+    "FI": {
+        "region": "Europe",
+        "bounds": {
+            "North": "70.10",
+            "West": "19.26",
+            "South": "59.69",
+            "East": "31.59"
+        }
+    },
+    "FR": {
+        "region": "Europe",
+        "bounds": {
+            "North": "51.10",
+            "West": "-5.25",
+            "South": "41.30",
+            "East": "9.60"
+        }
+    },
+    "DE": {
+        "region": "Europe",
+        "bounds": {
+            "North": "55.10",
+            "West": "5.87",
+            "South": "47.27",
+            "East": "15.04"
+        }
+    },
+    "GI": {
+        "region": "Europe",
+        "bounds": {
+            "North": "36.16",
+            "West": "-5.37",
+            "South": "36.11",
+            "East": "-5.33"
+        }
+    },
+    "GR": {
+        "region": "Europe",
+        "bounds": {
+            "North": "41.81",
+            "West": "17.14",
+            "South": "34.89",
+            "East": "31.42"
+        }
+    },
+    "GG": {
+        "region": "Europe",
+        "bounds": {
+            "North": "49.77",
+            "West": "-2.73",
+            "South": "49.38",
+            "East": "-2.13"
+        }
+    },
+    "HU": {
+        "region": "Europe",
+        "bounds": {
+            "North": "48.59",
+            "West": "16.11",
+            "South": "45.74",
+            "East": "22.90"
+        }
+    },
+    "IS": {
+        "region": "Europe",
+        "bounds": {
+            "North": "66.71",
+            "West": "-25.57",
+            "South": "63.25",
+            "East": "-12.32"
+        }
+    },
+    "IE": {
+        "region": "Europe",
+        "bounds": {
+            "North": "55.45",
+            "West": "-10.67",
+            "South": "51.38",
+            "East": "-5.99"
+        }
+    },
+    "IM": {
+        "region": "Europe",
+        "bounds": {
+            "North": "54.45",
+            "West": "-4.86",
+            "South": "54.01",
+            "East": "-4.28"
+        }
+    },
+    "IT": {
+        "region": "Europe",
+        "bounds": {
+            "North": "47.07",
+            "West": "1.23",
+            "South": "36.68",
+            "East": "23.81"
+        }
+    },
+    "SJ": [
+        {
+            "region": "Europe",
+            "bounds": {
+                "North": "71.32",
+                "West": "-9.14",
+                "South": "70.50",
+                "East": "-7.48"
+            }
+        },
+        {
+            "region": "Europe",
+            "bounds": {
+                "North": "82.45",
+                "West": "8.82",
+                "South": "73.57",
+                "East": "36.82"
+            }
+        }
+    ],
+    "JE": {
+        "region": "Europe",
+        "bounds": {
+            "North": "49.33",
+            "West": "-2.32",
+            "South": "49.12",
+            "East": "-1.92"
+        }
+    },
+    "LV": {
+        "region": "Europe",
+        "bounds": {
+            "North": "58.09",
+            "West": "20.91",
+            "South": "55.67",
+            "East": "28.24"
+        }
+    },
+    "LI": {
+        "region": "Europe",
+        "bounds": {
+            "North": "47.27",
+            "West": "9.47",
+            "South": "47.05",
+            "East": "9.64"
+        }
+    },
+    "LT": {
+        "region": "Europe",
+        "bounds": {
+            "North": "56.45",
+            "West": "20.91",
+            "South": "53.90",
+            "East": "26.84"
+        }
+    },
+    "LU": {
+        "region": "Europe",
+        "bounds": {
+            "North": "50.18",
+            "West": "5.73",
+            "South": "49.45",
+            "East": "6.53"
+        }
+    },
+    "MK": {
+        "region": "Europe",
+        "bounds": {
+            "North": "42.37",
+            "West": "20.46",
+            "South": "40.85",
+            "East": "23.04"
+        }
+    },
+    "MT": {
+        "region": "Europe",
+        "bounds": {
+            "North": "36.15",
+            "West": "14.12",
+            "South": "35.70",
+            "East": "14.65"
+        }
+    },
+    "MD": {
+        "region": "Europe",
+        "bounds": {
+            "North": "48.49",
+            "West": "26.62",
+            "South": "45.47",
+            "East": "30.16"
+        }
+    },
+    "MC": {
+        "region": "Europe",
+        "bounds": {
+            "North": "43.76",
+            "West": "7.40",
+            "South": "43.71",
+            "East": "7.47"
+        }
+    },
+    "ME": {
+        "region": "Europe",
+        "bounds": {
+            "North": "43.54",
+            "West": "18.43",
+            "South": "41.79",
+            "East": "20.38"
+        }
+    },
+    "NL": {
+        "region": "Europe",
+        "bounds": {
+            "North": "53.53",
+            "West": "1.61",
+            "South": "50.76",
+            "East": "8.91"
+        }
+    },
+    "NO": {
+        "region": "Europe",
+        "bounds": {
+            "North": "71.28",
+            "West": "-7.00",
+            "South": "58.29",
+            "East": "42.34"
+        }
+    },
+    "PL": {
+        "region": "Europe",
+        "bounds": {
+            "North": "54.89",
+            "West": "14.12",
+            "South": "49.00",
+            "East": "24.15"
+        }
+    },
+    "PT": {
+        "region": "Europe",
+        "bounds": {
+            "North": "42.17",
+            "West": "-13.62",
+            "South": "36.87",
+            "East": "-2.50"
+        }
+    },
+    "RO": {
+        "region": "Europe",
+        "bounds": {
+            "North": "48.27",
+            "West": "20.26",
+            "South": "43.62",
+            "East": "29.76"
+        }
+    },
+    "RU": {
+        "region": "Asia",
+        "bounds": {
+            "North": "78.12",
+            "West": "24.07",
+            "South": "38.35",
+            "East": "178.89"
+        }
+    },
+    "SM": {
+        "region": "Europe",
+        "bounds": {
+            "North": "44.00",
+            "West": "12.40",
+            "South": "43.89",
+            "East": "12.52"
+        }
+    },
+    "RS": {
+        "region": "Europe",
+        "bounds": {
+            "North": "46.28",
+            "West": "15.77",
+            "South": "41.70",
+            "East": "26.05"
+        }
+    },
+    "SK": {
+        "region": "Europe",
+        "bounds": {
+            "North": "50.41",
+            "West": "15.44",
+            "South": "46.95",
+            "East": "23.93"
+        }
+    },
+    "SI": {
+        "region": "Europe",
+        "bounds": {
+            "North": "47.02",
+            "West": "13.30",
+            "South": "45.31",
+            "East": "16.79"
+        }
+    },
+    "ES": {
+        "region": "Europe",
+        "bounds": {
+            "North": "44.06",
+            "West": "-11.45",
+            "South": "35.80",
+            "East": "5.95"
+        }
+    },
+    "SE": {
+        "region": "Europe",
+        "bounds": {
+            "North": "69.23",
+            "West": "-6.77",
+            "South": "55.38",
+            "East": "41.44"
+        }
+    },
+    "CH": {
+        "region": "Europe",
+        "bounds": {
+            "North": "47.81",
+            "West": "5.96",
+            "South": "45.82",
+            "East": "10.49"
+        }
+    },
+    "UA": {
+        "region": "Europe",
+        "bounds": {
+            "North": "52.38",
+            "West": "22.14",
+            "South": "44.32",
+            "East": "40.22"
+        }
+    },
+    "GB": {
+        "region": "Europe",
+        "bounds": {
+            "North": "60.78",
+            "West": "-18.28",
+            "South": "49.96",
+            "East": "12.54"
+        }
+    },
+    "VA": {
+        "region": "Europe",
+        "bounds": {
+            "North": "41.92",
+            "West": "12.43",
+            "South": "41.89",
+            "East": "12.48"
+        }
+    },
+    "AI": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.65",
+            "West": "-63.46",
+            "South": "18.07",
+            "East": "-62.77"
+        }
+    },
+    "AG": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "17.80",
+            "West": "-62.41",
+            "South": "16.86",
+            "East": "-61.60"
+        }
+    },
+    "AW": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "12.76",
+            "West": "-70.41",
+            "South": "12.24",
+            "East": "-69.54"
+        }
+    },
+    "BS": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "27.63",
+            "West": "-81.33",
+            "South": "20.42",
+            "East": "-72.46"
+        }
+    },
+    "BB": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "13.44",
+            "West": "-59.71",
+            "South": "12.97",
+            "East": "-59.38"
+        }
+    },
+    "BZ": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.50",
+            "West": "-89.23",
+            "South": "15.89",
+            "East": "-87.38"
+        }
+    },
+    "BM": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "32.53",
+            "West": "-65.04",
+            "South": "32.16",
+            "East": "-64.56"
+        }
+    },
+    "BQ": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "12.69",
+            "West": "-68.78",
+            "South": "11.86",
+            "East": "-68.01"
+        }
+    },
+    "VG": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.79",
+            "West": "-64.88",
+            "South": "18.30",
+            "East": "-64.20"
+        }
+    },
+    "CA": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "73.00",
+            "West": "-142.10",
+            "South": "40.90",
+            "East": "-51.90"
+        }
+    },
+    "KY": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "19.94",
+            "West": "-81.71",
+            "South": "19.04",
+            "East": "-79.35"
+        }
+    },
+    "CR": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "11.40",
+            "West": "-87.15",
+            "South": "7.88",
+            "East": "-81.37"
+        }
+    },
+    "CU": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "23.74",
+            "West": "-85.30",
+            "South": "19.52",
+            "East": "-73.83"
+        }
+    },
+    "CW": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "12.82",
+            "West": "-69.48",
+            "South": "11.86",
+            "East": "-68.53"
+        }
+    },
+    "DM": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "15.76",
+            "West": "-61.93",
+            "South": "15.07",
+            "East": "-60.77"
+        }
+    },
+    "DO": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "20.01",
+            "West": "-72.01",
+            "South": "17.30",
+            "East": "-68.09"
+        }
+    },
+    "SV": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "14.45",
+            "West": "-90.20",
+            "South": "12.99",
+            "East": "-87.61"
+        }
+    },
+    "GL": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "74.77",
+            "West": "-76.06",
+            "South": "59.32",
+            "East": "-11.97"
+        }
+    },
+    "GD": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "12.56",
+            "West": "-61.90",
+            "South": "11.89",
+            "East": "-61.27"
+        }
+    },
+    "GP": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "16.69",
+            "West": "-61.90",
+            "South": "15.72",
+            "East": "-60.97"
+        }
+    },
+    "GT": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "17.82",
+            "West": "-92.28",
+            "South": "13.65",
+            "East": "-88.17"
+        }
+    },
+    "HT": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "20.33",
+            "West": "-74.63",
+            "South": "17.87",
+            "East": "-71.61"
+        }
+    },
+    "HN": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "17.51",
+            "West": "-89.36",
+            "South": "12.98",
+            "East": "-82.10"
+        }
+    },
+    "JM": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.95",
+            "West": "-78.69",
+            "South": "17.31",
+            "East": "-75.89"
+        }
+    },
+    "MQ": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "14.97",
+            "West": "-61.31",
+            "South": "14.27",
+            "East": "-60.58"
+        }
+    },
+    "MX": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "35.27",
+            "West": "-119.70",
+            "South": "14.49",
+            "East": "-82.64"
+        }
+    },
+    "MS": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "16.87",
+            "West": "-62.28",
+            "South": "16.59",
+            "East": "-62.10"
+        }
+    },
+    "NI": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "15.03",
+            "West": "-87.78",
+            "South": "10.71",
+            "East": "-82.48"
+        }
+    },
+    "PA": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "9.72",
+            "West": "-83.05",
+            "South": "7.08",
+            "East": "-77.16"
+        }
+    },
+    "PR": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.77",
+            "West": "-68.09",
+            "South": "17.74",
+            "East": "-65.16"
+        }
+    },
+    "XS": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "17.73",
+            "West": "-63.34",
+            "South": "17.53",
+            "East": "-63.13"
+        }
+    },
+    "BL": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.10",
+            "West": "-62.98",
+            "South": "17.81",
+            "East": "-62.68"
+        }
+    },
+    "XE": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "17.60",
+            "West": "-63.07",
+            "South": "17.42",
+            "East": "-62.86"
+        }
+    },
+    "SX": [
+        {
+            "region": "NorthAmerica",
+            "bounds": {
+                "North": "18.10",
+                "West": "-63.11",
+                "South": "18.04",
+                "East": "-63.03"
+            }
+        },
+        {
+            "region": "NorthAmerica",
+            "bounds": {
+                "North": "18.10",
+                "West": "-63.11",
+                "South": "18.04",
+                "East": "-63.03"
+            }
+        }
+    ],
+    "LC": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "14.16",
+            "West": "-61.16",
+            "South": "13.58",
+            "East": "-60.77"
+        }
+    },
+    "MF": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "30.50",
+            "West": "-91.99",
+            "South": "29.70",
+            "East": "-91.09"
+        }
+    },
+    "PM": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "47.23",
+            "West": "-56.73",
+            "South": "46.56",
+            "East": "-55.90"
+        }
+    },
+    "VC": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "13.54",
+            "West": "-61.51",
+            "South": "12.50",
+            "East": "-60.86"
+        }
+    },
+    "TT": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "11.55",
+            "West": "-62.02",
+            "South": "9.95",
+            "East": "-60.34"
+        }
+    },
+    "TC": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "22.11",
+            "West": "-72.62",
+            "South": "20.83",
+            "East": "-70.79"
+        }
+    },
+    "US": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "48.05",
+            "West": "-125.81",
+            "South": "26.56",
+            "East": "-73.69"
+        }
+    },
+    "VI": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "18.46",
+            "West": "-65.13",
+            "South": "17.60",
+            "East": "-64.45"
+        }
+    },
+    "AR": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-21.78",
+            "West": "-74.00",
+            "South": "-55.00",
+            "East": "-40.00"
+        }
+    },
+    "BO": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-9.67",
+            "West": "-69.64",
+            "South": "-22.91",
+            "East": "-57.45"
+        }
+    },
+    "BR": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "5.27",
+            "West": "-73.99",
+            "South": "-33.78",
+            "East": "-27.20"
+        }
+    },
+    "CL": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-17.45",
+            "West": "-108.89",
+            "South": "-55.79",
+            "East": "-31.59"
+        }
+    },
+    "CO": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "16.02",
+            "West": "-82.34",
+            "South": "-4.23",
+            "East": "-66.85"
+        }
+    },
+    "EC": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "1.53",
+            "West": "-83.67",
+            "South": "-5.03",
+            "East": "-73.05"
+        }
+    },
+    "FK": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-50.94",
+            "West": "-61.53",
+            "South": "-52.97",
+            "East": "-57.62"
+        }
+    },
+    "GF": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "6.08",
+            "West": "-54.60",
+            "South": "2.11",
+            "East": "-51.55"
+        }
+    },
+    "GY": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "9.40",
+            "West": "-66.07",
+            "South": "0.39",
+            "East": "-51.44"
+        }
+    },
+    "PY": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-19.29",
+            "West": "-62.65",
+            "South": "-27.61",
+            "East": "-54.26"
+        }
+    },
+    "PE": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-0.01",
+            "West": "-81.40",
+            "South": "-18.39",
+            "East": "-68.65"
+        }
+    },
+    "GS": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-52.23",
+            "West": "-42.79",
+            "South": "-59.95",
+            "East": "-26.00"
+        }
+    },
+    "SR": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "6.31",
+            "West": "-58.07",
+            "South": "1.83",
+            "East": "-53.87"
+        }
+    },
+    "UY": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "-30.08",
+            "West": "-58.49",
+            "South": "-35.63",
+            "East": "-53.07"
+        }
+    },
+    "VE": {
+        "region": "SouthAmerica",
+        "bounds": {
+            "North": "15.72",
+            "West": "-73.38",
+            "South": "0.63",
+            "East": "-59.74"
+	    }
+        },
+    "KN": {
+        "region": "NorthAmerica",
+        "bounds": {
+            "North": "17.47",
+            "West": "-62.91",
+            "South": "17.00",
+            "East": "-62.34"
+        }
+     }
+}

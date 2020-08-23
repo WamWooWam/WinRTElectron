@@ -1,0 +1,4207 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.glyph, .inlineGlyph, .inlineGlyphSmall, .verticalListStatusIcon, .contentNotificationListIcon
+{
+    opacity: .5;
+    width: auto
+}
+.inlineGlyphSolid
+{
+    opacity: 1
+}
+html[dir=ltr] .companionHomeSearchBox .editBox
+{
+    padding-right: 10px
+}
+html[dir=rtl] .companionHomeSearchBox .editBox
+{
+    padding-left: 10px
+}
+[data-win-control="MS.Entertainment.UI.Shell.ImageControl"]
+{
+    background-position: center top;
+    background-size: cover;
+    -ms-high-contrast-adjust: none
+}
+.errorContainer
+{
+    display: none
+}
+.editBox.validationFailed .errorContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 5px 1fr
+}
+.editError
+{
+    display: none
+}
+html[dir=rtl] .editError
+{
+    text-align: right
+}
+.editInput, .editMultiline
+{
+    padding: 5px
+}
+.editBox .icon
+{
+    display: block;
+    -ms-grid-row-align: start
+}
+.fillParent, .layout-fillParent
+{
+    height: 100%;
+    width: 100%
+}
+.layout-centerChildren, .layout-fillChildren
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.layout-centerChildren>div
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.layout-fillChildren>div
+{
+    -ms-grid-column-align: stretch;
+    -ms-grid-row-align: stretch;
+    height: 100%;
+    width: 100%
+}
+.editBox .editError
+{
+    display: block;
+    -ms-grid-row-align: start;
+    -ms-grid-column: 3;
+    margin-top: -1px
+}
+.music .editBox .editError
+{
+    margin-top: 1px
+}
+.modifierControl
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto auto auto;
+    margin: 11px -8px 0 -8px;
+    padding: 4px 8px 4px 8px;
+    outline: none
+}
+.modifierControl:not(.templatelessModifierControl)::before
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(70,71,76,.01)
+}
+.templatelessModifierControl
+{
+    position: relative
+}
+.templatelessModifierControl:not(.dropDownDisabled)::after
+{
+    position: absolute;
+    content: "";
+    font-size: 10pt;
+    -ms-transform: translateY(-1px)
+}
+html[dir=ltr] .templatelessModifierControl::after
+{
+    right: -11px
+}
+html[dir=rtl] .templatelessModifierControl::after
+{
+    left: -11px
+}
+.searchModifier .modifierControl
+{
+    position: relative
+}
+.leaderboards .immersiveMoreGallery .modifierControl
+{
+    -ms-grid-columns: auto 1fr auto
+}
+.modifierControl .modifierDescription
+{
+    padding-right: 6px;
+    -ms-grid-row-align: end;
+    padding-bottom: 2px
+}
+html[dir=rtl] .modifierControl .modifierDescription
+{
+    padding-right: 0;
+    padding-left: 6px
+}
+.musicPage .modifierControl .modifierDescription
+{
+    white-space: normal;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2
+}
+.modifierPopupScroller
+{
+    height: auto;
+    min-width: 283px;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    margin-top: 4px;
+    box-shadow: 0 5px 25px rgba(0,0,0,.4)
+}
+.seriesPopoverSeasonSelector .modifierPopupScroller
+{
+    max-height: 250px
+}
+@media screen and (min-height: 1080px)
+{
+    .modifierPopupScroller
+    {
+        max-height: calc(100vh - 230px)
+    }
+}
+@media screen and (min-height: 1200px)
+{
+    .modifierPopupScroller
+    {
+        max-height: calc(100vh - 350px)
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .modifierPopupScroller
+    {
+        max-height: calc(100vh - 440px)
+    }
+}
+.modifierEntryTextContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto auto;
+    -ms-grid-row-align: center
+}
+.modifierPopupEntryDescriptionLabel
+{
+    -ms-grid-column: 1
+}
+.modifierPopupEntryLabel
+{
+    -ms-grid-column: 2
+}
+.initialSelectedModifierPopupEntry .modifierPopupEntryLabel
+{
+    padding: 0 6px 0 2px
+}
+.modifierPopupScroller .win-template
+{
+    height: 50px
+}
+.modifierPopupEntry
+{
+    height: 100%;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 15px;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr
+}
+.modifierSelectedItem
+{
+    -ms-grid-column: 2
+}
+.inboxPage .modifierSelectedItem, .musicPage .modifierSelectedItem
+{
+    white-space: normal;
+    -ms-grid-column: 1;
+    -ms-grid-row: 2
+}
+.dropDownArrowContainer
+{
+    -ms-grid-column: 3
+}
+.inboxPage .dropDownArrowContainer, .musicPage .dropDownArrowContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2
+}
+.modifierDropDownArrow
+{
+    margin-top: 3px;
+    padding-left: 8px;
+    padding-right: 8px
+}
+.thumbnailButton, .cardThumbnailButton
+{
+    position: relative;
+    width: 295px;
+    height: 165px;
+    white-space: normal;
+    display: inline-block;
+    overflow: hidden
+}
+.musicFlexHubBigItem .cardThumbnailButton
+{
+    width: 275px
+}
+.videoFlexHubBigItem.movieThumbnail, .videoFlexHubBigItem .cardThumbnailButton, .musicFlexHubBigItem .cardThumbnailButton, .gamesFlexHubBigItem .cardThumbnailButton, .searchHCR.movieThumbnail, .searchHCR.gamesThumbnail, .searchHCR .cardThumbnailButton
+{
+    height: 100%
+}
+.cardThumbnailButton.acc-keyboardFocusTarget
+{
+    overflow: visible
+}
+.thumbnailButton
+{
+    opacity: 0
+}
+.dashboardGridItemContent .thumbnailButton
+{
+    overflow: visible;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%
+}
+.dashboardGridItemContent .content, .dashboardGridItemContent .imageContainer
+{
+    overflow: hidden;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1
+}
+.dashboardGridItemContent .content
+{
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 1fr 67px
+}
+.dashboardGridItemContent .textContainer
+{
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    -ms-grid-columns: 15px 1fr auto 15px;
+    -ms-grid-rows: 25px 42px
+}
+.dashboardGridItemContent .secondaryText, .dashboardGridItemContent .tertiaryText, .dashboardGridItemContent .quaternaryText
+{
+    padding-left: 15px;
+    padding-right: 15px;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4
+}
+.dashboardGridItemContent .primaryTextBg
+{
+    width: 100%;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 5
+}
+.dashboardGridItemContent .primaryText
+{
+    height: calc(100% - 8px);
+    padding-top: 8px;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2
+}
+.companion .dashboardGridItemContent .primaryText
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 4;
+    padding-left: 15px;
+    padding-right: 15px
+}
+.dashboardGridItemContent .dashboardTileIcon
+{
+    -ms-grid-row: 2;
+    -ms-grid-row-align: end;
+    -ms-grid-column: 3;
+    margin-bottom: 14px;
+    margin-left: 5px
+}
+html[dir=rtl] .dashboardGridItemContent .dashboardTileIcon
+{
+    margin-left: 0;
+    margin-right: 5px;
+    transform: scaleX(-1)
+}
+.dashboardGridItemContent .dashboardTileIcon.gameIcon
+{
+    -ms-grid-row-align: center;
+    margin-top: 3px;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: -7px
+}
+html[dir=rtl] .dashboardGridItemContent .dashboardTileIcon.gameIcon
+{
+    margin-left: -7px;
+    margin-right: 0
+}
+.dashboardGridItemContent .primaryText.specificLineCount
+{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+.dashboardGridItemContent .secondaryText, .dashboardGridItemContent .tertiaryText, .dashboardGridItemContent .quaternaryText
+{
+    width: auto;
+    max-width: calc(100% - 30px);
+    height: calc(100% - 4px);
+    padding-top: 4px;
+    -ms-grid-column-align: start;
+    -ms-grid-row: 1
+}
+.adThumbnail.thumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr 25px
+}
+.adThumbnail .imageHolder
+{
+    -ms-grid-row: 1
+}
+.adThumbnail .content
+{
+    -ms-grid-row: 2
+}
+.adThumbnail .textContainer
+{
+    width: 100%;
+    height: 25px;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr
+}
+.adThumbnail .primaryText
+{
+    padding-top: 4px;
+    padding-right: 15px;
+    padding-left: 15px;
+    -ms-grid-row: 1
+}
+.companionFullBleedNowPlayingTile:hover, .dashboardPanel .cardThumbnailButton:hover, .dashboardPanel .homeNowPlayingTile:hover, .dashboardPanel .homeNowPlayingTilePoster:hover, .dashboardGridItemContent .thumbnailButton:hover, .immersiveDetails .relatedHeroItemImage .thumbnailButton:hover, .games .engagePanel .actionTile button:hover, .games .engagePanel .actionTile button:hover:active
+{
+    outline-width: 2px;
+    outline-style: solid;
+    outline-color: rgba(0,0,0,.3)
+}
+.companionFullBleedNowPlayingTile:after, .dashboardPanel .cardThumbnailButton:after, .dashboardPanel .homeNowPlayingTile:after, .dashboardPanel .homeNowPlayingTilePoster:after, .dashboardGridItemContent .thumbnailButton:after, .immersiveDetails .relatedHeroItemImage .thumbnailButton:after, .extras .control-extrasListItem:after, .games .achievementPageContainer .achievementGameDetailsThumbnail .imageContainer:after, .pickProviderItemContainer:after, .relatedHeroItem:after, .related.albums .relatedListView .control-immersiveListViewItem:after, .related.activities .relatedListView .control-immersiveListViewItem:after, .related.games .relatedListView .control-immersiveListViewItem:after, .related.movies .relatedListView .control-immersiveListViewItem:after, .related.seasons .relatedListView .control-immersiveListViewItem:after, .immersiveDetails .relatedListView .horizontalListItem .win-focusable:after, .template-relatedGridButtonContainer .template-fullBleedThumbnail:after, .ui-interactive:after
+{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.01)
+}
+.ui-interactive:after {
+    background-color: rgba(0,0,0,0)
+}
+.pickProviderItemContainer:after
+{
+    background-color: rgba(255,255,255,.01)
+}
+.extras .control-extrasListItem:after, .relatedHeroItem:after, .related.albums .relatedListView .control-immersiveListViewItem:after, .related.activities .relatedListView .control-immersiveListViewItem:after, .related.games .relatedListView .control-immersiveListViewItem:after, .related.movies .relatedListView .control-immersiveListViewItem:after, .related.seasons .relatedListView .control-immersiveListViewItem:after, .immersiveDetails .relatedListView .horizontalListItem .win-focusable:after, .template-relatedGridButtonContainer .template-fullBleedThumbnail:after
+{
+    background-color: rgba(55,54,58,.01)
+}
+.companionFullBleedNowPlayingTile:active, .dashboardPanel .cardThumbnailButton:active, .dashboardPanel .homeNowPlayingTile:active, .dashboardPanel .homeNowPlayingTilePoster:active, .dashboardGridItemContent .thumbnailButton:active, .immersiveDetails .relatedHeroItemImage .thumbnailButton:active, .games .achievementPageContainer .achievementGameDetailsThumbnail .imageContainer:active, .extras .control-extrasListItem:active, .videoAdCloseButton button.win-command:active .win-commandicon.win-commandring, .videoAdCloseButton button.win-command:hover:active .win-commandicon.win-commandring, .bigFindFriendButton:active, .pickProviderItemContainer:active, .relatedHeroItem:active, .related.albums .relatedListView .control-immersiveListViewItem:active, .related.activities .relatedListView .control-immersiveListViewItem:active, .related.games .relatedListView .control-immersiveListViewItem:active, .related.movies .relatedListView .control-immersiveListViewItem:active, .related.seasons .relatedListView .control-immersiveListViewItem:active, .castAndCrewMore .control-immersiveListViewItem:active, .control-castAndCrewList .control-immersiveListViewItem:active, .games .engagePanel .actionTile button:active, .immersiveDetails .relatedListView .horizontalListItem .win-focusable:active, .template-relatedGridButtonContainer .template-fullBleedThumbnail:active, .ui-interactive:active
+{
+    transform: scale(.975)
+}
+.games .achievementPageContainer .achievementGameDetailsThumbnail .imageContainer:hover, .videoAdCloseButton button.win-command:hover .win-commandicon.win-commandring, .extras .control-extrasListItem:hover>div, .relatedHeroItem:hover .imageContainer, .relatedHeroItem:hover .textContainer, .related.albums .relatedListView .control-immersiveListViewItem:hover>.part-content, .related.albums .relatedListView .control-immersiveListViewItem:hover .part-imageHolder, .related.games .relatedListView .control-immersiveListViewItem:hover>.part-content, .related.games .relatedListView .control-immersiveListViewItem:hover .part-imageHolder, .related.movies .relatedListView .control-immersiveListViewItem:hover>.part-content, .related.movies .relatedListView .control-immersiveListViewItem:hover .part-imageHolder, .related.seasons .relatedListView .control-immersiveListViewItem:hover>.part-content, .related.seasons .relatedListView .control-immersiveListViewItem:hover .part-imageHolder, .castAndCrewMore .control-immersiveListViewItem:hover>.part-content, .control-castAndCrewList .control-immersiveListViewItem:hover>.part-content, .control-rottenTomatoesReviewItem .rottenTomatoesReviewItem-scoreDataGrid:hover, .control-metaCritic:hover
+{
+    opacity: .8
+}
+.related .relatedListView.acc-keyboardFocusTarget>.win-template:hover, .related .relatedListView.acc-keyboardFocusTarget>.win-template>.control-immersiveListViewItem>.win-template:hover
+{
+    opacity: 1
+}
+.albumThumbnail .cardThumbnailButton, .artistThumbnail .cardThumbnailButton, .otherVideoThumbnail .cardThumbnailButton, .songThumbnail .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-columns: 15px 135px 15px 114px 15px
+}
+.otherVideoThumbnail .otherVideoImg
+{
+    min-width: 0;
+    width: auto;
+    height: 135px
+}
+.otherVideoThumbnail.moviePoster .otherVideoImg
+{
+    width: 99px;
+    height: 135px
+}
+.tvThumbnail .cardThumbnailButton, .otherVideoThumbnail .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-columns: 15px 135px 12px 128px 5px
+}
+.heroActivityTile .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-columns: 15px 135px 12px 1fr 5px
+}
+.otherVideoThumbnail.moviePoster .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-columns: 15px 99px 12px 164px 5px
+}
+.gameThumbnail .cardThumbnailButton, .movieThumbnail .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-columns: 15px 99px 15px 151px 15px
+}
+.gameThumbnail.gameExtra .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-columns: 15px 135px 15px 115px 15px
+}
+.cardThumbnailButton
+{
+    -ms-grid-rows: 100%
+}
+.videoFlexHubBigItem.movieThumbnail .cardThumbnailButton, .gamesFlexHubBigItem.gamesThumbnail .cardThumbnailButton, .musicFlexHubBigItem .cardThumbnailButton, .searchHCR.movieThumbnail .cardThumbnailButton, .searchHCR.gamesThumbnail .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-rows: 15px auto 15px 1fr 15px;
+    -ms-grid-cols: 100%;
+    -ms-grid-columns: auto
+}
+.musicFlexHubBigItem .cardThumbnailButton
+{
+    display: -ms-grid;
+    -ms-grid-rows: 21px auto 10px auto 15px;
+    -ms-grid-cols: 100%;
+    -ms-grid-columns: auto
+}
+.thumbnailButton.visible
+{
+    transform: translateX(0);
+    opacity: 1
+}
+.thumbnailButtonImage, .albumThumbnail
+{
+    width: 100%;
+    height: 100%
+}
+.artistImageCollage, .playlistImageCollage
+{
+    position: relative;
+    width: 135px;
+    height: 135px
+}
+.playlistImageCollage.largeCollage
+{
+    width: 295px;
+    height: 160px
+}
+.verticalListItem .playlistImageCollage
+{
+    width: 60px;
+    height: 60px
+}
+.thumbnailButton .artistImageCollage
+{
+    width: auto;
+    height: auto
+}
+.gameThumbnail
+{
+    width: 295px;
+    height: 165px
+}
+.tvThumbnail.disableClick, .gameThumbnail.disableClick, .movieThumbnail.disableClick
+{
+    position: relative
+}
+.tvThumbnail.disableClick:after, .gameThumbnail.disableClick:after, .movieThumbnail.disableClick:after
+{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,.01)
+}
+.gameThumbnail .cardThumbnailButton .imageContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.gameThumbnail .cardThumbnailButton .imageHolder
+{
+    -ms-grid-column-align: center;
+    display: -ms-grid;
+    -ms-grid-columns: auto;
+    -ms-grid-rows: 1fr
+}
+.companion .gameThumbnail.disableClick .cardThumbnailButton .imageHolder
+{
+    min-width: 99px
+}
+.gameThumbnail .cardThumbnailButton .imageHolder img
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.thumbnailButtonImageContainer, .showMoreContent
+{
+    overflow: hidden
+}
+.cardThumbnailButton .imageContainer
+{
+    position: relative;
+    -ms-grid-column: 2;
+    margin-top: 15px
+}
+.videoFlexHubBigItem .cardThumbnailButton .imageContainer, .gamesFlexHubBigItem .cardThumbnailButton .imageContainer, .searchHCR .cardThumbnailButton .imageContainer
+{
+    position: relative;
+    -ms-grid-row: 2;
+    margin-left: 15px;
+    margin-right: 15px;
+    -ms-grid-column: 1;
+    margin-top: 0
+}
+.musicFlexHubBigItem .cardThumbnailButton .imageContainer
+{
+    position: relative;
+    -ms-grid-row: 2;
+    margin-left: 0;
+    margin-right: 0;
+    -ms-grid-column: 1;
+    margin-top: 0
+}
+.videoFlexHubBigItem .cardThumbnailButton .imageContainer img, .musicFlexHubBigItem .cardThumbnailButton .imageContainer img
+{
+    width: 260px;
+    height: auto
+}
+.tvSeriesThumbnail .imageContainer
+{
+    margin: 0
+}
+.thumbnailButtonImageHolder, .cardThumbnailButton .imageHolder, .imageHolder
+{
+    background-repeat: no-repeat;
+    background-position: center
+}
+.cardThumbnailButton .imageHolder
+{
+    display: -ms-grid;
+    overflow: hidden
+}
+.collectionMusic .cardThumbnailButton .imageHolder, .marketplaceMusicPage .cardThumbnailButton .imageHolder, .otherVideoThumbnail .cardThumbnailButton .imageHolder, .tvThumbnail .cardThumbnailButton .imageHolder
+{
+    -ms-grid-columns: 135px
+}
+.otherVideoThumbnail.moviePoster .cardThumbnailButton .imageHolder
+{
+    -ms-grid-columns: 99px
+}
+.collectionGames .cardThumbnailButton .imageHolder, .movieThumbnail .cardThumbnailButton .imageHolder, .gamesThumbnail .cardThumbnailButton .imageHolder
+{
+    -ms-grid-columns: 99px
+}
+.companionNowPlayingPanel .cardThumbnailButton .imageHolder
+{
+    -ms-grid-rows: 1fr
+}
+.cardThumbnailButton .imageHolder img
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center
+}
+.companionNowPlayingPanel .cardThumbnailButton .imageHolder img
+{
+    -ms-grid-row-align: center;
+    max-width: 100%
+}
+.cardThumbnailButton .imageOverlay
+{
+    position: absolute;
+    width: 135px;
+    height: 135px;
+    top: 0
+}
+.dashboardGridItemContent.primaryPanelComponent .imageHolder
+{
+    background-position-y: center
+}
+.detailsGamesGallery .thumbnailButtonImageHolder, .detailsAlbumsGallery .thumbnailButtonImageHolder, .detailsTVGallery .thumbnailButtonImageHolder
+{
+    background-position-y: 42%
+}
+.thumbnailButtonTextContainer
+{
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto;
+    -ms-grid-rows: 1fr
+}
+.cardThumbnailButton .content
+{
+    -ms-grid-column: 4;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-rows: 100%;
+    -ms-grid-columns: 1fr
+}
+.videoFlexHubBigItem .cardThumbnailButton .content, .gamesFlexHubBigItem .cardThumbnailButton .content, .searchHCR .cardThumbnailButton .content
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 4;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-rows: 100%;
+    margin-top: 0;
+    margin-left: 15px;
+    margin-right: 15px
+}
+.musicFlexHubBigItem .cardThumbnailButton .content
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 4;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-rows: 100%;
+    margin-top: 0;
+    margin-left: 0;
+    margin-right: 0
+}
+.tvSeriesThumbnail .content
+{
+    display: block
+}
+.movieThumbnail .thumbnailTextInner, .gamesThumbnail .thumbnailTextInner
+{
+    width: auto
+}
+.immersiveDetailsGallery .thumbnailButton .thumbnailButtonTextContainerPadding, .thumbnailButtonTextContainerPadding
+{
+    padding-bottom: 16px;
+    padding-top: 80%
+}
+.collectionPage .thumbnailButtonTextContainerPadding, .dashboardMyMusic .thumbnailButtonTextContainerPadding, .marketplacePage .thumbnailButtonTextContainerPadding, .marketplaceGamesPage .thumbnailButtonTextContainerPadding, .searchGalleryView .thumbnailButtonTextContainerPadding, .cardThumbnailButton .thumbnailButtonTextContainerPadding, .thumbnailButton .thumbnailButtonTextContainerPadding, .control-immersiveListViewItem .thumbnailButtonTextContainerPadding
+{
+    padding: 0
+}
+.musicPage .thumbnailButtonTextContainerPadding, .collectionVideoGallery .thumbnailButtonTextContainerPadding, .albumThumbnail .thumbnailButtonTextContainerPadding, .movieThumbnail .thumbnailButtonTextContainerPadding, .gamesThumbnail .thumbnailButtonTextContainerPadding, .tvSeriesThumbnail .thumbnailButtonTextContainerPadding
+{
+    padding-bottom: 18px
+}
+.musicPage .secondaryText
+{
+    margin-top: 7px
+}
+.musicPage .primaryText
+{
+    margin-bottom: -7px
+}
+.detailsGamesGallery .thumbnailButtonTextContainerPadding, .detailsAlbumsGallery .thumbnailButtonTextContainerPadding, .detailsTVGallery .thumbnailButtonTextContainerPadding
+{
+    padding-bottom: 35px
+}
+.thumbnailButtonText
+{
+    padding-left: 14px;
+    padding-right: 20px;
+    position: relative;
+    text-align: left
+}
+.thumbnailTextInner
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1
+}
+.cardThumbnailButton .textContainer
+{
+    position: relative;
+    height: calc(100% - 20px);
+    margin-top: 0;
+    padding-top: 20px;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: auto auto auto 1fr
+}
+.searchHCR .cardThumbnailButton .textContainer
+{
+    height: 100%
+}
+.searchHCR .cardThumbnailButton .quaternaryText
+{
+    margin-bottom: 0
+}
+.collectionMusic .cardThumbnailButton .textContainer, .dashboardMyMusic .cardThumbnailButton .textContainer, .marketplaceMusicPage .cardThumbnailButton .textContainer
+{
+    width: 114px
+}
+.otherVideoThumbnail .cardThumbnailButton .textContainer, .tvThumbnail .cardThumbnailButton .textContainer
+{
+    width: 128px
+}
+.otherVideoThumbnail.moviePoster .cardThumbnailButton .textContainer
+{
+    width: 164px
+}
+.collectionGames .cardThumbnailButton .textContainer, .movieThumbnail .cardThumbnailButton .textContainer, .gamesThumbnail .cardThumbnailButton .textContainer
+{
+    width: 151px
+}
+.videoFlexHubBigItem.movieThumbnail .cardThumbnailButton .textContainer, .musicFlexHubBigItem .cardThumbnailButton .textContainer, .gamesFlexHubBigItem.gamesThumbnail .cardThumbnailButton .textContainer, .searchHCR.movieThumbnail .cardThumbnailButton .textContainer, .searchHCR.gamesThumbnail .cardThumbnailButton .textContainer
+{
+    width: 100%
+}
+.cardThumbnailButton .textContainer, .cardThumbnailButton .primaryText, .cardThumbnailButton .secondaryText, .cardThumbnailButton .tertiaryText
+{
+    width: 100%
+}
+.hcrHubPanel .textContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: auto auto 1fr
+}
+.hcrHubPanel .secondaryText
+{
+    -ms-grid-row: 1
+}
+.hcrHubPanel .primaryText
+{
+    -ms-grid-row: 2
+}
+.hcrHubPanel .quaternaryText
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-row: 3;
+    -ms-grid-rows: 1fr;
+    width: 100%;
+    -ms-grid-row-align: end
+}
+.hcrHubPanel .quaternaryText .smartGlassGem
+{
+    -ms-grid-column-align: end;
+    margin-left: -3px;
+    margin-right: -3px
+}
+.cardThumbnailButton .primaryText, .cardThumbnailButton .secondaryText, .cardThumbnailButton .tertiaryText, .cardThumbnailButton .quaternaryText
+{
+    overflow: hidden;
+    word-wrap: break-word
+}
+.searchGalleryView .gameThumbnail .primaryText
+{
+    max-height: 87px
+}
+.cardThumbnailButton .quaternaryText
+{
+    max-height: 33px
+}
+.companion .companionNowPlayingPanel .cardThumbnailButton .tertiaryText
+{
+    max-height: 87px
+}
+.hcrHubPanel .primaryText
+{
+    padding-bottom: 2px;
+    margin-bottom: 7px
+}
+.cardThumbnailButton .primaryText
+{
+    -ms-grid-row: 2;
+    margin-top: 2px;
+    margin-bottom: 0;
+    padding-bottom: 2px;
+    white-space: normal
+}
+.cardThumbnailButton .secondaryText
+{
+    -ms-grid-row: 1;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    white-space: normal
+}
+.cardThumbnailButton .textContainer.primaryTextOnTop .primaryText, .companion .gamesCollection .cardThumbnailButton .primaryText
+{
+    -ms-grid-row: 1
+}
+.cardThumbnailButton .textContainer.primaryTextOnTop .secondaryText, .companion .gamesCollection .cardThumbnailButton .secondaryText
+{
+    -ms-grid-row: 2;
+    margin-top: 6px;
+    margin-bottom: 0;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.musicFlexHubBigItem .cardThumbnailButton .textContainer.primaryTextOnTop .secondaryText, .video .flexHubPage .cardThumbnailButton .textContainer.primaryTextOnTop .secondaryText, .video .recommendationsPage .cardThumbnailButton .textContainer.primaryTextOnTop .secondaryText, .video .watchlistPage .cardThumbnailButton .textContainer.primaryTextOnTop .secondaryText, .games .flexHubPage .cardThumbnailButton .textContainer.primaryTextOnTop .secondaryText
+{
+    white-space: normal
+}
+.videoFlexHubBigItem.movieThumbnail .cardThumbnailButton .textContainer, .searchHCR .cardThumbnailButton .textContainer, .musicFlexHubBigItem .cardThumbnailButton .textContainer
+{
+    padding-top: 0
+}
+.videoFlexHubBigItem.movieThumbnail .cardThumbnailButton .textContainer .secondaryText, .musicFlexHubBigItem .cardThumbnailButton .textContainer .secondaryText
+{
+    margin-top: 2px
+}
+.cardThumbnailButton .tertiaryText
+{
+    -ms-grid-row: 3;
+    margin-top: 4px
+}
+.cardThumbnailButton .quaternaryText:not(.removeFromDisplay)
+{
+    -ms-grid-row: 4;
+    -ms-grid-row-align: end;
+    max-height: 100%;
+    margin-bottom: 15px;
+    white-space: normal;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto;
+    -ms-grid-rows: 1fr
+}
+.cardThumbnailButton .quaternaryText>div
+{
+    -ms-grid-column-align: start;
+    -ms-grid-row-align: end;
+    max-height: 34px;
+    width: 100%
+}
+.cardThumbnailButton .quaternaryText>.gamerScoreContainer
+{
+    -ms-grid-row-align: start
+}
+.cardThumbnailButton .quaternaryText .smartGlassGem
+{
+    -ms-grid-column-align: end
+}
+.tvThumbnail .secondaryText
+{
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+.thumbnailStatusIcon
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: end
+}
+.musicPage .thumbnailStatusIcon
+{
+    margin-right: 18px
+}
+.hidden
+{
+    visibility: hidden;
+    z-index: -1
+}
+.collapse
+{
+    visibility: collapse
+}
+.label
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+.label.noClip
+{
+    overflow: visible
+}
+.miniProfileDetailsAndControls .label.noClip
+{
+    overflow: hidden
+}
+.label.wrap
+{
+    white-space: normal
+}
+.label.autoResizeFont
+{
+    white-space: normal;
+    overflow: hidden
+}
+.label.specificLineCount
+{
+    word-wrap: break-word;
+    white-space: normal
+}
+.link
+{
+    border: 0 solid
+}
+.imageActionLink.link
+{
+    background: none;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0
+}
+.imageActionLink.link img
+{
+    width: 100%;
+    height: 100%
+}
+.showMoreLink
+{
+    background: none;
+    border: 0 solid;
+    padding-left: 0;
+    margin-top: 10px;
+    overflow: visible
+}
+.dialogLink
+{
+    padding: 0;
+    font-size: 12px
+}
+.opportunityContainer .opportunityTitle:hover, .opportunityContainer .opportunitySubTitle:hover, button:not([disabled]).link.panelHeaderLink:hover
+{
+    opacity: .8
+}
+.opportunityContainer .opportunityTitle:active, .opportunityContainer .opportunitySubTitle:active, button:not([disabled]).link.panelHeaderLink:active
+{
+    opacity: .4
+}
+.listDivider
+{
+    height: 1px;
+    width: 100%;
+    border: none
+}
+.actionListItem
+{
+    display: inline-block
+}
+.hideFromDisplay, [data-win-control="MS.Entertainment.UI.Shell.ImageControl"][src=""], .control-image[src=""]
+{
+    visibility: hidden;
+    z-index: -1
+}
+.hideDuringInitialize
+{
+    visibility: hidden;
+    z-index: -1
+}
+.wecDialog
+{
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%
+}
+.overlayContainerGrid
+{
+    display: -ms-grid;
+    -ms-grid-columns: 120px auto 1fr;
+    -ms-grid-rows: 150px auto 1fr
+}
+.overlayBackground
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row-span: 3;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    -ms-touch-action: none
+}
+.companionConnectionOverlayBackground
+{
+    opacity: 1
+}
+.overlayContainer
+{
+    position: absolute
+}
+.wecDialog .overlayContainer
+{
+    position: relative;
+    -ms-grid-row-align: center
+}
+.dialogContainerBackground
+{
+    width: 100%;
+    height: auto
+}
+.dialogContainer
+{
+    height: 100%;
+    overflow: auto
+}
+.dialogContainer form
+{
+    width: 50%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto
+}
+@media(min-width: 479px) and (max-width: 960px)
+{
+    .dialogContainer form
+    {
+        width: 80%
+    }
+}
+.dialogContainer form textarea
+{
+    width: 558px;
+    margin-top: 6px;
+    margin-bottom: 6px
+}
+.dialogCaption
+{
+    margin-top: 40px;
+    margin-bottom: 10px;
+    white-space: normal
+}
+.dialogContent
+{
+    max-height: 60vh;
+    overflow-y: auto;
+    padding: 2px
+}
+.errorDialogContent
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto auto auto auto auto
+}
+.webLinkContainer
+{
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+.webLinkContainer a
+{
+    padding: 2px
+}
+.webHostDialogContent
+{
+    padding-top: 0;
+    padding-left: 0;
+    top: 0;
+    bottom: 0
+}
+@media(min-width: 819px)
+{
+    .webHostResizeMessageAutoHide
+    {
+        display: none
+    }
+}
+@media(max-width: 820px)
+{
+    .webHostDialogContentAutoHide
+    {
+        display: none
+    }
+}
+.webHostDialogResizeCancelButtonContainer
+{
+    display: -ms-flexbox;
+    -ms-flex-pack: end;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 150px
+}
+.webHostResizeTitle
+{
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 10px
+}
+.webHostResizeMessage
+{
+    margin-left: 80px;
+    margin-right: 80px
+}
+.webHostResizeImage
+{
+    margin-top: 250px;
+    margin-left: 80px;
+    margin-right: 80px
+}
+.dialogButtons
+{
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    white-space: nowrap;
+    display: -ms-flexbox;
+    -ms-flex-pack: end
+}
+.dialogButtons>.win-template
+{
+    display: inline-block;
+    margin-right: 0
+}
+.dialogButton
+{
+    min-width: 90px;
+    min-height: 32px;
+    margin: 5px
+}
+.dialogButton:focus
+{
+    outline: 0
+}
+.createPlaylistFlyoutGrid .dialogButton, .resetButtonContainer .dialogButton
+{
+    margin: 0
+}
+.errorDialogSendMail
+{
+    float: right
+}
+.errorDialogStackTrace
+{
+    margin: 10px
+}
+.errorFeedbackLink
+{
+    border: 0;
+    text-align: left;
+    padding: 0;
+    margin-bottom: 20px
+}
+html[dir=rtl] .errorFeedbackLink
+{
+    text-align: right
+}
+.webHostIFrame
+{
+    position: absolute;
+    height: 745px;
+    border-width: 0
+}
+.webHostPromptOnPurchaseToggle .win-title, .webHostPromptOnPurchaseToggle .win-label
+{
+    max-width: 100%
+}
+.dashboardHost
+{
+    display: -ms-grid;
+    height: 100%;
+    width: 100%
+}
+.dashboardContent
+{
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    height: 100%;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -ms-scroll-snap-type: proximity;
+    -ms-scroll-snap-points-x: snapInterval(0%,0%);
+    -ms-scroll-limit-x-min: 4000px
+}
+.pivotDashboard .dashboardContent
+{
+    -ms-scroll-snap-type: mandatory;
+    -ms-scroll-snap-points-x: snapInterval(4000px,100%)
+}
+.dialogXenonTitle, .dashboardTitle
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 20px auto 60px 1fr 40px;
+    -ms-grid-rows: auto;
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: end
+}
+.dashboardTitle .dashboardTitle-searchIcon {
+    -ms-grid-column: 5;
+    -ms-grid-column-align: end;
+    margin-top: 20px
+}
+.dashboardTitle-searchIcon button.iconButton.win-command .win-commandimage {
+    line-height: 30px
+}
+.pivotDashboard .dashboardTitle
+{
+    -ms-grid-columns: 40px 20px 100px 44px auto 60px;
+    -ms-grid-rows: auto auto
+}
+html[dir=rtl] .dashboardTitle
+{
+    direction: ltr;
+    -ms-grid-column-align: start
+}
+.dialogXenonTitleIcon, .dashboardTitleIcon
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    width: 40px;
+    height: 40px;
+    margin-top: 11px;
+    -ms-grid-row-align: start;
+    unicode-bidi: bidi-override
+}
+.dialogXenonTitleLabel, .dashboardTitleLabel
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 1
+}
+.pivotDashboard .dashboardTitleLabel
+{
+    -ms-grid-column: 5
+}
+.pivotDashboard .dashboardPivots
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 5
+}
+.pivotDashboard .dashBoardSignInControl {
+    -ms-grid-column: 3;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    border-bottom-style: solid;
+    border-left-style: solid;
+    border-right-style: solid;
+    border-top-style: solid;
+    height: 100px;
+    margin-top: 54px;
+    width: 100px
+}
+.dashboardContent>.leftSpacer
+{
+    width: 40px;
+    height: 100%
+}
+.dashboardContent>.leftOfHome
+{
+    display: -ms-flexbox;
+    -ms-flex-pack: end;
+    width: 4000px;
+    height: 100%
+}
+.dashboardContent>.homeAndToTheRight
+{
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    min-width: calc(100vw - 120px);
+    height: 100%
+}
+.dashboardContent>div
+{
+    flex-shrink: 0
+}
+.dashboardContent>.rightSpacer
+{
+    width: 80px;
+    height: 100%
+}
+.dashboardPanel
+{
+    display: -ms-grid;
+    -ms-grid-rows: 51px 1fr;
+    -ms-grid-columns: 80px auto;
+    width: auto
+}
+.pivotDashboard .dashboardPanel
+{
+    width: 100vw
+}
+.dashboardPanel>.panelTitle
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 2
+}
+.dashboardPanel>.panelContainer, .dashboardPanel>.panelLoading, .dashboardPanel>.panelFailed
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    position: relative
+}
+.dashboardPanel>.panelLoading
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.dashboardPanel>.panelLoading>.win-ring
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.dashboardPanel>.panelLoading, .dashboardPanel>.panelFailed
+{
+    height: 505px
+}
+@media screen and (min-height: 1080px)
+{
+    .dashboardPanel>.panelLoading, .dashboardPanel>.panelFailed
+    {
+        height: 675px
+    }
+}
+.hubStripScroller
+{
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 100%;
+    opacity: 0
+}
+.galleryPageHost .hubStripScroller
+{
+    opacity: 1
+}
+.galleryHubStrip
+{
+    height: 100%
+}
+.galleryHubStripScrollerContainer
+{
+    opacity: 1
+}
+.hub
+{
+    position: relative;
+    display: inline-block;
+    white-space: nowrap;
+    height: 100%;
+    vertical-align: top
+}
+.mainHubStrip>.win-template, .hubControl, .hubControl>.win-template, .mainHubStripHub, .mainHubStripHub>.win-template, .panel, .panel>.win-template, .panelFragmentContainer>.win-template
+{
+    height: 100%
+}
+.pageHub
+{
+    margin-top: 10px
+}
+.pageNavigation
+{
+    margin-top: 30px
+}
+.panelFragmentContainer
+{
+    height: 100%
+}
+.dashboardPanel.failed
+{
+    position: relative
+}
+.dashboardPanel.failed>.panelFailed
+{
+    position: absolute;
+    top: 55px
+}
+.failedPanelContainer
+{
+    width: 100%;
+    height: 100%
+}
+.dashboardPanel.musicTopAlbumsPanel.musicTopMusic .failedPanelContainer
+{
+    width: 600px
+}
+.dashboardPanel.musicTopArtistsPanel.musicTopMusic .failedPanelContainer
+{
+    display: none
+}
+.collectionMusicGalleryView .failedPanelContainer, .music .marketplaceGalleryView .failedPanelContainer
+{
+    height: calc(100% - 60px);
+    margin-top: 66px
+}
+.music .sidebarEnabled.musicPage .marketplaceGalleryView .failedPanelContainer
+{
+    width: calc(100% - 320px)
+}
+.failedPanelTextContainer, .noContentTextContainer
+{
+    position: absolute;
+    bottom: 0;
+    margin: 48px 48px
+}
+.overlayAnchor .failedPanelTextContainer
+{
+    bottom: auto
+}
+.offline .failedPanelTextContainer
+{
+    margin: 20px 25px
+}
+.emptyFriendsListContainer .failedPanelTextContainer
+{
+    max-width: 512px
+}
+.failedPanelTitle
+{
+    margin-bottom: 8px;
+    padding-bottom: 2px
+}
+.offline.dashboardHost .dashboardPanel.failed:not(.homeSpotlight)
+{
+    display: none
+}
+.popOverContainer .failedPanelContainer .failedPanelTextContainer
+{
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 25px
+}
+.immersiveDetailsHub .failedPanelTextContainer, .galleryHubStrip .failedPanelTextContainer, .galleryHubStrip .noContentTextContainer
+{
+    margin: 45px 40px
+}
+.panelFragmentContainer .win-listview-browse
+{
+    height: 100%;
+    width: 100%
+}
+.panel
+{
+    position: relative;
+    vertical-align: top;
+    display: inline-block
+}
+.panelTitle .internalActionLink
+{
+    margin: 2px -8px 0 -8px
+}
+.hubShadow
+{
+    width: 100%;
+    height: 75px;
+    position: absolute;
+    bottom: 0
+}
+.loadingControlHidden
+{
+    visibility: hidden
+}
+progress:-ms-square
+{
+    background-repeat: no-repeat;
+    background-color: transparent
+}
+progress.ringLoadingControl:indeterminate::-ms-fill {
+    animation-name: -ms-ring
+}
+.horizontalFlow
+{
+    display: inline-block;
+    vertical-align: top
+}
+.verticalFlow
+{
+    display: block
+}
+.listFlowLeft
+{
+    float: left
+}
+.panelActionLinkContainer
+{
+    width: 115px;
+    height: 115px;
+    position: relative;
+    bottom: 0;
+    margin-right: 5px
+}
+.panelActionLinkLabel
+{
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    text-align: left;
+    margin-bottom: 10px
+}
+.panelActionLinkContainer .panelActionLinkLabel
+{
+    white-space: normal
+}
+.panelActionLink
+{
+    text-align: left;
+    vertical-align: middle
+}
+.actionLinkContainer
+{
+    display: -ms-flexbox;
+    -ms-flex-align: start;
+    -ms-box-orient: horizontal
+}
+.actionLinkContainer .icon
+{
+    margin-bottom: 4px
+}
+.achievements .actionLinkContainer .icon
+{
+    margin-top: -8px
+}
+.actionLinkContainer .icon:after
+{
+    content: ''
+}
+html[dir=rtl] .actionLinkContainer .icon:after
+{
+    content: ''
+}
+.panelHeaderLink .actionLinkContainer .icon
+{
+    transform: translateX(8px)
+}
+html[dir=rtl] .panelHeaderLink .actionLinkContainer .icon
+{
+    transform: translateX(-8px)
+}
+.closeLink .actionLinkContainer .icon:after, html[dir=rtl] .closeLink .actionLinkContainer .icon:after
+{
+    content: '✕'
+}
+.panelModifierContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 40px auto 40px auto 1fr auto 80px;
+    -ms-grid-rows: 100%
+}
+.secondaryPanelModifier
+{}
+.tertiaryPanelModifier
+{}
+.galleryHubStrip .secondaryPanelModifier, .galleryHubStrip .tertiaryPanelModifier
+{
+    text-align: right
+}
+.galleryHubStrip .tertiaryPanelModifier
+{
+    width: 120px
+}
+.primaryPanelModifier
+{
+    position: relative
+}
+.primaryPanelModifier.disabled
+{
+    opacity: .4
+}
+.pivotModifier
+{
+    display: inline-block
+}
+.loadingProgress
+{
+    width: 100%;
+    height: 100%
+}
+.albumThumbnail
+{
+    display: block
+}
+.snappedMode
+{
+    position: absolute;
+    width: 100%;
+    height: 100%
+}
+.avatarControlContainer
+{
+    overflow: hidden
+}
+.avatarElementContainer
+{
+    height: 100%;
+    width: auto;
+    float: left;
+    margin-left: 50%;
+    opacity: 1
+}
+html[dir=rtl] .avatarElementContainer
+{
+    float: right;
+    margin-left: 0;
+    margin-right: 50%
+}
+.removeFromDisplay .avatarElementContainer, .avatarElementContainer.removeFromDisplay
+{
+    opacity: 0
+}
+.avatarElementContainer
+{
+    transition-property: opacity;
+    transition-duration: .25s;
+    transition-timing-function: cubic-bezier(0,0,1,1)
+}
+.avatarImageContainer
+{
+    height: 63%;
+    bottom: 65px;
+    position: absolute
+}
+.avatarPlaceHolder .avatarImageContainer
+{
+    bottom: 65px
+}
+.avatarImage
+{
+    height: 100%;
+    width: auto;
+    margin-left: -50%
+}
+html[dir=rtl] .avatarImage
+{
+    margin-left: 0;
+    margin-right: -50%
+}
+.avatarImageShadow
+{
+    position: absolute;
+    width: 250px;
+    height: 87px;
+    bottom: -20px;
+    left: -60%
+}
+html[dir=rtl] .avatarImageShadow
+{
+    left: 0;
+    right: -60%
+}
+.avatarVideo
+{
+    height: 100%;
+    width: auto;
+    margin-left: -50%
+}
+html[dir=rtl] .avatarVideo
+{
+    margin-left: 0;
+    margin-right: -50%
+}
+.panelFragmentLoading, .panelFragmentFailed
+{
+    position: absolute;
+    top: 4px;
+    width: 100%
+}
+.panelFragmentLoading, .panelFragmentFailed, .achievementsGallery .emptyGalleryContainer
+{
+    height: 505px
+}
+@media screen and (min-height: 1080px)
+{
+    .panelFragmentLoading, .panelFragmentFailed, .achievementsGallery .emptyGalleryContainer
+    {
+        height: 675px
+    }
+}
+.popOverContentContainer .panelFragmentLoading
+{
+    position: absolute;
+    width: 100%;
+    height: 530px
+}
+html[dir=ltr] .panelFragmentLoading, html[dir=ltr] .panelFragmentFailed
+{
+    left: 0
+}
+html[dir=rtl] .panelFragmentLoading, html[dir=rtl] .panelFragmentFailed
+{
+    right: 0
+}
+.popOverContainer .panelFragmentLoading
+{
+    top: 0;
+    height: 100%
+}
+.panelFragmentWrapper
+{
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+.panelFragmentWrapper .noShadow
+{
+    height: 100%
+}
+.panelFragmentLoadingProgress, .dashboardPanel>.panelLoading>.loadingTextLabel
+{
+    position: relative;
+    width: 200px;
+    top: calc(50% - 5pt);
+    left: 45%
+}
+.actionButtonContainer
+{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    bottom: 0;
+    margin-right: 5px
+}
+.actionButton
+{
+    width: 42px;
+    height: 42px;
+    margin: 8px 29px 8px 29px
+}
+.actionButtonLabel
+{
+    text-align: center;
+    width: 100%
+}
+html[dir=rtl] .actionButtonLabel
+{
+    direction: rtl
+}
+.removeOverlayWaitCursor {
+    position: absolute;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px)
+}
+.win-flyout
+{
+    position: fixed;
+    padding: 25px 20px 20px 20px;
+    line-height: 20px;
+    text-align: left;
+    min-width: 200px;
+    max-width: 80vw;
+    min-height: 68px
+}
+html[dir=rtl] .win-flyout
+{
+    text-align: right
+}
+.win-flyout.actionListFlyout
+{
+    padding: 5px 0;
+    line-height: 33px;
+    max-height: calc(100vh - 133px);
+    min-height: 45px;
+    min-width: 205px;
+    max-width: 620px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: 13px
+}
+.win-flyout.actionListFlyout.appbarActionFlyout
+{
+    max-width: calc(100vw - 200px)
+}
+.snapped .win-flyout.actionListFlyout.appbarActionFlyout
+{
+    max-width: calc(100vw - 15px)
+}
+.win-flyout .win-contentTitle
+{
+    margin-top: -13px;
+    padding-bottom: 18px
+}
+.win-flyout hr
+{
+    display: block;
+    margin: 4px 0 8px 0;
+    height: 1px;
+    width: 100%;
+    border: 0
+}
+.win-flyout:not(.win-ratingpicker-overlay) button, .win-flyout:not(.win-ratingpicker-overlay) input[type="button"]
+{
+    margin-left: 20px;
+    float: right
+}
+.bottomAppBar, .bottomAppBar div, .bottomAppBar button
+{
+    z-index: 1002
+}
+.actionListFlyout button, .actionListFlyout input[type="button"]
+{
+    display: block;
+    border: none;
+    padding: 0 16px 0 16px;
+    margin-left: 2px;
+    margin-right: 2px;
+    line-height: 50px;
+    float: none;
+    text-align: left;
+    width: calc(100% - 4px)
+}
+html[dir=rtl] .actionListFlyout button, html[dir=rtl] .actionListFlyout input[type="button"]
+{
+    text-align: right
+}
+.actionListFlyout hr
+{
+    padding: 0;
+    margin: 8px 16px;
+    width: calc(100% - 32px)
+}
+.actionListFlexBox
+{
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    -ms-flex-align: start;
+    -ms-flex-pack: justify;
+    -ms-flex-wrap: wrap
+}
+.appbarActionFlyout .actionListFlexBox
+{
+    -ms-flex-direction: column-reverse
+}
+.actionListFlexBox .win-template
+{
+    width: 100%
+}
+.win-flyout .actionButtonFlyoutButton, .win-flyout .playbackOptionComboTitle, .win-flyout .playbackOptionFlyoutButton
+{
+    word-wrap: normal
+}
+.playbackOptionComboTitle, .comboUnavailableLabel
+{
+    font-weight: 600;
+    padding: 0 16px 0 16px
+}
+.playbackOptionComboTitle
+{
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    line-height: 50px
+}
+.playbackOptionComboTitle .icon
+{
+    opacity: 1;
+    line-height: 50px
+}
+html[dir=ltr] .playbackOptionComboTitle .icon
+{
+    margin-right: 5px
+}
+html[dir=rtl] .playbackOptionComboTitle .icon
+{
+    margin-left: 5px
+}
+.comboSelect
+{
+    margin: 0 14px 0 14px;
+    width: 85%
+}
+.miniProfilePanelControlsSignedOut, .dashboardHubContent
+{
+    height: 100%;
+    width: auto;
+    margin-top: 4px;
+    display: -ms-grid;
+    -ms-grid-columns: auto auto auto;
+    -ms-grid-rows: 220px 215px
+}
+.dashboardGridItemContent
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-right: 0
+}
+.dashboardLargeGridItemSquare .thumbnailButton
+{
+    height: 435px;
+    width: 435px
+}
+.dashboardSmallGridItemSquare .thumbnailButton
+{
+    height: 215px;
+    width: 215px
+}
+.dashboardLargeGridItemPoster .thumbnailButton
+{
+    height: 435px;
+    width: 297px
+}
+.dashboardSmallGridItemPoster .thumbnailButton
+{
+    height: 215px;
+    width: 150px
+}
+.dashboardLargeGridItemStandard .thumbnailButton, .dashboardLargeGridItemWidescreen .thumbnailButton
+{
+    height: 435px;
+    width: 592px
+}
+.dashboardSmallGridItemStandard .thumbnailButton, .dashboardSmallGridItemWidescreen .thumbnailButton
+{
+    height: 215px;
+    width: 287px
+}
+.dashboardSmallGridItemWidescreen .imageHolder, .dashboardLargeGridItemWidescreen .imageHolder
+{
+    display: -ms-grid
+}
+.dashboardSmallGridItemWidescreen .imageHolder
+{
+    -ms-grid-columns: 287px
+}
+.dashboardLargeGridItemWidescreen .imageHolder
+{
+    -ms-grid-columns: 592px
+}
+.dashboardSmallGridItemWidescreen .imageHolder img, .dashboardLargeGridItemWidescreen .imageHolder img
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center
+}
+.dashboardLargeGridItemWidescreen .imageHolder img
+{
+    min-width: 592px
+}
+.dashboardSmallGridItemStandard .imageHolder img, .dashboardSmallGridItemSquare .imageHolder img
+{
+    min-width: 287px
+}
+.flexibleItemsControlContainer .dashboardSmallGridItemStandard .imageHolder img, .flexibleItemsControlContainer .dashboardSmallGridItemSquare .imageHolder img
+{
+    min-width: 0
+}
+.spotlightContent
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 885px;
+    -ms-grid-rows: 1fr
+}
+.spotlightContent.noWidth
+{
+    -ms-grid-columns: auto
+}
+.noContentPane
+{
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-top: 4px;
+    border-width: 0;
+    border-style: solid;
+    text-align: left;
+    width: inherit;
+    height: inherit
+}
+html[dir=rtl] .noContentPane
+{
+    text-align: right
+}
+.noContentPane.removeFromDisplay
+{
+    display: none
+}
+.noVideoContentPane, .noGamesContentPane
+{
+    width: 675px;
+    height: 505px
+}
+@media screen and (min-height: 900px)
+{
+    .noVideoContentPane, .noGamesContentPane
+    {
+        width: 675px;
+        height: 675px
+    }
+}
+.noSpotlightContentPane
+{
+    position: absolute;
+    top: 4px;
+    height: 435px;
+    width: 885px
+}
+.failedPanelContainer .failedPanelTitle, .noContentPane .noContentPaneTitle
+{
+    margin-bottom: 30px
+}
+.offline .failedPanelContainer .failedPanelTitle, .popOverContainer .failedPanelContainer .failedPanelTitle
+{
+    margin-bottom: 8px
+}
+.settingsFeedbackContentDialog
+{
+    left: 0
+}
+.settingsFeedbackOptions, .optionsContainer-option
+{
+    margin-top: 13px;
+    margin-bottom: 13px
+}
+.settingsUserVoiceLinkDialog
+{
+    left: 0
+}
+.settingsFeedbackOptionLabelContainer
+{
+    display: block;
+    margin: 0 0 20px -1px
+}
+html[dir=rtl] .settingsFeedbackOptionLabelContainer
+{
+    margin: 0 -1px 20px 0
+}
+.feedbackRadioButton, .option-input
+{
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    vertical-align: middle
+}
+.settingsFeedbackOptionLabel, .option-label
+{
+    display: inline;
+    position: relative;
+    white-space: normal;
+    vertical-align: middle
+}
+.settingsFeedbackSelect
+{
+    width: 100%;
+    height: auto
+}
+.settingsCaptionsSelect
+{
+    width: 260px;
+    height: auto
+}
+.settingsFeedbackCommentBox .editMultiline
+{
+    width: calc(100% - 26px)
+}
+html[dir=ltr] .settingsFeedbackCommentBox .editMultiline {
+    padding-right: 17px
+}
+html[dir=rtl] .settingsFeedbackCommentBox .editMultiline {
+    padding-left: 17px
+}
+.settingsFeedbackCommentBoxDialog
+{
+    left: 0
+}
+.settingsFeedbackBottom
+{
+    top: 20px;
+    left: 0
+}
+.feedbackButtons
+{
+    margin-top: 20px;
+    height: auto;
+    display: -ms-flexbox;
+    -ms-flex-pack: start;
+    transform: translateX(-5px)
+}
+html[dir=rtl] .feedbackButtons {
+    transform: translateX(5px)
+}
+.feedbackButtons .dialogButton
+{
+    margin: 5px
+}
+.feedbackButtonsDialog
+{
+    float: right;
+    margin-top: 20px;
+    height: auto;
+    position: static;
+    left: initial
+}
+.feedbackConnectionError
+{
+    margin-top: 10px
+}
+.deleteOptionItemContainer
+{
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px
+}
+.remoteWarning
+{
+    position: relative;
+    bottom: 0
+}
+.expanderRoot
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto auto;
+    -ms-grid-rows: auto
+}
+.expanderPanel, .expanderFlyoutPanel
+{
+    display: inline-block;
+    vertical-align: top
+}
+.cursorDefault
+{
+    cursor: default
+}
+button.iconButton.win-command
+{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 35px 1fr;
+    -ms-grid-rows: 5px 1fr 5px
+}
+button.iconButton.win-command.removeFromDisplay
+{
+    display: none
+}
+button.iconButton.win-command.hideAdorner
+{
+    overflow: visible
+}
+html[dir=rtl] .collectionSmartDJGallery button.iconButton.win-command.hideAdorner
+{
+    -ms-grid-columns: 40px 1fr
+}
+.inPlaceDetailsItemActions button.iconButton.win-command
+{
+    padding-top: 0;
+    max-height: none
+}
+button.iconButton.win-command:focus, button.iconButton.win-command:not(:disabled):active
+{
+    opacity: 1
+}
+button.iconButton.win-command:hover
+{
+    opacity: .9
+}
+button.iconButton.win-command.verticalListStatusIcon:hover
+{
+    opacity: .5
+}
+.iconButton .win-commandicon
+{
+    width: 30px;
+    height: 30px;
+    margin: 0;
+    padding: 0;
+    -ms-grid-column: 1;
+    -ms-grid-column-align: start;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center
+}
+button.iconButton.hideAdorner .win-commandicon
+{
+    overflow: visible
+}
+html[dir=rtl] .collectionSmartDJGallery button.iconButton.win-command.hideAdorner .win-commandicon, html[dir=rtl] .popOver .verticalBox button.iconButton .win-commandicon, .nowPlayingTransportControlsPlayPauseButton .iconButton .win-commandicon
+{
+    -ms-grid-column-align: center
+}
+.iconButton .win-commandimage
+{
+    width: 30px;
+    height: 30px;
+    background-size: 120px 60px
+}
+button.iconButton:hover .win-commandimage, button.iconButton:active .win-commandimage
+{
+    background-position: -30px 0
+}
+button.iconButton:hover:active .win-commandimage
+{
+    background-position: -60px 0
+}
+button.iconButton:disabled .win-commandimage, button.iconButton:disabled:active .win-commandimage
+{
+    background-position: -90px 0
+}
+button.iconButton[aria-selected=true] .win-commandimage {
+    background-position: 0 -30px
+}
+button.iconButton[aria-selected=true]:hover .win-commandimage, button.iconButton[aria-selected=true]:active .win-commandimage {
+    background-position: -30px -30px
+}
+button.iconButton[aria-selected=true]:hover:active .win-commandimage {
+    background-position: -60px -30px
+}
+button.iconButton[aria-selected=true]:disabled .win-commandimage, button.iconButton[aria-selected=true]:disabled:active .win-commandimage {
+    background-position: -90px -30px
+}
+button.iconButton.win-command .win-label
+{
+    position: inherit;
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: normal;
+    max-width: none;
+    max-height: none;
+    padding: 2px 4px;
+    width: calc(100% - 8px);
+    white-space: normal;
+    text-align: left;
+    -ms-grid-column: 2;
+    -ms-grid-column-align: start;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center;
+    -ms-grid-row-span: 3
+}
+html[dir=rtl] button:not(.appBarIconButton).iconButton.win-command .win-label
+{
+    text-align: right
+}
+html[dir=rtl] .adIconButton button.win-command .win-label.label
+{
+    text-align: center
+}
+.headingRow button.iconButton.win-command .win-label
+{
+    max-height: 109px
+}
+.iconButtonTwoLine .iconButton.win-command
+{
+    -ms-grid-columns: 53px 1fr;
+    -ms-grid-rows: 1fr auto;
+    max-height: none;
+    min-height: 62px;
+    height: auto;
+    margin-bottom: 10px
+}
+.iconButtonTwoLine .iconButton .win-commandicon
+{
+    margin: 0;
+    width: 40px;
+    height: 40px;
+    -ms-grid-column-align: start;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-row-align: center
+}
+.iconButtonTwoLine .iconButton .win-commandimage
+{
+    width: 40px;
+    height: 40px
+}
+.iconButtonTwoLine .iconButton.win-command .textContainer
+{
+    display: block;
+    -ms-grid-column: 2
+}
+.iconButtonTwoLine .iconButton.win-command .win-label
+{
+    max-height: none;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center;
+    -ms-grid-row-span: 1;
+    line-height: normal;
+    margin-bottom: 4px
+}
+.iconButtonTwoLine .iconButton.win-command .win-label.subtitle
+{
+    max-height: none;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: start;
+    -ms-grid-row-span: 1;
+    line-height: normal;
+    margin-top: -4px
+}
+.iconButtonTwoLine .iconButton.win-command .win-label.subtitle.removeFromDisplay
+{
+    display: none
+}
+.iconButtonWithSubtext>button.iconButton.win-command
+{
+    -ms-grid-rows: 0 1fr 5px
+}
+.iconButtonWithSubtext .textContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto auto;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: center
+}
+.iconButtonWithSubtext .iconButton.win-command .win-label
+{
+    max-height: none;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 1;
+    line-height: normal
+}
+.iconButtonWithSubtext .iconButton.win-command .win-label.subtitle
+{
+    max-height: none;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    margin-top: -4px
+}
+.iconButtonWithSubtext .iconButton.win-command .win-label.subtitle.removeFromDisplay, .immersiveTwoColumn .viewMoreRow.removeFromDisplay
+{
+    display: none
+}
+.inPlaceDetailsItemActions button.iconButton.win-command
+{
+    -ms-grid-columns: 1fr 30px 1fr;
+    -ms-grid-rows: 30px 1fr;
+    margin-left: 0;
+    margin-right: 20px;
+    width: 100%
+}
+html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command
+{
+    margin-left: 20px;
+    margin-right: 0
+}
+.inPlaceDetailsItemActions button:disabled, .inPlaceDetailsItemActions .iconButton .win-commandicon
+{
+    -ms-grid-column: 2;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 1
+}
+.popover .inPlaceDetailsItemActions button:disabled, .popOver .inPlaceDetailsItemActions .iconButton .win-commandicon, .games .inPlaceDetailsItemActions button:disabled, .games .inPlaceDetailsItemActions .iconButton .win-commandicon
+{
+    -ms-grid-row-align: start;
+    margin: 3px 0 0 0
+}
+html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command .win-label, .inPlaceDetailsItemActions button.iconButton.win-command .win-label
+{
+    -ms-grid-column: 1;
+    text-align: center;
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 3;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    padding: 5px;
+    line-height: normal;
+    max-height: 32px;
+    max-width: 110px;
+    min-width: 80px;
+    white-space: normal;
+    word-wrap: normal;
+    word-break: normal
+}
+.win-appbar button.appBarIconButton
+{
+    width: 100px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto 1fr;
+    margin-top: -2px
+}
+@media(min-width: 320px) and (max-width: 480px)
+{
+    .win-appbar button.appBarIconButton
+    {
+        width: 80px
+    }
+}
+.win-appbar:not(.previewBrowseBar) button.appBarIconButton, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:hover, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:hover:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:hover, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:hover:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:disabled, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:disabled:hover, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:disabled:hover:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton:disabled:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:disabled, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:disabled:hover, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:disabled:hover:active, .win-appbar:not(.previewBrowseBar) button.appBarIconButton.acc-keyboardFocusTarget:disabled:active
+{
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent
+}
+.win-appbar .appBarIconButton .win-commandicon
+{
+    margin: 0 8px;
+    width: 40px;
+    height: 40px;
+    -ms-grid-column-align: center
+}
+.win-appbar .appBarIconButton .win-commandimage
+{
+    width: 40px;
+    height: 40px
+}
+.win-appbar button.appBarIconButton.win-command .appBarIconLabel
+{
+    display: block;
+    padding-left: 0;
+    -ms-grid-row: 2;
+    padding-right: 0;
+    -ms-grid-column-align: center;
+    margin-top: 1px;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: normal;
+    max-height: 50px
+}
+html[dir=rtl] .win-appbar button.appBarIconButton.win-command .appBarIconLabel
+{
+    direction: rtl
+}
+.actionTile button.iconButton.win-command
+{
+    padding: 0;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 36px 66px 8px 1fr;
+    width: 295px;
+    height: 165px;
+    max-height: 165px
+}
+.actionTile button:disabled, .actionTile .iconButton .win-commandicon
+{
+    width: 66px;
+    height: 66px;
+    -ms-grid-row: 2;
+    -ms-grid-column-align: center;
+    border-width: 4px
+}
+.actionTile .iconButton .win-commandimage
+{
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    margin: -2px;
+    width: 66px;
+    height: 66px;
+    margin: -4px;
+    background-size: 264px 132px;
+    letter-spacing: 0
+}
+.actionTile button.iconButton:hover .win-commandimage, button:active .win-commandimage {
+    background-position: -66px 0
+}
+.actionTile button.iconButton:hover:active .win-commandimage {
+    background-position: -132px 0
+}
+.actionTile button.iconButton:disabled .win-commandimage, .actionTile button.iconButton:disabled:active .win-commandimage {
+    background-position: -198px 0
+}
+.actionTile button.iconButton[aria-selected=true] .win-commandimage {
+    background-position: 0 -66px
+}
+.actionTile button.iconButton[aria-selected=true]:hover .win-commandimage, .actionTile button.iconButton[aria-selected=true]:active .win-commandimage {
+    background-position: -66px -66px
+}
+.actionTile button.iconButton[aria-selected=true]:hover:active .win-commandimage {
+    background-position: -132px -66px
+}
+.actionTile button.iconButton[aria-selected=true]:disabled .win-commandimage, .actionTile button.iconButton[aria-selected=true]:disabled:active .win-commandimage {
+    background-position: -198px -66px
+}
+html[dir=rtl] .actionTile button.iconButton.win-command .win-label, .actionTile button.iconButton.win-command .win-label
+{
+    -ms-grid-column: 1;
+    text-align: center;
+    -ms-grid-row: 4;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    max-height: 48px;
+    margin-bottom: 8px
+}
+button.playPauseIconButton.win-command
+{
+    width: 131px;
+    height: 131px;
+    -ms-grid-columns: 1fr;
+    padding: 0
+}
+button:active.playPauseIconButton .win-commandicon, button:hover.playPauseIconButton .win-commandicon, button:disabled.playPauseIconButton .win-commandicon, .playPauseIconButton .win-commandicon, .playPauseIconButton:hover .win-commandicon
+{
+    width: 131px;
+    height: 131px;
+    border-width: 10px;
+    margin: 0
+}
+html[dir=ltr].games .nowPlayingTransportControlsContainer .win-commandimage, html[dir=ltr].video .nowPlayingTransportControlsContainer .win-commandimage, html[dir=ltr].companion .nowPlayingTransportControlsContainer .win-commandimage
+{
+    margin-left: -53px
+}
+html[dir=rtl].games .nowPlayingTransportControlsContainer .win-commandimage, html[dir=rtl].video .nowPlayingTransportControlsContainer .win-commandimage, html[dir=rtl].companion .nowPlayingTransportControlsContainer .win-commandimage
+{
+    margin-right: -53px
+}
+button.prevNextIconButton.win-command
+{
+    width: 65px;
+    height: 65px;
+    -ms-grid-columns: 1fr;
+    padding: 0
+}
+button:active.prevNextIconButton .win-commandicon, button:hover.prevNextIconButton .win-commandicon, button:active:hover.prevNextIconButton .win-commandicon, button:disabled.prevNextIconButton .win-commandicon, .prevNextIconButton .win-commandicon
+{
+    width: 65px;
+    height: 65px;
+    border: none;
+    margin: 0
+}
+.nowPlayingContainer:not(.musicTrack) .nowPlayingTransportControlsSkipButton button:active .win-commandicon, .nowPlayingContainer:not(.musicTrack) .nowPlayingTransportControlsSkipButton button:hover .win-commandicon, .nowPlayingContainer:not(.musicTrack) .nowPlayingTransportControlsSkipButton button:active:hover .win-commandicon
+{
+    border: none
+}
+.prevNextIconButton .win-commandimage
+{
+    position: relative;
+    vertical-align: middle;
+    text-align: center;
+    width: 65px;
+    height: 65px;
+    background-size: 260px 130px;
+    letter-spacing: 0
+}
+.musicOverlay .playPauseIconButton button.win-command, .musicOverlay .prevNextIconButton button.win-command, .musicOverlay .volumeIconButton button.win-command
+{
+    width: 40px;
+    height: 40px;
+    min-width: 40px
+}
+.adIconButton button.win-command .win-commandicon, .adIconButton button.win-command:hover .win-commandicon, .musicOverlay .playPauseIconButton .win-commandicon, .musicOverlay .playPauseIconButton:hover .win-commandicon, .musicOverlay .prevNextIconButton .win-commandicon, .musicOverlay .prevNextIconButton:active:hover .win-commandicon, .musicOverlay .volumeIconButton .win-commandicon, .musicOverlay .volumeIconButton:active:hover .win-commandicon
+{
+    width: 40px;
+    height: 40px;
+    border-style: solid;
+    border-width: 2px
+}
+.adIconButton .win-commandimage, .musicOverlay .playPauseIconButton .win-commandimage, .musicOverlay .prevNextIconButton .win-commandimage, .musicOverlay .volumeIconButton .win-commandimage
+{
+    width: 40px;
+    height: 40px
+}
+.adIconButton .win-commandimage, .musicOverlay .nowPlayingTransportControlsNext .win-commandimage, .musicOverlay .nowPlayingTransportControlsPrevious .win-commandimage, .musicOverlay .nowPlayingTransportControlsVolume .win-commandimage
+{
+    margin-right: 0;
+    margin-left: 0
+}
+.adIconButton
+{
+    margin-top: 40px
+}
+.adIconButton button.win-command
+{
+    height: auto;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: auto auto;
+    width: 100%;
+    overflow: visible
+}
+.adIconButton button.win-command .win-commandicon.win-commandring
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 1
+}
+.adIconButton:not(.playPauseIconButton) button.win-command:active:hover .win-commandring, .adIconButton:not(.playPauseIconButton) button.win-command:-ms-keyboard-active .win-commandring, .appBarUpsellContainer .appBarUpsellAction:not(.appBarUpsellPlayPauseAction) button.win-command:active:hover .win-commandring, .appBarUpsellContainer .appBarUpsellAction:not(.appBarUpsellPlayPauseAction) button.win-command:-ms-keyboard-active .win-commandring
+{
+    width: 36px;
+    height: 36px;
+    margin: 2px
+}
+.adIconButton:not(.playPauseIconButton) .win-commandimage, .appBarUpsellContainer .appBarUpsellAction:not(.appBarUpsellPlayPauseAction) .appBarIconButton .win-commandimage
+{
+    margin-top: -6px
+}
+.adIconButton:not(.playPauseIconButton) .win-commandicon, .appBarUpsellContainer .appBarUpsellAction:not(.appBarUpsellPlayPauseAction) .appBarIconButton .win-commandicon
+{
+    margin-top: 0
+}
+.adIconButton button.win-command .label, .adIconButton button.win-command .textContainer
+{
+    display: block;
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 2;
+    -ms-grid-row-span: 1;
+    padding-left: 0;
+    padding-right: 0;
+    margin-top: 4px;
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    word-break: normal;
+    max-height: 68px;
+    min-width: 88px;
+    max-width: 120px
+}
+.adIconButton:not(.playPauseIconButton) button.win-command .label
+{
+    margin-top: 0
+}
+.adIconButton button.win-command .textContainer span.subtitle
+{
+    margin-top: 0
+}
+.win-commandicon.win-commandring
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.win-commandicon.win-commandring.removeFromDisplay
+{
+    display: none
+}
+.win-commandimage
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+button.iconButton .win-commandimage.iconSpan, button.iconButton:not(:disabled):active:hover .win-commandimage.iconSpanPressed, button.iconButton .win-commandimage.modifier
+{
+    opacity: 1
+}
+button.appBarIconButton .win-commandimage.iconSpanPressed, button.iconButton:not(:disabled):active:hover .win-commandimage.iconSpan, button.iconButton .win-commandimage.iconSpanPressed, button.iconButton:not(:disabled):active:hover .win-commandimage.modifier
+{
+    opacity: 0
+}
+button.iconButton.toggleButton:not(:disabled):active:hover .win-commandimage.toggleIndicator, button.appBarIconButton.toggleButton:not(:disabled):active:hover .win-commandimage.toggleIndicator
+{
+    opacity: 0
+}
+.inlineCaretButton, .inlineCaretContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto auto;
+    border: none;
+    margin: 0;
+    padding: 0
+}
+.inlineCaretButton:focus
+{
+    outline: 0
+}
+.notificationContent .inlineCaretButtonText
+{
+    -ms-grid-column: 1
+}
+.notificationContent .inlineCaretButtonIcon
+{
+    -ms-grid-column: 2
+}
+.immersiveTwoColumn .inlineCaretButton.related, .immersiveTwoColumn .inlineCaretButton.albums, .immersiveTwoColumn .inlineCaretButton.seasons
+{
+    -ms-grid-columns: auto auto;
+    -ms-grid-rows: 1fr
+}
+.inlineCaretButton:hover
+{
+    opacity: .8
+}
+.inlineCaretButton:active, .inlineCaretButton:active:hover
+{
+    opacity: .4
+}
+.inlineCaretButtonText
+{
+    margin-right: 2px
+}
+html[dir=rtl] .inlineCaretButtonText
+{
+    margin-right: 0;
+    margin-left: 2px
+}
+.inlineCaretButtonIcon
+{
+    margin-top: 2px
+}
+.playPlaylistOverlay .inlineCaretButtonIcon
+{
+    margin-top: 1px
+}
+html[dir=rtl] .inlineCaretButtonIcon
+{
+    transform: scaleX(-1)
+}
+.emptyGalleryContainer
+{
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    bottom: 50px;
+    left: 0
+}
+html[dir=rtl] .emptyGalleryContainer
+{
+    right: 0;
+    left: 50px
+}
+.emptyGalleryPanel
+{
+    position: relative;
+    width: calc(100vw - 200px);
+    height: calc(100% - 153px);
+    margin-left: 120px;
+    margin-right: 80px
+}
+html[dir=rtl] .emptyGalleryPanel
+{
+    margin-left: 80px;
+    margin-right: 120px
+}
+.emptyGalleryContainerNoMargins
+{
+    top: 0;
+    left: 0;
+    bottom: 0
+}
+.signIn
+{
+    display: -ms-grid;
+    -ms-grid-columns: minmax(60px,1fr) auto;
+    -ms-grid-rows: auto auto;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+    background-color: transparent
+}
+.signInError, .signInRetry, .signInProgress, .signInComplete
+{
+    margin: 0 10px 0 0;
+    -ms-grid-column-align: end;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center
+}
+.settingsSignIn .signInError, .settingsSignIn .signInRetry, .settingsSignIn .signInProgress, .settingsSignIn .signInComplete
+{
+    -ms-grid-column-align: start;
+    max-width: 100%
+}
+.signInRetry
+{
+    -ms-grid-row: 2
+}
+.signInProgress, .signInComplete
+{
+    -ms-grid-row-span: 2
+}
+.signInRetryRing, .signInRetrySpinner
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-row-align: center
+}
+.contentNotificationListItemWrapper
+{
+    display: -ms-grid;
+    -ms-grid-columns: auto 1fr;
+    -ms-grid-rows: 100%;
+    width: 100%
+}
+.contentNotificationListImagesWrapper
+{
+    display: -ms-grid;
+    -ms-grid-rows: auto 55px;
+    width: 100%
+}
+.immersiveDetailsOverviewDetailsBlock .contentNotificationListItems
+{
+    padding-bottom: 14px
+}
+.contentNotificationListIcon
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    margin-top: 1px;
+    margin-right: 5px;
+    margin-bottom: 5px
+}
+.contentNotificationListItemDescription
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1
+}
+.contentNotificationListItemDescriptionNoIcon
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1
+}
+.contentNotificationImage
+{
+    height: 45px;
+    float: left
+}
+html[dir=rtl] .contentNotificationImage
+{
+    margin: 5px -2px 3px 0;
+    float: right
+}
+.immersiveDetailsOverviewActionBlock .externalLinkBackground, .inlineDetailsOverviewActionBlock .externalLinkBackground, .inPlaceDetailsItemActions .externalLinkBackground
+{
+    padding-left: 35px
+}
+.horizontalPivotItem, .verticalPivotItem
+{
+    width: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 5px 30px;
+    -ms-grid-rows: auto
+}
+.verticalSubPivotItem
+{
+    margin: 0
+}
+.horizontalPivotButton, .verticalPivotButton
+{
+    text-overflow: ellipsis;
+    border: 0 solid;
+    padding: 0;
+    outline-style: none;
+    outline-width: 0;
+    min-height: 50px;
+    text-align: left
+}
+html[dir=rtl] .horizontalPivotButton, html[dir=rtl] .verticalPivotButton
+{
+    text-align: right
+}
+.verticalPivotIcon, .horizontalPivotIcon
+{
+    max-height: 40px;
+    max-width: 40px
+}
+.verticalPivotIcon button.win-command, .horizontalPivotIcon button.win-command
+{
+    min-width: 0;
+    padding-top: 0;
+    padding-bottom: 0
+}
+.removeIconFromDisplay
+{
+    display: none
+}
+[data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl"]
+{
+    display: -ms-flexbox;
+    overflow: visible;
+    -ms-flex-align: start;
+    -ms-flex-pack: start;
+    -ms-flex-direction: column;
+    -ms-flex-wrap: wrap
+}
+.flexRowLayout[data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl"], .games .homeSpotlight [data-win-control="MS.Entertainment.UI.Controls.FlexibleItemsControl"]
+{
+    -ms-flex-direction: row
+}
+.dashboard .flexibleItemsControlItemContainer, .dashboardPanel .flexibleItemsControlItemContainer
+{
+    margin-top: 0;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 0;
+    position: relative
+}
+.games .homeSpotlight .flexibleItemsControlItemContainer
+{
+    -ms-flex-preferred-size: 293px
+}
+.visualizationLayer
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    overflow: hidden
+}
+.imageCollageCell
+{
+    position: absolute;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    opacity: 0
+}
+.imageCollageCellColorOverlay
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: stretch;
+    -ms-grid-row-align: stretch;
+    opacity: .5
+}
+[data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"], [data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"].state-orientationHorizontal, [data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl"], .horizontalBox
+{
+    display: -ms-flexbox;
+    -ms-flex-direction: row
+}
+[data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"].state-orientationHorizontal
+{
+    -ms-flex-wrap: wrap
+}
+[data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"].state-orientationVertical, .verticalBox, .inPlaceDetailsItemActionButtons, .actionButtonsListControl {
+    display: -ms-flexbox;
+    -ms-flex-direction: column
+}
+.popOverContainer
+{
+    height: auto;
+    display: -ms-grid;
+    -ms-grid-columns: 255px 1fr
+}
+.popOverCloseButton
+{
+    position: absolute;
+    top: 0;
+    right: 0
+}
+html[dir=rtl] .popOverCloseButton
+{
+    left: 0
+}
+.popOverCloseButton .iconButton.internalActionLink
+{
+    writing-mode: lr-tb
+}
+.popOverCloseButton .win-command.iconButton
+{
+    -ms-grid-columns: 60px;
+    min-width: 30px
+}
+.popOverCloseButton .iconButton .win-commandicon
+{
+    -ms-grid-column-align: center
+}
+.popOverCloseButton .iconButton .win-label
+{
+    display: none
+}
+.imageCollageArtFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 666ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.imageCollageArtFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 666ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+@keyframes imageCollageLargeArt
+{
+    0%, 100%
+    {
+        transform: scale(1,1)
+    }
+    50%
+    {
+        transform: scale(1.2,1.2)
+    }
+}
+.control-nowPlayingVisualization .imageCollageLargeArt, .nowPlayingTileBackground .imageCollageLargeArt, .nowPlayingControl .imageCollageLargeArt, .fullScreenNowPlaying .imageCollageLargeArt
+{
+    transform-origin: center .25%;
+    animation-name: imageCollageLargeArt;
+    animation-duration: 60s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite
+}
+.nowPlayingPlaylistGalleryViewSnappedFlipView .win-flipview
+{
+    height: 100%
+}
+.overlayAnchor
+{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0
+}
+@media(min-width: 320px) and (max-width: 480px)
+{
+    .overlayAnchor
+    {
+        display: none
+    }
+}
+[data-win-control="MS.Entertainment.UI.Controls.ImmersiveLayout"]
+{
+    height: 100%;
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-align: stretch;
+    -ms-flex-direction: row;
+    -ms-flex-pack: start;
+    -ms-flex-wrap: nowrap;
+    -ms-scroll-snap-type: proximity
+}
+.immersiveViewMoreOneColumn .immersiveViewMorePopOverContentLayout, .immersiveOneColumn
+{
+    width: 350px
+}
+.immersiveViewMoreTwoColumn .immersiveViewMorePopOverContentLayout, .immersiveTwoColumn
+{
+    width: 800px
+}
+.immersiveThreeColumn .immersiveFrame
+{
+    width: 1200px
+}
+.immersiveAutoSize
+{
+    width: auto
+}
+.immersivePlaylist .contentRow>.win-template
+{
+    height: 100%
+}
+.immersivePlaylist .immersiveViewMorePopOverContentLayout
+{
+    width: 595px
+}
+.snapped .immersivePlaylist .immersiveViewMorePopOverContentLayout
+{
+    width: 100vw
+}
+.immersivePlaylist .immersiveViewMorePopOverContentLayout .nowPlayingPlaylistGalleryHeader.removeFromDisplay
+{
+    display: none
+}
+.immersivePlaylist .immersiveViewMorePopOverContentLayout>.contentRow
+{
+    height: 100%
+}
+.immersiveFrame
+{
+    display: -ms-grid;
+    -ms-grid-columns: 25px 1fr 25px;
+    -ms-grid-rows: auto 1fr 78px;
+    height: 100%
+}
+@media screen and (min-height: 1080px)
+{
+    .immersiveFrame
+    {
+        -ms-grid-rows: auto 1fr 98px
+    }
+}
+.immersiveFrame>.headingRow, .immersiveViewMorePopOverContentLayout>.headingRow
+{
+    width: 100%;
+    height: 104px;
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr 48px auto;
+    margin-bottom: 15px
+}
+.immersiveFrame>.headingRow
+{
+    position: relative;
+    border-bottom-width: 1px;
+    border-bottom-style: solid
+}
+.immersiveViewMorePopOverContentLayout>.headingRow
+{
+    -ms-grid-columns: 1fr 10px auto
+}
+@media screen and (min-height: 1080px)
+{
+    .immersiveFrame>.headingRow, .immersiveViewMorePopOverContentLayout>.headingRow
+    {
+        height: 114px
+    }
+}
+@media screen and (min-height: 1200px)
+{
+    .immersiveFrame>.headingRow, .immersiveViewMorePopOverContentLayout>.headingRow
+    {
+        height: 134px
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .immersiveFrame>.headingRow, .immersiveViewMorePopOverContentLayout>.headingRow
+    {
+        height: 194px
+    }
+}
+.immersiveFrame>.headingRow>div .iconButton
+{
+    -ms-grid-columns: 0 1fr;
+    -ms-grid-rows: 0 1fr 0
+}
+.immersiveFrame>.headingRow>p, .immersiveFrame>.headingRow>div
+{
+    margin: 0;
+    padding: 0;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: end;
+    white-space: normal
+}
+.immersiveFrame>.headingRow>.headingLink
+{
+    margin-left: -8px;
+    margin-right: -8px
+}
+.immersiveFrame .headingRow .internalActionLink
+{
+    width: 100%
+}
+html[dir=ltr] .immersiveFrame .headingRow .internalActionLink .actionLinkLabel
+{
+    text-align: left
+}
+html[dir=rtl] .immersiveFrame .headingRow .internalActionLink .actionLinkLabel
+{
+    text-align: right
+}
+.immersiveViewMorePopOverContentLayout>.headingRow>.immersiveViewMorePopOverHeading
+{
+    margin: 8px 0;
+    padding: 0;
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-row-align: end;
+    -ms-grid-column-span: 3
+}
+.immersiveViewMorePopOverContentLayout>.headingRow>.immersiveViewMorePopOverSubHeading
+{
+    margin: 8px 0;
+    padding: 0;
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-row-align: end;
+    -ms-grid-column-span: 3
+}
+.immersiveViewMorePopOverContentLayout .closeButtonContainer {
+    -ms-grid-column: 3;
+    -ms-grid-column-align: end;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: start
+}
+.immersiveViewMorePopOverContentLayout .closeButtonContainer .closeButton
+{
+    margin-top: 32px;
+    margin-right: -7px;
+    margin-left: -7px;
+    padding: 0
+}
+.control-buttonClose {
+    display: none
+}
+.immersiveFrame>.contentRow, .immersiveViewMorePopOverContentLayout>.contentRow
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 3;
+    overflow: hidden
+}
+.immersiveViewMorePopOverContentLayout>.contentRow
+{
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: calc(100% - 20px)
+}
+.immersiveColumnPadding
+{
+    margin-left: 25px;
+    margin-right: 25px
+}
+.immersiveFrame>.viewMoreRow
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 3;
+    -ms-grid-column-span: 2;
+    -ms-grid-column-align: start;
+    -ms-grid-row-align: end;
+    background-color: transparent;
+    margin: 0 15px 24px 15px;
+    padding: 10px
+}
+.immersiveFrame>.viewMoreRow .inlineCaretButtonText
+{
+    -ms-grid-column: 1
+}
+.immersiveFrame>.viewMoreRow .inlineCaretButtonIcon
+{
+    -ms-grid-column: 2
+}
+@media screen and (min-height: 1080px)
+{
+    .immersiveFrame>.viewMoreRow
+    {
+        margin-bottom: 54px
+    }
+}
+.firstImmersiveTwoColumn
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr auto;
+    -ms-grid-columns: 50px 1fr 50px
+}
+html[dir=ltr] .immersiveDetailsContainer .firstImmersiveTwoColumn
+{
+    padding-right: 25px
+}
+html[dir=ltr] .immersiveViewMoreIndex1 .immersiveViewMorePopOverContentLayout
+{
+    margin-left: -25px;
+    padding-left: 25px
+}
+html[dir=ltr] .immersiveDetailsContainer .immersiveNowPlayingColumn
+{
+    margin-left: -25px
+}
+html[dir=rtl] .immersiveDetailsContainer .firstImmersiveTwoColumn
+{
+    padding-left: 25px
+}
+html[dir=rtl] .immersiveViewMoreIndex1 .immersiveViewMorePopOverContentLayout
+{
+    margin-right: -25px;
+    padding-right: 25px
+}
+html[dir=rtl] .immersiveDetailsContainer .immersiveNowPlayingColumn
+{
+    margin-right: -25px
+}
+[data-win-control="MS.Entertainment.UI.Controls.ImmersiveTableOfContents"]
+{
+    display: -ms-flexbox;
+    -ms-flex-direction: row;
+    -ms-flex-align: stretch;
+    -ms-flex-pack: start;
+    -ms-flex-wrap: wrap;
+    -ms-grid-row-align: end;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: end;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 95px;
+    min-height: 50px;
+    transform: translateX(-8px)
+}
+html[dir=rtl] [data-win-control="MS.Entertainment.UI.Controls.ImmersiveTableOfContents"]
+{
+    transform: translateX(8px)
+}
+.immersiveTableOfContentsItemContainer
+{
+    min-width: 260px;
+    margin-bottom: 12px;
+    height: 38px
+}
+.immersiveTableOfContentsItemContainer button.label
+{
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent
+}
+.showKeyboardFocus .immersiveTableOfContentsItemContainer button:focus.label
+{
+    border-style: solid;
+    border-width: 2px;
+    border-color: #fff
+}
+.immersiveViewMorePopOverContentLayout
+{
+    -ms-grid-column: 2
+}
+.snapped .immersiveViewMorePopOverContentLayout
+{
+    -ms-grid-column: 1
+}
+.immersiveViewMorePopOverLayout
+{
+    display: -ms-grid;
+    height: 100%;
+    width: 100%;
+    -ms-grid-columns: 20px auto 1fr;
+    -ms-grid-rows: 40px auto 1fr
+}
+.snapped .immersiveViewMorePopOverLayout
+{
+    -ms-grid-columns: 0 auto 1fr
+}
+@media screen and (min-height: 1080px)
+{
+    .immersiveViewMorePopOverLayout
+    {
+        -ms-grid-rows: 50px auto 1fr
+    }
+}
+@media screen and (min-height: 1200px)
+{
+    .immersiveViewMorePopOverLayout
+    {
+        -ms-grid-rows: 70px auto 1fr
+    }
+}
+@media screen and (min-height: 1440px)
+{
+    .immersiveViewMorePopOverLayout
+    {
+        -ms-grid-rows: 130px auto 1fr
+    }
+}
+.immersiveViewMoreBackground
+{
+    position: static;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row-span: 3;
+    height: 100%;
+    width: 100%
+}
+.immersiveBackButtonContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2
+}
+.immersiveViewMorePopoverContainer
+{
+    height: 100%;
+    -ms-grid-column: 3;
+    -ms-grid-row-span: 3;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    position: relative
+}
+.immersiveViewMorePopOverContentLayout
+{
+    -ms-grid-column: 2;
+    display: -ms-grid;
+    height: 100%;
+    -ms-grid-columns: 25px 1fr 25px;
+    -ms-grid-rows: auto 1fr
+}
+.immersivePlaylist .immersiveViewMorePopOverContentLayout
+{
+    -ms-grid-columns: 50px 1fr 50px
+}
+.immersiveTableOfContentsItemContainer .label
+{
+    font-weight: normal
+}
+[data-win-control="MS.Entertainment.UI.Controls.ArcProgressControl"]
+{
+    width: 250px;
+    height: 250px
+}
+[data-win-control="MS.Entertainment.UI.Controls.ArcProgress"]>svg
+{
+    width: 100%;
+    height: 100%
+}
+.artistActionHeaderButton button
+{
+    border: 2px solid
+}
+.extendedSplashScreen
+{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1
+}
+.extendedSplashScreenProgressContainer
+{
+    text-align: center
+}
+.extendedSplashScreenImage
+{
+    position: absolute
+}
+.extendedSplashScreenTitle
+{
+    margin-top: 20px
+}
+.adPlaceholder, .adError
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1
+}
+.adPlaceholder
+{
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 100%
+}
+.adPlaceholderText
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.sidebarAd .adError
+{
+    height: 600px
+}
+.adCompanion
+{
+    position: absolute;
+    bottom: 113px;
+    right: -10px;
+    z-index: 1000;
+    display: -ms-grid;
+    -ms-grid-rows: 25px 250px;
+    -ms-grid-columns: 300px
+}
+html[dir=rtl] .adCompanion
+{
+    left: -10px;
+    right: auto
+}
+@media(min-width: 320px) and (max-width: 480px)
+{
+    .adCompanion
+    {
+        right: -30px;
+        bottom: 241px
+    }
+    html[dir=rtl] .adCompanion
+    {
+        left: -30px;
+        right: auto
+    }
+}
+.adCompanionHeader
+{
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    height: 25px;
+    -ms-grid-columns: 10px auto 1fr
+}
+.adCompanionLabel
+{
+    -ms-grid-column: 2;
+    margin-top: 4px;
+    overflow: hidden
+}
+.adCompanionCloseButton
+{
+    -ms-grid-column: 3;
+    -ms-grid-column-align: end;
+    position: relative;
+    top: -4px;
+    width: auto;
+    height: auto
+}
+.adCompanionContent
+{
+    -ms-grid-row: 2;
+    width: 300px;
+    height: 250px;
+    padding: 0;
+    border: none
+}
+.adCompanionImage
+{
+    width: 100%;
+    height: 100%
+}
+.appBarTransportControlsContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto;
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 4
+}
+.commandingPopoverContent, .commandingPopoverContent button.appBarIconButton, .commandingMainContent, .commandingOverlayContainer>div, .commandingPopoverTopRowContent, .commandingPopoverTopRowGlobalContent, .commandingPopoverTopRowGlobalContent .commandingPopoverTextContainer, .commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer, .commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer>div, .commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer button
+{
+    display: -ms-grid
+}
+.commandingPopoverContent
+{
+    -ms-grid-rows: 170px 1fr;
+    height: auto
+}
+.commandingPopoverTopRow
+{
+    -ms-grid-row: 1
+}
+.commandingPopoverTopRowContent
+{
+    -ms-grid-columns: 1fr;
+    width: calc(100% - 6px);
+    height: auto
+}
+.commandingPopoverTopRowGlobalContent
+{
+    -ms-grid-columns: 200px 1fr;
+    height: auto
+}
+.commandingPopoverTextContainer
+{
+    padding: 15px 30px
+}
+.commandingPopoverTopRowGlobalContent .commandingPopoverTextContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 45px 35px 1fr;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+    margin-bottom: 0
+}
+.commandingPopoverTopRowGlobalContent .commandingPopoverTextContainer .metadata1
+{
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center
+}
+.commandingPopoverTopRowGlobalContent .commandingPopoverTextContainer .metadata2
+{
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center
+}
+.commandingPopoverTopRowGlobalContent .globalTransportControls
+{
+    -ms-grid-row: 3;
+    -ms-grid-row-align: center;
+    margin-right: 15px;
+    margin-left: 15px
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer
+{
+    -ms-grid-columns: 100px 4px 100px 4px 100px
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsSkipButton, .commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsPlayPauseButton
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    width: 100px;
+    height: 100px;
+    min-width: 100px;
+    min-height: 100px;
+    max-width: 100px;
+    max-height: 100px
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsPlayPauseButton
+{
+    -ms-grid-column: 3
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsNext
+{
+    -ms-grid-column: 5
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer button.win-command.iconButton
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+    max-width: 60px;
+    max-height: 60px
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer .iconButton span.win-commandimage, .commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsContainer span.win-commandicon
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    height: 60px;
+    width: 60px
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsPlayPauseButton span.win-commandicon
+{
+    margin-left: 58px
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsPrevious
+{
+    -ms-grid-column: 1
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsPlayPauseButton
+{
+    -ms-grid-column: 3
+}
+.commandingPopoverTopRowGlobalContent .nowPlayingTransportControlsNext
+{
+    -ms-grid-column: 5
+}
+.commandingPopoverActionList
+{
+    display: -ms-flexbox;
+    -ms-grid-column-align: start;
+    -ms-grid-row: 2;
+    -ms-flex-wrap: wrap;
+    -ms-flex-direction: column;
+    height: 400px;
+    width: 620px;
+    margin-top: 0;
+    overflow: visible
+}
+.commandingPopoverContent .commandingPopoverActionList span.win-commandicon
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    width: 74px;
+    margin: 0
+}
+.commandingPopoverContent .commandingPopoverActionList span.win-commandimage
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    height: 74px;
+    width: 74px;
+    margin: 0
+}
+.commandingPopoverContent .commandingPopoverActionList span.actionButtonLabel
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: end;
+    max-width: 180px;
+    padding: 0
+}
+.commandingMainContent
+{
+    -ms-grid-columns: auto 200px;
+    height: auto;
+    box-shadow: none;
+    transform: translateX(100px)
+}
+html[dir=rtl] .commandingMainContent {
+    transform: translateX(-100px)
+}
+.commandingMainContent .overlayContent
+{
+    -ms-grid-column: 1
+}
+.commandingMainContent .commandingPopoverGestureCloseButton {
+    -ms-grid-column: 2;
+    margin-left: 30px
+}
+html[dir=rtl] .commandingMainContent .commandingPopoverGestureCloseButton {
+    margin-left: 0;
+    margin-right: 30px
+}
+.commandingMainContent .commandingPopoverCloseButton
+{
+    -ms-grid-column: 2
+}
+.commandingMainContent .commandingPopoverVoiceCloseText
+{
+    -ms-grid-column: 2;
+    margin-top: 63px;
+    margin-left: 25px;
+    display: none;
+    color: #5dc21e
+}
+html[dir=rtl] .commandingMainContent .commandingPopoverVoiceCloseText {
+    margin-left: 0;
+    margin-right: 25px
+}
+.activeListening .commandingMainContent .commandingPopoverVoiceCloseText
+{
+    display: inherit
+}
+.commandingMainContent .overlayContent>div
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.commandingPopover-showTransportControls .commandingMainContent .overlayContent>div:not(.commandingPopover-noMedia)
+{
+    -ms-grid-rows: 217px 1fr
+}
+.commandingPopover-contextual .commandingMainContent .overlayContent>div
+{
+    -ms-grid-rows: 110px 1fr
+}
+.commandingPopoverImageContainer .imageHolder
+{
+    width: 200px;
+    height: 200px;
+    margin-bottom: -4px
+}
+.commandingPopoverContent button.appBarIconButton
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    height: 200px;
+    width: 200px;
+    margin-top: 6px;
+    margin-right: 6px
+}
+html[dir=rtl] .commandingPopoverContent button.appBarIconButton
+{
+    margin-right: 0;
+    margin-left: 6px
+}
+[data-win-control="MS.Entertainment.UI.Controls.ItemControl"]
+{
+    -ms-touch-action: pan-x
+}
+[data-win-control="MS.Entertainment.UI.Controls.ItemControl"]>.selectionContainer
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0
+}
+[data-win-control="MS.Entertainment.UI.Controls.ItemControl"]>.selectionContainer .selectionLayout
+{
+    -ms-touch-action: pan-x;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    width: 100%;
+    height: 100%;
+    border-width: 3px;
+    border-style: solid;
+    box-sizing: border-box
+}
+[data-win-control="MS.Entertainment.UI.Controls.ItemControl"]>.selectionContainer .selectionLayout .checkBackground
+{
+    -ms-touch-action: pan-x;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: start;
+    width: 0;
+    height: 0;
+    border-top-width: 35px;
+    border-top-style: solid;
+    border-left: 35px solid transparent
+}
+[data-win-control="MS.Entertainment.UI.Controls.ItemControl"]>.selectionContainer .selectionLayout .checkMark
+{
+    -ms-touch-action: pan-x;
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: start
+}
+.control-textInputOverlay .overlayContainer
+{
+    background-color: transparent
+}
+.control-textInputOverlay .overlayContainer>div
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.control-textInputOverlay .overlayContent
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.control-textInput
+{
+    display: -ms-grid;
+    -ms-grid-rows: 50px 20px auto
+}
+.container-textInputCloseButton
+{
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 100px 1fr
+}
+.control-textInputGestureClose
+{
+    -ms-grid-column: 1;
+    -ms-attraction: 50% 50%
+}
+.control-textInputVoiceClose
+{
+    -ms-grid-column: 2;
+    display: none;
+    color: #5dc21e;
+    background-color: #222;
+    -ms-grid-column-align: start;
+    -ms-grid-row-align: center;
+    padding: 10px;
+    height: auto
+}
+.activeListening .control-textInputVoiceClose
+{
+    display: inherit
+}
+.container-textInputEditBox
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 6px auto;
+    -ms-grid-row: 3
+}
+.control-textInput .part-editBox
+{
+    -ms-grid-column: 1
+}
+.control-textInput .part-editBox .editInput
+{
+    width: calc(100% - 20px);
+    height: 112px;
+    padding-left: 20px
+}
+html[dir=rtl] .control-textInput .part-editBox .editInput
+{
+    padding-left: 0;
+    padding-right: 20px
+}
+.control-textInput .part-editBox:not(.hasContent) .editInput, .control-textInput .part-editBox:not(.hasContent) .editInput:hover, .control-textInput .part-editBox:not(.hasContent) .editInput:focus
+{
+    border-color: transparent;
+    background-color: transparent
+}
+.control-textInput .part-editBox .editInput
+{
+    border-color: transparent
+}
+.control-textInput .part-submitButton
+{
+    -ms-grid-column: 3;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: none
+}
+.control-textInput .part-editBoxFake
+{
+    -ms-grid-column: 1;
+    width: 100%;
+    height: 112px;
+    border-width: 0;
+    margin-top: 6px;
+    margin-left: 2px
+}
+.control-textInput .part-editBoxFake::-ms-value
+{
+    border-width: 0;
+    padding-left: 20px
+}
+html[dir=rtl] .control-textInput .part-editBoxFake::-ms-value
+{
+    padding-left: 0;
+    padding-right: 20px
+}
+.control-upgradeTileContainer
+{
+    -ms-grid-columns: 25px 1fr 25px;
+    -ms-grid-rows: 25px 1fr 130px 25px 25px;
+    display: -ms-grid
+}
+.control-upgradeTileContainer .part-Image
+{
+    -ms-grid-column: 2;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center
+}
+.control-upgradeTileContainer .part-bigMessage
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 3;
+    -ms-grid-row-align: center;
+    text-align: center
+}
+.control-upgradeTileContainer .part-littleMessage
+{
+    -ms-grid-column: 2;
+    -ms-grid-column-align: center;
+    -ms-grid-row: 4;
+    -ms-grid-row-align: end
+}
+.part-outOfBandMessagingContainer
+{
+    position: relative
+}
+.userEngagementMessageContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: 2fr 1fr;
+    height: 100%
+}
+.userEngagementMessageTop
+{
+    height: 100%;
+    -ms-grid-columns: 25px 1fr 25px;
+    -ms-grid-row: 1;
+    -ms-grid-rows: 40px 1fr 2fr 40px;
+    display: -ms-grid
+}
+.userEngagementMessageTitle
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2
+}
+.userEngagementMessageTop .imageContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    -ms-grid-row: 3
+}
+.userEngagementMessageBottom
+{
+    -ms-grid-row: 2;
+    height: 100%;
+    -ms-grid-columns: 25px 1fr 25px;
+    -ms-grid-rows: 25px 3fr 1fr 10px;
+    display: -ms-grid
+}
+.userEngagementMessageSubText {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2
+}
+.userEngagementMessageBottom .userEngagementMessageExternalLink {
+    -ms-grid-column: 2;
+    -ms-grid-row: 3;
+    display: block
+}
+.searchFlyoutContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: 30px 1fr 1fr 30px;
+    -ms-grid-columns: 40px 1fr 40px
+}
+.searchFlyoutContainerPromptTitle
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    margin-top: 5px
+}
+.searchFlyoutContainerSearchBox
+{
+    -ms-grid-row: 3;
+    -ms-grid-column: 2;
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 4px
+}
+.searchFlyoutContainerSearchBox .win-searchbox-flyout
+{
+    width: 100%
+}
+.removeFromDisplay, .removeFromDisplayOnError, .dropDownDisabled .dropDownArrowContainer
+{
+    display: none
+}
+@media screen and (-ms-high-contrast)
+{
+    .dashboard .homeNowPlayingTile:after, .dashboard .homeNowPlayingTilePoster:after, .dashboardGridItemContent .thumbnailButton:after, .immersiveDetails .relatedHeroItemImage .thumbnailButton:after, .flexibleItemsControlItemContainer .cardThumbnailButton:after, .games .achievementPageContainer .achievementGameDetailsThumbnail .imageContainer:after, .immersiveDetails .relatedListView .horizontalListItem .win-focusable:after, .immersiveDetails .related .mediatype-tvSeries.win-focusable:after, .immersiveDetails .related .mediatype-movie.win-focusable:after, .ui-interactive:after
+    {
+        background-color: transparent
+    }
+    .imageCollageCellColorOverlay
+    {
+        display: none
+    }
+    .reorderTrackButtonContainer .win-commandicon.win-commandring, .reorderTrackButtonContainer button.win-command:disabled .win-commandicon, .reorderTrackButtonContainer button.win-command:active:disabled .win-commandicon
+    {
+        border-radius: 0%
+    }
+    .games .achievementPageContainer .achievementGameDetailsThumbnail .imageContainer:hover, .opportunityContainer .opportunityTitle:active, .opportunityContainer .opportunitySubTitle:active, .opportunityContainer .opportunityTitle:hover, .opportunityContainer .opportunitySubTitle:hover, .glyph, .inlineGlyph, .inlineGlyphSmall, button:not([disabled]).link.panelHeaderLink:hover, button:not([disabled]).link.panelHeaderLink:active, .nowPlayingMetadataShowPlaylistButton:hover, .viewMoreRow:hover, .videoAdLearnMoreLink:hover
+    {
+        opacity: 1
+    }
+    .albumThumbnail
+    {
+        overflow: visible
+    }
+    .albumThumbnail .imageContainer
+    {
+        overflow: hidden
+    }
+}
+html:-ms-lang(ta,kn) .hubNavigationContainer
+{
+    margin: -12px -12px -1px -12px
+}
+html:-ms-lang(ta) .actionLinkContainer .actionLinkLabel
+{
+    margin-top: 4px
+}
+html:-ms-lang(ml,ta) .actionTile button.iconButton.win-command .win-label
+{
+    max-height: 52px;
+    padding-top: 0;
+    padding-bottom: 0
+}
+html:-ms-lang(ml,ta,km) .profileButtons>.itemList>.win-template
+{
+    -ms-flex-preferred-size: 100%
+}
+html:-ms-lang(ml,ta) .hubNavigationClippingContainer
+{
+    overflow-x: auto
+}
+html:-ms-lang(ta) .hubNavigationTitle
+{
+    margin-bottom: 6px
+}
+html:-ms-lang(ta) .companionHomeSearchBox .editInput
+{
+    margin-top: 2px
+}
+html:-ms-lang(ta) .editInput
+{
+    padding-top: 4px
+}
+html:-ms-lang(ta) .selectArtistEditBox .editInput
+{
+    padding-top: 0
+}
+html:-ms-lang(ta) .modifierControl .modifierDescription
+{
+    -ms-grid-row-align: center
+}
+html:-ms-lang(ml,ta) .companionConnectionDialogBodyText, html:-ms-lang(ml,ta) .companionConnectionDialogAccountText, html:-ms-lang(ml,ta) .companionConnectionDialogBodyTextCenter, html:-ms-lang(ml,ta) .companionConnectionDialogTroubleShootText3
+{
+    max-height: none;
+    padding-bottom: 2px;
+    overflow: hidden
+}
+html:-ms-lang(ta) .musicCollection .musicPage .modifierControl
+{
+    -ms-grid-rows: 44px auto
+}
+html:-ms-lang(ml,ta,ka,km) .musicPage .pageContainer
+{
+    -ms-grid-columns: 120px 340px 5px 1fr
+}
+html:-ms-lang(ml,ta) .infoNotificationContainer, html:-ms-lang(ml,ta) .criticalNotificationContainer
+{
+    width: 520px
+}
+html:-ms-lang(ml,ta) .infoNotificationTitle, html:-ms-lang(ml,ta) .criticalNotificationTitle
+{
+    max-width: 420px
+}
+html:-ms-lang(ml).music .homeNowPlayingTile .homeNowPlayingMetadataTitle, html:-ms-lang(ml).music .homeHubNowPlayingTile .nowPlayingMetadataTitle
+{
+    max-height: 146px
+}
+html:-ms-lang(ja) .win-appbar button.appBarIconButton.win-command .appBarIconLabel
+{
+    word-break: keep-all;
+    word-wrap: break-word;
+    padding-left: 0;
+    padding-right: 0
+}
+html:-ms-lang(ml,ta,ja) .achievementsGallery .achievementByDate
+{
+    width: 170px
+}
+html:-ms-lang(ml,ta,ja,fi) .videoAdOverlay .adIconButton button.win-command.iconButton .win-label.label, html:-ms-lang(ml,ta,ja,fi) .videoAdOverlay .adIconButton button.win-command.iconButton .textContainer
+{
+    max-width: 200px
+}
+html:-ms-lang(en) .inPlaceDetailsItemActions button.iconButton.win-command .win-label
+{
+    max-width: 80px
+}
+html:-ms-lang(as,el) .inPlaceDetailsItemActions button.iconButton.win-command .win-label
+{
+    max-width: 140px
+}
+html:-ms-lang(ta) .inPlaceDetailsItemActions button.iconButton.win-command .win-label
+{
+    max-width: 160px
+}
+html:-ms-lang(ml) .inPlaceDetailsItemActions button.iconButton.win-command .win-label
+{
+    max-width: 220px
+}
+html:-ms-lang(ta) .cardThumbnailButton .primaryText, html:-ms-lang(ta) .cardThumbnailButton .secondaryText, html:-ms-lang(ta) .cardThumbnailButton .tertiaryText, html:-ms-lang(ta) .cardThumbnailButton .quaternaryText
+{
+    word-wrap: break-word
+}
+.control-watchProgress .watchProgress-progressBar
+{
+    width: 100%
+}
+.control-watchProgress .watchProgress-progressBar::-ms-fill
+{
+    animation-name: none
+}
+.overlayAnchor.volumeContainer:not(.removeFromDisplay), .snapped .overlayAnchor.volumeContainer:not(.removeFromDisplay)
+{
+    display: block
+}
+.overlayAnchor.volumeContainer, .snapped .overlayAnchor.volumeContainer
+{
+    width: 100%;
+    top: -8px;
+    z-index: 1010
+}
+.volumeContainer
+{
+    width: 66px
+}
+.volumeIcon
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    height: 50px;
+    width: 46px;
+    margin-left: 10px;
+    margin-right: 10px
+}
+.volumeIcon button.win-command
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    height: 40px;
+    width: 40px;
+    margin-left: -3px;
+    padding: 0
+}
+.volumeIcon button.win-command .win-commandicon.win-commandring, .snapped .volumeIcon button.win-command .win-commandicon.win-commandring, .volumeIcon button.win-command:active .win-commandicon.win-commandring, .snapped .volumeIcon button.win-command:active .win-commandicon.win-commandring
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    height: inherit;
+    width: inherit;
+    margin: 0;
+    border: none;
+    background-color: transparent
+}
+.volumeIcon .win-commandimage
+{
+    height: inherit;
+    width: inherit;
+    margin: 0
+}
+.volumeRange
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    height: 195px;
+    width: 66px
+}
+.volumeRange input[type=range].win-vertical
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    height: 163px;
+    width: 11px;
+    padding: 0
+}
+.volumeRange input[type=range].win-vertical::-ms-tooltip
+{
+    display: none
+}
+.musicBrandActionLink button .actionLinkLabel:after, .cloudGrovelInfo .cloudGrovelInfoLink:after, .localGrovelInfo .localGrovelInfoLink:after, .userEngagementMessageExternalLink:not(.removeFromDisplay):after, .control-upgradeTileContainer .part-littleMessage:after
+{
+    content: " ";
+    position: relative;
+    top: -1px;
+    font-weight: 800
+}

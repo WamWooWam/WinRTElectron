@@ -1,0 +1,36 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/settings.css">
+    <title>Settings Control Template</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+    
+    <script src="/Components/Settings/Settings.js"></script>
+</head>
+<body>
+    
+    
+    <div id="SettingsFeedback" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow', lightDismiss:'false'}">
+         
+        
+        <div class="settingsWrapper" data-win-control="MS.Entertainment.Utilities.SettingsWrapper">
+            
+            <div class="settingsPanelHeaderBackground"></div>
+            
+            <div class="settingsPanelHeader win-ui-dark">
+                <button class="win-backbutton" type="button" data-win-automationid="feedbackBackButton" data-ent-event="click: backToSettings" tabindex="0" data-ent-member="_backButton">
+                </button>
+                <div class="settingsPanelTitle label text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_FEEDBACK_TITLE}">
+                </div>
+            </div>
+            
+            <div class="settingsPanelContent text-weightBold">
+                <div data-win-control="MS.Entertainment.UI.Controls.UserFeedbackDialog"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,817 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/ThumbnailButton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Components/Music/MusicSharedTemplatesControls.js"></script>
+
+    <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+    <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+    <link rel="Stylesheet" type="text/css" href="/Styles/InlineDetails.css">
+    <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+</head>
+<body>
+    
+    
+    
+    
+    
+    
+    
+    
+
+    
+
+    
+    
+    
+    
+    <div data-ent-templateid="actionTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalPivotIcon actionCell" data-win-bind="
+                    winControl.icon: icon WinJS.Binding.oneTime;
+                    winControl.hideDefaultRing: hideDefaultRing WinJS.Binding.oneTime;
+                    winControl.text: text WinJS.Binding.oneTime;
+                    winControl.action: action WinJS.Binding.oneTime;
+                    winControl.stringId: stringId WinJS.Binding.oneTime;" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{
+                    tabIndex: -1,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true }"></div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalAlbumItemAlphaSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }"></div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 60, height: 60 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="artistName" data-win-bind="textContent: artistName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalTracksCount MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell4th">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    <div class="icon" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime" data-win-control="MS.Entertainment.UI.Controls.Tooltip"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="artistPopoverHeaderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem verticalListItem_semanticZoomHeader">
+            <div class="simpleHeader placeholderItem text-listItem" data-ent-placeholderdatapath="title" data-win-bind="textContent: title WinJS.Binding.oneTime;" data-win-automationid="simpleHeader"></div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="simpleHeaderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem verticalListItem_semanticZoomHeader">
+            <div class="simpleHeader placeholderItem text-listItem" data-ent-placeholderdatapath="title" data-win-bind="textContent: title WinJS.Binding.oneTime;" data-win-automationid="simpleHeader"></div>
+            <button class="win-semanticzoom-button acc-keyboardFocusTarget" aria-hidden="true" type="button" tabindex="-1"></button>
+        </div>
+        <span class="hidden" data-win-bind="textContent: String.id.IDS_COLLECTION_HEADER_ZOOM_OUT MS.Entertainment.Formatters.formatStringId;"></span>
+    </div>
+
+    <div data-ent-templateid="albumHeaderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="collectionHeader collectionHeader_semanticZoomHeader">
+                
+                <div class="albumHeaderThumbnail">
+                    
+                    <img class="albumHeaderImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+    enableDelayInitialization: true,
+    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+    hide: MS.Entertainment.Utilities.doNothing,
+    allowAnimations: false,
+    preventHideDuringInitialize: true,
+    desiredImageSize: { width: 40, height: 40 },
+    defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+
+                </div>
+
+                <div class="albumHeaderLabel placeholderItem" data-ent-placeholderdatapath="albumName" data-win-bind="textContent: albumName WinJS.Binding.oneTime;" data-win-automationid="albumHeader"></div>
+
+                <button class="win-semanticzoom-button acc-keyboardFocusTarget" aria-hidden="true" type="button" tabindex="-1"></button>
+            </div>
+        </div>
+        <span class="hidden" data-win-bind="textContent: String.id.IDS_COLLECTION_HEADER_ZOOM_OUT MS.Entertainment.Formatters.formatStringId;"></span>
+    </div>
+
+    <div data-ent-templateid="artistHeaderTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="collectionHeader collectionHeader_semanticZoomHeader">
+                
+                <div class="artistHeaderThumbnail">
+                    
+                    <img class="artistHeaderImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-options="{
+    enableDelayInitialization: true,
+    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+    hide: MS.Entertainment.Utilities.doNothing,
+    allowAnimations: false,
+    preventHideDuringInitialize: true,
+    desiredImageSize: { width: 54, height: 40 },
+    defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }" data-win-bind="winControl.target: artist WinJS.Binding.oneTime">
+                </div>
+
+                <div class="artistHeaderLabel placeholderItem" data-ent-placeholderdatapath="artistName" data-win-bind="textContent: artistName WinJS.Binding.oneTime;" data-win-automationid="artistHeader"></div>
+
+                <button class="win-semanticzoom-button acc-keyboardFocusTarget" aria-hidden="true" type="button" tabindex="-1"></button>
+            </div>
+        </div>
+        <span class="hidden" data-win-bind="textContent: String.id.IDS_COLLECTION_HEADER_ZOOM_OUT MS.Entertainment.Formatters.formatStringId;"></span>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="simpleZoomedOutTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <progress aria-hidden="true" data-win-bind="
+                        max: largestTotalCountScaled WinJS.Binding.oneTime;
+                        value: totalCountScaled WinJS.Binding.oneTime"></progress>
+
+            <div class="simpleHeader placeholderItem" data-win-bind="lowCountResults: totalCountScaled MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-automationid="simpleHeader">
+
+                <div class="text-zoomedOutTitle" data-ent-placeholderdatapath="title" data-win-bind="textContent: title WinJS.Binding.oneTime;"></div>
+
+                <div class="text-metadata description" data-ent-placeholderdatapath="description" data-win-bind="textContent: description WinJS.Binding.oneTime;"></div>
+
+                <span class="hidden" data-win-bind="textContent: String.id.IDS_COLLECTION_HEADER_ZOOM_IN MS.Entertainment.Formatters.formatStringId;"></span>
+
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="verticalNotificationActionTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem cloudNotification" data-win-bind="className: notificationClass MS.Entertainment.Utilities.appendClassName;">
+            <div class="verticalPivotIcon actionCell notificationCell" data-win-control="MS.Entertainment.UI.Controls.IconButtonTwoLine" data-win-options="{
+                        tabIndex: -1,
+                        allowAnimations: false,
+                        preventHideDuringInitialize: true }" data-win-bind="
+                        winControl.icon: icon;
+                        winControl.hideDefaultRing: hideDefaultRing;
+                        winControl.text: text;
+                        winControl.subTextString: subText;
+                        winControl.action: action;
+                        winControl.stringId: stringId;"></div>
+
+            <div class="clearIcon" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{ hideDefaultRing: true }" data-win-bind="
+                        winControl.icon: clearIcon;
+                        winControl.action: clearAction;
+                        winControl.text: String.id.IDS_CLOSE_BUTTON MS.Entertainment.Formatters.formatStringId;"></div>
+        </div>
+    </div>
+
+    
+    
+    
+
+    
+    <div data-ent-templateid="verticalAlbumItemArtistNameSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 60, height: 60 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="genreName" data-win-bind="textContent: genreName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalTracksCount MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalAlbumItemDateAddedSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 60, height: 60 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="artistName" data-win-bind="textContent: artistName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalTracksCount MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell4th">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalAlbumItemReleaseYearSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 60, height: 60 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="aritstName" data-win-bind="textContent: artistName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalTracksCount MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalAlbumItemGenreSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 60, height: 60 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="artistName" data-win-bind="textContent: artistName WinJS.Binding.oneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalTracksCount MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+
+    
+    <div data-ent-templateid="verticalArtistItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain artistArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></div>
+
+                
+                <div class="verticalListArtistThumbnail">
+                    <img class="verticalListCell verticalListArtistImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 160, height: 160 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalTracksCount MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: totalAlbumsCount MS.Entertainment.Formatters.formatAlbumCountOneTime;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+
+    
+    <div data-ent-templateid="verticalSongItemDateAddedSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell">
+                    <button class="verticalListStatusIcon icon glyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                                enableDelayInitialization: true,
+                                preventHideDuringInitialize: true,
+                                allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance WinJS.Binding.oneTime;">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                               enableDelayInitialization: true,
+                               loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                               hide: MS.Entertainment.Utilities.doNothing,
+                               allowAnimations: false,
+                               preventHideDuringInitialize: true,
+                               desiredImageSize: { width: 60, height: 60 },
+                               defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="albumAndArtistName" data-win-bind="textContent: albumAndArtistName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime"></div>
+
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata ui-durationString" data-win-bind="textContent: durationString WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell4th">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear WinJS.Binding.oneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+
+                <div class="inPlaceDetailsItemActions" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                            winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            defaultButtonClass: 'iconActionButton'}"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalSongItemAlphaSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell">
+                    <button class="verticalListStatusIcon icon glyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                                enableDelayInitialization: true,
+                                preventHideDuringInitialize: true,
+                                allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance WinJS.Binding.oneTime;">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                               enableDelayInitialization: true,
+                               loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                               hide: MS.Entertainment.Utilities.doNothing,
+                               allowAnimations: false,
+                               preventHideDuringInitialize: true,
+                               desiredImageSize: { width: 60, height: 60 },
+                               defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="albumAndArtistName" data-win-bind="textContent: albumAndArtistName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata ui-durationString" data-win-bind="textContent: durationString WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell4th">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+
+                <div class="inPlaceDetailsItemActions" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                            winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            defaultButtonClass: 'iconActionButton'}"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalSongItemAlbumNameSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain">
+
+                
+                <div class="verticalListCell">
+                    <button class="verticalListStatusIcon icon glyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                                enableDelayInitialization: true,
+                                preventHideDuringInitialize: true,
+                                allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance WinJS.Binding.oneTime;">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="artistName" data-win-bind="textContent: artistName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata ui-durationString" data-win-bind="textContent: durationString WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell4th">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear  WinJS.Binding.oneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+
+                <div class="inPlaceDetailsItemActions" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                            winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            defaultButtonClass: 'iconActionButton'}"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalSongItemGenreSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain albumArtContainer">
+
+                
+                <div class="verticalListCell">
+                    <button class="verticalListStatusIcon icon glyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                                enableDelayInitialization: true,
+                                preventHideDuringInitialize: true,
+                                allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance WinJS.Binding.oneTime;">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+                
+                <div class="verticalListThumbnail">
+                    
+                    <img class="verticalListCell verticalListImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 60, height: 60 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericMusicL2 }">
+                    <div class="imagePlaceholder placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="albumAndArtistName" data-win-bind="textContent: albumAndArtistName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata ui-durationString" data-win-bind="textContent: durationString WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+                    <div class="icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                               textContent: cloudIcon WinJS.Binding.oneTime;
+                               style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                               title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+
+                <div class="inPlaceDetailsItemActions" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                           winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                           allowAnimations: false,
+                           preventHideDuringInitialize: true,
+                           defaultButtonClass: 'iconActionButton'}"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="verticalSongItemArtistNameSortTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain">
+
+                
+                <div class="verticalListCell">
+                    <button class="verticalListStatusIcon icon glyph win-command win-global iconButton hideFromDisplay" type="button" disabled="disabled" data-win-control="MS.Entertainment.UI.Controls.MediaStatusIcon" data-win-options="{
+                                enableDelayInitialization: true,
+                                preventHideDuringInitialize: true,
+                                allowAnimations: false }" data-win-bind="winControl.mediaInstance: instance WinJS.Binding.oneTime;">
+                        <span class="mediaStatusIconContainer"></span>
+                        <span class="removeFromDisplay mediaStatusAriaLabelContainer"></span>
+                    </button>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="albumName" data-win-bind="textContent: albumName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: genreName WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell3rd">
+                    <div class="secondaryText label clip text-metadata ui-durationString" data-win-bind="textContent: durationString WinJS.Binding.oneTime"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell4th">
+                    <div class="secondaryText label clip text-metadata" data-win-bind="textContent: releaseYear MS.Entertainment.Formatters.formatStringOrEmptyOneTime;"></div>
+
+                    <div class="icon cloudStatusIcon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                                textContent: cloudIcon WinJS.Binding.oneTime;
+                                style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
+                                title: cloudIconTooltip WinJS.Binding.oneTime"></div>
+                </div>
+
+                <div class="inPlaceDetailsItemActions" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
+                            winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            defaultButtonClass: 'iconActionButton'}"></div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="verticalPlaylistItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+
+            <div class="verticalListCell verticalListCellMain playlistArtContainer">
+                
+                <div class="verticalListThumbnail" data-ent-member="imageContainer">
+                    <div class="playlistImageCollage" data-win-control="MS.Entertainment.UI.Controls.PlaylistImageCollage" data-win-options="{size: {width: 60, height: 60}, rows: 2, columns: 2, useDynamicLayouts: false}" data-win-bind="winControl.media: instance WinJS.Binding.oneTime;" data-win-automationid="playlistImageCollage"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+
+                    <div class="secondaryText label clip text-metadata removeFromDisplayWhenFiltered" data-win-bind="textContent: count MS.Entertainment.Formatters.formatTracksOneTime;"></div>
+                </div>
+
+                
+                <div class="verticalListCell verticalListCell2nd">
+                    <div class="secondaryText label clip text-metadata removeFromDisplayWhenFiltered" data-win-bind="textContent: duration MS.Entertainment.Formatters.formatDurationFromDate;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="verticalSmartDJItemTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="verticalListItem">
+            <div class="verticalListCell verticalListCellMain artistArtContainer">
+
+                
+                <div class="verticalListCell verticalListStatusIcon icon" data-win-control="MS.Entertainment.Pages.ContentNotificationIconTileItem" data-win-options="{
+                            enableDelayInitialization: true,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></div>
+
+                
+                <div class="verticalListArtistThumbnail verticalSmartDJThumbnail">
+                    <img class="verticalListCell verticalListArtistImage hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                enableDelayInitialization: true,
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: { width: 160, height: 160 } }">
+                    
+                    <div class="imagePlaceholder icon smartDJIcon smartDJOverlay placeholderItem"></div>
+                </div>
+
+                
+                <div class="verticalListCellMainPrimary">
+                    <div class="primaryText label clip placeholderItem text-listItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                    <div class="secondaryText label clip placeholderItem text-metadata" data-ent-placeholderdatapath="subtitle" data-win-bind="textContent: subtitle WinJS.Binding.oneTime"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

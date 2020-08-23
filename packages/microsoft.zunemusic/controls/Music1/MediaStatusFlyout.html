@@ -1,0 +1,22 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Media Status Flyout</title>
+    <script src="/group_2_merged.js"></script>
+</head>
+<body>
+    
+    
+    
+    <div data-ent-templateid="templateid-mediaStatusFlyout" data-win-control="WinJS.Binding.Template" class="templateid-mediaStatusFlyout">
+        <div class="control-messagingFlyout messagingFlyout_mediaStatus" tabindex="0">
+            <div class="messagingFlyout-text" data-win-bind="innerText: text"></div>
+            <div class="messagingFlyout-action ent-control" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="
+                    winControl.action: action;
+                    hideFromDisplay: action MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{setTextContent: true}"></div>
+        </div>
+    </div>
+</body>
+</html>

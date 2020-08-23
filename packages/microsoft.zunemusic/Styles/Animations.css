@@ -1,0 +1,218 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.tranFadeVeryShort
+{
+    transition-property: opacity;
+    transition-duration: .25s
+}
+.tranFadeShort
+{
+    transition-property: opacity;
+    transition-duration: .5s
+}
+.tranFadeLong
+{
+    transition-property: opacity;
+    transition-duration: 2s
+}
+.tranHeight
+{
+    transition-property: height;
+    transition-duration: .33s
+}
+.tranMargins
+{
+    transition-property: margin;
+    transition-duration: .33s
+}
+.tranMarginBottom
+{
+    transition-property: margin-bottom;
+    transition-duration: .33s
+}
+.tranMarginTop
+{
+    transition-property: margin-top;
+    transition-duration: .33s
+}
+.tranTop
+{
+    transition-property: top;
+    transition-duration: .33s
+}
+.tranImmersiveDetails
+{
+    transition-property: transform;
+    transition-duration: .33s
+}
+.tranSeekBarControl
+{
+    transition-property: margin-bottom,opacity;
+    transition-duration: .33s,.5s
+}
+.tranActionlistToggle
+{
+    transition-property: width;
+    transition-duration: .33s
+}
+.tranXboxArrowRotate
+{
+    transition-property: transform;
+    transition-duration: .66s
+}
+.tranSnappedPlaylistIndent
+{
+    transition-property: transform;
+    transition-duration: .5s
+}
+@keyframes rotate360
+{
+    from
+    {
+        transform: rotate(0)
+    }
+    to
+    {
+        transform: rotate(360deg)
+    }
+}
+.avatarSelectionRefreshAnimation, .spinNoticationRetrySpinner, .rotate360Animation, .xboxConnectingAnimation
+{
+    animation-name: rotate360;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: cubic-bezier(0,0,1,1)
+}
+.snappedNPAnimation
+{
+    transition-property: transform opacity;
+    transition-duration: .66s
+}
+.tranBackgroundColor
+{
+    transition-property: background-color;
+    transition-duration: .5s
+}
+.tranBackgroundColorInstant
+{
+    transition-property: background-color;
+    transition-duration: 0
+}
+.tranMusicImages
+{
+    transition-property: opacity;
+    transition-duration: 7s
+}
+@keyframes _showOverlayContainer {
+    from
+    {
+        opacity: 0
+    }
+    to
+    {
+        opacity: 1
+    }
+}
+@keyframes _hideOverlayContainer {
+    from
+    {
+        opacity: 1
+    }
+    to
+    {
+        opacity: 0
+    }
+}
+@keyframes _showOverlayBackground {
+    from
+    {
+        opacity: 0
+    }
+    to
+    {
+        opacity: 1
+    }
+}
+@keyframes _hideOverlayBackground {
+    from
+    {
+        opacity: 1
+    }
+    to
+    {
+        opacity: 0
+    }
+}
+.tranXboxTouchPadBottomRowOffset
+{
+    transition-duration: .33s;
+    transition-property: transform
+}
+.animShowOverlayContainer
+{
+    animation-name: _showOverlayContainer;
+    animation-duration: .1s;
+    animation-timing-function: ease-in
+}
+.animHideOverlayContainer
+{
+    animation-name: _hideOverlayContainer;
+    animation-duration: .1s;
+    animation-timing-function: ease-out
+}
+.animShowOverlayBackground
+{
+    animation-name: _showOverlayBackground;
+    animation-duration: 667ms;
+    animation-timing-function: cubic-bezier(.21,1,.19,.98)
+}
+.animHideOverlayBackground
+{
+    animation-name: _hideOverlayBackground;
+    animation-duration: 167ms;
+    animation-timing-function: cubic-bezier(0,0,1,1)
+}
+.animShowProgress
+{
+    animation-name: _showOverlayContainer;
+    animation-duration: 5s;
+    animation-timing-function: ease-in;
+    animation-iteration-count: 3;
+    animation-direction: alternate
+}
+.scrollAnimation
+{
+    transition-duration: 250ms;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.24,1,0,.99)
+}
+.immersiveDetails .scrollAnimation
+{
+    transition-duration: 300ms;
+    transition-timing-function: ease
+}
+.pivotDashboard .scrollAnimation
+{
+    transition-duration: 500ms
+}
+.immersivePivots.scrollAnimation
+{
+    transition-property: opacity,transform
+}
+.immersivePivots
+{
+    transition-duration: 250ms;
+    transition-property: opacity;
+    transition-timing-function: cubic-bezier(.24,1,0,.99)
+}
+.companionFullBleedNowPlayingTile, .companionQuickplay .cardThumbnailButton, .dashboardPanel .cardThumbnailButton, .dashboardPanel .homeNowPlayingTile, .dashboardPanel .homeNowPlayingTilePoster, .dashboardGridItemContent .thumbnailButton, .games .achievementsGallery .achievementThumbnail.cardThumbnailButton, .games .achievementPageContainer .achievementGameDetailsThumbnail .imageContainer, .bigFindFriendButton, .pickProviderItemContainer, .relatedHeroItem, .related.albums .relatedListView .control-immersiveListViewItem, .related.activities .relatedListView .control-immersiveListViewItem, .related.games .relatedListView .control-immersiveListViewItem, .related.movies .relatedListView .control-immersiveListViewItem, .related.seasons .relatedListView .control-immersiveListViewItem, .games .engagePanel .actionTile button, .immersiveDetails .relatedListView .horizontalListItem .win-focusable, .template-relatedGridButtonContainer .template-fullBleedThumbnail, .ui-interactive
+{
+    transition-property: transform;
+    transition-duration: 100ms;
+    animation-timing-function: ease-out
+}
+.flipViewTransitionAnimation
+{
+    transition-duration: 300ms;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.24,1,.6,.99)
+}

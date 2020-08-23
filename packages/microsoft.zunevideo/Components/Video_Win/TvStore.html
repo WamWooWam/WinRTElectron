@@ -1,0 +1,408 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html data-ent-waypoint="1">
+<head>
+    <title>Video TV Store Page and Item Templates</title>
+
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/TvStore_merged.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="tvStoreBody" data-win-control="WinJS.Binding.Template">
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-tvSeries">
+            <div class="template-tvSeries verticalItemTileModule-item win-focusable" tabindex="-1" data-ent-moduleid="tvSeries" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;">
+                <div class="control-verticalItemTile ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 150, height: 150 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoLarge,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoLarge,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-three" data-win-bind="textContent: primaryText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-topTvSeries">
+            <div class="template-topTv horizontalItemTileModule-item win-focusable" tabindex="-1" data-ent-moduleid="topTv" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;" role="option">
+                <div class="control-horizontalItemTile horizontalItemTile_numbered ui-interactive">
+                    <div class="horizontalItemTile-imageContainer">
+                        <div class="horizontalItemTile-imagePlaceholder"></div>
+                        <img class="horizontalItemTile-image acc-preserveBackground ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this;" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 75, height: 75 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoMedium,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoMedium,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+
+                    <div class="horizontalItemTile-itemCount text-numeralLarge text-fixedWidthNumerals" data-win-bind="textContent: position MS.Entertainment.Formatters.formatDecimalNumber;"></div>
+
+                    <div class="horizontalItemTile-content">
+                        <div class="content-itemTitle text-itemTitle maxLines-two">
+                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: primaryText WinJS.Binding.oneTime;"></span>
+                        </div>
+                        <div class="content-metadata text-metadata maxLines-one" data-win-bind="textContent: seasonCount MS.Entertainment.Formatters.formatSeason;
+                               removeFromDisplay: seasonCount MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" class="templateid-featuredSet">
+            <div class="template-featuredSet verticalItemTileModule-item win-focusable" tabindex="-1" data-win-bind="
+                    removeFromDisplay: this MS.Entertainment.Utilities.toggleClassNameNegate;
+                    clickDataContext: this;">
+                <div class="control-verticalItemTile verticalItemTile_featuredSet ui-interactive" role="button">
+                    <div class="verticalItemTile-imageContainer">
+                        <div class="verticalItemTile-imagePlaceholder"></div>
+                        <img class="verticalItemTile-image acc-preserveBackground ent-control" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this" data-ent-pagecontent="target" data-win-options="{
+                                desiredImageSize: { width: 310, height: 150 },
+                                defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoWide,
+                                errorImage: MS.Entertainment.UI.ImagePaths.genericVideoWide,
+                                addLoadedClassToParent: true,
+                                applyImageAsBackground: true }">
+                    </div>
+                    <div class="verticalItemTile-content">
+                        <div class="verticalItemTile-primaryText text-itemTitle maxLines-one" data-win-bind="textContent: primaryText"></div>
+                        <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind=""></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-win-control="WinJS.Binding.Template" data-win-options="{ disableOptimizedProcessing: true }" class="template-heroCarouselItemHost">
+            <div class="template-heroCarouselItem win-interactive" data-win-bind="clickDataContext: this" role="button" data-ent-pagecontent="clickDataContext">
+                <div class="heroCarouselItem-artworkPlaceholder acc-preserveBackground"></div>
+                <img class="heroCarouselItem-artwork acc-preserveBackground ent-control win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageUrl" data-win-options="{
+                            imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                            defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoL3Hero,
+                            applyImageAsBackground: true,
+                            suppressSourceClear: true,
+                            suppressUnload: true }">
+
+                <div class="heroCarouselItem-content">
+                    <div class="content-title text-heroTitle removeFromDisplay" data-win-bind="textContent: primaryText;
+                             removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                    <div class="content-subTitle text-heroSubTitle maxLines-one removeFromDisplay" data-win-bind="textContent: secondaryText;
+                             removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div data-win-control="WinJS.Binding.Template" class="template-heroCarouselButtonHost">
+            <div class="carouselContainer-jumpButton" data-win-bind="
+                     posinset: position MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                     setsize: totalCount MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                     selected: checked MS.Entertainment.Utilities.toggleClassName;"></div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="templateid-headerNotification" data-win-control="WinJS.Binding.Template" class="templateid-headerNotification">
+            <div class="template-headerNotification">
+                <div class="headerNotification-content">
+                    <div class="content-icon icon" data-win-bind="textContent: icon"></div>
+                    <div class="content-primaryText" data-win-bind="textContent: title"></div>
+                    <div class="content-secondaryText maxLines-one" data-win-bind="textContent: subTitle"></div>
+                    <div class="content-actions ent-control" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithViewModel" data-win-bind="winControl.dataSource: actionArray;" data-win-options="{itemTemplate: select('.templateid-headerNotificationActionItem')}" data-win-automationid="notificationActionList">
+                    </div>
+                </div>
+                <button class="headerNotification-closeButton text-link ent-control" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-win-bind="
+                            removeFromDisplay: dismissIcon MS.Entertainment.Utilities.toggleClassNameNegate;
+                            winControl.action: dismissActionObject;
+                            textContent: String.id.IDS_CLOSE_BUTTON MS.Entertainment.Formatters.formatStringId;"></button>
+            </div>
+        </div>
+
+        <div class="page-store store_tv" role="group">
+            
+            
+            
+            <div class="control-viewStateControl ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ViewStateControl" data-win-bind="winControl.dataContext: this" data-win-options="{
+                    hideFromDisplayReadyElement: true,
+                    delayInitializeDataContext: true,
+                    delayInitializeChildren: true }">
+                
+                
+                
+                <div class="viewStateControl-layoutRoot">
+                    <div class="viewStateControl-notificationsContainer removeFromDisplay" data-ent-member="_notificationsElement" data-win-automationid="ViewState_Container">
+
+                        
+                        
+                        
+                        <div data-ent-member="_loadingElement" data-win-automationid="Page_Loading" class="viewStateControl-loadingContainer removeFromDisplay">
+                            <progress class="win-large win-ring"></progress>
+                        </div>
+                        
+                        
+                        
+                        
+                        
+                        
+                        <div data-ent-member="_errorOfflineEmptyElement" data-win-automationid="Page_ErrorOfflineEmpty" class="viewStateControl-errorContainer removeFromDisplay">
+                            <div class="text-errorTitle removeFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.title;
+                                removeFromDisplay: dataContext.viewStateViewModel.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                            <div class="text-errorSubTitle removeFromDisplay" data-win-bind="textContent: dataContext.viewStateViewModel.subTitle;
+                                removeFromDisplay: dataContext.viewStateViewModel.subTitle MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                    
+                    
+                    
+                    <div class="viewStateControl-content hideFromDisplay" data-ent-member="_readyElement">
+                        <div class="control-storeHub ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.TvStoreHub" data-win-bind="winControl.dataContext: dataContext">
+                            <div data-win-automationid="TvStore_Page">
+                                <div data-win-bind="removeFromDisplay: dataContext.heroModule.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReadyOrEmpty;">
+                                    <div class="storeHub-header" data-win-bind="removeFromDisplay: dataContext.heroModule.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                        
+                                        
+                                        
+                                        <div class="header-heroCarousel ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.Carousel" data-ent-member="_heroCarousel" data-ent-event="click: onHeroCarouselInvoke; keydown: onHeroCarouselInvoke;" data-win-bind="winControl.dataSource: dataContext.heroModule.items;">
+                                            <div class="storeHub-carouselContainer">
+                                                <div class="carouselContainer-carousel" data-win-control="WinJS.UI.FlipView" data-win-automationcontainer="module" data-win-automationid="TvStore_HeroCarousel" data-win-options="{ itemTemplate: select('.template-heroCarouselItemHost') }" data-ent-event="
+                                                        pageselected: _onPageSelected" data-ent-member="_flipView"></div>
+                                                <div class="carouselContainer-jumpButtons" data-win-bind="
+                                                            removeFromDisplay: jumpButtons MS.Entertainment.Utilities.toggleClassNameOnObservableArrayLengthMoreThanOneNegate;">
+                                                    <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="TvStore_HeroCarouselButtons" data-win-options="{
+	                                                            containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+	                                                            itemTemplate: select('.template-heroCarouselButtonHost'),
+	                                                            keyboardNavigable: true,
+                                                                excludeFromContentReady: true }" data-ent-member="_jumpButtonList" role="listbox"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+
+                                    
+                                    
+                                    
+                                    <div class="storeHub-notifications ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: dataContext.notificationList" data-win-options="{
+                                            excludeFromContentReady: true,
+                                            itemTemplate: select('.templateid-headerNotification') }"></div>
+
+                                    
+                                    
+                                    
+                                    <div data-ent-member="" data-win-automationid="" class="storeHub-modulesContainer">
+
+                                        
+                                        
+                                        
+                                        <div class="module-newTv template-carouselModule" data-win-automationcontainer="module" data-win-automationid="TvStore_NewTvModule" data-win-bind="removeFromDisplay: dataContext.newTv.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.newTv" data-win-automationid="TvStore_NewTv_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_NEW_TV_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.newTv.moduleAction.title;
+                                                            title: dataContext.newTv.moduleAction.title;" data-win-automationid="TvStore_NewTv_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="TvStore_NewTv" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-tvSeries'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: MS.Entertainment.UI.Controls.TvStoreHub.tvItemSize,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.newTv.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-featuredTv template-carouselModule" data-win-automationcontainer="module" data-win-automationid="TvStore_FeaturedTvModule" data-win-bind="removeFromDisplay: dataContext.featuredTv.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.featuredTv" data-win-automationid="TvStore_FeaturedTv_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_FEATURED_TV_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.featuredTv.moduleAction.title;
+                                                            title: dataContext.featuredTv.moduleAction.title;" data-win-automationid="TvStore_FeaturedTv_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="TvStore_FeaturedTv" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-tvSeries'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: MS.Entertainment.UI.Controls.TvStoreHub.tvItemSize,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.featuredTv.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-lastNightTv template-carouselModule" data-win-automationcontainer="module" data-win-automationid="TvStore_LastNightTvModule" data-win-bind="removeFromDisplay: dataContext.lastNightTv.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.lastNightTv" data-win-automationid="TvStore_LastNightTv_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_LAST_NIGHT_SHOWS_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.lastNightTv.moduleAction.title;
+                                                            title: dataContext.lastNightTv.moduleAction.title" data-win-automationid="TvStore_LastNightTv_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="TvStore_LastNightTv" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-tvSeries'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: MS.Entertainment.UI.Controls.TvStoreHub.tvItemSize,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true,
+                                                                excludeFromContentReady: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.lastNightTv.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-featuredSets template-carouselModule" data-win-automationcontainer="module" data-win-automationid="TvStore_FeaturedSetsModule" data-win-bind="removeFromDisplay: dataContext.featuredSets.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="carouselModule-header" data-win-bind="moduleDataContext: dataContext.featuredSets" data-win-automationid="TvStore_FeaturedSets_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_FEATURED_SETS_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.featuredSets.moduleAction.title;
+                                                            title: dataContext.featuredSets.moduleAction.title;" data-win-automationid="TvStore_FeaturedSets_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="carouselModule-items template-verticalItemTileModule" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;">
+                                                <div class="items-list" data-win-control="MS.Entertainment.UI.Controls.PagedItemsControl" data-win-automationid="TvStore_FeaturedSets" data-win-options="{
+                                                            itemsControlOptions: {
+                                                                delayInitializeChildren: true,
+                                                                enableDelayInitialization: true,
+                                                                containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                                itemTemplate: select('.templateid-featuredSet'),
+                                                                firstItemTabIndex: 0,
+                                                                itemSize: 320,
+                                                                singleAxis: true,
+                                                                virtualize: true,
+                                                                virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                                                                useParentAsScrollContainer: true,
+                                                                excludeFromContentReady: true, }
+                                                            }" data-win-bind="winControl.dataSource: dataContext.featuredSets.items;"></div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        <div class="module-topSellingTv template-contentModule" data-win-automationcontainer="module" data-win-automationid="TvStore_TopSellingTvModule" data-win-bind="removeFromDisplay: dataContext.topSellingTv.moduleState MS.Entertainment.Utilities.toggleClassNameViewStateNotReady;">
+                                            
+                                            <div class="contentModule-header" data-win-bind="moduleDataContext: dataContext.topSellingTv" data-win-automationid="TvStore_TopSellingTv_Header">
+                                                <div class="control-moduleHeader">
+                                                    <div class="moduleHeader-title text-subHeader maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_TOP_SELLING_TV_TITLE MS.Entertainment.Formatters.formatStringId;" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked"></div>
+                                                    <div class="moduleHeader-link text-link acc-keyboardFocusTarget" data-win-bind="textContent: dataContext.lastNightTv.moduleAction.title;
+                                                            title: dataContext.lastNightTv.moduleAction.title;" data-win-automationid="TvStore_TopSellingTv_ViewAll" data-ent-pagecontent="this" data-ent-event="click: onModuleHeaderInvoked; keydown: onModuleHeaderInvoked" role="button" tabindex="0"></div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="topTvSeries-content contentModule-items template-horizontalItemTileModule">
+                                                <div class="topSellingTv-list" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-ent-event="click: onModuleItemClicked; keydown: onModuleItemClicked;" data-win-automationid="TvStore_TopSellingTv" data-win-options="{
+                                                        delayInitializeChildren: true,
+                                                        enableDelayInitialization: true,
+                                                        itemSize: { width: 318, height: 100 },
+                                                        singleAxis: false,
+                                                        useParentAsScrollContainer: true,
+                                                        virtualize: true,
+                                                        virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.vertical,
+                                                        containerStyle: MS.Entertainment.UI.Controls.ItemsControl.ContainerStyles.horizontalFlow,
+                                                        itemTemplate: select('.templateid-topTvSeries'),
+                                                        firstItemTabIndex: 0,
+                                                        keyboardNavigable: true,
+                                                        keyboardNavigationSetTabIndex: true,
+                                                        keyboardNavigationManagerClass: MS.Entertainment.Framework.OnScreenKeyboardNavigationManager,
+                                                        excludeFromContentReady: true, }" data-win-bind="winControl.dataSource: dataContext.topSellingTv.items;" role="listbox">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        
+                                        
+                                    </div>
+                                    
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                </div>
+                
+                
+                
+            </div>
+            
+            
+            
+        </div>
+    </div>
+</body>
+</html>

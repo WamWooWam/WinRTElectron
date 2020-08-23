@@ -1,0 +1,86 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/settings.css">
+    <title>Settings Control Template</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script><script src="/ExplorePage_merged.js"></script>
+    
+    <script src="/Components/Settings/Settings.js"></script>
+
+</head>
+<body>
+    
+    
+    <div id="SettingsAccount" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow', lightDismiss:'false'}">     
+        <div class="settingsWrapper" data-win-control="MS.Entertainment.Utilities.AccountSettingsWrapper">
+            
+            <div class="settingsPanelHeaderBackground"></div>
+
+            
+            <div class="onlineAccountPanel" data-ent-member="_onlineAccountPanel">
+                <div class="settingsPanelHeader win-ui-dark">
+                    <button class="win-backbutton" type="button" data-win-automationid="onlineAccountBackButton" data-ent-event="click: backToSettings" tabindex="0">
+                    </button>
+                    <div class="settingsPanelTitle label text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_YOUR_ACCOUNT_TC}">
+                    </div>
+                </div>
+                <div class="settingsPanelContent">
+                    <div class="accountButton settingAccountsButton" role="button" data-ent-event="click: _userAccountLinkClicked; keydown: _userAccountLinkClicked" tabindex="0">
+                        <div data-ent-member="_accountHeader" class="text-preferencesGroupHeader" data-win-control="MS.Entertainment.UI.Controls.Label">
+                        </div>
+                        <div data-ent-member="_accountEmail" class="label text-xSmall" data-win-control="MS.Entertainment.UI.Controls.Label">
+                        </div>
+                    </div>
+                    <div data-ent-member="_musicPassButton" class="removeFromDisplay accountMusicPassButton settingAccountsButton" role="button" data-ent-event="click: _musicPassSubscribeClick; keydown: _musicPassSubscribeClick" tabindex="0">
+                        <div class="text-preferencesGroupHeader" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_MUSIC_PASS_HEADER_TC}">
+                        </div>
+                        <div data-ent-member="_musicPassLevel" class="label text-xSmall" data-win-control="MS.Entertainment.UI.Controls.Label">
+                        </div>
+                    </div>
+                    <div data-ent-member="_musicDevicesButton" class="removeFromDisplay accountManageMusicDevices settingAccountsButton" role="button" data-ent-event="click: _manageMusicDevices; keydown: _manageMusicDevices" tabindex="0">
+                        <div class="text-preferencesGroupHeader" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_MANAGE_DEVICES_HEADER_TC, wrap:true}">
+                        </div>
+                        <div class="label text-xSmall" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_MANAGE_DEVICES_DESC_TC, wrap:true}">
+                        </div>
+                    </div>
+                    <div class="accountRedeemCode settingAccountsButton" role="button" tabindex="0" data-ent-event="click: _redeemCodeClick; keydown: _redeemCodeClick">
+                        <div class="text-preferencesGroupHeader" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_REDEEM_CODE_HEADER_TC, wrap:true}">
+                        </div>
+                        <div class="label text-xSmall" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_REDEEM_CODE_DESC_TC, wrap:true}">
+                        </div>
+                    </div>
+                    <div class="accountLinks">
+                        <a class="settingsWebLinks accountSettings settingsWebLinkText text-xSmall text-weightBold" tabindex="0" data-ent-event="click: _managePaymentOptionsClick; keydown: _managePaymentOptionsClick" data-win-automationid="managePaymentOptionsLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_MANAGE_PAYMENT_TC}">
+                        </a>
+                        <a class="settingsWebLinks accountSettings settingsWebLinkText text-xSmall text-weightBold" tabindex="0" data-ent-event="click: _billingContactInfoClick; keydown: _billingContactInfoClick" data-win-automationid="billingContactInfoLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_CONTACT_INFO_TC}">
+                        </a>
+                        <a class="settingsWebLinks accountSettings settingsWebLinkText text-xSmall text-weightBold" tabindex="0" data-ent-event="click: _billingHistoryClick; keydown: _billingHistoryClick" data-win-automationid="billingHistoryLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_BILLING_HISTORY_TC}">
+                        </a>
+                        <a class="settingsWebLinks accountSettings settingsWebLinkText text-xSmall text-weightBold" tabindex="0" data-ent-event="click: _privacyClick; keydown: _privacyClick" data-win-automationid="privacyLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_PRIVACY_SETTINGS_TC}">
+                        </a>
+                        <a class="settingsWebLinks accountSettings settingsWebLinkText text-xSmall text-weightBold" tabindex="0" data-ent-event="click: _contactPreferencesClick; keydown: _contactPreferencesClick" data-win-automationid="contactPreferencesLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_CONTACT_PREFERENCES_TC}">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div data-ent-member="_offlineAccountPanel" class="offLineAccountPanel" style="visibility: collapse">
+                <div class="settingsPanelHeader win-ui-dark">
+                    <button class="win-backbutton" type="button" data-win-automationid="offLineAccountBackButton" data-ent-event="click: backToSettings" tabindex="0">
+                    </button>
+                    <div class="settingsPanelTitle label text-medium text-weightLight" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_SETTINGS_ACCOUNT_TITLE}">
+                    </div>
+                </div>
+                <div class="settingsSignIn hideFromDisplay" data-win-automationid="accountSignInButton" data-win-control="MS.Entertainment.UI.Controls.SignInControl" data-win-options="{settings:true}">
+                </div>
+            </div>
+
+            
+            <div data-win-control="MS.Entertainment.Utilities.Settings.onAccountShow"></div>
+        </div>
+    </div>
+</body>
+</html>

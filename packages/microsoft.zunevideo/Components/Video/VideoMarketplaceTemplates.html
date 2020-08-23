@@ -1,0 +1,1383 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Marketplace Templates</title>
+        
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+        <script src="/Animations/animations.js"></script>
+        <script src="/Controls/thumbnailButton.js"></script>
+        <script src="/Controls/MediaItemThumbnail.js"></script>
+        <script src="/Controls/GalleryThumbnail.js"></script>
+        <script src="/Components/Video/PurchaseVideo.js"></script>
+        <script src="/Components/video/VideoSharedTemplatesControls.js"></script>
+        <script src="/Components/Marketplace.js"></script>
+        <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+        <script src="/Components/Video/TvSeriesHeaderControl.js"></script>
+        <script src="/Components/Search/SearchView.js"></script>
+        <script src="/Components/Search/VideoSearchView.js"></script>
+        <script src="/ViewModels/Search/SearchViewModel.js"></script>
+        <script src="/viewmodels/search/NewSearchViewModel.js"></script>
+        <script src="/Controls/app2/PageScroller.js"></script>
+
+        <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+        <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+        <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+    </head>
+    <body>
+        
+        
+        
+        
+        <div data-ent-templateid="searchGalleryTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery searchPage" data-ent-member="_galleryScrollContainer">
+                <div class="marketplaceGalleryFlex" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                    raisePanelReady: true,
+                    useItemsControlInGallery: true,
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                    focusFirstItemOnRender: true,
+                    useFirstChildForAnimations: true,
+                    virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                    getItemSize: MS.Entertainment.Pages.Video2Search.computeSearchItemSize,
+                    useParentAsScrollContainer: true,
+                    additionalScrollContainerPadding: 100,
+                    additionalItemsToRealize: 2,
+                    itemTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.templates,
+                    loadItemTemplate: MS.Entertainment.UI.Controls.ItemsControl.loadAllItemTemplates,
+                    selectTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.selectVerticalItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+            
+            <div data-ent-member="_previousPageScroller" class="galleryScroller-previousPage voice-logicalTarget win-voice-disableoverride" data-win-voice="{
+                    phrase: 'IDS_PREVIOUS_PAGE_VUI_ALM',
+                    confidence: 'IDS_PREVIOUS_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_PREVIOUS_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-previousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+            <div data-ent-member="_nextPageScroller" class="galleryScroller-nextPage voice-logicalTarget" data-win-voice="{
+                    phrase: 'IDS_NEXT_PAGE_VUI_ALM',
+                    confidence: 'IDS_NEXT_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_NEXT_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-nextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="featuredSetsGalleryTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery flexHubPage" data-ent-member="_galleryScrollContainer">
+                <div class="marketplaceGallery-image" data-win-bind="image_featuredSetImage: this._viewModel.heroImageUrl MS.Entertainment.Utilities.toggleClassName">
+                    <img class="imageHolder hideFromDisplay" data-ent-member="_heroImageContainer" data-win-bind="hideFromDisplay: this._viewModel.heroImageUrl MS.Entertainment.Utilities.toggleClassNameNegate" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 600, height: 1080},
+                            applyImageAsBackground: true,
+                            defaultImagePath: ''}">
+                    <div class="image-content">
+                        <div class="content-textContainer">
+                            <div class="textContainer-primaryText text-featuredSetImageTitle maxLines-two hideFromDisplay" data-win-bind="textContent: this._viewModel.heroPrimaryText;" data-ent-member="_heroPrimaryTextContainer" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage"></div>
+                            <div class="textContainer-secondaryText text-featuredSetImageSubhead maxLines-two hideFromDisplay" data-win-bind="textContent: this._viewModel.heroSecondaryText;" data-ent-member="_heroSecondaryTextContainer" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketplaceGalleryFlex" data-win-bind="marketplaceGalleryFlex_featuredSetImage: this._viewModel.heroImageUrl MS.Entertainment.Utilities.toggleClassName" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                        firstItemTabIndex: 0,
+                        keyboardNavigable: true,
+                        keyboardNavigationSetTabIndex: true,
+                        keyboardNavigationManagerClass: MS.Entertainment.Framework.OnScreenKeyboardNavigationManager,
+                        raisePanelReady: true,
+                        useItemsControlInGallery: true,
+                        selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                        focusFirstItemOnRender: true,
+                        useFirstChildForAnimations: true,
+                        virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                        getItemSize: MS.Entertainment.Pages.Video1FeaturedSets.computeFlexHubItemSize,
+                        useParentAsScrollContainer: true,
+                        additionalScrollContainerPadding: 100,
+                        additionalItemsToRealize: 2,
+                        itemTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.templates,
+                        loadItemTemplate: MS.Entertainment.UI.Controls.ItemsControl.loadAllItemTemplates,
+                        selectTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.selectVerticalItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="flexHubGalleryTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery flexHubPage" data-ent-member="_galleryScrollContainer">
+                <div class="marketplaceGallery-image">
+                    <img class="imageHolder hideFromDisplay" data-ent-member="_heroImageContainer" data-win-bind="hideFromDisplay: this._viewModel.heroImageUrl MS.Entertainment.Utilities.toggleClassNameNegate" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 600, height: 1080},
+                            applyImageAsBackground: true,
+                            defaultImagePath: ''}">
+                    <div class="image-content">
+                        <div class="content-textContainer">
+                            <div class="textContainer-primaryText text-hubTitle maxLines-two hideFromDisplay" data-win-bind="textContent: this._viewModel.heroPrimaryText;" data-ent-member="_heroPrimaryTextContainer" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage"></div>
+                            <div class="textContainer-secondaryText text-subhead2 maxLines-two hideFromDisplay" data-win-bind="textContent: this._viewModel.heroSecondaryText;" data-ent-member="_heroSecondaryTextContainer" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="marketplaceGalleryFlex" data-win-bind="marketplaceGalleryFlex_featuredSetImage: this._viewModel.heroImageUrl MS.Entertainment.Utilities.toggleClassName" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                    raisePanelReady: true,
+                    useItemsControlInGallery: true,
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                    focusFirstItemOnRender: true,
+                    useFirstChildForAnimations: true,
+                    virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                    getItemSize: MS.Entertainment.Pages.Video2FlexHub.computeFlexHubItemSize,
+                    useParentAsScrollContainer: true,
+                    additionalScrollContainerPadding: 100,
+                    additionalItemsToRealize: 2,
+                    itemTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.templates,
+                    loadItemTemplate: MS.Entertainment.UI.Controls.ItemsControl.loadAllItemTemplates,
+                    selectTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.selectVerticalItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+            
+            <div data-ent-member="_previousPageScroller" class="galleryScroller-previousPage voice-logicalTarget win-voice-disableoverride" data-win-voice="{
+                    phrase: 'IDS_PREVIOUS_PAGE_VUI_ALM',
+                    confidence: 'IDS_PREVIOUS_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_PREVIOUS_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-previousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+            <div data-ent-member="_nextPageScroller" class="galleryScroller-nextPage voice-logicalTarget" data-win-voice="{
+                    phrase: 'IDS_NEXT_PAGE_VUI_ALM',
+                    confidence: 'IDS_NEXT_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_NEXT_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-nextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="studioAndNetworkGalleryTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery studioAndNetworkGallery" data-ent-member="_galleryScrollContainer">  
+                <div class="marketplaceGalleryFlex" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                    raisePanelReady: true,
+                    useItemsControlInGallery: true,
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                    focusFirstItemOnRender: true,
+                    useFirstChildForAnimations: true,
+                    virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                    getItemSize: MS.Entertainment.Pages.Video2StudioAndNetworkGallery.computeHubItemSize,
+                    useParentAsScrollContainer: true,
+                    additionalScrollContainerPadding: 100,
+                    additionalItemsToRealize: 2,
+                    itemTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.templates,
+                    loadItemTemplate: MS.Entertainment.UI.Controls.ItemsControl.loadAllItemTemplates,
+                    selectTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.selectVerticalItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+
+            <div data-ent-member="_previousPageScroller" class="galleryScroller-previousPage voice-logicalTarget win-voice-disableoverride" data-win-voice="{
+                    phrase: 'IDS_PREVIOUS_PAGE_VUI_ALM',
+                    confidence: 'IDS_PREVIOUS_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_PREVIOUS_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-previousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+            <div data-ent-member="_nextPageScroller" class="galleryScroller-nextPage voice-logicalTarget" data-win-voice="{
+                    phrase: 'IDS_NEXT_PAGE_VUI_ALM',
+                    confidence: 'IDS_NEXT_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_NEXT_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-nextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="studioAndNetworkGalleryItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-studioAndNetworkItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.StudioAndNetworkGalleryItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="studioAndNetworkGalleryWideItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-studioAndNetworkCard win-focusable voice-logicalTarget" data-win-automationid="studioAndNetworkItem" data-win-bind="voicePhrase: mediaItem.name;
+                                voiceConfidence: MSE.Data.Factory.defaultVoiceConfidence;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick">
+
+                <div class="studioAndNetworkCard-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 560, height: 320},
+                            applyImageAsBackground: true,
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="studioAndNetworkCard-content">
+                    <div class="content-textContainer">
+                        <div class="textContainer-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.name WinJS.Binding.oneTime;
+                                removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="browseByActorTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery recommendationsPage" data-ent-member="_galleryScrollContainer">
+                <div class="marketplaceGalleryFlex" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                        raisePanelReady: true,
+                        useItemsControlInGallery: true,
+                        selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                        focusFirstItemOnRender: true,
+                        useFirstChildForAnimations: true,
+                        virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                        getItemSize: MS.Entertainment.Pages.BrowseByActorHub.computeBrowseByActorHubItemSize,
+                        useParentAsScrollContainer: true,
+                        additionalScrollContainerPadding: 100,
+                        additionalItemsToRealize: 2,
+                        itemTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.templates,
+                        loadItemTemplate: MS.Entertainment.UI.Controls.ItemsControl.loadAllItemTemplates,
+                        selectTemplate: MS.Entertainment.UI.Controls.VerticalCardGalleryItem.selectVerticalItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+
+            <div data-ent-member="_previousPageScroller" class="galleryScroller-previousPage voice-logicalTarget win-voice-disableoverride" data-win-voice="{
+                    phrase: 'IDS_PREVIOUS_PAGE_VUI_ALM',
+                    confidence: 'IDS_PREVIOUS_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_PREVIOUS_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-previousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+            <div data-ent-member="_nextPageScroller" class="galleryScroller-nextPage voice-logicalTarget" data-win-voice="{
+                    phrase: 'IDS_NEXT_PAGE_VUI_ALM',
+                    confidence: 'IDS_NEXT_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_NEXT_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-nextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+        </div>
+
+        
+        <div data-ent-templateid="recommendationsGalleryTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery recommendationsPage" data-ent-member="_galleryScrollContainer">
+                <div class="marketplaceGalleryFlex" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                    raisePanelReady: true,
+                    useItemsControlInGallery: true,
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                    focusFirstItemOnRender: true,
+                    useFirstChildForAnimations: true,
+                    virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                    getItemSize: MS.Entertainment.Pages.Video2Recommendations.computeRecommendationsItemSize,
+                    useParentAsScrollContainer: true,
+                    additionalScrollContainerPadding: 100,
+                    additionalItemsToRealize: 2,
+                    selectTemplate: MS.Entertainment.UI.Controls.VerticalRecommendationsGalleryItem.selectRecommendationsItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+            
+            <div data-ent-member="_previousPageScroller" class="galleryScroller-previousPage voice-logicalTarget win-voice-disableoverride" data-win-voice="{
+                    phrase: 'IDS_PREVIOUS_PAGE_VUI_ALM',
+                    confidence: 'IDS_PREVIOUS_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_PREVIOUS_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-previousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+            <div data-ent-member="_nextPageScroller" class="galleryScroller-nextPage voice-logicalTarget" data-win-voice="{
+                    phrase: 'IDS_NEXT_PAGE_VUI_ALM',
+                    confidence: 'IDS_NEXT_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_NEXT_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-nextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+        </div>
+
+
+        
+        <div data-ent-templateid="watchlistGalleryTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="marketplace marketplaceGalleryView marketplaceGallery watchlistPage" data-ent-member="_galleryScrollContainer">
+                <div class="marketplaceGalleryFlex" data-win-control="MS.Entertainment.UI.Controls.ItemsControlWithVariableSizeItems" data-win-options="{
+                    raisePanelReady: true,
+                    useItemsControlInGallery: true,
+                    selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.none,
+                    focusFirstItemOnRender: true,
+                    useFirstChildForAnimations: true,
+                    getItemSize: MS.Entertainment.Pages.Video2Watchlist.computeWatchlistHubItemSize,
+                    virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                    useParentAsScrollContainer: true,
+                    additionalScrollContainerPadding: 100,
+                    additionalItemsToRealize: 2,
+                    itemTemplate: MS.Entertainment.UI.Controls.VerticalWatchlistsGalleryItem.templates,
+                    loadItemTemplate: MS.Entertainment.UI.Controls.ItemsControl.loadAllItemTemplates,
+                    selectTemplate: MS.Entertainment.UI.Controls.VerticalWatchlistsGalleryItem.selectWatchlistItemTemplate }" data-ent-member="_galleryView"></div>
+            </div>
+            
+            <div data-ent-member="_previousPageScroller" class="galleryScroller-previousPage voice-logicalTarget win-voice-disableoverride" data-win-voice="{
+                    phrase: 'IDS_PREVIOUS_PAGE_VUI_ALM',
+                    confidence: 'IDS_PREVIOUS_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_PREVIOUS_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-previousPageLabel" data-win-bind="textContent: String.id.IDS_PREVIOUS_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+
+            <div data-ent-member="_nextPageScroller" class="galleryScroller-nextPage voice-logicalTarget" data-win-voice="{
+                    phrase: 'IDS_NEXT_PAGE_VUI_ALM',
+                    confidence: 'IDS_NEXT_PAGE_VUI_CONF',
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: 'IDS_NEXT_PAGE_VUI_PRON',
+                }">
+                <div class="voice-visualTarget text-small galleryScroller-nextPageLabel" data-win-bind="textContent: String.id.IDS_NEXT_PAGE_VUI_GUI MS.Entertainment.Formatters.formatStringIdNoAssert;"></div>
+            </div>
+        </div>
+
+        
+        
+        
+        <div data-ent-templateid="horizontalActionTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="horizontalListActionItem">
+                <div class="actionTile win-ui-light" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{
+                        tabIndex: -1,
+                        allowAnimations: false,
+                        preventHideDuringInitialize: true }" data-win-bind="
+                        winControl.icon: icon WinJS.Binding.oneTime;
+                        winControl.hideDefaultRing: hideDefaultRing WinJS.Binding.oneTime;
+                        winControl.text: text WinJS.Binding.oneTime;
+                        winControl.action: action WinJS.Binding.oneTime;
+                        winControl.stringId: stringId WinJS.Binding.oneTime;">
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid='movieListItemButtonTemplate' data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-immersiveListViewItem win-focusable voice-logicalTarget" data-win-bind="tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                    clickDataContext: mediaItem WinJS.Binding.oneTime;
+                    voicePhrase: mediaItem.voicePhrase;
+                    voiceConfidence: mediaItem.voiceConfidence;
+                    voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    pronunciation: getContext('element').voicePhoneticPhrase,
+                    targetElement: select('.voice-visualTarget') }" data-ent-member="thumbnailButton" data-ent-event="click: clicked; keydown: onKeyDown;">
+                
+                <div class="part-imageContainer" data-ent-member="imageContainer">
+                    <div data-ent-member="imageHolder" class="part-imageHolder"></div>
+                </div>
+
+                <div class="part-content" data-ent-member="content">
+                    <div class="part-textContainer" data-ent-member="textContainer">
+                        <div class="part-title label text-listItem voice-visualTarget" data-ent-member="primaryTextLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: primaryText WinJS.Binding.oneTime; 
+                                            removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="part-subTitle label text-metadata" data-ent-member="secondaryTextLabel" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: secondaryText WinJS.Binding.oneTime; 
+                                            removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="castAndCrewTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-immersiveListViewItemContainer" role="listitem">
+                <div data-win-control="MS.Entertainment.UI.Controls.CastAndCrewListItem" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.search" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                        winControl.primaryText: name WinJS.Binding.oneTime;
+                        winControl.actionParam.queryText: name WinJS.Binding.oneTime;" data-win-options="{containerWidth: 'auto',
+                        containerHeight: 'auto',
+                        actionParam: {}
+                        }">
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid='movieGridItemButtonTemplate' data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-fullBleedThumbnail mediatype-movie win-focusable voice-logicalTarget" data-win-bind="tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                    clickDataContext: mediaItem WinJS.Binding.oneTime;
+                    voicePhrase: mediaItem.voicePhrase;
+                    voiceConfidence: mediaItem.voiceConfidence;
+                    voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    pronunciation: getContext('element').voicePhoneticPhrase,
+                    targetElement: select('.voice-visualTarget') }" data-ent-member="thumbnailButton" data-ent-event="click: clicked; keydown: onKeyDown;">
+                
+                <div class="imageContainer" data-ent-member="imageContainer">
+                    <div class="part-imageHolder" data-ent-member="imageHolder"></div>
+                </div>
+
+                <div class="content" data-ent-member="content">
+                    <div class="textContainer focus-showTarget" data-ent-member="textContainer">
+                        <div class="part-primaryText text-cardTitle maxLines-four voice-visualTarget" data-win-bind="textContent: primaryText WinJS.Binding.oneTime; 
+                                            removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid='tvGridItemButtonTemplate' data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-fullBleedThumbnail mediatype-tvSeries win-focusable voice-logicalTarget" data-win-bind="tabindex: tabindex MS.Entertainment.Utilities.bindingAppTypeTabIndexHelper;
+                    clickDataContext: mediaItem WinJS.Binding.oneTime;
+                    voicePhrase: mediaItem.voicePhrase;
+                    voiceConfidence: mediaItem.voiceConfidence;
+                    voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    pronunciation: getContext('element').voicePhoneticPhrase,
+                    targetElement: select('.voice-visualTarget') }" data-ent-member="thumbnailButton" data-ent-event="click: clicked; keydown: onKeyDown;">
+                
+                <div class="imageContainer" data-ent-member="imageContainer">
+                    <div class="part-imageHolder" data-ent-member="imageHolder"></div>
+                </div>
+
+                <div class="content" data-ent-member="content">
+                    <div class="textContainer focus-showTarget" data-ent-member="textContainer">
+                        <div class="part-primaryText text-cardTitle maxLines-four voice-visualTarget" data-win-bind="textContent: primaryText WinJS.Binding.oneTime; 
+                                            removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        
+        
+        
+        <div data-ent-templateid="movieRelatedGridItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-relatedGridButtonContainer">
+                <div data-win-control="MS.Entertainment.UI.Controls.MovieGridItem" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.showItemDetails" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                        winControl.primaryText: name WinJS.Binding.oneTime;
+                        winControl.secondaryText: releaseDate MS.Entertainment.Formatters.formatYearFromDate;
+                        winControl.actionParam.dataContext.data: instance WinJS.Binding.oneTime;" data-win-options="{
+                        containerWidth: '265px',
+                        containerHeight: '355px',
+                        imageContainerWidth: '265px',
+                        imageContainerHeight: '355px',
+                        imageHolderWidth: '265px',
+                        imageHolderHeight: '355px',
+                        imageWidth: '100%',
+                        imageHeight: 'auto',
+                        contentWidth: '100%',
+                        actionAutomationId: 'relatedMoviePopOver',
+                        actionParam: {
+                            itemConstructor: 'MS.Entertainment.Pages.MovieInlineDetails',
+                            dataContext: { data: null, location: MS.Entertainment.Pages.BaseMediaInlineDetails.Location.marketplace },
+                        },
+                        }">
+                </div>
+            </div>
+        </div>
+
+        
+        
+        
+        
+        <div data-ent-templateid="movieRelatedGridItemSmallTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-relatedGridButtonContainer">
+                <div data-win-control="MS.Entertainment.UI.Controls.MovieGridItem" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.showItemDetails" data-win-bind="winControl.mediaItem: instance WinJS.Binding.oneTime;
+                        winControl.primaryText: name WinJS.Binding.oneTime;
+                        winControl.secondaryText: releaseDate MS.Entertainment.Formatters.formatYearFromDate;
+                        winControl.actionParam.dataContext.data: instance WinJS.Binding.oneTime;" data-win-options="{
+                        containerWidth: '195px',
+                        containerHeight: '260px',
+                        imageContainerWidth: '195px',
+                        imageContainerHeight: '260px',
+                        imageHolderWidth: '195px',
+                        imageHolderHeight: '260px',
+                        imageWidth: '195px',
+                        imageHeight: '260px',
+                        contentWidth: '100%',
+                        actionAutomationId: 'relatedMoviePopOver',
+                        actionParam: {
+                            itemConstructor: 'MS.Entertainment.Pages.MovieInlineDetails',
+                            dataContext: { data: null, location: MS.Entertainment.Pages.BaseMediaInlineDetails.Location.marketplace },
+                        },
+                        }">
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="movieFlexHubTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="movieThumbnail" data-win-automationid="movieItem">
+
+                <div class="cardThumbnailButton voice-logicalTarget" data-win-bind="
+                            voicePhrase: voicePhrase;
+                            voiceConfidence: voiceConfidence;
+                            voicePhoneticPhrase: voicePhoneticPhrase;" data-win-voice="{
+                            phrase: getContext('element').voicePhrase,
+                            confidence: getContext('element').voiceConfidence,
+                            targetElement: select('.voice-visualTarget'),
+                            handler: MS.Entertainment.UI.App2.voiceListviewItemClickHandler,
+                            pronunciation: getContext('element').voicePhoneticPhrase }">
+
+                    <div class="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 234, height: 320},
+                                    defaultImagePath: ''}" width="99" height="135">
+                    </div>
+
+                    <div class="content">
+                        <div class="textContainer primaryTextOnTop">
+                            <div class="secondaryText text-metadata maxLines-three" data-win-bind="textContent: secondaryText WinJS.Binding.oneTime;
+                                                removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-three voice-visualTarget" data-win-bind="textContent: primaryText WinJS.Binding.oneTime;
+                                                removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText specificLineCount text-metadata" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="tvFlexHubTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="tvThumbnail" data-win-automationid="tvSeriesItem">
+
+                <div class="cardThumbnailButton voice-logicalTarget" data-win-bind="
+                            voicePhrase: voicePhrase;
+                            voiceConfidence: voiceConfidence;
+                            voicePhoneticPhrase: voicePhoneticPhrase;" data-win-voice="{
+                            phrase: getContext('element').voicePhrase,
+                            confidence: getContext('element').voiceConfidence,
+                            targetElement: select('.voice-visualTarget'),
+                            handler: MS.Entertainment.UI.App2.voiceListviewItemClickHandler,
+                            pronunciation: getContext('element').voicePhoneticPhrase }">
+                    <div class="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 240, height: 240},
+                                    defaultImagePath: ''}" width="135" height="135">
+                    </div>
+
+                    <div class="content" data-ent-member="content">
+                        <div class="textContainer primaryTextOnTop" data-ent-member="textContainer">
+                            <div class="secondaryText text-metadata maxLines-three" data-ent-member="secondaryTextLabel" data-win-bind="textContent: secondaryText WinJS.Binding.oneTime;
+                                                removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-three voice-visualTarget" data-ent-member="primaryTextLabel" data-win-bind="textContent: primaryText WinJS.Binding.oneTime;
+                                                removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText specificLineCount text-metadata" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+ 
+        
+        <div data-ent-templateid="videoFlexHubBigItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="videoFlexHubBigItem movieThumbnail" data-win-automationid="flexHubBigItem">
+
+                <div class="cardThumbnailButton">
+
+                    <div class="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-showanimation="fadeIn" data-win-bind="winControl.target: instance WinJS.Binding.oneTime;" data-win-options="{
+                                    enableDelayInitialization: true,
+                                    loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true,
+                                    desiredImageSize: {width: 234, height: 320},
+                                    defaultImagePath: ''}" width="265" height="360" style="width: 265px; height: auto;">
+                    </div>
+
+                    <div class="content">
+                        <div class="textContainer primaryTextOnTop">
+                            <div class="secondaryText text-metadata maxLines-three" data-ent-member="secondaryTextLabel" data-win-bind="textContent: secondaryText WinJS.Binding.oneTime;
+                                                removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="primaryText specificLineCount text-cardTitle maxLines-three" data-ent-member="primaryTextLabel" data-win-bind="textContent: primaryText WinJS.Binding.oneTime;
+                                                removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="quaternaryText specificLineCount text-metadata" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;"></div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        
+        
+        <div data-ent-templateid="moviePosterTileL2" data-win-control="WinJS.Binding.Template">
+            
+            <div class="movieVideoTile videoTile" data-win-automationid="movieItem">
+                <div class="movieVideoTileButton win-focusable voice-logicalTarget" role="button" data-win-bind="clickDataContext: instance WinJS.Binding.oneTime;
+                            voicePhrase: voicePhrase;
+                            voiceConfidence: voiceConfidence;
+                            voicePhoneticPhrase: voicePhoneticPhrase;" data-win-voice="{
+                            phrase: getContext('element').voicePhrase,
+                            confidence: getContext('element').voiceConfidence,
+                            targetElement: select('.voice-visualTarget'),
+                            handler: MS.Entertainment.UI.App2.voiceListviewItemClickHandler,
+                            pronunciation: getContext('element').voicePhoneticPhrase }">
+                </div>
+
+                <img class="imageContainer imageHolder win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: instance WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            enableDelayInitialization: true,
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            errorImage: '',
+                            parentStyleIfNotEmpty: 'hideMetadataOverImage',
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 180, height: 245},
+                            defaultImagePath: ''}" width="180" height="245">
+
+                <div class="content">
+                    <div class="textContainer">
+                        <div class="textContainer-notifications folderTextBg">
+                            <div class="primaryText specificLineCount text-cardTitle voice-visualTarget" data-win-bind="textContent: name WinJS.Binding.oneTime;
+                                                removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="part-primaryIcon inlineGlyph" data-win-bind="textContent: canPlayLocally MS.Entertainment.Formatters.formatIsDownloaded;
+                                        removeFromDisplay: libraryId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;"></div>
+                            <div class="part-primaryText text-metadata maxLines-two win-disposable" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItemWithNotification" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true,
+                                        hideIfEmpty: true, }" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;
+                                                winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+        
+        
+        <div data-ent-templateid="tvSeriesTileL2" data-win-control="WinJS.Binding.Template">
+            
+            <div class="tvSeriesVideoTile videoTile" data-win-automationid="tvSeriesItem">
+                <div class="tvSeriesVideoTileButton win-focusable voice-logicalTarget" role="button" data-win-bind="clickDataContext: instance WinJS.Binding.oneTime;
+                            voicePhrase: voicePhrase;
+                            voiceConfidence: voiceConfidence;
+                            voicePhoneticPhrase: voicePhoneticPhrase;" data-win-voice="{
+                            phrase: getContext('element').voicePhrase,
+                            confidence: getContext('element').voiceConfidence,
+                            targetElement: select('.voice-visualTarget'),
+                            handler: MS.Entertainment.UI.App2.voiceListviewItemClickHandler,
+                            pronunciation: getContext('element').voicePhoneticPhrase }">
+                </div>
+
+                <img class="imageContainer imageHolder win-disposable" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: instance WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            enableDelayInitialization: true,
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            errorImage: '',
+                            parentStyleIfNotEmpty: 'hideMetadataOverImage',
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 245, height: 245},
+                            defaultImagePath: ''}" width="245" height="245">
+
+                <div class="content">
+                    <div class="textContainer">
+                        <div class="textContainer-notifications folderTextBg">
+                            <div class="primaryText specificLineCount text-cardTitle voice-visualTarget" data-win-bind="textContent: title WinJS.Binding.oneTime;
+                                                removeFromDisplay: title MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="part-primaryIcon inlineGlyph" data-win-bind="textContent: downloadedEpisodesCount MS.Entertainment.Formatters.formatIsDownloaded;
+                                        removeFromDisplay: libraryId MS.Entertainment.Utilities.toggleClassNameOnNegativeNumber;"></div>
+                            <div class="part-primaryText text-metadata maxLines-two win-disposable" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                        enableDelayInitialization: true,
+                                        allowAnimations: false,
+                                        preventHideDuringInitialize: true,
+                                        hideIfEmpty: true, }" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;
+                                                winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="castVerticalItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-castVerticalItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.CastVerticalItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeCastTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_cast win-focusable voice-logicalTarget" data-win-automationid="castItem" data-win-bind="voicePhrase: mediaItem.name;
+                                voiceConfidence: MSE.Data.Factory.defaultVoiceConfidence;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget')}" data-ent-event="click: _onClick">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem.image WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                defaultImagePath: '',
+                                applyImageAsBackground: true}" width="316" height="432">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.name WinJS.Binding.oneTime;
+                                        removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO2_SEARCH_CAST_ITEM_SUBTITLE MS.Entertainment.Formatters.formatStringId;"></div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="movieVerticalItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-movieVerticalItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.MovieVerticalItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        
+        <div data-ent-templateid="largeMovieTitleRatingTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_movie win-focusable voice-logicalTarget" data-win-automationid="movieItem" data-win-bind="voicePhrase: mediaItem.voiceLongPhrase;
+                        voiceConfidence: mediaItem.voiceConfidence;
+                        voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick;">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 234, height: 320},
+                                defaultImagePath: ''}" width="316" height="432">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.primaryText WinJS.Binding.oneTime;
+                            removeFromDisplay: mediaItem.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-three" data-win-bind="textContent: mediaItem.secondaryText WinJS.Binding.oneTime;
+                                       removeFromDisplay: mediaItem.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="verticalCardTile-tertiaryText" data-win-bind="removeFromDisplay: mediaItem.inCollection MS.Entertainment.Utilities.toggleClassName;">
+                         <div class="text-metadata maxLines-one" data-win-bind="textContent: mediaItem.releaseDate MS.Entertainment.Formatters.formatYearFromDate;
+                                             removeFromDisplay: mediaItem.releaseDate MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                    <div class="verticalCardTile-contentNotification text-metadata maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_IN_COLLECTION_LABEL MS.Entertainment.Formatters.formatStringId;
+                                        removeFromDisplay: mediaItem.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                    
+                    <div class="verticalCardTile-starRating control-starRating">
+                        <div class="mediaRatingControl" data-win-control="WinJS.UI.Rating" data-win-options="{ tooltipStrings : [] }" data-win-bind="winControl.averageRating: mediaItem.averageRating;"></div>
+
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+        
+        
+        <div data-ent-templateid="bundledMovieVerticalItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-movieVerticalItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.BundledMovieVerticalItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeBundledMovieTitlePriceRatingTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_movie win-focusable voice-logicalTarget" data-win-automationid="movieItem" data-win-bind="voicePhrase: mediaItem.voicePhrase;
+                        voiceConfidence: mediaItem.voiceConfidence;
+                        voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick;">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 320, height: 426},
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: primaryText;
+                                        removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: secondaryText;
+                                       removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-tertiaryText text-metadata maxLines-one" data-win-bind="textContent: languageText;
+                                       removeFromDisplay: languageText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-quaternaryText text-metadata maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_BUNDLES_PRE_PURCHASE_ITEM MS.Entertainment.Formatters.formatStringId;
+                                       removeFromDisplay: mediaItem.isPresale MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+
+                    <div class="verticalCardTile-starRating control-starRating">
+                        <div data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: mediaItem;" data-win-options="{
+                                disabled: true,
+                                ratingInfoVisible: false,
+                                disableTransitionAnimations: true,
+                                refreshOnThaw: true,
+                            }"></div>
+                    </div>            
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="bundledTvVerticalItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-tvVerticalItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.BundledTvVerticalItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeBundledTvTitlePriceTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_tv win-focusable voice-logicalTarget" data-win-automationid="tvItem" data-win-bind="voicePhrase: mediaItem.voicePhrase;
+                        voiceConfidence: mediaItem.voiceConfidence;
+                        voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick;">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 430, height: 430},
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: primaryText;
+                                        removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: secondaryText;
+                                       removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-tertiaryText text-metadata maxLines-one" data-win-bind="textContent: languageText;
+                                       removeFromDisplay: languageText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-starRating control-starRating">
+                        <div data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: ratingItem;" data-win-options="{
+                                disabled: true,
+                                ratingInfoVisible: false,
+                                disableTransitionAnimations: true,
+                                refreshOnThaw: true,
+                            }"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="movieRecommendationsItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-movieVerticalItem" role="listitem" data-ent-showanimation="fadeIn" data-ent-hideanimation="fadeOut">
+                <div data-win-control="MS.Entertainment.UI.Controls.MovieRecommendationsItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+
+                <div class="movieVerticalItem-button" data-win-control="MS.Entertainment.UI.Controls.RecommendationsNotInterestedButton" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="recommendationsNotInterestedTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="control-button win-focusable voice-logicalTarget" data-win-automationid="notInterestedButton" data-win-voice="{
+                        phrase: 'IDS_VIDEO2_L2_RECOMMENDATIONS_NOT_INTERESTED_VUI_ALM',
+                        confidence: 'IDS_VIDEO2_L2_RECOMMENDATIONS_NOT_INTERESTED_VUI_CONF',
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: 'IDS_VIDEO2_L2_RECOMMENDATIONS_NOT_INTERESTED_VUI_PRON' }" data-ent-event="click: _onClick; focusin: _onFocusIn; focusout: _onFocusOut;">
+                <div class="button-innerContainer">
+                    <div class="innerContainer-primaryText text-itemTitle maxLines-two voice-visualTarget" data-win-bind="textContent: String.id.IDS_VIDEO2_L2_RECOMMENDATIONS_NOT_INTERESTED_VUI_GUI MS.Entertainment.Formatters.formatStringId;"></div>
+                </div>
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeMovieRecommendationsTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_movie win-focusable voice-logicalTarget" data-ent-type="removableGalleryItem" data-win-automationid="movieItem" data-win-bind="voicePhrase: mediaItem.voicePhrase;
+                    voiceConfidence: mediaItem.voiceConfidence;
+                    voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick; focusin: _onFocusIn; focusout: _onFocusOut;">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 234, height: 320},
+                                defaultImagePath: ''}" width="316" height="432">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.name WinJS.Binding.oneTime;
+                            removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-two" data-win-bind="textContent: mediaItem.secondaryText WinJS.Binding.oneTime;
+                                       removeFromDisplay: mediaItem.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="verticalCardTile-starRating">
+                        <div data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: mediaItem;" data-win-options="{
+                                     disabled: true,
+                                     ratingInfoVisible: false,
+                                     disableTransitionAnimations: true,
+                                     refreshOnThaw: true
+                                 }"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="watchlistRemoveButtonTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="control-button win-focusable voice-logicalTarget" data-win-automationid="removeFromWatchlistButton" data-win-voice="{
+                        phrase: 'IDS_VIDEO2_WISHLIST_REMOVE_BUTTON_TITLE_VUI_ALM',
+                        confidence: 'IDS_VIDEO2_WISHLIST_REMOVE_BUTTON_TITLE_VUI_CONF',
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: 'IDS_VIDEO2_WISHLIST_REMOVE_BUTTON_TITLE_VUI_PRON' }" data-ent-event="click: _onClick; focusin: _onFocusIn; focusout: _onFocusOut;">
+                <div class="button-innerContainer">
+                    <div class="innerContainer-primaryText text-itemTitle maxLines-two voice-visualTarget" data-win-bind="textContent: String.id.IDS_VIDEO2_WISHLIST_REMOVE_BUTTON_TITLE_VUI_GUI MS.Entertainment.Formatters.formatStringId;"></div>
+                </div>
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="movieWatchlistsItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-movieVerticalItem" role="listitem" data-ent-showanimation="fadeIn" data-ent-hideanimation="fadeOut">
+                <div data-win-control="MS.Entertainment.UI.Controls.MovieWatchlistItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+
+                <div class="movieVerticalItem-button" data-win-control="MS.Entertainment.UI.Controls.WatchlistRemoveButton" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeMovieWatchlistItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-mediaItem mediaItem_movie mediaItem_tall mediaItem_wide voice-logicalTarget win-focusable" data-ent-type="removableGalleryItem" data-win-automationid="movieItem" data-win-bind="voicePhrase: mediaItem.voicePhrase;
+                        voiceConfidence: mediaItem.voiceConfidence;
+                        voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick; focusin: _onFocusIn; focusout: _onFocusOut;">
+
+                <div class="mediaItem-innerContainer">
+                    <div class="innerContainer-imageContainer imageContainer_watermarkDisabled" aria-hidden="true">
+                        
+                        <img class="imageContainer-image hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                allowAnimations: true,
+                                desiredImageSize: {width: 467, height: 640},
+                                preventHideDuringInitialize: true,
+                                defaultImagePath: 'String.empty',
+                                clearSrcOnEmptyTarget: true,
+                                applyImageAsBackground: true,
+                                parentStyleIfNotEmpty: 'imageContainer_watermarkDisabled'}">
+                    </div>
+                    <div class="innerContainer-metadata focus-showTarget">
+                        <div class="metadata-textContainer">
+                            <div class="textContainer-primaryText text-itemTitle maxLines-four voice-visualTarget" data-win-bind="
+                                    textContent: mediaItem.name WinJS.Binding.oneTime;
+                                    removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="tvWatchlistsItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-tvVerticalItem" role="listitem" data-ent-showanimation="fadeIn" data-ent-hideanimation="fadeOut">
+                <div data-win-control="MS.Entertainment.UI.Controls.TvWatchlistItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+
+                <div class="tvVerticalItem-button" data-win-control="MS.Entertainment.UI.Controls.WatchlistRemoveButton" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeTvWatchlistsTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-mediaItem mediaItem_tv mediaItem_tall mediaItem_wide voice-logicalTarget win-focusable" data-ent-type="removableGalleryItem" data-win-automationid="tvSeriesItem" data-win-bind="voicePhrase: mediaItem.voicePhrase;
+                        voiceConfidence: mediaItem.voiceConfidence;
+                        voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick; focusin: _onFocusIn; focusout: _onFocusOut;">
+
+                <div class="mediaItem-innerContainer">
+                    <div class="innerContainer-imageContainer imageContainer_watermarkDisabled" aria-hidden="true">
+                        
+                        <img class="imageContainer-image hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                allowAnimations: true,
+                                desiredImageSize: {width: 640, height: 640},
+                                preventHideDuringInitialize: true,
+                                defaultImagePath: 'String.empty',
+                                clearSrcOnEmptyTarget: true,
+                                applyImageAsBackground: true,
+                                parentStyleIfNotEmpty: 'imageContainer_watermarkDisabled'}">
+                    </div>
+                    <div class="innerContainer-metadata focus-showTarget">
+                        <div class="metadata-textContainer">
+                            <div class="textContainer-primaryText text-itemTitle maxLines-four voice-visualTarget" data-win-bind="
+                                    textContent: mediaItem.name WinJS.Binding.oneTime;
+                                    removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+        
+        
+        <div data-ent-templateid="tvVerticalItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-tvVerticalItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.TvVerticalItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeTvTitleRatingTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_tv win-focusable voice-logicalTarget" data-win-automationid="tvSeriesItem" data-win-bind="label: mediaItem.seriesTitle MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                        voicePhrase: mediaItem.voiceLongPhrase;
+                        voiceConfidence: mediaItem.voiceConfidence;
+                        voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                        phrase: getContext('element').voicePhrase,
+                        confidence: getContext('element').voiceConfidence,
+                        targetElement: select('.voice-visualTarget'),
+                        pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 320, height: 320},
+                                defaultImagePath: ''}" width="432" height="432">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.primaryText WinJS.Binding.oneTime;
+                            removeFromDisplay: mediaItem.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-three" data-win-bind="textContent: mediaItem.secondaryText WinJS.Binding.oneTime;
+                                       removeFromDisplay: mediaItem.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-tertiaryText" data-win-bind="removeFromDisplay: mediaItem.inCollection MS.Entertainment.Utilities.toggleClassName;">
+                         <div class="text-metadata maxLines-one" data-win-bind="textContent: mediaItem.seasonCount MS.Entertainment.Formatters.formatSeason;
+                                             removeFromDisplay: mediaItem.seasonCount MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                    <div class="verticalCardTile-contentNotification text-metadata maxLines-one" data-win-bind="textContent: String.id.IDS_VIDEO_IN_COLLECTION_LABEL MS.Entertainment.Formatters.formatStringId;
+                                        removeFromDisplay: mediaItem.inCollection MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                    <div class="verticalCardTile-starRating control-starRating">
+                        <div class="mediaRatingControl" data-win-control="WinJS.UI.Rating" data-win-options="{ tooltipStrings : [] }" data-win-bind="winControl.averageRating: mediaItem.averageRating;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="tvRecommendationsItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-tvVerticalItem" role="listitem" data-ent-showanimation="fadeIn" data-ent-hideanimation="fadeOut">
+                <div data-win-control="MS.Entertainment.UI.Controls.TvRecommendationsItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+
+                <div class="tvVerticalItem-button" data-win-control="MS.Entertainment.UI.Controls.RecommendationsNotInterestedButton" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="largeTvRecommendationsTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_tv win-focusable voice-logicalTarget" data-ent-type="removableGalleryItem" data-win-automationid="tvSeriesItem" data-win-bind="label: mediaItem.seriesTitle MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                    voicePhrase: mediaItem.voicePhrase;
+                    voiceConfidence: mediaItem.voiceConfidence;
+                    voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick; focusin: _onFocusIn; focusout: _onFocusOut;">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 320, height: 320},
+                                defaultImagePath: ''}" width="432" height="432">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.name WinJS.Binding.oneTime;
+                            removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-secondaryText text-metadata maxLines-two" data-win-bind="textContent: mediaItem.secondaryText WinJS.Binding.oneTime;
+                                       removeFromDisplay: mediaItem.secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+
+                    <div class="verticalCardTile-starRating">
+                        <div data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: mediaItem;" data-win-options="{
+                                 disabled: true,
+                                 ratingInfoVisible: false,
+                                 disableTransitionAnimations: true,
+                             }"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="video1FeaturedSetTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-featuredSetItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.Video1FeaturedSetItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="video1FeaturedSetItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-featuredSetsCard win-focusable" data-win-automationid="featuredSetItem" data-ent-event="click: _onClick; focusin: _onFocusIn;" role="button">
+
+                <div class="featuredSetsCard-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 560, height: 320},
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="featuredSetsCard-content">
+                    <div class="content-textContainer">
+                        <div class="textContainer-primaryText text-featuredSetCardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.primaryText WinJS.Binding.oneTime;
+                                removeFromDisplay: mediaItem.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="featuredSetItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-featuredSetItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.FeaturedSetItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="wideFeaturedSetItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-featuredSetsCard win-focusable voice-logicalTarget" data-win-automationid="featuredSetItem" data-win-bind="voicePhrase: mediaItem.voicePhrase;
+                    voiceConfidence: mediaItem.voiceConfidence;
+                    voicePhoneticPhrase: mediaItem.voicePhoneticPhrase;" data-win-voice="{
+                    phrase: getContext('element').voicePhrase,
+                    confidence: getContext('element').voiceConfidence,
+                    targetElement: select('.voice-visualTarget'),
+                    pronunciation: getContext('element').voicePhoneticPhrase}" data-ent-event="click: _onClick">
+
+                <div class="featuredSetsCard-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 560, height: 320},
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="featuredSetsCard-content">
+                    <div class="content-textContainer">
+                        <div class="textContainer-primaryText text-cardTitle maxLines-two voice-visualTarget" data-win-bind="textContent: mediaItem.primaryText WinJS.Binding.oneTime;
+                                removeFromDisplay: mediaItem.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+
+                
+                <div class="win-tile-focusindicator"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="featuredSetsMovieTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-featuredSetItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.FeaturedSetMovieItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+        
+        
+        <div data-ent-templateid="featuredSetsTVTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="control-featuredSetItem" role="listitem" data-ent-showanimation="fadeIn">
+                <div data-win-control="MS.Entertainment.UI.Controls.FeaturedSetTVItem" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime;"></div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="featuredSetsMovieCardItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_movie win-focusable" data-win-automationid="movieItem" data-ent-event="click: _onClick; focusin: _onFocusIn;" role="button">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 320, height: 320},
+                            applyImageAsBackground: true,
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-itemTitle maxLines-two" data-win-bind="
+                            textContent: mediaItem.primaryText WinJS.Binding.oneTime;
+                            removeFromDisplay: mediaItem.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                </div>
+            </div>
+        </div>
+
+        
+        <div data-ent-templateid="featuredSetsTVCardItemTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="template-verticalCardTile verticalCardTile_tv win-focusable" data-win-automationid="tvItem" data-ent-event="click: _onClick; focusin: _onFocusIn;" role="button">
+
+                <div class="verticalCardTile-imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: mediaItem WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            preventHideDuringInitialize: true,
+                            desiredImageSize: {width: 320, height: 320},
+                            applyImageAsBackground: true,
+                            defaultImagePath: ''}">
+                </div>
+
+                <div class="verticalCardTile-content">
+                    <div class="verticalCardTile-primaryText text-itemTitle maxLines-two" data-win-bind="
+                            textContent: mediaItem.primaryText WinJS.Binding.oneTime;
+                            removeFromDisplay: mediaItem.primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

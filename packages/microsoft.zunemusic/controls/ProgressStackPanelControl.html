@@ -1,0 +1,47 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Progress Stack Panel Controls</title>
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+
+    
+    <script src="/Controls/ProgressStackPanelView.js"></script>
+    <script src="/Models/ProgressModel.js"></script>
+    <script src="/ViewModels/ProgressStackPanelViewModel.js"></script>
+
+</head>
+<body>
+    
+    
+    
+    <div data-ent-templateid="progressItem" data-win-control="WinJS.Binding.Template">
+        <div class="template-progressItem text-bodyContent" data-win-automationid="ProgressStackPanel_Item" aria-live="polite">
+            <div class="progressItem-icon icon" data-win-automationid="ProgressStackPanel_Item_Icon" data-win-bind="textContent: icon;"></div>
+            <div class="progressItem-title" data-win-automationid="ProgressStackPanel_Item_Title" data-win-bind="textContent: title;"></div>
+            <div class="progressItem-status" data-win-automationid="ProgressStackPanel_Item_Status" data-win-bind="
+                    textContent: status;
+                    removeFromDisplay: status MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+            <progress class="progressItem-progressBar" data-win-automationid="ProgressStackPanel_Item_Progress" data-win-bind="
+                        max: maxTick;
+                        value: currentTick;"></progress>
+            <div class="progressItem-clearIcon ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{
+                    icon: MS.Entertainment.UI.Icon.close,
+                    hideDefaultRing: true }" data-win-automationid="ProgressStackPanel_Item_Cancel" data-win-bind="
+                    removeFromDisplay: cancelAction MS.Entertainment.Utilities.toggleClassNameNegate;
+                    winControl.action: cancelAction;"></div>
+        </div>
+    </div>
+
+    
+    
+    
+    <div data-ent-templateid="templateid-progressPanel" data-win-control="WinJS.Binding.Template">
+        <div class="control-progressPanel">
+            <div class="progressPanel-content" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="ProgressStackPanel_Items" data-win-bind="winControl.dataSource: dataContext.items" data-win-options="{ itemTemplate: '/Controls/ProgressStackPanelControl.html#progressItem' }"></div>
+        </div>
+    </div>
+
+</body>
+</html>

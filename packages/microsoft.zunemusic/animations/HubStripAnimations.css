@@ -1,0 +1,47 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.hubStripFadeIn
+{
+    transition-duration: 3000ms,2000ms;
+    transition-property: transform,opacity;
+    transition-timing-function: cubic-bezier(.15,.02,0,.99),cubic-bezier(0,0,1,1)
+}
+.navigationContainerStartLocation
+{
+    opacity: 0;
+    transform: translateY(70px)
+}
+.navigationContainerEndLocation
+{
+    opacity: 1;
+    transform: translateY(0)
+}
+.scrollerStartLocation
+{
+    opacity: 0;
+    transform: translateY(90px)
+}
+.scrollerEndLocation
+{
+    opacity: 1;
+    transform: translateY(0)
+}
+.panelContainerTransition
+{
+    transition-duration: 930ms;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.24,1,0,.99)
+}
+.panelActionContainerTransition
+{}
+.panelActionContainer.collapsed
+{}
+.panelActionWrapper.overflowHidden
+{
+    overflow: hidden
+}
+.hubStripScrollTransition
+{
+    transition-duration: 1500ms;
+    transition-property: transform;
+    transition-timing-function: cubic-bezier(.24,1,0,.99)
+}

@@ -1,0 +1,70 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>VideoWinNowPlayingOverlays</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/NowPlaying_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Framework/abTestingUtilities.js"></script>
+    <script src="/Framework/abTests.js"></script>
+
+    
+    <script src="/Controls/Video/VideoPostRoll.js"></script>
+    <script src="/Controls/Video_Win/AudioTrackPickerControl.js"></script>
+    <script src="/Controls/Video_Win/ClosedCaptionPickerControl.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="nowPlayingTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="nowPlayingOverlaysContainer" data-ent-member="_overlaysContainer">
+
+                <div class="control-videoTransportControls acc-preserveBackground acc-backgroundTransparent hideFromDisplay" data-ent-hideanimation="nowPlayingControlsSlideDown" data-ent-showanimation="nowPlayingControlsSlideUp" data-ent-member="_videoTransportControlsOverlayContainer">
+                    <div class="videoTransportControls-overlay" data-ent-member="_videoTransportControlsOverlay">
+                        
+                        <div class="overlay-metadata acc-keyboardFocusTarget" data-win-control="WinJS.UI.ItemContainer" data-ent-member="_metadataContainer" data-win-options="{ selectionDisabled: true }" data-ent-event="click: _metadataClick; keydown: _metadataKeyDown" role="button" tabindex="0">
+                            <div class="metadata-content">
+                                <div class="content-title text-itemTitle maxLines-one" data-ent-member="_metadataTitle"></div>
+                                <div class="content-subTitle text-metadata maxLines-one" data-ent-member="_metadataSubtitle"></div>
+                            </div>
+                        </div>
+
+                        
+                        <div class="overlay-seekbar">
+                            <div class="seekbar-content" data-ent-member="_seekBarContainer"></div>
+                        </div>
+
+                        
+                        <div class="overlay-controlsContainer" data-ent-member="_playbackControlsContainer">
+                            <div class="controlsContainer-controls" data-ent-member="_playbackControls">
+                                
+                                <button class="controls-playPauseButton icon icon-transportControl icon-win-play acc-keyboardFocusTarget" data-ent-member="_playPauseButton" data-ent-event="click: _playPauseClick" tabindex="0" type="button"></button>
+
+                                
+                                <div class="controls-volumeContainer acc-keyboardFocusTarget" data-ent-event="click: _volumeClick; keydown: _volumeKeyDown" data-ent-member="_volumeContainer" role="button" tabindex="0">
+                                    <button class="volumeContainer-volumeButton icon icon-transportControl icon-win-volume" data-ent-member="_volumeButton" disabled="disabled" tabindex="-1" type="button"></button>
+                                    <div class="volumeContainer-volumeText text-metadata .text-fixedWidthNumerals" data-ent-member="_volumeText"></div>
+                                </div>
+
+                                
+                                <button class="controls-closedCaptionButton icon icon-transportControl icon-win-closedCaption acc-keyboardFocusTarget" data-ent-member="_closedCaptionButton" disabled="disabled" data-ent-event="click: _closedCaptionClick" data-win-bind="label: IDS_TRANSPORT_CONTROLS_CLOSED_CAPTION_LABEL MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId" tabindex="0" type="button"></button>
+
+                                
+                                <button class="controls-audioTracksButton icon icon-transportControl icon-win-audioTracks acc-keyboardFocusTarget" data-ent-member="_audioTracksButton" disabled="disabled" data-ent-event="click: _audioTracksClick" data-win-bind="label: IDS_VIDEO_NOW_PLAYING_AUDIO_TRACKS_BUTTON MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId" tabindex="0" type="button"></button>
+
+                                
+                                <button class="controls-repeatButton icon icon-transportControl icon-win-repeat acc-keyboardFocusTarget" data-ent-member="_repeatButton" data-ent-event="click: _repeatClick" tabindex="0" type="button"></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+              
+                
+                <div class="nowPlayingRatingImageContainer removeFromDisplay" data-ent-member="_ratingImageContainer" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn">
+                    <img data-win-control="MS.Entertainment.UI.Framework.ImageControl" data-ent-member="_ratingImageUrl" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="winControl.target: videoRatingImage" data-win-options="{
+                     clearSrcOnEmptyTarget: true,
+                     defaultimagepath: 'String.empty' }">
+                </div>
+            </div>
+    </div>
+</body>
+</html>

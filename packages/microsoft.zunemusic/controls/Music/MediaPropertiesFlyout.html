@@ -1,0 +1,108 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_3_merged.js"></script>
+    <script src="/ViewModels/Music1/TextContentActions.js"></script>
+</head>
+<body>
+
+    <div data-ent-templateid="mediaPropertiesFlyoutHostTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.MediaPropertiesFlyout"></div>
+    </div>
+
+    <div data-ent-templateid="mediaPropertiesFlyoutTemplate" data-win-control="WinJS.Binding.Template">
+        
+        
+        
+        <div class="templateid-fileLocationItem" data-ent-templateid="templateid-fileLocationItem" data-win-control="WinJS.Binding.Template">
+            <div class="template-fileLocationItem text-bodyContent">
+                <div class="fileLocationItem-text" data-win-bind="textContent: url WinJS.Binding.oneTime"></div>
+                <button class="fileLocationItem-button acc-keyboardFocusTarget removeFromDisplay ent-control" tabindex="0" data-win-control="MS.Entertainment.UI.Controls.SimpleActionButton" data-ent-action="MS.Entertainment.UI.Actions.ActionIdentifiers.copy" data-win-bind="
+                        removeFromDisplay: hideCopyButton MS.Entertainment.Utilities.toggleClassName;
+                        textContent: String.id.IDS_MUSIC_PROPERTIES_FOLDER_PATH_COPY_LINK MS.Entertainment.Formatters.formatStringId;
+                        winControl.actionParameter: url;"></button>
+            </div>
+        </div>
+        <div class="template-mediaPropertiesFlyout" data-win-bind="tabIndex: showBuyLink MS.Entertainment.Utilities.toggleTabIndexNegate">
+
+            <div class="mediaPropertiesFlyout-metadata metadata_songTitle removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_SONG_TITLE_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.name"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_albumTitle removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.albumName MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_ALBUM_TITLE_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.albumName"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_songArtist removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.artistName MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_SONG_ARTIST_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.artistName"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_genre removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.genreName MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_GENRE_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.genreName"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_releaseYear removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.releaseYear MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_RELEASE_YEAR_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.releaseYear"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_duration removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.durationString MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_LENGTH_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent ui-durationString" data-win-bind="textContent: mediaItem.durationString"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_trackNumber removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.trackNumber MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_TRACK_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.trackNumber"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_copyright removeFromDisplay" data-win-bind="removeFromDisplay: mediaItem.copyright MS.Entertainment.Utilities.toggleClassNameNegate">
+                <div class="metadata-title text-fieldTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_MUSIC_PROPERTIES_COPYRIGHT_LABEL }">
+                </div>
+                <div class="metadata-text text-bodyContent" data-win-bind="textContent: mediaItem.copyright"></div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_buyLink removeFromDisplay" data-win-bind="removeFromDisplay: showBuyLink MS.Entertainment.Utilities.toggleClassNameNegate">
+                <a class="acc-keyboardFocusTarget" href="http://go.microsoft.com/fwlink/?LinkId=261664" data-win-bind="textContent: String.id.IDS_BUY_BUTTON MS.Entertainment.Formatters.formatStringId;" data-win-automationid="mediaPropertiesBuyLink">
+                </a>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_cloudStatus">
+                <div class="metadata-title removeFromDisplay text-fieldTitle" data-win-bind="removeFromDisplay: cloudIconTooltip MS.Entertainment.Utilities.toggleClassNameNegate" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{ wrap: true, stringId: String.id.IDS_COLLECTION_TOOLTIP_CLOUD_STATUS }">
+                </div>
+                <div class="metadata-text text-bodyContent">
+                    <span class="text-icon icon" data-win-control="MS.Entertainment.UI.Controls.Tooltip" data-win-bind="
+                            textContent: cloudIcon;
+                            style.opacity: cloudIconOpacity;
+                            title: cloudIconTooltip;
+                            removeFromDisplay: cloudIcon MS.Entertainment.Utilities.toggleClassNameNegate"></span>
+                    <span class="text-content" data-win-bind="textContent: cloudIconTooltip"></span>
+                </div>
+            </div>
+
+            <div class="mediaPropertiesFlyout-metadata metadata_fileLocation">
+                <div class="metadata-title removeFromDisplay text-fieldTitle" data-win-bind="removeFromDisplay: showLocation MS.Entertainment.Utilities.toggleClassNameNegate" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_MUSIC_PROPERTIES_FOLDER_PATH_LABEL, wrap:true}"></div>
+
+                
+                <div class="metadata-listItems" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: trackFiles" data-win-options="{itemTemplate: select('.templateid-fileLocationItem')}" data-win-automationid="trackFileList">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,83 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Info Notification Template</title>
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script>
+    </head>
+    <body>
+
+       <div data-ent-templateid="infoNotificationTemplate" data-win-control="WinJS.Binding.Template">
+           <div class="acc-keyboardFocusTarget" aria-atomic="true" data-ent-event="click: onItemClick" role="button" data-ent-member="_buttonContainer" tabindex="0" data-win-bind="removeFromDisplay: hideNotifications MS.Entertainment.Utilities.toggleClassName;">
+               <div data-ent-member="notificationContainer" class="infoNotificationContainer" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{
+                        keyboardNavigable: true,
+                        keyboardNavigationSetTabIndex: true,
+                        firstItemTabIndex: 0,
+                        itemSize: 64,
+                        virtualize: true,
+                        virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                     }">
+               </div>
+               <div class="removeFromDisplay" data-ent-member="_liveRegionContainer" aria-live="off" role="tooltip">
+               </div>
+           </div>
+        </div>
+
+        <div data-ent-templateid="infoNotificationItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="notificationContent" data-win-automationid="infoNotificationItem" aria-hidden="true" data-win-bind="performClick: action">
+                <div class="infoNotificationIcon icon" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{autoResizeFont: false}" data-win-bind="winControl.text: icon;
+                                    winControl.className: iconClassName MS.Entertainment.Utilities.appendClassName;
+                                    performClick: action;">
+                </div>
+
+                <div class="textContainer">
+                    <div class="infoNotificationTitle text-notificationTitle" data-win-bind="textContent: title;
+                                       performClick: action;"></div>
+
+                    <div class="inlineCaretButton">
+                        <div class="inlineCaretButtonText infoNotificationSubTitle label text-metadata" data-win-bind="textContent: subTitle;
+                                           removeFromDisplay: subTitle MS.Entertainment.Utilities.toggleClassNameOnEmptyString;
+                                           performClick: action;"></div>
+
+                        <div class="inlineCaretButtonIcon text-xxSmall text-weightNormal" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;
+                                           removeFromDisplay: subTitleCaret MS.Entertainment.Utilities.toggleClassNameNegate;
+                                           performClick: action;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="criticalNotificationTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="acc-keyboardFocusTarget" aria-atomic="true" data-ent-event="click: onItemClick" role="button" data-ent-member="_buttonContainer" tabindex="0" data-win-bind="removeFromDisplay : hideNotifications MS.Entertainment.Utilities.toggleClassName;">
+                <div data-ent-member="notificationContainer" class="criticalNotificationContainer" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{
+                        keyboardNavigable: true,
+                        keyboardNavigationSetTabIndex: true,
+                        firstItemTabIndex: 0,
+                        itemSize: 64,
+                        virtualize: true,
+                        virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
+                     }">
+                </div>
+                <div class="removeFromDisplay" data-ent-member="_liveRegionContainer" aria-live="polite" role="tooltip">
+                </div>
+            </div>
+        </div>
+
+        <div data-ent-templateid="criticalNotificationItemTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="criticalNotificationItem" aria-hidden="true">
+                <div class="notificationContent" tabindex="-1" data-win-automationid="criticalNotificationItem">
+                    <div class="infoNotificationIcon icon" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{autoResizeFont: false}" data-win-bind="winControl.text: icon;">
+                    </div>
+                    <div class="textContainer">
+                        <div class="infoNotificationTitle text-notificationTitle" data-ent-member="itemTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: title">
+                        </div>
+                        <div class="infoNotificationSubTitle text-metadata" data-ent-member="itemSubTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: subTitle;
+                                removeFromDisplay: subTitle MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

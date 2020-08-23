@@ -1,0 +1,26 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Overlay Control Template</title>   
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/CollectionPageDelayedScripts_merged.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="overlayTemplate" data-win-control="WinJS.Binding.Template">
+             <div data-win-automationid="wecOverlay">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecOverlayBackground"></div>
+
+                
+                <div class="overlayContainer popOverContainer" data-ent-member="overlayContainer" data-ent-areaname="popOverContainer" data-win-bind="style.cssText: cssPositionText" data-win-automationid="wecOverlayContainer" role="dialog" aria-label="">
+                    <div class="popOverLeftColumnPlaceholder"></div>
+                    <div style="-ms-grid-column-span: 2;" data-win-bind="style.width: size.width; style.height: size.height;">
+                        <div class="overlayContent" data-ent-member="overlayContent">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

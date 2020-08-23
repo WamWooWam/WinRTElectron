@@ -1,0 +1,20 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <script src="/Components/Playback/Netstats/VideoNetstats.js"></script>
+    <link rel="stylesheet" type="text/css" href="/Components/Playback/Controls/PlaybackControl.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/ClosedCaption.css">
+    <title>Playback Control Template</title>
+</head>
+<body>
+    <div data-ent-templateid='playbackControlTemplate' data-win-control="WinJS.Binding.Template">
+        <div data-ent-member="_closedCaptionsContainer" class="closedCaptionsContainer">
+        </div>
+        <div data-ent-member="_videoNetstatsContainer" data-win-control="MS.Entertainment.Platform.Playback.VideoNetstatsControl" class="videoStreamingStatisticsContainer hideFromDisplay">
+        </div>
+        <div data-ent-member="_playerContainer" class="playbackPipeline">
+        </div>
+    </div>
+</body>
+</html>

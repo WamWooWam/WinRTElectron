@@ -1,0 +1,60 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.pickProviderContainerBackground
+{
+    height: 614px
+}
+.pickProvidersContainer
+{
+    margin-top: 20px;
+    display: -ms-grid;
+    -ms-grid-columns: auto 10px 1fr
+}
+.pickProvidersMetadata, .pickProvidersMetadata img
+{
+    max-width: 300px
+}
+.pickProvidersTitle
+{
+    max-height: 108px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+    overflow: hidden
+}
+.pickProvidersMetadataText
+{
+    margin-top: 1px
+}
+.pickProviderItemContainer
+{
+    position: relative;
+    width: 100%;
+    height: 80px;
+    display: -ms-grid;
+    -ms-grid-columns: 10px 60px 15px 1fr;
+    -ms-grid-rows: 10px 1fr 10px
+}
+.pickProviderItemImageContainer
+{
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    overflow: hidden
+}
+.pickProviderItemImage
+{
+    width: 100%;
+    height: auto;
+    -ms-grid-row-align: center
+}
+.pickProviderItemText
+{
+    -ms-grid-row-align: center;
+    max-height: 100%;
+    overflow: hidden
+}
+.pickProvidersMetadataInline .label
+{
+    float: left
+}

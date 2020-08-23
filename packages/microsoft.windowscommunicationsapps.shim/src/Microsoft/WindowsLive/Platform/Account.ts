@@ -8,6 +8,7 @@ import { Enumerable, Uri } from "winrt-node/Windows.Foundation"
 import { ShimProxyHandler } from "winrt-node/ShimProxyHandler"
 import { AccountServerConnectionSettings } from "./AccountServerConnectionSettings"
 import { Windows } from "winrt-node"
+import { Person } from "./Person"
 
 export class Account extends PlatformObject {
     constructor(id: string) {
@@ -61,6 +62,7 @@ export class Account extends PlatformObject {
     public get meContact(): Contact {
         let cont = new Contact(null);
         cont.objectId = "sakodkaspd";
+        cont.person = new Person();
         return cont;
     }
 

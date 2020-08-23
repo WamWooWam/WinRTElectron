@@ -1,0 +1,101 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Flip View Template</title>
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/ImmersiveLayout.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="Frame" data-win-control="WinJS.Binding.Template">
+        <div class="immersiveFrame" data-ent-showanimation="enterPage" data-ent-enteranimation="enterPage" data-win-bind="removeFromDisplay: frame.visible MS.Entertainment.Utilities.toggleClassNameNegate;">
+
+            <div class="headingRow">
+                <div data-win-control="MS.Entertainment.UI.Controls.ActionLink" data-win-bind="winControl.text: frame.heading;
+                                    winControl.doClick: viewMoreClickedHandler;" class="headingLink acc-preserveBackground" data-ent-member="_viewMoreHeaderButton"></div>
+            </div>
+
+            <div data-ent-member="_content" class="contentRow"></div>
+            
+            <div class="viewMoreRow" data-win-bind="removeFromDisplay: viewMoreButtonVisible MS.Entertainment.Utilities.toggleClassNameNegate;
+                                winControl.className: frame.moniker MS.Entertainment.Utilities.appendClassName;">
+            
+                <div class="template-moreButton">
+                    <div class="moreButton-container" data-win-bind="clickDataContext: frame.viewMoreInfo;" data-ent-showanimation="fadeIn">
+                        <div class="actionTile voice-logicalTarget" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                                winControl.doClick: _viewMoreClicked;
+                                winControl.automationId: frame.viewMoreInfo.automationId;
+                                winControl.text: frame.viewMoreInfo.title;
+                                winControl.voicePhrase: frame.viewMoreInfo.voicePhrase;
+                                winControl.voicePhoneticPhrase: frame.viewMoreInfo.voicePhoneticPhrase;
+                                winControl.voiceConfidence: frame.viewMoreInfo.voiceConfidence;
+                                winControl.icon: frame.viewMoreInfo.icon;" data-win-options="{ hideDefaultRing: true }" data-win-voice="{
+                                phrase: getContext('element').winControl.voicePhrase,
+                                confidence: getContext('element').winControl.voiceConfidence,
+                                handler: getContext('element').winControl.onClickWithContext,
+                                targetElement: select('.voice-visualTarget'),
+                                pronunciation: getContext('element').winControl.voicePhoneticPhrase,}"></div>
+                    </div>
+                </div>
+
+                <button class="inlineCaretButton acc-keyboardFocusTarget" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-event="click: _viewMoreClicked" role="button" tabindex="0">
+                    <div class="inlineCaretButtonText text-xSmall text-weightBold" data-win-bind="textContent: frame.viewMoreInfo.title;
+                                        removeFromDisplay: frame.viewMoreInfo.title MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="inlineCaretButtonIcon text-xxSmall text-weightNormal" data-win-bind="textContent: frame.viewMoreInfo.icon;"></div>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="TableOfContentsItem" data-win-control="WinJS.Binding.Template">
+        <button class="label" data-win-control="MS.Entertainment.UI.Controls.Label" tabindex="0" role="link" data-win-bind="winControl.text: heading;">
+        </button>
+    </div>
+
+    <span data-ent-templateid="pivotButtonTemplate" data-win-control="WinJS.Binding.Template">
+        <button class="PrimaryNavigationButton acc-keyboardFocusTarget text-filterItem" tabindex="-1" data-win-bind="textContent: heading; dataSource: this;" type="button" role="tab"></button>
+    </span>
+
+    <div data-ent-templateid="ViewMorePopOver" data-win-control="WinJS.Binding.Template">
+        
+        <div class="immersiveViewMorePopOverLayout" data-win-automationid="wecOverlay" data-ent-event="keydown: keyDown">
+                
+                <div class="overlayBackground immersiveViewMoreBackground acc-preserveBackground" data-ent-member="overlayBackground" data-win-automationid="wecOverlayBackground">
+                </div>
+                
+                <div class="win-ui-dark ui-hitTestArea shellBackButtonContainer immersiveBackButtonContainer">
+                    <button data-ent-event="click: backButtonClick" data-win-bind="label: IDS_ACC_BACK_BUTTON MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId" data-ent-member="backButton" class="win-backbutton acc-keyboardFocusTarget" tabindex="0" type="button">
+                    </button>
+                </div>
+                
+                <div class="immersiveViewMorePopoverContainer" data-ent-event="click: lightDismiss" data-win-bind="style.msGridColumns: gridDefinition" data-ent-member="overlayContainer" data-ent-areaname="immersiveViewMoreContainer" data-win-automationid="wecOverlayContainer" role="dialog" aria-label="">
+                    
+                    <div class="immersiveViewMorePopOverContentLayout win-ui-dark" data-ent-member="_contentLayoutContainer" data-ent-event="click: suppressBubblingClicks;
+                             PopOverTemplateLoaded: handleTemplateLoaded">
+                        <div class="headingRow" data-win-bind="removeFromDisplay: headerVisible MS.Entertainment.Utilities.toggleClassNameNegate">
+                            <div class="immersiveViewMorePopOverHeading label text-panelHeader" data-win-bind="textContent: frame.viewMoreHeading"></div>
+                            <div class="immersiveViewMorePopOverSubHeading label text-panelHeader" data-win-bind="textContent: frame.viewMoreSubHeading;
+                                                removeFromDisplay: frame.viewMoreSubHeading MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                            <div class="closeButtonContainer">
+                                <div class="closeButton" data-ent-member="_closeButton" data-win-control="MS.Entertainment.UI.Controls.CloseActionLink" data-win-options="{stringId: String.id.IDS_CLOSE_BUTTON_LC, accessibilityStringId: String.id.IDS_CLOSE_BUTTON_LC, tabIndex: 1, actionAutomationId: 'closeOverlay'}" data-win-bind="winControl.action: closeAction">
+                                </div>
+                            
+                                <div class="gestureCloseButton control-buttonClose win-ui-dark ui-hitTestArea" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: MS.Entertainment.UI.Icon.close, tabIndex: -1}" data-win-bind="winControl.action: closeAction">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="contentRow" role="region">
+                             <div class="immersiveMoreContentContainer" data-ent-member="overlayContent"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    <div data-ent-templateid="Error" data-win-control="WinJS.Binding.Template">
+        <div class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: dataContext.message"></div>
+    </div>
+</body>
+</html>

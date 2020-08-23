@@ -1,0 +1,41 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/HubStripAnimations.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/animations.css">
+        <title>Hub Strip Control Template</title>
+
+        
+        <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+
+        
+        <script src="/Animations/HubStripAnimations.js"></script>    
+    </head>
+    <body>
+        <span data-ent-templateid="pivotButtonTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="PrimaryNavigationButton acc-keyboardFocusTarget text-filterItem" tabindex="-1" data-win-control="MS.Entertainment.UI.Shell.PrimaryNavigationButton" data-win-bind="textContent: title; winControl.dataSource: instance; doClick: doNavigation; disabled: isLoading;" type="button" role="tab"></button>
+        </span>
+        <div data-ent-templateid="hubStripTemplate" data-win-control="WinJS.Binding.Template">
+            <progress class="shellLoadingControl" data-win-control="MS.Entertainment.UI.Controls.LoadingControl" data-win-options="{ displayDelay: 0, isBusy: true }" data-ent-member="_waitCursor"></progress> 
+            <div class="hubNavigationClippingContainer" data-ent-member="_navigationClippingContainer">
+                <div class="hubNavigationContainer hideFromDisplay enterPageOffset2 removeFromDisplay" data-win-control="MS.Entertainment.UI.Controls.PivotsControl" data-win-options="{itemTemplate: '/Controls/HubStrip.html#pivotButtonTemplate'}" data-win-bind="winControl.dataSource: hubs; winControl.selectedIndex: selectedIndex;" data-win-automationid="hubNavigationContainer" data-ent-member="_navigationContainer" role="tablist">
+                </div>
+                <div class="hubNavigationTitle hideFromDisplay enterPageOffset2 removeFromDisplay label text-hubTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="hubNavigationTitle" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage">
+                </div>
+
+                
+                <div class="hubStripTitleContainer hideFromDisplay removeFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage" data-ent-member="_titleContainer">
+                    <span class="hubStripTitle label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="_title">
+                    </span>
+                    <span class="hubStripPreviewTitle label" data-win-control="MS.Entertainment.UI.Controls.Label" data-ent-member="_titlePreview">
+                    </span>
+                </div>
+            </div>
+            <div class="hubStripScroller enterPageOffset2" data-win-automationid="hubStripScroller" data-ent-event="HubReady: hubReadyHandler; HubLoaded: hubLoadedHandler; scroll: onScroll;" data-ent-member="_scroller" role="tabpanel">
+            </div>
+        </div>
+    </body>
+</html>

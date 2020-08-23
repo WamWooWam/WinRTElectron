@@ -1,0 +1,117 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Cloud Grovel Info</title>
+        <script src="/Controls/editbox.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="cloudGrovelInfoTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="cloudGrovelInfoContentContainer">
+                <div data-ent-member="cloudInfoDialogPage1">
+                    <div class="cloudGrovelInfoContent">
+                        <div class="cloudInfoImage acc-preserveBackground"></div>
+                        <div class="cloudInfoDialogPage1TextContent">
+
+                            <div class="cloudLegendLabel text-weightHeavy" data-win-bind="textContent: subHeaderString;
+                                                label: subHeaderString MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+
+                            <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: String.id.IDS_MUSIC_CLOUD_INFO_DIALOG_BODY MS.Entertainment.Formatters.formatStringId;
+                                                label: IDS_MUSIC_CLOUD_INFO_DIALOG_BODY MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                            <a class="cloudGrovelInfoLink" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-automationid="cloudGrovelLearnMoreMusicPassLink" data-win-options="{stringId:String.id.IDS_MUSIC_CLOUD_INFO_DIALOG_PREMIUM_LINK}" data-ent-member="xboxMusicPassWebLink"></a>
+                        </div>
+                    </div>
+                </div>
+                <div data-ent-member="cloudInfoDialogPage2">
+                    <div class="cloudGrovelInfoContent">
+                        <div>
+                            
+                            <div class="text-bodyContent" data-win-bind="textContent: String.id.IDS_MUSIC_CLOUD_ICON_DIALOG_SUBTEXT MS.Entertainment.Formatters.formatStringId;
+                                                label: IDS_MUSIC_CLOUD_ICON_DIALOG_SUBTEXT MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                            <div class="cloudEducationTable">
+                                <div class="cloudEducationTableCol1" data-ent-member="iconColumn1">
+
+                                    
+                                    <div class="cloudLegendIcon streamingOnly acc-preserveBackground"></div>
+
+                                    <div class="cloudLegendLabel cloudLegendIconLabel text-weightHeavy" data-win-bind="textContent: String.id.IDS_MUSIC_CLOUD_ICON_DIALOG_REMOTE_TITLE MS.Entertainment.Formatters.formatStringId;
+                                                        label: IDS_MUSIC_CLOUD_ICON_DIALOG_REMOTE_TITLE MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                                    <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: streamIconParagraphOneText;
+                                                        label: streamIconParagraphOneText MS.Entertainment.Framework.AccUtils.setAriaAttribute;">
+                                    </div>
+
+                                    <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: streamIconParagraphTwoText;
+                                                        label: streamIconParagraphTwoText MS.Entertainment.Framework.AccUtils.setAriaAttribute;">
+                                    </div>
+
+                                </div>
+
+                                <div class="cloudEducationTableCol2" data-ent-member="iconColumn2">
+
+                                    
+                                    <div class="cloudLegendIcon localAndStreaming acc-preserveBackground"></div>
+
+                                    <div class="cloudLegendLabel cloudLegendIconLabel text-weightHeavy" data-win-bind="textContent: String.id.IDS_MUSIC_CLOUD_ICON_DIALOG_MATCHED_TITLE MS.Entertainment.Formatters.formatStringId;
+                                                        label: IDS_MUSIC_CLOUD_ICON_DIALOG_MATCHED_TITLE MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                                    <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: cloudIconParagraphOneText;
+                                                        label: cloudIconParagraphOneText MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+
+                                </div>
+
+                                <div class="cloudEducationTableCol3" data-ent-member="iconColumn3">
+
+                                    
+                                    <div class="cloudLegendIcon"></div>
+                                    <div class="cloudLegendLabel cloudLegendIconLabel text-weightHeavy" data-win-bind="textContent: String.id.IDS_MUSIC_CLOUD_ICON_NONE_HEADER MS.Entertainment.Formatters.formatStringId;
+                                                        label: IDS_MUSIC_CLOUD_ICON_NONE_HEADER MS.Entertainment.Framework.AccUtils.setAriaAttribute;"></div>
+
+                                    <div class="cloudLegendDescription text-bodyContent" data-win-bind="textContent: String.id.IDS_MUSIC_CLOUD_ICON_NONE_PARA_1 MS.Entertainment.Formatters.formatStringId;
+                                                        label: IDS_MUSIC_CLOUD_ICON_NONE_PARA_1 MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;"></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div data-ent-templateid="dialogTemplate" data-win-control="WinJS.Binding.Template">
+            <div class="cloudGrovelInfo wecDialog wecDialog_cloud" data-win-automationid="wecDialog">
+                
+                <div class="overlayBackground" data-ent-member="overlayBackground" data-win-automationid="wecDialogBackground"></div>
+
+                
+                <div class="overlayContainer dialogContainerBackground" data-win-bind="style.top: top; style.bottom: bottom" data-ent-member="overlayContainer" data-ent-areaname="cloudGrovelInfoDialogContainer" role="dialog" aria-label="">
+
+                    <div class="dialogContainer win-ui-light" data-win-bind="style.left: left; style.right: right" data-ent-member="dialogContainer">
+                        <form action="javascript:MS.Entertainment.UI.Controls.Dialog.dialogFormSubmit();">
+
+                            
+                            <div class="wecDialog-backButton cloudInfoBackButton" data-ent-member="_backButton" data-win-automationid="backButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: WinJS.UI.AppBarIcon.back, tabIndex: 3, accessibilityStringId: String.id.IDS_ACC_BACK_BUTTON}" data-ent-event="click: onBackClick">
+                            </div>
+
+                            
+                            <div class="dialogCaption" data-win-automationid="wecDialogCaption" data-win-bind="textContent: title;"></div>
+
+                            
+                            <div class="overlayContent dialogContent text-xSmall" data-ent-member="overlayContent" data-win-automationid="wecDialogContainer"></div>
+                
+                            
+                            <div class="dialogFooter"> 
+
+                                
+                                <div class="dialogButtons" data-ent-member="_buttonList" data-ent-event="click: _handleButtonClick" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-options="{itemTemplate: 'Controls/Dialog.html#dialogButtonTemplate', applyItemTemplate: MS.Entertainment.UI.Controls.Dialog.focusDefaultItemWhenCreated }" data-win-automationid="wecDialogButtons">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

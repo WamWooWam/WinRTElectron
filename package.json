@@ -4,12 +4,13 @@
   "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
-    "deep-rename-keys": "^0.2.1"
+    "deep-rename-keys": "^0.2.1",
+    "node-fetch": "^2.6.0"
   },
   "devDependencies": {
+    "electron": "^9.1.0",
     "electron-packager": "^15.0.0",
-    "typescript": "^3.9.2",
-    "electron": "^9.1.0"
+    "typescript": "^3.9.2"
   },
   "scripts": {
     "start": "electron ."

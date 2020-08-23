@@ -1,0 +1,18 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>More Video Overview</title>
+    <script src="/main_merged.js"></script>
+    <script src="/Components/Immersive/Video/Extras.js"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="/controls/controls.css">
+</head>
+<body>
+    <div class="viewMoreScroller" data-win-control="App2.UI.ScrollViewer" data-win-options="{ scrollMode: 'list' }" data-ent-fragmentload="MS.Entertainment.UI.Framework.scrollViewerFocusHelper" role="menu">
+
+        <div class="extrasMore" data-win-control="MS.Entertainment.UI.Controls.ExtrasList" data-win-options="{ dataContext: { }, isViewMore: true }" data-win-bind="winControl.dataContext.tvImmersiveViewModel: this.tvImmersiveViewModel;"></div>
+    </div>
+ </body>
+</html>

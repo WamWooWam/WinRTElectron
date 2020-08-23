@@ -1,0 +1,181 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <link rel="stylesheet" type="text/css" href="/Styles/Video.css">
+    <title>Preview Browse</title>
+    <script src="/Components/Video/PreviewBrowse.js"></script>
+    <script src="/Components/Immersive/Shared/BaseImmersiveSummary.js"></script>
+    <script src="/Components/Immersive/Video/VideoHero.js"></script>
+    
+    <script src="/main_merged.js"></script><script src="/group_2_merged.js"></script>
+</head>
+
+<body>
+    
+    
+    <div id="previewBrowseItemTemplate" data-ent-templateid="previewBrowseItemTemplate" data-win-control="WinJS.Binding.Template" style="display:none;">
+
+        
+        <div data-win-control="MS.Entertainment.Utilities.FlipViewUnloadHelper" class="removeFromDisplay"></div>
+
+        <div class="playbackContainer">
+        </div>
+
+        <div class="previewBrowseItemDataContainer" data-ent-hideanimation="nowPlayingControlsFadeOut">
+
+            <div class="previewBrowseContainer">
+                <div class="imageContainer">
+                    <img class="imageHolder" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: this WinJS.Binding.oneTime;" data-win-options="{
+                            unloadTimeout: 3000,
+                            show: MS.Entertainment.Utilities.showElementNoAnimation,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            desiredImageSize: { width: 130, height: 174 },
+                            defaultImagePath: ''}" width="130" height="174">
+                </div>
+                
+                <div class="metaDataContainer">
+                    <div class="previewBrowseTitle text-weightLight" data-win-bind="textContent: name;
+                                       hidden: name MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                    <div class="textContainer">
+                        <p class="previewBrowseSecondaryMetadata text-small" data-win-bind="textContent: previewBrowseSecondaryMetadata;
+                                           hidden: previewBrowseSecondaryMetadata MS.Entertainment.Utilities.toggleClassNameNegate"></p>
+                    </div>
+                
+                    <div class="control-starRating mediaRatingControl disabled">
+                        <div class="ratingsContainer hideFromDisplay" data-win-control="WinJS.UI.Rating" data-win-bind="
+                                winControl.averageRating: averageRating;
+                                winControl.userRating: userRating;
+                                hideFromDisplay: hydrated MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{ disabled: true }">
+                        </div>
+                    </div>
+
+                    <div class="noTrailerAvailableContainer" data-win-bind="hidden: hydrated MS.Entertainment.Utilities.toggleClassNameNegate">
+                        <div class="noTrailerAvailableMessage" data-win-bind="textContent: String.id.IDS_VIDEO_PREVIEW_NOT_AVAILABLE MS.Entertainment.Formatters.formatStringId;
+                                            removeFromDisplay: videoPreviewUrl MS.Entertainment.Utilities.toggleClassNameOnNonEmptyString;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    
+    
+    <div class="previewBrowse win-ui-dark" data-win-control="MS.Entertainment.Video.PreviewBrowse" data-win-automationid="previewBrowse">
+        
+        
+        <div class="videoFullScreenNowPlaying-spinner hideFromDisplay" data-ent-member="_spinner" data-ent-showanimation="nowPlayingControlsFadeIn">
+            <div class="videoFullScreenNowPlaying-spinnerContainer">
+                <progress class="videoFullScreenNowPlaying-progressControl win-ring win-medium">
+                </progress>
+
+                <div class="videoFullScreenNowPlaying-progressLabel text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId:String.id.IDS_VIDEO_STARTING_SMOOTH}">
+                </div>
+            </div>
+        </div>
+
+        <div class="previewBrowseFlipView" data-win-control="WinJS.UI.FlipView" data-ent-member="_flipView" data-win-options="{itemTemplate: select('#previewBrowseItemTemplate')}">
+        </div>
+
+        <div class="navArrowContainer left">
+            <div class="navArrow left hideFromDisplay" data-ent-member="_arrowLeft" data-ent-event="click: onLeftArrow;" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingPrev MS.Entertainment.Formatters.formatIcon;"></div>
+        </div>
+
+        <div class="navArrowContainer right">
+            <div class="navArrow right hideFromDisplay" data-ent-member="_arrowRight" data-ent-event="click: onRightArrow;" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;"></div>
+        </div>
+    </div>
+
+    
+    <div class="previewBrowseBar win-ui-dark" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'bottom',layout:'custom'}" data-win-automationid="bottomAppBar">
+
+        <div class="buttonContainer">
+            
+            <button class="getDetailsButton acc-keyboardFocusTarget hideFromDisplay" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-ent-member="_getDetailsButton" data-ent-hideanimation="nowPlayingControlsFadeOut" data-ent-showanimation="nowPlayingControlsFadeIn" role="button" data-win-options="{
+                    tabIndex: -1,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true}">
+
+                <div class="imageContainer">
+                    <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-ent-member="_boxArt" data-win-options="{
+                            show: MS.Entertainment.Utilities.showElementNoAnimation,
+                            hide: MS.Entertainment.Utilities.doNothing,
+                            allowAnimations: false,
+                            desiredImageSize: { width: 99, height: 135 },
+                            defaultImagePath: ''}" width="75" height="105">
+                </div>
+
+                <div class="metaDataContainer">
+                    <div class="barTitle label text-small" data-ent-member="_barTitle"></div>
+                    <div class="textContainer">
+                        <p class="barGenre text-xxSmall maxLines-one" data-ent-member="_barGenre"></p>
+                    </div>
+                    <div class="textContainer">
+                        <p class="barSecondaryMetadata text-xxSmall maxLines-one" data-ent-member="_barSecondaryMetadata"></p>
+                    </div>
+
+                    <div class="control-starRating mediaRatingControl disabled">
+                        <div class="ratingsContainer" data-win-control="WinJS.UI.Rating" data-ent-member="_barStarRatings" data-win-options="{ disabled: true }">
+                        </div>
+                    </div>
+
+                    <div class="inlineCaretContainer">
+                        <div class="inlineCaretButtonText text-xxSmall text-weightBold" style="-ms-grid-column: 1;" data-win-bind="textContent: String.id.IDS_DETAILS_VIEW_FULL_MOVIE MS.Entertainment.Formatters.formatStringId;"></div>
+                        <div class="inlineCaretButtonIcon text-xxSmall text-weightNormal" style="-ms-grid-column: 2;" data-win-bind="textContent: MS.Entertainment.UI.Icon.nowPlayingNext MS.Entertainment.Formatters.formatIcon;"></div>
+                    </div>
+                </div>
+            </button>
+  
+            
+            <div class="freeButton purchaseButton" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-ent-member="_freeButton" data-win-options="{
+                    tabIndex: 0,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true,
+                    stringId: String.id.IDS_MOVIE_PLAY_MOVIE_BUTTON,
+                    icon: MS.Entertainment.UI.Icon.play}">
+                <p class="purchaseSubtitle text-xxSmall" data-ent-member="_freeSubtitle" data-win-bind="textContent: String.id.IDS_VIDEO_PRICE_FREE MS.Entertainment.Formatters.formatStringId;"></p>
+            </div>
+
+            
+            <div class="buyButton purchaseButton" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-ent-member="_buyButton" data-win-options="{
+                    tabIndex: 0,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true,
+                    stringId: String.id.IDS_BUY_BUTTON,
+                    icon: MS.Entertainment.UI.Icon.shop}">
+                <p class="purchaseSubtitle text-xxSmall" data-ent-member="_buySubtitle"></p>
+            </div>
+
+            
+            <div class="rentButton purchaseButton" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-ent-member="_rentButton" data-win-options="{
+                    tabIndex: 0,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true,
+                    stringId: String.id.IDS_RENT_BUTTON,
+                    icon: MS.Entertainment.UI.Icon.shop}">
+                <p class="purchaseSubtitle text-xxSmall" data-ent-member="_rentSubtitle"></p>
+            </div>             
+            
+            <div class="playPauseButton" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-ent-member="_playPauseButton" data-win-options="{
+                    tabIndex: 0,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true,
+                    stringId: String.id.IDS_TRANSPORT_CONTROLS_PAUSE_BUTTON,
+                    icon: WinJS.UI.AppBarIcon.pause}">
+            </div>
+            
+            <div class="volumeButton" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-ent-member="_volumeButton" data-win-options="{
+                    tabIndex: 0,
+                    allowAnimations: false,
+                    preventHideDuringInitialize: true}">
+            </div>
+        </div>
+    </div>
+    
+
+</body>
+</html>

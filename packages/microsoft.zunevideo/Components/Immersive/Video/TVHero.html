@@ -1,0 +1,72 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Immersive Video Hero</title>
+        <link rel="stylesheet" type="text/css" href="/styles/ImmersiveDetails.css">
+        <link rel="stylesheet" type="text/css" href="/Styles/Immersive.css">
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script><script src="/TvDetails_merged.js"></script>
+
+        <script src="/Controls/NowPlaying/NowPlaying.js"></script>
+        <script src="/Controls/NowPlaying/NowPlayingPlaylist.js"></script>
+        <script src="/Components/video/CriticReviewControls.js"></script>
+        <script src="/Components/Immersive/Video/TvOverview.js"></script>
+        <script src="/Components/App2/PinnedListService.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="ImmersiveTvHero" data-win-control="WinJS.Binding.Template">
+            
+            <div class="primaryPanelModifier" tabindex="-1" data-win-control="MS.Entertainment.UI.Controls.Modifier" data-ent-showanimation="enterPage" data-win-options="{
+                    tabIndex: 0,
+                    popupStyle: ['tvSeasonModifier'],
+                    identifier: 'primary',
+                    overrideControlVisibility: true,
+                    allowSingleItemToShowList: true }" data-win-automationid="seasonsModifier" data-win-bind="
+                    winControl.items: seasonSelections;
+                    winControl.selectionManager: modifierSelectionManager;"></div>
+
+            
+            <div class="immersiveHeroContentContainer hideFromDisplay" data-win-bind="animate: heroMediaItem.hydrated MS.Entertainment.Utilities.forceShowAnimationOnLoad" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage">
+                
+                <div class="mediatype-tvSeries immersiveHeroBackgroundImageContainer acc-preserveBackground" data-win-bind="mediaType: mediaTypeClassName MS.Entertainment.Utilities.appendClassName;">
+                    <img src="" data-win-control="MS.Entertainment.UI.Controls.TvHeroImageControl" data-win-bind="winControl.target: heroMediaItem;
+                            this['aria-label']: dataContext.mediaItem.name WinJS.Binding.setAttribute" data-ent-showanimation="immersiveFrameFadeIn" data-win-options="{
+                            loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                            allowAnimations: true,
+                            imageIdType: MS.Entertainment.Data.ImageIdType.image,
+                            disableLazyDecode: true,
+                            desiredImageSize: MS.Entertainment.Utilities.tvHeroSize,
+                            preventHideDuringInitialize: true,
+                            defaultImagePath: MS.Entertainment.UI.ImagePaths.genericVideoL3Hero }">
+                </div>
+
+                
+                <div class="immersiveHeroContent acc-preserveBackground" data-win-control="MS.Entertainment.UI.Framework.UserControl" data-win-bind="mediaType: mediaTypeClassName MS.Entertainment.Utilities.appendClassName;
+                                    removeFromDisplay: displayHeroContent MS.Entertainment.Utilities.toggleClassNameNegate;" data-ent-member="_heroContent">
+
+                    <div class="immersiveHeroText">
+                        <div class="immersiveHeroSubDetails">
+                            
+                            <div class="ratingLabel text-metadata" data-win-bind="textContent: String.id.IDS_TV_SERIES_RATING_LABEL MS.Entertainment.Formatters.formatStringId"></div>
+
+                            
+                            <div class="ratingContainer" data-win-control="MS.Entertainment.UI.Controls.StarRatingControl" data-win-bind="winControl.mediaInstance: dataContext.mediaItem;" data-ent-showanimation="enterContent" data-ent-enteranimation="enterContent"></div>
+
+                            
+                            <div class="immersiveHeroSecondaryText text-immersiveHeroSubTitle reviewContainer" data-win-control="MS.Entertainment.UI.Controls.MetaCriticControl" data-ent-member="_metaCriticControl" data-win-bind="winControl.mediaItem: dataContext.mediaItem;"></div>
+                        </div>
+
+                        
+                        <div data-win-bind="removeFromDisplay: displayContentDescription MS.Entertainment.Utilities.toggleClassNameNegate">
+                            <div class="immersiveHeroDescriptionText text-bodyContent" data-win-bind="textContent: dataContext.mediaItem.description;
+                                                removeFromDisplay: dataContext.mediaItem.description MS.Entertainment.Utilities.toggleClassNameNegate"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </body>
+</html>

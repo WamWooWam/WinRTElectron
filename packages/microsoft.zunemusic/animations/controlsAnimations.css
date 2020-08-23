@@ -1,0 +1,157 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.longFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 1500ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.longFadeout
+{
+    animation-name: fadeOut;
+    animation-duration: 1500ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.actionListButtonFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 500ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.actionListButtonFadeout
+{
+    animation-name: fadeOut;
+    animation-duration: 500ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.transportControlsButtonFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 250ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.transportControlsButtonFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 250ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.nowPlayingControlsFadeIn, .immersiveFrameFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.nowPlayingControlsFadeOut, .immersiveFrameFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.trackListFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.trackListFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.musicOverlay .nowPlayingControlsFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.musicOverlay .nowPlayingControlsFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 1s;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.musicOverlay .nowPlayingControlsQuickFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.musicOverlay .nowPlayingControlsQuickFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.xboxControlsShow, .galleryItemShow
+{
+    animation-name: fadeIn;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.xboxControlsHide
+{
+    animation-name: fadeOut;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.galleryItemShow
+{
+    animation-duration: 500ms
+}
+.companionConnectionPanelFadeIn
+{
+    animation-name: fadeIn;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.companionConnectionPanelFadeOut
+{
+    animation-name: fadeOut;
+    animation-duration: 333ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.showNotification
+{
+    animation-name: fadeIn;
+    animation-duration: 600ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.hideNotification
+{
+    animation-name: fadeOut;
+    animation-duration: 300ms;
+    animation-timingfunction: cubic-bezier(.16,1,.23,.98);
+    animation-fill-mode: forwards
+}
+.popOver .leftColumn .iconButton, .immersiveDetails .immersiveDetailsContainer .iconButton
+{
+    animation-name: fadeIn;
+    animation-duration: 333ms;
+    animation-delay: 167ms;
+    animation-timing-function: linear;
+    animation-fill-mode: both
+}
+.immersiveDetails .immersiveDetailsContainer .inPlaceDetailsItemActions .iconButton
+{
+    animation-name: none
+}

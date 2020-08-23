@@ -1,0 +1,19 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <script src="/Controls/Video/WatchProgress.js"></script>
+</head>
+    <body>
+        <div data-ent-templateid="watchProgress" data-win-control="WinJS.Binding.Template">
+            <div class="control-watchProgress">
+                <progress class="watchProgress-progressBar" data-ent-member="_progressBar" data-win-bind="value: _percentageWatched;
+                                   removeFromDisplay : _showWatchProgress MS.Entertainment.Utilities.toggleClassNameNegate;" max="100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-atomic="true">
+                </progress>
+                <span class="removeFromDisplay" data-ent-member="_ariaLabel">
+                </span>
+            </div>
+        </div>
+    </body>
+</html>

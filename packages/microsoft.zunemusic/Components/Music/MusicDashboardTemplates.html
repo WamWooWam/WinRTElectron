@@ -1,0 +1,309 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Controls/Thumbnailbutton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Components/Music/MusicSharedTemplatesControls.js"></script>
+
+    <link rel="Stylesheet" type="text/css" href="/Animations/GalleryAnimations.css">
+    <link rel="Stylesheet" type="text/css" href="/Styles/Galleries.css">
+    <link rel="Stylesheet" type="text/css" href="/Styles/InlineDetails.css">
+    <link rel="Stylesheet" type="text/css" href="/Controls/Controls.css">
+</head>
+<body>
+    
+    
+    
+    
+    
+    
+    
+
+    
+    
+
+    <div data-ent-templateid="dashboardEngagePanelButton" data-win-control="WinJS.Binding.Template">
+        <div class="actionTile" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="winControl.text: parameter.engageTitle MS.Entertainment.Formatters.formatStringOrStringId;
+                               winControl.icon: iconInfo.icon;
+                               winControl.iconPressed: iconInfo.iconPressed;
+                               winControl.adornerMode: iconInfo.adornerMode;
+                               winControl.adornerRing: iconInfo.adornerRing;
+                               winControl.isToggleButton: iconInfo.isToggleButton;
+                               winControl.className: iconInfo.className MS.Entertainment.Utilities.appendClassName;
+                               winControl.isDisabled: isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                               winControl.hideDefaultRing: iconInfo.hideDefaultRing;
+                               winControl.automationId: automationId;
+                               winControl.action: this;" data-win-options="{tabIndex: MS.Entertainment.Utilities.optionsAppTypeTabIndexHelper, overrideIconInfo: true}"></div>
+    </div>
+
+    
+    <div data-ent-templateid="musicTitleArtistTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="albumThumbnail">
+
+            <div class="cardThumbnailButton win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime;
+                        winControl.context: instance WinJS.Binding.oneTime" role="button">
+
+                <div class="imageContainer" data-ent-member="imageContainer">
+                    <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: instance WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 135, height: 135},
+                                defaultImagePath: '' }" class="imageHolder hideFromDisplay" width="135" height="135">
+                </div>
+
+                <div class="content" data-ent-member="content">
+                    <div class="textContainer" data-ent-member="textContainer">
+                        <div class="secondaryText text-metadata maxLines-two-xxSmall" data-ent-member="secondaryTextLabel" data-win-bind="
+                                    removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;
+                                    textContent: String.id.IDS_MEDIATYPE_ALBUM MS.Entertainment.Formatters.formatStringId;"></div>
+                        <div class="primaryText text-cardTitle maxLines-three-small" data-ent-member="primaryTextLabel" data-win-bind="textContent: name; removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="tertiaryText text-metadata maxLines-three-xxSmall" data-ent-member="tertiaryTextLabel" data-win-control="MS.Entertainment.Pages.ContentNotificationShortTextTileItem" data-win-options="{
+                                    allowAnimations: false,
+                                    preventHideDuringInitialize: true}" data-win-bind="winControl.contentNotifications: contentNotifications WinJS.Binding.oneTime;
+                                    winControl.alternateText: artistName WinJS.Binding.oneTime;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="recentAlbumDashboardTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dashboardGridItemContent mediatype-album">
+
+            <div class="thumbnailButton win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime;
+                        winControl.context: instance WinJS.Binding.oneTime" role="button">
+
+                <div class="imageContainer" data-ent-member="imageContainer">
+                    <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: instance WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: {width: 316, height: 316},
+                                defaultImagePath: '' }" class="imageHolder hideFromDisplay" width="316" height="316">
+                </div>
+
+                <div class="content" data-ent-member="content">
+                    <div class="textContainer" data-ent-member="textContainer">
+                        <div class="primaryText text-cardTitle maxLines-three-small" data-ent-member="primaryTextLabel" data-win-bind="
+                                    textContent: name; removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="secondaryText text-metadata maxLines-two-xxSmall" data-ent-member="secondaryTextLabel" data-win-bind="
+                                    textContent: artistName; removeFromDisplay: artistName MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="musicPlaylistTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="artistThumbnail" data-win-control="MS.Entertainment.UI.Controls.PlaylistThumbnail" data-win-bind="winControl.mediaItem: instance;
+                    winControl.primaryText: name;
+                    winControl.secondaryText: String.id.IDS_MEDIATYPE_PLAYLIST MS.Entertainment.Formatters.formatStringId;
+                    winControl.tertiaryText: count MS.Entertainment.Formatters.formatTracksOneTime;
+                    winControl.doclick: doclick;
+                    winControl.showStatusIcon: canDownload" data-win-options="MS.Entertainment.UI.Shell.musicPlaylistDashboardTemplateSettings" data-win-automationid="artistItem"></div>
+    </div>
+
+    
+    <div data-ent-templateid="recentPlaylistDashboardTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dashboardGridItemContent">
+
+            <div class="thumbnailButton win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime;
+                        winControl.context: instance WinJS.Binding.oneTime" role="button">
+
+                <div class="imageContainer" data-ent-member="imageContainer">
+                    <div class="playlistImageCollage" data-win-control="MS.Entertainment.UI.Controls.PlaylistImageCollage" data-win-options="{
+                                size: { width: 316, height: 316 },
+                                rows: 2, 
+                                columns: 2, 
+                                useDynamicLayouts: false}" data-win-bind="winControl.media: this;" data-win-automationid="playlistImageCollage"></div>
+                </div>
+
+                <div class="content">
+                    <div class="textContainer">
+                        <div class="primaryTextBg"></div>
+                        <div class="primaryText label text-cardTitle" data-win-bind="
+                                    textContent: primaryText;
+                                    removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="recentSmartDJDashboardTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="dashboardGridItemContent mediatype-smartDJ">
+
+            <div class="thumbnailButton win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime;
+                        winControl.context: instance WinJS.Binding.oneTime" role="button">
+
+                <div class="imageContainer smartDJPanelImageContainer" data-ent-member="imageContainer">
+                        <img class="imageHolder hideFromDisplay" data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageResizeUri WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: MS.Entertainment.UI.Shell.smartDjDashboardItemSize,
+                                defaultImagePath: String.empty,
+                                applyImageAsBackground: true }">
+                </div>
+
+                <div class="content" data-ent-member="content">
+                    <div class="textContainer" data-ent-member="textContainer">
+                        <div class="icon smartDJIcon smartDJPanel"></div>
+                        <div class="primaryText text-cardTitle maxLines-one" data-ent-member="primaryTextLabel" data-win-bind="textContent: name; removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="recentNowPlayingTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="homeHubNowPlayingTile win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                clickDataContext: this WinJS.Binding.oneTime; 
+                winControl.context: this WinJS.Binding.oneTime;" role="button">
+            <div class="recentPanel-NowPlaying"></div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="musicDashboardSmartDJTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="artistThumbnail">
+            <div class="cardThumbnailButton win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="
+                        clickDataContext: instance WinJS.Binding.oneTime;
+                        winControl.context: instance WinJS.Binding.oneTime" role="button">
+
+                <div class="imageContainer smartDJPanelImageContainer" data-ent-member="imageContainer">
+                    <div class="smartDJPanelImageAlign">
+                        <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: imageResizeUri WinJS.Binding.oneTime" data-ent-showanimation="fadeIn" data-win-options="{
+                                loadDelay: MS.Entertainment.UI.Controls.GalleryControl.maxItemRenderTime,
+                                hide: MS.Entertainment.Utilities.doNothing,
+                                allowAnimations: false,
+                                preventHideDuringInitialize: true,
+                                desiredImageSize: MS.Entertainment.UI.Shell.smartDjDashboardItemSize,
+                                defaultImagePath: String.empty }" class="imageHolder hideFromDisplay smartDJPanelImage">
+                    </div>
+                    <div class="icon smartDJIcon smartDJPanel"></div>
+                </div>
+
+                <div class="content smartDJPanelContent" data-ent-member="content">
+                    <div class="textContainer" data-ent-member="textContainer">
+                        <div class="secondaryText text-metadata" data-ent-member="secondaryTextLabel" data-win-bind="textContent: String.id.IDS_SMARTDJ_CARD_LABEL MS.Entertainment.Formatters.formatStringId;"></div>
+                        <div class="primaryText text-cardTitle maxLines-two-small" data-ent-member="primaryTextLabel" data-win-bind="textContent: name; removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                        <div class="tertiaryText text-metadata maxLines-three-xxSmall" data-ent-member="tertiaryTextLabel" data-win-bind="textContent: subtitle; removeFromDisplay: name MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicPanelButtonList" data-win-control="WinJS.Binding.Template">
+        <div style="display: -ms-flexbox; -ms-flex-direction: row;">
+            <div class="actionTile" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                        winControl.text: action1.text MS.Entertainment.Formatters.formatStringOrStringId;
+                        winControl.isDisabled: action1.isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                        winControl.automationId: action1.automationId;
+                        winControl.action: action1;" data-win-options="{tabIndex: MS.Entertainment.Utilities.optionsAppTypeTabIndexHelper}"></div>
+            
+            <div class="actionTile" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-bind="
+                        removeFromDisplay: action2 MS.Entertainment.Utilities.toggleClassNameNegate;
+                        winControl.text: action2.text MS.Entertainment.Formatters.formatStringOrStringId;
+                        winControl.isDisabled: action2.isEnabled MS.Entertainment.Utilities.toggleBoolean;
+                        winControl.automationId: action2.automationId;
+                        winControl.action: action2;" data-win-options="{tabIndex: MS.Entertainment.Utilities.optionsAppTypeTabIndexHelper}"></div>
+        </div>
+    </div>
+
+    
+    <div data-ent-templateid="musicGalleryTitleTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="winControl.context: instance WinJS.Binding.oneTime">
+            <div class="artistThumbnail" data-win-control="MS.Entertainment.UI.Controls.ArtistThumbnail" data-win-bind="winControl.mediaItem: instance;
+                        winControl.primaryText: title;
+                        winControl.secondaryText: String.id.IDS_MEDIATYPE_ARTIST MS.Entertainment.Formatters.formatStringId;
+                        winControl.tertiaryText: genreName;
+                        winControl.showStatusIcon: canDownload;
+                        winControl.doclick: doclick" data-win-options="{containerWidth: '295px',
+                        containerHeight: '165px',
+                        imageContainerWidth: '140px',
+                        imageContainerHeight: '140px',
+                        imageHolderWidth: '135px',
+                        imageWidth: '135px',
+                        imageHeight: '135px',
+                        contentWidth: '114px',
+                        panelConstructor: 'MS.Entertainment.Pages.MusicArtistInlineDetails',
+                        collectionPanelData: { location: MS.Entertainment.Data.ItemLocation.collection },
+                        marketplacePanelData: { location: MS.Entertainment.Data.ItemLocation.marketplace } }" data-win-automationid="artistItem"></div>
+        </div>
+    </div>
+
+    <div data-ent-templateid='artistThumbnailButtonTemplate' data-win-control="WinJS.Binding.Template">
+        <div class="cardThumbnailButton win-focusable" data-ent-member="thumbnailButton" data-ent-event="click: clicked;">
+
+            <div class="imageContainer" data-ent-member="imageContainer">
+                <div class="artistImageCollage" data-win-control="MS.Entertainment.UI.Controls.ArtistImageCollage" data-win-bind="winControl.media: mediaItem;" data-win-automationid="artistImageCollage"></div>
+            </div>
+
+            <div class="content" data-ent-member="content">
+                <div class="textContainer" data-ent-member="textContainer">
+                    <div class="secondaryText text-metadata" data-ent-member="secondaryTextLabel" data-win-bind="
+                                textContent: secondaryText; 
+                                removeFromDisplay: secondaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;
+                                removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="primaryText text-cardTitle maxLines-two-small" data-ent-member="primaryTextLabel" data-win-bind="
+                                textContent: primaryText;
+                                removeFromDisplay: primaryText MS.Entertainment.Utilities.toggleClassNameOnEmptyString;"></div>
+                    <div class="tertiaryText text-metadata maxLines-three-xxSmall" data-ent-member="tertiaryTextLabel" data-win-bind="
+                                textContent: tertiaryText;
+                                removeFromDisplay: quaternaryText MS.Entertainment.Utilities.toggleClassNameOnNonEmptyString;"></div>
+                    <div class="quaternaryText text-metadata">
+                        <div data-win-bind="textContent: quaternaryText" data-ent-member="quaternaryTextLabel"></div>
+                        <div class="icon smartGlassGem" style="-ms-grid-column: 2;" data-win-bind="removeFromDisplay: hasActivities MS.Entertainment.Utilities.toggleClassNameNegate;
+                                                textContent: MS.Entertainment.UI.Icon.smartGlassGem MS.Entertainment.Formatters.formatIcon;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div data-ent-templateid="musicHubSpotlightPanelTemplate" data-win-control="WinJS.Binding.Template">
+        <div data-win-control="MS.Entertainment.UI.Controls.NowPlayingFeaturedContent" class="featuredMusicContent dashboardHubContent" data-win-options="{ enableClickEvents: true, templates: ['/Components/Music/MusicSpotlightView1.html', '/Components/Music/MusicSpotlightView2.html'] }" data-win-bind="winControl.data: dataContext.viewModel.featuredObject" data-win-automationid="spotlightContent"></div>
+    </div>
+
+    
+    <div data-ent-templateid='playlistThumbnailButtonTemplate' data-win-control="WinJS.Binding.Template">
+        <div class="cardThumbnailButton win-focusable" data-win-control="MS.Entertainment.UI.Controls.ItemControl" data-win-bind="winControl.context: mediaItem WinJS.Binding.oneTime" data-ent-member="thumbnailButton" data-ent-event="click: clicked;">
+
+            <div class="imageContainer" data-ent-member="imageContainer">
+                <div class="playlistImageCollage" data-win-control="MS.Entertainment.UI.Controls.PlaylistImageCollage" data-win-options="{
+                            size: MS.Entertainment.Utilities.dashboardPlaylistCollageSize,
+                            rows: 2, 
+                            columns: 2, 
+                            useDynamicLayouts: false}" data-win-bind="winControl.media: mediaItem;" data-win-automationid="playlistImageCollage"></div>
+            </div>
+
+            <div class="content" data-ent-member="content">
+                <div class="textContainer" data-ent-member="textContainer">
+                    <div class="secondaryText text-metadata" data-ent-member="secondaryTextLabel" data-win-bind="textContent: secondaryText"></div>
+                    <div class="primaryText text-cardTitle maxLines-two-small" data-ent-member="primaryTextLabel" data-win-bind="textContent: primaryText"></div>
+                    <div class="tertiaryText text-metadata maxLines-three-xxSmall" data-ent-member="tertiaryTextLabel" data-win-bind="textContent: tertiaryText"></div>
+                    <div class="quaternaryText" data-ent-member="quaternaryTextLabel" data-win-bind="textContent: quaternaryText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

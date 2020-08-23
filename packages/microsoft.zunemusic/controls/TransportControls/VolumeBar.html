@@ -1,0 +1,25 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Volume Bar</title>   
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="volumeControl" class="volumeContainer win-ui-light" data-win-control="WinJS.Binding.Template">
+        <div class="volumeIcon acc-keyboardFocusTarget" data-win-control="MS.Entertainment.UI.Controls.ActionListButton" data-win-options="{
+                tabIndex: 0,
+                isToggleAction: true,
+                accessibilityStringId: String.id.IDS_TRANSPORT_CONTROLS_MUTE_LABEL }" data-win-bind="winControl.icon: iconType;
+                            winControl.action: _muteAction;" data-ent-member="muteButton">
+        </div>
+    
+        <div class="volumeRange win-focusable">
+            <input id="volValue" type="range" class="win-vertical acc-keyboardFocusTarget" data-win-bind="
+                    value: volumeValue; 
+                    label: IDS_TRANSPORT_CONTROLS_VOLUME_SLIDER_LABEL MS.Entertainment.Framework.AccUtils.setAriaAttributeFromStaticStringId;
+                    mute: _volumeControllerService.mute MS.Entertainment.Utilities.toggleClassName" data-ent-event="change: onValueChange">
+        </div>
+    </div>
+</body>
+</html>

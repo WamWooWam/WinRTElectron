@@ -1,0 +1,29 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<html>
+<head>
+    <title>Whats New Display Templates</title>
+    <script src="/Components/Shell/WhatsNewDisplay.js"></script>
+</head>
+<body>
+    <div data-ent-templateid="whatsNewItemTemplate" data-win-control="WinJS.Binding.Template">
+        <ul>
+            <li>
+                <span class="text-xSmall" data-win-bind="textContent: message">
+                </span>
+            </li>
+        </ul>
+    </div>
+
+    <div data-ent-templateid="control-whatsNewDisplay" data-win-control="WinJS.Binding.Template">
+        <div class="control-whatsNewContainer">
+            <div class="control-whatsNewTitle text-xSmall" data-win-bind="textContent: titleText;">
+            </div>
+            <div class="control-whatsNewMessages">
+                <div data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-bind="winControl.dataSource: whatsNewStrings" data-win-options="{ itemTemplate: '/Components/Shell/WhatsNewDisplay.html#whatsNewItemTemplate' }"></div>
+            </div>
+            <a tabindex="0" data-win-automationid="whatsNewFullReleaseNotesButton" data-ent-pagecontent="this" data-ent-member="_fullReleaseNotesButton" data-win-bind="textContent: String.id.IDS_WHATSNEW_POPUP_LINK MS.Entertainment.Formatters.formatStringId;" data-ent-event="click: fullNotesClicked; keydown: fullNotesClicked">
+            </a>
+        </div>
+    </div>
+</body>
+</html>

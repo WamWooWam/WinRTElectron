@@ -1,0 +1,35 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Video Collection Page Template</title>
+        <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+
+        
+        <script src="/Framework/navigation.js"></script>
+
+        
+        <script src="/Components/Shell/PrimaryNavigationButton.js"></script>
+        
+        <script src="/Framework/Data/xhr.js"></script>
+
+        <script src="/ViewModels/Video/VideoCollectionViewModel.js"></script>
+        <script src="/Components/Video/VideoCollection.js"></script>
+        <script src="/Controls/Video/ChooseDownloadQuality.js"></script>
+
+        <link rel="Stylesheet" type="text/css" href="../../styles/Galleries.css">
+    </head>
+    <body>
+        
+        <div data-ent-templateid="videoCollectionTemplate" data-win-control="WinJS.Binding.Template">
+            
+            <div class="collectionVideo collectionVideoGalleryView collectionVideoGallery" data-win-control="MS.Entertainment.UI.Controls.GalleryControl" data-ent-member="_galleryView" data-win-bind="winControl.templateSelectorConstructor: templateSelectorConstructor" data-win-options="{ tap: MS.Entertainment.UI.Controls.GalleryControl.Tap.invokeOnly,
+                                        swipeBehavior: MS.Entertainment.UI.Controls.GalleryControl.swipeBehavior.select,
+                                        selectionMode: MS.Entertainment.UI.Controls.GalleryControl.SelectionMode.single,
+                                        emptyGalleryTemplate: 'Controls/GalleryControl.html#listViewEmptyGalleryTemplate',
+                                        canInvokeForItemOverride: MS.Entertainment.Pages.VideoCollection.canInvokeForItemOverride,
+                                        focusFirstItemOnPageLoad: true }">
+            </div>
+        </div>
+    </body>
+</html>

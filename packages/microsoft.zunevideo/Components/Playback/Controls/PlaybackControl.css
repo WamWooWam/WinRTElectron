@@ -1,0 +1,30 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.playbackPipeline, .nowPlayingPlaybackControlContainer .win-template
+{
+    width: 100%;
+    height: 100%
+}
+.nowPlayingPlaybackControlContainer
+{
+    width: 100%;
+    height: 100%;
+    position: relative
+}
+.closedCaptionsContainer
+{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    direction: ltr
+}
+.videoStreamingStatisticsContainer
+{
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    left: 50px;
+    bottom: 100px;
+    direction: ltr
+}

@@ -1,0 +1,30 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <title>Sign In Control Template</title>   
+        <script src="/main_merged.js"></script><script src="/VideoCollection_merged.js"></script>
+
+        
+        <script src="/Controls/SignInControl.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="signInControlTemplate" data-win-control="WinJS.Binding.Template">
+            <button class="signIn" data-win-automationid="signIn" data-ent-event="click: onClick" data-ent-showanimation="showNotification" data-ent-hideanimation="hideNotification" type="button">
+                <div class="signInError label" data-ent-member="_signInError" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId: String.id.IDS_SIGNIN_NOTIFICATION_SIGNIN_TITLE}">
+                </div>
+                <div class="signInProgress label" data-ent-member="_signInProgress" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId: String.id.IDS_SIGNIN_PROGRESS}">
+                </div>
+                <div class="signInComplete label" data-ent-member="_signInComplete" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId: String.id.IDS_SIGNIN_COMPLETE}">
+                </div>
+                <div class="signInRetry label" data-ent-member="_signInRetry" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-options="{stringId: String.id.IDS_SIGNIN_NOTIFICATION_SIGNIN_TEXT}">
+                </div>
+                <div data-ent-member="_signInRetrySpinner" class="signInRetrySpinner">
+                </div>
+                <div class="signInRetryRing">
+                </div>
+            </button>
+        </div>
+    </body>
+</html>

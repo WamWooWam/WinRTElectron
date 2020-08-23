@@ -1,0 +1,17 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+    <title>Immersive Related</title>
+    <script src="/main_merged.js"></script>
+    <script src="/Components/Immersive/Video/CriticReviewControls.js"></script>
+</head>
+<body>
+    <div class="viewMoreScroller" data-win-control="App2.UI.ScrollViewer" data-win-options="{ scrollMode: 'list' }" data-ent-fragmentload="MS.Entertainment.UI.Framework.scrollViewerFocusHelper" role="menu">
+
+        <div class="criticReviewMore" data-win-control="MS.Entertainment.UI.Controls.RottenTomatoesImmersivePanel" data-win-options="{ dataContext: {}, isViewMore: true }" data-win-bind="winControl.dataContext.mediaItem: this.mediaItem;
+                           winControl.dataContext.criticReviews: this.fullCriticReviewList;"></div>
+    </div>
+</body>
+</html>

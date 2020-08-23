@@ -1,0 +1,25 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <link rel="stylesheet" type="text/css" href="/Controls/controls.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/animations.css">
+        <link rel="stylesheet" type="text/css" href="/Animations/ShellAnimations.css">
+        <title>Toggle Modifier Control Template</title>
+        
+        <script src="/main_merged.js"></script>
+        <script src="/Controls/ToggleModifier.js"></script>
+    </head>
+    <body>
+        <div data-ent-templateid="toggleModifierTemplate" data-win-control="WinJS.Binding.Template">
+            <div data-ent-event="click: onClicked; keydown: onKeyDown" data-ent-member="_modifierContainer" class="modifierControl acc-keyboardFocusTarget" role="tab">
+                <span style="-ms-grid-column: 1;" class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="
+                        winControl.stringId: descriptionLabel; 
+                        winControl.text: descriptionLabelText" data-ent-member="labelDescription">
+                </span>
+                <div style="-ms-grid-column: 3;" class="label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-automationid="modifierSelectedItem" data-ent-member="labelControl">
+                </div>
+            </div>
+        </div>       
+    </body>
+</html>

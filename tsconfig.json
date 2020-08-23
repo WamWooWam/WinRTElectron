@@ -1,13 +1,17 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
+    "module": "commonjs",
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "sourceMap": true,
-    "lib": [ "ES2020", "DOM", "DOM.Iterable" ],
+    "lib": [ "ES2020", "DOM" ],
     "target": "ES6",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "outDir": "./dist"
-  }
+  },
+  "include": [
+    "./index.ts"
+  ]
 }

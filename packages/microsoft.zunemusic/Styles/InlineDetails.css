@@ -1,0 +1,1522 @@
+﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+.win-listview .inlineDetailsTrackFullContainer, .win-listview .inlineDetailsGameContainer, .win-listview .inlineDetailsMusicVideoContainer, .win-listview .inlineDetailsVideoContainer, .win-listview .inlineDetailsTvContainer
+{
+    position: absolute;
+    width: calc(100% - 24px);
+    margin-left: 12px;
+    margin-right: 12px
+}
+.inlineDetailsTrackFullContainer, .inlineDetailsGameContainer, .inlineDetailsMusicVideoContainer, .inlineDetailsVideoContainer, .inlineDetailsPlaylistContainer, .inlineDetailsTvContainer
+{
+    height: 100%;
+    top: 5px
+}
+.popOver.album .bodyContainer .title, .popOver.artist .bodyContainer .title .popOver.artist .trackTitle, .popOver.artist .emptyContainer
+{
+    margin: 0 30px
+}
+.inlineDetailsTvImmersive.inlineDetailsTvContainer
+{
+    margin-left: 17px;
+    width: calc(100% - 14px)
+}
+button.win-command.inlineTrackListStatusIcon
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr;
+    height: 20px;
+    min-height: 20px;
+    width: 30px;
+    min-width: 30px;
+    margin-top: 6px
+}
+.mediaStatusIconContainer
+{
+    -ms-grid-column-align: center;
+    height: 20px;
+    min-height: 20px;
+    width: 20px;
+    min-width: 20px
+}
+.popOver.album .inlineTrackListStatusIcon, .popOver.artist .inlineTrackListStatusIcon, .popOver.playlist .inlineTrackListStatusIcon
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-row-align: start
+}
+.popOver .divider
+{
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 7px
+}
+.inlineTrackListNumber, .inlineEpisodeNumber, .immersiveInlineTrackListNumber
+{
+    -ms-grid-column: 2
+}
+.inlineTrackListName, .inlineEpisodeName, .immersiveInlineTrackListName
+{
+    -ms-grid-column: 4;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListName, .popOver.playlist .immersiveInlineTrackListName
+{
+    -ms-grid-column: 3
+}
+.immersiveInlineTrackListAlbumName
+{
+    -ms-grid-column: 4;
+    -ms-grid-row: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListAlbumName, .popOver.playlist .immersiveInlineTrackListAlbumName
+{
+    -ms-grid-column: 3
+}
+.popOver.playlist .immersiveInlineTrackListAlbumName
+{
+    -ms-grid-column-span: 2
+}
+.immersiveInlineTrackListName
+{
+    width: 100%
+}
+.immersiveInlineTrackListName, .immersiveInlineTrackListNumber
+{
+    -ms-grid-row-align: center
+}
+.inlineTrackListAlbum, .inlineEpisodeDuration
+{
+    text-align: right;
+    -ms-grid-column: 3
+}
+.inlineTrackListDurationStatus, .immersiveInlineTrackListDurationStatus
+{
+    display: -ms-grid;
+    -ms-grid-column: 6
+}
+.immersiveInlineTrackListArtistName
+{
+    -ms-grid-column: 4;
+    -ms-grid-row: 2
+}
+.popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDurationStatus, .popOver.playlist .immersiveInlineTrackListDurationStatus
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto 1fr
+}
+.popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDurationStatus div, .popOver.playlist .immersiveInlineTrackListDurationStatus div
+{
+    -ms-grid-column-align: end
+}
+.popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDurationStatus, .popOver.playlist .immersiveInlineTrackListDurationStatus
+{
+    -ms-grid-column: 5;
+    -ms-grid-row-align: start;
+    margin-top: 8px
+}
+.popOver.playlist .immersiveInlineTrackListDurationStatus
+{
+    margin-top: 9px
+}
+.popOver.album .immersiveInlineTrackListDurationStatus, .popOver.artist .immersiveInlineTrackListDurationStatus
+{
+    -ms-grid-column: 6;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center
+}
+.popOver.playlist .immersiveInlineTrackListDuration
+{
+    transform: translateY(-1px)
+}
+.popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDuration
+{
+    margin-top: 0
+}
+.invoked .inlineTrackListDurationStatus, .popOver.playlist .invoked .immersiveInlineTrackListDurationStatus, .popOver.artist .invoked .immersiveInlineTrackListDurationStatus, .popOver.album .invoked .immersiveInlineTrackListDurationStatus, .playlist .invoked .inlineTrackListStatusIcon
+{
+    display: none
+}
+.inlineTrackListItemStatus
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1
+}
+.inlineTrackListDuration, .immersiveInlineTrackListDuration
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    direction: ltr
+}
+.inlineTrackListAlbum .label, .inlineTrackListDuration .label, .inlineEpisodeDuration .label
+{
+    padding-left: 10px;
+    padding-right: 20px
+}
+.inlineDetailsTrackFullContainer .inlineDetailsTitle, .inlineDetailsMusicVideoContainer .inlineDetailsTitle, .inlineDetailsTvContainer .inlineDetailsTitle, .inlineDetailsVideoContainer .inlineDetailsTitle
+{
+    width: calc(100% - 40px);
+    margin-top: 15px;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    padding-bottom: 4px
+}
+.inlineDetailsAlbumImmersive .inlineDetailsTitle, .inlineDetailsTvImmersive .inlineDetailsTitle
+{
+    padding-right: 0;
+    padding-left: 0
+}
+.inlineDetailsTrackFullContainer .inlineDetailsTitle .label, .inlineDetailsGameContainer .inlineDetailsTitle .label, .inlineDetailsTvContainer .inlineDetailsTitle .label
+{
+    padding-bottom: 4px
+}
+.inlineDetailsTrackFullContainer .label, .inlineDetailsGameContainer .label, .inlineDetailsMusicVideoContainer .label, .inlineDetailsVideoContainer .label, .inlineDetailsTvContainer .label
+{
+    white-space: normal
+}
+.inlineDetailsScrollableArea
+{
+    overflow-y: auto;
+    overflow-x: hidden;
+    clear: left;
+    position: relative;
+    width: calc(100% + 19px);
+    height: 400px
+}
+.inlineDetailsSubHeader
+{
+    padding-top: 20px;
+    margin-bottom: 10px
+}
+.inlineDetailsPrimary
+{
+    width: 100%
+}
+.inlineDetailsTrackFullContainer .inlineDetailsPrimaryBold, .inlineDetailsGameContainer .inlineDetailsPrimaryBold, .inlineDetailsMusicVideoContainer .inlineDetailsPrimaryBold, .inlineDetailsVideoContainer .inlineDetailsPrimaryBold
+{
+    width: calc(100% - 40px);
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-top: 6px;
+    margin-bottom: 2px
+}
+.inlineDetailsGameContainer .inlineDetailsPrimaryBold
+{
+    margin: 0
+}
+.inlineDetailsGameContainer .inlineDetailsGameContent .inlineDetailsPrimary
+{
+    margin-bottom: 20px
+}
+.inlineDetailsContentRating
+{
+    float: left;
+    margin-right: 5px;
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-bottom: 2px
+}
+.inlineDetailsContentRating .label
+{
+    display: inline
+}
+.inlineDetailsSecondary
+{
+    width: auto
+}
+.inlineDetailsSecondary .label
+{
+    margin-right: 5px
+}
+.inlineDetailsInline
+{
+    white-space: normal
+}
+.inlineDetailsInline .label
+{
+    float: left;
+    font-weight: bold
+}
+.inlineDetailsTrackFullContainer .inlineDetailsOverviewActionBlock
+{
+    margin-left: 20px
+}
+.inlineDetailsOverviewActionBlock
+{
+    margin-bottom: 15px
+}
+.actionButtonWaitCursor
+{
+    position: absolute;
+    left: calc(50% - 25px)
+}
+.inlineDetailsAlbumContent, .inlineDetailsArtistContent, .inlineDetailsGameContent, .inlineDetailsMusicVideoContent, .inlineDetailsTvContent, .inlineDetailsVideoContent, .inlineDetailsSeasonContent
+{
+    width: calc(100% - 40px);
+    padding-left: 20px;
+    padding-right: 20px;
+    white-space: normal;
+    word-wrap: normal;
+    line-break: normal;
+    overflow: auto;
+    margin-bottom: 20px
+}
+.inlineDetailsPlaylistContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto 1fr
+}
+.inlineDetailsPlaylistTrackContainer
+{
+    display: -ms-grid;
+    -ms-grid-row: 2;
+    -ms-grid-rows: auto auto;
+    -ms-grid-columns: 100%
+}
+.inlineDetailsAlbumImmersive .inlineDetailsAlbumContent, .inlineDetailsTvImmersive .inlineDetailsSeasonContent
+{
+    width: calc(100% - 5px);
+    padding-right: 0;
+    padding-left: 0
+}
+.inlineDetailsFullDescription
+{
+    margin: 0;
+    text-align: left;
+    width: 100%;
+    white-space: normal;
+    word-wrap: normal;
+    line-break: normal
+}
+.inlineDetailsTvImmersive .inlineDetailsFullDescription
+{
+    width: calc(100% - 20px)
+}
+.inlineDetailsVideoContent .inlineDetailsFullDescription
+{
+    margin-top: 15px
+}
+.inlineDetailsOverviewActionButtonAlbum, .inlineDetailsOverviewActionButtonArtist, .inlineDetailsOverviewActionButtonGame, .inlineDetailsOverviewActionButtonEpisode, .inlineDetailsOverviewActionButtonMusicVideo, .inlineDetailsOverviewActionButtonVideo, .inlineDetailsOverviewActionButtonTv, .inlineDetailsOverviewActionButtonTrack, .downloadVideoActionButton
+{
+    float: left;
+    width: calc(50% - 2px);
+    height: 50px;
+    margin: 0 2px 2px 0;
+    padding-left: 20px;
+    text-align: left;
+    border: 0 solid;
+    cursor: pointer
+}
+.inlineDetailsOverviewActionButtonAlbum, .inlineDetailsOverviewActionButtonArtist, .inlineDetailsOverviewActionButtonTrack, .inlineDetailsTvImmersive .inlineDetailsOverviewActionButtonEpisode, .downloadVideoActionButton
+{
+    width: calc((100% / 2) - 10px)
+}
+.inlineDetailsAlbumImmersive .inlineDetailsOverviewActionButtonAlbum, .inlineDetailsTvImmersive .inlineDetailsOverviewActionButtonTv
+{
+    width: calc(100% - 20px)
+}
+.inlineDetailsOverviewWideActionButton
+{
+    float: left;
+    width: 390px;
+    height: 30px;
+    padding: 10px 10px 10px 10px;
+    margin: 20px 0 0 0;
+    text-align: left;
+    font-weight: bold
+}
+.rightAlign
+{
+    text-align: right;
+    float: right;
+    margin-right: 10px
+}
+.leftAlign
+{
+    text-align: left;
+    float: left;
+    margin-left: 10px
+}
+.inlineDetailsItemSelected
+{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 100
+}
+.inlineDetailsPanelFragmentLoadingProgress
+{
+    position: relative;
+    top: calc(50% - 5pt);
+    width: 100%;
+    text-align: center
+}
+.inlineDetailsTvEpisode
+{
+    display: -ms-grid;
+    -ms-grid-columns: 30px auto 10px 1fr 10px auto 50px;
+    -ms-grid-rows: 1fr;
+    padding-top: 5px
+}
+.downloadDetailsVideo
+{
+    display: -ms-grid;
+    -ms-grid-columns: 80px 10px 1fr auto;
+    -ms-grid-rows: 25px 20px 20px 2px 3px;
+    padding-top: 5px;
+    padding-bottom: 5px
+}
+.downloadDetailsVideo .imageContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 5;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.downloadDetailsVideo .downloadDetailsVideoTitle
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 1
+}
+.downloadDetailsVideo .downloadDetailsVideoDescription
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 2
+}
+.downloadDetailsVideo .downloadDetailsVideoButtons
+{
+    -ms-grid-column: 4;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 4;
+    -ms-grid-column-align: end
+}
+.downloadDetailsVideo .downloadDetailsVideoStatus
+{
+    -ms-grid-column: 4;
+    -ms-grid-row: 2;
+    -ms-grid-column-align: end
+}
+.downloadDetailsVideo .downloadDetailsVideoError
+{
+    -ms-grid-column: 3;
+    -ms-grid-row: 3;
+    -ms-grid-column-span: 3
+}
+.downloadDetailsVideo .progressBar
+{
+    width: 100%;
+    height: 2px;
+    -ms-grid-column: 3;
+    -ms-grid-row: 5;
+    -ms-grid-column-span: 3
+}
+.invoked .downloadDetailsVideoStatus
+{
+    display: none
+}
+.popOver .inlineDetailsTvEpisodeDuration
+{
+    margin-top: 7px;
+    -ms-grid-column-align: end
+}
+.popOver .inlineDetailsEpisodeList .mediaStatusIconContainer
+{
+    -ms-grid-column-align: end
+}
+.inlineDetailsMusicTrack
+{
+    display: -ms-grid;
+    -ms-grid-columns: 30px auto 10px 1fr 10px auto 10px 30px;
+    -ms-grid-rows: 30px 30px;
+    padding-top: 10px
+}
+.invoked .inlineDetailsMusicTrack
+{
+    -ms-grid-columns: 30px auto 10px 1fr 10px auto 10px 15px
+}
+.immersiveInlineTrackListNumber
+{
+    max-width: 43px;
+    min-width: 21px
+}
+.popOver.album .inlineDetailsMusicTrack
+{
+    -ms-grid-rows: 27px 30px
+}
+.popOver.artist .popOverPrimaryList.tracks .inlineDetailsMusicTrack, .popOver.playlist .inlineDetailsMusicTrack
+{
+    height: 65px;
+    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 39px;
+    -ms-grid-rows: 28px 1fr
+}
+.popOver.artist .popOverPrimaryList.tracks .invoked .inlineDetailsMusicTrack
+{
+    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 25px
+}
+.popOver.playlist .invoked .inlineDetailsMusicTrack
+{
+    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 15px
+}
+.inlineDetailsMusicTrack .label
+{
+    white-space: nowrap
+}
+.popOver .inlineDetailsMusicTrack .label.win-label
+{
+    display: block
+}
+.musicInlineDetailsTopSongs.inlineDetailsMusicTrack .immersiveInlineTrackListName, .musicInlineDetailsTopSongs.inlineDetailsMusicTrack .immersiveInlineTrackListAlbumName
+{
+    -ms-grid-column: 2;
+    -ms-grid-column-span: 3
+}
+.musicInlineDetailsTopSongs.inlineDetailsMusicTrack .immersiveInlineTrackListDurationStatus
+{
+    padding-top: 8px
+}
+.inlineDetailsMusicTrack .inCollectionIcon
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 6;
+    -ms-grid-column-align: end
+}
+.popOver.playlist .inlineDetailsMusicTrack .inCollectionIcon
+{
+    display: none
+}
+.popOver.artist .popOverPrimaryList.tracks .inlineDetailsMusicTrack .inCollectionIcon
+{
+    -ms-grid-column: 5;
+    margin-top: 0
+}
+.invoked .inlineDetailsMusicTrack .inCollectionIcon, .collectionTracks .inCollectionIcon, .collectionAlbums .inCollectionIcon, .marketplaceTracks .cloudStatusIcon, .marketplaceAlbums .cloudStatusIcon
+{
+    display: none
+}
+.inlineDetailsMusicTrack .popOverCloudStateIcon
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 6;
+    -ms-grid-column-align: end;
+    margin-right: 2px
+}
+html[dir=rtl] .inlineDetailsMusicTrack .popOverCloudStateIcon
+{
+    margin-right: 0;
+    margin-left: 2px
+}
+.popOver.artist .popOverPrimaryList.tracks .inlineDetailsMusicTrack .popOverCloudStateIcon
+{
+    margin-top: 6px
+}
+.popOver.playlist .inlineDetailsMusicTrack .popOverCloudStateIcon
+{
+    margin-top: 4px
+}
+.invoked .inlineDetailsMusicTrack .popOverCloudStateIcon
+{
+    display: none
+}
+.inlineDetailsMusicTrack .inPlaceDetailsItemActions
+{
+    display: none
+}
+.invoked .inlineDetailsMusicTrack .inPlaceDetailsItemActions
+{
+    display: -ms-flexbox;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 5;
+    margin-top: -5px
+}
+.popOver.playlist .invoked .inlineDetailsMusicTrack .inPlaceDetailsItemActions
+{
+    -ms-grid-column-span: 1;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: start
+}
+html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command, .inPlaceDetailsItemActions button.iconButton.win-command
+{
+    margin: 0
+}
+.popOver .iconButtonHost
+{
+    min-height: 50px
+}
+.popOver .actions button.iconButton.win-command .win-label
+{
+    max-width: 172px
+}
+.inPlaceDetailsItemActions .iconButtonHost
+{
+    max-height: none
+}
+.reorderTrackButtonContainer
+{
+    display: none
+}
+.invoked .reorderTrackButtonContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 20px 1fr 20px;
+    height: 46px;
+    width: 30px
+}
+.inlineDetailsMoveTrackUpButton, .inlineDetailsMoveTrackDownButton
+{
+    -ms-grid-column-align: center
+}
+.inlineDetailsMoveTrackUpButton, .inlineDetailsMoveTrackDownButton, .inlineDetailsMoveTrackUpButton .iconButton, .inlineDetailsMoveTrackDownButton .iconButton, .inlineDetailsMoveTrackUpButton .win-commandicon, .inlineDetailsMoveTrackDownButton .win-commandicon, .inlineDetailsMoveTrackUpButton .win-commandimage, .inlineDetailsMoveTrackDownButton .win-commandimage
+{
+    min-height: 20px;
+    height: 20px;
+    min-width: 20px;
+    width: 20px
+}
+.inlineDetailsMoveTrackUpButton
+{
+    -ms-grid-row: 1
+}
+.inlineDetailsMoveTrackDownButton
+{
+    -ms-grid-row: 3
+}
+.invoked .reorderTrackButtonContainer button.win-command:focus
+{
+    outline-width: 2px
+}
+.reorderTrackButtonContainer .win-commandring, .reorderTrackButtonContainer .iconButton:hover .win-commandring, .reorderTrackButtonContainer .iconButton:disabled .win-commandring, .reorderTrackButtonContainer .iconButton:disabled:active .win-commandring
+{
+    border-width: 0;
+    background-color: transparent
+}
+.reorderTrackButtonContainer button.win-command.iconButton
+{
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.inlineDetailsMoveTrackUpButton .win-commandicon, .inlineDetailsMoveTrackDownButton .win-commandicon
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1
+}
+.inlineDetailsTvEpisodeTitle, .downloadDetailsVideoDescription, .downloadDetailsVideoError, .downloadDetailsVideoTitle
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: 15px
+}
+html[dir=rtl] .inlineDetailsTvEpisodeTitle, html[dir=rtl] .downloadDetailsVideoDescription, html[dir=rtl] .downloadDetailsVideoError, html[dir=rtl] .downloadDetailsVideoTitle
+{
+    padding-right: 0;
+    padding-left: 15px
+}
+.downloadDetailsEpisodeList .win-listview, .downloadDetailsEpisodeList .win-surface, .inlineDetailsEpisodeList .win-listview, .inlineDetailsEpisodeList .win-surface, .popOverList .win-listview
+{
+    margin: 10px 0 0 0;
+    width: 100%;
+    padding: 0 0 5px 0;
+    position: relative;
+    overflow: hidden
+}
+.inlineDetailsEpisodeList .win-listview, .inlineDetailsEpisodeList .win-surface, .popOverList .win-listview
+{
+    height: 100%
+}
+.popOverList .win-surface
+{
+    margin: 10px 0 0 0;
+    height: auto;
+    width: 100%;
+    padding: 0 0 5px 0;
+    position: relative;
+    overflow: hidden
+}
+.downloadDetailsEpisodeList .win-listview, .popOver .inlineDetailsEpisodeList .win-listview, .popOver .popOverList .win-listview, .popOver .popOverList .win-surface
+{
+    margin: 0
+}
+.popOver .inlineDetailsEpisodeList .win-surface, .downloadDetailsEpisodeList .win-surface
+{
+    margin-top: 2px;
+    margin-bottom: 2px
+}
+.popOver .win-listview .win-container:hover, .popOver .win-listview .win-container.invoked, .popOver .win-listview .win-container.invoked:hover, .popOver .win-listview .win-container.win-selected, .popOver .win-listview .win-container.win-selected:hover
+{
+    outline-style: solid;
+    outline-width: 4px
+}
+.popOver .win-listview>.win-vertical .win-container
+{
+    margin: 4px
+}
+.popOver.playlist .win-surface>.win-container
+{
+    margin: 0;
+    padding-left: 0;
+    padding-right: 31px
+}
+.popOver.playlist .noPlaylists
+{
+    display: -ms-grid;
+    -ms-grid-rows: 8px auto 18px auto 12px;
+    -ms-grid-columns: 1fr
+}
+.popOver.playlist .inlineDetailsHidden
+{
+    display: none
+}
+html[dir=rtl] .popOver.playlist .win-surface>.win-container
+{
+    padding-left: 31px;
+    padding-right: 0
+}
+.downloadDetailsEpisodeList .win-item, .inlineDetailsEpisodeList .win-item
+{
+    margin: 0;
+    width: 100%;
+    height: 50px
+}
+.inlineDetailsTVGallery .win-listview, .inlineDetailsTVGallery .win-template, .inlineDetailsAlbumsGallery .win-listview, .inlineDetailsAlbumsGallery .win-template
+{
+    height: 100%;
+    width: 100%
+}
+.inlineDetailsTVGallery, .inlineDetailsAlbumsGallery
+{
+    margin-left: 30px;
+    height: 80vh
+}
+.inlineDetailsTVGallery .win-item
+{
+    margin: 0 10px 10px 0;
+    width: 215px;
+    height: 215px
+}
+.inPlaceDetailsItem
+{
+    height: 100px;
+    width: 420px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr auto;
+    -ms-grid-rows: 30px 1fr
+}
+.musicPage .inPlaceDetailsItem, .collectionVideoGallery .inPlaceDetailsItem
+{
+    width: 100%;
+    height: 85px;
+    -ms-grid-rows: 40px 1fr
+}
+.inPlaceDetailsItemName
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1
+}
+.musicPage .win-vertical .inPlaceDetailsItemName, .collectionVideoGallery .inPlaceDetailsItemName
+{
+    margin-top: 15px;
+    padding-right: 10px
+}
+.inPlaceDetailsItemDurationStatus
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    display: -ms-grid
+}
+.musicPage .win-vertical .inPlaceDetailsItemDurationStatus, .collectionVideoGallery .inPlaceDetailsItemDurationStatus
+{
+    margin-top: 15px
+}
+.inPlaceDetailsItemStatus
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 1
+}
+.inPlaceDetailsItemDuration
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 2
+}
+.inPlaceDetailsHorizontalRule
+{
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2;
+    border-top: 1px solid
+}
+.inPlaceDetailsItemInfo
+{
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 2
+}
+.inPlaceDetailsItemActions
+{
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 2;
+    clear: left
+}
+.inPlaceDetailsItemActions>div .win-template
+{
+    -ms-flex: 1 auto
+}
+.inPlaceDetailsItemActionButton
+{
+    float: left;
+    width: 208px;
+    height: 50px;
+    padding: 10px;
+    margin: 1px;
+    text-align: left;
+    border: 0 solid;
+    cursor: pointer;
+    white-space: normal
+}
+.musicPage .win-vertical .inPlaceDetailsItemActionButton, .collectionVideoGallery .inPlaceDetailsItemActionButton
+{
+    width: calc(50% - 1px);
+    margin-top: 0;
+    margin-right: 1px;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-left: 15px
+}
+.inlineDetailsExtrasList .win-listview, .inlineDetailsExtrasList .win-surface
+{
+    width: 100%;
+    margin: 0;
+    height: auto;
+    padding: 0;
+    position: relative;
+    overflow: visible
+}
+.inlineDetailsExtrasList .win-item
+{
+    margin: 0;
+    padding-bottom: 10px;
+    width: 100%;
+    height: 50px
+}
+.inlineDetailsGameExtra
+{
+    height: 100%;
+    width: 100%;
+    padding-top: 10px
+}
+.inlineDetailsGameExtraMetadataLine
+{
+    clear: left;
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden
+}
+.inlineDetailsGameExtraTitle
+{
+    position: relative;
+    left: 4px;
+    height: 50px
+}
+.inlineStreamingStatusArea
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: auto 1fr;
+    padding-bottom: 10px
+}
+.inlineStreamingText
+{
+    -ms-grid-row: 1;
+    -ms-grid-column: 2
+}
+.gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
+{
+    width: calc(100% - 35px);
+    height: calc(100% - 30px);
+    top: 5px;
+    left: 15px;
+    margin-left: 0
+}
+.gameInlineDetailsPanelFragmentContainer.panelFragmentContainer.panelFragmentLoading, .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer.panelFragmentLoading, .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer.panelFragmentLoading, .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer.panelFragmentLoading
+{
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0
+}
+.contentNotificationListWrapper
+{
+    margin-left: -5px
+}
+.contentNotificationListWrapper .label
+{
+    margin-left: 12px
+}
+.popOver
+{
+    display: -ms-grid;
+    width: 730px;
+    height: 530px;
+    -ms-grid-columns: 255px 475px;
+    -ms-grid-rows: 1fr
+}
+@media screen and (min-height: 1080px)
+{
+    .dashboardPanel.socialMiniProfile .popOver.friend
+    {
+        height: 675px
+    }
+}
+.popOver.tv
+{
+    overflow: hidden
+}
+.popOver .leftColumn
+{
+    display: -ms-grid;
+    -ms-grid-columns: 20px 1fr 20px;
+    -ms-grid-rows: 20px auto 4px 1fr auto 20px
+}
+.popOver .rightColumn
+{
+    display: -ms-grid;
+    -ms-grid-columns: 30px 1fr 50px;
+    -ms-grid-column: 2;
+    -ms-grid-rows: 20px auto auto 16px 1fr 22px
+}
+.popOver .rightColumnBackground
+{
+    -ms-grid-column: 2
+}
+.popOver.friend .rightColumn
+{
+    -ms-grid-columns: 25px 1fr 50px;
+    -ms-grid-rows: 20px auto auto 16px 1fr 20px
+}
+.popOver.playlist .rightColumn
+{
+    -ms-grid-rows: 20px auto auto auto 10px 1fr 22px
+}
+.popOver.album .rightColumn
+{
+    -ms-grid-rows: 20px auto 10px auto auto auto 12px 1fr 30px
+}
+.popOver.artist .rightColumn
+{
+    -ms-grid-rows: 20px auto 10px auto auto auto 10px auto 0 1fr 30px
+}
+.popOver .actions
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 4;
+    overflow-x: visible;
+    overflow-y: auto;
+    -ms-grid-column-span: 2;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr 20px;
+    -ms-grid-row-span: 2;
+    margin: 0 -2px
+}
+.musicSubscriptionLink
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 5
+}
+.musicSubscriptionLink>button
+{
+    width: 100%
+}
+.musicSubscriptionLink .actionLinkLabel
+{
+    width: 100%
+}
+html[dir=ltr] .musicSubscriptionLink .actionLinkLabel
+{
+    text-align: left
+}
+html[dir=rtl] .musicSubscriptionLink .actionLinkLabel
+{
+    text-align: right
+}
+.popOverContainer .overlayContent>div
+{
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 1fr
+}
+.popOver .titleContainer
+{
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    margin: 0 2px
+}
+.popOver.game .titleContainer
+{
+    -ms-grid-row-span: 2
+}
+.popOver .titleContainer .secondaryText
+{
+    margin: 4px 0
+}
+.popOver .popOverPage .titleContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 0 354px;
+    -ms-grid-rows: 1fr
+}
+.popOver .popOverSecondPage .titleContainer, .popOver .episodeTitleContainer
+{
+    display: -ms-grid;
+    -ms-grid-columns: 46px 354px;
+    -ms-grid-rows: 1fr
+}
+.popOver .popOverPage:not(.popOverSecondPage) .popOverBackButton
+{
+    display: none
+}
+.popOver .popOverPage .popOverBackButton, .popOver .episodeTitleContainer .episodeBackButton
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1
+}
+.popOver .popOverPage .popOverBackButton button.iconButton.win-command, .popOver .episodeTitleContainer .episodeBackButton button.iconButton.win-command
+{
+    -ms-grid-rows: 0 1fr 0
+}
+.popOver .popOverPage .titleContainer .metadata1, .popOver .episodeTitleContainer .metadata1
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1
+}
+.popOver .popOverPage .titleContainer .metadata2, .popOver .episodeTitleContainer .metadata2
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 2
+}
+.popOver .popOverPage .titleContainer .metadata3, .popOver .episodeTitleContainer .metadata3
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 3
+}
+.popOver .popOverPage .titleContainer .metadata4, .popOver .episodeTitleContainer .metadata4
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 4
+}
+.popOver .bodyContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 5;
+    -ms-grid-column-span: 2;
+    padding-right: 50px;
+    padding-left: 2px;
+    overflow-y: auto
+}
+html[dir=rtl] .popOver .bodyContainer
+{
+    padding-right: 0
+}
+html[dir=rtl] .popOver.game .bodyContainer, html[dir=rtl] .popOver.movie .bodyContainer
+{
+    padding-left: 50px
+}
+.popOver.tv .bodyContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3
+}
+html[dir=rtl] .popOver.tv .bodyContainer
+{
+    padding: 0
+}
+.popOver.tv .bodyContainer>div:not(.title)
+{
+    margin-left: 30px;
+    margin-right: 50px
+}
+html[dir=rtl] .popOver.tv .bodyContainer>div:not(.title)
+{
+    margin-left: 50px;
+    margin-right: 30px
+}
+.popOver.album .bodyContainer, .popOver.artist .bodyContainer
+{
+    position: relative;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    padding: 0
+}
+html[dir=rtl] .popOver.friend .bodyContainer
+{
+    padding-left: 50px
+}
+.popOver .bodyContainer .win-listview
+{
+    height: 100%
+}
+.popOver.artist .bodyContainer, .popOver.album .bodyContainer, .popOver.playlist .bodyContainer
+{
+    overflow: hidden
+}
+.popOver.album .bodyContainer
+{
+    -ms-grid-row: 8;
+    -ms-grid-column: 1
+}
+.popOver.artist .bodyContainer
+{
+    -ms-grid-row: 10;
+    -ms-grid-column: 1
+}
+.popOver.artist .bodyContainer>div:not(.listLoadingContainer), .popOver.playlist .bodyContainer>div, .popOver.album .bodyContainer>div:not(.listLoadingContainer)
+{
+    position: relative;
+    height: 100%
+}
+.popOver.playlist .bodyContainer
+{
+    -ms-grid-row: 6;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 3;
+    padding-right: 0
+}
+html[dir=rtl] .popOver.playlist .bodyContainer
+{
+    padding-left: 0
+}
+.popOver.artist .contentNotifications
+{
+    min-height: 19px
+}
+.popOver.artist .contentNotifications, .popOver.album .contentNotifications
+{
+    -ms-grid-row: 4;
+    -ms-grid-column: 2
+}
+.popOver.artist .collectionFilter, .popOver.album .collectionFilter, .popOver.playlist .collectionFilter
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: auto 4px 1fr;
+    -ms-grid-row: 5;
+    -ms-grid-column: 2
+}
+.popOver .collectionFilterText
+{
+    -ms-grid-column: 1;
+    -ms-grid-row-align: center
+}
+.popOver .collectionFilterLink
+{
+    -ms-grid-column: 3;
+    -ms-grid-row-align: center;
+    padding-top: 3px
+}
+.collectionFilterLink>button, .collectionFilterLink .actionLinkLabel
+{
+    width: 100%
+}
+html[dir=ltr] .collectionFilterLink .actionLinkLabel
+{
+    text-align: left
+}
+html[dir=rtl] .collectionFilterLink .actionLinkLabel
+{
+    text-align: right
+}
+.popOver.artist .inlineStreamingStatusArea, .popOver.album .inlineStreamingStatusArea
+{
+    -ms-grid-row: 6;
+    -ms-grid-column: 2
+}
+.popOver.artist .listContainerTitle
+{
+    -ms-grid-row: 8;
+    -ms-grid-column: 2
+}
+.popOver .trackContainer
+{
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 30px 1fr;
+    -ms-grid-rows: 100%
+}
+.popOver.artist .popOverList, .popOver.album .popOverList
+{
+    height: 100%
+}
+.popOverList .verticalListItem.artistTopSongsAlbum .verticalListCell2nd, .popOverList .verticalListItem.artistTopSongsAlbum .verticalListCell3rd
+{
+    display: none
+}
+.popOver.playlist .trackContainer
+{
+    margin-left: -2px
+}
+html[dir=rtl] .popOver.playlist .trackContainer
+{
+    margin-left: 0;
+    margin-right: -2px
+}
+.popOver.playlist .popOverList
+{
+    height: 100%;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 1
+}
+.popOver .bodyContainer .win-listview>.win-vertical.win-viewport
+{
+    overflow-y: visible
+}
+.popOver .imageContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    width: 215px;
+    height: 294px
+}
+.popOver .imageContainer>div, .popOver .imageContainer>img
+{
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2)
+}
+.popOver .imageContainer>img, .movieDownload .imageContainer>img, .episodeDownload .imageContainer>img
+{
+    width: 100%;
+    height: 100%;
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center
+}
+.movieDownload .imageContainer>img, .episodeDownload .imageContainer>img
+{
+    max-height: 80px;
+    max-width: 80px
+}
+.popOver .leftColumn button.iconButton.iconImage.win-command .imageContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2;
+    -ms-grid-row-span: 3
+}
+.popOver .imageContainer>img.tall, .movieDownload .imageContainer img.tall
+{
+    width: auto
+}
+.popOver .imageContainer>img.wide, .episodeDownload .imageContainer img.wide
+{
+    height: auto
+}
+.popOver .modernExtraTitleHeader
+{
+    display: -ms-grid;
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 100px fr
+}
+.popOver .modernExtraImageContainer
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    overflow: hidden;
+    width: 100px;
+    height: 100px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2)
+}
+.popOver .modernExtraTitleContainer
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    margin-left: 10px
+}
+.popOver.artist .imageContainer, .popOver.album .imageContainer, .popOver.tv .imageContainer, .popOver.playlist .imageContainer, .popOver.activity .imageContainer
+{
+    height: 215px
+}
+.popOver.game.gameExtra .imageContainer
+{
+    height: auto
+}
+.popOver .artistImageCollage
+{
+    height: 215px;
+    width: 215px
+}
+.popOver .imageContainer .popOverImage
+{
+    -ms-grid-column-align: center
+}
+.popOver .playlistImageCollage, .popOver .playlistImageCollage .visualizationLayer
+{
+    height: 215px;
+    width: 215px
+}
+.popOver .playlistImageCollage
+{
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2;
+    -ms-grid-row-span: 3
+}
+.popOver .iconImageCollage .win-commandicon
+{
+    position: relative
+}
+.popOver .bodyContainer .bodyContainerFirstChild
+{
+    border-top: 0
+}
+.popOver .titleContainer .title
+{
+    margin-top: -8px;
+    margin-bottom: 5px;
+    white-space: normal
+}
+.popOver .titleContainer .subTitle
+{
+    margin-top: -1px
+}
+.popOver.tv .bodyContainer .title
+{
+    -ms-grid-column-span: 3
+}
+.popOver .bodyContainer .bodyContent, .popOver .subTitle
+{
+    white-space: normal;
+    word-wrap: normal;
+    line-break: normal
+}
+.companion .popOver.activity .bodyContainer .subTitle
+{
+    margin-bottom: 27px
+}
+html[dir=rtl] .popOver .bodyContainer .bodyContent.editorialContent
+{
+    direction: ltr;
+    margin-left: 10px
+}
+.popOver.artist .bodyContainer .bodyContent
+{
+    width: calc(100% - 60px);
+    margin-left: 30px;
+    margin-right: 30px
+}
+.popOver.movie .bodyContainer .bodyContent
+{
+    margin-top: 20px
+}
+.popOver.tv .bodyContainer .bodyContent
+{
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+.popOver.tv .bodyContainer .showMoreLink, .popOver.movie .bodyContainer .showMoreLink
+{
+    margin-top: 0;
+    margin-bottom: 15px
+}
+.popOver.tv .modifierControl
+{
+    margin-top: 5px;
+    margin-bottom: 15px
+}
+.popOver.game .bodyContainer .bodyContent
+{
+    margin-top: 10px
+}
+.popOver.movie .rentalExpirationNotification
+{
+    margin-bottom: 20px
+}
+.popOver .bodyContainer .title
+{
+    padding-top: 20px;
+    padding-bottom: 22px
+}
+.popOver.tv .bodyContainer .title
+{
+    padding-top: 0;
+    padding-bottom: 0
+}
+.popOver.friend .bodyContainer .title
+{
+    clear: both;
+    padding-bottom: 5px
+}
+.popOver.friend .bodyContainer .title, .popOver.friend .bodyContainer .bodyContent
+{
+    margin-right: 5px
+}
+.popOver.friend .bodyContainer .bodyContent
+{
+    margin-bottom: 15px
+}
+.popOver.friend .bodyContainer .bodyContent.profileBioText
+{
+    margin-bottom: 0
+}
+.popOver.friend .bodyContent.newUserProfileText
+{
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-right: 0;
+    margin-left: 0
+}
+.popOver.friend .bodyContainer .bodyContent.incomingFriendRequest
+{
+    margin-bottom: 10px;
+    margin-top: 8px
+}
+.popOver.playlist .bodyContainer .title
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    padding: 0
+}
+.popOver.playlist .collectionFilter
+{
+    -ms-grid-column: 2;
+    -ms-grid-row: 3
+}
+.popOver.playlist .browseLinks .browseLinksFirstChild
+{
+    margin-bottom: 10px
+}
+.iconActionButton
+{
+    height: 30px;
+    padding-left: 20px
+}
+.popOver .win-flipview .win-item
+{
+    width: 100%;
+    height: 100%
+}
+.popOver .popoverSlideshow .win-flipview {
+    overflow: hidden;
+    height: 220px
+}
+.companion .popoverSlideshow
+{
+    margin-bottom: 20px
+}
+.popOver .win-item
+{
+    width: 380px;
+    height: 33px
+}
+.popOver .invoked .inlineDetailsMusicTrack, .popOver .popOverList .win-item
+{
+    width: 100%;
+    height: 80px
+}
+.downloadDetailsVideoDescription, .downloadDetailsVideoError
+{
+    margin-top: 2px
+}
+.popOver .inlineDetailsTvEpisodeDate
+{
+    margin-top: 3px
+}
+.popOver .inlineDetailsEpisodeList .win-item, .downloadDetailsEpisodeList .win-item
+{
+    height: 80px
+}
+.popOver .bodyContainer .actionButtonsListControl, .popOver .bodyContainer [data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"], .popOver .bodyContainer [data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl"], .inPlaceDetailsItemActions [data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"], .inPlaceDetailsItemActions [data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl"]
+{
+    -ms-flex-direction: row
+}
+.popOverContentContainer
+{
+    display: -ms-grid;
+    width: 100%;
+    height: 100%
+}
+.popOverContentContainer .loadingContainer
+{
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr
+}
+.popOverContentContainer .loadingContainer.removeFromDisplay
+{
+    display: none
+}
+.popOverContentContainer .loadingContainer progress
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.popOverContentContainer .bodyContainer .listLoadingContainer
+{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%
+}
+.popOverContentContainer .listLoadingContainer progress
+{
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+.inlineDetailsHidden, .popOver .rightColumn.inlineDetailsHidden
+{
+    display: none
+}
+.popOver .verticalBox button.iconButton, .popOver .verticalBox button:hover.iconButton, .popOver .verticalBox button:hover:active.iconButton, .popOver .verticalBox button:hover:focus.iconButton, .popOver .verticalBox button:hover:focus:active.iconButton, .popOver .verticalBox button:focus:active.iconButton
+{
+    box-sizing: border-box;
+    border-style: solid;
+    border-width: 2px;
+    border-color: transparent;
+    outline-color: transparent
+}
+.showKeyboardFocus .popOver .verticalBox button:focus.iconButton
+{
+    border-style: solid;
+    border-width: 2px;
+    outline-color: transparent;
+    border-color: #000
+}
+@media screen and (-ms-high-contrast)
+{
+    .inlineDetailsMoveTrackUpButton .win-commandicon, .inlineDetailsMoveTrackDownButton .win-commandicon, .inlineDetailsMoveTrackUpButton button.iconButton[disabled] .win-commandicon, .inlineDetailsMoveTrackDownButton[disabled] .win-commandicon
+    {
+        width: 25px;
+        height: 25px
+    }
+    .reorderTrackButtonContainer .win-commandring, .reorderTrackButtonContainer .iconButton:hover .win-commandring, .reorderTrackButtonContainer .iconButton:disabled .win-commandring, .reorderTrackButtonContainer .iconButton:disabled:active .win-commandring
+    {
+        border-width: 2px;
+        background-color: none
+    }
+    .showKeyboardFocus .popOver .verticalBox button:focus.iconButton
+    {
+        outline-color: transparent;
+        border-color: ButtonText
+    }
+    .showKeyboardFocus .userMessageDetails button.win-command.iconButton:focus .win-commandring
+    {
+        border-color: Highlight
+    }
+    .popOver .rightColumn
+    {
+        -ms-grid-columns: 30px 1fr 48px 2px
+    }
+    .popOver.album .bodyContainer, .popOver.artist .bodyContainer, .popOver.playlist .bodyContainer, .popOver.tv .bodyContainer
+    {
+        -ms-grid-column-span: 4
+    }
+}

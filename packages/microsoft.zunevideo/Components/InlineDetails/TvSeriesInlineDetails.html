@@ -1,0 +1,210 @@
+﻿<!-- Copyright (C) Microsoft Corporation. All rights reserved. -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>tvSeriess Inline Details</title>
+    
+    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/group_2_merged.js"></script>
+    <script src="/Animations/animations.js"></script>
+    <script src="/Controls/Thumbnailbutton.js"></script>
+    <script src="/Controls/MediaItemThumbnail.js"></script>
+    <script src="/Controls/GalleryThumbnail.js"></script>
+    <script src="/Components/Video/PurchaseVideo.js"></script>
+    <script src="/Components/Marketplace.js"></script>
+    <script src="/Components/InlineDetails/BaseInlineDetails.js"></script>
+    <script src="/Components/InlineDetails/TvSeriesInlineDetails.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../Controls/Controls.css">
+    <link rel="stylesheet" type="text/css" href="../../styles/InlineDetails.css">
+</head>
+<body>
+
+    <div data-ent-templateid="tvInlineDetailsEpisode" data-win-control="WinJS.Binding.Template" data-win-automationid="tvInlineDetailsEpisode">
+        <div class="inlineDetailsTvEpisode">
+            <div class="inlineEpisodeNumber" data-win-bind="textContent: episodeNumber MS.Entertainment.Formatters.formatTrackNumber" style="-ms-grid-column: 1; -ms-grid-row: 1"></div>
+            <div class="inlineEpisodeName label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: name" style="-ms-grid-column: 3; -ms-grid-row: 1"></div>
+            <div class="inlineEpisodeDuration label" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: duration MS.Entertainment.Formatters.formatTrackDuration" style="-ms-grid-column: 5; -ms-grid-row: 1"></div>
+        </div>
+    </div>
+    
+    
+    
+    <div data-ent-templateid="tvSeriesInlineDetailsTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvSeriesInlineDetailsTemplate">
+        
+        <div class="popOverContentContainer">
+
+            
+            <div class="loadingContainer hideFromDisplay" data-ent-member="loadingContainer" data-ent-hideanimation="inlineDetailsFadeOut">
+                <progress class="win-ring win-medium"></progress>
+            </div>
+
+            <div class="popOver tv hideFromDisplay" data-ent-member="fragmentContainer">
+
+                
+                <div class="rightColumnBackground"></div>
+
+                
+                <div class="rightColumn hideFromDisplay" data-ent-member="_episodeContent" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage">
+
+                    <div class="actions" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: smartBuyStateEngine.currentButtons" data-win-options="{defaultButtonClass: 'iconActionButton'}" data-ent-member="_actionButtons">
+                    </div>
+
+                    <div class="titleContainer episodeTitleContainer" data-win-bind="episodeTitleContainer: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+
+                        <div class="episodeBackButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: WinJS.UI.AppBarIcon.back, accessibilityStringId: String.id.IDS_ACC_BACK_BUTTON}" data-ent-event="click: _onBackFromEpisodeClickCallback" data-win-bind="removeFromDisplay: showBackButton MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        </div>
+
+                        <div class="episodeTitle">
+
+                            <div class="episodeNumber label text-episodeTitle" data-win-bind="textContent: episode.formattedEpisodeNumber MS.Entertainment.Formatters.formatAddPeriod; 
+                                                       removeFromDisplay: episode.episodeNumber MS.Entertainment.Utilities.toggleClassNameOnNonPositiveNumber;
+                                                       inlineDetailsPrimaryBold: episode.libraryId MS.Entertainment.Utilities.toggleClassNameOnNonNegativeNumber"></div>
+
+                            <div class="title metadata1 label text-episodeTitle" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: media.name;
+                                                metadata1: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                            </div>
+
+                        </div>
+
+                        <div class="metadata3" data-win-bind="metadata3: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                            <div class="subTitle label text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: episodeDetailString;">
+                            </div>
+                        
+                            <div class="icon inlineGlyph label closedCaptionSymbol" data-win-bind="textContent: MS.Entertainment.UI.Icon.closedCaption MS.Entertainment.Formatters.formatIcon;
+                                               removeFromDisplay: media.hasCaptions MS.Entertainment.Utilities.toggleClassNameNegate;">
+                            </div>
+                        </div>
+
+                        <div class="subTitle metadata4 label text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: episode.providerNameList;
+                                            metadata4: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                        </div>
+                        <div class="watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-bind="winControl.viewModel: media;">
+                        </div>
+
+                        <div class="contentNotificationList" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: media.contentNotifications;">
+                        </div>
+                    </div>
+
+                    <div class="bodyContainer">
+                        <div class="bodyContent label text-bodyContent bodyContainerFirstChild" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: description; removeFromDisplay: description MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{wrap: true}">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <div class="panelFragmentLoading panelFragmentContainer tvInlineDetailsPanelFragmentContainer hideFromDisplay" data-ent-member="failedControl">
+            </div>
+
+        </div>
+
+    </div>
+
+
+    
+    
+    
+    <div data-ent-templateid="tvSeriesInlineDetailsFullScreenTemplate" data-win-control="WinJS.Binding.Template" data-win-automationid="tvSeriesInlineDetailsTemplate">
+        
+        <div class="popOverContentContainer">
+
+            
+            <div class="loadingContainer hideFromDisplay" data-ent-member="loadingContainer" data-ent-hideanimation="inlineDetailsFadeOut">
+                <progress class="win-ring win-medium"></progress>
+            </div>
+
+            <div class="popOver tv hideFromDisplay" data-ent-member="fragmentContainer">
+                <div class="leftColumn" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage">
+                    <div class="imageContainer" data-win-bind="removeFromDisplay: series MS.Entertainment.Utilities.toggleClassNameNegate">
+                        <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: series.instance WinJS.Binding.oneTime" data-win-options="{
+                                    show: MS.Entertainment.Utilities.showElementNoAnimation,
+                                    hide: MS.Entertainment.Utilities.doNothing,
+                                    allowAnimations: false,
+                                    desiredImageSize: MS.Entertainment.Utilities.tvHeroSize,
+                                    defaultImagePath: ''}" class="imageHolder hideFromDisplay" width="475" height="475">
+                    </div>
+
+                    <div class="imageContainer" data-win-bind="removeFromDisplay: series MS.Entertainment.Utilities.toggleClassName">
+                        <img data-win-control="MS.Entertainment.UI.Shell.ImageControl" data-win-bind="winControl.target: media.instance WinJS.Binding.oneTime" data-win-options="{
+                                    allowAnimations: true,
+                                    desiredImageSize: MS.Entertainment.Utilities.tvHeroSize,
+                                    defaultImagePath: ''}" class="imageHolder hideFromDisplay" width="475" height="475">
+                    </div>
+
+                    <div class="actions" data-ent-member="_actionButtons" data-win-control="MS.Entertainment.UI.Controls.FocusHandlingItemsControl" data-win-bind="winControl.dataSource: smartBuyStateEngine.currentButtons;" data-win-options="{
+                            selectTemplate: MS.Entertainment.ViewModels.SmartBuyButtons.smartBuyButtonTemplateSelector
+                    }"></div>
+                </div>
+
+                
+                <div class="rightColumnBackground"></div>
+
+                
+                <div class="rightColumn hideFromDisplay enterPageOffset2" data-ent-member="_episodeContent" data-ent-showanimation="enterPage" data-ent-hideanimation="exitPage">
+
+                    <div class="titleContainer episodeTitleContainer" data-win-bind="episodeTitleContainer: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+
+                        <div class="episodeBackButton" data-win-control="MS.Entertainment.UI.Controls.IconButton" data-win-options="{icon: WinJS.UI.AppBarIcon.back, accessibilityStringId: String.id.IDS_ACC_BACK_BUTTON}" data-ent-event="click: _onBackFromEpisodeClickCallback" data-win-bind="removeFromDisplay: showBackButton MS.Entertainment.Utilities.toggleClassNameNegate;">
+                        </div>
+
+                        <div class="title metadata1 label text-popoverTitle maxLines-three-medium" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: media.name;
+                                            metadata1: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                        </div>
+
+                        <div class="subTitle metadata2 label text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: seasonNumberEpisodeNumberString;
+                                            metadata2: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                        </div>
+
+                        <div class="metadata3" data-win-bind="metadata3: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                            <div class="subTitle subTitle_episodeDetailString label text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: episodeDetailString;">
+                            </div>
+
+                            <span class="icon subtitleSymbol icon-subtitle" data-win-bind="textContent: MS.Entertainment.UI.Icon.subtitle MS.Entertainment.Formatters.formatIcon;
+                                               removeFromDisplay: media.hasSubtitles MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-automationid="subtitlesIcon">
+                            </span>
+
+                            <span class="icon closedCaptionSymbol icon-closedcaption" data-win-bind="textContent: MS.Entertainment.UI.Icon.closedCaption MS.Entertainment.Formatters.formatIcon;
+                                               removeFromDisplay: media.hasCaptions MS.Entertainment.Utilities.toggleClassNameNegate;">
+                            </span>
+                        </div>
+
+                        <div class="subTitle metadata4 label text-metadata" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: episode.providerNameList;
+                                            metadata4: showBackButton MS.Entertainment.Utilities.toggleClassName;">
+                        </div>
+                    </div>
+                
+                    <div class="bodyContainer">
+
+                        <div class="contentNotificationList bodyContainerFirstChild" data-win-control="MS.Entertainment.Pages.ContentNotificationList" data-win-bind="winControl.source: media.contentNotifications;">
+                        </div>
+
+                        <div class="watchProgress" data-win-control="MS.Entertainment.UI.Controls.Video.WatchProgress" data-win-bind="winControl.viewModel: media;">
+                        </div>
+
+                        <div class="bodyContent bodyContent_description label text-bodyContent" data-win-control="MS.Entertainment.UI.Controls.Label" data-win-bind="winControl.text: description; removeFromDisplay: description MS.Entertainment.Utilities.toggleClassNameNegate" data-win-options="{wrap: true}">
+                        </div>
+
+                        <span class="bodyContent icon subtitleSymbol icon-subtitle" data-win-bind="
+                                textContent: MS.Entertainment.UI.Icon.subtitle MS.Entertainment.Formatters.formatIcon;
+                                removeFromDisplay: media.hasSubtitles MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-automationid="subtitlesListIcon">
+                        </span>
+
+                        <span class="bodyContent text-bodyContent content-subtitles" data-win-bind="
+                                textContent: media.formattedSubtitles;
+                                removeFromDisplay: media.hasSubtitles MS.Entertainment.Utilities.toggleClassNameNegate;" data-win-automationid="subtitlesList">
+                        </span>
+
+                    </div>
+                </div>
+
+            </div>
+
+            
+            <div class="panelFragmentLoading panelFragmentContainer tvInlineDetailsPanelFragmentContainer hideFromDisplay" data-ent-member="failedControl">
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
