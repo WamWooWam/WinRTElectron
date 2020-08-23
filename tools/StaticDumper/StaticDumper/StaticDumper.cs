@@ -14,14 +14,6 @@ using Windows.Foundation.Metadata;
 using Windows.UI;
 using Windows.UI.Xaml;
 
-namespace Windows.Foundation
-{
-    interface IClosable
-    {
-        void Close();
-    }
-}
-
 namespace StaticDumper
 {
     class Dumper
@@ -492,7 +484,7 @@ namespace StaticDumper
 
         private void WriteInterfaceList(Type type)
         {
-            var interfaces = type.GetInterfaces().Where(iface => !iface.Name.StartsWith("__")).Select(iface => GetTypeScriptTypeName(iface, true)).Where(n => !n.StartsWith("/*")).ToArray();
+            var interfaces = type.GetInterfaces().Select(iface => GetTypeScriptTypeName(iface, true)).Where(n => !n.StartsWith("/*")).ToArray();
             if (interfaces.Any())
             {
                 str.Write(type.IsInterface ? "extends " : "implements ");

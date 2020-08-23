@@ -140,6 +140,7 @@
     <Content Include="Microsoft.Entertainment.Instrumentation.Providers.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Microsoft.Xbox.dll" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -173,7 +174,7 @@
   <ItemGroup>
     <Reference Include="LibWrap, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Electron\winjs-electron\packages\microsoft.skypeapp\raw\LibWrap.winmd</HintPath>
+      <HintPath>..\..\..\packages\microsoft.skypeapp\raw\LibWrap.winmd</HintPath>
     </Reference>
     <Reference Include="Microsoft, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -181,9 +182,6 @@
     </Reference>
     <Reference Include="Microsoft.Entertainment">
       <HintPath>..\..\WindowsCommunicationApps\microsoft.zunemusic\raw\Microsoft.Entertainment.winmd</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Xbox">
-      <HintPath>..\..\Electron\winjs-electron\packages\zeptolabuklimited.cuttherope\raw\Microsoft.Xbox.winmd</HintPath>
     </Reference>
     <Reference Include="WindowsLive, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\Electron\winjs-electron\packages\microsoft.windowsphotos\raw\WindowsLive.winmd</HintPath>
