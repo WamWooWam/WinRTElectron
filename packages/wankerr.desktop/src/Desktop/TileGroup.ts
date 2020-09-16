@@ -1,6 +1,5 @@
 import { Tile, TileSize } from "./Tile";
 
-
 export class TileGroup {
 
     private startTilesElement: HTMLDivElement;

@@ -5,11 +5,16 @@
     "experimentalDecorators": true,
     "noImplicitAny": false,
     "sourceMap": true,
-    "lib": [ "ES2020", "DOM" ],
+    "lib": [
+      "ES2020",
+      "DOM"
+    ],
     "target": "ES6",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "jsx": "react",
+    "jsxFactory": "jsx"
   },
   "include": [
     "./index.ts"

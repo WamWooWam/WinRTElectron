@@ -1,5 +1,4 @@
 import { Application, ApplicationVisualElements, ApplicationDefaultTile, ForegroundText, ApplicationSplashScreen } from "./Application";
-import { IpcMainEvent, App } from "electron";
 import { ResourceLoader, ApplicationModel } from "winrt-node/Windows";
 
 const { remote } = require('electron')

@@ -8,6 +8,8 @@
     "target": "ES6",
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    "jsx": "react",
+    "jsxFactory": "jsx"
   }
 }

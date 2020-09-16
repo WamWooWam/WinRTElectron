@@ -5,10 +5,11 @@
   "license": "MIT",
   "dependencies": {
     "deep-rename-keys": "^0.2.1",
+    "jsx-no-react": "https://github.com/WamWooWam/jsx-no-react",
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "electron": "^9.1.0",
+    "electron": "^10.1.2",
     "electron-packager": "^15.0.0",
     "typescript": "^3.9.2"
   },

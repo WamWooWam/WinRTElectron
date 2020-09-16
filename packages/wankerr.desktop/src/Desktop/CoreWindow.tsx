@@ -5,14 +5,13 @@ import { WebviewTag, IpcMessageEvent, WillNavigateEvent, shell } from "electron"
 import { MessageDialogHandler } from "./MessageDialogImpl";
 import { SettingsPaneHandler } from "./SettingsPane";
 import { IpcHandler } from "./IpcHandler";
+import { CharmsBar } from "./CharmsBar";
+import { Package } from "./Package";
+import jsx from "jsx-no-react";
 
-
-import $d from "../dom-tools"
 import * as _ from "lodash"
 import "./core-window.css"
 import "./splash-screen.css"
-import { CharmsBar } from "./CharmsBar";
-import { Package } from "./Package";
 
 export class CoreWindow {
     static getForegroundWindow() {
@@ -94,18 +93,16 @@ export class CoreWindow {
         ]
 
         this._splash = createSplashElement(app);
-        this._titleBarElement = <HTMLDivElement>$d("<div>")
-            .addClass("core-window-titlebar")
-            .append([
-                $d("<div>").addClass("core-window-icon-container")
-                    .css("background", this._app.visualElements.backgroundColor)
-                    .append([
-                        $d("<img>").addClass("core-window-icon").attr("src", app.visualElements.square30x30Logo)
-                    ]),
-                $d("<div>").addClass("core-window-title").text(app.visualElements.displayName),
-                $d("<button>").addClass("core-window-minimise"),
-                $d("<button>").addClass("core-window-close").click(this.onCloseButtonClicked, false),
-            ]).element;
+        this._titleBarElement =
+            <div classList="core-window-titlebar">
+                <div classList="core-window-icon-container" style={{ background: this._app.visualElements.backgroundColor }}>
+                    <img classList="core-window-icon" src={app.visualElements.square30x30Logo} />
+                </div>
+
+                <div classList="core-window-title" innerText={app.visualElements.displayName} />
+                <button className="core-window-minimise" />
+                <button className="core-window-close" onclick={this.onCloseButtonClicked} />
+            </div>
 
         this._rootElement.appendChild(this._frame);
         this._rootElement.appendChild(this._splash);
@@ -247,7 +244,7 @@ export class CoreWindow {
         if (CoreWindow.rootElement)
             return;
 
-        CoreWindow.rootElement = <HTMLElement>document.getElementsByClassName("core-window-container")[0];
+        CoreWindow.rootElement = document.getElementsByClassName("core-window-container")[0] as HTMLElement;
         CoreWindow.mainWindowMap = new Map<string, CoreWindow>();
         CoreWindow.windowSet = [];
     }

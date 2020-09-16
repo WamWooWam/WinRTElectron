@@ -124,7 +124,8 @@ app.whenReady().then(() => {
     webPreferences: {
       nodeIntegration: true,
       webviewTag: true,
-      webSecurity: false // fuck you.
+      webSecurity: false, // fuck you.
+      enableRemoteModule: true,
     },
     autoHideMenuBar: true,
   });

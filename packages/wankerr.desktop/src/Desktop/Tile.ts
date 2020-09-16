@@ -164,9 +164,9 @@ export class Tile {
                 return s;
             })
 
-            fetch(url, { mode: "cors" }).then((resp) => {
-                console.log(resp);
-            })
+            fetch(url)
+                .then((resp) => resp.text())
+                .then((text) => console.log(text));
         }
     }
 
