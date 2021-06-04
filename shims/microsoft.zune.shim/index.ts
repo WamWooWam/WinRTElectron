@@ -5,6 +5,7 @@
 // </auto-generated>
 // --------------------------------------------------
 
+import "winrt"
 import { ApplicationLifetimeManager as Microsoft_Entertainment_ApplicationLifetimeManager } from "./Microsoft/Entertainment/ApplicationLifetimeManager";
 import { ApplicationState as Microsoft_Entertainment_ApplicationState } from "./Microsoft/Entertainment/ApplicationState";
 import { ClosedCaptionDownloader as Microsoft_Entertainment_ClosedCaptionDownloader } from "./Microsoft/Entertainment/ClosedCaptionDownloader";

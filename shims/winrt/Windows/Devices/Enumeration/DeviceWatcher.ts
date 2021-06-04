@@ -42,7 +42,7 @@ export class DeviceWatcher {
         info.name = device.label;
         info.isEnabled = true;
 
-        InvokeEvent(this.#added, "added", info);
+        InvokeEvent(this.__added, "added", info);
     }
 
     private hasDeviceClass(deviceClass: DeviceClass): boolean {
@@ -53,52 +53,52 @@ export class DeviceWatcher {
         console.warn('DeviceWatcher#stop not implemented')
     }
 
-    #added: Set<TypedEventHandler<DeviceWatcher, DeviceInformation>> = new Set();
+    __added: Set<TypedEventHandler<DeviceWatcher, DeviceInformation>> = new Set();
     @Enumerable(true)
     set onadded(handler: TypedEventHandler<DeviceWatcher, DeviceInformation>) {
-        this.#added.add(handler);
+        this.__added.add(handler);
     }
 
-    #enumerationCompleted: Set<TypedEventHandler<DeviceWatcher, any>> = new Set();
+    __enumerationCompleted: Set<TypedEventHandler<DeviceWatcher, any>> = new Set();
     @Enumerable(true)
     set onenumerationcompleted(handler: TypedEventHandler<DeviceWatcher, any>) {
-        this.#enumerationCompleted.add(handler);
+        this.__enumerationCompleted.add(handler);
     }
 
-    #removed: Set<TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>> = new Set();
+    __removed: Set<TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>> = new Set();
     @Enumerable(true)
     set onremoved(handler: TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>) {
-        this.#removed.add(handler);
+        this.__removed.add(handler);
     }
 
-    #stopped: Set<TypedEventHandler<DeviceWatcher, any>> = new Set();
+    __stopped: Set<TypedEventHandler<DeviceWatcher, any>> = new Set();
     @Enumerable(true)
     set onstopped(handler: TypedEventHandler<DeviceWatcher, any>) {
-        this.#stopped.add(handler);
+        this.__stopped.add(handler);
     }
 
-    #updated: Set<TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>> = new Set();
+    __updated: Set<TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>> = new Set();
     @Enumerable(true)
     set onupdated(handler: TypedEventHandler<DeviceWatcher, DeviceInformationUpdate>) {
-        this.#updated.add(handler);
+        this.__updated.add(handler);
     }
 
     addEventListener(name: string, handler: any) {
         switch (name) {
             case 'added':
-                this.#added.add(handler);
+                this.__added.add(handler);
                 break;
             case 'enumerationcompleted':
-                this.#enumerationCompleted.add(handler);
+                this.__enumerationCompleted.add(handler);
                 break;
             case 'removed':
-                this.#removed.add(handler);
+                this.__removed.add(handler);
                 break;
             case 'stopped':
-                this.#stopped.add(handler);
+                this.__stopped.add(handler);
                 break;
             case 'updated':
-                this.#updated.add(handler);
+                this.__updated.add(handler);
                 break;
         }
     }
@@ -106,19 +106,19 @@ export class DeviceWatcher {
     removeEventListener(name: string, handler: any) {
         switch (name) {
             case 'added':
-                this.#added.delete(handler);
+                this.__added.delete(handler);
                 break;
             case 'enumerationcompleted':
-                this.#enumerationCompleted.delete(handler);
+                this.__enumerationCompleted.delete(handler);
                 break;
             case 'removed':
-                this.#removed.delete(handler);
+                this.__removed.delete(handler);
                 break;
             case 'stopped':
-                this.#stopped.delete(handler);
+                this.__stopped.delete(handler);
                 break;
             case 'updated':
-                this.#updated.delete(handler);
+                this.__updated.delete(handler);
                 break;
         }
     }

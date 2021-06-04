@@ -1,8 +1,9 @@
+const webpack = require("webpack")
 const path = require('path');
 
 module.exports = {
     entry: './index.ts',
-    mode: 'production',
+    mode: 'development',
     devtool: 'inline-source-map',
     module: {
         rules: [
@@ -20,5 +21,11 @@ module.exports = {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
+    plugins: [
+        new webpack.DllReferencePlugin({
+            context: path.dirname(require.resolve("winrt")),
+            manifest: require("winrt/dist/manifest.winrt.json")
+        }),
+    ],
     target: "electron-renderer"
 };
