@@ -1,0 +1,3 @@
+[submodule "tools/tswinrt"]
+	path = tools/tswinrt
+	url = https://github.com/WamWooWam/tswinrt
