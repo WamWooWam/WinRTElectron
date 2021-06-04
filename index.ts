@@ -96,8 +96,11 @@ function appxUriHandler(request: any, callback: any) {
 
   // ensure the package actually exists
   if (!fs.existsSync(packagePath)) {
-    console.warn(`notfound ms-appx://${packageName} -> package doesn't exist`)
-    return callback({ error: E_NOTFOUND });
+    packagePath = path.join(dirName, "shims", packageName);
+    if (!fs.existsSync(packagePath)) {
+      console.warn(`notfound ms-appx://${packageName} -> package doesn't exist`)
+      return callback({ error: E_NOTFOUND });
+    }
   }
 
   let filePath = path.normalize(path.join(packagePath, pathName));
@@ -138,6 +141,7 @@ function appxUriHandler(request: any, callback: any) {
 }
 
 app.allowRendererProcessReuse = true;
+app.commandLine.appendSwitch('disable-site-isolation-trials')
 app.commandLine.appendSwitch('enable-experimental-web-platform-features')
 
 const filePath = path.join(app.getPath('appData'), "app-launch-flags.txt")
@@ -184,5 +188,5 @@ app.whenReady().then(() => {
     }
   });
 
-  win.loadURL("ms-appx://wankerr.desktop/index.html")
+  win.loadURL("ms-appx://wankerr.desktop1/index.html")
 });

@@ -10,7 +10,7 @@
         "windows": {
           "runtimeExecutable": "${workspaceFolder}/node_modules/.bin/electron.cmd"
         },
-        "args" : [".", "winstore/Windows.Store"],
+        "args" : ["."],
         "outputCapture": "std"
       }
     ]
