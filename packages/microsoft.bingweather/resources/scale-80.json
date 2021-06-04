@@ -1,0 +1,11 @@
+{
+  "Files": {
+    "images": {
+      "largelogo.png": "images\\largelogo.scale-80.png",
+      "logo.png": "images\\logo.scale-80.png",
+      "smalllogo.png": "images\\smalllogo.scale-80.png",
+      "tinylogo.png": "images\\tinylogo.scale-80.png",
+      "widelogo.png": "images\\widelogo.scale-80.png"
+    }
+  }
+}

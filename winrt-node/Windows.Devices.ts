@@ -1,4 +1,4 @@
-import { EventTarget } from "./Windows.Foundation";
+import { EventTarget, IAsyncOperation } from "./Windows.Foundation";
 
 export namespace Devices {
     export namespace Input {
@@ -126,6 +126,73 @@ export namespace Devices {
 
             static createWatcher(type: DeviceClass) {
                 return new DeviceWatcher(type);
+            }
+        }
+    }
+
+    export namespace Geolocation {
+        export interface Geoposition {
+
+        }
+
+        export interface PositionAccuracy {
+
+        }
+
+        export interface BasicGeoposition {
+
+        }
+
+        export interface PositionStatus {
+            
+        }
+        
+        export enum GeolocationAccessStatus {
+            unspecified,
+            allowed,
+            denied,
+        }
+        export class Geolocator {
+            reportInterval: number;
+            movementThreshold: number;
+            desiredAccuracy: PositionAccuracy;
+            locationStatus: PositionStatus;
+            desiredAccuracyInMeters: number | null;
+            static defaultGeoposition: BasicGeoposition | null;
+            static isDefaultGeopositionRecommended: Boolean;
+
+            getGeopositionAsync(): IAsyncOperation<Geoposition> {
+                throw new Error('shimmed function Geolocator.getGeopositionAsync');
+            }
+
+            getGeopositionAsync_1(maximumAge: number, timeout: number): IAsyncOperation<Geoposition> {
+                throw new Error('shimmed function Geolocator.getGeopositionAsync_1');
+            }
+
+            allowFallbackToConsentlessPositions(): void {
+                console.warn('shimmed function Geolocator.allowFallbackToConsentlessPositions');
+            }
+
+            static requestAccessAsync(): IAsyncOperation<GeolocationAccessStatus> {
+                throw new Error('shimmed function Geolocator.requestAccessAsync');
+            }
+
+            static getGeopositionHistoryAsync(startTime: Date): IAsyncOperation<Geoposition[]> {
+                throw new Error('shimmed function Geolocator.getGeopositionHistoryAsync');
+            }
+
+            static getGeopositionHistoryAsync_1(startTime: Date, duration: number): IAsyncOperation<Geoposition[]> {
+                throw new Error('shimmed function Geolocator.getGeopositionHistoryAsync_1');
+            }
+
+            addEventListener(name: string, handler: Function) {
+                console.warn(`Geolocator::addEventListener: ${name}`);
+                switch (name) {
+                    case "positionchanged": // Foundation.TypedEventHandler<Geolocator,PositionChangedEventArgs>
+                    case "statuschanged": // Foundation.TypedEventHandler<Geolocator,StatusChangedEventArgs>
+                        break;
+                }
+
             }
         }
     }

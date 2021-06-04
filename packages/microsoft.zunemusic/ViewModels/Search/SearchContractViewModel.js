@@ -133,14 +133,14 @@ scriptValidator();
                                                             }
                                                         typeName = MS.Entertainment.Utilities.getMediaTypeName(mediaType, videoType, item.itemPlatformType)
                                                     }
-                                                    var tag = item.name + ",:::" + item.serviceId + ",:::" + mediaType;
+                                                    var tag = item.text + ",:::" + item.serviceId + ",:::" + mediaType;
                                                     if (item.itemPlatformType)
                                                         tag = tag + ",:::" + item.itemPlatformType;
                                                     var addSuggestion = function addSuggestion() {
                                                             var imageSource;
                                                             var imageUri;
                                                             if (querySuggestion)
-                                                                suggestionRequest.searchSuggestionCollection.appendQuerySuggestion(item.name);
+                                                                suggestionRequest.searchSuggestionCollection.appendQuerySuggestion(item.text);
                                                             else {
                                                                 if (!imageUrl || imageUrl < 0)
                                                                     imageUrl = "file://images/squareLoading." + MS.Entertainment.Utilities.getPackageImageFileExtension();
@@ -152,7 +152,7 @@ scriptValidator();
                                                                     imageUri = new Windows.Foundation.Uri(imageUrl)
                                                                 }
                                                                 imageSource = Windows.Storage.Streams.RandomAccessStreamReference.createFromUri(imageUri);
-                                                                suggestionRequest.searchSuggestionCollection.appendResultSuggestion(item.name, typeName, tag, imageSource, String.empty)
+                                                                suggestionRequest.searchSuggestionCollection.appendResultSuggestion(item.text, typeName, tag, imageSource, String.empty)
                                                             }
                                                             suggestionsToProvide--;
                                                             if (suggestionsToProvide === 0)
@@ -206,7 +206,7 @@ scriptValidator();
                             item = MS.Entertainment.Data.augment(item, augmenter);
                             if (item)
                                 MS.Entertainment.Platform.PlaybackHelpers.showImmersiveDetails(item, true, false);
-                            MS.Entertainment.Utilities.Telemetry.logSearchWordWheelEnter(item.name, mediaType, item.videoType);
+                            MS.Entertainment.Utilities.Telemetry.logSearchWordWheelEnter(item.text, mediaType, item.videoType);
                             return
                         }
                         if (mediaType === Microsoft.Entertainment.Queries.ObjectType.album || mediaType === Microsoft.Entertainment.Queries.ObjectType.track) {
@@ -226,7 +226,7 @@ scriptValidator();
                                 MS.Entertainment.ViewModels.SearchContractViewModel._navigateToSearchPage(options)
                             })
                         }
-                        MS.Entertainment.Utilities.Telemetry.logSearchWordWheelEnter(item.name, mediaType, item.videoType)
+                        MS.Entertainment.Utilities.Telemetry.logSearchWordWheelEnter(item.text, mediaType, item.videoType)
                     }
                 }, searchVisibilityChanged: function searchVisibilityChanged(e) {
                     if (e.visible) {

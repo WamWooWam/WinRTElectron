@@ -16,12 +16,12 @@
           , f = WinJS.UI.executeAnimation([i], r("opacity: 1", "opacity: 0"));
         return WinJS.Promise.join([u, f])
     }
-    var t = window.People
-      , u = t.Accounts
-      , i = Microsoft.WindowsLive.Platform
-      , n = u.ConnectedAccounts = function(n, i, r, u) {
+    var People = window.People
+      , Accounts = People.Accounts
+      , Platform = Microsoft.WindowsLive.Platform
+      , ConnectedAccounts = Accounts.ConnectedAccounts = function(n, i, r, u) {
         this._scenario = n;
-        this._jobSet = i ? i.createChild() : (new t.Scheduler).getJobSet();
+        this._jobSet = i ? i.createChild() : (new People.Scheduler).getJobSet();
         this._disabled = u ? u : false;
         this._ellipsisShowing = false;
         this._displayOnTwoLines = r ? r : false;
@@ -37,13 +37,13 @@
         this._animating = false;
         this._pendingChanges = false;
         this._populatedUI = false;
-        this._onAccountUpdated = this._jobSet.addUIJob.bind(this._jobSet, this, this._crossFadeChanges, null, t.Priority.propertyUpdate);
+        this._onAccountUpdated = this._jobSet.addUIJob.bind(this._jobSet, this, this._crossFadeChanges, null, People.Priority.propertyUpdate);
         this.initComponent();
         $include("$(cssResources)/" + Jx.getAppNameFromId(Jx.appId) + "ConnectedAccounts.css")
     }
     ;
-    Jx.inherit(n, Jx.Component);
-    Object.defineProperty(n.prototype, "disabled", {
+    Jx.inherit(ConnectedAccounts, Jx.Component);
+    Object.defineProperty(ConnectedAccounts.prototype, "disabled", {
         get: function() {
             return this._disabled
         },
@@ -51,24 +51,24 @@
             this._disabled !== n && this._updateDisabledState(n)
         }
     });
-    n.prototype.setPlatform = function(n) {
+    ConnectedAccounts.prototype.setPlatform = function(n) {
         this._platform = n
     }
     ;
-    n.prototype.getElement = function() {
+    ConnectedAccounts.prototype.getElement = function() {
         return this._control
     }
     ;
-    n.prototype.isPopulated = function() {
+    ConnectedAccounts.prototype.isPopulated = function() {
         return this._populatedUI
     }
     ;
-    n.prototype.getUI = function(n) {
+    ConnectedAccounts.prototype.getUI = function(n) {
         var t = this._displayOnTwoLines ? " displayOnTwoLines" : "";
         n.html = "<div id='" + this._id + "' class='connectedAccounts' role='link'><div class='connectedAccounts-label connectedAccounts-inlineBlock connectedAccounts-bottomAligned typeSizeSmall " + t + "'><\/div><div class='connectedAccounts-inlineBlock connectedAccounts-bottomAligned " + t + "'><div class='connectedAccounts-canvasContainer' ><div class='connectedAccounts-canvas'><div class='connectedAccounts-accounts connectedAccounts-inlineBlock'><\/div><div class='connectedAccounts-ellipsis connectedAccounts-inlineBlock connectedAccounts-bottomAligned' style='display: none'>...<\/div><\/div><\/div><\/div><\/div>"
     }
     ;
-    n.prototype._updateDisabledState = function(n) {
+    ConnectedAccounts.prototype._updateDisabledState = function(n) {
         this._disabled = n;
         var t = this._control;
         Jx.setClass(t, "disabled", n);
@@ -76,14 +76,14 @@
         t.tabIndex = n ? -1 : 0
     }
     ;
-    n.prototype._setCanvasElements = function(n) {
+    ConnectedAccounts.prototype._setCanvasElements = function(n) {
         this._canvas = n;
         this._accounts = n.querySelector(".connectedAccounts-accounts");
         this._accounts.innerHTML = "";
         this._ellipsis = n.querySelector(".connectedAccounts-ellipsis")
     }
     ;
-    n.prototype.activateUI = function() {
+    ConnectedAccounts.prototype.activateUI = function() {
         var i = this._control = document.getElementById(this._id), n;
         this._updateDisabledState(this._disabled);
         n = document.createElement("div");
@@ -91,13 +91,13 @@
         this._accountTemplate = n.firstChild;
         this._setCanvasElements(i.querySelector(".connectedAccounts-canvas"));
         this._canvasParent = this._canvas.parentNode;
-        this._jobSet.addUIJob(this, this._query, null, t.Priority.connectedAccounts);
+        this._jobSet.addUIJob(this, this._query, null, People.Priority.connectedAccounts);
         Jx.Component.prototype.activateUI.call(this)
     }
     ;
-    n.prototype._query = function() {
-        var r = this._platform.accountManager.getConnectedAccountsByScenario(this._scenario, i.ConnectedFilter.normal, i.AccountSort.rank), n;
-        this._deferredCollection = new t.DeferredCollection(r,this);
+    ConnectedAccounts.prototype._query = function() {
+        var r = this._platform.accountManager.getConnectedAccountsByScenario(this._scenario, Platform.ConnectedFilter.normal, Platform.AccountSort.rank), n;
+        this._deferredCollection = new People.DeferredCollection(r,this);
         n = this._control;
         n.querySelector(".connectedAccounts-label").innerText = Jx.res.loadCompoundString("/accountsStrings/connectedAccounts-label");
         n.addEventListener("click", this._onClickHandler = this._onClick.bind(this), false);
@@ -105,19 +105,19 @@
         this._populateUI()
     }
     ;
-    n.prototype._disposeAssets = function() {
+    ConnectedAccounts.prototype._disposeAssets = function() {
         this._assets.forEach(Jx.dispose);
         this._assets = []
     }
     ;
-    n.prototype._populateUI = function() {
+    ConnectedAccounts.prototype._populateUI = function() {
         var u = [], i, f, r;
         for (this._disposeAssets(),
         i = 0,
-        f = Math.min(n.maxCount, this._deferredCollection.length); i < f; i++)
+        f = Math.min(ConnectedAccounts.maxCount, this._deferredCollection.length); i < f; i++)
             if (r = this._deferredCollection.getItem(i),
             !Jx.isNullOrUndefined(r)) {
-                var e = new t.PlatformObjectBinder(r)
+                var e = new People.PlatformObjectBinder(r)
                   , o = e.createAccessor(this._onAccountUpdated)
                   , s = this._createNewAccountElement(o);
                 this._assets.push(e);
@@ -125,42 +125,42 @@
                 u.push(o.displayName)
             }
         var h = u.join(", ")
-          , c = this._deferredCollection.length > n.maxCount ? "/accountsStrings/connectedAccounts-ariaLabelMoreAccounts" : "/accountsStrings/connectedAccounts-ariaLabel"
+          , c = this._deferredCollection.length > ConnectedAccounts.maxCount ? "/accountsStrings/connectedAccounts-ariaLabelMoreAccounts" : "/accountsStrings/connectedAccounts-ariaLabel"
           , l = Jx.res.loadCompoundString(c, h);
         this._control.setAttribute("aria-label", l);
         this._populatedUI = true;
         this._setEllipsis()
     }
     ;
-    n.prototype._shouldEllipsisShow = function() {
-        return this._deferredCollection.length > n.maxCount
+    ConnectedAccounts.prototype._shouldEllipsisShow = function() {
+        return this._deferredCollection.length > ConnectedAccounts.maxCount
     }
     ;
-    n.prototype._setEllipsis = function() {
+    ConnectedAccounts.prototype._setEllipsis = function() {
         var n = this._shouldEllipsisShow();
         n !== this._ellipsisShowing && (this._ellipsisShowing = n,
         this._ellipsis.style.display = n ? "" : "none")
     }
     ;
-    n.prototype._onClick = function() {
+    ConnectedAccounts.prototype._onClick = function() {
         this._disabled || (Jx.log.info("ConnectedAccounts control activated by user"),
-        t.Accounts.showAccountSettingsPage(this._platform, this._scenario, t.Accounts.AccountSettingsPage.connectedAccounts, {
+        People.Accounts.showAccountSettingsPage(this._platform, this._scenario, People.Accounts.AccountSettingsPage.connectedAccounts, {
             launchedFromApp: true
         }))
     }
     ;
-    n.prototype._onKeyDown = function(n) {
+    ConnectedAccounts.prototype._onKeyDown = function(n) {
         (n.key === "Spacebar" || n.key === "Enter") && (this._onClick(n),
         n.preventDefault())
     }
     ;
-    n.prototype._onAnimationEnd = function(n) {
+    ConnectedAccounts.prototype._onAnimationEnd = function(n) {
         this._canvasParent.removeChild(n);
         this._animating = false;
         this._pendingChanges && this.onChangesPending()
     }
     ;
-    n.prototype._crossFadeChanges = function() {
+    ConnectedAccounts.prototype._crossFadeChanges = function() {
         var n, i, t;
         this._animating = true;
         n = this._canvas;
@@ -177,7 +177,7 @@
         })
     }
     ;
-    n.prototype._createNewAccountElement = function(n) {
+    ConnectedAccounts.prototype._createNewAccountElement = function(n) {
         var t = this._accountTemplate.cloneNode(true), i;
         return t.id = "",
         i = t.firstChild,
@@ -186,17 +186,17 @@
         t
     }
     ;
-    n.prototype.onChangesPending = function() {
-        this._jobSet.addUIJob(this, this._applyChanges, null, t.Priority.connectedAccounts)
+    ConnectedAccounts.prototype.onChangesPending = function() {
+        this._jobSet.addUIJob(this, this._applyChanges, null, People.Priority.connectedAccounts)
     }
     ;
-    n.prototype._applyChanges = function() {
+    ConnectedAccounts.prototype._applyChanges = function() {
         this._animating ? this._pendingChanges = true : (this._pendingChanges = false,
         this._deferredCollection.acceptPendingChanges(),
         this._crossFadeChanges())
     }
     ;
-    n.prototype.deactivateUI = function() {
+    ConnectedAccounts.prototype.deactivateUI = function() {
         Jx.dispose(this._deferredCollection);
         this._deferredCollection = null;
         this._jobSet.cancelJobs();
@@ -205,7 +205,7 @@
         Jx.Component.prototype.deactivateUI.call(this)
     }
     ;
-    n.prototype.shutdownComponent = function() {
+    ConnectedAccounts.prototype.shutdownComponent = function() {
         this._disposeAssets();
         this._jobSet.dispose();
         this._jobSet = null;
@@ -213,6 +213,6 @@
         Jx.Component.prototype.shutdownComponent.call(this)
     }
     ;
-    n.maxCount = 4;
-    Object.freeze(n)
+    ConnectedAccounts.maxCount = 4;
+    Object.freeze(ConnectedAccounts)
 })

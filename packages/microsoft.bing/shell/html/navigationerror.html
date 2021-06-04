@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Navigation Error Page</title>
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" type="text/css" />
+
+    <!-- Font metrics for each market -->
+    <link href="/shell/css/fontmetrics.css" rel="stylesheet">
+
+    <link href="/shell/css/navigationerror.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="/common/js/tracing.js"></script>
+    <script src="/common/js/utilities.js"></script>
+    <script src="/common/js/errors.js"></script>
+    <script src="/shell/js/navigationerror.js"></script>
+</head>
+<body>
+    <div id="errorPage">
+        <section id="errorContent">
+            <p id="errorMessage" class="fontLarge fontWeightRegular" data-win-res="{textContent:'error_page_network_error_message'}"></p>
+            <button id="retryButton" class="fontMedium fontWeightRegular" data-win-res="{textContent:'error_page_retry', attributes: {'aria-label':'error_page_retry'}}"></button>
+        </section>
+    </div>
+</body>
+</html>

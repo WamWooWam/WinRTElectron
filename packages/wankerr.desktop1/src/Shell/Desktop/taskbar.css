@@ -1,0 +1,183 @@
+.taskbar {
+    width: 100vw;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid;
+    box-sizing: border-box;
+    z-index: 2147483646;
+    transition: transform 0.2s ease-in-out;
+}
+
+.taskbar.hide {
+    transform: translateY(40px);
+}
+
+.taskbar-content {
+    display: flex;
+    height: 40px;
+    margin-top: -1px;
+}
+
+.start-button {
+    width: 50px;
+    min-width: 50px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+}
+
+.start-button:hover {
+    background: #111111;
+}
+
+.taskbar-show-desktop-button {
+    width: 8px;
+    min-width: 8px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    padding: 0;
+    margin: 0;
+    margin-top: -1px;
+    background: transparent;
+}
+
+.taskbar-show-desktop-button:hover {
+    background: transparent;
+}
+
+.taskbar-show-desktop-button:active {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.taskbar-button {
+    padding: 0;
+    position: relative;
+    min-width: 0;
+    border-width: 0 2px;
+    border-style: solid;
+    border-color: transparent;
+    background: transparent;
+    color: white;
+}
+
+.taskbar-button:focus {
+    outline: none;
+}
+
+.taskbar-button:hover {
+    color: white;
+    background: radial-gradient(10px at bottom, rgba(255, 255, 255, 0.75), transparent) no-repeat;
+    border-image: url(/static/taskbar/border.png) 2 100%;
+}
+
+.taskbar-button:hover:active {
+    color: white;
+    background: radial-gradient(10px at bottom, rgba(255, 255, 255, 0.8), transparent) no-repeat;
+    border-image: url(/static/taskbar/border.png) 2 100%;
+}
+
+.taskbar-button:before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    z-index: -1;
+}
+
+.taskbar-button:hover::before {
+    /* border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 5%, rgba(255, 255, 255, 0.33), rgba(255, 255, 255, 0) 95%) 1 100%; */
+}
+
+.taskbar-button:active::before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 5%, rgba(0, 0, 0, 0.33), rgba(0, 0, 0, 0.05) 95%);
+}
+
+.taskbar-clock {
+    display: flex;
+    padding: 0 8px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.taskbar-clock>p {
+    margin: 0;
+    font-size: 12px;
+    font-family: "Segoe UI Light" !important;
+}
+
+.taskbar-tray {
+    display: flex;
+    margin: 0 4px;
+    flex-direction: row-reverse;
+}
+
+.taskbar-tray-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 3px;
+}
+
+.taskbar-tray-icon {
+    width: 16px;
+    height: 16px;
+}
+
+.taskbar-app {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    position: relative;
+    border: 1px solid transparent;
+    margin: 0 1px;
+}
+
+.taskbar-app-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    border: 1px solid transparent;
+}
+
+.taskbar-app.open {
+    border: 1px solid rgba(0, 0, 0, 0.33);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.taskbar-app.open>.taskbar-app-inner {
+    border: 1px solid rgba(255, 255, 255, 0.33);
+}
+
+.taskbar-app-icon-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    z-index: 1;
+}
+
+.taskbar-apps-list {
+    flex: 1;
+    display: flex;
+}

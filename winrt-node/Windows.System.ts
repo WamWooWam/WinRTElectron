@@ -5,14 +5,22 @@ import { IAsyncOperation, Uri } from "./Windows.Foundation";
 import { StorageFile } from "./Windows.Storage.FileSystem";
 import { UI } from "./Windows.UI";
 import { shell } from "electron";
+const os = require ("os");
 
 export namespace System {
     export namespace UserProfile {
         export class GlobalizationPreferences {
             static weekStartsOn = Globalization.DayOfWeek.monday;
+            static homeGeographicRegion = "en";
 
             static get languages() {
                 return new Foundation.Collections.Vector(["en-GB"])
+            }
+        }
+
+        export class UserInformation {
+            static getDisplayNameAsync(): IAsyncOperation<string> {
+                return new IAsyncOperation((resolve, reject) => resolve(os.userInfo().username));
             }
         }
     }
@@ -58,7 +66,7 @@ export namespace System {
 
         static launchFileWithOptionsAsync(file: StorageFile, options: LauncherOptions): IAsyncOperation<boolean> {
             console.log(`request to launch ${file.path}...`);
-            
+
             return new IAsyncOperation((resolve, reject) => {
                 resolve(true);
             })

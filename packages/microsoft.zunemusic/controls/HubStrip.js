@@ -398,7 +398,7 @@
                                     for (var i = 0; i < that._scroller.children.length; i++) {
                                         that._scroller.children[i].removeEventListener("transitionend", animationEnd, false);
                                         WinJS.Utilities.removeClass(that._scroller.children[i], "hubStripScrollTransition");
-                                        that._scroller.children[i].style.msTransform = "translateX(0px)"
+                                        that._scroller.children[i].style.transform = "translateX(0px)"
                                     }
                                     completion()
                                 }
@@ -410,7 +410,7 @@
                         for (var i = 0; i < this._scroller.children.length; i++) {
                             this._scroller.children[i].addEventListener("transitionend", animationEnd, false);
                             WinJS.Utilities.addClass(this._scroller.children[i], "hubStripScrollTransition");
-                            this._scroller.children[i].style.msTransform = "translateX(" + translateAmount + "px)"
+                            this._scroller.children[i].style.transform = "translateX(" + translateAmount + "px)"
                         }
                     }
                     else

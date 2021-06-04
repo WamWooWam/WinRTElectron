@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>Weather Details Page</title>
+<script src="/WeatherControls/core/Utilities.js"></script>
+<script src="/WeatherControls/core/ClusterControls.js"></script>
+<script src="/WeatherControls/core/Models.js"></script>
+<script src="/WeatherControls/core/ViewBlocks.js"></script>
+<script src="/WeatherControls/core/ViewControls.js"></script>
+<script src="/WeatherControls/clusters/heroClusterControl.js"></script>
+<script src="/js/WeatherConfigs.js"></script>
+<script src="/js/freutility.js"></script>
+<script src="/panoramas/home/home.js"></script>
+<script src="/WeatherControls/clusters/interactiveMapsClusterControl.js"></script>
+<script src="/WeatherControls/views/mapsViewBlock.js"></script>
+</head>
+<body>
+<div id="mainContainer" class="fragment">
+<div class="themeBackground"></div>
+<div class="platformMainContent platformPanoramaFlushLeft" id="mainPanorama"
+data-win-control="CommonJS.Immersive.SemanticZoomPanorama" 
+data-win-bind="winControl.title: title; winControl.clusterDataSource: clusterDataSource; winControl.semanticZoomRenderer: semanticZoomRenderer; winControl.showInertiaBackground:showInertiaBackground;">
+</div>
+<!-- Bottom Edgy -->
+<div id="homeEdgy" class="platformActionBar" data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'bottom'}" aria-label="Action Bar">
+<div class="mainActionBarDiv-left">
+<div class="mainActionBarLeft-NotOnHome">
+<button id="setDefaultButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE137', extraClass: 'appexSymbol'}" />
+<button id="pinButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE015', extraClass: 'appexSymbol'}" />
+<button id="unpinButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE016', extraClass: 'appexSymbol'}" />
+<button id="addFavoriteButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE017', extraClass: 'appexSymbol'}" />
+<button id="removeFavoriteButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE018', extraClass: 'appexSymbol'}" />
+</div>
+<button id="changeHomeButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE185', extraClass: 'appexSymbol'}" />
+</div>
+<div class="mainActionBarDiv-right platformFeedbackButtonParent">
+<button id="currentLocationButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE013', extraClass: 'appexSymbol'}" style="display:none" />
+<button id="changeUnitToFButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE151', extraClass: 'appexSymbol'}" style="display:none"></button>
+<button id="changeUnitToCButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE150', extraClass: 'appexSymbol'}" style="display:none"></button>
+<button id="refreshButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}"></button>
+<button id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}"></button>
+</div>
+</div>
+<div id="flyoutBackground"></div>
+<!-- Anchor div for the legacy maps flyout -->
+<div id="mapsFlyoutAnchor"></div>
+</div>
+<div id="flyoutAnchor"></div> 
+</body>
+</html>

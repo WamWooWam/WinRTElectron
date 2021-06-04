@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>BingSearchApp</title>
+    <script src="//Microsoft.BingNews.Shim/dist/shim.js"></script>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet">
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <!-- Font metrics for each market -->
+    <link href="/shell/css/fontmetrics.css" rel="stylesheet">
+
+    <!-- BingSearchApp references -->
+    <link href="/shell/css/shell.css" rel="stylesheet">
+    <script src="/common/js/tracing.js"></script>
+    <script src="/common/js/utilities.js"></script>
+    <script src="/common/js/errors.js"></script>
+    <script src="/common/js/asyncoperations.js"></script>
+    <script src="/common/js/eventsource.js"></script>
+    <script src="/common/js/querystringcollection.js"></script>
+    <script src="/shell/js/setup.js"></script>
+    <script src="/shell/js/backgroundImageLoader.js"></script>
+    <script src="/shell/js/env.js"></script>
+    <script src="/shell/js/eventrelay.js"></script>
+    <script src="/shell/js/globaleventrelay.js"></script>
+    <script src="/shell/js/settings.js"></script>
+    <script src="/shell/js/progress.js"></script>
+    <script src="/shell/js/networkdetection.js"></script>
+    <script src="/shell/js/softkeyboard.js"></script>
+    <script src="/shell/js/viewstate.js"></script>
+    <script src="/shell/js/shell.js"></script>
+    <script src="/shell/js/navigation.js"></script>
+    <script src="/shell/js/viewmanagement.js"></script>
+    <script src="/shell/js/livetile.js"></script>
+    <script src="/shell/js/appconfig.js"></script>
+    <script src="/shell/js/searchpane.js"></script>
+    <script src="/shell/js/searchpaneautosuggest.js"></script>
+    <script src="/shell/js/proxy.js"></script>
+    <script src="/shell/js/servicelocator.js"></script>
+    <script src="/shell/js/navigationprogress.js"></script>
+    <script src="/shell/js/viewcontroller.js"></script>
+    <script src="/shell/js/appconfig.js"></script>
+    <script src="/shell/js/sharesource.js"></script>
+    <script src="/shell/js/sharesourceimagedatacache.js"></script>
+    <script src="/shell/js/nativeinstrumentation.js"></script>
+    <script src="/shell/js/start.js"></script>
+</head>
+<body class="fill-allSpace">
+    <div id="proxy" class="hidden"></div>
+
+    <!--Progress indicator control displayed for blocking operation: displayed as progress ring with text next to it.-->
+    <div id="progressindicatorblocking" class="hidden fill-allSpace topmost translucent" data-win-res="{attributes: {'aria-label': 'progress_indicator_loading_message'}}">
+        <label>
+            <progress class="win-ring win-medium blocking withText centered"></progress>
+        </label>
+    </div>
+
+    <!--Progress indicator control displayed for non-blocking operation: displayed as progress band at the top of app.-->
+    <div id="progressindicatornonblocking" class="hidden topmost translucent" data-win-res="{attributes: {'aria-label': 'progress_indicator_searching_message'}}">
+        <progress class="win-large nonblocking">
+        </progress>
+    </div>
+    
+    <div class="fill-allSpace">
+        <div id="secondarysplashscreen" class="fill-allSpace splashscreenhost">
+            <img id="splashscreenimage" src="/shell/images/splashscreen.png" class="splashscreenimage" data-win-res="{attributes: {'aria-label': 'secondary_splash_screen_image_label'}}" />
+        </div>
+    
+        <div id="mainviewhost" class="fill-allSpace translucent">
+            <!-- TODO:   WI 152551: need to put some UI in place to display in case main view did not load-->        
+            <p>Main view goes here.</p>
+        </div>
+    </div>
+</body>
+</html>

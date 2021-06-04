@@ -360,24 +360,7 @@
     "Images": {
       "GenericIcons": {
         "actor_placeholder.png": "Images\\GenericIcons\\actor_placeholder.png",
-        "cast_placeholder.png": "Images\\GenericIcons\\cast_placeholder.png",
-        "ico_74x_GenericVideo_Large.png": "Images\\GenericIcons\\ico_74x_GenericVideo_Large.scale-100.png",
-        "ico_74x_GenericVideo_LargeMovie.png": "Images\\GenericIcons\\ico_74x_GenericVideo_LargeMovie.scale-100.png",
-        "ico_74x_GenericVideo_Medium.png": "Images\\GenericIcons\\ico_74x_GenericVideo_Medium.scale-100.png",
-        "ico_74x_GenericVideo_Small.png": "Images\\GenericIcons\\ico_74x_GenericVideo_Small.scale-100.png",
-        "ico_GenericVideo_L3_Hero.png": "Images\\GenericIcons\\ico_GenericVideo_L3_Hero.scale-100.png",
-        "ico_GenericVideo_Wide.png": "Images\\GenericIcons\\ico_GenericVideo_Wide.scale-100.png"
-      },
-      "ListStripes": {
-        "ListStripesDark.png": "Images\\ListStripes\\ListStripesDark.scale-100.png"
-      },
-      "LoadingCardTemplateBg": {
-        "LoadingCardTemplateBg_Video.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_Video.scale-100.png",
-        "LoadingCardTemplateBg_VideoOther.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoOther.scale-100.png",
-        "LoadingCardTemplateBg_VideoOtherRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoOtherRTL.scale-100.png",
-        "LoadingCardTemplateBg_VideoRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoRTL.scale-100.png",
-        "LoadingCardTemplateBg_VideoSquare.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoSquare.scale-100.png",
-        "LoadingCardTemplateBg_VideoSquareRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_VideoSquareRTL.scale-100.png"
+        "cast_placeholder.png": "Images\\GenericIcons\\cast_placeholder.png"
       },
       "NowPlaying": {
         "now_playing_mask.png": "Images\\NowPlaying\\now_playing_mask.png"
@@ -389,29 +372,12 @@
       },
       "Tiles": {
         "VideoIcon.png": "Images\\Tiles\\VideoIcon.png",
-        "Video_Movie_Resume_2x2.png": "Images\\Tiles\\Video_Movie_Resume_2x2.scale-100.png",
-        "Video_Tv_Resume_2x2.png": "Images\\Tiles\\Video_Tv_Resume_2x2.scale-100.png",
-        "XBL_VIDEO_150x150_A.png": "Images\\Tiles\\XBL_VIDEO_150x150_A.scale-100.png",
-        "XBL_VIDEO_30x30_A.png": "Images\\Tiles\\XBL_VIDEO_30x30_A.scale-100.png",
-        "XBL_VIDEO_310x150_C.png": "Images\\Tiles\\XBL_VIDEO_310x150_C.scale-100.png",
-        "XBL_VIDEO_310x310_A.png": "Images\\Tiles\\XBL_VIDEO_310x310_A.scale-100.png",
-        "XBL_VIDEO_50x50_A.png": "Images\\Tiles\\XBL_VIDEO_50x50_A.png",
-        "XBL_VIDEO_620x300_A.png": "Images\\Tiles\\XBL_VIDEO_620x300_A.scale-100.png",
-        "XBL_VIDEO_70x70_A.png": "Images\\Tiles\\XBL_VIDEO_70x70_A.scale-100.png"
+        "XBL_VIDEO_30x30_A.png": "Images\\Tiles\\XBL_VIDEO_30x30_A.targetsize-16.png",
+        "XBL_VIDEO_50x50_A.png": "Images\\Tiles\\XBL_VIDEO_50x50_A.png"
       },
       "TransportControls": {
         "leaf_default.png": "Images\\TransportControls\\leaf_default.png",
         "leaf_touch.png": "Images\\TransportControls\\leaf_touch.png"
-      },
-      "VideoRatings": {
-        "video_poland_ratings_12.png": "Images\\VideoRatings\\video_poland_ratings_12.scale-100.png",
-        "video_poland_ratings_16.png": "Images\\VideoRatings\\video_poland_ratings_16.scale-100.png",
-        "video_poland_ratings_18.png": "Images\\VideoRatings\\video_poland_ratings_18.scale-100.png",
-        "video_poland_ratings_7.png": "Images\\VideoRatings\\video_poland_ratings_7.scale-100.png",
-        "video_poland_ratings_no_restriction.png": "Images\\VideoRatings\\video_poland_ratings_no_restriction.scale-100.png"
-      },
-      "WebDialogResize": {
-        "RotateResizeIcon.png": "Images\\WebDialogResize\\RotateResizeIcon.scale-100.png"
       },
       "AppBar_gradient.png": "Images\\AppBar_gradient.png",
       "img_not_found.png": "Images\\img_not_found.png",

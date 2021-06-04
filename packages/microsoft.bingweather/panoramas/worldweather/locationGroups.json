@@ -1,0 +1,1978 @@
+﻿{
+    "World": [
+        {
+            "name": {
+                "first": "Los Angeles",
+                "second": "UNITED STATES"
+            },
+            "id": "Los Angeles, CA",
+            "landscape": {
+                "x": "211",
+                "y": "342",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "88",
+                "y": "374",
+                "group": "1"
+            },
+            "normalizedName": "los angeles ca united states",
+            "latitude": "34.0534896850585",
+            "longitude": "-118.245323181152",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "New Delhi",
+                "second": "INDIA"
+            },
+            "id": "New Delhi, India",
+            "landscape": {
+                "x": "938",
+                "y": "377",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "542",
+                "y": "397",
+                "group": "0"
+            },
+            "normalizedName": "new delhi delhi india",
+            "latitude": "28.6143398284912",
+            "longitude": "77.2121887207031",
+            "isoCode": "IN"
+        },
+        {
+            "name": {
+                "first": "Rio de Janeiro",
+                "second": "BRAZIL"
+            },
+            "id": "Rio de Janeiro, Brazil",
+            "landscape": {
+                "x": "490",
+                "y": "562",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "265",
+                "y": "511",
+                "group": "1"
+            },
+            "normalizedName": "rio de janeiro rj brazil",
+            "latitude": "-22.9766693115234",
+            "longitude": "-43.1947517395019",
+            "isoCode": "BR"
+        },
+        {
+            "name": {
+                "first": "Paris",
+                "second": "FRANCE"
+            },
+            "id": "Paris, France",
+            "landscape": {
+                "x": "658",
+                "y": "280",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "374",
+                "y": "336",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "0"
+            },
+            "normalizedName": "paris idf france",
+            "latitude": "48.8569297790527",
+            "longitude": "2.3412001132965",
+            "isoCode": "FR"
+        },
+        {
+            "name": {
+                "first": "Beijing",
+                "second": "CHINA"
+            },
+            "id": "Beijing",
+            "landscape": {
+                "x": "1080",
+                "y": "317",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "634",
+                "y": "362",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "1"
+            },
+            "normalizedName": "beijing beijing china",
+            "latitude": "39.9065704345703",
+            "longitude": "116.387649536132",
+            "isoCode": "CN"
+        },
+        {
+            "name": {
+                "first": "Cape Town",
+                "second": "SOUTH AFRICA"
+            },
+            "id": "Cape Town, South Africa",
+            "landscape": {
+                "x": "718",
+                "y": "608",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "409",
+                "y": "540",
+                "group": "2"
+            },
+            "normalizedName": "cape town western cape south africa",
+            "latitude": "-33.919090270996",
+            "longitude": "18.4219894409179",
+            "isoCode": "ZA"
+        },
+        {
+            "name": {
+                "first": "Sydney",
+                "second": "AUSTRALIA"
+            },
+            "id": "Sydney, Australia",
+            "landscape": {
+                "x": "1214",
+                "y": "605",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "716",
+                "y": "538",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "0"
+            },
+            "normalizedName": "sydney nsw australia",
+            "latitude": "-33.86962890625",
+            "longitude": "151.206954956054",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "New York City",
+                "second": "UNITED STATES"
+            },
+            "id": "New York, NY",
+            "landscape": {
+                "x": "366",
+                "y": "319",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "196",
+                "y": "356",
+                "group": "3"
+            },
+            "normalizedName": "new york ny united states",
+            "latitude": "40.7145500183105",
+            "longitude": "-74.0071182250976",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Buenos Aires",
+                "second": "ARGENTINA"
+            },
+            "id": "Buenos Aires, Argentina",
+            "landscape": {
+                "x": "436",
+                "y": "615",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "228",
+                "y": "546",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "buenos aires city of buenos aires argentina",
+            "latitude": "-34.6089706420898",
+            "longitude": "-58.3721504211425",
+            "isoCode": "AR"
+        },
+        {
+            "name": {
+                "first": "Tokyo",
+                "second": "JAPAN"
+            },
+            "id": "Tokyo, Japan",
+            "landscape": {
+                "x": "1172",
+                "y": "335",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "689",
+                "y": "373",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "tokyo tokyo japan",
+            "latitude": "35.6832084655761",
+            "longitude": "139.808944702148",
+            "isoCode": "JP"
+        },
+        {
+            "name": {
+                "first": "Cairo",
+                "second": "EGYPT"
+            },
+            "id": "Cairo, Egypt",
+            "landscape": {
+                "x": "760",
+                "y": "365",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "439",
+                "y": "391",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "cairo cairo egypt",
+            "latitude": "30.0590858459472",
+            "longitude": "31.2507305145263",
+            "isoCode": "EG"
+        },
+        {
+            "name": {
+                "first": "Moscow",
+                "second": "RUSSIA"
+            },
+            "id": "Moscow, Russia",
+            "landscape": {
+                "x": "782",
+                "y": "246",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "453",
+                "y": "315",
+                "group": "3"
+            },
+            "normalizedName": "moscow moscow city russia",
+            "latitude": "55.756980895996",
+            "longitude": "37.6150093078613",
+            "isoCode": "RU"
+        },
+        {
+            "name": {
+                "first": "Melbourne",
+                "second": "AUSTRALIA"
+            },
+            "id": "Melbourne, Australia",
+            "landscape": {
+                "x": "1189",
+                "y": "626",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "700",
+                "y": "551",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "melbourne vic australia",
+            "latitude": "-37.8175315856933",
+            "longitude": "144.967147827148",
+            "isoCode": "AU"
+        }
+    ],
+    "NorthAmerica": [
+        {
+            "name": {
+                "first": "Toronto",
+                "second": "CANADA"
+            },
+            "id": "Toronto, Canada",
+            "landscape": {
+                "x": "640",
+                "y": "411",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "579",
+                "y": "457",
+                "group": "1"
+            },
+            "normalizedName": "toronto on canada",
+            "latitude": "43.6485595703125",
+            "longitude": "-79.3853225708007",
+            "isoCode": "CA"
+        },
+        {
+            "name": {
+                "first": "Juneau",
+                "second": "UNITED STATES"
+            },
+            "id": "Juneau, AK",
+            "landscape": {
+                "x": "120",
+                "y": "231",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "233",
+                "y": "341",
+                "group": "0"
+            },
+            "normalizedName": "juneau ak united states",
+            "latitude": "58.2997398376464",
+            "longitude": "-134.406784057617",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Cancún",
+                "second": "MEXICO"
+            },
+            "id": "Cancún, Mexico",
+            "landscape": {
+                "x": "567",
+                "y": "652",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "529",
+                "y": "616",
+                "group": "1"
+            },
+            "normalizedName": "cancún qr mexico",
+            "latitude": "21.0956306457519",
+            "longitude": "-86.767593383789",
+            "isoCode": "MX"
+        },
+        {
+            "name": {
+                "first": "Seattle",
+                "second": "UNITED STATES"
+            },
+            "id": "Seattle, WA",
+            "landscape": {
+                "x": "232",
+                "y": "371",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "309",
+                "y": "427",
+                "group": "1"
+            },
+            "normalizedName": "seattle wa united states",
+            "latitude": "47.6035614013671",
+            "longitude": "-122.329437255859",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Chicago",
+                "second": "UNITED STATES"
+            },
+            "id": "Chicago, Illinois",
+            "landscape": {
+                "x": "560",
+                "y": "431",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "524",
+                "y": "472",
+                "group": "0"
+            },
+            "normalizedName": "chicago il united states",
+            "latitude": "41.8841514587402",
+            "longitude": "-87.6324081420898",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "San Francisco",
+                "second": "UNITED STATES"
+            },
+            "id": "San Francisco, CA",
+            "landscape": {
+                "x": "236",
+                "y": "481",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "309",
+                "y": "501",
+                "group": "0"
+            },
+            "normalizedName": "san francisco ca united states",
+            "latitude": "37.7771186828613",
+            "longitude": "-122.419639587402",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Mexico City",
+                "second": "MEXICO"
+            },
+            "id": "Mexico City, Mexico",
+            "landscape": {
+                "x": "462",
+                "y": "675",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "454",
+                "y": "623",
+                "group": "2"
+            },
+            "normalizedName": "mexico city df mexico",
+            "latitude": "19.431900024414",
+            "longitude": "-99.1328506469726",
+            "isoCode": "MX"
+        },
+        {
+            "name": {
+                "first": "Miami",
+                "second": "UNITED STATES"
+            },
+            "id": "Miami, FL",
+            "landscape": {
+                "x": "632",
+                "y": "606",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "571",
+                "y": "588",
+                "group": "3"
+            },
+            "normalizedName": "miami fl united states",
+            "latitude": "25.7289791107177",
+            "longitude": "-80.2374191284179",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Los Angeles",
+                "second": "UNITED STATES"
+            },
+            "id": "Los Angeles, CA",
+            "landscape": {
+                "x": "272",
+                "y": "519",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "325",
+                "y": "522",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "los angeles ca united states",
+            "latitude": "34.0534896850585",
+            "longitude": "-118.245323181152",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "New York City",
+                "second": "UNITED STATES"
+            },
+            "id": "New York, NY",
+            "landscape": {
+                "x": "691",
+                "y": "447",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "614",
+                "y": "479",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "new york ny united states",
+            "latitude": "40.7145500183105",
+            "longitude": "-74.0071182250976",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Washington D.C.",
+                "second": "UNITED STATES"
+            },
+            "id": "Washington, DC",
+            "landscape": {
+                "x": "662",
+                "y": "477",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "590",
+                "y": "500",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "washington dc dc united states",
+            "latitude": "38.8903694152832",
+            "longitude": "-77.0319595336914",
+            "isoCode": "US"
+        },
+        {
+            "name": {
+                "first": "Vancouver",
+                "second": "CANADA"
+            },
+            "id": "Vancouver, Canada",
+            "landscape": {
+                "x": "226",
+                "y": "347",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "306",
+                "y": "413",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "vancouver bc canada",
+            "latitude": "49.2604217529296",
+            "longitude": "-123.114013671875",
+            "isoCode": "CA"
+        }
+    ],
+    "Europe": [
+        {
+            "name": {
+                "first": "Berlin",
+                "second": "GERMANY"
+            },
+            "id": "Berlin, Germany",
+            "landscape": {
+                "x": "424",
+                "y": "425",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "305",
+                "y": "403",
+                "group": "1"
+            },
+            "normalizedName": "berlin be germany",
+            "latitude": "52.51607131958",
+            "longitude": "13.3769798278808",
+            "isoCode": "DE"
+        },
+        {
+            "name": {
+                "first": "Barcelona",
+                "second": "SPAIN"
+            },
+            "id": "Barcelona, Spain",
+            "landscape": {
+                "x": "254",
+                "y": "645",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "182",
+                "y": "566",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "normalizedName": "barcelona catalonia spain",
+            "latitude": "41.3855781555175",
+            "longitude": "2.16874003410339",
+            "isoCode": "ES"
+        },
+        {
+            "name": {
+                "first": "London",
+                "second": "UNITED KINGDOM"
+            },
+            "id": "London, United Kingdom",
+            "landscape": {
+                "x": "223",
+                "y": "456",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "156",
+                "y": "427",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "normalizedName": "london england united kingdom",
+            "latitude": "51.5063209533691",
+            "longitude": "-0.127140000462532",
+            "isoCode": "GB"
+        },
+        {
+            "name": {
+                "first": "Helsinki",
+                "second": "FINLAND"
+            },
+            "id": "Helsinki, Finland",
+            "landscape": {
+                "x": "597",
+                "y": "266",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "431",
+                "y": "287",
+                "group": "1"
+            },
+            "normalizedName": "helsinki southern finland finland",
+            "latitude": "60.1711616516113",
+            "longitude": "24.9326496124267",
+            "isoCode": "FI"
+        },
+        {
+            "name": {
+                "first": "Athens",
+                "second": "GREECE"
+            },
+            "id": "Athens, Greece",
+            "landscape": {
+                "x": "574",
+                "y": "707",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "416",
+                "y": "611",
+                "group": "0"
+            },
+            "normalizedName": "athens attica greece",
+            "latitude": "37.9761505126953",
+            "longitude": "23.7364101409912",
+            "isoCode": "GR"
+        },
+        {
+            "name": {
+                "first": "Vienna",
+                "second": "AUSTRIA"
+            },
+            "id": "Vienna, Austria",
+            "landscape": {
+                "x": "467",
+                "y": "527",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "343",
+                "y": "489",
+                "group": "0"
+            },
+            "normalizedName": "vienna vienna austria",
+            "latitude": "48.2025413513183",
+            "longitude": "16.3687992095947",
+            "isoCode": "AT"
+        },
+        {
+            "name": {
+                "first": "Moscow",
+                "second": "RUSSIA"
+            },
+            "id": "Moscow, Russia",
+            "landscape": {
+                "x": "782",
+                "y": "349",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "573",
+                "y": "338",
+                "group": "3"
+            },
+            "normalizedName": "moscow moscow city russia",
+            "latitude": "55.756980895996",
+            "longitude": "37.6150093078613",
+            "isoCode": "RU"
+        },
+        {
+            "name": {
+                "first": "Paris",
+                "second": "FRANCE"
+            },
+            "id": "Paris, France",
+            "landscape": {
+                "x": "242",
+                "y": "513",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "182",
+                "y": "471",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "2"
+            },
+            "normalizedName": "paris idf france",
+            "latitude": "48.8569297790527",
+            "longitude": "2.3412001132965",
+            "isoCode": "FR"
+        },
+        {
+            "name": {
+                "first": "Kyiv",
+                "second": "UKRAINE"
+            },
+            "id": "Kyiv, Ukraine",
+            "landscape": {
+                "x": "698",
+                "y": "490",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "497",
+                "y": "457",
+                "group": "2"
+            },
+            "normalizedName": "kyiv kyiv city ukraine",
+            "latitude": "50.4383659362792",
+            "longitude": "30.5239562988281",
+            "isoCode": "UA"
+        },
+        {
+            "name": {
+                "first": "Rome",
+                "second": "ITALY"
+            },
+            "id": "Rome, Italy",
+            "landscape": {
+                "x": "410",
+                "y": "640",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "297",
+                "y": "561",
+                "group": "3"
+            },
+            "normalizedName": "rome laz. italy",
+            "latitude": "41.9031105041503",
+            "longitude": "12.4957599639892",
+            "isoCode": "IT"
+        },
+        {
+            "name": {
+                "first": "Amsterdam",
+                "second": "NETHERLANDS"
+            },
+            "id": "Amsterdam, Netherlands",
+            "landscape": {
+                "x": "297",
+                "y": "442",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "211",
+                "y": "417",
+                "group": "3"
+            },
+            "normalizedName": "amsterdam north holland netherlands",
+            "latitude": "52.3730888366699",
+            "longitude": "4.89330005645751",
+            "isoCode": "NL"
+        },
+        {
+            "name": {
+                "first": "Dublin",
+                "second": "IRELAND"
+            },
+            "id": "Dublin, Ireland",
+            "landscape": {
+                "x": "124",
+                "y": "422",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "85",
+                "y": "401",
+                "group": "2"
+            },
+            "normalizedName": "dublin dublin ireland",
+            "latitude": "53.3480682373046",
+            "longitude": "-6.24827003479003",
+            "isoCode": "IE"
+        }
+    ],
+    "SouthAmerica": [
+        {
+            "name": {
+                "first": "Santiago",
+                "second": "CHILE"
+            },
+            "id": "Santiago, Chile",
+            "landscape": {
+                "x": "393",
+                "y": "475",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "325",
+                "y": "505",
+                "group": "1"
+            },
+            "normalizedName": "santiago santiago chile",
+            "latitude": "-33.4372100830078",
+            "longitude": "-70.6500167846679",
+            "isoCode": "CL"
+        },
+        {
+            "name": {
+                "first": "Brasília",
+                "second": "BRAZIL"
+            },
+            "id": "Brasília, Brazil",
+            "landscape": {
+                "x": "646",
+                "y": "279",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "538",
+                "y": "333",
+                "group": "1"
+            },
+            "normalizedName": "brasília df brazil",
+            "latitude": "-15.778389930725",
+            "longitude": "-47.9286308288574",
+            "isoCode": "BR"
+        },
+        {
+            "name": {
+                "first": "Bogota",
+                "second": "COLOMBIA"
+            },
+            "id": "Bogota, Colombia",
+            "landscape": {
+                "x": "367",
+                "y": "84",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "300",
+                "y": "165",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "normalizedName": "bogota capital district colombia",
+            "latitude": "4.62693309783935",
+            "longitude": "-74.0862960815429",
+            "isoCode": "CO"
+        },
+        {
+            "name": {
+                "first": "Lima",
+                "second": "PERU"
+            },
+            "id": "Lima, Peru",
+            "landscape": {
+                "x": "331",
+                "y": "250",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "273",
+                "y": "308",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "normalizedName": "lima lima peru",
+            "latitude": "-12.0560998916625",
+            "longitude": "-77.0268096923828",
+            "isoCode": "PE"
+        },
+        {
+            "name": {
+                "first": "Asunción",
+                "second": "PARAGUAY"
+            },
+            "id": "Asunción, Paraguay",
+            "landscape": {
+                "x": "526",
+                "y": "388",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "442",
+                "y": "426",
+                "group": "0"
+            },
+            "normalizedName": "asunción central paraguay",
+            "latitude": "-25.2989444732666",
+            "longitude": "-57.6291160583496",
+            "isoCode": "PY"
+        },
+        {
+            "name": {
+                "first": "Caracas",
+                "second": "VENEZUELA"
+            },
+            "id": "Caracas, Venezuela",
+            "landscape": {
+                "x": "437",
+                "y": "21",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "361",
+                "y": "110",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "normalizedName": "caracas federal district venezuela",
+            "latitude": "10.4947748184204",
+            "longitude": "-66.9201049804687",
+            "isoCode": "VE"
+        },
+        {
+            "name": {
+                "first": "Buenos Aires",
+                "second": "ARGENTINA"
+            },
+            "id": "Buenos Aires, Argentina",
+            "landscape": {
+                "x": "522",
+                "y": "497",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "433",
+                "y": "521",
+                "group": "3"
+            },
+            "normalizedName": "buenos aires city of buenos aires argentina",
+            "latitude": "-34.6089706420898",
+            "longitude": "-58.3721504211425",
+            "isoCode": "AR"
+        },
+        {
+            "name": {
+                "first": "Rio de Janeiro",
+                "second": "BRAZIL"
+            },
+            "id": "Rio de Janeiro, Brazil",
+            "landscape": {
+                "x": "682",
+                "y": "357",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "572",
+                "y": "402",
+                "group": "2"
+            },
+            "normalizedName": "rio de janeiro rj brazil",
+            "latitude": "-22.9766693115234",
+            "longitude": "-43.1947517395019",
+            "isoCode": "BR"
+        },
+        {
+            "name": {
+                "first": "Quito",
+                "second": "ECUADOR"
+            },
+            "id": "Quito, Ecuador",
+            "landscape": {
+                "x": "315",
+                "y": "128",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "261",
+                "y": "202",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "quito pichincha ecuador",
+            "latitude": "-0.205669999122619",
+            "longitude": "-78.5087432861328",
+            "isoCode": "EC"
+        },
+        {
+            "name": {
+                "first": "Georgetown",
+                "second": "GUYANA"
+            },
+            "id": "Georgetown, Guyana",
+            "landscape": {
+                "x": "522",
+                "y": "59",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "435",
+                "y": "144",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "3"
+            },
+            "normalizedName": "georgetown guyana",
+            "latitude": "6.80674982070922",
+            "longitude": "-58.1500701904296",
+            "isoCode": "GY"
+        },
+        {
+            "name": {
+                "first": "Rio Gallegos",
+                "second": "ARGENTINA"
+            },
+            "id": "Rio Gallegos, Argentina",
+            "landscape": {
+                "x": "407",
+                "y": "704",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "338",
+                "y": "704",
+                "group": "2"
+            },
+            "normalizedName": "rio gallegos santa cruz argentina",
+            "latitude": "-51.6227912902832",
+            "longitude": "-69.2153930664062",
+            "isoCode": "AR"
+        },
+        {
+            "name": {
+                "first": "La Paz",
+                "second": "BOLIVIA"
+            },
+            "id": "La Paz, Bolivia",
+            "landscape": {
+                "x": "425",
+                "y": "297",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "352",
+                "y": "349",
+                "group": "2"
+            },
+            "normalizedName": "la paz la paz bolivia",
+            "latitude": "-16.4988994598388",
+            "longitude": "-68.1331176757812",
+            "isoCode": "BO"
+        }
+    ],
+    "Oceania": [
+        {
+            "name": {
+                "first": "Brisbane",
+                "second": "AUSTRALIA"
+            },
+            "id": "Brisbane, Australia",
+            "landscape": {
+                "x": "635",
+                "y": "407",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "465",
+                "y": "420",
+                "group": "1"
+            },
+            "normalizedName": "brisbane qld australia",
+            "latitude": "-27.4684600830078",
+            "longitude": "153.02342224121",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Adelaide",
+                "second": "AUSTRALIA"
+            },
+            "id": "Adelaide, Australia",
+            "landscape": {
+                "x": "448",
+                "y": "520",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "314",
+                "y": "507",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "1"
+            },
+            "normalizedName": "adelaide sa australia",
+            "latitude": "-34.9261016845703",
+            "longitude": "138.599884033203",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Auckland",
+                "second": "NEW ZEALAND"
+            },
+            "id": "Auckland, New Zealand",
+            "landscape": {
+                "x": "917",
+                "y": "547",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "695",
+                "y": "529",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "0"
+            },
+            "normalizedName": "auckland auckland new zealand",
+            "latitude": "-36.8841094970703",
+            "longitude": "174.770416259765",
+            "isoCode": "NZ"
+        },
+        {
+            "name": {
+                "first": "Port Moresby",
+                "second": "PAPUA NEW GUINEA"
+            },
+            "id": "Port Moresby, Papua New Guinea",
+            "landscape": {
+                "x": "561",
+                "y": "169",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "405",
+                "y": "220",
+                "group": "0"
+            },
+            "normalizedName": "port moresby papua new guinea",
+            "latitude": "-9.46331977844238",
+            "longitude": "147.193038940429",
+            "isoCode": "PG"
+        },
+        {
+            "name": {
+                "first": "Perth",
+                "second": "AUSTRALIA"
+            },
+            "id": "Perth, Australia",
+            "landscape": {
+                "x": "152",
+                "y": "465",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "73",
+                "y": "473",
+                "group": "0"
+            },
+            "normalizedName": "perth wa australia",
+            "latitude": "-31.9526405334472",
+            "longitude": "115.85740661621",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Hobart",
+                "second": "AUSTRALIA"
+            },
+            "id": "Hobart, Australia",
+            "landscape": {
+                "x": "559",
+                "y": "639",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "406",
+                "y": "607",
+                "group": "1"
+            },
+            "normalizedName": "hobart tas australia",
+            "latitude": "-42.8816299438476",
+            "longitude": "147.331588745117",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Sydney",
+                "second": "AUSTRALIA"
+            },
+            "id": "Sydney, Australia",
+            "landscape": {
+                "x": "617",
+                "y": "492",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "448",
+                "y": "491",
+                "vpos": "top",
+                "hpos": "right",
+                "group": "2"
+            },
+            "normalizedName": "sydney nsw australia",
+            "latitude": "-33.86962890625",
+            "longitude": "151.206954956054",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Melbourne",
+                "second": "AUSTRALIA"
+            },
+            "id": "Melbourne, Australia",
+            "landscape": {
+                "x": "532",
+                "y": "561",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "382",
+                "y": "539",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "melbourne vic australia",
+            "latitude": "-37.8175315856933",
+            "longitude": "144.967147827148",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Darwin",
+                "second": "AUSTRALIA"
+            },
+            "id": "Darwin, Australia",
+            "landscape": {
+                "x": "350",
+                "y": "211",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "233",
+                "y": "257",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "darwin nt australia",
+            "latitude": "-12.4674997329711",
+            "longitude": "130.843154907226",
+            "isoCode": "AU"
+        },
+        {
+            "name": {
+                "first": "Wellington",
+                "second": "NEW ZEALAND"
+            },
+            "id": "Wellington, New Zealand",
+            "landscape": {
+                "x": "917",
+                "y": "616",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "697",
+                "y": "585",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "wellington wellington new zealand",
+            "latitude": "-41.2845611572265",
+            "longitude": "174.777725219726",
+            "isoCode": "NZ"
+        },
+        {
+            "name": {
+                "first": "Arawa",
+                "second": "PAPUA NEW GUINEA"
+            },
+            "id": "Arawa, Papua New Guinea",
+            "landscape": {
+                "x": "670",
+                "y": "127",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "494",
+                "y": "187",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "arawa papua new guinea",
+            "latitude": "-6.22825098037719",
+            "longitude": "155.565933227539",
+            "isoCode": "PG"
+        },
+        {
+            "name": {
+                "first": "Suva",
+                "second": "FIJI"
+            },
+            "id": "Suva, Fiji Islands",
+            "landscape": {
+                "x": "957",
+                "y": "281",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "733",
+                "y": "313",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "suva fiji islands",
+            "latitude": "-18.1187896728515",
+            "longitude": "178.436965942382",
+            "isoCode": "FJ"
+        }
+    ],
+    "Asia": [
+        {
+            "name": {
+                "first": "Singapore",
+                "second": "SINGAPORE_CAPS"
+            },
+            "id": "Singapore, Singapore",
+            "landscape": {
+                "x": "630",
+                "y": "635",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "367",
+                "y": "615",
+                "group": "2"
+            },
+            "normalizedName": "singapore singapore",
+            "latitude": "1.2901599407196",
+            "longitude": "103.851997375488",
+            "isoCode": "SG"
+        },
+        {
+            "name": {
+                "first": "Beijing",
+                "second": "CHINA"
+            },
+            "id": "Beijing",
+            "landscape": {
+                "x": "719",
+                "y": "304",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "421",
+                "y": "427",
+                "vpos": "top",
+                "hpos": "right",
+                "group": "1"
+            },
+            "normalizedName": "beijing beijing china",
+            "latitude": "39.9065704345703",
+            "longitude": "116.387649536132",
+            "isoCode": "CN"
+        },
+        {
+            "name": {
+                "first": "New Delhi",
+                "second": "INDIA"
+            },
+            "id": "New Delhi, India",
+            "landscape": {
+                "x": "417",
+                "y": "426",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "243",
+                "y": "504",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "new delhi delhi india",
+            "latitude": "28.6143398284912",
+            "longitude": "77.2121887207031",
+            "isoCode": "IN"
+        },
+        {
+            "name": {
+                "first": "Tokyo",
+                "second": "JAPAN"
+            },
+            "id": "Tokyo, Japan",
+            "landscape": {
+                "x": "898",
+                "y": "365",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "530",
+                "y": "453",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "tokyo tokyo japan",
+            "latitude": "35.6832084655761",
+            "longitude": "139.808944702148",
+            "isoCode": "JP"
+        },
+        {
+            "name": {
+                "first": "Bangkok",
+                "second": "THAILAND"
+            },
+            "id": "Bangkok, Thailand",
+            "landscape": {
+                "x": "608",
+                "y": "546",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "350",
+                "y": "556",
+                "group": "1"
+            },
+            "normalizedName": "bangkok thailand",
+            "latitude": "13.7533502578735",
+            "longitude": "100.504829406738",
+            "isoCode": "TH"
+        },
+        {
+            "name": {
+                "first": "Dubai",
+                "second": "UNITED ARAB EMIRATES"
+            },
+            "id": "Dubai, United Arab Emirates",
+            "landscape": {
+                "x": "247",
+                "y": "452",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "142",
+                "y": "510",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "3"
+            },
+            "normalizedName": "dubai united arab emirates",
+            "latitude": "25.271141052246",
+            "longitude": "55.3290901184082",
+            "isoCode": "AE"
+        },
+        {
+            "name": {
+                "first": "Istanbul",
+                "second": "TURKEY"
+            },
+            "id": "Istanbul, Turkey",
+            "landscape": {
+                "x": "53",
+                "y": "312",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "27",
+                "y": "425",
+                "group": "1"
+            },
+            "normalizedName": "istanbul istanbul turkey",
+            "latitude": "41.0408515930175",
+            "longitude": "28.9861793518066",
+            "isoCode": "TR"
+        },
+        {
+            "name": {
+                "first": "Mumbai",
+                "second": "INDIA"
+            },
+            "id": "Mumbai, India",
+            "landscape": {
+                "x": "392",
+                "y": "517",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "227",
+                "y": "537",
+                "group": "0"
+            },
+            "normalizedName": "mumbai maharashtra india",
+            "latitude": "18.9698104858398",
+            "longitude": "72.8325881958007",
+            "isoCode": "IN"
+        },
+        {
+            "name": {
+                "first": "Colombo",
+                "second": "SRI LANKA"
+            },
+            "id": "Colombo, Sri Lanka",
+            "landscape": {
+                "x": "441",
+                "y": "593",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "258",
+                "y": "591",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "normalizedName": "colombo sri lanka",
+            "latitude": "6.92728996276855",
+            "longitude": "79.8718795776367",
+            "isoCode": "LK"
+        },
+        {
+            "name": {
+                "first": "Baghdad",
+                "second": "IRAQ"
+            },
+            "id": "Baghdad, Iraq",
+            "landscape": {
+                "x": "173",
+                "y": "391",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "98",
+                "y": "473",
+                "group": "3"
+            },
+            "normalizedName": "baghdad iraq",
+            "latitude": "33.3420181274414",
+            "longitude": "44.393009185791",
+            "isoCode": "IQ"
+        },
+        {
+            "name": {
+                "first": "Riyadh",
+                "second": "SAUDI ARABIA"
+            },
+            "id": "Riyadh, Saudi Arabia",
+            "landscape": {
+                "x": "193",
+                "y": "456",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "106",
+                "y": "514",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "normalizedName": "riyadh saudi arabia",
+            "latitude": "24.6413536071777",
+            "longitude": "46.7259330749511",
+            "isoCode": "SA"
+        },
+        {
+            "name": {
+                "first": "Shanghai",
+                "second": "CHINA"
+            },
+            "id": "Shanghai",
+            "landscape": {
+                "x": "760",
+                "y": "397",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "446",
+                "y": "476",
+                "group": "3"
+            },
+            "normalizedName": "shanghai shanghai china",
+            "latitude": "31.2551593780517",
+            "longitude": "121.474700927734",
+            "isoCode": "CN"
+        },
+        {
+            "name": {
+                "first": "Seoul",
+                "second": "KOREA"
+            },
+            "id": "Seoul, South Korea",
+            "landscape": {
+                "x": "803",
+                "y": "344",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "474",
+                "y": "442",
+                "group": "0"
+            },
+            "normalizedName": "seoul seoul south korea",
+            "latitude": "37.560",
+            "longitude": "126.990",
+            "isoCode": "KR"
+        }
+    ],
+    "Africa": [
+        {
+            "name": {
+                "first": "Nairobi",
+                "second": "KENYA"
+            },
+            "id": "Nairobi, Kenya",
+            "landscape": {
+                "x": "729",
+                "y": "409",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "545",
+                "y": "433",
+                "group": "1"
+            },
+            "normalizedName": "nairobi kenya",
+            "latitude": "-1.28412997722625",
+            "longitude": "36.8221282958984",
+            "isoCode": "KE"
+        },
+        {
+            "name": {
+                "first": "Cape Town",
+                "second": "SOUTH AFRICA"
+            },
+            "id": "Cape Town, South Africa",
+            "landscape": {
+                "x": "540",
+                "y": "754",
+                "vpos": "top",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "393",
+                "y": "714",
+                "group": "1"
+            },
+            "normalizedName": "cape town western cape south africa",
+            "latitude": "-33.919090270996",
+            "longitude": "18.4219894409179",
+            "isoCode": "ZA"
+        },
+        {
+            "name": {
+                "first": "Cairo",
+                "second": "EGYPT"
+            },
+            "id": "Cairo, Egypt",
+            "landscape": {
+                "x": "671",
+                "y": "88",
+                "vpos": "bottom",
+                "hpos": "left",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "503",
+                "y": "167",
+                "group": "0"
+            },
+            "normalizedName": "cairo cairo egypt",
+            "latitude": "30.0590858459472",
+            "longitude": "31.2507305145263",
+            "isoCode": "EG"
+        },
+        {
+            "name": {
+                "first": "Lagos",
+                "second": "NIGERIA"
+            },
+            "id": "Lagos, Nigeria",
+            "landscape": {
+                "x": "395",
+                "y": "336",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "271",
+                "y": "368",
+                "group": "0"
+            },
+            "normalizedName": "lagos nigeria",
+            "latitude": "6.45471000671386",
+            "longitude": "3.38876008987426",
+            "isoCode": "NG"
+        },
+        {
+            "name": {
+                "first": "Addis Ababa",
+                "second": "ETHIOPIA"
+            },
+            "id": "Addis Ababa, Ethiopia",
+            "landscape": {
+                "x": "757",
+                "y": "305",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "562",
+                "y": "352",
+                "group": "0"
+            },
+            "normalizedName": "addis ababa ethiopia",
+            "latitude": "9.03359985351562",
+            "longitude": "38.7444992065429",
+            "isoCode": "ET"
+        },
+        {
+            "name": {
+                "first": "Casablanca",
+                "second": "MOROCCO"
+            },
+            "id": "Casablanca, Morocco",
+            "landscape": {
+                "x": "283",
+                "y": "53",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "0"
+            },
+            "portrait": {
+                "x": "179",
+                "y": "136",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "normalizedName": "casablanca casablanca morocco",
+            "latitude": "33.5930557250976",
+            "longitude": "-7.61638879776",
+            "isoCode": "MA"
+        },
+        {
+            "name": {
+                "first": "Durban",
+                "second": "SOUTH AFRICA"
+            },
+            "id": "Durban, South Africa",
+            "landscape": {
+                "x": "670",
+                "y": "704",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "502",
+                "y": "668",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "3"
+            },
+            "normalizedName": "durban kwazulu-natal south africa",
+            "latitude": "-29.8557395935058",
+            "longitude": "31.0351200103759",
+            "isoCode": "ZA"
+        },
+        {
+            "name": {
+                "first": "Victoria Falls",
+                "second": "ZIMBABWE"
+            },
+            "id": "Victoria Falls, Zimbabwe",
+            "landscape": {
+                "x": "618",
+                "y": "581",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "461",
+                "y": "574",
+                "vpos": "top",
+                "hpos": "left",
+                "group": "2"
+            },
+            "normalizedName": "victoria falls zimbabwe",
+            "latitude": "-17.916669845581",
+            "longitude": "25.8500003814697",
+            "isoCode": "ZW"
+        },
+        {
+            "name": {
+                "first": "Ibadan",
+                "second": "NIGERIA"
+            },
+            "id": "Ibadan, Nigeria",
+            "landscape": {
+                "x": "397",
+                "y": "317",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "274",
+                "y": "356",
+                "group": "3"
+            },
+            "normalizedName": "ibadan nigeria",
+            "latitude": "7.48090982437133",
+            "longitude": "3.9178500175476",
+            "isoCode": "NG"
+        },
+        {
+            "name": {
+                "first": "Alexandria",
+                "second": "EGYPT"
+            },
+            "id": "Alexandria, Egypt",
+            "landscape": {
+                "x": "652",
+                "y": "75",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "489",
+                "y": "159",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "3"
+            },
+            "normalizedName": "alexandria alexandria egypt",
+            "latitude": "31.1861362457275",
+            "longitude": "29.8946418762207",
+            "isoCode": "EG"
+        },
+        {
+            "name": {
+                "first": "Kampala",
+                "second": "UGANDA"
+            },
+            "id": "Kampala, Uganda",
+            "landscape": {
+                "x": "685",
+                "y": "396",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "511",
+                "y": "419",
+                "group": "2"
+            },
+            "normalizedName": "kampala uganda",
+            "latitude": "0.32541000843048",
+            "longitude": "32.5869903564453",
+            "isoCode": "UG"
+        },
+        {
+            "name": {
+                "first": "Algiers",
+                "second": "ALGERIA"
+            },
+            "id": "Algiers, Algeria",
+            "landscape": {
+                "x": "379",
+                "y": "17",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "1"
+            },
+            "portrait": {
+                "x": "263",
+                "y": "107",
+                "vpos": "bottom",
+                "hpos": "right",
+                "group": "2"
+            },
+            "normalizedName": "algiers algeria",
+            "latitude": "36.7428283691406",
+            "longitude": "3.09116005897521",
+            "isoCode": "DZ"
+        }
+    ]
+}

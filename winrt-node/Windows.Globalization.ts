@@ -237,12 +237,10 @@ export namespace Globalization {
     export namespace Collation {
         export class CharacterGrouping {
             first: string;
-            end: string;
             label: string;
 
             constructor(char: string) {
                 this.first = char;
-                this.end = char;
                 this.label = char.toUpperCase();
             }
         }

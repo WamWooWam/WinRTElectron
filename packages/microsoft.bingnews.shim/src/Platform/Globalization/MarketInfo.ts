@@ -1,4 +1,5 @@
-import { Windows } from 'winrt-node';
+import { GeographicRegion } from "winrt/Windows/Globalization/GeographicRegion";
+import { Language } from "winrt/Windows/Globalization/Language";
 
 export class MarketInfo {
     static defaultMarket: MarketInfo;
@@ -10,7 +11,7 @@ export class MarketInfo {
     }
 
     displayName: string;
-    geographicRegion: Windows.Globalization.GeographicRegion;
-    language: Windows.Globalization.Language;
+    geographicRegion: GeographicRegion;
+    language: Language;
     valueAsString: string;
 }

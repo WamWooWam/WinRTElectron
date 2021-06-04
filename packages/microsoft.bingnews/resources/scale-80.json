@@ -1,0 +1,23 @@
+{
+  "Files": {
+    "images": {
+      "large.png": "images\\large.scale-80.png",
+      "logo.png": "images\\logo.scale-80.png",
+      "logoCategory.png": "images\\logoCategory.scale-80.png",
+      "logoSource.png": "images\\logoSource.scale-80.png",
+      "logoTopic.png": "images\\logoTopic.scale-80.png",
+      "small.png": "images\\small.scale-80.png",
+      "smallCategory.png": "images\\smallCategory.scale-80.png",
+      "smallSource.png": "images\\smallSource.scale-80.png",
+      "smallTopic.png": "images\\smallTopic.scale-80.png",
+      "tiny.png": "images\\tiny.scale-80.png",
+      "tinyCategory.png": "images\\tinyCategory.scale-80.png",
+      "tinySource.png": "images\\tinySource.scale-80.png",
+      "tinyTopic.png": "images\\tinyTopic.scale-80.png",
+      "wide.png": "images\\wide.scale-80.png",
+      "wideCategory.png": "images\\wideCategory.scale-80.png",
+      "wideSource.png": "images\\wideSource.scale-80.png",
+      "wideTopic.png": "images\\wideTopic.scale-80.png"
+    }
+  }
+}

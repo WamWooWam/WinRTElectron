@@ -1,14 +1,103 @@
-﻿@font-face{font-family:"Custom Icons";src:url('/ModernShared/resources/fonts/customIcons.woff');}@font-face{font-family:"Color Emoji";src:local("Segoe UI Emoji");unicode-range:U+A9,U+AE,U+203C-3299,U+E100-E11A,U+1F004-1F6FF;}.singleLineText{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
-.typeSizeLarge{font-size:56px;letter-spacing:0;line-height:64px;padding-bottom:11px;padding-top:5px;}
-.typeSizeMedium{font-size:26.66667px;letter-spacing:0.02em;line-height:32px;padding-bottom:5px;padding-top:3px;}
-.typeSize16pt{font-size:21.33333px;letter-spacing:0.02em;line-height:27px;padding-bottom:2px;padding-top:1px;}
-.typeSizeNormal{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
-.typeSizeSmall{font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
-.typeForAuthoring{font-feature-settings:"kern" 1,"ss20" 1;font-size:16px;font-weight:400;letter-spacing:normal;line-height:20px;padding-bottom:0px;padding-top:0px;}
-body:not(#spec){margin:0;padding:0;font-feature-settings:"kern" 1,"ss20" 1,"dlig" 1;color:#000000;cursor:default;}
-input:not(#spec),textarea:not(#spec){font-feature-settings:"kern" 1,"ss20" 1,"dlig" 1;}
-.typeSizeSmall p,.typeSizeSmall ul,.typeSizeNormal p,.typeSizeNormal ul{padding-bottom:20px;}
-.typeForAuthoring p{margin-bottom:20px;}
-.errorLinkDarkBg{color:#ff8033;}.errorLinkDarkBg:hover{color:#ff9442;}
-.errorLinkDarkBg:active,.errorLinkDarkBg:hover:active{color:#ffa750;}
-.win-appbar .win-command .win-label{word-wrap:break-word;word-break:keep-all;}
+﻿@font-face {
+    font-family: "Custom Icons";
+    src: url('/ModernShared/resources/fonts/customIcons.woff');
+}
+
+@font-face {
+    font-family: "Color Emoji";
+    src: local("Segoe UI Emoji");
+    unicode-range: U+A9, U+AE, U+203C-3299, U+E100-E11A, U+1F004-1F6FF;
+}
+
+.singleLineText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.typeSizeLarge {
+    font-size: 56px;
+    letter-spacing: 0;
+    line-height: 64px;
+    padding-bottom: 11px;
+    padding-top: 5px;
+}
+
+.typeSizeMedium {
+    font-size: 26.66667px;
+    letter-spacing: 0.02em;
+    line-height: 32px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+}
+
+.typeSize16pt {
+    font-size: 21.33333px;
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    padding-bottom: 2px;
+    padding-top: 1px;
+}
+
+.typeSizeNormal {
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.typeSizeSmall {
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.typeForAuthoring {
+    font-feature-settings: "kern" 1, "ss20" 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+body:not(#spec) {
+    margin: 0;
+    padding: 0;
+    font-feature-settings: "kern" 1, "ss20" 1, "dlig" 1;
+    color: #000000;
+    cursor: default;
+}
+
+input:not(#spec), textarea:not(#spec) {
+    font-feature-settings: "kern" 1, "ss20" 1, "dlig" 1;
+}
+
+.typeSizeSmall p, .typeSizeSmall ul, .typeSizeNormal p, .typeSizeNormal ul {
+    padding-bottom: 20px;
+}
+
+.typeForAuthoring p {
+    margin-bottom: 20px;
+}
+
+.errorLinkDarkBg {
+    color: #ff8033;
+}
+
+.errorLinkDarkBg:hover {
+    color: #ff9442;
+}
+
+.errorLinkDarkBg:active, .errorLinkDarkBg:hover:active {
+    color: #ffa750;
+}
+
+.win-appbar .win-command .win-label {
+    word-wrap: break-word;
+    word-break: keep-all;
+}

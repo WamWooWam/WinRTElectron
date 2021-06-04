@@ -46,7 +46,7 @@
         Views: {}
     };
     t("ImportScripts");
-    n.importScripts("/microsoft.windowscommunicationsapps/dist/shim.js", "Router.js", "/microsoft.windowscommunicationsapps/Jx/JxWorker.js", "../Scheduler/Scheduler.js", "../Helpers/Data.js", "../Month/Worker.js", "../Week/Worker.js", "../Day/Worker.js", "../FreeBusy/Worker.js", "../Agenda/AgendaHelpers.js", "../Agenda/AgendaWorker.js");
+    n.importScripts("/microsoft.windowscommunicationsapps/dist/bundle.js", "Router.js", "/microsoft.windowscommunicationsapps/Jx/JxWorker.js", "../Scheduler/Scheduler.js", "../Helpers/Data.js", "../Month/Worker.js", "../Week/Worker.js", "../Day/Worker.js", "../FreeBusy/Worker.js", "../Agenda/AgendaHelpers.js", "../Agenda/AgendaWorker.js");
     i("ImportScripts");
     t("createAppData");
     o = Windows.Storage.ApplicationData.current.localSettings;

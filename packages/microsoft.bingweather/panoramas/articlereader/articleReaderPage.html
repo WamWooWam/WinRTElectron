@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<!-- Common Controls references -->
+<script src="/common/js/articlereader.js"></script>          
+<script src="/common/js/dynamicPanoDataProvider.js"></script>
+<script src="/common/js/dynamicArticleReader.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<script src="/panoramas/articlereader/articleReaderPage.js"></script>
+<!-- Dynamic Pano css reference. Without this, launching on article reader page is screwed up -->
+<link rel="stylesheet" href="/common/DynamicPano/css/dynamicPano.css" />
+<link rel="stylesheet" href="/common/css/delayedCommon.css" />
+</head>
+<body>
+<div id="articleReaderPage" class="ImmersivePage fragment articleReaderPage" aria-label="Main content" role="Main">
+<div class="platformMainContent">
+<div id="immersiveHeader" data-win-control="CommonJS.Immersive.Header"></div>
+<div id="articleOrchestrator"></div>
+</div>
+<div id="bottomEdgy"></div>
+<div id="articleLoadingScreen" class="articleLoadingScreen platformHide"></div>
+</div>
+</body>
+</html>

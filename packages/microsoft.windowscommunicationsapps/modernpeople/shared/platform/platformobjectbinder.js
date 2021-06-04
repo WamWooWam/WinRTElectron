@@ -4,69 +4,93 @@
             n()
         })
     }
-    function h(t, i, r) {
+    function h(item, name, binderType) {
         var u = null;
         try {
-            return t && (r = r || s[t.getPlatformObject().objectType],
-                u = new r(t, i)),
+            return item && (binderType = binderType || BinderTypes[item.getPlatformObject().objectType],
+                u = new binderType(item, name)),
                 u;
         }
         catch (e) {
             return null;
         }
     }
-    function i(i) {
-        var r = s[i] = function (i, u) {
-            t.call(this, r, i, u)
+    function binderForObjectType(i) {
+        var r = BinderTypes[i] = function (i, u) {
+            BinderBase.call(this, r, i, u)
         }
             ;
-        return Jx.inherit(r, t),
+        return Jx.inherit(r, BinderBase),
             Object.defineProperty(r.prototype, "objectType", {
                 value: i,
                 enumerable: true
             }),
             r
     }
-    function b(n, t) {
-        Object.defineProperty(n.prototype, t, {
+    function defineProp(target, name) {
+        Object.defineProperty(target.prototype, name, {
             get: function () {
-                return this._getValue(t)
+                return this._getValue(name)
             },
             enumerable: true
         })
     }
-    function c(n, t, i) {
-        Object.defineProperty(n.prototype, t, {
+    function addCollectionBinder(type, collectionName, collectionType) {
+        Object.defineProperty(type.prototype, collectionName, {
             get: function () {
-                return this._getCollection(t, i)
+                return this._getCollection(collectionName, collectionType)
             },
             enumerable: true
         })
     }
-    function r(n, t, i) {
-        Object.defineProperty(n.prototype, t, {
+    function addItemBinder(type, itemName, itemType) {
+        Object.defineProperty(type.prototype, itemName, {
             get: function () {
-                return this._getObject(t, i)
+                return this._getObject(itemName, itemType)
             },
             enumerable: true
         })
     }
-    function k(n, t) {
-        var i, r;
-        for (n.prototype._populated = true,
-            i = t.getPlatformObject(); i = Object.getPrototypeOf(i);)
-            r = Object.keys(i),
-                r.forEach(function (t) {
-                    var u = Object.getOwnPropertyDescriptor(i, t), r;
-                    t in n.prototype || (r = u.value,
-                        Jx.isFunction(r) ? n.prototype[t] = function () {
-                            var n = this._binder.getPlatformObject();
-                            return n[t].apply(n, arguments)
-                        }
-                            : b(n, t))
-                })
+    function populate(binder, value) {
+        if (binder.prototype._populated)
+            return;
+        binder.prototype._populated = true;
+
+        // this is a clusterfuck, but it's needed in order to walk the prototype
+        // chain of ES6 classes and access both inhereted properties, and non enumerable ones
+        // TLDR fuck javascript
+        let properties = new Map();
+        let object = value.getPlatformObject()
+        let keys = Object.getOwnPropertyNames(object);
+        for (let obj = object; obj && obj != Object.prototype; obj = Object.getPrototypeOf(obj)) {
+            let newKeys = Object.getOwnPropertyNames(obj);
+            for (const newKey of newKeys) {
+                if (properties.has(newKey))
+                    continue;
+                properties.set(newKey, Object.getOwnPropertyDescriptor(obj, newKey))
+            }
+            keys = keys.concat(...newKeys);
+        }
+        keys = [...new Set(keys)];
+
+        for (const key of keys) {
+            var prop = properties.get(key);
+            var value;
+            if (!(key in binder.prototype) && prop) {
+                value = prop.value;
+                if (Jx.isFunction(value)) {
+                    binder.prototype[key] = function () {
+                        var n = this._binder.getPlatformObject();
+                        return n[key].apply(n, arguments)
+                    }
+                }
+                else {
+                    defineProp(binder, key);
+                }
+            }
+        }
     }
-    var w = window.People, o = Microsoft.WindowsLive.Platform, n = w.PlatformObjectBinder = function (n, t) {
+    var People = window.People, Platform = Microsoft.WindowsLive.Platform, PlatformObjectBinder = People.PlatformObjectBinder = function (n, t) {
         this._name = (t || "") + "[" + n.objectType + " " + n.objectId + "]";
         this._bindings = {};
         this._childCollections = {};
@@ -75,8 +99,8 @@
         this._listener = null;
         this._listening = false
     }
-        , f, s, t;
-    n.prototype.dispose = function () {
+        , PlatformCollectionBinder, BinderTypes, BinderBase;
+    PlatformObjectBinder.prototype.dispose = function () {
         if (Object.keys(this._childCollections).forEach(function (n) {
             this._childCollections[n] && this._childCollections[n].dispose()
         }, this),
@@ -104,15 +128,15 @@
         }
     }
         ;
-    n.prototype.setObject = function (n) {
+    PlatformObjectBinder.prototype.setObject = function (n) {
         this._object = n
     }
         ;
-    n.prototype.getPlatformObject = function () {
+    PlatformObjectBinder.prototype.getPlatformObject = function () {
         return this._object
     }
         ;
-    n.prototype._addBinding = function (n, t) {
+    PlatformObjectBinder.prototype._addBinding = function (n, t) {
         if (n) {
             if (!this._listening) {
                 this._listener || (this._listener = this._onChange.bind(this));
@@ -129,7 +153,7 @@
         }
     }
         ;
-    n.prototype._getProperty = function (n) {
+    PlatformObjectBinder.prototype._getProperty = function (n) {
         var t;
         try {
             t = this._object[n]
@@ -139,29 +163,29 @@
         return t
     }
         ;
-    n.prototype.getValue = function (n, t) {
+    PlatformObjectBinder.prototype.getValue = function (n, t) {
         return this._addBinding(n, t),
             this._getProperty(t)
     }
         ;
-    n.prototype.getObject = function (t, i) {
+    PlatformObjectBinder.prototype.getObject = function (t, i) {
         var r, u;
         return this._addBinding(t, i),
             r = this._childObjects[i],
             r || (u = this._getProperty(i),
-                this._childObjects[i] = r = u ? new n(u, this._name + "." + i) : null),
+                this._childObjects[i] = r = u ? new PlatformObjectBinder(u, this._name + "." + i) : null),
             r
     }
         ;
-    n.prototype.getCollection = function (n, t) {
+    PlatformObjectBinder.prototype.getCollection = function (n, t) {
         var i, r;
         return i = this._childCollections[t],
             i || (r = this._getProperty(t),
-                this._childCollections[t] = i = new f(r, this._name + "." + t)),
+                this._childCollections[t] = i = new PlatformCollectionBinder(r, this._name + "." + t)),
             i.getItems(n)
     }
         ;
-    n.prototype._onChange = function (n) {
+    PlatformObjectBinder.prototype._onChange = function (n) {
         var t, r, e, i, u, f;
         for (t = n.detail && n.detail[0],
             Jx.isNullOrUndefined(t) && (t = Object.keys(this._bindings)),
@@ -176,26 +200,26 @@
                 f && y(f)
     }
         ;
-    n.prototype.createAccessor = function (n) {
+    PlatformObjectBinder.prototype.createAccessor = function (n) {
         return h(this, n)
     }
         ;
-    f = function (t, i) {
-        if (this._name = i,
-            this._collection = t,
+    PlatformCollectionBinder = function (collection, name) {
+        if (this._name = name,
+            this._collection = collection,
             this._listeners = [],
             this._items = [],
-            t) {
-            for (var r = 0, u = t.count; r < u; ++r)
-                this._items.push(new n(t.item(r), this._name));
-            t.addEventListener("collectionchanged", this._onChangeListener = this._onChange.bind(this));
-            t.unlock()
+            collection) {
+            for (var r = 0, u = collection.count; r < u; ++r)
+                this._items.push(new PlatformObjectBinder(collection.item(r), this._name));
+            collection.addEventListener("collectionchanged", this._onChangeListener = this._onChange.bind(this));
+            collection.unlock()
         }
     }
         ;
-    f.prototype.dispose = function () {
-        if (this._items.forEach(function (n) {
-            n.dispose()
+    PlatformCollectionBinder.prototype.dispose = function () {
+        if (this._items.forEach(function (item) {
+            item.dispose()
         }),
             this._items = [],
             this._collection) {
@@ -209,107 +233,111 @@
         }
     }
         ;
-    f.prototype.getItems = function (n) {
+    PlatformCollectionBinder.prototype.getItems = function (n) {
         return n && this._listeners.indexOf(n) === -1 && this._listeners.push(n),
             this._items.slice()
     }
         ;
-    f.prototype._onChange = function (t) {
-        var r, i, u, f, e;
-        r = t.detail[0];
-        switch (r.eType) {
-            case o.CollectionChangeType.itemAdded:
-                u = "add";
-                i = new n(this._collection.item(r.index), this._name);
-                this._items.splice(r.index, 0, i);
-                Jx.log.info("Collection change: collection=" + this._name + " type=add object=" + i.getPlatformObject().objectId);
+    PlatformCollectionBinder.prototype._onChange = function (event) {
+        var detail, binder, action, f, e;
+        detail = event.detail[0];
+        switch (detail.eType) {
+            case Platform.CollectionChangeType.itemAdded:
+                action = "add";
+                binder = new PlatformObjectBinder(this._collection.item(detail.index), this._name);
+                this._items.splice(detail.index, 0, binder);
+                Jx.log.info("Collection change: collection=" + this._name + " type=add object=" + binder.getPlatformObject().objectId);
                 break;
-            case o.CollectionChangeType.itemRemoved:
-                u = "remove";
-                i = this._items.splice(r.index, 1)[0];
-                Jx.log.info("Collection change: collection=" + this._name + " type=remove object=" + i.getPlatformObject().objectId);
-                i.dispose();
+            case Platform.CollectionChangeType.itemRemoved:
+                action = "remove";
+                binder = this._items.splice(detail.index, 1)[0];
+                Jx.log.info("Collection change: collection=" + this._name + " type=remove object=" + binder.getPlatformObject().objectId);
+                binder.dispose();
                 break;
-            case o.CollectionChangeType.itemChanged:
-                u = "move";
-                i = this._items.splice(r.previousIndex, 1)[0];
-                this._items.splice(r.index, 0, i);
-                Jx.log.info("Collection change: collection=" + this._name + " type=move object=" + i.getPlatformObject().objectId);
+            case Platform.CollectionChangeType.itemChanged:
+                action = "move";
+                binder = this._items.splice(detail.previousIndex, 1)[0];
+                this._items.splice(detail.index, 0, binder);
+                Jx.log.info("Collection change: collection=" + this._name + " type=move object=" + binder.getPlatformObject().objectId);
                 break;
-            case o.CollectionChangeType.reset:
-                for (u = "reset",
+            case Platform.CollectionChangeType.reset:
+                for (action = "reset",
                     this._items.forEach(function (n) {
                         n.dispose()
                     }),
                     this._items.length = 0,
                     f = 0,
                     e = this._collection.count; f < e; ++f)
-                    this._items.push(new n(this._collection.item(f), this._name));
+                    this._items.push(new PlatformObjectBinder(this._collection.item(f), this._name));
                 Jx.log.info("Collection change: collection=" + this._name + " type=reset")
         }
         y(this._listeners)
     }
         ;
-    s = {};
-    t = function (t, i, r) {
+    BinderTypes = {};
+    BinderBase = function (t, i, r) {
         this._binder = i;
         this._callback = r;
-        this._populated || k(t, i)
+        this._populated || populate(t, i)
     }
         ;
-    Object.defineProperty(t.prototype, "objectId", {
+    Object.defineProperty(BinderBase.prototype, "objectId", {
         get: function () {
             return this._binder.getPlatformObject().objectId
         }
     });
-    t.prototype.getPlatformObject = function () {
+    BinderBase.prototype.getPlatformObject = function () {
         return this._binder.getPlatformObject()
     }
         ;
-    t.prototype.createAccessor = function (n) {
+    BinderBase.prototype.createAccessor = function (n) {
         return h(this._binder, n, this.constructor)
     }
         ;
-    t.prototype._getValue = function (n) {
+    BinderBase.prototype._getValue = function (n) {
         return this._binder.getValue(this._callback, n)
     }
         ;
-    t.prototype._getObject = function (n, t) {
+    BinderBase.prototype._getObject = function (n, t) {
         return h(this._binder.getObject(this._callback, n), this._callback, t)
     }
         ;
-    t.prototype._getCollection = function (t, i) {
+    BinderBase.prototype._getCollection = function (t, i) {
         return this._binder.getCollection(this._callback, t).map(function (t) {
             return h(t, this._callback, i)
         }, this)
     }
         ;
-    var a = i("Person")
-        , e = i("Contact")
-        , l = i("ImplicitContact")
-        , u = i("MeContact")
-        , v = i("Account")
-        , d = i("Recipient")
-        , g = i("usertile")
-        , p = i("SearchPerson");
-    c(a, "linkedContacts", e);
-    c(u, "linkedContacts", u);
-    c(p, "linkedContacts", e);
-    c(l, "linkedContacts");
-    r(e, "account", v);
-    r(e, "person", a);
-    r(u, "account", v);
-    r(u, "person", u);
-    r(d, "person");
-    r(l, "account", v);
-    r(l, "person");
-    a.prototype.getUserTile = e.prototype.getUserTile = u.prototype.getUserTile = l.prototype.getUserTile = p.prototype.getUserTile = function (t, i) {
-        var r;
-        try {
-            r = this._binder.getPlatformObject().getUserTile(t, i)
-        } catch (u) {
-            Jx.log.exception("Error retrieving usertile: ", u)
+    var a = binderForObjectType("Person")
+        , e = binderForObjectType("Contact")
+        , l = binderForObjectType("ImplicitContact")
+        , u = binderForObjectType("MeContact")
+        , v = binderForObjectType("Account")
+        , d = binderForObjectType("Recipient")
+        , g = binderForObjectType("usertile")
+        , p = binderForObjectType("SearchPerson");
+    addCollectionBinder(a, "linkedContacts", e);
+    addCollectionBinder(u, "linkedContacts", u);
+    addCollectionBinder(p, "linkedContacts", e);
+    addCollectionBinder(l, "linkedContacts");
+    addItemBinder(e, "account", v);
+    addItemBinder(e, "person", a);
+    addItemBinder(u, "account", v);
+    addItemBinder(u, "person", u);
+    addItemBinder(d, "person");
+    addItemBinder(l, "account", v);
+    addItemBinder(l, "person");
+    a.prototype.getUserTile =
+        e.prototype.getUserTile =
+        u.prototype.getUserTile =
+        l.prototype.getUserTile =
+        p.prototype.getUserTile = function (t, i) {
+            var r;
+            try {
+                r = this._binder.getPlatformObject().getUserTile(t, i)
+            } catch (u) {
+                Jx.log.exception("Error retrieving usertile: ", u)
+            }
+            return r ? new PlatformObjectBinder(r) : null
         }
-        return r ? new n(r) : null
-    }
 })

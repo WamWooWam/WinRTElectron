@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>PC settings</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="/dist/shim.js"></script>
+
+    <!-- WinJS references -->
+    <link href="//microsoft.winjs.2.0/css/ui-light.css" rel="stylesheet" />
+    <script src="//microsoft.winjs.2.0/js/base.js"></script>
+    <script src="//microsoft.winjs.2.0/js/ui.js"></script>
+
+    <link rel='stylesheet' href='/src/main.css'>
+    <script src="/src/main.js"></script>
+    <script src="/src/navigator.js"></script>
+    <script src="/src/sidebar.js"></script>
+    <script src="/src/application.js"></script>
+
+    <script src="/pages/mainview.js"></script>
+    <script src="/pages/about.js"></script>
+    <script src="/pages/windowsupdate.js"></script>
+</head>
+
+<body class="container">
+    <div id="sidebar">
+        <div id="sidebar-content">
+            <div id=sidebar-list-view-header class="inline-container">
+                <button id="sidebar-back-button"
+                    data-win-control="WinJS.UI.BackButton"></button>
+                <h2 id="sidebar-title">PC settings</h2>
+                <button class="sidebar-search-button"></button>
+            </div>
+            <div class="sidebar-list-view-container">
+                <div id="sidebar-list-view-template"
+                    data-win-control="WinJS.Binding.Template">
+                    <div class="sidebar-list-view-item">
+                        <p data-win-bind="innerText: title"></p>
+                    </div>
+                </div>
+                <div id="sidebar-list-view" data-win-control="WinJS.UI.ListView"
+                    data-win-options="{ layout: {type: WinJS.UI.ListLayout}, 
+                                        itemTemplate: select('#sidebar-list-view-template'), 
+                                        selectionMode: 'single' }">
+                </div>
+            </div>
+            <a id="control-panel-link" onclick="" href="#">Control Panel</a>
+        </div>
+    </div>
+    <div id="contenthost" data-win-control="Application.PageControlNavigator" data-win-options="{home: '/pages/mainview.html'}"></div>
+</body>
+
+</html>

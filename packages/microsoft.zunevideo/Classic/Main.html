@@ -9,7 +9,7 @@
         window.msWriteProfilerMark("ent:Startup.ScriptsStart,StartTM");
 
         // Warm up the DLLs used by our app ASAP.
-        new Worker("/WarmupCode.js");
+        // new Worker("/WarmupCode.js");
 
         // Save App start time in a global object, it's needed for PerfTrack instrumentation
         this.PerfTrack = { 
@@ -46,7 +46,13 @@
      
     <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
     <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
-    <script src="/main_merged.js"></script><script src="/group_1_merged.js"></script><script src="/VideoCollection_merged.js"></script><script src="/group_2_merged.js"></script><script src="/MovieDetails_merged.js"></script><script src="/SearchResultsPage_merged.js"></script><script src="/TvDetails_merged.js"></script>
+    <script src="/main_merged.js"></script>
+    <script src="/group_1_merged.js"></script>
+    <script src="/VideoCollection_merged.js"></script>
+    <script src="/group_2_merged.js"></script>
+    <script src="/MovieDetails_merged.js"></script>
+    <script src="/SearchResultsPage_merged.js"></script>
+    <script src="/TvDetails_merged.js"></script>
     <script src="/framework/DashboardRefresherService.js"></script>
     <script src="/framework/iaservice.js"></script>
     <script src="/framework/navigation.js"></script>

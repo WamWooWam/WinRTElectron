@@ -234,8 +234,8 @@
                         <div class="layoutRoot-shrinkAndStayHeader shrinkAndStayHeaderControl-dropDownHeader">
                             <button class="dropDownHeader-backButton acc-keyboardFocusTarget" type="button" data-win-control="WinJS.UI.BackButton"></button>
                             <div class="dropDownHeader-title text-navHeaderTitle maxLines-one" data-win-bind="
-                                     textContent: dataContext.mediaItem.name;
-                                     removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;">
+                                     textContent: dataContext.mediaItem._name;
+                                     removeFromDisplay: dataContext.mediaItem._name MS.Entertainment.Utilities.toggleClassNameNegate;">
                             </div>
                         </div>
 
@@ -252,8 +252,8 @@
                                     applyImageAsBackground: true }">
                             <div class="header-content">
                                 <div class="content-title text-heroItemTitle maxLines-three" data-win-bind="
-                                        textContent: dataContext.mediaItem.name;
-                                        removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                        textContent: dataContext.mediaItem._name;
+                                        removeFromDisplay: dataContext.mediaItem._name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
                                 <div class="content-subTitle text-heroItemSubTitle maxLines-one removeFromDisplay" data-win-bind="textContent: dataContext.mediaItem.genre.name;
                                 removeFromDisplay: dataContext.mediaItem.genre.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
                                 <div class="content-actions ent-control win-disposable" data-win-automationid="ArtistDetails_PrimaryHeaderButtons" data-win-control="MS.Entertainment.Pages.ActionButtonsControl" data-win-bind="winControl.buttons: dataContext.primaryHeaderButtons" data-win-options="{

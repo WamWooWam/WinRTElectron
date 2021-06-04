@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>about Settings</title>
+</head>
+<body>
+<!-- Settings Template-->
+<div class="settingsPanel">
+<!-- About Template-->
+<div id="AboutPage" class="panel" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow'}">
+<!-- Header -->
+<div class="win-header">
+<button type="button" data-win-bind="onclick:aboutPageBackButtonclick" class="win-backbutton">
+</button>
+<div class="settingsTitle" data-win-res="{textContent:'About'}"></div>
+<div class="appIcon"></div>
+</div>
+<!-- Content -->
+<div class="win-content">
+<!-- Version -->
+<div class="simpleLabel" data-win-res="{textContent:'BrandedAppTitle'}"></div>
+<div class="simpleLabel" id="appVersion"></div>
+<div class="simpleLabel" data-win-res="{textContent:'Publisher'}"></div>
+<a tabindex="0" class="settingsLink" data-win-bind="textContent:helpText; onclick:onHelpClick; onkeydown:onHelpKeyDown;"></a>
+<a tabindex="0" class="settingsLink" data-win-bind="textContent:creditsText; onclick:onCreditsClick"></a>
+<!-- Attribution -->
+<div id="providerAttribution" class="setting">
+<div class="sectionTitle" data-win-res="{textContent:'DataAttribution'}"></div>
+<div class="tianqiAttribution sectionLabel" data-win-res="{textContent:'TianQiAttribution'}"></div>
+<div class="tianqiAttribution providerLogo">
+<span><a href="http://www.weather.com.cn">weather.com.cn</a></span>
+</div>
+<div class="sectionLabel" data-win-res="{textContent:'CCDailyMapsAttribution'}"></div>
+<div class="providerLogo">
+<span><a href="http://www.weather.com/services/winapp.html" data-win-res="{attributes: {'aria-label': 'Weather.com'}}">
+<img src="/images/providerLogos/weatherdotcom.png" /></a></span><span class="providerPosition"><a id="weatherDotComUrl" href="http://www.weather.com"></a></span>
+</div>
+<div class="sectionLabel" data-win-res="{textContent:'CCDailyMapsAttribution'}"></div>
+<div class="providerLogo">
+<span><a href="http://www.foreca.com" data-win-res="{attributes: {'aria-label': 'Foreca'}}" tabindex="0">
+<img src="/images/providerLogos/foreca.png" aria-hidden="true" /></a></span>
+<span class="providerSeperator"><a href="http://bit.ly/wdtconsumer" data-win-res="{attributes: {'aria-label': 'iMap Weather'}}" tabindex="0">
+<img src="/images/providerLogos/wdt.png" aria-hidden="true" /></a></span>
+</div>
+<div class="sectionLabel" data-win-res="{textContent:'CCDailyAttribution'}"></div>
+<div class="providerLogo">
+<span><a href="http://www.accuweather.com" data-win-res="{attributes: {'aria-label': 'AccuWeather'}}" tabindex="0">
+<img src="/images/providerLogos/accuweather.png" aria-hidden="true" /></a></span>
+</div>
+<div class="sectionLabel" data-win-res="{textContent:'SunshineSeaTempAttribution'}"></div>
+<div class="providerLogo">
+<span><a href="http://www.weather2travel.com" data-win-res="{attributes: {'aria-label': 'Weather2Travel'}}" tabindex="0">
+<img src="/images/providerLogos/weather2travel.png" aria-hidden="true" /></a></span>
+<span><a href="http://www.holiday-weather.com" data-win-res="{attributes: {'aria-label': 'HolidayWeather.com'}}" tabindex="0">
+<img src="/images/providerLogos/holidayWeather.png" aria-hidden="true" /></a></span>
+</div>
+<div class="weatherTrendsContainer">
+<div class="sectionLabel" data-win-res="{textContent:'HWAttribution'}"></div>
+<div class="providerLogo">
+<span><a href="http://www.weathertrends360.com/" data-win-res="{attributes: {'aria-label': 'Weather Trends 360'}}" tabindex="0">
+<img src="/images/providerLogos/weathertrends.png" aria-hidden="true" /></a></span>
+</div>
+</div>
+<div class="providerLogo">
+<div data-win-res="{textContent:'CanadaRadarAttribution'}"></div>
+</div>
+<div class="imageCreditsContainer">
+<div class="imageAttributionLabel" data-win-res="{textContent:'ImageCredits'}"></div>
+<div class="imageAttribution"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

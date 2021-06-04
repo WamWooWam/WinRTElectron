@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<link href="/common/FeaturedCluster/css/FeaturedCluster.css" rel="stylesheet" />
+</head>
+<body>
+<div id="moreSourceItemTemplate" class="moreSourceItemTemplate" data-win-control="WinJS.Binding.Template" data-module-width="14" data-module-height="14">
+<div class="moreSourceTileContainer">
+<div class="moreSourceImageContainer" data-win-bind="style.display: data.clusterlogo">
+<div class="moreSourceImage" data-win-control="CommonJS.ImageCard" data-win-options="{ noIdentifier: 1, showProgress: true, showError: false, classification: 'small' }" data-win-bind="winControl.imageSource: data.clusterlogo PlatformJS.Utilities.imageCardSource; winControl.alternateText: data.panoTitle;">
+</div>
+</div>
+<div class="moreSourceTileOverlay">
+</div>
+<div class="moreSourceTileItem">
+<div class="moreSourceTextContainer">
+<div class="moreSourceText" data-win-bind="textContent: data.panoTitle"></div>
+<div class="moreSourceDescription" data-win-bind="textContent: data.panoDescription"></div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

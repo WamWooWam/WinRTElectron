@@ -12643,7 +12643,7 @@ MS.Entertainment.UI.Debug.defineAssert("MS.Entertainment.Utilities");
                                         if (!WinJS.Utilities.hasClass(subElement, animationClass))
                                             WinJS.Utilities.addClass(subElement, animationClass)
                                     });
-                                    animationNames = subElement.currentStyle.msAnimationName.split(",").map(function(animationName) {
+                                    animationNames = subElement.currentStyle.animationName.split(",").map(function(animationName) {
                                         return animationName.trim()
                                     });
                                     if (animationNames.length <= 0 || (animationNames.length === 1 && animationNames[0] === "none")) {
@@ -13817,7 +13817,7 @@ MS.Entertainment.UI.Debug.defineAssert("MS.Entertainment.Utilities");
                 var url = "undetermined";
                 MS.Entertainment.Platform.Playback.assert(mediaInstance, "tried to determine url for undefined mediaInstance");
                 if (mediaInstance)
-                    if ((mediaInstance.isLocal && Microsoft.Entertainment.Configuration.ConfigurationManager().telemetry.flightId) || (!mediaInstance.isLocal && !MS.Entertainment.Utilities.isAmsterdamApp) || (!mediaInstance.isLocal && MS.Entertainment.Utilities.isAmsterdamApp && Microsoft.Entertainment.Configuration.ConfigurationManager().telemetry.flightId))
+                    if ((mediaInstance.isLocal && (new Microsoft.Entertainment.Configuration.ConfigurationManager()).telemetry.flightId) || (!mediaInstance.isLocal && !MS.Entertainment.Utilities.isAmsterdamApp) || (!mediaInstance.isLocal && MS.Entertainment.Utilities.isAmsterdamApp && (new Microsoft.Entertainment.Configuration.ConfigurationManager()).telemetry.flightId))
                         if (!mediaInstance.isLocal && mediaInstance.source && !MS.Entertainment.Utilities.isBlobUrl(mediaInstance.source))
                             url = mediaInstance.source;
                         else if (mediaInstance._mediaItem && mediaInstance._mediaItem.data)

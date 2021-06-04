@@ -1,0 +1,310 @@
+.start-screen {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    z-index: 2147483645;
+    /* :) */
+    background-color: rgba(0, 0, 0, 0.33);
+}
+
+.start-content {
+    display: grid;
+    grid-template-rows: 120px 1fr 94px;
+    height: 100vh;
+}
+
+.start-screen.hiding {
+    animation: start-hide 0.25s forwards;
+}
+
+.start-screen.hiding>* {
+    animation: start-content-hide 0.25s forwards;
+}
+
+.start-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+    display: block;
+}
+
+@keyframes start-content-hide {
+    0% {
+        transform: scale3d(1, 1, 1);
+    }
+    100% {
+        transform: scale3d(0.33, 0.33, 0.33);
+    }
+}
+
+@keyframes start-hide {
+    25% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.start-header {
+    margin-left: 118px;
+    display: flex;
+    align-items: flex-end;
+    font-weight: 200;
+    z-index: 1;
+}
+
+.start-main-header {
+    margin-right: 38px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+}
+
+.start-title {
+    font-family: "Segoe UI";
+    font-size: 42pt;
+    font-weight: 200;
+    margin: 0;
+    padding-bottom: 14px;
+    margin-left: -2px;
+}
+
+.start-header-buttons {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 170px 57px 57px;
+    column-gap: 2px;
+    margin-bottom: 20px;
+}
+
+.start-header-button {
+    height: 57px;
+    transition: transform 0.1s ease-out;
+}
+
+.start-header-button:hover {
+    background: #2B0680;
+}
+
+.start-header-button:active {
+    background: #2B0680;
+    transform: scale3d(0.975, 0.975, 0.975);
+}
+
+.start-header-user-button {
+    display: grid;
+    text-align: right;
+    align-items: center;
+    grid-template-columns: 1fr 60px;
+}
+
+.start-header-user-button>.username>p {
+    margin: 0;
+}
+
+.start-header-user-button>.username>.primary {
+    font-size: 27px;
+    line-height: 27px;
+}
+
+.start-header-user-button>.picture {
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    justify-self: center;
+}
+
+.start-header-power, .start-header-search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Segoe UI Symbol";
+    font-size: 30px;
+    line-height: 30px;
+    width: 57px;
+    height: 57px;
+}
+
+.mobile>.start-header, .mobile>.start-footer {
+    display: none;
+}
+
+.start.mobile {
+    margin: 8px;
+}
+
+.start-tiles-scroll-container {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: overlay;
+    grid-row: 2;
+    -webkit-overflow-scrolling: touch;
+}
+
+.start-tiles-scroll-container::-webkit-scrollbar {
+    height: 0px;
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar {
+    height: 17px;
+    background: rgba(255, 255, 255, 0.25);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-thumb {
+    box-shadow: inset 0 0 15px 15px #cdcdcd;
+    border: solid 1px rgba(255, 255, 255, 0.33);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-thumb:hover {
+    box-shadow: inset 0 0 15px 15px #dadada;
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-thumb:active {
+    box-shadow: inset 0 0 15px 15px rgba(0, 0, 0, 0.66);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal {
+    width: 33px;
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:hover {
+    background-color: #dadada;
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:active {
+    background-color: rgba(0, 0, 0, 0.66);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal:increment {
+    background-image: url(/static/scrollbar/scroll-right.svg);
+    background-position: 25% center;
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal:increment:hover {
+    background-image: url(/static/scrollbar/scroll-right-hover.svg);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+    background-image: url(/static/scrollbar/scroll-right-active.svg);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal:decrement {
+    background-image: url(/static/scrollbar/scroll-left.svg);
+    background-position: 75% center;
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal:decrement:hover {
+    background-image: url(/static/scrollbar/scroll-left-hover.svg);
+}
+
+.start-tiles-scroll-container.scroll-visible::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
+    background-image: url(/static/scrollbar/scroll-left-active.svg);
+}
+
+.start-tiles {
+    padding: 24px 118px 0px 62px;
+    display: flex;
+    align-self: center;
+    align-items: center;
+    height: calc(100% - 196px);
+}
+
+.mobile>.start-tiles {
+    grid-auto-rows: calc(calc(100vw / 6) - 6px);
+    grid-auto-columns: calc(calc(100vw / 6) - 6px);
+}
+
+.start-footer {
+    margin-left: 118px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    grid-row: 3;
+}
+
+.start-tile-group {
+    display: flex;
+    flex-direction: column;
+    margin-left: 56px;
+}
+
+.start-show-all-button {
+    transform: rotate(90deg);
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+.start-hide-all-button {
+    transform: rotate(-90deg);
+}
+
+.start-arrow-button {
+    font-family: "Segoe UI Symbol";
+    font-size: 42px;
+    display: flex;
+    justify-self: flex-start;
+}
+
+.start-show-all-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.start-show-all-button #arrow {
+    fill: white;
+}
+
+.start-show-all-button #circle {
+    stroke: white;
+    fill: transparent;
+}
+
+.start-show-all-button:hover #circle {
+    fill: #2E00A5;
+}
+
+.start-show-all-button:active #circle {
+    fill: white;
+}
+
+.start-show-all-button:active #arrow {
+    fill: #180053;
+}
+
+.start-hide-all-button #arrow {
+    fill: black;
+}
+
+.start-hide-all-button #circle {
+    stroke: black;
+    fill: transparent;
+}
+
+.start-hide-all-button:hover #arrow {
+    fill: white;
+}
+
+.start-hide-all-button:hover #circle {
+    fill: #2E00A5;
+}
+
+.start-hide-all-button:active #circle {
+    fill: black;
+}
+
+.start-hide-all-button:active #arrow {
+    fill: #180053;
+}
+
+.all-apps-text {
+    display: grid;
+    grid-auto-columns: 450px;
+    column-gap: 20px;
+}

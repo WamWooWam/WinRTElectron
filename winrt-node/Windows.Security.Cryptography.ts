@@ -6,6 +6,10 @@ export namespace Security.Cryptography {
             return Buffer.from(buff).toString('base64');
         }
 
+        static encodeToHexString(buff: Uint8Array) {
+            return Buffer.from(buff).toString('hex');
+        }
+
         static convertStringToBinary(str: string, encoding: BinaryStringEncoding){
             var encoder = new TextEncoder(); // we cant really use encoding :c
             return encoder.encode(str);

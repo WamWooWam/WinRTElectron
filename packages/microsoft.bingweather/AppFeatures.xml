@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<App Name="Weather" Version="latest">
+  <Aggregates>
+    
+    <Aggregate Name="ads" Type="js">
+      <Feature Name="Ads"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="articlereader" Type="js">
+      <Feature Name="ArticleReader"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="autosuggest" Type="js">
+      <Feature Name="AutoSuggest"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="controls" Type="js">
+      <Feature Name="CoreCommonUX"></Feature>
+      <Feature Name="PrivacySettings"></Feature>
+      <Feature Name="CommonUtils"></Feature>
+      <Feature Name="Flyout"></Feature>
+      <Feature Name="Header"></Feature>
+      <Feature Name="ImageAttribution"></Feature>
+      <Feature Name="ImageCard"></Feature>
+      <Feature Name="ItemsContainer"></Feature>
+      <Feature Name="ListView2"></Feature>
+      <Feature Name="Panorama"></Feature>
+      <Feature Name="NavigableView"></Feature>
+      <Feature Name="SearchDialog"></Feature>
+      <Feature Name="TempCluster"></Feature>
+      <Feature Name="Hero"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="dynamicpano" Type="js">
+      <Feature Name="DynamicPano"></Feature>
+    </Aggregate>
+	
+    <Aggregate Name="dynamicPanoDataProvider" Type="js">
+      <Feature Name="DynamicPanoDataProvider"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="dynamicArticleReader" Type="js">
+      <Feature Name="DynamicPanoArticleReader"></Feature>
+    </Aggregate>
+    
+    <Aggregate Name="collection" Type="js">
+      <Feature Name="Collection"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="uiconfig" Type="js">
+      <Feature Name="UIConfig"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="ecv" Type="js">
+      <Feature Name="ECV"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="filters" Type="js">
+      <Feature Name="Filters"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="feedbackFragment" Type="js">
+      <Feature Name="Feedback"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="mediaplayback" Type="js">
+      <Feature Name="MediaPlayback"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="navigation" Type="js">
+      <Feature Name="Navigation"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="newscluster" Type="js">
+      <Feature Name="NewsCluster"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="search" Type="js">
+      <Feature Name="Search"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="services" Type="js">
+      <Feature Name="Services"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="slideshow" Type="js">
+      <Feature Name="SlideShow"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="table" Type="js">
+      <Feature Name="Table"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="utils" Type="js">
+      <Feature Name="CommonUtils"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="utilities" Type="js">
+      <Feature Name="PlatformUtils"></Feature>
+      <Feature Name="Tools"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="photosynthview" Type="js">
+      <Feature Name="PhotosynthView"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="common" Type="css">
+      <Feature Name="CoreCommonUX"></Feature>
+      <Feature Name="Flyout"></Feature>
+      <Feature Name="TempCluster"></Feature>
+      <Feature Name="Search"></Feature>
+      <Feature Name="Hero"></Feature>
+    </Aggregate>
+
+    <Aggregate Name="delayedCommon" Type="css">
+      <Feature Name="ArticleReader"></Feature>
+      <Feature Name="AutoSuggest"></Feature>
+      <Feature Name="ECV"></Feature>
+      <Feature Name="MediaPlayback"></Feature>
+      <Feature Name="SlideShow"></Feature>
+      <Feature Name="Table"></Feature>
+      <Feature Name="Feedback"></Feature>
+      <Feature Name="SearchDialog"></Feature>
+      <Feature Name="ListView2"></Feature>
+      <Feature Name="PrivacySettings"></Feature>
+    </Aggregate>
+    
+    <Aggregate Name="dynamicpano" Type="css">
+      <Feature Name="DynamicPano"></Feature>
+    </Aggregate>
+    
+    <Aggregate Name="photosynthview" Type="css">
+      <Feature Name="PhotosynthView"></Feature>
+    </Aggregate>
+
+  </Aggregates>
+</App>

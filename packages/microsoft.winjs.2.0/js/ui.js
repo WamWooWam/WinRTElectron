@@ -7790,7 +7790,7 @@ define('WinJS/Controls/ItemContainer/_ItemEventsHandler',[
                         leftButton,
                         rightButton;
                     site.pressedElement = eventObject.target;
-                    if (_WinRT.Windows.UI.Input.PointerPoint) {
+                    if (/*_WinRT.Windows.UI.Input.PointerPoint*/ false) {
                         // xButton is true when you've x-clicked with a mouse or pen. Otherwise it is false.
                         var currentPoint = this._getCurrentPoint(eventObject);
                         var pointProps = currentPoint.properties;
@@ -28354,7 +28354,13 @@ define('WinJS/Controls/Repeater',[
                     /// The DOM element for the specified item.
                     /// </returns>
                     /// </signature>
-                    return this._repeatedDOM[index];
+                    let element = this._repeatedDOM[index];
+                    if (!element) {
+                        this._renderAllItems();
+                        element = this._repeatedDOM[index];
+                    }
+
+                    return element;
                 },
 
                 dispose: function Repeater_dispose() {
@@ -28486,7 +28492,8 @@ define('WinJS/Controls/Repeater',[
 
                 _beginModification: function Repeater_beginModification() {
                     if (this._modifying) {
-                        throw new _ErrorFromName("WinJS.UI.Repeater.RepeaterModificationReentrancy", strings.repeaterReentrancy);
+                        console.error("WinJS.UI.Repeater.RepeaterModificationReentrancy")
+                        // throw new _ErrorFromName("WinJS.UI.Repeater.RepeaterModificationReentrancy", strings.repeaterReentrancy);
                     }
                     this._modifying = true;
                 },
@@ -33016,6 +33023,8 @@ define('WinJS/Controls/SemanticZoom',[
                     this._resetPointerRecords();
                 }
 
+                this.sizeReference = options.sizeReference;
+
                 // Get going
                 this._onResizeImpl();
 
@@ -33342,7 +33351,7 @@ define('WinJS/Controls/SemanticZoom',[
                             style.height = height + "px";
                         };
 
-                        var sezoComputedStyle = _Global.getComputedStyle(this._element, null),
+                        var sezoComputedStyle = _Global.getComputedStyle((this.sizeReference ?? this._element), null),
                             computedWidth = parseFloat(sezoComputedStyle.width),
                             computedHeight = parseFloat(sezoComputedStyle.height),
                             sezoPaddingLeft = getDimension(this._element, sezoComputedStyle["paddingLeft"]),
@@ -41887,7 +41896,7 @@ define('WinJS/Controls/AppBar',[
 
                 // Need to set placement before closedDisplayMode, closedDisplayMode sets our starting position, which is dependant on placement.
                 this.placement = options.placement || _Constants.appBarPlacementBottom;
-                this.closedDisplayMode = options.closedDisplayMode || closedDisplayModes.minimal;
+                this.closedDisplayMode = options.closedDisplayMode || closedDisplayModes.none;
 
                 _Control.setOptions(this, options);
 
@@ -44362,11 +44371,11 @@ define('WinJS/Controls/SearchBox',[
                 this._searchSuggestions = null;
 
                 // Get the search suggestion provider if it is available
-                if (_WinRT.Windows.ApplicationModel.Search.Core.SearchSuggestionManager) {
-                    this._searchSuggestionManager = new _WinRT.Windows.ApplicationModel.Search.Core.SearchSuggestionManager();
-                } else {
+                // if (_WinRT.Windows.ApplicationModel.Search.Core.SearchSuggestionManager) {
+                //     this._searchSuggestionManager = new _WinRT.Windows.ApplicationModel.Search.Core.SearchSuggestionManager();
+                // } else {
                     this._searchSuggestionManager = new _SearchSuggestionManagerShim._SearchSuggestionManagerShim();
-                }
+                // }
                 this._searchSuggestions = this._searchSuggestionManager.suggestions;
 
                 this._hitFinder = null;
@@ -44765,9 +44774,9 @@ define('WinJS/Controls/SearchBox',[
                         var firstChild = element.firstChild;
 
                         var hitsProvided = item.hits;
-                        if ((!hitsProvided) && (this._hitFinder !== null) && (item.kind !== _SearchSuggestionManagerShim._SearchSuggestionKind.Separator)) {
-                            hitsProvided = this._hitFinder.find(text);
-                        }
+                        // if ((!hitsProvided) && (this._hitFinder !== null) && (item.kind !== _SearchSuggestionManagerShim._SearchSuggestionKind.Separator)) {
+                        //     hitsProvided = this._hitFinder.find(text);
+                        // }
 
                         var hits = SearchBox._sortAndMergeHits(hitsProvided);
 

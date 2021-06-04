@@ -147,7 +147,7 @@ msWriteProfilerMark("SkypeDebugETW:loginManager,StartTM");
             var liveId = Windows.Security.Authentication.OnlineId;
             var promptType = silent ? liveId.CredentialPromptType.doNotPrompt : liveId.CredentialPromptType.promptIfNeeded;
 
-            var serviceTicketRequest = liveId.OnlineIdServiceTicketRequest(scope, "MBI_SSL");
+            var serviceTicketRequest = new liveId.OnlineIdServiceTicketRequest(scope, "MBI_SSL");
             ticketRequests.push(serviceTicketRequest);
             log("[LiveID] requesting token for {0}:{1}".format(ticketRequests[0].service, ticketRequests[0].policy));
 

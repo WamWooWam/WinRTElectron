@@ -266,7 +266,6 @@
       },
       "images": {
         "app_update.png": "Common\\images\\app_update.png",
-        "beak_nav_asset.png": "Common\\images\\beak_nav_asset.scale-100.png",
         "customizationItemLarge.png": "Common\\images\\customizationItemLarge.png",
         "customizationItemMedium.png": "Common\\images\\customizationItemMedium.png",
         "customizationItemSmall.png": "Common\\images\\customizationItemSmall.png",
@@ -377,10 +376,7 @@
         "searchCharm.png": "images\\autoSuggest\\searchCharm.png",
         "searchCharmSki.png": "images\\autoSuggest\\searchCharmSki.png"
       },
-      "badge.png": "images\\badge.scale-100.png",
       "heroraindrop.png": "images\\heroraindrop.png",
-      "largelogo.png": "images\\largelogo.scale-100.png",
-      "logo.png": "images\\logo.scale-100.png",
       "mapsFlyout": {
         "a_clear.gif": "images\\mapsFlyout\\a_clear.gif",
         "dopplerlegend.png": "images\\mapsFlyout\\dopplerlegend.png",
@@ -539,10 +535,7 @@
           "9c.png": "images\\skycodes\\89x89\\9c.png"
         }
       },
-      "smalllogo.png": "images\\smalllogo.scale-100.png",
-      "splash.png": "images\\splash.scale-100.png",
-      "store.png": "images\\store.scale-100.png",
-      "tinylogo.png": "images\\tinylogo.scale-100.png",
+      "smalllogo.png": "images\\smalllogo.targetsize-16.png",
       "weathermaps": {
         "maps_thumb.png": "images\\weathermaps\\maps_thumb.png",
         "maps_thumb_active.png": "images\\weathermaps\\maps_thumb_active.png",
@@ -550,7 +543,6 @@
         "pushpin.png": "images\\weathermaps\\pushpin.png"
       },
       "weather_placeholder.png": "images\\weather_placeholder.png",
-      "widelogo.png": "images\\widelogo.scale-100.png",
       "worldweather": {
         "arrow-bottomright.png": "images\\worldweather\\arrow-bottomright.png",
         "arrow-topleft.png": "images\\worldweather\\arrow-topleft.png",

@@ -1,4 +1,4 @@
-﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+/* Copyright (C) Microsoft Corporation. All rights reserved. */
 .music .home, .snappedContainer
 {
     position: fixed;
@@ -12,19 +12,28 @@
 {
     display: -ms-grid;
     -ms-grid-columns: auto;
-    -ms-grid-rows: auto 1fr auto 98px
+    -ms-grid-rows: auto 1fr auto 98px;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr auto 98px
 }
 .snappedContainer.snappedIconContainer
 {
     display: -ms-grid;
     -ms-grid-columns: 20px 1fr 20px;
-    -ms-grid-rows: 50vh auto 1fr
+    -ms-grid-rows: 50vh auto 1fr;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 50vh auto 1fr
 }
 .snappedContainer.videoSnappedMiniView
 {
     display: -ms-grid;
     -ms-grid-columns: 20px 1fr 20px;
-    -ms-grid-rows: 40px auto auto 1fr
+    -ms-grid-rows: 40px auto auto 1fr;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 40px auto auto 1fr
 }
 .opacity100
 {
@@ -35,13 +44,21 @@
     -ms-grid-row: 3;
     -ms-grid-column: 2;
     -ms-grid-row-align: start;
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    align-items: flex-start;
+    justify-content: center
 }
 .music .snappedIconContainer .label {
     -ms-grid-column: 2;
     -ms-grid-row: 3;
     -ms-grid-column-align: end;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    grid-column-start: 2;
+    grid-row-start: 3;
+    justify-content: flex-end;
+    align-items: center
 }
 .snappedUnsnapIcon button.win-command .win-label {
     display: block
@@ -61,7 +78,11 @@
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     -ms-grid-row-align: end;
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    align-items: flex-end;
+    justify-content: center
 }
 .snappedMode>.win-template
 {
@@ -73,12 +94,17 @@
     -ms-grid-columns: 20px 1fr 20px;
     -ms-grid-rows: 50vh auto 1fr;
     height: 100vh;
-    width: 100vw
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 50vh auto 1fr
 }
 .snappedIconContainer
 {
     display: -ms-grid;
-    -ms-grid-columns: auto 1fr
+    -ms-grid-columns: auto 1fr;
+    display: grid;
+    grid-template-columns: auto 1fr
 }
 .snappedBackgroundImage
 {
@@ -89,7 +115,10 @@
     background-size: 100% 100%;
     -ms-grid-row-span: 4;
     -ms-grid-row-align: stretch;
-    -ms-grid-column-align: stretch
+    -ms-grid-column-align: stretch;
+    grid-row-end: span 4;
+    align-items: stretch;
+    justify-content: stretch
 }
 .snappedNowPlayingProgress
 {
@@ -108,7 +137,12 @@
     -ms-grid-columns: 1fr auto;
     -ms-grid-rows: auto auto;
     -ms-grid-row: 0;
-    -ms-grid-row-align: stretch
+    -ms-grid-row-align: stretch;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-row-start: 0;
+    align-items: stretch
 }
 .snappedNowPlaying .title, .snappedNowPlaying .subTitle, .snappedNowPlaying .metadata
 {
@@ -117,7 +151,9 @@
 .snappedNowPlaying .homeHubNowPlayingTile
 {
     -ms-grid-row: 1;
-    -ms-grid-column-span: 2
+    -ms-grid-column-span: 2;
+    grid-row-start: 1;
+    grid-column-end: span 2
 }
 .snappedIconAppTitle
 {
@@ -126,18 +162,26 @@
     padding-bottom: 20px;
     -ms-grid-row: 2;
     -ms-grid-column: 2;
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    grid-row-start: 2;
+    grid-column-start: 2;
+    justify-content: center
 }
 .videoSnappedMiniView .snappedIconAppTitle
 {
-    -ms-grid-column-align: start
+    -ms-grid-column-align: start;
+    justify-content: flex-start
 }
 .videoSnappedMiniView .snappedSubtitle
 {
     -ms-grid-row: 3;
     -ms-grid-column: 2;
     -ms-grid-row-align: start;
-    -ms-grid-column-align: start
+    -ms-grid-column-align: start;
+    grid-row-start: 3;
+    grid-column-start: 2;
+    align-items: flex-start;
+    justify-content: flex-start
 }
 html[dir=rtl] .snapped .musicOverlay .seekBarControl
 {
@@ -149,7 +193,8 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
     opacity: 0;
     transform: translate(-320px,0);
     background-color: rgba(0,0,0,.0001);
-    -ms-grid-row: 2
+    -ms-grid-row: 2;
+    grid-row-start: 2
 }
 .snappedDetailsContentContainer
 {
@@ -181,7 +226,9 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
     height: 100%;
     position: relative;
     -ms-grid-row: 1;
-    -ms-grid-column-span: 2
+    -ms-grid-column-span: 2;
+    grid-row-start: 1;
+    grid-column-end: span 2
 }
 .snappedNowPlayingThumbnail .win-template .playbackPipeline
 {
@@ -196,7 +243,9 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
     -ms-grid-column-align: start;
     -ms-high-contrast-adjust: none;
     position: relative;
-    z-index: 1
+    z-index: 1;
+    align-items: flex-start;
+    justify-content: flex-start
 }
 .snappedVideoRatingImage {
     height: 27px;
@@ -209,7 +258,9 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
     border-bottom-width: 1px;
     border-bottom-style: solid;
     -ms-grid-row: 2;
-    -ms-grid-column: 1
+    -ms-grid-column: 1;
+    grid-row-start: 2;
+    grid-column-start: 1
 }
 .snappedDetailsOverviewMetadata
 {
@@ -247,7 +298,10 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
     display: -ms-grid;
     -ms-grid-columns: auto 1fr;
     -ms-grid-rows: auto;
-    margin-bottom: 20px
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto
 }
 .snappedDetailsOverview .metaDataContainer>.imageContainer
 {
@@ -257,7 +311,9 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
 {
     -ms-grid-column: 2;
     -ms-grid-row: 1;
-    margin: 0 0 0 0
+    margin: 0 0 0 0;
+    grid-column-start: 2;
+    grid-row-start: 1
 }
 .snappedDetailsOverview .metaDataContainer>.textContainer p
 {
@@ -282,25 +338,30 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
 .snapped .nowPlayingBrandingContainer
 {
     -ms-grid-columns: 27px auto;
-    -ms-grid-rows: 64px 40px
+    -ms-grid-rows: 64px 40px;
+    grid-template-columns: 27px auto;
+    grid-template-rows: 64px 40px
 }
 @media screen and (min-height: 1200px)
 {
     .snapped .nowPlayingBrandingContainer
     {
-        -ms-grid-rows: 82px 40px
+        -ms-grid-rows: 82px 40px;
+        grid-template-rows: 82px 40px
     }
 }
 @media screen and (min-height: 1440px)
 {
     .snapped .nowPlayingBrandingContainer
     {
-        -ms-grid-rows: 142px 40px
+        -ms-grid-rows: 142px 40px;
+        grid-template-rows: 142px 40px
     }
 }
 .snapped .nowPlayingBranding
 {
-    -ms-grid-columns: auto 10px auto
+    -ms-grid-columns: auto 10px auto;
+    grid-template-columns: auto 10px auto
 }
 .snapped .nowPlayingBrandingIcon
 {
@@ -311,7 +372,9 @@ html[dir=rtl] .snapped .musicOverlay .seekBarControl
     display: -ms-grid;
     margin-left: 20px;
     margin-top: 20px;
-    -ms-grid-columns: auto 12px auto
+    -ms-grid-columns: auto 12px auto;
+    display: grid;
+    grid-template-columns: auto 12px auto
 }
 html[dir=rtl] .snapped .xboxBranding
 {

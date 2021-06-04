@@ -402,6 +402,28 @@ export namespace UI {
     }
 
     export namespace Notifications {
+        export class BadgeUpdateManager {
+            static createBadgeUpdaterForApplication(): BadgeUpdater {
+                return new BadgeUpdater();
+            }
+
+            static getTemplateContent() {
+                return new XMLDocument();
+            }
+        }
+
+        export class BadgeNotification {
+            constructor(xml: XMLDocument) {
+
+            }
+        }
+
+        export class BadgeUpdater {
+            update(notification: BadgeNotification) {
+
+            }
+        }
+
         export class ToastNotificationManager {
             private static _manager: ToastNotificationManager;
 

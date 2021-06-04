@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Home view</title>
+
+    <!-- View references -->
+    <link href="/views/home/css/homeview.css" rel="stylesheet">
+    <script src="/data/js/localstoragedataprovider.js"></script>
+    <script src="/data/js/localstoragecacheprovider.js"></script>
+    <script src="/data/js/xhrdataprovider.js"></script>
+    <script src="/data/js/datautilities.js"></script>
+    <script src="/data/js/listviewmodel.js"></script>
+    <script src="/data/js/listviewmodelrefresher.js"></script>
+    <script src="/views/start/data/poptextdataprovider.js"></script>
+    <script src="/views/start/data/popvisualdataprovider.js"></script>
+    <script src="/views/start/data/msntrendingdataprovider.js"></script>
+    <script src="/views/start/data/bingnewsdataprovider.js"></script>
+    <script src="/data/js/aggregatedataprovider.js"></script>
+    <script src="/views/start/js/trendingController.js"></script>
+    <script src="/views/home/js/homeview.js"></script>
+</head>
+<body>
+    <div id="trendsPeek" class="fontSizeMedium" aria-label="trendsPeek">
+        <!--Tabindex for trendsTitle is 11 due to trendsTitle element is after
+             attribButton in taborder and attribButton is defined in homeview.html-->
+        <a id="trendsTitle" aria-label="trendsTitle" data-win-res="{textContent:'trending_trendingTitle'}" tabindex="11"></a>
+        <div id="trendsTitlesContainer">
+        </div>
+        <div id="moreButton" aria-label="moreButton">
+            <div id="moreButtonText" data-win-res="{textContent:'home_more'}"></div>
+            <a id="moreButtonArrow" class="fontSizeLarge"></a>
+        </div>
+    </div>
+</body>
+</html>

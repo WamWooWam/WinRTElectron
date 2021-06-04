@@ -23,7 +23,7 @@
                 <div class="verticalListItem-flexColumns">
                     <div class="verticalListItem-songTrack text-metadata maxLines-one" data-ent-placeholderdatapath="track" data-win-bind="textContent: trackNumber MS.Entertainment.Formatters.formatTrackNumberOneTime"></div>
                     <div class="verticalListItem-primaryColumnContainer" data-win-bind="primaryColumnContainer_explicit: isExplicit MS.Entertainment.Utilities.toggleClassName;">
-                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: _name WinJS.Binding.oneTime"></div>
                         <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
                                 winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
                                 allowAnimations: false,
@@ -64,7 +64,7 @@
                 <div class="verticalListItem-flexColumns">
                     <div class="verticalListItem-songTrack text-metadata maxLines-one" data-ent-placeholderdatapath="track" data-win-bind="textContent: trackNumber MS.Entertainment.Formatters.formatTrackNumberOneTime"></div>
                     <div class="verticalListItem-primaryColumnContainer" data-win-bind="primaryColumnContainer_explicit: isExplicit MS.Entertainment.Utilities.toggleClassName;">
-                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: _name WinJS.Binding.oneTime"></div>
                         <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
                                 winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
                                 allowAnimations: false,
@@ -148,8 +148,8 @@
                             hide: MS.Entertainment.Utilities.doNothing }">
 
                     <div class="header-content">
-                        <div class="content-title text-heroItemTitle maxLines-three" data-win-bind="textContent: dataContext.mediaItem.name;
-                             removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                        <div class="content-title text-heroItemTitle maxLines-three" data-win-bind="textContent: dataContext.mediaItem.title;
+                             removeFromDisplay: dataContext.mediaItem.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
                         <div class="content-secondaryContainer">
                             <span class="content-subTitle text-heroItemSubTitle maxLines-one" data-win-bind="
                                     textContent: dataContext.mediaItemDetails;
@@ -248,8 +248,8 @@
                                     
                                     <div class="shrinkAndStayHeaderControl-dropDownHeader">
                                         <button class="dropDownHeader-backButton acc-keyboardFocusTarget" type="button" data-win-control="WinJS.UI.BackButton"></button>
-                                        <div class="dropDownHeader-title text-navHeaderTitle maxLines-one" data-win-bind="textContent: dataContext.mediaItem.name;
-                                                 removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                        <div class="dropDownHeader-title text-navHeaderTitle maxLines-one" data-win-bind="textContent: dataContext.mediaItem.title;
+                                                 removeFromDisplay: dataContext.mediaItem.title MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
                                     </div>
                                 </div>
                             </div>

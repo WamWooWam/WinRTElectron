@@ -1,6 +1,6 @@
 ﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
-#htmlUnsnapped, #htmlSnapped
-{
+
+#htmlUnsnapped, #htmlSnapped {
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -10,47 +10,45 @@
     right: 0;
     bottom: 0
 }
+
 .mainHeader {
     display: -ms-grid;
     -ms-grid-columns: 120px 1fr auto 40px;
     -ms-grid-rows: 40px 80px
 }
-@media screen and (min-height: 1080px)
-{
-    .mainHeader
-    {
+
+@media screen and (min-height: 1080px) {
+    .mainHeader {
         -ms-grid-rows: 50px 80px
     }
 }
-@media screen and (min-height: 1200px)
-{
-    .mainHeader
-    {
+
+@media screen and (min-height: 1200px) {
+    .mainHeader {
         -ms-grid-rows: 70px 80px
     }
 }
-@media screen and (min-height: 1440px)
-{
-    .mainHeader
-    {
+
+@media screen and (min-height: 1440px) {
+    .mainHeader {
         -ms-grid-rows: 130px 80px
     }
 }
-.mainParentGrid
-{
+
+.mainParentGrid {
     display: -ms-grid;
     -ms-grid-columns: 1fr;
     -ms-grid-rows: auto 1fr;
     width: 100vw;
     height: 100vh
 }
-.mainContentGrid
-{
+
+.mainContentGrid {
     -ms-grid-column: 1;
     -ms-grid-row: 2
 }
-.navigationWrapper
-{
+
+.navigationWrapper {
     -ms-grid-column: 1;
     -ms-grid-row: 2;
     height: 80px;
@@ -60,50 +58,47 @@
     -ms-grid-rows: 80px;
     z-index: 1
 }
-.navigationWrapper .navigationContainer
-{
+
+.navigationWrapper .navigationContainer {
     -ms-grid-column: 2;
     -ms-grid-row: 1;
     white-space: nowrap
 }
-.mainHubStrip, .dashboardHost
-{
+
+.mainHubStrip, .dashboardHost {
     height: 100vh;
     width: 100vw;
     display: -ms-grid;
     -ms-grid-rows: 110px 10px 1fr
 }
-.mainHubStrip
-{
+
+.mainHubStrip {
     -ms-grid-columns: 120px 1fr
 }
-.dashboardHost
-{
+
+.dashboardHost {
     -ms-grid-columns: 60px 1fr
 }
-@media screen and (min-height: 1080px)
-{
-    .mainHubStrip, .dashboardHost
-    {
+
+@media screen and (min-height: 1080px) {
+    .mainHubStrip, .dashboardHost {
         -ms-grid-rows: 120px 25px 1fr
     }
 }
-@media screen and (min-height: 1200px)
-{
-    .mainHubStrip, .dashboardHost
-    {
+
+@media screen and (min-height: 1200px) {
+    .mainHubStrip, .dashboardHost {
         -ms-grid-rows: 140px 85px 1fr
     }
 }
-@media screen and (min-height: 1440px)
-{
-    .mainHubStrip, .dashboardHost
-    {
+
+@media screen and (min-height: 1440px) {
+    .mainHubStrip, .dashboardHost {
         -ms-grid-rows: 200px 125px 1fr
     }
 }
-.hubNavigationClippingContainer
-{
+
+.hubNavigationClippingContainer {
     -ms-grid-column: 2;
     -ms-grid-row: 1;
     display: -ms-grid;
@@ -112,43 +107,41 @@
     padding-bottom: 15px;
     margin-bottom: -15px
 }
-html[dir=ltr] .hubNavigationClippingContainer
-{
+
+html[dir=ltr] .hubNavigationClippingContainer {
     padding-left: 12px;
     margin-left: -12px
 }
-html[dir=rtl] .hubNavigationClippingContainer
-{
+
+html[dir=rtl] .hubNavigationClippingContainer {
     padding-right: 12px;
     margin-right: -12px
 }
-@media screen and (max-width: 1365px)
-{
-    .hubNavigationClippingContainer
-    {
+
+@media screen and (max-width: 1365px) {
+    .hubNavigationClippingContainer {
         overflow-x: auto
     }
-    .mainHeader
-    {
+    .mainHeader {
         height: 40px
     }
 }
-.mainHubStrip .hubStripScroller, .searchHubStrip .hubStripScroller
-{
+
+.mainHubStrip .hubStripScroller, .searchHubStrip .hubStripScroller {
     -ms-grid-column: 1;
     -ms-grid-row: 3;
     -ms-grid-column-span: 2
 }
-.hubNavigationClippingContainer
-{
+
+.hubNavigationClippingContainer {
     opacity: 0
 }
-.galleryPageHost .hubNavigationClippingContainer
-{
+
+.galleryPageHost .hubNavigationClippingContainer {
     opacity: 1
 }
-.hubNavigationContainer
-{
+
+.hubNavigationContainer {
     -ms-grid-column: 1;
     -ms-grid-row: 3;
     height: auto;
@@ -157,24 +150,24 @@ html[dir=rtl] .hubNavigationClippingContainer
     padding: 2px;
     margin: -19px -12px 1px -12px
 }
-.pivotDashboard .dashboardPivots
-{
+
+.pivotDashboard .dashboardPivots {
     margin-left: -12px
 }
-html[dir=rtl] .pivotDashboard .dashboardPivots
-{
+
+html[dir=rtl] .pivotDashboard .dashboardPivots {
     margin-right: -12px;
     margin-left: 0
 }
-.hubNavigationTitle
-{
+
+.hubNavigationTitle {
     -ms-grid-column: 1;
     -ms-grid-row: 2;
     height: auto;
     margin-bottom: 11px
 }
-.hubNavigationSubTitle
-{
+
+.hubNavigationSubTitle {
     -ms-grid-column: 1;
     -ms-grid-row: 3;
     height: auto;
@@ -183,57 +176,58 @@ html[dir=rtl] .pivotDashboard .dashboardPivots
     padding-bottom: 5px;
     margin-top: -15px
 }
-.hubStripTitleContainer
-{
+
+.hubStripTitleContainer {
     -ms-grid-column: 1;
     -ms-grid-row: 3;
     margin-bottom: 5px;
     height: auto;
     width: auto
 }
-.mainHubStripHub
-{
+
+.mainHubStripHub {
     display: inline-block;
     white-space: nowrap
 }
-.dashboard .panelFragmentLoading, .dashboard .panelFragmentFailed
-{
+
+.dashboard .panelFragmentLoading, .dashboard .panelFragmentFailed {
     height: 435px
 }
-.dashboard .panelFragmentWrapper
-{
+
+.dashboard .panelFragmentWrapper {
     top: 0
 }
-.dashboard .panelFragmentLoading
-{
+
+.dashboard .panelFragmentLoading {
     display: -ms-grid;
     -ms-grid-columns: 1fr
 }
+
 .dashboard .panelFragmentLoadingProgress {
     left: 0;
     width: auto;
     -ms-grid-column-align: center
 }
-.dashboard .panelContentContainer
-{
+
+.dashboard .panelContentContainer {
     top: 0
 }
-.shellLoadingControl
-{
+
+.shellLoadingControl {
     position: relative;
     z-index: 1;
     -ms-grid-column-align: stretch;
     -ms-grid-row-align: start;
     -ms-grid-column-span: 4
 }
-.pageTitle
-{
+
+.pageTitle {
     position: absolute;
     top: -10px;
     left: 100px
 }
-.pageContainer
-{
+
+.pageContainer {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -242,8 +236,8 @@ html[dir=rtl] .pivotDashboard .dashboardPivots
     width: 100vw;
     overflow: visible
 }
-.pageFooter
-{
+
+.pageFooter {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -251,26 +245,26 @@ html[dir=rtl] .pivotDashboard .dashboardPivots
     width: 100vw;
     height: 50px
 }
-.appSignIn
-{
+
+.appSignIn {
     -ms-grid-column: 3;
     -ms-grid-row: 2
 }
-.PrimaryNavigationButton
-{
+
+.PrimaryNavigationButton {
     border: 0 solid;
     outline: none
 }
-.fadedNavigationContainer
-{
+
+.fadedNavigationContainer {
     opacity: .4
 }
-.win-backbutton.homeIcon::before
-{
+
+.win-backbutton.homeIcon::before {
     content: ""
 }
-.CreateAccountButton
-{
+
+.CreateAccountButton {
     position: absolute;
     margin: 5px 10px 0 0;
     border: 0 solid;
@@ -279,8 +273,8 @@ html[dir=rtl] .pivotDashboard .dashboardPivots
     right: 0;
     text-align: right
 }
-.SearchEditBox
-{
+
+.SearchEditBox {
     width: 140px;
     height: 20px;
     top: 15px;
@@ -289,8 +283,8 @@ html[dir=rtl] .pivotDashboard .dashboardPivots
     -ms-grid-column: 2;
     -ms-grid-row: 2
 }
-.SearchButton
-{
+
+.SearchButton {
     position: absolute;
     width: 48px;
     height: 48px;
@@ -299,108 +293,107 @@ html[dir=rtl] .pivotDashboard .dashboardPivots
     outline: none;
     top: 30px
 }
-@media(min-width: 320px) and (max-width: 480px)
-{
-    body:not(.app-newmusic) .appBarActionList, .appBarNowPlaying
-    {
+
+@media(min-width: 320px) and (max-width: 480px) {
+    body:not(.app-newmusic) .appBarActionList, .appBarNowPlaying {
         display: none
     }
 }
-.bottomProgressBar
-{
+
+.bottomProgressBar {
     position: absolute;
     bottom: 0;
     height: 3px;
     width: 100vw;
     z-index: 50
 }
-.imageButton
-{
+
+.imageButton {
     border: 0;
     background-repeat: no-repeat;
     background-position: 50% 50%;
     outline: none
 }
-.fullScreen
-{
+
+.fullScreen {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh
 }
-.dashboard
-{
+
+.dashboard {
     width: 100%
 }
-.games .dashboard .hubNavigationClippingContainer
-{
+
+.games .dashboard .hubNavigationClippingContainer {
     left: 240px;
     width: calc(100% - 240px)
 }
-.dashboard .hub
-{
+
+.dashboard .hub {
     height: 100%
 }
-.galleryHubStrip .win-surface
-{
+
+.galleryHubStrip .win-surface {
     margin-left: 116px
 }
-html[dir=rtl] .galleryHubStrip .win-surface
-{
+
+html[dir=rtl] .galleryHubStrip .win-surface {
     margin-left: 0;
     margin-right: 116px
 }
-.galleryHubStrip .panelFragmentLoading, .galleryHubStrip .panelModifierContainer, .galleryHubStrip .panelFragmentFailed
-{
+
+.galleryHubStrip .panelFragmentLoading, .galleryHubStrip .panelModifierContainer, .galleryHubStrip .panelFragmentFailed {
     margin-left: 120px
 }
-html[dir=rtl] .galleryHubStrip .panelFragmentLoading, html[dir=rtl] .galleryHubStrip .panelModifierContainer, html[dir=rtl] .galleryHubStrip .panelFragmentFailed
-{
+
+html[dir=rtl] .galleryHubStrip .panelFragmentLoading, html[dir=rtl] .galleryHubStrip .panelModifierContainer, html[dir=rtl] .galleryHubStrip .panelFragmentFailed {
     margin-left: 0;
     margin-right: 120px
 }
-.galleryHubStrip .panelFragmentLoading, .galleryHubStrip .panelFragmentFailed
-{
+
+.galleryHubStrip .panelFragmentLoading, .galleryHubStrip .panelFragmentFailed {
     width: calc(100vw - 200px)
 }
-.galleryHubStrip .win-surface
-{
+
+.galleryHubStrip .win-surface {
     padding-right: 75px
 }
-.galleryHubStrip .hubStripScroller
-{
+
+.galleryHubStrip .hubStripScroller {
     overflow: hidden
 }
-#homePageContent
-{
+
+#homePageContent {
     top: 0;
     width: auto;
     display: -ms-grid;
     -ms-grid-columns: 2278px;
     -ms-grid-rows: 1fr
 }
-#musicPageContent, #videoPageContent
-{
+
+#musicPageContent, #videoPageContent {
     top: 0;
     width: auto;
     display: -ms-grid;
     -ms-grid-columns: 2103px;
     -ms-grid-rows: 1fr
 }
-.panelContainer
-{
+
+.panelContainer {
     display: inline-block;
     width: 100%;
     height: 100%;
     min-width: 300px
 }
-.panelContainer.noWidth
-{
+
+.panelContainer.noWidth {
     min-width: 0
 }
-.panelActionWrapper
-{
+
+.panelActionWrapper {
     position: absolute;
     left: -120px;
     display: inline-block;
@@ -408,54 +401,54 @@ html[dir=rtl] .galleryHubStrip .panelFragmentLoading, html[dir=rtl] .galleryHubS
     padding-top: 47px;
     width: 115px
 }
-.panelActionContainer
-{
+
+.panelActionContainer {
     position: relative;
     margin-right: -5px
 }
-.panelFragmentContainer
-{
+
+.panelFragmentContainer {
     display: inline-block
 }
-.panelActionLink
-{
+
+.panelActionLink {
     margin-bottom: 5px;
     height: 115px;
     width: 115px
 }
-.panelContentContainer
-{
+
+.panelContentContainer {
     display: -ms-grid;
     -ms-grid-columns: 100%;
     -ms-grid-rows: 40px 11px 1fr;
     height: 100%;
     width: 100%
 }
-.panelContentContainer .panelTitle
-{
+
+.panelContentContainer .panelTitle {
     height: auto
 }
-.panelContainer.noWidth .panelTitle
-{
+
+.panelContainer.noWidth .panelTitle {
     height: 36px
 }
-.adControl
-{
+
+.adControl {
     width: 100%;
     height: 100%
 }
-.disabledAdControl
-{
+
+.disabledAdControl {
     width: 0;
     height: 0
 }
-.videoAdContainer .overlayContent
-{
+
+.videoAdContainer .overlayContent {
     height: 100%;
     width: 100%
 }
-.videoAdOverlay
-{
+
+.videoAdOverlay {
     position: absolute;
     top: 0;
     left: 0;
@@ -467,19 +460,19 @@ html[dir=rtl] .galleryHubStrip .panelFragmentLoading, html[dir=rtl] .galleryHubS
     background-position: 0 0;
     background-size: cover
 }
-.videoAd
-{
+
+.videoAd {
     height: 100%;
     width: 100%
 }
-.videoAdOverlayContentContainer
-{
+
+.videoAdOverlayContentContainer {
     display: -ms-grid;
     -ms-grid-columns: 60px 1fr auto auto 40px;
     -ms-grid-rows: 1fr
 }
-.videoAdCloseButton
-{
+
+.videoAdCloseButton {
     -ms-grid-column-align: end;
     -ms-grid-row-align: start;
     width: 30px;
@@ -488,70 +481,70 @@ html[dir=rtl] .galleryHubStrip .panelFragmentLoading, html[dir=rtl] .galleryHubS
     margin-left: 50px;
     margin-right: 50px
 }
-.videoAdCloseButton .win-commandicon.win-commandring
-{
+
+.videoAdCloseButton .win-commandicon.win-commandring {
     border: none
 }
-.videoAdText
-{
+
+.videoAdText {
     display: -ms-grid;
     -ms-grid-columns: auto;
     -ms-grid-rows: auto auto auto auto;
     margin-top: 30px
 }
-a.videoAdReasonLink, a.videoAdLearnMoreLink
-{
+
+a.videoAdReasonLink, a.videoAdLearnMoreLink {
     margin-top: 30px;
     -ms-grid-column-align: start
 }
-a.videoAdReasonLink .inlineCaretButtonIcon, a.videoAdLearnMoreLink .inlineCaretButtonIcon
-{
+
+a.videoAdReasonLink .inlineCaretButtonIcon, a.videoAdLearnMoreLink .inlineCaretButtonIcon {
     margin-top: 1px
 }
-a.nowPlayingMoreInfoLink
-{
+
+a.nowPlayingMoreInfoLink {
     margin-top: 10px
 }
-.welcomeDialog .welcomeDialogContent
-{
+
+.welcomeDialog .welcomeDialogContent {
     display: -ms-grid;
     -ms-grid-rows: 480px 60px auto 57px auto;
     -ms-grid-columns: 424px 1072px 424px
 }
-.welcomeDialog .welcomeDialogTitle
-{
+
+.welcomeDialog .welcomeDialogTitle {
     -ms-grid-row: 2;
     -ms-grid-column: 2
 }
-.welcomeDialog .welcomeDialogSubText
-{
+
+.welcomeDialog .welcomeDialogSubText {
     -ms-grid-row: 3;
     -ms-grid-column: 2
 }
-.welcomeDialog.win-ui-dark progress:indeterminate
-{
+
+.welcomeDialog.win-ui-dark progress:indeterminate {
     -ms-grid-row: 3;
     -ms-grid-column: 2;
     -ms-grid-column-align: center
 }
-.welcomeDialog .welcomeNextButton
-{
+
+.welcomeDialog .welcomeNextButton {
     width: 475px;
     height: 84px;
     -ms-grid-row: 5;
     -ms-grid-column: 2
 }
-.welcomeDialog button.win-command, .welcomeDialog button.win-command.iconButton, .welcomeDialog button.win-command.iconButton:hover:focus, .welcomeDialog button.win-command.iconButton:active, .welcomeDialog button.win-command.iconButton:focus
-{
+
+.welcomeDialog button.win-command, .welcomeDialog button.win-command.iconButton, .welcomeDialog button.win-command.iconButton:hover:focus, .welcomeDialog button.win-command.iconButton:active, .welcomeDialog button.win-command.iconButton:focus {
     height: 100%
 }
-.welcomeDialog .welcomeNextButton .win-commandicon
-{
+
+.welcomeDialog .welcomeNextButton .win-commandicon {
     margin-left: 13px;
     margin-bottom: 10px
 }
-.welcomeDialog .welcomeNextButton button.win-command .win-label
-{
+
+.welcomeDialog .welcomeNextButton button.win-command .win-label {
     margin-left: 15px;
     margin-bottom: 4px
 }

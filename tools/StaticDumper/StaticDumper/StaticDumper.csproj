@@ -172,21 +172,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="LibWrap, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\packages\microsoft.skypeapp\raw\LibWrap.winmd</HintPath>
-    </Reference>
-    <Reference Include="Microsoft, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Electron\winjs-electron\packages\microsoft.windowsphotos\raw\Microsoft.winmd</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Entertainment">
-      <HintPath>..\..\WindowsCommunicationApps\microsoft.zunemusic\raw\Microsoft.Entertainment.winmd</HintPath>
-    </Reference>
-    <Reference Include="WindowsLive, Version=255.255.255.255, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\Electron\winjs-electron\packages\microsoft.windowsphotos\raw\WindowsLive.winmd</HintPath>
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
+    <SDKReference Include="WindowsDesktop, Version=10.0.18362.0">
+      <Name>Windows Desktop Extensions for the UWP</Name>
+    </SDKReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

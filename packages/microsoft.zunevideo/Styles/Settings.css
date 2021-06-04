@@ -1,4 +1,4 @@
-﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+/* Copyright (C) Microsoft Corporation. All rights reserved. */
 .win-settingsflyout {
     z-index: 1001;
     overflow: auto;
@@ -60,7 +60,10 @@
     -ms-grid-rows: 80px 20px 1fr;
     width: 100%;
     height: 100%;
-    overflow: auto
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 35px 5px 1fr 60px;
+    grid-template-rows: 80px 20px 1fr
 }
 .settingsPanelHeader
 {
@@ -70,16 +73,25 @@
     -ms-grid-column: 2;
     -ms-grid-row: 1;
     -ms-grid-column-span: 3;
-    margin-top: 30px
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 40px 10px 1fr;
+    grid-template-rows: auto;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: span 3
 }
 .settingsPanelHeaderBackground
 {
-    -ms-grid-column-span: 5
+    -ms-grid-column-span: 5;
+    grid-column-end: span 5
 }
 .settingsPanelBackButton
 {
     -ms-grid-column: 1;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 1;
+    grid-row-start: 1
 }
 html[dir=rtl] .settingsPanelBackButton
 {
@@ -88,17 +100,23 @@ html[dir=rtl] .settingsPanelBackButton
 .settingsPanelTitle
 {
     -ms-grid-column: 3;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 3;
+    grid-row-start: 1
 }
 .offLineAccountPanel, .onlineAccountPanel
 {
     -ms-grid-column-span: 5;
-    -ms-grid-row-span: 3
+    -ms-grid-row-span: 3;
+    grid-column-end: span 5;
+    grid-row-end: span 3
 }
 .settingsSignIn, .settingsPanelContent
 {
     -ms-grid-column: 3;
-    -ms-grid-row: 3
+    -ms-grid-row: 3;
+    grid-column-start: 3;
+    grid-row-start: 3
 }
 .settingsPanelContent
 {
@@ -185,7 +203,10 @@ html[dir=rtl] .settingsPanelBackButton
 {
     display: -ms-grid;
     -ms-grid-rows: auto;
-    -ms-grid-columns: 1fr 8px auto
+    -ms-grid-columns: 1fr 8px auto;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 8px auto
 }
 .preferenceFreePlayLimitMeter
 {
@@ -196,11 +217,16 @@ html[dir=rtl] .settingsPanelBackButton
     width: 100%;
     height: 20px;
     border-width: 1px;
-    border-style: solid
+    border-style: solid;
+    grid-row-start: 1;
+    grid-column-start: 1
 }
 .preferenceFreePlayLimitMeterPercentageLabel
 {
     -ms-grid-row-align: center;
     -ms-grid-row: 1;
-    -ms-grid-column: 3
+    -ms-grid-column: 3;
+    align-items: center;
+    grid-row-start: 1;
+    grid-column-start: 3
 }

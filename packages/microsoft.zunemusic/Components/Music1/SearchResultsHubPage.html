@@ -66,7 +66,7 @@
                                       textContent: data.cloudIcon;
                                       style.opacity: data.cloudIconOpacity;
                                       title: data.cloudIconTooltip;"></span>
-                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name;"></span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="title" data-win-bind="textContent: data.title;"></span>
                         </div>
                         <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: data.artistName;"></div>
                         <div class="removeFromDisplay" data-win-bind="textContent: data.cloudIconAriaString WinJS.Binding.oneTime"></div>
@@ -361,8 +361,8 @@
                                             
                                             <div class="albums-items template-verticalItemTileModule" data-ent-member="_albumsElement" data-ent-event="click: onModuleItemClicked">
                                                 <div class="albums-list ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ItemsControl" data-win-automationid="SearchResults_Albums_Items" data-win-options="{
-                                                        enableDelayInitialization: true,
-                                                        delayInitializeChildren: true,
+                                                        enableDelayInitialization: false,
+                                                        delayInitializeChildren: false,
                                                         fireFirstTimeRenderedEventOnEmptyObservableArray: true,
                                                         virtualize: true,
                                                         virtualizationAxis: MS.Entertainment.UI.Controls.ItemsControl.VirtualizationAxis.horizontal,
@@ -392,9 +392,7 @@
 
                                             
                                             <div data-win-control="MS.Entertainment.UI.Controls.GalleryHost" class="songs-items control-galleryHost ent-control win-disposable" data-win-options="{delayInitializeChildren: false}" data-win-bind="winControl.dataContext: dataContext.songs" data-win-automationid="SearchResults_Songs_List">
-                                                <div data-ent-member="_galleryControl" class="control-gallery ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ListViewModelGalleryControl" data-win-options="{
-                                                        excludeFromContentReady: true,
-                                                        enableDelayInitialization: true }"></div>
+                                                <div data-ent-member="_galleryControl" class="control-gallery ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.ListViewModelGalleryControl" data-win-options="{ excludeFromContentReady: true, enableDelayInitialization: true }"></div>
                                             </div>
                                         </div>
 

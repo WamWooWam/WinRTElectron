@@ -31,7 +31,7 @@
                 <div class="immersiveHeroSummary-backgroundAndBioContainer" data-win-bind="state_artistBioAvailable: dataContext.description MS.Entertainment.Utilities.toggleClassName;">
                     <div class="immersiveHeroSummary-bioBackground" data-ent-member="_bioBackground"></div>
                     <div class="immersiveHeroSummary-bioContainer" data-ent-event="MSPointerOver: _onFocusIn;">
-                        <h1 class="immersiveHeroSummary-artistTitle text-immersiveHeroTitle maxLines-three" data-win-bind="textContent: dataContext.mediaItem.name"></h1>
+                        <h1 class="immersiveHeroSummary-artistTitle text-immersiveHeroTitle maxLines-three" data-win-bind="textContent: dataContext.mediaItem._name"></h1>
                         <div class="immersiveHeroSummary-descriptionContainer" data-win-control="App2.UI.ScrollViewer" data-ent-event="focusin: _onFocusIn; focusout: _onFocusOut; keydown: _onKeyDown;" data-ent-member="_scrollViewer">
                             <div>
                                 <p class="descriptionText text-bodyContent immersiveHeroSummary-artistDescription" data-win-bind="innerHTML: dataContext.description;"></p>

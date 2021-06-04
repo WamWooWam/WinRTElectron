@@ -1,0 +1,28 @@
+{
+  "Files": {
+    "views": {
+      "start": {
+        "css": {
+          "startview.css": "views\\start\\css\\und-Beng\\startview.css"
+        }
+      },
+      "main": {
+        "css": {
+          "mainview.css": "views\\main\\css\\und-Beng\\mainview.css"
+        }
+      },
+      "home": {
+        "css": {
+          "homeview.css": "views\\home\\css\\und-Beng\\homeview.css"
+        }
+      }
+    },
+    "shell": {
+      "css": {
+        "shell.css": "shell\\css\\und-Beng\\shell.css",
+        "navigationerror.css": "shell\\css\\und-Beng\\navigationerror.css",
+        "fontmetrics.css": "shell\\css\\und-Beng\\fontmetrics.css"
+      }
+    }
+  }
+}

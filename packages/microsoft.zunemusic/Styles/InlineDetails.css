@@ -1,4 +1,4 @@
-﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+/* Copyright (C) Microsoft Corporation. All rights reserved. */
 .win-listview .inlineDetailsTrackFullContainer, .win-listview .inlineDetailsGameContainer, .win-listview .inlineDetailsMusicVideoContainer, .win-listview .inlineDetailsVideoContainer, .win-listview .inlineDetailsTvContainer
 {
     position: absolute;
@@ -28,7 +28,9 @@ button.win-command.inlineTrackListStatusIcon
     min-height: 20px;
     width: 30px;
     min-width: 30px;
-    margin-top: 6px
+    margin-top: 6px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr
 }
 .mediaStatusIconContainer
 {
@@ -36,14 +38,19 @@ button.win-command.inlineTrackListStatusIcon
     height: 20px;
     min-height: 20px;
     width: 20px;
-    min-width: 20px
+    min-width: 20px;
+    justify-content: center
 }
 .popOver.album .inlineTrackListStatusIcon, .popOver.artist .inlineTrackListStatusIcon, .popOver.playlist .inlineTrackListStatusIcon
 {
     -ms-grid-column: 1;
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
-    -ms-grid-row-align: start
+    -ms-grid-row-align: start;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    align-items: flex-start
 }
 .popOver .divider
 {
@@ -53,18 +60,21 @@ button.win-command.inlineTrackListStatusIcon
 }
 .inlineTrackListNumber, .inlineEpisodeNumber, .immersiveInlineTrackListNumber
 {
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-column-start: 2
 }
 .inlineTrackListName, .inlineEpisodeName, .immersiveInlineTrackListName
 {
     -ms-grid-column: 4;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    grid-column-start: 4
 }
 .popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListName, .popOver.playlist .immersiveInlineTrackListName
 {
-    -ms-grid-column: 3
+    -ms-grid-column: 3;
+    grid-column-start: 3
 }
 .immersiveInlineTrackListAlbumName
 {
@@ -72,15 +82,19 @@ button.win-command.inlineTrackListStatusIcon
     -ms-grid-row: 2;
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis
+    text-overflow: ellipsis;
+    grid-column-start: 4;
+    grid-row-start: 2
 }
 .popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListAlbumName, .popOver.playlist .immersiveInlineTrackListAlbumName
 {
-    -ms-grid-column: 3
+    -ms-grid-column: 3;
+    grid-column-start: 3
 }
 .popOver.playlist .immersiveInlineTrackListAlbumName
 {
-    -ms-grid-column-span: 2
+    -ms-grid-column-span: 2;
+    grid-column-end: span 2
 }
 .immersiveInlineTrackListName
 {
@@ -88,37 +102,48 @@ button.win-command.inlineTrackListStatusIcon
 }
 .immersiveInlineTrackListName, .immersiveInlineTrackListNumber
 {
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    align-items: center
 }
 .inlineTrackListAlbum, .inlineEpisodeDuration
 {
     text-align: right;
-    -ms-grid-column: 3
+    -ms-grid-column: 3;
+    grid-column-start: 3
 }
 .inlineTrackListDurationStatus, .immersiveInlineTrackListDurationStatus
 {
     display: -ms-grid;
-    -ms-grid-column: 6
+    -ms-grid-column: 6;
+    display: grid;
+    grid-column-start: 6
 }
 .immersiveInlineTrackListArtistName
 {
     -ms-grid-column: 4;
-    -ms-grid-row: 2
+    -ms-grid-row: 2;
+    grid-column-start: 4;
+    grid-row-start: 2
 }
 .popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDurationStatus, .popOver.playlist .immersiveInlineTrackListDurationStatus
 {
     -ms-grid-columns: 1fr;
-    -ms-grid-rows: auto 1fr
+    -ms-grid-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr
 }
 .popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDurationStatus div, .popOver.playlist .immersiveInlineTrackListDurationStatus div
 {
-    -ms-grid-column-align: end
+    -ms-grid-column-align: end;
+    justify-content: flex-end
 }
 .popOver.artist .popOverPrimaryList.tracks .immersiveInlineTrackListDurationStatus, .popOver.playlist .immersiveInlineTrackListDurationStatus
 {
     -ms-grid-column: 5;
     -ms-grid-row-align: start;
-    margin-top: 8px
+    margin-top: 8px;
+    grid-column-start: 5;
+    align-items: flex-start
 }
 .popOver.playlist .immersiveInlineTrackListDurationStatus
 {
@@ -128,7 +153,10 @@ button.win-command.inlineTrackListStatusIcon
 {
     -ms-grid-column: 6;
     -ms-grid-row: 1;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    grid-column-start: 6;
+    grid-row-start: 1;
+    align-items: center
 }
 .popOver.playlist .immersiveInlineTrackListDuration
 {
@@ -145,13 +173,17 @@ button.win-command.inlineTrackListStatusIcon
 .inlineTrackListItemStatus
 {
     -ms-grid-row: 1;
-    -ms-grid-column: 1
+    -ms-grid-column: 1;
+    grid-row-start: 1;
+    grid-column-start: 1
 }
 .inlineTrackListDuration, .immersiveInlineTrackListDuration
 {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
-    direction: ltr
+    direction: ltr;
+    grid-row-start: 1;
+    grid-column-start: 2
 }
 .inlineTrackListAlbum .label, .inlineTrackListDuration .label, .inlineEpisodeDuration .label
 {
@@ -271,14 +303,21 @@ button.win-command.inlineTrackListStatusIcon
 {
     display: -ms-grid;
     -ms-grid-columns: 1fr;
-    -ms-grid-rows: auto 1fr
+    -ms-grid-rows: auto 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr
 }
 .inlineDetailsPlaylistTrackContainer
 {
     display: -ms-grid;
     -ms-grid-row: 2;
     -ms-grid-rows: auto auto;
-    -ms-grid-columns: 100%
+    -ms-grid-columns: 100%;
+    display: grid;
+    grid-row-start: 2;
+    grid-template-rows: auto auto;
+    grid-template-columns: 100%
 }
 .inlineDetailsAlbumImmersive .inlineDetailsAlbumContent, .inlineDetailsTvImmersive .inlineDetailsSeasonContent
 {
@@ -363,7 +402,10 @@ button.win-command.inlineTrackListStatusIcon
     display: -ms-grid;
     -ms-grid-columns: 30px auto 10px 1fr 10px auto 50px;
     -ms-grid-rows: 1fr;
-    padding-top: 5px
+    padding-top: 5px;
+    display: grid;
+    grid-template-columns: 30px auto 10px 1fr 10px auto 50px;
+    grid-template-rows: 1fr
 }
 .downloadDetailsVideo
 {
@@ -371,7 +413,10 @@ button.win-command.inlineTrackListStatusIcon
     -ms-grid-columns: 80px 10px 1fr auto;
     -ms-grid-rows: 25px 20px 20px 2px 3px;
     padding-top: 5px;
-    padding-bottom: 5px
+    padding-bottom: 5px;
+    display: grid;
+    grid-template-columns: 80px 10px 1fr auto;
+    grid-template-rows: 25px 20px 20px 2px 3px
 }
 .downloadDetailsVideo .imageContainer
 {
@@ -379,36 +424,55 @@ button.win-command.inlineTrackListStatusIcon
     -ms-grid-row: 1;
     -ms-grid-row-span: 5;
     -ms-grid-column-align: center;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-row-end: span 5;
+    justify-content: center;
+    align-items: center
 }
 .downloadDetailsVideo .downloadDetailsVideoTitle
 {
     -ms-grid-column: 3;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 3;
+    grid-row-start: 1
 }
 .downloadDetailsVideo .downloadDetailsVideoDescription
 {
     -ms-grid-column: 3;
-    -ms-grid-row: 2
+    -ms-grid-row: 2;
+    grid-column-start: 3;
+    grid-row-start: 2
 }
 .downloadDetailsVideo .downloadDetailsVideoButtons
 {
     -ms-grid-column: 4;
     -ms-grid-row: 1;
     -ms-grid-row-span: 4;
-    -ms-grid-column-align: end
+    -ms-grid-column-align: end;
+    grid-column-start: 4;
+    grid-row-start: 1;
+    grid-row-end: span 4;
+    justify-content: flex-end
 }
 .downloadDetailsVideo .downloadDetailsVideoStatus
 {
     -ms-grid-column: 4;
     -ms-grid-row: 2;
-    -ms-grid-column-align: end
+    -ms-grid-column-align: end;
+    grid-column-start: 4;
+    grid-row-start: 2;
+    justify-content: flex-end
 }
 .downloadDetailsVideo .downloadDetailsVideoError
 {
     -ms-grid-column: 3;
     -ms-grid-row: 3;
-    -ms-grid-column-span: 3
+    -ms-grid-column-span: 3;
+    grid-column-start: 3;
+    grid-row-start: 3;
+    grid-column-end: span 3
 }
 .downloadDetailsVideo .progressBar
 {
@@ -416,7 +480,10 @@ button.win-command.inlineTrackListStatusIcon
     height: 2px;
     -ms-grid-column: 3;
     -ms-grid-row: 5;
-    -ms-grid-column-span: 3
+    -ms-grid-column-span: 3;
+    grid-column-start: 3;
+    grid-row-start: 5;
+    grid-column-end: span 3
 }
 .invoked .downloadDetailsVideoStatus
 {
@@ -425,22 +492,28 @@ button.win-command.inlineTrackListStatusIcon
 .popOver .inlineDetailsTvEpisodeDuration
 {
     margin-top: 7px;
-    -ms-grid-column-align: end
+    -ms-grid-column-align: end;
+    justify-content: flex-end
 }
 .popOver .inlineDetailsEpisodeList .mediaStatusIconContainer
 {
-    -ms-grid-column-align: end
+    -ms-grid-column-align: end;
+    justify-content: flex-end
 }
 .inlineDetailsMusicTrack
 {
     display: -ms-grid;
     -ms-grid-columns: 30px auto 10px 1fr 10px auto 10px 30px;
     -ms-grid-rows: 30px 30px;
-    padding-top: 10px
+    padding-top: 10px;
+    display: grid;
+    grid-template-columns: 30px auto 10px 1fr 10px auto 10px 30px;
+    grid-template-rows: 30px 30px
 }
 .invoked .inlineDetailsMusicTrack
 {
-    -ms-grid-columns: 30px auto 10px 1fr 10px auto 10px 15px
+    -ms-grid-columns: 30px auto 10px 1fr 10px auto 10px 15px;
+    grid-template-columns: 30px auto 10px 1fr 10px auto 10px 15px
 }
 .immersiveInlineTrackListNumber
 {
@@ -449,21 +522,26 @@ button.win-command.inlineTrackListStatusIcon
 }
 .popOver.album .inlineDetailsMusicTrack
 {
-    -ms-grid-rows: 27px 30px
+    -ms-grid-rows: 27px 30px;
+    grid-template-rows: 27px 30px
 }
 .popOver.artist .popOverPrimaryList.tracks .inlineDetailsMusicTrack, .popOver.playlist .inlineDetailsMusicTrack
 {
     height: 65px;
     -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 39px;
-    -ms-grid-rows: 28px 1fr
+    -ms-grid-rows: 28px 1fr;
+    grid-template-columns: 20px 6px 1fr 10px auto 10px auto 39px;
+    grid-template-rows: 28px 1fr
 }
 .popOver.artist .popOverPrimaryList.tracks .invoked .inlineDetailsMusicTrack
 {
-    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 25px
+    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 25px;
+    grid-template-columns: 20px 6px 1fr 10px auto 10px auto 25px
 }
 .popOver.playlist .invoked .inlineDetailsMusicTrack
 {
-    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 15px
+    -ms-grid-columns: 20px 6px 1fr 10px auto 10px auto 15px;
+    grid-template-columns: 20px 6px 1fr 10px auto 10px auto 15px
 }
 .inlineDetailsMusicTrack .label
 {
@@ -476,7 +554,9 @@ button.win-command.inlineTrackListStatusIcon
 .musicInlineDetailsTopSongs.inlineDetailsMusicTrack .immersiveInlineTrackListName, .musicInlineDetailsTopSongs.inlineDetailsMusicTrack .immersiveInlineTrackListAlbumName
 {
     -ms-grid-column: 2;
-    -ms-grid-column-span: 3
+    -ms-grid-column-span: 3;
+    grid-column-start: 2;
+    grid-column-end: span 3
 }
 .musicInlineDetailsTopSongs.inlineDetailsMusicTrack .immersiveInlineTrackListDurationStatus
 {
@@ -486,7 +566,10 @@ button.win-command.inlineTrackListStatusIcon
 {
     -ms-grid-row: 2;
     -ms-grid-column: 6;
-    -ms-grid-column-align: end
+    -ms-grid-column-align: end;
+    grid-row-start: 2;
+    grid-column-start: 6;
+    justify-content: flex-end
 }
 .popOver.playlist .inlineDetailsMusicTrack .inCollectionIcon
 {
@@ -495,7 +578,8 @@ button.win-command.inlineTrackListStatusIcon
 .popOver.artist .popOverPrimaryList.tracks .inlineDetailsMusicTrack .inCollectionIcon
 {
     -ms-grid-column: 5;
-    margin-top: 0
+    margin-top: 0;
+    grid-column-start: 5
 }
 .invoked .inlineDetailsMusicTrack .inCollectionIcon, .collectionTracks .inCollectionIcon, .collectionAlbums .inCollectionIcon, .marketplaceTracks .cloudStatusIcon, .marketplaceAlbums .cloudStatusIcon
 {
@@ -506,7 +590,10 @@ button.win-command.inlineTrackListStatusIcon
     -ms-grid-row: 2;
     -ms-grid-column: 6;
     -ms-grid-column-align: end;
-    margin-right: 2px
+    margin-right: 2px;
+    grid-row-start: 2;
+    grid-column-start: 6;
+    justify-content: flex-end
 }
 html[dir=rtl] .inlineDetailsMusicTrack .popOverCloudStateIcon
 {
@@ -535,13 +622,20 @@ html[dir=rtl] .inlineDetailsMusicTrack .popOverCloudStateIcon
     -ms-grid-row: 1;
     -ms-grid-row-span: 2;
     -ms-grid-column: 5;
-    margin-top: -5px
+    margin-top: -5px;
+    display: flex;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+    grid-column-start: 5
 }
 .popOver.playlist .invoked .inlineDetailsMusicTrack .inPlaceDetailsItemActions
 {
     -ms-grid-column-span: 1;
     -ms-grid-column-align: end;
-    -ms-grid-row-align: start
+    -ms-grid-row-align: start;
+    grid-column-end: span 1;
+    justify-content: flex-end;
+    align-items: flex-start
 }
 html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command, .inPlaceDetailsItemActions button.iconButton.win-command
 {
@@ -569,11 +663,15 @@ html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command, .inPlace
     -ms-grid-columns: 1fr;
     -ms-grid-rows: 20px 1fr 20px;
     height: 46px;
-    width: 30px
+    width: 30px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 20px 1fr 20px
 }
 .inlineDetailsMoveTrackUpButton, .inlineDetailsMoveTrackDownButton
 {
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    justify-content: center
 }
 .inlineDetailsMoveTrackUpButton, .inlineDetailsMoveTrackDownButton, .inlineDetailsMoveTrackUpButton .iconButton, .inlineDetailsMoveTrackDownButton .iconButton, .inlineDetailsMoveTrackUpButton .win-commandicon, .inlineDetailsMoveTrackDownButton .win-commandicon, .inlineDetailsMoveTrackUpButton .win-commandimage, .inlineDetailsMoveTrackDownButton .win-commandimage
 {
@@ -584,11 +682,13 @@ html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command, .inPlace
 }
 .inlineDetailsMoveTrackUpButton
 {
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-row-start: 1
 }
 .inlineDetailsMoveTrackDownButton
 {
-    -ms-grid-row: 3
+    -ms-grid-row: 3;
+    grid-row-start: 3
 }
 .invoked .reorderTrackButtonContainer button.win-command:focus
 {
@@ -602,12 +702,16 @@ html[dir=rtl] .inPlaceDetailsItemActions button.iconButton.win-command, .inPlace
 .reorderTrackButtonContainer button.win-command.iconButton
 {
     -ms-grid-columns: 1fr;
-    -ms-grid-rows: 1fr
+    -ms-grid-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr
 }
 .inlineDetailsMoveTrackUpButton .win-commandicon, .inlineDetailsMoveTrackDownButton .win-commandicon
 {
     -ms-grid-column: 1;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 1;
+    grid-row-start: 1
 }
 .inlineDetailsTvEpisodeTitle, .downloadDetailsVideoDescription, .downloadDetailsVideoError, .downloadDetailsVideoTitle
 {
@@ -670,7 +774,10 @@ html[dir=rtl] .inlineDetailsTvEpisodeTitle, html[dir=rtl] .downloadDetailsVideoD
 {
     display: -ms-grid;
     -ms-grid-rows: 8px auto 18px auto 12px;
-    -ms-grid-columns: 1fr
+    -ms-grid-columns: 1fr;
+    display: grid;
+    grid-template-rows: 8px auto 18px auto 12px;
+    grid-template-columns: 1fr
 }
 .popOver.playlist .inlineDetailsHidden
 {
@@ -709,18 +816,24 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
     width: 420px;
     display: -ms-grid;
     -ms-grid-columns: 1fr auto;
-    -ms-grid-rows: 30px 1fr
+    -ms-grid-rows: 30px 1fr;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 30px 1fr
 }
 .musicPage .inPlaceDetailsItem, .collectionVideoGallery .inPlaceDetailsItem
 {
     width: 100%;
     height: 85px;
-    -ms-grid-rows: 40px 1fr
+    -ms-grid-rows: 40px 1fr;
+    grid-template-rows: 40px 1fr
 }
 .inPlaceDetailsItemName
 {
     -ms-grid-row: 1;
-    -ms-grid-column: 1
+    -ms-grid-column: 1;
+    grid-row-start: 1;
+    grid-column-start: 1
 }
 .musicPage .win-vertical .inPlaceDetailsItemName, .collectionVideoGallery .inPlaceDetailsItemName
 {
@@ -731,7 +844,10 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
 {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
-    display: -ms-grid
+    display: -ms-grid;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    display: grid
 }
 .musicPage .win-vertical .inPlaceDetailsItemDurationStatus, .collectionVideoGallery .inPlaceDetailsItemDurationStatus
 {
@@ -740,33 +856,44 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
 .inPlaceDetailsItemStatus
 {
     -ms-grid-row: 1;
-    -ms-grid-column: 1
+    -ms-grid-column: 1;
+    grid-row-start: 1;
+    grid-column-start: 1
 }
 .inPlaceDetailsItemDuration
 {
     -ms-grid-row: 1;
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-row-start: 1;
+    grid-column-start: 2
 }
 .inPlaceDetailsHorizontalRule
 {
     -ms-grid-row: 1;
     -ms-grid-column-span: 2;
-    border-top: 1px solid
+    border-top: 1px solid;
+    grid-row-start: 1;
+    grid-column-end: span 2
 }
 .inPlaceDetailsItemInfo
 {
     -ms-grid-row: 2;
-    -ms-grid-column-span: 2
+    -ms-grid-column-span: 2;
+    grid-row-start: 2;
+    grid-column-end: span 2
 }
 .inPlaceDetailsItemActions
 {
     -ms-grid-row: 2;
     -ms-grid-column-span: 2;
-    clear: left
+    clear: left;
+    grid-row-start: 2;
+    grid-column-end: span 2
 }
 .inPlaceDetailsItemActions>div .win-template
 {
-    -ms-flex: 1 auto
+    -ms-flex: 1 auto;
+    flex: 1 auto
 }
 .inPlaceDetailsItemActionButton
 {
@@ -830,12 +957,17 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
     display: -ms-grid;
     -ms-grid-rows: 1fr;
     -ms-grid-columns: auto 1fr;
-    padding-bottom: 10px
+    padding-bottom: 10px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 1fr
 }
 .inlineStreamingText
 {
     -ms-grid-row: 1;
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-row-start: 1;
+    grid-column-start: 2
 }
 .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
 {
@@ -866,7 +998,10 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
     width: 730px;
     height: 530px;
     -ms-grid-columns: 255px 475px;
-    -ms-grid-rows: 1fr
+    -ms-grid-rows: 1fr;
+    display: grid;
+    grid-template-columns: 255px 475px;
+    grid-template-rows: 1fr
 }
 @media screen and (min-height: 1080px)
 {
@@ -883,35 +1018,48 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
 {
     display: -ms-grid;
     -ms-grid-columns: 20px 1fr 20px;
-    -ms-grid-rows: 20px auto 4px 1fr auto 20px
+    -ms-grid-rows: 20px auto 4px 1fr auto 20px;
+    display: grid;
+    grid-template-columns: 20px 1fr 20px;
+    grid-template-rows: 20px auto 4px 1fr auto 20px
 }
 .popOver .rightColumn
 {
     display: -ms-grid;
     -ms-grid-columns: 30px 1fr 50px;
     -ms-grid-column: 2;
-    -ms-grid-rows: 20px auto auto 16px 1fr 22px
+    -ms-grid-rows: 20px auto auto 16px 1fr 22px;
+    display: grid;
+    grid-template-columns: 30px 1fr 50px;
+    grid-column-start: 2;
+    grid-template-rows: 20px auto auto 16px 1fr 22px
 }
 .popOver .rightColumnBackground
 {
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-column-start: 2
 }
 .popOver.friend .rightColumn
 {
     -ms-grid-columns: 25px 1fr 50px;
-    -ms-grid-rows: 20px auto auto 16px 1fr 20px
+    -ms-grid-rows: 20px auto auto 16px 1fr 20px;
+    grid-template-columns: 25px 1fr 50px;
+    grid-template-rows: 20px auto auto 16px 1fr 20px
 }
 .popOver.playlist .rightColumn
 {
-    -ms-grid-rows: 20px auto auto auto 10px 1fr 22px
+    -ms-grid-rows: 20px auto auto auto 10px 1fr 22px;
+    grid-template-rows: 20px auto auto auto 10px 1fr 22px
 }
 .popOver.album .rightColumn
 {
-    -ms-grid-rows: 20px auto 10px auto auto auto 12px 1fr 30px
+    -ms-grid-rows: 20px auto 10px auto auto auto 12px 1fr 30px;
+    grid-template-rows: 20px auto 10px auto auto auto 12px 1fr 30px
 }
 .popOver.artist .rightColumn
 {
-    -ms-grid-rows: 20px auto 10px auto auto auto 10px auto 0 1fr 30px
+    -ms-grid-rows: 20px auto 10px auto auto auto 10px auto 0 1fr 30px;
+    grid-template-rows: 20px auto 10px auto auto auto 10px auto 0 1fr 30px
 }
 .popOver .actions
 {
@@ -923,12 +1071,20 @@ html[dir=rtl] .popOver.playlist .win-surface>.win-container
     display: -ms-grid;
     -ms-grid-columns: 1fr 20px;
     -ms-grid-row-span: 2;
-    margin: 0 -2px
+    margin: 0 -2px;
+    grid-column-start: 2;
+    grid-row-start: 4;
+    grid-column-end: span 2;
+    display: grid;
+    grid-template-columns: 1fr 20px;
+    grid-row-end: span 2
 }
 .musicSubscriptionLink
 {
     -ms-grid-column: 2;
-    -ms-grid-row: 5
+    -ms-grid-row: 5;
+    grid-column-start: 2;
+    grid-row-start: 5
 }
 .musicSubscriptionLink>button
 {
@@ -950,17 +1106,23 @@ html[dir=rtl] .musicSubscriptionLink .actionLinkLabel
 {
     display: -ms-grid;
     -ms-grid-columns: 1fr;
-    -ms-grid-rows: 1fr
+    -ms-grid-rows: 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr
 }
 .popOver .titleContainer
 {
     -ms-grid-row: 2;
     -ms-grid-column: 2;
-    margin: 0 2px
+    margin: 0 2px;
+    grid-row-start: 2;
+    grid-column-start: 2
 }
 .popOver.game .titleContainer
 {
-    -ms-grid-row-span: 2
+    -ms-grid-row-span: 2;
+    grid-row-end: span 2
 }
 .popOver .titleContainer .secondaryText
 {
@@ -970,13 +1132,19 @@ html[dir=rtl] .musicSubscriptionLink .actionLinkLabel
 {
     display: -ms-grid;
     -ms-grid-columns: 0 354px;
-    -ms-grid-rows: 1fr
+    -ms-grid-rows: 1fr;
+    display: grid;
+    grid-template-columns: 0 354px;
+    grid-template-rows: 1fr
 }
 .popOver .popOverSecondPage .titleContainer, .popOver .episodeTitleContainer
 {
     display: -ms-grid;
     -ms-grid-columns: 46px 354px;
-    -ms-grid-rows: 1fr
+    -ms-grid-rows: 1fr;
+    display: grid;
+    grid-template-columns: 46px 354px;
+    grid-template-rows: 1fr
 }
 .popOver .popOverPage:not(.popOverSecondPage) .popOverBackButton
 {
@@ -985,31 +1153,42 @@ html[dir=rtl] .musicSubscriptionLink .actionLinkLabel
 .popOver .popOverPage .popOverBackButton, .popOver .episodeTitleContainer .episodeBackButton
 {
     -ms-grid-column: 1;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 1;
+    grid-row-start: 1
 }
 .popOver .popOverPage .popOverBackButton button.iconButton.win-command, .popOver .episodeTitleContainer .episodeBackButton button.iconButton.win-command
 {
-    -ms-grid-rows: 0 1fr 0
+    -ms-grid-rows: 0 1fr 0;
+    grid-template-rows: 0 1fr 0
 }
 .popOver .popOverPage .titleContainer .metadata1, .popOver .episodeTitleContainer .metadata1
 {
     -ms-grid-column: 2;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 2;
+    grid-row-start: 1
 }
 .popOver .popOverPage .titleContainer .metadata2, .popOver .episodeTitleContainer .metadata2
 {
     -ms-grid-column: 2;
-    -ms-grid-row: 2
+    -ms-grid-row: 2;
+    grid-column-start: 2;
+    grid-row-start: 2
 }
 .popOver .popOverPage .titleContainer .metadata3, .popOver .episodeTitleContainer .metadata3
 {
     -ms-grid-column: 2;
-    -ms-grid-row: 3
+    -ms-grid-row: 3;
+    grid-column-start: 2;
+    grid-row-start: 3
 }
 .popOver .popOverPage .titleContainer .metadata4, .popOver .episodeTitleContainer .metadata4
 {
     -ms-grid-column: 2;
-    -ms-grid-row: 4
+    -ms-grid-row: 4;
+    grid-column-start: 2;
+    grid-row-start: 4
 }
 .popOver .bodyContainer
 {
@@ -1018,7 +1197,10 @@ html[dir=rtl] .musicSubscriptionLink .actionLinkLabel
     -ms-grid-column-span: 2;
     padding-right: 50px;
     padding-left: 2px;
-    overflow-y: auto
+    overflow-y: auto;
+    grid-column-start: 2;
+    grid-row-start: 5;
+    grid-column-end: span 2
 }
 html[dir=rtl] .popOver .bodyContainer
 {
@@ -1031,7 +1213,9 @@ html[dir=rtl] .popOver.game .bodyContainer, html[dir=rtl] .popOver.movie .bodyCo
 .popOver.tv .bodyContainer
 {
     -ms-grid-column: 1;
-    -ms-grid-column-span: 3
+    -ms-grid-column-span: 3;
+    grid-column-start: 1;
+    grid-column-end: span 3
 }
 html[dir=rtl] .popOver.tv .bodyContainer
 {
@@ -1052,7 +1236,9 @@ html[dir=rtl] .popOver.tv .bodyContainer>div:not(.title)
     position: relative;
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
-    padding: 0
+    padding: 0;
+    grid-column-start: 1;
+    grid-column-end: span 3
 }
 html[dir=rtl] .popOver.friend .bodyContainer
 {
@@ -1069,12 +1255,16 @@ html[dir=rtl] .popOver.friend .bodyContainer
 .popOver.album .bodyContainer
 {
     -ms-grid-row: 8;
-    -ms-grid-column: 1
+    -ms-grid-column: 1;
+    grid-row-start: 8;
+    grid-column-start: 1
 }
 .popOver.artist .bodyContainer
 {
     -ms-grid-row: 10;
-    -ms-grid-column: 1
+    -ms-grid-column: 1;
+    grid-row-start: 10;
+    grid-column-start: 1
 }
 .popOver.artist .bodyContainer>div:not(.listLoadingContainer), .popOver.playlist .bodyContainer>div, .popOver.album .bodyContainer>div:not(.listLoadingContainer)
 {
@@ -1086,7 +1276,10 @@ html[dir=rtl] .popOver.friend .bodyContainer
     -ms-grid-row: 6;
     -ms-grid-column: 1;
     -ms-grid-column-span: 3;
-    padding-right: 0
+    padding-right: 0;
+    grid-row-start: 6;
+    grid-column-start: 1;
+    grid-column-end: span 3
 }
 html[dir=rtl] .popOver.playlist .bodyContainer
 {
@@ -1099,7 +1292,9 @@ html[dir=rtl] .popOver.playlist .bodyContainer
 .popOver.artist .contentNotifications, .popOver.album .contentNotifications
 {
     -ms-grid-row: 4;
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-row-start: 4;
+    grid-column-start: 2
 }
 .popOver.artist .collectionFilter, .popOver.album .collectionFilter, .popOver.playlist .collectionFilter
 {
@@ -1107,18 +1302,27 @@ html[dir=rtl] .popOver.playlist .bodyContainer
     -ms-grid-rows: 1fr;
     -ms-grid-columns: auto 4px 1fr;
     -ms-grid-row: 5;
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: auto 4px 1fr;
+    grid-row-start: 5;
+    grid-column-start: 2
 }
 .popOver .collectionFilterText
 {
     -ms-grid-column: 1;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    grid-column-start: 1;
+    align-items: center
 }
 .popOver .collectionFilterLink
 {
     -ms-grid-column: 3;
     -ms-grid-row-align: center;
-    padding-top: 3px
+    padding-top: 3px;
+    grid-column-start: 3;
+    align-items: center
 }
 .collectionFilterLink>button, .collectionFilterLink .actionLinkLabel
 {
@@ -1135,19 +1339,26 @@ html[dir=rtl] .collectionFilterLink .actionLinkLabel
 .popOver.artist .inlineStreamingStatusArea, .popOver.album .inlineStreamingStatusArea
 {
     -ms-grid-row: 6;
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-row-start: 6;
+    grid-column-start: 2
 }
 .popOver.artist .listContainerTitle
 {
     -ms-grid-row: 8;
-    -ms-grid-column: 2
+    -ms-grid-column: 2;
+    grid-row-start: 8;
+    grid-column-start: 2
 }
 .popOver .trackContainer
 {
     height: 100%;
     display: -ms-grid;
     -ms-grid-columns: 30px 1fr;
-    -ms-grid-rows: 100%
+    -ms-grid-rows: 100%;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    grid-template-rows: 100%
 }
 .popOver.artist .popOverList, .popOver.album .popOverList
 {
@@ -1171,7 +1382,10 @@ html[dir=rtl] .popOver.playlist .trackContainer
     height: 100%;
     -ms-grid-column: 1;
     -ms-grid-column-span: 2;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row-start: 1
 }
 .popOver .bodyContainer .win-listview>.win-vertical.win-viewport
 {
@@ -1185,7 +1399,12 @@ html[dir=rtl] .popOver.playlist .trackContainer
     -ms-grid-row: 2;
     -ms-grid-column: 2;
     width: 215px;
-    height: 294px
+    height: 294px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-row-start: 2;
+    grid-column-start: 2
 }
 .popOver .imageContainer>div, .popOver .imageContainer>img
 {
@@ -1196,7 +1415,9 @@ html[dir=rtl] .popOver.playlist .trackContainer
     width: 100%;
     height: 100%;
     -ms-grid-row-align: center;
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    align-items: center;
+    justify-content: center
 }
 .movieDownload .imageContainer>img, .episodeDownload .imageContainer>img
 {
@@ -1208,7 +1429,11 @@ html[dir=rtl] .popOver.playlist .trackContainer
     -ms-grid-column: 1;
     -ms-grid-row: 1;
     -ms-grid-column-span: 2;
-    -ms-grid-row-span: 3
+    -ms-grid-row-span: 3;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: span 2;
+    grid-row-end: span 3
 }
 .popOver .imageContainer>img.tall, .movieDownload .imageContainer img.tall
 {
@@ -1224,7 +1449,12 @@ html[dir=rtl] .popOver.playlist .trackContainer
     -ms-grid-column: 2;
     -ms-grid-row: 2;
     -ms-grid-rows: 1fr;
-    -ms-grid-columns: 100px fr
+    -ms-grid-columns: 100px fr;
+    display: grid;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    grid-template-rows: 1fr;
+    grid-template-columns: 100px fr
 }
 .popOver .modernExtraImageContainer
 {
@@ -1233,13 +1463,17 @@ html[dir=rtl] .popOver.playlist .trackContainer
     overflow: hidden;
     width: 100px;
     height: 100px;
-    box-shadow: 1px 1px 4px rgba(0,0,0,.2)
+    box-shadow: 1px 1px 4px rgba(0,0,0,.2);
+    grid-column-start: 1;
+    grid-row-start: 1
 }
 .popOver .modernExtraTitleContainer
 {
     -ms-grid-column: 2;
     -ms-grid-row: 1;
-    margin-left: 10px
+    margin-left: 10px;
+    grid-column-start: 2;
+    grid-row-start: 1
 }
 .popOver.artist .imageContainer, .popOver.album .imageContainer, .popOver.tv .imageContainer, .popOver.playlist .imageContainer, .popOver.activity .imageContainer
 {
@@ -1256,7 +1490,8 @@ html[dir=rtl] .popOver.playlist .trackContainer
 }
 .popOver .imageContainer .popOverImage
 {
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    justify-content: center
 }
 .popOver .playlistImageCollage, .popOver .playlistImageCollage .visualizationLayer
 {
@@ -1268,7 +1503,11 @@ html[dir=rtl] .popOver.playlist .trackContainer
     -ms-grid-column: 1;
     -ms-grid-row: 1;
     -ms-grid-column-span: 2;
-    -ms-grid-row-span: 3
+    -ms-grid-row-span: 3;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    grid-column-end: span 2;
+    grid-row-end: span 3
 }
 .popOver .iconImageCollage .win-commandicon
 {
@@ -1290,7 +1529,8 @@ html[dir=rtl] .popOver.playlist .trackContainer
 }
 .popOver.tv .bodyContainer .title
 {
-    -ms-grid-column-span: 3
+    -ms-grid-column-span: 3;
+    grid-column-end: span 3
 }
 .popOver .bodyContainer .bodyContent, .popOver .subTitle
 {
@@ -1383,12 +1623,16 @@ html[dir=rtl] .popOver .bodyContainer .bodyContent.editorialContent
 {
     -ms-grid-column: 2;
     -ms-grid-row: 1;
-    padding: 0
+    padding: 0;
+    grid-column-start: 2;
+    grid-row-start: 1
 }
 .popOver.playlist .collectionFilter
 {
     -ms-grid-column: 2;
-    -ms-grid-row: 3
+    -ms-grid-row: 3;
+    grid-column-start: 2;
+    grid-row-start: 3
 }
 .popOver.playlist .browseLinks .browseLinksFirstChild
 {
@@ -1436,19 +1680,24 @@ html[dir=rtl] .popOver .bodyContainer .bodyContent.editorialContent
 }
 .popOver .bodyContainer .actionButtonsListControl, .popOver .bodyContainer [data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"], .popOver .bodyContainer [data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl"], .inPlaceDetailsItemActions [data-win-control="MS.Entertainment.Pages.ActionButtonsListControl"], .inPlaceDetailsItemActions [data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl"]
 {
-    -ms-flex-direction: row
+    -ms-flex-direction: row;
+    flex-direction: row
 }
 .popOverContentContainer
 {
     display: -ms-grid;
     width: 100%;
-    height: 100%
+    height: 100%;
+    display: grid
 }
 .popOverContentContainer .loadingContainer
 {
     display: -ms-grid;
     -ms-grid-rows: 1fr;
-    -ms-grid-columns: 1fr
+    -ms-grid-columns: 1fr;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr
 }
 .popOverContentContainer .loadingContainer.removeFromDisplay
 {
@@ -1457,7 +1706,9 @@ html[dir=rtl] .popOver .bodyContainer .bodyContent.editorialContent
 .popOverContentContainer .loadingContainer progress
 {
     -ms-grid-column-align: center;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    justify-content: center;
+    align-items: center
 }
 .popOverContentContainer .bodyContainer .listLoadingContainer
 {
@@ -1469,7 +1720,9 @@ html[dir=rtl] .popOver .bodyContainer .bodyContent.editorialContent
 .popOverContentContainer .listLoadingContainer progress
 {
     -ms-grid-column-align: center;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    justify-content: center;
+    align-items: center
 }
 .inlineDetailsHidden, .popOver .rightColumn.inlineDetailsHidden
 {
@@ -1513,10 +1766,12 @@ html[dir=rtl] .popOver .bodyContainer .bodyContent.editorialContent
     }
     .popOver .rightColumn
     {
-        -ms-grid-columns: 30px 1fr 48px 2px
+        -ms-grid-columns: 30px 1fr 48px 2px;
+        grid-template-columns: 30px 1fr 48px 2px
     }
     .popOver.album .bodyContainer, .popOver.artist .bodyContainer, .popOver.playlist .bodyContainer, .popOver.tv .bodyContainer
     {
-        -ms-grid-column-span: 4
+        -ms-grid-column-span: 4;
+        grid-column-end: span 4
     }
 }

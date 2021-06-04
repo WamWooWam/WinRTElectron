@@ -1,0 +1,363 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<script src="///MSAdvertisingJS/ads/ad.js" ></script>
+<script src="/common/js/ads.js"></script>
+<!--Common Controls References-->
+<script src="/common/js/utils.js"></script>
+<script src="/common/js/newscluster.js"></script>
+<script src="/common/js/articlereader.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<!--Dynamic Pano References-->
+<link rel="stylesheet" href="/common/css/common.css" />
+<link rel="stylesheet" href="/common/css/dynamicpano.css" />
+<link rel="stylesheet" href="/common/css/dynamicpartners.css" />
+<script src="/common/js/auth.js"></script>
+<script src="/common/js/dynamicPanoDataProvider.js"></script>
+<script src="/common/js/dynamicPano.js"></script>
+<script src="/common/js/dynamicpartners.js"></script>
+<script src="/common/js/dynamicArticleReader.js"></script>
+</head> 
+<body>
+<style id="partnerStyleAnchor" type="text/css">
+</style>
+<div id="rssFeedTile" data-win-control="WinJS.Binding.Template">
+<div class="rssFeedTileContainer" data-win-bind="onclick: onclick">
+<div class="rssFeedTileTitle" data-win-bind="textContent: title"></div>
+</div>
+</div>
+<div id="dynamicPanoSemanticTile" data-win-control="WinJS.Binding.Template">
+<div class="dynamicPanoSemanticTileContainer">
+<div class="dynamicPanoSemanticTileImage" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageSource: thumbnail.url; winControl.alternateText: altText;">
+</div>
+<div class="dynamicPanoSemanticTileGradient">
+</div>
+<div class="dynamicPanoSemanticTileOverlay">
+<div class="dynamicPanoSemanticTileTextContainer">
+<div class="dynamicPanoSemanticTileTitle" data-win-bind="textContent: title">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="dynamicPanoSemanticTileNoImage" data-win-control="WinJS.Binding.Template">
+<div class="dynamicPanoSemanticTileContainerNoImage">
+<div class="dynamicPanoSemanticTileGradientNoImage">
+</div>
+<div class="dynamicPanoSemanticTileOverlayNoImage">
+<div class="dynamicPanoSemanticTileTextContainerNoImage">
+<div class="dynamicPanoSemanticTileTitleNoImage" data-win-bind="textContent: title">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="trendsSquare" data-win-control="WinJS.Binding.Template" data-module-width="25"
+data-module-height="19">
+<div class="trendsContainer">
+<div class="trendsImage" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}"
+data-win-bind="winControl.imageSource: thumbnail.url; winControl.alternateText: title;">
+</div>
+<div class="trendsOverlay">
+<div class="trendsSquareBackgroundTextContainer">
+<div class="trendsTextContainer">
+<div class="trendsSquareTextContainerTitle" data-win-bind="textContent: title">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="sourceItemTemplate" class="sourcesItemTemplate" data-win-control="WinJS.Binding.Template" data-module-width="14" data-module-height="14">
+<div class="sourceTileContainer">
+<div class="sourceImageContainer">
+<div class="sourceImage" role="presentation" data-win-control="CommonJS.ImageCard" data-win-options="{ noIdentifier: 1, showProgress: true, showError: false, classification: 'small' }"
+data-win-bind="winControl.imageSource: data.win8_image NewsJS.Bindings.sourceImageCard; winControl.alternateText: data.displayname;">
+</div>
+</div>
+<div class="sourceTextContainer" data-win-bind="textContent: data.displayname; dir: data.displayname NewsJS.Utilities.directionAttribute">
+</div>
+</div>
+</div>
+<div id="sourceSemanticZoomTile" data-win-control="WinJS.Binding.Template">
+<div class="sourceSemanticZoomContainer">
+<div class="sourceSemanticZoomText" data-win-bind="textContent: title">
+</div>
+</div>
+</div>
+<div id="panoHero" data-win-control="WinJS.Binding.Template">
+<div class="panoHeroOverlay">
+<div role="link" class="panoHeroTextContainer">
+<div class="panoHeroTitle" data-win-bind="innerHTML: title">
+</div>
+<div class="panoHeroSubContainer">
+<div class="heroFaviconContainer" data-win-bind="style.display: favicon NewsJS.Controls.DomUtil.domCollapser">
+<div class="heroFavicon fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageErrorHandler: faviconErrorHandler; winControl.imageSource: favicon PlatformJS.Utilities.imageCardSource; winControl.alternateText: editorial.source;">
+</div>
+</div>
+<div class="panoHeroSource" data-win-bind="style.display: source NewsJS.Controls.DomUtil.domCollapser; textContent: source">
+</div>
+<div class="panoHeroPublishTime" data-win-bind="textContent: publishTime">
+</div>
+</div>
+<div class="panoHeroSnippet" data-win-bind="innerHTML: snippet">
+</div>
+</div>
+</div>
+</div>
+<div id="panoHeroBreakingNews" data-win-control="WinJS.Binding.Template">
+<div class="panoHeroOverlay">
+<div role="link" class="panoHeroTextContainer">
+<div class="breakingNewsBar">
+<div class="breakingNewsText" data-win-bind="textContent: breakingNews"></div>
+</div>
+<div class="panoHeroBreakingNewsTitle" data-win-bind="innerHTML: title">
+</div>
+<div class="panoHeroSubContainer">
+<div class="heroFaviconContainer" data-win-bind="style.display: favicon NewsJS.Controls.DomUtil.domCollapser">
+<div class="heroFavicon fitBoth" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1, classification: 'small'}" data-win-bind="winControl.imageErrorHandler: faviconErrorHandler; winControl.imageSource: favicon PlatformJS.Utilities.imageCardSource; winControl.alternateText: editorial.source;">
+</div>
+</div>
+<div class="panoHeroSource" data-win-bind="style.display: source NewsJS.Controls.DomUtil.domCollapser; textContent: source">
+</div>
+<div class="panoHeroPublishTime" data-win-bind="textContent: publishTime">
+</div>
+</div>
+<div class="panoHeroSnippet" data-win-bind="innerHTML: snippet">
+</div>
+</div>
+</div>
+</div>
+<div id="offlineMessage" data-win-control="WinJS.Binding.Template">
+<div class="offlineNoContentMessageContainer" >
+<div class="offlineOverlay">
+<div aria-label="Offline Message" class="offlineTextContainer">
+<div class="offlineBar">
+</div>
+<div class="offlineTitle" data-win-bind="textContent: title">
+</div>
+<div class="offlineSnippet" data-win-bind="textContent: snippet">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="semanticZoomTile" data-win-control="WinJS.Binding.Template">
+<div class="semanticZoomTileContainer">
+<div class="semanticZoomTextContainer">
+<div class="semanticZoomText" data-win-bind="textContent: clusterTitle">
+</div>
+</div>
+</div>
+</div>
+<div id="topicSemanticZoomTile" data-win-control="WinJS.Binding.Template">
+<div class="topicSemanticZoomContainer">
+<div class="topicSemanticZoomText topicSemanticZoomFont" data-win-bind="textContent: title">
+</div>
+<div class="topicTileImageContainer">
+<div class="win-command">
+<span class="topicTileImageRing win-commandring win-commandicon"><span class="topicTileImage win-commandimage"
+data-win-bind="textContent: imageGlyphText"></span></span>
+</div>
+</div>
+</div>
+</div>
+<div id="clusterHeadingTopicTile" data-win-control="WinJS.Binding.Template" data-module-width="26"
+data-module-height="9" data-bypass-descending-sizes="true" data-disable-pointerup-animations="false">
+<div class="topicTileContainer favoriteTopic" data-win-bind="onclick: open">
+<div class="topicTileTextContainer">
+<div class="topicTileText clusterHeadingFont favoriteTopic" data-win-bind="textContent: title">
+</div>
+</div>
+<div class="topicButtonContainer" tabindex="0" data-win-bind="onclick: del; textContent: glyph"></div>
+</div>
+</div>
+<div id="sourceEntityManagement" data-win-control="WinJS.Binding.Template" data-module-width="53"
+data-module-height="11" data-group="largeLandscape" data-bypass-descending-sizes="true">
+<div class="sourceEntityManagement">
+<div class="addToContainer" id="addToContainer"><img src="" data-win-bind="src: imgSrc" />  
+<span  class="followText" data-win-bind="textContent: followTextContent"></span>
+</div>
+<div class="sourceInfoContainer" id="sourceInfoContainer">
+<img src="" data-win-bind="src: sourceImage" />
+<span  class="sourceDescription" data-win-bind="textContent: sourceTextContent"></span>
+</div>
+</div>
+</div>
+<div id="noResultsAlertNarrow" data-win-control="WinJS.Binding.Template" data-module-width="26"
+data-module-height="11" data-group="mediumPortrait">
+<div class="noResultsContainer win-interactive" data-win-bind="onclick:onclick">
+<div class="noResultsContentContainer">
+<div class="noResultsLine"></div>
+<div class="noResultsImagePlusMessageContainer">
+<div class="noResultsImageContainer">
+<div class="win-command">
+<span class="noResultsImageRing win-commandring win-commandicon"><span class="noResultsImage win-commandimage"
+data-win-bind="textContent: imageGlyphText"></span></span>
+</div>
+</div>
+<div class="noResultsMessageContainer">
+<div class="noResultsMessage1" data-win-bind="textContent: message1"></div>
+<div class="noResultsMessage2" data-win-bind="textContent: message2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="noResultsAlert" data-win-control="WinJS.Binding.Template" data-module-width="53"
+data-module-height="11" data-group="mediumPortrait">
+<div class="noResultsContainer win-interactive" data-win-bind="onclick:onclick">
+<div class="noResultsContentContainer">
+<div class="noResultsLine"></div>
+<div class="noResultsImagePlusMessageContainer">
+<div class="noResultsImageContainer">
+<div class="win-command">
+<span class="noResultsImageRing win-commandring win-commandicon"><span class="noResultsImage win-commandimage"
+data-win-bind="textContent: imageGlyphText"></span></span>
+</div>
+</div>
+<div class="noResultsMessageContainer">
+<div class="noResultsMessage1" data-win-bind="textContent: message1"></div>
+<div class="noResultsMessage2" data-win-bind="textContent: message2"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="addTopicCardTile" data-win-control="WinJS.Binding.Template">
+<div class="topicTileContainer favoriteTopic">
+<div class="topicTileImageContainer">
+<div class="win-command">
+<span class="topicTileImageRing win-commandring win-commandicon"><span class="topicTileImage win-commandimage"
+data-win-bind="textContent: imageGlyphText"></span></span>
+</div>
+</div>
+</div>
+</div>
+<div id="apNewsBreakingNewsOfflineUnavailable" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div data-win-bind="innerHTML: message; dir: message CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadlineImageSnippetArticle" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="imageContainer">
+<div class="image fitWidth" data-win-control="CommonJS.TwoStepBindingImageCard" data-win-options="{noIdentifier: 1, classification: 'medium', defaultImageErrorHandler: 'hide'}"
+data-win-bind="winControl.lowResolutionUrl: thumbnailLowRes.url; winControl.highResolutionUrl: thumbnail.url PlatformJS.Utilities.imageCardSource; winControl.alternateText: altText;">
+</div>
+</div>
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="snippet" data-win-bind="innerHTML: snippet; dir: snippet CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div class="actionMessage" data-win-bind="innerHTML: actionMessage; dir: actionMessage CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadlineImageSnippet" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="imageContainer">
+<div class="image fitWidth" data-win-control="CommonJS.TwoStepBindingImageCard" data-win-options="{noIdentifier: 1, classification: 'medium', defaultImageErrorHandler: 'hide'}"
+data-win-bind="winControl.lowResolutionUrl: thumbnailLowRes.url; winControl.highResolutionUrl: thumbnail.url PlatformJS.Utilities.imageCardSource; winControl.alternateText: altText;">
+</div>
+</div>
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="snippet" data-win-bind="innerHTML: snippet; dir: snippet CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div class="actionMessage" data-win-bind="innerHTML: actionMessage; dir: actionMessage CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadlineImageArticle" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="imageContainer">
+<div class="image fitWidth" data-win-control="CommonJS.TwoStepBindingImageCard" data-win-options="{noIdentifier: 1, classification: 'medium', defaultImageErrorHandler: 'hide'}"
+data-win-bind="winControl.lowResolutionUrl: thumbnailLowRes.url; winControl.highResolutionUrl: thumbnail.url PlatformJS.Utilities.imageCardSource; winControl.alternateText: altText;">
+</div>
+</div>
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div class="actionMessage" data-win-bind="innerHTML: actionMessage; dir: actionMessage CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadlineImage" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="imageContainer">
+<div class="image fitWidth" data-win-control="CommonJS.TwoStepBindingImageCard" data-win-options="{noIdentifier: 1, classification: 'medium', defaultImageErrorHandler: 'hide'}"
+data-win-bind="winControl.lowResolutionUrl: thumbnailLowRes.url; winControl.highResolutionUrl: thumbnail.url PlatformJS.Utilities.imageCardSource; winControl.alternateText: altText;">
+</div>
+</div>
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div class="actionMessage" data-win-bind="innerHTML: actionMessage; dir: actionMessage CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadlineSnippetArticle" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="snippet" data-win-bind="innerHTML: snippet; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div class="actionMessage" data-win-bind="innerHTML: actionMessage; dir: actionMessage CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadlineSnippet" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="snippet" data-win-bind="innerHTML: snippet; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="apNewsBreakingNewsHeadline" data-win-control="WinJS.Binding.Template">
+<div class="cardContainer">
+<div class="publishTime" data-win-bind="innerHTML: publishTime; dir: publishTime CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="leadOverlay">
+<div class="textContainer">
+<div class="title" data-win-bind="innerHTML: title; dir: title CommonJS.News.NewsCluster.directionAttribute"></div>
+<div class="bar"></div>
+</div>
+</div>
+<div class="actionMessage" data-win-bind="innerHTML: actionMessage; dir: actionMessage CommonJS.News.NewsCluster.directionAttribute"></div>
+</div>
+</div>
+<div class="dynamicPano fragment">
+<div class="platformMainContent" id="news_Panorama" data-win-control="CommonJS.Immersive.SemanticZoomPanorama"
+data-win-bind="winControl.headerOptions: headerOptions; winControl.title: title; winControl.semanticZoomRenderer: semanticZoomRenderer">
+</div>
+<div class="platformNewsActionEdgyHidden"></div>
+<div class="platformNewsActionEdgy" id="actionEdgy" data-win-control="WinJS.UI.AppBar" data-win-options="{placement: 'bottom', layout: 'custom'}">
+<div class="platformNewsActionEdgyLeft">
+</div>
+<div class="platformNewsActionEdgyRight platformFeedbackButtonParent">
+<button tabindex="0" class="hiddenButton" id="previewButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE175', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="pinFeaturedSource" data-win-control="WinJS.UI.AppBarCommand" />
+<button tabindex="0" id="refreshButton" data-win-control="WinJS.UI.AppBarCommand"
+data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" />
+<button tabindex="0" id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" />
+</div>
+</div>
+</div>
+</body>
+</html>

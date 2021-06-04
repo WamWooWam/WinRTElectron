@@ -9,6 +9,7 @@ export * from "./Windows.Devices"
 export * from "./Windows.Networking"
 export * from "./Windows.Graphics"
 export * from "./Windows.Media"
+export * from "./Windows.Data"
 import * as UITemp from "./Windows.UI"
 import * as WebUITemp from "./Windows.UI.WebUI"
 

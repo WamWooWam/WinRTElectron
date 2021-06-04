@@ -1,0 +1,1 @@
+﻿body {  background-color: rgba(0, 0, 0, 0);}#errorPage {  margin: 120px 40px 40px 120px;}#errorContent p {  margin: 40px 0px;  padding: 0px;}#retryButton {  padding: 8px 20px 10px 20px;}@media screen and (-ms-view-state: snapped) {  #errorPage {    margin: 60px 20px 40px 20px;  }  #errorContent p {    margin: 30px 0px;  }}

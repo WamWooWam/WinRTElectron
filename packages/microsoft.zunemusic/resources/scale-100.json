@@ -1,0 +1,76 @@
+{
+  "Files": {
+    "Images": {
+      "CloudDialog": {
+        "cloud.png": "Images\\CloudDialog\\cloud.scale-100.png",
+        "Cloud_3Screen_Dialog.png": "Images\\CloudDialog\\Cloud_3Screen_Dialog.scale-100.png",
+        "streaming.png": "Images\\CloudDialog\\streaming.scale-100.png"
+      },
+      "Devices": {
+        "Devices_PCWeb_Active.png": "Images\\Devices\\Devices_PCWeb_Active.scale-100.png",
+        "Devices_PCWeb_Hover.png": "Images\\Devices\\Devices_PCWeb_Hover.scale-100.png",
+        "Devices_PCWeb_Rest.png": "Images\\Devices\\Devices_PCWeb_Rest.scale-100.png",
+        "Devices_PhonesXbox_Active.png": "Images\\Devices\\Devices_PhonesXbox_Active.scale-100.png",
+        "Devices_PhonesXbox_Hover.png": "Images\\Devices\\Devices_PhonesXbox_Hover.scale-100.png",
+        "Devices_PhonesXbox_Rest.png": "Images\\Devices\\Devices_PhonesXbox_Rest.scale-100.png"
+      },
+      "ExploreUpsell": {
+        "devices.png": "Images\\ExploreUpsell\\devices.scale-100.png",
+        "offline.png": "Images\\ExploreUpsell\\offline.scale-100.png",
+        "sign-in.png": "Images\\ExploreUpsell\\sign-in.scale-100.png"
+      },
+      "GenericIcons": {
+        "Music8_1": {
+          "Missing_Album_130.png": "Images\\GenericIcons\\Music8_1\\Missing_Album_130.scale-100.png",
+          "Missing_Album_150.png": "Images\\GenericIcons\\Music8_1\\Missing_Album_150.scale-100.png",
+          "Missing_Album_210.png": "Images\\GenericIcons\\Music8_1\\Missing_Album_210.scale-100.png",
+          "Missing_Album_75.png": "Images\\GenericIcons\\Music8_1\\Missing_Album_75.scale-100.png",
+          "Missing_Artist_130.png": "Images\\GenericIcons\\Music8_1\\Missing_Artist_130.scale-100.png",
+          "Missing_Artist_150.png": "Images\\GenericIcons\\Music8_1\\Missing_Artist_150.scale-100.png",
+          "Missing_Artist_75.png": "Images\\GenericIcons\\Music8_1\\Missing_Artist_75.scale-100.png",
+          "Missing_Art_Now_Playing.png": "Images\\GenericIcons\\Music8_1\\Missing_Art_Now_Playing.scale-100.png"
+        },
+        "ico_74x_GenericMusic_L2.png": "Images\\GenericIcons\\ico_74x_GenericMusic_L2.scale-100.png",
+        "ico_74x_GenericMusic_Large.png": "Images\\GenericIcons\\ico_74x_GenericMusic_Large.scale-100.png",
+        "ico_74x_GenericMusic_Medium.png": "Images\\GenericIcons\\ico_74x_GenericMusic_Medium.scale-100.png",
+        "ico_74x_GenericMusic_Small.png": "Images\\GenericIcons\\ico_74x_GenericMusic_Small.scale-100.png",
+        "ico_GenericMusic_L3_Hero.png": "Images\\GenericIcons\\ico_GenericMusic_L3_Hero.scale-100.png"
+      },
+      "ListStripes": {
+        "ListStripes.png": "Images\\ListStripes\\ListStripes.scale-100.png",
+        "ListStripesTall.png": "Images\\ListStripes\\ListStripesTall.scale-100.png",
+        "ListStripesTall_WhiteBackground.png": "Images\\ListStripes\\ListStripesTall_WhiteBackground.scale-100.png"
+      },
+      "LoadingCardTemplateBg": {
+        "LoadingCardTemplateBg_Empty.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_Empty.scale-100.png",
+        "LoadingCardTemplateBg_EmptyRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_EmptyRTL.scale-100.png",
+        "LoadingCardTemplateBg_Music.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_Music.scale-100.png",
+        "LoadingCardTemplateBg_MusicRTL.png": "Images\\LoadingCardTemplateBg\\LoadingCardTemplateBg_MusicRTL.scale-100.png"
+      },
+      "SubscriptionSignup": {
+        "Subscription_Devices.png": "Images\\SubscriptionSignup\\Subscription_Devices.scale-100.png"
+      },
+      "ThirdParty": {
+        "Echonest_Attribution_Assets_1.png": "Images\\ThirdParty\\Echonest_Attribution_Assets_1.scale-100.png",
+        "Webmix_Co-Attribution.png": "Images\\ThirdParty\\Webmix_Co-Attribution.scale-100.png",
+        "echonest.png": "Images\\ThirdParty\\echonest.scale-100.png"
+      },
+      "Tiles": {
+        "XBL_MUSIC_150x150_A.png": "Images\\Tiles\\XBL_MUSIC_150x150_A.scale-100.png",
+        "XBL_MUSIC_30x30_A.png": "Images\\Tiles\\XBL_MUSIC_30x30_A.scale-100.png",
+        "XBL_MUSIC_310x150_C.png": "Images\\Tiles\\XBL_MUSIC_310x150_C.scale-100.png",
+        "XBL_MUSIC_310x310_A.png": "Images\\Tiles\\XBL_MUSIC_310x310_A.scale-100.png",
+        "XBL_MUSIC_620x300_A.png": "Images\\Tiles\\XBL_MUSIC_620x300_A.scale-100.png",
+        "XBL_MUSIC_70x70_A.png": "Images\\Tiles\\XBL_MUSIC_70x70_A.scale-100.png"
+      },
+      "WebDialogResize": {
+        "Expand_Screen_Icon.png": "Images\\WebDialogResize\\Expand_Screen_Icon.scale-100.png",
+        "RotateResizeIcon.png": "Images\\WebDialogResize\\RotateResizeIcon.scale-100.png"
+      },
+      "ico_252x265_GenericMusic.png": "Images\\ico_252x265_GenericMusic.scale-100.png",
+      "ico_74x_GenericMusic.png": "Images\\ico_74x_GenericMusic.scale-100_contrast-black.png",
+      "ico_74x_GenericMusic_L2.png": "Images\\ico_74x_GenericMusic_L2.scale-100_contrast-black.png",
+      "XBM_Branded_Title.png": "Images\\XBM_Branded_Title.scale-100.png"
+    }
+  }
+}

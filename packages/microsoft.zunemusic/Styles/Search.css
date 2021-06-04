@@ -1,11 +1,11 @@
-﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
-.searchContainer>.win-template, .searchContainer
-{
+/* Copyright (C) Microsoft Corporation. All rights reserved. */
+
+.searchContainer>.win-template, .searchContainer {
     height: 100%;
     width: 100%
 }
-.hcrHubPanel
-{
+
+.hcrHubPanel {
     min-width: 0;
     display: -ms-grid;
     margin: 4px 80px 0 0;
@@ -14,18 +14,22 @@
     max-height: 684px;
     -ms-grid-columns: 20px 260px 20px;
     -ms-grid-rows: 20px auto 10px 1fr auto 20px;
-    outline: none
+    outline: none;
+    display: grid;
+    grid-template-columns: 20px 260px 20px;
+    grid-template-rows: 20px auto 10px 1fr auto 20px
 }
-html[dir=rtl] .hcrHubPanel
-{
+
+html[dir=rtl] .hcrHubPanel {
     margin: 4px 0 0 80px
 }
-.hcrBody
-{
-    display: -ms-grid
+
+.hcrBody {
+    display: -ms-grid;
+    display: grid
 }
-.hcrOutline
-{
+
+.hcrOutline {
     width: 100%;
     height: calc(100% + 4px);
     left: -2px;
@@ -33,26 +37,28 @@ html[dir=rtl] .hcrHubPanel
     top: -2px;
     position: relative
 }
-.searchResultsContainer .panelModifierContainer
-{
-    -ms-grid-columns: auto
+
+.searchResultsContainer .panelModifierContainer {
+    -ms-grid-columns: auto;
+    grid-template-columns: auto
 }
-.mainHubStripHub .panelFragmentLoading
-{
+
+.mainHubStripHub .panelFragmentLoading {
     display: none
 }
-.searchHubStrip .panelContainer
-{
+
+.searchHubStrip .panelContainer {
     min-width: 0
 }
-.galleryViewHubPanel
-{
+
+.galleryViewHubPanel {
     display: -ms-flexbox;
     border: 0 solid;
-    height: 100%
+    height: 100%;
+    display: flex
 }
-.searchGalleryView
-{
+
+.searchGalleryView {
     float: left;
     border: 0 solid;
     position: relative;
@@ -60,17 +66,17 @@ html[dir=rtl] .hcrHubPanel
     height: calc(100% - 65px);
     margin-right: 80px
 }
-html[dir=rtl] .searchGalleryView
-{
+
+html[dir=rtl] .searchGalleryView {
     margin-right: 0;
     margin-left: 80px
 }
-.searchGalleryView .win-listview-browse, .searchGalleryView .win-surface
-{
+
+.searchGalleryView .win-listview-browse, .searchGalleryView .win-surface {
     width: 100%
 }
-.searchListView
-{
+
+.searchListView {
     width: 400px;
     height: 655px;
     float: left;
@@ -80,29 +86,32 @@ html[dir=rtl] .searchGalleryView
     padding-right: 20px;
     border: 0 solid
 }
-.searchListView .win-listview-browse, .searchListView .win-surface
-{
+
+.searchListView .win-listview-browse, .searchListView .win-surface {
     height: 100%;
     width: 100%
 }
-.message
-{
+
+.message {
     position: absolute;
     left: 120px;
     top: 60px;
     max-width: 80%;
     border: 0 solid
 }
-.searchGroupHeader
-{
+
+.searchGroupHeader {
     display: -ms-grid;
     -ms-grid-columns: 10px 1fr 10px;
     -ms-grid-rows: 10px 1fr 10px;
     position: relative;
-    height: 165px
+    height: 165px;
+    display: grid;
+    grid-template-columns: 10px 1fr 10px;
+    grid-template-rows: 10px 1fr 10px
 }
-.searchGroupHeaderInPlace
-{
+
+.searchGroupHeaderInPlace {
     display: -ms-grid;
     -ms-grid-columns: 10px 1fr 10px;
     -ms-grid-rows: 10px 1fr 10px;
@@ -111,169 +120,187 @@ html[dir=rtl] .searchGalleryView
     height: 165px;
     margin-right: 0;
     margin-left: 0;
-    margin-top: 0
+    margin-top: 0;
+    display: grid;
+    grid-template-columns: 10px 1fr 10px;
+    grid-template-rows: 10px 1fr 10px
 }
-html[dir=rtl] .searchGroupHeader
-{
+
+html[dir=rtl] .searchGroupHeader {
     margin-right: 0;
     margin-left: 4px
 }
-html[dir=rtl] .searchGroupHeaderInPlace
-{
+
+html[dir=rtl] .searchGroupHeaderInPlace {
     margin-right: 4px;
     margin-left: 0
 }
-.searchGroupHeaderText
-{
+
+.searchGroupHeaderText {
     -ms-grid-column: 2;
     -ms-grid-row: 2;
     -ms-grid-row-align: end;
     white-space: normal;
-    word-wrap: break-word
+    word-wrap: break-word;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-items: flex-end
 }
-.searchGroupHeaderInPlaceText
-{
+
+.searchGroupHeaderInPlaceText {
     -ms-grid-column: 2;
     -ms-grid-row: 2;
     -ms-grid-row-align: end;
     max-height: 185px;
     white-space: normal;
-    word-wrap: break-word
+    word-wrap: break-word;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-items: flex-end
 }
-.searchListItem .win-item
-{
+
+.searchListItem .win-item {
     margin: 0;
     width: calc(100% + 7px);
     height: 50px
 }
-.searchSongListItem
-{
+
+.searchSongListItem {
     display: -ms-grid;
     -ms-grid-rows: 1fr;
     -ms-grid-columns: 250px 50px 1fr;
     border: 0 solid;
-    border-top: 1px solid #a9a9a9
+    border-top: 1px solid #a9a9a9;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 250px 50px 1fr
 }
-.searchSongListItem .inlineTrackListName
-{
+
+.searchSongListItem .inlineTrackListName {
     padding-right: 10px
 }
-.HCRCoverArt
-{
+
+.HCRCoverArt {
     width: auto;
     height: auto
 }
-.HCRCoverArt.artistImageCollage
-{
+
+.HCRCoverArt.artistImageCollage {
     width: 260px;
     height: 260px;
     padding: 0
 }
-.HCRCoverArt .thumbnailButton
-{
+
+.HCRCoverArt .thumbnailButton {
     padding-right: 4px;
     padding-bottom: 4px
 }
-.HCRCoverArt .imageHolder
-{
+
+.HCRCoverArt .imageHolder {
     display: -ms-grid;
     -ms-grid-columns: 100%;
-    -ms-grid-rows: 100%
+    -ms-grid-rows: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%
 }
-.HCRCoverArt .imageHolder img
-{
+
+.HCRCoverArt .imageHolder img {
     -ms-grid-column-align: center;
-    -ms-grid-row-align: center
+    -ms-grid-row-align: center;
+    justify-content: center;
+    align-items: center
 }
-.HCRInlineDetailsContainer
-{
+
+.HCRInlineDetailsContainer {
     width: 450px
 }
-.HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
-{
+
+.HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer {
     height: 630px;
     margin: 0
 }
-.HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
-{
+
+.HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer {
     width: 450px
 }
-.HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
-{
+
+.HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer {
     left: 280px
 }
-.searchHubStrip
-{
+
+.searchHubStrip {
     height: 100vh;
     width: 100vw;
     display: -ms-grid;
     -ms-grid-columns: 120px 1fr;
     -ms-grid-rows: 110px 10px 1fr;
     -ms-grid-column-span: 2;
-    -ms-grid-row-span: 3
+    -ms-grid-row-span: 3;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 110px 10px 1fr;
+    grid-column-end: span 2;
+    grid-row-end: span 3
 }
-.searchPage .win-listview>.win-horizontal.win-viewport .win-container
-{
+
+.searchPage .win-listview>.win-horizontal.win-viewport .win-container {
     width: 295px;
     height: 165px
 }
-@media screen and (min-height: 1080px)
-{
-    .searchHubStrip
-    {
-        -ms-grid-rows: 120px 25px 1fr
+
+@media screen and (min-height: 1080px) {
+    .searchHubStrip {
+        -ms-grid-rows: 120px 25px 1fr;
+        grid-template-rows: 120px 25px 1fr
     }
 }
-@media screen and (min-height: 1200px)
-{
-    .searchHubStrip
-    {
-        -ms-grid-rows: 140px 85px 1fr
+
+@media screen and (min-height: 1200px) {
+    .searchHubStrip {
+        -ms-grid-rows: 140px 85px 1fr;
+        grid-template-rows: 140px 85px 1fr
     }
 }
-@media screen and (min-height: 1440px)
-{
-    .searchHubStrip
-    {
-        -ms-grid-rows: 200px 125px 1fr
+
+@media screen and (min-height: 1440px) {
+    .searchHubStrip {
+        -ms-grid-rows: 200px 125px 1fr;
+        grid-template-rows: 200px 125px 1fr
     }
 }
-.searchHubStrip .hub
-{
+
+.searchHubStrip .hub {
     margin-left: 120px
 }
-html[dir=rtl] .searchHubStrip .hub
-{
+
+html[dir=rtl] .searchHubStrip .hub {
     margin-right: 120px;
     margin-left: 0
 }
-.searchHubStrip .panelTitle
-{
+
+.searchHubStrip .panelTitle {
     min-width: 0
 }
-@media screen and (max-height: 1049px)
-{
-    .searchListView
-    {
+
+@media screen and (max-height: 1049px) {
+    .searchListView {
         height: 435px
     }
-    .HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer
-    {
+    .HCRInlineDetailsContainer .inlineDetailsVideoContainer, .HCRInlineDetailsContainer .inlineDetailsTvContainer, .HCRInlineDetailsContainer .inlineDetailsGameContainer, .HCRInlineDetailsContainer .inlineDetailsMusicVideoContainer, .HCRInlineDetailsContainer .gameInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .movieInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .musicInlineDetailsPanelFragmentContainer.panelFragmentContainer, .HCRInlineDetailsContainer .tvInlineDetailsPanelFragmentContainer.panelFragmentContainer {
         height: 400px
     }
-    .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer
-    {
+    .HCRInlineDetailsContainer .inlineDetailsTrackFullContainer {
         height: 410px
     }
 }
-.hiddenItem
-{
+
+.hiddenItem {
     display: none
 }
-@media screen and (-ms-high-contrast)
-{
-    .hcrHubPanel
-    {
+
+@media screen and (-ms-high-contrast) {
+    .hcrHubPanel {
         outline-style: solid
     }
 }

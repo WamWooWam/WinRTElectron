@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=10" />
+<title></title>
+</head>
+<body>
+<div class="mediaPlaybackTopBarBackButton">
+<button id="mediaPlaybackFullScreenToggleButton" class="win-commandicon win-commandring roundUIBtnLight fullScreenToggleButton" data-win-res="{ attributes: { 'aria-label': '/Platform/GoBack' } }" data-supportedmodes="full partial minimal" data-supportedmediatypes="audio video"></button>
+</div>
+<div id="mediaPlaybackContent" class="mediaPlaybackContent" role="region" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackContentRegionAriaLabel' } }">
+<!--This holds the media element-->
+<div id="mediaPlaybackVideoAd" class="mediaPlaybackVideoAd"></div>
+<div id="mediaPlaybackErrorScreen" class="mediaPlaybackErrorScreen platformHide">
+<div class="mediaPlaybackErrorScreenContent">
+<div id="mediaPlaybackReloadIcon" class="win-commandicon win-commandring roundUIBtnLight reloadButton"></div>
+<div id="mediaPlaybackMessage" class="mediaPlaybackMessage"></div>
+</div>
+</div>
+<div id="mediaPlaybackTopBarWrapper " class="mediaPlaybackTopBarWrapper">
+<div id="mediaPlaybackTopBar" class="platformHide">
+<div class="mediaPlaybackTopBar">
+<img id="topBarLogo" class="mediaPlaybackTopBarLogo platformHide" src="" />
+<div id="topBarTitle" class="mediaPlaybackTopBarTitle"></div>
+<div id="topBarAttribution" class="mediaPlaybackTopBarAttribution"></div>
+<div class="mediaPlaybackTopBarTime">
+<span id="topBarCurrentTime" class="mediaPlaybackTopBarCurrentTime"></span>
+<span id="topBarTotalTime" class="mediaPlaybackTopBarTotalTime"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- When current video reaches to END we will show this UI -->
+<div id="mediaPlaybackCountdownUI" class="platformHide">
+<button id="nextVideoPlaybackButton" class="mediaPlaybackFullDivButton" tabindex="0" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackControlsAriaLabel' } }"></button>
+<div class="countdownContent">
+<h1 id="countdownText">UP NEXT IN 5</h1>
+<div class="nextVideoTitleContainer">
+<h2 class="fontLL mask" id="nextVideoTitle">TITLE</h2>
+</div>
+<div class="partnerAttribution">
+<div class="favicon">
+<img id="nextVideoFavicon" alt="" height="24" width="24" />
+</div>
+<div class="source">
+<span id="nextVideoSource" class="fontSB"></span>
+</div>
+</div>
+</div>
+<div class="nextVideoThumbnailContainer">
+<img id="nextVideoThumbnail" width="100%" height="100%" />
+<div id="nextVideoPlaybackButtonPlaceHolder" class="win-commandicon win-commandring nextVideoPlaybackButtonPlaceHolder" tabindex="0"></div>
+</div>
+</div>
+<div class="mediaPlaybackMediaStrip" id="mediaPlaybackMediaStrip"></div>
+<!-- These objects are here in order to get the absolute path from the relative one for the play/pause buttons -->
+<img id="mediaPlaybackGripperHarvest" class="mediaPlaybackHarvest" src="/Common/MediaPlayback/Resources/GripperRest_inline.svg" />
+<div id="mediaPlaybackControlsLayer" role="group" class="mediaPlaybackControlsLayer">
+<div id="mediaPlaybackPosterImageContainer" aria-hidden="true" class="mediaPlaybackPosterImageContainer">
+<div id="mediaPlaybackPosterImagePlaceholder" class="mediaPlaybackPosterImagePlaceholder">
+<table class="centeringTable">
+<tr>
+<td class="centeringTable mediaPlaybackPosterImagePlaceholder"></td>
+</tr>
+</table>
+</div>
+<img id="mediaPlaybackPosterImage" class="mediaPlaybackPosterImage hiddenObject" src="" />
+</div>
+<table class="fullWidthTable hiddenObject" id="captionControls">
+<tr>
+<td class="fillCell"></td>
+<td class="formattingCell">
+<select id="captionLanguageDropDown" class="platformHide captionLanguageDropDown"></select>
+</td>
+</tr>
+<tr>
+<td class="fillCell"></td>
+<td class="formattingCellRight">
+<button id="captionButton" class="platformHide win-commandicon win-commandring roundUIBtnLight captionButton"></button>
+</td>
+</tr>
+</table>
+<img id="mediaPlaybackSeekBarThumb" role="slider" tabindex="0" class="mediaPlaybackSeekBarThumb" src="/Common/MediaPlayback/Resources/GripperRest_inline.svg" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackSeekBarThumbAriaLabel' } }" />
+<div id="mediaPlaybackSeekBarThumbToolTip" class="mediaPlaybackSeekBarThumbToolTipContainer" aria-hidden="true"><div class="mediaPlaybackSeekBarThumbToolTip"></div></div>
+<table class="fullWidthTable" id="seekAndPlaybackControlTable">
+<tr>
+<td id="seekAndPlaybackControlTableSpacerLeft" class="seekAndPlaybackControlTableSpacerLeft"></td>
+<td class="fillCell">
+<div id="mediaPlaybackSeekBarControls" class="mediaPlaybackSeekBarControls">
+<!--This holds the playback time indicator -->
+<div id="mediaPlaybackTimeIndicator" role="timer" class="mediaPlaybackTimeIndicator colorPrimaryText win-type-xx-small" data-supportedmediatypes="audio"></div>
+<!--This is the seek bar, it has an invisible area on both sides of the actual visual to aid touch events-->
+<div id="mediaPlaybackSeekBar" role="progressbar" class="mediaPlaybackSeekBar colorPrimaryText win-type-small">
+<div id="mediaPlaybackSeekBarRail" class="mediaPlaybackSeekBarRail">
+<div id="mediaPlaybackSeekBarProgress" class="mediaPlaybackSeekBarProgress"></div>
+</div>
+<div id="mediaPlaybackCurrentTimeIndicator" class="mediaPlaybackCurrentTimeIndicator" data-supportedmediatypes="video"></div>
+<div id="mediaPlaybackTotalTimeIndicator" class="mediaPlaybackTotalTimeIndicator colorPrimaryText win-type-xx-small" data-supportedmediatypes="video"></div>
+</div>
+<div id="mediaPlaybackControlsBackdrop" aria-hidden="true" class="mediaPlaybackControlsBackdrop"></div>
+</div>
+</td>
+<td id="seekAndPlaybackControlTableSpacerMiddle" class="seekAndPlaybackControlTableSpacerMiddle"></td>
+<td class="formattingCell">
+<!--This div contains the play/-->
+<div id="mediaPlaybackControls" role="region" class="colorPrimaryText mediaPlaybackControls">
+<table class="formattingTable playbackControlTable" id="playbackControlTable">
+<tr>
+<td class="formattingCell">
+<button id="shareVideoButton" class="win-commandicon win-commandring roundUIBtnLight shareVideoButton" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackShareAriaLabel' } }" data-supportedmodes="full partial minimal" data-supportedmediatypes="audio video"></button>
+<button id="screenSizeToggleButton" class="win-commandicon win-commandring roundUIBtnLight fullScreenSizeToggleButton" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackEnterFullScreenAriaLabel' } }" data-supportedmodes="full partial minimal" data-supportedmediatypes="audio video"></button>
+<button id="mediaPlaybackPlayButton" class="win-commandicon win-commandring roundUIBtnLight grayButton playButton" tabindex="0" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackControlsAriaLabel' } }" data-supportedmodes="full partial minimal" data-supportedmediatypes="audio video"></button>
+</td>
+</tr>
+</table>
+<div id="mediaPlaybackPlayButtonAriaLabel" style="display: none" aria-hidden="true" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackPlayButtonAriaLabel' } }"></div>
+<div id="mediaPlaybackPauseButtonAriaLabel" style="display: none" aria-hidden="true" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackPauseButtonAriaLabel' } }"></div>
+<div id="mediaPlaybackEnterFullScreenAriaLabel" style="display: none" aria-hidden="true" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackEnterFullScreenAriaLabel' } }"></div>
+</div>
+</td>
+<td id="seekAndPlaybackControlTableSpacerRight" class="seekAndPlaybackControlTableSpacerRight"></td>
+</tr>
+</table>
+</div>
+<!--This handles all the inputs/mouse keyboard etc-->
+<div id="mediaPlaybackInputHandler" class="mediaPlaybackInputHandler" data-win-res="{ attributes: { 'aria-label': '/Platform/mediaPlaybackControlsAriaLabel' } }"></div>
+<div id="mediaPlaybackSpinnerContainer" class="mediaPlaybackSpinnerContainer">
+<table class="centeringTable">
+<tr>
+<td class="centeringTable">
+<progress class="win-medium win-ring mediaPlaybackSpinner"></progress>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</body>
+</html>

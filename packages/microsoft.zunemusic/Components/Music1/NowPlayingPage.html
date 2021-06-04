@@ -46,7 +46,7 @@
             <div class="control-verticalListItem verticalListItem_snapped">
                 
                 <div class="verticalListItem-flexColumns">
-                    <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                    <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="_name" data-win-bind="textContent: data._name WinJS.Binding.oneTime"></div>
                     <div class="verticalListItem-artistName text-metadata maxLines-one" data-win-bind="textContent: data.artistName WinJS.Binding.oneTime"></div>
                     <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
                         winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
@@ -83,7 +83,7 @@
                 
                 <div class="verticalListItem-flexColumns">
                     <div class="verticalListItem-primaryColumnContainer">
-                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data.name WinJS.Binding.oneTime"></div>
+                        <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: data._name WinJS.Binding.oneTime"></div>
                         <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
                                     winControl.eventProxy: data.eventProxy WinJS.Binding.oneTime;" data-win-options="{
                                     allowAnimations: false,
@@ -147,8 +147,8 @@
                         <div class="overlay-content">
                             <div class="content-currentItem">
                                 <div class="currentItem-primaryText text-nowPlayingTitle" data-win-bind="
-                                       textContent: dataContext.mediaItem.name;
-                                       hideFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
+                                       textContent: dataContext.mediaItem._name;
+                                       hideFromDisplay: dataContext.mediaItem._name MS.Entertainment.Utilities.toggleClassNameOnEmptyString"></div>
 
                                 <div class="currentItem-secondaryText">
                                     <div class="secondaryText-text secondaryText-artist text-nowPlayingMetadata" tabindex="0" role="button" data-ent-member="_artistMetadata" data-ent-event="click: _metadataClick; keydown: _metadataKeyDown" data-win-bind="

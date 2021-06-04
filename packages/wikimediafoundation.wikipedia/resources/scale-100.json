@@ -1,0 +1,11 @@
+{
+  "Files": {
+    "images": {
+      "secondary-tile.png": "images\\secondary-tile.scale-100.png",
+      "splashscreen.png": "images\\splashscreen.scale-100.png"
+    },
+    "win8-small-tile.png": "win8-small-tile.scale-100.png",
+    "win8-tile.png": "win8-tile.scale-100.png",
+    "win8-wide-tile.png": "win8-wide-tile.scale-100.png"
+  }
+}

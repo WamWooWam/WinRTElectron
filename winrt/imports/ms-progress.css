@@ -1,0 +1,106 @@
+.ms-progress-container {
+    position: relative;
+    width: 100%;
+    height: 100%
+}
+
+.ms-progress-container.active span {
+    position: absolute;
+    -ms-transform: rotate(-140deg);
+    transform: rotate(-140deg);
+    animation: orbit 4.3s infinite;
+    opacity: 0;
+}
+
+.ms-progress-container.active span:after {
+    content: '';
+    position: absolute;
+    border-radius: 100%;
+    width: 6px;
+    height: 6px
+}
+
+.ms-progress-container.active span:nth-child(2) {
+    animation-delay: 167ms
+}
+
+.ms-progress-container.active span:nth-child(3) {
+    animation-delay: 334ms
+}
+
+.ms-progress-container.active span:nth-child(4) {
+    animation-delay: 501ms
+}
+
+.ms-progress-container.active span:nth-child(5) {
+    animation-delay: 668ms
+}
+
+.ms-progress-container.active span:nth-child(6) {
+    animation-delay: 835ms
+}
+
+/* .ms-progress-container.active.f-progress-large {
+    width: 60px;
+    height: 60px
+}
+
+.ms-progress-container.active.f-progress-large span {
+    width: 60px;
+    height: 60px
+}
+
+
+.ms-progress-container.active.f-progress-small {
+    width: 20px;
+    height: 20px
+}
+
+.ms-progress-container.active.f-progress-small span {
+    width: 25px;
+    height: 25px
+}
+
+.ms-progress-container.active.f-progress-small span:after {
+    width: 3px;
+    height: 3px
+} */
+
+@keyframes orbit {
+    0% {
+        transform: rotate(-140deg);
+        opacity: 1;
+        animation-timing-function: cubic-bezier(0.02, 0.33, 0.38, 0.77)
+    }
+    10% {
+        transform: rotate(-20deg);
+        animation-timing-function: linear
+    }
+    23% {
+        transform: rotate(63deg);
+        animation-timing-function: cubic-bezier(0.57, 0.17, 0.95, 0.75)
+    }
+    37.6% {
+        transform: rotate(175deg);
+        animation-timing-function: cubic-bezier(0, 0.19, 0.07, 0.72)
+    }
+    46.9% {
+        transform: rotate(325deg);
+        animation-timing-function: linear
+    }
+    64.72% {
+        transform: rotate(409deg);
+        animation-timing-function: cubic-bezier(0, 0, 0.95, 0.37);
+    }
+    74.81% {
+        opacity: 1;
+    }
+    74.82% {
+        opacity: 0;
+        transform: rotate(555deg);
+        animation-timing-function: cubic-bezier(0.13, 0.21, 0.1, 0.7);
+    }
+    100% {
+        opacity: 0;
+    }
+}

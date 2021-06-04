@@ -153,7 +153,7 @@
                     if (!animationComplete || (extraAnimations && !extraAnimationsComplete))
                         return;
                     WinJS.Utilities.removeClass(hubStrip._scroller, "hubStripScrollTransition");
-                    hubStrip._scroller.style.msTransform = "";
+                    hubStrip._scroller.style.transform = "";
                     hubStrip._scroller.style.overflow = "";
                     hubStrip._scroller.scrollLeft = destinationOffset;
                     hubStrip.animating = false;
@@ -164,7 +164,7 @@
                     if (!hubStrip.animating) {
                         var offset = hubStrip._scroller.scrollLeft;
                         hubStrip._scroller.style.overflow = "visible";
-                        hubStrip._scroller.style.msTransform = "translateX(-" + offset + "px)";
+                        hubStrip._scroller.style.transform = "translateX(-" + offset + "px)";
                         hubStrip.animating = true
                     }
                     else {
@@ -179,7 +179,7 @@
                             cleanupStrip()
                         });
                     WinJS.Utilities.addClass(hubStrip._scroller, "hubStripScrollTransition");
-                    hubStrip._scroller.style.msTransform = "translateX(-" + destinationOffset + "px)"
+                    hubStrip._scroller.style.transform = "translateX(-" + destinationOffset + "px)"
                 }
                 else {
                     hubStrip._scroller.scrollLeft = destinationOffset;

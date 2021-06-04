@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>WorldWeather</title>
+<link rel="stylesheet" href="/css/secondaryPanos.css" />
+<script src="/panoramas/worldweather/WorldWeather.js"></script>
+</head>
+<body>
+<div class="WorldWeather headerFontDark fragment">
+<div id ="worldWeatherHeader" class="immersiveHeader" data-win-control="CommonJS.Immersive.Header" 
+data-win-bind="winControl.headerTitleText: headerTitle; 
+winControl.headerSubTitleText: headerSubTitle">
+</div>
+<!-- Bottom Edgy -->
+<div id="bottomEdgy" class="platformActionBar" data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'bottom'}" aria-label="Action Bar">
+<div class="mainActionBarDiv-right platformFeedbackButtonParent">
+<button id="currentLocationButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE013', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: CurrentLocationButtonTitle" style="display:none" />
+<button id="changeUnitToFButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE151', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: ChangeUnitToFButtonTitle"></button>
+<button id="changeUnitToCButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE150', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: ChangeUnitToCButtonTitle"></button>
+<button id="refreshButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: RefreshButtonTitle"></button>
+<button id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: HelpButtonTitle"></button>
+</div>
+</div>
+<div id="worldWeatherFloater"></div>
+<div class="worldWeatherMainContent">
+<div class="mapContainer">
+<div id="continentMap">
+<img id="continentImage" />
+</div>
+<div id="worldMap">
+<div class="blank">
+<!-- This blank div is added as a workaround to make smooth zooming for north & south america in RTL build. -->
+</div>
+<div id="worldMapContent" class="landscape">
+<img id="worldMapImage" class="worldMapImage" src="/images/worldweather/landscape/worldmap.png" data-win-res="{alt: 'WorldMapAltText'}"/>
+<div class="continentNames" style="display:none">
+<!--names-->
+<div id='NorthAmericaText' class="navText northAmericaText" data-win-res="{textContent:'NorthAmerica'}" tabindex="0" role="button"> </div>
+<div id='SouthAmericaText' class="navText southAmericaText" data-win-res="{textContent:'SouthAmerica'}" tabindex="0" role="button"></div>
+<div id='EuropeText' class="navText europeText" data-win-res="{textContent:'Europe'}" tabindex="0" role="button"></div>
+<div id='AfricaText' class="navText africaText" data-win-res="{textContent:'Africa'}" tabindex="0" role="button"></div>
+<div id='AsiaText' class="navText asiaText" data-win-res="{textContent:'Asia'}" tabindex="0" role="button"></div>
+<div id='OceaniaText' class="navText oceaniaText" data-win-res="{textContent:'Oceania'}" tabindex="0" role="button"></div>
+</div>
+<!--SVG click polygons-->
+<svg class="mapTouchAreas">
+<polygon id='NorthAmerica' points="7,147 27,247 143,261 225,407 335,442 395,407 478,256 288,137" fill="transparent" />
+<polygon id='SouthAmerica' points="375,412,515,498,497,568,407,727,353,700,368,555,324,484" fill="transparent" />
+<polygon id="Asia" points="797,149,994,59,1335,142,1356,174,1356,204,1326,204,1106,394,1104,525,1037,510,992,459,980,402,944,467,885,387,814,431,758,343,828,333" fill="transparent" />
+<polygon id="Oceania" points="1145,510,1130,469,1213,478,1270,515,1320,628,1268,691,1178,646,1138,611,1070,621,1061,550" fill="transparent" />
+<polygon id="Europe" points="728,141,802,165,832,335,711,343,665,318,600,341,616,284,600,259,616,221" fill="transparent" />
+<polygon id="Africa" points="604,340,673,327,758,351,809,431,851,427,822,476,838,566,708,626,658,476,603,462,568,410" fill="transparent" />
+</svg>
+</div>
+<div id="worldMapContentPortrait" class="portrait">
+<img id="worldMapImagePortrait" class="worldMapImage" src="/images/worldweather/portrait/worldmap.png" data-win-res="{alt: 'WorldMapAltText'}"/>
+<div class="continentNames" style="display:none">
+<div id='NorthAmericaTextPortrait' class="navText northAmericaText" data-win-res="{textContent:'NorthAmerica'}" tabindex="0" role="button"> </div>
+<div id='SouthAmericaTextPortrait' class="navText southAmericaText" data-win-res="{textContent:'SouthAmerica'}" tabindex="0" role="button"></div>
+<div id='EuropeTextPortrait' class="navText europeText" data-win-res="{textContent:'Europe'}" tabindex="0" role="button"></div>
+<div id='AfricaTextPortrait' class="navText africaText" data-win-res="{textContent:'Africa'}" tabindex="0" role="button"></div>
+<div id='AsiaTextPortrait' class="navText asiaText" data-win-res="{textContent:'Asia'}" tabindex="0" role="button"></div>
+<div id='OceaniaTextPortrait' class="navText oceaniaText" data-win-res="{textContent:'Oceania'}" tabindex="0" role="button"></div>
+</div>
+<svg class="mapTouchAreas">
+<polygon id='NorthAmericaPortrait' points="77,231 227,269 251,327 184,385 216,416 196,426 178,449 129,428 77,375 39,306 0,316 0,256" fill="transparent" />
+<polygon id='SouthAmericaPortrait' points="203,424 292,474 215,603 202,606 188,595 191,502 173,470 194,427" fill="transparent" />
+<polygon id="AsiaPortrait" points="461,269 496,223 582,204 765,254 765,303 667,403 672,450 657,486 616,486 582,457 573,416 557,449 532,448 513,411 468,433 444,385 478,369" fill="transparent" />
+<polygon id="OceaniaPortrait" points="672,450 759,485 766,565 757,582 702,574 629,546 619,511 657,486" fill="transparent" />
+<polygon id="EuropePortrait" points="427,252 461,269 478,369 444,385 392,368 344,372 334,305" fill="transparent" />
+<polygon id="AfricaPortrait" points="392,368 444,385 468,433 487,430 483,510 448,545 405,545 381,458 337,455 322,405 351,372" fill="transparent" />
+</svg>
+</div>
+</div>
+</div>
+<div class="lastUpdatedTimeStamp"></div>
+</div>
+<div class="cityListPanel"></div>    
+</div>
+</body>
+</html>

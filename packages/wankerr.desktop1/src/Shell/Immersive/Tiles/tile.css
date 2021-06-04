@@ -1,0 +1,124 @@
+
+
+.tile {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    transform-style: preserve-3d;
+}
+
+.tile:hover {
+    transition: transform 0.05s ease-in-out;
+}
+
+.tile:hover:active {
+    transform: scale3d(0.985, 0.985, 0.985);
+}
+
+.moving>.tile {
+    width: 100%;
+    height: 100%;
+}
+
+.tile-container.wide310x150 {
+    grid-column-end: span 4;
+}
+
+.tile-container.square310x310 {
+    grid-row-end: span 4;
+    grid-column-end: span 4;
+}
+
+.tile-container {
+    grid-row-end: span 2;
+    grid-column-end: span 2;
+    border: 2px solid transparent;
+    transform-style: preserve-3d;
+}
+
+.tile-container.square70x70 {
+    grid-row-end: span 1;
+    grid-column-end: span 1;
+}
+
+.tile-container:hover {
+    border: 2px solid rgba(43, 6, 128, 1);
+}
+
+.tile-container.flipped {
+    border: none !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+.tile-container.flipped>.tile {
+    border: none !important;
+    margin: 0 !important;
+    overflow: hidden;
+}
+
+.front {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.tile-front-image-container {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.tile-front-image {
+    max-height: 120px;
+}
+
+.tile-front-image.square70x70 {
+    max-height: 50px;
+}
+
+.tile-front-image.square310x310 {
+   max-height: 246px;
+}
+
+.tile-front-text {
+    padding: 0;
+    margin: 6px 12px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.tile-visual {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.back {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    visibility: hidden;
+    transform: rotateY(180deg);
+}
+
+.flipped>.tile>.front {
+    visibility: hidden;
+}
+
+.flipped>.tile>.back {
+    visibility: visible;
+}

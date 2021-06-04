@@ -291,7 +291,7 @@ var MS;
                                 return;
                             this._attachTemporaryPointerEvents();
                             this._startY = p.position.y;
-                            this.domElement.msSetPointerCapture(p.pointerId);
+                            this.domElement.setPointerCapture(p.pointerId);
                             try {
                                 this.recognizer.processDownEvent(p)
                             }

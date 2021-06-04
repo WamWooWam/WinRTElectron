@@ -1,0 +1,159 @@
+{
+  "Files": {
+    "views": {
+      "start": {
+        "mockData": {
+          "trendingMockData.js": "views\\start\\mockData\\trendingMockData.js"
+        },
+        "js": {
+          "trendingController.js": "views\\start\\js\\trendingController.js",
+          "startview.js": "views\\start\\js\\startview.js"
+        },
+        "images": {
+          "trendsimageplaceholder.png": "views\\start\\images\\trendsimageplaceholder.png"
+        },
+        "html": {
+          "startview.html": "views\\start\\html\\startview.html"
+        },
+        "data": {
+          "popvisualdataprovider.js": "views\\start\\data\\popvisualdataprovider.js",
+          "poptextdataprovider.js": "views\\start\\data\\poptextdataprovider.js",
+          "msntrendingdataprovider.js": "views\\start\\data\\msntrendingdataprovider.js",
+          "bingnewsdataprovider.js": "views\\start\\data\\bingnewsdataprovider.js"
+        }
+      },
+      "main": {
+        "js": {
+          "searchbar.js": "views\\main\\js\\searchbar.js",
+          "mainview.js": "views\\main\\js\\mainview.js"
+        },
+        "images": {
+          "HP_ImageInfo_hover.png": "views\\main\\images\\HP_ImageInfo_hover.png",
+          "HP_ImageInfo_click.png": "views\\main\\images\\HP_ImageInfo_click.png",
+          "HP_ImageInfo.png": "views\\main\\images\\HP_ImageInfo.png"
+        },
+        "html": {
+          "mainview.html": "views\\main\\html\\mainview.html"
+        }
+      },
+      "iframehost": {
+        "js": {
+          "weberrors.js": "views\\iframehost\\js\\weberrors.js",
+          "iframehost.js": "views\\iframehost\\js\\iframehost.js"
+        },
+        "html": {
+          "iframehost.html": "views\\iframehost\\html\\iframehost.html"
+        }
+      },
+      "home": {
+        "js": {
+          "homeview.js": "views\\home\\js\\homeview.js"
+        },
+        "html": {
+          "homeview.html": "views\\home\\html\\homeview.html"
+        }
+      }
+    },
+    "shell": {
+      "js": {
+        "viewstate.js": "shell\\js\\viewstate.js",
+        "viewmanagement.js": "shell\\js\\viewmanagement.js",
+        "viewcontroller.js": "shell\\js\\viewcontroller.js",
+        "start.js": "shell\\js\\start.js",
+        "softkeyboard.js": "shell\\js\\softkeyboard.js",
+        "shell.js": "shell\\js\\shell.js",
+        "sharesourceimagedatacache.js": "shell\\js\\sharesourceimagedatacache.js",
+        "sharesource.js": "shell\\js\\sharesource.js",
+        "setup.js": "shell\\js\\setup.js",
+        "settings.js": "shell\\js\\settings.js",
+        "servicelocator.js": "shell\\js\\servicelocator.js",
+        "searchpaneautosuggest.js": "shell\\js\\searchpaneautosuggest.js",
+        "searchpane.js": "shell\\js\\searchpane.js",
+        "searchhistory.js": "shell\\js\\searchhistory.js",
+        "safesearch.js": "shell\\js\\safesearch.js",
+        "proxy.js": "shell\\js\\proxy.js",
+        "progress.js": "shell\\js\\progress.js",
+        "oeminstalltask.js": "shell\\js\\oeminstalltask.js",
+        "networkdetection.js": "shell\\js\\networkdetection.js",
+        "navigationprogress.js": "shell\\js\\navigationprogress.js",
+        "navigationerror.js": "shell\\js\\navigationerror.js",
+        "navigation.js": "shell\\js\\navigation.js",
+        "nativeinstrumentation.js": "shell\\js\\nativeinstrumentation.js",
+        "msapp-error.js": "shell\\js\\msapp-error.js",
+        "livetile.js": "shell\\js\\livetile.js",
+        "globaleventrelay.js": "shell\\js\\globaleventrelay.js",
+        "eventrelay.js": "shell\\js\\eventrelay.js",
+        "env.js": "shell\\js\\env.js",
+        "configuration.js": "shell\\js\\configuration.js",
+        "backgroundImageLoader.js": "shell\\js\\backgroundImageLoader.js",
+        "appconfig.js": "shell\\js\\appconfig.js"
+      },
+      "images": {
+        "widelogo.png": "shell\\images\\widelogo.scale-100.png",
+        "storelogo.png": "shell\\images\\storelogo.scale-100.png",
+        "squarelogo.png": "shell\\images\\squarelogo.scale-100.png",
+        "splashscreen.png": "shell\\images\\splashscreen.scale-100.png",
+        "smalllogo.png": "shell\\images\\smalllogo.scale-100.png",
+        "defaultBgWide.jpg": "shell\\images\\defaultBgWide.jpg",
+        "defaultBgTall.jpg": "shell\\images\\defaultBgTall.jpg"
+      },
+      "html": {
+        "shell.html": "shell\\html\\shell.html",
+        "searchhistory.html": "shell\\html\\searchhistory.html",
+        "safesearch.html": "shell\\html\\safesearch.html",
+        "navigationerror.html": "shell\\html\\navigationerror.html",
+        "defaultsearchbox.html": "shell\\html\\defaultsearchbox.html",
+        "configuration.html": "shell\\html\\configuration.html"
+      },
+      "configuration": {
+        "viewregistry.json": "shell\\configuration\\viewregistry.json",
+        "test.appconfiguration.json": "shell\\configuration\\test.appconfiguration.json",
+        "navigationmappings.json": "shell\\configuration\\navigationmappings.json",
+        "env.configuration.json": "shell\\configuration\\env.configuration.json"
+      }
+    },
+    "msapp-error.html": "msapp-error.html",
+    "fonts": {
+      "AppExSymbol-Regular.ttf": "fonts\\AppExSymbol-Regular.ttf"
+    },
+    "data": {
+      "js": {
+        "xhrdataprovider.js": "data\\js\\xhrdataprovider.js",
+        "priorityaggregatedataprovider.js": "data\\js\\priorityaggregatedataprovider.js",
+        "localstoragedataprovider.js": "data\\js\\localstoragedataprovider.js",
+        "localstoragecacheprovider.js": "data\\js\\localstoragecacheprovider.js",
+        "listviewmodelrefresher.js": "data\\js\\listviewmodelrefresher.js",
+        "listviewmodel.js": "data\\js\\listviewmodel.js",
+        "datautilities.js": "data\\js\\datautilities.js",
+        "arraydataprovider.js": "data\\js\\arraydataprovider.js",
+        "aggregatedataprovider.js": "data\\js\\aggregatedataprovider.js"
+      }
+    },
+    "common": {
+      "js": {
+        "utilities.js": "common\\js\\utilities.js",
+        "tracing.js": "common\\js\\tracing.js",
+        "querystringcollection.js": "common\\js\\querystringcollection.js",
+        "eventsource.js": "common\\js\\eventsource.js",
+        "errors.js": "common\\js\\errors.js",
+        "asyncoperations.js": "common\\js\\asyncoperations.js"
+      }
+    }
+  },
+  "appconfig": {
+    "DEFAULT_PROVIDER_URLS": "{}"
+  },
+  "market": {
+    "DEFAULT_API_HOST": "http://api.bing.com",
+    "TOU_PRIVACY_STATEMENT_URL": "http://g.msn.com/1ewBingWin8/SettingsPrivacyyo-ng",
+    "TOU_SERVICE_AGREEMENT_URL": "http://g.msn.com/1ewBingWin8/SettingsTOUyo-ng",
+    "QUERY_PARAM_MKT": "yo-ng",
+    "QUERY_PARAM_SETLANG": "yo-ng",
+    "DEFAULT_HOST": "http://www.bing.com",
+    "INTERNET_CONTENT_PROVIDER_FLAG": "off",
+    "IMPRESSUM_FLAG": "off",
+    "IMPRESSUM_LINK": "",
+    "FEEDBACK_URL": "http://g.msn.com/1ewbingwin8/SettingsFeedbackyo-ng",
+    "HELP_URL": "http://answers.microsoft.com/en-us/Search/Search?SearchTerm=bing&CurrentScope.ForumName=windows&CurrentScope.Filter=windows_8-winapps&askingquestion=false"
+  }
+}

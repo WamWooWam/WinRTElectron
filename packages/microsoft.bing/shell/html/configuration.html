@@ -1,0 +1,68 @@
+﻿<!doctype HTML>
+<html>
+    <head>
+        <title>Help settings flyout</title>
+        <script src="/shell/js/configuration.js"></script>
+    </head>
+    <body>
+        <!-- BEGINSETTINGFLYOUT -->
+        <div id="configSettingsDiv" data-win-control="WinJS.UI.SettingsFlyout" aria-label="Help settings flyout" data-win-options="{width:'wide'}">
+           <div class="win-header" style="background-color:#dbf9ff">
+               <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+               <div class="win-label">Environment and Flight Configuration</div>
+            </div>                
+            <div class="win-content">
+                <h2>Environment</h2>
+                <h3>Current Environment: <span id="envInUse">loading</span></h3>
+                <p>Choose which environment to use with the app</p>
+                <ul class="env">
+                    <!-- 
+                        Contract
+                            @data-env specifies environment value to use on click
+                            @data-envref specifies the element to inspect to find the value on click using @value
+                    -->
+                    <li><button type="button" class="action" data-env="http://www.dev1-bing-int.com">Dev1</button></li>
+                    <li><button type="button" class="action" data-env="http://www.dev2-bing-int.com">Dev2</button></li>
+                    <li><button type="button" class="action" data-env="http://www.dev4-bing-int.com">Dev4</button></li>
+                    <li><button type="button" class="action" data-env="http://www.bing-int.com">Bing-Int</button></li>
+                    <li><input type="text" value="" id="txtCustomEnv" /><button type="button" class="action" data-envref="#txtCustomEnv">Custom</button></li>
+                </ul>
+                <h2>Query Settings</h2>
+                <h3>Current parameters: <span id="paramsInUse">loading</span></h3>
+                <p>Choose query parameters</p>
+                <ul class="querystring">
+                    <!-- 
+                        Contract
+                            @data-paramname specifies querystring parameter name to use on click
+                            @data-paramvalue specifies querystring parameter value to use on click    
+                            @data-paramnameref specifies the element to inspect to find the name on click using @value
+                            @data-paramvalueref specifies the element to inspect to find the value on click using @value
+                    -->
+                    <li><button type="button" class="action" data-paramname="setflight" data-paramvalue="image1:uselayoutengine">Flight Images</button></li>
+                    <li><button type="button" class="action" data-paramname="setflight" data-paramvalue="flt7:win8appserp">Flight win8appserp</button></li>
+                    <li><button type="button" class="action" data-paramname="setflight" data-paramvalue="flt7:win8appserp2">Flight win8appserp2</button></li>
+                    <li><button type="button" class="action" data-paramname="setflight" data-paramvalue="flt7:win8appserp3">Flight win8appserp3</button></li>
+                    <li><button type="button" class="action" data-paramname="setflight" data-paramvalue="flt7:win8appserp4">Flight win8appserp4</button></li>
+                    <li><button type="button" class="action" data-paramname="setflight" data-paramvalue="flt7:win8appserp5">Flight win8appserp5</button></li>
+                    <li>
+                        <input type="text" value="" id="txtParamName" /> <label>Parameter (indexservebed, etc.)</label> <br />
+                        <input type="text" value="" id="txtParamValue" /> <label>Value (cache-prod-bay, etc.)</label> <br />
+                        <button type="button" class="action" data-paramnameref="#txtParamName" data-paramvalueref="#txtParamValue">Custom</button>
+                    </li>
+                </ul>
+                <h2>Other Options</h2>
+                <ul class="options">
+                    <!-- 
+                        Contract
+                            @data-paramname specifies querystring parameter name to use on click
+                            @data-paramvalue specifies querystring parameter value to use on click    
+                    -->
+                    <li><button type="button" class="action" data-paramname="perf" data-paramvalue="1">Enable Perf</button><label>  Enables Performance markers</label></li>
+                    <li><button type="button" class="action" data-paramname="uncrunched" data-paramvalue="1">Uncrunched</button><label>  Enabled uncrunched resources from CoreUX</label></li>
+                    <li><button type="button" class="action" data-paramname="reset" data-paramvalue="">Reset</button><label>  Clears query setting and sets host to default</label></li>
+                </ul>
+            </div>
+        </div>
+        <!-- ENDSETTINGSFLYOUT -->
+    </body>
+</html>

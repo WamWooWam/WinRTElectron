@@ -35,16 +35,14 @@ namespace StaticDumper
 
         private async void Page_Loaded(object ass, RoutedEventArgs fuck)
         {
-            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync($"LibWrap.ts", CreationCollisionOption.ReplaceExisting);
+            var file = await ApplicationData.Current.TemporaryFolder.CreateFileAsync($"Windows.ts", CreationCollisionOption.ReplaceExisting);
             var writer = new StreamWriter(await file.OpenStreamForWriteAsync());
 
-            var asm = typeof(LibWrap.WrSkyLib).Assembly;
+            var asm = typeof(Windows.Storage.ApplicationData).Assembly;
             var dumper = new Dumper(asm, writer) { GetPropertyValues = true };
-            await Task.Run(() => dumper.Dump());
-
+            dumper.Dump();
+            
             await Windows.System.Launcher.LaunchFileAsync(file);
         }
-
-
     }
 }

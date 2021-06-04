@@ -2,7 +2,7 @@
     var n = window.People;
     n.AddressBookCollections = {};
     n.AddressBookCollections.getAlphabets = function(n, t, i) {
-        var o = new Windows.Globalization.Collation.CharacterGroupings, s = Array.prototype.reduce.call(o, function(n, t) {
+        var o = new Windows.Globalization.Collation.CharacterGroupings, s = o.reduce(function(n, t) {
             return i.push({
                 start: n.first,
                 end: t.first,

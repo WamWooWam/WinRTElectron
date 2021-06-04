@@ -55,7 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PriFormat\PriFormat.csproj">
-      <Project>{A7228EC9-ACD6-4B18-BDCA-65160149B83A}</Project>
+      <Project>{a7228ec9-acd6-4b18-bdca-65160149b83a}</Project>
       <Name>PriFormat</Name>
     </ProjectReference>
   </ItemGroup>

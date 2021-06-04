@@ -4,12 +4,12 @@
 @font-face{
     font-family:'Skype UI Symbol';
     font-weight:normal;
-    src:url("/fonts/SkypeUISymbol-Regular.ttf") format("embedded-opentype")
+    src: url("../fonts/SkypeUISymbol-Regular.ttf")
 }
 @font-face{
     font-family:'Skype UI Symbol';
     font-weight:bold;
-    src:url("/fonts/SkypeUISymbol-Bold.ttf") format("embedded-opentype")
+    src: url("../fonts/SkypeUISymbol-Bold.ttf")
 }
 :-ms-lang(ar,dv,fa,he,ku-Arab,pa-Arab,prs,ps,sd-Arab,syr,ug,ur,qps-plocm).win-backbutton::before,button.backbutton::before{
     content:"\E41C";

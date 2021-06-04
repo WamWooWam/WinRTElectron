@@ -18,6 +18,9 @@ namespace StaticDumper
 {
     class Dumper
     {
+        private Dictionary<Type, object> _cache
+            = new Dictionary<Type, object>();
+
         struct ParameterEquality : IEqualityComparer<ParameterInfo>
         {
             public bool Equals(ParameterInfo x, ParameterInfo y) => x?.ParameterType == y?.ParameterType || x?.Name == y?.Name;
@@ -31,7 +34,7 @@ namespace StaticDumper
 
         // accessing properties on these types cause hard exceptions
         private static string[] bannedPropertyTypes = new[] {
-            "SharingPackage", "SmartCardCryptogramMaterialCharacteristics", "CoreInkPresenterHost"
+            "SharingPackage", "SmartCardCryptogramMaterialCharacteristics", "CoreInkPresenterHost", "RenderTargetBitmap", "AccessKeyDisplayRequestedEventArgs"
         };
 
         // accessing these properties cause hard exceptions
@@ -56,7 +59,7 @@ namespace StaticDumper
 
         public void Dump()
         {
-            var types = assembly.GetTypes().OrderBy(t => t.FullName).ToArray();
+            var types = assembly.GetTypes().OrderBy(t => t.FullName).ToList();
             var ignoredMethods = new List<MethodInfo>();
             var ignoredTypes = new[]
             {
@@ -68,6 +71,16 @@ namespace StaticDumper
             {
                 ignoredMethods.AddRange(item.GetRuntimeMethods());
             }
+
+            var includeedTypes = new[] {
+                GetWinRTDefinedType("Windows.Foundation.Collections.IIterable`1"),
+                GetWinRTDefinedType("Windows.Foundation.Collections.IVector`1"),
+                GetWinRTDefinedType("Windows.Foundation.Collections.IVectorView`1"),
+                GetWinRTDefinedType("Windows.Foundation.Collections.IKeyValuePair`2"),
+                GetWinRTDefinedType("Windows.Foundation.Collections.IMap`2"),
+                GetWinRTDefinedType("Windows.Foundation.Collections.IMapView`2")
+            };
+
 
             var generationText = $"//     Generated from {Path.GetFileName(assembly.CodeBase)} version {assembly.GetName().Version} at {DateTime.Now}";
 
@@ -173,6 +186,9 @@ namespace StaticDumper
                 }
                 else if (type.IsInterface && doClasses)
                 {
+                    if (!includeedTypes.Contains(type) && !type.IsVisible)
+                        continue;
+
                     WriteWhitespace(stack.Count);
                     str.Write($"export interface {GetContextAwareTypeName(type)} ");
                     WriteInterfaceList(type);
@@ -181,7 +197,7 @@ namespace StaticDumper
                     var properties = type.GetRuntimeProperties();
                     foreach (var prop in properties)
                     {
-                        WriteProperty(type, ref _unused, prop, true);
+                        WriteProperty(type, ref _unused, false, prop, true);
                     }
 
                     var methods = type.GetRuntimeMethods().Where(t => !ignoredMethods.Any(y => t.Name == y.Name)).OrderBy(m => m.MetadataToken).OrderBy(m => m.IsStatic ? 1 : 0);
@@ -240,13 +256,14 @@ namespace StaticDumper
                         str.WriteLine();
                     }
 
+                    var canCreateInstance = type.GetConstructors().Any(t => t.GetParameters().Length == 0);
                     var properties = type.GetRuntimeProperties();
                     object instance = null;
                     if (properties.Any())
                     {
                         foreach (var prop in properties)
                         {
-                            WriteProperty(type, ref instance, prop);
+                            WriteProperty(type, ref instance, canCreateInstance, prop);
                         }
 
                         str.WriteLine();
@@ -352,21 +369,33 @@ namespace StaticDumper
             return instance;
         }
 
-        private object WriteProperty(Type type, ref object instance, PropertyInfo prop, bool isInterfaceDefinition = false)
+        private object WriteProperty(Type type, ref object instance, bool canCreateInstance, PropertyInfo prop, bool isInterfaceDefinition = false)
         {
             var name = FixCasing(prop.Name);
             var isStatic = (prop.GetMethod?.IsStatic ?? false) || (prop.SetMethod?.IsStatic ?? false);
 
             object val = null;
 
-            if (!isInterfaceDefinition && GetPropertyValues && !bannedPropertyTypes.Contains(type.Name) && !bannedPropertyIdentifiers.Contains(prop.Name)) // dirty hack to avoid hard exceptions
+            if (!isInterfaceDefinition && GetPropertyValues && !bannedPropertyTypes.Contains(type.Name) && !bannedPropertyIdentifiers.Contains(prop.Name) && prop.GetMethod != null) // dirty hack to avoid hard exceptions
             {
                 try
                 {
                     if (!isStatic)
                     {
-                        instance = instance ?? Activator.CreateInstance(type);
-                        val = prop.GetValue(instance);
+                        if (canCreateInstance)
+                        {
+                            instance = instance ?? Activator.CreateInstance(type);
+                            val = prop.GetValue(instance);
+                        }
+
+                        if (instance == null)
+                        {
+                            if (_cache.TryGetValue(type, out instance))
+                            {
+                                Debug.WriteLine($"instance from cache {type}");
+                                val = prop.GetValue(instance);
+                            }
+                        }
                     }
                     else
                     {
@@ -388,6 +417,10 @@ namespace StaticDumper
 
             if (isStatic)
                 str.Write("static ");
+
+            if (prop.GetMethod != null && prop.SetMethod == null)
+                str.Write("readonly ");
+
             str.Write(name);
             str.Write(": ");
 
@@ -484,7 +517,7 @@ namespace StaticDumper
 
         private void WriteInterfaceList(Type type)
         {
-            var interfaces = type.GetInterfaces().Select(iface => GetTypeScriptTypeName(iface, true)).Where(n => !n.StartsWith("/*")).ToArray();
+            var interfaces = type.GetInterfaces().Where(i => !i.IsPrimitive).Select(iface => GetTypeScriptTypeName(iface, true)).Where(n => !n.StartsWith("/*")).ToArray();
             if (interfaces.Any())
             {
                 str.Write(type.IsInterface ? "extends " : "implements ");
@@ -757,9 +790,9 @@ namespace StaticDumper
                 return (bool)obj ? "true" : "false";
             }
 
-            if (t == typeof(string) || t == typeof(char) || t == typeof(Guid))
+            if (t == typeof(string) || t == typeof(char) || t == typeof(Guid) || obj is string)
             {
-                return $"'{obj}'";
+                return $"'{obj.ToString().Replace("'", "\'")}'";
             }
 
             if (t == typeof(float) || t == typeof(double) ||
@@ -783,6 +816,48 @@ namespace StaticDumper
             {
                 return $"new Date({((DateTimeOffset)obj).Subtract(new DateTime(1970, 1, 1)).TotalMilliseconds})";
             }
+
+            if (t == typeof(Color))
+            {
+                var col = (Color)obj;
+                return $"{{ a: {col.A}, r: {col.R}, g: {col.G}, b: {col.B} }}";
+            }
+
+            if (t == typeof(Rect))
+            {
+                var r = (Rect)obj;
+                return $"{{ x: {r.X}, y: {r.Y}, width: {r.Width}, height: {r.Height} }}";
+            }
+
+            if (t == typeof(Size))
+            {
+                var s = (Size)obj;
+                return $"{{ width: {s.Width}, height: {s.Height} }}";
+            }
+
+            if (t == typeof(Uri))
+            {
+                var uri = (Uri)obj;
+                return $"new Uri('{uri}')";
+            }
+
+            try
+            {
+                if (obj is IEnumerable e)
+                {
+                    var str = string.Join(", ", e.OfType<object>().Select(s => GetTypeScriptValue(s, s.GetType())));
+                    return $"[ {str} ]";
+                }
+            }
+            catch
+            {
+
+            }
+
+            Debug.WriteLine(t);
+
+            if (obj != null)
+                _cache[obj.GetType()] = obj;
 
             return "null";
         }

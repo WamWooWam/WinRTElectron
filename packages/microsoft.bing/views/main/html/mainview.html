@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Main view which displays shell chrome and hosts app content</title>
+
+    <!-- View references -->
+    <link href="/shell/css/shell.css" rel="stylesheet">
+    <link href="/views/main/css/mainview.css" rel="stylesheet">
+    <script src="/views/main/js/searchbar.js"></script>
+    <script src="/views/main/js/mainview.js"></script>
+</head>
+<body>
+
+    <div id="bgImagePanorama" class="fullScreen">
+        <div id="bgImage0" aria-label="bgImage0" class="fullScreen bgImage"></div>
+        <div id="bgImage1" aria-label="bgImage1" class="fullScreen bgImage"></div>
+        <div id="bgImage2" aria-label="bgImage2" class="fullScreen bgImage"></div>
+        <div id="bgImage3" aria-label="bgImage3" class="fullScreen bgImage"></div>
+        <div id="bgImage4" aria-label="bgImage4" class="fullScreen bgImage"></div>
+        <div id="bgImage5" aria-label="bgImage5" class="fullScreen bgImage"></div>
+        <div id="bgImage6" aria-label="bgImage6" class="fullScreen bgImage"></div>
+    </div>
+
+    <div id="shield" class="fullScreen"></div>
+
+    <div id="hotspotsContainer">
+        <div id="hsc0" class="hsContainer">
+            <div id="hst0" class="hsTrigger" tabindex="2"></div>
+            <div class="hsAnchor infoContainer hidden" aria-label="hsAnchor0">
+                <div id="hsd0" class="hsDescription" aria-label="hsDescription0"></div>
+                <div id="hsl0" class="hsLinkText" aria-label="hsLinkText0" tabindex="3"></div>
+            </div>
+        </div>
+        <div id="hsc1" class="hsContainer">
+            <div id="hst1" class="hsTrigger" tabindex="4"></div>
+            <div class="hsAnchor infoContainer hidden" aria-label="hsAnchor1">
+                <div id="hsd1" class="hsDescription" aria-label="hsDescription1"></div>
+                <div id="hsl1" class="hsLinkText" aria-label="hsLinkText1" tabindex="5"></div>
+            </div>
+        </div>
+        <div id="hsc2" class="hsContainer">
+            <div id="hst2" class="hsTrigger" tabindex="6"></div>
+            <div class="hsAnchor infoContainer hidden" aria-label="hsAnchor2">
+                <div id="hsd2" class="hsDescription" aria-label="hsDescription2"></div>
+                <div id="hsl2" class="hsLinkText" aria-label="hsLinkText2" tabindex="7"></div>
+            </div>
+        </div>
+        <div id="hsc3" class="hsContainer">
+            <div id="hst3" class="hsTrigger" tabindex="8"></div>
+            <div class="hsAnchor infoContainer hidden" aria-label="hsAnchor3">
+                <div id="hsd3" class="hsDescription" aria-label="hsDescription3"></div>
+                <div id="hsl3" class="hsLinkText" aria-label="hsLinkText3" tabindex="9"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="attribButton" aria-label="attribButton" tabindex="10"></div>
+    <div id="attribText" class="fontSizeMedium" aria-label="attribText"></div>
+
+    <div id="networkStatus" class="networkIndicator hidden">
+        <div id="networkStatusText" class="networkIndicatorText fontSmall fontWeightRegular"></div>
+        <div class="networkIndicatorIcon"></div>
+        <div class="networkIndicatorIconCross"></div>
+    </div>
+
+    <div id="header">
+        <iframe id="searchbariframe"></iframe>
+    </div>
+
+    <div id="containedviewhost" class="fullScreen">
+        <!-- TODO:   WI 152551: need to put some UI in place to display in case contained view did not load-->
+        <p>Contained view goes here.</p>
+    </div>
+
+</body>
+</html>

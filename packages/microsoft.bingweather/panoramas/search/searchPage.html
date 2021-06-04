@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="ms-design-extensionType" content="Search">
+<title>Search</title>
+<link rel="stylesheet" href="/css/secondaryPanos.css" />
+<script src="/panoramas/search/searchPage.js"></script>
+</head>
+<body>
+<div class="itemtemplate" data-win-control="WinJS.Binding.Template">
+<div class="item">
+<div class="itemContent">
+<div class="itemTitle" data-win-bind="innerText: Title"></div>
+<div class="itemSubtitle win-type-x-small win-type-ellipsis" data-win-bind="innerText: Subtitle"></div>
+<span class="searchGlyph" data-win-bind="className: cName"><span></span></span>
+</div>
+</div>
+</div>
+<div class="platformMainContent" id="searchPageContent">
+<div class="searchPage headerFontDark fragment">
+<div id="searchPageHeader" class="immersiveHeader" data-win-control="CommonJS.Immersive.Header"
+data-win-bind="winControl.headerTitleText: headerTitle; 
+winControl.headerSubTitleText: headerSubTitle">
+</div>
+<div class="searchResultsArea">
+<div id="searchErrorMsg" ></div>
+<div id="searchResults" class="resultslist" data-win-control="WinJS.UI.ListView"
+data-win-options="{ selectionMode: 'none' }"
+data-win-res="{attributes: {'aria-label': 'SearchResultsAriaLabel' }}"
+data-win-bind="winControl.itemDataSource: searchResultsDataSource; winControl.itemTemplate: searchResultTemplate">
+</div>
+<div class="addCityButton" data-win-bind="style.display: displayAddLocationButton; onclick: addLocationClicked; onkeyup: handleKeyboardInvocation" tabindex="0" role="button">
+<div class="addCityImg"><img src="/images/autoSuggest/search.png" data-win-res="{alt: 'SearchButtonTitle'}" /></div>
+<div class="addCityCaption" data-win-res="{textContent:'AddAnotherLocSearchPage'}"></div>
+</div>
+</div>
+</div>
+<div id="searchPageEdgy" class="platformActionBar" data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'bottom'}" aria-label="Action Bar">
+<div class="mainActionBarDiv-right platformFeedbackButtonParent">
+<button id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}"></button>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "microsoft.immersivecontrolpanel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "ts-loader": "^8.0.14",
+    "webpack": "^4.43.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.3.1"
+  }
+}

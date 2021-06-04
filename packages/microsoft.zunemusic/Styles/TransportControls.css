@@ -1,44 +1,52 @@
-﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
-.appBarTransportControlsXboxContainer .appBarIconButton
-{
+/* Copyright (C) Microsoft Corporation. All rights reserved. */
+
+.appBarTransportControlsXboxContainer .appBarIconButton {
     overflow: visible
 }
-.appBarTransportControlsMessageTitle, .appBarTransportControlsMessageSubTitle
-{
+
+.appBarTransportControlsMessageTitle, .appBarTransportControlsMessageSubTitle {
     margin: 0 10px 0 0
 }
-.nowPlayingTransportControlsContainer
-{
+
+.nowPlayingTransportControlsContainer {
     display: -ms-grid;
     -ms-grid-columns: 1fr 33% 1fr;
     -ms-grid-rows: auto;
     margin-left: 0;
     margin-right: 0;
-    direction: ltr
+    direction: ltr;
+    display: grid;
+    grid-template-columns: 1fr 33% 1fr;
+    grid-template-rows: auto
 }
-.musicOverlay .nowPlayingTransportControlsContainer
-{
+
+.musicOverlay .nowPlayingTransportControlsContainer {
     -ms-grid-columns: 80px 80px 80px 80px;
     margin-left: 60px;
     margin-right: 60px;
-    width: 200px
+    width: 200px;
+    grid-template-columns: 80px 80px 80px 80px
 }
-html[dir=rtl] .musicOverlay .nowPlayingTransportControlsContainer
-{
+
+html[dir=rtl] .musicOverlay .nowPlayingTransportControlsContainer {
     margin-right: 140px
 }
-.nowPlayingTransportControls
-{
+
+.nowPlayingTransportControls {
     -ms-grid-row-align: center;
-    -ms-grid-row: 2
+    -ms-grid-row: 2;
+    align-items: center;
+    grid-row-start: 2
 }
-.musicOverlay .nowPlayingTransportControls
-{
+
+.musicOverlay .nowPlayingTransportControls {
     -ms-grid-row: 3;
-    -ms-grid-row-align: end
+    -ms-grid-row-align: end;
+    grid-row-start: 3;
+    align-items: flex-end
 }
-.nowPlayingTransportControlsPlayPauseButton
-{
+
+.nowPlayingTransportControlsPlayPauseButton {
     -ms-grid-row: 1;
     -ms-grid-column: 2;
     width: 131px;
@@ -48,26 +56,33 @@ html[dir=rtl] .musicOverlay .nowPlayingTransportControlsContainer
     background-color: transparent;
     background-repeat: no-repeat;
     -ms-grid-row-align: center;
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    grid-row-start: 1;
+    grid-column-start: 2;
+    align-items: center;
+    justify-content: center
 }
-.nowPlayingTransportControlsNext
-{
-    -ms-grid-column: 3
+
+.nowPlayingTransportControlsNext {
+    -ms-grid-column: 3;
+    grid-column-start: 3
 }
-.nowPlayingTransportControlsPlayPauseButton .label
-{
+
+.nowPlayingTransportControlsPlayPauseButton .label {
     visibility: hidden
 }
-.nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command
-{
-    -ms-grid-columns: 131px 1fr
+
+.nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command {
+    -ms-grid-columns: 131px 1fr;
+    grid-template-columns: 131px 1fr
 }
-.musicOverlay .nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command, .videoAd .nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command
-{
-    -ms-grid-columns: auto 1fr
+
+.musicOverlay .nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command, .videoAd .nowPlayingTransportControlsPlayPauseButton button.iconButton.win-command {
+    -ms-grid-columns: auto 1fr;
+    grid-template-columns: auto 1fr
 }
-.nowPlayingContainer:not(.musicTrack) .nowPlayingTransportControlsSkipButton, .games .nowPlayingContainer .nowPlayingTransportControlsVolume
-{
+
+.nowPlayingContainer:not(.musicTrack) .nowPlayingTransportControlsSkipButton, .games .nowPlayingContainer .nowPlayingTransportControlsVolume {
     display: none;
     width: 65px;
     height: 65px;
@@ -77,34 +92,36 @@ html[dir=rtl] .musicOverlay .nowPlayingTransportControlsContainer
     background-color: transparent;
     background-repeat: no-repeat;
     -ms-grid-row-align: center;
-    -ms-grid-column-align: center
+    -ms-grid-column-align: center;
+    align-items: center;
+    justify-content: center
 }
-.musicOverlay .nowPlayingTransportControlsPlayPauseButton, .musicOverlay .nowPlayingTransportControlsSkipButton
-{
+
+.musicOverlay .nowPlayingTransportControlsPlayPauseButton, .musicOverlay .nowPlayingTransportControlsSkipButton {
     width: 40px;
     height: 40px;
-    -ms-grid-column-align: start
+    -ms-grid-column-align: start;
+    justify-content: flex-start
 }
-.nowPlayingTransportControlsPlayPauseButton:disabled, .nowPlayingTransportControlsSkipButton:disabled
-{
+
+.nowPlayingTransportControlsPlayPauseButton:disabled, .nowPlayingTransportControlsSkipButton:disabled {
     opacity: .4
 }
-.nowPlayingTransportControlsPlayPauseButton:hover, .nowPlayingTransportControlsPrevious:hover
-{
+
+.nowPlayingTransportControlsPlayPauseButton:hover, .nowPlayingTransportControlsPrevious:hover {
     opacity: .9
 }
-.nowPlayingTransportControlsPause .win-commandimage:before
-{
+
+.nowPlayingTransportControlsPause .win-commandimage:before {
     content: ""
 }
-.nowPlayingTransportControlsPlay .win-commandimage:before
-{
+
+.nowPlayingTransportControlsPlay .win-commandimage:before {
     content: ""
 }
-@media screen and (-ms-high-contrast)
-{
-    .nowPlayingTransportControlsSkipButton .win-commandicon.win-commandring
-    {
+
+@media screen and (-ms-high-contrast) {
+    .nowPlayingTransportControlsSkipButton .win-commandicon.win-commandring {
         border-radius: 0%
     }
 }

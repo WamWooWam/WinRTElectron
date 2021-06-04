@@ -1,0 +1,155 @@
+{
+  "Files": {
+    "wllog.dll": "wllog.dll",
+    "wlcore.dll": "wlcore.dll",
+    "WindowsLive.winmd": "WindowsLive.winmd",
+    "WindowsLive.Photo.Viewer.dll": "WindowsLive.Photo.Viewer.dll",
+    "WindowsLive.Photo.App.dll": "WindowsLive.Photo.App.dll",
+    "suite_splash_d.png": "suite_splash_d.png",
+    "suite_logo_s.png": "suite_logo_s.png",
+    "suite_logo.png": "suite_logo.png",
+    "Microsoft.winmd": "Microsoft.winmd",
+    "Microsoft.WindowsLive.Shared.Market.dll": "Microsoft.WindowsLive.Shared.Market.dll",
+    "Microsoft.WindowsLive.Platform.Service.dll": "Microsoft.WindowsLive.Platform.Service.dll",
+    "Microsoft.WindowsLive.Platform.Migration.dll": "Microsoft.WindowsLive.Platform.Migration.dll",
+    "Microsoft.WindowsLive.Platform.Eas.dll": "Microsoft.WindowsLive.Platform.Eas.dll",
+    "Microsoft.WindowsLive.Platform.dll": "Microsoft.WindowsLive.Platform.dll",
+    "Microsoft.WindowsLive.Launch.dll": "Microsoft.WindowsLive.Launch.dll",
+    "Microsoft.WindowsLive.ClientAccessLibrary.dll": "Microsoft.WindowsLive.ClientAccessLibrary.dll",
+    "Microsoft.PerfTrack.dll": "Microsoft.PerfTrack.dll",
+    "LiveComm.exe": "LiveComm.exe",
+    "config.xml": "config.xml",
+    "appxmanifest.xml": "appxmanifest.xml",
+    "shared": {
+      "bici.xml": "shared\\bici.xml",
+      "bici.dll": "shared\\bici.dll"
+    },
+    "SendASmile": {
+      "survey_helper.js": "SendASmile\\survey_helper.js",
+      "survey_helper.html": "SendASmile\\survey_helper.html",
+      "sasManager.js": "SendASmile\\sasManager.js",
+      "sas.js": "SendASmile\\sas.js"
+    },
+    "Resources": {
+      "sendasmile": {
+        "css": {
+          "SkyDriveSaSColor.css": "Resources\\sendasmile\\css\\SkyDriveSaSColor.css",
+          "SaS.css": "Resources\\sendasmile\\css\\SaS.css",
+          "PhotoSaSColor.css": "Resources\\sendasmile\\css\\PhotoSaSColor.css",
+          "PeopleSaSColor.css": "Resources\\sendasmile\\css\\PeopleSaSColor.css",
+          "MailSaSColor.css": "Resources\\sendasmile\\css\\MailSaSColor.css",
+          "FMS.css": "Resources\\sendasmile\\css\\FMS.css",
+          "ChatSaSColor.css": "Resources\\sendasmile\\css\\ChatSaSColor.css",
+          "CalendarSaSColor.css": "Resources\\sendasmile\\css\\CalendarSaSColor.css"
+        }
+      },
+      "ModernShared": {
+        "css": {
+          "shared.css": "Resources\\ModernShared\\css\\shared.css"
+        }
+      }
+    },
+    "PhotoViewer": {
+      "resources": {
+        "css": {
+          "ViewerFrame.css": "PhotoViewer\\resources\\css\\ViewerFrame.css",
+          "VideoScrubber.css": "PhotoViewer\\resources\\css\\VideoScrubber.css",
+          "Status.css": "PhotoViewer\\resources\\css\\Status.css",
+          "Settings.css": "PhotoViewer\\resources\\css\\Settings.css",
+          "PlayTo.css": "PhotoViewer\\resources\\css\\PlayTo.css",
+          "OneUp.css": "PhotoViewer\\resources\\css\\OneUp.css",
+          "MultiUpSlideshow.css": "PhotoViewer\\resources\\css\\MultiUpSlideshow.css",
+          "Layouts.css": "PhotoViewer\\resources\\css\\Layouts.css",
+          "Import.css": "PhotoViewer\\resources\\css\\Import.css",
+          "Collections.css": "PhotoViewer\\resources\\css\\Collections.css",
+          "Basket.css": "PhotoViewer\\resources\\css\\Basket.css",
+          "BackButton.css": "PhotoViewer\\resources\\css\\BackButton.css",
+          "AppBar.css": "PhotoViewer\\resources\\css\\AppBar.css"
+        }
+      },
+      "frame": {
+        "ViewerFrame.js": "PhotoViewer\\frame\\ViewerFrame.js"
+      },
+      "extensions": {
+        "Extensions.js": "PhotoViewer\\extensions\\Extensions.js"
+      },
+      "components": {
+        "status": {
+          "Status.js": "PhotoViewer\\components\\status\\Status.js"
+        },
+        "settings": {
+          "Settings.js": "PhotoViewer\\components\\settings\\Settings.js"
+        },
+        "print": {
+          "Print.js": "PhotoViewer\\components\\print\\Print.js"
+        },
+        "playto": {
+          "PlayTo.js": "PhotoViewer\\components\\playto\\PlayTo.js"
+        },
+        "oneup": {
+          "OneUp.js": "PhotoViewer\\components\\oneup\\OneUp.js"
+        },
+        "multiupslideshow": {
+          "MultiUpSlideshow.js": "PhotoViewer\\components\\multiupslideshow\\MultiUpSlideshow.js"
+        },
+        "import": {
+          "Import.js": "PhotoViewer\\components\\import\\Import.js"
+        },
+        "coordinator": {
+          "Coordinator.js": "PhotoViewer\\components\\coordinator\\Coordinator.js"
+        },
+        "componentscommon": {
+          "ComponentsCommon.js": "PhotoViewer\\components\\componentscommon\\ComponentsCommon.js"
+        },
+        "collections": {
+          "Collections.js": "PhotoViewer\\components\\collections\\Collections.js"
+        },
+        "basket": {
+          "Basket.js": "PhotoViewer\\components\\basket\\Basket.js"
+        },
+        "backbutton": {
+          "BackButton.js": "PhotoViewer\\components\\backbutton\\BackButton.js"
+        },
+        "appbar": {
+          "AppBar.js": "PhotoViewer\\components\\appbar\\AppBar.js"
+        }
+      }
+    },
+    "ModernShared": {
+      "resources": {
+        "css": {
+          "shared_styles.css": "ModernShared\\resources\\css\\shared_styles.css"
+        }
+      },
+      "ErrorReporting": {
+        "ErrorResponse.xml": "ModernShared\\ErrorReporting\\ErrorResponse.xml",
+        "ErrorReporting.dll": "ModernShared\\ErrorReporting\\ErrorReporting.dll"
+      }
+    },
+    "ModernPhoto": {
+      "photosbackgroundtaskworker": {
+        "PhotosTileUpdaterBackgroundTask.js": "ModernPhoto\\photosbackgroundtaskworker\\PhotosTileUpdaterBackgroundTask.js",
+        "PhotosBackgroundTaskWorker.js": "ModernPhoto\\photosbackgroundtaskworker\\PhotosBackgroundTaskWorker.js"
+      },
+      "photosapplication": {
+        "PhotosApplication.js": "ModernPhoto\\photosapplication\\PhotosApplication.js",
+        "PhotosApplication.htm": "ModernPhoto\\photosapplication\\PhotosApplication.htm"
+      }
+    },
+    "ModernLaunch": {
+      "launch": {
+        "resources": {
+          "css": {
+            "Launch.css": "ModernLaunch\\launch\\resources\\css\\Launch.css"
+          }
+        }
+      }
+    },
+    "Jx": {
+      "SettingsFlyout.tmpl.js": "Jx\\SettingsFlyout.tmpl.js",
+      "SettingsFlyout.js": "Jx\\SettingsFlyout.js",
+      "SettingsFlyout.css": "Jx\\SettingsFlyout.css",
+      "Jx.js": "Jx\\Jx.js"
+    }
+  }
+}

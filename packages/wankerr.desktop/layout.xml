@@ -1,0 +1,16 @@
+<launcher version="1">
+    <view name="Start">
+        <group name="Lifestyle">
+            <tile packageName="microsoft.windowscommunicationsapps" appId="Microsoft.WindowsLive.Mail" size="square310x310" />
+            <tile packageName="microsoft.windowscommunicationsapps" appId="Microsoft.WindowsLive.People" size="wide310x150" />
+            <tile packageName="microsoft.windowscommunicationsapps" appId="Microsoft.WindowsLive.Calendar" size="square150x150" />
+            <tile packageName="Microsoft.ZuneVideo" appId="Microsoft.ZuneVideo" size="square150x150" />
+            <tile packageName="Microsoft.ZuneMusic" appId="Microsoft.ZuneMusic" size="square150x150" />
+            <tile packageName="Microsoft.BingNews" appId="AppexNews" size="square70x70" fence="true" />
+            <tile packageName="WikimediaFoundation.Wikipedia" appId="App" size="square70x70" />
+            <tile packageName="Microsoft.MicrosoftProjectSiena" appId="App" size="square70x70" />
+            <tile packageName="windows.immersivecontrolpanel" appId="microsoft.windows.immersivecontrolpanel" size="square70x70" />
+            <tile packageName="Microsoft.SkypeApp" appId="App" size="wide310x150" />
+        </group>
+    </view>
+</launcher>

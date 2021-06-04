@@ -1,4 +1,5 @@
-﻿/* Copyright (C) Microsoft Corporation. All rights reserved. */
+/* Copyright (C) Microsoft Corporation. All rights reserved. */
+
 .win-settingsflyout {
     z-index: 1001;
     overflow: auto;
@@ -15,15 +16,18 @@
     visibility: hidden;
     overflow: hidden
 }
+
 .win-settingsflyout.win-wide {
     width: 646px
 }
+
 .win-settingsflyout .win-header {
     padding-left: 40px;
     padding-right: 40px;
     padding-top: 32px;
     height: 80px
 }
+
 .win-settingsflyout .win-backbutton {
     position: relative;
     width: 37px;
@@ -33,146 +37,168 @@
     margin-top: 2px;
     border-width: 3px
 }
+
 .win-settingsflyout .win-header .win-label {
     display: inline-block;
     padding-left: 40px;
     font-size: 20pt;
     line-height: 33px
 }
+
 .win-settingsflyout .win-content {
     overflow: auto;
     padding-left: 40px;
     padding-right: 40px;
     height: calc(100% - 80px)
 }
+
 .win-settingsflyout:lang(ar), .win-settingsflyout:lang(dv), .win-settingsflyout:lang(fa), .win-settingsflyout:lang(he), .win-settingsflyout:lang(ku-Arab), .win-settingsflyout:lang(pa-Arab), .win-settingsflyout:lang(prs), .win-settingsflyout:lang(ps), .win-settingsflyout:lang(sd-Arab), .win-settingsflyout:lang(syr), .win-settingsflyout:lang(ug), .win-settingsflyout:lang(ur), .win-settingsflyout:lang(qps-plocm) {
     right: auto;
     left: 0
 }
+
 .win-settingsflyout .win-header .win-label:lang(ar), .win-settingsflyout .win-header .win-label:lang(dv), .win-settingsflyout .win-header .win-label:lang(fa), .win-settingsflyout .win-header .win-label:lang(he), .win-settingsflyout .win-header .win-label:lang(ku-Arab), .win-settingsflyout .win-header .win-label:lang(pa-Arab), .win-settingsflyout .win-header .win-label:lang(prs), .win-settingsflyout .win-header .win-label:lang(ps), .win-settingsflyout .win-header .win-label:lang(sd-Arab), .win-settingsflyout .win-header .win-label:lang(syr), .win-settingsflyout .win-header .win-label:lang(ug), .win-settingsflyout .win-header .win-label:lang(ur), .win-settingsflyout .win-header .win-label:lang(qps-plocm) {
     padding-right: 40px;
     padding-left: 0
 }
-.settingsWrapper, .offLineAccountPanel, .onlineAccountPanel
-{
+
+.settingsWrapper, .offLineAccountPanel, .onlineAccountPanel {
     display: -ms-grid;
     -ms-grid-columns: 35px 5px 1fr 60px;
     -ms-grid-rows: 80px 20px 1fr;
     width: 100%;
     height: 100%;
-    overflow: auto
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 35px 5px 1fr 60px;
+    grid-template-rows: 80px 20px 1fr
 }
-.settingsPanelHeader
-{
+
+.settingsPanelHeader {
     display: -ms-grid;
     -ms-grid-columns: 40px 10px 1fr;
     -ms-grid-rows: auto;
     -ms-grid-column: 2;
     -ms-grid-row: 1;
     -ms-grid-column-span: 3;
-    margin-top: 30px
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 40px 10px 1fr;
+    grid-template-rows: auto;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    grid-column-end: span 3
 }
-.settingsPanelHeaderBackground
-{
-    -ms-grid-column-span: 5
+
+.settingsPanelHeaderBackground {
+    -ms-grid-column-span: 5;
+    grid-column-end: span 5
 }
-.settingsPanelBackButton
-{
+
+.settingsPanelBackButton {
     -ms-grid-column: 1;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 1;
+    grid-row-start: 1
 }
-html[dir=rtl] .settingsPanelBackButton
-{
+
+html[dir=rtl] .settingsPanelBackButton {
     transform: scaleX(-1)
 }
-.settingsPanelTitle
-{
+
+.settingsPanelTitle {
     -ms-grid-column: 3;
-    -ms-grid-row: 1
+    -ms-grid-row: 1;
+    grid-column-start: 3;
+    grid-row-start: 1
 }
-.offLineAccountPanel, .onlineAccountPanel
-{
+
+.offLineAccountPanel, .onlineAccountPanel {
     -ms-grid-column-span: 5;
-    -ms-grid-row-span: 3
+    -ms-grid-row-span: 3;
+    grid-column-end: span 5;
+    grid-row-end: span 3
 }
-.settingsSignIn, .settingsPanelContent
-{
+
+.settingsSignIn, .settingsPanelContent {
     -ms-grid-column: 3;
-    -ms-grid-row: 3
+    -ms-grid-row: 3;
+    grid-column-start: 3;
+    grid-row-start: 3
 }
-.settingsPanelContent
-{
+
+.settingsPanelContent {
     margin-top: 18px
 }
-.preferenceSwitchUser
-{
+
+.preferenceSwitchUser {
     margin-bottom: 8px
 }
-.preferenceUserDesc, .preferenceCurrentUser
-{
+
+.preferenceUserDesc, .preferenceCurrentUser {
     margin-bottom: 20px
 }
-.preferencePurchasesContainer
-{
+
+.preferencePurchasesContainer {
     margin-top: 20px
 }
-.genericContainer
-{
+
+.genericContainer {
     margin-bottom: 4px;
     margin-top: 4px
 }
-.genericContainer p
-{
+
+.genericContainer p {
     margin-bottom: 12px;
     margin-top: 4px
 }
-.musicCloudGrovelInfoContainer .dialogButton
-{
+
+.musicCloudGrovelInfoContainer .dialogButton {
     margin-top: 10px
 }
-.settingsFeedbackPanelContentDialog
-{
+
+.settingsFeedbackPanelContentDialog {
     margin-left: 0;
     margin-top: 0
 }
-.settingsWebLinkText
-{
+
+.settingsWebLinkText {
     margin-top: 4px;
     text-decoration: none;
     display: block
 }
-.accountSettings.settingsWebLinkText
-{
+
+.accountSettings.settingsWebLinkText {
     margin-top: 20px
 }
-.settingsWebLinkText.removeFromDisplay
-{
+
+.settingsWebLinkText.removeFromDisplay {
     display: none
 }
-.aboutPageTitles
-{
+
+.aboutPageTitles {
     margin-top: 30px;
     max-height: 80px;
     overflow: hidden
 }
-.settingsAboutVersion
-{
+
+.settingsAboutVersion {
     margin-bottom: 10px
 }
-.settingsPreferenceGroup, .settingAccountsButton
-{
+
+.settingsPreferenceGroup, .settingAccountsButton {
     margin-bottom: 36px
 }
-.libraryPreferencesTitle, .launchToCollectionTitle, .cloudCollectionEnabledTitle, .musicPassDownloadEnabledLabel, .goOnlineForMetadataTitle .oneDrivePreferencesTitle, .resetCloudCollectionTitle
-{
+
+.libraryPreferencesTitle, .launchToCollectionTitle, .cloudCollectionEnabledTitle, .musicPassDownloadEnabledLabel, .goOnlineForMetadataTitle .oneDrivePreferencesTitle, .resetCloudCollectionTitle {
     margin-bottom: 4px
 }
-.settingsFeedbackContent
-{
+
+.settingsFeedbackContent {
     margin-top: 10px
 }
-.settingsCaptionPreviewWindow
-{
+
+.settingsCaptionPreviewWindow {
     margin-top: 6px;
     margin-bottom: 20px;
     padding: 20px;
@@ -181,14 +207,17 @@ html[dir=rtl] .settingsPanelBackButton
     width: auto;
     outline: solid 2px #a9a9a9
 }
-.preferenceFreePlayLimitMeterContainer
-{
+
+.preferenceFreePlayLimitMeterContainer {
     display: -ms-grid;
     -ms-grid-rows: auto;
-    -ms-grid-columns: 1fr 8px auto
+    -ms-grid-columns: 1fr 8px auto;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 8px auto
 }
-.preferenceFreePlayLimitMeter
-{
+
+.preferenceFreePlayLimitMeter {
     -ms-grid-row: 1;
     -ms-grid-column: 1;
     margin-top: 6px;
@@ -196,11 +225,16 @@ html[dir=rtl] .settingsPanelBackButton
     width: 100%;
     height: 20px;
     border-width: 1px;
-    border-style: solid
+    border-style: solid;
+    grid-row-start: 1;
+    grid-column-start: 1
 }
-.preferenceFreePlayLimitMeterPercentageLabel
-{
+
+.preferenceFreePlayLimitMeterPercentageLabel {
     -ms-grid-row-align: center;
     -ms-grid-row: 1;
-    -ms-grid-column: 3
+    -ms-grid-column: 3;
+    align-items: center;
+    grid-row-start: 1;
+    grid-column-start: 3
 }

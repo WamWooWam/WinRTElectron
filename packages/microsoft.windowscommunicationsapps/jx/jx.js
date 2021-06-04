@@ -696,9 +696,9 @@ Jx.LOG_VERBOSE = 5;
 Jx.Log.prototype = {
     enabled: true,
     piiEnabledInShip: false,
-    level: Jx.LOG_INFORMATIONAL,
+    level: Jx.LOG_VERBOSE,
     _writeMsg: function (n) {
-        msWriteProfilerMark(n)
+        console.log(n)
     },
     write: function (n, t) {
         this.enabled && n <= this.level && this._writeMsg(t)
@@ -6537,7 +6537,7 @@ Jx.delayDefine(Jx, ["Res", "res"], function () {
         _initResourceLoader: function () {
             if (Jx.isWWA) {
                 var n = Windows.ApplicationModel.Resources.ResourceLoader;
-                this._resourceLoader = Jx.isWorker ? n.getForViewIndependentUse() : n.getForCurrentView()
+                this._resourceLoader = Jx.isWorker ? n.getForViewIndependentUseWithName(null) : n.getForCurrentViewWithName(null)
             }
         },
         _replaceRemainingEscapes: function (n) {

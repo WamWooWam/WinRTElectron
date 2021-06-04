@@ -1,0 +1,188 @@
+.charms-overlay {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    pointer-events: none;
+}
+
+.charms-overlay.visible {
+    pointer-events: all;
+}
+
+.charms-pane {
+    width: 345px;
+    height: 100%;
+    border-left: 1px solid #18004F;
+    background: #1F0068;
+    align-self: flex-end;
+    pointer-events: all;
+
+    transition: transform 0.66s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.charms-pane-header {
+    margin: 40px 40px 0 40px;
+}
+
+.charms-pane-content {
+    transition: transform 0.66s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.charms-pane.hidden, .charms-pane-content.hidden {
+    display: block;
+    transform: translateX(345px);
+}
+
+.charms-pane-info-text {
+    margin: 20px 40px;
+    color: rgba(255, 255, 255, 0.6)
+}
+
+.charms-pane-info-text > p {
+    margin: 0;
+}
+
+.charms-pane-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.charms-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: background 0.45s ease-out, opacity 0.30s ease-out;
+    z-index: 2147483647;
+    pointer-events: none;
+}
+
+.charms-bar-visible {
+    width: 86px;
+    opacity: 1;
+    pointer-events: all;
+}
+
+.charms-bar-open {    
+    width: 86px;
+    opacity: 1;
+    background: #111111;
+    pointer-events: all;
+}
+
+.charms-bar-items {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.charms-bar-item {
+    width: 86px;
+    height: 100px;
+    display: list-item;
+    color: white;
+    text-align: center;
+    transform: translateX(80px);
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.charms-bar-open .charms-bar-item:hover {
+    background: #333333;
+    color: white;
+}
+
+.charms-bar-open .charms-bar-item:active {
+    background: #444444;
+    color: white;
+}
+
+.charms-bar-visible .charms-bar-item, .charms-bar-open .charms-bar-item {
+    transform: translateX(0px);
+}
+
+.charms-bar-fade-out .charms-bar-item {
+    transition: none;
+    transition-delay: 0ms !important;
+    transform: translateX(0px);
+}
+
+.charms-bar-fade-out .charms-bar-item p {    
+    opacity: 0.75;
+}
+
+.charms-bar-image {
+    margin: 15px 0 0 0;
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+}
+
+.charms-bar-item > p {
+    margin: 0;
+    opacity: 0;
+    transition: opacity 0.15s ease-out;
+}
+
+.charms-bar-open .charms-bar-item > p {
+    opacity: 0.75;
+}
+
+.charms-bar-share, .charms-bar-devices {
+    transition-delay: 0.05s;
+}
+
+.charms-bar-search, .charms-bar-settings {
+    transition-delay: 0.1s;
+}
+
+.charms-bar-search > .charms-bar-image {
+    background-image: url(/static/charms/search-outline.png);
+}
+.charms-bar-share > .charms-bar-image {
+    background-image: url(/static/charms/share-outline.png);
+}
+.charms-bar-start > .charms-bar-image {
+    background-image: url(/static/charms/windows-outline.png);
+}
+.charms-bar-devices > .charms-bar-image {
+    background-image: url(/static/charms/devices-outline.png);
+}
+.charms-bar-settings > .charms-bar-image {
+    background-image: url(/static/charms/settings-outline.png);
+}
+
+.charms-bar-open > .charms-bar-items > .charms-bar-search > .charms-bar-image {
+    background-image: url(/static/charms/search.png);
+}
+.charms-bar-open > .charms-bar-items > .charms-bar-share > .charms-bar-image {
+    background-image: url(/static/charms/share.png);
+}
+.charms-bar-open > .charms-bar-items > .charms-bar-start > .charms-bar-image {
+    background-image: url(/static/charms/windows.png);
+}
+.charms-bar-open > .charms-bar-items > .charms-bar-devices > .charms-bar-image {
+    background-image: url(/static/charms/devices.png);
+}
+.charms-bar-open > .charms-bar-items > .charms-bar-settings > .charms-bar-image {
+    background-image: url(/static/charms/settings.png);
+}
+
+.charms-bar-clock {
+    z-index: 100000;
+    background: rgba(11,11,11,0.95);
+    position: absolute;
+    width: 450px;
+    height: 140px;
+    bottom: 50px;
+    left: 48px;
+    pointer-events: none;
+    opacity: 0;
+}

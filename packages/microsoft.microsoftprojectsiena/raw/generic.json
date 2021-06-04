@@ -1,0 +1,1395 @@
+{
+  "Files": {
+    "appContent": {
+      "Beta3ToBeta4.xslt": "appContent\\Beta3ToBeta4.xslt"
+    },
+    "ApplicationInsights.config": "ApplicationInsights.config",
+    "backStages": {
+      "appSettings": {
+        "appSettingsPage.css": "backStages\\appSettings\\appSettingsPage.css",
+        "appSettingsPage.html": "backStages\\appSettings\\appSettingsPage.html",
+        "appSettingsPage.js": "backStages\\appSettings\\appSettingsPage.js"
+      },
+      "data": {
+        "cloudTableConnections": {
+          "cloudTableConnectionDataView.css": "backStages\\data\\cloudTableConnections\\cloudTableConnectionDataView.css",
+          "cloudTableConnectionDataView.html": "backStages\\data\\cloudTableConnections\\cloudTableConnectionDataView.html",
+          "cloudTableConnectionDataView.js": "backStages\\data\\cloudTableConnections\\cloudTableConnectionDataView.js",
+          "cloudTableConnectionView.css": "backStages\\data\\cloudTableConnections\\cloudTableConnectionView.css",
+          "cloudTableConnectionView.html": "backStages\\data\\cloudTableConnections\\cloudTableConnectionView.html",
+          "cloudTableConnectionView.js": "backStages\\data\\cloudTableConnections\\cloudTableConnectionView.js"
+        },
+        "configPages": {
+          "azure": {
+            "azureConfig.css": "backStages\\data\\configPages\\azure\\azureConfig.css",
+            "azureConfig.html": "backStages\\data\\configPages\\azure\\azureConfig.html",
+            "azureConfig.js": "backStages\\data\\configPages\\azure\\azureConfig.js",
+            "azureRegistration.css": "backStages\\data\\configPages\\azure\\azureRegistration.css",
+            "azureRegistration.html": "backStages\\data\\configPages\\azure\\azureRegistration.html",
+            "azureRegistration.js": "backStages\\data\\configPages\\azure\\azureRegistration.js",
+            "azureServiceKeyConfig.css": "backStages\\data\\configPages\\azure\\azureServiceKeyConfig.css",
+            "azureServiceKeyConfig.html": "backStages\\data\\configPages\\azure\\azureServiceKeyConfig.html",
+            "azureServiceKeyConfig.js": "backStages\\data\\configPages\\azure\\azureServiceKeyConfig.js"
+          },
+          "cloudTable": {
+            "cloudTableConfig.css": "backStages\\data\\configPages\\cloudTable\\cloudTableConfig.css",
+            "cloudTableConfig.html": "backStages\\data\\configPages\\cloudTable\\cloudTableConfig.html",
+            "cloudTableConfig.js": "backStages\\data\\configPages\\cloudTable\\cloudTableConfig.js"
+          },
+          "excel": {
+            "excelConfig.css": "backStages\\data\\configPages\\excel\\excelConfig.css",
+            "excelConfig.html": "backStages\\data\\configPages\\excel\\excelConfig.html",
+            "excelConfig.js": "backStages\\data\\configPages\\excel\\excelConfig.js"
+          },
+          "localtable": {
+            "localTableConfig.css": "backStages\\data\\configPages\\localtable\\localTableConfig.css",
+            "localTableConfig.html": "backStages\\data\\configPages\\localtable\\localTableConfig.html",
+            "localTableConfig.js": "backStages\\data\\configPages\\localtable\\localTableConfig.js"
+          },
+          "rest": {
+            "restConfig.css": "backStages\\data\\configPages\\rest\\restConfig.css",
+            "restConfig.html": "backStages\\data\\configPages\\rest\\restConfig.html",
+            "restConfig.js": "backStages\\data\\configPages\\rest\\restConfig.js",
+            "restServiceKeyConfig.css": "backStages\\data\\configPages\\rest\\restServiceKeyConfig.css",
+            "restServiceKeyConfig.html": "backStages\\data\\configPages\\rest\\restServiceKeyConfig.html",
+            "restServiceKeyConfig.js": "backStages\\data\\configPages\\rest\\restServiceKeyConfig.js",
+            "restServicePackageImportConfig.css": "backStages\\data\\configPages\\rest\\restServicePackageImportConfig.css",
+            "restServicePackageImportConfig.html": "backStages\\data\\configPages\\rest\\restServicePackageImportConfig.html",
+            "restServicePackageImportConfig.js": "backStages\\data\\configPages\\rest\\restServicePackageImportConfig.js"
+          },
+          "rss": {
+            "rssConfig.css": "backStages\\data\\configPages\\rss\\rssConfig.css",
+            "rssConfig.html": "backStages\\data\\configPages\\rss\\rssConfig.html",
+            "rssConfig.js": "backStages\\data\\configPages\\rss\\rssConfig.js"
+          },
+          "sharepoint": {
+            "sharepointConfig.css": "backStages\\data\\configPages\\sharepoint\\sharepointConfig.css",
+            "sharepointConfig.html": "backStages\\data\\configPages\\sharepoint\\sharepointConfig.html",
+            "sharepointConfig.js": "backStages\\data\\configPages\\sharepoint\\sharepointConfig.js"
+          },
+          "sharepointTableSelector": {
+            "sharepointTableSelector.css": "backStages\\data\\configPages\\sharepointTableSelector\\sharepointTableSelector.css",
+            "sharepointTableSelector.html": "backStages\\data\\configPages\\sharepointTableSelector\\sharepointTableSelector.html",
+            "sharepointTableSelector.js": "backStages\\data\\configPages\\sharepointTableSelector\\sharepointTableSelector.js"
+          },
+          "tableSelector": {
+            "tableSelector.css": "backStages\\data\\configPages\\tableSelector\\tableSelector.css",
+            "tableSelector.html": "backStages\\data\\configPages\\tableSelector\\tableSelector.html",
+            "tableSelector.js": "backStages\\data\\configPages\\tableSelector\\tableSelector.js"
+          }
+        },
+        "connections": {
+          "connectionDataView.css": "backStages\\data\\connections\\connectionDataView.css",
+          "connectionDataView.html": "backStages\\data\\connections\\connectionDataView.html",
+          "connectionDataView.js": "backStages\\data\\connections\\connectionDataView.js",
+          "connectionView.css": "backStages\\data\\connections\\connectionView.css",
+          "connectionView.html": "backStages\\data\\connections\\connectionView.html",
+          "connectionView.js": "backStages\\data\\connections\\connectionView.js"
+        },
+        "dataPage.css": "backStages\\data\\dataPage.css",
+        "dataPage.html": "backStages\\data\\dataPage.html",
+        "dataPage.js": "backStages\\data\\dataPage.js",
+        "restConnections": {
+          "restConnectionDataView.css": "backStages\\data\\restConnections\\restConnectionDataView.css",
+          "restConnectionDataView.html": "backStages\\data\\restConnections\\restConnectionDataView.html",
+          "restConnectionDataView.js": "backStages\\data\\restConnections\\restConnectionDataView.js",
+          "restConnectionView.css": "backStages\\data\\restConnections\\restConnectionView.css",
+          "restConnectionView.html": "backStages\\data\\restConnections\\restConnectionView.html",
+          "restConnectionView.js": "backStages\\data\\restConnections\\restConnectionView.js"
+        }
+      },
+      "dataCollections": {
+        "dataCollectionsPage.css": "backStages\\dataCollections\\dataCollectionsPage.css",
+        "dataCollectionsPage.html": "backStages\\dataCollections\\dataCollectionsPage.html",
+        "dataCollectionsPage.js": "backStages\\dataCollections\\dataCollectionsPage.js"
+      },
+      "embeddedMedia": {
+        "embeddedMediaPage.css": "backStages\\embeddedMedia\\embeddedMediaPage.css",
+        "embeddedMediaPage.html": "backStages\\embeddedMedia\\embeddedMediaPage.html",
+        "embeddedMediaPage.js": "backStages\\embeddedMedia\\embeddedMediaPage.js"
+      },
+      "macro": {
+        "macroPage.css": "backStages\\macro\\macroPage.css",
+        "macroPage.html": "backStages\\macro\\macroPage.html",
+        "macroPage.js": "backStages\\macro\\macroPage.js"
+      },
+      "publish": {
+        "publishPage.css": "backStages\\publish\\publishPage.css",
+        "publishPage.html": "backStages\\publish\\publishPage.html",
+        "publishPage.js": "backStages\\publish\\publishPage.js"
+      }
+    },
+    "controls": {
+      "appBar": {
+        "appBarControl.css": "controls\\appBar\\appBarControl.css",
+        "appBarControl.html": "controls\\appBar\\appBarControl.html",
+        "appBarControl.js": "controls\\appBar\\appBarControl.js"
+      },
+      "backStage": {
+        "backStage.css": "controls\\backStage\\backStage.css",
+        "backStage.html": "controls\\backStage\\backStage.html",
+        "backStage.js": "controls\\backStage\\backStage.js"
+      },
+      "canvas": {
+        "canvasControl.css": "controls\\canvas\\canvasControl.css",
+        "canvasControl.html": "controls\\canvas\\canvasControl.html",
+        "canvasControl.js": "controls\\canvas\\canvasControl.js"
+      },
+      "commandBar": {
+        "commandBar.css": "controls\\commandBar\\commandBar.css",
+        "commandBar.html": "controls\\commandBar\\commandBar.html",
+        "commandBar.js": "controls\\commandBar\\commandBar.js"
+      },
+      "common": {
+        "dialog": {
+          "authDialogBody.css": "controls\\common\\dialog\\authDialogBody.css",
+          "authDialogBody.html": "controls\\common\\dialog\\authDialogBody.html",
+          "authDialogBody.js": "controls\\common\\dialog\\authDialogBody.js",
+          "cachedAuthDialog.css": "controls\\common\\dialog\\cachedAuthDialog.css",
+          "cachedAuthDialog.html": "controls\\common\\dialog\\cachedAuthDialog.html",
+          "cachedAuthDialog.js": "controls\\common\\dialog\\cachedAuthDialog.js",
+          "dialog.css": "controls\\common\\dialog\\dialog.css",
+          "dialog.html": "controls\\common\\dialog\\dialog.html",
+          "messageDialogBody.css": "controls\\common\\dialog\\messageDialogBody.css",
+          "messageDialogBody.html": "controls\\common\\dialog\\messageDialogBody.html",
+          "messageDialogBody.js": "controls\\common\\dialog\\messageDialogBody.js",
+          "restDialogBody.css": "controls\\common\\dialog\\restDialogBody.css",
+          "restDialogBody.html": "controls\\common\\dialog\\restDialogBody.html",
+          "restDialogBody.js": "controls\\common\\dialog\\restDialogBody.js",
+          "waitDialogBody.css": "controls\\common\\dialog\\waitDialogBody.css",
+          "waitDialogBody.html": "controls\\common\\dialog\\waitDialogBody.html",
+          "waitDialogBody.js": "controls\\common\\dialog\\waitDialogBody.js"
+        },
+        "notification": {
+          "notification.css": "controls\\common\\notification\\notification.css",
+          "notification.html": "controls\\common\\notification\\notification.html",
+          "notification.js": "controls\\common\\notification\\notification.js"
+        },
+        "progressIndicator": {
+          "progressIndicator.css": "controls\\common\\progressIndicator\\progressIndicator.css",
+          "progressIndicator.html": "controls\\common\\progressIndicator\\progressIndicator.html",
+          "progressIndicator.js": "controls\\common\\progressIndicator\\progressIndicator.js"
+        },
+        "ruleValueEditor": {
+          "ruleValueEditor.css": "controls\\common\\ruleValueEditor\\ruleValueEditor.css",
+          "ruleValueEditor.html": "controls\\common\\ruleValueEditor\\ruleValueEditor.html",
+          "ruleValueEditor.js": "controls\\common\\ruleValueEditor\\ruleValueEditor.js"
+        },
+        "seekBar": {
+          "css": {
+            "seekBar.css": "controls\\common\\seekBar\\css\\seekBar.css"
+          },
+          "images": {
+            "seekBarThumb.svg": "controls\\common\\seekBar\\images\\seekBarThumb.svg",
+            "seekBarThumbSelected.svg": "controls\\common\\seekBar\\images\\seekBarThumbSelected.svg"
+          },
+          "js": {
+            "seekBar.js": "controls\\common\\seekBar\\js\\seekBar.js"
+          },
+          "seekBar.html": "controls\\common\\seekBar\\seekBar.html"
+        }
+      },
+      "configuration": {
+        "configurationControl.css": "controls\\configuration\\configurationControl.css",
+        "configurationControl.html": "controls\\configuration\\configurationControl.html",
+        "configurationControl.js": "controls\\configuration\\configurationControl.js"
+      },
+      "controlGallery": {
+        "controlGallery.css": "controls\\controlGallery\\controlGallery.css",
+        "controlGallery.html": "controls\\controlGallery\\controlGallery.html",
+        "controlGallery.js": "controls\\controlGallery\\controlGallery.js"
+      },
+      "dataSourceDataViewer": {
+        "dataSourceDataViewerControl.css": "controls\\dataSourceDataViewer\\dataSourceDataViewerControl.css",
+        "dataSourceDataViewerControl.html": "controls\\dataSourceDataViewer\\dataSourceDataViewerControl.html",
+        "dataSourceDataViewerControl.js": "controls\\dataSourceDataViewer\\dataSourceDataViewerControl.js"
+      },
+      "Intellisense": {
+        "commandRuleTextBox.css": "controls\\Intellisense\\commandRuleTextBox.css",
+        "commandRuleTextBox.html": "controls\\Intellisense\\commandRuleTextBox.html",
+        "commandRuleTextBox.js": "controls\\Intellisense\\commandRuleTextBox.js",
+        "expressRuleTextBox.css": "controls\\Intellisense\\expressRuleTextBox.css",
+        "expressRuleTextBox.html": "controls\\Intellisense\\expressRuleTextBox.html",
+        "expressRuleTextBox.js": "controls\\Intellisense\\expressRuleTextBox.js",
+        "ruleTextBoxBase.js": "controls\\Intellisense\\ruleTextBoxBase.js"
+      },
+      "objectViewer": {
+        "objectViewerControl.css": "controls\\objectViewer\\objectViewerControl.css",
+        "objectViewerControl.html": "controls\\objectViewer\\objectViewerControl.html",
+        "objectViewerControl.js": "controls\\objectViewer\\objectViewerControl.js"
+      },
+      "playback": {
+        "images": {
+          "iconPause.svg": "controls\\playback\\images\\iconPause.svg",
+          "iconPlay.svg": "controls\\playback\\images\\iconPlay.svg",
+          "iconVolume.svg": "controls\\playback\\images\\iconVolume.svg",
+          "iconVolumeBlack.svg": "controls\\playback\\images\\iconVolumeBlack.svg",
+          "iconVolumeMuted.svg": "controls\\playback\\images\\iconVolumeMuted.svg",
+          "iconVolumeMutedBlack.svg": "controls\\playback\\images\\iconVolumeMutedBlack.svg"
+        },
+        "js": {
+          "htmlMedia.js": "controls\\playback\\js\\htmlMedia.js",
+          "iframeMedia.js": "controls\\playback\\js\\iframeMedia.js",
+          "media.js": "controls\\playback\\js\\media.js",
+          "mediaFactory.js": "controls\\playback\\js\\mediaFactory.js",
+          "playback.js": "controls\\playback\\js\\playback.js",
+          "playbackViewModel.js": "controls\\playback\\js\\playbackViewModel.js"
+        }
+      },
+      "restErrorPanel": {
+        "restErrorPanel.css": "controls\\restErrorPanel\\restErrorPanel.css",
+        "restErrorPanel.html": "controls\\restErrorPanel\\restErrorPanel.html",
+        "restErrorPanel.js": "controls\\restErrorPanel\\restErrorPanel.js"
+      },
+      "screenCanvasContainer": {
+        "screenCanvasContainer.css": "controls\\screenCanvasContainer\\screenCanvasContainer.css",
+        "screenCanvasContainer.html": "controls\\screenCanvasContainer\\screenCanvasContainer.html",
+        "screenCanvasContainer.js": "controls\\screenCanvasContainer\\screenCanvasContainer.js"
+      },
+      "wait": {
+        "waitControl.css": "controls\\wait\\waitControl.css",
+        "waitControl.html": "controls\\wait\\waitControl.html",
+        "waitControl.js": "controls\\wait\\waitControl.js"
+      }
+    },
+    "css": {
+      "appBar.css": "css\\appBar.css",
+      "canvas.css": "css\\canvas.css",
+      "constants.css": "css\\constants.css",
+      "ctrllib.css": "css\\ctrllib.css",
+      "default.css": "css\\default.css",
+      "mixins.css": "css\\mixins.css"
+    },
+    "ctrllib": {
+      "audioPlayback": {
+        "audioPlayback_oam.xml": "ctrllib\\audioPlayback\\audioPlayback_oam.xml",
+        "css": {
+          "audioPlayback.css": "ctrllib\\audioPlayback\\css\\audioPlayback.css"
+        },
+        "images": {
+          "SampleAudioImage.svg": "ctrllib\\audioPlayback\\images\\SampleAudioImage.svg"
+        },
+        "js": {
+          "audioPlayback.js": "ctrllib\\audioPlayback\\js\\audioPlayback.js",
+          "authoringAudioPlayback.js": "ctrllib\\audioPlayback\\js\\authoringAudioPlayback.js"
+        },
+        "media": {
+          "SampleAudio.mp3": "ctrllib\\audioPlayback\\media\\SampleAudio.mp3"
+        }
+      },
+      "barChart": {
+        "barChart_oam.xml": "ctrllib\\barChart\\barChart_oam.xml",
+        "css": {
+          "barChart.css": "ctrllib\\barChart\\css\\barChart.css"
+        },
+        "data": {
+          "ColumnChartSample.xlsx": "ctrllib\\barChart\\data\\ColumnChartSample.xlsx"
+        }
+      },
+      "bingControls": {
+        "bingImageSearch_oam.xml": "ctrllib\\bingControls\\bingImageSearch_oam.xml",
+        "bingNewsSearch_oam.xml": "ctrllib\\bingControls\\bingNewsSearch_oam.xml",
+        "bingTranslator_oam.xml": "ctrllib\\bingControls\\bingTranslator_oam.xml",
+        "bingVideoSearch_oam.xml": "ctrllib\\bingControls\\bingVideoSearch_oam.xml",
+        "bingWebSearch_oam.xml": "ctrllib\\bingControls\\bingWebSearch_oam.xml",
+        "images": {
+          "BingLogo.png": "ctrllib\\bingControls\\images\\BingLogo.png",
+          "BingSearchImage.png": "ctrllib\\bingControls\\images\\BingSearchImage.png",
+          "BingTranslator_80x40.svg": "ctrllib\\bingControls\\images\\BingTranslator_80x40.svg"
+        }
+      },
+      "button": {
+        "button_oam.xml": "ctrllib\\button\\button_oam.xml"
+      },
+      "camera": {
+        "camera_oam.xml": "ctrllib\\camera\\camera_oam.xml",
+        "css": {
+          "camera.css": "ctrllib\\camera\\css\\camera.css"
+        },
+        "images": {
+          "camera_no_stream.svg": "ctrllib\\camera\\images\\camera_no_stream.svg"
+        },
+        "js": {
+          "camera.js": "ctrllib\\camera\\js\\camera.js"
+        }
+      },
+      "chartControls": {
+        "compositeColumnChart_oam.xml": "ctrllib\\chartControls\\compositeColumnChart_oam.xml",
+        "compositeLineChart_oam.xml": "ctrllib\\chartControls\\compositeLineChart_oam.xml",
+        "compositePieChart_oam.xml": "ctrllib\\chartControls\\compositePieChart_oam.xml"
+      },
+      "charts": {
+        "css": {
+          "charts.css": "ctrllib\\charts\\css\\charts.css"
+        },
+        "js": {
+          "charts.js": "ctrllib\\charts\\js\\charts.js"
+        }
+      },
+      "checkbox": {
+        "checkbox_oam.xml": "ctrllib\\checkbox\\checkbox_oam.xml",
+        "css": {
+          "checkbox.css": "ctrllib\\checkbox\\css\\checkbox.css"
+        },
+        "js": {
+          "checkbox.js": "ctrllib\\checkbox\\js\\checkbox.js"
+        }
+      },
+      "common": {
+        "css": {
+          "button.css": "ctrllib\\common\\css\\button.css"
+        },
+        "js": {
+          "button.js": "ctrllib\\common\\js\\button.js",
+          "impex.js": "ctrllib\\common\\js\\impex.js"
+        }
+      },
+      "commonStyleProperties.xml": "ctrllib\\commonStyleProperties.xml",
+      "courseraControls": {
+        "courseraPlaylist_oam.xml": "ctrllib\\courseraControls\\courseraPlaylist_oam.xml",
+        "courseraSearch_oam.xml": "ctrllib\\courseraControls\\courseraSearch_oam.xml",
+        "images": {
+          "CourseraLogo.png": "ctrllib\\courseraControls\\images\\CourseraLogo.png"
+        }
+      },
+      "dropdown": {
+        "css": {
+          "dropdown.css": "ctrllib\\dropdown\\css\\dropdown.css"
+        },
+        "data": {
+          "DropdownSample.xlsx": "ctrllib\\dropdown\\data\\DropdownSample.xlsx"
+        },
+        "dropdown_oam.xml": "ctrllib\\dropdown\\dropdown_oam.xml",
+        "html": {
+          "dropdownListBody.html": "ctrllib\\dropdown\\html\\dropdownListBody.html"
+        },
+        "images": {
+          "dropdownarrow_blackicon.svg": "ctrllib\\dropdown\\images\\dropdownarrow_blackicon.svg"
+        },
+        "js": {
+          "dropdown.js": "ctrllib\\dropdown\\js\\dropdown.js",
+          "dropdownListItemViewModel.js": "ctrllib\\dropdown\\js\\dropdownListItemViewModel.js",
+          "dropdownListViewModel.js": "ctrllib\\dropdown\\js\\dropdownListViewModel.js"
+        }
+      },
+      "export": {
+        "export_oam.xml": "ctrllib\\export\\export_oam.xml",
+        "js": {
+          "export.js": "ctrllib\\export\\js\\export.js"
+        }
+      },
+      "facebookControls": {
+        "facebookAlbums_oam.xml": "ctrllib\\facebookControls\\facebookAlbums_oam.xml",
+        "facebookFriends_oam.xml": "ctrllib\\facebookControls\\facebookFriends_oam.xml",
+        "facebookPostAPhoto_oam.xml": "ctrllib\\facebookControls\\facebookPostAPhoto_oam.xml",
+        "images": {
+          "FacebookLogo.png": "ctrllib\\facebookControls\\images\\FacebookLogo.png"
+        }
+      },
+      "gallery": {
+        "css": {
+          "authoringButtons.css": "ctrllib\\gallery\\css\\authoringButtons.css",
+          "gallery.css": "ctrllib\\gallery\\css\\gallery.css"
+        },
+        "data": {
+          "CustomGallerySample.xlsx": "ctrllib\\gallery\\data\\CustomGallerySample.xlsx",
+          "imageGallery": {
+            "ImageGallerySample.xlsx": "ctrllib\\gallery\\data\\imageGallery\\ImageGallerySample.xlsx",
+            "Image_Placeholder.svg": "ctrllib\\gallery\\data\\imageGallery\\Image_Placeholder.svg",
+            "SampleImage1.svg": "ctrllib\\gallery\\data\\imageGallery\\SampleImage1.svg",
+            "SampleImage2.svg": "ctrllib\\gallery\\data\\imageGallery\\SampleImage2.svg",
+            "SampleImage3.svg": "ctrllib\\gallery\\data\\imageGallery\\SampleImage3.svg",
+            "SampleImage4.svg": "ctrllib\\gallery\\data\\imageGallery\\SampleImage4.svg"
+          },
+          "textualGallery": {
+            "TextualGallerySample.xlsx": "ctrllib\\gallery\\data\\textualGallery\\TextualGallerySample.xlsx"
+          }
+        },
+        "gallery_oam.xml": "ctrllib\\gallery\\gallery_oam.xml",
+        "html": {
+          "authoringButtons.html": "ctrllib\\gallery\\html\\authoringButtons.html",
+          "gallery.html": "ctrllib\\gallery\\html\\gallery.html"
+        },
+        "js": {
+          "gallery.js": "ctrllib\\gallery\\js\\gallery.js"
+        }
+      },
+      "group": {
+        "group_oam.xml": "ctrllib\\group\\group_oam.xml",
+        "js": {
+          "group.js": "ctrllib\\group\\js\\group.js"
+        }
+      },
+      "htmlViewer": {
+        "css": {
+          "htmlViewer.css": "ctrllib\\htmlViewer\\css\\htmlViewer.css"
+        },
+        "htmlViewer_oam.xml": "ctrllib\\htmlViewer\\htmlViewer_oam.xml",
+        "js": {
+          "htmlViewer.js": "ctrllib\\htmlViewer\\js\\htmlViewer.js"
+        }
+      },
+      "image": {
+        "css": {
+          "image.css": "ctrllib\\image\\css\\image.css"
+        },
+        "images": {
+          "SampleImage.svg": "ctrllib\\image\\images\\SampleImage.svg"
+        },
+        "image_oam.xml": "ctrllib\\image\\image_oam.xml",
+        "js": {
+          "image.js": "ctrllib\\image\\js\\image.js"
+        }
+      },
+      "import": {
+        "import_oam.xml": "ctrllib\\import\\import_oam.xml",
+        "js": {
+          "import.js": "ctrllib\\import\\js\\import.js"
+        }
+      },
+      "inkControl": {
+        "css": {
+          "inkControl.css": "ctrllib\\inkControl\\css\\inkControl.css"
+        },
+        "inkControl_oam.xml": "ctrllib\\inkControl\\inkControl_oam.xml",
+        "js": {
+          "inkControl.js": "ctrllib\\inkControl\\js\\inkControl.js"
+        }
+      },
+      "instagramControls": {
+        "images": {
+          "InstagramLogo.png": "ctrllib\\instagramControls\\images\\InstagramLogo.png"
+        },
+        "instagramFeed_oam.xml": "ctrllib\\instagramControls\\instagramFeed_oam.xml",
+        "instagramFollowing_oam.xml": "ctrllib\\instagramControls\\instagramFollowing_oam.xml",
+        "instagramMyLikes_oam.xml": "ctrllib\\instagramControls\\instagramMyLikes_oam.xml",
+        "instagramSearchPeople_oam.xml": "ctrllib\\instagramControls\\instagramSearchPeople_oam.xml"
+      },
+      "label": {
+        "css": {
+          "label.css": "ctrllib\\label\\css\\label.css"
+        },
+        "js": {
+          "label.js": "ctrllib\\label\\js\\label.js"
+        },
+        "label_oam.xml": "ctrllib\\label\\label_oam.xml"
+      },
+      "legend": {
+        "css": {
+          "legend.css": "ctrllib\\legend\\css\\legend.css"
+        },
+        "data": {
+          "LegendSample.xlsx": "ctrllib\\legend\\data\\LegendSample.xlsx"
+        },
+        "legend_oam.xml": "ctrllib\\legend\\legend_oam.xml"
+      },
+      "lineChart": {
+        "data": {
+          "LineChartSample.xlsx": "ctrllib\\lineChart\\data\\LineChartSample.xlsx"
+        },
+        "lineChart_oam.xml": "ctrllib\\lineChart\\lineChart_oam.xml"
+      },
+      "listbox": {
+        "css": {
+          "listbox.css": "ctrllib\\listbox\\css\\listbox.css"
+        },
+        "data": {
+          "ListboxSample.xlsx": "ctrllib\\listbox\\data\\ListboxSample.xlsx"
+        },
+        "js": {
+          "listbox.js": "ctrllib\\listbox\\js\\listbox.js",
+          "listboxItemViewModel.js": "ctrllib\\listbox\\js\\listboxItemViewModel.js",
+          "listboxViewModel.js": "ctrllib\\listbox\\js\\listboxViewModel.js"
+        },
+        "listbox_oam.xml": "ctrllib\\listbox\\listbox_oam.xml"
+      },
+      "microphone": {
+        "css": {
+          "microphone.css": "ctrllib\\microphone\\css\\microphone.css"
+        },
+        "images": {
+          "microphone_disabled_icon.svg": "ctrllib\\microphone\\images\\microphone_disabled_icon.svg",
+          "microphone_rest_icon.svg": "ctrllib\\microphone\\images\\microphone_rest_icon.svg",
+          "microphone_stop_icon.svg": "ctrllib\\microphone\\images\\microphone_stop_icon.svg"
+        },
+        "js": {
+          "microphone.js": "ctrllib\\microphone\\js\\microphone.js",
+          "microphoneViewModel.js": "ctrllib\\microphone\\js\\microphoneViewModel.js"
+        },
+        "microphone_oam.xml": "ctrllib\\microphone\\microphone_oam.xml"
+      },
+      "o365Controls": {
+        "images": {
+          "OfficeLogo.png": "ctrllib\\o365Controls\\images\\OfficeLogo.png"
+        },
+        "o365Contacts_oam.xml": "ctrllib\\o365Controls\\o365Contacts_oam.xml",
+        "o365MailMessage_oam.xml": "ctrllib\\o365Controls\\o365MailMessage_oam.xml",
+        "o365MailSend_oam.xml": "ctrllib\\o365Controls\\o365MailSend_oam.xml",
+        "o365Mail_oam.xml": "ctrllib\\o365Controls\\o365Mail_oam.xml",
+        "o365MeetingsCreate_oam.xml": "ctrllib\\o365Controls\\o365MeetingsCreate_oam.xml",
+        "o365Meetings_oam.xml": "ctrllib\\o365Controls\\o365Meetings_oam.xml"
+      },
+      "pieChart": {
+        "css": {
+          "pieChart.css": "ctrllib\\pieChart\\css\\pieChart.css"
+        },
+        "data": {
+          "PieChartSample.xlsx": "ctrllib\\pieChart\\data\\PieChartSample.xlsx"
+        },
+        "pieChart_oam.xml": "ctrllib\\pieChart\\pieChart_oam.xml"
+      },
+      "radio": {
+        "css": {
+          "radio.css": "ctrllib\\radio\\css\\radio.css"
+        },
+        "data": {
+          "RadioSample.xlsx": "ctrllib\\radio\\data\\RadioSample.xlsx"
+        },
+        "html": {
+          "radio.html": "ctrllib\\radio\\html\\radio.html"
+        },
+        "js": {
+          "radio.js": "ctrllib\\radio\\js\\radio.js"
+        },
+        "radio_oam.xml": "ctrllib\\radio\\radio_oam.xml"
+      },
+      "rating": {
+        "css": {
+          "rating.css": "ctrllib\\rating\\css\\rating.css"
+        },
+        "js": {
+          "rating.js": "ctrllib\\rating\\js\\rating.js"
+        },
+        "rating_oam.xml": "ctrllib\\rating\\rating_oam.xml"
+      },
+      "shapes": {
+        "arrow": {
+          "arrow_oam.xml": "ctrllib\\shapes\\arrow\\arrow_oam.xml",
+          "js": {
+            "arrow.js": "ctrllib\\shapes\\arrow\\js\\arrow.js"
+          }
+        },
+        "circle": {
+          "circle_oam.xml": "ctrllib\\shapes\\circle\\circle_oam.xml",
+          "js": {
+            "circle.js": "ctrllib\\shapes\\circle\\js\\circle.js"
+          }
+        },
+        "css": {
+          "shape.css": "ctrllib\\shapes\\css\\shape.css"
+        },
+        "hexagon": {
+          "hexagon_oam.xml": "ctrllib\\shapes\\hexagon\\hexagon_oam.xml",
+          "js": {
+            "hexagon.js": "ctrllib\\shapes\\hexagon\\js\\hexagon.js"
+          }
+        },
+        "js": {
+          "shape.js": "ctrllib\\shapes\\js\\shape.js"
+        },
+        "octagon": {
+          "js": {
+            "octagon.js": "ctrllib\\shapes\\octagon\\js\\octagon.js"
+          },
+          "octagon_oam.xml": "ctrllib\\shapes\\octagon\\octagon_oam.xml"
+        },
+        "partialCircle": {
+          "js": {
+            "partialCircle.js": "ctrllib\\shapes\\partialCircle\\js\\partialCircle.js"
+          },
+          "partialCircle_oam.xml": "ctrllib\\shapes\\partialCircle\\partialCircle_oam.xml"
+        },
+        "pentagon": {
+          "js": {
+            "pentagon.js": "ctrllib\\shapes\\pentagon\\js\\pentagon.js"
+          },
+          "pentagon_oam.xml": "ctrllib\\shapes\\pentagon\\pentagon_oam.xml"
+        },
+        "rectangle": {
+          "js": {
+            "rectangle.js": "ctrllib\\shapes\\rectangle\\js\\rectangle.js"
+          },
+          "rectangle_oam.xml": "ctrllib\\shapes\\rectangle\\rectangle_oam.xml"
+        },
+        "star": {
+          "js": {
+            "star.js": "ctrllib\\shapes\\star\\js\\star.js"
+          },
+          "star_oam.xml": "ctrllib\\shapes\\star\\star_oam.xml"
+        },
+        "triangle": {
+          "js": {
+            "triangle.js": "ctrllib\\shapes\\triangle\\js\\triangle.js"
+          },
+          "triangle_oam.xml": "ctrllib\\shapes\\triangle\\triangle_oam.xml"
+        }
+      },
+      "sharepointUpdate": {
+        "js": {
+          "sharepointUpdate.js": "ctrllib\\sharepointUpdate\\js\\sharepointUpdate.js"
+        },
+        "sharepointUpdate_oam.xml": "ctrllib\\sharepointUpdate\\sharepointUpdate_oam.xml",
+        "syncNotification": {
+          "syncNotification.css": "ctrllib\\sharepointUpdate\\syncNotification\\syncNotification.css",
+          "syncNotification.html": "ctrllib\\sharepointUpdate\\syncNotification\\syncNotification.html",
+          "syncNotification.js": "ctrllib\\sharepointUpdate\\syncNotification\\syncNotification.js",
+          "warning_sign.svg": "ctrllib\\sharepointUpdate\\syncNotification\\warning_sign.svg"
+        }
+      },
+      "slider": {
+        "css": {
+          "slider.css": "ctrllib\\slider\\css\\slider.css"
+        },
+        "js": {
+          "slider.js": "ctrllib\\slider\\js\\slider.js",
+          "sliderViewModel.js": "ctrllib\\slider\\js\\sliderViewModel.js"
+        },
+        "slider_oam.xml": "ctrllib\\slider\\slider_oam.xml"
+      },
+      "text": {
+        "css": {
+          "text.css": "ctrllib\\text\\css\\text.css"
+        },
+        "js": {
+          "text.js": "ctrllib\\text\\js\\text.js"
+        },
+        "text_oam.xml": "ctrllib\\text\\text_oam.xml"
+      },
+      "timer": {
+        "css": {
+          "timer.css": "ctrllib\\timer\\css\\timer.css"
+        },
+        "js": {
+          "timer.js": "ctrllib\\timer\\js\\timer.js"
+        },
+        "timer_oam.xml": "ctrllib\\timer\\timer_oam.xml"
+      },
+      "toggleSwitch": {
+        "css": {
+          "toggleSwitch.css": "ctrllib\\toggleSwitch\\css\\toggleSwitch.css"
+        },
+        "js": {
+          "toggleSwitch.js": "ctrllib\\toggleSwitch\\js\\toggleSwitch.js",
+          "toggleSwitchViewModel.js": "ctrllib\\toggleSwitch\\js\\toggleSwitchViewModel.js"
+        },
+        "toggleSwitch_oam.xml": "ctrllib\\toggleSwitch\\toggleSwitch_oam.xml"
+      },
+      "twitterControls": {
+        "images": {
+          "TwitterLogo.png": "ctrllib\\twitterControls\\images\\TwitterLogo.png"
+        },
+        "tweet_oam.xml": "ctrllib\\twitterControls\\tweet_oam.xml",
+        "twitterFollowing_oam.xml": "ctrllib\\twitterControls\\twitterFollowing_oam.xml",
+        "twitterSearchPeople_oam.xml": "ctrllib\\twitterControls\\twitterSearchPeople_oam.xml"
+      },
+      "videoPlayback": {
+        "css": {
+          "videoPlayback.css": "ctrllib\\videoPlayback\\css\\videoPlayback.css"
+        },
+        "html": {
+          "iframe-youtube.html": "ctrllib\\videoPlayback\\html\\iframe-youtube.html",
+          "iframeHost.css": "ctrllib\\videoPlayback\\html\\iframeHost.css",
+          "iframeHost.js": "ctrllib\\videoPlayback\\html\\iframeHost.js"
+        },
+        "images": {
+          "iconFullscreen.svg": "ctrllib\\videoPlayback\\images\\iconFullscreen.svg",
+          "iconFullscreenCollapse.svg": "ctrllib\\videoPlayback\\images\\iconFullscreenCollapse.svg",
+          "SamplePosterImage.png": "ctrllib\\videoPlayback\\images\\SamplePosterImage.png"
+        },
+        "js": {
+          "authoringVideoPlayback.js": "ctrllib\\videoPlayback\\js\\authoringVideoPlayback.js",
+          "videoPlayback.js": "ctrllib\\videoPlayback\\js\\videoPlayback.js"
+        },
+        "media": {
+          "SampleVideo.mp4": "ctrllib\\videoPlayback\\media\\SampleVideo.mp4"
+        },
+        "videoPlayback_oam.xml": "ctrllib\\videoPlayback\\videoPlayback_oam.xml"
+      },
+      "yammerControls": {
+        "images": {
+          "YammerLogo.png": "ctrllib\\yammerControls\\images\\YammerLogo.png"
+        },
+        "yammerPeopleByGroup_oam.xml": "ctrllib\\yammerControls\\yammerPeopleByGroup_oam.xml",
+        "yammerPostAMessage_oam.xml": "ctrllib\\yammerControls\\yammerPostAMessage_oam.xml",
+        "yammerPostAPhoto_oam.xml": "ctrllib\\yammerControls\\yammerPostAPhoto_oam.xml"
+      },
+      "youTubeControls": {
+        "images": {
+          "YoutubeLogo.png": "ctrllib\\youTubeControls\\images\\YoutubeLogo.png"
+        },
+        "youTubePlaylist_oam.xml": "ctrllib\\youTubeControls\\youTubePlaylist_oam.xml",
+        "youTubeSearch_oam.xml": "ctrllib\\youTubeControls\\youTubeSearch_oam.xml",
+        "youTubeWatch_oam.xml": "ctrllib\\youTubeControls\\youTubeWatch_oam.xml"
+      }
+    },
+    "default.html": "default.html",
+    "images": {
+      "addscreenicon.svg": "images\\addscreenicon.svg",
+      "addvisualicon.svg": "images\\addvisualicon.svg",
+      "addvisualicon_black.svg": "images\\addvisualicon_black.svg",
+      "addvisualicon_white.svg": "images\\addvisualicon_white.svg",
+      "add_20x20.svg": "images\\add_20x20.svg",
+      "alignBottom_icon.svg": "images\\alignBottom_icon.svg",
+      "alignCenterHorz_icon.svg": "images\\alignCenterHorz_icon.svg",
+      "alignCenterVert_icon.svg": "images\\alignCenterVert_icon.svg",
+      "alignLeft_icon.svg": "images\\alignLeft_icon.svg",
+      "alignRight_icon.svg": "images\\alignRight_icon.svg",
+      "alignTop_icon.svg": "images\\alignTop_icon.svg",
+      "align_icon.svg": "images\\align_icon.svg",
+      "appsetting_landscape.svg": "images\\appsetting_landscape.svg",
+      "appsetting_portrait.svg": "images\\appsetting_portrait.svg",
+      "Audio_20x20.png": "images\\Audio_20x20.png",
+      "Azure_icon.png": "images\\Azure_icon.png",
+      "Azure_icon_white.png": "images\\Azure_icon_white.png",
+      "backarrow.svg": "images\\backarrow.svg",
+      "backarrow_black.svg": "images\\backarrow_black.svg",
+      "backarrow_gallery_white.svg": "images\\backarrow_gallery_white.svg",
+      "backarrow_white.svg": "images\\backarrow_white.svg",
+      "badge_logo.png": "images\\badge_logo.png",
+      "barWidth_icon.svg": "images\\barWidth_icon.svg",
+      "behaviorrule_onchangeicon.svg": "images\\behaviorrule_onchangeicon.svg",
+      "behaviorrule_oncheckedicon.svg": "images\\behaviorrule_oncheckedicon.svg",
+      "behaviorrule_onendicon.svg": "images\\behaviorrule_onendicon.svg",
+      "behaviorrule_onhidden.svg": "images\\behaviorrule_onhidden.svg",
+      "behaviorrule_onpauseicon.svg": "images\\behaviorrule_onpauseicon.svg",
+      "behaviorrule_onplayicon.svg": "images\\behaviorrule_onplayicon.svg",
+      "behaviorrule_onselecticon.svg": "images\\behaviorrule_onselecticon.svg",
+      "behaviorrule_onuncheckedicon.svg": "images\\behaviorrule_onuncheckedicon.svg",
+      "behaviorrule_onvisible.svg": "images\\behaviorrule_onvisible.svg",
+      "behaviorrule_timerendicon.svg": "images\\behaviorrule_timerendicon.svg",
+      "Bing_white.png": "images\\Bing_white.png",
+      "bringforward_icon.svg": "images\\bringforward_icon.svg",
+      "bringtofront_icon.svg": "images\\bringtofront_icon.svg",
+      "browseicon.svg": "images\\browseicon.svg",
+      "browseicon_black.svg": "images\\browseicon_black.svg",
+      "CG_Edit_Hover.svg": "images\\CG_Edit_Hover.svg",
+      "CG_Edit_Pressed.svg": "images\\CG_Edit_Pressed.svg",
+      "CG_Edit_Rest.svg": "images\\CG_Edit_Rest.svg",
+      "charts_markersicon.svg": "images\\charts_markersicon.svg",
+      "collapse.svg": "images\\collapse.svg",
+      "copy_icon.svg": "images\\copy_icon.svg",
+      "Coursera_white.png": "images\\Coursera_white.png",
+      "customgallery_editicon.svg": "images\\customgallery_editicon.svg",
+      "cut_icon.svg": "images\\cut_icon.svg",
+      "dataicon.svg": "images\\dataicon.svg",
+      "datarule_allitemsicon.svg": "images\\datarule_allitemsicon.svg",
+      "datarule_audioicon.svg": "images\\datarule_audioicon.svg",
+      "datarule_autostarticon.svg": "images\\datarule_autostarticon.svg",
+      "datarule_brightnessicon.svg": "images\\datarule_brightnessicon.svg",
+      "datarule_cameraicon.svg": "images\\datarule_cameraicon.svg",
+      "datarule_clearicon.svg": "images\\datarule_clearicon.svg",
+      "datarule_contrasticon.svg": "images\\datarule_contrasticon.svg",
+      "datarule_dataicon.svg": "images\\datarule_dataicon.svg",
+      "datarule_defaulticon.svg": "images\\datarule_defaulticon.svg",
+      "datarule_defaultselectedicon.svg": "images\\datarule_defaultselectedicon.svg",
+      "datarule_defaultstrokesicon.svg": "images\\datarule_defaultstrokesicon.svg",
+      "datarule_endicon.svg": "images\\datarule_endicon.svg",
+      "datarule_imageicon.svg": "images\\datarule_imageicon.svg",
+      "datarule_itemsicon.svg": "images\\datarule_itemsicon.svg",
+      "datarule_loopicon.svg": "images\\datarule_loopicon.svg",
+      "datarule_maxicon.svg": "images\\datarule_maxicon.svg",
+      "datarule_mediaicon.svg": "images\\datarule_mediaicon.svg",
+      "datarule_micicon.svg": "images\\datarule_micicon.svg",
+      "datarule_minicon.svg": "images\\datarule_minicon.svg",
+      "datarule_pausedicon.svg": "images\\datarule_pausedicon.svg",
+      "datarule_readonlyicon.svg": "images\\datarule_readonlyicon.svg",
+      "datarule_selectedicon.svg": "images\\datarule_selectedicon.svg",
+      "datarule_starticon.svg": "images\\datarule_starticon.svg",
+      "datarule_starttimeicon.svg": "images\\datarule_starttimeicon.svg",
+      "datarule_texticon.svg": "images\\datarule_texticon.svg",
+      "datarule_valueicon.svg": "images\\datarule_valueicon.svg",
+      "datarule_visibleindexicon.svg": "images\\datarule_visibleindexicon.svg",
+      "datarule_zoomicon.svg": "images\\datarule_zoomicon.svg",
+      "designrule_borderstyleicon.svg": "images\\designrule_borderstyleicon.svg",
+      "designrule_borderthicknessicon.svg": "images\\designrule_borderthicknessicon.svg",
+      "designrule_directionicon.svg": "images\\designrule_directionicon.svg",
+      "designrule_disabledicon.svg": "images\\designrule_disabledicon.svg",
+      "designrule_group_barcharticon.svg": "images\\designrule_group_barcharticon.svg",
+      "designrule_group_bordericon.svg": "images\\designrule_group_bordericon.svg",
+      "designrule_group_charticon.svg": "images\\designrule_group_charticon.svg",
+      "designrule_group_fillicon.svg": "images\\designrule_group_fillicon.svg",
+      "designrule_group_imagepositionicon.svg": "images\\designrule_group_imagepositionicon.svg",
+      "designrule_group_linecharticon.svg": "images\\designrule_group_linecharticon.svg",
+      "designrule_group_optionsicon.svg": "images\\designrule_group_optionsicon.svg",
+      "designrule_group_paddingicon.svg": "images\\designrule_group_paddingicon.svg",
+      "designrule_group_paragraphicon.svg": "images\\designrule_group_paragraphicon.svg",
+      "designrule_group_penicon.svg": "images\\designrule_group_penicon.svg",
+      "designrule_group_sizepositionicon.svg": "images\\designrule_group_sizepositionicon.svg",
+      "designrule_group_templateicon.svg": "images\\designrule_group_templateicon.svg",
+      "designrule_group_texticon.svg": "images\\designrule_group_texticon.svg",
+      "designrule_group_transparencyicon.svg": "images\\designrule_group_transparencyicon.svg",
+      "designrule_heighticon.svg": "images\\designrule_heighticon.svg",
+      "designrule_imagepositionicon.svg": "images\\designrule_imagepositionicon.svg",
+      "designrule_italicicon.svg": "images\\designrule_italicicon.svg",
+      "designrule_layouticon.svg": "images\\designrule_layouticon.svg",
+      "designrule_modeicon.svg": "images\\designrule_modeicon.svg",
+      "designrule_multipleicon.svg": "images\\designrule_multipleicon.svg",
+      "designrule_overflowicon.svg": "images\\designrule_overflowicon.svg",
+      "designrule_paddingbottomicon.svg": "images\\designrule_paddingbottomicon.svg",
+      "designrule_paddingicon.svg": "images\\designrule_paddingicon.svg",
+      "designrule_paddinglefticon.svg": "images\\designrule_paddinglefticon.svg",
+      "designrule_paddingrighticon.svg": "images\\designrule_paddingrighticon.svg",
+      "designrule_paddingtopicon.svg": "images\\designrule_paddingtopicon.svg",
+      "designrule_pressedfillicon.svg": "images\\designrule_pressedfillicon.svg",
+      "designrule_showcontrolsicon.svg": "images\\designrule_showcontrolsicon.svg",
+      "designrule_snapicon.svg": "images\\designrule_snapicon.svg",
+      "designrule_starcoloricon.svg": "images\\designrule_starcoloricon.svg",
+      "designrule_strikethroughicon.svg": "images\\designrule_strikethroughicon.svg",
+      "designrule_tooltipicon.svg": "images\\designrule_tooltipicon.svg",
+      "designrule_transitionicon.svg": "images\\designrule_transitionicon.svg",
+      "designrule_transparencyicon.svg": "images\\designrule_transparencyicon.svg",
+      "designrule_underlineicon.svg": "images\\designrule_underlineicon.svg",
+      "designrule_verticalalignicon.svg": "images\\designrule_verticalalignicon.svg",
+      "designrule_visibleicon.svg": "images\\designrule_visibleicon.svg",
+      "designrule_widthicon.svg": "images\\designrule_widthicon.svg",
+      "designrule_xicon.svg": "images\\designrule_xicon.svg",
+      "designrule_yicon.svg": "images\\designrule_yicon.svg",
+      "design_icon.svg": "images\\design_icon.svg",
+      "desingrule_hoverfillicon.svg": "images\\desingrule_hoverfillicon.svg",
+      "distributeHorz_icon.svg": "images\\distributeHorz_icon.svg",
+      "distributeVert_icon.svg": "images\\distributeVert_icon.svg",
+      "dropdownarrow_11_174x8_FFFFFF_1_0.svg": "images\\dropdownarrow_11_174x8_FFFFFF_1_0.svg",
+      "dropdownarrow_9x5.svg": "images\\dropdownarrow_9x5.svg",
+      "dropdownarrow_9x5_Eveningstar.svg": "images\\dropdownarrow_9x5_Eveningstar.svg",
+      "dropdownarrow_blackicon.svg": "images\\dropdownarrow_blackicon.svg",
+      "dropdownarrow_icon.svg": "images\\dropdownarrow_icon.svg",
+      "dropdownarrow_stoneicon.svg": "images\\dropdownarrow_stoneicon.svg",
+      "edit_icon.svg": "images\\edit_icon.svg",
+      "Excel_15x15_white.png": "images\\Excel_15x15_white.png",
+      "Excel_icon.png": "images\\Excel_icon.png",
+      "Excel_icon_white.png": "images\\Excel_icon_white.png",
+      "explodeicon.svg": "images\\explodeicon.svg",
+      "expressView_openicon.svg": "images\\expressView_openicon.svg",
+      "Facebook_white.png": "images\\Facebook_white.png",
+      "fileicon.svg": "images\\fileicon.svg",
+      "fillicon.svg": "images\\fillicon.svg",
+      "find_40x40.svg": "images\\find_40x40.svg",
+      "find_40x40_black.svg": "images\\find_40x40_black.svg",
+      "find_icon_abyss.svg": "images\\find_icon_abyss.svg",
+      "FirstRunPosterImage.png": "images\\FirstRunPosterImage.png",
+      "fiticon.svg": "images\\fiticon.svg",
+      "fndiscovery_officon.svg": "images\\fndiscovery_officon.svg",
+      "fndiscovery_onicon.svg": "images\\fndiscovery_onicon.svg",
+      "greencheckmark.svg": "images\\greencheckmark.svg",
+      "group_icon.svg": "images\\group_icon.svg",
+      "help_icon.svg": "images\\help_icon.svg",
+      "icon_change_30x30_FFFFFF_1_0.svg": "images\\icon_change_30x30_FFFFFF_1_0.svg",
+      "icon_delete_18x18.svg": "images\\icon_delete_18x18.svg",
+      "icon_delete_30x30_000000_1_0.svg": "images\\icon_delete_30x30_000000_1_0.svg",
+      "icon_delete_30x30_FFFFFF_1_0.svg": "images\\icon_delete_30x30_FFFFFF_1_0.svg",
+      "icon_delete_32x32.svg": "images\\icon_delete_32x32.svg",
+      "icon_remove_30x30_FFFFFF_1_0.svg": "images\\icon_remove_30x30_FFFFFF_1_0.svg",
+      "Image_20x20.png": "images\\Image_20x20.png",
+      "Instagram_white.png": "images\\Instagram_white.png",
+      "Khan_white.png": "images\\Khan_white.png",
+      "labelangleicon.svg": "images\\labelangleicon.svg",
+      "lessicon.svg": "images\\lessicon.svg",
+      "link_icon.svg": "images\\link_icon.svg",
+      "logo.png": "images\\logo.png",
+      "logos": {
+        "excel.png": "images\\logos\\excel.png",
+        "ms.jpg": "images\\logos\\ms.jpg",
+        "sharepoint.png": "images\\logos\\sharepoint.png"
+      },
+      "maxvalueicon.svg": "images\\maxvalueicon.svg",
+      "minvalueicon.svg": "images\\minvalueicon.svg",
+      "mode_icon.svg": "images\\mode_icon.svg",
+      "moreicon.svg": "images\\moreicon.svg",
+      "namemap_icon.svg": "images\\namemap_icon.svg",
+      "NavArrowJump.svg": "images\\NavArrowJump.svg",
+      "noteBox_110x110.svg": "images\\noteBox_110x110.svg",
+      "object_viewer_media_icon.svg": "images\\object_viewer_media_icon.svg",
+      "ordericon.svg": "images\\ordericon.svg",
+      "order_icon.svg": "images\\order_icon.svg",
+      "paste_icon.svg": "images\\paste_icon.svg",
+      "pencoloricon.svg": "images\\pencoloricon.svg",
+      "pencommandbarcoloricon.svg": "images\\pencommandbarcoloricon.svg",
+      "pen_draw_icon.svg": "images\\pen_draw_icon.svg",
+      "pen_erase_icon.svg": "images\\pen_erase_icon.svg",
+      "pen_select_icon.svg": "images\\pen_select_icon.svg",
+      "play_icon.svg": "images\\play_icon.svg",
+      "position_center_icon.svg": "images\\position_center_icon.svg",
+      "position_fill_icon.svg": "images\\position_fill_icon.svg",
+      "position_fit_icon.svg": "images\\position_fit_icon.svg",
+      "position_stretch_icon.svg": "images\\position_stretch_icon.svg",
+      "position_tile_icon.svg": "images\\position_tile_icon.svg",
+      "question.svg": "images\\question.svg",
+      "questionmark_hoverpress.svg": "images\\questionmark_hoverpress.svg",
+      "questionmark_rest.svg": "images\\questionmark_rest.svg",
+      "redoicon.svg": "images\\redoicon.svg",
+      "refresh_icon_25x25.svg": "images\\refresh_icon_25x25.svg",
+      "removeicon_black.svg": "images\\removeicon_black.svg",
+      "removeicon_b_35x35.svg": "images\\removeicon_b_35x35.svg",
+      "removeicon_whisper.svg": "images\\removeicon_whisper.svg",
+      "RESTconnector_icon.png": "images\\RESTconnector_icon.png",
+      "RESTconnector_white.png": "images\\RESTconnector_white.png",
+      "RSS_icon.png": "images\\RSS_icon.png",
+      "RSS_trans_white.png": "images\\RSS_trans_white.png",
+      "rulebutton_boldWeight.png": "images\\rulebutton_boldWeight.png",
+      "ruleButton_centerAlign.png": "images\\ruleButton_centerAlign.png",
+      "rulebutton_color.svg": "images\\rulebutton_color.svg",
+      "rulebutton_horizontallayout.svg": "images\\rulebutton_horizontallayout.svg",
+      "rulebutton_justifyAlign.png": "images\\rulebutton_justifyAlign.png",
+      "rulebutton_leftAlign.png": "images\\rulebutton_leftAlign.png",
+      "rulebutton_lighterWeight.png": "images\\rulebutton_lighterWeight.png",
+      "rulebutton_normalWeight.png": "images\\rulebutton_normalWeight.png",
+      "rulebutton_rightAlign.png": "images\\rulebutton_rightAlign.png",
+      "rulebutton_verticalbottomalign.svg": "images\\rulebutton_verticalbottomalign.svg",
+      "rulebutton_verticallayout.svg": "images\\rulebutton_verticallayout.svg",
+      "rulebutton_verticalmiddlealign.svg": "images\\rulebutton_verticalmiddlealign.svg",
+      "rulebutton_verticaltopalign.svg": "images\\rulebutton_verticaltopalign.svg",
+      "screenCloseIcon.svg": "images\\screenCloseIcon.svg",
+      "screenCloseIconClick.svg": "images\\screenCloseIconClick.svg",
+      "screenCloseIconHover.svg": "images\\screenCloseIconHover.svg",
+      "sendbackward_icon.svg": "images\\sendbackward_icon.svg",
+      "sendtoback_icon.svg": "images\\sendtoback_icon.svg",
+      "seriesoverlapicon.svg": "images\\seriesoverlapicon.svg",
+      "series_icon.svg": "images\\series_icon.svg",
+      "SharePoint_icon.png": "images\\SharePoint_icon.png",
+      "SharePoint_icon_white.png": "images\\SharePoint_icon_white.png",
+      "showcontrols.svg": "images\\showcontrols.svg",
+      "small_logo.png": "images\\small_logo.png",
+      "splash_screen.png": "images\\splash_screen.png",
+      "squiggle.png": "images\\squiggle.png",
+      "store_logo.png": "images\\store_logo.png",
+      "table_icon.png": "images\\table_icon.png",
+      "table_icon.svg": "images\\table_icon.svg",
+      "table_icon_active.svg": "images\\table_icon_active.svg",
+      "text_center.svg": "images\\text_center.svg",
+      "text_justify.svg": "images\\text_justify.svg",
+      "text_left.svg": "images\\text_left.svg",
+      "text_right.svg": "images\\text_right.svg",
+      "thumbnails": {
+        "controls": {
+          "Albums_80x40.svg": "images\\thumbnails\\controls\\Albums_80x40.svg",
+          "audioPlayback.svg": "images\\thumbnails\\controls\\audioPlayback.svg",
+          "backArrow.svg": "images\\thumbnails\\controls\\backArrow.svg",
+          "barchart.svg": "images\\thumbnails\\controls\\barchart.svg",
+          "BingNews_80x40.svg": "images\\thumbnails\\controls\\BingNews_80x40.svg",
+          "BingTranslator_80x40.svg": "images\\thumbnails\\controls\\BingTranslator_80x40.svg",
+          "BingVideoSearch_80x40.svg": "images\\thumbnails\\controls\\BingVideoSearch_80x40.svg",
+          "bing_image_search_80x40.svg": "images\\thumbnails\\controls\\bing_image_search_80x40.svg",
+          "bing_translate_80x40.png": "images\\thumbnails\\controls\\bing_translate_80x40.png",
+          "bing_web_search_80x40.svg": "images\\thumbnails\\controls\\bing_web_search_80x40.svg",
+          "camera.svg": "images\\thumbnails\\controls\\camera.svg",
+          "chart_tile.svg": "images\\thumbnails\\controls\\chart_tile.svg",
+          "checkbox.svg": "images\\thumbnails\\controls\\checkbox.svg",
+          "circle.svg": "images\\thumbnails\\controls\\circle.svg",
+          "circle1qtr.svg": "images\\thumbnails\\controls\\circle1qtr.svg",
+          "circle3qtr.svg": "images\\thumbnails\\controls\\circle3qtr.svg",
+          "cornerTriangle.svg": "images\\thumbnails\\controls\\cornerTriangle.svg",
+          "customgallery.svg": "images\\thumbnails\\controls\\customgallery.svg",
+          "customgalleryvert_icon_80x40.svg": "images\\thumbnails\\controls\\customgalleryvert_icon_80x40.svg",
+          "customgallery_icon_80x40.svg": "images\\thumbnails\\controls\\customgallery_icon_80x40.svg",
+          "dropdown.svg": "images\\thumbnails\\controls\\dropdown.svg",
+          "education.svg": "images\\thumbnails\\controls\\education.svg",
+          "equiTriangle.svg": "images\\thumbnails\\controls\\equiTriangle.svg",
+          "export.svg": "images\\thumbnails\\controls\\export.svg",
+          "forwardArrow.svg": "images\\thumbnails\\controls\\forwardArrow.svg",
+          "Friends_80x40.svg": "images\\thumbnails\\controls\\Friends_80x40.svg",
+          "halfCircle.svg": "images\\thumbnails\\controls\\halfCircle.svg",
+          "hexagon.svg": "images\\thumbnails\\controls\\hexagon.svg",
+          "htmlViewer.svg": "images\\thumbnails\\controls\\htmlViewer.svg",
+          "image.svg": "images\\thumbnails\\controls\\image.svg",
+          "imagegalleryvertical_icon_80x40.svg": "images\\thumbnails\\controls\\imagegalleryvertical_icon_80x40.svg",
+          "imagegallery_icon_80x40.svg": "images\\thumbnails\\controls\\imagegallery_icon_80x40.svg",
+          "ImageSearch_80x40.svg": "images\\thumbnails\\controls\\ImageSearch_80x40.svg",
+          "imagewithcaptionvertical_icon_80x40.svg": "images\\thumbnails\\controls\\imagewithcaptionvertical_icon_80x40.svg",
+          "imagewithcaption_icon_80x40.svg": "images\\thumbnails\\controls\\imagewithcaption_icon_80x40.svg",
+          "imagewithtextvertical_icon_80x40.svg": "images\\thumbnails\\controls\\imagewithtextvertical_icon_80x40.svg",
+          "imagewithtext_icon_80x40.svg": "images\\thumbnails\\controls\\imagewithtext_icon_80x40.svg",
+          "import.svg": "images\\thumbnails\\controls\\import.svg",
+          "InstagramFollowing_80x40.svg": "images\\thumbnails\\controls\\InstagramFollowing_80x40.svg",
+          "InstagramLikes_80x40.svg": "images\\thumbnails\\controls\\InstagramLikes_80x40.svg",
+          "InstagramPeopleSearch_80x40.svg": "images\\thumbnails\\controls\\InstagramPeopleSearch_80x40.svg",
+          "label.svg": "images\\thumbnails\\controls\\label.svg",
+          "linechart.svg": "images\\thumbnails\\controls\\linechart.svg",
+          "listbox_icon.svg": "images\\thumbnails\\controls\\listbox_icon.svg",
+          "microphone.svg": "images\\thumbnails\\controls\\microphone.svg",
+          "O365Contacts_80x40.svg": "images\\thumbnails\\controls\\O365Contacts_80x40.svg",
+          "O365MailMessage_80x40.svg": "images\\thumbnails\\controls\\O365MailMessage_80x40.svg",
+          "O365MailSend_80x40.svg": "images\\thumbnails\\controls\\O365MailSend_80x40.svg",
+          "O365Mail_80x40.svg": "images\\thumbnails\\controls\\O365Mail_80x40.svg",
+          "O365MeetingsCreate_80x40.svg": "images\\thumbnails\\controls\\O365MeetingsCreate_80x40.svg",
+          "O365Meetings_80x40.svg": "images\\thumbnails\\controls\\O365Meetings_80x40.svg",
+          "octagon.svg": "images\\thumbnails\\controls\\octagon.svg",
+          "Office_80x40.svg": "images\\thumbnails\\controls\\Office_80x40.svg",
+          "pen.svg": "images\\thumbnails\\controls\\pen.svg",
+          "pentagon.svg": "images\\thumbnails\\controls\\pentagon.svg",
+          "piechart.svg": "images\\thumbnails\\controls\\piechart.svg",
+          "PostPhoto_80x40.svg": "images\\thumbnails\\controls\\PostPhoto_80x40.svg",
+          "Post_80x40.svg": "images\\thumbnails\\controls\\Post_80x40.svg",
+          "pushbutton.svg": "images\\thumbnails\\controls\\pushbutton.svg",
+          "radiobutton.svg": "images\\thumbnails\\controls\\radiobutton.svg",
+          "rating.svg": "images\\thumbnails\\controls\\rating.svg",
+          "rectangle.svg": "images\\thumbnails\\controls\\rectangle.svg",
+          "RSS_80x40.svg": "images\\thumbnails\\controls\\RSS_80x40.svg",
+          "Search_80x40.svg": "images\\thumbnails\\controls\\Search_80x40.svg",
+          "shapes.svg": "images\\thumbnails\\controls\\shapes.svg",
+          "sharepoint_icon.svg": "images\\thumbnails\\controls\\sharepoint_icon.svg",
+          "sliders.svg": "images\\thumbnails\\controls\\sliders.svg",
+          "Social_80x40.svg": "images\\thumbnails\\controls\\Social_80x40.svg",
+          "star12.svg": "images\\thumbnails\\controls\\star12.svg",
+          "star5.svg": "images\\thumbnails\\controls\\star5.svg",
+          "star6.svg": "images\\thumbnails\\controls\\star6.svg",
+          "star8.svg": "images\\thumbnails\\controls\\star8.svg",
+          "textbox.svg": "images\\thumbnails\\controls\\textbox.svg",
+          "textgalleryvert_icon_80x40.svg": "images\\thumbnails\\controls\\textgalleryvert_icon_80x40.svg",
+          "textgallery_icon_80x40.svg": "images\\thumbnails\\controls\\textgallery_icon_80x40.svg",
+          "timer.svg": "images\\thumbnails\\controls\\timer.svg",
+          "toggleswitch.svg": "images\\thumbnails\\controls\\toggleswitch.svg",
+          "TwitterFollowing_80x40.svg": "images\\thumbnails\\controls\\TwitterFollowing_80x40.svg",
+          "TwitterPeopleSearch_80x40.svg": "images\\thumbnails\\controls\\TwitterPeopleSearch_80x40.svg",
+          "TwitterTweet_80x40.svg": "images\\thumbnails\\controls\\TwitterTweet_80x40.svg",
+          "videoPlayback.svg": "images\\thumbnails\\controls\\videoPlayback.svg",
+          "WatchPlaylist_80x40.svg": "images\\thumbnails\\controls\\WatchPlaylist_80x40.svg",
+          "Watch_80x40.svg": "images\\thumbnails\\controls\\Watch_80x40.svg",
+          "web.svg": "images\\thumbnails\\controls\\web.svg",
+          "web_80x40.svg": "images\\thumbnails\\controls\\web_80x40.svg",
+          "YammerPeople_80x40.svg": "images\\thumbnails\\controls\\YammerPeople_80x40.svg",
+          "YammerPostPhoto_80x40.svg": "images\\thumbnails\\controls\\YammerPostPhoto_80x40.svg",
+          "YoutubeVideoSearch_80x40.svg": "images\\thumbnails\\controls\\YoutubeVideoSearch_80x40.svg"
+        }
+      },
+      "transition_none_icon.svg": "images\\transition_none_icon.svg",
+      "transition_pop_icon.svg": "images\\transition_pop_icon.svg",
+      "transition_push_icon.svg": "images\\transition_push_icon.svg",
+      "transparent.svg": "images\\transparent.svg",
+      "trashcan_20x20.svg": "images\\trashcan_20x20.svg",
+      "trash_icon.svg": "images\\trash_icon.svg",
+      "triangle.png": "images\\triangle.png",
+      "twirl_icon.svg": "images\\twirl_icon.svg",
+      "Twitter_white.png": "images\\Twitter_white.png",
+      "undoicon.svg": "images\\undoicon.svg",
+      "ungroup_icon.svg": "images\\ungroup_icon.svg",
+      "valueicon.svg": "images\\valueicon.svg",
+      "verticalAlignBottom_icon.svg": "images\\verticalAlignBottom_icon.svg",
+      "verticalAlignCenter_icon.svg": "images\\verticalAlignCenter_icon.svg",
+      "verticalAlignTop_icon.svg": "images\\verticalAlignTop_icon.svg",
+      "Video_20x20.png": "images\\Video_20x20.png",
+      "warningicon_small.svg": "images\\warningicon_small.svg",
+      "warning_sign.svg": "images\\warning_sign.svg",
+      "wide_logo.png": "images\\wide_logo.png",
+      "Yammer_white.png": "images\\Yammer_white.png",
+      "youtube_white.png": "images\\youtube_white.png",
+      "zoomMinus_icon.svg": "images\\zoomMinus_icon.svg",
+      "zoomPlus_icon.svg": "images\\zoomPlus_icon.svg"
+    },
+    "js": {
+      "AppMagic.Authoring.js": "js\\AppMagic.Authoring.js",
+      "AppMagic.Common.js": "js\\AppMagic.Common.js",
+      "AppMagic.Common.Windows.js": "js\\AppMagic.Common.Windows.js",
+      "AppMagic.Controls.js": "js\\AppMagic.Controls.js",
+      "AppMagic.Services.js": "js\\AppMagic.Services.js",
+      "AppMagic.UI.js": "js\\AppMagic.UI.js",
+      "AppMagic.Worker.js": "js\\AppMagic.Worker.js",
+      "authoring": {
+        "authoringControlManager.js": "js\\authoring\\authoringControlManager.js",
+        "authoringRequirementsManager.js": "js\\authoring\\authoringRequirementsManager.js",
+        "config.js": "js\\authoring\\config.js",
+        "console.js": "js\\authoring\\console.js",
+        "context.js": "js\\authoring\\context.js",
+        "controlsImporter.js": "js\\authoring\\controlsImporter.js",
+        "inlineEditText.js": "js\\authoring\\inlineEditText.js",
+        "modelExtensions.js": "js\\authoring\\modelExtensions.js",
+        "navigator.js": "js\\authoring\\navigator.js",
+        "runtime.js": "js\\authoring\\runtime.js",
+        "testhooks.js": "js\\authoring\\testhooks.js",
+        "uiUtility.js": "js\\authoring\\uiUtility.js"
+      },
+      "common": {
+        "animation.js": "js\\common\\animation.js",
+        "collectionZipUtilities.js": "js\\common\\collectionZipUtilities.js",
+        "constants.js": "js\\common\\constants.js",
+        "controlManager.js": "js\\common\\controlManager.js",
+        "converters.js": "js\\common\\converters.js",
+        "cssRuleUtility.js": "js\\common\\cssRuleUtility.js",
+        "dialog.js": "js\\common\\dialog.js",
+        "domUtility.js": "js\\common\\domUtility.js",
+        "globalization.js": "js\\common\\globalization.js",
+        "impexWorker.js": "js\\common\\impexWorker.js",
+        "impexWorkerController.js": "js\\common\\impexWorkerController.js",
+        "math.js": "js\\common\\math.js",
+        "modelValueConstrainers.js": "js\\common\\modelValueConstrainers.js",
+        "platformHelpers.js": "js\\common\\platformHelpers.js",
+        "requirementsManager.js": "js\\common\\requirementsManager.js",
+        "RESTConfigImportHandler.js": "js\\common\\RESTConfigImportHandler.js",
+        "RESTWorker.js": "js\\common\\RESTWorker.js",
+        "RESTWorkerController.js": "js\\common\\RESTWorkerController.js",
+        "ruleValue.js": "js\\common\\ruleValue.js",
+        "runtimebase.js": "js\\common\\runtimebase.js",
+        "viewModels": {
+          "dialogButtonViewModel.js": "js\\common\\viewModels\\dialogButtonViewModel.js",
+          "notificationViewModel.js": "js\\common\\viewModels\\notificationViewModel.js",
+          "progressIndicatorViewModel.js": "js\\common\\viewModels\\progressIndicatorViewModel.js"
+        },
+        "visualIntellisenseConstants.js": "js\\common\\visualIntellisenseConstants.js",
+        "workerDispatcher.js": "js\\common\\workerDispatcher.js"
+      },
+      "Core.js": "js\\Core.js",
+      "Core.Knockout.js": "js\\Core.Knockout.js",
+      "Core.Polyfill.js": "js\\Core.Polyfill.js",
+      "default.js": "js\\default.js",
+      "extends.js": "js\\extends.js",
+      "functions": {
+        "aggregateFunctions.js": "js\\functions\\aggregateFunctions.js",
+        "behaviorFunctions.js": "js\\functions\\behaviorFunctions.js",
+        "collectionFunctions.js": "js\\functions\\collectionFunctions.js",
+        "dateTimeFunctions.js": "js\\functions\\dateTimeFunctions.js",
+        "informationFunctions.js": "js\\functions\\informationFunctions.js",
+        "mathFunctions.js": "js\\functions\\mathFunctions.js",
+        "membershipFunctions.js": "js\\functions\\membershipFunctions.js",
+        "screenFunctions.js": "js\\functions\\screenFunctions.js",
+        "sharedFunctions.js": "js\\functions\\sharedFunctions.js",
+        "solverFunctions.js": "js\\functions\\solverFunctions.js",
+        "textFunctions.js": "js\\functions\\textFunctions.js"
+      },
+      "utility.js": "js\\utility.js",
+      "xml.js": "js\\xml.js"
+    },
+    "Microsoft.AppMagic": {
+      "Exporters": {
+        "BasicExcel.zip": "Microsoft.AppMagic\\Exporters\\BasicExcel.zip"
+      }
+    },
+    "mycode.json": "mycode.json",
+    "openSource": {
+      "modified": {
+        "aadgraph": {
+          "aadgraph.js": "openSource\\modified\\aadgraph\\aadgraph.js",
+          "utility.js": "openSource\\modified\\aadgraph\\utility.js"
+        },
+        "flotr2.js": "openSource\\modified\\flotr2.js"
+      },
+      "unmodified": {
+        "caja": {
+          "html-sanitizer.debug.js": "openSource\\unmodified\\caja\\html-sanitizer.debug.js",
+          "html-sanitizer.js": "openSource\\unmodified\\caja\\html-sanitizer.js"
+        },
+        "cryptojs": {
+          "components": {
+            "enc-base64-min.js": "openSource\\unmodified\\cryptojs\\components\\enc-base64-min.js"
+          },
+          "rollups": {
+            "hmac-sha1.js": "openSource\\unmodified\\cryptojs\\rollups\\hmac-sha1.js",
+            "hmac-sha256.js": "openSource\\unmodified\\cryptojs\\rollups\\hmac-sha256.js"
+          }
+        },
+        "jszip": {
+          "jszip-deflate.js": "openSource\\unmodified\\jszip\\jszip-deflate.js",
+          "jszip-inflate.js": "openSource\\unmodified\\jszip\\jszip-inflate.js",
+          "jszip-load.js": "openSource\\unmodified\\jszip\\jszip-load.js",
+          "jszip.js": "openSource\\unmodified\\jszip\\jszip.js"
+        },
+        "knockout": {
+          "knockout-3.2.0.debug.js": "openSource\\unmodified\\knockout\\knockout-3.2.0.debug.js",
+          "knockout-3.2.0.js": "openSource\\unmodified\\knockout\\knockout-3.2.0.js",
+          "OSSREADME_TODO.txt": "openSource\\unmodified\\knockout\\OSSREADME_TODO.txt"
+        },
+        "polymer": {
+          "pointerevents.dev.js": "openSource\\unmodified\\polymer\\pointerevents.dev.js",
+          "pointerevents.min.js": "openSource\\unmodified\\polymer\\pointerevents.min.js"
+        },
+        "sax": {
+          "sax.js": "openSource\\unmodified\\sax\\sax.js"
+        },
+        "sugarjs": {
+          "sugar-1.4.1.debug.js": "openSource\\unmodified\\sugarjs\\sugar-1.4.1.debug.js",
+          "sugar-1.4.1.js": "openSource\\unmodified\\sugarjs\\sugar-1.4.1.js"
+        }
+      }
+    },
+    "packages.config": "packages.config",
+    "pages": {
+      "blank": {
+        "blankPage.css": "pages\\blank\\blankPage.css",
+        "blankPage.html": "pages\\blank\\blankPage.html",
+        "blankPage.js": "pages\\blank\\blankPage.js"
+      }
+    },
+    "publish": {
+      "css": {
+        "default.css": "publish\\css\\default.css",
+        "winjs": {
+          "ui-dark.css": "publish\\css\\winjs\\ui-dark.css"
+        }
+      },
+      "DefaultTemplate.html": "publish\\DefaultTemplate.html",
+      "Deployment": {
+        "priconfig.xml": "publish\\Deployment\\priconfig.xml"
+      },
+      "fonts": {
+        "Symbols.ttf": "publish\\fonts\\Symbols.ttf"
+      },
+      "images": {
+        "background.png": "publish\\images\\background.png",
+        "default_icon.png": "publish\\images\\default_icon.png",
+        "default_icon_transparent.png": "publish\\images\\default_icon_transparent.png",
+        "like.png": "publish\\images\\like.png",
+        "logo.png": "publish\\images\\logo.png",
+        "notificationlogo.png": "publish\\images\\notificationlogo.png",
+        "smalllogo.png": "publish\\images\\smalllogo.png",
+        "splashscreen.png": "publish\\images\\splashscreen.png",
+        "storelogo.png": "publish\\images\\storelogo.png",
+        "widelogo.png": "publish\\images\\widelogo.png"
+      },
+      "js": {
+        "ai.0.js": "publish\\js\\ai.0.js",
+        "AppMagic.PublishedApp.Common.js": "publish\\js\\AppMagic.PublishedApp.Common.js",
+        "AppMagic.PublishedApp.Web.js": "publish\\js\\AppMagic.PublishedApp.Web.js",
+        "AppMagic.PublishedApp.Windows.js": "publish\\js\\AppMagic.PublishedApp.Windows.js",
+        "canvas.js": "publish\\js\\canvas.js",
+        "inlineEditText.js": "publish\\js\\inlineEditText.js",
+        "runtime.js": "publish\\js\\runtime.js",
+        "screen.js": "publish\\js\\screen.js",
+        "uiUtility.js": "publish\\js\\uiUtility.js",
+        "winjs": {
+          "base.js": "publish\\js\\winjs\\base.js",
+          "base.min.js": "publish\\js\\winjs\\base.min.js",
+          "base.min.js.map": "publish\\js\\winjs\\base.min.js.map",
+          "ui.js": "publish\\js\\winjs\\ui.js",
+          "ui.min.js": "publish\\js\\winjs\\ui.min.js",
+          "ui.min.js.map": "publish\\js\\winjs\\ui.min.js.map"
+        }
+      },
+      "PublishConstants.xml": "publish\\PublishConstants.xml",
+      "PublishRuntimeScripts.xml": "publish\\PublishRuntimeScripts.xml",
+      "resources": {
+        "LangPack-de-DE": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-de-DE\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-de-DE\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-de-DE\\Strings.resjson"
+        },
+        "LangPack-en-US": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-en-US\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-en-US\\ControlStrings.resjson",
+          "strings.js": "publish\\resources\\LangPack-en-US\\strings.js",
+          "Strings.resjson": "publish\\resources\\LangPack-en-US\\Strings.resjson"
+        },
+        "LangPack-es-ES": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-es-ES\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-es-ES\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-es-ES\\Strings.resjson"
+        },
+        "LangPack-fr-FR": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-fr-FR\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-fr-FR\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-fr-FR\\Strings.resjson"
+        },
+        "LangPack-it-IT": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-it-IT\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-it-IT\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-it-IT\\Strings.resjson"
+        },
+        "LangPack-ja-JP": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-ja-JP\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-ja-JP\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-ja-JP\\Strings.resjson"
+        },
+        "LangPack-ko-kr": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-ko-kr\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-ko-kr\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-ko-kr\\Strings.resjson"
+        },
+        "LangPack-pt-BR": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-pt-BR\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-pt-BR\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-pt-BR\\Strings.resjson"
+        },
+        "LangPack-ru-RU": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-ru-RU\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-ru-RU\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-ru-RU\\Strings.resjson"
+        },
+        "LangPack-zh-cn": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-zh-cn\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-zh-cn\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-zh-cn\\Strings.resjson"
+        },
+        "LangPack-zh-tw": {
+          "AuthoringStrings.resjson": "publish\\resources\\LangPack-zh-tw\\AuthoringStrings.resjson",
+          "ControlStrings.resjson": "publish\\resources\\LangPack-zh-tw\\ControlStrings.resjson",
+          "Strings.resjson": "publish\\resources\\LangPack-zh-tw\\Strings.resjson"
+        }
+      }
+    },
+    "services": {
+      "AzureMobile": {
+        "ams.js": "services\\AzureMobile\\ams.js",
+        "package.json": "services\\AzureMobile\\package.json"
+      },
+      "Connectors": {
+        "ServiceManifest.xml": "services\\Connectors\\ServiceManifest.xml",
+        "Services.zip": "services\\Connectors\\Services.zip"
+      },
+      "facebook": {
+        "facebook.js": "services\\facebook\\facebook.js",
+        "package.json": "services\\facebook\\package.json"
+      },
+      "rest": {
+        "package.json": "services\\rest\\package.json",
+        "rest.js": "services\\rest\\rest.js"
+      },
+      "results.js": "services\\results.js",
+      "rss": {
+        "package.json": "services\\rss\\package.json",
+        "rss.js": "services\\rss\\rss.js"
+      },
+      "SharePoint": {
+        "package.json": "services\\SharePoint\\package.json",
+        "sharepoint.js": "services\\SharePoint\\sharepoint.js"
+      },
+      "skydrive": {
+        "package.json": "services\\skydrive\\package.json",
+        "skydrive.js": "services\\skydrive\\skydrive.js"
+      },
+      "utility.js": "services\\utility.js"
+    },
+    "ThirdPartyNotices.txt": "ThirdPartyNotices.txt",
+    "viewModels": {
+      "appBarViewModel.js": "viewModels\\appBarViewModel.js",
+      "azureConfigViewModel.js": "viewModels\\azureConfigViewModel.js",
+      "azureViewModel.js": "viewModels\\azureViewModel.js",
+      "backStageViewModel.js": "viewModels\\backStageViewModel.js",
+      "behaviorRuleFlyout.js": "viewModels\\behaviorRuleFlyout.js",
+      "blankPageViewModel.js": "viewModels\\blankPageViewModel.js",
+      "canvasViewModel.js": "viewModels\\canvasViewModel.js",
+      "clipboardManager.js": "viewModels\\clipboardManager.js",
+      "commandBarViewModel.js": "viewModels\\commandBarViewModel.js",
+      "configurationViewModel.js": "viewModels\\configurationViewModel.js",
+      "connectionManager.js": "viewModels\\connectionManager.js",
+      "connectionViewModel.js": "viewModels\\connectionViewModel.js",
+      "controlGalleryViewModel.js": "viewModels\\controlGalleryViewModel.js",
+      "dataCollectionsViewModel.js": "viewModels\\dataCollectionsViewModel.js",
+      "dataConnectionsViewModel.js": "viewModels\\dataConnectionsViewModel.js",
+      "dataRuleFlyout.js": "viewModels\\dataRuleFlyout.js",
+      "dataSourceManager.js": "viewModels\\dataSourceManager.js",
+      "documentViewModel.js": "viewModels\\documentViewModel.js",
+      "embeddedMediaViewModel.js": "viewModels\\embeddedMediaViewModel.js",
+      "entityDropDownViewModel.js": "viewModels\\entityDropDownViewModel.js",
+      "excelConfigViewModel.js": "viewModels\\excelConfigViewModel.js",
+      "functionDiscoveryPanel.js": "viewModels\\functionDiscoveryPanel.js",
+      "importedRestConfigViewModel.js": "viewModels\\importedRestConfigViewModel.js",
+      "intellisenseViewModel.js": "viewModels\\intellisenseViewModel.js",
+      "pageNavigator.js": "viewModels\\pageNavigator.js",
+      "publishViewModel.js": "viewModels\\publishViewModel.js",
+      "restConfigViewModel.js": "viewModels\\restConfigViewModel.js",
+      "restErrorPanelViewModel.js": "viewModels\\restErrorPanelViewModel.js",
+      "restServicePackageImportConfigViewModel.js": "viewModels\\restServicePackageImportConfigViewModel.js",
+      "rssConfigViewModel.js": "viewModels\\rssConfigViewModel.js",
+      "ruleButtonManager.js": "viewModels\\ruleButtonManager.js",
+      "ruleButtonPanel.js": "viewModels\\ruleButtonPanel.js",
+      "ruleDecorationManager.js": "viewModels\\ruleDecorationManager.js",
+      "ruleValueFactory.js": "viewModels\\ruleValueFactory.js",
+      "screenWidget.js": "viewModels\\screenWidget.js",
+      "sharePointConfigViewModel.js": "viewModels\\sharePointConfigViewModel.js",
+      "shellControlGalleryViewModel.js": "viewModels\\shellControlGalleryViewModel.js",
+      "tableSelectorViewModel.js": "viewModels\\tableSelectorViewModel.js",
+      "undoManager.js": "viewModels\\undoManager.js",
+      "visualSnapper.js": "viewModels\\visualSnapper.js",
+      "waitViewModel.js": "viewModels\\waitViewModel.js",
+      "zdataControlViewModel.js": "viewModels\\zdataControlViewModel.js",
+      "zoomViewModel.js": "viewModels\\zoomViewModel.js"
+    }
+  }
+}

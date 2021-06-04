@@ -1,4 +1,4 @@
-import "winrt-node"
+import "winrt"
 import { Microsoft } from "./src/Microsoft"
 import { Platform } from "./src/Platform"
 

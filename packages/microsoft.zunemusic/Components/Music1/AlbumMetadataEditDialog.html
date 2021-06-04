@@ -39,12 +39,12 @@
             
             
             
-            <div class="trackItem-songTitle control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.name;
-                    state_error: items.name.hasError MS.Entertainment.Utilities.toggleClassName;">
-                <div class="metadataField-label" data-win-bind="innerText: items.name.displayName"></div>
+            <div class="trackItem-songTitle control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: items.title;
+                    state_error: items.title.hasError MS.Entertainment.Utilities.toggleClassName;">
+                <div class="metadataField-label" data-win-bind="innerText: items.title.displayName"></div>
                 <input class="metadataField-editBox" type="text" tabindex="-1" data-ent-type="metadataField" data-win-automationid="trackTitleField" data-win-bind="
-                           label: items.name.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
-                           maxLength: items.name.maxLength WinJS.Binding.setAttribute;">
+                           label: items.title.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                           maxLength: items.title.maxLength WinJS.Binding.setAttribute;">
             </div>
 
             
@@ -134,7 +134,7 @@
                 
                 
                 <div class="viewStateControl-loadingContainer removeFromDisplay" data-ent-member="_loadingElement" data-win-automationid="Dialog_Loading">
-                    <progress class="win-large win-ring"></progress>
+                    <ms-progress class="win-large win-ring"></ms-progress>
                 </div>
 
                 
@@ -175,12 +175,12 @@
                                     
                                     
                                     
-                                    <div class="editBoxes-albumTitle control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: dataContext.items.name;
-                                        state_error: dataContext.items.name.hasError MS.Entertainment.Utilities.toggleClassName;">
-                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.name.displayName"></div>
+                                    <div class="editBoxes-albumTitle control-metadataField" data-win-control="MS.Entertainment.UI.Controls.MetadataField" data-win-bind="winControl.dataContext: dataContext.items.title;
+                                        state_error: dataContext.items.title.hasError MS.Entertainment.Utilities.toggleClassName;">
+                                        <div class="metadataField-label" data-win-bind="innerText: dataContext.items.title.displayName"></div>
                                         <input class="metadataField-editBox" type="text" data-ent-type="metadataField" data-win-automationid="albumTitleField" data-win-bind="
-                                               label: dataContext.items.name.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
-                                               maxLength: dataContext.items.name.maxLength WinJS.Binding.setAttribute;">
+                                               label: dataContext.items.title.displayName MS.Entertainment.Framework.AccUtils.setAriaAttribute;
+                                               maxLength: dataContext.items.title.maxLength WinJS.Binding.setAttribute;">
                                     </div>
 
                                     

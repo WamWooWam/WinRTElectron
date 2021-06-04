@@ -9,9 +9,16 @@
     "node-fetch": "^2.6.0"
   },
   "devDependencies": {
-    "electron": "^10.1.2",
-    "electron-packager": "^15.0.0",
-    "typescript": "^3.9.2"
+    "electron": "^12.0.2",
+    "electron-builder": "^22.10.5",
+    "electron-packager": "^15.2.0",
+    "postcss": "^8.2.8",
+    "postcss-cli": "^8.3.1",
+    "postcss-html": "^0.36.0",
+    "postcss-prettify": "^0.3.4",
+    "postcss-syntax": "^0.36.2",
+    "postcss-unprefix": "^2.1.4",
+    "typescript": "^4.3.2"
   },
   "scripts": {
     "start": "electron ."

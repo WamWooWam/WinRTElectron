@@ -12,7 +12,6 @@ export class ContactPicker {
     pickContactsAsync(): IAsyncOperation<Collections.Vector<Contact>> {
         return IAsyncOperation.wrap((async () => {
             let resp = await IpcHelper.send("contact-picker", { commitButtonText: this.commitButtonText, selectionMode: this.selectionMode });
-
             return new Collections.Vector<Contact>([]);
         })())
     }

@@ -100,6 +100,8 @@ export class StorageFolder extends StorageItem {
     }
 
     createFileAsync(name: string, collision: CreationCollisionOption): IAsyncOperation<StorageFile> {
+        name = `${name}`;
+
         return new IAsyncOperation((res, rej) => {
             this.ensureInitialised().then(_ => {
                 var filePath = _path.join(this.path, name);
@@ -140,6 +142,8 @@ export class StorageFolder extends StorageItem {
     }
 
     getFileAsync(name: string): IAsyncOperation<StorageFile> {
+        name = `${name}`;
+        
         return new IAsyncOperation((res, rej) => {
             this.ensureInitialised().then(_ => {
                 var filePath = _path.join(this.path, name);

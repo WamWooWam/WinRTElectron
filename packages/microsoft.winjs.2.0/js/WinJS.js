@@ -32631,7 +32631,7 @@ define('WinJS/Controls/ItemContainer/_ItemEventsHandler',[
                         leftButton,
                         rightButton;
                     site.pressedElement = eventObject.target;
-                    if (_WinRT.Windows.UI.Input.PointerPoint) {
+                    if (/*_WinRT.Windows.UI.Input.PointerPoint*/ false) {
                         // xButton is true when you've x-clicked with a mouse or pen. Otherwise it is false.
                         var currentPoint = this._getCurrentPoint(eventObject);
                         var pointProps = currentPoint.properties;

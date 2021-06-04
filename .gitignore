@@ -6,6 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+*.winmd
+*.dll
+*.pri
+*.exe
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -43,6 +48,9 @@ jspm_packages/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/
+
+B3B9BB81.56264F78B4FFF/
+zeptolabuklimited.cuttherope/
 
 # TypeScript cache
 *.tsbuildinfo

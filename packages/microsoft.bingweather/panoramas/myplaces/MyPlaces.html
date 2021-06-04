@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>MyPlaces</title>
+<!-- My Places References -->
+<link rel="stylesheet" href="/css/secondaryPanos.css" />
+<script src="/panoramas/myplaces/MyPlaces.js"></script>
+</head>
+<body>
+<div class="myPlaces headerFontDark fragment" id="mainContainer">
+<div class="platformMainContent" id="mainPanorama"
+data-win-control="CommonJS.Immersive.Panorama"
+data-win-bind="winControl.title: title; winControl.clusterDataSource : listDataSource">
+</div>
+<!-- Bottom Edgy -->
+<div id="myPlacesEdgy" class="platformActionBar" data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'bottom'}" aria-label="Action Bar">
+<div class="mainActionBarDiv-left">
+<button id="setDefaultButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE137', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: SetDefaultButtonTitle">
+</button>
+<button id="pinButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE015', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: PinButtonTitle">
+</button>
+<button id="unpinButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE016', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: UnpinButtonTitle">
+</button>
+<button id="removeLocationButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE018', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: RemoveButtonTitle">
+</button>
+<button id="clearButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE009', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: ClearButtonTitle">
+</button>
+<button id="changeHomeButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE185', extraClass: 'appexSymbol'}" style="display:none" data-win-bind="winControl.label: ChangeHomeButtonTitle" />
+</div>
+<div class="mainActionBarDiv-right platformFeedbackButtonParent">
+<button id="addFavoriteButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE017', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: AddButtonTitle"></button>
+<button id="currentLocationButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE013', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: CurrentLocationButtonTitle" style="display:none" />
+<button id="changeUnitToFButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE151', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: ChangeUnitToFButtonTitle"></button>
+<button id="changeUnitToCButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE150', extraClass: 'appexSymbol'}" style="display:none"
+data-win-bind="winControl.label: ChangeUnitToCButtonTitle"></button>
+<button id="refreshButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: RefreshButtonTitle"></button>
+<button id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: HelpButtonTitle"></button>
+</div>
+</div>
+</div>
+<div id="flyoutAnchor"></div>
+<!-- Change Home flyout -->
+<div id="changeHomeFlyout" data-win-control="WinJS.UI.Flyout"> <!-- bhargavm - ToDo data-win-res="{ attributes: {'aria-label': 'alertsFlyoutAriaText' } }">-->
+</div>
+</body>
+</html>

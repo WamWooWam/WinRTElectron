@@ -1,0 +1,15 @@
+{
+  "market": {
+    "DEFAULT_API_HOST": "http://api.bing.com",
+    "TOU_PRIVACY_STATEMENT_URL": "http://g.msn.com/1ewBingWin8/SettingsPrivacyit-it",
+    "TOU_SERVICE_AGREEMENT_URL": "http://g.msn.com/1ewBingWin8/SettingsTOUit-it",
+    "QUERY_PARAM_MKT": "it-it",
+    "QUERY_PARAM_SETLANG": "it-it",
+    "DEFAULT_HOST": "http://www.bing.com",
+    "INTERNET_CONTENT_PROVIDER_FLAG": "off",
+    "IMPRESSUM_FLAG": "off",
+    "IMPRESSUM_LINK": "",
+    "FEEDBACK_URL": "http://g.msn.com/1ewbingwin8/SettingsFeedbackit-it",
+    "HELP_URL": "http://answers.microsoft.com/en-us/Search/Search?SearchTerm=bing&CurrentScope.ForumName=windows&CurrentScope.Filter=windows_8-winapps&askingquestion=false"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "Files": {
+    "images": {
+      "skypeSmall.png": "images\\scale-80\\skypeSmall.png",
+      "skype_wide_logo.png": "images\\scale-80\\skype_wide_logo.png",
+      "Square70x70.png": "images\\scale-80\\Square70x70.png",
+      "s_logo.png": "images\\scale-80\\s_logo.png",
+      "s_logo_24x24.png": "images\\s_logo_24x24.scale-80.png",
+      "s_logo_50x50.png": "images\\scale-80\\s_logo_50x50.png"
+    }
+  }
+}

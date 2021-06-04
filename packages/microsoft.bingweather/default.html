@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>WeatherApp</title>
+<style> 
+@font-face {
+font-family: AppExSymbolFont;
+src: url('/common/fonts/AppExSymbol-Regular.ttf');
+}
+</style>
+<!-- WinJS references -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<script src="///MSAdvertisingJS/ads/ad.js" ></script>
+<!-- Platform references -->
+<script src="/common/js/utilities.js"></script>
+<script src="/common/js/controls.js"></script>
+<script src="/common/js/navigation.js"></script>
+<script src="/common/js/services.js"></script>
+<script src="/common/js/autosuggest.js"></script>	
+<script src="/common/js/search.js"></script>
+<script src="/common/js/ads.js"></script>
+<!-- UI references -->
+<script src="/js/share.js"></script>
+<script src="/js/topEdgy.js"></script>
+<script src="/js/errorCodes.js"></script>    
+<script src="/js/processListener.js"></script>
+<script src="/js/geocodeLocation.js"></script>
+<script src="/js/settingsManager.js"></script>
+<script src="/js/geocodeCache.js"></script>
+<script src="/js/default.js"></script>       
+<script src="/js/weather.js"></script>
+<script src="/js/app.js"></script>
+<script src="/js/weatherUtilities.js"></script>
+<script src="/js/predict.js"></script>
+<script src="/js/geocodePolygonSearch.js"></script>
+<script src="/js/locationSuggest.js"></script>
+<script src="/js/search.js"></script>
+<script src="/js/locationTracking.js"></script>
+<script src="/js/weatherServices.js"></script>
+<script src="/WeatherControls/core/weatherBasePage.js"></script>
+<link rel="stylesheet" href="//Microsoft.WinJS.2.0/css/ui-dark.css" />
+<link rel="stylesheet" href="/common/css/common.css" />
+<link rel="stylesheet" href="/css/default.css" /> 
+</head>
+<body>
+<div id="platformNavigationBar" data-win-control="WinJS.UI.AppBar" data-win-options="{placement:'top', layout:'custom'}" aria-label="Navigation Bar">
+<div data-win-control="CommonJS.NavigationBar" data-win-bind="winControl.channels: channels"></div>
+</div>
+<div id="platformPageArea"></div>
+<div id="splashContainer" class="platformSplash">
+<img id="splashImage" src="/images/splash.png" />
+<progress id="splashProgress" class="win-medium win-ring"></progress>
+</div>
+</body>
+</html>

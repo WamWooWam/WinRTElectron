@@ -1,0 +1,15 @@
+.check-button {
+    margin: 12px 0;
+}
+
+.checking-progress {
+    height: 6px !important;
+    margin: 12px 0;
+    width: 100%;
+    max-width: 450px;
+    justify-self: stretch;
+}
+
+#updates-checking {
+    align-self: stretch;
+}

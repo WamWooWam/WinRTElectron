@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<script src="/js/delayedBasePage.js"></script>
+<script src="/panoramas/weathermaps/Common/mapUtilities.js"></script>
+<script src="/panoramas/weathermaps/MapControls/Legend.js"></script>
+<script src="/js/chart.js"></script>
+<script src="/common/js/ads.js"></script>
+<script src="/common/js/mediaplayback.js"></script>
+<script src="/js/settingsUI.js"></script>
+<link rel="stylesheet" href="/common/css/delayedCommon.css" />
+<link rel="stylesheet" href="/css/interactivemaps.css" />
+<link rel="stylesheet" href="/css/historical.css" />
+</head>
+<body>
+<div id="historicalWeather" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div id="hwClusterWrapper" class="chartClusterWrapper">
+<div id="hwChart" class="win-interactive chartPlot">
+</div>
+<div id="hwMonthlyModule" class="chartMonthlyModule">
+<div id="hwModuleShifted" class="chartMonthlyModuleShifted" role="document">
+<div id="hwMonth" class="colorChartHeaders hwMonthName"></div>
+<table id="hwProperties"></table>
+</div>
+<div id="hwModuleHorizontal" class="chartMonthlyModuleShifted">
+<div id="hwMonthHistorical" class="colorChartHeaders hwMonthName"></div>
+<table id="hwHistoricalLeftProperties" class="hwFloat"></table>
+<table id="hwHistoricalRightProperties" class="hwFloat"></table>
+</div>
+</div>
+<div id="hwHeaders" class="win-interactive chartFilters"></div>
+<div id="hwChartTitle" class="chartTitle"></div>
+<div id="hwAttributions" class="chartAttributions">
+<div class="chartAttributionsInnerContainer">
+<div id="hwAttrib1" class="chartAttribution"><span class="attribtext"></span></div>
+</div>
+</div>
+</div>
+</div>
+<div id="interactiveMaps" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div class="iMapsContainer">
+<div class="iMapsImageViewport">
+<div class="iMapsBaseMapDiv">
+<div data-win-control="CommonJS.ImageCard"
+data-win-bind="winControl.imageSource: basemap.url WeatherAppJS.Utilities.UI.imageCardSource" data-win-options="{noIdentifier: 1, classification: 'hidden'}">
+</div>
+</div>
+<div class="iMapsOverlayDiv">
+<div data-win-control="CommonJS.ImageCard"
+data-win-bind="winControl.imageSource: overlay.url WeatherAppJS.Utilities.UI.imageCardSource" data-win-options="{noIdentifier: 1, classification: 'hidden'}">
+</div>
+</div>
+<div class="iMapsLabelsDiv">
+<div data-win-control="CommonJS.ImageCard"
+data-win-bind="winControl.imageSource: labels.url WeatherAppJS.Utilities.UI.imageCardSource" data-win-options="{noIdentifier: 1, classification: 'hidden'}">
+</div>
+</div>
+<div class="win-interactive iMapsProgressBar"></div>
+<button id="iMapsFullScreenButton" class="win-commandicon win-commandring roundUIBtnLight grayButton playButton" data-win-res="{ attributes: { 'aria-label': '/platform/mediaPlaybackPlayButtonAriaLabel' } }"></button>
+<div class="iMapsLegendDiv" dir="ltr" data-win-control="WeatherAppJS.Maps.Legend"></div>
+<div class="iMapsTimestampDiv"></div>
+</div>
+<div class="win-interactive iMapsFilterBar"></div>
+</div>
+</div>
+<!-- historical chart grid -->
+<div id="historicalChartGrid" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div class="historicalGrid">
+<div class="wrapper">
+<div class="yaxis">
+<div class="yticksWrapper">
+</div>
+</div>
+<div class="chart">
+<div class="yGrid">
+<div class="yGridWrapper"></div>
+</div>
+<div class="month" style="-ms-grid-column: 1;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 2;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 3;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 4;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 5;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 6;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 7;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 8;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 9;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 10;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 11;">
+<div class="data"></div>
+</div>
+<div class="month" style="-ms-grid-column: 12;">
+<div class="data"></div>
+</div>
+</div>
+<div style="clear: both;"></div>
+</div>
+<div class="xaxis">
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+<div class="monthname histXAxisValue"></div>
+</div>
+</div>
+</div>
+<!-- settings templates -->
+<div id="providerTemplateLink" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div class="localProvider">
+<div class="attributionHeading" data-win-bind="textContent: attributionHeading"></div>
+<div class="providerLogo">
+<a data-win-bind="href: providerUrl">
+<img data-win-bind="src: providerLogo" /></a>
+</div>
+</div>
+</div>
+<div id="providerTemplate" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div class="localProvider">
+<div class="attributionHeading" data-win-bind="textContent: attributionHeading"></div>
+<div class="providerName" data-win-bind="textContent: providerName"></div>
+</div>
+</div>
+<!-- Share template -->
+<div id="shareTemplate" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div style="font-family: 'Segoe UI', Tahoma, Verdana, Arial, sans-serif;">
+<div style="font-size: 26.66667px; line-height: 32px; font-weight: 700; padding-top: 0px; padding-bottom: 10px; letter-spacing: 0.02em;">
+<span id="locationName" style="color: #333333;">
+<!--[locationName]-->
+</span>
+</div>
+<div style="font-size: 14.66667px; line-height: 20px; font-weight: 400; padding-top: 0px; padding-bottom: 0px; letter-spacing: 0.02em;">
+<span id="snippet" style="color: #000000;">
+<!--[snippet]-->
+</span>
+</div>
+<div style="font-size: 14.66667px; line-height: 20px; font-weight: 400; padding-top: 20px; padding-bottom: 0px; letter-spacing: 0.02em;">
+<span id="deepLink" style="color: #666666;">
+<!--[deepLink]-->
+</span>
+</div>
+</div>
+</div>
+<!--Nearby Ski Resorts-->
+<div id="NearbyResortsTemplate" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div class="NearbyResortsTile">
+<div class="resortImage">
+<img data-win-bind="src:thumbnail" />
+</div>
+<div class="tileGradient"></div>
+<div class="resortName" data-win-bind="innerText: name"></div>
+<div class="snow">
+<span data-win-bind="innerText: snow"></span>
+<span class="snowdaysGlyph"><span></span></span>
+</div>
+</div>
+</div>
+<!-- template for each alert -->
+<div id="alertModule" data-win-control="WinJS.Binding.Template" style="display:none;">
+<div class="eachAlert" data-win-bind="style.display:displayType" tabindex="0" role="document">
+<div class="eachAlertHeader">
+<div class="alertTitle" data-win-bind="textContent:title"></div>
+<div class="alertTime" data-win-bind="textContent:formattedAlertTime"></div>
+</div>
+<div class="alertDesc" data-win-bind="textContent:description"></div>
+</div>
+</div>
+</body>
+</html>

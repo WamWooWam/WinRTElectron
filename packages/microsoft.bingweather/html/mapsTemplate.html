@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<script src="/js/jquery.js1"></script> <!-- renamed to js1 to prevent bytecode caching -->
+<script src="/js/jqueryuiAll_c.js1"></script> 
+<script src="/js/mapsFlyoutUI.js"></script>
+<link rel="stylesheet" href="/css/mapsflyout.css" />
+</head>
+<body>
+<!--Contains template for legacy maps cluster-->
+<div class="fragment" id="mapModule" data-win-control="WinJS.Binding.Template">
+<div class="mapItem">
+<div class="mapImageDiv">
+<div  data-win-control="CommonJS.ImageCard"
+data-win-bind="winControl.imageSource: map.thumbnailUrl WeatherAppJS.Utilities.UI.imageCardSource; winControl.alternateText: map.altText"  data-win-options="{noIdentifier: 1, classification: 'small'}" ></div>
+</div>
+<div class="mapDescription">
+<div class="mapTypeText" data-win-bind="textContent: map.type"></div>
+<div class="mapCategoryText" data-win-bind="textContent: map.category"></div>
+</div>
+</div>
+</div>
+<!-- Maps flyout -->
+<div id="mapsFlyoutTemplate" data-win-control="WinJS.Binding.Template">
+<div id="mapsFlyout" data-win-control="WinJS.UI.Flyout">
+<div id="mapsFlyoutContainer">
+<div id="mapsFlyoutContent">
+<div id="mapsFlyoutHeaderDiv">
+</div>
+<div id="mapsFlyoutImageDiv">
+<img id="mapsFlyoutImageb0" class="mapsFlyoutImage" src="/images/mapsFlyout/a_clear.gif" data-win-res="{alt: 'MapFlyoutAltText'}" />
+<div id="mapsFlyoutError" class="mapsError">
+<span data-win-res="{textContent: 'MapsUnavailable'}"></span>
+</div>
+</div>
+<div id="mapsFlyoutSliderDiv">
+<!-- maps controls are always ltr even in BiDi build -->
+<button id="wt_anim_button" class="wt_ab" dir="ltr" data-win-res="{ attributes: {'aria-label': 'play' } }" 
+onclick="WeatherAppJS.Utilities.UI.MapsFlyout.mapsPlayHandler()">
+<span id="wam_bt" class="bt_pl "></span>
+</button>
+<div id="wt_asb_wr" dir="ltr">
+<div id="slider-range-min" class="wt_asb">
+</div>
+</div>
+<span id="mapsFlyoutImagebts">
+</span>
+</div>
+<div id="mapsFlyoutAttrAndColorCodeDiv">
+<div id="mapsFlyoutAttribution">
+</div>
+<div class="mapsFlyoutColorCodeWrapper">
+<div id="mapsFlyoutColorCodeTextDiv" data-win-res="{textContent:'LegendName'}"></div>
+<div id="mapsFlyoutColorCodeImageDiv">
+<div id ="mapsFlyoutColorCodeImage">
+<img id="colorCodeImg" src="/images/mapsFlyout/a_clear.gif" data-win-res="{alt:'LegendName'}"/>
+</div>
+<div id="mapsFlyoutColorCodeImageText">
+<span id="textLeft" data-win-res="{textContent:'LeftText'}"></span>
+<span id="textRight" data-win-res="{textContent:'RightText'}"></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

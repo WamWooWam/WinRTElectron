@@ -1,0 +1,361 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+<link rel="stylesheet" href="/css/skipano.css" />
+</head>
+<body>
+<!-- day or night conditions template used in daily forecast panorama -->
+<div id="dailyConditionTemplate" data-win-control="WinJS.Binding.Template">
+<div class="dayNightWrapper">
+<div class="dayConditions" role="document">
+<div class="heading" data-win-res="{textContent: 'DayHeading'}"></div>
+<div class="conditions">
+<div class="skycode">
+<img class="skycodeImage" data-win-bind="src: daySkycode; alt: caption" />
+</div>
+<div class="conditionsWrapper">
+<span class="bigTempWrapper" data-win-bind="dir: symbolPosition" role="document">
+<span class="bigtemp" data-win-bind="textContent: temphighWithoutUnit"></span>
+<span class="bigTempDegree">°</span>
+</span>
+<div class="caption" data-win-bind="textContent: caption"></div>
+</div>
+</div>
+</div>
+<div class="nightConditions" role="document">
+<div class="heading" data-win-res="{textContent: 'NightHeading'}"></div>
+<div class="conditions">
+<div class="skycode">
+<img class="skycodeImage" data-win-bind="src: nightSkycode; alt: nightcaption" />
+</div>
+<div class="conditionsWrapper">
+<span class="bigTempWrapper" data-win-bind="dir: symbolPosition" role="document">
+<span class="bigtemp" data-win-bind="textContent: templowWithoutUnit"></span>
+<span class="bigTempDegree">°</span>
+</span>
+<div class="caption" data-win-bind="textContent: nightcaption"></div>
+</div>
+</div>
+</div>
+<div class="dayWindProperty">
+<div class="additionalConditions">
+<div class="collectionWrapper">
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'Wind'}"></div>
+<div class="ccValue" data-win-bind="textContent: daywindspeed"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="nightWindProperty">
+<div class="additionalConditions">
+<div class="collectionWrapper">
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'Wind'}"></div>
+<div class="ccValue" data-win-bind="textContent: nightwindspeed"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="dayAdditionalProperties">
+<div class="additionalConditions">
+<div class="collectionWrapper">
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'Humidity'}"></div>
+<div class="ccValue"><span data-win-bind="textContent: humidity; dir: symbolPosition"></span></div>
+</div>
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'Sunrise'}"></div>
+<div class="ccValue" data-win-bind="textContent: sunrise"></div>
+</div>
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'HourlyForecastPrecipChanceTitle'}"></div>
+<div class="ccValue precipWrapper">
+<span class="raindrop"> <span class="precipGlyph"> </span> </span> <span class="precip" data-win-bind="textContent: precipitation; dir: symbolPosition"> </span>
+</div>
+</div>
+<div class="condition uvindex" data-win-bind="style.display: showuvindex;">
+<div class="ccKey" data-win-res="{textContent: 'UVindex'}"></div>
+<div class="ccValue" data-win-bind="textContent: dayuv"></div>
+</div>
+</div>
+<div class="clearFloats"></div>
+</div>
+</div>
+<div class="nightAdditionalProperties">
+<div class="additionalConditions">
+<div class="collectionWrapper">
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'Humidity'}"></div>
+<div class="ccValue"><span data-win-bind="textContent: nighthumidity; dir: symbolPosition"></span></div>
+</div>
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'Sunset'}"></div>
+<div class="ccValue" data-win-bind="textContent: sunset"></div>
+</div>
+<div class="condition">
+<div class="ccKey" data-win-res="{textContent: 'HourlyForecastPrecipChanceTitle'}"></div>
+<div class="ccValue precipWrapper">
+<span class="raindrop"> <span class="precipGlyph"> </span> </span> <span class="precip" data-win-bind="textContent: nightprecipitation; dir: symbolPosition"> </span>
+</div>
+</div>
+</div>
+<div class="clearFloats"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="historicColumnTemplate" data-win-control="WinJS.Binding.Template">
+<table class="historicalData">
+<tr class="heading1">
+<th data-win-res="{textContent: 'MonthlyMaxTemp'}"></th>
+<th data-win-res="{textContent: 'MonthlyMinTemp'}"></th>
+<th class="optionalKey1"></th>
+</tr>
+<tr class="values1">
+<td data-win-bind="textContent: MaxTemp"></td>
+<td data-win-bind="textContent: MinTemp"></td>
+<td class="optionalValue1"></td>
+</tr>
+<tr class="heading2">
+<th data-win-res="{textContent: 'MonthlyRecordedHighTemp'}"></th>
+<th data-win-res="{textContent: 'MonthlyRecordedLowTemp'}"></th>
+<th class="optionalKey2"></th>
+</tr>
+<tr class="values2">
+<td data-win-bind="innerHTML: MaxRecordedTemp"></td>
+<td data-win-bind="innerHTML: MinRecordedTemp"></td>
+<td class="optionalValue2"></td>
+</tr>
+</table>
+</div>
+<div id="skiDetailsOverview" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsOverviewWrapper">
+<div class="leftTile" tabindex="0" data-win-bind="style.display: trail WeatherAppJS.Utilities.Formatting.displayConverter;" onkeydown="WeatherAppJS.Utilities.TabIndexManager.handleArrowKeyForAccessibility(event)">
+<div class="WeatherViewControl" id="trail" data-weather-dataid="trail" data-weather-view="WeatherAppJS.Configs.View.skiOverviewTrail" role="region"></div>
+</div>
+<div class="rightTile">
+<div class="WeatherViewControl" id="introduction" data-weather-dataid="introduction" data-weather-view="WeatherAppJS.Configs.View.skiOverviewIntroduction" role="region"></div>
+<div class="WeatherViewControl" id="currentInfo" data-weather-dataid="currentInfo" data-weather-view="WeatherAppJS.Configs.View.skiOverviewCurrentInfo" role="document"></div>
+<div class="WeatherViewControl" id="extraInfo" data-weather-dataid="extraInfo" data-weather-view="WeatherAppJS.Configs.View.skiOverviewExtraInfo" role="document"></div>
+</div>
+</div>
+</div>
+<div id="skiDetailsOverviewTrail" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsOverviewTrail">
+<div class="trailMap" data-win-bind="onclick: buttonTrailClick; onkeydown: buttonTrailClick" tabindex="0">
+<img data-win-bind="src: trailMap; alt: trailMapImageText" draggable="false" />
+</div>
+<div class="runs" role="document" id="autoID_ResortRunsData" data-win-bind="style.visibility: isTrailRunsAvailable WeatherAppJS.Utilities.Formatting.visibilityConverter">
+<div class="beginner header" data-win-res="{textContent: 'BeginnerRuns'}"></div>
+<div class="beginner value">
+<div class="Indicator"></div>
+<div class="percent" data-win-bind="innerText:percentageBeginnerRun"></div>
+</div>
+<div class="intermediate header" data-win-res="{textContent: 'IntermediateRuns'}"></div>
+<div class="intermediate value">
+<div class="Indicator"></div>
+<div class="percent" data-win-bind="innerText:percentageIntermediateRun"></div>
+</div>
+<div class="advanced header" data-win-res="{textContent: 'AdvancedRuns'}"></div>
+<div class="advanced value">
+<div class="Indicator"></div>
+<div class="percent" data-win-bind="innerText:percentageAdvancedRun"></div>
+</div>
+<div class="expert header" data-win-res="{textContent: 'ExpertRuns'}"></div>
+<div class="expert value">
+<div class="Indicator"></div>
+<div class="Indicator"></div>
+<div class="percent" data-win-bind="innerText:percentageExpertRun"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="skiDetailsOverviewIntroduction" data-win-control="WinJS.Binding.Template">
+<div class="overviewIntroductionHeader" data-win-res="{textContent: 'Introduction'}"></div>
+<div class="overviewGraph" role="region" id="autoID_OverviewElevationGraph">
+<img src="/images/skiElevationTriangles.svg" />
+<div class="vdText">
+<span class="ogLabel" data-win-res="{textContent: 'VerticalDrop'}"></span>
+<span class="ogValue" data-win-bind="innerHTML: elevation.verticalDrop;"></span>
+</div>
+<div class="smText">
+<span class="ogLabel" data-win-res="{textContent: 'Summit'}"></span>
+<span class="ogValue" data-win-bind="innerHTML: elevation.summit;"></span>
+</div>
+<div class="bsText">
+<span class="ogLabel" data-win-res="{textContent: 'Base'}"></span>
+<span class="ogValue" data-win-bind="innerHTML: elevation.base;"></span>
+</div>            
+</div>
+<!--ToDo: Check if backend can clear the text without sending any html tags.-->
+<div class="introText" data-win-bind="style.display: introText WeatherAppJS.Utilities.Formatting.displayConverter" role="document" id="autoID_IntroductionText">
+<span data-win-bind="innerText: introText;"></span>
+<span data-win-bind="style.display: moreClick WeatherAppJS.Utilities.Formatting.displayInlineConverter">
+<a tabindex="0" class="more" data-win-res="{innerText: 'moretext'}" data-win-bind="onclick: moreClick; onkeydown: moreClick"></a>
+</span>
+</div>
+<div class="overviewFooter">
+<div class="overview-footer-address" data-win-bind="onclick: buttonMapClick; onkeydown: buttonMapClick" role="link" id="autoID_IntroductionMapWrapper" tabindex="0">
+<div class="footerIcon"><span class="directionGlyph win-commandicon"></span></div>
+<div class="address-line1" data-win-bind="innerText: overfooter1; style.visibility: addressVisibility"></div>
+<div class="address-line2" data-win-bind="innerText: overfooter2; style.visibility: addressVisibility"></div>
+</div>
+<div class="overview-footer-link" data-win-bind="onclick: buttonWebClick; onkeydown:buttonWebClick; textContent: footerlink1; style.visibility: footerlinkVisibility" role="link" id="autoID_IntroductionResortLink" tabindex="0"></div>
+</div>
+</div>
+<div id="extraInfoAttribution" data-win-control="WinJS.Binding.Template">
+<div class="attribution"  data-win-bind="style.visibility: attributionVisibility">
+<span data-win-bind="innerText: dataAttributionText"></span>
+<a data-win-bind="href: providerUrl; textContent: providerName; onclick: attributionClick" tabindex="0"></a>
+</div>
+</div>
+<!--TODO: Modify property template when output data is binded. Make it general template.-->
+<div id="skiDetailsOverviewCurrentInfo" data-win-control="WinJS.Binding.Template">
+<div class="overviewCurrentInfoHeader" data-win-res="{textContent: 'Today'}"></div>
+<div class="overviewCurrentInfoProperties">
+<div class="property">
+<label data-win-bind="innerText:statusLabel;"></label>
+<div class="value" data-win-bind="innerText:status WeatherAppJS.Utilities.Formatting.resortStatusStringConverter; className: status  WeatherAppJS.Utilities.Formatting.resortStatusConverter"></div>
+</div>
+<div class="property">
+<label data-win-bind="innerText:freshSnowLabel;"></label>
+<div class="value" data-win-bind="dir: symbolPosition">
+<span data-win-bind="innerText:freshSnow;""></span>
+<span class="unit" data-win-bind="innerText: snowUnit;"></span>
+</div>
+</div>
+<div class="property">
+<label data-win-bind="innerText:baseDepthLabel;"></label>
+<div class="value" data-win-bind="dir: symbolPosition"> 
+<span data-win-bind="innerText:baseDepth;"></span>
+<span class="unit" data-win-bind="innerText: baseDepthUnit;"></span>
+</div>
+</div>
+<div class="property">
+<label data-win-bind="innerText:liftOpenLabel;"></label>
+<div class="value" data-win-bind="innerText:liftOpen;"></div>
+</div>
+<div class="property">
+<label data-win-bind="innerText:trailsOpenLabel;"></label>
+<div class="value" data-win-bind="innerText:trailsOpen;"></div>
+</div>
+<div class="property">
+<label data-win-bind="innerText:acresOpenLabel;"></label>
+<div class="value" data-win-bind="innerText:acresOpen;"></div>
+</div>
+<div class="property" data-win-bind="style.display: boarding WeatherAppJS.Utilities.Formatting.displayConverter">
+<label data-win-bind="innerText:boardingLabel;"></label>
+<div class="value" data-win-bind="innerText:boarding;"></div>
+</div>
+<div class="property" data-win-bind="style.display: tubing WeatherAppJS.Utilities.Formatting.displayConverter">
+<label data-win-bind="innerText:tubingLabel;"></label>
+<div class="value" data-win-bind="innerText:tubing;"></div>
+</div>
+<div class="property" data-win-bind="style.display: crossCountry WeatherAppJS.Utilities.Formatting.displayConverter">
+<label data-win-bind="innerText:crossCountryLabel;"></label>
+<div class="value" data-win-bind="innerText:crossCountry;"></div>
+</div>
+</div>
+</div>
+<div id="skiDetailsSlideShow" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsSlideShowTile">
+<div class="weatherSlideShowImage">
+<img data-win-bind="src:thumbnail" />
+</div>
+<div class="weatherSlideShowImageOverlay tileGradient"></div>
+<div class="weatherSlideShowAttribution" data-win-bind="innerText: date"></div>
+<div class="icon win-command">
+<div class="iconImage win-commandimage webCamGlyph"></div>
+</div>
+</div>
+</div>
+<div id="skiDetailsDeals" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsDealsTile">
+<div class="skiDetailsDealsContainer">
+<div class="skiDetailsDealImage">
+<img data-win-bind="src:thumbnail" />
+</div>
+<div class="skiDetailsTextContainer">
+<div class="skiDetailsDealHead" data-win-bind="innerText: dealTitle"></div>
+<div class="skiDetailsDealText" data-win-bind="innerText: dealText"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="skiDetailsResortReviewChart" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsResortReviewChart">
+<div class="skiDetailsRatingsGrid">
+<div class="reviewRatings" data-win-bind="textContent: totalRatings"></div>                
+<div class="reviewOverall" role="region" id="autoID_ReviewOverallRating">
+<div data-win-res="{textContent: 'SkiReviewOverAllText'}"></div>
+<div class="ratings">
+<div data-win-bind="textContent: overAllStarRating" ></div>
+<div class="smallstar" data-win-control="WinJS.UI.Rating" data-win-bind="winControl.userRating :overAllRating" data-win-options="{disabled: true}"></div>
+</div>
+</div>
+<div class="reviewFamily" role="region" id="autoID_ReviewFamilyRating">
+<div data-win-res="{textContent: 'SkiReviewFamilyFriendly'}"></div>
+<div class="ratings" >
+<div data-win-bind="textContent: familyStarRating"></div>
+<div class="smallstar" data-win-control="WinJS.UI.Rating" data-win-bind="winControl.userRating :familyRating" data-win-options="{disabled: true}"></div>
+</div>
+</div>
+</div>
+<div class="skiDetailsChartGrid">
+<div class="chart">
+<div class="ratingBar" style="-ms-grid-column: 1;" >  
+<div class="ratingPct" data-win-bind="innerText: ratingFiveValue; style.margin: ratingFiveNum WeatherAppJS.Utilities.Formatting.constructBarHeight"></div>                         
+<div data-win-bind="className: ratingFiveBarColor; style.height: ratingFiveNum WeatherAppJS.Utilities.Formatting.getBarHeight" ></div>
+</div>
+<div class="ratingBar" style="-ms-grid-column: 2;" >
+<div class="ratingPct" data-win-bind="innerText: ratingFourValue; style.margin: ratingFourNum WeatherAppJS.Utilities.Formatting.constructBarHeight"></div>                         
+<div data-win-bind="className: ratingFourBarColor; style.height: ratingFourNum WeatherAppJS.Utilities.Formatting.getBarHeight" ></div>
+</div>
+<div class="ratingBar" style="-ms-grid-column: 3;" >
+<div class="ratingPct" data-win-bind="innerText: ratingThreeValue; style.margin: ratingThreeNum WeatherAppJS.Utilities.Formatting.constructBarHeight"></div>                         
+<div data-win-bind="className: ratingThreeBarColor; style.height: ratingThreeNum WeatherAppJS.Utilities.Formatting.getBarHeight" ></div>
+</div>
+<div class="ratingBar" style="-ms-grid-column: 4;" >
+<div class="ratingPct" data-win-bind="innerText: ratingTwoValue; style.margin: ratingTwoNum WeatherAppJS.Utilities.Formatting.constructBarHeight"></div>                         
+<div data-win-bind="className: ratingTwoBarColor; style.height: ratingTwoNum WeatherAppJS.Utilities.Formatting.getBarHeight" ></div>
+</div>
+</div>
+<div class="xaxis">
+<div class="ratingStar" data-win-res="{textContent: 'SkiReviewFiveStarsText'}"></div>
+<div class="ratingStar" data-win-res="{textContent: 'SkiReviewFourStarsText'}"></div>
+<div class="ratingStar" data-win-res="{textContent: 'SkiReviewThreeStarsText'}"></div>
+<div class="ratingStar" data-win-res="{textContent: 'SkiReviewTwoStarsText'}"></div>
+</div>
+</div>
+</div>
+</div>
+<div id="skiDetailsResortReview" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsReviewTile">
+<div class="skiDetailsReviewHeadline">
+<span class="reviewHeadline" data-win-bind="textContent: headline"></span>
+<span class="reviewDate" data-win-bind="textContent: date"></span>
+</div>
+<div class="smallstar right" data-win-control="WinJS.UI.Rating"
+data-win-bind="winControl.userRating:rating" data-win-options="{disabled: true}">
+</div>
+<div class="skiDetailsDealText" data-win-bind="textContent: reviewText"></div>
+</div>
+</div>
+<div id="skiDetailsreviewMore" data-win-control="WinJS.Binding.Template">
+<div class="skiDetailsResortMoreText">
+<a tabindex="0" role="link" class="more" data-win-res="{innerText: 'moretext'}" data-win-bind="onClick: reviewMoreUrl; style.display: reviewMoreUrl WeatherAppJS.Utilities.Formatting.displayConverter"></a>
+</div>
+</div>
+<div id="photosynthItemTemplate" data-win-control="WinJS.Binding.Template">
+<div tabindex="0" class="photosynthItem">
+<div class="thumbnail" data-win-control="CommonJS.ImageCard" data-win-options="{noIdentifier: 1}" data-win-bind="winControl.imageSource: thumbnail"></div>
+<div class="tileOverlay">
+<div class="title" data-win-bind="innerText: title"></div>
+<div class="icon"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

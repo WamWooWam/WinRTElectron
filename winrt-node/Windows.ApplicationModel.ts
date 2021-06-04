@@ -1,6 +1,6 @@
 // <ref src="Windows.Foundation.ts"/>
 
-import { EventTarget } from "./Windows.Foundation";
+import { EventTarget, IAsyncOperation } from "./Windows.Foundation";
 import { isInWWA, getCurrentPackageName } from "./util";
 import * as fs from "fs"
 import * as path from "path"
@@ -283,6 +283,89 @@ export namespace ApplicationModel {
             text,
             uri,
             webLink
+        }
+    }
+
+    export namespace Search {
+        export class LocalContentSuggestionSettings {
+            enabled: Boolean;
+            aqsFilter: string;
+            locations: any[];
+            propertiesToMatch: string[];
+        }
+
+        export class SearchPane {
+            showOnKeyboardInput: Boolean;
+            searchHistoryEnabled: Boolean;
+            searchHistoryContext: string;
+            placeholderText: string;
+            language: string;
+            queryText: string;
+            visible: Boolean;
+
+            setLocalContentSuggestionSettings(settings: LocalContentSuggestionSettings): void {
+                console.warn('shimmed function SearchPane.setLocalContentSuggestionSettings');
+            }
+
+            show(): void {
+                console.warn('shimmed function SearchPane.show');
+            }
+
+            showWithQuery(query: string): void {
+                console.warn('shimmed function SearchPane.show_1');
+            }
+
+            trySetQueryText(query: string): Boolean {
+                throw new Error('shimmed function SearchPane.trySetQueryText');
+            }
+
+            static hideThisApplication(): void {
+                console.warn('shimmed function SearchPane.hideThisApplication');
+            }
+
+            static getForCurrentView(): SearchPane {
+                return new SearchPane();
+            }
+
+            addEventListener(name: string, handler: Function) {
+                console.warn(`SearchPane::addEventListener: ${name}`);
+                switch (name) {
+                    case "querychanged": // Foundation.TypedEventHandler<SearchPane,SearchPaneQueryChangedEventArgs>
+                    case "querysubmitted": // Foundation.TypedEventHandler<SearchPane,SearchPaneQuerySubmittedEventArgs>
+                    case "resultsuggestionchosen": // Foundation.TypedEventHandler<SearchPane,SearchPaneResultSuggestionChosenEventArgs>
+                    case "suggestionsrequested": // Foundation.TypedEventHandler<SearchPane,SearchPaneSuggestionsRequestedEventArgs>
+                    case "visibilitychanged": // Foundation.TypedEventHandler<SearchPane,SearchPaneVisibilityChangedEventArgs>
+                        break;
+                }
+
+            }
+        }
+    }
+
+    export namespace Store {
+
+        export class LicenseInformation extends EventTarget {
+            get isTrial(): boolean {
+                return false;
+            }
+
+            get isActive(): boolean {
+                return true;
+            }
+        }
+
+        export class CurrentApp {
+            static getAppReceiptAsync(): IAsyncOperation<string> {
+                return new IAsyncOperation((resolve, reject) => resolve("fuck"));
+            }
+
+            static get licenseInformation() {
+                return new LicenseInformation();
+            }
+
+            static addEventListener(event: string, handler: any) {
+                console.warn("CurrentApp::addEventListener " + event)
+            }
         }
     }
 

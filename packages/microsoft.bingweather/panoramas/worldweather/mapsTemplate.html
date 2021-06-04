@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+</head>
+<body>
+<div class="fragment">
+<div id="eachPanelItem" data-win-control="WinJS.Binding.Template">
+<div class="panelItem" tabindex="0" data-win-bind="onclick:panelItemOnClick" role="button">
+<div class="panelItemBox">
+<span class="panelLocationName" data-win-bind="textContent:firstName"></span>
+<span class="panelLocationLastName" data-win-bind="textContent:lastName"></span>
+<div class="panelSkycode">
+<img class="panelSkycodeImg" data-win-bind="style.display: displayImg; src:skycode; alt: caption" />
+</div>
+<div class="panelTemp">
+<span class="panelHighTemp" data-win-bind="textContent:tempHigh; dir: symbolPosition"></span>
+<span data-win-res="{textContent:'WWHighLowSeperator'}"></span>
+<span class="panelLowTemp" data-win-bind="textContent:tempLow; dir: symbolPosition"></span>
+</div>
+</div>
+</div>
+</div>
+<div id="eachLocationTileItem" data-win-control="WinJS.Binding.Template">
+<div class="locationTileItem">
+<div class="locationDataWrapper">
+<div class="locationShadowBox">
+<div class="skycodeImg">
+<img class="skycodeimage" data-win-bind="style.display: displayImg;src:skycode; alt: caption" />
+</div>
+<div class="locationWrapper">
+<div class="highLow">
+<span class="largeRegular" data-win-bind="textContent:tempHigh; dir: symbolPosition"></span>
+<span class="largeRegular" data-win-res="{textContent:'WWHighLowSeperator'}"></span>
+<span class="lowTemp largeRegular" data-win-bind="textContent:tempLow; dir: symbolPosition"></span>
+</div>
+<div class="locationName" data-win-bind="textContent:firstName"></div>
+</div>
+</div>
+<img class="arrowImg" role="presentation" />
+</div>
+</div>
+<div class="bullet"></div>
+</div>
+</div>
+</body>
+</html>

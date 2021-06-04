@@ -1,0 +1,18 @@
+{
+  "name": "microsoft.zune.shim",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "mime-types": "^2.1.29",
+    "music-metadata": "^7.8.3",
+    "node-machine-id": "^1.1.12"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.6.0",
+    "ts-loader": "^8.1.0",
+    "typescript": "^4.2.3",
+    "webpack": "^5.28.0",
+    "@types/mime-types": "^2.1.0"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "Files": {
+    "views": {
+      "start": {
+        "css": {
+          "startview.css": "views\\start\\css\\und-cyrl\\startview.css"
+        }
+      },
+      "main": {
+        "css": {
+          "mainview.css": "views\\main\\css\\und-cyrl\\mainview.css"
+        }
+      },
+      "home": {
+        "css": {
+          "homeview.css": "views\\home\\css\\und-cyrl\\homeview.css"
+        }
+      }
+    },
+    "shell": {
+      "css": {
+        "shell.css": "shell\\css\\und-cyrl\\shell.css",
+        "navigationerror.css": "shell\\css\\und-cyrl\\navigationerror.css",
+        "fontmetrics.css": "shell\\css\\und-cyrl\\fontmetrics.css"
+      }
+    }
+  }
+}

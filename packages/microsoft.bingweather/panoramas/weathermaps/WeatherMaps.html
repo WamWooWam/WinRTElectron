@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>WeatherMaps</title>
+<!-- Bing Maps references -->
+<script type="text/javascript" src="///Bing.Maps.JavaScript//js/veapicore.js"></script>
+<link rel="stylesheet" href="/css/secondaryPanos.css" />
+<script src="/panoramas/weathermaps/Common/mapUtilities.js"></script>
+<script src="/panoramas/weathermaps/BaseMap/baseMap.js"></script>
+<script src="/panoramas/weathermaps/BaseMap/baseMapController.js"></script>
+<script src="/panoramas/weathermaps/MapLayers/MapLayer.js"></script>
+<script src="/panoramas/weathermaps/MapLayers/CanvasLayer/CanvasImageRenderer.js"></script>
+<script src="/panoramas/weathermaps/MapLayers/CanvasLayer/CanvasDataManager.js"></script>
+<script src="/panoramas/weathermaps/MapLayers/CanvasLayer/CanvasLayer.js"></script>
+<script src="/panoramas/weathermaps/MapLayers/LabelsLayer/LabelsTileLayer.js"></script>
+<script src="/panoramas/weathermaps/MapControls/MapsTopBar.js"></script>
+<script src="/panoramas/weathermaps/MapControls/SeekBar.js"></script>
+<script src="/panoramas/weathermaps/MapControls/TimeStamp.js"></script>
+<script src="/panoramas/weathermaps/MapControls/Legend.js"></script>
+<script src="/panoramas/weathermaps/MapControls/ZoomControl.js"></script>
+<script src="/panoramas/weathermaps/WeatherMaps.js"></script>
+<script src="/lib/UserInteractionCrunched.js"></script>
+</head>
+<body>
+<div class="WeatherMaps fragment">
+<div id="header"></div>
+<div id="mapdiv"></div>
+<div id="mapcontrols"></div>
+<!-- Bottom Edgy -->
+<div id="bottomEdgy" class="platformActionBar" data-win-control="WinJS.UI.AppBar" data-win-options="{layout:'custom', placement:'bottom'}" aria-label="Action Bar">
+<div class="mainActionBarDiv-right platformFeedbackButtonParent">
+<button id="changeUnitToFButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE151', extraClass: 'appexSymbol'}" style="display: none"
+data-win-bind="winControl.label: ChangeUnitToFButtonTitle"></button>
+<button id="changeUnitToCButton" class="mainActionBarButton-left" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE150', extraClass: 'appexSymbol'}" style="display: none"
+data-win-bind="winControl.label: ChangeUnitToCButtonTitle"></button>
+<button id="refreshButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uE067', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: RefreshButtonTitle"></button>
+<button id="helpButton" data-win-control="WinJS.UI.AppBarCommand" data-win-options="{icon: '\uFF60', extraClass: 'appexSymbol'}" data-win-bind="winControl.label: HelpButtonTitle"></button>
+</div>
+</div>
+</div>
+</body>
+</html>

@@ -630,9 +630,9 @@ Jx.delayDefine(Jx, "PeekBar", function() {
         return this._showAsTab
     };
     n.allowTabVersion = function(n) {
-        this._allowTabVersion !== n && (n ? (window.addEventListener("MSPointerDown", this._onPointerDown, true),
+        this._allowTabVersion !== n && (n ? (window.addEventListener("pointerdown", this._onPointerDown, true),
             window.addEventListener("mousemove", this._onMouseMove, true)) : (this._showFullView(),
-            window.removeEventListener("MSPointerDown", this._onPointerDown, true),
+            window.removeEventListener("pointerdown", this._onPointerDown, true),
             window.removeEventListener("mousemove", this._onMouseMove, true)));
         this._allowTabVersion = n
     };
@@ -676,12 +676,12 @@ Jx.delayDefine(Jx, "PressEffect", function() {
             this._pressed = null;
             this._pointerId = null;
             this._captureElement = null;
-            t.addEventListener("MSPointerDown", this._onPointerDown, false)
+            t.addEventListener("pointerdown", this._onPointerDown, false)
         };
     t.prototype = {
         dispose: function() {
             var n = this._element;
-            n && (n.removeEventListener("MSPointerDown", this._onPointerDown, false),
+            n && (n.removeEventListener("pointerdown", this._onPointerDown, false),
                 this._element = null,
                 this._unhook())
         },
@@ -693,9 +693,9 @@ Jx.delayDefine(Jx, "PressEffect", function() {
                     n.pointerType === "touch" && (u = this._captureSelector,
                         u && (t = this._element.querySelector(u))),
                     f = t || window,
-                    f.addEventListener("MSPointerUp", this._onPointerUp, false),
-                    f.addEventListener("MSPointerCancel", this._onPointerUp, false),
-                    t && (t.addEventListener("MSLostPointerCapture", this._onPointerUp, false),
+                    f.addEventListener("pointerup", this._onPointerUp, false),
+                    f.addEventListener("pointercancel", this._onPointerUp, false),
+                    t && (t.addEventListener("lostpointercapture", this._onPointerUp, false),
                         t.msSetPointerCapture(r)),
                     this._pressed = i,
                     this._pointerId = r,
@@ -710,10 +710,10 @@ Jx.delayDefine(Jx, "PressEffect", function() {
                 n, t;
             i && (n = this._captureElement,
                 t = n || window,
-                n && (n.removeEventListener("MSLostPointerCapture", this._onPointerUp, false),
+                n && (n.removeEventListener("lostpointercapture", this._onPointerUp, false),
                     n.msReleasePointerCapture(this._pointerId)),
-                t.removeEventListener("MSPointerCancel", this._onPointerUp, false),
-                t.removeEventListener("MSPointerUp", this._onPointerUp, false),
+                t.removeEventListener("pointercancel", this._onPointerUp, false),
+                t.removeEventListener("pointerup", this._onPointerUp, false),
                 this._pressed = null,
                 this._pointerId = null,
                 this._captureElement = null)

@@ -64,7 +64,7 @@ MS.Entertainment.UI.Debug.defineAssert("MS.Entertainment.UI.Framework");
                     var parsedExternalLinkUri = null;
                     if (serviceResponse.deepLinkLocation) {
                         try {
-                            parsedDeepLinkUri = Windows.Foundation.Uri(serviceResponse.deepLinkLocation)
+                            parsedDeepLinkUri = new Windows.Foundation.Uri(serviceResponse.deepLinkLocation)
                         }
                         catch(e) {
                             MS.Entertainment.UI.Framework.fail("Failed to turn deep link location into uri " + serviceResponse.deepLinkLocation);
@@ -80,7 +80,7 @@ MS.Entertainment.UI.Debug.defineAssert("MS.Entertainment.UI.Framework");
                     }
                     if (serviceResponse.infoExternalLink) {
                         try {
-                            parsedExternalLinkUri = Windows.Foundation.Uri(serviceResponse.infoExternalLink)
+                            parsedExternalLinkUri = new Windows.Foundation.Uri(serviceResponse.infoExternalLink)
                         }
                         catch(e) {
                             MS.Entertainment.UI.Framework.fail("Failed to turn info external link into uri " + serviceResponse.infoExternalLink);

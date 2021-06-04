@@ -1,0 +1,34 @@
+{
+  "Files": {
+    "common": {
+      "images": {
+        "beak_nav_asset.png": "Common\\images\\beak_nav_asset.scale-100.png"
+      }
+    },
+    "images": {
+      "AP_pin.png": "images\\AP_pin.scale-100.png",
+      "badge.png": "images\\badge.scale-100.png",
+      "large.png": "images\\large.scale-100.png",
+      "logo.png": "images\\logo.scale-100.png",
+      "logoCategory.png": "images\\logoCategory.scale-100.png",
+      "logoSource.png": "images\\logoSource.scale-100.png",
+      "logoTopic.png": "images\\logoTopic.scale-100.png",
+      "NYT_pin.png": "images\\NYT_pin.scale-100.png",
+      "small.png": "images\\small.scale-100.png",
+      "smallCategory.png": "images\\smallCategory.scale-100.png",
+      "smallSource.png": "images\\smallSource.scale-100.png",
+      "smallTopic.png": "images\\smallTopic.scale-100.png",
+      "splash.png": "images\\splash.scale-100.png",
+      "store.png": "images\\store.scale-100.png",
+      "tiny.png": "images\\tiny.scale-100.png",
+      "tinyCategory.png": "images\\tinyCategory.scale-100.png",
+      "tinySource.png": "images\\tinySource.scale-100.png",
+      "tinyTopic.png": "images\\tinyTopic.scale-100.png",
+      "wide.png": "images\\wide.scale-100.png",
+      "wideCategory.png": "images\\wideCategory.scale-100.png",
+      "wideSource.png": "images\\wideSource.scale-100.png",
+      "wideTopic.png": "images\\wideTopic.scale-100.png",
+      "wsj_pin.png": "images\\wsj_pin.scale-100.png"
+    }
+  }
+}

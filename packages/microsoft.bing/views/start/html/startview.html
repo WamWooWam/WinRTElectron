@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Start view</title>
+
+    <!-- View references -->
+    <link href="/shell/css/shell.css" rel="stylesheet">
+    <link href="/views/start/css/startview.css" rel="stylesheet">
+    <script src="/views/start/mockData/trendingMockData.js"></script>
+    <script src="/data/js/arraydataprovider.js"></script>
+    <script src="/data/js/localstoragedataprovider.js"></script>
+    <script src="/data/js/localstoragecacheprovider.js"></script>
+    <script src="/data/js/datautilities.js"></script>
+    <script src="/data/js/aggregatedataprovider.js"></script>
+    <script src="/data/js/priorityaggregatedataprovider.js"></script>
+    <script src="/data/js/xhrdataprovider.js"></script>
+    <script src="/views/start/data/bingnewsdataprovider.js"></script>
+    <script src="/views/start/data/msntrendingdataprovider.js"></script>
+    <script src="/views/start/data/poptextdataprovider.js"></script>
+    <script src="/views/start/data/popvisualdataprovider.js"></script>
+    <script src="/data/js/listviewmodel.js"></script>
+    <script src="/views/start/js/trendingController.js"></script>
+    <script src="/views/start/js/startview.js"></script>
+</head>
+<body class="fullScreen">
+
+    <!-- Template for the group header -->
+    <div id="groupTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="group">
+            <span class="title text fontLarge fontWeightLight" data-win-bind="innerText: title"></span>
+            <span class="last-updated fontMedium fontWeightSemiLight" data-win-bind="innerText: lastUpdated"></span>
+        </div>
+    </div>
+
+    <!-- Trending template for hero image -->
+    <div id="heroTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="hero-item item image-box">
+            <div class="image-cell">
+                <img src="#" class="image" data-win-bind="src: Image" aria-label="trendsListHeroImage"/>
+            </div>
+            <div class="caption text fontLarge fontWeightLight" data-win-bind="innerText: SearchTermDisplay"></div>
+        </div>
+    </div>
+
+    <!-- Trending template for the news items -->
+    <div id="newsTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="news-item item">
+            <div class="content">
+                <img class="image-cell" src="#" data-win-bind="src:Image.Url"/>
+                <div class="title text fontLarge fontWeightLight" data-win-bind="innerText: Title"></div>
+                <div class="description text fontMedium fontWeightRegular" data-win-bind="innerText: Snippet"></div>
+                <div class="source text fontSmall fontWeightRegular" data-win-bind="innerText: Source"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Trending template for the text items -->
+    <div id="textTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="text-item item">
+            <div class="caption text fontLarge fontWeightLight" data-win-bind="innerText: title"></div>
+        </div>
+    </div>
+
+    <!-- Trending template for the image items -->
+    <div id="imageTemplate" data-win-control="WinJS.Binding.Template">
+        <div class="image-item item image-box">
+            <div class="image-cell">
+                <img src="#" class="image" data-win-bind="src: Image" aria-label="trendsListImageItem"/>
+            </div>
+            <div class="caption fontLarge fontWeightLight" data-win-bind="innerText: SearchTermDisplay"></div>
+        </div>
+    </div>
+
+    <!-- Offscreen rulers for ellipses calculation -->
+    <div class="trends itemRulers">
+        <div id="newsRuler" class="news-item item">
+            <div class="content">
+                <img class="image-cell" src="#"/>
+                <div class="title text fontLarge fontWeightLight"></div>
+                <div class="description text fontMedium fontWeightRegular"></div>
+                <div class="source text fontSmall fontWeightRegular"></div>
+            </div>
+        </div>
+
+        <div id="textRuler" class="text-item item">
+            <div class="caption text fontLarge fontWeightLight"></div>
+        </div>
+    </div>
+
+    <div id="startPanorama" class="fullScreen">
+        <div id="trendsListViewContainer" class="listViewContainer">
+            <div id="trendsListView" class="fullScreen trends" aria-label="trendsListView"
+                data-win-control="WinJS.UI.ListView"
+                data-win-options="{
+                selectionMode: 'none',
+                tapBehavior: 'invoke',
+                swipeBehavior: 'none',
+                groupHeaderTemplate: groupTemplate,
+                layout: {
+                    type: WinJS.UI.GridLayout
+                }
+            }">
+            </div>
+            <div id="copyright" class="fontSizeLarge"><span id="copyrightLink" tabindex="0"></span></div>
+        </div>
+    </div>
+</body>
+</html>

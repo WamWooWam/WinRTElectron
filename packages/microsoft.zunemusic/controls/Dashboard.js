@@ -381,7 +381,7 @@ MS.Entertainment.UI.Debug.defineAssert("MS.Entertainment.UI.Controls");
                             WinJS.Utilities.removeClass(this.domElement, "failed");
                             MS.Entertainment.Utilities.showElement(this._loadingPanel);
                             if (this._loadingPanel.children && this._loadingPanel.children.length < 1) {
-                                progressRing = document.createElement("progress");
+                                progressRing = document.createElement("ms-progress");
                                 progressRing.className = "fillParent win-medium win-ring";
                                 this._loadingPanel.appendChild(progressRing)
                             }

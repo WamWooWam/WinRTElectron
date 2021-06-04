@@ -1,0 +1,12 @@
+{
+  "resources": {
+    "DisplayName": "PC settings",
+    "Description": "Change settings and customise how you use your computer.",
+    "PublisherDisplayName": "Microsoft Corporation",
+    "VendorName": "CN=Microsoft Windows, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+    "TileDisplayName": "PC settings",
+    "ShortItemName": "PC settings",
+    "TileDescription": "Change settings and customise how you use your computer.",
+    "TileShortcutName": "PC settings"
+  }
+}

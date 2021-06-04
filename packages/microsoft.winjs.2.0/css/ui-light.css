@@ -1025,6 +1025,18 @@ progress.win-large.win-ring {
   width: 60px;
   height: 60px;
 }
+ms-progress.win-ring {
+  width: 20px;
+  height: 20px;
+}
+ms-progress.win-medium.win-ring {
+  width: 40px;
+  height: 40px;
+}
+ms-progress.win-large.win-ring {
+  width: 60px;
+  height: 60px;
+}
 @keyframes win-progress-fade-out {
   from {
     opacity: 1.0;

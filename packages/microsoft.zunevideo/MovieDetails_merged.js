@@ -1165,7 +1165,7 @@ MS.Entertainment.UI.Debug.defineAssert("MS.Entertainment.Platform.Playback");
                         MSEPlatform.Playback.Etw.traceString("VideoPlayer::_smoothStreamingSessionCreated: Event: smoothstreamingsessioncreated");
                         MS.Entertainment.Platform.assert(this._smoothStreamingSession === null, "_smoothStreamingSessionCreated called while this._smoothStreamingSession was non-null");
                         this._smoothStreamingSession = session;
-                        if (Microsoft.Entertainment.Configuration.ConfigurationManager().playback.enableVideo2SmoothStreamingTelemetry && !isBlobUrl(session.uri))
+                        if ((new Microsoft.Entertainment.Configuration.ConfigurationManager()).playback.enableVideo2SmoothStreamingTelemetry && !isBlobUrl(session.uri))
                             try {
                                 var reporter = new Microsoft.Entertainment.Platform.Playback.SmoothStreamingPlaybackReporter;
                                 session.setReporter(reporter)

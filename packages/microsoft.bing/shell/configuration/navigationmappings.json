@@ -1,0 +1,7 @@
+﻿[
+{ "path": "app", "viewId": "mainview" },
+{ "path": "app/home", "viewId": "homeview" },
+{ "path": "app/start", "viewId": "startview" },
+{ "path": "app/search", "viewId": "iframehost" },
+{ "path": "app/images/grid", "viewId": "iframehost" }
+] 

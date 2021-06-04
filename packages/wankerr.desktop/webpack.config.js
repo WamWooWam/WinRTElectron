@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = [
     {
-        entry: "./src/index.ts",
+        entry: "./src/index.tsx",
         mode: "development",
         devtool: 'inline-source-map',
         module: {
@@ -17,12 +17,11 @@ module.exports = [
                     use: ['style-loader', 'css-loader'],
                 },
                 {
-                    test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    test: /\.(woff(2)?|ttf|eot|svg|png|jpg)(\?v=\d+\.\d+\.\d+)?$/,
                     use: [
                         {
                             loader: 'file-loader',
                             options: {
-                                name: '[name].[ext]',
                                 outputPath: 'static/'
                             }
                         }

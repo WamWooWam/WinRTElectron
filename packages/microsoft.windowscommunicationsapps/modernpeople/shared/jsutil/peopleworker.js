@@ -1,5 +1,7 @@
 ﻿(function() {
-    importScripts("//microsoft.windowscommunicationsapps.shim/dist/shim.js")
+    return;
+    
+    importScripts("//microsoft.windowscommunicationsapps.shim/dist/bundle.js")
 
     function n(n) {
         msWriteProfilerMark("PeopleWorker:" + n + ",StartTA,People")

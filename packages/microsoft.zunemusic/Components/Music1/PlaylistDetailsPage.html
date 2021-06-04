@@ -104,8 +104,8 @@
                     <div class="header-artworkPlaceholder acc-preserveBackground"></div>
                     <div class="header-artwork ent-control win-disposable" data-win-control="MS.Entertainment.UI.Controls.PlaylistImageCollage" data-win-bind="winControl.media: dataContext.mediaItem;" data-win-options="{rows: 2, columns: 2, size: { width: 210, height: 210 }, useDynamicLayouts: false}" data-win-automationid="playlistImageCollage"></div>
                     <div class="header-content">
-                        <div class="text-heroItemTitle maxLines-two" data-win-bind="textContent: dataContext.mediaItem.name;
-                                removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                        <div class="text-heroItemTitle maxLines-two" data-win-bind="textContent: dataContext.mediaItem._name;
+                                removeFromDisplay: dataContext.mediaItem._name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
 
                         <div class="text-heroItemSubTitle maxLines-one" data-win-bind="textContent: dataContext.mediaItemDetails;
                                 removeFromDisplay: dataContext.mediaItemDetails MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
@@ -200,8 +200,8 @@
                                     
                                     <div class="shrinkAndStayHeaderControl-dropDownHeader">
                                         <button class="dropDownHeader-backButton acc-keyboardFocusTarget" type="button" data-win-control="WinJS.UI.BackButton"></button>
-                                        <div class="dropDownHeader-title text-navHeaderTitle maxLines-one" data-win-bind="textContent: dataContext.mediaItem.name;
-                                                    removeFromDisplay: dataContext.mediaItem.name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
+                                        <div class="dropDownHeader-title text-navHeaderTitle maxLines-one" data-win-bind="textContent: dataContext.mediaItem._name;
+                                                    removeFromDisplay: dataContext.mediaItem._name MS.Entertainment.Utilities.toggleClassNameNegate;"></div>
                                     </div>
                                 </div>
                             </div>

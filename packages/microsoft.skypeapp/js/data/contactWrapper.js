@@ -32,6 +32,8 @@
         this.isPstnContact = this.type === LibWrap.Contact.type_FREE_PSTN || this.type === LibWrap.Contact.type_PSTN || this.type === LibWrap.Contact.type_UNDISCLOSED_PSTN;
         this.isEmergencyContact = this.type === LibWrap.Contact.type_EMERGENCY_PSTN;
         this._hasId = uid++;
+        this._refreshName();
+        this._refreshAvatarUri(); 
     }, {
         libContact: null,
 

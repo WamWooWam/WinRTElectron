@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Platform</title>
+</head>
+<body>
+<div id="platformSystemMessage" data-win-control="WinJS.Binding.Template">
+<div class="platformSystemFlyoutContainer">
+<div class="platformFlyoutIcon"></div>
+<div class="platformFlyoutMessage" data-win-bind="textContent: message"></div>
+</div>
+</div>
+<div id="platformErrorModule" data-win-control="WinJS.Binding.Template">
+<div data-win-bind="className: errorContainerClassName">
+<button class="platformRetryButton" data-win-bind="onclick: retryCallback" data-win-res="{ attributes: { 'aria-label': '/platform/retry' } }"></button>
+<div class="platformErrorMessage" data-win-bind="textContent: message"></div>
+</div>
+</div>
+<div id="platformProgressModule" data-win-control="WinJS.Binding.Template">
+<div class="platformProgressModule">
+<progress class="win-large win-ring platformProgress"></progress>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+</head>
+<body>
+<div class="fragment">
+<!--<div class="favoriteLocation" data-win-bind="style.backgroundImage: url(/images/favoritesBackgrounds/19b.jpg)" >-->
+<!-- Favorites tile template -->
+<div id="eachfavoriteModule" data-win-control="WinJS.Binding.Template">
+<div class="platformPlaceHolderMedium">
+<div data-win-bind="style.backgroundImage: loc.bg; className: loc.bgClass"> 
+<div class="tileGradient"></div>
+<div class="favLoc">
+<div>
+<div class="favLocName" data-win-bind="textContent: loc.locationDisplayName"></div>
+<div class="favHome" style="display: none" data-win-bind="style.display: loc.displayHome" >
+<span data-win-res="{ attributes: {'aria-label': 'Home' } }"></span>
+</div>
+</div>
+</div>
+<div class="favTemp" data-win-bind="style.display: loc.displayTempData">
+<div class="favCurrentTempBlock" data-win-bind="style.opacity: loc.currentTempBlockOpacity">
+<div class="favTempWrapper">
+<div class="favCurrentTemp">
+<span data-win-bind="style.display: loc.displayCurrentTemp; textContent: loc.currentTemp; dir: loc.symbolPosition"></span>
+</div>
+</div>
+<div class="favCaption" data-win-bind="textContent: loc.caption"></div>
+</div>
+<div class="boundaryTempBlock" data-win-bind="style.opacity: loc.boundaryTempBlockOpacity">
+<div class="favTempWrapper">
+<div class="favBoundary">
+<span data-win-bind="style.display: loc.displayTempBoundary">
+<span data-win-bind="textContent: loc.displayTemp1; dir: loc.symbolPosition"></span>
+<span data-win-res="{textContent:'WWHighLowSeperator'}"></span>
+<span data-win-bind="textContent:loc.displayTemp2; dir: loc.symbolPosition"></span>
+</span>
+<span data-win-bind="style.display: loc.displaySnowData; textContent: loc.snowCC; dir: loc.symbolPosition"></span>
+<span class="favSnowUnit" data-win-bind="style.display: loc.displaySnowData; textContent: loc.snowUnit; dir: loc.symbolPosition"></span>
+</div>
+</div>
+<div class="favHighLowText" data-win-bind="textContent: loc.secondaryCaption"></div>
+</div>
+</div>
+<div class="favAlerts" data-win-bind="innerHTML: loc.alertText; style.display: loc.displayAlert; className: loc.displayAlertBgClassFav;"></div>
+</div>
+</div>
+</div>
+<!-- Change Home tile template -->
+<div id="homeChangeTile" data-win-control="WinJS.Binding.Template">
+<div class="addTileFavorites" >
+<span class="changehomeTileIcon" aria-hidden="true"></span>
+<div class="changehomeTitle">
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

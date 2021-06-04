@@ -158,7 +158,7 @@ scriptValidator();
                     if (this.musicPassDownloadEnabled.checked)
                         checkSettingAllowedPromise = MS.Entertainment.UI.SubscriptionDownload.verifyMachineActivationIsNotAtLimit();
                     checkSettingAllowedPromise.then(function settingIsAllowed() {
-                        (Microsoft.Entertainment.Configuration.ConfigurationManager()).music.musicPassDownloadEnabled = this.musicPassDownloadEnabled.checked;
+                        (new Microsoft.Entertainment.Configuration.ConfigurationManager()).music.musicPassDownloadEnabled = this.musicPassDownloadEnabled.checked;
                         this._initializeCloudCollectionOfflineSetting();
                         MS.Entertainment.Utilities.Telemetry.logTelemetryEvent(MS.Entertainment.Utilities.PreferenceSettingsWrapper.TelemetryEvents.MusicPassDownloadEnabledStateChanged, MS.Entertainment.Utilities.PreferenceSettingsWrapper.States.MusicPassDownloadEnabledState, this.musicPassDownloadEnabled.checked)
                     }.bind(this), function settingIsNotAllowed(errorCode) {
@@ -335,7 +335,7 @@ scriptValidator();
                         this._hideElement(this.cloudMatchSettingContainer)
                 }, _isCloudCollectionOfflineAvailable: function _isCloudCollectionOfflineAvailable() {
                     var cloudCollectionService = this._getCloudCollectionService();
-                    return MS.Entertainment.Utilities.isMusicApp && cloudCollectionService && cloudCollectionService.isEnabled && (MS.Entertainment.ServiceLocator.getService(MS.Entertainment.Services.signIn)).isSignedIn && (Microsoft.Entertainment.Configuration.ConfigurationManager()).music.musicPassDownloadEnabled
+                    return MS.Entertainment.Utilities.isMusicApp && cloudCollectionService && cloudCollectionService.isEnabled && (MS.Entertainment.ServiceLocator.getService(MS.Entertainment.Services.signIn)).isSignedIn && (new Microsoft.Entertainment.Configuration.ConfigurationManager()).music.musicPassDownloadEnabled
                 }, _initializeCloudCollectionOfflineSetting: function _initializeCloudCollectionOfflineSetting() {
                     if (this._isCloudCollectionOfflineAvailable()) {
                         var isSubscriptionUser = (MS.Entertainment.ServiceLocator.getService(MS.Entertainment.Services.signedInUser)).isSubscription;

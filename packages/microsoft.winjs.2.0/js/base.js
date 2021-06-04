@@ -2082,6 +2082,7 @@
                     if (value instanceof Error && value.message === canceledName) {
                         return;
                     }
+                    console.error(onerrorDetailsGenerator(promise, value, context, handler));
                     promiseEventListeners.dispatchEvent(errorET, onerrorDetailsGenerator(promise, value, context, handler));
                 }
             }
@@ -4714,7 +4715,7 @@
                     return null;
                 }
 
-                console.warn(`Requested member ${root}.${name}`);
+                // console.debug(`Requested member ${root}.${name}`);
                 return getMemberFiltered(name, root || _Global, nop);
             }
 
@@ -5437,6 +5438,9 @@
                 /// The element.
                 /// </returns>
                 /// </signature>
+
+                if(!e) return;
+
                 if (e.classList) {
 
                     // Fastpath: Nothing to remove
@@ -12133,6 +12137,10 @@ StringLiteral       7.8.4
                             }
                         };
 
+                        req.onerror = function() {
+                            schedule(e, req, priority);
+                        }
+
                         req.open(
                             options.type || "GET",
                             options.url,
@@ -13432,6 +13440,7 @@ StringLiteral       7.8.4
                         l.forEach(function dispatchOne(e) { e(eventRecord, handled); });
                     }
                 } catch (err) {
+                    console.error(err);
                     queueEvent({ type: errorET, detail: err });
                 }
 
@@ -13468,6 +13477,7 @@ StringLiteral       7.8.4
 
             function drainOneEvent(queue) {
                 function drainError(err) {
+                    console.error(err);
                     queueEvent({ type: errorET, detail: err });
                 }
 
@@ -13633,6 +13643,8 @@ StringLiteral       7.8.4
             }
 
             function errorHandler(e) {
+                console.error(e);
+
                 var flattenedError = {};
                 for (var key in e) {
                     flattenedError[key] = e[key];
@@ -13707,6 +13719,7 @@ StringLiteral       7.8.4
                         var errors = outstandingPromiseErrors;
                         outstandingPromiseErrors = null;
                         errors.forEach(function(error) {
+                            console.error(error);
                             queueEvent({ type: errorET, detail: error });
                         });
                     }, Scheduler.Priority.high, null, "WinJS.Application._queuePromiseErrors");

@@ -1,142 +1,1284 @@
-﻿.win-flyout.profile-flyout{padding-top:10px;padding-right:20px;padding-bottom:20px;padding-left:20px;word-wrap:normal;}
-.uiform-hide,.profile-flyout-description{display:none;}
-.win-menu.profile-flyout{padding-left:0px;padding-right:0px;}
-.profile-flyout{margin-bottom:6px;}
-.profile-flyout-list{margin-top:-7px;margin-bottom:-19px;}
-#delete-flyout.profile-flyout{width:288px;}
-.profile-flyout ul,.profile-flyout li,.profile-flyout h2,.profile-flyout p{list-style-type:none;border:0;padding:0;margin:0;}
-.profile-flyout>ul{width:100%;}
-#delete-flyout-text{margin-bottom:7px;color:#000000;}
-#delete-flyout-subText{color:#666666;}
-#delete-flyout.profile-flyout li{margin-bottom:1px;width:100%;height:60px;position:relative;}
-#edit-flyout.profile-flyout button{padding-top:2px;padding-bottom:5px;padding-left:20px;padding-right:20px;margin:0px;}
-#edit-flyout.profile-flyout button:hover{background-color:#f6e2ca;border-color:#f6e2ca;}
-#edit-flyout.profile-flyout button:hover:active{background-color:#d24625;border-color:#d24625;color:White;}
-.profile-flyout .ic-billboardLayout{width:100%;}
-.profile-flyout .ic-billboardLayout-textArea-40{width:auto;right:5px;}
-.profile-flyout input[type=submit]{margin-top:15px;float:right;background-color:#d24625;border-color:#d24625;-ms-user-select:none;}
-.profile-flyout-ic{position:absolute;right:0px;left:-10px;top:0px;bottom:0px;}
-.profile-flyout input[type=checkbox]{position:absolute;top:10px;left:0;padding:0;}
-input[type=checkbox]+.profile-flyout-ic{left:21px;}
-.profile-flyout .ic-billboardLayout-secondaryContent{color:#d24625;}
-#delete-flyout-list-3rdParty .ic-billboardLayout-secondaryContent{color:#666666;}
-.mePrfView-baseUiContainer{height:100%;overflow-x:auto;overflow-y:hidden;max-height:100%;position:relative;outline:none;}
-.mePrfView-container{font-weight:400;color:#000000;background-color:White;position:absolute;top:20px;bottom:88px;left:380px;padding-top:24px;padding-left:20px;padding-right:40px;column-width:340px;column-gap:40px;column-fill:auto;column-rule-width:0;}
-.mePrfView-container:empty{display:none;}
-.mePrfView-groupContainer{break-inside:avoid-column;width:340px;margin-bottom:calc(72px);}
-.mePrfView-groupContainer:first-of-type{break-inside:auto;}
-.mePrfView-groupTitle{font-weight:600;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;color:#d24625;margin-bottom:calc(-32px);margin-left:1px;margin-right:1px;}
-.mePrfView-groupFields{width:340px;}
-.mePrfView-fieldContainer{margin-top:calc(38px);margin-bottom:calc(-33px);break-inside:avoid-column;break-after:auto;color:#666666;margin-left:1px;margin-right:1px;}
-#fieldDiv_homeLocation.mePrfView-fieldContainer,#fieldDiv_businessLocation.mePrfView-fieldContainer,#fieldDiv_otherLocation.mePrfView-fieldContainer{margin-bottom:calc(-19px);}
-.mePrfView-fieldTitle{letter-spacing:0;font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;margin-top:-5px;color:#666666;}
-.mePrfView-fieldValue{font-size:26.66667px;letter-spacing:0.02em;line-height:32px;padding-bottom:5px;padding-top:3px;font-weight:200;color:#000000;word-wrap:break-word;}
-.mePrfView-fieldValue:hover{color:#ff7347;}
-.mePrfView-fieldValue:hover:active,.mePrfView-fieldValue.pressed{color:#ff4f22;}
-.mePrfView-fieldAttribution{color:#666666;font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
-.mePrfView-nmbr,.mePrfView-tipNmbr{direction:ltr;text-align:left;}
-.mePrfView-ic-me:hover{outline:3px solid #f5efe7;}@media screen and (-ms-high-contrast){.mePrfView-ic-me:hover{outline:3px solid WindowText;}}
-.profile-icContainer{background-color:White;position:absolute;top:20px;bottom:88px;left:120px;overflow:hidden;width:220px;padding-left:20px;padding-right:20px;padding-top:20px;}
-.profileView-icNetworks{display:inline-block;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;color:#666666;margin-top:24px;}
-.profileView-container{font-weight:400;color:#000000;background-color:White;column-width:340px;column-gap:40px;column-fill:auto;column-rule-width:0;position:absolute;top:20px;bottom:88px;left:380px;padding-right:40px;padding-left:20px;padding-top:24px;}
-.profileView-container:empty{display:none;}
-.profileView-groupContainer{break-inside:avoid-column;max-width:340px;margin-bottom:calc(72px);}
-.profileView-groupContainer:first-of-type{break-inside:auto;}
-#groupDiv_location.profileView-groupContainer{margin-bottom:calc(58px);}
-.profileView-groupTitle{font-weight:600;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;color:#d24625;margin-bottom:calc(-32px);margin-left:1px;margin-right:1px;}
-.profileView-groupFields{max-width:340px;}
-.profileView-fieldContainer{margin-top:calc(38px);margin-bottom:calc(-33px);break-inside:avoid-column;break-after:auto;color:#666666;margin-left:1px;margin-right:1px;}
-.profileView-fieldContainer:first-of-type{break-inside:auto;}
-.profileView-emailFld span{float:left;max-width:338px;}
-#fieldDiv_homeLocation.profileView-fieldContainer,#fieldDiv_businessLocation.profileView-fieldContainer,#fieldDiv_otherLocation.profileView-fieldContainer{margin-bottom:calc(-19px);}
-.profileView-fieldValue{font-size:26.66667px;letter-spacing:0.02em;line-height:32px;padding-bottom:5px;padding-top:3px;font-weight:200;color:#000000;word-wrap:break-word;}
-.hasDefaultAction .profileView-fieldValue:hover{color:#ff7347;}
-.hasDefaultAction .profileView-fieldValue:hover:active,.hasDefaultAction .profileView-fieldValue.pressed{color:#ff4f22;}
-.profileView-fieldTitle{letter-spacing:0;font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;margin-top:-5px;color:#666666;clear:both;}
-.profileView-fieldAttribution{color:#666666;margin-top:-5px;padding-bottom:5px;font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;}
-.profileView-link{color:#000000;text-decoration:none;}
-.profileView-nmbr,.profileView-tipNmbr{direction:ltr;text-align:left;}
-.c_chev{font-family:"Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;font-size:14.66667px;font-color:#000000;text-decoration:none;}
-.c_mlu{text-decoration:none;}
-.profileEdit-container{font-weight:400;font-size:14.66667px;color:#000000;column-width:280px;column-gap:80px;column-fill:auto;column-rule-width:0;position:absolute;left:120px;top:20px;bottom:32px;padding-top:4px;padding-bottom:136px;padding-left:0px;padding-right:40px;}
-.profileEdit-fldCntr input[type=text],.profileEdit-fldCntr input[type=password],.profileEdit-fldCntr input[type=email],.profileEdit-fldCntr input[type=number],.profileEdit-fldCntr input[type=tel],.profileEdit-fldCntr input[type=url],.profileEdit-fldCntr input[type=search],.profileEdit-fldCntr textarea{width:276px !important;font-family:inherit;}
-.profileEdit-fldCntr input:-ms-lang(zh-HK, zh-TW, zh-Hant, zh-MO){min-height:29px;}
-.profileEdit-fldCntr select{width:280px !important;}
-.profileEdit-fldCntr-location input[type=text]{width:276px !important;margin-top:0px;margin-bottom:0px;}
-.profileEdit-fldCntr-location textarea{padding-left:8px;padding-right:8px;padding-top:8px;padding-bottom:8px;width:260px !important;margin-top:3px;margin-bottom:0px;}
-.profileEdit-container input[type=text]::-ms-clear{display:inline-block;}
-.profileEdit-container input[type=email]::-ms-clear{display:inline-block;}
-.profileEdit-container input[type=tel]::-ms-clear{display:inline-block;}
-.profileEdit-container input[type=number]::-ms-clear{display:inline-block;}
-.profileEdit-container input[type=url]::-ms-clear{display:inline-block;}
-.profileEdit-container input:-ms-placeholder{color:#b6b6b6;}
-#groupDiv_name.profileEdit-groupContainer{break-inside:auto;}
-.profileEdit-groupContainer{break-inside:avoid-column;width:280px;margin-bottom:54px;}
-.profileEdit-groupTitle{font-weight:600;font-size:14.66667px;color:#d24625;}
-.profileEdit-groupFields{width:280px;margin-top:-1px;}
-.profileEdit-groupAddExtra{margin-top:8px;margin-bottom:-9px;margin-left:-10px;break-inside:avoid;}
-.profileEdit-groupAddExtra a{text-decoration:none;text-align:left;vertical-align:top;color:#000000;width:300px;display:block;}
-.profileEdit-groupAddExtra a:hover{background-color:#f6e2ca;}
-.profileEdit-groupAddExtra a.pressed,.profileEdit-groupAddExtra a.menuOpen{background-color:#d24625;color:White;}
-.profileEdit-groupAddExtraWrp{display:inline-block;padding-top:9px;padding-right:10px;padding-bottom:11px;padding-left:10px;}
-.profileEdit-groupAddField{font-weight:300;display:inline-block;}
-.profileEdit-groupAddExtraBtn{display:inline-block;vertical-align:middle;text-align:center;font-family:"Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;font-size:7pt;width:16px;height:16px;line-height:16px;border-width:2px;border-style:solid;border-radius:50%;}
-.profileEdit-groupAddExtraLbl{text-decoration:none;vertical-align:middle;margin-left:10px;text-align:left;}
-.profileEdit-form{height:100%;max-height:100%;}
-.profileEdit-fldCntr{break-inside:avoid-column;color:#666666;margin-top:0px;margin-bottom:0px;padding-top:20px;}
-.profileEdit-subFldCntnr{break-inside:auto;margin-top:30px;}
-.profileEdit-subFldCntnr:not(.uiform-hide)~.profileEdit-subFldCntnr{break-inside:avoid-column;}
-.profileEdit-fldCntr.profileEdit-fldCntr-location{margin-top:4px;margin-bottom:2px;padding-top:0px;}
-.profileEdit-fieldTitle{font-weight:400;font-size:14.66667px;color:#666666;margin-bottom:3px;}
-.profileEdit-displayValue{font-weight:400;font-size:14.66667px;padding-top:0px;padding-bottom:20px;color:#000000;}
-.profileEdit-fieldInput{font-weight:400;font-size:14.66667px;margin-top:4px;}
-.profileEdit-readonly{background-color:#f3f3f3;}
-.profileEdit-fieldError{font-weight:300;font-size:14.66667px;color:#00a693;width:280px;}
-.profileEdit-formError{font-weight:300;font-size:14.66667px;color:#00a693;margin-bottom:20px;column-span:all;}
-.profileEdit-formErrorHeader{font-weight:700;}
-.profileEdit-link{color:#00749e;text-decoration:none;}
-.profileEdit-changeField{font-weight:400;font-size:14.66667px;color:#666666;}
-.profileEdit-changeField a{text-decoration:none;color:#666666;}
-#editInput_notes.profileEdit-fieldInput{height:auto;padding-left:8px;padding-right:8px;padding-top:8px;padding-bottom:8px;width:260px !important;}
-option:checked,select:focus::-ms-value{background-color:#d24625;}
-.profileBase-container{height:100%;overflow-x:auto;overflow-y:hidden;max-height:100%;position:relative;outline:none;}
-.profileBase-paddingDiv{position:absolute;width:120px;}
-#displayDiv_addLinkEdit.profileBase-container .profile-icContainer{display:none;}
-.profileBase-container table{height:100%;max-height:100%;}
-.profileBase-container table tr{height:100%;max-height:100%;}
-.profileBase-container table tr td{height:100%;max-height:100%;}
-#linkingListView{width:100%;height:100%;}@media screen and (max-width: 375px){#linkingListView .win-groupleader{margin-top:0px;}}
-#linkingListView .win-groupheader{font-weight:600;font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;color:#d24625;margin-top:15px;margin-bottom:9px;margin-left:0px;padding-left:20px;}@media screen and (max-width: 375px){#linkingListView .win-groupheader{margin-bottom:15px;}}
-#linkingListView .win-surface{background-color:White;margin-left:120px;margin-right:120px;padding-right:70px;margin-top:20px;margin-bottom:108px;height:calc((100% - 128px));}@media screen and (max-width: 375px){#linkingListView .win-surface{margin-left:20px;margin-right:20px;padding-right:0px;margin-top:0px;margin-bottom:0px;height:100%;}}
-#linkingListView .win-container{margin-left:10px;}@media screen and (-ms-high-contrast){#linkingListView .win-container{background-color:transparent;}}@media screen and (max-width: 375px){#linkingListView .win-container{margin-right:10px;margin-top:0px;margin-bottom:0px;}}#linkingListView .win-container:hover{background-color:transparent;outline:none;}#linkingListView .win-container:hover .win-item{background-color:#f6e2ca;}@media screen and (-ms-high-contrast){#linkingListView .win-container:hover .win-item{background-color:Highlight;}}
-#linkingListView .win-container:hover .profileLink-progress{background-color:transparent;}
-#linkingListView .win-container .profileLink-progress{padding-top:22px;padding-left:10px;}#linkingListView .win-container .profileLink-progress progress{height:30px;width:30px;}#linkingListView .win-container .profileLink-progress progress::-ms-fill{-ms-animation-name:-ms-ring;}
-#linkingListView .win-container .profileLink-pickerLink{padding-top:12px;padding-bottom:26px;width:310px;}#linkingListView .win-container .profileLink-pickerLink .profileLink-pickerGlyph{display:inline-block;vertical-align:middle;text-align:center;font-family:"Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;font-size:7pt;width:16px;height:16px;line-height:16px;border-width:2px;border-style:solid;border-radius:50%;margin-left:10px;margin-right:10px;}
-#linkingListView .win-container .profileLink-pickerLink .profileLink-pickerText{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;font-weight:300;vertical-align:middle;color:#000000;}
-@media screen and (max-width: 375px){#linkingListView .win-itemscontainer{margin-bottom:10px;}}
-@media screen and (max-width: 375px){#linkingListView .ic-billboardLayout-textArea{top:15px;}}
-@media screen and (max-width: 375px){#linkingListView .ic-billboardLayout-primaryContent-medium{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;font-weight:400;}}
-@media screen and (max-width: 375px){#linkingListView .ic-billboardLayout-secondaryContent{font-size:14.66667px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;font-weight:400;}}
-.win-menu.uiflyoutmenu{min-height:30px;}
-.profileEdit-groupAddExtra .win-menu.uiflyoutmenu{margin-top:-11px;margin-bottom:-9px;margin-left:50px;}
-.uiflyoutmenuitem button{font-size:11pt;font-weight:400;white-space:nowrap;margin:0px !important;}
-.uiflyoutmenuitem:hover{background-color:#dedede;border-color:#dedede;}
-.uiflyoutmenuitem:hover:active{background-color:#212121;border-color:#212121;color:#ffffff;}
-#profilePicture-container{position:absolute;left:0;right:0;top:0;bottom:88px;margin-left:120px;margin-right:66px;margin-top:20px;margin-bottom:40px;overflow:hidden;-ms-scroll-limit-x-max:0px;-ms-scroll-limit-y-max:0px;}
-#profilePicture-scroller{position:relative;height:100%;width:100%;overflow:scroll;-ms-content-zooming:zoom;-ms-overflow-style:none;-ms-scroll-rails:none;}
-#profilePicture-photo{position:relative;}
-#profilePicture-photo.hidden{visibility:hidden;}
-#profilePicture-hitTargetContainer{position:relative;z-index:1;}
-#profilePicture-hitTarget{position:absolute;left:0px;top:0px;z-index:2;background-color:white;opacity:0.00001;-ms-high-contrast-adjust:none;}
-#profilePicture-hitTargetZoom{position:absolute;left:0px;top:0px;z-index:2;-ms-touch-action:pinch-zoom;}
-#profilePicture-crop{border:4px solid #878787;}
-#profilePicture-crop.inactive{border-color:rgba(255, 255, 255, 0.6);}
-#profilePicture-mask{position:absolute;border-style:solid;border-color:rgba(255, 255, 255, 0.6);-ms-high-contrast-adjust:none;}
-#profilePicture-buttons{position:absolute;width:50px;top:0px;right:20px;}
-.profilePicture-button{position:relative;margin-top:20px;display:block;float:right;z-index:5;width:40px;height:40px;box-sizing:border-box;font-family:"Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;font-size:14pt;font-weight:normal;line-height:36px;text-align:center;color:#000000;border-width:2px;border-style:solid;border-radius:50%;border-color:#000000;}
-#profilePicture-buttons #profilePicture-zoomToFit{font-family:"Custom Icons";}
-#profilePicture-buttons .profilePicture-button:hover{background-color:rgba(0, 0, 0, 0.13);}
-#profilePicture-buttons .profilePicture-button:active,#profilePicture-buttons .profilePicture-button.pressed{color:#ffffff;background-color:#000000;}
-#profilePicture-buttons .profilePicture-button[aria-disabled="true"]{color:rgba(0, 0, 0, 0.4);background-color:transparent;border-color:rgba(0, 0, 0, 0.4);}
-#profilePicture-anchor{position:absolute;width:1px;height:1px;z-index:-1;opacity:0.01;}
-@media screen and (-ms-high-contrast){#profilePicture-crop{border-color:WindowText;} #profilePicture-buttons .profilePicture-button{color:ButtonText;background-color:ButtonFace;border-color:ButtonText;} #profilePicture-buttons>.profilePicture-button:hover{color:HighlightText;background-color:Highlight;} #profilePicture-buttons .profilePicture-button:active,#profilePicture-buttons .profilePicture-button.pressed{color:Window;background-color:ButtonText;} #profilePicture-buttons .profilePicture-button[aria-disabled="true"]{color:GrayText;background-color:ButtonFace;border-color:GrayText;}}@media screen and (max-width: 375px){textarea{min-width:100px;} .profile-flyout{margin-left:5px;margin-right:20px;margin-top:3px;} #delete-flyout.profile-flyout{width:226px;} .profileBase-container{overflow-x:hidden;overflow-y:auto;height:100%;max-height:100%;} .profileBase-paddingDiv{position:relative;left:auto !important;width:280px;height:48px;} #displayDiv_addLinkEdit.profileBase-container .profileBase-paddingDiv{height:20px;} .mePrfView-baseUiContainer{overflow-x:hidden;overflow-y:auto;} .mePrfView-container{column-width:240px;column-gap:0px;column-fill:auto;column-rule-width:0;position:relative;padding-top:0px;padding-bottom:40px;top:-18px;bottom:auto;left:20px;padding-left:20px;padding-right:20px;width:240px !important;} .mePrfView-groupContainer{break-inside:avoid-column;width:240px;margin-bottom:39px;} .mePrfView-groupContainer:last-of-type{margin-bottom:0px;} .mePrfView-groupTitle{margin-bottom:1px;} .mePrfView-groupFields{width:240px;} .mePrfView-fieldContainer{margin-top:13px;margin-bottom:0px;} .mePrfView-fieldValue{font-size:21.33333px;letter-spacing:0.02em;line-height:27px;padding-top:1px;padding-bottom:2px;word-wrap:normal;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;} .mePrfView-fieldTitle{letter-spacing:0;font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;margin-top:1px;color:#666666;} #groupDiv_location.mePrfView-groupContainer{margin-bottom:50px;} #fieldDiv_homeLocation.mePrfView-fieldContainer,#fieldDiv_businessLocation.mePrfView-fieldContainer,#fieldDiv_otherLocation.mePrfView-fieldContainer{margin-bottom:17px;} .profile-icContainer{position:relative;height:auto;top:0px;left:20px;overflow:hidden;width:240px;padding-bottom:40px;} .profileView-icNetworks{margin-top:14.66667px;} .profileView-container{column-width:240px;column-gap:0px;column-fill:auto;column-rule-width:0;position:relative;padding-top:0px;padding-bottom:40px;top:-14px;bottom:auto;left:20px;padding-left:20px;padding-right:20px;width:240px !important;} .profileView-groupContainer{break-inside:avoid-column;width:240px;margin-bottom:39px;} .profileView-groupContainer:last-of-type{margin-bottom:0px;} .profileView-groupTitle{margin-bottom:1px;} .profileView-groupFields{width:240px;} .profileView-fieldContainer{margin-top:13px;margin-bottom:0px;} .profileView-fieldValue{font-size:21.33333px;letter-spacing:0.02em;line-height:27px;padding-top:1px;padding-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}.profileView-fieldValue:not(#fieldValueDiv_notes){word-wrap:normal;} .profileView-fieldTitle{letter-spacing:0;font-size:12px;letter-spacing:0.02em;line-height:20px;padding-bottom:0px;padding-top:0px;margin-top:1px;color:#666666;} #groupDiv_location.profileView-groupContainer{margin-bottom:50px;} #fieldDiv_homeLocation.profileView-fieldContainer,#fieldDiv_businessLocation.profileView-fieldContainer,#fieldDiv_otherLocation.profileView-fieldContainer{margin-bottom:17px;} .profileEdit-container{column-width:240px;position:relative;left:20px;top:0px;bottom:auto;padding-right:20px;width:240px !important;} .profileEdit-fldCntr input[type=text],.profileEdit-fldCntr input[type=password],.profileEdit-fldCntr input[type=email],.profileEdit-fldCntr input[type=number],.profileEdit-fldCntr input[type=tel],.profileEdit-fldCntr input[type=url],.profileEdit-fldCntr input[type=search],.profileEdit-fldCntr textarea{width:236px !important;} .profileEdit-fldCntr select{width:240px !important;} .profileEdit-fldCntr-location input[type=text]{width:236px !important;} .profileEdit-fldCntr-location textarea{width:220px !important;margin-top:0px;margin-bottom:0px;} .profileEdit-groupContainer:last-of-type{padding-right:0px;margin-bottom:20px;} .profileEdit-groupContainer{margin-top:0px;margin-bottom:49px;} .profileEdit-groupTitle{margin-bottom:0px;} .profileEdit-groupFields{width:240px;margin-top:-10px;margin-bottom:15px;} .profileEdit-groupAddExtra{margin-top:1px;margin-bottom:-5px;padding-top:0px;} .profileEdit-groupAddExtra a{width:260px;} .profileEdit-fldCntr{margin-top:0px;margin-bottom:-1px;padding-top:0px;} .profileEdit-fieldTitle{margin-top:21px;margin-bottom:1px;} .profileEdit-fieldInput{margin-top:4px;margin-bottom:4px;} .profileEdit-fldCntr.profileEdit-fldCntr-location{margin-top:10px;margin-bottom:0px;} #groupDatalocation.profileEdit-groupFields{margin-bottom:16px;} #editInput_notes.profileEdit-fieldInput{width:220px !important;margin-top:4px;} #profilePicture-container{margin-left:20px;margin-right:20px;}}
+.win-flyout.profile-flyout {
+  padding-top: 10px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  word-wrap: normal;
+}
+
+.uiform-hide,.profile-flyout-description {
+  display: none;
+}
+
+.win-menu.profile-flyout {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.profile-flyout {
+  margin-bottom: 6px;
+}
+
+.profile-flyout-list {
+  margin-top: -7px;
+  margin-bottom: -19px;
+}
+
+#delete-flyout.profile-flyout {
+  width: 288px;
+}
+
+.profile-flyout ul,.profile-flyout li,.profile-flyout h2,.profile-flyout p {
+  list-style-type: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+
+.profile-flyout>ul {
+  width: 100%;
+}
+
+#delete-flyout-text {
+  margin-bottom: 7px;
+  color: #000000;
+}
+
+#delete-flyout-subText {
+  color: #666666;
+}
+
+#delete-flyout.profile-flyout li {
+  margin-bottom: 1px;
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
+
+#edit-flyout.profile-flyout button {
+  padding-top: 2px;
+  padding-bottom: 5px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0px;
+}
+
+#edit-flyout.profile-flyout button:hover {
+  background-color: #f6e2ca;
+  border-color: #f6e2ca;
+}
+
+#edit-flyout.profile-flyout button:hover:active {
+  background-color: #d24625;
+  border-color: #d24625;
+  color: White;
+}
+
+.profile-flyout .ic-billboardLayout {
+  width: 100%;
+}
+
+.profile-flyout .ic-billboardLayout-textArea-40 {
+  width: auto;
+  right: 5px;
+}
+
+.profile-flyout input[type=submit] {
+  margin-top: 15px;
+  float: right;
+  background-color: #d24625;
+  border-color: #d24625;
+  -ms-user-select: none;
+}
+
+.profile-flyout-ic {
+  position: absolute;
+  right: 0px;
+  left: -10px;
+  top: 0px;
+  bottom: 0px;
+}
+
+.profile-flyout input[type=checkbox] {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  padding: 0;
+}
+
+input[type=checkbox]+.profile-flyout-ic {
+  left: 21px;
+}
+
+.profile-flyout .ic-billboardLayout-secondaryContent {
+  color: #d24625;
+}
+
+#delete-flyout-list-3rdParty .ic-billboardLayout-secondaryContent {
+  color: #666666;
+}
+
+.mePrfView-baseUiContainer {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 100%;
+  position: relative;
+  outline: none;
+}
+
+.mePrfView-container {
+  font-weight: 400;
+  color: #000000;
+  background-color: White;
+  position: absolute;
+  top: 20px;
+  bottom: 88px;
+  left: 380px;
+  padding-top: 24px;
+  padding-left: 20px;
+  padding-right: 40px;
+  column-width: 340px;
+  column-gap: 40px;
+  column-fill: auto;
+  column-rule-width: 0;
+}
+
+.mePrfView-container:empty {
+  display: none;
+}
+
+.mePrfView-groupContainer {
+  break-inside: avoid-column;
+  width: 340px;
+  margin-bottom: calc(72px);
+}
+
+.mePrfView-groupContainer:first-of-type {
+  break-inside: auto;
+}
+
+.mePrfView-groupTitle {
+  font-weight: 600;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: #d24625;
+  margin-bottom: calc(-32px);
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.mePrfView-groupFields {
+  width: 340px;
+}
+
+.mePrfView-fieldContainer {
+  margin-top: calc(38px);
+  margin-bottom: calc(-33px);
+  break-inside: avoid-column;
+  break-after: auto;
+  color: #666666;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+#fieldDiv_homeLocation.mePrfView-fieldContainer,#fieldDiv_businessLocation.mePrfView-fieldContainer,#fieldDiv_otherLocation.mePrfView-fieldContainer {
+  margin-bottom: calc(-19px);
+}
+
+.mePrfView-fieldTitle {
+  letter-spacing: 0;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-top: -5px;
+  color: #666666;
+}
+
+.mePrfView-fieldValue {
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  font-weight: 200;
+  color: #000000;
+  word-wrap: break-word;
+}
+
+.mePrfView-fieldValue:hover {
+  color: #ff7347;
+}
+
+.mePrfView-fieldValue:hover:active,.mePrfView-fieldValue.pressed {
+  color: #ff4f22;
+}
+
+.mePrfView-fieldAttribution {
+  color: #666666;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.mePrfView-nmbr,.mePrfView-tipNmbr {
+  direction: ltr;
+  text-align: left;
+}
+
+.mePrfView-ic-me:hover {
+  outline: 3px solid #f5efe7;
+}
+
+@media screen and (-ms-high-contrast) {
+  .mePrfView-ic-me:hover {
+    outline: 3px solid WindowText;
+  }
+}
+
+.profile-icContainer {
+  background-color: White;
+  position: absolute;
+  top: 20px;
+  bottom: 88px;
+  left: 120px;
+  overflow: hidden;
+  width: 220px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 20px;
+}
+
+.profileView-icNetworks {
+  display: inline-block;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: #666666;
+  margin-top: 24px;
+}
+
+.profileView-container {
+  font-weight: 400;
+  color: #000000;
+  background-color: White;
+  column-width: 340px;
+  column-gap: 40px;
+  column-fill: auto;
+  column-rule-width: 0;
+  position: absolute;
+  top: 20px;
+  bottom: 88px;
+  left: 380px;
+  padding-right: 40px;
+  padding-left: 20px;
+  padding-top: 24px;
+}
+
+.profileView-container:empty {
+  display: none;
+}
+
+.profileView-groupContainer {
+  break-inside: avoid-column;
+  max-width: 340px;
+  margin-bottom: calc(72px);
+}
+
+.profileView-groupContainer:first-of-type {
+  break-inside: auto;
+}
+
+#groupDiv_location.profileView-groupContainer {
+  margin-bottom: calc(58px);
+}
+
+.profileView-groupTitle {
+  font-weight: 600;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: #d24625;
+  margin-bottom: calc(-32px);
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.profileView-groupFields {
+  max-width: 340px;
+}
+
+.profileView-fieldContainer {
+  margin-top: calc(38px);
+  margin-bottom: calc(-33px);
+  break-inside: avoid-column;
+  break-after: auto;
+  color: #666666;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.profileView-fieldContainer:first-of-type {
+  break-inside: auto;
+}
+
+.profileView-emailFld span {
+  float: left;
+  max-width: 338px;
+}
+
+#fieldDiv_homeLocation.profileView-fieldContainer,#fieldDiv_businessLocation.profileView-fieldContainer,#fieldDiv_otherLocation.profileView-fieldContainer {
+  margin-bottom: calc(-19px);
+}
+
+.profileView-fieldValue {
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  font-weight: 200;
+  color: #000000;
+  word-wrap: break-word;
+}
+
+.hasDefaultAction .profileView-fieldValue:hover {
+  color: #ff7347;
+}
+
+.hasDefaultAction .profileView-fieldValue:hover:active,.hasDefaultAction .profileView-fieldValue.pressed {
+  color: #ff4f22;
+}
+
+.profileView-fieldTitle {
+  letter-spacing: 0;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-top: -5px;
+  color: #666666;
+  clear: both;
+}
+
+.profileView-fieldAttribution {
+  color: #666666;
+  margin-top: -5px;
+  padding-bottom: 5px;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.profileView-link {
+  color: #000000;
+  text-decoration: none;
+}
+
+.profileView-nmbr,.profileView-tipNmbr {
+  direction: ltr;
+  text-align: left;
+}
+
+.c_chev {
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  font-size: 14.66667px;
+  font-color: #000000;
+  text-decoration: none;
+}
+
+.c_mlu {
+  text-decoration: none;
+}
+
+.profileEdit-container {
+  font-weight: 400;
+  font-size: 14.66667px;
+  color: #000000;
+  column-width: 280px;
+  column-gap: 80px;
+  column-fill: auto;
+  column-rule-width: 0;
+  position: absolute;
+  left: 120px;
+  top: 20px;
+  bottom: 32px;
+  padding-top: 4px;
+  padding-bottom: 136px;
+  padding-left: 0px;
+  padding-right: 40px;
+}
+
+.profileEdit-fldCntr input[type=text],.profileEdit-fldCntr input[type=password],.profileEdit-fldCntr input[type=email],.profileEdit-fldCntr input[type=number],.profileEdit-fldCntr input[type=tel],.profileEdit-fldCntr input[type=url],.profileEdit-fldCntr input[type=search],.profileEdit-fldCntr textarea {
+  width: 276px !important;
+  font-family: inherit;
+}
+
+.profileEdit-fldCntr input:-ms-lang(zh-HK,
+zh-TW,
+zh-Hant,
+zh-MO) {
+  min-height: 29px;
+}
+
+.profileEdit-fldCntr select {
+  width: 280px !important;
+}
+
+.profileEdit-fldCntr-location input[type=text] {
+  width: 276px !important;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.profileEdit-fldCntr-location textarea {
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 260px !important;
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
+
+.profileEdit-container input[type=text]::-ms-clear {
+  display: inline-block;
+}
+
+.profileEdit-container input[type=email]::-ms-clear {
+  display: inline-block;
+}
+
+.profileEdit-container input[type=tel]::-ms-clear {
+  display: inline-block;
+}
+
+.profileEdit-container input[type=number]::-ms-clear {
+  display: inline-block;
+}
+
+.profileEdit-container input[type=url]::-ms-clear {
+  display: inline-block;
+}
+
+.profileEdit-container input:-ms-placeholder {
+  color: #b6b6b6;
+}
+
+#groupDiv_name.profileEdit-groupContainer {
+  break-inside: auto;
+}
+
+.profileEdit-groupContainer {
+  break-inside: avoid-column;
+  width: 280px;
+  margin-bottom: 54px;
+}
+
+.profileEdit-groupTitle {
+  font-weight: 600;
+  font-size: 14.66667px;
+  color: #d24625;
+}
+
+.profileEdit-groupFields {
+  width: 280px;
+  margin-top: -1px;
+}
+
+.profileEdit-groupAddExtra {
+  margin-top: 8px;
+  margin-bottom: -9px;
+  margin-left: -10px;
+  break-inside: avoid;
+}
+
+.profileEdit-groupAddExtra a {
+  text-decoration: none;
+  text-align: left;
+  vertical-align: top;
+  color: #000000;
+  width: 300px;
+  display: block;
+}
+
+.profileEdit-groupAddExtra a:hover {
+  background-color: #f6e2ca;
+}
+
+.profileEdit-groupAddExtra a.pressed,.profileEdit-groupAddExtra a.menuOpen {
+  background-color: #d24625;
+  color: White;
+}
+
+.profileEdit-groupAddExtraWrp {
+  display: inline-block;
+  padding-top: 9px;
+  padding-right: 10px;
+  padding-bottom: 11px;
+  padding-left: 10px;
+}
+
+.profileEdit-groupAddField {
+  font-weight: 300;
+  display: inline-block;
+}
+
+.profileEdit-groupAddExtraBtn {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  font-size: 7pt;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
+}
+
+.profileEdit-groupAddExtraLbl {
+  text-decoration: none;
+  vertical-align: middle;
+  margin-left: 10px;
+  text-align: left;
+}
+
+.profileEdit-form {
+  height: 100%;
+  max-height: 100%;
+}
+
+.profileEdit-fldCntr {
+  break-inside: avoid-column;
+  color: #666666;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 20px;
+}
+
+.profileEdit-subFldCntnr {
+  break-inside: auto;
+  margin-top: 30px;
+}
+
+.profileEdit-subFldCntnr:not(.uiform-hide)~.profileEdit-subFldCntnr {
+  break-inside: avoid-column;
+}
+
+.profileEdit-fldCntr.profileEdit-fldCntr-location {
+  margin-top: 4px;
+  margin-bottom: 2px;
+  padding-top: 0px;
+}
+
+.profileEdit-fieldTitle {
+  font-weight: 400;
+  font-size: 14.66667px;
+  color: #666666;
+  margin-bottom: 3px;
+}
+
+.profileEdit-displayValue {
+  font-weight: 400;
+  font-size: 14.66667px;
+  padding-top: 0px;
+  padding-bottom: 20px;
+  color: #000000;
+}
+
+.profileEdit-fieldInput {
+  font-weight: 400;
+  font-size: 14.66667px;
+  margin-top: 4px;
+}
+
+.profileEdit-readonly {
+  background-color: #f3f3f3;
+}
+
+.profileEdit-fieldError {
+  font-weight: 300;
+  font-size: 14.66667px;
+  color: #00a693;
+  width: 280px;
+}
+
+.profileEdit-formError {
+  font-weight: 300;
+  font-size: 14.66667px;
+  color: #00a693;
+  margin-bottom: 20px;
+  column-span: all;
+}
+
+.profileEdit-formErrorHeader {
+  font-weight: 700;
+}
+
+.profileEdit-link {
+  color: #00749e;
+  text-decoration: none;
+}
+
+.profileEdit-changeField {
+  font-weight: 400;
+  font-size: 14.66667px;
+  color: #666666;
+}
+
+.profileEdit-changeField a {
+  text-decoration: none;
+  color: #666666;
+}
+
+#editInput_notes.profileEdit-fieldInput {
+  height: auto;
+  padding-left: 8px;
+  padding-right: 8px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 260px !important;
+}
+
+option:checked,select:focus::-ms-value {
+  background-color: #d24625;
+}
+
+.profileBase-container {
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-height: 100%;
+  position: relative;
+  outline: none;
+}
+
+.profileBase-paddingDiv {
+  position: absolute;
+  width: 120px;
+}
+
+#displayDiv_addLinkEdit.profileBase-container .profile-icContainer {
+  display: none;
+}
+
+.profileBase-container table {
+  height: 100%;
+  max-height: 100%;
+}
+
+.profileBase-container table tr {
+  height: 100%;
+  max-height: 100%;
+}
+
+.profileBase-container table tr td {
+  height: 100%;
+  max-height: 100%;
+}
+
+#linkingListView {
+  width: 100%;
+  height: 100%;
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .win-groupleader {
+    margin-top: 0px;
+  }
+}
+
+#linkingListView .win-groupheader {
+  font-weight: 600;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  color: #d24625;
+  margin-top: 15px;
+  margin-bottom: 9px;
+  margin-left: 0px;
+  padding-left: 20px;
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .win-groupheader {
+    margin-bottom: 15px;
+  }
+}
+
+#linkingListView .win-surface {
+  background-color: White;
+  margin-left: 120px;
+  margin-right: 120px;
+  padding-right: 70px;
+  margin-top: 20px;
+  margin-bottom: 108px;
+  height: calc((100% - 128px));
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .win-surface {
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-right: 0px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 100%;
+  }
+}
+
+#linkingListView .win-container {
+  margin-left: 10px;
+}
+
+@media screen and (-ms-high-contrast) {
+  #linkingListView .win-container {
+    background-color: transparent;
+  }
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .win-container {
+    margin-right: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+}
+
+#linkingListView .win-container:hover {
+  background-color: transparent;
+  outline: none;
+}
+
+#linkingListView .win-container:hover .win-item {
+  background-color: #f6e2ca;
+}
+
+@media screen and (-ms-high-contrast) {
+  #linkingListView .win-container:hover .win-item {
+    background-color: Highlight;
+  }
+}
+
+#linkingListView .win-container:hover .profileLink-progress {
+  background-color: transparent;
+}
+
+#linkingListView .win-container .profileLink-progress {
+  padding-top: 22px;
+  padding-left: 10px;
+}
+
+#linkingListView .win-container .profileLink-progress progress {
+  height: 30px;
+  width: 30px;
+}
+
+#linkingListView .win-container .profileLink-progress progress::-ms-fill {
+  -ms-animation-name: -ms-ring;
+}
+
+#linkingListView .win-container .profileLink-pickerLink {
+  padding-top: 12px;
+  padding-bottom: 26px;
+  width: 310px;
+}
+
+#linkingListView .win-container .profileLink-pickerLink .profileLink-pickerGlyph {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  font-size: 7pt;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+#linkingListView .win-container .profileLink-pickerLink .profileLink-pickerText {
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
+  vertical-align: middle;
+  color: #000000;
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .win-itemscontainer {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .ic-billboardLayout-textArea {
+    top: 15px;
+  }
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .ic-billboardLayout-primaryContent-medium {
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-weight: 400;
+  }
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #linkingListView .ic-billboardLayout-secondaryContent {
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    font-weight: 400;
+  }
+}
+
+.win-menu.uiflyoutmenu {
+  min-height: 30px;
+}
+
+.profileEdit-groupAddExtra .win-menu.uiflyoutmenu {
+  margin-top: -11px;
+  margin-bottom: -9px;
+  margin-left: 50px;
+}
+
+.uiflyoutmenuitem button {
+  font-size: 11pt;
+  font-weight: 400;
+  white-space: nowrap;
+  margin: 0px !important;
+}
+
+.uiflyoutmenuitem:hover {
+  background-color: #dedede;
+  border-color: #dedede;
+}
+
+.uiflyoutmenuitem:hover:active {
+  background-color: #212121;
+  border-color: #212121;
+  color: #ffffff;
+}
+
+#profilePicture-container {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 88px;
+  margin-left: 120px;
+  margin-right: 66px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  overflow: hidden;
+  -ms-scroll-limit-x-max: 0px;
+  -ms-scroll-limit-y-max: 0px;
+}
+
+#profilePicture-scroller {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: scroll;
+  -ms-content-zooming: zoom;
+  -ms-overflow-style: none;
+  -ms-scroll-rails: none;
+}
+
+#profilePicture-photo {
+  position: relative;
+}
+
+#profilePicture-photo.hidden {
+  visibility: hidden;
+}
+
+#profilePicture-hitTargetContainer {
+  position: relative;
+  z-index: 1;
+}
+
+#profilePicture-hitTarget {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+  background-color: white;
+  opacity: 0.00001;
+  -ms-high-contrast-adjust: none;
+}
+
+#profilePicture-hitTargetZoom {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  z-index: 2;
+  -ms-touch-action: pinch-zoom;
+}
+
+#profilePicture-crop {
+  border: 4px solid #878787;
+}
+
+#profilePicture-crop.inactive {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+#profilePicture-mask {
+  position: absolute;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.6);
+  -ms-high-contrast-adjust: none;
+}
+
+#profilePicture-buttons {
+  position: absolute;
+  width: 50px;
+  top: 0px;
+  right: 20px;
+}
+
+.profilePicture-button {
+  position: relative;
+  margin-top: 20px;
+  display: block;
+  float: right;
+  z-index: 5;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  font-size: 14pt;
+  font-weight: normal;
+  line-height: 36px;
+  text-align: center;
+  color: #000000;
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 50%;
+  border-color: #000000;
+}
+
+#profilePicture-buttons #profilePicture-zoomToFit {
+  font-family: "Custom Icons";
+}
+
+#profilePicture-buttons .profilePicture-button:hover {
+  background-color: rgba(0, 0, 0, 0.13);
+}
+
+#profilePicture-buttons .profilePicture-button:active,#profilePicture-buttons .profilePicture-button.pressed {
+  color: #ffffff;
+  background-color: #000000;
+}
+
+#profilePicture-buttons .profilePicture-button[aria-disabled="true"] {
+  color: rgba(0, 0, 0, 0.4);
+  background-color: transparent;
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+#profilePicture-anchor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  z-index: -1;
+  opacity: 0.01;
+}
+
+@media screen and (-ms-high-contrast) {
+  #profilePicture-crop {
+    border-color: WindowText;
+  }
+  #profilePicture-buttons .profilePicture-button {
+    color: ButtonText;
+    background-color: ButtonFace;
+    border-color: ButtonText;
+  }
+  #profilePicture-buttons>.profilePicture-button:hover {
+    color: HighlightText;
+    background-color: Highlight;
+  }
+  #profilePicture-buttons .profilePicture-button:active,#profilePicture-buttons .profilePicture-button.pressed {
+    color: Window;
+    background-color: ButtonText;
+  }
+  #profilePicture-buttons .profilePicture-button[aria-disabled="true"] {
+    color: GrayText;
+    background-color: ButtonFace;
+    border-color: GrayText;
+  }
+}
+
+@media screen and (-ms-view-state: snapped) {
+  textarea {
+    min-width: 100px;
+  }
+  .profile-flyout {
+    margin-left: 5px;
+    margin-right: 20px;
+    margin-top: 3px;
+  }
+  #delete-flyout.profile-flyout {
+    width: 226px;
+  }
+  .profileBase-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    max-height: 100%;
+  }
+  .profileBase-paddingDiv {
+    position: relative;
+    left: auto !important;
+    width: 280px;
+    height: 48px;
+  }
+  #displayDiv_addLinkEdit.profileBase-container .profileBase-paddingDiv {
+    height: 20px;
+  }
+  .mePrfView-baseUiContainer {
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+  .mePrfView-container {
+    column-width: 240px;
+    column-gap: 0px;
+    column-fill: auto;
+    column-rule-width: 0;
+    position: relative;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    top: -18px;
+    bottom: auto;
+    left: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 240px !important;
+  }
+  .mePrfView-groupContainer {
+    break-inside: avoid-column;
+    width: 240px;
+    margin-bottom: 39px;
+  }
+  .mePrfView-groupContainer:last-of-type {
+    margin-bottom: 0px;
+  }
+  .mePrfView-groupTitle {
+    margin-bottom: 1px;
+  }
+  .mePrfView-groupFields {
+    width: 240px;
+  }
+  .mePrfView-fieldContainer {
+    margin-top: 13px;
+    margin-bottom: 0px;
+  }
+  .mePrfView-fieldValue {
+    font-size: 21.33333px;
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    word-wrap: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .mePrfView-fieldTitle {
+    letter-spacing: 0;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 1px;
+    color: #666666;
+  }
+  #groupDiv_location.mePrfView-groupContainer {
+    margin-bottom: 50px;
+  }
+  #fieldDiv_homeLocation.mePrfView-fieldContainer,#fieldDiv_businessLocation.mePrfView-fieldContainer,#fieldDiv_otherLocation.mePrfView-fieldContainer {
+    margin-bottom: 17px;
+  }
+  .profile-icContainer {
+    position: relative;
+    height: auto;
+    top: 0px;
+    left: 20px;
+    overflow: hidden;
+    width: 240px;
+    padding-bottom: 40px;
+  }
+  .profileView-icNetworks {
+    margin-top: 14.66667px;
+  }
+  .profileView-container {
+    column-width: 240px;
+    column-gap: 0px;
+    column-fill: auto;
+    column-rule-width: 0;
+    position: relative;
+    padding-top: 0px;
+    padding-bottom: 40px;
+    top: -14px;
+    bottom: auto;
+    left: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 240px !important;
+  }
+  .profileView-groupContainer {
+    break-inside: avoid-column;
+    width: 240px;
+    margin-bottom: 39px;
+  }
+  .profileView-groupContainer:last-of-type {
+    margin-bottom: 0px;
+  }
+  .profileView-groupTitle {
+    margin-bottom: 1px;
+  }
+  .profileView-groupFields {
+    width: 240px;
+  }
+  .profileView-fieldContainer {
+    margin-top: 13px;
+    margin-bottom: 0px;
+  }
+  .profileView-fieldValue {
+    font-size: 21.33333px;
+    letter-spacing: 0.02em;
+    line-height: 27px;
+    padding-top: 1px;
+    padding-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .profileView-fieldValue:not(#fieldValueDiv_notes) {
+    word-wrap: normal;
+  }
+  .profileView-fieldTitle {
+    letter-spacing: 0;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    margin-top: 1px;
+    color: #666666;
+  }
+  #groupDiv_location.profileView-groupContainer {
+    margin-bottom: 50px;
+  }
+  #fieldDiv_homeLocation.profileView-fieldContainer,#fieldDiv_businessLocation.profileView-fieldContainer,#fieldDiv_otherLocation.profileView-fieldContainer {
+    margin-bottom: 17px;
+  }
+  .profileEdit-container {
+    column-width: 240px;
+    position: relative;
+    left: 20px;
+    top: 0px;
+    bottom: auto;
+    padding-right: 20px;
+    width: 240px !important;
+  }
+  .profileEdit-fldCntr input[type=text],.profileEdit-fldCntr input[type=password],.profileEdit-fldCntr input[type=email],.profileEdit-fldCntr input[type=number],.profileEdit-fldCntr input[type=tel],.profileEdit-fldCntr input[type=url],.profileEdit-fldCntr input[type=search],.profileEdit-fldCntr textarea {
+    width: 236px !important;
+  }
+  .profileEdit-fldCntr select {
+    width: 240px !important;
+  }
+  .profileEdit-fldCntr-location input[type=text] {
+    width: 236px !important;
+  }
+  .profileEdit-fldCntr-location textarea {
+    width: 220px !important;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
+  .profileEdit-groupContainer:last-of-type {
+    padding-right: 0px;
+    margin-bottom: 20px;
+  }
+  .profileEdit-groupContainer {
+    margin-top: 0px;
+    margin-bottom: 49px;
+  }
+  .profileEdit-groupTitle {
+    margin-bottom: 0px;
+  }
+  .profileEdit-groupFields {
+    width: 240px;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+  .profileEdit-groupAddExtra {
+    margin-top: 1px;
+    margin-bottom: -5px;
+    padding-top: 0px;
+  }
+  .profileEdit-groupAddExtra a {
+    width: 260px;
+  }
+  .profileEdit-fldCntr {
+    margin-top: 0px;
+    margin-bottom: -1px;
+    padding-top: 0px;
+  }
+  .profileEdit-fieldTitle {
+    margin-top: 21px;
+    margin-bottom: 1px;
+  }
+  .profileEdit-fieldInput {
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  .profileEdit-fldCntr.profileEdit-fldCntr-location {
+    margin-top: 10px;
+    margin-bottom: 0px;
+  }
+  #groupDatalocation.profileEdit-groupFields {
+    margin-bottom: 16px;
+  }
+  #editInput_notes.profileEdit-fieldInput {
+    width: 220px !important;
+    margin-top: 4px;
+  }
+  #profilePicture-container {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}

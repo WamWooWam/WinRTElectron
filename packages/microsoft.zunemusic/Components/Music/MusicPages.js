@@ -256,7 +256,7 @@ scriptValidator("/Framework/corefx.js", "/Framework/utilities.js", "/Framework/s
                         else {
                             MS.Entertainment.Utilities.hideElement(this.hubContainer);
                             WinJS.Utilities.removeClass(this.loadingControl, "removeFromDisplay");
-                            var ring = document.createElement("progress");
+                            var ring = document.createElement("ms-progress");
                             ring.className = "win-medium win-ring galleryProgress";
                             this.loadingControl.appendChild(ring)
                         }

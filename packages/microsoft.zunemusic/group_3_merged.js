@@ -736,7 +736,7 @@ var __extends = this.__extends || function(d, b) {
                     };
                     DetailsPageViewModelBase.prototype._updateCatalogDetails = function(){};
                     DetailsPageViewModelBase.prototype._cancelMediaItemHydration = function() {
-                        if (this._mediaItemHydratePromise) {
+                        if (this._mediaItemHydratePromise && this._mediaItemHydratePromise.cancel) {
                             this._mediaItemHydratePromise.cancel();
                             this._mediaItemHydratePromise = null
                         }

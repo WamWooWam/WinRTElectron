@@ -1,831 +1,858 @@
-﻿html {
-    direction: ltr;
+html {
+  direction: ltr;
 }
 
 body,html {
-    height: 100%;
-    overflow: hidden;
-    -ms-content-zooming: none;
+  height: 100%;
+  overflow: hidden;
+  -ms-content-zooming: none;
 }
 
 html body {
-    letter-spacing: normal;
-    line-height: normal;
+  letter-spacing: normal;
+  line-height: normal;
 }
 
 .app-frame {
-    height: 100%;
-    background-color: #f4f4f4;
+  height: 100%;
+  background-color: #f4f4f4;
 }
 
 .app-frame,.content-container {
-    width: 100%;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    overflow: hidden;
+  width: 100%;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow: hidden;
 }
 
 .app-frame-grid {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto 1fr;
+  display: -ms-grid;
+  -ms-grid-columns: 100%;
+  -ms-grid-rows: auto 1fr;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto 1fr;
 }
 
 .app-frame-header {
-    height: 120px;
-    position: relative;
-    grid-row: 1;
+  height: 120px;
+  position: relative;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
 }
 
 .app-frame-body {
-    grid-row: 2;
-    position: relative;
-    left: 0;
-    z-index: 0;
+  -ms-grid-row: 2;
+  position: relative;
+  overflow: hidden;
+  left: 0;
+  z-index: 0;
+  grid-row-start: 2;
 }
 
 .app-frame-connectedTo {
-    position: absolute;
-    bottom: 0px;
-    right: 0px;
-    grid-row: 2;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  -ms-grid-row: 2;
+  grid-row-start: 2;
 }
 
 .app-frame-header,.app-frame-body {
-    width: 100%;
+  width: 100%;
 }
 
 .header-container {
-    display: grid;
-    grid-template-rows: 40px auto;
-    grid-template-columns: 80px 1fr auto 40px;
-    z-index: 1;
-    font-weight: 200;
-    color: #000000;
-    text-decoration: none;
-    position: absolute;
-    width: 100%;
+  display: -ms-grid;
+  -ms-grid-rows: 40px auto;
+  -ms-grid-columns: 80px 1fr auto 40px;
+  z-index: 1;
+  font-weight: 200;
+  color: #000000;
+  text-decoration: none;
+  position: absolute;
+  width: 100%;
+  display: grid;
+  grid-template-rows: 40px auto;
+  grid-template-columns: 80px 1fr auto 40px;
 }
 
 #idOutgoingHeader {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    z-index: 2;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 2;
 }
 
 .content-container {
-    right: 0;
-    bottom: 0;
-    z-index: 1;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
 }
 
 .content-container.under,#idOutgoingHeader.under {
-    z-index: 0;
-    opacity: 0.0;
+  z-index: 0;
+  opacity: 0.0;
 }
 
 #idOutgoingContent.under {
-    opacity: inherit;
+  opacity: inherit;
 }
 
 #idPeopleBack,#idPeopleTitle,#idPeopleSecondaryTitle {
-    z-index: 1;
+  z-index: 1;
 }
 
 .grid-header-back {
-    grid-row: 2;
-    grid-column: 1;
-    padding-top: 19px;
-    padding-left: 40px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 1;
+  padding-top: 19px;
+  padding-left: 40px;
+  grid-row-start: 2;
+  grid-column-start: 1;
 }
 
 .app-backbutton {
-    border-color: #d24625;
-    color: #d24625;
+  border-color: #d24625;
+  color: #d24625;
 }
 
 .app-backbutton:hover {
-    border-color: #d24625;
-    background-color: #d7d7d7;
+  border-color: #d24625;
+  background-color: #d7d7d7;
 }
 
 .app-backbutton:active,.app-backbutton:hover:active {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .grid-header-title {
-    grid-row: 2;
-    grid-column: 2;
-    display: grid;
-    grid-template-rows: 1;
-    grid-template-columns: auto 1fr;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  display: -ms-grid;
+  -ms-grid-rows: 1;
+  -ms-grid-columns: auto 1fr;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: auto 1fr;
 }
 
 .grid-header-frameCommands {
-    grid-row: 2;
-    grid-column: 3;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  grid-row-start: 2;
+  grid-column-start: 3;
 }
 
 .grid-header-search-container {
-    grid-row: 2;
-    grid-column: 3;
-    align-items: end;
-    padding-top: 26px;
+  -ms-grid-row: 2;
+  -ms-grid-column: 3;
+  -ms-grid-column-align: end;
+  padding-top: 26px;
+  grid-row-start: 2;
+  grid-column-start: 3;
+  justify-content: flex-end;
 }
 
 .header-title {
-    grid-row: 1;
-    grid-column: 1;
-    display: grid;
-    grid-template-rows: 1;
-    grid-template-columns: 1fr auto;
-    height: auto;
-    margin-left: 40px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  display: -ms-grid;
+  -ms-grid-rows: 1;
+  -ms-grid-columns: 1fr auto;
+  height: auto;
+  margin-left: 40px;
+  grid-row-start: 1;
+  grid-column-start: 1;
+  display: grid;
+  grid-template-rows: 1;
+  grid-template-columns: 1fr auto;
 }
 
 .header-title.hasFilter:hover * {
-    color: rgba(0, 0, 0, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 @media screen and (-ms-high-contrast) {
-    .header-title.hasFilter:hover * {
-        color: Hotlight;
-    }
+  .header-title.hasFilter:hover * {
+    color: Hotlight;
+  }
 }
 
 .header-title.hasFilter.pressed * {
-    color: rgba(0, 0, 0, 0.4);
+  color: rgba(0, 0, 0, 0.4);
 }
 
 .header-title .header-title-text {
-    grid-row: 1;
-    grid-column: 1;
-    font-size: 56px;
-    letter-spacing: 0;
-    line-height: 64px;
-    padding-bottom: 11px;
-    padding-top: 5px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  font-size: 56px;
+  letter-spacing: 0;
+  line-height: 64px;
+  padding-bottom: 11px;
+  padding-top: 5px;
+  grid-row-start: 1;
+  grid-column-start: 1;
 }
 
 .header-title .header-title-chevron {
-    grid-row: 1;
-    grid-column: 2;
-    font-size: 56px;
-    letter-spacing: 0;
-    line-height: 64px;
-    padding-bottom: 11px;
-    padding-top: 5px;
-    font-family: "Segoe UI Symbol";
-    font-size: 20pt;
-    margin-left: 12px;
-    padding-top: 9px;
-    padding-bottom: 0px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  font-size: 56px;
+  letter-spacing: 0;
+  line-height: 64px;
+  padding-bottom: 11px;
+  padding-top: 5px;
+  font-family: "Segoe UI Symbol";
+  font-size: 20pt;
+  margin-left: 12px;
+  padding-top: 9px;
+  padding-bottom: 0px;
+  grid-row-start: 1;
+  grid-column-start: 2;
 }
 
 .ab-headertitle {
-    color: #d24625;
+  color: #d24625;
 }
 
 .header-secondaryTitle {
-    grid-row: 1;
-    grid-column: 2;
-    justify-items: end;
-    margin-left: 30px;
+  -ms-grid-row: 1;
+  -ms-grid-column: 2;
+  -ms-grid-row-align: end;
+  margin-left: 30px;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  padding-bottom: 15px;
+  color: #666666;
+  grid-row-start: 1;
+  grid-column-start: 2;
+  align-items: flex-end;
+}
+
+.search-scene .header-secondaryTitle {
+  color: #d24625;
+}
+
+.connectedTo-container {
+  position: absolute;
+  z-index: 3;
+  bottom: 30px;
+  right: 40px;
+  color: #00749e;
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+}
+
+.connectedAccounts-label {
+  position: relative;
+  top: -5px;
+}
+
+.edit-create-scene .hiddenInEdit,.has-commands-scene .hiddenInCommandScene,.inZoomedOutView .hiddenInZoomedOut,.hidden {
+  display: none;
+}
+
+.shown {
+  display: block;
+}
+
+.flyoutMenu {
+  border: solid 2px;
+  padding-top: 9px;
+  padding-bottom: 11px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.flyoutMenu.whatsNewFilter {
+  margin: 0px;
+  max-width: 300px;
+}
+
+.flyoutMenu-item {
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 600;
+  padding: 10px 20px;
+  margin: 6px 0px;
+}
+
+.flyoutMenu-item:focus,.flyoutMenu-item:hover {
+  outline: 0px;
+  color: #000000;
+  background-color: #f6e2ca;
+}
+
+@media screen and (-ms-high-contrast) {
+  .flyoutMenu-item:focus,.flyoutMenu-item:hover {
+    color: HighlightText;
+    background-color: Highlight;
+  }
+}
+
+.flyoutMenu-item:active,.flyoutMenu-item.selected-item {
+  color: #fff;
+  background-color: #d24625;
+}
+
+@media screen and (-ms-high-contrast) {
+  .flyoutMenu-item:active,.flyoutMenu-item.selected-item {
+    color: HighlightText;
+    background-color: Highlight;
+  }
+}
+
+.win-appbar,.win-appbar.win-ui-dark,.win-ui-dark .win-appbar {
+  background-color: #292929;
+}
+
+.win-ui-dark button {
+  border-color: transparent;
+}
+
+.win-ui-dark button[type=button]:hover:active {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: white;
+}
+
+.win-ui-dark button[type=button]:hover:active .win-commandimage {
+  color: #d24625;
+}
+
+.win-ui-dark button[aria-checked=true] .win-commandimage,.win-ui-dark button[aria-checked=true]:hover .win-commandimage {
+  color: #d24625;
+}
+
+.win-ui-dark button[aria-checked=true]:active .win-commandimage,.win-ui-dark button[aria-checked=true]:hover:active .win-commandimage {
+  color: white;
+}
+
+.win-ui-dark button[aria-checked=true]:hover .win-commandring {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+.show-number-on-commandimage .win-commandimage {
+  padding-top: 4px;
+  line-height: 12px;
+}
+
+.commandimage-uppernumber {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.commandimage-lower {
+  font-size: 13pt;
+}
+
+#idNavBar {
+  padding-top: 20px;
+  padding-bottom: 17px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: calc((100% - 50px));
+}
+
+button.win-command.nav-command-container {
+  background-color: rgba(255, 255, 255, 0.11);
+  color: white;
+  width: 210px;
+  height: 50px;
+  padding-top: 11px;
+  padding-bottom: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+button.win-command.nav-command-container:hover {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+button.win-command.nav-command-container:hover:active {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.grid-header-frameCommands button.win-command {
+  padding: 0px;
+  margin-top: 18px;
+  margin-left: 27px;
+}
+
+.grid-header-frameCommands button.win-command .win-commandicon {
+  margin: 0px;
+}
+
+.grid-header-frameCommands button.win-command .win-commandring {
+  border-color: #d24625;
+}
+
+.grid-header-frameCommands button.win-command .win-commandimage {
+  color: #d24625;
+}
+
+.grid-header-frameCommands button.win-command.win-hidefocus:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+.grid-header-frameCommands button.win-command:focus {
+  outline: 1px dotted black;
+  border-color: transparent;
+}
+
+.grid-header-frameCommands button.win-command:hover .win-commandring {
+  background-color: #f6e2ca;
+}
+
+.grid-header-frameCommands button.win-command:active .win-commandring {
+  border-color: #d24625;
+  background-color: #d24625;
+}
+
+.grid-header-frameCommands button.win-command:active .win-commandimage {
+  color: white;
+}
+
+.nav-command {
+  width: 100%;
+  height: 100%;
+  display: -ms-grid;
+  -ms-grid-rows: 100%;
+  -ms-grid-columns: auto 1fr;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: auto 1fr;
+}
+
+.nav-command-icon {
+  -ms-grid-column: 1;
+  -ms-grid-column-align: start;
+  font-size: 20pt;
+  padding-left: 10px;
+  padding-top: 5px;
+  grid-column-start: 1;
+  justify-content: flex-start;
+}
+
+.nav-command-label {
+  -ms-grid-column: 2;
+  -ms-grid-column-align: start;
+  text-align: left;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 600;
+  padding-left: 5px;
+  padding-right: 10px;
+  padding-top: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc((100% - 15px));
+  grid-column-start: 2;
+  justify-content: flex-start;
+}
+
+.win-searchbox {
+  margin-top: 2px;
+  margin-right: 2px;
+  height: 28px;
+  border: none;
+  background-color: white;
+  width: 270px;
+}
+
+@media screen and (-ms-high-contrast) {
+  .win-searchbox {
+    margin-top: 0px;
+    margin-right: 0px;
+    border: solid 2px WindowText;
+  }
+}
+
+.dynamic-win-searchbox {
+  margin-top: 2px;
+  margin-right: 2px;
+  height: 28px;
+  border: solid 2px rgba(0, 0, 0, 0.27);
+  width: 270px;
+}
+
+.win-searchbox-input {
+  display: inline-block;
+  font-family: inherit;
+}
+
+.win-searchbox-button {
+  height: 28px;
+  width: 28px;
+  background-color: white;
+  color: #d24625;
+}
+
+.win-searchbox-button:hover {
+  background-color: white;
+  color: rgba(210, 70, 37, 0.82);
+}
+
+.dynamic-win-searchbox-button {
+  height: 28px;
+  width: 28px;
+  background-color: #d24625;
+  color: white;
+}
+
+.dynamic-win-searchbox-button:hover {
+  background-color: rgba(210, 70, 37, 0.82);
+  color: white;
+}
+
+.win-searchbox-flyout {
+  width: 270px;
+  min-width: 106px;
+  border: solid 2px rgba(0, 0, 0, 0.27);
+}
+
+.win-searchbox-suggestion-result-text {
+  width: auto;
+  flex: 1 1 auto;
+}
+
+.win-searchbox-suggestion-result img {
+  flex: none;
+}
+
+.win-searchbox-suggestion-selected .win-searchbox-flyout-highlighttext {
+  color: white;
+  font-weight: 700;
+}
+
+.win-searchbox-flyout-highlighttext {
+  color: #d24625;
+}
+
+.win-searchbox-suggestion-selected .win-searchbox-suggestion-result-text {
+  color: white;
+}
+
+.win-searchbox-suggestion-result:hover {
+  background-color: #f6e2ca;
+}
+
+.win-searchbox-suggestion-selected {
+  background-color: #d24625;
+}
+
+.win-searchbox-suggestion-selected:hover {
+  background-color: #d24625 !important;
+}
+
+@media (-ms-high-contrast) {
+  button.win-command.nav-command-container {
+    background-color: transparent;
+    border-color: ButtonText;
+  }
+  button.win-command.nav-command-container:focus {
+    background-color: ButtonFace;
+    border-color: ButtonText;
+    outline: 2px solid ButtonText;
+  }
+  button.win-command.nav-command-container:hover {
+    background-color: Highlight;
+  }
+  button.win-command.nav-command-container:hover:active {
+    background-color: ButtonText;
+  }
+}
+
+@media screen and (-ms-view-state: snapped) {
+  #idNavBar {
+    padding-bottom: 10px;
+  }
+  button.win-command.nav-command-container {
+    width: calc((100% - 5px));
+    height: 40px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 6px;
+  }
+  .nav-command {
+    -ms-grid-columns: auto 1fr;
+    -ms-grid-rows: 100%;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 100%;
+  }
+  .nav-command-icon {
+    -ms-grid-column: 1;
+    font-size: 14pt;
+    padding-top: 0px;
+    grid-column-start: 1;
+  }
+  .nav-command-label {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-top: 0px;
+    grid-row-start: 1;
+    grid-column-start: 2;
+  }
+  .app-frame-grid {
+    -ms-grid-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr auto;
+  }
+  .app-frame-connectedTo {
+    position: relative;
+    -ms-grid-row: 3;
+    height: 50px;
+    grid-row-start: 3;
+  }
+  .header-container {
+    -ms-grid-rows: 40px auto 20px;
+    grid-template-rows: 40px auto 20px;
+  }
+  .grid-header-frameCommands {
+    display: none;
+  }
+  .snappable .header-container {
+    -ms-grid-rows: 50px auto;
+    -ms-grid-columns: auto 1fr auto 20px;
+    grid-template-rows: 50px auto;
+    grid-template-columns: auto 1fr auto 20px;
+  }
+  .snappable .grid-header-frameCommands {
+    display: block;
+  }
+  .snappable .grid-header-title {
+    -ms-grid-rows: auto 40px;
+    -ms-grid-columns: 1;
+    grid-template-rows: auto 40px;
+    grid-template-columns: 1;
+  }
+  .snappable .edit-create-scene .grid-header-title {
+    margin-left: 10px;
+    margin-right: -10px;
+  }
+  .snappable .grid-header-back {
+    padding-top: 5px;
+    padding-left: 10px;
+  }
+  .win-backbutton {
+    width: 41px;
+    height: 41px;
+    font-size: 14pt;
+    line-height: 37px;
+    vertical-align: baseline;
+    margin-left: 10px;
+  }
+  .snappable .win-backbutton {
+    width: 30px;
+    height: 30px;
+    font-size: 10.5pt;
+    line-height: 26px;
+    vertical-align: -0.37em;
+  }
+  .snappable button.win-command {
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 3px;
+    margin-right: -2px;
+    margin-left: 8px;
+  }
+  .snappable button.win-command .win-commandicon,.snappable button.win-command .win-commandimage {
+    font-size: 11pt;
+    height: 30px;
+    width: 30px;
+  }
+  .snappable button.win-command .win-commandimage {
+    line-height: 30px;
+  }
+  .snappable .header-title:not(.increaseSpecificity) {
+    margin-left: 10px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 0px;
+    max-width: 236px;
+  }
+  .snappable .header-title:not(.increaseSpecificity) .header-title-text {
     font-size: 26.66667px;
     letter-spacing: 0.02em;
     line-height: 32px;
     padding-bottom: 5px;
     padding-top: 3px;
-    padding-bottom: 15px;
-    color: #666666;
-}
-
-.search-scene .header-secondaryTitle {
-    color: #d24625;
-}
-
-.connectedTo-container {
-    position: absolute;
-    z-index: 3;
-    bottom: 30px;
-    right: 40px;
-    color: #00749e;
-    font-weight: 400;
-    font-size: 12px;
+  }
+  .snappable .header-title:not(.increaseSpecificity) .header-title-chevron {
+    font-size: 26.66667px;
     letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-}
-
-.connectedAccounts-label {
-    position: relative;
-    top: -5px;
-}
-
-.edit-create-scene .hiddenInEdit,.has-commands-scene .hiddenInCommandScene,.inZoomedOutView .hiddenInZoomedOut,.hidden {
-    display: none;
-}
-
-.shown {
-    display: block;
-}
-
-.flyoutMenu {
-    border: solid 2px;
-    padding-top: 9px;
-    padding-bottom: 11px;
-    padding-left: 0px;
-    padding-right: 0px;
-}
-
-.flyoutMenu.whatsNewFilter {
-    margin: 0px;
-    max-width: 300px;
-}
-
-.flyoutMenu-item {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 600;
-    padding: 10px 20px;
-    margin: 6px 0px;
-}
-
-.flyoutMenu-item:focus,.flyoutMenu-item:hover {
-    outline: 0px;
-    color: #000000;
-    background-color: #f6e2ca;
-}
-
-@media screen and (-ms-high-contrast) {
-    .flyoutMenu-item:focus,.flyoutMenu-item:hover {
-        color: HighlightText;
-        background-color: Highlight;
-    }
-}
-
-.flyoutMenu-item:active,.flyoutMenu-item.selected-item {
-    color: #fff;
-    background-color: #d24625;
-}
-
-@media screen and (-ms-high-contrast) {
-    .flyoutMenu-item:active,.flyoutMenu-item.selected-item {
-        color: HighlightText;
-        background-color: Highlight;
-    }
-}
-
-.win-appbar,.win-appbar.win-ui-dark,.win-ui-dark .win-appbar {
-    background-color: #292929;
-}
-
-.win-ui-dark button {
-    border-color: transparent;
-}
-
-.win-ui-dark button[type=button]:hover:active {
-    background-color: rgba(255, 255, 255, 0.6);
-    color: white;
-}
-
-.win-ui-dark button[type=button]:hover:active .win-commandimage {
-    color: #d24625;
-}
-
-.win-ui-dark button[aria-checked=true] .win-commandimage,.win-ui-dark button[aria-checked=true]:hover .win-commandimage {
-    color: #d24625;
-}
-
-.win-ui-dark button[aria-checked=true]:active .win-commandimage,.win-ui-dark button[aria-checked=true]:hover:active .win-commandimage {
-    color: white;
-}
-
-.win-ui-dark button[aria-checked=true]:hover .win-commandring {
-    background-color: rgba(255, 255, 255, 0.6);
-    border-color: rgba(255, 255, 255, 0.6);
-}
-
-.show-number-on-commandimage .win-commandimage {
-    padding-top: 4px;
-    line-height: 12px;
-}
-
-.commandimage-uppernumber {
-    font-size: 12px;
-    font-weight: 400;
-}
-
-.commandimage-lower {
-    font-size: 13pt;
-}
-
-#idNavBar {
-    padding-top: 20px;
-    padding-bottom: 17px;
-    padding-left: 25px;
-    padding-right: 25px;
-    width: calc((100% - 50px));
-}
-
-button.win-command.nav-command-container {
-    background-color: rgba(255, 255, 255, 0.11);
-    color: white;
-    width: 210px;
-    height: 50px;
-    padding-top: 11px;
-    padding-bottom: 10px;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-button.win-command.nav-command-container:hover {
-    background-color: rgba(255, 255, 255, 0.22);
-}
-
-button.win-command.nav-command-container:hover:active {
-    background-color: #ffffff;
-    color: #000000;
-}
-
-.grid-header-frameCommands button.win-command {
-    padding: 0px;
-    margin-top: 18px;
-    margin-left: 27px;
-}
-
-.grid-header-frameCommands button.win-command .win-commandicon {
-    margin: 0px;
-}
-
-.grid-header-frameCommands button.win-command .win-commandring {
-    border-color: #d24625;
-}
-
-.grid-header-frameCommands button.win-command .win-commandimage {
-    color: #d24625;
-}
-
-.grid-header-frameCommands button.win-command.win-hidefocus:focus {
-    outline: none;
-    border-color: transparent;
-}
-
-.grid-header-frameCommands button.win-command:focus {
-    outline: 1px dotted black;
-    border-color: transparent;
-}
-
-.grid-header-frameCommands button.win-command:hover .win-commandring {
-    background-color: #f6e2ca;
-}
-
-.grid-header-frameCommands button.win-command:active .win-commandring {
-    border-color: #d24625;
-    background-color: #d24625;
-}
-
-.grid-header-frameCommands button.win-command:active .win-commandimage {
-    color: white;
-}
-
-.nav-command {
-    width: 100%;
-    height: 100%;
-    display: grid;
-    grid-template-rows: 100%;
-    grid-template-columns: auto 1fr;
-}
-
-.nav-command-icon {
-    grid-column: 1;
-    align-items: start;
-    font-size: 20pt;
+    line-height: 32px;
+    padding-bottom: 5px;
+    padding-top: 3px;
+    margin-left: 12px;
+    margin-right: 0px;
+  }
+  .snappable .header-secondaryTitle {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    margin-left: 0px;
     padding-left: 10px;
-    padding-top: 5px;
-}
-
-.nav-command-label {
-    grid-column: 2;
-    align-items: start;
-    text-align: left;
+    font-weight: 300;
     font-size: 14.66667px;
     letter-spacing: 0.02em;
     line-height: 20px;
     padding-bottom: 0px;
     padding-top: 0px;
-    font-weight: 600;
-    padding-left: 5px;
-    padding-right: 10px;
+    padding-bottom: 20px;
+    max-width: 236px;
+    grid-row-start: 2;
+    grid-column-start: 1;
+  }
+  .connectedTo-container {
+    bottom: 20px;
+    right: 20px;
+  }
+  .flyoutMenu.whatsNewFilter {
+    margin-top: 23px;
+  }
+  .snappable .win-backbutton:disabled,.snappable .win-backbutton:active:disabled {
+    display: none;
+  }
+}
+
+@media (min-width:320px) and (max-width: 955px) {
+   {
+  }
+  .grid-header-search-container {
+    -ms-grid-column: 3;
     padding-top: 5px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: calc((100% - 15px));
-}
-
-.win-searchbox {
+    padding-right: 0px;
+    grid-column-start: 3;
+  }
+  .win-searchbox {
+    -ms-grid-column-align: end;
     margin-top: 2px;
     margin-right: 2px;
-    height: 28px;
     border: none;
-    background-color: white;
-    width: 270px;
-}
-
-@media screen and (-ms-high-contrast) {
-    .win-searchbox {
-        margin-top: 0px;
-        margin-right: 0px;
-        border: solid 2px WindowText;
-    }
-}
-
-.dynamic-win-searchbox {
-    margin-top: 2px;
-    margin-right: 2px;
+    width: 28px;
+    justify-content: flex-end;
+  }
+  .win-searchbox-flyout {
+    width: calc((100vw - 44px));
+  }
+  .dynamic-win-searchbox {
+    -ms-grid-column-align: end;
+    margin-top: 0px;
+    margin-right: 0px;
+    margin-left: 10px;
     height: 28px;
     border: solid 2px rgba(0, 0, 0, 0.27);
-    width: 270px;
-}
-
-.win-searchbox-input {
+    width: calc((100vw - 44px));
+    justify-content: flex-end;
+  }
+  .dynamic-win-searchbox-with-back-button {
+    width: calc((100vw - 84px));
+  }
+  .dynamic-win-searchbox-flyout-with-back-button {
+    width: calc((100vw - 84px));
+  }
+  .win-searchbox-input {
+    display: none;
+  }
+  .dynamic-win-searchbox-input {
     display: inline-block;
-    font-family: inherit;
-}
-
-.win-searchbox-button {
-    height: 28px;
-    width: 28px;
-    background-color: white;
-    color: #d24625;
-}
-
-.win-searchbox-button:hover {
-    background-color: white;
-    color: rgba(210, 70, 37, 0.82);
-}
-
-.dynamic-win-searchbox-button {
-    height: 28px;
-    width: 28px;
+  }
+  .win-searchbox-button {
     background-color: #d24625;
     color: white;
-}
-
-.dynamic-win-searchbox-button:hover {
+  }
+  .win-searchbox-button:hover {
     background-color: rgba(210, 70, 37, 0.82);
     color: white;
+  }
+  .dynamic-search-grid-header-title {
+    display: -ms-grid;
+    -ms-grid-rows: auto 40px;
+    -ms-grid-columns: 1fr 10px;
+    display: grid;
+    grid-template-rows: auto 40px;
+    grid-template-columns: 1fr 10px;
+  }
+  .dynamic-search-header-secondaryTitle {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+    -ms-grid-column-align: start;
+    padding-left: 10px;
+    padding-right: 40px;
+    font-weight: 300;
+    font-size: 14.66667px;
+    letter-spacing: 0.02em;
+    line-height: 20px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 20px;
+    max-width: calc((100vw - 160px));
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    justify-content: flex-start;
+  }
 }
 
-.win-searchbox-flyout {
-    width: 270px;
-    min-width: 106px;
-    border: solid 2px rgba(0, 0, 0, 0.27);
+@media (min-width:320px) and (max-width: 955px) and screen and (-ms-high-contrast) {
+  .win-searchbox {
+    margin-top: 0px;
+    margin-right: 0px;
+    border: solid 2px WindowText;
+  }
 }
 
-.win-searchbox-suggestion-result-text {
-    width: auto;
-    flex: 1 1 auto;
-}
-
-.win-searchbox-suggestion-result img {
-    flex: none;
-}
-
-.win-searchbox-suggestion-selected .win-searchbox-flyout-highlighttext {
-    color: white;
-    font-weight: 700;
-}
-
-.win-searchbox-flyout-highlighttext {
-    color: #d24625;
-}
-
-.win-searchbox-suggestion-selected .win-searchbox-suggestion-result-text {
-    color: white;
-}
-
-.win-searchbox-suggestion-result:hover {
-    background-color: #f6e2ca;
-}
-
-.win-searchbox-suggestion-selected {
-    background-color: #d24625;
-}
-
-.win-searchbox-suggestion-selected:hover {
-    background-color: #d24625 !important;
-}
-
-@media (-ms-high-contrast) {
-    button.win-command.nav-command-container {
-        background-color: transparent;
-        border-color: ButtonText;
-    }
-
-    button.win-command.nav-command-container:focus {
-        background-color: ButtonFace;
-        border-color: ButtonText;
-        outline: 2px solid ButtonText;
-    }
-
-    button.win-command.nav-command-container:hover {
-        background-color: Highlight;
-    }
-
-    button.win-command.nav-command-container:hover:active {
-        background-color: ButtonText;
-    }
-}
-
-@media screen and (max-width: 375px) {
-    #idNavBar {
-        padding-bottom: 10px;
-    }
-
-    button.win-command.nav-command-container {
-        width: calc((100% - 5px));
-        height: 40px;
-        padding-left: 10px;
-        padding-right: 10px;
-        padding-top: 8px;
-        padding-bottom: 8px;
-        margin-bottom: 6px;
-    }
-
-    .nav-command {
-        grid-template-columns: auto 1fr;
-        grid-template-rows: 100%;
-    }
-
-    .nav-command-icon {
-        grid-column: 1;
-        font-size: 14pt;
-        padding-top: 0px;
-    }
-
-    .nav-command-label {
-        grid-row: 1;
-        grid-column: 2;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        padding-top: 0px;
-    }
-
-    .app-frame-grid {
-        grid-template-rows: auto 1fr auto;
-    }
-
-    .app-frame-connectedTo {
-        position: relative;
-        grid-row: 3;
-        height: 50px;
-    }
-
-    .header-container {
-        grid-template-rows: 40px auto 20px;
-    }
-
-    .grid-header-frameCommands {
-        display: none;
-    }
-
-    .snappable .header-container {
-        grid-template-rows: 50px auto;
-        grid-template-columns: auto 1fr auto 20px;
-    }
-
-    .snappable .grid-header-frameCommands {
-        display: block;
-    }
-
-    .snappable .grid-header-title {
-        grid-template-rows: auto 40px;
-        grid-template-columns: 1;
-    }
-
-    .snappable .edit-create-scene .grid-header-title {
-        margin-left: 10px;
-        margin-right: -10px;
-    }
-
-    .snappable .grid-header-back {
-        padding-top: 5px;
-        padding-left: 10px;
-    }
-
-    .win-backbutton {
-        width: 41px;
-        height: 41px;
-        font-size: 14pt;
-        line-height: 37px;
-        vertical-align: baseline;
-        margin-left: 10px;
-    }
-
-    .snappable .win-backbutton {
-        width: 30px;
-        height: 30px;
-        font-size: 10.5pt;
-        line-height: 26px;
-        vertical-align: -0.37em;
-    }
-
-    .snappable button.win-command {
-        padding: 0px;
-        margin-bottom: 0px;
-        margin-top: 3px;
-        margin-right: -2px;
-        margin-left: 8px;
-    }
-
-    .snappable button.win-command .win-commandicon,.snappable button.win-command .win-commandimage {
-        font-size: 11pt;
-        height: 30px;
-        width: 30px;
-    }
-
-    .snappable button.win-command .win-commandimage {
-        line-height: 30px;
-    }
-
-    .snappable .header-title:not(.increaseSpecificity) {
-        margin-left: 10px;
-        padding-left: 0px;
-        padding-right: 0px;
-        padding-bottom: 0px;
-        max-width: 236px;
-    }
-
-    .snappable .header-title:not(.increaseSpecificity) .header-title-text {
-        font-size: 26.66667px;
-        letter-spacing: 0.02em;
-        line-height: 32px;
-        padding-bottom: 5px;
-        padding-top: 3px;
-    }
-
-    .snappable .header-title:not(.increaseSpecificity) .header-title-chevron {
-        font-size: 26.66667px;
-        letter-spacing: 0.02em;
-        line-height: 32px;
-        padding-bottom: 5px;
-        padding-top: 3px;
-        margin-left: 12px;
-        margin-right: 0px;
-    }
-
-    .snappable .header-secondaryTitle {
-        grid-row: 2;
-        grid-column: 1;
-        margin-left: 0px;
-        padding-left: 10px;
-        font-weight: 300;
-        font-size: 14.66667px;
-        letter-spacing: 0.02em;
-        line-height: 20px;
-        padding-bottom: 0px;
-        padding-top: 0px;
-        padding-bottom: 20px;
-        max-width: 236px;
-    }
-
-    .connectedTo-container {
-        bottom: 20px;
-        right: 20px;
-    }
-
-    .flyoutMenu.whatsNewFilter {
-        margin-top: 23px;
-    }
-
-    .snappable .win-backbutton:disabled,.snappable .win-backbutton:active:disabled {
-        display: none;
-    }
-}
-
-@media (min-width: 320px) and (max-width:955px) {
-    .grid-header-search-container {
-        grid-column: 3;
-        padding-top: 5px;
-        padding-right: 0px;
-    }
-
-    .win-searchbox {
-        align-items: end;
-        margin-top: 2px;
-        margin-right: 2px;
-        border: none;
-        width: 28px;
-    }
-
-    .win-searchbox-flyout {
-        width: calc((100vw - 44px));
-    }
-
-    .dynamic-win-searchbox {
-        align-items: end;
-        margin-top: 0px;
-        margin-right: 0px;
-        margin-left: 10px;
-        height: 28px;
-        border: solid 2px rgba(0, 0, 0, 0.27);
-        width: calc((100vw - 44px));
-    }
-
-    .dynamic-win-searchbox-with-back-button {
-        width: calc((100vw - 84px));
-    }
-
-    .dynamic-win-searchbox-flyout-with-back-button {
-        width: calc((100vw - 84px));
-    }
-
-    .win-searchbox-input {
-        display: none;
-    }
-
-    .dynamic-win-searchbox-input {
-        display: inline-block;
-    }
-
-    .win-searchbox-button {
-        background-color: #d24625;
-        color: white;
-    }
-
-    .win-searchbox-button:hover {
-        background-color: rgba(210, 70, 37, 0.82);
-        color: white;
-    }
-
-    .dynamic-search-grid-header-title {
-        display: grid;
-        grid-template-rows: auto 40px;
-        grid-template-columns: 1fr 10px;
-    }
-
-    .dynamic-search-header-secondaryTitle {
-        grid-row: 2;
-        grid-column: 1 / 3;
-        align-items: start;
-        padding-left: 10px;
-        padding-right: 40px;
-        font-weight: 300;
-        font-size: 14.66667px;
-        letter-spacing: 0.02em;
-        line-height: 20px;
-        padding-bottom: 0px;
-        padding-top: 0px;
-        padding-bottom: 20px;
-        max-width: calc((100vw - 160px));
-    }
-}
-
-@media screen and (min-width: 320px) and (max-width:955px) and (-ms-high-contrast) {
-    .win-searchbox {
-        margin-top: 0px;
-        margin-right: 0px;
-        border: solid 2px WindowText;
-    }
-}
-
-@media (min-width: 501px) and (max-width:955px) {
-    .grid-header-search-container {
-        grid-column:3 / 5;
-        padding-top: 28px;
-        padding-right: 38px;
-        padding-left: 30px;
-    }
-
-    .dynamic-win-searchbox {
-        width: calc((100vw - 162px));
-    }
-
-    .win-searchbox-flyout {
-        width: calc((100vw - 162px));
-    }
-
-    .dynamic-win-searchbox-with-back-button {
-        width: calc((100vw - 162px));
-    }
-
-    .dynamic-win-searchbox-flyout-with-back-button {
-        width: calc((100vw - 162px));
-    }
-
-    .dynamic-header-title-header-title-text {
-        padding-bottom: 0px !important;
-        padding-top: 9px !important;
-    }
+@media (min-width:501px) and (max-width: 955px) {
+  .grid-header-search-container {
+    -ms-grid-column: 3;
+    -ms-grid-column-span: 2;
+    padding-top: 28px;
+    padding-right: 38px;
+    padding-left: 30px;
+    grid-column-start: 3;
+    grid-column-end: span 2;
+  }
+  .dynamic-win-searchbox {
+    width: calc((100vw - 162px));
+  }
+  .win-searchbox-flyout {
+    width: calc((100vw - 162px));
+  }
+  .dynamic-win-searchbox-with-back-button {
+    width: calc((100vw - 162px));
+  }
+  .dynamic-win-searchbox-flyout-with-back-button {
+    width: calc((100vw - 162px));
+  }
+  .dynamic-header-title-header-title-text {
+    padding-bottom: 0px !important;
+    padding-top: 9px !important;
+  }
 }

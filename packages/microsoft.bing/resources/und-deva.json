@@ -1,0 +1,28 @@
+{
+  "Files": {
+    "views": {
+      "start": {
+        "css": {
+          "startview.css": "views\\start\\css\\und-Deva\\startview.css"
+        }
+      },
+      "main": {
+        "css": {
+          "mainview.css": "views\\main\\css\\und-Deva\\mainview.css"
+        }
+      },
+      "home": {
+        "css": {
+          "homeview.css": "views\\home\\css\\und-Deva\\homeview.css"
+        }
+      }
+    },
+    "shell": {
+      "css": {
+        "shell.css": "shell\\css\\und-Deva\\shell.css",
+        "navigationerror.css": "shell\\css\\und-Deva\\navigationerror.css",
+        "fontmetrics.css": "shell\\css\\und-Deva\\fontmetrics.css"
+      }
+    }
+  }
+}

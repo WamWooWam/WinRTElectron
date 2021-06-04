@@ -47,10 +47,25 @@ namespace PriInfo
                             string value = null;
 
                             var qualifierSet = decisionInfoSection.QualifierSets[candidate.QualifierSet];
-                            var language = qualifierSet.Qualifiers.FirstOrDefault(l => l.Type == QualifierType.Language)?.Value ?? "generic";
-                            language = language.ToLowerInvariant();
+                            //var language = qualifierSet.Qualifiers.FirstOrDefault(l => l.Type == QualifierType.Language)?.Value ?? qualifierSet.Qualifiers.FirstOrDefault(l => l.Type == QualifierType.Scale)?.Value ?? "generic";
+                            //language = language.ToLowerInvariant();
 
-                            var json = languages.TryGetValue(language, out var la) ? la : languages[language] = new JObject();
+                            var set = "generic";
+                            var language = qualifierSet.Qualifiers.FirstOrDefault(l => l.Type == QualifierType.Language);
+                            if (language != null)
+                            {
+                                set = language.Value.ToLowerInvariant();
+                            }
+                            else
+                            {
+                                var scale = qualifierSet.Qualifiers.FirstOrDefault(l => l.Type == QualifierType.Scale);
+                                if (scale != null)
+                                {
+                                    set = $"scale-{scale.Value}";
+                                }
+                            }
+
+                            var json = languages.TryGetValue(set, out var la) ? la : languages[set] = new JObject();
                             var keysArray = item.FullName.Split(new[] { '\\' }, StringSplitOptions.RemoveEmptyEntries);
                             var keys = keysArray.Take(keysArray.Length - 1);
                             if (!keys.Any())
@@ -90,6 +105,12 @@ namespace PriInfo
                                     value = string.Format("<{0} bytes>", data.Length);
                                     break;
                             }
+
+                            //var name = item.Name;
+                            //if(scale != null && scale.Value != "100")
+                            //{
+                            //    name = Path.ChangeExtension(name, $".scale-{scale.Value}" + Path.GetExtension(name));
+                            //}
 
                             json[item.Name] = value;
 

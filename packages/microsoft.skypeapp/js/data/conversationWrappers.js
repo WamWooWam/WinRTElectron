@@ -117,6 +117,7 @@
         this.id = libConv.getObjectID();
         this.identity = libConv.getIdentity();
         this.type = this.libConversation.getIntProperty(LibWrap.PROPKEY.conversation_TYPE);
+        this._refreshName();
     }, {
         libConversation: null,
 

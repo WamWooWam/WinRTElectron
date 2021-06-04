@@ -26,3 +26,8 @@ header, footer, div, span, header, img, button, svg, object
 {
     z-index: 0
 }
+
+.win-commandicon > *, .gallery-content > *, #contentHost > * {
+    grid-row-start: 1;
+    grid-column-start: 1;
+}

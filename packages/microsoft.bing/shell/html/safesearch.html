@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="//Microsoft.WinJS.1.0/css/ui-light.css" rel="stylesheet">
+    <!--
+        Merged into shell.css
+        <link href="/shell/css/safesearch.css" rel="stylesheet" />
+    -->
+    <script src="/shell/js/safesearch.js"></script>
+</head>
+<body>
+    <div id="safeSearchSettingsDiv" data-win-control="WinJS.UI.SettingsFlyout">
+        <div class="win-ui-dark win-header">
+            <button id="BACKSETTINGS" type="button" class="win-backbutton" tabindex="1"></button>
+            <div class="win-label safesearch-text-description">
+                <span  data-win-res="{textContent: 'settings_safesearch_title'}"></span>
+            </div>
+        </div>
+        <div class="win-content win-settings-section safesearch-text-description">
+            <p id="selectiondescription" data-win-res="{textContent: 'settings_safesearch_description'}" ></p>
+            <div>
+                <input id="STRICT" type="radio" name="safesearch" tabindex="2" data-win-res="{attributes: {'aria-label': 'settings_safesearch_filter_strict_label'}}" />
+                <div class="safedescription">
+                    <p data-win-res="{textContent: 'settings_safesearch_filter_strict_label'}">Strict</p>
+                </div>
+                <div>
+                    <p data-win-res="{textContent: 'settings_safesearch_filter_strict_description'}"></p>
+                </div>
+            </div>
+            <div>
+                <input id="DEMOTE" type="radio" name="safesearch" data-win-res="{attributes: {'aria-label': 'settings_safesearch_filter_moderate_label'}}"/>
+                <div class="safedescription">
+                    <p data-win-res="{textContent: 'settings_safesearch_filter_moderate_label'}">Moderate</p>
+                </div>
+                <div> 
+                    <p data-win-res="{textContent: 'settings_safesearch_filter_moderate_description'}"></p>
+                </div>
+            </div>
+            <div>
+                <input id="OFF" type="radio" name="safesearch" data-win-res="{attributes: {'aria-label': 'settings_safesearch_filter_off_label'}}"/>
+                <div class="safedescription">
+                    <p data-win-res="{textContent: 'settings_safesearch_filter_off_label'}">Off</p>
+                </div> 
+                <div>
+                    <p data-win-res="{textContent: 'settings_safesearch_filter_off_description'}"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

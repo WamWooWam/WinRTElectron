@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="//Microsoft.WinJS.1.0/css/ui-light.css" rel="stylesheet">
+    <!--
+        Merged into shell.css
+        <link href="/shell/css/searchhistory.css" rel="stylesheet" />
+    -->
+    <script src="/shell/js/searchhistory.js"></script>
+</head>
+<body>
+    <div id="searchHistorySettingsDiv" data-win-control="WinJS.UI.SettingsFlyout">
+        <div class="win-header win-ui-dark">
+            <button type="button" onclick="WinJS.UI.SettingsFlyout.show()" class="win-backbutton"></button>
+            <div class="win-label">
+                <span data-win-res="{textContent: 'settings_searchhistory_title'}"></span>
+            </div>
+        </div>
+        <div class="win-content">
+            <div class="win-settings-section">
+                <div>
+                    <h3 data-win-res="{textContent: 'settings_searchhistory_toggle'}">Turn on/off</h3>
+                    <br />
+                    <div id="historyEnabled" data-win-control="WinJS.UI.ToggleSwitch" data-win-res="{attributes: {'aria-label': 'settings_searchhistory_toggle'}}" />
+                </div>
+                <br />
+                <div>
+                    <h3 data-win-res="{textContent: 'settings_searchhistory_clear_title'}">Clear history</h3>
+                    <br />
+                    <span data-win-res="{textContent: 'settings_searchhistory_clear_description'}">This can't be undone.</span>
+                    <br />
+                    <button id="clearHistoryButton" type="button">
+                        <span data-win-res="{textContent: 'settings_searchhistory_clear_button'}">Clear</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

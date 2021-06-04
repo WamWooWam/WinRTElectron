@@ -1,16 +1,15 @@
 const path = require('path');
 
-module.exports = [
-{
-    entry: "./src/pack.js",
-    mode: "development",
+module.exports = {
+    entry: './index.ts',
+    mode: 'development',
     devtool: 'inline-source-map',
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
-                exclude: /node_modules/,
+                loader: 'ts-loader',
+                options: { allowTsInNodeModules: true }
             }
         ],
     },
@@ -18,11 +17,8 @@ module.exports = [
         extensions: ['.tsx', '.ts', '.js'],
     },
     output: {
-        filename: 'shim.js',
+        filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist'),
     },
-    target: "electron-renderer",
-    node: {
-        global: true            
-    }
-}];
+    target: "electron-renderer"
+};

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="/common/css/dynamicpano.css" />
+<script src="/common/js/dynamicPano.js"></script>
+</head>
+<body>
+<div class="paywallCard" data-win-bind="style.backgroundImage: cardBackgroundImage">
+<div class="paywallCardOverlay">
+<div class="paywallCardContent">
+<div class="paywallHeader">
+<div class="partnerLogo"><img data-win-bind="src: cardLogoImage" /></div>
+<div class="paywallGrowl paywallMessage">
+<span data-win-bind="innerHTML: paywallGrowlMessageHtml"></span>
+</div>
+</div>
+<div class="paywallCardMainContent">
+<div class="paywallKicker" data-win-bind="innerText: kickerText"></div>
+<div class="paywallCardHeadline">
+<div data-win-bind="innerText: headlineText"></div>
+</div>
+<div class="paywallCardByline">
+<span data-win-bind="innerText: authorText"></span> | <span data-win-bind="innerText: dateText"></span>
+</div>
+<div class="paywallAbstract"></div>
+<div class="paywallReadArticle">
+<button class="readArticle" data-win-bind="innerText: readArticleText" />
+</div>
+</div>
+<div class="paywallSpacer"></div>
+<div class="paywallFooter">
+<div class="paywallMessage" data-win-bind="innerText: unlimitedAccessText"></div>
+<div class="paywallFooterButtons">
+<span><button class="paywallSubscribeButton" data-win-bind="innerText: subscribeText"></button></span><span><button class="paywallSignInButton" data-win-bind="innerText: signInText"></button></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

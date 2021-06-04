@@ -1,0 +1,243 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title></title>
+</head>
+<body>
+<div id="zoomedOutTemplate" data-win-control="WinJS.Binding.Template">
+<div class="semanticZoomTileContainer">
+<div class="semanticZoomTextContainer">
+<div class="semanticZoomText" data-win-bind="textContent: clusterTitle">
+</div>
+</div>
+</div>
+</div>
+<!-- Current conditions template -->
+<div id="ccModule" data-win-control="WinJS.Binding.Template">
+<div class="currentConditions">
+<div class="currentConditionsSlider">
+<div class="ccWrapper">
+<div class="currentTemp" role="document" id="autoID_CurrentDataModule">
+<div class="locWrapper ccSlider1">
+<div id="autoID_clickTempUnit" class="bTemp" tabindex="0" role="button" data-win-control="WinJS.UI.Tooltip" data-win-options="{position: 'top'}" data-win-bind="winControl.innerHTML: toolTipText">
+<span class="bigTempWrapper" data-win-bind="dir: symbolPosition WinJS.Binding.oneTime">
+<span class="bigtemp" data-win-bind="textContent: tempCC WinJS.Binding.oneTime"></span>
+<span class="bigTempDegree" data-win-bind="style.display:displayTemp WinJS.Binding.oneTime">°</span>
+<span class="bigTempUnit" data-win-bind="textContent: tempunit WinJS.Binding.oneTime; style.display:displayTemp WinJS.Binding.oneTime"></span>
+</span>
+</div>
+<div class="ccCaption cityCaption">
+<span data-win-bind="textContent:caption WinJS.Binding.oneTime"></span>
+</div>
+<div class="feelsLikeWrapper">
+<div class="feelslike">
+<span data-win-bind="innerHTML:feelslike WinJS.Binding.oneTime"></span>
+</div>
+</div>                                
+<div class="newSnowDepth">
+<span class="baseDepthHeader" data-win-res="{'textContent': 'NewSnowHeader' }"></span>
+<span class="baseDepthText" data-win-bind="textContent:heroData.newSnowDepth WinJS.Binding.oneTime"></span>
+</div>
+<div class="baseDepth">
+<span class="baseDepthHeader" data-win-res="{'textContent': 'SnowDepthHeader' }"></span>
+<span class="baseDepthText" data-win-bind="innerHTML:heroData.baseDepth WinJS.Binding.oneTime"></span>
+</div>
+<div class="providerWrapper" >
+<div class="snowProvider" role="link" id="autoID_SnowProvider">
+<a class="dailyConditionsProviderLink" data-win-bind="innerHTML:heroData.snowProviderData WinJS.Binding.oneTime; onclick: heroData.snowProviderDataClick" tabindex="0"></a>
+</div>
+<span class="snowProvider"><span>/</span></span>
+<div class="ccProvider" role="link" id="autoID_PrimaryProvider"></div>
+</div>
+<div class="dailyModuleWrapper">
+<div class="dailyModule">
+<div class="forecastsWrapper animateSlide"></div>
+<div class="clearFloats"></div>
+</div>
+</div>
+<div class="dailyPrecipWrapper">
+<div class ="precipContainer">
+<div class="precipitationWrapper animateSlide"></div>
+</div>
+</div>
+<div class="overlayViewport">
+<div class="overlayContainer animateSlide"></div>
+</div>
+</div>
+</div>
+<div class="ccActionButtons ccSlider1">
+<div class="forecastSlider" style="display: none;">
+<button id="autoID_ForecastsButton" class="forecastAnimateButton animateButton win-commandring" tabindex="0" data-win-res="{ attributes: {'aria-label': 'nextDailyConditionsDataText' } }">
+</button>
+</div>
+</div>
+</div>
+<div id="dcExpanded" class="dailyConditionsWrapper">
+<div id="ccExpanded" class="conditionsCollection ccSlider1" role="document">
+<div class="ccCollectionWrapper">
+<div>
+<div class="ccKey" data-win-bind="textContent:weatherProperties.key0 WinJS.Binding.oneTime"></div>
+<div class="ccValue"><span data-win-bind="textContent:weatherProperties.value0; dir:weatherProperties.symbolPosition0 WinJS.Binding.oneTime"></span></div>
+</div>
+<div>
+<div class="ccKey" data-win-bind="textContent:weatherProperties.key1 WinJS.Binding.oneTime"></div>
+<div class="ccValue"><span data-win-bind="textContent:weatherProperties.value1; dir:weatherProperties.symbolPosition1 WinJS.Binding.oneTime"></span></div>
+</div>
+<div class="clearFloats"></div>
+</div>
+<div class="ccCollectionWrapper">
+<div>
+<div class="ccKey" data-win-bind="textContent:weatherProperties.key2 WinJS.Binding.oneTime"></div>
+<div class="ccValue"><span data-win-bind="textContent:weatherProperties.value2; dir:weatherProperties.symbolPosition2 WinJS.Binding.oneTime"></span></div>
+</div>
+<div>
+<div class="ccKey" data-win-bind="textContent:weatherProperties.key3 WinJS.Binding.oneTime"></div>
+<div class="ccValue"><span data-win-bind="textContent:weatherProperties.value3; dir:weatherProperties.symbolPosition3 WinJS.Binding.oneTime"></span></div>
+</div>
+<div class="clearFloats"></div>
+</div>
+<div class="clearFloats"></div>
+</div>
+<div class="otherProvidersWrapper ccSlider2">
+<div class="dailyModuleOtherProviderName primaryProvider" id="autoID_MultiProvider1" role="link"></div>
+<div class="dailyModuleSmall otherForecast1" role="document" id="autoID_MultiProvider1Data">
+<div class="forecastsWrapper animateSlide"></div>
+<div class="clearFloats"></div>
+</div>
+<div class="dailyModuleOtherProviderName secondaryProvider1" id="autoID_MultiProvider2" role="link"></div>
+<div class="dailyModuleSmall otherForecast2" role="document" id="autoID_MultiProvider2Data">
+<div class="forecastsWrapper animateSlide"></div>
+<div class="clearFloats"></div>
+</div>
+</div>
+</div>
+<div class="portraitDailyConditionsWrapper">
+<div class="providersHeader">
+<div class="primaryProviderName" role="link" id="autoID_PrimaryProviderPortrait"></div>
+<div class="portraitOtherProviderNameWrapper">
+<div class="secondaryProviderName1 portraitCCSlide" id="autoID_MultiProvider1Portrait" role="link"></div>
+<div class="secondaryProviderName2 portraitCCSlide" id="autoID_MultiProvider2Portrait" role="link"></div>
+</div>
+</div>
+<div class="animationContainer">
+<div class="portraitMultiProviderWrapper">
+<div class="primaryProvider portraitForecastSlide"></div>
+<div class="portraitOtherProviderWrapper portraitForecastSlide">
+<div class="secondaryProvider1 portraitCCSlide" id="autoID_MultiProvider1DataPortrait" role="document"></div>
+<div class="secondaryProvider2 portraitCCSlide" id="autoID_MultiProvider2DataPortrait" role="document"></div>
+<div class="secondaryProvider3 portraitCCSlide" role="document"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="portraitSliders portraitCCSlide">
+<div class="pCCSlider" onclick="WeatherAppJS.Utilities.UI.AnimatePortraitCurrentConditionsSlide()">
+<button id="autoID_ProvidersButtonPortrait" class="forecastAnimateButton animateButton win-commandring" tabindex="0" data-win-res="{ attributes: {'aria-label': 'moreDailyConditionsAriaText' } }">
+</button>
+</div>
+</div>
+</div>
+<div class="infoWrapper">
+<div class="alertIndicator" data-win-bind="style.display: displayAlert; className: displayAlertBgClass; onclick: handleAlertsClick; onkeyup: handleKeyboardInvocation" tabindex="0" role="button" >
+<div class="alertInfo" data-win-bind="innerHTML: alertText;"></div>
+</div>
+</div>
+<div class="providerSlider" onclick="WeatherAppJS.Utilities.UI.AnimateCurrentConditionsSlide(event)">
+<button id="autoID_ProvidersButton" class="dailyConditionsAnimateButton animateButton win-commandring" tabindex="0" data-win-res="{ attributes: {'aria-label': 'moreDailyConditionsAriaText' } }">
+</button>
+</div>
+</div>
+</div>
+<div id="eachDailyModule" data-win-control="WinJS.Binding.Template" style="display:block;">
+<div class="dailyModuleFirstProvider" role="document">
+<div>
+<div class="date" data-win-bind="textContent: date WinJS.Binding.oneTime"></div>
+<div class="skycode"><img class="skycodeImage" data-win-bind="src: skycode WinJS.Binding.oneTime; alt: caption WinJS.Binding.oneTime" draggable="false" /></div>
+<div class="forecastProvider"></div>
+<div class="tempContainer"><span class="tempHigh" data-win-bind="textContent: temphigh;dir: symbolPosition WinJS.Binding.oneTime"></span><span>/</span><span class="tempLow" data-win-bind="textContent: templow;dir: symbolPosition WinJS.Binding.oneTime"></span></div>
+<div class="caption" data-win-bind="textContent:caption WinJS.Binding.oneTime"></div>
+</div>
+</div>
+</div>
+<div id="precipModule" data-win-control="WinJS.Binding.Template">
+<div class="precipWrapper">                
+<span class="raindrop">
+<span class="precipGlyph"></span>
+<span class="precip" data-win-bind="textContent: precipitation;dir: symbolPosition WinJS.Binding.oneTime"></span>
+<span class="snowFreshText" data-win-bind="innerHTML:heroData WinJS.Binding.oneTime"></span>
+</div>
+</div>
+<div id="eachDailyModuleSmall" data-win-control="WinJS.Binding.Template" style="display:block;">
+<div class="dailyModuleOtherProvider" role="document">
+<div class="otherProviderTempWrapper">
+<div class="skycode"><img class="skycodeImage" data-win-bind="src: skycodeSmall WinJS.Binding.oneTime; alt: caption WinJS.Binding.oneTime" draggable="false" /></div>
+<span class="tempHigh" data-win-bind="textContent: temphigh;dir: symbolPosition WinJS.Binding.oneTime"></span><span>/</span><span class="tempLow" data-win-bind="textContent: templow;dir: symbolPosition WinJS.Binding.oneTime"></span>
+<div class="precipWrapper">                        
+<span class="raindrop"> <span class="precipGlyph"></span> </span> <span class="precip" data-win-bind="textContent: precipitation;dir: symbolPosition WinJS.Binding.oneTime"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- portrait daily conditions template -->
+<div id="pEachDailyModule" data-win-control="WinJS.Binding.Template">
+<div class="pDailyModuleFirstProvider" role="document">
+<div class="date">
+<div class="day" data-win-bind="textContent: day WinJS.Binding.oneTime"></div>
+<div class="dayName" data-win-bind="textContent: dayName WinJS.Binding.oneTime"></div>
+</div>
+<div class="skycode"><img class="skycodeImage" data-win-bind="src: skycode WinJS.Binding.oneTime; alt: caption WinJS.Binding.oneTime" draggable="false" /></div>
+<div class="tempWrapper">
+<div class="tempContainer"><span class="tempHigh" data-win-bind="textContent: temphigh;dir: symbolPosition WinJS.Binding.oneTime"></span><span>/</span><span class="tempLow" data-win-bind="textContent: templow;dir: symbolPosition WinJS.Binding.oneTime"></span></div>
+<div class="caption" data-win-bind="textContent:caption WinJS.Binding.oneTime"></div>
+<div class="precipWrapper">                        
+<span class="raindrop"><span class="precipGlyph"></span></span><span class="precip" data-win-bind="textContent: precipitation;dir: symbolPosition WinJS.Binding.oneTime"></span>
+<span class="snowFreshText" data-win-bind="innerHTML:heroData WinJS.Binding.oneTime"></span>
+</div>
+</div>
+</div>
+</div>
+<!-- see more template for weather.com daily conditions -->
+<div id="seeMoreTemplate" data-win-control="WinJS.Binding.Template">
+<div class="seeMore"><a class="seeMoreLink weatherDotComSeeMoreText" href=""></a></div>
+</div>
+<!-- see more template for weather.com portrait mode, having a seperate one since the text for the landscape mode will keep changing -->
+<div id="pSeeMoreTemplate" data-win-control="WinJS.Binding.Template">
+<div class="pSeeMoreLink">
+<div class="pSeeMore"><a class="seeMoreLink weatherDotComSeeMoreText" href=""></a></div>
+</div>
+</div>
+<div id="hourlyForecastHeaderModule" data-win-control="WinJS.Binding.Template">
+<div class="hourlyHeader">
+<div class="hour" data-win-res="{textContent:'HourlyForecastTimeTitle'}"></div>
+<div class="skycode"></div>
+<div class="tempContainer" data-win-res="{textContent:'HourlyForecastForecastTitle'}"></div>
+<div class="precip" data-win-res="{textContent:'HourlyForecastPrecipChanceTitle'}"></div>
+<div class="clearFloats"></div>
+</div>
+</div>
+<div id="hourlyForecastRowModule" data-win-control="WinJS.Binding.Template" style="display:block;">
+<div class="hourlyConditions" data-win-bind="className:className" role="document">
+<div class="hour" data-win-bind="textContent: time"></div>
+<div class="skycode"><img class="skycodeImage" data-win-bind="src: skycode; alt: caption" /></div>
+<div class="tempContainer">
+<span class="temperature" data-win-bind="textContent: temperature; dir: symbolPosition"></span><span class="caption" data-win-bind="textContent: caption"></span>
+</div>
+<div class="precip"><span class="raindrop"> <span class="precipGlyph"> </span> </span> <span class="precipValue" data-win-bind="textContent: precipitation"></span> </div>
+<div class="clearFloats"></div>
+</div>
+</div> 
+<!-- Change Home Flyout Template -->
+<div id="changeHomeFlyoutTemplate" data-win-control="WinJS.Binding.Template">
+<div class="changeHomeSection">
+<div class="changeHomeSectionHeading">
+<div class="changeHomeSectionIcon"></div>
+<div class="changeHomeSectionText"></div>
+</div>
+</div>
+<div class="changeHomeSectionDiv" role="button" tabindex="0">
+<div class="changeHomeSectionIcon"></div>
+<div class="changeHomeSectionText"></div>
+</div>
+</div>
+</body>
+</html>

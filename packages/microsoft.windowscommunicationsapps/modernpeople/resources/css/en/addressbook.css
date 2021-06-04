@@ -1,1212 +1,1292 @@
-﻿.app-frame-body .semanticZoomEnabled {
-    position: fixed;
-    height: 100%;
+.app-frame-body .semanticZoomEnabled {
+  position: fixed;
+  height: 100%;
 }
 
 .semanticZoomEnabled .viewport-horizontal>.stitcher,.semanticZoomEnabled .viewport-horizontal>.section {
-    margin-top: 130px;
-    height: calc((100% - 130px));
+  margin-top: 130px;
+  height: calc((100% - 130px));
 }
 
 .semanticZoom,.zoomedIn,.zoomedOut {
-    height: 100%;
+  height: 100%;
 }
 
 .viewport-horizontal {
-    overflow-y: hidden;
-    overflow-x: scroll;
-    width: 100%;
-    height: 100%;
+  overflow-y: hidden;
+  overflow-x: overlay;
+  width: 100%;
+  height: 100%;
 }
 
 .viewport-vertical {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    width: 100%;
-    height: 100%;
+  overflow-y: overlay;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 .zooming {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    overflow-x: visible;
-    overflow-y: visible;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  overflow-x: visible;
+  overflow-y: visible;
 }
 
 .viewport-horizontal>.stitcher,.viewport-horizontal>.section {
-    height: 100%;
-    margin-top: 10px;
+  height: 100%;
+  margin-top: 10px;
 }
 
 .viewport-vertical>.stitcher,.viewport-vertical>.section {
-    width: 100%;
+  width: 100%;
 }
 
 .stitcher {
-    display: grid;
+  display: -ms-grid;
+  display: grid;
 }
 
 .viewport-horizontal>.stitcher {
-    grid-template-columns: auto auto auto 1fr;
-    grid-template-rows: 100%;
+  -ms-grid-columns: auto auto auto 1fr;
+  -ms-grid-rows: 100%;
+  grid-template-columns: auto auto auto 1fr;
+  grid-template-rows: 100%;
 }
 
 .viewport-vertical>.stitcher {
-    grid-template-columns: 100%;
-    grid-template-rows: auto;
+  -ms-grid-columns: 100%;
+  -ms-grid-rows: auto;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
 }
 
 .sectionHidden {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 .section,.sectionHeader {
-    z-index: 1;
+  z-index: 4;
+}
+
+.section.socialSection {
+  z-index: 4;
+}
+
+.section.favoritesSection {
+  z-index: 3;
+}
+
+.section.alphabetsSection {
+  z-index: 2;
 }
 
 .viewport-horizontal .sectionHidden .sectionHeader {
-    display: none;
+  display: none;
 }
 
 .viewport-horizontal .section {
-    grid-row: 1;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
 }
 
 .viewport-horizontal .sectionContent {
-    box-sizing: border-box;
-    padding-top: 30px;
-    padding-bottom: 88px;
-    height: calc((100% - 10px));
+  box-sizing: border-box;
+  padding-top: 30px;
+  padding-bottom: 88px;
+  height: calc((100% - 10px));
 }
 
 .viewport-horizontal .socialSection .sectionContent {
-    width: 520px;
+  width: 520px;
 }
 
 .socialSectionGrid {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 20px 100px 1fr auto;
-    height: 100%;
-    width: 100%;
+  display: -ms-grid;
+  -ms-grid-columns: 100%;
+  -ms-grid-rows: 20px 100px 1fr auto;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 20px 100px 1fr auto;
 }
 
 .viewport-vertical .socialSectionGrid {
-    grid-template-rows: 15px 65px auto auto 1fr;
+  -ms-grid-rows: 15px 65px auto auto 1fr;
+  grid-template-rows: 15px 65px auto auto 1fr;
 }
 
 .socialSectionGrid .socialSectionBackground {
-    grid-row: 2 / 6;
-    background-color: #d24625;
-    width: 100%;
-    height: 100%;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 4;
+  background-color: #d24625;
+  width: 100%;
+  height: 100%;
+  grid-row-start: 2;
+  grid-row-end: span 4;
 }
 
 .socialSectionGrid .ic-me {
-    display: grid;
-    grid-template-rows: 1fr auto auto;
-    grid-template-columns: 120px auto;
-    margin-left: 120px;
-    margin-right: 40px;
-    grid-row: 1 / 3;
-    align-items: start;
-    width: auto;
-    overflow: hidden;
+  display: -ms-grid;
+  -ms-grid-rows: 1fr auto auto;
+  -ms-grid-columns: 120px auto;
+  margin-left: 120px;
+  margin-right: 40px;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  -ms-grid-column-align: start;
+  width: auto;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 1fr auto auto;
+  grid-template-columns: 120px auto;
+  grid-row-start: 1;
+  grid-row-end: span 2;
+  justify-content: flex-start;
 }
 
 .viewport-vertical .ic-me {
-    margin-left: 20px;
-    margin-right: 20px;
-    grid-template-columns: 80px auto;
-    width: auto;
+  margin-left: 20px;
+  margin-right: 20px;
+  -ms-grid-columns: 80px auto;
+  width: auto;
+  grid-template-columns: 80px auto;
 }
 
 .socialSectionGrid .ic-me .ic-tileContainer {
-    grid-row: 1 / 4;
-    grid-column: 1;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 1;
+  grid-row-start: 1;
+  grid-row-end: span 3;
+  grid-column-start: 1;
 }
 
 .socialSectionGrid .ic-me .ic-tileLayout-primary {
-    grid-row: 2;
-    grid-column: 2;
-    margin-top: 0px;
-    margin-left: 10px;
-    display: flex;
-    flex-direction: row;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  margin-top: 0px;
+  margin-left: 10px;
+  display: -ms-flexbox;
+  -ms-flex-direction: row;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  display: flex;
+  flex-direction: row;
 }
 
 .socialSectionGrid .ic-me .ab-notifications-container {
-    grid-row: 3;
-    grid-column: 2;
-    margin-top: 0px;
-    margin-left: 10px;
-    max-width: 230px;
+  -ms-grid-row: 3;
+  -ms-grid-column: 2;
+  margin-top: 0px;
+  margin-left: 10px;
+  max-width: 230px;
+  grid-row-start: 3;
+  grid-column-start: 2;
 }
 
 .viewport-vertical .socialSectionGrid .ic-me .ab-notifications-container {
-    max-width: 190px;
+  max-width: 190px;
 }
 
 .socialSectionGrid .ic-meName {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    font-weight: 200;
-    color: #ffffff;
-    display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  font-weight: 200;
+  color: #ffffff;
+  display: block;
 }
 
 .viewport-vertical .socialSectionGrid .ic-meName {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
 }
 
 .socialSectionGrid .ab-notifications-singleLine {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
-    color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
+  color: #ffffff;
 }
 
 .viewport-vertical .socialSectionGrid .ab-notifications-singleLine {
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 400;
 }
 
 .socialSectionGrid .ic-chevron {
-    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
 }
 
 .socialSectionGrid .upsell-container {
-    grid-row: 4;
-    padding-top: 42px;
-    padding-left: 120px;
-    padding-right: 40px;
-    padding-bottom: 30px;
+  -ms-grid-row: 4;
+  padding-top: 42px;
+  padding-left: 120px;
+  padding-right: 40px;
+  padding-bottom: 30px;
+  grid-row-start: 4;
 }
 
 @media screen and (min-height: 1024px) {
-    .viewport-horizontal .socialSectionGrid .upsell-container {
-        padding-bottom:60px;
-    }
+  .viewport-horizontal .socialSectionGrid .upsell-container {
+    padding-bottom: 60px;
+  }
 }
 
 .viewport-vertical .socialSectionGrid .upsell-container,.socialSectionGrid .upsell-container .upsell-hidden {
-    display: none;
+  display: none;
 }
 
 .socialSectionGrid .upsell-container .upsell-instructions {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
-    color: #ffffff;
-    margin-bottom: 17px;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
+  color: #ffffff;
+  margin-bottom: 17px;
 }
 
 .socialSectionGrid .upsell-container .upsell-dismiss {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    line-height: 24px;
-    font-weight: 600;
-    border: 2px solid #ffffff;
-    min-width: 86px;
-    height: 28px;
-    color: #ffffff;
-    box-sizing: border-box;
-    margin: 0px;
-    padding-left: 0px;
-    padding-right: 0px;
-    text-align: center;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  line-height: 24px;
+  font-weight: 600;
+  border: 2px solid #ffffff;
+  min-width: 86px;
+  height: 28px;
+  color: #ffffff;
+  box-sizing: border-box;
+  margin: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  text-align: center;
 }
 
 .socialSectionGrid .upsell-container .upsell-dismiss:hover {
-    background-color: rgba(255, 255, 255, 0.13);
+  background-color: rgba(255, 255, 255, 0.13);
 }
 
 .socialSectionGrid .upsell-container .upsell-dismiss:active {
-    color: #000000;
-    background-color: #ffffff;
+  color: #000000;
+  background-color: #ffffff;
 }
 
 @media screen and (-ms-high-contrast) {
-    .socialSectionGrid .upsell-container .upsell-dismiss {
-        background-color: ButtonFace;
-        color: ButtonText;
-        border: 2px solid ButtonText;
-    }
-
-    .socialSectionGrid .upsell-container .upsell-dismiss:hover {
-        background-color: Highlight;
-        color: HighlightText;
-    }
-
-    .socialSectionGrid .upsell-container .upsell-dismiss:active {
-        background-color: ButtonText;
-        color: ButtonFace;
-    }
+  .socialSectionGrid .upsell-container .upsell-dismiss {
+    background-color: ButtonFace;
+    color: ButtonText;
+    border: 2px solid ButtonText;
+  }
+  .socialSectionGrid .upsell-container .upsell-dismiss:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .socialSectionGrid .upsell-container .upsell-dismiss:active {
+    background-color: ButtonText;
+    color: ButtonFace;
+  }
 }
 
 .viewport-horizontal .favoritesSection .sectionContent {
-    padding-left: 0px;
-    padding-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .favoritesSection .placeholder {
-    display: none;
+  display: none;
 }
 
 .favoritesSection .zeroContacts .placeholder {
-    display: block;
-    color: rgba(255, 255, 255, 0.6);
-    grid-row: 1;
-    padding-top: 205px;
-    padding-left: 20px;
-    width: 160px;
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  -ms-grid-row: 1;
+  padding-top: 205px;
+  padding-left: 20px;
+  width: 160px;
+  grid-row-start: 1;
 }
 
 .favoritesSectionGrid {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 20px 1fr 160px;
-    height: 100%;
-    width: 100%;
-}
-
-.favoritesSectionGrid>*,.socialSectionGrid>*{
-    grid-column: 1;
+  display: -ms-grid;
+  -ms-grid-columns: auto;
+  -ms-grid-rows: 20px 1fr 160px;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 20px 1fr 160px;
 }
 
 .favoritesSectionGrid .favoritesSectionBackground {
-    background-color: #1c1c1c;
-    grid-row: 2 / 5;
+  background-color: #1c1c1c;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 3;
+  grid-row-start: 2;
+  grid-row-end: span 3;
 }
 
 .favoritesSectionGrid .gridContainer {
-    grid-row: 1 / 3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row-start: 1;
+  grid-row-end: span 2;
 }
 
 .viewport-vertical .gridContainer {
-    padding-top: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: calc((100% - 40px));
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc((100% - 40px));
 }
 
 .viewport-vertical .favoritesSection .zeroContacts .placeholder {
-    grid-row: 1;
-    padding-top: 165px;
-    padding-left: 20px;
-    padding-right: 20px;
-    width: calc((100% - 40px));
+  -ms-grid-row: 1;
+  padding-top: 165px;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: calc((100% - 40px));
+  grid-row-start: 1;
 }
 
 .viewport-vertical .favoritesSectionGrid {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-    height: 100%;
-    width: 100%;
+  display: -ms-grid;
+  -ms-grid-columns: 100%;
+  -ms-grid-rows: auto auto;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto;
 }
 
 .viewport-vertical .favoritesSectionGrid .favoritesSectionBackground {
-    background-color: #1c1c1c;
-    grid-row: 1 / 3;
+  background-color: #1c1c1c;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 2;
+  grid-row-start: 1;
+  grid-row-end: span 2;
 }
 
 .viewport-vertical .favoritesSectionGrid .gridContainer {
-    grid-row: 1  / 2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row-start: 1;
+  grid-row-end: span 1;
 }
 
 .favoritesSectionGrid .ab-whatsNew {
-    grid-row: 3;
-    align-items: start;
-    justify-items: end;
-    width: auto;
-    padding-top: 12px;
-    padding-bottom: 27px;
+  -ms-grid-row: 3;
+  -ms-grid-column-align: start;
+  -ms-grid-row-align: end;
+  width: auto;
+  padding-top: 12px;
+  padding-bottom: 27px;
+  grid-row-start: 3;
+  justify-content: flex-start;
+  align-items: flex-end;
 }
 
 @media screen and (min-height: 1024px) {
-    .viewport-horizontal .favoritesSectionGrid {
-        grid-template-rows:20px 1fr 210px;
-    }
-
-    .viewport-horizontal .favoritesSectionGrid .ab-whatsNew {
-        padding-bottom: 57px;
-    }
+  .viewport-horizontal .favoritesSectionGrid {
+    -ms-grid-rows: 20px 1fr 210px;
+    grid-template-rows: 20px 1fr 210px;
+  }
+  .viewport-horizontal .favoritesSectionGrid .ab-whatsNew {
+    padding-bottom: 57px;
+  }
 }
 
 .viewport-vertical .favoritesSectionGrid .ab-whatsNew {
-    grid-row: 2;
-    width: auto;
-    padding-top: 25px;
+  -ms-grid-row: 2;
+  width: auto;
+  padding-top: 25px;
+  grid-row-start: 2;
 }
 
 .favoritesSectionGrid .ab-whatsNew .ra-feedModule {
-    background-color: #1c1c1c;
+  background-color: #1c1c1c;
 }
 
 .favoritesSectionGrid .ab-whatsNew .ra-feedModuleTitle,.favoritesSectionGrid .ab-whatsNew .ra-feedModuleChevron {
-    color: #ffffff;
-    display: block;
+  color: #ffffff;
+  display: block;
 }
 
 .favoritesSectionGrid .ab-whatsNew .ra-feedModuleMessage {
-    color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .socialSectionGrid .ic-me:hover .ic-text,.alphabetsSectionGrid .alphabetsSectionTitleContainer:hover .alphabetsSectionTitle,.alphabetsSectionGrid .alphabetsSectionTitleContainer:hover .alphabetsSectionTitleChevron {
-    color: rgba(255, 255, 255, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .favoritesSectionGrid .ab-whatsNew:hover .ra-feedModuleTitle,.favoritesSectionGrid .ab-whatsNew:hover .ra-feedModuleChevron,.favoritesSectionGrid .ab-whatsNew:hover .ra-feedModuleMessage {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .socialSectionGrid .ic-me .pressed .ic-text,.alphabetsSectionGrid .alphabetsSectionTitleContainer .pressed .alphabetsSectionTitle,.alphabetsSectionGrid .alphabetsSectionTitleContainer .pressed .alphabetsSectionTitleChevron {
-    color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .favoritesSectionGrid .ab-whatsNew .pressed .ra-feedModuleTitle,.favoritesSectionGrid .ab-whatsNew .pressed .ra-feedModuleChevron,.favoritesSectionGrid .ab-whatsNew .pressed .ra-feedModuleMessage {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .favoritesSectionGrid .virtualButton {
-    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
-    font-size: 32px;
-    font-weight: 400;
-    text-align: center;
-    line-height: 180px;
-    width: 180px;
-    height: 180px;
-    background-color: #292929;
-    color: rgba(255, 255, 255, 0.6);
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  text-align: center;
+  line-height: 180px;
+  width: 180px;
+  height: 180px;
+  background-color: #292929;
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .viewport-vertical .favoritesSectionGrid .virtualButton {
-    width: 140px;
-    height: 140px;
-    font-size: 26.667px;
-    line-height: 140px;
+  width: 140px;
+  height: 140px;
+  font-size: 26.667px;
+  line-height: 140px;
 }
 
 .favoritesSectionGrid .virtualButton .innerHighlight {
-    display: none;
+  display: none;
 }
 
 .viewport-horizontal .alphabetsSection {
-    /* grid-column-end: span 2 !important; */
+  -ms-grid-column-span: 2;
+  grid-column-end: span 2;
 }
 
 .viewport-horizontal .alphabetsSection .sectionContent {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 
 .alphabetsSectionGrid {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 104px 1fr 20px;
-    height: 100%;
-    width: 100%;
-    background-color: #1c1c1c;
-    padding-right: 40px;
-    box-sizing: border-box;
+  display: -ms-grid;
+  -ms-grid-columns: auto;
+  -ms-grid-rows: 104px 1fr 20px;
+  height: 100%;
+  width: 100%;
+  background-color: #1c1c1c;
+  padding-right: 40px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: 104px 1fr 20px;
 }
 
 .alphabetsSectionGrid .gridContainer {
-    grid-row: 2;
-    width: 100%;
-    padding-left: 44px;
+  -ms-grid-row: 2;
+  width: 100%;
+  padding-left: 44px;
+  grid-row-start: 2;
 }
 
 .viewport-vertical .alphabetsSectionGrid {
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto 20px;
-    height: 100%;
-    width: 100%;
-    padding-top: 5px;
+  display: -ms-grid;
+  -ms-grid-columns: 100%;
+  -ms-grid-rows: auto auto 20px;
+  height: 100%;
+  width: 100%;
+  padding-top: 5px;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto auto 20px;
 }
 
 .viewport-vertical .alphabetsSectionGrid .gridContainer {
-    grid-row: 2;
-    padding-top: 15px;
-    padding-left: 18px;
-    padding-right: 17px;
-    width: calc((100% - 35px));
+  -ms-grid-row: 2;
+  padding-top: 15px;
+  padding-left: 18px;
+  padding-right: 17px;
+  width: calc((100% - 35px));
+  grid-row-start: 2;
 }
 
 .alphabetsSectionGrid .alphabetsSectionTitleContainer {
-    align-items: start;
-    background-color: #1c1c1c;
-    color: #ffffff;
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    font-weight: 200;
-    display: flex;
-    flex-direction: row;
-    margin-top: 49px;
-    margin-left: 50px;
+  -ms-grid-column-align: start;
+  background-color: #1c1c1c;
+  color: #ffffff;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  font-weight: 200;
+  display: -ms-flexbox;
+  -ms-flex-direction: row;
+  margin-top: 49px;
+  margin-left: 50px;
+  justify-content: flex-start;
+  display: flex;
+  flex-direction: row;
 }
 
 .viewport-vertical .alphabetsSectionGrid .alphabetsSectionTitleContainer {
-    margin-left: 20px;
-    margin-top: 0px;
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
+  margin-left: 20px;
+  margin-top: 0px;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
 }
 
 .alphabetsSectionGrid .alphabetsSectionTitle {
-    color: #ffffff;
-    display: block;
+  color: #ffffff;
+  display: block;
 }
 
 .alphabetsSectionGrid .alphabetsSectionTitleChevron {
-    padding-left: 9px;
-    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
-    color: #ffffff;
-    display: block;
+  padding-left: 9px;
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  color: #ffffff;
+  display: block;
 }
 
 .alphabetsSectionGrid .virtualButton:hover {
-    outline: 2px solid #404040;
+  outline: 2px solid #404040;
 }
 
 .alphabetsSectionGrid .virtualButton {
-    box-sizing: border-box;
-    width: 120px;
-    height: 50px;
-    text-justify: auto;
-    text-align: justify;
-    background-color: #292929;
-    color: #ffffff;
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    font-weight: 200;
-    margin: 6px;
-    padding-left: 17px;
-    padding-top: 10px;
+  box-sizing: border-box;
+  width: 120px;
+  height: 50px;
+  text-justify: auto;
+  text-align: justify;
+  background-color: #292929;
+  color: #ffffff;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  font-weight: 200;
+  margin: 6px;
+  padding-left: 17px;
+  padding-top: 10px;
 }
 
 .GALSearchText {
-    color: #d24625;
-    background-color: white;
-    font-size: 15px;
-    width: 300px;
-    height: 80px;
-    padding-top: 15px;
-    padding-left: 10px;
-    font-weight: 600;
+  color: #d24625;
+  background-color: white;
+  font-size: 15px;
+  width: 300px;
+  height: 80px;
+  padding-top: 15px;
+  padding-left: 10px;
+  font-weight: 600;
 }
 
 .viewport-vertical .alphabetsSectionGrid .virtualButton {
-    width: 90px;
-    height: 55px;
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
-    padding-top: 27px;
-    padding-left: 10px;
-    margin-left: 2px;
-    margin-right: 3px;
-    margin-top: 2px;
-    margin-bottom: 3px;
+  width: 90px;
+  height: 55px;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
+  padding-top: 27px;
+  padding-left: 10px;
+  margin-left: 2px;
+  margin-right: 3px;
+  margin-top: 2px;
+  margin-bottom: 3px;
 }
 
 .viewport-horizontal .searchSection,.viewport-horizontal .allSection {
-    padding-left: 120px;
-    padding-right: 120px;
+  padding-left: 120px;
+  padding-right: 120px;
 }
 
 .viewport-horizontal .allSection .sectionContent,.viewport-horizontal .searchSection .sectionContent {
-    height: 100%;
+  height: 100%;
 }
 
 .viewport-horizontal .searchSection .sectionHeader {
-    display: none;
+  display: none;
 }
 
 .zoomedOutSection .sectionHeader {
-    display: none;
+  display: none;
 }
 
 .viewport-horizontal .zoomedOutSection .sectionContent {
-    padding-top: 35px;
-    padding-left: 100px;
-    height: 100%;
+  padding-top: 35px;
+  padding-left: 100px;
+  height: 100%;
 }
 
 .gridWrapper {
-    position: relative;
+  position: relative;
 }
 
 .gridStyler {
-    top: 0px;
-    left: 0px;
-    z-index: 0;
-    position: absolute;
-    height: 100%;
-    width: 100%;
-    display: grid;
-    overflow: hidden;
-    grid-template-rows: 100%;
-    grid-template-columns: auto auto 1fr;
+  top: 0px;
+  left: 0px;
+  z-index: 0;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: -ms-grid;
+  overflow: hidden;
+  -ms-grid-rows: 100%;
+  -ms-grid-columns: auto auto 1fr;
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: auto auto 1fr;
 }
 
 .gridStyler .leadingEdge {
-    grid-column: 1;
-    width: 0px;
+  -ms-grid-column: 1;
+  width: 0px;
+  grid-column-start: 1;
 }
 
 .gridStyler .visibleBlock {
-    grid-column: 2;
+  -ms-grid-column: 2;
+  grid-column-start: 2;
 }
 
 .gridStyler .trailingEdge {
-    grid-column: 3;
+  -ms-grid-column: 3;
+  grid-column-start: 3;
 }
 
 .viewport-horizontal {
 }
 
 .viewport-horizontal .searchSection .gridStyler>.leadingEdge,.viewport-horizontal .allSection .gridStyler>.leadingEdge,.viewport-horizontal .searchSection .gridStyler>.visibleBlock,.viewport-horizontal .allSection .gridStyler>.visibleBlock,.viewport-horizontal .searchSection .gridStyler>.trailingEdge,.viewport-horizontal .allSection .gridStyler>.trailingEdge {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .viewport-horizontal .searchSection .gridWrapper,.viewport-horizontal .allSection .gridWrapper,.viewport-horizontal .zoomedOutSection .gridWrapper {
-    padding: 10px;
+  padding: 10px;
 }
 
 .viewport-horizontal .searchSection .gridContainer {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .gridCanvas {
-    z-index: 1;
-    position: relative;
-    top: 0px;
-    left: 0px;
+  z-index: 1;
+  position: relative;
+  top: 0px;
+  left: 0px;
 }
 
 .viewport-horizontal .gridWrapper,.viewport-horizontal .gridCanvas {
-    width: 100%;
-    overflow: hidden;
+  width: 100%;
+  overflow: hidden;
 }
 
 .entering .viewport-horizontal .gridWrapper,.entering .viewport-horizontal .gridCanvas {
-    overflow: visible;
+  overflow: visible;
 }
 
 .viewport-vertical .gridWrapper,.viewport-vertical .gridCanvas {
-    height: 100%;
-    overflow: hidden;
+  height: 100%;
+  overflow: hidden;
 }
 
 .viewport-horizontal .barricade {
-    white-space: nowrap;
+  white-space: nowrap;
 }
 
 .allSection .barricade,.allSection .filterOnline .unfilteredBarricade,.allSection .onlineFilterBarricade,.allSection .zeroContacts .gridContainer {
-    display: none;
+  display: none;
 }
 
 .allSection .zeroContacts .barricade,.allSection .filterOnline .onlineFilterBarricade {
-    display: block;
+  display: block;
 }
 
 .viewport-vertical .section {
-    padding-left: 0px;
-    padding-right: 0px;
-    padding-bottom: 0px;
-    width: 100%;
-    grid-column: 1;
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  width: 100%;
+  -ms-grid-column: 1;
+  grid-column-start: 1;
 }
 
 .viewport-vertical .sectionHeader {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 600;
-    color: #000000;
-    margin-top: 4px;
-    height: 16px;
-    padding-bottom: 20px;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 600;
+  color: #000000;
+  margin-top: 4px;
+  height: 16px;
+  padding-bottom: 20px;
+}
+
+.sectionContent > *  {
+  z-index: 100;
 }
 
 .viewport-vertical .sectionContent {
-    padding: 0px;
-    width: 100%;
-    box-sizing: border-box;
+  padding: 0px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .viewport-vertical .searchSection .sectionHeader {
-    display: none;
+  display: none;
 }
 
 .viewport-vertical .zoomedOutSection {
-    padding-left: 17px;
-    padding-right: 17px;
-    padding-bottom: 33px;
-    width: calc((100% - 34px));
+  padding-left: 17px;
+  padding-right: 17px;
+  padding-bottom: 33px;
+  width: calc((100% - 34px));
 }
 
 .viewport-vertical .zoomedOutSection .sectionContent {
-    padding: 0px;
-    background-color: transparent;
+  padding: 0px;
+  background-color: transparent;
 }
 
 .viewport-horizontal .gridContainer {
-    height: 100%;
+  height: 100%;
 }
 
 .abHeaderContainer {
-    position: absolute;
-    padding: 10px;
-    height: 60px;
-    width: 300px;
-    cursor: default;
-    color: #d24625;
-    background-color: white;
+  position: absolute;
+  padding: 10px;
+  height: 60px;
+  width: 300px;
+  cursor: default;
+  color: #d24625;
+  background-color: white;
 }
 
 .abHeaderContainer:hover {
-    color: #ff7347;
+  color: #ff7347;
 }
 
 .abHeaderContainer.pressed {
-    color: #e08c78;
+  color: #e08c78;
 }
 
 @media screen and (-ms-high-contrast) {
-    .abHeaderContainer:hover,.abHeaderContainer.pressed {
-        color: Highlight;
-    }
+  .abHeaderContainer:hover,.abHeaderContainer.pressed {
+    color: Highlight;
+  }
 }
 
 .viewport-vertical .abHeaderContainer {
-    width: 240px;
+  width: 240px;
 }
 
 .abHeaderMixin {
-    top: 0px;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    padding: 0px;
+  top: 0px;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
 }
 
 .abHeaderLine {
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
-    border-bottom: 2px solid rgba(112, 112, 112, 0.12);
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border-bottom: 2px solid rgba(112, 112, 112, 0.12);
 }
 
 .abFavHeaderText {
-    font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
-    position: absolute;
-    font-size: 20pt;
-    bottom: 3px;
+  font-family: "Segoe UI Symbol","Segoe UI",Tahoma,Verdana,Arial,sans-serif;
+  position: absolute;
+  font-size: 20pt;
+  bottom: 3px;
 }
 
 .abHeaderText {
-    font-weight: 400;
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    position: absolute;
-    bottom: 0px;
+  font-weight: 400;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  position: absolute;
+  bottom: 0px;
 }
 
 .viewport-horizontal .zoomedOutHeaderContainer {
-    margin: 2px 7px;
-    padding: 3px;
+  margin: 2px 7px;
+  padding: 3px;
 }
 
 .viewport-vertical .zoomedOutHeaderContainer {
-    margin-top: 0px;
-    margin-bottom: -1px;
-    margin-left: 0px;
-    margin-right: -1px;
-    padding: 3px;
+  margin-top: 0px;
+  margin-bottom: -1px;
+  margin-left: 0px;
+  margin-right: -1px;
+  padding: 3px;
 }
 
 .zoomedOutHeaderBackground {
-    text-align: bottom;
-    background-color: #d24625;
-    border: 2px solid #d24625;
-    color: #ffffff;
+  text-align: bottom;
+  background-color: #d24625;
+  border: 2px solid #d24625;
+  color: #ffffff;
 }
 
 .zoomedOutHeaderBackground:hover {
-    outline: 3px solid rgba(210, 70, 37, 0.5);
+  outline: 3px solid rgba(210, 70, 37, 0.5);
 }
 
 .viewport-horizontal .zoomedOutHeaderBackground {
-    width: 166px;
-    height: 66px;
+  width: 166px;
+  height: 66px;
 }
 
 .viewport-vertical .zoomedOutHeaderBackground {
-    width: 86px;
-    height: 51px;
+  width: 86px;
+  height: 51px;
 }
 
 .fadedZoomedOutHeaderBackground {
-    background-color: #808080;
-    border-color: #808080;
+  background-color: #808080;
+  border-color: #808080;
 }
 
 .fadedZoomedOutHeaderBackground:hover {
-    outline: none;
+  outline: none;
 }
 
 .zoomedOutHeaderText {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 200;
-    position: absolute;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 200;
+  position: absolute;
 }
 
 .viewport-horizontal .zoomedOutHeaderText {
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    width: 140px;
-    max-height: 66px;
-    bottom: 0px;
-    margin: 0px 13px;
-    padding-bottom: 9px;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  width: 140px;
+  max-height: 66px;
+  bottom: 0px;
+  margin: 0px 13px;
+  padding-bottom: 9px;
 }
 
 .viewport-vertical .zoomedOutHeaderText {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    width: 70px;
-    max-height: 51px;
-    bottom: 0px;
-    margin: 0px 8px;
-    padding-bottom: 10px;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  width: 70px;
+  max-height: 51px;
+  bottom: 0px;
+  margin: 0px 8px;
+  padding-bottom: 10px;
 }
 
 @media screen and (-ms-high-contrast) {
-    .viewport-vertical .zoomedOutHeaderContainer {
-        margin-top: 2px;
-        margin-bottom: 1px;
-        margin-left: 2px;
-        margin-right: 1px;
-        padding: 1px;
-    }
-
-    .zoomedOutHeaderContainer:focus {
-        outline: 2px solid WindowText;
-    }
-
-    .zoomedOutHeaderBackground {
-        background-color: ButtonFace;
-        border-color: ButtonText;
-        color: ButtonText;
-    }
-
-    .zoomedOutHeaderBackground:hover {
-        background-color: Highlight;
-        outline: 3px solid Highlight;
-        border: 2px solid HighlightText;
-        color: HighlightText;
-    }
-
-    .fadedZoomedOutHeaderBackground {
-        border-color: GrayText;
-        color: GrayText;
-    }
-
-    .fadedZoomedOutHeaderBackground:hover {
-        background-color: ButtonFace;
-        border: 2px solid GrayText;
-        outline: none;
-        color: GrayText;
-    }
+  .viewport-vertical .zoomedOutHeaderContainer {
+    margin-top: 2px;
+    margin-bottom: 1px;
+    margin-left: 2px;
+    margin-right: 1px;
+    padding: 1px;
+  }
+  .zoomedOutHeaderContainer:focus {
+    outline: 2px solid WindowText;
+  }
+  .zoomedOutHeaderBackground {
+    background-color: ButtonFace;
+    border-color: ButtonText;
+    color: ButtonText;
+  }
+  .zoomedOutHeaderBackground:hover {
+    background-color: Highlight;
+    outline: 3px solid Highlight;
+    border: 2px solid HighlightText;
+    color: HighlightText;
+  }
+  .fadedZoomedOutHeaderBackground {
+    border-color: GrayText;
+    color: GrayText;
+  }
+  .fadedZoomedOutHeaderBackground:hover {
+    background-color: ButtonFace;
+    border: 2px solid GrayText;
+    outline: none;
+    color: GrayText;
+  }
 }
 
 .favoritesSectionGrid .ic-favorite {
-    background-color: #4d4d4d;
-    color: rgba(255, 255, 255, 0.7);
+  background-color: #4d4d4d;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .favoritesSectionGrid .ic-favorite {
-    margin-top: 0px;
-    margin-left: 0px;
-    margin-right: 0px;
-    margin-bottom: 0px;
-    width: 180px;
+  margin-top: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  width: 180px;
 }
 
 .favoritesSectionGrid .ic-favorite .ic-tile {
-    height: 150px !important;
+  height: 150px !important;
 }
 
 .favoritesSectionGrid .ic-favorite .ic-tileLayout-primary {
-    margin-top: 0px;
+  margin-top: 0px;
 }
 
 .favoritesSectionGrid .ic-favorite .ic-tileContainer .ic-tileLayout-tile {
-    background-position-y: 0px;
+  background-position-y: 0px;
 }
 
 .favoritesSectionGrid .ic-favoriteName {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
-    display: block;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 4px;
-    height: 30px;
-    width: 180px;
-    box-sizing: border-box;
-    color: #ffffff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
+  display: block;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 4px;
+  height: 30px;
+  width: 180px;
+  box-sizing: border-box;
+  color: #ffffff;
 }
 
 .viewport-vertical .favoritesSectionGrid .ic-favorite {
-    width: 140px;
+  width: 140px;
 }
 
 .viewport-vertical .favoritesSectionGrid .ic-favorite .ic-tile {
-    height: 110px !important;
+  height: 110px !important;
 }
 
 .viewport-vertical .favoritesSectionGrid .ic-favoriteName {
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 4px;
-    width: 140px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 4px;
+  width: 140px;
 }
 
 .ic-listItem {
-    margin-right: 40px;
-    background-color: white;
+  margin-right: 40px;
+  background-color: white;
 }
 
 .ic-searchHighlight {
-    color: #d24625;
+  color: #d24625;
 }
 
 .viewport-horizontal .upsellSection .sectionContent {
-    width: 350px;
-    margin-right: 50px;
+  width: 350px;
+  margin-right: 50px;
 }
 
 .upsellSection {
-    padding-left: 120px;
+  padding-left: 120px;
 }
 
 .upsellSection .phase1Upsell {
-    padding-right: 0px;
-    max-width: none;
+  padding-right: 0px;
+  max-width: none;
 }
 
 .upsellSection .upsell-instructions {
-    font-weight: 200;
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    color: rgba(0, 0, 0, 0.8);
+  font-weight: 200;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .upsellSection .ali {
-    height: 40px;
-    padding-bottom: 0px;
+  height: 40px;
+  padding-bottom: 0px;
 }
 
 .upsellSection .ali-largeIcon {
-    width: 30px;
-    height: 30px;
-    margin-top: 5px;
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
 }
 
 .upsellSection .upsell-more {
-    padding-bottom: 9px;
+  padding-bottom: 9px;
 }
 
 .upsellSection .upsell-moreIcon {
-    font-size: 30px;
-    height: 30px;
-    margin-left: -5px;
+  font-size: 30px;
+  height: 30px;
+  margin-left: -5px;
 }
 
 .upsellSection .upsell-dismiss {
-    color: #d24625;
-    font-size: 21.33333px;
-    letter-spacing: 0.02em;
-    line-height: 27px;
-    padding-bottom: 2px;
-    padding-top: 1px;
-    margin-top: 23px;
+  color: #d24625;
+  font-size: 21.33333px;
+  letter-spacing: 0.02em;
+  line-height: 27px;
+  padding-bottom: 2px;
+  padding-top: 1px;
+  margin-top: 23px;
 }
 
 .upsellSection .upsell-dismiss:hover {
-    color: #ff7347;
+  color: #ff7347;
 }
 
 .upsellSection .upsell-dismiss:active {
-    color: #ff4f22;
+  color: #ff4f22;
 }
 
 .upsell-accounts-container .ali:hover,.upsellSection .upsell-more:hover {
-    background-color: #f6e2ca;
+  background-color: #f6e2ca;
 }
 
 .phase1Upsell .ali.pressed,.phase1Upsell .ali.pressed .ali-displayName,.phase1Upsell .upsell-more.pressed,.phase1Upsell .upsell-more.pressed .upsell-moreIcon {
-    background-color: #d24625;
-    color: white;
+  background-color: #d24625;
+  color: white;
 }
 
 @media screen and (-ms-high-contrast) {
-    .upsellSection .upsell-dismiss:hover,.upsellSection .upsell-dismiss:active {
-        color: Highlight;
-    }
-
-    .upsell-accounts-container .ali:hover,.upsellSection .upsell-more:hover {
-        background-color: Highlight;
-        color: HighlightText;
-    }
-
-    .phase1Upsell .ali.pressed,.phase1Upsell .ali.pressed .ali-displayName,.phase1Upsell .ali.pressed .ali-description,.phase1Upsell .upsell-more.pressed,.phase1Upsell .upsell-more.pressed .upsell-moreIcon {
-        background-color: Highlight;
-        color: HighlightText;
-    }
+  .upsellSection .upsell-dismiss:hover,.upsellSection .upsell-dismiss:active {
+    color: Highlight;
+  }
+  .upsell-accounts-container .ali:hover,.upsellSection .upsell-more:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .phase1Upsell .ali.pressed,.phase1Upsell .ali.pressed .ali-displayName,.phase1Upsell .ali.pressed .ali-description,.phase1Upsell .upsell-more.pressed,.phase1Upsell .upsell-more.pressed .upsell-moreIcon {
+    background-color: Highlight;
+    color: HighlightText;
+  }
 }
 
 .ab-messageBar .mb-button1 {
-    background-color: #d24625;
+  background-color: #d24625;
 }
 
 .ab-messageBar .mb-button1:hover {
-    background-color: rgba(210, 71, 38, 0.87);
+  background-color: rgba(210, 71, 38, 0.87);
 }
 
 .ab-messageBar .messagebar-status {
-    left: 120px;
-    right: auto;
-    top: 14px;
-    color: #666666;
-    font-size: 12px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
+  left: 120px;
+  right: auto;
+  top: 14px;
+  color: #666666;
+  font-size: 12px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
 }
 
 .favoritesSectionGrid .virtualButton:hover .innerHighlight {
-    display: block;
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    right: 2px;
-    bottom: 2px;
-    outline: 2px solid #757575;
-    z-index: 2;
+  display: block;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  outline: 2px solid #757575;
+  z-index: 2;
 }
 
 .ic-hoverListItem:hover {
-    background-color: #f5efe7;
+  background-color: #f5efe7;
 }
 
 @media screen and (-ms-high-contrast) {
-    .ic-hoverListItem:hover,.viewport-vertical .ic-favorite:hover {
-        background-color: Highlight;
-        color: HighlightText;
-    }
-
-    .viewport-vertical .ic-me:hover {
-        outline: 3px solid WindowText;
-    }
+  .ic-hoverListItem:hover,.viewport-vertical .ic-favorite:hover {
+    background-color: Highlight;
+    color: HighlightText;
+  }
+  .viewport-vertical .ic-me:hover {
+    outline: 3px solid WindowText;
+  }
 }
 
 .sezo-horizontal .win-semanticzoom-button {
-    right: 0px;
-    bottom: 17px;
+  right: 0px;
+  bottom: 17px;
 }
 
 .sezo-vertical .win-semanticzoom-button {
-    right: 17px;
-    bottom: 0px;
+  right: 17px;
+  bottom: 0px;
 }
 
 #btnClearFilter {
-    font-size: 14.66667px;
-    letter-spacing: 0.02em;
-    line-height: 20px;
-    padding-bottom: 0px;
-    padding-top: 0px;
-    font-weight: 300;
-    color: #666666;
-    margin: 0;
-    margin-top: 7px;
-    padding: 0;
-    min-width: 0;
-    border-style: none;
-    background-color: transparent;
+  font-size: 14.66667px;
+  letter-spacing: 0.02em;
+  line-height: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  font-weight: 300;
+  color: #666666;
+  margin: 0;
+  margin-top: 7px;
+  padding: 0;
+  min-width: 0;
+  border-style: none;
+  background-color: transparent;
 }
 
-@media screen and (max-width: 375px) {
-    .app-frame-body .semanticZoomEnabled {
-        position: absolute;
-    }
-
-    .ab-messageBar .messagebar-status {
-        left: 20px;
-        right: auto;
-    }
-
-    .gridStyler,.gridStyler>* {
-        display: none;
-    }
-
-    .alphabetsSectionGrid {
-        padding-right: 0px;
-    }
+@media screen and (-ms-view-state: snapped) {
+  .app-frame-body .semanticZoomEnabled {
+    position: absolute;
+  }
+  .ab-messageBar .messagebar-status {
+    left: 20px;
+    right: auto;
+  }
+  .gridStyler,.gridStyler>* {
+    display: none;
+  }
+  .alphabetsSectionGrid {
+    padding-right: 0px;
+  }
 }
 
 .allSection .gridCanvas:not(.animating),.searchSection .gridCanvas:not(.animating),.pickerAlphabeticSection .gridCanvas:not(.animating) {
-    background: url("/microsoft.windowscommunicationsapps/modernpeople/images/ic-placeholder.png");
+  background: url("/ModernPeople/images/ic-placeholder.png");
 }
 
 .allSection .gridCanvas:not(.animating)>.patch,.searchSection .gridCanvas:not(.animating)>.patch,.pickerAlphabeticSection .gridCanvas:not(.animating)>.patch {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 
 .pp-hasDisambiguators .gridCanvas:not(.animating) {
-    background: url("/microsoft.windowscommunicationsapps/modernpeople/images/ic-placeholder-disambiguator.png");
+  background: url("/ModernPeople/images/ic-placeholder-disambiguator.png");
 }
 
 .socialSectionGrid .notificationList {
-    color: #ffffff;
-    grid-row: 3;
-    height: 100%;
-    margin-top: 32px;
-    margin-left: 115px;
-    margin-right: 40px;
-    display: flex;
-    flex-direction: column;
+  color: #ffffff;
+  -ms-grid-row: 3;
+  height: 100%;
+  margin-top: 32px;
+  margin-left: 115px;
+  margin-right: 40px;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  grid-row-start: 3;
+  display: flex;
+  flex-direction: column;
 }
 
 .socialSectionGrid .notificationContainer {
-    padding-left: 5px;
-    padding-bottom: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 .viewport-horizontal .socialSectionGrid .notificationContainer {
-    margin-bottom: 57px;
+  margin-bottom: 57px;
 }
 
 .socialSectionGrid .notificationBoilerText,.socialSectionGrid .notificationContainer .notificationText {
-    font-size: 26.66667px;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-    padding-bottom: 5px;
-    padding-top: 3px;
-    font-weight: 200;
-    max-height: calc(128px);
-    overflow: hidden;
-    color: #ffffff;
-    display: block;
+  font-size: 26.66667px;
+  letter-spacing: 0.02em;
+  line-height: 32px;
+  padding-bottom: 5px;
+  padding-top: 3px;
+  font-weight: 200;
+  max-height: calc(128px);
+  overflow: hidden;
+  color: #ffffff;
+  display: block;
 }
 
 .socialSectionGrid .notificationContainer .notificationTile {
-    margin-top: 18px;
-    float: left;
+  margin-top: 18px;
+  float: left;
 }
 
 .socialSectionGrid .notificationContainer .notificationDetail {
-    margin-top: 18px;
-    margin-left: 10px;
-    float: left;
+  margin-top: 18px;
+  margin-left: 10px;
+  float: left;
 }
 
 .socialSectionGrid .notificationContainer:hover .notificationText,.socialSectionGrid .notificationContainer:hover .notificationDetail {
-    opacity: 0.8;
+  opacity: 0.8;
 }
 
 .socialSectionGrid .notificationContainer .pressed .notificationText,.socialSectionGrid .notificationContainer .pressed .notificationDetail {
-    opacity: 0.6;
+  opacity: 0.6;
 }
 
 .viewport-vertical .socialSectionGrid .notificationList {
-    margin-left: 15px;
-    margin-right: 20px;
-    margin-top: 7px;
-    margin-bottom: 17px;
+  margin-left: 15px;
+  margin-right: 20px;
+  margin-top: 7px;
+  margin-bottom: 17px;
 }
 
 @media screen and (min-height: 1024px) {
-    .viewport-horizontal .socialSectionGrid .notificationContainer .notificationTile {
-        margin-top:28px;
-    }
-
-    .viewport-horizontal .socialSectionGrid .notificationContainer .notificationDetail {
-        margin-top: 53px;
-    }
+  .viewport-horizontal .socialSectionGrid .notificationContainer .notificationTile {
+    margin-top: 28px;
+  }
+  .viewport-horizontal .socialSectionGrid .notificationContainer .notificationDetail {
+    margin-top: 53px;
+  }
 }
 
 @media screen and (-ms-high-contrast) {
-    .viewport-horizontal .socialSectionGrid .notificationContainer:hover {
-        outline: 3px solid WindowText;
-    }
+  .viewport-horizontal .socialSectionGrid .notificationContainer:hover {
+    outline: 3px solid WindowText;
+  }
+}
+
+.favoritesSectionGrid>*,.socialSectionGrid>*{
+    grid-column: 1;
 }

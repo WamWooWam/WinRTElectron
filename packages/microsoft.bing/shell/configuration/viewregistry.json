@@ -1,0 +1,6 @@
+﻿[
+{ "viewId": "mainview", "location": "/views/main/html/mainview.html" },
+{ "viewId": "homeview", "location": "/views/home/html/homeview.html" },
+{ "viewId": "iframehost", "location": "/views/iframehost/html/iframehost.html" },
+{ "viewId": "startview", "location": "/views/start/html/startview.html" }
+] 

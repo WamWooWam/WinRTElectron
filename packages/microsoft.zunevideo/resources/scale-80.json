@@ -1,0 +1,13 @@
+{
+  "Files": {
+    "Images": {
+      "Tiles": {
+        "XBL_VIDEO_150x150_A.png": "Images\\Tiles\\XBL_VIDEO_150x150_A.scale-80.png",
+        "XBL_VIDEO_30x30_A.png": "Images\\Tiles\\XBL_VIDEO_30x30_A.scale-80.png",
+        "XBL_VIDEO_310x150_C.png": "Images\\Tiles\\XBL_VIDEO_310x150_C.scale-80.png",
+        "XBL_VIDEO_310x310_A.png": "Images\\Tiles\\XBL_VIDEO_310x310_A.scale-80.png",
+        "XBL_VIDEO_70x70_A.png": "Images\\Tiles\\XBL_VIDEO_70x70_A.scale-80.png"
+      }
+    }
+  }
+}

@@ -145,7 +145,7 @@
                                         style.opacity: cloudIconOpacity WinJS.Binding.oneTime;
                                         title: cloudIconTooltip WinJS.Binding.oneTime;"></span>
                             </span>
-                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime;"></span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: _name WinJS.Binding.oneTime;"></span>
                         </div>
                         <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: artist.name WinJS.Binding.oneTime;"></div>
                         <div class="removeFromDisplay" data-win-bind="textContent: cloudIconAriaString WinJS.Binding.oneTime"></div>
@@ -161,7 +161,7 @@
                     
                     <div class="verticalListItem-flexColumns">
                         <div class="verticalListItem-primaryColumnContainer">
-                            <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime"></div>
+                            <div class="verticalListItem-songTitle text-itemTitle maxLines-one placeholderItem thisone" data-ent-placeholderdatapath="name" data-win-bind="textContent: _name WinJS.Binding.oneTime"></div>
                             <div class="inPlaceDetailsItemActions ent-control win-disposable" data-win-control="MS.Entertainment.Pages.SmartBuyButtonsListControl" data-win-bind="
                                     winControl.eventProxy: eventProxy WinJS.Binding.oneTime;" data-win-options="{
                                     allowAnimations: false,
@@ -223,7 +223,7 @@
                                     enableDelayInitialization: true,
                                     allowAnimations: false,
                                     preventHideDuringInitialize: true }" data-win-bind="winControl.mediaItem: this WinJS.Binding.oneTime"></span>
-                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: name WinJS.Binding.oneTime;"></span>
+                            <span class="placeholderItem" data-ent-placeholderdatapath="name" data-win-bind="textContent: _name WinJS.Binding.oneTime;"></span>
                         </div>
                         <div class="verticalItemTile-secondaryText text-metadata maxLines-one" data-win-bind="textContent: totalAlbumsCount MS.Entertainment.Formatters.formatAlbumCountOneTime;"></div>
                     </div>

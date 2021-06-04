@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<title>Weather Settings</title>
+</head>
+<body>
+<!-- Settings Template-->
+<div class="settingsPanel">
+<div id="SettingsPage" class="panel" data-win-control="WinJS.UI.SettingsFlyout" data-win-options="{width:'narrow'}">
+<!-- Header -->
+<div class="win-header">
+<button type="button" data-win-bind="onclick:optionsPageBackButtonclick" class="win-backbutton"></button>
+<div class="settingsTitle" data-win-res="{textContent:'/platform/optionsTitle'}"></div>
+<div class="appIcon"></div>
+</div>
+<!-- Content -->
+<div class="win-content">
+<!-- Units-->
+<div id="displayUnit" class="displayUnit setting">
+<div class="settingName" data-win-res="{textContent:'DisplayUnits'}"></div>
+<div class="settingFullDiv displayUnitSetting">
+<input id="funit" class="settingsValue" type="radio" name="inputunit" value="F" data-win-bind="onchange:displayUnitChangeHandler"/>
+<label for="funit" data-win-res="{textContent: 'FahrenheitSetting'}"></label>
+</div>
+<div class="settingFullDiv displayUnitSetting">
+<input id="cunit" class="settingsValue" type="radio" name="inputunit" value="C" data-win-bind="onchange:displayUnitChangeHandler"/>
+<label for="cunit" data-win-res="{textContent: 'CelsiusSetting'}"></label>
+</div>
+</div>
+<!-- Search History -->
+<div id="searchHistory" class="setting">
+<div class="boldedLabel" data-win-res="{textContent:'SearchHistory'}"></div>
+<div id="enableSearchHistory" class="settingName enableSearchHistory" data-win-control="WinJS.UI.ToggleSwitch" data-win-options="{onchange:WeatherAppJS.UI.Settings.onEnableSearchHistory}"></div>
+<div class="buttonContainer">
+<button class="rectUIBtnDark" type="button" data-win-bind="onclick:clearHistoryClickHandler" data-win-res="{textContent: 'clearSearchHistoryButton'}" role="button" id="autoID_ClearWeatherSearchesButton"></button>
+</div>
+</div>
+<!-- Maps environment -->
+<!--<div id="mapEnvironment" class="setting">
+<div class="settingName boldedLabel">Maps Environment</div>
+<div class="settingFullDiv">
+<select id="mapsEnvironmentList" class="mapsEnvironmentComboBox listBoxEntries" aria-label="select server to contact" onchange="WeatherAppJS.UI.Settings.onMapsEnvironmentChange(this.value)"></select>
+</div>
+</div>-->
+</div>
+</div>
+</div>
+</body>
+</html>
