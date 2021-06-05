@@ -7,3 +7,4 @@ export const AppLifecycleV2 = "windows.applicationmodel.activation";
 export const SplashScreenV2 = "windows.applicationmodel.activation.splashscreen"
 export const SettingsPaneV2 = "windows.ui.applicationsettings.settingspane";
 export const MessageDialogV2 = "windows.ui.popups.messagedialog";
+export const SuspendingDeferralV1 = "windows.applicationmodel.suspendingdeferral"

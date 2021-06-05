@@ -60,7 +60,7 @@ class XmlElementFactory {
 
 }
 
-@GenerateShim('Windows.Data.Xml.Dom.XmlDocument')
+// @GenerateShim('Windows.Data.Xml.Dom.XmlDocument')
 export class XmlDocument extends XmlElement {
     __parser: DOMParser;
     __document: Document;
@@ -76,6 +76,7 @@ export class XmlDocument extends XmlElement {
         this.__parser = new DOMParser();
         this.__factory = new XmlElementFactory(this);
         this.ownerDocument = this;
+        return this;
     }
 
     loadXml(xml: string): void {

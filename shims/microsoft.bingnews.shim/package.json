@@ -4,9 +4,14 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "webpack-cli": "^4.6.0",
     "ts-loader": "^8.1.0",
     "typescript": "^4.2.3",
-    "webpack": "^5.28.0"
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
+  },
+  "dependencies": {
+    "@types/better-sqlite3": "^5.4.1",
+    "@types/sqlite3": "^3.1.7",
+    "better-sqlite3": "^7.4.0"
   }
 }

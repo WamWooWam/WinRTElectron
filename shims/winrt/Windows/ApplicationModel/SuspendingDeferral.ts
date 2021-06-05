@@ -7,10 +7,17 @@
 
 import { ISuspendingDeferral } from "./ISuspendingDeferral";
 import { GenerateShim } from "../Foundation/Interop/GenerateShim";
+import { IpcHelper } from "../../IpcHelper";
+import { SuspendingDeferralV1 } from "../Foundation/Interop/IpcConstants";
 
 @GenerateShim('Windows.ApplicationModel.SuspendingDeferral')
 export class SuspendingDeferral implements ISuspendingDeferral { 
+    private __deferralId : string;
+    constructor(deferralId: string) {
+        this.__deferralId = deferralId;
+    }
+
     complete(): void {
-        console.warn('SuspendingDeferral#complete not implemented')
+        IpcHelper.post(SuspendingDeferralV1, { deferralId: this.__deferralId, type: 'complete' })
     }
 }

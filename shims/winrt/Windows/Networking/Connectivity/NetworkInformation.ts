@@ -15,14 +15,16 @@ import { HostName } from "../HostName";
 import { HostNameSortOptions } from "../HostNameSortOptions";
 import { NetworkConnectivityLevel } from "./NetworkConnectivityLevel";
 import { ReadOnlyVector } from "../../Foundation/Interop/ReadOnlyVector`1";
+import { Vector } from "../../Foundation/Interop/Vector`1";
 
 @GenerateShim('Windows.Networking.Connectivity.NetworkInformation')
-export class NetworkInformation { 
+export class NetworkInformation {
     static findConnectionProfilesAsync(pProfileFilter: ConnectionProfileFilter): IAsyncOperation<IVectorView<ConnectionProfile>> {
         throw new Error('NetworkInformation#findConnectionProfilesAsync not implemented')
     }
     static getConnectionProfiles(): IVectorView<ConnectionProfile> {
-        throw new Error('NetworkInformation#getConnectionProfiles not implemented')
+        // throw new Error('NetworkInformation#getConnectionProfiles not implemented')
+        return new Vector([this.getInternetConnectionProfile()])
     }
     static getInternetConnectionProfile(): ConnectionProfile {
         return new ConnectionProfile(NetworkConnectivityLevel.internetAccess);

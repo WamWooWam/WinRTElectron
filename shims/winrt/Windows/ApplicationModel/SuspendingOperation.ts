@@ -9,11 +9,17 @@ import { ISuspendingOperation } from "./ISuspendingOperation";
 import { SuspendingDeferral } from "./SuspendingDeferral";
 import { DateTime } from "../Foundation/DateTime";
 import { GenerateShim } from "../Foundation/Interop/GenerateShim";
+import { IpcHelper } from "../../IpcHelper";
+import { SuspendingDeferralV1 } from "../Foundation/Interop/IpcConstants";
+import { uuidv4 } from "../Foundation/Interop/Utils";
 
 @GenerateShim('Windows.ApplicationModel.SuspendingOperation')
 export class SuspendingOperation implements ISuspendingOperation { 
     deadline: Date = null;
     getDeferral(): SuspendingDeferral {
-        throw new Error('SuspendingOperation#getDeferral not implemented')
+        let deferralId = uuidv4();
+        let deferral = new SuspendingDeferral(deferralId);
+        IpcHelper.post(SuspendingDeferralV1, { deferralId, type: 'captured' })
+        return deferral;
     }
 }

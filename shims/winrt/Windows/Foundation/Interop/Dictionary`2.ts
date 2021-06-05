@@ -54,7 +54,7 @@ export class Dictionary<K, V> implements IMap<K, V>, IMapView<K, V> {
 
 export class DictionaryProxy<K, V> implements ProxyHandler<Dictionary<K, V>> {
     get(target: Dictionary<K, V>, p: PropertyKey, receiver: any): any {
-        if (p in target || !(target instanceof Symbol) || p.toString().startsWith("#")) {
+        if (p in target || target instanceof Symbol || p.toString().startsWith("__")) {
             return target[p];
         }
 
@@ -63,7 +63,7 @@ export class DictionaryProxy<K, V> implements ProxyHandler<Dictionary<K, V>> {
     }
 
     set(target: Dictionary<K, V>, p: PropertyKey, value: any, receiver: any): boolean {
-        if (p in target || !(target instanceof Symbol) || p.toString().startsWith("#")) {
+        if (p in target || target instanceof Symbol || p.toString().startsWith("__")) {
             target[p] = value;
             return true;
         }

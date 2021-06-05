@@ -26,6 +26,8 @@ export class Package {
             return;
         }
 
+        this.installedLocation = StorageFolder.getFolderFromPathSync(path.dirname(packageManifestPath), false);
+
         let content = fs.readFileSync(packageManifestPath, 'utf-8');
         let manifestDocument = new DOMParser().parseFromString(content, 'application/xml');
         let identityElement = manifestDocument.querySelector("Identity");

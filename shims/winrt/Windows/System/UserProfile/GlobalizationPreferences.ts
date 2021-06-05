@@ -6,7 +6,7 @@ import { DayOfWeek } from "../../Globalization/DayOfWeek";
 
 @GenerateShim('Windows.System.UserProfile.GlobalizationPreferences')
 export class GlobalizationPreferences { 
-    static calendars: IVectorView<string> = null;
+    static calendars: IVectorView<string> = new Vector(["CAL_GREGORIAN"]);
     static clocks: IVectorView<string> = null;
     static currencies: IVectorView<string> = null;
     static homeGeographicRegion: string = "en";

@@ -16,7 +16,7 @@ import { XmlNodeList } from "./XmlNodeList";
 import { GenerateShim } from "../../../Foundation/Interop/GenerateShim";
 import { XmlNode } from "./XmlNode";
 
-@GenerateShim('Windows.Data.Xml.Dom.XmlElement')
+// @GenerateShim('Windows.Data.Xml.Dom.XmlElement')
 export class XmlElement extends XmlNode { 
     tagName: string = null;
     

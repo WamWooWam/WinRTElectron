@@ -4,6 +4,7 @@
   "main": "dist/index.js",
   "license": "MIT",
   "dependencies": {
+    "better-sqlite3": "^7.4.0",
     "deep-rename-keys": "^0.2.1",
     "jsx-no-react": "https://github.com/WamWooWam/jsx-no-react",
     "node-fetch": "^2.6.0"
@@ -12,6 +13,7 @@
     "electron": "^12.0.2",
     "electron-builder": "^22.10.5",
     "electron-packager": "^15.2.0",
+    "electron-rebuild": "^2.3.5",
     "postcss": "^8.2.8",
     "postcss-cli": "^8.3.1",
     "postcss-html": "^0.36.0",
@@ -22,5 +24,8 @@
   },
   "scripts": {
     "start": "electron ."
+  },
+  "build": {
+    "extends": null
   }
 }

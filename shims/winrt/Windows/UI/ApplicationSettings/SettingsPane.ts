@@ -36,16 +36,16 @@ export class SettingsPane {
     getCommands() {
         if (!this.commands) {
             var event = new SettingsPaneCommandsRequestedEventArgs();
-            InvokeRawEvent(this.#commandsRequested, "commandsrequested", event);
+            InvokeRawEvent(this.__commandsRequested, "commandsrequested", event);
             this.commands = new Vector<SettingsCommand>([...<Vector<SettingsCommand>>event.request.applicationCommands]);
         }
 
         return this.commands;
     }
 
-    private static _instance: SettingsPane;
+    private static __instance: SettingsPane;
     static getForCurrentView() {
-        return SettingsPane._instance ?? (SettingsPane._instance = new SettingsPane());
+        return SettingsPane.__instance ?? (SettingsPane.__instance = new SettingsPane());
     }
 
     static show(): void {
@@ -86,16 +86,16 @@ export class SettingsPane {
         }
     }
 
-    #commandsRequested: Set<TypedEventHandler<SettingsPane, SettingsPaneCommandsRequestedEventArgs>> = new Set();
+    __commandsRequested: Set<TypedEventHandler<SettingsPane, SettingsPaneCommandsRequestedEventArgs>> = new Set();
     @Enumerable(true)
     set oncommandsrequested(handler: TypedEventHandler<SettingsPane, SettingsPaneCommandsRequestedEventArgs>) {
-        this.#commandsRequested.add(handler);
+        this.__commandsRequested.add(handler);
     }
 
     addEventListener(name: string, handler: any) {
         switch (name) {
             case 'commandsrequested':
-                this.#commandsRequested.add(handler);
+                this.__commandsRequested.add(handler);
                 break;
         }
     }
@@ -103,7 +103,7 @@ export class SettingsPane {
     removeEventListener(name: string, handler: any) {
         switch (name) {
             case 'commandsrequested':
-                this.#commandsRequested.delete(handler);
+                this.__commandsRequested.delete(handler);
                 break;
         }
     }

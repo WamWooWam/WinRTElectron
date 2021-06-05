@@ -1,1 +1,13 @@
-﻿.mainList{height:100%}.platformDropDownFilterItem input:checked+label+label{color:#000;background-color:#fff}.platformDropDownFilterItem input:checked+label{color:#000;background-color:#fff}
+.mainList {
+    height: 100%
+}
+
+.platformDropDownFilterItem input:checked+label+label {
+    color: #000;
+    background-color: #fff
+}
+
+.platformDropDownFilterItem input:checked+label {
+    color: #000;
+    background-color: #fff
+}

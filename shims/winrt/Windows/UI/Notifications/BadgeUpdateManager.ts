@@ -13,10 +13,12 @@ import { BadgeUpdater } from "./BadgeUpdater";
 @GenerateShim('Windows.UI.Notifications.BadgeUpdateManager')
 export class BadgeUpdateManager { 
     static createBadgeUpdaterForApplication(): BadgeUpdater {
-        throw new Error('BadgeUpdateManager#createBadgeUpdaterForApplication not implemented')
+        // throw new Error('BadgeUpdateManager#createBadgeUpdaterForApplication not implemented')
+        return new BadgeUpdater();
     }
     static createBadgeUpdaterForApplicationWithId(applicationId: string): BadgeUpdater {
-        throw new Error('BadgeUpdateManager#createBadgeUpdaterForApplicationWithId not implemented')
+        // throw new Error('BadgeUpdateManager#createBadgeUpdaterForApplicationWithId not implemented')
+        return new BadgeUpdater();
     }
     static createBadgeUpdaterForSecondaryTile(tileId: string): BadgeUpdater {
         throw new Error('BadgeUpdateManager#createBadgeUpdaterForSecondaryTile not implemented')

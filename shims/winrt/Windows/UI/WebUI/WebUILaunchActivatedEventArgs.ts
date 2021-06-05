@@ -21,7 +21,7 @@ export class WebUILaunchActivatedEventArgs implements ILaunchActivatedEventArgs,
     arguments: string = "";
     tileId: string = null;
     kind: ActivationKind = ActivationKind.launch;
-    previousExecutionState: ApplicationExecutionState = null;
+    previousExecutionState: ApplicationExecutionState = ApplicationExecutionState.notRunning;
     splashScreen: SplashScreen = null;
     prelaunchActivated: boolean = null;
     currentlyShownApplicationViewId: number = null;

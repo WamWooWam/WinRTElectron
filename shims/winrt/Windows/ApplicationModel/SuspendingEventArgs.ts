@@ -11,5 +11,5 @@ import { GenerateShim } from "../Foundation/Interop/GenerateShim";
 
 @GenerateShim('Windows.ApplicationModel.SuspendingEventArgs')
 export class SuspendingEventArgs implements ISuspendingEventArgs { 
-    suspendingOperation: SuspendingOperation = null;
+    suspendingOperation: SuspendingOperation = new SuspendingOperation();
 }

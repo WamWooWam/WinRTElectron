@@ -1,1 +1,205 @@
-﻿.mainList{height:100%}.searchResultTileContainer{display:-ms-inline-grid;-ms-grid-columns:70px 1fr;-ms-grid-rows:70px;width:100%;height:100%;background-color:#fff}.searchResultTileContainer .searchResultTileImage{-ms-grid-column:1;-ms-grid-row:1;margin:4px}.searchResultTileContainer .searchResultTileImage .platformImageCardImage{background-size:contain}.searchResultTileContainer .searchResultTileText{margin:10px;-ms-grid-column:2;-ms-grid-row:1;padding-top:0;padding-bottom:0;font:600 14.66667px/20px "Segoe UI",Tahoma;letter-spacing:.02em;-ms-grid-row-align:center}.searchResultTileContainer .searchResultTileText:-ms-lang(kn,ta,pa){padding-top:3px;padding-bottom:3px}.searchResultTileContainer .searchResultTileText:-ms-lang(ja,te,km){padding-bottom:2px}.searchResultTileContainer .searchResultTileText:-ms-lang(si){padding-bottom:1px;font:600 16.33px/19px "Iskoola Pota","Segoe UI",sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(ar,prs-Arab,fa,ur,ku-Arab,pa-Arab,sd-Arab,ug-Arab,qps-plocm){font:600 15.33px/20px "Segoe UI",Tahoma}.searchResultTileContainer .searchResultTileText:-ms-lang(zh-hans){font:600 15px/26px "Segoe UI","Microsoft YaHei UI",Tahoma,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(zh-hant){font:600 15px/26px "Segoe UI","Microsoft JhengHei UI",Tahoma,Verdana,Arial,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(gu,te,as,bn-BD,bn-IN){font:600 14.66667px/20px "Nirmala UI","Segoe UI",sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(hi,mr,knn-Deva,ne,kok,or){font:600 14.66px/20px "Nirmala UI","Segoe UI",sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(ja){font:600 15.33px/24px "Segoe UI","Meiryo UI",Tahoma,Verdana,Arial,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(kn){font:600 14.66px/20px "Segoe UI","Tunga",Tahoma,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(ko){font:600 14.66667px/24px "Segoe UI","Malgun Gothic",Tahoma,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(ml){font:600 14.5px/20px "Nirmala UI","Segoe UI",sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(ta){font:600 14.66px/20px "Latha","Segoe UI",sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(th){font:600 14.66667px/20px "Leelawadee","Segoe UI",sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(am,ti){font:600 14.66667px/20px "Segoe UI","Ebrima",Tahoma,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(km){font:600 15.5px/20px "Khmer UI","Segoe UI",Tahoma,sans-serif}.searchResultTileContainer .searchResultTileText:-ms-lang(pa){font:600 14.66px/20px "Segoe UI","Raavi",Tahoma,sans-serif}.searchResultTileContainerNoImage{display:-ms-inline-grid;-ms-grid-columns:1fr;-ms-grid-rows:70px;width:100%;height:100%;background-color:#fff}.searchResultTileContainerNoImage .searchResultTileNoImageText{-ms-grid-column:1;-ms-grid-row:1;margin:10px;padding-top:0;padding-bottom:0;font:300 14.66667px/20px "Segoe UI",Tahoma;letter-spacing:.02em;-ms-grid-row-align:center}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(kn,ta,pa){padding-top:3px;padding-bottom:3px}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ja,te,km){padding-bottom:2px}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(si){padding-bottom:1px;font:300 16.33px/19px "Iskoola Pota","Segoe UI",sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ar,prs-Arab,fa,ur,ku-Arab,pa-Arab,sd-Arab,ug-Arab,qps-plocm){font:300 15.33px/20px "Segoe UI",Tahoma}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(zh-hans){font:300 15px/26px "Segoe UI","Microsoft YaHei UI",Tahoma,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(zh-hant){font:300 15px/26px "Segoe UI","Microsoft JhengHei UI",Tahoma,Verdana,Arial,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(gu,te,as,bn-BD,bn-IN){font:300 14.66667px/20px "Nirmala UI","Segoe UI",sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(hi,mr,knn-Deva,ne,kok,or){font:300 14.66px/20px "Nirmala UI","Segoe UI",sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ja){font:300 15.33px/24px "Segoe UI","Meiryo UI",Tahoma,Verdana,Arial,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(kn){font:300 14.66px/20px "Segoe UI","Tunga",Tahoma,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ko){font:300 14.66667px/24px "Segoe UI","Malgun Gothic",Tahoma,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ml){font:300 14.5px/20px "Nirmala UI","Segoe UI",sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ta){font:300 14.66px/20px "Latha","Segoe UI",sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(th){font:300 14.66667px/20px "Leelawadee","Segoe UI",sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(am,ti){font:300 14.66667px/20px "Segoe UI","Ebrima",Tahoma,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(km){font:300 15.5px/20px "Khmer UI","Segoe UI",Tahoma,sans-serif}.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(pa){font:300 14.66px/20px "Segoe UI","Raavi",Tahoma,sans-serif}
+.mainList {
+    height: 100%
+}
+
+.searchResultTileContainer {
+    display: -ms-inline-grid;
+    -ms-grid-columns: 70px 1fr;
+    -ms-grid-rows: 70px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    grid-template-columns: 70px 1fr;
+    grid-template-rows: 70px
+}
+
+.searchResultTileContainer .searchResultTileImage {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    margin: 4px;
+    grid-column-start: 1;
+    grid-row-start: 1
+}
+
+.searchResultTileContainer .searchResultTileImage .platformImageCardImage {
+    background-size: contain
+}
+
+.searchResultTileContainer .searchResultTileText {
+    margin: 10px;
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    padding-top: 0;
+    padding-bottom: 0;
+    font: 600 14.66667px/20px "Segoe UI", Tahoma;
+    letter-spacing: .02em;
+    -ms-grid-row-align: center;
+    grid-column-start: 2;
+    grid-row-start: 1;
+    align-items: center
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(kn, ta, pa) {
+    padding-top: 3px;
+    padding-bottom: 3px
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(ja, te, km) {
+    padding-bottom: 2px
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(si) {
+    padding-bottom: 1px;
+    font: 600 16.33px/19px "Iskoola Pota", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(ar, prs-Arab, fa, ur, ku-Arab, pa-Arab, sd-Arab, ug-Arab, qps-plocm) {
+    font: 600 15.33px/20px "Segoe UI", Tahoma
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(zh-hans) {
+    font: 600 15px/26px "Segoe UI", "Microsoft YaHei UI", Tahoma, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(zh-hant) {
+    font: 600 15px/26px "Segoe UI", "Microsoft JhengHei UI", Tahoma, Verdana, Arial, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(gu, te, as, bn-BD, bn-IN) {
+    font: 600 14.66667px/20px "Nirmala UI", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(hi, mr, knn-Deva, ne, kok, or) {
+    font: 600 14.66px/20px "Nirmala UI", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(ja) {
+    font: 600 15.33px/24px "Segoe UI", "Meiryo UI", Tahoma, Verdana, Arial, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(kn) {
+    font: 600 14.66px/20px "Segoe UI", "Tunga", Tahoma, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(ko) {
+    font: 600 14.66667px/24px "Segoe UI", "Malgun Gothic", Tahoma, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(ml) {
+    font: 600 14.5px/20px "Nirmala UI", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(ta) {
+    font: 600 14.66px/20px "Latha", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(th) {
+    font: 600 14.66667px/20px "Leelawadee", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(am, ti) {
+    font: 600 14.66667px/20px "Segoe UI", "Ebrima", Tahoma, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(km) {
+    font: 600 15.5px/20px "Khmer UI", "Segoe UI", Tahoma, sans-serif
+}
+
+.searchResultTileContainer .searchResultTileText:-ms-lang(pa) {
+    font: 600 14.66px/20px "Segoe UI", "Raavi", Tahoma, sans-serif
+}
+
+.searchResultTileContainerNoImage {
+    display: -ms-inline-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: 70px;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    grid-template-columns: 1fr;
+    grid-template-rows: 70px
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    margin: 10px;
+    padding-top: 0;
+    padding-bottom: 0;
+    font: 300 14.66667px/20px "Segoe UI", Tahoma;
+    letter-spacing: .02em;
+    -ms-grid-row-align: center;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    align-items: center
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(kn, ta, pa) {
+    padding-top: 3px;
+    padding-bottom: 3px
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ja, te, km) {
+    padding-bottom: 2px
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(si) {
+    padding-bottom: 1px;
+    font: 300 16.33px/19px "Iskoola Pota", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ar, prs-Arab, fa, ur, ku-Arab, pa-Arab, sd-Arab, ug-Arab, qps-plocm) {
+    font: 300 15.33px/20px "Segoe UI", Tahoma
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(zh-hans) {
+    font: 300 15px/26px "Segoe UI", "Microsoft YaHei UI", Tahoma, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(zh-hant) {
+    font: 300 15px/26px "Segoe UI", "Microsoft JhengHei UI", Tahoma, Verdana, Arial, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(gu, te, as, bn-BD, bn-IN) {
+    font: 300 14.66667px/20px "Nirmala UI", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(hi, mr, knn-Deva, ne, kok, or) {
+    font: 300 14.66px/20px "Nirmala UI", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ja) {
+    font: 300 15.33px/24px "Segoe UI", "Meiryo UI", Tahoma, Verdana, Arial, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(kn) {
+    font: 300 14.66px/20px "Segoe UI", "Tunga", Tahoma, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ko) {
+    font: 300 14.66667px/24px "Segoe UI", "Malgun Gothic", Tahoma, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ml) {
+    font: 300 14.5px/20px "Nirmala UI", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(ta) {
+    font: 300 14.66px/20px "Latha", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(th) {
+    font: 300 14.66667px/20px "Leelawadee", "Segoe UI", sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(am, ti) {
+    font: 300 14.66667px/20px "Segoe UI", "Ebrima", Tahoma, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(km) {
+    font: 300 15.5px/20px "Khmer UI", "Segoe UI", Tahoma, sans-serif
+}
+
+.searchResultTileContainerNoImage .searchResultTileNoImageText:-ms-lang(pa) {
+    font: 300 14.66px/20px "Segoe UI", "Raavi", Tahoma, sans-serif
+}

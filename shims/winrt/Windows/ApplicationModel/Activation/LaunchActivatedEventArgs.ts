@@ -21,6 +21,6 @@ export class LaunchActivatedEventArgs implements ILaunchActivatedEventArgs, IAct
     arguments: string = null;
     tileId: string = null;
     kind: ActivationKind = null;
-    previousExecutionState: ApplicationExecutionState = null;
+    previousExecutionState: ApplicationExecutionState = ApplicationExecutionState.notRunning;
     splashScreen: SplashScreen = null;
 }

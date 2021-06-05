@@ -1,1 +1,161 @@
-﻿.newsSlideShowEntry{width:100%;height:100%;display:-ms-grid;-ms-grid-columns:100%;-ms-grid-rows:1fr auto}.newsSlideShowEntry .newsSlideShowEntryBackground{width:100%;height:auto;background-color:#000;-ms-grid-column-align:stretch}.newsSlideShowEntry .newsSlideShowEntryImage{width:100%;height:auto;-ms-grid-column-align:center;background-color:#000}.newsSlideShowEntry .attribution{-ms-grid-row:2;font:400 12px/20px "Nirmala UI","Segoe UI",sans-serif;letter-spacing:.02em;color:#666;padding-top:0;padding-bottom:0}.newsSlideShowEntry .attribution:-ms-lang(en,eu,ca,hr,cs,da,nl,et,fi,fr,de,hu,id,it,lv,lt,ms,nb,pl,pt-BR,pt-PT,ro,sr-Latn,sk,sl,es,sv,tr,vi,af,sq,az-Latn,bs,fil-Latn,gl,ha-Latn,is,ig-Latn,ga,xh,zu,sw,lb,mk,mt,mi-Latn,nn,qu,nso,tn,tk-Latn,uz-Latn,cy,yo-Latn,qut-Latn,rw,gd-Latn,ca-ES-valencia,wo,quz,ar,prs-Arab,fa,ur,ku-Arab,pa-Arab,sd-Arab,ug-Arab,qps-plocm,bg,el,ru,sr-Cyrl-CS,sr-Cyrl-RS,uk,sr-Cyrl-BA,kk,ky-Cyrl,tt-Cyrl,be,tg-Cyrl,mn-cyrl,zh-hk,he,el){font:400 12px/20px "Segoe UI",Tahoma}.newsSlideShowEntry .attribution:-ms-lang(zh-hans){font:400 12.66px/20px "Segoe UI","Microsoft YaHei UI",Tahoma,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(zh-hant){font:400 13.66px/19px "Segoe UI","Microsoft JhengHei UI",Tahoma,Verdana,Arial,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(ja){font:400 12.66px/18px "Segoe UI","Meiryo UI",Tahoma,Verdana,Arial,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(kn){font:400 12px/20px "Segoe UI","Tunga",Tahoma,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(ko){font:400 12px/20px "Segoe UI","Malgun Gothic",Tahoma,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(ta){font:400 12px/20px "Latha","Segoe UI",sans-serif}.newsSlideShowEntry .attribution:-ms-lang(th){font:400 12px/20px "Leelawadee","Segoe UI",sans-serif}.newsSlideShowEntry .attribution:-ms-lang(am,ti){font:400 12px/20px "Segoe UI","Ebrima",Tahoma,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(hy,ka){font:400 12.5px/20px "Segoe UI",Tahoma}.newsSlideShowEntry .attribution:-ms-lang(km){font:400 12.66px/20px "Khmer UI","Segoe UI",Tahoma,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(pa){font:400 12px/20px "Segoe UI","Raavi",Tahoma,sans-serif}.newsSlideShowEntry .attribution:-ms-lang(si){font:400 14.5px/18px "Iskoola Pota","Segoe UI",sans-serif}.newsSlideShowEntry .icon{margin-bottom:20px;height:30px;width:30px;-ms-grid-column-align:end;-ms-grid-row-align:end;-ms-grid-row:1;-ms-grid-column:1}.newsSlideShowEntry .icon:-ms-lang(en,eu,ca,hr,cs,da,nl,et,fi,fr,de,hu,id,it,lv,lt,ms,nb,pl,pt-BR,pt-PT,ro,sr-Latn,sk,sl,es,sv,tr,vi,af,sq,az-Latn,bs,fil-Latn,gl,ha-Latn,is,ig-Latn,ga,xh,zu,sw,lb,mk,mt,mi-Latn,nn,qu,nso,tn,tk-Latn,uz-Latn,cy,yo-Latn,qut-Latn,rw,gd-Latn,ca-ES-valencia,wo,quz,bg,el,ru,sr-Cyrl-CS,sr-Cyrl-RS,uk,sr-Cyrl-BA,kk,ky-Cyrl,tt-Cyrl,be,tg-Cyrl,mn-cyrl,zh-hans,zh-hant,zh-hk,gu,hi,mr,knn-Deva,ne,kok,ja,kn,ko,ml,ta,te,th,am,ti,hy,as,bn-BD,bn-IN,ka,km,or,pa,si,el){margin-right:20px}.newsSlideShowEntry .icon:-ms-lang(ar,prs-Arab,fa,ur,ku-Arab,pa-Arab,sd-Arab,ug-Arab,qps-plocm,he){margin-left:20px}.newsSlideShowEntry .icon .iconRing{height:30px;width:30px;margin-left:0;margin-right:0;background-color:#333;border-color:#fff;display:-ms-grid;-ms-grid-rows:auto auto auto;-ms-grid-columns:auto auto auto}.newsSlideShowEntry .icon .iconRing .iconImage{height:30px;width:30px;margin-top:-4px;padding-top:1px;-ms-grid-row:2;-ms-grid-column:2;font-size:21.33px;font-family:AppExSymbolFont;color:#fff;text-align:center}.newsSlideShowEntry .icon .iconRing .iconImage:-ms-lang(en,eu,ca,hr,cs,da,nl,et,fi,fr,de,hu,id,it,lv,lt,ms,nb,pl,pt-BR,pt-PT,ro,sr-Latn,sk,sl,es,sv,tr,vi,af,sq,az-Latn,bs,fil-Latn,gl,ha-Latn,is,ig-Latn,ga,xh,zu,sw,lb,mk,mt,mi-Latn,nn,qu,nso,tn,tk-Latn,uz-Latn,cy,yo-Latn,qut-Latn,rw,gd-Latn,ca-ES-valencia,wo,quz,bg,el,ru,sr-Cyrl-CS,sr-Cyrl-RS,uk,sr-Cyrl-BA,kk,ky-Cyrl,tt-Cyrl,be,tg-Cyrl,mn-cyrl,zh-hans,zh-hant,zh-hk,gu,hi,mr,knn-Deva,ne,kok,ja,kn,ko,ml,ta,te,th,am,ti,hy,as,bn-BD,bn-IN,ka,km,or,pa,si,el){margin-left:-1px}.newsSlideShowEntry .icon .iconRing .iconImage:-ms-lang(ar,prs-Arab,fa,ur,ku-Arab,pa-Arab,sd-Arab,ug-Arab,qps-plocm,he){margin-right:-1px}.newsSlideShowEntry .icon .iconRing .iconImage:before{content:""}.inErrorMode .snappedHeaderList .listview{display:none}.primaryCluster .platformProgressModule{display:none!important;visibility:hidden!important}
+.newsSlideShowEntry {
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-columns: 100%;
+    -ms-grid-rows: 1fr auto;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 1fr auto
+}
+
+.newsSlideShowEntry .newsSlideShowEntryBackground {
+    width: 100%;
+    height: auto;
+    background-color: #000;
+    -ms-grid-column-align: stretch;
+    justify-content: stretch
+}
+
+.newsSlideShowEntry .newsSlideShowEntryImage {
+    width: 100%;
+    height: auto;
+    -ms-grid-column-align: center;
+    background-color: #000;
+    justify-content: center
+}
+
+.newsSlideShowEntry .attribution {
+    -ms-grid-row: 2;
+    font: 400 12px/20px "Nirmala UI", "Segoe UI", sans-serif;
+    letter-spacing: .02em;
+    color: #666;
+    padding-top: 0;
+    padding-bottom: 0;
+    grid-row-start: 2
+}
+
+.newsSlideShowEntry .attribution {
+    font: 400 12px/20px "Segoe UI", Tahoma
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(zh-hans) {
+    font: 400 12.66px/20px "Segoe UI", "Microsoft YaHei UI", Tahoma, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(zh-hant) {
+    font: 400 13.66px/19px "Segoe UI", "Microsoft JhengHei UI", Tahoma, Verdana, Arial, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(ja) {
+    font: 400 12.66px/18px "Segoe UI", "Meiryo UI", Tahoma, Verdana, Arial, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(kn) {
+    font: 400 12px/20px "Segoe UI", "Tunga", Tahoma, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(ko) {
+    font: 400 12px/20px "Segoe UI", "Malgun Gothic", Tahoma, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(ta) {
+    font: 400 12px/20px "Latha", "Segoe UI", sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(th) {
+    font: 400 12px/20px "Leelawadee", "Segoe UI", sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(am, ti) {
+    font: 400 12px/20px "Segoe UI", "Ebrima", Tahoma, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(hy, ka) {
+    font: 400 12.5px/20px "Segoe UI", Tahoma
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(km) {
+    font: 400 12.66px/20px "Khmer UI", "Segoe UI", Tahoma, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(pa) {
+    font: 400 12px/20px "Segoe UI", "Raavi", Tahoma, sans-serif
+}
+
+.newsSlideShowEntry .attribution:-ms-lang(si) {
+    font: 400 14.5px/18px "Iskoola Pota", "Segoe UI", sans-serif
+}
+
+.newsSlideShowEntry .icon {
+    margin-bottom: 20px;
+    height: 30px;
+    width: 30px;
+    -ms-grid-column-align: end;
+    -ms-grid-row-align: end;
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    justify-content: flex-end;
+    align-items: flex-end;
+    grid-row-start: 1;
+    grid-column-start: 1
+}
+
+.newsSlideShowEntry .icon {
+    margin-right: 20px
+}
+
+.newsSlideShowEntry .icon:-ms-lang(ar, prs-Arab, fa, ur, ku-Arab, pa-Arab, sd-Arab, ug-Arab, qps-plocm, he) {
+    margin-left: 20px
+}
+
+.newsSlideShowEntry .icon .iconRing {
+    height: 30px;
+    width: 30px;
+    margin-left: 0;
+    margin-right: 0;
+    background-color: #333;
+    border-color: #fff;
+    display: -ms-grid;
+    -ms-grid-rows: auto auto auto;
+    -ms-grid-columns: auto auto auto;
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto
+}
+
+.newsSlideShowEntry .icon .iconRing .iconImage {
+    height: 30px;
+    width: 30px;
+    margin-top: -4px;
+    padding-top: 1px;
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    font-size: 21.33px;
+    font-family: AppExSymbolFont;
+    color: #fff;
+    text-align: center;
+    grid-row-start: 2;
+    grid-column-start: 2
+}
+
+.newsSlideShowEntry .icon .iconRing .iconImage {
+    margin-left: -1px
+}
+
+.newsSlideShowEntry .icon .iconRing .iconImage:-ms-lang(ar, prs-Arab, fa, ur, ku-Arab, pa-Arab, sd-Arab, ug-Arab, qps-plocm, he) {
+    margin-right: -1px
+}
+
+.newsSlideShowEntry .icon .iconRing .iconImage:before {
+    content: ""
+}
+
+.inErrorMode .snappedHeaderList .listview {
+    display: none
+}
+
+.primaryCluster .platformProgressModule {
+    display: none !important;
+    visibility: hidden !important
+}

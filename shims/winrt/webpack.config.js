@@ -3,8 +3,8 @@ const path = require('path');
 
 module.exports = {
     entry: { index: "./shim.ts" },
-    mode: 'development',
-    devtool: 'inline-source-map',
+    mode: 'production',
+    devtool: 'source-map',
     module: {
         rules: [
             {
