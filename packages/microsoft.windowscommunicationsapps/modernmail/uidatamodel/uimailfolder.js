@@ -1,1 +1,204 @@
-﻿Jx.delayDefine(Mail.UIDataModel,"MailFolder",function(){"use strict";var n=Mail.UIDataModel,t=Microsoft.WindowsLive.Platform,i=t.MailFolderType,r,u;n.MailFolder=function(n){this._platformMailFolder=n;this._folderHook=null;this._accountSourceId=null;this._account=null};Jx.augment(n.MailFolder,Jx.Events);n.MailFolder.prototype.dispose=function(){Jx.dispose(this._folderHook)};n.MailFolder.prototype.addListener=function(n,t,i){this._folderHook||(this._folderHook=new Mail.EventHook(this._platformMailFolder,"changed",function(n){this._raiseChanged(Array.prototype.slice.call(n))},this));Jx.Events.addListener.call(this,n,t,i)};n.MailFolder.prototype.addEventListener=n.MailFolder.prototype.addListener;n.MailFolder.prototype.removeListener=function(n,t,i){Jx.Events.removeListener.call(this,n,t,i)};n.MailFolder.prototype.removeEventListener=n.MailFolder.prototype.removeListener;n.MailFolder.prototype.ensureSyncEnabled=function(){var r;Mail.writeProfilerMark("MailFolder.ensureSyncEnabled",Mail.LogEvent.start);var n=this._platformMailFolder,i=this.account,u=i?i.syncType!==t.SyncType.manual:false;if(!n.isLocalMailFolder&&!n.selectionDisabled&&u){r=n.objectId;Mail.writeProfilerMark("MailFolder.ensureSyncEnabled - startSyncFolderContents for folder - "+r);try{n.startSyncFolderContents(false)}catch(f){Jx.log.exception("folder.startSyncFolderContents id="+n.objectId,f)}}Mail.writeProfilerMark("MailFolder.ensureSyncEnabled",Mail.LogEvent.stop)};n.MailFolder.prototype._platformMailFolder=null;Object.defineProperty(n.MailFolder.prototype,"platformMailFolder",{get:function(){return this._platformMailFolder},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"objectId",{get:function(){return this._platformMailFolder.objectId},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"accountId",{get:function(){return this._platformMailFolder.accountId},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"isPinnedToNavPane",{get:function(){return this._platformMailFolder.isPinnedToNavPane},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"specialMailFolderType",{get:function(){return this._platformMailFolder.specialMailFolderType},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"folderName",{get:function(){return this._getFolderName()},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"shouldShowUnreadCount",{get:function(){return this._platformMailFolder.isLocalMailFolder||this._platformMailFolder.syncFolderContents},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"isOutbox",{get:function(){var n=this.specialMailFolderType;return n===i.outbox},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"isOutboundFolder",{get:function(){var n=this.specialMailFolderType;return n===i.outbox||n===i.sentItems||n===i.drafts},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"accountSourceId",{get:function(){if(!Jx.isNonEmptyString(this._accountSourceId)){var n=this.account;this._accountSourceId=n.sourceId}return this._accountSourceId},enumerable:true});Object.defineProperty(n.MailFolder.prototype,"account",{get:function(){if(!this._account){var n=Mail.Globals.platform;this._account=n.accountManager.loadAccount(this.accountId)}return this._account},enumerable:true});r=null;n.MailFolder.prototype.getView=function(n){var u=t.MailViewType;r||(r={},r[i.inbox]=u.inbox,r[i.deletedItems]=u.deletedItems,r[i.drafts]=u.draft,r[i.junkMail]=u.junkMail,r[i.outbox]=u.outbox,r[i.sentItems]=u.sentItems,r[i.userGenerated]=u.userGeneratedFolder,r[i.allMail]=u.userGeneratedFolder,r[i.starred]=u.userGeneratedFolder,r[i.important]=u.userGeneratedFolder);var e=new Mail.Account(this.account,n),f=r[this._platformMailFolder.specialMailFolderType];return f===u.userGeneratedFolder?e.queryView(f,this.objectId):e.getView(f)};n.MailFolder.prototype.getChildFolderCollection=function(){return this._platformMailFolder.getChildFolderCollection(false)};n.MailFolder.prototype.recordAction=function(n){this._platformMailFolder.recordAction(n)};n.MailFolder.prototype._raiseChanged=function(n){n.target=this;n.detail=[n];this.raiseEvent("changed",n)};u={};u[t.MailFolderType.inbox]="mailFolderNameInbox";u[t.MailFolderType.drafts]="mailFolderNameDrafts";u[t.MailFolderType.deletedItems]="mailFolderNameDeletedItems";u[t.MailFolderType.sentItems]="mailFolderNameSentItems";u[t.MailFolderType.outbox]="mailFolderNameOutbox";u[t.MailFolderType.junkMail]="mailFolderNameJunkMail";u[t.MailFolderType.allMail]="mailFolderNameAllMail";u[t.MailFolderType.starred]="mailFolderNameStarred";u[t.MailFolderType.important]="mailFolderNameImportant";u[t.MailFolderType.userGenerated]="mailMessageListFolderNameDefault";n.MailFolder.prototype._getFolderName=function(){return n.MailFolder.getName(this._platformMailFolder)};n.MailFolder.getName=function(n){return n.folderName||Jx.res.getString(u[n.specialMailFolderType])}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global Mail,Jx,Debug,Microsoft*/
+
+Jx.delayDefine(Mail.UIDataModel, "MailFolder", function () {
+    "use strict";
+
+    var UIDataModel = Mail.UIDataModel,
+        Plat = Microsoft.WindowsLive.Platform,
+        MailFolderType = Plat.MailFolderType;
+
+    UIDataModel.MailFolder = function (platformMailFolder) {
+        /// <param name="platformMailFolder" type="Plat.IFolder" />
+        Debug.assert(Jx.isObject(platformMailFolder));
+        Debug.assert(platformMailFolder.folderType === Plat.FolderType.mail);
+        this._platformMailFolder = platformMailFolder;
+        this._folderHook = null;
+        Debug.only(this._listenerCount = 0);
+
+        this._accountSourceId = null;
+        this._account = null;
+    };
+
+    // MailFolder forwards events from the underlying platform object. Note, we don't hook
+    // events on the platform object until a consumer of this class needs to hook.
+    Jx.augment(UIDataModel.MailFolder, Jx.Events);
+    Debug.Events.define(UIDataModel.MailFolder.prototype, "changed");
+
+    UIDataModel.MailFolder.prototype.dispose = function () {
+        Debug.assert(this._listenerCount === 0);
+        Jx.dispose(this._folderHook);
+    };
+
+    UIDataModel.MailFolder.prototype.addListener = function (type, fn, /*@dynamic,@optional*/context) {
+        Debug.assert(type === "changed");
+        Debug.only(this._listenerCount++);
+
+        if (!this._folderHook) {
+            this._folderHook = new Mail.EventHook(this._platformMailFolder, "changed", function (ev) {
+                this._raiseChanged(Array.prototype.slice.call(ev));
+            }, this);
+        }
+        Jx.Events.addListener.call(this, type, fn, context);
+    };
+    UIDataModel.MailFolder.prototype.addEventListener = UIDataModel.MailFolder.prototype.addListener;
+
+    UIDataModel.MailFolder.prototype.removeListener = function (type, fn, /*@dynamic,@optional*/context) {
+        Debug.assert(type === "changed");
+        Debug.assert(this._folderHook);
+        Debug.assert(this._listenerCount-- > 0);
+
+        Jx.Events.removeListener.call(this, type, fn, context);
+    };
+    UIDataModel.MailFolder.prototype.removeEventListener = UIDataModel.MailFolder.prototype.removeListener;
+
+    UIDataModel.MailFolder.prototype.ensureSyncEnabled = function () {
+        Mail.writeProfilerMark("MailFolder.ensureSyncEnabled", Mail.LogEvent.start);
+        var folder = this._platformMailFolder,
+            account = this.account,
+            shouldSyncAccount = account ? (account.syncType !== Plat.SyncType.manual) : false;
+        /* We can't force sync local folders or folders that are selection disabled.
+           Syncing a folder on an account that is manually syncing is also undesirable as
+           it will lead to extraneous syncs. */
+        if (!folder.isLocalMailFolder && !folder.selectionDisabled && shouldSyncAccount) {
+            var folderLogIdentifier = folder.objectId;
+            
+            folderLogIdentifier = folderLogIdentifier + " <" + this.folderName + ">";
+            
+            Mail.writeProfilerMark("MailFolder.ensureSyncEnabled - startSyncFolderContents for folder - " + folderLogIdentifier);
+            try {
+                folder.startSyncFolderContents(false /*fForceSynchronization*/);
+            } catch (e) {
+                Jx.log.exception("folder.startSyncFolderContents id=" + folder.objectId, e);
+            }
+        }
+        Mail.writeProfilerMark("MailFolder.ensureSyncEnabled", Mail.LogEvent.stop);
+    };
+
+    UIDataModel.MailFolder.prototype._platformMailFolder = /* @static_cast(Microsoft.WindowsLive.Platform.MailFolder)*/null;
+
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "platformMailFolder", { get: function () { return this._platformMailFolder; }, enumerable: true });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "objectId", { get: function () { return this._platformMailFolder.objectId; }, enumerable: true });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "accountId", { get: function () { return this._platformMailFolder.accountId; }, enumerable: true });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "isPinnedToNavPane", { get: function () { return this._platformMailFolder.isPinnedToNavPane; }, enumerable: true });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "specialMailFolderType", { get: function () {
+        return this._platformMailFolder.specialMailFolderType;
+    }, enumerable: true });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "folderName", { get: function () { return this._getFolderName(); }, enumerable: true });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "shouldShowUnreadCount", { get: function () { return this._platformMailFolder.isLocalMailFolder || this._platformMailFolder.syncFolderContents; }, enumerable: true });
+
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "isOutbox", { get: function () {
+        var specialFolderType = /*@static_cast(Number)*/this.specialMailFolderType;
+        return (specialFolderType === MailFolderType.outbox);
+    }, enumerable: true
+    });
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "isOutboundFolder", { get: function () {
+        var specialFolderType = /*@static_cast(Number)*/this.specialMailFolderType;
+        return (specialFolderType === MailFolderType.outbox) || (specialFolderType === MailFolderType.sentItems) || (specialFolderType === MailFolderType.drafts);
+    }, enumerable: true
+    });
+
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "accountSourceId", { get: function () {
+        if (!Jx.isNonEmptyString(this._accountSourceId)) {
+            var account = this.account;
+            this._accountSourceId = account.sourceId;
+        }
+
+        return this._accountSourceId;
+    }, enumerable: true});
+
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "account", { get: function () {
+        if (!this._account) {
+            Debug.assert(Jx.isNonEmptyString(this.accountId));
+            var platform = /*@static_cast(Microsoft.WindowsLive.Platform.IClient)*/Mail.Globals.platform;
+            this._account = platform.accountManager.loadAccount(this.accountId);
+            Debug.assert(Jx.isInstanceOf(this._account, Microsoft.WindowsLive.Platform.Account));
+        }
+        return this._account;
+    }, enumerable : true
+    });
+
+    var folderTypeToViewType = null;
+    UIDataModel.MailFolder.prototype.getView = function (platform) {
+        var ViewType = Plat.MailViewType;
+
+        if (!folderTypeToViewType) {
+            folderTypeToViewType = {};
+            folderTypeToViewType[MailFolderType.inbox] = ViewType.inbox;
+            folderTypeToViewType[MailFolderType.deletedItems] = ViewType.deletedItems;
+            folderTypeToViewType[MailFolderType.drafts] = ViewType.draft;
+            folderTypeToViewType[MailFolderType.junkMail] = ViewType.junkMail;
+            folderTypeToViewType[MailFolderType.outbox] = ViewType.outbox;
+            folderTypeToViewType[MailFolderType.sentItems] = ViewType.sentItems;
+            folderTypeToViewType[MailFolderType.userGenerated] = ViewType.userGeneratedFolder;
+            folderTypeToViewType[MailFolderType.allMail] = ViewType.userGeneratedFolder;
+            folderTypeToViewType[MailFolderType.starred] = ViewType.userGeneratedFolder;
+            folderTypeToViewType[MailFolderType.important] = ViewType.userGeneratedFolder;
+        }
+        Debug.assert(Jx.isNonEmptyString(this.accountId));
+
+        var account = new Mail.Account(this.account, platform),
+            viewType = folderTypeToViewType[this._platformMailFolder.specialMailFolderType],
+            view = null;
+
+        Debug.assert(Jx.isNumber(viewType), "Unknown incoming specialMailFolderType");
+
+        if (viewType === ViewType.userGeneratedFolder) {
+            Debug.assert(Jx.isNonEmptyString(this.objectId));
+            view = account.queryView(viewType, this.objectId);
+        } else {
+            view = account.getView(viewType);
+        }
+        return view;
+    };
+
+    UIDataModel.MailFolder.prototype.getChildFolderCollection = function () {
+        return this._platformMailFolder.getChildFolderCollection(/*allFolderTypes*/false);
+    };
+
+    UIDataModel.MailFolder.prototype.recordAction = function (action) {
+        this._platformMailFolder.recordAction(action);
+    };
+
+    UIDataModel.MailFolder.prototype._raiseChanged = function (/*@dynamic*/ev) {
+        ev.target = this;
+        ev.detail = [ev];
+        this.raiseEvent("changed", ev);
+    };
+
+    // Caches the ResID of each special folder type
+    var folderResIDs = {};
+    folderResIDs[Plat.MailFolderType.inbox] = "mailFolderNameInbox";
+    folderResIDs[Plat.MailFolderType.drafts] = "mailFolderNameDrafts";
+    folderResIDs[Plat.MailFolderType.deletedItems] = "mailFolderNameDeletedItems";
+    folderResIDs[Plat.MailFolderType.sentItems] = "mailFolderNameSentItems";
+    folderResIDs[Plat.MailFolderType.outbox] = "mailFolderNameOutbox";
+    folderResIDs[Plat.MailFolderType.junkMail] = "mailFolderNameJunkMail";
+    folderResIDs[Plat.MailFolderType.allMail] = "mailFolderNameAllMail";
+    folderResIDs[Plat.MailFolderType.starred] = "mailFolderNameStarred";
+    folderResIDs[Plat.MailFolderType.important] = "mailFolderNameImportant";
+    folderResIDs[Plat.MailFolderType.userGenerated] = "mailMessageListFolderNameDefault";
+
+    UIDataModel.MailFolder.prototype._getFolderName = function () {
+        return UIDataModel.MailFolder.getName(this._platformMailFolder);
+    };
+
+    UIDataModel.MailFolder.getName = function (folder) {
+        Debug.assert(Jx.isObject(folder));
+        return folder.folderName ||
+               Jx.res.getString(folderResIDs[folder.specialMailFolderType]);
+    };
+
+    
+    Object.defineProperty(UIDataModel.MailFolder.prototype, "uniqueId", {
+        get: function () {
+            return this.accountId + "-" + this.objectId + ":" + this.folderName;
+        },
+        enumerable: true
+    });
+    
+
+});

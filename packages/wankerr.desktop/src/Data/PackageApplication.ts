@@ -1,4 +1,4 @@
-export class PackageApplication {    
+export interface PackageApplication {    
     id: string;
     startPage: string;
 
@@ -8,7 +8,7 @@ export class PackageApplication {
 
 export type ForegroundText = "light" | "dark";
 
-export class ApplicationVisualElements {
+export interface ApplicationVisualElements {
     displayName: string;
     description: string;
     square150x150Logo: string;
@@ -21,20 +21,20 @@ export class ApplicationVisualElements {
     splashScreen: ApplicationSplashScreen;
 }
 
-export class ApplicationDefaultTile {
+export interface ApplicationDefaultTile {
     shortName: string;
-    square70x70Logo: string;
-    wide310x150Logo: string;
-    square310x310Logo: string;
-    showNameOnTiles: string[] = [];
-    tileUpdateUrl: string;
+    square70x70Logo?: string;
+    wide310x150Logo?: string;
+    square310x310Logo?: string;
+    showNameOnTiles?: string[];
+    tileUpdateUrl?: string;
 }
 
-export class ApplicationSplashScreen {
+export interface ApplicationSplashScreen {
     image: string;
     backgroundColor: string;
 }
 
-export class ApplicationExtension {
+export interface ApplicationExtension {
 
 }

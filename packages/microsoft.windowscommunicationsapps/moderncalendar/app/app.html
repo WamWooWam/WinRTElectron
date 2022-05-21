@@ -1,163 +1,153 @@
 ﻿<!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta charset="UTF-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
 
-    
-    <script src="//winrt/dist/winrt.bundle.js"></script>
-    <script src="//microsoft.windowscommunicationsapps.shim/dist/bundle.js"></script>
+<script src="//winrt/dist/winrt.bundle.js"></script>
+<script src="//microsoft.windowscommunicationsapps.shim/dist/bundle.js"></script>
 
-    <script>
-        window._platformWorker = new Worker("/moderncalendar/views/worker/PlatformWorker.js");
-        window._platformWorker.postMessage({
-            name: window.location.hash
-        });
-        msWriteProfilerMark("Calendar:WinJS_load,StartTA,Calendar");
-    </script>
+<script>
+    window._platformWorker = new Worker("/ModernCalendar/views/worker/PlatformWorker.js");
+    window._platformWorker.postMessage({ name: window.location.hash });
+    msWriteProfilerMark("Calendar:WinJS_load,StartTA,Calendar");
+</script>
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+<script>
+    msWriteProfilerMark("Calendar:WinJS_load,StopTA,Calendar");
+    msWriteProfilerMark("Calendar:Jx_load,StartTA,Calendar");
+</script>
+<script src="/Jx/Jx.js"></script>
+<script src="/Jx/JxUI.js"></script>
+<script>
+    msWriteProfilerMark("Calendar:Jx_load,StopTA,Calendar");
+    Jx.mark("Calendar:People_load,StartTA,Calendar");
+</script>
+<script src="/ModernPeople/Shared/JSUtil/Include.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+<script src="/ModernPeople/Shared/sequence/sequence.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountBarricadeDialog.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountControlBase.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountDialog.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountList.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountSettings.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountSynchronization.js"></script>
+<script src="/ModernPeople/shared/Accounts/ConnectedAccounts.js"></script>
+<script src="/ModernPeople/shared/Accounts/CredUI.js"></script>
+<script src="/ModernPeople/shared/Accounts/Dialog.js"></script>
+<script src="/ModernPeople/shared/Accounts/EasiIdConnector.js"></script>
+<script src="/ModernPeople/shared/Accounts/FlowLauncher.js"></script>
+<script src="/ModernPeople/shared/Accounts/LogonErrorDialog.js"></script>
+<script src="/ModernPeople/Shared/Accounts/NetworkConnectivity.js"></script>
+<script src="/ModernPeople/shared/Accounts/OAuthLauncher.js"></script>
+<script src="/ModernPeople/Shared/Accounts/ObjectList.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Overlay.js"></script>
+<script src="/ModernPeople/Shared/Accounts/PerAccountSettingsPage.js"></script>
+<script src="/ModernPeople/Shared/Accounts/CertificateSettings.js"></script>
+<script src="/ModernPeople/shared/Accounts/Phase1Upsell.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Phase2Upsell.js"></script>
+<script src="/ModernPeople/shared/Accounts/UpsellControl.js"></script>
+<script src="/ModernPeople/shared/Accounts/UpsellSettings.js"></script>
+<script src="/ModernPeople/shared/ContactCard/ContactCard.js"></script>
+<script src="/ModernPeople/Shared/Navigation/UriGenerator.js"></script>
+<script src="/ModernPeople/Shared/Bici/Bici.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/PeopleAnimation.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Callback.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Flyout.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Hydration.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Localization.js"></script>
+<script src="/ModernPeople/shared/JSUtil/PeopleLog.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Promises.js"></script>
+<script>
+    Jx.mark("Calendar:People_load,StopTA,Calendar");
+    Jx.mark("Calendar:Chat_load,StartTA,Calendar");
+</script>
+<script src="/MessageBar/messagebar/src/messagebar.js"></script>
+<script src="/MessageBar/messagebar/src/accountmbpresenter.js"></script>
+<script src="/MessageBar/messagebar/src/authmbpresenter.js"></script>
+<script src="/MessageBar/messagebar/src/ProxyAuthenticator.js"></script>
+<script src="/MessageBar/messagebar/src/syncmbpresenter.js"></script>
+<script src="/MessageBar/messagebar/src/syncmbflyout.js"></script>
+<script src="/MessageBar/messagebar/src/ensurelockscreen.js"></script>
+<script src="/MessageBar/messagebar/src/messagebar.tmpl.js"></script>
+<script>
+    Jx.mark("Calendar:Chat_load,StopTA,Calendar");
+    Jx.mark("Calendar:Cal_load,StartTA,Calendar");
+</script>
+<script src="/ModernCalendar/common/common.js"></script>
+<script src="/ModernCalendar/app/app.js"></script>
+<script src="/ModernCalendar/views/errormessages/errormessagembpresenter.js"></script>
+<script src="/ModernCalendar/views/helpers/data.js"></script>
+<script src="/ModernCalendar/views/helpers/helpers.js"></script>
+<script src="/ModernCalendar/views/datepicker/DatePicker.js"></script>
+<script src="/ModernCalendar/views/datepicker/DatePickerAnchor.js"></script>
+<script src="/ModernCalendar/views/timeline/Timeline.js"></script>
+<script src="/ModernCalendar/views/viewManager/ViewManager.js"></script>
+<script src="/ModernCalendar/views/worker/WorkerEx.js"></script>
+<script src="/ModernCalendar/views/calendar/calendar.js"></script>
+<script src="/ModernCalendar/views/calendar/NavBar.js"></script>
+<script src="/ModernCalendar/views/week/Week.js"></script>
+<script src="/ModernCalendar/views/timeindicator/TimeIndicator.js"></script>
+<script src="/ModernCalendar/views/timeslider/TimeSlider.js"></script>
+<script src="/ModernCalendar/views/eventdetails/calendarSelector.js"></script>
+<script src="/ModernCalendar/views/quickEvent/quickEvent.js"></script>
+<script src="/ModernCalendar/views/month/Month.js"></script>
+<script src="/ModernCalendar/views/day/DayView.js"></script>
+<script src="/ModernCalendar/views/agenda/AgendaHelpers.js"></script>
+<script src="/ModernCalendar/views/agenda/AgendaViewTemplates.js"></script>
+<script src="/ModernCalendar/views/agenda/AgendaView.js"></script>
+<script src="/ModernCalendar/views/agenda/AgendaViewBackground.js"></script>
+<script src="/ModernCalendar/views/freebusy/FreeBusy.js"></script>
+<script src="/ModernCalendar/views/grid/MonthGrid.js"></script>
+<script src="/ModernCalendar/views/grid/YearGrid.js"></script>
+<script src="/ModernCalendar/views/settings/settings.js"></script>
+<script src="/sendasmile/sasManager.js"></script>
+<script src="/sendasmile/sas.js"></script>
+<script>
+    Jx.mark("Calendar:Cal_load,StopTA,Calendar");
+    Jx.mark("Calendar:CSS_WinJS_load,StartTA,Calendar");
+</script>
+<link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet" type="text/css">
+<script>
+    Jx.mark("Calendar:CSS_WinJS_load,StopTA,Calendar");
+    Jx.mark("Calendar:CSS_load,StartTA,Calendar");
+</script>
+<link href="/ModernShared/Resources/css/shared_styles.css" rel="stylesheet" type="text/css">
+<link href="/Jx/PeekBar.css" rel="stylesheet" type="text/css">
+<link href="/Resources/MessageBar/css/messagebar.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/datepicker/DatePicker.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/timeline/timeline.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/calendar/calendar.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/timeindicator/TimeIndicator.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/agenda/AgendaView.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/month/Month.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/month/MonthAnimations.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/week/Week.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/day/DayView.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/freebusy/FreeBusy.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/timeslider/TimeSlider.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/eventdetails/calendarSelector.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/quickEvent/quickEvent.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/grid/MonthGrid.css" rel="stylesheet" type="text/css">
+<link href="/ModernCalendar/views/settings/settings.css" rel="stylesheet" type="text/css">
+<link href="/ModernPeople/resources/css/CalendarAccountSettings.css" rel="stylesheet" type="text/css">
+<script>
+    Jx.mark("Calendar:CSS_load,StopTA,Calendar");
+    Jx.mark("Calendar:DynamicFont,StartTA,Calendar");
+</script>
 
+<script src="/ModernShared/Resources/script/shared_primary_fonts.js"></script>
 
-    <script src="/modernmail/util/Platform.js" type="text/javascript"></script>
-
-    <script src="//Microsoft.WinJS.2.0/js/base.js" hint="$(winJS)"></script>
-    <script src="//Microsoft.WinJS.2.0/js/ui.js" hint="$(winJS)"></script>
-    <script>
-        msWriteProfilerMark("Calendar:WinJS_load,StopTA,Calendar");
-        msWriteProfilerMark("Calendar:Jx_load,StartTA,Calendar");
-    </script>
-    <script src="/jx/Jx.js"></script>
-    <script src="/jx/JxUI.js"></script>
-    <script>
-        msWriteProfilerMark("Calendar:Jx_load,StopTA,Calendar");
-        Jx.mark("Calendar:People_load,StartTA,Calendar");
-    </script>
-    <script src="/modernpeople/Shared/JSUtil/Include.js"></script>
-    <script src="/modernpeople/Shared/JSUtil/Namespace.js"></script>
-    <script src="/modernpeople/AddressBook/Controls/Scheduler/Priority.js"></script>
-    <script src="/modernpeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
-    <script src="/modernpeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
-    <script src="/modernpeople/Shared/sequence/sequence.js"></script>
-    <script src="/modernpeople/shared/Accounts/AccountBarricadeDialog.js"></script>
-    <script src="/modernpeople/shared/Accounts/AccountControlBase.js"></script>
-    <script src="/modernpeople/shared/Accounts/AccountDialog.js"></script>
-    <script src="/modernpeople/shared/Accounts/AccountList.js"></script>
-    <script src="/modernpeople/shared/Accounts/AccountSettings.js"></script>
-    <script src="/modernpeople/shared/Accounts/AccountSynchronization.js"></script>
-    <script src="/modernpeople/shared/Accounts/ConnectedAccounts.js"></script>
-    <script src="/modernpeople/shared/Accounts/CredUI.js"></script>
-    <script src="/modernpeople/shared/Accounts/Dialog.js"></script>
-    <script src="/modernpeople/shared/Accounts/EasiIdConnector.js"></script>
-    <script src="/modernpeople/shared/Accounts/FlowLauncher.js"></script>
-    <script src="/modernpeople/shared/Accounts/LogonErrorDialog.js"></script>
-    <script src="/modernpeople/Shared/Accounts/NetworkConnectivity.js"></script>
-    <script src="/modernpeople/shared/Accounts/OAuthLauncher.js"></script>
-    <script src="/modernpeople/Shared/Accounts/ObjectList.js"></script>
-    <script src="/modernpeople/Shared/Accounts/Overlay.js"></script>
-    <script src="/modernpeople/Shared/Accounts/PerAccountSettingsPage.js"></script>
-    <script src="/modernpeople/Shared/Accounts/CertificateSettings.js"></script>
-    <script src="/modernpeople/shared/Accounts/Phase1Upsell.js"></script>
-    <script src="/modernpeople/Shared/Accounts/Phase2Upsell.js"></script>
-    <script src="/modernpeople/shared/Accounts/UpsellControl.js"></script>
-    <script src="/modernpeople/shared/Accounts/UpsellSettings.js"></script>
-    <script src="/modernpeople/shared/ContactCard/ContactCard.js"></script>
-    <script src="/modernpeople/Shared/Navigation/UriGenerator.js"></script>
-    <script src="/modernpeople/Shared/Bici/Bici.js"></script>
-    <script src="/modernpeople/Shared/JSUtil/PeopleAnimation.js"></script>
-    <script src="/modernpeople/shared/JSUtil/Callback.js"></script>
-    <script src="/modernpeople/shared/JSUtil/Flyout.js"></script>
-    <script src="/modernpeople/shared/JSUtil/Hydration.js"></script>
-    <script src="/modernpeople/shared/JSUtil/Localization.js"></script>
-    <script src="/modernpeople/shared/JSUtil/PeopleLog.js"></script>
-    <script src="/modernpeople/shared/JSUtil/Promises.js"></script>
-    <script>
-        Jx.mark("Calendar:People_load,StopTA,Calendar");
-        Jx.mark("Calendar:Chat_load,StartTA,Calendar");
-    </script>
-    <script src="/messagebar/messagebar/src/messagebar.js"></script>
-    <script src="/messagebar/messagebar/src/accountmbpresenter.js"></script>
-    <script src="/messagebar/messagebar/src/authmbpresenter.js"></script>
-    <script src="/messagebar/messagebar/src/ProxyAuthenticator.js"></script>
-    <script src="/messagebar/messagebar/src/syncmbpresenter.js"></script>
-    <script src="/messagebar/messagebar/src/syncmbflyout.js"></script>
-    <script src="/messagebar/messagebar/src/ensurelockscreen.js"></script>
-    <script src="/messagebar/messagebar/src/messagebar.tmpl.js"></script>
-    <script>
-        Jx.mark("Calendar:Chat_load,StopTA,Calendar");
-        Jx.mark("Calendar:Cal_load,StartTA,Calendar");
-    </script>
-    <script src="/moderncalendar/common/common.js"></script>
-    <script src="/moderncalendar/app/app.js"></script>
-    <script src="/moderncalendar/views/errormessages/errormessagembpresenter.js"></script>
-    <script src="/moderncalendar/views/helpers/data.js"></script>
-    <script src="/moderncalendar/views/helpers/helpers.js"></script>
-    <script src="/moderncalendar/views/datepicker/DatePicker.js"></script>
-    <script src="/moderncalendar/views/datepicker/DatePickerAnchor.js"></script>
-    <script src="/moderncalendar/views/timeline/Timeline.js"></script>
-    <script src="/moderncalendar/views/viewManager/ViewManager.js"></script>
-    <script src="/moderncalendar/views/worker/WorkerEx.js"></script>
-    <script src="/moderncalendar/views/calendar/calendar.js"></script>
-    <script src="/moderncalendar/views/calendar/NavBar.js"></script>
-    <script src="/moderncalendar/views/week/Week.js"></script>
-    <script src="/moderncalendar/views/timeindicator/TimeIndicator.js"></script>
-    <script src="/moderncalendar/views/timeslider/TimeSlider.js"></script>
-    <script src="/moderncalendar/views/eventdetails/calendarSelector.js"></script>
-    <script src="/moderncalendar/views/quickEvent/quickEvent.js"></script>
-    <script src="/moderncalendar/views/month/Month.js"></script>
-    <script src="/moderncalendar/views/day/DayView.js"></script>
-    <script src="/moderncalendar/views/agenda/AgendaHelpers.js"></script>
-    <script src="/moderncalendar/views/agenda/AgendaViewTemplates.js"></script>
-    <script src="/moderncalendar/views/agenda/AgendaView.js"></script>
-    <script src="/moderncalendar/views/agenda/AgendaViewBackground.js"></script>
-    <script src="/moderncalendar/views/freebusy/FreeBusy.js"></script>
-    <script src="/moderncalendar/views/grid/MonthGrid.js"></script>
-    <script src="/moderncalendar/views/grid/YearGrid.js"></script>
-    <script src="/moderncalendar/views/settings/settings.js"></script>
-    <script src="/sendasmile/sasManager.js"></script>
-    <script src="/sendasmile/sas.js"></script>
-    <script>
-        Jx.mark("Calendar:Cal_load,StopTA,Calendar");
-        Jx.mark("Calendar:CSS_WinJS_load,StartTA,Calendar");
-    </script>
-    <link href="//Microsoft.WinJS.2.0/css/ui-light.css" hint="$(winJS)" rel="stylesheet" type="text/css">
-    <script>
-        Jx.mark("Calendar:CSS_WinJS_load,StopTA,Calendar");
-        Jx.mark("Calendar:CSS_load,StartTA,Calendar");
-    </script>
-    <link href="/modernshared/Resources/css/en/shared_styles.css" rel="stylesheet" type="text/css">
-    <link href="/jx/en/PeekBar.css" rel="stylesheet" type="text/css">
-    <link href="/Resources/MessageBar/css/en/messagebar.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/datepicker/en/datepicker.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/timeline/en/timeline.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/calendar/en/calendar.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/timeindicator/en/TimeIndicator.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/agenda/en/AgendaView.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/month/en/Month.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/month/en/MonthAnimations.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/week/en/Week.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/day/en/DayView.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/freebusy/en/FreeBusy.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/timeslider/en/TimeSlider.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/eventdetails/en/calendarSelector.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/quickEvent/en/quickEvent.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/grid/en/MonthGrid.css" rel="stylesheet" type="text/css">
-    <link href="/moderncalendar/views/settings/en/settings.css" rel="stylesheet" type="text/css">
-    <link href="/modernpeople/resources/css/en/CalendarAccountSettings.css" rel="stylesheet" type="text/css">
-    <script>
-        Jx.mark("Calendar:CSS_load,StopTA,Calendar");
-        Jx.mark("Calendar:DynamicFont,StartTA,Calendar");
-    </script>
-
-    <script src="/modernshared/Resources/script/shared_primary_fonts.js"></script>
-
-    <script>
-        Jx.mark("Calendar:DynamicFont,StopTA,Calendar");
-        document.addEventListener("DOMContentLoaded", Calendar.onDomContentLoaded, false);
-    </script>
+<script>
+    Jx.mark("Calendar:DynamicFont,StopTA,Calendar");
+    document.addEventListener("DOMContentLoaded", Calendar.onDomContentLoaded, false);
+</script>
 </head>
-
 <body>
     <div id="calendar" class="calendar"></div>
 </body>
-
 </html>

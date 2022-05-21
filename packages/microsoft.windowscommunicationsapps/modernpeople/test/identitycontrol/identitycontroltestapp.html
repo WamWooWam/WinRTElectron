@@ -1,0 +1,117 @@
+﻿<!doctype html>
+<html>
+<head>
+    <title>Identity Control Test App</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <script src="/Jx/Jx.js"></script>
+
+    <script src="/ModernPeople/Shared/JSUtil/Include.js"></script>
+    <script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+
+    <script src="/Platform/MockPlatform.js"></script>
+
+    <script src="/ModernPeople/Shared/JSUtil/PeopleAnimation.js"></script>
+    <script src="/ModernPeople/Shared/JSUtil/PeopleLog.js"></script>
+    <script src="/ModernPeople/Shared/ContactForm/Location.js"></script>
+    <script src="/ModernPeople/Shared/ContactCard/ContactCard.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityControl.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityControlActions.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityControlNode.js"></script>
+    <script src="/ModernPeople/Shared/IdentityControl/IdentityElements.js"></script>
+    <script src="/ModernPeople/Shared/Navigation/Protocols.js"></script>
+    <script src="/ModernPeople/Shared/Navigation/UriGenerator.js"></script>
+    <script src="/ModernPeople/Shared/Platform/PlatformObjectBinder.js"></script>
+    <script src="/ModernPeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
+    <script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+    <script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+
+    <script src="script.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link rel="stylesheet" type="text/css" href="/ModernShared/Resources/css/shared_styles.css" />
+    <link rel="stylesheet" type="text/css" href="//Microsoft.WinJS.2.0/css/ui-light.css" />
+</head>
+
+<body>
+    <div class="root">
+        <div class="dataArea">
+            <div id="canvas">
+                    <div class="intro">Identity Control Test Harness</div>
+            </div>
+        </div>
+        <div class="inputArea">
+            <div class="inputSection">
+                <div class="inputSectionTitle">Control Configuration</div>
+                <table>
+                    <tr><td>Control Type</td><td><select id="idInputType"><option value="All">All</option></select></td></tr>
+                    <tr><td>Number of Controls</td><td><input id="idInputNumber" type="text" value="1"></td></tr>
+                </table>
+            </div>
+            <div class="inputSection">
+                <div class="inputSectionTitle">Select Data Source</div>
+                <select types="Contact Person Recipient Literal Me" id="idSelectDataSource"></select>
+            </div>
+        </div>
+        <div class="templates">
+            <div template="Person Me" class="inputSection">
+                <div class="inputSectionTitle"></div>
+                <table>
+                    <tr><td>Name</td><td><input id="idInputName" type="text"><button id="idRandomName">Random</button></td></tr>
+                    <tr><td>Usertile</td><td><input id="idInputUserTile" type="text"><button id="idRandomUserTile">Random</button></td></tr>
+                    <tr><td>Email</td><td><input id="idInputEmail" type="text"><button id="idRandomEmail">Random</button></td></tr>
+                    <tr><td>Linked Contacts</td><td><select id="idInputLinkedContacts" multiple types="Contact"></select></td></tr>
+                </table>
+            </div>
+            <div template="Contact" class="inputSection">
+                <div class="inputSectionTitle"></div>
+                <table>
+                    <tr><td>First Name</td><td><input id="idInputFirstName" type="text" value="Jane"></td></tr>
+                    <tr><td>Last Name</td><td><input id="idInputLastName" type="text" value="Dow"></td></tr>
+                    <tr><td>Company Name</td><td><input id="idInputCompanyName" type="text"></td></tr>
+                    <tr><td>Passport</td><td><input id="idInputWindowsLiveEmailAddress" type="text"></td></tr>
+                    <tr><td>Home Email</td><td><input id="idInputPersonalEmailAddress" type="text"></td></tr>
+                    <tr><td>Work Email</td><td><input id="idInputBusinessEmailAddress" type="text"></td></tr>
+                    <tr><td>Other Email</td><td><input id="idInputOtherEmailAddress" type="text"></td></tr>
+                    <tr><td>Mobile Phone</td><td><input id="idInputMobilePhoneNumber" type="text"></td></tr>
+                    <tr><td>Home Phone</td><td><input id="idInputHomePhoneNumber" type="text"></td></tr>
+                    <tr><td>Home Phone 2</td><td><input id="idInputHome2PhoneNumber" type="text"></td></tr>
+                    <tr><td>Work Phone</td><td><input id="idInputBusinessPhoneNumber" type="text"></td></tr>
+                    <tr><td>Work Phone 2</td><td><input id="idInputBusiness2PhoneNumber" type="text"></td></tr>
+                    <tr><td>Usertile</td><td><input id="idInputUserTile" type="text"><button id="idRandomUserTile">Random</button></td></tr>
+                    <tr><td>Account</td><td><select id="idInputAccount" types="Account"></select></td></tr>
+                </table>
+            </div>
+            <div template="Account" class="inputSection">
+                <div class="inputSectionTitle"></div>
+                <table>
+                    <tr><td>Display Name</td><td><input id="idInputDisplayName" type="text"></td></tr>
+                </table>
+            </div>
+            <div template="Literal" class="inputSection">
+                <div class="inputSectionTitle"></div>
+                <table>
+                    <tr><td>Name</td><td><input id="idInputName" type="text"><button id="idRandomName">Random</button></td></tr>
+                    <tr><td>Usertile</td><td><input id="idInputUserTile" type="text"><button id="idRandomUserTile">Random</button></td></tr>
+                    <tr><td>Large usertile</td><td><input id="idInputLargeUserTile" type="text"><button id="idRandomLargeUserTile">Random</button></td></tr>
+                    <tr><td>Email</td><td><input id="idInputEmail" type="text"><button id="idRandomEmail">Random</button></td></tr>
+                </table>
+            </div>
+            <div template="Recipient" class="inputSection">
+                <div class="inputSectionTitle"></div>
+                <table>
+                    <tr><td>Name</td><td><input id="idInputName" type="text"><button id="idRandomName">Random</button></td></tr>
+                    <tr><td>Fast Name</td><td><input id="idInputFastName" type="text"><button id="idRandomFastName">Random</button></td></tr>
+                    <tr><td>Email</td><td><input id="idInputEmail" type="text"><button id="idRandomEmail">Random</button></td></tr>
+                    <tr><td>Person</td><td><select id="idInputPerson" types="Person Me"></select></td></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

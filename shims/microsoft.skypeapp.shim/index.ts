@@ -372,7 +372,8 @@ import { PerfTrackLogger } from "./Microsoft/PerfTrack/PerfTrackLogger";
 
 export const Microsoft = {
     PerfTrack: {
-        PerfTrackTimePoint
+        PerfTrackTimePoint,
+        PerfTrackLogger
     }
 };
 

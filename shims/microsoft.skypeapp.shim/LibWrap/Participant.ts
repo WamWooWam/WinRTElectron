@@ -14,11 +14,13 @@ import { VectUnsignedInt } from "./VectUnsignedInt";
 import { IClosable } from "winrt/Windows/Foundation/IClosable";
 import { Enumerable } from "winrt/Windows/Foundation/Interop/Enumerable";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
+import { User } from "discord.js";
+import { PROPKEY } from "./PROPKEY";
 
 @GenerateShim('LibWrap.Participant')
-export class Participant implements IClosable { 
-    participantContact: Contact = null; 
-    
+export class Participant implements IClosable {
+    participantContact: Contact = null;
+
     static dtmf_DTMF_POUND: number = 11;
     static dtmf_DTMF_STAR: number = 10;
     static dtmf_DTMF_9: number = 9;
@@ -57,26 +59,53 @@ export class Participant implements IClosable {
     static rank_ADMIN: number = 2;
     static rank_CREATOR: number = 1;
 
-    getObjectID(): number {
-        throw new Error('Participant#getObjectID not implemented')
+    private __user: Contact;
+    constructor(user: Contact) {
+        if(!user) throw new Error("how the actual fuck");
+        this.__user = user;
     }
 
-    getDbID(): number {
-        throw new Error('Participant#getDbID not implemented')
+    getObjectID() {
+        // throw new Error('Participant#getObjectID not implemented')
+        return this.__user.getUser().id;
+    }
+
+    getDbID() {
+        return this.__user.getDbID();
+        // throw new Error('Participant#getDbID not implemented')
     }
 
     getStrProperty(propKey: number): string {
-        throw new Error('Participant#getStrProperty not implemented')
+        for (const key of Object.keys(PROPKEY)) {
+            if (PROPKEY[key] == propKey) {
+                console.warn("string PROPKEY." + key);
+            }
+        }
+
+
+        return "";
     }
 
     getStrPropertyWithXmlStripped(propKey: number): string {
-        throw new Error('Participant#getStrPropertyWithXmlStripped not implemented')
+        for (const key of Object.keys(PROPKEY)) {
+            if (PROPKEY[key] == propKey) {
+                console.warn("string w/o Xml PROPKEY." + key);
+            }
+        }
+
+        return "";
     }
 
     getIntProperty(propKey: number): number {
-        throw new Error('Participant#getIntProperty not implemented')
+        for (const key of Object.keys(PROPKEY)) {
+            if (PROPKEY[key] == propKey) {
+                console.warn("int PROPKEY." + key);
+            }
+        }
+
+        return 0;
     }
-    
+
     setExtendedStrProperty(propKey: number, value: string): void {
         console.warn('Participant#setExtendedStrProperty not implemented')
     }
@@ -126,7 +155,8 @@ export class Participant implements IClosable {
         throw new Error('Participant#getLiveSessionVideos not implemented')
     }
     getDisplayNameHtml(): string {
-        throw new Error('Participant#getDisplayNameHtml not implemented')
+        // throw new Error('Participant#getDisplayNameHtml not implemented')
+        return this.__user.getDisplayNameHtml();
     }
     discard(): void {
         console.warn('Participant#discard not implemented')

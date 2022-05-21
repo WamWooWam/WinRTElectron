@@ -1,1 +1,88 @@
-﻿Jx.delayDefine(People,"ZoomedOutView",function(){var n=window.People,t;n.ZoomedOutView=function(t){n.ContactGridSection.call(this,"zoomedOutSection");this._zoomhost=t;this._rendered=false};Jx.inherit(n.ZoomedOutView,n.ContactGridSection);t=n.ZoomedOutView.prototype;t.shutdownComponent=function(){Jx.dispose(this._collection);n.ContactGridSection.prototype.shutdownComponent.call(this)};t._getCollection=function(){return this._zoomhost.getCollection()};t._getFactories=function(){return{zoomedOutAlphabeticHeader:new n.Callback(function(){return new n.ZoomedOutAlphabeticHeader},this),zoomedOutFavoritesHeader:new n.Callback(function(){return new n.ZoomedOutFavoritesHeader},this),zoomedOutSocialHeader:new n.Callback(function(){return new n.ZoomedOutSocialHeader},this)}};t._getCanonicalType=function(){return"zoomedOutAlphabeticHeader"};t.render=function(){this.getJobSet().addUIJob(this,this._ensureRendered,null,n.Priority.semanticZoom)};t.setCurrentItem=function(t){var i=getComputedStyle(this._sectionElement),f=this.getOrientation()===n.Orientation.horizontal,e=i.direction==="ltr",r,u;f?(r=e?i.marginLeft:i.marginRight,u=i.marginTop):(r=i.marginTop,u=i.marginLeft);t.scrollPos-=parseInt(r);t.orthoPos-=parseInt(u);n.ContactGridSection.prototype.setCurrentItem.call(this,t)};t.positionItem=function(t){return this._ensureRendered(),n.ContactGridSection.prototype.positionItem.call(this,t)};t._ensureRendered=function(){this._rendered||(this._rendered=true,n.ContactGridSection.prototype.render.call(this))}})
+﻿
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/// <reference path="../Sections/ContactGridSection.js" />
+/// <reference path="../Controls/SemanticZoom/zoomhost.js" />
+/// <reference path="../Controls/Viewport/Position.ref.js" />
+
+Jx.delayDefine(People, "ZoomedOutView", function () {
+    
+    var P = window.People;
+
+    P.ZoomedOutView = /* @constructor*/function (zoomhost) {
+        /// <param name="disableEnterKey" type="Boolean">true for tiles to ignore Enter key inputs.</param>
+        P.ContactGridSection.call(this, "zoomedOutSection");
+        this._zoomhost = zoomhost;
+        this._rendered = false;
+    };
+    Jx.inherit(P.ZoomedOutView, P.ContactGridSection);
+
+    var proto = P.ZoomedOutView.prototype;
+    proto.shutdownComponent = function () {
+        Jx.dispose(this._collection);
+        P.ContactGridSection.prototype.shutdownComponent.call(this);
+    };
+
+    proto._getCollection = function () {
+        return this._zoomhost.getCollection();
+    };
+
+    proto._getFactories = function () {
+        return {
+            zoomedOutAlphabeticHeader: new P.Callback(function () { return new P.ZoomedOutAlphabeticHeader(); }, this),
+            zoomedOutFavoritesHeader: new P.Callback(function () { return new P.ZoomedOutFavoritesHeader(); }, this),
+            zoomedOutSocialHeader: new P.Callback(function () { return new P.ZoomedOutSocialHeader(); }, this)
+        };
+    };
+
+    proto._getCanonicalType = function () {
+        return "zoomedOutAlphabeticHeader";
+    };
+
+    proto.render = function () {
+        /// <summary>Schedule the content of the semantic zoom section so that it doesn't interfere with normal loading. 
+        ///  JobSet visibility and order will ensure that these items render immediately if semantic zoom is invoked, 
+        ///  and last if it is not</summary>
+        this.getJobSet().addUIJob(this, this._ensureRendered, null, P.Priority.semanticZoom);
+    };
+
+    proto.setCurrentItem = function (position) {
+        /// <param name="position" type="Position" />
+        var sectionElementStyle = getComputedStyle(this._sectionElement);
+
+        var isHorizontal = (this.getOrientation() === P.Orientation.horizontal);
+        var isLTR = sectionElementStyle.direction === "ltr";
+
+        var scrollMargin, orthoMargin;
+        if (isHorizontal) {
+            scrollMargin = isLTR ? sectionElementStyle.marginLeft : sectionElementStyle.marginRight;
+            orthoMargin = sectionElementStyle.marginTop;
+        } else {
+            Debug.assert(sectionElementStyle.marginLeft === sectionElementStyle.marginRight);
+            scrollMargin = sectionElementStyle.marginTop;
+            orthoMargin = sectionElementStyle.marginLeft;
+        }
+
+        position.scrollPos -= parseInt(scrollMargin);
+        position.orthoPos -= parseInt(orthoMargin);
+
+        P.ContactGridSection.prototype.setCurrentItem.call(this, position);
+    };
+
+    proto.positionItem = function (item) {
+        // Semantic zoom has been invoked.  We must render immediately or we won't be able to take focus, because
+        // sectionHidden is still set.
+        this._ensureRendered();
+        return P.ContactGridSection.prototype.positionItem.call(this, item);
+    };
+
+    proto._ensureRendered = function () {
+        if (!this._rendered) {
+            this._rendered = true;
+            P.ContactGridSection.prototype.render.call(this);
+        }
+    };
+});
+

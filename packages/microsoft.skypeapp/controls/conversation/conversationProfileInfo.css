@@ -1,1 +1,791 @@
-﻿/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.profile{color:#fff;background-color:#00aff0;overflow:hidden;display:-ms-grid;-ms-grid-columns:360px;-ms-grid-rows:360px 1fr auto;height:100%;width:360px}div.profile span.ariaHelper{display:none}div.profile div.conversationNameContainer{-ms-grid-column:1;-ms-grid-row:2;max-height:100%;width:330px;overflow:hidden;margin-left:40px;margin-top:17px}div.profile div.conversationNameContainer div.conversationName{overflow-x:hidden;word-wrap:break-word;overflow-y:hidden;padding-right:50px;padding-bottom:1px;-ms-user-select:text;white-space:nowrap;text-overflow:ellipsis;min-height:50px;letter-spacing:0px}div.profile div.status{display:none}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.status.dialog.AVAILABLE div.moodMessageContainer{left:98px}body.RTL div.profile div.status.dialog.AVAILABLE div.moodMessageContainer{left:auto;right:98px}}@media screen and (max-width: 400px){div.profile div.status.dialog.AVAILABLE div.moodMessageContainer{left:80px}body.RTL div.profile div.status.dialog.AVAILABLE div.moodMessageContainer{left:auto;right:80px}}div.profile div.status.dialog.AVAILABLE div.presence{display:block}div.profile div.status.dialog div.presence{position:absolute;left:45px;top:66px;display:none}body.RTL div.profile div.status.dialog div.presence{left:auto;right:40px}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.status.dialog div.presence{height:8px;top:82px;left:84px}body.RTL div.profile div.status.dialog div.presence{left:auto;right:84px}}@media screen and (max-width: 400px){div.profile div.status.dialog div.presence{left:65px;top:72px}body.RTL div.profile div.status.dialog div.presence{left:auto;right:65px}}div.profile div.status.dialog div.moodMessageContainer{-ms-grid-column:1;-ms-grid-row:1;max-height:100%;width:calc(100% + 25px);overflow:hidden}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.status.dialog div.moodMessageContainer{width:calc(100% - 165px);position:absolute;left:80px;top:70px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}body.RTL div.profile div.status.dialog div.moodMessageContainer{left:auto;right:80px}}@media screen and (max-width: 400px){div.profile div.status.dialog div.moodMessageContainer{width:calc(100% - 124px);left:60px;top:60px}body.RTL div.profile div.status.dialog div.moodMessageContainer{left:auto;right:60px}}div.profile div.status.dialog div.moodMessageContainer div.moodMessage{overflow-x:hidden;word-wrap:break-word;overflow-y:hidden;padding-right:25px;padding-bottom:1px;-ms-user-select:text;line-height:30px}body.RTL div.profile div.status.dialog div.moodMessageContainer div.moodMessage{padding-right:0;padding-left:25px}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.status.dialog div.moodMessageContainer div.moodMessage{overflow:hidden;white-space:nowrap;word-wrap:normal;display:inline;padding:0;margin:0}}div.profile div.status.dialog div.moodMessageContainer div.moodMessage a{color:#fff;cursor:pointer}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.status.dialog div.moodMessageContainer div.moodMessage a{color:inherit}}div.profile div.status.dialog div.location{-ms-grid-column:1;-ms-grid-row:2;margin-top:7px}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.status.dialog div.location{display:none}}div.profile div.status.group a.participantCount{color:#fff}div.profile div.status.group a.participantCount::after{content:"\203A";margin-left:10px}body.RTL div.profile div.status.group a.participantCount::after{margin-left:0;margin-right:10px}div.profile div.status.group div.participants{height:100%}div.profile div.status.group div.win-container{background-color:transparent}div.profile div.status.group div.name{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}div.profile div.status.group div.presence{display:none;position:relative;top:-4px}div.profile div.status.group div.presence.AVAILABLE{display:inline-block}div.profile div.status.group div.mood{display:inline-block;box-sizing:border-box;width:calc(100% - 16px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}div.profile div.status.emergency{padding:73px 0 20px !important}div.profile div.status.emergency div.wrapper{height:100%;padding:0 40px;overflow-y:auto}div.profile div.status.emergency div.wrapper>div{display:none}div.profile div.status.emergency div.wrapper>div a{color:#004a66}div.profile div.status.emergency div.wrapper>div a:hover{color:#005c80}div.profile div.status.emergency div.wrapper>div a:active{color:#00374d}div.profile div.status.emergency div.wrapper>div div.content{word-wrap:break-word}div.profile div.status.emergency div.wrapper>div div.content strong{display:inline-block;word-wrap:break-word;width:100%}div.profile div.status.emergency[restriction='noCountry'] div.wrapper div.noCountry{display:block}div.profile div.status.emergency[restriction='allowedCountry'] div.wrapper div.allowedCountry{display:block}div.profile div.status.emergency[restriction='restrictedCountry'] div.wrapper div.restrictedCountry{display:-ms-grid;-ms-grid-columns:35px 1fr;-ms-grid-rows:40px 1fr 1fr 50px;margin-top:10px}div.profile div.status.emergency div.allowedCountry div.info{margin-bottom:10px}div.profile div.status.emergency div.allowedCountry div.info div.content strong{display:block;margin-bottom:20px}div.profile div.status.emergency div.restrictedCountry div.info{-ms-grid-row:1;-ms-grid-column-span:2;margin-bottom:10px}div.profile div.status.emergency div.restrictedCountry div.icon{-ms-grid-column:1;-ms-grid-row:2;display:inline-block;height:25px;width:25px;border-radius:50%;font-family:"Skype UI Symbol";font-size:25px;line-height:normal;text-align:center;color:#fff;background-color:#e81123;box-shadow:0 0 0 2px #fff}div.profile div.status.emergency div.restrictedCountry div.icon::before{content:"\E600"}div.profile div.status.emergency div.restrictedCountry h3{-ms-grid-column:2;-ms-grid-row:2;margin-top:-4px;margin-bottom:10px;word-wrap:break-word}div.profile div.status.emergency div.restrictedCountry div.content{-ms-grid-column-span:2;-ms-grid-column:1;-ms-grid-row:3}div.profile div.status.emergency div.restrictedCountry button{margin-top:20px;-ms-grid-column-span:2;-ms-grid-column:1;-ms-grid-row:4;-ms-grid-column-align:start;display:inline-block}div.profile div.status.emergency div.noCountry button{margin-top:20px}div.profile div.avatar{-ms-grid-row:1;height:360px;display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr;-ms-grid-row-align:center;position:relative;overflow:hidden;-ms-high-contrast-adjust:none;transition:opacity 0.7s linear;opacity:0;z-index:9}div.profile div.avatar div.protectionLayer{display:block;height:100%;background:url("/images/svg/prot440x440.svg") no-repeat}div.profile div.avatar.DEFAULTAVATAR div.protectionLayer{background:url("/images/svg/protDefAvatar440x440.svg") no-repeat;background-size:cover}div.profile div.actionButtons{display:-ms-flexbox;-ms-grid-row:3;-ms-grid-row-align:center;margin-bottom:20px;margin-top:20px;-ms-flex-direction:row;-ms-flex-pack:center;position:relative;z-index:10;bottom:15px}@media screen and (-ms-high-contrast: active){div.profile div.actionButtons{bottom:17px}}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.actionButtons{margin-bottom:0px;margin-top:0px;height:100px;background-color:#00aff0}}@media screen and (max-width: 400px){div.profile div.actionButtons{height:72px}}body.KEYBOARDUP div.profile div.actionButtons{padding:20px 0;margin-top:-60px;margin-bottom:0;min-width:360px;background-color:#00aff0}@media screen and (max-aspect-ratio: 1 / 1){body.KEYBOARDUP div.profile div.actionButtons{min-width:inherit;padding:0;bottom:0}}div.profile div.actionButtons>button{padding:0;min-height:0;min-width:0;font-weight:normal;background-color:transparent;letter-spacing:0;display:inline-block;height:60px;width:60px;border-radius:50%;margin:0px 20px;font-family:"Skype UI Symbol";font-size:58px;line-height:normal;text-align:center;vertical-align:middle;color:#fff;border-color:#fff;cursor:default;box-shadow:inset 0 0 0 1px #fff;border:1px solid #fff}@media screen and (max-aspect-ratio: 1 / 1){div.profile div.actionButtons>button{margin:18px 15px;box-shadow:inset 0 0 0 0px #fff;border:1.5px solid #fff}}@media screen and (max-width: 400px){div.profile div.actionButtons>button{height:40px;width:40px;margin:15px 10px;font-size:38px;border-radius:50%;line-height:normal;color:#fff;border-color:#fff;cursor:default}}div.profile div.actionButtons>button.more.HIDDEN,div.profile div.actionButtons>button.videocall.NOSENDVIDEO,div.profile div.actionButtons>button.joincallbutton,div.profile div.actionButtons>button.call.NOSENDAUDIO{display:none}div.profile div.actionButtons>button:hover:not(.DISABLED){background-color:#009dd8}@media screen and (-ms-high-contrast: active){div.profile div.actionButtons>button:hover:not(.DISABLED){background-color:Highlight;color:window}}div.profile div.actionButtons>button.DISABLED{opacity:0.4}@media screen and (-ms-high-contrast: active){div.profile div.actionButtons>button{border:2px solid ButtonText;color:ButtonText}}div.profile div.conversationMoreMenu button.HIDDEN{display:none}body.RTL div.profile{left:auto;right:0}div.profile.DIALOG:not(.EMERGENCY) div.status.dialog{-ms-grid-row:2;padding:53px 40px;display:-ms-grid;-ms-grid-columns:1fr;-ms-grid-rows:minmax(1fr, max-content) max-content;position:relative;height:100%;box-sizing:border-box;overflow:hidden}@media screen and (max-aspect-ratio: 1 / 1){div.profile.DIALOG:not(.EMERGENCY) div.status.dialog{-ms-grid-row:1;display:block;padding:0;height:auto !important}}div.profile.DIALOG:not(.EMERGENCY) div.status.dialog.AVAILABLE div.moodMessage{text-indent:20px}div.profile.GROUP div.status.group{-ms-grid-row:2;padding:75px 42px;display:block}@media screen and (max-aspect-ratio: 1 / 1){div.profile.GROUP div.status.group{-ms-grid-row:1;display:block}div.profile.GROUP div.status.group a.participantCount{display:block;position:absolute;left:82px;top:70px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}body.RTL div.profile.GROUP div.status.group a.participantCount{left:auto;right:82px}}@media screen and (max-width: 400px){div.profile.GROUP div.status.group a.participantCount{top:64px;left:62px}body.RTL div.profile.GROUP div.status.group a.participantCount{left:auto;right:62px}}div.conversation.BLOCKED div.profile div.actionButtons{display:none}div.conversation.BLOCKED div.profile div.avatar div.protectionLayer{font-family:"Skype UI Symbol";font-size:360px;line-height:normal;height:360px;background-color:rgba(77,77,77,0.75);color:rgba(255,255,255,0.4)}@media screen and (max-aspect-ratio: 1 / 1){div.conversation.BLOCKED div.profile div.avatar div.protectionLayer{display:none}}div.conversation.BLOCKED div.profile div.avatar div.protectionLayer:before{content:"\E20D"}@media screen and (max-aspect-ratio: 1 / 1){div.profile.EMERGENCY{width:100% !important}}div.profile.EMERGENCY div.status.emergency{-ms-grid-row:2;padding:73px 40px;display:block}@media screen and (max-aspect-ratio: 1 / 1){div.profile.EMERGENCY div.status.emergency{width:100vw}}@media screen and (max-aspect-ratio: 1 / 1){div.profile.EMERGENCY div.avatar{width:100vw;background-color:#5C0C10}}div.profile.EMERGENCY div.avatar.DEFAULTAVATAR div.protectionLayer{background-image:none}div.profile.EMERGENCY div.actionButtons{margin-bottom:30px}@media screen and (max-aspect-ratio: 1 / 1){div.profile.EMERGENCY div.actionButtons{width:100vw}}div.profile.EMERGENCY div.actionButtons>button.call{width:225px;height:46px;font-size:46px;border-radius:23px}div.profile.EMERGENCY div.actionButtons>button.more{display:none}div.profile.CHATCANJOIN{background-color:#005e91}div.profile.CHATCANJOIN div.actionButtons{background-color:#005e91;margin-bottom:15px}body.KEYBOARDUP div.profile.CHATCANJOIN div.actionButtons{background-color:#005e91}@media screen and (max-aspect-ratio: 1 / 1){div.profile.CHATCANJOIN div.actionButtons{margin-bottom:0}}div.profile.CHATCANJOIN div.actionButtons>button{background-clip:padding-box}@media screen and (max-aspect-ratio: 1 / 1){div.profile.CHATCANJOIN div.actionButtons>button{margin:auto 0px}}@media screen and (max-width: 400px){div.profile.CHATCANJOIN div.actionButtons>button{margin:12px 0px}}div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton{display:block;border-radius:25px;margin-right:0;min-width:148px;max-width:198px;width:auto;height:48px;background-color:#7fba00;font-weight:normal;box-shadow:0px 0px 0px 0px rgba(0,0,0,0.15);border:4px solid rgba(0,0,0,0.15);font-size:11pt;text-overflow:ellipsis;white-space:nowrap;padding:0 10px;font-family:"Segoe UI", "Ebrima", "Nirmala UI", "Gadugi", "Segoe UI Emoji", "Segoe UI Symbol", "Meiryo UI", "Leelawadee UI", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Javanese Text", "Cambria Math"}body.RTL div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton{margin-left:0;margin-right:0}div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton:hover{background-color:rgba(127,186,0,0.8)}@media screen and (-ms-high-contrast: active){div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton:hover{background-color:Highlight;color:window}}div.profile.CHATCANJOIN div.actionButtons>button.more{margin-left:12px;background-color:#0097b7;width:48px;height:48px;border-radius:50%;box-shadow:0px 0px 0px 0px rgba(0,0,0,0.15);border:4px solid rgba(0,0,0,0.15);font-size:20.66pt;line-height:46px}body.RTL div.profile.CHATCANJOIN div.actionButtons>button.more{margin-right:12px;margin-left:0}div.profile.CHATCANJOIN div.actionButtons>button.more:hover:not(.DISABLED){background-color:rgba(0,151,183,0.8)}@media screen and (-ms-high-contrast: active){div.profile.CHATCANJOIN div.actionButtons>button.more:hover:not(.DISABLED){background-color:Highlight;color:window}}div.profile.CHATCANJOIN div.actionButtons>button.videocall,div.profile.CHATCANJOIN div.actionButtons>button.call{display:none}div.profile.ACTIVE div.avatar{opacity:1}div.profile.ECHO div.actionButtons>button.more,div.profile.MESSENGER div.actionButtons>button.more,div.profile.LYNC div.actionButtons>button.more,div.conversation.NONMEMBER div.profile div.actionButtons{display:none}@media screen and (max-aspect-ratio: 1 / 1){div.profile:not(.EMERGENCY){width:100%;-ms-grid-rows:105px 1fr;-ms-grid-columns:1fr;background-color:inherit;color:inherit}div.profile:not(.EMERGENCY) div.avatar{display:none !important}div.profile:not(.EMERGENCY) div.conversationNameContainer{display:none}}body.KEYBOARDUP div.profile.GROUP div.status.group,body.KEYBOARDUP div.profile.DIALOG div.status.dialog,body.KEYBOARDUP div.profile.GROUP div.conversationNameContainer,body.KEYBOARDUP div.profile.DIALOG div.conversationNameContainer{display:none}@media screen and (max-aspect-ratio: 1 / 1){body.KEYBOARDUP div.profile.GROUP div.status.group,body.KEYBOARDUP div.profile.DIALOG div.status.dialog,body.KEYBOARDUP div.profile.GROUP div.conversationNameContainer,body.KEYBOARDUP div.profile.DIALOG div.conversationNameContainer{display:block}}
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.profile {
+    color: #fff;
+    background-color: #00aff0;
+    overflow: hidden;
+    display: -ms-grid;
+    -ms-grid-columns: 360px;
+    -ms-grid-rows: 360px 1fr auto;
+    height: 100%;
+    width: 360px
+}
+
+div.profile span.ariaHelper {
+    display: none
+}
+
+div.profile div.conversationNameContainer {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    max-height: 100%;
+    width: 330px;
+    overflow: hidden;
+    margin-left: 40px;
+    margin-top: 17px
+}
+
+div.profile div.conversationNameContainer div.conversationName {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-y: hidden;
+    padding-right: 50px;
+    padding-bottom: 1px;
+    -ms-user-select: text;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    min-height: 50px;
+    letter-spacing: 0px
+}
+
+div.profile div.status {
+    display: none
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.status.dialog.AVAILABLE div.moodMessageContainer {
+        left: 98px
+    }
+    body.RTL div.profile div.status.dialog.AVAILABLE div.moodMessageContainer {
+        left: auto;
+        right: 98px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile div.status.dialog.AVAILABLE div.moodMessageContainer {
+        left: 80px
+    }
+    body.RTL div.profile div.status.dialog.AVAILABLE div.moodMessageContainer {
+        left: auto;
+        right: 80px
+    }
+}
+
+div.profile div.status.dialog.AVAILABLE div.presence {
+    display: block
+}
+
+div.profile div.status.dialog div.presence {
+    position: absolute;
+    left: 45px;
+    top: 66px;
+    display: none
+}
+
+body.RTL div.profile div.status.dialog div.presence {
+    left: auto;
+    right: 40px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.status.dialog div.presence {
+        height: 8px;
+        top: 82px;
+        left: 84px
+    }
+    body.RTL div.profile div.status.dialog div.presence {
+        left: auto;
+        right: 84px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile div.status.dialog div.presence {
+        left: 65px;
+        top: 72px
+    }
+    body.RTL div.profile div.status.dialog div.presence {
+        left: auto;
+        right: 65px
+    }
+}
+
+div.profile div.status.dialog div.moodMessageContainer {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    max-height: 100%;
+    width: calc(100% + 25px);
+    overflow: hidden
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.status.dialog div.moodMessageContainer {
+        width: calc(100% - 165px);
+        position: absolute;
+        left: 80px;
+        top: 70px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    body.RTL div.profile div.status.dialog div.moodMessageContainer {
+        left: auto;
+        right: 80px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile div.status.dialog div.moodMessageContainer {
+        width: calc(100% - 124px);
+        left: 60px;
+        top: 60px
+    }
+    body.RTL div.profile div.status.dialog div.moodMessageContainer {
+        left: auto;
+        right: 60px
+    }
+}
+
+div.profile div.status.dialog div.moodMessageContainer div.moodMessage {
+    overflow-x: hidden;
+    word-wrap: break-word;
+    overflow-y: hidden;
+    padding-right: 25px;
+    padding-bottom: 1px;
+    -ms-user-select: text;
+    line-height: 30px
+}
+
+body.RTL div.profile div.status.dialog div.moodMessageContainer div.moodMessage {
+    padding-right: 0;
+    padding-left: 25px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.status.dialog div.moodMessageContainer div.moodMessage {
+        overflow: hidden;
+        white-space: nowrap;
+        word-wrap: normal;
+        display: inline;
+        padding: 0;
+        margin: 0
+    }
+}
+
+div.profile div.status.dialog div.moodMessageContainer div.moodMessage a {
+    color: #fff;
+    cursor: pointer
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.status.dialog div.moodMessageContainer div.moodMessage a {
+        color: inherit
+    }
+}
+
+div.profile div.status.dialog div.location {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    margin-top: 7px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.status.dialog div.location {
+        display: none
+    }
+}
+
+div.profile div.status.group a.participantCount {
+    color: #fff
+}
+
+div.profile div.status.group a.participantCount::after {
+    content: "\203A";
+    margin-left: 10px
+}
+
+body.RTL div.profile div.status.group a.participantCount::after {
+    margin-left: 0;
+    margin-right: 10px
+}
+
+div.profile div.status.group div.participants {
+    height: 100%
+}
+
+div.profile div.status.group div.win-container {
+    background-color: transparent
+}
+
+div.profile div.status.group div.name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+div.profile div.status.group div.presence {
+    display: none;
+    position: relative;
+    top: -4px
+}
+
+div.profile div.status.group div.presence.AVAILABLE {
+    display: inline-block
+}
+
+div.profile div.status.group div.mood {
+    display: inline-block;
+    box-sizing: border-box;
+    width: calc(100% - 16px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+div.profile div.status.emergency {
+    padding: 73px 0 20px !important
+}
+
+div.profile div.status.emergency div.wrapper {
+    height: 100%;
+    padding: 0 40px;
+    overflow-y: auto
+}
+
+div.profile div.status.emergency div.wrapper>div {
+    display: none
+}
+
+div.profile div.status.emergency div.wrapper>div a {
+    color: #004a66
+}
+
+div.profile div.status.emergency div.wrapper>div a:hover {
+    color: #005c80
+}
+
+div.profile div.status.emergency div.wrapper>div a:active {
+    color: #00374d
+}
+
+div.profile div.status.emergency div.wrapper>div div.content {
+    word-wrap: break-word
+}
+
+div.profile div.status.emergency div.wrapper>div div.content strong {
+    display: inline-block;
+    word-wrap: break-word;
+    width: 100%
+}
+
+div.profile div.status.emergency[restriction='noCountry'] div.wrapper div.noCountry {
+    display: block
+}
+
+div.profile div.status.emergency[restriction='allowedCountry'] div.wrapper div.allowedCountry {
+    display: block
+}
+
+div.profile div.status.emergency[restriction='restrictedCountry'] div.wrapper div.restrictedCountry {
+    display: -ms-grid;
+    -ms-grid-columns: 35px 1fr;
+    -ms-grid-rows: 40px 1fr 1fr 50px;
+    margin-top: 10px
+}
+
+div.profile div.status.emergency div.allowedCountry div.info {
+    margin-bottom: 10px
+}
+
+div.profile div.status.emergency div.allowedCountry div.info div.content strong {
+    display: block;
+    margin-bottom: 20px
+}
+
+div.profile div.status.emergency div.restrictedCountry div.info {
+    -ms-grid-row: 1;
+    -ms-grid-column-span: 2;
+    margin-bottom: 10px
+}
+
+div.profile div.status.emergency div.restrictedCountry div.icon {
+    -ms-grid-column: 1;
+    -ms-grid-row: 2;
+    display: inline-block;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    font-family: "Skype UI Symbol" !important;
+    font-size: 25px;
+    line-height: normal;
+    text-align: center;
+    color: #fff;
+    background-color: #e81123;
+    box-shadow: 0 0 0 2px #fff
+}
+
+div.profile div.status.emergency div.restrictedCountry div.icon::before {
+    content: "\E600"
+}
+
+div.profile div.status.emergency div.restrictedCountry h3 {
+    -ms-grid-column: 2;
+    -ms-grid-row: 2;
+    margin-top: -4px;
+    margin-bottom: 10px;
+    word-wrap: break-word
+}
+
+div.profile div.status.emergency div.restrictedCountry div.content {
+    -ms-grid-column-span: 2;
+    -ms-grid-column: 1;
+    -ms-grid-row: 3
+}
+
+div.profile div.status.emergency div.restrictedCountry button {
+    margin-top: 20px;
+    -ms-grid-column-span: 2;
+    -ms-grid-column: 1;
+    -ms-grid-row: 4;
+    -ms-grid-column-align: start;
+    display: inline-block
+}
+
+div.profile div.status.emergency div.noCountry button {
+    margin-top: 20px
+}
+
+div.profile div.avatar {
+    -ms-grid-row: 1;
+    height: 360px;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    -ms-grid-row-align: center;
+    position: relative;
+    overflow: hidden;
+    -ms-high-contrast-adjust: none;
+    transition: opacity 0.7s linear;
+    opacity: 0;
+    z-index: 9
+}
+
+div.profile div.avatar div.protectionLayer {
+    display: block;
+    height: 100%;
+    background: url("/images/svg/prot440x440.svg") no-repeat
+}
+
+div.profile div.avatar.DEFAULTAVATAR div.protectionLayer {
+    background: url("/images/svg/protDefAvatar440x440.svg") no-repeat;
+    background-size: cover
+}
+
+div.profile div.actionButtons {
+    display: -ms-flexbox;
+    -ms-grid-row: 3;
+    -ms-grid-row-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    -ms-flex-direction: row;
+    -ms-flex-pack: center;
+    position: relative;
+    z-index: 10;
+    bottom: 15px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.profile div.actionButtons {
+        bottom: 17px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.actionButtons {
+        margin-bottom: 0px;
+        margin-top: 0px;
+        height: 100px;
+        background-color: #00aff0
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile div.actionButtons {
+        height: 72px
+    }
+}
+
+body.KEYBOARDUP div.profile div.actionButtons {
+    padding: 20px 0;
+    margin-top: -60px;
+    margin-bottom: 0;
+    min-width: 360px;
+    background-color: #00aff0
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.KEYBOARDUP div.profile div.actionButtons {
+        min-width: inherit;
+        padding: 0;
+        bottom: 0
+    }
+}
+
+div.profile div.actionButtons>button {
+    padding: 0;
+    min-height: 0;
+    min-width: 0;
+    font-weight: normal;
+    background-color: transparent;
+    letter-spacing: 0;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 0px 20px;
+    font-family: "Skype UI Symbol" !important;
+    font-size: 58px;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    border-color: #fff;
+    cursor: default;
+    box-shadow: inset 0 0 0 1px #fff;
+    border: 1px solid #fff
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile div.actionButtons>button {
+        margin: 18px 15px;
+        box-shadow: inset 0 0 0 0px #fff;
+        border: 1.5px solid #fff
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile div.actionButtons>button {
+        height: 40px;
+        width: 40px;
+        margin: 15px 10px;
+        font-size: 38px;
+        border-radius: 50%;
+        line-height: normal;
+        color: #fff;
+        border-color: #fff;
+        cursor: default
+    }
+}
+
+div.profile div.actionButtons>button.more.HIDDEN,
+div.profile div.actionButtons>button.videocall.NOSENDVIDEO,
+div.profile div.actionButtons>button.joincallbutton,
+div.profile div.actionButtons>button.call.NOSENDAUDIO {
+    display: none
+}
+
+div.profile div.actionButtons>button:hover:not(.DISABLED) {
+    background-color: #009dd8
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.profile div.actionButtons>button:hover:not(.DISABLED) {
+        background-color: Highlight;
+        color: window
+    }
+}
+
+div.profile div.actionButtons>button.DISABLED {
+    opacity: 0.4
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.profile div.actionButtons>button {
+        border: 2px solid ButtonText;
+        color: ButtonText
+    }
+}
+
+div.profile div.conversationMoreMenu button.HIDDEN {
+    display: none
+}
+
+body.RTL div.profile {
+    left: auto;
+    right: 0
+}
+
+div.profile.DIALOG:not(.EMERGENCY) div.status.dialog {
+    -ms-grid-row: 2;
+    padding: 53px 40px;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: minmax(1fr, max-content) max-content;
+    position: relative;
+    height: 100%;
+    box-sizing: border-box;
+    overflow: hidden
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.DIALOG:not(.EMERGENCY) div.status.dialog {
+        -ms-grid-row: 1;
+        display: block;
+        padding: 0;
+        height: auto !important
+    }
+}
+
+div.profile.DIALOG:not(.EMERGENCY) div.status.dialog.AVAILABLE div.moodMessage {
+    text-indent: 20px
+}
+
+div.profile.GROUP div.status.group {
+    -ms-grid-row: 2;
+    padding: 75px 42px;
+    display: block
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.GROUP div.status.group {
+        -ms-grid-row: 1;
+        display: block
+    }
+    div.profile.GROUP div.status.group a.participantCount {
+        display: block;
+        position: absolute;
+        left: 82px;
+        top: 70px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    body.RTL div.profile.GROUP div.status.group a.participantCount {
+        left: auto;
+        right: 82px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile.GROUP div.status.group a.participantCount {
+        top: 64px;
+        left: 62px
+    }
+    body.RTL div.profile.GROUP div.status.group a.participantCount {
+        left: auto;
+        right: 62px
+    }
+}
+
+div.conversation.BLOCKED div.profile div.actionButtons {
+    display: none
+}
+
+div.conversation.BLOCKED div.profile div.avatar div.protectionLayer {
+    font-family: "Skype UI Symbol" !important;
+    font-size: 360px;
+    line-height: normal;
+    height: 360px;
+    background-color: rgba(77, 77, 77, 0.75);
+    color: rgba(255, 255, 255, 0.4)
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.conversation.BLOCKED div.profile div.avatar div.protectionLayer {
+        display: none
+    }
+}
+
+div.conversation.BLOCKED div.profile div.avatar div.protectionLayer:before {
+    content: "\E20D"
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.EMERGENCY {
+        width: 100% !important
+    }
+}
+
+div.profile.EMERGENCY div.status.emergency {
+    -ms-grid-row: 2;
+    padding: 73px 40px;
+    display: block
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.EMERGENCY div.status.emergency {
+        width: 100vw
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.EMERGENCY div.avatar {
+        width: 100vw;
+        background-color: #5C0C10
+    }
+}
+
+div.profile.EMERGENCY div.avatar.DEFAULTAVATAR div.protectionLayer {
+    background-image: none
+}
+
+div.profile.EMERGENCY div.actionButtons {
+    margin-bottom: 30px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.EMERGENCY div.actionButtons {
+        width: 100vw
+    }
+}
+
+div.profile.EMERGENCY div.actionButtons>button.call {
+    width: 225px;
+    height: 46px;
+    font-size: 46px;
+    border-radius: 23px
+}
+
+div.profile.EMERGENCY div.actionButtons>button.more {
+    display: none
+}
+
+div.profile.CHATCANJOIN {
+    background-color: #005e91
+}
+
+div.profile.CHATCANJOIN div.actionButtons {
+    background-color: #005e91;
+    margin-bottom: 15px
+}
+
+body.KEYBOARDUP div.profile.CHATCANJOIN div.actionButtons {
+    background-color: #005e91
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.CHATCANJOIN div.actionButtons {
+        margin-bottom: 0
+    }
+}
+
+div.profile.CHATCANJOIN div.actionButtons>button {
+    background-clip: padding-box
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile.CHATCANJOIN div.actionButtons>button {
+        margin: auto 0px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.profile.CHATCANJOIN div.actionButtons>button {
+        margin: 12px 0px
+    }
+}
+
+div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton {
+    display: block;
+    border-radius: 25px;
+    margin-right: 0;
+    min-width: 148px;
+    max-width: 198px;
+    width: auto;
+    height: 48px;
+    background-color: #7fba00;
+    font-weight: normal;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+    border: 4px solid rgba(0, 0, 0, 0.15);
+    font-size: 11pt;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 10px;
+    font-family: "Segoe UI", "Ebrima", "Nirmala UI", "Gadugi", "Segoe UI Emoji", "Segoe UI Symbol", "Meiryo UI", "Leelawadee UI", "Microsoft YaHei UI", "Microsoft JhengHei UI", "Malgun Gothic", "Estrangelo Edessa", "Microsoft Himalaya", "Microsoft New Tai Lue", "Microsoft PhagsPa", "Microsoft Tai Le", "Microsoft Yi Baiti", "Mongolian Baiti", "MV Boli", "Myanmar Text", "Javanese Text", "Cambria Math"
+}
+
+body.RTL div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton {
+    margin-left: 0;
+    margin-right: 0
+}
+
+div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton:hover {
+    background-color: rgba(127, 186, 0, 0.8)
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.profile.CHATCANJOIN div.actionButtons>button.joincallbutton:hover {
+        background-color: Highlight;
+        color: window
+    }
+}
+
+div.profile.CHATCANJOIN div.actionButtons>button.more {
+    margin-left: 12px;
+    background-color: #0097b7;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.15);
+    border: 4px solid rgba(0, 0, 0, 0.15);
+    font-size: 20.66pt;
+    line-height: 46px
+}
+
+body.RTL div.profile.CHATCANJOIN div.actionButtons>button.more {
+    margin-right: 12px;
+    margin-left: 0
+}
+
+div.profile.CHATCANJOIN div.actionButtons>button.more:hover:not(.DISABLED) {
+    background-color: rgba(0, 151, 183, 0.8)
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.profile.CHATCANJOIN div.actionButtons>button.more:hover:not(.DISABLED) {
+        background-color: Highlight;
+        color: window
+    }
+}
+
+div.profile.CHATCANJOIN div.actionButtons>button.videocall,
+div.profile.CHATCANJOIN div.actionButtons>button.call {
+    display: none
+}
+
+div.profile.ACTIVE div.avatar {
+    opacity: 1
+}
+
+div.profile.ECHO div.actionButtons>button.more,
+div.profile.MESSENGER div.actionButtons>button.more,
+div.profile.LYNC div.actionButtons>button.more,
+div.conversation.NONMEMBER div.profile div.actionButtons {
+    display: none
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.profile:not(.EMERGENCY) {
+        width: 100%;
+        -ms-grid-rows: 105px 1fr;
+        -ms-grid-columns: 1fr;
+        background-color: inherit;
+        color: inherit
+    }
+    div.profile:not(.EMERGENCY) div.avatar {
+        display: none !important
+    }
+    div.profile:not(.EMERGENCY) div.conversationNameContainer {
+        display: none
+    }
+}
+
+body.KEYBOARDUP div.profile.GROUP div.status.group,
+body.KEYBOARDUP div.profile.DIALOG div.status.dialog,
+body.KEYBOARDUP div.profile.GROUP div.conversationNameContainer,
+body.KEYBOARDUP div.profile.DIALOG div.conversationNameContainer {
+    display: none
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.KEYBOARDUP div.profile.GROUP div.status.group,
+    body.KEYBOARDUP div.profile.DIALOG div.status.dialog,
+    body.KEYBOARDUP div.profile.GROUP div.conversationNameContainer,
+    body.KEYBOARDUP div.profile.DIALOG div.conversationNameContainer {
+        display: block
+    }
+}

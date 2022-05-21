@@ -12,7 +12,7 @@ import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
 import { ReadOnlyVector } from "../../Foundation/Interop/ReadOnlyVector`1";
 import { CharacterGrouping } from "./CharacterGrouping";
 
-@GenerateShim('Windows.Globalization.Collation.CharacterGroupings')
+// @GenerateShim('Windows.Globalization.Collation.CharacterGroupings')
 export class CharacterGroupings extends ReadOnlyVector<CharacterGrouping> { 
     constructor() {
         let groupings = [];

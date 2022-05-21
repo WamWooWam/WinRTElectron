@@ -1,1 +1,120 @@
-﻿Jx.delayDefine(Calendar,"Scheduler",function(){var t=Calendar.Scheduler=function(n){this._scheduled=false;this._timeSlice=n||t.timeSlice;this.reset();this._runJobs=this._runJobs.bind(this)},n;t.timeSlice=20;n=t.prototype;n.schedule=function(n,i,r,u){var f=this._nextId++;return this._jobs[f]={fn:n,ctx:i,args:r,isVisible:u},u&&this._visibleJobs++,this._scheduled||(setImmediate(this._runJobs),this._scheduled=true),f};n.setVisible=function(n,t){var i=this._jobs[n],r;i&&i.isVisible!==t&&(r=t?1:-1,this._visibleJobs+=r,i.isVisible=t)};n.cancel=function(n){var t=this._jobs[n];t&&(t.isVisible&&this._visibleJobs--,delete this._jobs[n])};n.reset=function(){this._jobs={};this._nextId=0;this._currentId=0;this._visibleJobs=0};n._runJobs=function(){for(var i=Date.now(),t=this._currentId,n;this._visibleJobs&&Date.now()-i<this._timeSlice;)n=this._jobs[t],n&&n.isVisible&&(this._visibleJobs--,delete this._jobs[t],n.fn.apply(n.ctx,n.args)),t++;while(this._currentId<this._nextId&&Date.now()-i<this._timeSlice)t=this._currentId++,n=this._jobs[t],n&&(delete this._jobs[t],n.fn.apply(n.ctx,n.args));this._currentId<this._nextId?setImmediate(this._runJobs):(this._scheduled=false,Jx.ptStopLaunch(Jx.TimePoint.responsive,0))}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Debug,Calendar,setImmediate,Jx*/
+
+Jx.delayDefine(Calendar, "Scheduler", function() {
+
+    var Scheduler = Calendar.Scheduler = function(timeSlice) {
+        // set our initial state
+        this._scheduled = false;
+        this._timeSlice = timeSlice || Scheduler.timeSlice;
+        this.reset();
+
+        // bind callbacks
+        this._runJobs = this._runJobs.bind(this);
+    };
+
+    Scheduler.timeSlice = 20;
+
+    var proto = Scheduler.prototype;
+
+    proto.schedule = function(fn, ctx, args, isVisible) {
+        var id = this._nextId++;
+        this._jobs[id] = { fn: fn, ctx: ctx, args: args, isVisible: isVisible };
+
+        if (isVisible) {
+            this._visibleJobs++;
+        }
+
+        if (!this._scheduled) {
+            setImmediate(this._runJobs);
+            this._scheduled = true;
+        }
+
+        Debug.call(function () {
+            if (Scheduler.RUN_SYNC) {
+                while (this._currentId < this._nextId) {
+                    this._runJobs();
+                }
+                this.reset();
+            }
+        }, this);
+
+        return id;
+    };
+
+    proto.setVisible = function(id, isVisible) {
+        var job = this._jobs[id];
+
+        if (job) {
+            if (job.isVisible !== isVisible) {
+                var adjust = isVisible ? 1 : -1;
+                this._visibleJobs += adjust;
+
+                job.isVisible = isVisible;
+            }
+        }
+    };
+
+    proto.cancel = function(id) {
+        var job = this._jobs[id];
+
+        if (job) {
+            if (job.isVisible) {
+                this._visibleJobs--;
+            }
+
+            delete this._jobs[id];
+        }
+    };
+
+    proto.reset = function() {
+        this._jobs = {};
+        this._nextId    = 0;
+        this._currentId = 0;
+        this._visibleJobs = 0;
+    };
+
+    proto._runJobs = function() {
+        var start = Date.now(),
+            id    = this._currentId,
+            job;
+
+        // if we have visible jobs, run them first
+        while (this._visibleJobs && (Date.now() - start < this._timeSlice)) {
+            job = this._jobs[id];
+
+            if (job) {
+                if (job.isVisible) {
+                    this._visibleJobs--;
+                    delete this._jobs[id];
+                    job.fn.apply(job.ctx, job.args);
+                }
+            }
+
+            id++;
+        }
+
+        // do remaining jobs next
+        while ((this._currentId < this._nextId) && (Date.now() - start < this._timeSlice)) {
+            id  = this._currentId++;
+            job = this._jobs[id];
+
+            if (job) {
+                delete this._jobs[id];
+                job.fn.apply(job.ctx, job.args);
+            }
+        }
+
+        if (this._currentId < this._nextId) {
+            setImmediate(this._runJobs);
+        } else {
+            this._scheduled = false;
+            // TODO: currently the worker has no access to the activation kind, pass 0 for now
+            Jx.ptStopLaunch(Jx.TimePoint.responsive, 0); 
+        }
+    };
+});

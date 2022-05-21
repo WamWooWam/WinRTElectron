@@ -1,0 +1,48 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<!-- Calendar -->
+<script src="/ModernCalendar/common/common.js"></script>
+<script src="/ModernCalendar/views/helpers/helpers.js"></script>
+<script src="/ModernCalendar/views/timeline/timeline.js"></script>
+
+<!-- UT helpers -->
+<script src="TestHelpers.js"></script>
+<script src="/ModernCalendar/ut/mock/mock.js"></script>
+<script src="/ModernCalendar/ut/mock/accountmanager.js"></script>
+<script src="/ModernCalendar/ut/mock/calendar.js"></script>
+<script src="/ModernCalendar/ut/mock/calendarcollection.js"></script>
+<script src="/ModernCalendar/ut/mock/calendarmanager.js"></script>
+<script src="/ModernCalendar/ut/mock/event.js"></script>
+<script src="/ModernCalendar/ut/mock/eventcollection.js"></script>
+<script src="/ModernCalendar/ut/mock/eventinstance.js"></script>
+<script src="/ModernCalendar/ut/mock/eventoccurrence.js"></script>
+<script src="/ModernCalendar/ut/mock/freebusyrequest.js"></script>
+<script src="/ModernCalendar/ut/mock/platform.js"></script>
+
+<!-- UTs -->
+<script src="utTimelineExtended.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

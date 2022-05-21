@@ -26,19 +26,19 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 import { PlatformObject } from "./PlatformObject";
 import { Client } from "./Client";
 import { Person } from "./Person";
-import { DefaultAccount } from "./Account";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.Contact')
 export class Contact extends PlatformObject implements IContact, IBaseContact {
-    constructor(person?: IPerson) {
+    constructor(person: IPerson, account: IAccount) {
         super("Contact");
-        if (person) {
-            this.firstName = person.firstName;
-            this.lastName = person.lastName;
-            this.person = person;
-            this.account = DefaultAccount;
-            this.personalEmailAddress = `${this.firstName}.${this.lastName}.${Math.floor(Math.random() * 100000)}@hotmail.com`.toLowerCase()
-        }
+        if (!person)
+            return;
+
+        this.firstName = person.firstName;
+        this.lastName = person.lastName;
+        this.person = person;
+        this.account = account;
+        this.personalEmailAddress = `${this.firstName}.${this.lastName}.${Math.floor(Math.random() * 100000)}@hotmail.com`.toLowerCase()
     }
 
     yomiLastName: string = null;

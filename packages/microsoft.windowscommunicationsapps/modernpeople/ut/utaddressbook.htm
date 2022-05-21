@@ -1,0 +1,114 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+
+<!-- People -->
+<script src="/ModernPeople/Shared/JSUtil/Include.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Callback.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/PeopleAnimation.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Hydration.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/PeopleLog.js"></script>
+<script src="/Platform/MockPlatform.js"></script>
+<script src="/ModernPeople/Shared/identitycontrol/IdentityControl.js"></script>
+<script src="/ModernPeople/Shared/identitycontrol/IdentityElements.js"></script>
+<script src="/ModernPeople/Shared/Sequence/Sequence.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/AddressHelper.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/ContactForm.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/LocaleHelper.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/Location.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/NameHelper.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFieldRenderers.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/uiform.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFormAddressInputControl.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFormSelectInputControl.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFormTextInputControl.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiLocationRenderer.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/uimenu.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/SemanticZoom/ZoomableView.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/SemanticZoom/ZoomHost.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Stitcher/OffsetViewport.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Stitcher/Stitcher.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Viewport/Viewport.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Viewport/ScrollingViewport.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/CellCreator.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/GridAnimations.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/GridCell.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/GridNavigation.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/GridNotifier.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/GroupListener.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/Handler.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/Layout.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/Pool.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/PooledCells.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/PseudoCell.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/Reflow.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/virtualizedgrid/VirtualizedGrid.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/AddressBookCollections.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/ArrayCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/BaseCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/CappedPlatformCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/ConcatenatedCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/DeferredCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/DeferredListviewCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/IndexedSearchCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/PlatformCollectionWatcher.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/QueryCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/AllContactsSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/ContactGridHeaders.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/ContactGridSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/FavoriteContactsSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/HeaderKeyboardJump.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/PickerAlphabeticSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/SearchResultsSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/Section.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/SocialSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/StaticSection.js"></script>
+<script src="/ModernPeople/AddressBook/Sections/UpsellSection.js"></script>
+
+<!-- UT helpers -->
+<script src="CallVerifier.js"></script>
+<script src="DebugMocks.js"></script>
+<script src="GridUTHelpers.js"></script>
+<script src="MockJobSet.js"></script>
+<script src="MockHeaderHandler.js"></script>
+<script src="MockNode.js"></script>
+<script src="MockSection.js"></script>
+<script src="MockViewport.js"></script>
+<script src="TestCollections.js"></script>
+
+<!-- UTs -->
+<script src="utCollection.js"></script>
+<script src="utLayout.js"></script>
+<script src="utScheduler.js"></script>
+<script src="utSearch.js"></script>
+<script src="utSemanticZoom.js"></script>
+<script src="utStitcher.js"></script>
+<script src="utViewport.js"></script>
+<script src="utVirtualizedGrid.js"></script>
+<script src="utZoomedOutView.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

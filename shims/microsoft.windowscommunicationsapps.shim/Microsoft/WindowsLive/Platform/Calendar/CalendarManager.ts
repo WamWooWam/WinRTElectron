@@ -19,6 +19,7 @@ import { IAccount } from "../IAccount";
 import { ICollection } from "../ICollection";
 import { IVectorView } from "winrt/Windows/Foundation/Collections/IVectorView`1";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
+import { Collection } from "../Collection";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.Calendar.CalendarManager')
 export class CalendarManager implements ICalendarManager { 
@@ -79,7 +80,8 @@ export class CalendarManager implements ICalendarManager {
         throw new Error('CalendarManager#requestFreeBusyData not implemented')
     }
     getCalendarErrors(): ICollection {
-        throw new Error('CalendarManager#getCalendarErrors not implemented')
+        // throw new Error('CalendarManager#getCalendarErrors not implemented')
+        return new Collection([]);
     }
     getCalendarError(objectId: string): IErrorMessage {
         throw new Error('CalendarManager#getCalendarError not implemented')

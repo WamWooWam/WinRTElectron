@@ -9,16 +9,20 @@ import { IIterable } from "../../Foundation/Collections/IIterable`1";
 import { IMapView } from "../../Foundation/Collections/IMapView`2";
 import { AsyncOperation, IAsyncOperation } from "../../Foundation/IAsyncOperation`1";
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
+import { Dictionary } from "../../Foundation/Interop/Dictionary`2";
 
 @GenerateShim('Windows.Devices.Enumeration.DeviceInformation')
 export class DeviceInformation { 
-    enclosureLocation: EnclosureLocation = null;
     id: string = null;
-    isDefault: boolean = null;
-    isEnabled: boolean = null;
     name: string = null;
-    properties: IMapView<string, any> = null;
+    isDefault: boolean = true;
+    isEnabled: boolean = true;
+    enclosureLocation: EnclosureLocation = new EnclosureLocation();
+    properties: IMapView<string, any> = new Dictionary();
     
+    constructor() {
+    }
+
     static findAllAsync(): IAsyncOperation<DeviceInformationCollection> {
         return AsyncOperation.from(async () => {
             return new DeviceInformationCollection();

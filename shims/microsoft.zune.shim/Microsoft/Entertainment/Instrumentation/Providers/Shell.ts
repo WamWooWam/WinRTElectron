@@ -838,4 +838,7 @@ export class Shell implements IShell {
     tracePerfTrack_Trigger_FlexHubPageRequestToLoad(durationMsec: number): void {
         console.warn('Shell#tracePerfTrack_Trigger_FlexHubPageRequestToLoad not implemented')
     }
+    tracePerfTrack_Trigger_NavigateToSongsComplete(durationMsec: number): void {
+        console.warn('Shell#tracePerfTrack_Trigger_FlexHubPageRequestToLoad not implemented')
+    }
 }

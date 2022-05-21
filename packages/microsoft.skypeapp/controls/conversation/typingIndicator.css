@@ -1,1 +1,119 @@
-﻿/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.typingIndicator{display:none;opacity:0;-ms-grid-columns:minmax(128px, 1fr) minmax(660px, 940px) minmax(128px, 1fr);-ms-grid-rows:24px;-ms-grid-row-align:center;position:relative;margin-bottom:11px;transition:opacity 0.4s linear}div.typingIndicator div.indicator{-ms-grid-column:1;-ms-grid-row:1;position:relative}div.typingIndicator div.indicator span.icon{position:absolute;right:14px;width:27px;height:20px;background-position:0 0px;background-repeat:no-repeat;animation:typing 1s step-start 0 infinite forwards;animation-play-state:paused;animation-fill-mode:both;background-image:url("/images/typing_27x27_x6.png")}body.RTL div.typingIndicator div.indicator span.icon{background-image:url("/images/typingRTL_27x27_x6.png")}div.typingIndicator div.typingIndicatorContent{-ms-grid-column:2;-ms-grid-row:1;padding-left:13px}div.typingIndicator div.typingIndicatorContent span.text{color:#93999d;width:calc(100% - 20px);overflow:hidden;text-overflow:ellipsis;display:block;white-space:nowrap}div.typingIndicator.VISIBLE{display:-ms-grid}div.typingIndicator.VISIBLE div.indicator span.icon{animation-play-state:running}div.typingIndicator.VISIBLE.POPULATED{opacity:1}div.chat.LIVE div.typingIndicator{-ms-grid-columns:54px 1fr}@media screen and (max-width: 1280px){div.typingIndicator{-ms-grid-columns:75px 1fr}div.typingIndicator div.indicator span.icon{right:11px}div.typingIndicator div.typingIndicatorContent{padding-left:16px}}@media screen and (max-aspect-ratio: 1 / 1){div.typingIndicator{margin-bottom:25px;-ms-grid-columns:58px 1fr;-ms-grid-rows:20px}div.typingIndicator div.indicator span.icon{right:11px}div.typingIndicator div.typingIndicatorContent{padding-left:0}}@keyframes typing{0%{background-position:0 0px}16.667%{background-position:0 -27px}33.334%{background-position:0 -54px}50.001%{background-position:0 -81px}66.668%{background-position:0 -108px}83.335%{background-position:0 -135px}100%{background-position:0 -162px}}
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.typingIndicator {
+    display: none;
+    opacity: 0;
+    -ms-grid-columns: minmax(128px, 1fr) minmax(660px, 940px) minmax(128px, 1fr);
+    -ms-grid-rows: 24px;
+    -ms-grid-row-align: center;
+    position: relative;
+    margin-bottom: 11px;
+    transition: opacity 0.4s linear
+}
+
+div.typingIndicator div.indicator {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    position: relative
+}
+
+div.typingIndicator div.indicator span.icon {
+    position: absolute;
+    right: 14px;
+    width: 27px;
+    height: 20px;
+    background-position: 0 0px;
+    background-repeat: no-repeat;
+    animation: typing 1s step-start 0 infinite forwards;
+    animation-play-state: paused;
+    animation-fill-mode: both;
+    background-image: url("/images/typing_27x27_x6.png")
+}
+
+body.RTL div.typingIndicator div.indicator span.icon {
+    background-image: url("/images/typingRTL_27x27_x6.png")
+}
+
+div.typingIndicator div.typingIndicatorContent {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    padding-left: 13px
+}
+
+div.typingIndicator div.typingIndicatorContent span.text {
+    color: #93999d;
+    width: calc(100% - 20px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    white-space: nowrap
+}
+
+div.typingIndicator.VISIBLE {
+    display: -ms-grid
+}
+
+div.typingIndicator.VISIBLE div.indicator span.icon {
+    animation-play-state: running
+}
+
+div.typingIndicator.VISIBLE.POPULATED {
+    opacity: 1
+}
+
+div.chat.LIVE div.typingIndicator {
+    -ms-grid-columns: 54px 1fr
+}
+
+@media screen and (max-width: 1280px) {
+    div.typingIndicator {
+        -ms-grid-columns: 75px 1fr
+    }
+    div.typingIndicator div.indicator span.icon {
+        right: 11px
+    }
+    div.typingIndicator div.typingIndicatorContent {
+        padding-left: 16px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.typingIndicator {
+        margin-bottom: 25px;
+        -ms-grid-columns: 58px 1fr;
+        -ms-grid-rows: 20px
+    }
+    div.typingIndicator div.indicator span.icon {
+        right: 11px
+    }
+    div.typingIndicator div.typingIndicatorContent {
+        padding-left: 0
+    }
+}
+
+@keyframes typing {
+    0% {
+        background-position: 0 0px
+    }
+    16.667% {
+        background-position: 0 -27px
+    }
+    33.334% {
+        background-position: 0 -54px
+    }
+    50.001% {
+        background-position: 0 -81px
+    }
+    66.668% {
+        background-position: 0 -108px
+    }
+    83.335% {
+        background-position: 0 -135px
+    }
+    100% {
+        background-position: 0 -162px
+    }
+}

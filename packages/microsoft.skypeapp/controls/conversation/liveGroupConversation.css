@@ -1,1 +1,1061 @@
-﻿/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.liveGroupConversation div.bottomHolder{-ms-grid-row-align:end;display:-ms-grid;-ms-grid-columns:1fr;-ms-grid-rows:auto auto;margin-bottom:20px}div.liveGroupConversation div.bottomHolder div.actions{display:none;-ms-grid-row:2;-ms-grid-column-align:center;-ms-grid-row-align:center}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.bottomHolder div.actions{margin-bottom:15px}}div.liveGroupConversation div.bottomHolder div.actions button{padding:0;min-height:0;min-width:0;font-weight:normal;border:0;font-family:"Skype UI Symbol";font-weight:normal;font-size:40px;background-color:#00aff0;color:#fff;display:inline-block;width:40px;height:40px;border-radius:50%;line-height:normal;text-align:center;position:relative;z-index:100;height:60px;width:60px;margin:0px 18px;font-size:60px;opacity:.9;border-color:#fff;box-shadow:0 0 0 5px rgba(0,0,0,0.1);background-color:#00aff0}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.bottomHolder div.actions button{box-sizing:content-box;background-color:ButtonFace;color:ButtonText;border:2px solid ButtonText}div.liveGroupConversation div.bottomHolder div.actions button:hover:not([disabled]){background-color:Highlight;color:HighlightText}div.liveGroupConversation div.bottomHolder div.actions button[disabled]{border-color:GrayText;color:GrayText}}div.liveGroupConversation div.bottomHolder div.actions button.HIDDEN{display:none}div.liveGroupConversation div.bottomHolder div.actions button:hover{background-color:rgba(0,157,216,0.8)}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.bottomHolder div.actions button:hover{background-color:Highlight;color:window}}div.liveGroupConversation div.bottomHolder div.actions button:active{background-color:#007aa8}div.liveGroupConversation div.bottomHolder div.actions button.answer,div.liveGroupConversation div.bottomHolder div.actions button.answerVideo{background-color:#7fba00}div.liveGroupConversation div.bottomHolder div.actions button.answer:hover,div.liveGroupConversation div.bottomHolder div.actions button.answerVideo:hover{background-color:#7fba00}div.liveGroupConversation div.bottomHolder div.actions button.answer:active,div.liveGroupConversation div.bottomHolder div.actions button.answerVideo:active{background-color:#598200}div.liveGroupConversation div.bottomHolder div.actions button.hangUp{background-color:#e81123}div.liveGroupConversation div.bottomHolder div.actions button.hangUp:hover{background-color:#d00f1f}div.liveGroupConversation div.bottomHolder div.actions button.hangUp:active{background-color:#a20c18}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.bottomHolder div.actions button{margin:0px 13px}}@media screen and (max-width: 400px){div.liveGroupConversation div.bottomHolder div.actions button{height:40px;width:40px;margin:0px 8px;font-size:40px}}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.bottomHolder{margin-bottom:0px}}@media screen and (max-aspect-ratio: 1 / 1){body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.bottomHolder div.actions{display:none}div.liveGroupConversation.CHATOPEN div.bottomHolder div.actions button{height:40px;width:40px;margin:0px 8px;font-size:40px}}div.liveGroupConversation.VIDEOCALL div.actionButtons button{background-color:rgba(0,175,240,0.85)}div.liveGroupConversation.VIDEOCALL div.actionButtons button.hangUp{background-color:rgba(232,17,35,0.85)}body.LOCKSCREEN div.liveGroupConversation div.bottomHolder,body.LOCKSCREEN div.liveGroupConversation button.backbutton,div.liveGroupConversation.IMMERSIVE div.bottomHolder{opacity:0;pointer-events:none}div.liveGroupConversation.LIVEHOLDLOCAL div.bottomHolder div.actions,div.liveGroupConversation.LIVEHOLDREMOTE div.bottomHolder div.actions,div.liveGroupConversation.LIVE div.bottomHolder div.actions,div.liveGroupConversation.PRELIVE div.bottomHolder div.actions{display:block}div.liveGroupConversation.LIVEHOLDLOCAL div.bottomHolder div.actions>button.camera,div.liveGroupConversation.LIVEHOLDREMOTE div.bottomHolder div.actions>button.camera,div.liveGroupConversation.LIVEHOLDLOCAL div.bottomHolder div.actions>button.mute,div.liveGroupConversation.LIVEHOLDREMOTE div.bottomHolder div.actions>button.mute{z-index:49}/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.liveGroupConversation div.logo{display:none;position:absolute;top:0;left:0;background:url("/images/immersive_logo_274x180.png");width:274px;height:180px;z-index:999}body.RTL div.liveGroupConversation div.logo{left:auto;right:0}@media screen and (min-height: 999px){div.liveGroupConversation div.logo{background:url("/images/immersive_logo_274x180.png");width:274px;height:180px}}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.logo{background:url("/images/immersive_logo_155x108.png");width:155px;height:108px}}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.logo{-ms-high-contrast-adjust:none}}div.liveGroupConversation>header{position:absolute;color:#fff;width:calc(100% - 80px);height:120px;overflow:hidden;left:0;-ms-grid-row:1;display:-ms-grid;-ms-grid-columns:100px 1fr;-ms-grid-rows:1fr;overflow:visible;line-height:normal;z-index:51;pointer-events:none}body.RTL div.liveGroupConversation>header{left:auto;right:0}div.liveGroupConversation>header button.backbutton{-ms-grid-column:1;margin-left:39px;margin-top:59px;pointer-events:all}body.RTL div.liveGroupConversation>header button.backbutton{margin-left:0;margin-right:39px}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation>header button.backbutton{margin-left:20px;margin-top:35px}body.RTL div.liveGroupConversation>header button.backbutton{margin-left:0;margin-right:20px}}div.liveGroupConversation>header div.callStatusContainer{margin-top:62px;-ms-grid-column:2;position:relative}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation>header div.callStatusContainer{white-space:normal;margin-top:35px}}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation>header{-ms-grid-columns:80px 1fr}}@media screen and (max-width: 400px){div.liveGroupConversation>header{-ms-grid-columns:60px 1fr;width:calc(100% - 60px)}}div.liveGroupConversation.IMMERSIVE div.logo{display:block}div.liveGroupConversation.IMMERSIVE>header{opacity:0}@media screen and (max-aspect-ratio: 1 / 1){body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.logo{display:none}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN>header{opacity:0}}div.liveGroupConversation{display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr;height:100%;background:-ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%)}div.liveGroupConversation.PARTICIPANTSINITIALIZED{background:-ms-linear-gradient(top, #054359 0%, #043141 12%, #032632 22%, #02171e 41%, #010e12 65%, #010c0f 100%)}div.liveGroupConversation.PARTICIPANTSINITIALIZED div.viewport{opacity:1}div.liveGroupConversation div.ariaLiveContainer{display:none}div.liveGroupConversation div.immersiveFocusStore{opacity:0;pointer-events:none}div.liveGroupConversation div.chatNewMsgNotifContainer{pointer-events:none}div.liveGroupConversation div.participantListPanel{position:absolute;display:none;z-index:1000;max-width:320px;width:100%;height:100%}@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 401px){div.liveGroupConversation div.participantListPanel{max-width:400px}}div.liveGroupConversation div.participantListPanel.VISIBLE{display:block}div.liveGroupConversation div.viewport{display:-ms-grid;opacity:0;-ms-grid-rows:1fr;-ms-grid-columns:1fr}div.liveGroupConversation div.viewport div.gallery div.ribbon{width:calc(100% - 20px);margin:15px 10px 0 10px}body.KEYBOARDUP div.liveGroupConversation div.viewport div.gallery div.ribbon{display:none}div.liveGroupConversation div.viewport div.gallery div.ribbon div.background{padding:0px}div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo{display:none;height:120px}div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo.VISIBLE{display:inline-block}div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo:focus{outline:1px dotted white}div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo div.videoStreamWrapper{display:inline-block;height:120px;width:120px}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation.CHATOPEN div.viewport div.gallery{-ms-grid-rows:1fr 0px 0px}div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream,div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream{background:none !important;max-width:320px;max-height:240px;-ms-grid-column-align:center}div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.avatarCont,div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.avatarCont{width:160px !important;height:160px !important;max-height:none;max-width:none}div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.name{bottom:18px}div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusLabel,div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusLabel{bottom:36px}div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon{font-size:72pt}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream,body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream{width:120px;height:90px}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.avatarCont,body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.avatarCont{width:60px !important;height:60px !important}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.name,body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.name{display:none}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusLabel,body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusLabel{display:none}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon{font-size:72pt}div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation{-ms-grid-column-align:center}div.liveGroupConversation.CHATOPEN div.ribbon{display:none !important}div.liveGroupConversation.CHATOPEN div.myselfVideo{visibility:hidden;opacity:0}}div.liveGroupConversation div.videoStreamWrapper{height:100%}div.liveGroupConversation div.protectionLayer{display:none;height:100%;position:relative;z-index:50;opacity:1;transition:opacity 1s linear;background:url("/images/bgLiveConversationTopProtection.png") repeat-x;pointer-events:none}div.liveGroupConversation div.protectionLayer.galleryProtection{height:250px}@media screen and (max-aspect-ratio: 1 / 1){body.KEYBOARDUP div.liveGroupConversation div.protectionLayer{display:none}}div.liveGroupConversation.LIVE div.myselfVideo{position:relative}div.liveGroupConversation.LIVE div.protectionLayer{display:block}@media screen and (-ms-high-contrast: active){div.liveGroupConversation.LIVE div.protectionLayer{display:none}}div.liveGroupConversation.IMMERSIVE div.protectionLayer{display:none}div.liveGroupConversation.PRELIVE{position:relative}div.liveGroupConversation.PRELIVE div.callAnimationContainer{display:block}div.liveGroupConversation.PRELIVE div.viewport{opacity:0 !important}div.liveGroupConversation.PRELIVE div.viewport div.ribbon div.myselfVideo{position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,0.15);padding:5px}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation.PRELIVE div.viewport div.ribbon div.myselfVideo{bottom:85px}}div.liveGroupConversation div.liveConversationContextualMenu.win-menu button.win-command.HIDDEN{display:none}div.liveGroupConversation div.callAnimationContainer{display:none;width:100%;height:100%;background:-ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%)}div.liveGroupConversation div.callAnimationContainer div.protectionLayer{display:none}div.liveGroupConversation div.centerMessage,div.liveGroupConversation div.sideToSideMessage{-ms-grid-column-align:center;-ms-grid-row-align:center;opacity:0;display:none;transition-timing-function:linear;transition-property:opacity;transition-duration:0.3s;position:relative;z-index:3;text-align:center}div.liveGroupConversation div.centerMessage div.message{position:absolute;bottom:50px;width:60%;left:20%}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.centerMessage div.message{color:window}}div.liveGroupConversation div.centerMessage.videoOffMessage.VISIBLE,div.liveGroupConversation div.centerMessage.muteMessage.VISIBLE{display:block;opacity:1}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.centerMessage{color:highLightText}}div.liveGroupConversation div.centerMessage,div.liveGroupConversation div.sideToSideMessage{color:#fff}div.liveGroupConversation.LIVEHOLDREMOTE div.remotelyOnHoldMessage,div.liveGroupConversation.LIVERECOVERING div.recoveringMessage,div.liveGroupConversation.LIVEHOLDLOCAL div.locallyOnHoldMessage{display:block;opacity:1;z-index:60}div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.stage div.name,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.stage div.participantStatusLabel,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.presentation div.name,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.presentation div.participantStatusLabel,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.roster div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.roster div.name,div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.roster div.participantStatusLabel,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.stage div.name,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.stage div.participantStatusLabel,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.presentation div.name,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.presentation div.participantStatusLabel,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.roster div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.roster div.name,div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.roster div.participantStatusLabel,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.stage div.name,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.stage div.participantStatusLabel,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.presentation div.name,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.presentation div.participantStatusLabel,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.roster div.conversationParticipantStream div.participantStatusIcon,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.roster div.name,div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.roster div.participantStatusLabel{z-index:1}div.liveGroupConversation.LIVEHOLDLOCAL>div.protectionLayer,div.liveGroupConversation.LIVEHOLDREMOTE>div.protectionLayer,div.liveGroupConversation.LIVERECOVERING>div.protectionLayer{display:block !important;opacity:1 !important;background:rgba(0,0,0,0.8) !important;pointer-events:inherit;height:100%}@media screen and (-ms-high-contrast: active){div.liveGroupConversation.LIVEHOLDLOCAL>div.protectionLayer,div.liveGroupConversation.LIVEHOLDREMOTE>div.protectionLayer,div.liveGroupConversation.LIVERECOVERING>div.protectionLayer{display:none !important}}div.liveGroupConversation.LIVEHOLDLOCAL embed.locallyOnHoldImage{pointer-events:none}div.liveGroupConversation div.avatarCont{display:none;max-width:440px;max-height:440px;width:100vw;height:100vw;-ms-grid-column-align:center;-ms-grid-row-align:center}div.liveGroupConversation div.avatarCont div.protectionLayer{background:none}div.liveGroupConversation.fragment:not(.LIVEENDING):not(.ERROR_IN_LIVE) div.viewport:not(.NO_PARTICIPANT) div.groupAvatarCont{display:none !important}div.liveGroupConversation.fragment.ISGROUP div.viewport div.stage{display:-ms-grid;-ms-grid-row-align:center}div.liveGroupConversation.fragment.ISGROUP.LIVEENDING div.viewport div.stage,div.liveGroupConversation.fragment.ISGROUP.ERROR_IN_LIVE div.viewport div.stage{display:none}div.liveGroupConversation.fragment.ISGROUP.LIVEENDING div.viewport div.ribbon,div.liveGroupConversation.fragment.ISGROUP.ERROR_IN_LIVE div.viewport div.ribbon{display:none}/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery,div.liveGroupConversation div.viewport.PINNED div.gallery,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery{display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage,div.liveGroupConversation div.viewport.PINNED div.gallery div.stage,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage{display:-ms-grid;-ms-grid-rows:1fr;height:100%}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.PINNED div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage div.conversationParticipantStream div.name{bottom:15%}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage div.participant div.avatarCont,div.liveGroupConversation div.viewport.PINNED div.gallery div.stage div.participant div.avatarCont,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage div.participant div.avatarCont{max-width:440px;max-height:440px}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage div.participantStatusLabel,div.liveGroupConversation div.viewport.PINNED div.gallery div.stage div.participantStatusLabel,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage div.participantStatusLabel{display:none}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.presentation,div.liveGroupConversation div.viewport.PINNED div.gallery div.presentation,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.presentation{display:none}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon{-ms-grid-row-align:end;-ms-grid-row:1;margin-bottom:10px}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon{margin-bottom:85px}}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background{padding:0px}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.roster,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.roster,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.roster{display:none}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo{float:right;background:rgba(0,0,0,0.15);padding:5px}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo.DOCKEDLEFT,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo.DOCKEDLEFT,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo.DOCKEDLEFT{float:left}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo.DRAGGING,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo.DRAGGING,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo.DRAGGING{position:absolute}div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo.SLOWDOWNTRANSITION,div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo.SLOWDOWNTRANSITION,div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo.SLOWDOWNTRANSITION{transition-timing-function:ease-out;transition-property:left, right, top, bottom;transition-duration:0.3s}div.liveGroupConversation div.viewport.ONE_TO_ONE.SWITCHING div.gallery div.ribbon div.background div.myselfVideo,div.liveGroupConversation div.viewport.PINNED.SWITCHING div.gallery div.ribbon div.background div.myselfVideo,div.liveGroupConversation div.viewport.NO_PARTICIPANT.SWITCHING div.gallery div.ribbon div.background div.myselfVideo{display:inline-block}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.viewport.ONE_TO_ONE.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.ONE_TO_ONE.SWITCHING div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.PINNED.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.PINNED.SWITCHING div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.NO_PARTICIPANT.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream div.name,div.liveGroupConversation div.viewport.NO_PARTICIPANT.SWITCHING div.gallery div.stage div.conversationParticipantStream div.name{bottom:230px}div.liveGroupConversation div.viewport.ONE_TO_ONE.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,div.liveGroupConversation div.viewport.ONE_TO_ONE.SWITCHING div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,div.liveGroupConversation div.viewport.PINNED.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,div.liveGroupConversation div.viewport.PINNED.SWITCHING div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,div.liveGroupConversation div.viewport.NO_PARTICIPANT.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,div.liveGroupConversation div.viewport.NO_PARTICIPANT.SWITCHING div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div{background:rgba(0,0,0,0.5);display:inline-block;max-width:80%}}div.liveGroupConversation:not(.ISGROUP) div.viewport.ONE_TO_ONE div.gallery div.stage div.name{display:none}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream{width:auto}div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream div.name{bottom:58px}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream{width:auto}div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream video{height:240px}body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream video{height:90px}}/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.liveGroupConversation div.viewport.PRESENTATION div.gallery{display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.stage,div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.participantStatusLabel{display:none}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon{-ms-grid-row-align:end;-ms-grid-row:1;margin-bottom:10px}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon{margin-bottom:85px}}@media screen and (max-width: 400px){div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon{margin-left:0;margin-right:0;width:100%}}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background{display:-ms-flexbox;float:right;position:relative}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.roster{display:none}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker{display:none;height:120px;position:relative}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker{border-width:0}}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker div.conversationParticipantStream div.participant{width:120px}div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker div.conversationParticipantStream div.videoParticipant video.videoView{height:120px}div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATIONSPEAKERVISIBLE div.gallery div.ribbon div.background div.presentationSpeaker{display:inline-block}div.liveGroupConversation div.viewport.PRESENTATION.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.PRESENTATION.SWITCHING div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATIONSPEAKERVISIBLE div.gallery div.ribbon div.background{padding:5px;height:120px;background:rgba(0,0,0,0.15)}@media screen and (max-width: 330px){div.liveGroupConversation div.viewport.PRESENTATION.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.PRESENTATION.SWITCHING div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATIONSPEAKERVISIBLE div.gallery div.ribbon div.background{padding:5px 0}}div.liveGroupConversation div.viewport.PRESENTATION.SWITCHING div.gallery div.ribbon div.background div.myselfVideo{display:inline-block}div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATION.PRESENTATIONSPEAKERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before{border-left:5px solid rgba(0,0,0,0.15);margin-top:0;height:100%;width:0px;float:left;content:" ";margin-left:-5px}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATION.PRESENTATIONSPEAKERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before{border-left:none}}/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery{-ms-grid-row-align:center;display:inline-block}body.KEYBOARDUP div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery{margin-top:0}@media screen and (-ms-view-state: fullscreen-landscape){div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery{margin-top:20px}}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.stage{display:-ms-grid;-ms-grid-rows:1fr}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.stage div.conversationParticipantStream{background:-ms-linear-gradient(bottom left, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.05) 100%)}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.stage div.conversationParticipantStream div.avatarCont{width:100%;height:100%}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.presentation{display:none}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon{display:-ms-flexbox;height:0px;transition:height 1s;transition-delay:1s;justify-content:flex-end}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon{margin:15px 0 0 0;width:calc(100% + 5px);margin-left:-5px}}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon div.background{display:-ms-flexbox}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon div.background div.roster{white-space:nowrap;-ms-overflow-style:-ms-autohiding-scrollbar;overflow-x:auto;font-size:0;line-height:0}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon div.background div.roster .conversationParticipantStream{width:120px;display:inline-block}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.SWITCHING div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ROSTERVISIBLE div.gallery div.ribbon div.background{padding:5px;height:120px;background:rgba(0,0,0,0.15)}@media screen and (max-aspect-ratio: 1 / 1){div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.SWITCHING div.gallery div.ribbon div.background,div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ROSTERVISIBLE div.gallery div.ribbon div.background{padding-right:0}}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.SWITCHING div.gallery div.ribbon div.background div.myselfVideo{display:inline-block}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ROSTERVISIBLE div.gallery div.ribbon,div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.MYSELFVIDEOVISIBLE div.gallery div.ribbon{height:130px}div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ALL_PARTICIPANTS.ROSTERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before{border-left:5px solid rgba(0,0,0,0.15);margin-top:0;height:100%;width:0px;float:left;content:" ";margin-left:-5px}@media screen and (-ms-high-contrast: active){div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ALL_PARTICIPANTS.ROSTERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before{border-left:none}}
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.liveGroupConversation div.bottomHolder {
+    -ms-grid-row-align: end;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto auto;
+    margin-bottom: 20px
+}
+
+div.liveGroupConversation div.bottomHolder div.actions {
+    display: none;
+    -ms-grid-row: 2;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.bottomHolder div.actions {
+        margin-bottom: 15px
+    }
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button {
+    padding: 0;
+    min-height: 0;
+    min-width: 0;
+    font-weight: normal;
+    border: 0;
+    font-family: "Skype UI Symbol" !important;
+    font-weight: normal;
+    font-size: 40px;
+    background-color: #00aff0;
+    color: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: normal;
+    text-align: center;
+    position: relative;
+    z-index: 100;
+    height: 60px;
+    width: 60px;
+    margin: 0px 18px;
+    font-size: 60px;
+    opacity: .9;
+    border-color: #fff;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #00aff0
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.bottomHolder div.actions button {
+        box-sizing: content-box;
+        background-color: ButtonFace;
+        color: ButtonText;
+        border: 2px solid ButtonText
+    }
+    div.liveGroupConversation div.bottomHolder div.actions button:hover:not([disabled]) {
+        background-color: Highlight;
+        color: HighlightText
+    }
+    div.liveGroupConversation div.bottomHolder div.actions button[disabled] {
+        border-color: GrayText;
+        color: GrayText
+    }
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.HIDDEN {
+    display: none
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button:hover {
+    background-color: rgba(0, 157, 216, 0.8)
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.bottomHolder div.actions button:hover {
+        background-color: Highlight;
+        color: window
+    }
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button:active {
+    background-color: #007aa8
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.answer,
+div.liveGroupConversation div.bottomHolder div.actions button.answerVideo {
+    background-color: #7fba00
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.answer:hover,
+div.liveGroupConversation div.bottomHolder div.actions button.answerVideo:hover {
+    background-color: #7fba00
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.answer:active,
+div.liveGroupConversation div.bottomHolder div.actions button.answerVideo:active {
+    background-color: #598200
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.hangUp {
+    background-color: #e81123
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.hangUp:hover {
+    background-color: #d00f1f
+}
+
+div.liveGroupConversation div.bottomHolder div.actions button.hangUp:active {
+    background-color: #a20c18
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.bottomHolder div.actions button {
+        margin: 0px 13px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.liveGroupConversation div.bottomHolder div.actions button {
+        height: 40px;
+        width: 40px;
+        margin: 0px 8px;
+        font-size: 40px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.bottomHolder {
+        margin-bottom: 0px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.bottomHolder div.actions {
+        display: none
+    }
+    div.liveGroupConversation.CHATOPEN div.bottomHolder div.actions button {
+        height: 40px;
+        width: 40px;
+        margin: 0px 8px;
+        font-size: 40px
+    }
+}
+
+div.liveGroupConversation.VIDEOCALL div.actionButtons button {
+    background-color: rgba(0, 175, 240, 0.85)
+}
+
+div.liveGroupConversation.VIDEOCALL div.actionButtons button.hangUp {
+    background-color: rgba(232, 17, 35, 0.85)
+}
+
+body.LOCKSCREEN div.liveGroupConversation div.bottomHolder,
+body.LOCKSCREEN div.liveGroupConversation button.backbutton,
+div.liveGroupConversation.IMMERSIVE div.bottomHolder {
+    opacity: 0;
+    pointer-events: none
+}
+
+div.liveGroupConversation.LIVEHOLDLOCAL div.bottomHolder div.actions,
+div.liveGroupConversation.LIVEHOLDREMOTE div.bottomHolder div.actions,
+div.liveGroupConversation.LIVE div.bottomHolder div.actions,
+div.liveGroupConversation.PRELIVE div.bottomHolder div.actions {
+    display: block
+}
+
+div.liveGroupConversation.LIVEHOLDLOCAL div.bottomHolder div.actions>button.camera,
+div.liveGroupConversation.LIVEHOLDREMOTE div.bottomHolder div.actions>button.camera,
+div.liveGroupConversation.LIVEHOLDLOCAL div.bottomHolder div.actions>button.mute,
+div.liveGroupConversation.LIVEHOLDREMOTE div.bottomHolder div.actions>button.mute {
+    z-index: 49
+}
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.liveGroupConversation div.logo {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url("/images/immersive_logo_274x180.png");
+    width: 274px;
+    height: 180px;
+    z-index: 999
+}
+
+body.RTL div.liveGroupConversation div.logo {
+    left: auto;
+    right: 0
+}
+
+@media screen and (min-height: 999px) {
+    div.liveGroupConversation div.logo {
+        background: url("/images/immersive_logo_274x180.png");
+        width: 274px;
+        height: 180px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.logo {
+        background: url("/images/immersive_logo_155x108.png");
+        width: 155px;
+        height: 108px
+    }
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.logo {
+        -ms-high-contrast-adjust: none
+    }
+}
+
+div.liveGroupConversation>header {
+    position: absolute;
+    color: #fff;
+    width: calc(100% - 80px);
+    height: 120px;
+    overflow: hidden;
+    left: 0;
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 100px 1fr;
+    -ms-grid-rows: 1fr;
+    overflow: visible;
+    line-height: normal;
+    z-index: 51;
+    pointer-events: none
+}
+
+body.RTL div.liveGroupConversation>header {
+    left: auto;
+    right: 0
+}
+
+div.liveGroupConversation>header button.backbutton {
+    -ms-grid-column: 1;
+    margin-left: 39px;
+    margin-top: 59px;
+    pointer-events: all
+}
+
+body.RTL div.liveGroupConversation>header button.backbutton {
+    margin-left: 0;
+    margin-right: 39px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation>header button.backbutton {
+        margin-left: 20px;
+        margin-top: 35px
+    }
+    body.RTL div.liveGroupConversation>header button.backbutton {
+        margin-left: 0;
+        margin-right: 20px
+    }
+}
+
+div.liveGroupConversation>header div.callStatusContainer {
+    margin-top: 62px;
+    -ms-grid-column: 2;
+    position: relative
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation>header div.callStatusContainer {
+        white-space: normal;
+        margin-top: 35px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation>header {
+        -ms-grid-columns: 80px 1fr
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.liveGroupConversation>header {
+        -ms-grid-columns: 60px 1fr;
+        width: calc(100% - 60px)
+    }
+}
+
+div.liveGroupConversation.IMMERSIVE div.logo {
+    display: block
+}
+
+div.liveGroupConversation.IMMERSIVE>header {
+    opacity: 0
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.logo {
+        display: none
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN>header {
+        opacity: 0
+    }
+}
+
+div.liveGroupConversation {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    height: 100%;
+    background: -ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%)
+}
+
+div.liveGroupConversation.PARTICIPANTSINITIALIZED {
+    background: -ms-linear-gradient(top, #054359 0%, #043141 12%, #032632 22%, #02171e 41%, #010e12 65%, #010c0f 100%)
+}
+
+div.liveGroupConversation.PARTICIPANTSINITIALIZED div.viewport {
+    opacity: 1
+}
+
+div.liveGroupConversation div.ariaLiveContainer {
+    display: none
+}
+
+div.liveGroupConversation div.immersiveFocusStore {
+    opacity: 0;
+    pointer-events: none
+}
+
+div.liveGroupConversation div.chatNewMsgNotifContainer {
+    pointer-events: none
+}
+
+div.liveGroupConversation div.participantListPanel {
+    position: absolute;
+    display: none;
+    z-index: 1000;
+    max-width: 320px;
+    width: 100%;
+    height: 100%
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 401px) {
+    div.liveGroupConversation div.participantListPanel {
+        max-width: 400px
+    }
+}
+
+div.liveGroupConversation div.participantListPanel.VISIBLE {
+    display: block
+}
+
+div.liveGroupConversation div.viewport {
+    display: -ms-grid;
+    opacity: 0;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr
+}
+
+div.liveGroupConversation div.viewport div.gallery div.ribbon {
+    width: calc(100% - 20px);
+    margin: 15px 10px 0 10px
+}
+
+body.KEYBOARDUP div.liveGroupConversation div.viewport div.gallery div.ribbon {
+    display: none
+}
+
+div.liveGroupConversation div.viewport div.gallery div.ribbon div.background {
+    padding: 0px
+}
+
+div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo {
+    display: none;
+    height: 120px
+}
+
+div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo.VISIBLE {
+    display: inline-block
+}
+
+div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo:focus {
+    outline: 1px dotted white
+}
+
+div.liveGroupConversation div.viewport div.gallery div.ribbon div.background div.myselfVideo div.videoStreamWrapper {
+    display: inline-block;
+    height: 120px;
+    width: 120px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery {
+        -ms-grid-rows: 1fr 0px 0px
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream,
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream {
+        background: none !important;
+        max-width: 320px;
+        max-height: 240px;
+        -ms-grid-column-align: center
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.avatarCont,
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.avatarCont {
+        width: 160px !important;
+        height: 160px !important;
+        max-height: none;
+        max-width: none
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.name,
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.name {
+        bottom: 18px
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusLabel,
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusLabel {
+        bottom: 36px
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon {
+        font-size: 72pt
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream,
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream {
+        width: 120px;
+        height: 90px
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.avatarCont,
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.avatarCont {
+        width: 60px !important;
+        height: 60px !important
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.name,
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.name {
+        display: none
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusLabel,
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusLabel {
+        display: none
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon {
+        font-size: 72pt
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport div.gallery div.presentation {
+        -ms-grid-column-align: center
+    }
+    div.liveGroupConversation.CHATOPEN div.ribbon {
+        display: none !important
+    }
+    div.liveGroupConversation.CHATOPEN div.myselfVideo {
+        visibility: hidden;
+        opacity: 0
+    }
+}
+
+div.liveGroupConversation div.videoStreamWrapper {
+    height: 100%
+}
+
+div.liveGroupConversation div.protectionLayer {
+    display: none;
+    height: 100%;
+    position: relative;
+    z-index: 50;
+    opacity: 1;
+    transition: opacity 1s linear;
+    background: url("/images/bgLiveConversationTopProtection.png") repeat-x;
+    pointer-events: none
+}
+
+div.liveGroupConversation div.protectionLayer.galleryProtection {
+    height: 250px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.KEYBOARDUP div.liveGroupConversation div.protectionLayer {
+        display: none
+    }
+}
+
+div.liveGroupConversation.LIVE div.myselfVideo {
+    position: relative
+}
+
+div.liveGroupConversation.LIVE div.protectionLayer {
+    display: block
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation.LIVE div.protectionLayer {
+        display: none
+    }
+}
+
+div.liveGroupConversation.IMMERSIVE div.protectionLayer {
+    display: none
+}
+
+div.liveGroupConversation.PRELIVE {
+    position: relative
+}
+
+div.liveGroupConversation.PRELIVE div.callAnimationContainer {
+    display: block
+}
+
+div.liveGroupConversation.PRELIVE div.viewport {
+    opacity: 0 !important
+}
+
+div.liveGroupConversation.PRELIVE div.viewport div.ribbon div.myselfVideo {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 5px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation.PRELIVE div.viewport div.ribbon div.myselfVideo {
+        bottom: 85px
+    }
+}
+
+div.liveGroupConversation div.liveConversationContextualMenu.win-menu button.win-command.HIDDEN {
+    display: none
+}
+
+div.liveGroupConversation div.callAnimationContainer {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: -ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%)
+}
+
+div.liveGroupConversation div.callAnimationContainer div.protectionLayer {
+    display: none
+}
+
+div.liveGroupConversation div.centerMessage,
+div.liveGroupConversation div.sideToSideMessage {
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    opacity: 0;
+    display: none;
+    transition-timing-function: linear;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+    position: relative;
+    z-index: 3;
+    text-align: center
+}
+
+div.liveGroupConversation div.centerMessage div.message {
+    position: absolute;
+    bottom: 50px;
+    width: 60%;
+    left: 20%
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.centerMessage div.message {
+        color: window
+    }
+}
+
+div.liveGroupConversation div.centerMessage.videoOffMessage.VISIBLE,
+div.liveGroupConversation div.centerMessage.muteMessage.VISIBLE {
+    display: block;
+    opacity: 1
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.centerMessage {
+        color: highLightText
+    }
+}
+
+div.liveGroupConversation div.centerMessage,
+div.liveGroupConversation div.sideToSideMessage {
+    color: #fff
+}
+
+div.liveGroupConversation.LIVEHOLDREMOTE div.remotelyOnHoldMessage,
+div.liveGroupConversation.LIVERECOVERING div.recoveringMessage,
+div.liveGroupConversation.LIVEHOLDLOCAL div.locallyOnHoldMessage {
+    display: block;
+    opacity: 1;
+    z-index: 60
+}
+
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.stage div.name,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.stage div.participantStatusLabel,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.presentation div.name,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.presentation div.participantStatusLabel,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.roster div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.roster div.name,
+div.liveGroupConversation.LIVEHOLDREMOTE div.viewport div.gallery div.roster div.participantStatusLabel,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.stage div.name,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.stage div.participantStatusLabel,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.presentation div.name,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.presentation div.participantStatusLabel,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.roster div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.roster div.name,
+div.liveGroupConversation.LIVERECOVERING div.viewport div.gallery div.roster div.participantStatusLabel,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.stage div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.stage div.name,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.stage div.participantStatusLabel,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.presentation div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.presentation div.name,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.presentation div.participantStatusLabel,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.roster div.conversationParticipantStream div.participantStatusIcon,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.roster div.name,
+div.liveGroupConversation.LIVEHOLDLOCAL div.viewport div.gallery div.roster div.participantStatusLabel {
+    z-index: 1
+}
+
+div.liveGroupConversation.LIVEHOLDLOCAL>div.protectionLayer,
+div.liveGroupConversation.LIVEHOLDREMOTE>div.protectionLayer,
+div.liveGroupConversation.LIVERECOVERING>div.protectionLayer {
+    display: block !important;
+    opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    pointer-events: inherit;
+    height: 100%
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation.LIVEHOLDLOCAL>div.protectionLayer,
+    div.liveGroupConversation.LIVEHOLDREMOTE>div.protectionLayer,
+    div.liveGroupConversation.LIVERECOVERING>div.protectionLayer {
+        display: none !important
+    }
+}
+
+div.liveGroupConversation.LIVEHOLDLOCAL embed.locallyOnHoldImage {
+    pointer-events: none
+}
+
+div.liveGroupConversation div.avatarCont {
+    display: none;
+    max-width: 440px;
+    max-height: 440px;
+    width: 100vw;
+    height: 100vw;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+
+div.liveGroupConversation div.avatarCont div.protectionLayer {
+    background: none
+}
+
+div.liveGroupConversation.fragment:not(.LIVEENDING):not(.ERROR_IN_LIVE) div.viewport:not(.NO_PARTICIPANT) div.groupAvatarCont {
+    display: none !important
+}
+
+div.liveGroupConversation.fragment.ISGROUP div.viewport div.stage {
+    display: -ms-grid;
+    -ms-grid-row-align: center
+}
+
+div.liveGroupConversation.fragment.ISGROUP.LIVEENDING div.viewport div.stage,
+div.liveGroupConversation.fragment.ISGROUP.ERROR_IN_LIVE div.viewport div.stage {
+    display: none
+}
+
+div.liveGroupConversation.fragment.ISGROUP.LIVEENDING div.viewport div.ribbon,
+div.liveGroupConversation.fragment.ISGROUP.ERROR_IN_LIVE div.viewport div.ribbon {
+    display: none
+}
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery,
+div.liveGroupConversation div.viewport.PINNED div.gallery,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.stage,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    height: 100%
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream div.name,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.stage div.conversationParticipantStream div.name,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage div.conversationParticipantStream div.name {
+    bottom: 15%
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage div.participant div.avatarCont,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.stage div.participant div.avatarCont,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage div.participant div.avatarCont {
+    max-width: 440px;
+    max-height: 440px
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.stage div.participantStatusLabel,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.stage div.participantStatusLabel,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.stage div.participantStatusLabel {
+    display: none
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.presentation,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.presentation,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.presentation {
+    display: none
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon {
+    -ms-grid-row-align: end;
+    -ms-grid-row: 1;
+    margin-bottom: 10px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon,
+    div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon,
+    div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon {
+        margin-bottom: 85px
+    }
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background {
+    padding: 0px
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.roster,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.roster,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.roster {
+    display: none
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo {
+    float: right;
+    background: rgba(0, 0, 0, 0.15);
+    padding: 5px
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo.DOCKEDLEFT,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo.DOCKEDLEFT,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo.DOCKEDLEFT {
+    float: left
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo.DRAGGING,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo.DRAGGING,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo.DRAGGING {
+    position: absolute
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE div.gallery div.ribbon div.background div.myselfVideo.SLOWDOWNTRANSITION,
+div.liveGroupConversation div.viewport.PINNED div.gallery div.ribbon div.background div.myselfVideo.SLOWDOWNTRANSITION,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT div.gallery div.ribbon div.background div.myselfVideo.SLOWDOWNTRANSITION {
+    transition-timing-function: ease-out;
+    transition-property: left, right, top, bottom;
+    transition-duration: 0.3s
+}
+
+div.liveGroupConversation div.viewport.ONE_TO_ONE.SWITCHING div.gallery div.ribbon div.background div.myselfVideo,
+div.liveGroupConversation div.viewport.PINNED.SWITCHING div.gallery div.ribbon div.background div.myselfVideo,
+div.liveGroupConversation div.viewport.NO_PARTICIPANT.SWITCHING div.gallery div.ribbon div.background div.myselfVideo {
+    display: inline-block
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.viewport.ONE_TO_ONE.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream div.name,
+    div.liveGroupConversation div.viewport.ONE_TO_ONE.SWITCHING div.gallery div.stage div.conversationParticipantStream div.name,
+    div.liveGroupConversation div.viewport.PINNED.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream div.name,
+    div.liveGroupConversation div.viewport.PINNED.SWITCHING div.gallery div.stage div.conversationParticipantStream div.name,
+    div.liveGroupConversation div.viewport.NO_PARTICIPANT.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream div.name,
+    div.liveGroupConversation div.viewport.NO_PARTICIPANT.SWITCHING div.gallery div.stage div.conversationParticipantStream div.name {
+        bottom: 230px
+    }
+    div.liveGroupConversation div.viewport.ONE_TO_ONE.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,
+    div.liveGroupConversation div.viewport.ONE_TO_ONE.SWITCHING div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,
+    div.liveGroupConversation div.viewport.PINNED.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,
+    div.liveGroupConversation div.viewport.PINNED.SWITCHING div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,
+    div.liveGroupConversation div.viewport.NO_PARTICIPANT.MYSELFVIDEOVISIBLE div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div,
+    div.liveGroupConversation div.viewport.NO_PARTICIPANT.SWITCHING div.gallery div.stage div.conversationParticipantStream:not(.VIDEOISVISIBLE):not(.ONHOLD):not(.ISENDING) div.name div {
+        background: rgba(0, 0, 0, 0.5);
+        display: inline-block;
+        max-width: 80%
+    }
+}
+
+div.liveGroupConversation:not(.ISGROUP) div.viewport.ONE_TO_ONE div.gallery div.stage div.name {
+    display: none
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream {
+        width: auto
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream div.name {
+        bottom: 58px
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream {
+        width: auto
+    }
+    div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream video {
+        height: 240px
+    }
+    body.KEYBOARDUP div.liveGroupConversation.CHATOPEN div.viewport.ONE_TO_ONE div.gallery div.stage div.conversationParticipantStream video {
+        height: 90px
+    }
+}
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.stage,
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.participantStatusLabel {
+    display: none
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon {
+    -ms-grid-row-align: end;
+    -ms-grid-row: 1;
+    margin-bottom: 10px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon {
+        margin-bottom: 85px
+    }
+}
+
+@media screen and (max-width: 400px) {
+    div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%
+    }
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background {
+    display: -ms-flexbox;
+    float: right;
+    position: relative
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.roster {
+    display: none
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker {
+    display: none;
+    height: 120px;
+    position: relative
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker {
+        border-width: 0
+    }
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker div.conversationParticipantStream div.participant {
+    width: 120px
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION div.gallery div.ribbon div.background div.presentationSpeaker div.conversationParticipantStream div.videoParticipant video.videoView {
+    height: 120px
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATIONSPEAKERVISIBLE div.gallery div.ribbon div.background div.presentationSpeaker {
+    display: inline-block
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,
+div.liveGroupConversation div.viewport.PRESENTATION.SWITCHING div.gallery div.ribbon div.background,
+div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATIONSPEAKERVISIBLE div.gallery div.ribbon div.background {
+    padding: 5px;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.15)
+}
+
+@media screen and (max-width: 330px) {
+    div.liveGroupConversation div.viewport.PRESENTATION.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,
+    div.liveGroupConversation div.viewport.PRESENTATION.SWITCHING div.gallery div.ribbon div.background,
+    div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATIONSPEAKERVISIBLE div.gallery div.ribbon div.background {
+        padding: 5px 0
+    }
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION.SWITCHING div.gallery div.ribbon div.background div.myselfVideo {
+    display: inline-block
+}
+
+div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATION.PRESENTATIONSPEAKERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before {
+    border-left: 5px solid rgba(0, 0, 0, 0.15);
+    margin-top: 0;
+    height: 100%;
+    width: 0px;
+    float: left;
+    content: " ";
+    margin-left: -5px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.viewport.PRESENTATION.PRESENTATION.PRESENTATIONSPEAKERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before {
+        border-left: none
+    }
+}
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery {
+    -ms-grid-row-align: center;
+    display: inline-block
+}
+
+body.KEYBOARDUP div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery {
+    margin-top: 0
+}
+
+@media screen and (-ms-view-state: fullscreen-landscape) {
+    div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery {
+        margin-top: 20px
+    }
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.stage {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.stage div.conversationParticipantStream {
+    background: -ms-linear-gradient(bottom left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.05) 100%)
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.stage div.conversationParticipantStream div.avatarCont {
+    width: 100%;
+    height: 100%
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.presentation {
+    display: none
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon {
+    display: -ms-flexbox;
+    height: 0px;
+    transition: height 1s;
+    transition-delay: 1s;
+    justify-content: flex-end
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon {
+        margin: 15px 0 0 0;
+        width: calc(100% + 5px);
+        margin-left: -5px
+    }
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon div.background {
+    display: -ms-flexbox
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon div.background div.roster {
+    white-space: nowrap;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    overflow-x: auto;
+    font-size: 0;
+    line-height: 0
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS div.gallery div.ribbon div.background div.roster .conversationParticipantStream {
+    width: 120px;
+    display: inline-block
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.SWITCHING div.gallery div.ribbon div.background,
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ROSTERVISIBLE div.gallery div.ribbon div.background {
+    padding: 5px;
+    height: 120px;
+    background: rgba(0, 0, 0, 0.15)
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background,
+    div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.SWITCHING div.gallery div.ribbon div.background,
+    div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ROSTERVISIBLE div.gallery div.ribbon div.background {
+        padding-right: 0
+    }
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.SWITCHING div.gallery div.ribbon div.background div.myselfVideo {
+    display: inline-block
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ROSTERVISIBLE div.gallery div.ribbon,
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.MYSELFVIDEOVISIBLE div.gallery div.ribbon {
+    height: 130px
+}
+
+div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ALL_PARTICIPANTS.ROSTERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before {
+    border-left: 5px solid rgba(0, 0, 0, 0.15);
+    margin-top: 0;
+    height: 100%;
+    width: 0px;
+    float: left;
+    content: " ";
+    margin-left: -5px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.liveGroupConversation div.viewport.ALL_PARTICIPANTS.ALL_PARTICIPANTS.ROSTERVISIBLE.MYSELFVIDEOVISIBLE div.gallery div.ribbon div.background div.myselfVideo::before {
+        border-left: none
+    }
+}

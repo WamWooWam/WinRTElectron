@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Provider unit test page</title>
+    <meta charset="UTF-8" />
+
+    <!-- Tx -->
+    <script src="/Tx/core/TxLoader.js"></script>
+    <link rel="stylesheet" href="/Tx/ui/tx.css">
+
+    <!-- Jx -->
+    <script src="/Jx/Jx.js"></script>
+
+    <!-- WinJS -->
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+
+    <!-- Calendar -->
+    <script src="/ModernCalendar/common/common.js"></script>
+    <script src="/ModernCalendar/views/helpers/data.js"></script>
+    <script src="/ModernCalendar/views/helpers/helpers.js"></script>
+    <script src="/ModernCalendar/views/eventdetails/calendarselector.js"></script>
+    <script src="/ModernCalendar/views/provider/providerconverter.js"></script>
+    <script src="/ModernCalendar/views/provider/providerpage.js"></script>
+    <script src="/ModernCalendar/views/provider/providermodel.js"></script>
+    <script src="/ModernCalendar/views/provider/providereventview.js"></script>
+
+    <!-- mock -->
+    <script src="/ModernCalendar/ut/mock/mock.js"></script>
+    <script src="/ModernCalendar/ut/mock/accountmanager.js"></script>
+    <script src="/ModernCalendar/ut/mock/calendar.js"></script>
+    <script src="/ModernCalendar/ut/mock/calendarcollection.js"></script>
+    <script src="/ModernCalendar/ut/mock/calendarmanager.js"></script>
+    <script src="/ModernCalendar/ut/mock/event.js"></script>
+    <script src="/ModernCalendar/ut/mock/eventcollection.js"></script>
+    <script src="/ModernCalendar/ut/mock/eventinstance.js"></script>
+    <script src="/ModernCalendar/ut/mock/eventoccurrence.js"></script>
+    <script src="/ModernCalendar/ut/mock/freebusyrequest.js"></script>
+    <script src="/ModernCalendar/ut/mock/platform.js"></script>
+
+    <!-- UT helper -->
+    <script src="TestHelpers.js"></script>
+    <script src="ProviderUTHelper.js"></script>
+    <script>
+        // required to use libShared, which is included for BVT.marks.
+        BVT = window.BVT || {}; 
+    </script>
+    <script src="/ModernShared/uibvt/libShared.js"></script>
+
+    <!-- UTs -->
+    <script src="utProviderEndToEnd.js"></script>
+
+    <script>
+        window.onload = function () {
+            Tx.run();
+        }
+    </script>
+</head>
+<body>
+    <div id="providerRoot"></div>
+    <div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

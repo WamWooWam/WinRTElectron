@@ -27,12 +27,14 @@ import { IVector } from "winrt/Windows/Foundation/Collections/IVector`1";
 import { IClosable } from "winrt/Windows/Foundation/IClosable";
 import { Enumerable } from "winrt/Windows/Foundation/Interop/Enumerable";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
-import { TextChannel } from "discord.js"
 import { PROPKEY } from "./PROPKEY";
+import { WrSkyLib } from "./WrSkyLib";
+import { Vector } from "winrt/Windows/Foundation/Interop/Vector`1";
+import { TextChannel } from "discord.js"
 
 @GenerateShim('LibWrap.Conversation')
 export class Conversation implements IClosable {
-    participants: IVector<any> = null;
+    participants: IVector<any> = new Vector();
     partnerContact: Contact = null;
     partner: Participant = null;
     myself: Participant = null;
@@ -155,35 +157,37 @@ export class Conversation implements IClosable {
     static setupkey_ENABLE_EXTERNAL_CONTACTS: string = 'Lib/Contacts/EnableExternalContacts';
     static setupkey_ENABLE_BIRTHDAY_NOTIFICATION: string = 'Lib/Conversation/EnableBirthday';
 
-    private id: number;
-    private channel: TextChannel;
+    private __id: number;
+    private __channel: TextChannel;
     constructor(channel: TextChannel, id: number) {
-        this.id = id;
-        this.channel = channel;
+        this.__id = id;
+        this.__channel = channel;
+        this.myself = new Participant(WrSkyLib.getInstance().myself);
+        this.participants.append(this.myself);
     }
 
     getChatname(): string {
-        return `#${this.channel.name}`
+        return `#${this.__channel.name}`
     }
 
     getObjectID(): number {
-        return this.id
+        return this.__id
     }
 
     getDbID(): number {
-        return this.id
+        return this.__id
     }
 
     getIdentity(): string {
-        return "channel_" + this.channel.id;
+        return "channel_" + this.__channel.id;
     }
 
     getDisplayNameHtml(): string {
-        return `#<b>${this.channel.name}</b>`;
+        return `#<b>${this.__channel.name}</b>`;
     }
 
     getTopicHtml(): string {
-        return this.channel.topic;
+        return this.__channel.topic;
     }
 
     getStrProperty(propKey: number): string {
@@ -207,25 +211,23 @@ export class Conversation implements IClosable {
     }
 
     getIntProperty(propKey: number): number {
-        for (const key of Object.keys(PROPKEY)) {
-            if (PROPKEY[key] == propKey) {
-                console.warn("int PROPKEY." + key);
-            }
+        switch (propKey) {
+            case PROPKEY.conversation_TYPE:
+                return Conversation.type_CONFERENCE;
+            case PROPKEY.conversation_IS_P2P_MIGRATED:
+                return 1;
+            case PROPKEY.conversation_LOCAL_LIVESTATUS:
+                return Conversation.local_LIVESTATUS_RECENTLY_LIVE;
+            case PROPKEY.conversation_PINNED_ORDER:
+                return 0;
+            default:
+                for (const key of Object.keys(PROPKEY)) {
+                    if (PROPKEY[key] == propKey) {
+                        console.warn("int PROPKEY." + key);
+                    }
+                }
+                return 0;
         }
-
-        if (propKey == PROPKEY.conversation_LOCAL_LIVESTATUS) {
-            return Conversation.local_LIVESTATUS_OTHERS_ARE_LIVE;
-        }
-
-        if (propKey == PROPKEY.conversation_TYPE) {
-            return Conversation.type_CONFERENCE;
-        }
-
-        if (propKey == PROPKEY.conversation_PINNED_ORDER) {
-            return 0;
-        }
-
-        return 0;
     }
 
     setExtendedStrProperty(propKey: number, value: string): void {
@@ -241,7 +243,37 @@ export class Conversation implements IClosable {
         throw new Error('Conversation#my_STATUSToString not implemented')
     }
     static local_LIVESTATUSToString(val: number): string {
-        throw new Error('Conversation#local_LIVESTATUSToString not implemented')
+        // throw new Error('Conversation#local_LIVESTATUSToString not implemented')
+        switch (val) {
+            case this.local_LIVESTATUS_ACTIVATING:
+                return "LIVESTATUS_ACTIVATING";
+            case this.local_LIVESTATUS_TRANSFERRING:
+                return "LIVESTATUS_TRANSFERRING";
+            case this.local_LIVESTATUS_RECENTLY_LIVE:
+                return "LIVESTATUS_RECENTLY_LIVE";
+            case this.local_LIVESTATUS_RECORDING_VOICE_MESSAGE:
+                return "LIVESTATUS_RECORDING_VOICE_MESSAGE";
+            case this.local_LIVESTATUS_PLAYING_VOICE_MESSAGE:
+                return "LIVESTATUS_PLAYING_VOICE_MESSAGE";
+            case this.local_LIVESTATUS_OTHERS_ARE_LIVE_FULL:
+                return "LIVESTATUS_OTHERS_ARE_LIVE_FULL";
+            case this.local_LIVESTATUS_OTHERS_ARE_LIVE:
+                return "LIVESTATUS_OTHERS_ARE_LIVE";
+            case this.local_LIVESTATUS_ON_HOLD_REMOTELY:
+                return "LIVESTATUS_ON_HOLD_REMOTELY";
+            case this.local_LIVESTATUS_ON_HOLD_LOCALLY:
+                return "LIVESTATUS_ON_HOLD_LOCALLY";
+            case this.local_LIVESTATUS_IM_LIVE:
+                return "LIVESTATUS_IM_LIVE";
+            case this.local_LIVESTATUS_RINGING_FOR_ME:
+                return "LIVESTATUS_RINGING_FOR_ME";
+            case this.local_LIVESTATUS_STARTING:
+                return "LIVESTATUS_STARTING";
+            case this.local_LIVESTATUS_NONE:
+                return "LIVESTATUS_NONE";
+        }
+
+        return "LIVESTATUS_UNKNOWN";
     }
     static allowed_ACTIVITYToString(val: number): string {
         throw new Error('Conversation#allowed_ACTIVITYToString not implemented')
@@ -319,7 +351,8 @@ export class Conversation implements IClosable {
         throw new Error('Conversation#provideLiveSessionQualityFeedback not implemented')
     }
     setMyTextStatusTo(status: number): boolean {
-        throw new Error('Conversation#setMyTextStatusTo not implemented')
+        // throw new Error('Conversation#setMyTextStatusTo not implemented')
+        return true;
     }
     postText(text: string, isXML: boolean): number {
         throw new Error('Conversation#postText not implemented')
@@ -391,7 +424,8 @@ export class Conversation implements IClosable {
         throw new Error('Conversation#addToInbox not implemented')
     }
     setConsumedHorizon(timestamp: number, also_unconsume: boolean): boolean {
-        throw new Error('Conversation#setConsumedHorizon not implemented')
+        // throw new Error('Conversation#setConsumedHorizon not implemented')
+        return true;
     }
     markUnread(): boolean {
         throw new Error('Conversation#markUnread not implemented')
@@ -413,6 +447,7 @@ export class Conversation implements IClosable {
     }
     getParticipants(participants: VectUnsignedInt, filter: number): void {
         console.warn('Conversation#getParticipants not implemented')
+        participants.append(parseInt(WrSkyLib.getInstance().client.user.id))
     }
     getLastMessages(contextMessages: VectUnsignedInt, unconsumedMessages: VectUnsignedInt, requireTimestamp: number): void {
         console.warn('Conversation#getLastMessages not implemented')
@@ -430,10 +465,18 @@ export class Conversation implements IClosable {
         throw new Error('Conversation#list_TYPEToString not implemented')
     }
     static capabilitytoString(val: number): string {
-        throw new Error('Conversation#capabilitytoString not implemented')
+        // throw new Error('Conversation#capabilitytoString not implemented')
+        return "capability;"
     }
     getCapabilities(): VectBool {
-        throw new Error('Conversation#getCapabilities not implemented')
+        // throw new Error('Conversation#getCapabilities not implemented')
+
+        let vect = new VectBool();
+        for (let i = 0; i < Conversation.capability_CAPABILITY_COUNT; i++) {
+            vect.append(true)
+        }
+
+        return vect;
     }
     static subscription_CHECK_CONTEXTToString(val: number): string {
         throw new Error('Conversation#subscription_CHECK_CONTEXTToString not implemented')
@@ -442,10 +485,12 @@ export class Conversation implements IClosable {
         throw new Error('Conversation#checkPremiumVideoSubscription not implemented')
     }
     getChatNameFromThreadId(): string {
-        throw new Error('Conversation#getChatNameFromThreadId not implemented')
+        // throw new Error('Conversation#getChatNameFromThreadId not implemented')
+        return this.__channel.name;
     }
     getThreadIdFromChatName(): string {
-        throw new Error('Conversation#getThreadIdFromChatName not implemented')
+        //throw new Error('Conversation#getThreadIdFromChatName not implemented')
+        return this.__channel.id;
     }
     subscribePropChanges(propKeys: IVector<number>): void {
         console.warn('Conversation#subscribePropChanges not implemented')

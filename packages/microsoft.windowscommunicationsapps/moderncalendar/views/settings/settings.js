@@ -1,1 +1,344 @@
-﻿Jx.delayDefine(Calendar.Views,"Settings",function(){function o(n){return{name:n.name,isDefault:n.isDefault,calendarPlatform:n}}function s(n,t){var i=t.disabled=!t.disabled;t.style.color=i?e:parseInt(t.value,10);t.disabled=i;n.hidden=i;n.commit()}function h(n,t){n.color=t.value;t.style.color=parseInt(t.value,10);n.commit()}function c(n,t,i){i.keyCode===Jx.KeyCode.rightarrow?(n.checked||(n.checked=true,t()),i.stopPropagation()):i.keyCode===Jx.KeyCode.leftarrow&&(n.checked&&(n.checked=false,t()),i.stopPropagation())}var r=Windows.UI.ApplicationSettings,f=Calendar.Helpers,t,u,i,e=9211020,n=Calendar.Views.Settings=function(){this.initComponent();this._onCommandsRequested=this._onCommandsRequested.bind(this);this._onSignatureOptionChanged=this._onSignatureOptionChanged.bind(this)};Jx.augment(n,Jx.Component);n.prototype.appendCommands=function(n){var t=r.SettingsCommand,i;n.append(new t("settings.accounts",Jx.res.getString("/accountsStrings/actSettingEntryPoint"),this._onAccounts.bind(this)));n.append(new t("settings.options",Jx.res.getString("/Jx/Options"),this._onOptions.bind(this)));n.append(new t("settings.help",Jx.res.getString("/Jx/Help"),this._onHelp.bind(this)));n.append(new t("settings.about",Jx.res.getString("/Jx/About"),this._onAbout.bind(this)));!!window.SasManager&&SasManager.addSettingsEntry()&&(i=SasManager.getSettingsCommand(),n.append(i))};n.prototype.activateUI=function(){t||(t=Microsoft.WindowsLive.Platform,u=t.ResourceType,i=t.SignatureType);var n=r.SettingsPane.getForCurrentView();n.addEventListener("commandsrequested",this._onCommandsRequested)};n.prototype.deactivateUI=function(){var n=r.SettingsPane.getForCurrentView();n.removeEventListener("commandsrequested",this._onCommandsRequested)};n.prototype._onCommandsRequested=function(n){this.appendCommands(n.request.applicationCommands)};n.prototype._onAbout=function(){Jx.SettingsFlyout.showAbout(document.title)};n.prototype._onAccounts=function(){var t={},n;this.fire("getPlatform",t);n=People.Accounts;n.showAccountSettingsPage(t.platform,Calendar.scenario,n.AccountSettingsPage.connectedAccounts)};n.prototype._onHelp=function(){Jx.help("calendar")};n.prototype._formatAccount=function(n){var t=n.objectId,r=n.getResourceByType(u.calendar);return{id:t,name:n.displayName,email:n.emailAddress,useSignature:r.signatureType===i.enabled}};n.prototype._getCalendarData=function(){for(var l=this._platform.calendarManager,a=this._platform.accountManager.getConnectedAccountsByScenario(Calendar.scenario,t.ConnectedFilter.normal,t.AccountSort.rank),w=a.count,e=[],u,i,n,c,r=0;r<w;r++){var v=a.item(r),b=this._formatAccount(v),y=l.getAllCalendarsForAccount(v),k=y.count,s=[];for(u=0;u<k;u++)i=o(y.item(u)),i.account=b,i.isDefault?s.unshift(i):s.push(i);e=e.concat(s)}var h=l.colorTable,d=h.count,p=[];for(n=0;n<d;n++)c=h.value(n),p[n]={name:h.name(n),value:c,hex:f.processEventColor(c)};return{calendars:e,colors:p}};n.prototype._onSignatureOptionChanged=function(n){var t=n.target,f=t.checked,e=t.getAttribute("data-accountId"),o=this._platform.accountManager.loadAccount(e),r=o.getResourceByType(u.calendar);r.signatureType=f?i.enabled:i.disabled;r.commit()};n.prototype._initializeSignatureOptions=function(n){for(var i=n.querySelectorAll(".signature-option input"),t=0,r=i.length;t<r;t++)i[t].addEventListener("change",this._onSignatureOptionChanged,false)};n.prototype._initializeArrowsOption=function(n,t,i){var r=n.querySelector(".arrowsSwitch"),u=new WinJS.UI.ToggleSwitch(r,{title:Jx.res.getString("AlwaysShowIterators"),checked:this._settings.get("alwaysShowArrows"),labelOff:t,labelOn:i});u.addEventListener("change",function(n){this.fire("setShowArrows",{value:n.target.winControl.checked})}.bind(this))};n.prototype._onOptions=function(){var u={},t,w,l;this.fire("getPlatform",u);this._platform=u.platform;this.fire("getSettings",u);this._settings=u.settings;var e=this._getCalendarData(),a=e.calendars,v=new Jx.SettingsFlyout(Jx.res.getString("/Jx/Options")),r=v.getContentElement(),y=Jx.res.getString("Hide"),p=Jx.res.getString("Show");for(r.innerHTML=this._templateOptions(e.calendars,e.colors),this._initializeSignatureOptions(r),this._initializeArrowsOption(r,y,p),t=0,w=a.length;t<w;t++){var f=a[t],i=f.calendarPlatform,b=r.querySelector("#settings-calendar-"+t),o=new WinJS.UI.ToggleSwitch(b,{title:Jx.escapeHtml(f.name),checked:!i.hidden,labelOff:y,labelOn:p}),n=r.querySelector("#settings-color-"+t);b.querySelector(".win-title").setAttribute("aria-label",f.name+", "+f.account.email);l=s.bind(this,i,n);o.addEventListener("change",l,false);o.addEventListener("keydown",c.bind(this,o,l),false);n.addEventListener("change",h.bind(this,i,n),false);n.value=i.color;n.disabled=i.hidden;i.hidden||(n.style.color=parseInt(n.value,10))}v.show()};n.prototype._templateOptions=function(n,t){for(var r="",f,o,e,h,u,i=0,s=n.length;i<s;i++){for(f=n[i],f.isDefault&&(o=f.account,r+='<div class="calendar-account"><h3>'+Jx.escapeHtml(o.name)+"<\/h3>"+Jx.escapeHtml(o.email)+"<\/div>"),r+='<div id="settings-calendar-'+i+'" class="calendar-toggle"><\/div><select id="settings-color-'+i+'" class="color-table" aria-label="'+Jx.escapeHtml(f.name)+'">',e=0,h=t.length;e<h;e++)u=t[e],r+='<option value="'+u.value+'" style="color:'+u.hex+'" aria-label="'+u.name+'">&#x25A0;&#x00A0;&#x00A0;'+u.name+"<\/option>";r+="<\/select>"}return r+'<div class="win-settings-section"><div class="arrowsSwitch"><\/div><\/div>'}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="..\..\common\Common.js" />
+
+/*jshint browser:true*/
+/*global document,WinJS,Windows,Microsoft,People,Jx,Calendar,SasManager*/
+
+Jx.delayDefine(Calendar.Views, "Settings", function () {
+
+    //
+    // Namespaces
+    //
+
+    var AppSettings = Windows.UI.ApplicationSettings,
+        Helpers     = Calendar.Helpers;
+
+    var Platform,
+        ResourceType,
+        SignatureType;
+
+    //
+    // Constants
+    //
+
+    var grayHiddenColor       = 9211020;
+
+    //
+    // Settings
+    //
+
+    var Settings = Calendar.Views.Settings = function () {
+        this.initComponent();
+
+        this._onCommandsRequested      = this._onCommandsRequested.bind(this);
+        this._onSignatureOptionChanged = this._onSignatureOptionChanged.bind(this);
+    };
+
+    Jx.augment(Settings, Jx.Component);
+
+    //
+    // Public
+    //
+
+    Settings.prototype.appendCommands = function(cmds) {
+        var Command = AppSettings.SettingsCommand;
+
+        cmds.append(new Command("settings.accounts", Jx.res.getString("/accountsStrings/actSettingEntryPoint"), this._onAccounts.bind(this)));
+        cmds.append(new Command("settings.options",  Jx.res.getString("/Jx/Options"),                           this._onOptions.bind(this)));
+        cmds.append(new Command("settings.help",     Jx.res.getString("/Jx/Help"),                              this._onHelp.bind(this)));
+        cmds.append(new Command("settings.about",    Jx.res.getString("/Jx/About"),                             this._onAbout.bind(this)));
+
+        if (!!window.SasManager && SasManager.addSettingsEntry()) {
+            var feedback = SasManager.getSettingsCommand();
+            cmds.append(feedback);
+        }
+    };
+
+    //
+    // Jx.Component
+    //
+
+    Settings.prototype.activateUI = function() {
+        if (!Platform) {
+            Platform      = Microsoft.WindowsLive.Platform;
+            ResourceType  = Platform.ResourceType;
+            SignatureType = Platform.SignatureType;
+        }
+
+        var pane = AppSettings.SettingsPane.getForCurrentView();
+        pane.addEventListener("commandsrequested", this._onCommandsRequested);
+    };
+
+    Settings.prototype.deactivateUI = function() {
+        var pane = AppSettings.SettingsPane.getForCurrentView();
+        pane.removeEventListener("commandsrequested", this._onCommandsRequested);
+    };
+
+    //
+    // Private
+    //
+
+    Settings.prototype._onCommandsRequested = function(ev) {
+        this.appendCommands(ev.request.applicationCommands);
+    };
+
+    Settings.prototype._onAbout = function () {
+        Jx.SettingsFlyout.showAbout(document.title);
+    };
+
+    Settings.prototype._onAccounts = function() {
+        // get the platform
+        var data = {};
+        this.fire("getPlatform", data);
+
+        // show the flyout
+        var Accounts = People.Accounts;
+        Accounts.showAccountSettingsPage(data.platform,
+                                         Calendar.scenario,
+                                         Accounts.AccountSettingsPage.connectedAccounts);
+    };
+
+    Settings.prototype._onHelp = function () {
+        Jx.help("calendar");
+    };
+
+    Settings.prototype._formatAccount = function (account) {
+        var id       = account.objectId,
+            resource = account.getResourceByType(ResourceType.calendar);
+
+        return {
+            id:    id,
+            name:  account.displayName,
+            email: account.emailAddress,
+
+            useSignature: (resource.signatureType === SignatureType.enabled)
+        };
+    };
+
+    function formatCalendar (calendar) {
+        return {
+            name:             calendar.name,
+            isDefault:        calendar.isDefault,
+            calendarPlatform: calendar // hidden, color
+        };
+    }
+
+    Settings.prototype._getCalendarData = function () {
+        var calendarManager = this._platform.calendarManager,
+            accounts        = this._platform.accountManager.getConnectedAccountsByScenario(Calendar.scenario, Platform.ConnectedFilter.normal, Platform.AccountSort.rank),
+            numAccounts     = accounts.count,
+            calendars       = [];
+
+        for (var i = 0; i < numAccounts; i++) {
+            var account           = accounts.item(i),
+                formatted         = this._formatAccount(account),
+                platformCalendars = calendarManager.getAllCalendarsForAccount(account),
+                numCalendars      = platformCalendars.count,
+                accountCalendars  = [];
+
+            for (var j = 0; j < numCalendars; j++) {
+                var calendar = formatCalendar(platformCalendars.item(j));
+                calendar.account = formatted;
+
+                if (calendar.isDefault) {
+                    accountCalendars.unshift(calendar);
+                } else {
+                    accountCalendars.push(calendar);
+                }
+            }
+
+            calendars = calendars.concat(accountCalendars);
+        }
+
+        var colorTable = calendarManager.colorTable,
+            numColors  = colorTable.count,
+            colors     = [];
+
+        for (var k = 0; k < numColors; k++) {
+            var value = colorTable.value(k);
+
+            colors[k] = {
+                name: colorTable.name(k),
+                value: value,
+                hex: Helpers.processEventColor(value)
+            };
+        }
+
+        return {
+            calendars: calendars,
+            colors: colors
+        };
+    };
+
+    function onToggleHidden(calendarPlatform, select) {
+        var hidden = select.disabled = !select.disabled;
+
+        select.style.color = (hidden?grayHiddenColor:parseInt(select.value, 10));
+        select.disabled = hidden;
+        calendarPlatform.hidden = hidden;
+        calendarPlatform.commit();
+    }
+
+    function onColorChange(calendarPlatform, select) {
+        calendarPlatform.color = select.value;
+        select.style.color = parseInt(select.value, 10);
+        calendarPlatform.commit();
+    }
+
+    function onToggleKeyUp(toggle, onToggle, ev) {
+        if (ev.keyCode === Jx.KeyCode.rightarrow) {
+            if (!toggle.checked) {
+                toggle.checked = true;
+                onToggle();
+            }
+            ev.stopPropagation();
+        } else if (ev.keyCode === Jx.KeyCode.leftarrow) {
+            if (toggle.checked) {
+                toggle.checked = false;
+                onToggle();
+            }
+            ev.stopPropagation();
+        }
+    }
+
+    Settings.prototype._onSignatureOptionChanged = function(ev) {
+        var target  = ev.target,
+            checked = target.checked;
+
+        var accountId = target.getAttribute("data-accountId"),
+            account   = this._platform.accountManager.loadAccount(accountId),
+            resource  = account.getResourceByType(ResourceType.calendar);
+
+        resource.signatureType = (checked ? SignatureType.enabled : SignatureType.disabled);
+        resource.commit();
+    };
+
+    Settings.prototype._initializeSignatureOptions = function(host) {
+        // get all the checkboxes
+        var inputs = host.querySelectorAll(".signature-option input");
+
+        for (var i = 0, len = inputs.length; i < len; i++) {
+            inputs[i].addEventListener("change", this._onSignatureOptionChanged, false);
+        }
+    };
+
+    Settings.prototype._initializeArrowsOption = function(host, labelOff, labelOn) {
+        // get our global app settings
+        var arrowsDiv    = host.querySelector(".arrowsSwitch"),
+            arrowsSwitch = new WinJS.UI.ToggleSwitch(arrowsDiv, {
+                title:    Jx.res.getString("AlwaysShowIterators"),
+                checked:  this._settings.get("alwaysShowArrows"),
+                labelOff: labelOff,
+                labelOn:  labelOn
+            });
+
+        arrowsSwitch.addEventListener("change", function(ev) {
+            this.fire("setShowArrows", {
+                value: ev.target.winControl.checked
+            });
+        }.bind(this));
+    };
+
+    Settings.prototype._onOptions = function () {
+        // get our platform and app settings.  we'll need them for a few things.
+        var data = {};
+
+        this.fire("getPlatform", data);
+        this._platform = data.platform;
+
+        this.fire("getSettings", data);
+        this._settings = data.settings;
+
+        var dataModel = this._getCalendarData(),
+            calendars = dataModel.calendars,
+            flyout    = new Jx.SettingsFlyout(Jx.res.getString("/Jx/Options")),
+            host      = flyout.getContentElement();
+
+        var hide = Jx.res.getString("Hide"),
+            show = Jx.res.getString("Show");
+
+        host.innerHTML = this._templateOptions(dataModel.calendars, dataModel.colors);
+
+        this._initializeSignatureOptions(host);
+        this._initializeArrowsOption(host, hide, show);
+
+        for (var i = 0, len = calendars.length; i < len; i++) {
+            var calendar  = calendars[i],
+                calendarPlatform  = calendar.calendarPlatform,
+                toggleDiv = host.querySelector("#settings-calendar-" + i),
+                toggle    = new WinJS.UI.ToggleSwitch(toggleDiv, {
+                    title: Jx.escapeHtml(calendar.name),
+                    checked: !calendarPlatform.hidden,
+                    labelOff: hide,
+                    labelOn:  show
+                }),
+                select    = host.querySelector("#settings-color-" + i);
+
+            toggleDiv.querySelector(".win-title").setAttribute("aria-label", calendar.name + ", " + calendar.account.email);
+
+            var onToggle = onToggleHidden.bind(this, calendarPlatform, select);
+            toggle.addEventListener("change", onToggle, false);
+            toggle.addEventListener("keydown", onToggleKeyUp.bind(this, toggle, onToggle), false);
+
+            select.addEventListener("change", onColorChange.bind(this, calendarPlatform, select), false);
+            select.value = calendarPlatform.color;
+            select.disabled = calendarPlatform.hidden;
+            if (!calendarPlatform.hidden) {
+                select.style.color = parseInt(select.value, 10);
+            }
+        }
+
+        // now show the flyout
+        flyout.show();
+    };
+
+    Settings.prototype._templateOptions = function (calendars, colors) {
+        // Bug 115278: Remove signature entry points for M1. 
+        // var signatureHtml = Jx.escapeHtml(Jx.res.getString("UseMailSignature"));
+        
+        var html = "";
+
+        for (var i = 0, len = calendars.length; i < len; i++) {
+            var calendar = calendars[i];
+
+            if (calendar.isDefault) {
+                var account = calendar.account;
+
+                html += 
+                    '<div class="calendar-account">' +
+                    '<h3>' + Jx.escapeHtml(account.name) + '</h3>' +
+                    Jx.escapeHtml(account.email) +
+
+                    // Bug 115278: Remove signature entry points for M1.
+                    //var checked = account.useSignature ? ' checked="checked"' : '';
+                    // '<div class="signature-option">' +
+                    //    '<label><input type="checkbox" data-accountId="' + account.id + '"' + checked + '> ' + signatureHtml + '</label>' +
+                    // '</div>' +
+                    '</div>';
+            }
+            
+            html += 
+                '<div id="settings-calendar-' + i + '" class="calendar-toggle"></div>' +
+                '<select id="settings-color-' + i + '" class="color-table" aria-label="' + Jx.escapeHtml(calendar.name) + '">';
+
+            for (var j = 0, lenj = colors.length; j < lenj; j++) {
+                var color = colors[j];
+                html += '<option value="' + color.value + '" style="color:' + color.hex + '" aria-label="' + color.name + '">&#x25A0;&#x00A0;&#x00A0;' + color.name + '</option>';
+            }
+
+            html += '</select>';
+        }
+
+        html += 
+            '<div class="win-settings-section">' +
+                '<div class="arrowsSwitch"></div>' +
+            '</div>';
+
+        return html;
+    };
+
+});

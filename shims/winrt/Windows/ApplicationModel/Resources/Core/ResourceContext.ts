@@ -11,10 +11,11 @@ import { IObservableMap } from "../../../Foundation/Collections/IObservableMap`2
 import { IVectorView } from "../../../Foundation/Collections/IVectorView`1";
 import { GenerateShim } from "../../../Foundation/Interop/GenerateShim";
 import { Vector } from "../../../Foundation/Interop/Vector`1";
+import { ObservableDictionary } from "../../../Foundation/Interop/ObservableDictionary`2";
 
 export class ResourceContext { 
     languages: IVectorView<string> = new Vector(["en-GB"]);
-    qualifierValues: IObservableMap<string, string> = null;
+    qualifierValues: IObservableMap<string, string> = new ObservableDictionary();
     reset(): void {
         console.warn('ResourceContext#reset not implemented')
     }

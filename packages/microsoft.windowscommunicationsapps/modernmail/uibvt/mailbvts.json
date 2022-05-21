@@ -1,0 +1,19 @@
+{
+    "tests": [
+        "OpenCloseSweepFlyout",
+        "OpenCloseMoveAllFrom"
+	],
+
+    "files": [
+        "/ModernShared/uibvt/libShared.js",
+        "/ModernMail/compose/uibvt/libAddressWell.js",
+        "/ModernMail/compose/uibvt/composePom.js",
+        "/ModernMail/compose/uibvt/composeLfm.js",
+        "/ModernMail/uibvt/libMail.js",
+        "/ModernMail/uibvt/libPowerPane.js",
+        "/ModernMail/uibvt/libMessageList.js",
+        "/ModernMail/uibvt/libViewFlyout.js",
+
+        "/ModernMail/uibvt/MailTestScenario.js"
+    ]
+}

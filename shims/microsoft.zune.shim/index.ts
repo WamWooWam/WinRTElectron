@@ -1231,7 +1231,3 @@ export namespace Microsoft {
     }
 }
 globalThis['Microsoft'] = Microsoft;
-
-HTMLMediaElement.prototype["msSetMediaProtectionManager"] = function (e) {
-
-}

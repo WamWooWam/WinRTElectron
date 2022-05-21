@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Calendar provider test app</title>
+
+    <!-- WinJS references -->
+    <link rel="stylesheet" href="//Microsoft.WinJS.2.0/css/ui-light.css" />
+    <script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+    <link rel="stylesheet" href="calendarprovidertest.css" />
+
+    <script defer="defer" src="calendarprovidertest.js"></script>
+</head>
+<body>
+    <div class="appRoot">
+        <div class="actionArea">
+            <h1>Calendar provider test app</h1>
+            <label for="actionSelect" class="inputStyle">Action:</label>
+            <select id="actionSelect" class="inputStyle">
+                <option value="add">Add Appointment</option>
+                <option value="addDefault">Add default appointment</option>
+                <option value="view">View Calendar</option>
+                <option value="remove">Remove appointment</option>
+                <option value="replace">Replace appointment</option>
+            </select>
+            <div class="actionParams">
+                <div>
+                    <button id="createButton" class="actionToggle add addDefault">Create Appointment</button>
+                    <button id="viewButton" style="display:none" class="actionToggle view">View Calendar</button>
+                    <button id="removeButton" style="display:none" class="actionToggle remove">Remove Appointment</button>
+                    <button id="replaceButton" style="display:none" class="actionToggle replace">Replace Appointment</button>
+                </div>
+                <div style="display:none;float:right" class="actionToggle replace remove">
+                    <p>Provide the UID for the appointment.</p>
+                    <label for="idBox" class="inputStyle">UID:</label><br />
+                    <input type="text" id="idBox" class="inputStyle idBox" /><br />
+                    <input id="actionOnInstance" type="checkbox" /><label for="actionOnInstance">Perform action on specific instance?</label><br />
+                    <div id="instanceDatePicker" style="display:none" data-win-control="WinJS.UI.DatePicker" class="inputStyle"></div>
+                    <div id="instanceTimePicker" style="display:none" data-win-control="WinJS.UI.TimePicker" class="inputStyle"></div>
+                </div>
+            </div>
+        </div>
+        <div class="InputArea actionToggle view" style="display:none">
+            <div>
+                <p>Choose a time and duration below and then click the View button to view the time frame on your calendar.</p>
+                <label for="viewDatePicker" class="inputStyle">Date to view:</label><br />
+                <div id="viewDatePicker" data-win-control="WinJS.UI.DatePicker" class="inputStyle"></div><br />
+                <div id="viewTimePicker" data-win-control="WinJS.UI.TimePicker" class="inputStyle"></div><br />
+                <label for="viewDurationBox" class="inputStyle">Duration:</label>
+                <input type="text" id="viewDurationBox" class="inputStyle shortInput" value="8" />
+                <select id="viewDurationOption">
+                    <option value="day">Days</option>
+                    <option value="hour" selected="selected">Hours</option>
+                    <option value="minute">Minutes</option>
+                    <option value="raw">Raw (100-nanoseconds)</option>
+                </select>
+            </div>
+        </div>
+        <div class="inputChoiceArea actionToggle add replace">
+            <p style="display:inline">Edit the following information about the event:</p>
+            <select id="inputSelect" class="inputStyle">
+                <option value="general" selected="selected">General</option>
+                <option value="attendees">Attendees</option>
+                <option value="recurrence">Recurrence</option>
+            </select>
+        </div>
+        <div class="InputArea actionToggle add replace inputToggle general">
+            <div class="inputUnit">
+                <label for="startDatePicker" class="inputStyle">Start Time:</label><br />
+                <div id="startDatePicker" data-win-control="WinJS.UI.DatePicker" class="inputStyle"></div><br />
+                <div id="startTimePicker" data-win-control="WinJS.UI.TimePicker" class="inputStyle"></div><br />
+            </div>
+            <div class="inputUnit">
+                <label for="subjectInput" class="inputStyle">Subject:</label><br />
+                <input id="subjectInput" type="text" class="inputStyle"/><br />
+                <label for="subjectInput" class="inputStyle">Location:</label><br />
+                <input id="locationInput" type="text" class="inputStyle"/><br />
+                <label for="detailsInput" class="inputStyle">Details:</label><br />
+                <input id="detailsInput" type="text" class="inputStyle"/><br />
+            </div>
+            <div class="inputUnit">
+                <label for="durationInput" class="inputStyle">Duration:</label><br />
+                <input type="text" id="durationInput" class="inputStyle shortInput" value="30" />
+                <select id="durationOption">
+                    <option value="day">Days</option>
+                    <option value="hour">Hours</option>
+                    <option value="minute" selected="selected">Minutes</option>
+                    <option value="raw">Raw (100-nanoseconds)</option>
+                </select><br />
+                <span>
+                    <label for="allDayCheckBox" class="inputStyle">All Day:</label>
+                    <input id="allDayCheckBox" type="checkbox" class="inputStyle"/>
+                </span><br />
+            </div>
+            <div class="inputUnit">
+                <label for="reminderInput" class="inputStyle">Reminder:</label><br />
+                <input id="reminderCheckBox" type="checkbox" class="inputStyle"/> Has Reminder?<br />
+                <input type="text" id="reminderInput" class="inputStyle shortInput" value="15" />
+                <select id="reminderSelect">
+                    <option value="day">Days</option>
+                    <option value="hour">Hours</option>
+                    <option value="minute" selected="selected">Minutes</option>
+                    <option value="raw">Raw (100-nanoseconds)</option>
+                </select>
+            </div>
+            <div class="inputUnit">
+                <label for="busyStatusSelect"  class="inputStyle">Busy Status:</label><br />
+                <select id="busyStatusSelect"  class="inputStyle">
+                    <option value="busy">Busy</option>
+                    <option value="tentative">Tentative</option>
+                    <option value="free">Free</option>
+                    <option value="outofoffice">Out of Office</option>
+                    <option value="workingelsewhere">Working Elsewhere</option>
+                </select>
+            </div>
+            <div class="inputUnit">
+                <label for="sensitivitySelect"  class="inputStyle">Sensitivity:</label><br />
+                <select id="sensitivitySelect"  class="inputStyle">
+                    <option value="public">Public</option>
+                    <option value="private">Private</option>
+                </select>
+            </div>
+            <div class="inputUnit">
+                <label for="uriInput"  class="inputStyle">Uri:</label><br />
+                <input id="uriInput" type="text"  class="inputStyle"/><br />
+            </div>
+        </div>
+        <div class="InputArea actionToggle add replace inputToggle attendees" style="display:none">
+            <label for="organizerRadioButton"  class="inputStyle">Organizer:</label>
+            <input id="organizerRadioButton" type="radio" name="organizerInviteeGroup" value="organizer" />Has an Organizer?<br />
+            <div id="organizerDiv" style="display:none">
+                <label for="organizerDisplayNameInput"  class="inputStyle">Display Name:</label><br />
+                <input id="organizerDisplayNameInput" type="text"  class="inputStyle"/><br />
+                <label for="organizerAddressInput"  class="inputStyle">Address:</label><br />
+                <input id="organizerAddressInput" type="text"  class="inputStyle"/><br />
+            </div><br />
+            <label for="inviteesRadioButton"  class="inputStyle">Invitees:</label>
+            <input id="inviteeRadioButton" type="radio" name="organizerInviteeGroup" value="invitee" />Has an Invitee?<br />
+            <div id="inviteeDiv" style="display:none">
+                <label for="inviteeDisplayNameInput"  class="inputStyle">Display Name:</label><br />
+                <input id="inviteeDisplayNameInput" type="text"  class="inputStyle"/><br />
+                <label for="inviteAddressInput"  class="inputStyle">Address:</label><br />
+                <input id="inviteAddressInput" type="text"  class="inputStyle"/><br />
+                <label for="inviteeRoleSelect"  class="inputStyle">Role:</label><br />
+                <select id="inviteeRoleSelect"  class="inputStyle">
+                    <option value="required">Required Attendee</option>
+                    <option value="optional">Optional Attendee</option>
+                    <option value="resource">Resource</option>
+                </select><br />
+                <label for="inviteeResponseSelect"  class="inputStyle">Reponse:</label><br />
+                <select id="inviteeResponseSelect"  class="inputStyle">
+                    <option value="none">None</option>
+                    <option value="tentative">Tentative</option>
+                    <option value="accepted">Accepted</option>
+                    <option value="declined">Declined</option>
+                    <option value="unknown">Unknown</option>
+                </select><br />
+            </div><br />
+            <label for="noneRadioButton" class="inputStyle">None:</label>
+            <input id="noneRadioButton" type="radio" name="organizerInviteeGroup" value="none" />No organizer or attendees.<br />
+        </div>
+        <div class="InputArea actionToggle add replace inputToggle recurrence" style="display:none">
+            <div class="inputUnit">
+                <input id="recurringCheck" type="checkbox" /><label for="recurringCheck">Event is recurring?</label>
+            </div>
+            <div class="inputUnit">
+                <label for="unitSelect" class="inputStyle">Unit:</label><br />
+                <select id="unitSelect" class="inputStyle">
+                    <option value="0">Daily</option>
+                    <option value="1">Weekly</option>
+                    <option value="2">Monthly</option>
+                    <option value="3">Monthly on a day</option>
+                    <option value="4">Yearly</option>
+                    <option value="5">Yearly on a day</option>
+                    <option value="200">Invalid</option>
+                </select>
+            </div>
+            <div class="inputUnit">
+                <p>It is invalid for both occurrences and until to be specified. Specifying neither indicates an unbounded recurrence.</p>
+                <label for="occurrencesCheck" class="inputStyle">Occurrences:</label>
+                <input id="occurrencesCheck" type="checkbox" />Has a specific number of occurrences?<br />
+                <label for="occurrencesRange" class="inputStyle">Occurrences:</label>
+                <input id="occurrencesRange" type="text" class="inputStyle"/><br />
+                <label for="untilCheck" class="inputStyle">Until:</label>
+                <input id="untilCheck" type="checkbox" />Ends on a particular date?<br />
+                <div id="untilDatePicker" data-win-control="WinJS.UI.DatePicker" class="inputStyle"></div>
+            </div>
+            <div class="inputUnit">
+                <label for="intervalRange" class="inputStyle">Interval:</label>
+                <label for="intervalRange">(e.g. An interval of 2 for the daily unit is every other day)</label><br />
+                <input id="intervalRange" type="text" class="inputStyle"/>
+            </div>
+            <div class="inputUnit">
+                <label for="weekOfMonthSelect" class="inputStyle">Week of the month:</label><br />
+                <select id="weekOfMonthSelect" class="inputStyle">
+                    <option value="first">First</option>
+                    <option value="second">Second</option>
+                    <option value="third">Third</option>
+                    <option value="fourth">Fourth</option>
+                    <option value="last">Last</option>
+                    <option value="invalid">Invalid</option>
+                </select>
+            </div>
+            <div class="inputUnit">
+                <label for="dayOfMonthRange" class="inputStyle">Day of the month (1-31 are valid):</label><br />
+                <input id="dayOfMonthRange" type="text" class="inputStyle"/><br />
+                <label for="monthOfYearRange" class="inputStyle">Month of the year (1-12 are valid):</label><br />
+                <input id="monthOfYearRange" type="text" class="inputStyle"/>
+            </div>
+            <div class="inputUnit">
+                <label for="daysOfWeek" class="inputStyle">Days of the week:</label><br />
+                <input id="sundayCheckBox" name="daysOfWeek" type="checkbox" />Sunday<br />
+                <input id="mondayCheckBox" name="daysOfWeek" type="checkbox" />Monday<br />
+                <input id="tuesdayCheckBox" name="daysOfWeek" type="checkbox" />Tuesday<br />
+                <input id="wednesdayCheckBox" name="daysOfWeek" type="checkbox" />Wednesday<br />
+                <input id="thursdayCheckBox" name="daysOfWeek" type="checkbox" />Thursday<br />
+                <input id="fridayCheckBox" name="daysOfWeek" type="checkbox"  />Friday<br />
+                <input id="saturdayCheckBox" name="daysOfWeek" type="checkbox" />Saturday<br />
+                <input id="invalidCheckBox" name="daysOfWeek" type="checkbox"  />Invalid<br />
+            </div>
+        </div>
+        <div class="OutputArea">
+            <p id="result"></p>
+        </div>
+    </div>
+</body>
+</html>

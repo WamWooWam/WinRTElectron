@@ -11,6 +11,6 @@ import { Color } from "./Color";
 @GenerateShim('Windows.UI.ColorHelper')
 export class ColorHelper { 
     static fromArgb(a: number, r: number, g: number, b: number): Color {
-        throw new Error('ColorHelper#fromArgb not implemented')
+        return {a, r, g, b};
     }
 }

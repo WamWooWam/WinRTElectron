@@ -14,23 +14,24 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.ContactSearch')
 export class ContactSearch implements IClosable { 
-    static contact_TYPE_LYNC: number = null;
-    static contact_TYPE_SKYPE: number = null;
-    static condition_CONTAINS_WORD_PREFIXES: number = null;
-    static condition_CONTAINS_WORDS: number = null;
-    static condition_PREFIX_LE: number = null;
-    static condition_PREFIX_GE: number = null;
-    static condition_PREFIX_EQ: number = null;
-    static condition_LE: number = null;
-    static condition_LT: number = null;
-    static condition_GE: number = null;
-    static condition_GT: number = null;
-    static condition_EQ: number = null;
-    static status_FAILED: number = null;
-    static status_FINISHED: number = null;
-    static status_EXTENDABLE: number = null;
-    static status_PENDING: number = null;
-    static status_CONSTRUCTION: number = null;
+    static contact_TYPE_LYNC: number = 2;
+    static contact_TYPE_SKYPE: number = 1;
+    static condition_CONTAINS_WORD_PREFIXES: number = 9;
+    static condition_CONTAINS_WORDS: number = 8;
+    static condition_PREFIX_LE: number = 7;
+    static condition_PREFIX_GE: number = 6;
+    static condition_PREFIX_EQ: number = 5;
+    static condition_LE: number = 4;
+    static condition_LT: number = 3;
+    static condition_GE: number = 2;
+    static condition_GT: number = 1;
+    static condition_EQ: number = 0;
+    static status_FAILED: number = 5;
+    static status_FINISHED: number = 4;
+    static status_EXTENDABLE: number = 3;
+    static status_PENDING: number = 2;
+    static status_CONSTRUCTION: number = 1;
+    
     getObjectID(): number {
         throw new Error('ContactSearch#getObjectID not implemented')
     }

@@ -7,19 +7,28 @@
 
 import { IClosable } from "winrt/Windows/Foundation/IClosable";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
+import { Vector } from "winrt/Windows/Foundation/Interop/Vector`1";
+import { IVector } from "winrt/Windows/Foundation/Collections/IVector`1";
 
 @GenerateShim('LibWrap.VectBool')
 export class VectBool implements IClosable { 
+    private vals: Vector<boolean>;
+
+    constructor(vals?: IVector<boolean>) {
+        this.vals = vals as Vector<boolean> ?? new Vector<boolean>();
+    }
+
     getCount(): number {
-        throw new Error('VectBool#getCount not implemented')
+        return this.vals.size;
     }
     append(val: boolean): number {
-        throw new Error('VectBool#append not implemented')
+        this.vals.append(val);
+        return this.vals.size;
     }
     get(index: number): boolean {
-        throw new Error('VectBool#get not implemented')
+        return this.vals.getAt(index);
     }
     close(): void {
-        console.warn('VectBool#close not implemented')
+        console.warn('VectInt#close not implemented')
     }
 }

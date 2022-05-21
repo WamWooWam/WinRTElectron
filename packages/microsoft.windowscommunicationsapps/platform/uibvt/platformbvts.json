@@ -1,0 +1,10 @@
+{
+   "tests": [
+   ],
+
+   "files": [
+            "/ModernShared/uibvt/libShared.js",
+
+            "/Platform/uibvt/bvtSecondaryTile.js"
+   ]
+}

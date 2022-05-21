@@ -5,24 +5,52 @@
 // </auto-generated>
 // --------------------------------------------------
 
-import { IVector } from "../../Foundation/Collections/IVector`1";
-import { IAsyncOperation } from "../../Foundation/IAsyncOperation`1";
+import { IpcHelper } from "../../../IpcHelper";
+import { AsyncOperation, IAsyncOperation } from "../../Foundation/IAsyncOperation`1";
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
+import { PopupMenuV1 } from "../../Foundation/Interop/IpcConstants";
+import { Vector } from "../../Foundation/Interop/Vector`1";
 import { Point } from "../../Foundation/Point";
 import { Rect } from "../../Foundation/Rect";
 import { IUICommand } from "./IUICommand";
 import { Placement } from "./Placement";
+import { UICommand } from "./UICommand";
+
+interface PopupMenuResponse {
+    status: string
+    commandId: number
+}
 
 @GenerateShim('Windows.UI.Popups.PopupMenu')
-export class PopupMenu { 
-    commands: IVector<IUICommand> = null;
+export class PopupMenu {
+    commands: Vector<IUICommand> = new Vector();
     showAsync(invocationPoint: Point): IAsyncOperation<IUICommand> {
-        throw new Error('PopupMenu#showAsync not implemented')
+        return this.showForSelectionAsync({ x: invocationPoint.x, y: invocationPoint.y, width: 0, height: 0 })
     }
-    showAsyncWithRect(selection: Rect): IAsyncOperation<IUICommand> {
-        throw new Error('PopupMenu#showAsyncWithRect not implemented')
-    }
-    showAsyncWithRectAndPlacement(selection: Rect, preferredPlacement: Placement): IAsyncOperation<IUICommand> {
-        throw new Error('PopupMenu#showAsyncWithRectAndPlacement not implemented')
+    showForSelectionAsync(selection: Rect, preferredPlacement: Placement = Placement.default): IAsyncOperation<IUICommand> {
+        for (let i = 0; i < this.commands.size; i++) {
+            this.commands.getAt(i).id = i;
+        }
+
+        return AsyncOperation.from<UICommand>(async () => {
+            let message = {
+                rect: selection,
+                placement: preferredPlacement,
+                commands: this.commands.getArray().map(c => { return { id: c.id, label: c.label } })
+            }
+
+            let resp = await IpcHelper.send(PopupMenuV1, message) as PopupMenuResponse;
+            if (resp.status === "success") {
+                let command = this.commands.getAt(resp.commandId);
+                if (command.invoked != null) {
+                    command.invoked(command);
+                }
+
+                return command;
+            }
+            else {
+                throw new Error(resp.status);
+            }
+        });
     }
 }

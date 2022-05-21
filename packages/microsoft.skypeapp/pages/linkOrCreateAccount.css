@@ -1,1 +1,748 @@
-﻿@charset "UTF-8";/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount{display:-ms-grid;-ms-grid-rows:1fr minmax(50vh, min-content) 80px;-ms-grid-columns:1fr 100px 650px 100px 1fr;background-color:#00aff0;height:100%;width:100%;color:white}body.KEYBOARDUP div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount{-ms-grid-rows:12vh 88vh}body.KEYBOARDUP div.fragment.linkOrCreateAccount div.logo{visibility:hidden}div.fragment.linkOrCreateAccount input::-ms-check{background-color:#0095cc;border-color:#fff;color:#fff}div.fragment.linkOrCreateAccount input:hover::-ms-check{background-color:rgba(0,149,204,0.75);color:#fff}div.fragment.linkOrCreateAccount input:hover:active::-ms-check{color:#fff;background-color:rgba(0,149,204,0.25)}div.fragment.linkOrCreateAccount>div.msaLoginInfo{position:absolute;bottom:15px;width:100%;left:50%;margin-left:-50%;text-align:center}div.fragment.linkOrCreateAccount>div.msaLoginInfo a{color:white}div.fragment.linkOrCreateAccount h2{margin-bottom:23px}div.fragment.linkOrCreateAccount a[href],div.fragment.linkOrCreateAccount a.link{color:white;font-weight:600}div.fragment.linkOrCreateAccount button:not(.backbutton){background-color:rgba(0,0,0,0.15);border:0px;color:white;cursor:pointer;padding:0px 40px 0px 40px;min-height:40px;height:auto;border-radius:20px;margin-top:10px}div.fragment.linkOrCreateAccount button:not(.backbutton):hover{background-color:rgba(0,0,0,0.2)}div.fragment.linkOrCreateAccount button:not(.backbutton):active{background-color:rgba(0,0,0,0.3)}div.fragment.linkOrCreateAccount button:not(.backbutton)[disabled]{background-color:rgba(0,0,0,0.1);color:rgba(255,255,255,0.4);cursor:auto}div.fragment.linkOrCreateAccount input[type=text],div.fragment.linkOrCreateAccount input[type=password]{display:block;width:calc(100% - 6px);height:40px;margin-bottom:20px}div.fragment.linkOrCreateAccount div.logo{-ms-grid-row:1;-ms-grid-column:3;-ms-grid-column-align:center;-ms-grid-row-align:center}div.fragment.linkOrCreateAccount div.startUsingSkype{-ms-grid-row:2;-ms-grid-column-span:5;-ms-grid-column-align:center;display:-ms-grid;-ms-grid-columns:40px calc(50% - 90px) 100px calc(50% - 90px);-ms-grid-rows:max-content 1fr}div.fragment.linkOrCreateAccount div.startUsingSkype div.existingUser{-ms-grid-row:1;-ms-grid-column:2;-ms-grid-row-align:start}div.fragment.linkOrCreateAccount div.startUsingSkype button.existingUser{-ms-grid-row:2;-ms-grid-column:2;-ms-grid-row-align:start;-ms-grid-column-align:start}div.fragment.linkOrCreateAccount div.startUsingSkype div.newUser{-ms-grid-row:1;-ms-grid-column:4;-ms-grid-row-align:start}div.fragment.linkOrCreateAccount div.startUsingSkype button.newUser{-ms-grid-row:2;-ms-grid-column:4;-ms-grid-row-align:start;-ms-grid-column-align:start}div.fragment.linkOrCreateAccount div.startUsingSkype p{margin-bottom:16px;margin-top:-7px}div.fragment.linkOrCreateAccount div.mergeAccounts{-ms-grid-row:5;-ms-grid-column:6;display:-ms-grid;-ms-grid-columns:75px 75px 20px 30px 10px 1fr;-ms-grid-rows:38px 37px auto auto}div.fragment.linkOrCreateAccount div.mergeAccounts div.actions{-ms-grid-row:5;-ms-grid-column:1;-ms-grid-column-span:6;-ms-grid-row-align:end}div.fragment.linkOrCreateAccount button.backbutton{-ms-grid-row:2;-ms-grid-column:2;-ms-grid-column-align:end;margin-right:20px;-ms-grid-row-align:start;margin-top:10px}div.fragment.linkOrCreateAccount div.linkSkypeAccount{-ms-grid-row:2;-ms-grid-column:3;-ms-grid-row-align:start}div.fragment.linkOrCreateAccount div.createNewAccount{-ms-grid-row:2;-ms-grid-column:3;-ms-grid-row-align:start}div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul{list-style:none;padding:0 0 4px 25px}div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul li{position:relative;padding-bottom:10px}div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul li input{margin-left:-25px;width:15px;position:absolute;top:-3px}div.fragment.linkOrCreateAccount div.logo{display:block;width:280px;height:123px;margin-top:0px}div.fragment.linkOrCreateAccount div.logo img{width:100%;height:100%}div.fragment.linkOrCreateAccount .hidden{display:none !important}div.fragment.linkOrCreateAccount div.error{display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:55px 1fr;border:2px solid #0095CC;margin-bottom:20px}div.fragment.linkOrCreateAccount div.error div.icon{-ms-grid-column:1;-ms-grid-row:1;-ms-grid-column-align:center;-ms-grid-row-align:center;margin-top:4px}div.fragment.linkOrCreateAccount div.error div.icon:before{content:"\E601";font-family:"Skype UI Symbol";font-weight:bold;font-size:26.67px}div.fragment.linkOrCreateAccount div.error div.message{-ms-grid-column:2;-ms-grid-row:1;margin-top:12px;margin-bottom:12px;padding-right:5px}div.fragment.linkOrCreateAccount #accountContact{margin-bottom:20px}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.actions>button{float:left;margin-right:20px}body.RTL div.fragment.linkOrCreateAccount div.linkSkypeAccount div.actions>button{float:right;margin-left:20px;margin-right:0}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.actions>a{position:relative;top:18px;left:15px}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>a{display:block}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul{padding:0 20px 10px 20px}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul>li{margin-top:5px;margin-bottom:10px}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul.noSignOut>li.signOut,div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul.signOut>li.noSignOut{display:none}div.fragment.linkOrCreateAccount div.contactWrapper{display:-ms-grid;width:300px;height:75px;margin-bottom:10px;-ms-grid-rows:1fr;white-space:nowrap;-ms-grid-columns:75px 15px 1fr}div.fragment.linkOrCreateAccount div.contactWrapper div.avatar{-ms-grid-column:1;background-size:cover}div.fragment.linkOrCreateAccount div.contactWrapper div.name{margin-top:7px;-ms-grid-column:3;-ms-grid-row-align:start}div.fragment.linkOrCreateAccount div.contactWrapper div.username{margin-bottom:13px;-ms-grid-column:3;-ms-grid-row-align:end}div.fragment.linkOrCreateAccount div.accountsList{height:auto;min-height:100px;max-height:170px;overflow-y:auto;-ms-overflow-style:scrollbar}div.fragment.linkOrCreateAccount div.win-listview div.win-container{margin:0;background-color:transparent;height:85px}div.fragment.linkOrCreateAccount div.win-listview div.win-container:hover{outline:none;background-color:transparent}div.fragment.linkOrCreateAccount div.win-listview div.win-container div.win-focusedoutline{left:2px;top:2px;width:calc(100% - 24px);height:calc(100% - 4px);outline-width:2px;outline-color:black}@media screen and (-ms-high-contrast: active){div.fragment.linkOrCreateAccount div.win-listview div.win-container div.win-focusedoutline{left:5px;top:5px;width:calc(100% - 29px);height:calc(100% - 10px);outline-width:5px;outline-color:windowText}}div.fragment.linkOrCreateAccount #liveIdAvatar{-ms-grid-row:1;-ms-grid-row-span:2;-ms-grid-column:1;-ms-grid-row-align:start;width:75px;height:75px;background:url("/images/avatarMSAccount.png") no-repeat center center;background-size:cover}div.fragment.linkOrCreateAccount #skypeAvatar{-ms-grid-row:1;-ms-grid-row-span:2;-ms-grid-column:2;background:url("/images/avatar.default.unknown.png") no-repeat center center;background-size:cover}div.fragment.linkOrCreateAccount #plusSign{-ms-grid-column:1;-ms-grid-column-align:center;-ms-grid-column-span:2;-ms-grid-row:1;-ms-grid-row-align:center;-ms-grid-row-span:2;z-index:2}div.fragment.linkOrCreateAccount #plusSign>a{display:inline-block;font-family:"Skype UI Symbol";font-size:35px;border-radius:50%;margin:0px 0px;line-height:normal;text-align:center;color:#fff;border-color:#fff;cursor:default;width:35px;height:35px;background-color:#00AFF0}div.fragment.linkOrCreateAccount #skypeAvatarImg{width:75px;height:75px}div.fragment.linkOrCreateAccount #liveIdAvatarImg{width:75px;height:75px}div.fragment.linkOrCreateAccount #liveIdLogo{-ms-grid-row:1;-ms-grid-row-align:center;-ms-grid-column:4;background:url("/images/logoMSAccount.png") no-repeat center center;width:30px;height:25px}div.fragment.linkOrCreateAccount #skypeLogo{-ms-grid-row:2;-ms-grid-row-align:center;-ms-grid-column:4;height:28px}div.fragment.linkOrCreateAccount #skypeLogo:after{content:"\E001";font-family:"Skype UI Symbol";font-weight:bold;font-size:28px;line-height:normal}div.fragment.linkOrCreateAccount #liveIdUsername{-ms-grid-row:1;-ms-grid-row-align:center;-ms-grid-column:6;font-size:20px}div.fragment.linkOrCreateAccount #skypeUsername{-ms-grid-row:2;-ms-grid-row-align:center;-ms-grid-column:6;font-size:20px;margin-bottom:10px}div.fragment.linkOrCreateAccount #mergeAccountsNote{-ms-grid-row:4;-ms-grid-column:1;-ms-grid-column-span:6;-ms-grid-row-align:start;padding-top:10px}div.fragment.linkOrCreateAccount #accountsAriaLabel{-ms-grid-row:1;-ms-grid-row-span:2;-ms-grid-column:4;-ms-grid-column-span:3}body.RTL div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul{list-style:none;padding-right:25px;padding-left:0}body.RTL div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul li input{margin-left:0;margin-right:-25px}body.RTL div.fragment.linkOrCreateAccount button.backbutton{margin-right:0px;margin-left:20px}@media screen and (max-aspect-ratio: 1 / 1){body.RTL div.fragment.linkOrCreateAccount div.msaLoginInfo{text-align:right}body.RTL div.fragment.linkOrCreateAccount button.backbutton ~ div h2{padding-left:0;padding-right:40px}}@media screen and (-ms-view-state: filled){body.RTL div.fragment.linkOrCreateAccount div.msaLoginInfo{text-align:right}}@media screen and (-ms-high-contrast: active){div.fragment.linkOrCreateAccount div.logo,div.fragment.linkOrCreateAccount #liveIdAvatar,div.fragment.linkOrCreateAccount #liveIdLogo{-ms-high-contrast-adjust:none}div.fragment.linkOrCreateAccount input,div.fragment.linkOrCreateAccount button,div.fragment.linkOrCreateAccount input[type=text],div.fragment.linkOrCreateAccount input[type=password]{border:1px solid WindowText}div.fragment.linkOrCreateAccount div.selectSkypeAccount div.accountsList div.contactWrapper>div.avatar,div.fragment.linkOrCreateAccount div.fragment.linkOrCreateAccount div.skypeUserCredentials #accountContact div.avatar{-ms-high-contrast-adjust:none}}@media screen and (-ms-view-state: filled){div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount{-ms-grid-columns:1fr 100px 500px 100px 1fr}div.fragment.linkOrCreateAccount div.msaLoginInfo{position:static;text-align:left;-ms-grid-row:3;-ms-grid-row-align:end;-ms-grid-column:3;width:auto;margin:0 0 15px 0;left:0;bottom:0}div.fragment.linkOrCreateAccount div.startUsingSkype{-ms-grid-columns:1fr;-ms-grid-rows:max-content 100px max-content 1fr;-ms-grid-column:3;-ms-grid-row:2;-ms-grid-column-span:1;-ms-grid-column-align:center}div.fragment.linkOrCreateAccount div.startUsingSkype div.newUser{-ms-grid-row:3;-ms-grid-column:1}div.fragment.linkOrCreateAccount div.startUsingSkype div.existingUser{-ms-grid-column:1}div.fragment.linkOrCreateAccount div.startUsingSkype button.newUser{-ms-grid-column:1;-ms-grid-row:4}div.fragment.linkOrCreateAccount div.startUsingSkype button.existingUser{-ms-grid-column:1}}@media screen and (max-aspect-ratio: 1 / 1){div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount{-ms-grid-columns:minmax(40px, 1fr) minmax(240px, 500px) minmax(40px, 1fr);-ms-grid-rows:40px 65px minmax(50vh, min-content) 80px 1fr}body.KEYBOARDUP div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount{-ms-grid-rows:40px 65px minmax(50vh, min-content) 80px 1fr}body.KEYBOARDUP div.fragment.linkOrCreateAccount div.logo{visibility:visible}div.fragment.linkOrCreateAccount h2{font-size:26.67px;line-height:34px;font-weight:200;padding:6px 0 0 0}div.fragment.linkOrCreateAccount div.error{-ms-grid-columns:48px 1fr}div.fragment.linkOrCreateAccount div.error div.icon{-ms-grid-row-align:start;-ms-grid-column-align:start;margin-top:15px;margin-left:13px}div.fragment.linkOrCreateAccount div.error div.message{margin-top:13px}div.fragment.linkOrCreateAccount button.backbutton{font-size:10pt;height:30px;line-height:26px;width:30px;vertical-align:-0.37em}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul{padding-left:0;list-style-position:inside}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul>li{margin-bottom:16px;line-height:18px}div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul>li>span{position:relative;margin-left:-11px}div.fragment.linkOrCreateAccount button.backbutton{-ms-grid-row:3;-ms-grid-column:2;-ms-grid-column-align:start;z-index:2}div.fragment.linkOrCreateAccount button.backbutton ~ div h2{padding-left:40px}div.fragment.linkOrCreateAccount div.linkSkypeAccount,div.fragment.linkOrCreateAccount div.createNewAccount{-ms-grid-row:3;-ms-grid-column:2;-ms-grid-row-align:start;z-index:1}div.fragment.linkOrCreateAccount div.logo{display:block;width:100px;height:44px;margin-top:0px;-ms-grid-row:2;-ms-grid-column:2;-ms-grid-column-align:start;-ms-grid-row-align:start}div.fragment.linkOrCreateAccount div.startUsingSkype{-ms-grid-columns:1fr;-ms-grid-rows:max-content 100px max-content 1fr;-ms-grid-column:2;-ms-grid-row:3;-ms-grid-column-span:1}div.fragment.linkOrCreateAccount div.startUsingSkype div.newUser{-ms-grid-row:3;-ms-grid-column:1}div.fragment.linkOrCreateAccount div.startUsingSkype div.existingUser{-ms-grid-column:1}div.fragment.linkOrCreateAccount div.startUsingSkype button.newUser{-ms-grid-column:1;-ms-grid-row:4}div.fragment.linkOrCreateAccount div.startUsingSkype button.existingUser{-ms-grid-column:1}div.fragment.linkOrCreateAccount div.msaLoginInfo{position:static;text-align:left;-ms-grid-row:5;-ms-grid-row-align:end;-ms-grid-column:2;width:auto;margin:0 0 15px 0;left:0;bottom:0}div.fragment.linkOrCreateAccount div.contactWrapper{display:-ms-grid;width:100%;height:auto;margin-bottom:10px;-ms-grid-rows:1fr 1fr;white-space:nowrap;-ms-grid-columns:60px 1fr}div.fragment.linkOrCreateAccount div.contactWrapper div.avatar{-ms-grid-column:1;-ms-grid-row-span:2;background-size:cover;width:40px;height:40px}div.fragment.linkOrCreateAccount div.contactWrapper div.name{margin-top:0;-ms-grid-column:2;-ms-grid-row:1;-ms-grid-row-align:start;font-size:14.66px;line-height: 19px;overflow:hidden;text-overflow:ellipsis}div.fragment.linkOrCreateAccount div.contactWrapper div.username{margin-bottom:0;-ms-grid-column:2;-ms-grid-row:2;-ms-grid-row-align:start;line-height: 17px;overflow:hidden;text-overflow:ellipsis}div.fragment.linkOrCreateAccount div.skypeUserCredentials div.actions button,div.fragment.linkOrCreateAccount div.mergeAccounts div.actions button{float:none;margin:0;display:block}div.fragment.linkOrCreateAccount div.skypeUserCredentials div.actions a,div.fragment.linkOrCreateAccount div.mergeAccounts div.actions a{top:14px;left:0}div.fragment.linkOrCreateAccount div.mergeAccounts{-ms-grid-columns:40px 40px 20px 20px 5px 1fr;-ms-grid-rows:20px 25px auto auto}div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdAvatar,div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdAvatarImg,div.fragment.linkOrCreateAccount div.mergeAccounts #skypeAvatar,div.fragment.linkOrCreateAccount div.mergeAccounts #skypeAvatarImg{width:40px;height:40px}div.fragment.linkOrCreateAccount div.mergeAccounts #plusSign>a{width:17px;height:17px;font-size:17px;border-color:#E6F7FE;background-color:#E6F7FE;color:#00aff0}div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdUsername,div.fragment.linkOrCreateAccount div.mergeAccounts #skypeUsername{font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}div.fragment.linkOrCreateAccount div.mergeAccounts #skypeUsername{margin-bottom:5px}div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdLogo{height:14px;width:14px}div.fragment.linkOrCreateAccount div.mergeAccounts #skypeLogo::after{font-size:14px}}@media screen and (-ms-high-contrast: active){div.linkOrCreateAccount.fragment button:not(.backbutton){border:2px solid windowText}div.linkOrCreateAccount.fragment a[href],div.linkOrCreateAccount.fragment a.link,a{color:windowText}}
+﻿@charset "UTF-8";
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr minmax(50vh, min-content) 80px;
+    -ms-grid-columns: 1fr 100px 650px 100px 1fr;
+    background-color: #00aff0;
+    height: 100%;
+    width: 100%;
+    color: white
+}
+
+body.KEYBOARDUP div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount {
+    -ms-grid-rows: 12vh 88vh
+}
+
+body.KEYBOARDUP div.fragment.linkOrCreateAccount div.logo {
+    visibility: hidden
+}
+
+div.fragment.linkOrCreateAccount input::-ms-check {
+    background-color: #0095cc;
+    border-color: #fff;
+    color: #fff
+}
+
+div.fragment.linkOrCreateAccount input:hover::-ms-check {
+    background-color: rgba(0, 149, 204, 0.75);
+    color: #fff
+}
+
+div.fragment.linkOrCreateAccount input:hover:active::-ms-check {
+    color: #fff;
+    background-color: rgba(0, 149, 204, 0.25)
+}
+
+div.fragment.linkOrCreateAccount>div.msaLoginInfo {
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    left: 50%;
+    margin-left: -50%;
+    text-align: center
+}
+
+div.fragment.linkOrCreateAccount>div.msaLoginInfo a {
+    color: white
+}
+
+div.fragment.linkOrCreateAccount h2 {
+    margin-bottom: 23px
+}
+
+div.fragment.linkOrCreateAccount a[href],
+div.fragment.linkOrCreateAccount a.link {
+    color: white;
+    font-weight: 600
+}
+
+div.fragment.linkOrCreateAccount button:not(.backbutton) {
+    background-color: rgba(0, 0, 0, 0.15);
+    border: 0px;
+    color: white;
+    cursor: pointer;
+    padding: 0px 40px 0px 40px;
+    min-height: 40px;
+    height: auto;
+    border-radius: 20px;
+    margin-top: 10px
+}
+
+div.fragment.linkOrCreateAccount button:not(.backbutton):hover {
+    background-color: rgba(0, 0, 0, 0.2)
+}
+
+div.fragment.linkOrCreateAccount button:not(.backbutton):active {
+    background-color: rgba(0, 0, 0, 0.3)
+}
+
+div.fragment.linkOrCreateAccount button:not(.backbutton)[disabled] {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: rgba(255, 255, 255, 0.4);
+    cursor: auto
+}
+
+div.fragment.linkOrCreateAccount input[type=text],
+div.fragment.linkOrCreateAccount input[type=password] {
+    display: block;
+    width: calc(100% - 6px);
+    height: 40px;
+    margin-bottom: 20px
+}
+
+div.fragment.linkOrCreateAccount div.logo {
+    -ms-grid-row: 1;
+    -ms-grid-column: 3;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center
+}
+
+div.fragment.linkOrCreateAccount div.startUsingSkype {
+    -ms-grid-row: 2;
+    -ms-grid-column-span: 5;
+    -ms-grid-column-align: center;
+    display: -ms-grid;
+    -ms-grid-columns: 40px calc(50% - 90px) 100px calc(50% - 90px);
+    -ms-grid-rows: max-content 1fr
+}
+
+div.fragment.linkOrCreateAccount div.startUsingSkype div.existingUser {
+    -ms-grid-row: 1;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start
+}
+
+div.fragment.linkOrCreateAccount div.startUsingSkype button.existingUser {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: start
+}
+
+div.fragment.linkOrCreateAccount div.startUsingSkype div.newUser {
+    -ms-grid-row: 1;
+    -ms-grid-column: 4;
+    -ms-grid-row-align: start
+}
+
+div.fragment.linkOrCreateAccount div.startUsingSkype button.newUser {
+    -ms-grid-row: 2;
+    -ms-grid-column: 4;
+    -ms-grid-row-align: start;
+    -ms-grid-column-align: start
+}
+
+div.fragment.linkOrCreateAccount div.startUsingSkype p {
+    margin-bottom: 16px;
+    margin-top: -7px
+}
+
+div.fragment.linkOrCreateAccount div.mergeAccounts {
+    -ms-grid-row: 5;
+    -ms-grid-column: 6;
+    display: -ms-grid;
+    -ms-grid-columns: 75px 75px 20px 30px 10px 1fr;
+    -ms-grid-rows: 38px 37px auto auto
+}
+
+div.fragment.linkOrCreateAccount div.mergeAccounts div.actions {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    -ms-grid-row-align: end
+}
+
+div.fragment.linkOrCreateAccount button.backbutton {
+    -ms-grid-row: 2;
+    -ms-grid-column: 2;
+    -ms-grid-column-align: end;
+    margin-right: 20px;
+    -ms-grid-row-align: start;
+    margin-top: 10px
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount {
+    -ms-grid-row: 2;
+    -ms-grid-column: 3;
+    -ms-grid-row-align: start
+}
+
+div.fragment.linkOrCreateAccount div.createNewAccount {
+    -ms-grid-row: 2;
+    -ms-grid-column: 3;
+    -ms-grid-row-align: start
+}
+
+div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul {
+    list-style: none;
+    padding: 0 0 4px 25px
+}
+
+div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul li {
+    position: relative;
+    padding-bottom: 10px
+}
+
+div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul li input {
+    margin-left: -25px;
+    width: 15px;
+    position: absolute;
+    top: -3px
+}
+
+div.fragment.linkOrCreateAccount div.logo {
+    display: block;
+    width: 280px;
+    height: 123px;
+    margin-top: 0px
+}
+
+div.fragment.linkOrCreateAccount div.logo img {
+    width: 100%;
+    height: 100%
+}
+
+div.fragment.linkOrCreateAccount .hidden {
+    display: none !important
+}
+
+div.fragment.linkOrCreateAccount div.error {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 55px 1fr;
+    border: 2px solid #0095CC;
+    margin-bottom: 20px
+}
+
+div.fragment.linkOrCreateAccount div.error div.icon {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    margin-top: 4px
+}
+
+div.fragment.linkOrCreateAccount div.error div.icon:before {
+    content: "\E601";
+    font-family: "Skype UI Symbol" !important;
+    font-weight: bold;
+    font-size: 26.67px
+}
+
+div.fragment.linkOrCreateAccount div.error div.message {
+    -ms-grid-column: 2;
+    -ms-grid-row: 1;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding-right: 5px
+}
+
+div.fragment.linkOrCreateAccount #accountContact {
+    margin-bottom: 20px
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.actions>button {
+    float: left;
+    margin-right: 20px
+}
+
+body.RTL div.fragment.linkOrCreateAccount div.linkSkypeAccount div.actions>button {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.actions>a {
+    position: relative;
+    top: 18px;
+    left: 15px
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>a {
+    display: block
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul {
+    padding: 0 20px 10px 20px
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul>li {
+    margin-top: 5px;
+    margin-bottom: 10px
+}
+
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul.noSignOut>li.signOut,
+div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul.signOut>li.noSignOut {
+    display: none
+}
+
+div.fragment.linkOrCreateAccount div.contactWrapper {
+    display: -ms-grid;
+    width: 300px;
+    height: 75px;
+    margin-bottom: 10px;
+    -ms-grid-rows: 1fr;
+    white-space: nowrap;
+    -ms-grid-columns: 75px 15px 1fr
+}
+
+div.fragment.linkOrCreateAccount div.contactWrapper div.avatar {
+    -ms-grid-column: 1;
+    background-size: cover
+}
+
+div.fragment.linkOrCreateAccount div.contactWrapper div.name {
+    margin-top: 7px;
+    -ms-grid-column: 3;
+    -ms-grid-row-align: start
+}
+
+div.fragment.linkOrCreateAccount div.contactWrapper div.username {
+    margin-bottom: 13px;
+    -ms-grid-column: 3;
+    -ms-grid-row-align: end
+}
+
+div.fragment.linkOrCreateAccount div.accountsList {
+    height: auto;
+    min-height: 100px;
+    max-height: 170px;
+    overflow-y: auto;
+    -ms-overflow-style: scrollbar
+}
+
+div.fragment.linkOrCreateAccount div.win-listview div.win-container {
+    margin: 0;
+    background-color: transparent;
+    height: 85px
+}
+
+div.fragment.linkOrCreateAccount div.win-listview div.win-container:hover {
+    outline: none;
+    background-color: transparent
+}
+
+div.fragment.linkOrCreateAccount div.win-listview div.win-container div.win-focusedoutline {
+    left: 2px;
+    top: 2px;
+    width: calc(100% - 24px);
+    height: calc(100% - 4px);
+    outline-width: 2px;
+    outline-color: black
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.linkOrCreateAccount div.win-listview div.win-container div.win-focusedoutline {
+        left: 5px;
+        top: 5px;
+        width: calc(100% - 29px);
+        height: calc(100% - 10px);
+        outline-width: 5px;
+        outline-color: windowText
+    }
+}
+
+div.fragment.linkOrCreateAccount #liveIdAvatar {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 1;
+    -ms-grid-row-align: start;
+    width: 75px;
+    height: 75px;
+    background: url("/images/avatarMSAccount.png") no-repeat center center;
+    background-size: cover
+}
+
+div.fragment.linkOrCreateAccount #skypeAvatar {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
+    background: url("/images/avatar.default.unknown.png") no-repeat center center;
+    background-size: cover
+}
+
+div.fragment.linkOrCreateAccount #plusSign {
+    -ms-grid-column: 1;
+    -ms-grid-column-align: center;
+    -ms-grid-column-span: 2;
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center;
+    -ms-grid-row-span: 2;
+    z-index: 2
+}
+
+div.fragment.linkOrCreateAccount #plusSign>a {
+    display: inline-block;
+    font-family: "Skype UI Symbol" !important;
+    font-size: 35px;
+    border-radius: 50%;
+    margin: 0px 0px;
+    line-height: normal;
+    text-align: center;
+    color: #fff;
+    border-color: #fff;
+    cursor: default;
+    width: 35px;
+    height: 35px;
+    background-color: #00AFF0
+}
+
+div.fragment.linkOrCreateAccount #skypeAvatarImg {
+    width: 75px;
+    height: 75px
+}
+
+div.fragment.linkOrCreateAccount #liveIdAvatarImg {
+    width: 75px;
+    height: 75px
+}
+
+div.fragment.linkOrCreateAccount #liveIdLogo {
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center;
+    -ms-grid-column: 4;
+    background: url("/images/logoMSAccount.png") no-repeat center center;
+    width: 30px;
+    height: 25px
+}
+
+div.fragment.linkOrCreateAccount #skypeLogo {
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center;
+    -ms-grid-column: 4;
+    height: 28px
+}
+
+div.fragment.linkOrCreateAccount #skypeLogo:after {
+    content: "\E001";
+    font-family: "Skype UI Symbol" !important;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: normal
+}
+
+div.fragment.linkOrCreateAccount #liveIdUsername {
+    -ms-grid-row: 1;
+    -ms-grid-row-align: center;
+    -ms-grid-column: 6;
+    font-size: 20px
+}
+
+div.fragment.linkOrCreateAccount #skypeUsername {
+    -ms-grid-row: 2;
+    -ms-grid-row-align: center;
+    -ms-grid-column: 6;
+    font-size: 20px;
+    margin-bottom: 10px
+}
+
+div.fragment.linkOrCreateAccount #mergeAccountsNote {
+    -ms-grid-row: 4;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 6;
+    -ms-grid-row-align: start;
+    padding-top: 10px
+}
+
+div.fragment.linkOrCreateAccount #accountsAriaLabel {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 4;
+    -ms-grid-column-span: 3
+}
+
+body.RTL div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul {
+    list-style: none;
+    padding-right: 25px;
+    padding-left: 0
+}
+
+body.RTL div.fragment.linkOrCreateAccount div.createNewAccount div.acceptTermsOfUse ul li input {
+    margin-left: 0;
+    margin-right: -25px
+}
+
+body.RTL div.fragment.linkOrCreateAccount button.backbutton {
+    margin-right: 0px;
+    margin-left: 20px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.RTL div.fragment.linkOrCreateAccount div.msaLoginInfo {
+        text-align: right
+    }
+    body.RTL div.fragment.linkOrCreateAccount button.backbutton~div h2 {
+        padding-left: 0;
+        padding-right: 40px
+    }
+}
+
+@media screen and (-ms-view-state: filled) {
+    body.RTL div.fragment.linkOrCreateAccount div.msaLoginInfo {
+        text-align: right
+    }
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.fragment.linkOrCreateAccount div.logo,
+    div.fragment.linkOrCreateAccount #liveIdAvatar,
+    div.fragment.linkOrCreateAccount #liveIdLogo {
+        -ms-high-contrast-adjust: none
+    }
+    div.fragment.linkOrCreateAccount input,
+    div.fragment.linkOrCreateAccount button,
+    div.fragment.linkOrCreateAccount input[type=text],
+    div.fragment.linkOrCreateAccount input[type=password] {
+        border: 1px solid WindowText
+    }
+    div.fragment.linkOrCreateAccount div.selectSkypeAccount div.accountsList div.contactWrapper>div.avatar,
+    div.fragment.linkOrCreateAccount div.fragment.linkOrCreateAccount div.skypeUserCredentials #accountContact div.avatar {
+        -ms-high-contrast-adjust: none
+    }
+}
+
+@media screen and (-ms-view-state: filled) {
+    div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount {
+        -ms-grid-columns: 1fr 100px 500px 100px 1fr
+    }
+    div.fragment.linkOrCreateAccount div.msaLoginInfo {
+        position: static;
+        text-align: left;
+        -ms-grid-row: 3;
+        -ms-grid-row-align: end;
+        -ms-grid-column: 3;
+        width: auto;
+        margin: 0 0 15px 0;
+        left: 0;
+        bottom: 0
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype {
+        -ms-grid-columns: 1fr;
+        -ms-grid-rows: max-content 100px max-content 1fr;
+        -ms-grid-column: 3;
+        -ms-grid-row: 2;
+        -ms-grid-column-span: 1;
+        -ms-grid-column-align: center
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype div.newUser {
+        -ms-grid-row: 3;
+        -ms-grid-column: 1
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype div.existingUser {
+        -ms-grid-column: 1
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype button.newUser {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype button.existingUser {
+        -ms-grid-column: 1
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount {
+        -ms-grid-columns: minmax(40px, 1fr) minmax(240px, 500px) minmax(40px, 1fr);
+        -ms-grid-rows: 40px 65px minmax(50vh, min-content) 80px 1fr
+    }
+    body.KEYBOARDUP div.page section.navigationContainer>div>div.fragment.linkOrCreateAccount {
+        -ms-grid-rows: 40px 65px minmax(50vh, min-content) 80px 1fr
+    }
+    body.KEYBOARDUP div.fragment.linkOrCreateAccount div.logo {
+        visibility: visible
+    }
+    div.fragment.linkOrCreateAccount h2 {
+        font-size: 26.67px;
+        line-height: 34px;
+        font-weight: 200;
+        padding: 6px 0 0 0
+    }
+    div.fragment.linkOrCreateAccount div.error {
+        -ms-grid-columns: 48px 1fr
+    }
+    div.fragment.linkOrCreateAccount div.error div.icon {
+        -ms-grid-row-align: start;
+        -ms-grid-column-align: start;
+        margin-top: 15px;
+        margin-left: 13px
+    }
+    div.fragment.linkOrCreateAccount div.error div.message {
+        margin-top: 13px
+    }
+    div.fragment.linkOrCreateAccount button.backbutton {
+        font-size: 10pt;
+        height: 30px;
+        line-height: 26px;
+        width: 30px;
+        vertical-align: -0.37em
+    }
+    div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul {
+        padding-left: 0;
+        list-style-position: inside
+    }
+    div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul>li {
+        margin-bottom: 16px;
+        line-height: 18px
+    }
+    div.fragment.linkOrCreateAccount div.linkSkypeAccount div.accountAlreadyLinked>ul>li>span {
+        position: relative;
+        margin-left: -11px
+    }
+    div.fragment.linkOrCreateAccount button.backbutton {
+        -ms-grid-row: 3;
+        -ms-grid-column: 2;
+        -ms-grid-column-align: start;
+        z-index: 2
+    }
+    div.fragment.linkOrCreateAccount button.backbutton~div h2 {
+        padding-left: 40px
+    }
+    div.fragment.linkOrCreateAccount div.linkSkypeAccount,
+    div.fragment.linkOrCreateAccount div.createNewAccount {
+        -ms-grid-row: 3;
+        -ms-grid-column: 2;
+        -ms-grid-row-align: start;
+        z-index: 1
+    }
+    div.fragment.linkOrCreateAccount div.logo {
+        display: block;
+        width: 100px;
+        height: 44px;
+        margin-top: 0px;
+        -ms-grid-row: 2;
+        -ms-grid-column: 2;
+        -ms-grid-column-align: start;
+        -ms-grid-row-align: start
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype {
+        -ms-grid-columns: 1fr;
+        -ms-grid-rows: max-content 100px max-content 1fr;
+        -ms-grid-column: 2;
+        -ms-grid-row: 3;
+        -ms-grid-column-span: 1
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype div.newUser {
+        -ms-grid-row: 3;
+        -ms-grid-column: 1
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype div.existingUser {
+        -ms-grid-column: 1
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype button.newUser {
+        -ms-grid-column: 1;
+        -ms-grid-row: 4
+    }
+    div.fragment.linkOrCreateAccount div.startUsingSkype button.existingUser {
+        -ms-grid-column: 1
+    }
+    div.fragment.linkOrCreateAccount div.msaLoginInfo {
+        position: static;
+        text-align: left;
+        -ms-grid-row: 5;
+        -ms-grid-row-align: end;
+        -ms-grid-column: 2;
+        width: auto;
+        margin: 0 0 15px 0;
+        left: 0;
+        bottom: 0
+    }
+    div.fragment.linkOrCreateAccount div.contactWrapper {
+        display: -ms-grid;
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+        -ms-grid-rows: 1fr 1fr;
+        white-space: nowrap;
+        -ms-grid-columns: 60px 1fr
+    }
+    div.fragment.linkOrCreateAccount div.contactWrapper div.avatar {
+        -ms-grid-column: 1;
+        -ms-grid-row-span: 2;
+        background-size: cover;
+        width: 40px;
+        height: 40px
+    }
+    div.fragment.linkOrCreateAccount div.contactWrapper div.name {
+        margin-top: 0;
+        -ms-grid-column: 2;
+        -ms-grid-row: 1;
+        -ms-grid-row-align: start;
+        font-size: 14.66px;
+        line-height: 19px;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    div.fragment.linkOrCreateAccount div.contactWrapper div.username {
+        margin-bottom: 0;
+        -ms-grid-column: 2;
+        -ms-grid-row: 2;
+        -ms-grid-row-align: start;
+        line-height: 17px;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    div.fragment.linkOrCreateAccount div.skypeUserCredentials div.actions button,
+    div.fragment.linkOrCreateAccount div.mergeAccounts div.actions button {
+        float: none;
+        margin: 0;
+        display: block
+    }
+    div.fragment.linkOrCreateAccount div.skypeUserCredentials div.actions a,
+    div.fragment.linkOrCreateAccount div.mergeAccounts div.actions a {
+        top: 14px;
+        left: 0
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts {
+        -ms-grid-columns: 40px 40px 20px 20px 5px 1fr;
+        -ms-grid-rows: 20px 25px auto auto
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdAvatar,
+    div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdAvatarImg,
+    div.fragment.linkOrCreateAccount div.mergeAccounts #skypeAvatar,
+    div.fragment.linkOrCreateAccount div.mergeAccounts #skypeAvatarImg {
+        width: 40px;
+        height: 40px
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts #plusSign>a {
+        width: 17px;
+        height: 17px;
+        font-size: 17px;
+        border-color: #E6F7FE;
+        background-color: #E6F7FE;
+        color: #00aff0
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdUsername,
+    div.fragment.linkOrCreateAccount div.mergeAccounts #skypeUsername {
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts #skypeUsername {
+        margin-bottom: 5px
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts #liveIdLogo {
+        height: 14px;
+        width: 14px
+    }
+    div.fragment.linkOrCreateAccount div.mergeAccounts #skypeLogo::after {
+        font-size: 14px
+    }
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.linkOrCreateAccount.fragment button:not(.backbutton) {
+        border: 2px solid windowText
+    }
+    div.linkOrCreateAccount.fragment a[href],
+    div.linkOrCreateAccount.fragment a.link,
+    a {
+        color: windowText
+    }
+}

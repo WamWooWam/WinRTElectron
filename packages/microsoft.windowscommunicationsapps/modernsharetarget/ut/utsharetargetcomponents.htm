@@ -1,0 +1,55 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<!-- Share Anything script files -->
+<script src="/ModernShareAnything/ShareConstants.js" type="text/javascript"></script>
+<script src="/ModernShareAnything/ShareData.js" type="text/javascript"></script>
+<script src="/ModernShareAnything/ShareDataLoader.js" type="text/javascript"></script>
+
+<!-- ShareTarget -->
+<script src="/ModernShareTarget/ShareMailConstants.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/RequestHelper.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareAttachmentWrapper.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareButton.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareButton.tmpl.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareMailData.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareMailDataLoader.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareProgress.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareProgress.tmpl.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareQuickLinkData.js" type="text/javascript" ></script>
+<script src="/ModernShareTarget/ShareService.js" type="text/javascript" ></script>
+
+<!-- UTs -->
+<script src="/ModernShareAnything/ut/ShareUnitTestHelpers.js"></script>
+<script src="utRequestHelper.js"></script>
+<script src="utShareAttachmentWrapper.js"></script>
+<script src="utShareButton.js"></script>
+<script src="utShareMailData.js"></script>
+<script src="utShareMailDataLoader.js"></script>
+<script src="utShareProgress.js"></script>
+<script src="utShareQuickLinkData.js"></script>
+<script src="utShareService.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

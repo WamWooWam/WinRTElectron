@@ -407,7 +407,7 @@ div.fragment.dialer div.dialpad div.actionButtons>div {
     border-radius: 50%;
     width: 60px;
     height: 60px;
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-size: 60px;
     line-height: normal;
     text-align: center;
@@ -514,7 +514,7 @@ div.fragment.dialer div.categoryContainer.emergencyCall div.restrictedCountry di
     width: 30px;
     border-radius: 50%;
     right: 0;
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-size: 30px;
     line-height: normal;
     text-align: center;
@@ -635,7 +635,7 @@ div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.icon 
 
 div.fragment.dialer div.categoryContainer.recents div.itemsPlaceholder div.icon::before {
     content: "\E30b";
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-size: 64px;
     font-weight: bold;
     position: relative;
@@ -739,7 +739,7 @@ div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionStat
 }
 
 div.fragment.dialer div.categoryContainer.accountInfo div.item div.exceptionState>div>div.icon {
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-size: 44px;
     position: relative;
     top: 7px;
@@ -773,7 +773,7 @@ div.fragment.dialer div.categoryContainer.recents div.item div.buttonFrame div.c
     min-width: 0;
     font-weight: normal;
     border: 0;
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-weight: normal;
     font-size: 40px;
     background-color: #00aff0;

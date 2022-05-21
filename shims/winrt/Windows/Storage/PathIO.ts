@@ -12,10 +12,10 @@ import * as _path from "path";
 const fsp = fs.promises;
 
 @GenerateShim('Windows.Storage.PathIO')
-export class PathIO { 
+export class PathIO {
     static readTextAsync(absolutePath: string): IAsyncOperation<string> {
-        return AsyncOperation.from(async() => {
-            if(!fs.existsSync(absolutePath)) {
+        return AsyncOperation.from(async () => {
+            if (!fs.existsSync(absolutePath)) {
                 throw new Error("File doesn't exist!");
             }
 
@@ -26,7 +26,10 @@ export class PathIO {
     }
 
     static writeTextAsync(absolutePath: string, contents: string): IAsyncAction {
-        return AsyncOperation.from(async() => {
+        return AsyncOperation.from(async () => {
+            if (!fs.existsSync(_path.dirname(absolutePath)))
+                await fsp.mkdir(_path.dirname(absolutePath))
+
             await fsp.writeFile(absolutePath, contents);
         });
     }

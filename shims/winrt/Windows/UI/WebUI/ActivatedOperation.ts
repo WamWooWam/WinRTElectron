@@ -5,12 +5,23 @@
 // </auto-generated>
 // --------------------------------------------------
 
+import { IpcHelper } from "../../../IpcHelper";
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
+import { ActivatedDeferralV1 } from "../../Foundation/Interop/IpcConstants";
+import { uuidv4 } from "../../Foundation/Interop/Utils";
 import { ActivatedDeferral } from "./ActivatedDeferral";
 
 @GenerateShim('Windows.UI.WebUI.ActivatedOperation')
-export class ActivatedOperation { 
+export class ActivatedOperation {
+    private __deferral: ActivatedDeferral;
     getDeferral(): ActivatedDeferral {
-        return new ActivatedDeferral();
+        if (this.__deferral)
+            return this.__deferral;
+
+        let deferralId = uuidv4();
+        let deferral = new ActivatedDeferral(deferralId);
+        IpcHelper.post(ActivatedDeferralV1, { deferralId, type: 'captured' })
+        this.__deferral = deferral;
+        return deferral;
     }
 }

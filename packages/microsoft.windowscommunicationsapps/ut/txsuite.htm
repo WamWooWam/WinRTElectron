@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx framework -->
+<link rel="stylesheet" href="/Tx/ui/Tx.css">
+<script src="/Tx/core/TxLoader.js"></script>
+
+<!-- UT config -->
+<script src="/Tx/ut/config.js"></script>
+<script src="/Jx/ut/config.js"></script>
+<script src="/FontSelector/ut/config.js"></script>
+<script src="/FromControl/ut/config.js"></script>
+<script src="/MenuArrowKeyHandler/ut/config.js"></script>
+<script src="/ModernCanvas/ut/config.js"></script>
+<script src="/ModernMail/ut/config.js"></script>
+<script src="/ModernShareAnything/ut/config.js"></script>
+<script src="/ModernShareTarget/ut/config.js"></script>
+<script src="/ModernPeople/ut/config.js"></script>
+<script src="/ModernCalendar/ut/config.js"></script>
+<script src="/ModernCalendar/ut/platform/config.js"></script>
+<script src="/Platform/ut/config.js"></script>
+<script src="/ModernSync/ut/config.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.initSuite(document.getElementById("txSuite"));
+    };
+
+    window.onunload = function () {
+        Tx.shutdownSuite();
+    };
+</script>
+</head>
+<body>
+<div id="txSuite"></div>
+</body>
+</html> 

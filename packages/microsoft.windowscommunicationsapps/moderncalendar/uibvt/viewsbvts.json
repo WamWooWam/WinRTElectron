@@ -1,0 +1,37 @@
+{
+   "tests": [
+      "AgendaView_AllDayCardOrdering",
+      "AgendaView_AllDayInHero",
+      "AgendaView_ConflictingEvents",
+      "AgendaView_ConflictingSplitEvents",
+      "AgendaView_CreateAllDayInHero",
+      "AgendaView_CreateRegularEvent",
+      "AgendaView_CreateSplitEvent",      
+      "AgendaView_Delete",
+      "AgendaView_DeleteSplitEvent",
+      "AgendaView_DeleteMultiDayEvent",
+      "AgendaView_Manipulate",
+      "AgendaView_ManipulateSingleToSplit",
+      "AgendaView_ManipulateSplitToSingle",
+      "AgendaView_ManipulateSingleToMultiDay",
+      "AgendaView_ManipulateMultiDayToSingle",
+      "AgendaView_ManipulateSplitToMultiDay",
+      "AgendaView_ManipulateMultiDayToSplit",
+      "AgendaView_RegularEventTypes",
+      "AgendaView_SortingAllDayByBusyStatus",
+      "AgendaView_SortingAroundMidnight",
+      "AgendaView_SortingByBusyStatus",      
+      "AgendaView_SortingByDuration"      
+   ],
+
+   "files": [
+        "/ModernShared/uibvt/libShared.js",
+        "/ModernCalendar/uibvt/libUtilities.js",
+        "/ModernCalendar/uibvt/libAgendaView.js",
+        "/ModernCalendar/uibvt/libCalendar.js",
+        "/ModernCalendar/uibvt/libDatePicker.js",
+        "/ModernCalendar/uibvt/libEventDetails.js",        
+
+        "/ModernCalendar/uibvt/bvtAgendaView.js"        
+    ]
+}

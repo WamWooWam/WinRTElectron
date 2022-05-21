@@ -6,6 +6,9 @@
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        
+        <script src="//winrt/dist/winrt.bundle.js"></script>
+        <script src="//microsoft.windowscommunicationsapps.shim/dist/bundle.js"></script>
 
         <!-- For cover builds running in IE, stub out the CodeCoverage -->
         <!-- It must be included before any other JS file which would have CodeCoverage code injected into it. -->
@@ -13,9 +16,6 @@
              the ///#ifdef NO_SHIP is not available.
              If you want to debug a cover build in IE, uncomment the following line including CoverStubs.js. -->
         <!-- <script type="text/javascript" src="../Shared/Stubs/CoverStubs.js"></script> -->
-
-        <script src="//winrt/dist/winrt.bundle.js"></script>
-        <script src="//microsoft.windowscommunicationsapps.shim/dist/bundle.js"></script>
 
         <!-- Create the platform as early as possible, so that it can spin up the database in the background -->
         <script src="/ModernPeople/AppFrame/CreatePlatform.js"></script>

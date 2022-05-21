@@ -15,25 +15,26 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.ContactGroup')
 export class ContactGroup implements IClosable { 
-    static type_SCD_CONTACTS: number = null;
-    static type_LYNC_CONTACTS: number = null;
-    static type_PASSPORT_CONTACTS: number = null;
-    static type_XMPP_CONTACTS: number = null;
-    static type_EXTERNAL_CONTACTS: number = null;
-    static type_SHARED_GROUP: number = null;
-    static type_PROPOSED_SHARED_GROUP: number = null;
-    static type_CUSTOM_GROUP: number = null;
-    static type_UNGROUPED_BUDDIES: number = null;
-    static type_CONTACTS_BLOCKED_BY_ME: number = null;
-    static type_CONTACTS_AUTHORIZED_BY_ME: number = null;
-    static type_CONTACTS_WAITING_MY_AUTHORIZATION: number = null;
-    static type_RECENTLY_CONTACTED_CONTACTS: number = null;
-    static type_UNKNOWN_OR_PENDINGAUTH_BUDDIES: number = null;
-    static type_ONLINE_BUDDIES: number = null;
-    static type_SKYPEOUT_BUDDIES: number = null;
-    static type_SKYPE_BUDDIES: number = null;
-    static type_ALL_BUDDIES: number = null;
-    static type_ALL_KNOWN_CONTACTS: number = null;
+    static type_SCD_CONTACTS: number = 19;
+    static type_LYNC_CONTACTS: number = 18;
+    static type_PASSPORT_CONTACTS: number = 17;
+    static type_XMPP_CONTACTS: number = 16;
+    static type_EXTERNAL_CONTACTS: number = 15;
+    static type_SHARED_GROUP: number = 14;
+    static type_PROPOSED_SHARED_GROUP: number = 13;
+    static type_CUSTOM_GROUP: number = 12;
+    static type_UNGROUPED_BUDDIES: number = 11;
+    static type_CONTACTS_BLOCKED_BY_ME: number = 10;
+    static type_CONTACTS_AUTHORIZED_BY_ME: number = 9;
+    static type_CONTACTS_WAITING_MY_AUTHORIZATION: number = 8;
+    static type_RECENTLY_CONTACTED_CONTACTS: number = 7;
+    static type_UNKNOWN_OR_PENDINGAUTH_BUDDIES: number = 6;
+    static type_ONLINE_BUDDIES: number = 5;
+    static type_SKYPEOUT_BUDDIES: number = 4;
+    static type_SKYPE_BUDDIES: number = 3;
+    static type_ALL_BUDDIES: number = 2;
+    static type_ALL_KNOWN_CONTACTS: number = 1;
+    
     getObjectID(): number {
         throw new Error('ContactGroup#getObjectID not implemented')
     }

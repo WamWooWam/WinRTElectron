@@ -1,0 +1,39 @@
+﻿html { height: 100% }
+body { margin: 0px; height: 100%; width:100%; }
+.root { width:100%; height: 100%; display:-ms-grid; -ms-grid-rows: 100%; -ms-grid-columns: 1fr auto;}
+.dataArea { padding:5%; height: 89%; -ms-grid-row: 1; -ms-grid-column: 1; }
+#canvas { height:100%; width:100%; box-sizing:border-box; padding:5px; overflow-y:auto; background-color: rgba(242,242,242,1.0);}
+.intro { width:99%; text-align:center; font-size:20pt; height: 99%; background-color: lightgray }
+.heading { width: 100%; color:white; background-color: gray; display:block; margin-top:5px; margin-bottom:5px }
+.inputArea { margin:10px; max-height: 100%; overflow-y: auto; -ms-grid-row: 1; -ms-grid-column: 2;  }
+.inputSection { margin:3px; border:1px dashed black; padding:10px; overflow:hidden; }
+.inputSectionTitle { font-weight: bold }
+td { white-space: nowrap }
+input, select { width: 200px; }
+.templates { display: none; }
+
+.inline { display: inline-block; }
+.readingPaneFrom { width:100%; font-size: 56px; font-family:"Segoe UI Light"; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.readingPaneTo { font-size: 14.66667px; font-family:"Segoe UI Light"; overflow:hidden; text-overflow: ellipsis }
+.readingPaneToElement { white-space: nowrap; }
+.raContainer { display: -ms-flexbox; width: 100%; overflow:hidden; }
+.raTile { margin-top: 9px; }
+.raText { -ms-flex: 1 auto; font-size: 26.66667px; margin-left: 15px; font-family: "Segoe UI Light"; overflow:hidden; text-overflow:ellipsis }
+.raName { color: rgba(0, 116, 158, 1); font-family:"Segoe UI" }
+
+.disambiguator { color: rgba(112,112,112,1.0); }
+.disambiguatorContent { font-family: "Segoe UI Symbol"; margin-top:10px; padding-top:15px; height: 45px; text-align: center }
+
+.ic-favorite { background-color: white; }
+.ic-favorite .ic-tile { height: 215px !important; }
+.ic-favorite .ic-tileLayout-primary { margin-top: 0px; }
+.ic-favorite.ic-favorite .ic-favoriteName { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; display: block; font-size: 14.66px; font-weight: 300; padding-left: 10px; padding-right: 10px; padding-top: 4px; height: 30px; width: 220px; box-sizing:border-box; }
+.ic-listItem { margin-@right: 60px; }
+.ic-favorite:hover { background-color: rgba(251, 183, 104, 0.3); outline: 3px solid rgba(251, 183, 104, 0.3); }
+.ic-snapFavorite:hover, .ic-listItem:hover { background-color: rgba(251, 183, 104, 0.3); }
+.ic-favorite.pressed { background-color: white; outline: none; }
+.ic-snapFavorite.pressed, .ic-listItem.pressed { background-color: transparent; outline: none; }
+
+.ic-listItem.ic-pickerLayout { background-color: transparent; }
+
+div.noBackground { background-color: transparent; }

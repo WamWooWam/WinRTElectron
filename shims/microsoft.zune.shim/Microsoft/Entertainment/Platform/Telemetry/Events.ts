@@ -14,25 +14,128 @@ import { IShareEvent } from "./IShareEvent";
 import { IShipAssertEvent } from "./IShipAssertEvent";
 import { HResult } from "winrt/Windows/Foundation/HResult";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
+import { Behavior } from "./Behavior";
+import { InputMethod } from "./InputMethod";
+import { ScreenState } from "./ScreenState";
+
+
+
+class Event implements IPageActionEvent, IPageViewEvent, IAppLaunchEvent, IExceptionEvent, IShareEvent, IShipAssertEvent {
+    setCallStack(value: string): Event {
+        return this
+    }
+    setFileTag(value: number): Event {
+        return this
+    }
+    setLine(value: number): Event {
+        return this
+    }
+    setFunction(value: string): Event {
+        return this
+    }
+    setFile(value: string): Event {
+        return this
+    }
+    setLaunchSource(value: string): Event {
+        return this
+    }
+    send(): void {
+        
+    }
+    setCatchSiteFileTag(value: number): Event {
+        return this
+    }
+    setCatchSiteLine(value: number): Event {
+        return this
+    }
+    setCatchSiteFunction(value: string): Event {
+        return this
+    }
+    setCatchSiteFile(value: string): Event {
+        return this
+    }
+    setActionInputMethod(value: InputMethod): Event {
+        return this
+    }
+    setBehavior(value: Behavior): Event {
+        return this
+    }
+    setReferrerUri(value: string): Event {
+        return this
+    }
+    setMediaName(value: string): Event {
+        return this
+    }
+    setMediaType(value: string): Event {
+        return this
+    }
+    setFromAppId(value: string): Event {
+        return this
+    }
+    setToAppId(value: string): Event {
+        return this
+    }
+    setPage(value: string): Event {
+        return this
+    }
+    setUniqueId(value: string): Event {
+        return this
+    }
+    setId(value: number): Event {
+        return this
+    }
+
+    setUri(value: string): Event {
+        return this
+    }
+    setPageType(value: string): Event {
+        return this
+    }
+    setPageTags(value: string): Event {
+        return this
+    }
+    setProduct(value: string): Event {
+        return this
+    }
+    setScreenState(value: ScreenState): Event {
+        return this
+    }
+    setCustomSessionGuid(value: string): Event {
+        return this
+    }
+    setImpressionGuid(value: string): Event {
+        return this
+    }
+    setContentJsonVer(value: number): Event {
+        return this
+    }
+    setExtraContent(value: string): Event {
+        return this
+    }
+    setDestUri(value: string): Event {
+        return this
+    }
+}
 
 @GenerateShim('Microsoft.Entertainment.Platform.Telemetry.Events')
 export class Events { 
     static shipAssert(text: string, hResult: number): IShipAssertEvent {
-        throw new Error('Events#shipAssert not implemented')
+        // throw new Error('Events#shipAssert not implemented')
+        return new Event();
     }
     static exception(text: string, hResult: number): IExceptionEvent {
-        throw new Error('Events#exception not implemented')
+        return new Event();
     }
     static appLaunch(type: AppLaunchType): IAppLaunchEvent {
-        throw new Error('Events#appLaunch not implemented')
+        return new Event();
     }
     static pageView(pageName: string): IPageViewEvent {
-        throw new Error('Events#pageView not implemented')
+        return new Event();
     }
     static pageAction(pageName: string): IPageActionEvent {
-        throw new Error('Events#pageAction not implemented')
+        return new Event();
     }
     static share(): IShareEvent {
-        throw new Error('Events#share not implemented')
+        return new Event();
     }
 }

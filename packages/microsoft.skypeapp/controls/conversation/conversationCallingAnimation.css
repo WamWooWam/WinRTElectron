@@ -1,1 +1,382 @@
-﻿/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.callAnimation{width:100%;height:100%;display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr}div.callAnimation div.bgLayerCallStarting{height:100%;background:-ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%);opacity:0;transition:opacity 0.5s linear}div.callAnimation div.bgLayerNoise{height:100%;background:url("/images/bgLiveConversationNoise.png") repeat-x}div.callAnimation div.participant{-ms-grid-row-align:center;-ms-grid-column-align:center;display:-ms-grid;width:360px;height:360px;-ms-grid-rows:1fr;-ms-grid-columns:1fr;position:relative}body.KEYBOARDUP div.callAnimation div.participant,body.KEYBOARDUP div.callAnimation div.participant.EMERGENCY{width:300px;height:300px}div.callAnimation div.participant div.emergencyContent{display:none}div.callAnimation div.participant.EMERGENCY div.emergencyContent{display:block;z-index:3;position:absolute;bottom:-60px;padding:0 60px;color:#fff}@media screen and (max-aspect-ratio: 1 / 1){div.callAnimation div.participant.EMERGENCY div.emergencyContent{padding-left:40px;padding-right:40px}}div.callAnimation div.participant div.ringingAnimation{position:absolute;top:50%;left:50%}div.callAnimation div.participant div.ringingAnimation .avatarContainer .avatarImage{background-position:center;background-size:cover;background-repeat:no-repeat;position:absolute;width:270px;height:270px;left:-135px;top:-135px;border-radius:50%;animation-duration:1850ms;animation-iteration-count:infinite}div.callAnimation div.participant div.ringingAnimation .avatarContainer .avatarMask{position:absolute;width:270px;height:270px;left:-145px;top:-145px;border-radius:50%;background-color:transparent;border:10px solid #f4f4f4;animation-duration:1850ms;animation-iteration-count:infinite}div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer{position:absolute}div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer .smallCircleMirror{position:absolute;transform:scale(-1, -1)}div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer .smallCircleMirror .circleSmall{border-radius:50%;position:absolute;width:180px;height:180px;left:-22px;top:-22px;background-color:#f4f4f4;animation-duration:1850ms;animation-iteration-count:infinite}div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer .circleSmall{border-radius:50%;position:absolute;width:180px;height:180px;left:-22px;top:-22px;background-color:#f4f4f4;animation-duration:1850ms;animation-iteration-count:infinite}div.callAnimation div.participant div.ringingAnimation .radGrad{position:absolute;width:200px;height:200px;left:-100px;top:-100px;border-radius:50%;background-color:#f4f4f4;animation-duration:1850ms;animation-iteration-count:infinite}div.callAnimation div.participant div.ringingAnimation .radGradSml{opacity:0.2}div.callAnimation div.participant div.ringingAnimation .radGradMid{opacity:0.15}div.callAnimation div.participant div.ringingAnimation .radGradLrg{opacity:0.07}div.callAnimation div.participant div.ringingAnimation .circleMain{position:absolute;width:300px;height:300px;left:-150px;top:-150px}div.callAnimation div.participant div.ringingAnimation .connectingArrows{display:none}div.callAnimation div.participant div.ringingAnimation .connectingArrows .bgTint{position:absolute;width:270px;height:270px;left:-135px;top:-135px;border-radius:50%;background:rgba(0,0,0,0.25)}div.callAnimation div.participant div.ringingAnimation .connectingArrows .connectingIcon{font-family:"Skype UI Symbol";font-size:120pt;line-height:normal;text-align:center;vertical-align:middle;color:#f4f4f4;position:absolute;margin-left:-79px;margin-top:-79px;transform-origin:80px 80px;animation-name:rotateAnim;animation-duration:1s;animation-iteration-count:infinite}.small div.callAnimation div.participant div.ringingAnimation{transform:scale(0.3, 0.3)}.medium div.callAnimation div.participant div.ringingAnimation{transform:scale(0.7, 0.7)}.large div.callAnimation div.participant div.ringingAnimation{transform:scale(1.2, 1.2)}@media screen and (max-aspect-ratio: 1 / 1){div.callAnimation div.participant div.ringingAnimation{transform:scale(0.7, 0.7)}}div.callAnimation div.participant.ANIMATE div.ringingAnimation .connectingArrows{display:none}div.callAnimation div.participant.ANIMATE div.ringingAnimation .avatarImage{animation-name:aniAvatar}div.callAnimation div.participant.ANIMATE div.ringingAnimation .avatarMask{animation-name:aniAvatarMask}div.callAnimation div.participant.ANIMATE div.ringingAnimation .circleSmall{animation-name:aniCircleSmallMove}div.callAnimation div.participant.ANIMATE div.ringingAnimation .radGradSml{animation-name:aniCircleTwo}div.callAnimation div.participant.ANIMATE div.ringingAnimation .radGradMid{animation-name:aniCircleThree}div.callAnimation div.participant.ANIMATE div.ringingAnimation .radGradLrg{animation-name:aniCircleFour}div.callAnimation div.participant.ANIMATE div.ringingAnimation .circleMain{animation-name:aniCircleOne}div.callAnimation div.participant.CONNECTING div.ringingAnimation .connectingArrows{display:block}@keyframes aniCircleSmallMove{0%{transform:scale(1) translate(0px, 0px);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}56.36%{transform:scale(0.93) translate(-17px, -17px);animation-timing-function:cubic-bezier(1, 0, 0.78, 1)}78.18%{transform:scale(1.08) translate(3px, 3px);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1)}100%{transform:scale(1) translate(0px, 0px)}}@keyframes aniCircleOne{0%{transform:scale(1);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}56.36%{transform:scale(0.88);animation-timing-function:cubic-bezier(1, 0, 0.78, 1)}78.18%{transform:scale(1.06);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1)}100%{transform:scale(1)}}@keyframes aniCircleTwo{0%{transform:scale(1);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}40%{transform:scale(1.6);animation-timing-function:cubic-bezier(0.5, 0, 1, 1)}61.82%{transform:scale(1);animation-timing-function:steps(1)}100%{transform:scale(0);animation-timing-function:steps(1)}}@keyframes aniCircleThree{0%{transform:scale(1);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}45.45%{transform:scale(1.95);animation-timing-function:cubic-bezier(0.7, 0, 1, 1)}67.27%{transform:scale(1);animation-timing-function:steps(1)}100%{transform:scale(0);animation-timing-function:steps(1)}}@keyframes aniCircleFour{0%{transform:scale(1);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}50.91%{transform:scale(2.3);animation-timing-function:cubic-bezier(0.9, 0, 1, 1)}72.73%{transform:scale(1);animation-timing-function:steps(1)}100%{transform:scale(0);animation-timing-function:steps(1)}}@keyframes aniAvatar{0%{transform:scale(1);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}56.36%{transform:scale(0.95);animation-timing-function:cubic-bezier(1, 0, 0.78, 1)}78.18%{transform:scale(1.04);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1)}100%{transform:scale(1)}}@keyframes aniAvatarMask{0%{transform:scale(1);animation-timing-function:cubic-bezier(0.33, 0, 0, 1)}56.36%{transform:scale(0.91);animation-timing-function:cubic-bezier(1, 0, 0.78, 1)}78.18%{transform:scale(1.06);animation-timing-function:cubic-bezier(0.33, 0, 0.67, 1)}100%{transform:scale(1)}}@keyframes rotateAnim{0%{transform:rotate(0deg);animation-timing-function:linear}100%{transform:rotate(180deg)}}
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.callAnimation {
+    width: 100%;
+    height: 100%;
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr
+}
+
+div.callAnimation div.bgLayerCallStarting {
+    height: 100%;
+    background: -ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%);
+    opacity: 0;
+    transition: opacity 0.5s linear
+}
+
+div.callAnimation div.bgLayerNoise {
+    height: 100%;
+    background: url("/images/bgLiveConversationNoise.png") repeat-x
+}
+
+div.callAnimation div.participant {
+    -ms-grid-row-align: center;
+    -ms-grid-column-align: center;
+    display: -ms-grid;
+    width: 360px;
+    height: 360px;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    position: relative
+}
+
+body.KEYBOARDUP div.callAnimation div.participant,
+body.KEYBOARDUP div.callAnimation div.participant.EMERGENCY {
+    width: 300px;
+    height: 300px
+}
+
+div.callAnimation div.participant div.emergencyContent {
+    display: none
+}
+
+div.callAnimation div.participant.EMERGENCY div.emergencyContent {
+    display: block;
+    z-index: 3;
+    position: absolute;
+    bottom: -60px;
+    padding: 0 60px;
+    color: #fff
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.callAnimation div.participant.EMERGENCY div.emergencyContent {
+        padding-left: 40px;
+        padding-right: 40px
+    }
+}
+
+div.callAnimation div.participant div.ringingAnimation {
+    position: absolute;
+    top: 50%;
+    left: 50%
+}
+
+div.callAnimation div.participant div.ringingAnimation .avatarContainer .avatarImage {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    left: -135px;
+    top: -135px;
+    border-radius: 50%;
+    animation-duration: 1850ms;
+    animation-iteration-count: infinite
+}
+
+div.callAnimation div.participant div.ringingAnimation .avatarContainer .avatarMask {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    left: -145px;
+    top: -145px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 10px solid #f4f4f4;
+    animation-duration: 1850ms;
+    animation-iteration-count: infinite
+}
+
+div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer {
+    position: absolute
+}
+
+div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer .smallCircleMirror {
+    position: absolute;
+    transform: scale(-1, -1)
+}
+
+div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer .smallCircleMirror .circleSmall {
+    border-radius: 50%;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: -22px;
+    top: -22px;
+    background-color: #f4f4f4;
+    animation-duration: 1850ms;
+    animation-iteration-count: infinite
+}
+
+div.callAnimation div.participant div.ringingAnimation .avatarCircleContainer .circleSmall {
+    border-radius: 50%;
+    position: absolute;
+    width: 180px;
+    height: 180px;
+    left: -22px;
+    top: -22px;
+    background-color: #f4f4f4;
+    animation-duration: 1850ms;
+    animation-iteration-count: infinite
+}
+
+div.callAnimation div.participant div.ringingAnimation .radGrad {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    left: -100px;
+    top: -100px;
+    border-radius: 50%;
+    background-color: #f4f4f4;
+    animation-duration: 1850ms;
+    animation-iteration-count: infinite
+}
+
+div.callAnimation div.participant div.ringingAnimation .radGradSml {
+    opacity: 0.2
+}
+
+div.callAnimation div.participant div.ringingAnimation .radGradMid {
+    opacity: 0.15
+}
+
+div.callAnimation div.participant div.ringingAnimation .radGradLrg {
+    opacity: 0.07
+}
+
+div.callAnimation div.participant div.ringingAnimation .circleMain {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: -150px;
+    top: -150px
+}
+
+div.callAnimation div.participant div.ringingAnimation .connectingArrows {
+    display: none
+}
+
+div.callAnimation div.participant div.ringingAnimation .connectingArrows .bgTint {
+    position: absolute;
+    width: 270px;
+    height: 270px;
+    left: -135px;
+    top: -135px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.25)
+}
+
+div.callAnimation div.participant div.ringingAnimation .connectingArrows .connectingIcon {
+    font-family: "Skype UI Symbol" !important;
+    font-size: 120pt;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+    color: #f4f4f4;
+    position: absolute;
+    margin-left: -79px;
+    margin-top: -79px;
+    transform-origin: 80px 80px;
+    animation-name: rotateAnim;
+    animation-duration: 1s;
+    animation-iteration-count: infinite
+}
+
+.small div.callAnimation div.participant div.ringingAnimation {
+    transform: scale(0.3, 0.3)
+}
+
+.medium div.callAnimation div.participant div.ringingAnimation {
+    transform: scale(0.7, 0.7)
+}
+
+.large div.callAnimation div.participant div.ringingAnimation {
+    transform: scale(1.2, 1.2)
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.callAnimation div.participant div.ringingAnimation {
+        transform: scale(0.7, 0.7)
+    }
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .connectingArrows {
+    display: none
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .avatarImage {
+    animation-name: aniAvatar
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .avatarMask {
+    animation-name: aniAvatarMask
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .circleSmall {
+    animation-name: aniCircleSmallMove
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .radGradSml {
+    animation-name: aniCircleTwo
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .radGradMid {
+    animation-name: aniCircleThree
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .radGradLrg {
+    animation-name: aniCircleFour
+}
+
+div.callAnimation div.participant.ANIMATE div.ringingAnimation .circleMain {
+    animation-name: aniCircleOne
+}
+
+div.callAnimation div.participant.CONNECTING div.ringingAnimation .connectingArrows {
+    display: block
+}
+
+@keyframes aniCircleSmallMove {
+    0% {
+        transform: scale(1) translate(0px, 0px);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    56.36% {
+        transform: scale(0.93) translate(-17px, -17px);
+        animation-timing-function: cubic-bezier(1, 0, 0.78, 1)
+    }
+    78.18% {
+        transform: scale(1.08) translate(3px, 3px);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1)
+    }
+    100% {
+        transform: scale(1) translate(0px, 0px)
+    }
+}
+
+@keyframes aniCircleOne {
+    0% {
+        transform: scale(1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    56.36% {
+        transform: scale(0.88);
+        animation-timing-function: cubic-bezier(1, 0, 0.78, 1)
+    }
+    78.18% {
+        transform: scale(1.06);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes aniCircleTwo {
+    0% {
+        transform: scale(1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    40% {
+        transform: scale(1.6);
+        animation-timing-function: cubic-bezier(0.5, 0, 1, 1)
+    }
+    61.82% {
+        transform: scale(1);
+        animation-timing-function: steps(1)
+    }
+    100% {
+        transform: scale(0);
+        animation-timing-function: steps(1)
+    }
+}
+
+@keyframes aniCircleThree {
+    0% {
+        transform: scale(1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    45.45% {
+        transform: scale(1.95);
+        animation-timing-function: cubic-bezier(0.7, 0, 1, 1)
+    }
+    67.27% {
+        transform: scale(1);
+        animation-timing-function: steps(1)
+    }
+    100% {
+        transform: scale(0);
+        animation-timing-function: steps(1)
+    }
+}
+
+@keyframes aniCircleFour {
+    0% {
+        transform: scale(1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    50.91% {
+        transform: scale(2.3);
+        animation-timing-function: cubic-bezier(0.9, 0, 1, 1)
+    }
+    72.73% {
+        transform: scale(1);
+        animation-timing-function: steps(1)
+    }
+    100% {
+        transform: scale(0);
+        animation-timing-function: steps(1)
+    }
+}
+
+@keyframes aniAvatar {
+    0% {
+        transform: scale(1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    56.36% {
+        transform: scale(0.95);
+        animation-timing-function: cubic-bezier(1, 0, 0.78, 1)
+    }
+    78.18% {
+        transform: scale(1.04);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes aniAvatarMask {
+    0% {
+        transform: scale(1);
+        animation-timing-function: cubic-bezier(0.33, 0, 0, 1)
+    }
+    56.36% {
+        transform: scale(0.91);
+        animation-timing-function: cubic-bezier(1, 0, 0.78, 1)
+    }
+    78.18% {
+        transform: scale(1.06);
+        animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1)
+    }
+    100% {
+        transform: scale(1)
+    }
+}
+
+@keyframes rotateAnim {
+    0% {
+        transform: rotate(0deg);
+        animation-timing-function: linear
+    }
+    100% {
+        transform: rotate(180deg)
+    }
+}

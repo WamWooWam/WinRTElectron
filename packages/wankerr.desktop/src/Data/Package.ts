@@ -1,22 +1,19 @@
 import { PackageApplication, ApplicationVisualElements, ApplicationDefaultTile, ForegroundText, ApplicationSplashScreen } from "./PackageApplication";
 import { ResourceLoader } from "winrt/Windows/ApplicationModel/Resources/ResourceLoader";
 import { Uri } from "winrt/Windows/Foundation/Uri";
+import base32Encode from 'base32-encode'
 
+const { createHash } = require('crypto');
 const { remote } = require('electron')
 const path = require("path");
 const fs = require("fs");
 
-export class Package {
+export interface Package {
     path: string;
-    identity: PackageIdentity;
-    properties: PackageProperties;
-    applications: Map<string, PackageApplication>;
-    compatibilityMode: PackageCompatibilityMode;
-
-    constructor(path: string) {
-        this.path = path;
-        this.applications = new Map();
-    }
+    identity?: PackageIdentity;
+    properties?: PackageProperties;
+    applications?: Map<string, PackageApplication>;
+    compatibilityMode?: PackageCompatibilityMode;
 }
 
 export enum PackageCompatibilityMode {
@@ -25,13 +22,15 @@ export enum PackageCompatibilityMode {
     windows10,
 }
 
-export class PackageIdentity {
+export interface PackageIdentity {
     name: string;
     version: string;
     publisher: string;
+
+    packageFamilyName: string;
 }
 
-export class PackageProperties {
+export interface PackageProperties {
     displayName: string;
     description: string;
     publisherDisplayName: string;
@@ -52,11 +51,14 @@ export class PackageReader {
     }
 
     readPackage(): Package {
-        let pack = new Package(this.packagePath);
+        //let pack = new Package(this.packagePath);
+
+        let pack: Package = { path: this.packagePath, applications: new Map() };
         let manifestPath = path.join(this.packagePath, "AppxManifest.xml");
         let manifestText = fs.readFileSync(manifestPath, 'utf-8');
 
-        let manifestDocument = new DOMParser().parseFromString(manifestText, 'application/xml');
+        let manifestDocument = new DOMParser()
+            .parseFromString(manifestText, 'application/xml');
         if (manifestDocument === null) {
             throw new Error("Manifest failed to parse!");
         }
@@ -89,42 +91,53 @@ export class PackageReader {
     }
 
     private readIdentity(element: Element): PackageIdentity {
-        let identity = new PackageIdentity();
-        identity.name = element.getAttribute("Name");
-        identity.publisher = element.getAttribute("Publisher");
-        identity.version = element.getAttribute("Version");
+        let name = element.getAttribute("Name");
+        let publisher = element.getAttribute("Publisher");
+        let version = element.getAttribute("Version");
 
-        return identity;
+        // compute the PackageFamilyName as base32 crockford of the first 8 bytes of the SHA256
+        // hash of the Publisher field.
+
+        const buffer = new ArrayBuffer(publisher.length * 2)
+        const bufView = new Uint16Array(buffer);
+        for (let i = 0; i < publisher.length; i++) {
+            bufView[i] = publisher.charCodeAt(i);
+        }
+
+        const hash = createHash('sha256').update(bufView).digest();
+        const base32 = base32Encode(hash.subarray(0, 8), 'Crockford');
+        let packageFamilyName = name + "_" + base32.toLowerCase();
+
+        return { name, publisher, version, packageFamilyName };
     }
 
     private readProperties(element: Element): PackageProperties {
-        let properties = new PackageProperties();
-        properties.displayName = element.querySelector("DisplayName").textContent;
-        properties.description = element.querySelector("Description")?.textContent;
-        properties.publisherDisplayName = element.querySelector("PublisherDisplayName").textContent;
-        properties.logo = this.fixupUrl(element.querySelector("Logo").textContent);
+        let displayName = element.querySelector("DisplayName").textContent;
+        let description = element.querySelector("Description")?.textContent;
+        let publisherDisplayName = element.querySelector("PublisherDisplayName").textContent;
+        let logo = this.fixupUrl(element.querySelector("Logo").textContent);
 
-        return properties;
+        return { displayName, description, publisherDisplayName, logo };
     }
 
     private readApplication(element: Element): PackageApplication {
-        let application = new PackageApplication();
-        application.id = element.getAttribute("Id");
-        application.startPage = "//" + this.packageName + "/" + element.getAttribute("StartPage");
+        let id = element.getAttribute("Id");
+        let startPage = "//" + this.packageName + "/" + element.getAttribute("StartPage");
 
         let visualElementsElement = element.querySelector("VisualElements");
-        application.visualElements = this.loadTextResources(this.readVisualElements(visualElementsElement));
+        let visualElements = this.loadTextResources(this.readVisualElements(visualElementsElement));
 
+        // this will become important eventually (share targets, etc.)
         // let extensionsElement = element.querySelector("Extensions");
         // for (const extensionElement of extensionsElement.childNodes) {
 
         // }
 
-        return application;
+        return { id, startPage, visualElements, extensions: [] };
     }
 
     private readVisualElements(element: Element): ApplicationVisualElements {
-        let visualElements = new ApplicationVisualElements();
+        let visualElements: Partial<ApplicationVisualElements> = {};
         visualElements.displayName = element.getAttribute("DisplayName");
         visualElements.description = element.getAttribute("Description");
         visualElements.foregroundText = <ForegroundText>element.getAttribute("ForegroundText");
@@ -139,32 +152,30 @@ export class PackageReader {
             visualElements.square30x30Logo = this.fixupUrl(element.getAttribute("Square30x30Logo"));
         }
 
-
         let defaultTileElement = element.querySelector("DefaultTile");
         if (defaultTileElement !== null) {
             visualElements.defaultTile = this.loadTextResources(this.readDefaultTile(defaultTileElement));
         }
         else {
-            visualElements.defaultTile = new ApplicationDefaultTile();
-            visualElements.defaultTile.shortName = visualElements.displayName;
+            visualElements.defaultTile = { shortName: visualElements.displayName };
         }
 
         let splashScreenElement = element.querySelector("SplashScreen");
         visualElements.splashScreen = this.readSplashScreen(splashScreenElement);
 
-        return visualElements;
+        return <ApplicationVisualElements>visualElements;
     }
 
     private readSplashScreen(element: Element): ApplicationSplashScreen {
-        let splashScreen = new ApplicationSplashScreen();
-        splashScreen.backgroundColor = element.getAttribute("BackgroundColor");
-        splashScreen.image = this.fixupUrl(element.getAttribute("Image"));
+        //let splashScreen = new ApplicationSplashScreen();
+        let backgroundColor = element.getAttribute("BackgroundColor");
+        let image = this.fixupUrl(element.getAttribute("Image"));
 
-        return splashScreen;
+        return { backgroundColor, image };
     }
 
     private readDefaultTile(element: Element): ApplicationDefaultTile {
-        let defaultTile = new ApplicationDefaultTile();
+        let defaultTile: Partial<ApplicationDefaultTile> = { showNameOnTiles: [] };
         defaultTile.shortName = element.getAttribute("ShortName");
 
         if (this.compatibilityMode == PackageCompatibilityMode.windows80) {
@@ -189,7 +200,7 @@ export class PackageReader {
 
             for (const showOnElement of element.querySelectorAll("ShowOn")) {
                 let tile = showOnElement.getAttribute("Tile");
-                defaultTile.showNameOnTiles.push(tile.substr(0, tile.length - 4));
+                defaultTile.showNameOnTiles.push(tile.substring(0, tile.length - 4));
             }
         }
 
@@ -198,7 +209,7 @@ export class PackageReader {
             defaultTile.tileUpdateUrl = tileUpdate.getAttribute("UriTemplate");
         }
 
-        return defaultTile;
+        return <ApplicationDefaultTile>defaultTile;
     }
 
     private fixupUrl(relativeUrl: string): string {

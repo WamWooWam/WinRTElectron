@@ -12,7 +12,6 @@ import { UICommand } from "./UICommand";
 
 interface MessageDialogResponse {
     status: string
-    message: string
     commandId: number
 }
 

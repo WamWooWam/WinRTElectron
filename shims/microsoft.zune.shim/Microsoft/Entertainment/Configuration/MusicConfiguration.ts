@@ -21,7 +21,7 @@ export class MusicConfiguration implements IMusicConfiguration {
     ertMin: string = null;
     disableArtistBioLinks: boolean = null;
     defaultPivotIndex: number = 0;
-    backgroundAudioEnabled: boolean = null;
+    backgroundAudioEnabled: boolean = true;
     anonymousLimitReachedVideoShown: boolean = null;
     anonymousLimitReached: boolean = null;
     allowArtistGrid: boolean = null;
@@ -43,4 +43,5 @@ export class MusicConfiguration implements IMusicConfiguration {
     pageLoadTimeUntilSpinner: number = 2000;
     nextMonthlyFreeLimitResetDate: string = null;
     musicPassDownloadEnabled: boolean = null;
+    desktopTheme: number = 2; 
 }

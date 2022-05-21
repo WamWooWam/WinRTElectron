@@ -1,87 +1,183 @@
-﻿Jx.delayDefine(People.Grid, "Animations", function() {
-    function e(n, t, i) {
-        var u = n.style,
-            r = u.getAttribute(t).split(", "),
-            f = r.lastIndexOf(i);
-        f >= 0 ? (r.splice(f, 1), u.setAttribute(t, r.join(","))) : Jx.log.error(i + " not found in " + t + " attribute.")
+﻿
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/// <reference path="../../../Shared/JSUtil/Include.js"/>
+/// <reference path="../../../Shared/JSUtil/Namespace.js"/>
+/// <reference path="../../../Shared/Sequence/Sequence.js" />
+/// <reference path="../../../../Shared/WinJS/WinJS.ref.js" />
+/// <reference path="VirtualizedGrid.Anim.ref.js" />
+
+Jx.delayDefine(People.Grid, "Animations", function () {
+
+    ///<disable>JS2076.IdentifierIsMiscased</disable>
+    var P = window.People,
+        S = P.Sequence,
+        G = P.Grid,
+        A = G.Animations = {},
+        UI = WinJS.UI;
+    ///<enable>JS2076.IdentifierIsMiscased</enable>
+
+    function clearAnimation(element) {
+        /// <param name="element" type="HTMLElement" />
+        var style = element.style;
+        style.msAnimationName = null;
+        style.msAnimationDelay = null;
+        style.msAnimationDuration = null;
+        style.msAnimationTimingFunction = null;
+        style.msAnimationFillMode = "none";
+    }
+    
+    function removeAttrItem(elem, prop, toRemove) {
+        /// <summary> Removes 'toRemove' from the 'prop' attribute in 'elem' where elem[prop] is a comma-delimited
+        /// attribute.</summary>
+        /// <param name="elem" type="HTMLElement" />
+        var /*@dynamic*/ style = elem.style;
+        var names = /*@static_cast(Array)*/ style.getAttribute(prop).split(", ");
+        var index = names.lastIndexOf(toRemove);
+
+        if (index >= 0) {
+            names.splice(index, 1);
+            style.setAttribute(prop, names.join(","));
+        } else {
+            // This can happen when our DOM tree has been mangled, which causes animations to get mangled
+            // (e.g. instantiating the SemanticZoom control)
+            Jx.log.error(toRemove + " not found in " + prop + " attribute.");
+        }
     }
 
-    function o(n) {
-        for (var t = 0; t < n.length; t++) n[t].keyframe = n[t].name + Jx.uid()
+    function initializeAnimationArray(animArray) {
+        /// <summary> A version of the private function, getAnimationStaggerOffset, used in WinJS.UI that initalizes an
+        /// animation array correctly.  Intended for use in executeElementsAnimation</summary>
+        /// <param name="animArray" type="Array" />
+
+        for (var i = 0; i < animArray.length; i++) {
+            animArray[i].keyframe = animArray[i].name + Jx.uid();
+        }
     }
 
-    function s(n, t, i) {
-        return n.style.setAttribute(t, i), window.getComputedStyle(n, null)[t]
+    function triggerStyle(elem, prop, value) {
+        /// <param name="elem" type="HTMLElement" />
+        /// <param name="prop" type="String" />
+        elem.style.setAttribute(prop, value);
+        return window.getComputedStyle(elem, null)[prop];
     }
-    var r = window.People,
-        u = r.Sequence,
-        f = r.Grid,
-        n = f.Animations = {},
-        h = WinJS.UI,
-        t, i;
-    n.createAnimationPromises = function(n, t, i) {
-        var u = "",
-            c = "",
-            l = "",
-            a = "",
-            v = "",
-            r, y, f, h;
-        for (o(t), r = 0; r < t.length; r++) y = "@keyframes " + t[r].keyframe + " { from {" + t[r].from + ";} to {" + t[r].to + ";}}", i.insertRule(y, 0), c += u + t[r].delay + "ms", l += u + t[r].duration + "ms", a += u + t[r].timing, v += u + t[r].keyframe, u = ",";
-        for (r = 0; r < n.length; r++) f = n[r].style, f.setAttribute("animation-delay", c), f.setAttribute("animation-duration", l), f.setAttribute("animation-timing-function", a), f.setAttribute("animation-fill-mode", "both");
-        return h = [], n.forEach(function(n) {
-            t.forEach(function(t) {
-                h.push(new WinJS.Promise(function(i) {
-                    var r = function() {
-                            n.removeEventListener("animationend", u, false);
-                            e(n, "animation-name", t.keyframe);
-                            window.clearTimeout(f);
-                            i()
-                        },
-                        u = function(n) {
-                            n.animationName === t.keyframe && r()
-                        },
-                        f = window.setTimeout(r, t.delay + t.duration + 10);
-                    n.addEventListener("animationend", u, false)
-                }))
+
+    A.createAnimationPromises = function (elems, animArray, styleSheet) {
+        /// <summary> createAnimationPromises and executeElementsAnimation combined work *very* similary to the current
+        /// WinJS.UI.executeElementAnimation, with the exception that the function takes an array of elements instead of
+        /// a single element as well as the stylesheet.  This avoids creating multiple stylesheets and multiple rules
+        /// when one stylesheet can be applied to multiple elements and a few rules can be applied to mutually exclusive
+        /// groups of elements.  When profiling, stylesheet creation showed up as the mostly costly item for animating
+        /// repositioning elements to the point where it was not clear animations were even occuring due to
+        /// "chopiness".</summary>
+        /// <param name="elems" type="Array" />
+        /// <param name="animArray" type="Array" />
+        /// <param name="styleSheet" type="CSSStyleSheet" />
+        var comma = "", delay = "", duration = "", animTiming = "", animName = "", i;
+
+        initializeAnimationArray(animArray);
+
+        for (i = 0; i < animArray.length; i++) {
+            var kf = "@-ms-keyframes " + animArray[i].keyframe + " { from {" + animArray[i].from + ";} to {" + animArray[i].to + ";}}";
+            styleSheet.insertRule(kf, 0);
+            delay += comma + animArray[i].delay + "ms";
+            duration += comma + animArray[i].duration + "ms";
+            animTiming += comma + animArray[i].timing;
+            animName += comma + animArray[i].keyframe;
+            comma = ",";
+        }
+
+        for (i = 0; i < elems.length; i++) {
+            var /*@dynamic*/style = elems[i].style;
+            style.setAttribute("-ms-animation-delay", delay);
+            style.setAttribute("-ms-animation-duration", duration);
+            style.setAttribute("-ms-animation-timing-function", animTiming);
+            style.setAttribute("-ms-animation-fill-mode", "both");
+        }
+
+        var promises = [];
+        elems.forEach(function (elem) { 
+            /// <param name="elem" type="HTMLElement" />
+            animArray.forEach(function (/*@dynamic*/anim) {
+                promises.push(new WinJS.Promise(function (c, e, p) {
+                    var finish = function () {
+                        elem.removeEventListener("MSAnimationEnd", onAnimationEnd, false);
+                        removeAttrItem(elem, "-ms-animation-name", anim.keyframe);
+                        window.clearTimeout(timeoutId);
+                        c();
+                    };
+
+                    var onAnimationEnd = function (/*@dynamic*/ev) {
+                        if (ev.animationName === anim.keyframe) {
+                            finish();
+                        }
+                    };
+                    var timeoutId = window.setTimeout(finish, anim.delay + anim.duration + 10);
+                    elem.addEventListener("MSAnimationEnd", onAnimationEnd, false);
+                }));
+
             });
-            s(n, "animation-name", v)
-        }), h
+            triggerStyle(elem, "-ms-animation-name", animName);
+        });
+
+        return promises;
     };
-    n.executeElementsAnimation = function(t) {
+
+    A.executeElementsAnimation = function (animations) {
+        /// <summary> createAnimationPromises and executeElementsAnimation combined work *very* similary to the current
+        /// WinJS.UI.executeElementAnimation.  executeElementsAnimation takes an array of objects of the form:
+        /// { elements: [...], animations: [...] }
+        /// </summary>
+        /// <param name="animations" type="Array" />
         try {
-            var i = document.createElement("STYLE"),
-                r = [],
-                f = i.sheet;
-            return document.documentElement.firstChild.appendChild(i), t.forEach(function(t) {
-                u.append(r, n.createAnimationPromises(t.elements, t.animations, f))
-            }), i.parentNode.removeChild(i), WinJS.Promise.join(r)
+            var style = /*@static_cast(HTMLStyleElement)*/document.createElement("STYLE"),
+                promises = [],
+                styleSheet = style.sheet;
+
+            document.documentElement.firstChild.appendChild(style);
+            animations.forEach(function (anim) {                
+                /// <param name="anim" type="ElementsAnimation" />
+                S.append(promises, A.createAnimationPromises(anim.elements, anim.animations, styleSheet));
+            });
+            style.parentNode.removeChild(/*@static_cast(HTMLElement)*/style);
+            return WinJS.Promise.join(promises);
         } catch (e) {
-            return WinJS.Promise.wrapError(e)
+            return WinJS.Promise.wrapError(e);
         }
     };
-    t = "transform";
-    i = "cubic-bezier(0.1, 0.9, 0.2, 1)";
-    n.createOffsetAnimationArray = function(n) {
+
+    var msTransform = "-ms-transform",
+        timing = "cubic-bezier(0.1, 0.9, 0.2, 1)";
+
+    A.createOffsetAnimationArray = function (offset) {
+        /// <param name="offset" type="ClientRect" />
         return [{
             name: "reposition",
             delay: 167,
-            duration: 500,
-            timing: i,
-            from: t + ":translate(" + n.left + "px, " + n.top + "px)",
-            to: t + ":translate(0px, 0px)"
-        }]
+            duration : 500,
+            timing: timing,
+            from: msTransform + ":translate(" + /*@static_cast(String)*/offset.left + "px, " + /*@static_cast(String)*/offset.top + "px)",
+            to: msTransform + ":translate(0px, 0px)"
+        }];
     };
-    n.deleteFromList = function(r) {
-        return n.executeElementsAnimation([{
-            elements: r,
+
+    A.deleteFromList = function (deleted) {
+        /// <summary> Provides a subset of the behavior of WinJS.UI.createDeleteFromListAnimation.  It does
+        /// not take a remaining array to perform a 2D transform.  We do this because animTranslate2DTransform is
+        /// extremely expensive, and the MoCo list animations do not use it.  Since we are emulating the MoCo
+        /// animations, we can safely elide this functionality.</summary>
+        return A.executeElementsAnimation([{
+            elements: deleted, 
             animations: [{
                 name: "deleteScale",
                 delay: 0,
                 duration: 367,
-                timing: i,
-                from: t + ":scale(1.0, 1.0)",
-                to: t + ":scale(0.85, 0.85)"
-            }, {
+                timing: timing,
+                from: msTransform + ":scale(1.0, 1.0)",
+                to: msTransform + ":scale(0.85, 0.85)"
+            },{
                 name: "deleteOpacity",
                 delay: 0,
                 duration: 167,
@@ -89,18 +185,23 @@
                 from: "opacity: 1",
                 to: "opacity: 0"
             }]
-        }])
+        }]);
     };
-    n.addToList = function(r) {
-        return n.executeElementsAnimation([{
-            elements: r,
+
+    A.addToList = function (added) {
+        /// <summary> Provides a subset of the behavior of WinJS.UI.createAddToListAnimation.  It does not
+        /// take a remaining array to perform a 2D transform.  We do this because animTranslate2DTransform is extremely
+        /// expensive, and the MoCo list animations do not use it.  Since we are emulating the MoCo animations, we can 
+        /// safely elide this functionality.</summary>
+        return A.executeElementsAnimation([{
+            elements: added,
             animations: [{
-                name: "addScale",
-                delay: 167,
-                duration: 367,
-                timing: i,
-                from: t + ":scale(0.85, 0.85)",
-                to: t + ":scale(1.0, 1.0)"
+                 name: "addScale",
+                 delay: 167,
+                 duration: 367,
+                 timing: timing,
+                 from: msTransform + ":scale(0.85, 0.85)",
+                 to: msTransform + ":scale(1.0, 1.0)"
             }, {
                 name: "addOpacity",
                 delay: 167,
@@ -109,6 +210,7 @@
                 from: "opacity: 0",
                 to: "opacity: 1"
             }]
-        }])
-    }
-})
+        }]);
+    };
+
+});

@@ -17694,7 +17694,7 @@
                         this.filterSelectionManager.selectedIndex = 0
                 },
                 _supportsNotifications: function _supportsNotifications() {
-                    return false
+                    return true
                 },
                 _filterNotifications: function _filterNotifications(notification) {
                     return this._filterNotificationCategories(notification && notification.category)
@@ -17747,6 +17747,7 @@
                     return actionCells
                 },
                 _initializeNotifications: function _initializeNotifications() {
+                    console.log("initializing notifications");
                     if (this._supportsNotifications() && this.isDelayInitialized) {
                         if (!this.notificationCells)
                             this.notificationCells = this.createNotificationActionCells();

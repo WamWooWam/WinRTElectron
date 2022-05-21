@@ -2,17 +2,21 @@ const webpack = require('webpack');
 const path = require('path');
 
 module.exports = {
-    entry:  {
+    entry: {
         winrt: [path.join(__dirname, "index.ts")]
     },
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'source-map',
     module: {
         rules: [
             {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 options: { allowTsInNodeModules: true }
+            },
+            {
+                test: /\.css$/i,
+                use: ["css-loader"],
             },
         ],
     },

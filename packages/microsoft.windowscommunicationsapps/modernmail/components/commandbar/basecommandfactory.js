@@ -1,276 +1,242 @@
-﻿Jx.delayDefine(Mail.Commands, "BaseFactory", function() {
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global  Jx, Mail, Debug, Microsoft */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail.Commands, "BaseFactory", function () {
     "use strict";
-    var n = Mail.Commands
-      , t = n.Contexts
-      , i = Microsoft.WindowsLive.Platform.MailViewType;
-    n.BaseFactory = function() {
-        var r = this.commands = {};
-        r.toggleUnread = new n.ToggleItem({
+    var Commands = Mail.Commands,
+        Contexts = Commands.Contexts,
+        MailViewType = Microsoft.WindowsLive.Platform.MailViewType;
+
+    Commands.BaseFactory = function () {
+        /// This contains the list of the base set of commands.  The commands are declared as object literals known as ItemsOptions, see command.ref.js for details
+        var commands = this.commands = {};
+        commands.toggleUnread = new Commands.ToggleItem({
             id: "toggleUnread",
-            icon: "",
+            icon: "\uE194",
             useCustomFont: true,
-            shortcutLabel: {
-                off: "Ctrl+U",
-                on: "Ctrl+Q"
-            },
-            shortcutLabelId: {
-                off: "mailCommandMarkUnreadToolTip",
-                on: "mailCommandMarkReadToolTip"
-            },
-            labelLocId: {
-                off: "mailCommandMarkUnreadLabel",
-                on: "mailCommandMarkReadLabel"
-            },
-            handler: {
-                off: n.Handlers.onMarkAsUnread,
-                on: n.Handlers.onMarkAsRead
-            },
+            shortcutLabel: { off: "Ctrl+U", on: "Ctrl+Q" },
+            shortcutLabelId: { off: "mailCommandMarkUnreadToolTip", on: "mailCommandMarkReadToolTip" },
+            labelLocId: { off: "mailCommandMarkUnreadLabel", on: "mailCommandMarkReadLabel" },
+            handler: { off: Commands.Handlers.onMarkAsUnread, on: Commands.Handlers.onMarkAsRead },
             shortcuts: [],
             type: "toggle",
             toggleBackground: false,
             enableContext: ["guiState", "selection", "readStatus"],
             toggleContext: ["selection", "readStatus"],
-            isEnabled: t.canChangeReadState,
-            isToggledOn: t.hasUnreadMessages,
+            isEnabled: Contexts.canChangeReadState,
+            isToggledOn: Contexts.hasUnreadMessages,
             dismissAfterInvoke: false
         });
-        r.markUnread = new n.Item({
+        commands.markUnread = new Commands.Item({
             id: "markUnread",
-            shortcuts: [{
-                control: true,
-                keyCode: Jx.KeyCode.u
-            }],
+            shortcuts: [{ control: true, keyCode: Jx.KeyCode.u }],
             type: "shortcut",
-            handler: n.Handlers.onMarkAsUnread,
+            handler: Commands.Handlers.onMarkAsUnread,
             enableContext: ["guiState", "selection", "readStatus"],
-            isEnabled: function(n) {
-                return t.canChangeReadState(n) && !t.hasUnreadMessages()
+            isEnabled: function (selection) {
+                return Contexts.canChangeReadState(selection) && !Contexts.hasUnreadMessages();
             }
         });
-        r.markRead = new n.Item({
+        commands.markRead = new Commands.Item({
             id: "markRead",
-            shortcuts: [{
-                control: true,
-                keyCode: Jx.KeyCode.q
-            }],
+            shortcuts: [{ control: true, keyCode: Jx.KeyCode.q }],
             type: "shortcut",
-            handler: n.Handlers.onMarkAsRead,
+            handler: Commands.Handlers.onMarkAsRead,
             enableContext: ["guiState", "selection", "readStatus"],
-            isEnabled: function(n) {
-                return t.canChangeReadState(n) && t.hasUnreadMessages()
+            isEnabled: function (selection) {
+                return Contexts.canChangeReadState(selection) && Contexts.hasUnreadMessages();
             }
         });
-        r.deleteMessage = new n.Item({
+        commands.deleteMessage = new Commands.Item({
             id: "deleteMessage",
-            icon: "",
-            shortcuts: [{
-                keyCode: Jx.KeyCode["delete"]
-            }, {
-                control: true,
-                keyCode: Jx.KeyCode.d
-            }],
+            icon: "\uE107",
+            shortcuts: [{ keyCode: Jx.KeyCode["delete"] }, { control: true, keyCode: Jx.KeyCode.d }],
             shortcutLabel: "Ctrl+D",
             shortcutLabelId: "mailCommandDeleteToolTip",
             labelLocId: "mailCommandDeleteOnItemTooltip",
             type: "button",
-            handler: n.Handlers.onDeleteButton,
+            handler: Commands.Handlers.onDeleteButton,
             enableContext: ["guiState", "selection"],
-            isEnabled: function() {
-                return t.nonEmptySelection() && t.selectionSupportMoving()
+            isEnabled: function () {
+                return Contexts.nonEmptySelection() &&
+                    Contexts.selectionSupportMoving();
             },
             dismissAfterInvoke: true
         });
-        r.toggleFlag = new n.ToggleItem({
+        commands.toggleFlag = new Commands.ToggleItem({
             id: "toggleFlag",
-            icon: "",
+            icon: "\uE129",
             shortcutLabel: "Insert",
-            shortcutLabelId: {
-                off: "mailCommandFlagToolTip",
-                on: "mailCommandUnflagToolTip"
-            },
-            labelLocId: {
-                off: "mailCommandFlagLabel",
-                on: "mailCommandUnflagLabel"
-            },
-            handler: {
-                off: n.Handlers.applyFlag,
-                on: n.Handlers.removeFlag
-            },
-            shortcuts: [{
-                keyCode: Jx.KeyCode.insert
-            }],
+            shortcutLabelId: { off: "mailCommandFlagToolTip", on: "mailCommandUnflagToolTip" },
+            labelLocId: { off: "mailCommandFlagLabel", on: "mailCommandUnflagLabel" },
+            handler: { off: Commands.Handlers.applyFlag, on: Commands.Handlers.removeFlag },
+            shortcuts: [{ keyCode: Jx.KeyCode.insert }],
             type: "toggle",
             toggleBackground: true,
             enableContext: ["guiState", "selection", "flagStatus"],
             toggleContext: ["selection", "flagStatus"],
-            isEnabled: function(n) {
-                return t.nonEmptySelection() && n.view.type !== i.outbox && (t.hasFlaggedMessages() || t.hasUnflaggedMessages())
+            isEnabled: function (selection) {
+                return Contexts.nonEmptySelection() &&
+                    selection.view.type !== MailViewType.outbox &&
+                    // In Search, it is possible to have a non-empty selection that contains non-flaggable messages
+                    (Contexts.hasFlaggedMessages() || Contexts.hasUnflaggedMessages());
             },
-            isToggledOn: function() {
-                return t.hasFlaggedMessages() && !t.hasUnflaggedMessages()
+            isToggledOn: function () {
+                return Contexts.hasFlaggedMessages() && !Contexts.hasUnflaggedMessages();
             },
             dismissAfterInvoke: false
         });
-        r.respond = new n.Item({
+        commands.respond = new Commands.Item({
             id: "respond",
-            icon: "",
+            icon: "\uE172",
             shortcuts: [],
             shortcutLabel: "Ctrl+R",
             shortcutLabelId: "mailCommandRespondToolTip",
             type: "button",
             handler: Jx.fnEmpty,
             enableContext: ["guiState", "selection", "irm"],
-            isEnabled: function(n) {
-                return t.singleSelection() && t.allExceptDraftsAndOutbox(n) && !t.draftsAreSelected(n) && t.allowResponse(n) && t.irmCanRespond()
+            isEnabled: function (selection) {
+                return Contexts.singleSelection() &&
+                        Contexts.allExceptDraftsAndOutbox(selection) &&
+                        !Contexts.draftsAreSelected(selection) &&
+                        Contexts.allowResponse(selection) &&
+                        Contexts.irmCanRespond();
             },
             dismissAfterInvoke: true
         });
-        r.forward = new n.Item({
+        commands.forward = new Commands.Item({
             id: "forward",
-            icon: "",
-            shortcuts: [{
-                control: true,
-                keyCode: Jx.KeyCode.f
-            }, {
-                alt: true,
-                keyCode: Jx.KeyCode.w
-            }],
+            icon: "\uE172",
+            shortcuts: [{ control: true, keyCode: Jx.KeyCode.f }, { alt: true, keyCode: Jx.KeyCode.w }],
             labelLocId: "mailCommandForwardLabel",
             type: "button",
             handler: Mail.Utilities.ComposeHelper.onForwardButton,
             enableContext: ["guiState", "selection", "irm"],
-            isEnabled: function(n) {
-                return t.singleSelection() && t.allExceptDraftsAndOutbox(n) && !t.draftsAreSelected(n) && t.allowResponse(n) && t.irmAllows("irmCanForward")
+            isEnabled: function (selection) {
+                return Contexts.singleSelection() &&
+                        Contexts.allExceptDraftsAndOutbox(selection) &&
+                        !Contexts.draftsAreSelected(selection) &&
+                        Contexts.allowResponse(selection) &&
+                        Contexts.irmAllows("irmCanForward");
             },
             dismissAfterInvoke: true
         });
-        r.reply = new n.Item({
+        commands.reply = new Commands.Item({
             id: "reply",
-            icon: "",
-            shortcuts: [{
-                control: true,
-                keyCode: Jx.KeyCode.r
-            }, {
-                alt: true,
-                keyCode: Jx.KeyCode.r
-            }],
+            icon: "\uE172",
+            shortcuts: [{ control: true, keyCode: Jx.KeyCode.r }, { alt: true, keyCode: Jx.KeyCode.r }],
             labelLocId: "mailCommandReplyLabel",
             type: "button",
             handler: Mail.Utilities.ComposeHelper.onReplyButton,
             enableContext: ["guiState", "selection", "irm"],
-            isEnabled: function(n) {
-                return t.singleSelection() && t.allExceptDraftsAndOutbox(n) && !t.draftsAreSelected(n) && t.allowResponse(n) && t.irmAllows("irmCanReply")
+            isEnabled: function (selection) {
+                return Contexts.singleSelection() &&
+                       Contexts.allExceptDraftsAndOutbox(selection) &&
+                        !Contexts.draftsAreSelected(selection) &&
+                        Contexts.allowResponse(selection) &&
+                        Contexts.irmAllows("irmCanReply");
             },
             dismissAfterInvoke: true
         });
-        r.replyAll = new n.Item({
+        commands.replyAll = new Commands.Item({
             id: "replyAll",
-            icon: "",
-            shortcuts: [{
-                control: true,
-                shift: true,
-                keyCode: Jx.KeyCode.r
-            }, {
-                alt: true,
-                keyCode: Jx.KeyCode.l
-            }],
+            icon: "\uE172",
+            shortcuts: [{ control: true, shift: true, keyCode: Jx.KeyCode.r }, { alt: true, keyCode: Jx.KeyCode.l }],
             labelLocId: "mailCommandReplyAllLabel",
             type: "button",
             handler: Mail.Utilities.ComposeHelper.onReplyAllButton,
             enableContext: ["guiState", "selection", "irm"],
-            isEnabled: function(n) {
-                return t.singleSelection() && t.allExceptDraftsAndOutbox(n) && !t.draftsAreSelected(n) && t.allowResponse(n) && t.irmAllows("irmCanReplyAll")
+            isEnabled: function (selection) {
+                return Contexts.singleSelection() &&
+                       Contexts.allExceptDraftsAndOutbox(selection) &&
+                        !Contexts.draftsAreSelected(selection) &&
+                        Contexts.allowResponse(selection) &&
+                        Contexts.irmAllows("irmCanReplyAll");
             },
             dismissAfterInvoke: true
         });
-        r.printMenu = new n.Item({
+        commands.printMenu = new Commands.Item({
             id: "printMenu",
-            icon: "",
+            icon: "\uE188",
             useCustomFont: true,
-            shortcuts: [{
-                control: true,
-                keyCode: Jx.KeyCode.p
-            }],
+            shortcuts: [{ control: true, keyCode: Jx.KeyCode.p }],
             shortcutLabel: "Ctrl+P",
             shortcutLabelId: "mailCommandPrintToolTip",
             labelLocId: "mailCommandPrintLabel",
             type: "button",
-            handler: n.Handlers.print,
+            handler: Commands.Handlers.print,
             enableContext: ["guiState", "selection"],
-            isEnabled: t.isPrintingEnabled,
+            isEnabled: Contexts.isPrintingEnabled,
             dismissAfterInvoke: true
         });
-        r.save = new n.Item({
+
+        
+        commands.printDebug = new Commands.Item({
+            id: "printDebug",
+            shortcuts: [{ control: true, shift: true, keyCode: Jx.KeyCode.p }],
+            type: "shortcut",
+            handler: Commands.Handlers.printDebug,
+            isEnabled: function () {
+                return Contexts.isPrintingEnabled();
+            }
+        });
+        
+
+        commands.save = new Commands.Item({
             id: "save",
             icon: "save",
-            shortcuts: [{
-                control: true,
-                keyCode: Jx.KeyCode.s
-            }],
+            shortcuts: [{ control: true, keyCode: Jx.KeyCode.s }],
             shortcutLabel: "Ctrl+S",
             shortcutLabelId: "mailCommandSaveToolTip",
             labelLocId: "composeAppBarSaveDraftButton",
             type: "button",
-            handler: n.Handlers.composeSaveCommand,
+            handler: Commands.Handlers.composeSaveCommand,
             dismissAfterInvoke: true
         });
-        r.saveMoreMenu = new n.MenuItem(r.save,{
+        commands.saveMoreMenu = new Commands.MenuItem(commands.save, {
             id: "saveMoreMenu"
         });
-        r.clipboardToggle = new n.ToggleItem({
+        commands.clipboardToggle = new Commands.ToggleItem({
             id: "clipboardToggle",
             icon: "paste",
-            labelLocId: {
-                off: "composeAppBarPasteLabel",
-                on: "composeAppBarClipboardLabel"
-            },
-            shortcutLabelId: {
-                off: "composeAppBarPasteToolTip",
-                on: "composeAppBarClipboardLabel"
-            },
+            labelLocId: { off: "composeAppBarPasteLabel", on: "composeAppBarClipboardLabel" },
+            shortcutLabelId: { off: "composeAppBarPasteToolTip", on: "composeAppBarClipboardLabel" },
             shortcutLabel: "Ctrl+V",
             handler: {
-                off: function() {
-                    n.Handlers.composeCommand("paste")
-                },
-                on: function() {
-                    n.FlyoutHandler.onHostButton("clipboardMenu", "clipboardToggle")
-                }
+                off: function () { Commands.Handlers.composeCommand("paste"); },
+                on: function () { Commands.FlyoutHandler.onHostButton("clipboardMenu", "clipboardToggle"); }
             },
             shortcuts: [],
             type: "toggle",
             toggleBackground: false,
             toggleContext: ["composeSelection"],
-            isToggledOn: t.copyEnabled,
-            dismissAfterInvoke: {
-                off: true,
-                on: false
-            }
+            isToggledOn: Contexts.copyEnabled,
+            dismissAfterInvoke: { off: true, on: false }
         });
-        r.paste = new n.Item({
+        commands.paste = new Commands.Item({
             id: "paste",
             icon: "paste",
             shortcuts: [],
             labelLocId: "composeAppBarPasteLabel",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("paste")
-            },
+            handler: function () { Commands.Handlers.composeCommand("paste"); },
             dismissAfterInvoke: true
         });
-        r.copy = new n.Item({
+        commands.copy = new Commands.Item({
             id: "copy",
             icon: "copy",
             shortcuts: [],
             labelLocId: "composeAppBarCopyLabel",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("copy")
-            },
-            isEnabled: t.copyEnabled,
+            handler: function () { Commands.Handlers.composeCommand("copy"); },
+            isEnabled: Contexts.copyEnabled,
             dismissAfterInvoke: true
         });
-        r.font = new n.Item({
+        commands.font = new Commands.Item({
             id: "font",
             icon: "font",
             shortcuts: [],
@@ -278,12 +244,10 @@
             shortcutLabel: "Ctrl+Shift+F",
             labelLocId: "composeAppBarSetFontLabel",
             type: "flyout",
-            handler: function() {
-                n.FlyoutHandler.onHostButton("fontFlyout", "font")
-            },
+            handler: function () { Commands.FlyoutHandler.onHostButton("fontFlyout", "font"); },
             dismissAfterInvoke: false
         });
-        r.bold = new n.ToggleItem({
+        commands.bold = new Commands.ToggleItem({
             id: "bold",
             icon: "bold",
             shortcuts: [],
@@ -292,16 +256,12 @@
             labelLocId: "composeAppBarBoldButton",
             type: "toggle",
             toggleBackground: true,
-            handler: function() {
-                n.Handlers.composeCommand("bold")
-            },
+            handler: function () { Commands.Handlers.composeCommand("bold"); },
             toggleContext: ["composeSelection"],
-            isToggledOn: function() {
-                return t.composeFormatToggle("bold")
-            },
+            isToggledOn: function () { return Contexts.composeFormatToggle("bold"); },
             dismissAfterInvoke: false
         });
-        r.italic = new n.ToggleItem({
+        commands.italic = new Commands.ToggleItem({
             id: "italic",
             icon: "italic",
             shortcuts: [],
@@ -310,16 +270,12 @@
             labelLocId: "composeAppBarItalicButton",
             type: "toggle",
             toggleBackground: true,
-            handler: function() {
-                n.Handlers.composeCommand("italic")
-            },
+            handler: function () { Commands.Handlers.composeCommand("italic"); },
             toggleContext: ["composeSelection"],
-            isToggledOn: function() {
-                return t.composeFormatToggle("italic")
-            },
+            isToggledOn: function () { return Contexts.composeFormatToggle("italic"); },
             dismissAfterInvoke: false
         });
-        r.underline = new n.ToggleItem({
+        commands.underline = new Commands.ToggleItem({
             id: "underline",
             icon: "underline",
             shortcuts: [],
@@ -328,167 +284,138 @@
             labelLocId: "composeAppBarUnderlineButton",
             type: "toggle",
             toggleBackground: true,
-            handler: function() {
-                n.Handlers.composeCommand("underline")
-            },
+            handler: function () { Commands.Handlers.composeCommand("underline"); },
             toggleContext: ["composeSelection"],
-            isToggledOn: function() {
-                return t.composeFormatToggle("underline")
-            },
+            isToggledOn: function () { return Contexts.composeFormatToggle("underline"); },
             dismissAfterInvoke: false
         });
-        r.fontColor = new n.Item({
+        commands.fontColor = new Commands.Item({
             id: "fontColor",
-            icon: "",
+            icon: "\uE196",
             useCustomFont: true,
             shortcuts: [],
             shortcutLabelId: "composeAppBarSetFontColorLabel",
             labelLocId: "composeAppBarSetFontColorLabel",
             type: "flyout",
-            handler: function() {
-                n.FlyoutHandler.onHostButton("fontColorFlyout", "fontColor")
-            },
+            handler: function () { Commands.FlyoutHandler.onHostButton("fontColorFlyout", "fontColor"); },
             dismissAfterInvoke: false
         });
-        r.highlightColor = new n.Item({
+        commands.highlightColor = new Commands.Item({
             id: "highlightColor",
-            icon: "",
+            icon: "\uE198",
             useCustomFont: true,
             shortcuts: [],
             shortcutLabelId: "composeAppBarSetFontHighlightColorButton",
             labelLocId: "composeAppBarSetFontHighlightColorButton",
             type: "flyout",
-            handler: function() {
-                n.FlyoutHandler.onHostButton("highlightColorFlyout", "highlightColor")
-            },
+            handler: function () { Commands.FlyoutHandler.onHostButton("highlightColorFlyout", "highlightColor"); },
             dismissAfterInvoke: false
         });
-        r.emojiCmd = new n.Item({
+        commands.emojiCmd = new Commands.Item({
             id: "emojiCmd",
             icon: "emoji2",
             shortcuts: [],
             shortcutLabelId: "composeAppBarEmojiPickerLabel",
             labelLocId: "composeAppBarEmojiPickerLabel",
             type: "button",
-            handler: n.Handlers.composeEmojiPicker,
-            dismissAfterInvoke: false
+            handler: Commands.Handlers.composeEmojiPicker,
+            dismissAfterInvoke: false // handler does this on its own.
         });
-        r.emojiMoreMenu = new n.MenuItem(r.emojiCmd,{
+        commands.emojiMoreMenu = new Commands.MenuItem(commands.emojiCmd, {
             id: "emojiMoreMenu"
         });
-        r.linkToggle = new n.ToggleItem({
+        commands.linkToggle = new Commands.ToggleItem({
             id: "linkToggle",
             icon: "link",
             labelLocId: "composeAppBarHyperlinkButton",
             shortcutLabelId: "composeAppBarHyperlinkButton",
             handler: {
-                off: function() {
-                    n.Handlers.composeCommand("showHyperlinkControl")
-                },
-                on: function() {
-                    n.FlyoutHandler.onHostButton("linkMenu", "linkToggle")
-                }
+                off: function () { Commands.Handlers.composeCommand("showHyperlinkControl"); },
+                on: function () { Commands.FlyoutHandler.onHostButton("linkMenu", "linkToggle"); }
             },
             shortcuts: [],
             type: "toggle",
             toggleBackground: false,
             toggleContext: ["composeSelection"],
-            isToggledOn: t.composeInLink,
-            dismissAfterInvoke: {
-                off: true,
-                on: false
-            }
+            isToggledOn: Contexts.composeInLink,
+            dismissAfterInvoke: { off: true, on: false }
         });
-        r.addLinkMenuItem = new n.Item({
+        commands.addLinkMenuItem = new Commands.Item({
             id: "addLinkMenuItem",
             icon: "link",
             shortcuts: [],
             labelLocId: "/modernCanvas/hyperlinkControl_completionButton",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("showHyperlinkControl")
-            },
+            handler: function () { Commands.Handlers.composeCommand("showHyperlinkControl"); },
             enableContext: ["composeSelection"],
-            isEnabled: function() {
-                return !t.composeInLink()
-            },
+            isEnabled: function () { return !Contexts.composeInLink(); },
             dismissAfterInvoke: true
         });
-        r.editLink = new n.Item({
+        commands.editLink = new Commands.Item({
             id: "editLink",
             icon: "link",
             shortcuts: [],
             labelLocId: "/modernCanvas/canvasCommand_editLink",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("showHyperlinkControl")
-            },
+            handler: function () { Commands.Handlers.composeCommand("showHyperlinkControl"); },
             enableContext: ["composeSelection"],
-            isEnabled: t.composeInLink,
+            isEnabled: Contexts.composeInLink,
             dismissAfterInvoke: true
         });
-        r.openLink = new n.Item({
+        commands.openLink = new Commands.Item({
             id: "openLink",
             icon: "link",
             shortcuts: [],
             labelLocId: "/modernCanvas/canvasCommand_openLink",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("openLink")
-            },
+            handler: function () { Commands.Handlers.composeCommand("openLink"); },
             enableContext: ["composeSelection"],
-            isEnabled: t.composeInLink,
+            isEnabled: Contexts.composeInLink,
             dismissAfterInvoke: true
         });
-        r.removeLink = new n.Item({
+        commands.removeLink = new Commands.Item({
             id: "removeLink",
             icon: "link",
             shortcuts: [],
             labelLocId: "/modernCanvas/canvasCommand_removeLink",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("removeHyperlink")
-            },
+            handler: function () { Commands.Handlers.composeCommand("removeHyperlink"); },
             enableContext: ["composeSelection"],
-            isEnabled: t.composeInLink,
+            isEnabled: Contexts.composeInLink,
             dismissAfterInvoke: true
         });
-        r.editLinkMenu = new n.MenuItem(r.editLink,{
+        commands.editLinkMenu = new Commands.MenuItem(commands.editLink, {
             id: "editLinkMenu"
         });
-        r.openLinkMenu = new n.MenuItem(r.openLink,{
+        commands.openLinkMenu = new Commands.MenuItem(commands.openLink, {
             id: "openLinkMenu"
         });
-        r.removeLinkMenu = new n.MenuItem(r.removeLink,{
+        commands.removeLinkMenu = new Commands.MenuItem(commands.removeLink, {
             id: "removeLinkMenu"
         });
-        r.directionLtr = new n.Item({
+        commands.directionLtr = new Commands.Item({
             id: "directionLtr",
             icon: "alignleft",
             shortcuts: [],
             labelLocId: "composeAppBarDirectionLtr",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("directionLtr")
-            },
+            handler: function () { Commands.Handlers.composeCommand("directionLtr"); },
             enableContext: ["composeSelection"],
             isEnabled: Mail.Utilities.haveRtlLanguage,
             dismissAfterInvoke: true
         });
-        r.directionRtl = new n.Item({
+        commands.directionRtl = new Commands.Item({
             id: "directionRtl",
             icon: "alignright",
             shortcuts: [],
             labelLocId: "composeAppBarDirectionRtl",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("directionRtl")
-            },
+            handler: function () { Commands.Handlers.composeCommand("directionRtl"); },
             enableContext: ["composeSelection"],
             isEnabled: Mail.Utilities.haveRtlLanguage,
             dismissAfterInvoke: true
         });
-        r.directionSeperator = new n.Item({
+        commands.directionSeperator = new Commands.Item({
             id: "directionSeperator",
             shortcuts: [],
             type: "separator",
@@ -496,112 +423,139 @@
             enableContext: ["composeSelection"],
             isEnabled: Mail.Utilities.haveRtlLanguage
         });
-        r.linkSeperator = new n.Item({
+        commands.linkSeperator = new Commands.Item({
             id: "linkSeperator",
             shortcuts: [],
             type: "separator",
-            handler: Jx.fnEmpty
+            handler: Jx.fnEmpty,
         });
-        r.fontSeparator = new n.Item({
+        commands.fontSeparator = new Commands.Item({
             id: "fontSeparator",
             shortcuts: [],
             type: "separator",
-            handler: Jx.fnEmpty
+            handler: Jx.fnEmpty,
         });
-        r.formatSeparator = new n.Item({
+        commands.formatSeparator = new Commands.Item({
             id: "formatSeparator",
             shortcuts: [],
             type: "separator",
-            handler: Jx.fnEmpty
+            handler: Jx.fnEmpty,
         });
-        r.listMenu = new n.Item({
+        commands.listMenu = new Commands.Item({
             id: "listMenu",
             icon: "list",
             shortcuts: [],
             shortcutLabelId: "composeAppBarListsButton",
             labelLocId: "composeAppBarListsButton",
             type: "flyout",
-            handler: function() {
-                n.FlyoutHandler.onHostButton("listMenu", "listMenu")
-            },
+            handler: function () { Commands.FlyoutHandler.onHostButton("listMenu", "listMenu"); },
             dismissAfterInvoke: false
         });
-        r.bulletsMenuItem = new n.Item({
+        commands.bulletsMenuItem = new Commands.Item({
             id: "bulletsMenuItem",
             icon: "list",
             shortcuts: [],
             labelLocId: "composeAppBarBulletsButton",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("bullets")
-            },
+            handler: function () { Commands.Handlers.composeCommand("bullets"); },
             dismissAfterInvoke: true
         });
-        r.numberingMenuItem = new n.Item({
+        commands.numberingMenuItem = new Commands.Item({
             id: "numberingMenuItem",
             icon: "list",
             shortcuts: [],
             labelLocId: "composeAppBarNumberingButton",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("numbers")
-            },
+            handler: function () { Commands.Handlers.composeCommand("numbers"); },
             dismissAfterInvoke: true
         });
-        r.clearFormatting = new n.Item({
+        commands.clearFormatting = new Commands.Item({
             id: "clearFormatting",
             icon: "clear",
             shortcuts: [],
             labelLocId: "composeAppBarClearFormattingButton",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("clearFormatting")
-            },
+            handler: function () { Commands.Handlers.composeCommand("clearFormatting"); },
             dismissAfterInvoke: true
         });
-        r.undo = new n.Item({
+        commands.undo = new Commands.Item({
             id: "undo",
             icon: "undo",
             shortcuts: [],
             labelLocId: "composeAppBarUndoButton",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("undo")
-            },
+            handler: function () { Commands.Handlers.composeCommand("undo"); },
             dismissAfterInvoke: true
         });
-        r.redo = new n.Item({
+        commands.redo = new Commands.Item({
             id: "redo",
             icon: "redo",
             shortcuts: [],
             labelLocId: "composeAppBarRedoButton",
             type: "button",
-            handler: function() {
-                n.Handlers.composeCommand("redo")
-            },
+            handler: function () { Commands.Handlers.composeCommand("redo"); },
             dismissAfterInvoke: true
         });
-        r.composeMoreMenu = new n.Item({
+        commands.composeMoreMenu = new Commands.Item({
             id: "composeMoreMenu",
             icon: "more",
             shortcuts: [],
             labelLocId: "composeAppBarEllipseLabel",
             shortcutLabelId: "composeAppBarEllipseLabel",
             type: "flyout",
-            handler: function() {
-                n.FlyoutHandler.onHostButton("composeMoreMenu", "composeMoreMenu")
-            },
+            handler: function () { Commands.FlyoutHandler.onHostButton("composeMoreMenu", "composeMoreMenu"); },
             dismissAfterInvoke: false
-        })
-    }
-    ;
-    n.BaseFactory.prototype = {
-        filterCommands: function(n) {
-            var t = [];
-            return n.forEach(function(n) {
-                this.commands[n] ? t.push(n) : Mail.log("Filtering out command: " + n)
-            }, this),
-            t
+        });
+        Debug.only(
+            commands.debugSnapshot = new Commands.Item({
+                id: "debugSnapshot",
+                icon: "D",
+                shortcuts: [{ control: true, keyCode: Jx.KeyCode["1"] }],
+                type: "button",
+                labelLocId: "mail_useingCachedLabel",
+                handler: function () { return Mail.SnapshotMenu(); }, // SnapshotMenu is delay loaded, so can't reference it durring app initialization
+                dismissAfterInvoke: true
+            }),
+            commands.debugSnapshot._cachedLabel = "Debug Menu" 
+        );
+    };
+
+    /*jshint laxcomma:true*/
+    Commands.BaseFactory.prototype = {
+        filterCommands: function (commandArray) {
+            var filteredCommands = [];
+            commandArray.forEach(function (command) {
+                Debug.assert(Jx.isNonEmptyString(command));
+                if (this.commands[command]) {
+                    filteredCommands.push(command);
+                } else {
+                    Mail.log("Filtering out command: " + command);
+                }
+            }, this);
+            return filteredCommands;
         }
-    }
-})
+
+        
+        ,_verifyCommands: function () {
+            function verifyCalShortcut(shortcut) {
+                if (shortcut.alt) {
+                    Debug.assert(shortcut.keyCode !== Jx.KeyCode.c);
+                    Debug.assert(shortcut.keyCode !== Jx.KeyCode.t);
+                    Debug.assert(shortcut.keyCode !== Jx.KeyCode.d);
+                }
+            }
+            for (var commandId in this.commands) {
+                var command = /*@dynamic*/ this.commands[commandId];
+                Debug.assert(commandId === command.id);
+                // verify that the calendar invite shortcuts are not used here
+                if (command.shortcuts) {
+                    command.shortcuts.forEach(verifyCalShortcut);
+                }
+            }
+        }
+        
+    };
+    /*jshint laxcomma:false*/
+
+});
+

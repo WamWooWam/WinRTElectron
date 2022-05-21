@@ -1,1 +1,325 @@
-﻿Jx.delayDefine(People,["AlertDialog","Dialog","DialogEvents","DialogButton","FormDialog"],function(){var i=window.People,r=i.DialogEvents={opened:"People.DialogEvents.opened",closed:"People.DialogEvents.closed"},n,f,u,t;Object.freeze(r);n=i.Dialog=function(n,t,r){this.buttons=[];this._title=n;this._content=t;this._options=r||{headColor:"",headerIcon:"",titleColor:"",useAppTheme:false,fullscreen:false,form:false};this._overlay=new i.Overlay(this);this._escapeHandler=null;this._role="dialog";$include("$(cssResources)/"+Jx.getAppNameFromId(Jx.appId)+"Dialog.css")};Jx.inherit(n,Jx.Events);Jx.augment(n,Jx.Component);n.prototype.show=function(n,t){return(this.append.apply(this,this.buttons),this.appendChild(this._content),this.initComponent(),this._overlay.show(t))?(n&&(this._escapeHandler=function(n){n.key==="Esc"&&this.close()},this._overlay.addListener("keyup",this._escapeHandler,this)),Jx.EventManager.broadcast(r.opened),this.raiseEvent("opened"),true):false};n.prototype.close=function(){this._closed||(this._closed=true,this._escapeHandler&&(this._overlay.removeListener("keyup",this._escapeHandler,this),this._escapeHandler=null),this._overlay.close(),Jx.EventManager.broadcast(r.closed),this.raiseEvent("closed"))};n.prototype.isShowing=function(){return this._overlay.isShowing()};n.prototype.canShow=function(){return this._overlay.canShow()};n.prototype.closeActive=function(){return this._overlay.closeActive()};n.prototype.reserveNextShowing=function(){return this._overlay.reserveNextShowing()};n.prototype.cancelReservation=function(){return this._overlay.cancelReservation()};n.prototype.updateTitle=function(n){var t,i;this._title=n;t=document.getElementById("dlg-box");Jx.isHTMLElement(t)&&t.setAttribute("aria-label",n);i=t.querySelector("#dlg-title");Jx.isHTMLElement(i)&&(i.innerText=n)};n.prototype.getUI=function(n){n.html="<div id='dlg-box' class='"+(this._options.fullscreen?"fullscreen":"")+"' role='"+this._role+"' aria-describedby='dlgDescription' aria-label='"+Jx.escapeHtml(this._title)+"'><div class='dlg-band'><\/div>"+(this._options.form?"<form id='dlg-form' class='dlg-content' novalidate>":"<div id='dlg-contentPanel' class='dlg-content'>")+"<div id='dlg-header' class='row1'><div id='dlg-title' class='singleLineText' role='heading'>"+Jx.escapeHtml(this._title)+"<\/div><div id='dlg-headerIcon'><\/div><\/div><div id='dlg-body' class='row2'><div class='dlg-inner-content'>"+Jx.getUI(this._content).html+"<\/div><\/div><div id='dlg-footer' class='row3'><div class='dlg-inner-content'>"+this.buttons.reduce(function(n,t){return n+Jx.getUI(t).html},"")+"<\/div><\/div>"+(this._options.form?"<\/form>":"<\/div>")+"<div class='dlg-band'><\/div><\/div>"};n.prototype.activateUI=function(){var t=document.getElementById("dlg-header"),i=document.getElementById("dlg-headerIcon"),n=this._options;n.useAppTheme?Jx.addClass(t,"appThemedHeader"):(Jx.isNonEmptyString(n.headerColor)&&(Jx.addClass(t,"customizedHeader"),t.style.backgroundColor=n.headerColor),Jx.isNonEmptyString(n.titleColor)&&(t.style.color=n.titleColor),Jx.isNonEmptyString(n.headerIcon)?(i.style.backgroundImage="url("+n.headerIcon+")",Jx.addClass(t,"customizedHeader")):Jx.addClass(i,"hidden"));Jx.Component.prototype.activateUI.call(this)};n.prototype.shutdownUI=function(){this._content.shutdownUI();Jx.Component.prototype.shutdownUI.call(this)};f=i.AlertDialog=function(n,t,r){i.Dialog.call(this,n,t,r);this._role="alertdialog"};Jx.inherit(f,n);u=i.FormDialog=function(n,t,r){r.form=true;this._submitHandler=null;i.Dialog.call(this,n,t,r)};Jx.inherit(u,n);u.prototype.activateUI=function(){var t=document.getElementById("dlg-form");t&&t.addEventListener("submit",function(n){this.raiseEvent("submit");n.preventDefault()}.bind(this),false);n.prototype.activateUI.call(this)};t=i.DialogButton=function(n,t,i){this._idButton=n;this._label=t;this._type=i||"button";this._autofocus=false;this.initComponent()};Jx.inherit(t,Jx.Events);Jx.augment(t,Jx.Component);t.prototype.getUI=function(n){n.html="<input class='dlg-button singleLineText' id='"+this._idButton+"' value='"+Jx.escapeHtml(this._label)+"'/>"};t.prototype.activateUI=function(){var n=this._button=document.getElementById(this._idButton);n.type=this._type;n.addEventListener("click",function(t){this.raiseEvent("click");n.type==="submit"&&t.preventDefault()}.bind(this),false);n.addEventListener("keydown",this.raiseEvent.bind(this,"keydown"),false);n.addEventListener("keyup",this.raiseEvent.bind(this,"keyup"),false);this._autofocus&&Jx.safeSetActive(n);Jx.Component.prototype.activateUI.call(this)};t.prototype.hide=function(n){Jx.setClass(this._button,"hidden",n)};t.prototype.focus=function(){Jx.safeSetActive(this._button)};Object.defineProperty(t.prototype,"disabled",{get:function(){return this._button.disabled},set:function(n){this._button.disabled=n}});Object.defineProperty(t.prototype,"autofocus",{get:function(){return this._autofocus},set:function(n){this._autofocus=n}});Object.defineProperty(t.prototype,"type",{get:function(){return this._type},set:function(n){this._type=n;this._button.type=n}});Object.defineProperty(t.prototype,"value",{get:function(){return this._label},set:function(n){this._label=n;this._button.value=n}});i.CloseButton=function(n,i,r){t.call(this,n,i);this.addListener("click",r.close,r);this.addListener("keydown",function(n){(n.key==="Spacebar"||n.key==="Enter")&&n.preventDefault()});this.addListener("keyup",function(n){(n.key==="Spacebar"||n.key==="Enter")&&(n.stopPropagation(),r.close())},r)};Jx.inherit(i.CloseButton,t)})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="../JSUtil/Include.js"/>
+/// <reference path="Dialog.js"/>
+/// <disable>JS2076.IdentifierIsMiscased</disable>
+
+Jx.delayDefine(People, ["AlertDialog", "Dialog", "DialogEvents", "DialogButton", "FormDialog"], function () {
+
+    var P = window.People;
+
+    var DialogEvents = P.DialogEvents = {
+        opened: "People.DialogEvents.opened",
+        closed: "People.DialogEvents.closed"
+    };
+    Object.freeze(DialogEvents);
+
+    var Dialog = P.Dialog = function (title, content, options) {
+        ///<summary>Basic dialog control that is overlayed across the entirety of the screen. Supports a title,
+        ///buttons, and arbitrary inner content.</summary>
+        ///<param name="title" type="String">Title string</param>
+        ///<param name="content" type="Jx.Component">The UI to show as an overlay</param>
+        ///<param name="options" type="Object" optional="true"> Configurable options. Defaults as shown.
+        ///     headerColor: "", // CSS color value for colorizing the header
+        ///     headerIcon: "", // Image URL to be displayed in the header
+        ///     titleColor: "", // CSS color value for dialog's title text
+        ///     useAppTheme: false, // If true, uses pre-defined app color and icon to style the header.
+        ///     fullscreen: false, // If true, shows a fullscreen dialog, like a barricade page.
+        /// } </param>
+        this.buttons = [];
+
+        this._title = title;
+        this._content = content;
+        this._options = options || { headColor: "", headerIcon: "", titleColor: "", useAppTheme: false, fullscreen: false, form: false };
+        this._overlay = new P.Overlay(this);
+        this._escapeHandler = null;
+        this._role = "dialog";
+
+        $include("$(cssResources)/" + Jx.getAppNameFromId(Jx.appId) + "Dialog.css");
+    };
+    Jx.inherit(Dialog, Jx.Events);
+    Debug.Events.define(Dialog.prototype, "opened", "closed");
+    Jx.augment(Dialog, Jx.Component);
+
+    Dialog.prototype.show = function (escapable, forceShow) {
+        ///<summary>Open the dialog</summary>
+        ///<param name="escapable" type="Boolean" optional="true">Does escape close the dialog</param>
+        ///<param name="forceShow" type="Boolean" optional="true">If true will force any current dialogs to dismiss so this one can be displayed.</param>
+        this.append.apply(this, this.buttons);
+        this.appendChild(this._content);
+        this.initComponent();
+
+        if (this._overlay.show(forceShow)) {
+            if (escapable) {
+                this._escapeHandler = function (ev) {
+                    if (ev.key === "Esc") {
+                        this.close();
+                    }
+                };
+                this._overlay.addListener("keyup", this._escapeHandler, this);
+            }
+            Jx.EventManager.broadcast(DialogEvents.opened);
+            this.raiseEvent("opened");
+            return true;
+        }
+
+        return false;
+    };
+
+    Dialog.prototype.close = function () {
+        ///<summary>Close the dialog</summary>
+        if (!this._closed) {
+            this._closed = true;
+
+            if (this._escapeHandler) {
+                this._overlay.removeListener("keyup", this._escapeHandler, this);
+                this._escapeHandler = null;
+            }
+            this._overlay.close();
+            Jx.EventManager.broadcast(DialogEvents.closed);
+            this.raiseEvent("closed");
+        }
+    };
+
+    Dialog.prototype.isShowing = function () {
+        return this._overlay.isShowing();
+    };
+
+    Dialog.prototype.canShow = function () {
+        return this._overlay.canShow();
+    };
+
+    Dialog.prototype.closeActive = function () {
+        return this._overlay.closeActive();
+    };
+
+    Dialog.prototype.reserveNextShowing = function () {
+        return this._overlay.reserveNextShowing();
+    };
+
+    Dialog.prototype.cancelReservation = function () {
+        return this._overlay.cancelReservation();
+    };
+
+    Dialog.prototype.updateTitle = function (titleText) {
+        Debug.assert(this.hasUI());
+        this._title = titleText;
+
+        var dlgElement = document.getElementById("dlg-box");
+        Debug.assert(Jx.isHTMLElement(dlgElement));
+        if (Jx.isHTMLElement(dlgElement)) {
+            dlgElement.setAttribute("aria-label", titleText);
+        }
+
+        var dlgTitleElement = dlgElement.querySelector("#dlg-title");
+        Debug.assert(Jx.isHTMLElement(dlgTitleElement));
+        if (Jx.isHTMLElement(dlgTitleElement)) {
+            dlgTitleElement.innerText = titleText;
+        }
+    };
+
+    Dialog.prototype.getUI = function (ui) {
+        ///<summary>The outer flexbox for hosting the dialog content</summary>
+        ///<param name="ui" type="Object">Contains html and css strings</param>
+        ui.html =
+        "<div id='dlg-box' class='" + (this._options.fullscreen ? "fullscreen" : "") + "' role='" + this._role + "' aria-describedby='dlgDescription' aria-label='" + Jx.escapeHtml(this._title) + "'>" +
+            "<div class='dlg-band'></div>" +
+            (this._options.form ? "<form id='dlg-form' class='dlg-content' novalidate>" : "<div id='dlg-contentPanel' class='dlg-content'>") +
+                "<div id='dlg-header' class='row1'>" +
+                    "<div id='dlg-title' class='singleLineText' role='heading'>" + Jx.escapeHtml(this._title) + "</div>" +
+                    "<div id='dlg-headerIcon'></div>" +
+                "</div>" +
+                "<div id='dlg-body' class='row2'>" +
+                    "<div class='dlg-inner-content'>" +
+                        Jx.getUI(this._content).html +
+                    "</div>" +
+                "</div>" +
+                "<div id='dlg-footer' class='row3'>" +
+                    "<div class='dlg-inner-content'>" +
+                        this.buttons.reduce(function (html, button) {
+                            return html + Jx.getUI(button).html;
+                        }, "") +
+                    "</div>" +
+                "</div>" +
+            (this._options.form ? "</form>" : "</div>") +
+            "<div class='dlg-band'></div>" +
+        "</div>";
+    };
+
+    Dialog.prototype.activateUI = function () {
+        var header = document.getElementById("dlg-header");
+        var icon = document.getElementById("dlg-headerIcon");
+        var options = this._options;
+
+        Debug.assert(document.querySelector(".dlg-inner-content #dlgDescription"), "No description element was provided by the dialog content element");
+
+        if (options.useAppTheme) {
+            Jx.addClass(header, "appThemedHeader");
+        } else {
+            if (Jx.isNonEmptyString(options.headerColor)) {
+                // Turn on the customized header
+                Jx.addClass(header, "customizedHeader");
+                header.style.backgroundColor = options.headerColor;
+            }
+
+            if (Jx.isNonEmptyString(options.titleColor)) {
+                header.style.color = options.titleColor;
+            }
+
+            if (Jx.isNonEmptyString(options.headerIcon)) {
+                icon.style.backgroundImage = "url(" + options.headerIcon + ")";
+                Jx.addClass(header, "customizedHeader");
+            } else {
+                Jx.addClass(icon, "hidden");
+            }
+        }
+
+        Jx.Component.prototype.activateUI.call(this);
+    };
+
+    Dialog.prototype.shutdownUI = function () {
+        this._content.shutdownUI();
+        Jx.Component.prototype.shutdownUI.call(this);
+    };
+
+    //
+    // AlertDialog
+    //
+    var AlertDialog = P.AlertDialog = function (title, content, options) {
+        ///<summary>Basic alert dialog control. Derived directly from Dialog.</summary>
+        P.Dialog.call(this, title, content, options);
+        this._role = "alertdialog";
+    };
+    Jx.inherit(AlertDialog, Dialog);
+
+
+    //
+    // FormDialog
+    //
+    var FormDialog = P.FormDialog = function (title, content, options) {
+        ///<summary>Basic form dialog control. Derived directly from Dialog.</summary>
+        options.form = true;
+        this._submitHandler = null;
+
+        P.Dialog.call(this, title, content, options);
+    };
+    Jx.inherit(FormDialog, Dialog);
+    Debug.Events.define(FormDialog.prototype, "submit");
+
+    FormDialog.prototype.activateUI = function () {
+        var form = document.getElementById("dlg-form");
+        Debug.assert(Jx.isHTMLElement(form));
+
+        if (form) {
+            form.addEventListener("submit", function (ev) {
+                this.raiseEvent("submit");
+                ev.preventDefault(); // prevent the 'submit' from refreshing the page (i.e. reload the app)
+            }.bind (this), false);
+        }
+        
+        Dialog.prototype.activateUI.call(this);
+    };
+
+    //
+    // DialogButton
+    //
+    var DialogButton = P.DialogButton = function (id, label, type) {
+        ///<summary>Basic button abstraction for use in the Dialog control. Supports a label and click callback</summary>
+        ///<param name="id" type="String">Unique id of the button element in the DOM</param>
+        ///<param name="label" type="String">The button label</param>
+        ///<param name="type" type="String" optional="true">Either 'button' or 'submit'</param>
+        this._idButton = id;
+        this._label = label;
+        this._type = type || "button";
+        this._autofocus = false;
+        this.initComponent();
+    };
+    Jx.inherit(DialogButton, Jx.Events);
+    Debug.Events.define(DialogButton.prototype, "click");
+    Debug.Events.define(DialogButton.prototype, "keyup");
+    Debug.Events.define(DialogButton.prototype, "keydown");
+    Jx.augment(DialogButton, Jx.Component);
+
+    DialogButton.prototype.getUI = function (ui) {
+        ///<summary>Creates the button UI</summary>
+        ///<param name="ui" type="Object">Contains html and css strings</param>
+        ui.html = "<input class='dlg-button singleLineText' id='" + this._idButton + "' value='" + Jx.escapeHtml(this._label) + "'/>";
+    };
+
+    DialogButton.prototype.activateUI = function () {
+        ///<summary>Localizes the button label once the UI is loaded</summary>
+        var button = this._button = document.getElementById(this._idButton);
+        button.type = this._type;
+        button.addEventListener("click", function (ev) {
+            this.raiseEvent("click");
+            if (button.type === "submit") {
+                ev.preventDefault();
+            }
+        }.bind(this), false);
+        button.addEventListener("keydown", this.raiseEvent.bind(this, "keydown"), false);
+        button.addEventListener("keyup", this.raiseEvent.bind(this, "keyup"), false);
+
+        if (this._autofocus) {
+            Debug.assert(!button.disabled, "autofocus is set on a button defaulted to disabled.");
+            Jx.safeSetActive(button);
+        }
+
+        Jx.Component.prototype.activateUI.call(this);
+    };
+
+    DialogButton.prototype.hide = function (hide) {
+        Debug.assert(Jx.isHTMLElement(this._button));
+        Jx.setClass(this._button, "hidden", hide);
+    };
+
+    DialogButton.prototype.focus = function () {
+        Debug.assert(Jx.isHTMLElement(this._button));
+        Jx.safeSetActive(this._button);
+    };
+
+    Object.defineProperty(DialogButton.prototype, "disabled", {
+        get: function () { return this._button.disabled; },
+        set: function (value) { this._button.disabled = value; }
+    });
+
+    Object.defineProperty(DialogButton.prototype, "autofocus", {
+        get: function () { return this._autofocus; },
+        set: function (value) { this._autofocus = value; }
+    });
+
+    Object.defineProperty(DialogButton.prototype, "type", {
+        get: function () { return this._type; },
+        set: function (value) { this._type = value; this._button.type = value; }
+    });
+
+    Object.defineProperty(DialogButton.prototype, "value", {
+        get: function () { return this._label; },
+        set: function (value) { this._label = value; this._button.value = value; }
+    });
+
+    P.CloseButton = function (id, label, dialog) {
+        ///<summary>Close button for use in the Dialog control</summary>
+        ///<param name="id" type="String">Unique id of the button element in the DOM</param>
+        ///<param name="label" type="String">The button label</param>
+        ///<param name="dialog" type="String">The owning dialog</param>
+        DialogButton.call(this, id, label);
+        this.addListener("click", dialog.close, dialog);
+        this.addListener("keydown", function (ev) {
+            if (ev.key === "Spacebar" || ev.key === "Enter") {
+                // Prevent IE from converting this to a click event.
+                ev.preventDefault();
+            }
+        });
+        this.addListener("keyup", function (ev) {
+            if (ev.key === "Spacebar" || ev.key === "Enter") {
+                ev.stopPropagation();
+                dialog.close();
+            }
+        }, dialog);
+    };
+    Jx.inherit(P.CloseButton, DialogButton);
+
+});

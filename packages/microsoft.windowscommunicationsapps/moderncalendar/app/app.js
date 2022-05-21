@@ -1,1 +1,668 @@
-﻿Jx.delayDefine(Calendar,"App",function(){function u(n){Jx.mark("Calendar.App."+n+",Info,Calendar,App")}function t(n){Jx.mark("Calendar:App."+n+",StartTA,Calendar,App")}function i(n){Jx.mark("Calendar:App."+n+",StopTA,Calendar,App")}var r=Calendar.App=function(n,r){t("ctor");this._host=n;this._platformWorker=new Calendar.WorkerEx(r);this._scheduler=null;this._jobset=null;this._deferredWork=new Calendar.WorkQueue;this._services={deferredWork:this._deferredWork};this._firstRun=true;this._platform=null;this._hrPlatform=0;this._suspended=false;this._hadConnectedId=false;this.initComponent();this._id="calApp";this._lastOuterWidth=window.outerWidth;var u=Jx.activation;u.addListener(u.tile,this._onTile,this);u.addListener(u.protocol,this._onProtocol,this);u.addListener(u.resuming,this._onResuming,this);u.addListener(u.appointmentsProvider,this._onShowTimeFrame,this);this.on("getPlatform",this._onGetPlatform,this);this.on("getPlatformWorker",this._onGetPlatformWorker,this);this.on("getSettings",this._onGetSettings,this);this.on("setShowArrows",this._onSetShowArrows,this);this.on("viewReady",this._onViewReady,this);this._time=Date.now();document.addEventListener("msvisibilitychange",this._onVisibilityChange.bind(this),false);this._onResize=this._onResize.bind(this);window.addEventListener("resize",this._onResize,false);document.title=Jx.res.getString("calendarAppTitle");i("ctor")},n,f;Jx.augment(r,Jx.Component);r._reloadTimeout=Calendar.DAY_IN_MILLISECONDS*3;n=r.prototype;n.dispose=function(){this._services=null;this._deferredWork&&(this._deferredWork.dispose(),this._deferredWork=null)};n.onQueryService=function(n){return this._services[n]};n.shutdownUI=function(){this._ui.shutdownUI()};n._getPlatform=function(){if(!this._platform){var u=Microsoft.WindowsLive.Platform,n=u.ClientCreateOptions;try{t("createUiPlatform");this._platform=new u.Client("calendar",n.delayResources|n.failIfNoUser|n.failIfUnverified);this._hrPlatform=0;i("createUiPlatform")}catch(r){Jx.mark("Calendar:WinRT_GetPlatform_error: "+r.toString().trim()+" ("+r.number+")");this._hrPlatform=r.number}}return this._platform};n._retryPlatformCreation=function(n){var t=this._getPlatform();return n&&n(this._hrPlatform),Jx.isObject(t)};n._onTile=function(n){if(t("_onTile"),n.arguments&&this._ui){Jx.log.info("launched with arguments: "+n.arguments);var r;try{r=this._platform.calendarManager.getEventFromHandle(n.arguments)}catch(u){Jx.log.exception("tile received invalid handle: "+n.arguments,u);r=this._getEventFromPreHandleToastId(n.arguments)}r&&Jx.EventManager.broadcast("editEvent",{event:r},this._ui)}i("_onTile")};n._onProtocol=function(n){var r,f,s,u;t("_onProtocol");var e=n.uri,h=e.host,o=e.queryParsed;if(h==="focusEvent"){for(r={startDate:null,endDate:null,allDayEvent:null},f=0,s=o.length;f<s;f++){u=o[f];switch(u.name){case"start":r.startDate=new Date(parseInt(u.value,10));break;case"end":r.endDate=new Date(parseInt(u.value,10));break;case"allDay":r.allDayEvent=u.value==="true"}}Jx.isDate(r.startDate)&&Jx.isDate(r.endDate)&&Jx.isBoolean(r.allDayEvent)&&(isNaN(r.startDate.valueOf())||isNaN(r.endDate.valueOf())||r.startDate<=r.endDate&&Jx.EventManager.broadcast("focusEvent",r,this._ui))}i("_onProtocol")};n._onShowTimeFrame=function(n){var u,f,r;(t("_onShowTimeFrame"),u=n.verb===Windows.ApplicationModel.Appointments.AppointmentsProvider.AppointmentsProviderLaunchActionVerbs.showTimeFrame,u)&&(f=Math.round(n.duration),r={},r.startDate=new Date(n.timeToShow),r.endDate=new Date(r.startDate.getTime()+f),r.allDayEvent=false,i("_onShowTimeFrame"),Jx.EventManager.broadcast("focusEvent",r,this._ui))};n._onCommandsRequested=function(n){this._settingsPane=new Calendar.Views.Settings;this.append(this._settingsPane);this._settingsPane.activateUI();this._settingsPane.appendCommands(n.request.applicationCommands);n.target.removeEventListener("commandsrequested",this._onCommandsRequested)};n._onSuspending=function(){t("_onSuspending");this._platform&&(this._suspended=true,this._platform.suspend());i("_onSuspending")};n._onResuming=function(){t("_onResuming");this._platform&&(this._suspended=false,this._platform.resume());this.fire("resuming");Jx.ptStopResume(Jx.TimePoint.responsive);i("_onResuming")};n._onVisibilityChange=function(){if(!document.msHidden&&!this._suspended){var n=Date.now()-this._time;r._reloadTimeout<n&&(this._ui&&this._ui.isEditing()||(t("reload"),Jx.EventManager.broadcast("reload"),window.location.reload(),i("reload")))}};n._onGetPlatform=function(n){n.handled||(n.data.platform=this._platform,n.handled=true)};n._onGetPlatformWorker=function(n){n.handled||(n.data.platformWorker=this._platformWorker,n.handled=true)};n._onGetSettings=function(n){if(!n.handled){if(!this._settingsContainer){var t=new Jx.AppData,i=t.localSettings();this._settingsContainer=i.container("Calendar")}n.data.settings=this._settingsContainer;n.handled=true}};n._onSetShowArrows=function(n){n.handled||(this._settingsContainer.set("alwaysShowArrows",n.data.value),Jx.EventManager.broadcast("showArrows",n.data,this._ui),n.handled=true)};n._onViewReady=function(n){var t,f,i;n.stage===Jx.EventManager.Stages.bubbling&&(t=this._deferredWork,this._firstRun&&(this._firstRun=false,f=People.Accounts,i=People.Priority.launch,t.queue("PlatformInit",50,i,this._platformInit,this),t.queue("NetFirstRun",50,i,f.ensureNetworkOnFirstRun,null,[this._platform]),t.queue("EasiId",50,i,f.checkForEasiId,null,[this._platform,r.scenario]),t.queue("JxLaunch",50,i,Jx.launch.startDeferredTasks,Jx.launch,[this._platform]),t.queue("LockScreen",50,i,Chat.Shared.ensureLockScreen)),u("RunDeferredWork"),t.unlock())};n._platformInit=function(){t("_platformInit");this._platform.addEventListener("restartneeded",r._onRestartNeeded);this._platform.requestDelayedResources();Jx.forceSync(this._platform,Calendar.scenario);i("_platformInit")};n.initialize=function(){if(this._getPlatform())this._hadConnectedId=true,this._initUi();else{var n=this._retryPlatformCreation.bind(this),t=this._initUi.bind(this);People.Accounts.showLogonErrorDialog(n,t,this._hrPlatform)}};n._hookSuspend=function(){var n=Jx.activation;n.addListener(n.suspending,this._onSuspending,this)};n._hookSettings=function(){this._onCommandsRequested=this._onCommandsRequested.bind(this);var n=Windows.UI.ApplicationSettings.SettingsPane.getForCurrentView();n.addEventListener("commandsrequested",this._onCommandsRequested)};n._hookShare=function(){var n=Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();n.addEventListener("datarequested",this._onShareSourceDataRequested.bind(this))};n._onShareSourceDataRequested=function(n){this._ui.getShareData(n.request)};r._onRestartNeeded=function(){People.Accounts.showMustSignInDialog(function(){location.reload()},true)};n._initUi=function(){t("_initUi");this._scheduler=new People.Scheduler;this._jobset=this._scheduler.getJobSet();this._host&&(this._hadConnectedId||this._platformWorker.postCommand("Worker/restartPlatform"),this._platformWorker.postCommand("Worker/DOMContentLoaded",{isRtl:getComputedStyle(document.documentElement).direction==="rtl"}),this._ui=new Calendar.Views.Frame,this.appendChild(this._ui),this._ui.initUI(this._host,this._jobset));this._hookSuspend();this._hookSettings();this._hookShare();i("_initUi")};n._onResize=function(){t("_onResize");this._suspended||setImmediate(function(){var n={outerWidth:window.outerWidth},t,i;this._lastOuterWidth!==n.outerWidth&&(this._deferredWork.lock(),Jx.EventManager.broadcast("resizeWindow",n),t=true,i=false,Jx.ptStopResize(Jx.TimePoint.responsive,t,i,n.outerWidth,window.outerHeight),this._deferredWork.unlock(),this._lastOuterWidth=n.outerWidth)}.bind(this));i("_onResize")};n._getEventFromPreHandleToastId=function(n){var i=null,t,r,u;return n&&(t=n.split(".",2),r=parseInt(t[0],10),t.length>1&&(u=new Date(parseInt(t[1],10))),i=this._loadEvent(r,u)),i};n._loadEvent=function(n,t){var r=this._platform.calendarManager,i=null;try{i=r.getEventFromID(n);t&&i&&(i=i.getOccurrence(t))}catch(u){Jx.log.exception("unable to load eventId ["+n+"] with instanceStartDate ["+t+"]",u);i=null}return i};f=Calendar.WorkQueue=function(){this._queue=[];this._job=null;this._locked=true};f.prototype={dispose:function(){this._queue=null;this._job&&(this._job.dispose(),this._job=null)},queue:function(n,t,i,r,f,e){for(var o=this._queue,s=o.length-1;s>=0;s--)n===o[s].description&&(u("WorkQueue: remove:"+n),o.splice(s,1));o.push({description:n,delay:t,priority:i,fn:r,context:f,args:e})},_run:function(){var t=this._queue,n;!this._locked&&!this._job&&t.length>0&&(n=t.shift(),this._job=Jx.scheduler.addTimerJob(null,n.priority,n.description,n.delay,function(){this._job=null;n.fn.apply(n.context,n.args);this._run()},this))},lock:function(){this._locked=true},unlock:function(){this._locked=false;this._run()}}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="..\common\common.js" />
+
+/*jshint browser:true*/
+/*global Windows,Microsoft,Debug,Jx,People,Chat,Calendar,BVT,setImmediate*/
+
+Jx.delayDefine(Calendar, "App", function() {
+    
+    function _info(s) { Jx.mark("Calendar.App." + s + ",Info,Calendar,App"); }
+    function _start(s) { Jx.mark("Calendar:App." + s + ",StartTA,Calendar,App"); }
+    function _stop(s) { Jx.mark("Calendar:App." + s + ",StopTA,Calendar,App"); }
+
+    var App = Calendar.App = function(host, platformWorker) {
+        _start("ctor");
+
+        // cache params
+        this._host           = host;
+        this._platformWorker = new Calendar.WorkerEx(platformWorker);
+
+        // init members
+        this._scheduler = null;
+        this._jobset = null;
+        this._deferredWork = new Calendar.WorkQueue();
+        this._services = { deferredWork: this._deferredWork };
+        this._firstRun = true;
+
+        this._platform   = null;
+        this._hrPlatform = 0;
+        this._suspended = false;
+
+        this._hadConnectedId = false;
+
+        this.initComponent();
+        this._id = "calApp";
+
+        this._lastOuterWidth = window.outerWidth;
+
+        // hook activation, except suspend.  we want to build the rest of our app
+        // ui before hooking suspend, so our suspend event will be called last
+        // preventing anybody from using a suspended platform.
+        var activation = Jx.activation;
+        activation.addListener(activation.tile, this._onTile, this);
+        activation.addListener(activation.protocol, this._onProtocol, this);
+        activation.addListener(activation.resuming, this._onResuming, this);
+        activation.addListener(activation.appointmentsProvider, this._onShowTimeFrame, this);
+
+        // hook jx events
+        this.on("getPlatform",       this._onGetPlatform,       this);
+        this.on("getPlatformWorker", this._onGetPlatformWorker, this);
+        this.on("getSettings",       this._onGetSettings,       this);
+        this.on("setShowArrows",     this._onSetShowArrows,     this);
+        this.on("viewReady",         this._onViewReady,         this);
+
+        // hook visibility
+        this._time = Date.now();
+        document.addEventListener("msvisibilitychange", this._onVisibilityChange.bind(this), false);
+
+        this._onResize = this._onResize.bind(this);
+        window.addEventListener("resize", this._onResize, false);
+
+        // finally initialize the app
+        document.title = Jx.res.getString("calendarAppTitle");
+
+        _stop("ctor");
+    };
+
+    Jx.augment(App, Jx.Component);
+
+    App._reloadTimeout = Calendar.DAY_IN_MILLISECONDS * 3;
+
+    // override the reload timeout in debug for testing
+    Debug.call(function () {
+        App._reloadTimeout = Calendar.HOUR_IN_MILLISECONDS;
+    });
+
+    var proto = App.prototype;
+
+    proto.dispose = function () {
+        // TODO: dispose all members
+        this._services = null;
+        if (this._deferredWork) {
+            this._deferredWork.dispose();
+            this._deferredWork = null;
+        }
+    };
+
+    proto.onQueryService = function (serviceName) {
+        return this._services[serviceName];
+    };
+
+    proto.shutdownUI = function () {
+        this._ui.shutdownUI();
+    };
+
+    proto._getPlatform = function() {
+        Debug.call(function () {
+            if (!this._platform && window.location.hash.indexOf("#testMode") >= 0) {
+                var wlt = Microsoft.WindowsLive.Platform.Test;
+
+                this._harness = new wlt.ClientTestHarness("calendarTest", wlt.PluginsToStart.defaultPlugins, "account@calendar.test", Microsoft.WindowsLive.Platform.ClientCreateOptions.delayResources);
+                this._platform = this._harness.client;
+            }
+        }, this);
+
+        if (!this._platform) {
+            var Platform = Microsoft.WindowsLive.Platform,
+                Options  = Platform.ClientCreateOptions;
+
+            try {
+                _start("createUiPlatform");
+                this._platform = new Platform.Client("calendar", Options.delayResources | Options.failIfNoUser | Options.failIfUnverified);
+                this._hrPlatform = 0;
+                _stop("createUiPlatform");
+            } catch (ex) {
+                Jx.mark("Calendar:WinRT_GetPlatform_error: " + ex.toString().trim() + " (" + ex.number + ")");
+                this._hrPlatform = ex.number;
+            }
+        }
+
+        return this._platform;
+    };
+
+    proto._retryPlatformCreation = function (setError) {
+        ///<summary>Attempts to create the platform</summary>
+        ///<param name="setError" type="Function" optional="true">Callback to receive the hresult value for the platform creation</param>
+        ///<returns type="Boolean">True if the platform was created successfully</returns>
+        var platform = this._getPlatform();
+
+        if (setError) {
+            setError(this._hrPlatform);
+        }
+
+        return Jx.isObject(platform);
+    };
+
+    // Events
+
+    proto._onTile = function(ev) {
+        _start("_onTile");
+
+        if (ev.arguments && this._ui) {
+            Jx.log.info("launched with arguments: " + ev.arguments);
+
+            // getEventFromHandle returns an error HRESULT (which translates into a JS exception) when it 
+            // gets a handle with an unexpected format, so we need to put the getEventFromHandle in a try/catch.
+            // since _onTile just handles the launched activation, the argument could be anything.  we have also
+            // observed cases of old storeobjectid-style ids being passed (BLUE:362200), so until we have
+            // identified the cause of that issue, we will still try to handle them
+
+            // we're expecting event handle to be in ev.arguments
+            var calEv;
+            try {
+                calEv = this._platform.calendarManager.getEventFromHandle(ev.arguments);
+            } catch (ex) {
+                // there was a problem with the handle (missing event would just return null), so try to
+                // get the event as an old style id
+                Jx.log.exception("tile received invalid handle: " + ev.arguments, ex);
+                calEv = this._getEventFromPreHandleToastId(ev.arguments);
+            }
+
+            if (calEv) {
+                Jx.EventManager.broadcast("editEvent", {event: calEv}, this._ui);
+            }
+        }
+
+        _stop("_onTile");
+    };
+
+    proto._onProtocol = function (ev) {
+        _start("_onProtocol");
+
+        var uri    = ev.uri,
+            action = uri.host,
+            params = uri.queryParsed;        
+
+        // we only support the "focusEvent" action
+        if (action === "focusEvent") {
+            var data = { 
+                startDate: null,
+                endDate: null,
+                allDayEvent: null,
+            };
+
+            for (var i = 0, len = params.length; i < len; i++) {
+                var param = params[i];
+
+                switch (param.name) {
+                case "start":
+                    data.startDate = new Date(parseInt(param.value, 10));
+                    break;
+
+                case "end":
+                    data.endDate = new Date(parseInt(param.value, 10));
+                    break;
+
+                case "allDay":
+                    data.allDayEvent = (param.value === "true");
+                    break;
+                }
+            }
+
+            // verify we got the values we need
+            if (Jx.isDate(data.startDate) && Jx.isDate(data.endDate) && Jx.isBoolean(data.allDayEvent)) {
+                // further verify that the dates are valid
+                if (!isNaN(data.startDate.valueOf()) && !isNaN(data.endDate.valueOf())) {
+                    // lastly verify the end date is not before the start date
+                    if (data.startDate <= data.endDate) {
+                        Jx.EventManager.broadcast("focusEvent", data, this._ui);
+                    }
+                }
+            }
+        }
+
+        _stop("_onProtocol");
+    };
+
+    proto._onShowTimeFrame = function (args) {
+        /// <summary>Handles activation for the appointmentsProvider showTimeFrame verb</summary>
+        /// <param name="args" type="Windows.ApplicationModel.Activation.IAppointmentsProviderShowTimeFrameActivatedEventArgs">activation arguments</param>
+
+        _start("_onShowTimeFrame");
+
+        // We should only see showTimeFrame here - the provider page should be activated for all other verbs
+        var isShowTimeFrame = args.verb === Windows.ApplicationModel.Appointments.AppointmentsProvider.AppointmentsProviderLaunchActionVerbs.showTimeFrame;
+        Debug.assert(isShowTimeFrame, "Unexpected appointments activation verb: " + args.verb);
+
+        if (!isShowTimeFrame) {
+            // This will launch calendar or bring it to the foreground without doing anything else.
+            return;
+        }
+
+        // Translate the arguments into our data object
+        var durationInMs = Math.round(args.duration);
+        var data = {};
+        // Since the input comes from a Windows API, the timeToShow date object passed in can be a C++ date object.
+        // We've seen issues before where if we add a zero duration to this object, since the C++ date object is more precise than the JS one, 
+        // the end date can be (very slightly) before the start date.  Prevent this by re-creating the start date object in JS.
+        data.startDate = new Date(args.timeToShow);
+        data.endDate = new Date(data.startDate.getTime() + durationInMs);
+        data.allDayEvent = false;
+
+        // Windows should make sure that the duration is never negative, so we shouldn't ever hit this.
+        Debug.assert(data.startDate <= data.endDate, "endDate should not be before startDate");
+
+        _stop("_onShowTimeFrame");
+        Jx.EventManager.broadcast("focusEvent", data, this._ui);
+    };
+
+    proto._onCommandsRequested = function (ev) {
+        // create the settings pane
+        this._settingsPane = new Calendar.Views.Settings();
+        this.append(this._settingsPane);
+        this._settingsPane.activateUI();
+
+        // tell it to handle this request
+        this._settingsPane.appendCommands(ev.request.applicationCommands);
+
+        // now remove ourself as a listener for this event
+        ev.target.removeEventListener("commandsrequested", this._onCommandsRequested);
+    };
+
+    proto._onSuspending = function () {
+        _start("_onSuspending");
+
+        if (this._platform) {
+            Debug.assert(!this._suspended);
+            this._suspended = true;
+            this._platform.suspend();
+        }
+
+        _stop("_onSuspending");
+    };
+
+    proto._onResuming = function () {
+        _start("_onResuming");
+
+        // resume the platform first
+        if (this._platform) {
+            Debug.assert(this._suspended);
+            this._suspended = false;
+            this._platform.resume();
+        }
+
+        // then fire resuming event for components
+        this.fire("resuming");
+
+        // record the perftrack resume point
+        Jx.ptStopResume(Jx.TimePoint.responsive);
+
+        _stop("_onResuming");
+    };
+
+    proto._onVisibilityChange = function () {
+        // we only want to reload the app in the foreground
+        // also don't handle the incoming visibility change if we've been told to suspend (work around for BLUE:459992)
+        if (!document.msHidden && !this._suspended) {
+            
+            if (Jx.appData.localSettings().get("disableReload")) {
+                return;
+             }            
+            
+            var runningTime = (Date.now() - this._time);
+
+            if (App._reloadTimeout < runningTime) {
+                if (!this._ui || !this._ui.isEditing()) {
+                    _start("reload");
+
+                    Jx.EventManager.broadcast("reload");
+                    window.location.reload();
+
+                    _stop("reload");
+                }
+            }
+        }
+    };
+
+    // Jx Events
+
+    proto._onGetPlatform = function (ev) {
+        if (!ev.handled) {
+            Debug.assert(this._platform);
+
+            ev.data.platform = this._platform;
+            ev.handled = true;
+        }
+    };
+
+    proto._onGetPlatformWorker = function (ev) {
+        if (!ev.handled) {
+            Debug.assert(this._platformWorker);
+
+            ev.data.platformWorker = this._platformWorker;
+            ev.handled = true;
+        }
+    };
+
+    proto._onGetSettings = function (ev) {
+        if (!ev.handled) {
+            // get and cache our settings
+            if (!this._settingsContainer) {
+                var appData       = new Jx.AppData(),
+                    localSettings = appData.localSettings();
+                this._settingsContainer = localSettings.container("Calendar");
+            }
+
+            ev.data.settings = this._settingsContainer;
+            ev.handled = true;
+        }
+    };
+
+    proto._onSetShowArrows = function (ev) {
+        if (!ev.handled) {
+            this._settingsContainer.set("alwaysShowArrows", ev.data.value);
+            Jx.EventManager.broadcast("showArrows", ev.data, this._ui);
+
+            ev.handled = true;
+        }
+    };
+
+    proto._onViewReady = function (ev) {
+        if (ev.stage === Jx.EventManager.Stages.bubbling) {
+            // let the children add work first
+
+            var deferredWork = this._deferredWork;
+
+            if (this._firstRun) {
+                this._firstRun = false;
+
+                var Accounts = People.Accounts;
+                var idle = People.Priority.launch;
+
+                // These are jobs that need to be done once per app
+                deferredWork.queue("PlatformInit", 50, idle, this._platformInit, this);
+                deferredWork.queue("NetFirstRun", 50, idle, Accounts.ensureNetworkOnFirstRun, null, [this._platform]);
+                deferredWork.queue("EasiId", 50, idle, Accounts.checkForEasiId, null, [this._platform, App.scenario]);
+                deferredWork.queue("JxLaunch", 50, idle, Jx.launch.startDeferredTasks, Jx.launch, [this._platform]);
+                deferredWork.queue("LockScreen", 50, idle, Chat.Shared.ensureLockScreen);
+
+                Debug.only(deferredWork.queue("BVT", 50, idle, function () {
+                    Jx.loadScript("/ModernShared/uibvt/bvtLoader.js").then(function () {
+                       
+                        var map = {},
+                            query = document.location.hash;
+                        var url = decodeURIComponent(query);
+                        
+                        if (url.indexOf("?") === -1) {
+                            // We only care if there are parameters after the ?. If no ?, no parameters.
+                            map = null;
+                        } else {
+                            var parameters = url.substring(url.indexOf("?") + 1).split("&");
+                            // Split returns an array of length 1 with an empty string when no elements are found.
+                            if (parameters.length === 1 && parameters[0] === "") {
+                                map = null;
+                            } else {
+                                parameters.forEach(function (parameter) {
+                                    var pair = parameter.split("=");
+                                    map[pair[0]] = pair[1] || "";
+                                });
+                            }
+                        }
+                        
+                        return BVT.lab(map);
+                    });
+                }));
+            }
+
+            // The children can enqueue work on view change so we need to run the scheduler on each viewReady event.
+            _info("RunDeferredWork");
+            deferredWork.unlock();
+        }
+    };
+
+    proto._platformInit = function () {
+        _start("_platformInit");
+        // let the platform load its plugins and kick off sync
+        this._platform.addEventListener("restartneeded", App._onRestartNeeded);
+        this._platform.requestDelayedResources();
+        Jx.forceSync(this._platform, Calendar.scenario);
+        _stop("_platformInit");
+    };
+
+    // App
+
+    proto.initialize = function () {
+        // try to load the platform
+        if (this._getPlatform()) {
+            this._hadConnectedId = true;
+            this._initUi();
+        } else {
+            var getPlatform = this._retryPlatformCreation.bind(this),
+                initUi      = this._initUi.bind(this);
+            People.Accounts.showLogonErrorDialog(getPlatform, initUi, this._hrPlatform);
+        }
+    };
+
+    proto._hookSuspend = function () {
+        var activation = Jx.activation;
+        activation.addListener(activation.suspending, this._onSuspending, this);
+    };
+
+    proto._hookSettings = function () {
+        // bind our callback
+        this._onCommandsRequested = this._onCommandsRequested.bind(this);
+
+        // add our listener
+        var settingsPane = Windows.UI.ApplicationSettings.SettingsPane.getForCurrentView();
+        settingsPane.addEventListener("commandsrequested", this._onCommandsRequested);
+    };
+
+    proto._hookShare = function () {
+        // listen for share source requests
+        var shareManager = Windows.ApplicationModel.DataTransfer.DataTransferManager.getForCurrentView();
+        shareManager.addEventListener("datarequested", this._onShareSourceDataRequested.bind(this));
+    };
+
+    proto._onShareSourceDataRequested = function(ev) {
+        // call into the frame to populate the share content
+        this._ui.getShareData(ev.request);
+    };
+
+    App._onRestartNeeded = function() {
+        // Present the user with a full-screen dialog informing them that they need
+        // to sign-in to continue.
+        People.Accounts.showMustSignInDialog(function () {
+            // This will be invoked when the user hits the "try again" link
+            // in the dialog.
+            location.reload();
+        }, true /*forceShow*/);
+    };
+
+    // UI
+
+    proto._initUi = function() {
+        _start("_initUi");
+
+        // we need a scheduler for our ui work
+        this._scheduler = new People.Scheduler();
+        this._jobset    = this._scheduler.getJobSet();
+
+        // if our host still exists, create our ui.  it won't exist if jx.launch
+        // is forcing an upgrade.
+        if (this._host) {
+            // set up our worker
+            if (!this._hadConnectedId) {
+                this._platformWorker.postCommand("Worker/restartPlatform");
+            }
+
+            this._platformWorker.postCommand(
+                "Worker/DOMContentLoaded",
+                { isRtl: getComputedStyle(document.documentElement).direction === "rtl" }
+            );
+
+            // create our frame component
+            this._ui = new Calendar.Views.Frame();
+            this.appendChild(this._ui);
+
+            // and initialize it once our resources are loaded
+            this._ui.initUI(this._host, this._jobset);
+        }
+
+        // now that our UI is up, do some additional work
+        this._hookSuspend();
+        this._hookSettings();
+        this._hookShare();
+
+        _stop("_initUi");
+    };
+
+    proto._onResize = function() {
+        _start("_onResize");
+
+        // don't handle the incoming resize if we've been told to suspend (work around for BLUE:459992)
+        if (!this._suspended) {
+
+            // The resize handler should do as less work as possible to avoid the 200ms OS snapshot
+            // See http://windowsblue/tenets/performance/Pages/Resize.aspx
+            setImmediate(function () {
+
+                var data = { outerWidth: window.outerWidth };
+
+                // We don't want to reformat our layout unless the width changes.
+                if (this._lastOuterWidth !== data.outerWidth) {
+                    this._deferredWork.lock();
+                    Jx.EventManager.broadcast("resizeWindow", data);
+                    var isMajorChange = true;
+                    var isRotate = false;
+                    Jx.ptStopResize(Jx.TimePoint.responsive, isMajorChange, isRotate, data.outerWidth, window.outerHeight);
+                    this._deferredWork.unlock();
+                    this._lastOuterWidth = data.outerWidth;
+                }
+            }.bind(this));
+
+        }
+        _stop("_onResize");
+    };
+
+    proto._getEventFromPreHandleToastId = function(toastId) {
+        /// <summary>tries to retrieve an event from the platform treating the passed toast id the way we did
+        ///     before introducing event handles</summary>
+        /// <param name="id" type="String">the id to try to treat as a pre-event handle identifier. such ids
+        ///     have one of the following formats:
+        ///     STOREOBJECTID for an single occurrence event
+        ///     STOREOBJECTID.JSTIMESTAMP.toast for recurrences
+        ///     STOREOBJECTID is the decimal representation of an event store object id
+        ///     JSTIMESTAMP is an integer value that can be passed to a Date ctor to reconstruct the date of a
+        ///     particular recurrence or exception
+        ///     toast is literal and can be ignored
+        ///     </param>
+        /// <returns type="IEvent">the event the id represents, or null if the id is malformed or the event does
+        ///     not exist</returns>
+
+        var result = null;
+
+        if (toastId) {
+            // try to split
+            var fields = toastId.split(".", 2);
+            var id = parseInt(fields[0], 10);
+            var startDate;
+
+            if (fields.length > 1) {
+                startDate = new Date(parseInt(fields[1], 10));
+            }
+
+            result = this._loadEvent(id, startDate);
+        }
+
+        return result;
+    };
+
+    proto._loadEvent = function (eventId, instanceStartDate) {
+        /// <summary>
+        /// Gets the given event from the platform using the object store id plus instance date method.
+        /// DO NOT USE THIS METHOD IN NEW CODE!  This has been brought back in to handle cases where
+        /// such ids are being fired in toasts.  Ideally, once we know why these legacy toasts are 
+        /// persisting we will be able to remove this again.
+        /// </summary>
+        /// <param name="eventId">store object id of the event</param>
+        /// <param name="instanceStartDate" optional="true" type="Date">instance ID of the event (if appropriate)</param>
+        /// <returns>Loaded IEvent (will be the instanced event if appropriate), or null if not found.</returns>
+
+        var manager = this._platform.calendarManager,
+            targetEvent = null;
+
+        try {
+            targetEvent = manager.getEventFromID(eventId);
+
+            if (instanceStartDate && targetEvent) {
+                targetEvent = targetEvent.getOccurrence(instanceStartDate);
+            }
+        } catch (ex) {
+            // Couldn't load event - event doesn't exist.
+            Jx.log.exception("unable to load eventId [" + eventId + "] with instanceStartDate [" + instanceStartDate + "]", ex);
+            targetEvent = null;
+        }
+
+        return targetEvent;
+    };
+
+    var WorkQueue = Calendar.WorkQueue = function () {
+        this._queue = [];
+        this._job = null;
+        this._locked = true; // starts locked
+        Debug.only(Object.seal(this));
+    };
+
+    WorkQueue.prototype = {
+        dispose: function () {
+            this._queue = null;
+            if (this._job) {
+                this._job.dispose();
+                this._job = null;
+            }
+        },
+
+        queue: function (description, delay, priority, fn, context, args) {
+            ///<summary>Queues a job to the work queue.</summary>
+            ///<param name="description" type="String">The description of the job.</param>
+            ///<param name="delay" type="Number">The time in milliseconds to delay starting this job.</param>
+            ///<param name="priority">The priority of this job.</param>
+            ///<param name="fn" type="Function">The function that will be called.</param>
+            ///<param name="context" optional="true">The this context for the callback function.</param>
+            ///<param name="args" type="Array" optional="true">The arguments that will be passed to the callback function call.</param>
+            Debug.assert(Jx.isNonEmptyString(description));
+            Debug.assert(Jx.isValidNumber(delay) && delay > 11); // timers with less than 11ms are loading extra dlls
+            Debug.assert(Jx.isObject(priority));
+            Debug.assert(Jx.isFunction(fn));
+            Debug.assert(Jx.isNullOrUndefined(context) || Jx.isObject(context));
+            Debug.assert(Jx.isNullOrUndefined(args) || Jx.isArray(args));
+
+            var queue = this._queue;
+
+            // remove work items with the same description that were not scheduled yet
+            for (var i = queue.length - 1; i >= 0; i--) {
+                if (description === queue[i].description) {
+                    _info("WorkQueue: remove:" + description);
+                    queue.splice(i, 1);
+                }
+            }
+
+            queue.push({ description: description, delay: delay, priority: priority, fn: fn, context: context, args: args });
+        },
+
+        _run: function () {
+            var queue = this._queue;
+            if (!this._locked && !this._job && (queue.length > 0)) {
+                var item = queue.shift();
+                this._job = Jx.scheduler.addTimerJob(null, item.priority, item.description, item.delay, function () {
+                    this._job = null;
+                    item.fn.apply(item.context, item.args);
+                    this._run();
+                }, this);
+            }
+        },
+
+        lock: function () {
+            this._locked = true;
+        },
+
+        unlock: function () {
+            this._locked = false;
+            this._run();
+        },
+    };
+});

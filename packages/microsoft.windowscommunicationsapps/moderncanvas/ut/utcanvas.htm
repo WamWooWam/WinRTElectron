@@ -1,0 +1,66 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- ModernCanvas -->
+<script>
+    // MCanvas.js loads moderncanvas.css on demand and that's affecting some of the existing UTs that verify iframe sizing.
+    // Disable $include to prevent the css loading.
+    $include = Jx.fnEmpty;
+</script>
+<script src="/ModernCanvas/MCanvas.js"></script>
+<script src="/ModernCanvas/ModernCanvasPlugins.js"></script>
+
+<!-- UTs -->
+<script src="DOMx.js"></script>
+<script src="utCanvas.js"></script>
+<script src="utModernCanvas.js"></script>
+<script src="utIrmQuotedBody.js"></script>
+<script src="utAutoResize.js"></script>
+<script src="utDefaultFont.js"></script>
+<script src="utIndent.js"></script>
+<script src="utImageResize.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+
+<style>
+    .modernCanvas-container {
+        width: 100px;
+        height: 100px;
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+        .modernCanvas-container > .modernCanvas-frame {
+            width: 1024px; /* Give enough room so that lines don't wrap. */
+            border-style: none;
+        }
+
+        .modernCanvas-container > .modernCanvas-cueText, .modernCanvas-container > .modernCanvas-hyperlinkTooltip-anchor, .modernCanvas-container > .modernCanvas-hyperlinkTooltip-container {
+            display: none;
+        }
+
+</style>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+<div id="modernCanvasContainer"></div>
+</body>
+</html>

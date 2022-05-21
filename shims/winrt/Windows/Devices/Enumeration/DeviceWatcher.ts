@@ -6,19 +6,24 @@ import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
 import { TypedEventHandler } from "../../Foundation/TypedEventHandler`2";
 import { DeviceClass } from "./DeviceClass";
 import { InvokeEvent } from "../../Foundation/Interop/InvokeEvent";
+import { EnclosureLocation } from "./EnclosureLocation";
+import { Dictionary } from "../../Foundation/Interop/Dictionary`2";
 
 @GenerateShim('Windows.Devices.Enumeration.DeviceWatcher')
 export class DeviceWatcher {
-    private deviceClass: DeviceClass;
+    private __deviceClass: DeviceClass;
     status: DeviceWatcherStatus = null;
 
     constructor(deviceClass: DeviceClass) {
-        this.deviceClass = deviceClass;
+        this.status = DeviceWatcherStatus.created;
+        this.__deviceClass = deviceClass;
     }
 
     start(): void {
+        this.status = DeviceWatcherStatus.started;
         navigator.mediaDevices.enumerateDevices()
             .then((devices) => this.invokeEvents(devices))
+            .then(() => this.status = DeviceWatcherStatus.enumerationCompleted);
     }
 
 
@@ -46,7 +51,7 @@ export class DeviceWatcher {
     }
 
     private hasDeviceClass(deviceClass: DeviceClass): boolean {
-        return this.deviceClass == DeviceClass.all || this.deviceClass == deviceClass;
+        return this.__deviceClass == DeviceClass.all || this.__deviceClass == deviceClass;
     }
 
     stop(): void {

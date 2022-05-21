@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script src="../core/TxLoader.js"></script>
+
+<script src="utTxErrors.js"></script>
+
+<script>
+    // TODO: Move this code to TxLoader or TxSuite
+    window.onload = function () {
+        Tx.run();
+    }
+
+    // TODO: remove it
+    window.onunload = function () {
+        Tx.shutdown();
+    }
+</script>
+</head>
+<body>
+</body>
+</html> 

@@ -1,1 +1,101 @@
-﻿Jx.delayDefine(Mail,"CappedCollection",function(){var t=Microsoft.WindowsLive.Platform,n=t.CollectionChangeType;Mail.CappedCollection=function(n,t,i){Mail.CollectionWrapper.call(this,t,i||"cap:"+t.name);this._cap=n};Jx.inherit(Mail.CappedCollection,Mail.CollectionWrapper);Mail.CappedCollection.prototype.dispose=function(){Mail.CollectionWrapper.prototype.dispose.call(this);Jx.dispose(this._collection);this._collection=null};Mail.CappedCollection.prototype.item=function(n){return this._collection.item(n)};Object.defineProperty(Mail.CappedCollection.prototype,"count",{get:function(){return Math.min(this._cap,this._collection.count)},enumerable:true});Mail.CappedCollection.prototype._onCollectionChanged=function(t){switch(t.eType){case n.itemRemoved:this._itemRemoved(t);break;case n.itemAdded:this._itemAdded(t);break;case n.itemChanged:this._itemChanged(t);break;case n.reset:case n.batchBegin:case n.batchEnd:this._raiseChange({eType:t.eType})}};Mail.CappedCollection.prototype._itemAdded=function(n){var t=this._cap,i;n.index<t&&(this._cap++,i=n.index,this._raiseAdded(this._collection.item(i),i),this._cap--,this._collection&&this._collection.count>t&&this._raiseRemoved(this._collection.item(t),t))};Mail.CappedCollection.prototype._itemRemoved=function(n){var t=this._cap,r,i;n.index<t&&(this._cap--,r=n.index,this._raiseRemoved({objectId:n.objectId},r),this._cap++,this._collection&&this._collection.count>=t&&(i=t-1,this._raiseAdded(this._collection.item(i),i)))};Mail.CappedCollection.prototype._itemChanged=function(n){var t=this._cap;n.index<t&&n.previousIndex<t?this._raiseMoved(this._collection.item(n.index),n.previousIndex,n.index):n.index<t?this._itemAdded({index:n.index,objectId:n.objectId}):n.previousIndex<t&&this._itemRemoved({index:n.previousIndex,objectId:n.objectId})}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Mail, Debug, Microsoft */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail, "CappedCollection", function () {
+
+    var P = Microsoft.WindowsLive.Platform;
+    var ChangeType = P.CollectionChangeType;
+
+    Mail.CappedCollection = /*@constructor*/function (cap, collection, collectionName) {
+        Debug.assert(Jx.isValidNumber(cap) && (cap > 0));
+        Mail.CollectionWrapper.call(this, collection, collectionName || ("cap:" + collection.name));
+
+        this._cap = cap;
+    };
+
+    Jx.inherit(Mail.CappedCollection, Mail.CollectionWrapper);
+
+    Mail.CappedCollection.prototype.dispose = function () {
+        Mail.CollectionWrapper.prototype.dispose.call(this);
+        Jx.dispose(this._collection);
+        this._collection = null;
+    };
+
+    Mail.CappedCollection.prototype.item = function (index) {
+        Debug.assert(index >= 0 && index < this._collection.count && index <= this._cap);
+        return this._collection.item(index);
+    };
+
+    Object.defineProperty(Mail.CappedCollection.prototype, "count", { get: function () {
+        return Math.min(this._cap, this._collection.count);
+    }, enumerable: true });
+
+    Mail.CappedCollection.prototype._onCollectionChanged = function (/*@type(P.CollectionChangedEventArgs)*/ev) {
+        // Respond to changes in the underlying collection changes
+        switch (ev.eType) {
+            case ChangeType.itemRemoved: this._itemRemoved(ev); break;
+            case ChangeType.itemAdded:   this._itemAdded(ev); break;
+            case ChangeType.itemChanged: this._itemChanged(ev); break;
+            case ChangeType.reset:
+            case ChangeType.batchBegin:
+            case ChangeType.batchEnd:
+                this._raiseChange({ eType: ev.eType });
+                break;
+            default:
+                Debug.assert(false, "Unexpected change type: " + ev.eType);
+                break;
+        }
+    };
+
+    Mail.CappedCollection.prototype._itemAdded = function (ev) {
+        var cap = this._cap;
+        if (ev.index < cap) {
+            this._cap++;
+            var addIndex = ev.index;
+            this._raiseAdded(this._collection.item(addIndex), addIndex);
+            this._cap--;
+
+            // Need to check that the collection is valid in case someone disposed us inside an event handler
+            if (this._collection && this._collection.count > cap) {
+                this._raiseRemoved(this._collection.item(cap), cap);
+            }
+        }
+    };
+
+    Mail.CappedCollection.prototype._itemRemoved = function (ev) {
+        var cap = this._cap;
+        if (ev.index < cap) {
+            this._cap--;
+            var removeIndex = ev.index;
+            this._raiseRemoved({objectId: ev.objectId}, removeIndex);
+            this._cap++;
+
+            // Need to check that the collection is valid in case someone disposed us inside an event handler
+            if (this._collection && this._collection.count >= cap) {
+                var addIndex = cap - 1;
+                this._raiseAdded(this._collection.item(addIndex), addIndex);
+            }
+        }
+    };
+
+    Mail.CappedCollection.prototype._itemChanged = function (ev) {
+        Debug.assert(Jx.isValidNumber(ev.index));
+        Debug.assert(Jx.isValidNumber(ev.previousIndex));
+        var cap = this._cap;
+        if (ev.index < cap && ev.previousIndex < cap) {
+            this._raiseMoved(this._collection.item(ev.index), ev.previousIndex, ev.index);
+        } else if (ev.index < cap) {
+            Debug.assert(ev.previousIndex >= cap);
+            this._itemAdded({index: ev.index, objectId: ev.objectId});
+        } else if (ev.previousIndex < cap) {
+            Debug.assert(ev.index >= cap);
+            this._itemRemoved({index: ev.previousIndex, objectId: ev.objectId});
+        }
+    };
+});
+

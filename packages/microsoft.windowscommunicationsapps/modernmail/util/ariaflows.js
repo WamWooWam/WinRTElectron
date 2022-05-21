@@ -1,1 +1,110 @@
-﻿Jx.delayDefine(Mail,"AriaFlows",function(){"use strict";function i(n){var t=n.id;return t||(t=n.id="ariaFlowStep"+Jx.uid()),t}var t=Mail.AriaFlows=function(n,t){this.initComponent();this._child=n;this.appendChild(n);this._excluded=t;this._job=null;this._startId="ariaFlowStart"+this._id;this._endId="ariaFlowEnd"+this._id},n;Jx.inherit(t,Jx.Component);n=t.prototype;n.getUI=function(n){n.html="<div id='"+this._id+"'><div id='"+this._startId+"' aria-hidden='true'><\/div>"+Jx.getUI(this._child).html+"<div id='"+this._endId+"' aria-hidden='true'><\/div><\/div>"};n.onActivateUI=function(){this.on("contentUpdated",this._queueUpdate,this);this._queueUpdate()};n.onDeactivateUI=function(){Jx.dispose(this._job);this.detach("contentUpdated",this._queueUpdate,this)};n._queueUpdate=function(){Jx.dispose(this._job);this._job=Jx.scheduler.addJob(null,Mail.Priority.updateAriaFlow,null,this._update,this)};n._update=function(){for(var c=document.getElementById(this._id),s=c.querySelectorAll("[role]"),u=[],f=[],h=this._excluded,e,o,n,t=0,r=s.length;t<r;++t)n=s[t],n.getAttribute("role")!=="list"&&(Jx.isNonEmptyString(h)&&n.matches(h)||getComputedStyle(n).display==="none"?f.push(n):u.push(n));for(e=0,t=0,r=u.length;t<r;++t)u[t].getAttribute("role")==="option"&&e++;for(o=0,t=0,r=u.length;t<r;++t)n=u[t],Mail.setAttribute(n,"x-ms-aria-flowfrom",t>0?i(u[t-1]):this._startId),Mail.setAttribute(n,"aria-flowto",t<r-1?i(u[t+1]):this._endId),n.getAttribute("role")==="option"?(o++,Mail.setAttribute(n,"aria-posinset",o.toString()),Mail.setAttribute(n,"aria-setsize",e.toString())):(n.removeAttribute("aria-posinset"),n.removeAttribute("aria-setsize")),n.removeAttribute("aria-hidden");for(t=0,r=f.length;t<r;++t)n=f[t],n.removeAttribute("x-ms-aria-flowfrom"),n.removeAttribute("aria-flowto"),n.removeAttribute("aria-posinset"),n.removeAttribute("aria-setsize"),Mail.setAttribute(n,"aria-hidden","true")}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Mail,Jx,Debug*/
+Jx.delayDefine(Mail, "AriaFlows", function () {
+    "use strict";
+
+    var AriaFlows = Mail.AriaFlows = function (component, excluded) {
+        Debug.assert(Jx.isObject(component));
+        Debug.assert(Jx.isNullOrUndefined(excluded) || Jx.isNonEmptyString(excluded));
+
+        this.initComponent();
+        this._child = component;
+        this.appendChild(component);
+
+        this._excluded = excluded;
+        this._job = null;
+
+        this._startId = "ariaFlowStart" + this._id;
+        this._endId = "ariaFlowEnd" + this._id;
+    };
+    Jx.inherit(AriaFlows, Jx.Component);
+    var prototype = AriaFlows.prototype;
+
+    prototype.getUI = function (ui) {
+        ui.html = "<div id='" + this._id + "'>" +
+                      "<div id='" + this._startId + "' aria-hidden='true'></div>" +
+                      Jx.getUI(this._child).html +
+                      "<div id='" + this._endId + "' aria-hidden='true'></div>" +
+                  "</div>";
+    };
+
+    prototype.onActivateUI = function () {
+        this.on("contentUpdated", this._queueUpdate, this);
+        this._queueUpdate();
+    };
+
+    prototype.onDeactivateUI = function () {
+        Jx.dispose(this._job);
+        this.detach("contentUpdated", this._queueUpdate, this);
+    };
+
+    prototype._queueUpdate = function () {
+        Jx.dispose(this._job);
+        this._job = Jx.scheduler.addJob(null, Mail.Priority.updateAriaFlow, null, this._update, this);
+    };
+
+    prototype._update = function () {
+        var root = document.getElementById(this._id);
+
+        var allElements = root.querySelectorAll("[role]");
+        var flowElements = [], excludedElements = [];
+        var excluded = this._excluded;
+        for (var i = 0, len = allElements.length; i < len; ++i) {
+            var element = allElements[i];
+            if (element.getAttribute("role") !== "list") { // Don't involve container elements in our flow shenanigans
+                if ((Jx.isNonEmptyString(excluded) && element.msMatchesSelector(excluded)) ||
+                     getComputedStyle(element).display === "none") {
+                    excludedElements.push(element);
+                } else {
+                    flowElements.push(element);
+                }
+            }
+        }
+
+        var setSize = 0;
+        for (i = 0, len = flowElements.length; i < len; ++i) {
+            if (flowElements[i].getAttribute("role") === "option") {
+                setSize++;
+            }
+        }
+
+        var posInSet = 0;
+        for (i = 0, len = flowElements.length; i < len; ++i) {
+            element = flowElements[i];
+            Mail.setAttribute(element, "x-ms-aria-flowfrom", (i > 0) ? ensureId(flowElements[i - 1]) : this._startId);
+            Mail.setAttribute(element, "aria-flowto", (i < len - 1) ? ensureId(flowElements[i + 1]) : this._endId);
+            if (element.getAttribute("role") === "option") {
+                posInSet++;
+                Mail.setAttribute(element, "aria-posinset", posInSet.toString());
+                Mail.setAttribute(element, "aria-setsize", setSize.toString());
+            } else {
+                element.removeAttribute("aria-posinset");
+                element.removeAttribute("aria-setsize");
+            }
+            element.removeAttribute("aria-hidden");
+        }
+
+        for (i = 0, len = excludedElements.length; i < len; ++i) {
+            var element = excludedElements[i];
+            element.removeAttribute("x-ms-aria-flowfrom");
+            element.removeAttribute("aria-flowto");
+            element.removeAttribute("aria-posinset");
+            element.removeAttribute("aria-setsize");
+            Mail.setAttribute(element, "aria-hidden", "true");
+        }
+    };
+
+    function ensureId(element) {
+        Debug.assert(Jx.isHTMLElement(element));
+        var id = element.id;
+        if (!id) {
+            id = element.id = "ariaFlowStep" + Jx.uid();
+        }
+        return id;
+    }
+});

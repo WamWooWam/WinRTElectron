@@ -7,23 +7,55 @@
 
 import { IVectorView } from "../../Foundation/Collections/IVectorView`1";
 import { IVector } from "../../Foundation/Collections/IVector`1";
-import { IAsyncOperation } from "../../Foundation/IAsyncOperation`1";
+import { AsyncOperation, IAsyncOperation } from "../../Foundation/IAsyncOperation`1";
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
 import { PickerLocationId } from "./PickerLocationId";
 import { PickerViewMode } from "./PickerViewMode";
 import { StorageFile } from "../StorageFile";
+import { Vector } from "../../Foundation/Interop/Vector`1";
+import { IpcHelper } from "../../../IpcHelper";
+import { FileOpenPickerV1 } from "../../Foundation/Interop/IpcConstants";
 
 @GenerateShim('Windows.Storage.Pickers.FileOpenPicker')
-export class FileOpenPicker { 
+export class FileOpenPicker {
     viewMode: PickerViewMode = null;
     suggestedStartLocation: PickerLocationId = null;
     settingsIdentifier: string = null;
     commitButtonText: string = null;
-    fileTypeFilter: IVector<string> = null;
+    fileTypeFilter: IVector<string> = new Vector();
     pickSingleFileAsync(): IAsyncOperation<StorageFile> {
-        throw new Error('FileOpenPicker#pickSingleFileAsync not implemented')
+        // throw new Error('FileOpenPicker#pickSingleFileAsync not implemented')
+        return AsyncOperation.from(async () => {
+            let data = {
+                suggestedStartLocation: this.suggestedStartLocation,
+                commitButtonText: this.commitButtonText,
+                mode: 'single-file',
+                fileTypeFilter: [...this.fileTypeFilter]
+            };
+
+            let resp = await IpcHelper.sendToMain<string[]>(FileOpenPickerV1, data);
+            return resp ? StorageFile.getFileFromPath(resp[0]) : null;
+        })
     }
     pickMultipleFilesAsync(): IAsyncOperation<IVectorView<StorageFile>> {
-        throw new Error('FileOpenPicker#pickMultipleFilesAsync not implemented')
+        // throw new Error('FileOpenPicker#pickMultipleFilesAsync not implemented')
+        return AsyncOperation.from(async () => {
+            let data = {
+                suggestedStartLocation: this.suggestedStartLocation,
+                commitButtonText: this.commitButtonText,
+                mode: 'multiple-files',
+                fileTypeFilter: [...this.fileTypeFilter]
+            };
+
+            let vector = new Vector<StorageFile>();
+            let resp = await IpcHelper.sendToMain<string[]>(FileOpenPickerV1, data);
+            if (resp) {
+                for (const file of resp) {
+                    vector.append(StorageFile.getFileFromPath(file));
+                }
+            }
+
+            return vector;
+        })
     }
 }

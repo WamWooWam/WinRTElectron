@@ -17,20 +17,43 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 import { PlatformObject } from "./PlatformObject";
 import { Folder } from "./Folder";
 import { Collection } from "./Collection";
-import { DefaultAccount } from "./Account";
+// import { DefaultAccount } from "./Account";
 import { FolderType } from "./FolderType";
+import { Client } from "./Client";
+import { MailBodyType } from "./MailBodyType";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.MailView')
 export class MailView extends PlatformObject implements IMailView {
 
-    constructor(id: string, type: MailViewType) {
+    private _messages: Collection;
+
+    constructor(id: string, accountId: string, type: MailViewType) {
         super("MailView", true, false);
         this.objectId = id;
+        this.accountId = accountId;
         this.type = type;
         this.isPinnedToNavPane = true;
         this.notificationCount = 0;
         this.canChangePinState = true;
         this.sourceObject = new Folder(this);
+
+        this._messages = new Collection();
+
+        if (type == MailViewType.inbox) {
+            for (let i = 0; i < 10; i++) {
+                let message = Client.instance.mailManager.createMessageInFolder(<Folder>this.sourceObject);
+                message.subject = "Hi there!";
+                message.read = false;
+
+                var body = message.createBody();
+                body.type = MailBodyType.html;
+                body.body = "<b>lily is gay</b>";
+
+                message.commit();
+
+                this._messages._add(message);
+            }
+        }
     }
 
     objectId: string;
@@ -46,7 +69,7 @@ export class MailView extends PlatformObject implements IMailView {
     readonly type: MailViewType = null;
     getMessages(filter: FilterCriteria): ICollection {
         // throw new Error('MailView#getMessages not implemented')
-        return new Collection();
+        return this._messages;
     }
     getConversations(filter: FilterCriteria): ICollection {
         // throw new Error('MailView#getConversations not implemented')

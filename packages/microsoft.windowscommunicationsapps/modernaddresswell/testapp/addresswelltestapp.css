@@ -1,0 +1,43 @@
+/* These styles are for the test app so values are hardcoded and they don't need to be from shared.css. */
+
+body {
+    /* Use a light yellow color to verify that it does not bleed into the control. */
+    background-color:InfoBackground;
+    /* Explictly enable the following because they are disable by ui-light.css */
+    -ms-content-zooming: zoom;
+    overflow: auto;
+}
+/* The hosting page controls the width of the components */
+#container {
+    width: 400px;
+}
+
+p {
+    -ms-flex: 1 auto; 
+    padding: 5px;
+    margin: 0;
+}
+
+input[type="button"] {
+    margin: 5px;
+}
+
+.narrow {
+    width: 10%;
+    margin-bottom: 10px;
+}
+
+.warning {
+    color: Red;
+    font-weight: bold;
+}
+
+.label{
+    display: block;
+    font-size: 20pt;
+}
+
+/* Reserve padding for the address well at the bottom of the page */
+#footer {
+    height: 230px;
+}

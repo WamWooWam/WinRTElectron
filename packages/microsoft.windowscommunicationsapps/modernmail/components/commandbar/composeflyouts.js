@@ -1,418 +1,513 @@
-﻿var Commands = Mail.Commands;
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Mail,Jx,Debug,FontSelector,MenuArrowKeyHandler,WinJS,setImmediate,SasManager*/
+
+
+var Commands = Mail.Commands;
+
 Jx.delayDefine(Mail, "CompFlyoutCommandHost", function () {
     "use strict";
-    var t = Mail.CompFlyoutCommandHost = function () {
-            this._registeredCommandIds = ["reply", "replyAll", "forward"];
-            this._label = Jx.escapeHtml(Jx.res.getString("mailCommandRespondAriaLabel"));
-            Commands.MenuFlyout.call(this);
-            this._uiEntryPoint = Mail.Instrumentation.UIEntryPoint.onCanvas
-        },
-        n;
-    Jx.inherit(t, Commands.MenuFlyout);
-    n = t.prototype;
-    Object.defineProperty(n, "placement", {
-        get: function () {
-            return "bottom"
-        },
-        enumerable: true
-    });
-    Object.defineProperty(n, "id", {
-        get: function () {
-            return "mailRespondFlyout"
-        },
-        enumerable: true
-    });
-    n.composeCommands = function () {
-        return []
+
+    var Flyout = Mail.CompFlyoutCommandHost = function () {
+        this._registeredCommandIds = ["reply", "replyAll", "forward"];
+        this._label = Jx.escapeHtml(Jx.res.getString("mailCommandRespondAriaLabel"));
+        Commands.MenuFlyout.call(this);
+        this._uiEntryPoint = Mail.Instrumentation.UIEntryPoint.onCanvas;
     };
-    n.viewStateCommands = function () {
-        return ["forward", "reply", "replyAll"]
+
+    Jx.inherit(Flyout, Commands.MenuFlyout);
+
+    var prototype = Flyout.prototype;
+    Object.defineProperty(prototype, "placement", { get: function () { return "bottom"; }, enumerable: true });
+    Object.defineProperty(prototype, "id", { get: function () { return "mailRespondFlyout"; }, enumerable: true });
+
+    prototype.composeCommands = function () {
+        return [];
     };
-    n.addEventListener = function (n, t, i) {
-        this._flyout.addEventListener(n, t, i)
+
+    prototype.viewStateCommands = function () {
+        return ["forward", "reply", "replyAll"];
     };
-    n.removeEventListener = function (n, t, i) {
-        this._flyout.removeEventListener(n, t, i)
-    }
+
+    prototype.addEventListener = function (eventName, handler, useCapture) {
+        Debug.assert(Jx.isObject(this._flyout));
+        Debug.assert(Jx.isNonEmptyString(eventName));
+        Debug.assert(Jx.isFunction(handler));
+        Debug.assert(Jx.isBoolean(useCapture));
+
+        this._flyout.addEventListener(eventName, handler, useCapture);
+    };
+
+    prototype.removeEventListener = function (eventName, handler, useCapture) {
+        Debug.assert(Jx.isObject(this._flyout));
+        Debug.assert(Jx.isNonEmptyString(eventName));
+        Debug.assert(Jx.isFunction(handler));
+        Debug.assert(Jx.isBoolean(useCapture));
+
+        this._flyout.removeEventListener(eventName, handler, useCapture);
+    };
+
 });
+
 Jx.delayDefine(Commands, "ClipboardMenu", function () {
     "use strict";
-    var t = Commands.ClipboardMenu = function () {
-            this._registeredCommandIds = ["copy", "paste"];
-            this._label = Jx.escapeHtml(Jx.res.getString("composeAppBarClipboardLabel"));
-            Commands.MenuFlyout.call(this)
-        },
-        n;
-    Jx.inherit(t, Commands.MenuFlyout);
-    n = t.prototype;
-    n.composeCommands = function () {
-        return this.registeredCommandIds
+
+    var ClipboardMenu = Commands.ClipboardMenu = function () {
+        this._registeredCommandIds = ["copy", "paste"];
+        this._label = Jx.escapeHtml(Jx.res.getString("composeAppBarClipboardLabel"));
+        Commands.MenuFlyout.call(this);
     };
-    n.viewStateCommands = function () {
-        return this.registeredCommandIds
+
+    Jx.inherit(ClipboardMenu, Commands.MenuFlyout);
+
+    var prototype = ClipboardMenu.prototype;
+    prototype.composeCommands = function () {
+        return this.registeredCommandIds;
     };
-    Object.defineProperty(n, "id", {
-        get: function () {
-            return "clipboardMenuFlyout"
-        },
-        enumerable: true
-    })
+
+    prototype.viewStateCommands = function () {
+        return this.registeredCommandIds;
+    };
+
+    Object.defineProperty(prototype, "id", { get: function () { return "clipboardMenuFlyout"; }, enumerable: true });
+
 });
+
 Jx.delayDefine(Commands, "LinkMenu", function () {
     "use strict";
-    var t = Commands.LinkMenu = function () {
-            this._registeredCommandIds = ["editLinkMenu", "openLinkMenu", "removeLinkMenu"];
-            this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
-            this._label = Jx.escapeHtml(Jx.res.getString("composeAppBarHyperlinkButton"));
-            Commands.MenuFlyout.call(this)
-        },
-        n;
-    Jx.inherit(t, Commands.MenuFlyout);
-    n = t.prototype;
-    n.composeCommands = function () {
-        return this._sortedRegisteredCommandsIds
+
+    var LinkMenu = Commands.LinkMenu = function () {
+        this._registeredCommandIds = ["editLinkMenu", "openLinkMenu", "removeLinkMenu"];
+        this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
+        this._label = Jx.escapeHtml(Jx.res.getString("composeAppBarHyperlinkButton"));
+        Commands.MenuFlyout.call(this);
     };
-    n.viewStateCommands = function () {
-        return this._sortedRegisteredCommandsIds
+
+    Jx.inherit(LinkMenu, Commands.MenuFlyout);
+
+    var prototype = LinkMenu.prototype;
+    prototype.composeCommands = function () {
+        return this._sortedRegisteredCommandsIds;
     };
-    Object.defineProperty(n, "id", {
-        get: function () {
-            return "linkMenuFlyout"
-        },
-        enumerable: true
-    })
+
+    prototype.viewStateCommands = function () {
+        return this._sortedRegisteredCommandsIds;
+    };
+
+    Object.defineProperty(prototype, "id", { get: function () { return "linkMenuFlyout"; }, enumerable: true });
+
 });
+
 Jx.delayDefine(Commands, "ListMenu", function () {
     "use strict";
-    var t = Commands.ListMenu = function () {
-            this._registeredCommandIds = ["bulletsMenuItem", "numberingMenuItem"];
-            this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
-            this._label = Jx.res.getString("composeAppBarListsButton");
-            Commands.MenuFlyout.call(this)
-        },
-        n;
-    Jx.inherit(t, Commands.MenuFlyout);
-    n = t.prototype;
-    n.composeCommands = function () {
-        return this._sortedRegisteredCommandsIds
+
+    var ListMenu = Commands.ListMenu = function () {
+        this._registeredCommandIds = ["bulletsMenuItem", "numberingMenuItem"];
+        this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
+        this._label = Jx.res.getString("composeAppBarListsButton");
+
+        Commands.MenuFlyout.call(this);
     };
-    n.viewStateCommands = function () {
-        return this._sortedRegisteredCommandsIds
+
+    Jx.inherit(ListMenu, Commands.MenuFlyout);
+
+    var prototype = ListMenu.prototype;
+    prototype.composeCommands = function () {
+        return this._sortedRegisteredCommandsIds;
     };
-    Object.defineProperty(n, "id", {
-        get: function () {
-            return "listMenuFlyout"
-        },
-        enumerable: true
-    })
+
+    prototype.viewStateCommands = function () {
+        return this._sortedRegisteredCommandsIds;
+    };
+
+    Object.defineProperty(prototype, "id", { get: function () { return "listMenuFlyout"; }, enumerable: true });
+
 });
+
 Jx.delayDefine(Commands, "MoreMenu", function () {
     "use strict";
-    var t = Commands.MoreMenu = function () {
-            this._registeredCommandIds = ["folderOperationsMenu", "toggleSelectionModeMenu", "selectMenuSeperator", "moveMenu", "sweepMenu", "junkMessagesMenu", "unjunkMessagesMenu", "sweepMenuSeperator", "moveMenuSeperator", "syncMenu", "printMenu", "feedback", "debugSnapshot"];
-            this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
-            this._label = Jx.res.getString("composeAppbarEllipseLabel");
-            Commands.MenuFlyout.call(this)
-        },
-        n;
-    Jx.inherit(t, Commands.MenuFlyout);
-    n = t.prototype;
-    n.composeCommands = function () {
-        return []
+
+    var MoreMenu = Commands.MoreMenu = function () {
+        this._registeredCommandIds = ["folderOperationsMenu", "toggleSelectionModeMenu", "selectMenuSeperator", "moveMenu", "sweepMenu", "junkMessagesMenu", "unjunkMessagesMenu", "sweepMenuSeperator", "moveMenuSeperator", "syncMenu", "printMenu", "feedback", "debugSnapshot"];
+        this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
+        this._label = Jx.res.getString("composeAppbarEllipseLabel");
+        Commands.MenuFlyout.call(this);
     };
-    n.activateCommands = function (n) {
-        Commands.MenuFlyout.prototype.activateCommands.call(this, n);
+
+    Jx.inherit(MoreMenu, Commands.MenuFlyout);
+
+    var prototype = MoreMenu.prototype;
+    prototype.composeCommands = function () {
+        return [];
+    };
+
+    prototype.activateCommands = function (commands) {
+        Commands.MenuFlyout.prototype.activateCommands.call(this, commands);
+        // Initialize SendaSmile if we are not in IE
+        Debug.Mail.log("MenuFlyout.activateCommands - init SAS", Mail.LogEvent.start);
         SasManager.init(Jx.res.getString("mailAppTitle"), "feedback");
-        Mail.Globals.commandManager.subscribeToSaS()
+        Mail.Globals.commandManager.subscribeToSaS();
+        Debug.Mail.log("MenuFlyout.activateCommands - init SAS", Mail.LogEvent.stop);
     };
-    n.viewStateCommands = function (n) {
-        var t = Jx.ApplicationView.State;
-        return n === t.wide || n === t.full || n === t.large || n === t.more || n === t.portrait ? ["debugSnapshot", "feedback", "printMenu", "syncMenu"] : n === t.split ? ["debugSnapshot", "feedback", "printMenu", "sweepMenu", "sweepMenuSeperator", "syncMenu"] : n === t.less ? ["debugSnapshot", "feedback", "junkMessagesMenu", "moveMenu", "moveMenuSeperator", "printMenu", "sweepMenu", "syncMenu", "unjunkMessagesMenu"] : n === t.snap || n === t.minimum ? ["debugSnapshot", "feedback", "folderOperationsMenu", "junkMessagesMenu", "moveMenu", "moveMenuSeperator", "printMenu", "selectMenuSeperator", "sweepMenu", "syncMenu", "toggleSelectionModeMenu", "unjunkMessagesMenu"] : void 0
+
+    prototype.viewStateCommands = function (viewState) {
+        var appViewState = Jx.ApplicationView.State;
+        if (viewState === appViewState.wide || viewState === appViewState.full || viewState === appViewState.large || viewState === appViewState.more || viewState === appViewState.portrait) {
+            return ["debugSnapshot", "feedback", "printMenu", "syncMenu"];
+        } else if (viewState === appViewState.split) {
+            return ["debugSnapshot", "feedback", "printMenu", "sweepMenu", "sweepMenuSeperator", "syncMenu"];
+        } else if (viewState === appViewState.less) {
+            return ["debugSnapshot", "feedback", "junkMessagesMenu", "moveMenu", "moveMenuSeperator", "printMenu", "sweepMenu", "syncMenu", "unjunkMessagesMenu"];
+        } else if (viewState === appViewState.snap || viewState === appViewState.minimum) {
+            return ["debugSnapshot", "feedback", "folderOperationsMenu", "junkMessagesMenu", "moveMenu", "moveMenuSeperator", "printMenu", "selectMenuSeperator", "sweepMenu", "syncMenu", "toggleSelectionModeMenu", "unjunkMessagesMenu"];
+        }
+        Debug.assert(false, "unknown viewState");
     };
-    Object.defineProperty(n, "id", {
-        get: function () {
-            return "moreMenuFlyout"
-        },
-        enumerable: true
-    })
+
+    Object.defineProperty(prototype, "id", { get: function () { return "moreMenuFlyout"; }, enumerable: true });
+
 });
+
 Jx.delayDefine(Commands, "ComposeMoreMenu", function () {
     "use strict";
-    var t = Commands.ComposeMoreMenu = function () {
-            this._registeredCommandIds = ["directionLtr", "directionRtl", "directionSeperator", "addLinkMenuItem", "editLink", "openLink", "removeLink", "emojiMoreMenu", "linkSeperator", "saveMoreMenu", "undo", "redo", "clearFormatting"];
-            this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
-            this._label = Jx.res.getString("composeAppbarEllipseLabel");
-            Commands.MenuFlyout.call(this)
-        },
-        n;
-    Jx.inherit(t, Commands.MenuFlyout);
-    n = t.prototype;
-    n.composeCommands = function () {
-        return this._sortedRegisteredCommandsIds
+
+    var ComposeMoreMenu = Commands.ComposeMoreMenu = function () {
+        this._registeredCommandIds = ["directionLtr", "directionRtl", "directionSeperator", "addLinkMenuItem", "editLink", "openLink", "removeLink", "emojiMoreMenu", "linkSeperator", "saveMoreMenu", "undo", "redo", "clearFormatting"];
+        this._sortedRegisteredCommandsIds = [].concat(this._registeredCommandIds).sort();
+        this._label = Jx.res.getString("composeAppbarEllipseLabel");
+        Commands.MenuFlyout.call(this);
     };
-    n.viewStateCommands = function (n) {
-        var t = Jx.ApplicationView.State;
-        return n === t.wide || n === t.full || n === t.large ? ["clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "redo", "undo"] : n === t.more ? ["clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "redo", "saveMoreMenu", "undo"] : n === t.portrait ? ["addLinkMenuItem", "clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "editLink", "linkSeperator", "openLink", "redo", "removeLink", "saveMoreMenu", "undo"] : n === t.split ? ["addLinkMenuItem", "clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "editLink", "emojiMoreMenu", "linkSeperator", "openLink", "redo", "removeLink", "saveMoreMenu", "undo"] : n === t.snap || n === t.minimum || n === t.less ? [] : void 0
+
+    Jx.inherit(ComposeMoreMenu, Commands.MenuFlyout);
+
+    var prototype = ComposeMoreMenu.prototype;
+    prototype.composeCommands = function () {
+        return this._sortedRegisteredCommandsIds;
     };
-    Object.defineProperty(n, "id", {
-        get: function () {
-            return "composeMoreMenuFlyout"
-        },
-        enumerable: true
-    })
+
+    prototype.viewStateCommands = function (viewState) {
+        var appViewState = Jx.ApplicationView.State;
+        if (viewState === appViewState.wide || viewState === appViewState.full || viewState === appViewState.large) {
+            return ["clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "redo", "undo"];
+        } else if (viewState === appViewState.more) {
+            return ["clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "redo", "saveMoreMenu", "undo"];
+        } else if (viewState === appViewState.portrait) {
+            return ["addLinkMenuItem", "clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "editLink", "linkSeperator", "openLink", "redo", "removeLink", "saveMoreMenu", "undo"];
+        } else if (viewState === appViewState.split) {
+            return ["addLinkMenuItem", "clearFormatting", "directionLtr", "directionRtl", "directionSeperator", "editLink", "emojiMoreMenu", "linkSeperator", "openLink", "redo", "removeLink", "saveMoreMenu", "undo"];
+        } else if (viewState === appViewState.snap || viewState === appViewState.minimum || viewState === appViewState.less) {
+            return [];
+        }
+        Debug.assert(false, "unknown viewState");
+    };
+
+    Object.defineProperty(prototype, "id", { get: function () { return "composeMoreMenuFlyout"; }, enumerable: true });
+
 });
+
 Jx.delayDefine(Commands, "FontFlyout", function () {
     "use strict";
-    var t = Commands.FontFlyout = function () {
-            this._pxToPtRatio = 1 / .75;
-            this._flyout = null;
-            this._id = "FontFlyout";
-            this._fontNameControl = null;
-            this._fontSizeControl = null;
-            this._makh = null
-        },
-        n = t.prototype;
-    n.register = Jx.fnEmpty;
-    n._createFlyoutMenu = function () {
-        var n;
-        n = document.createElement("div");
-        n.className = "fontFlyout";
-        n.id = this._id;
-        var r = document.getElementById(Mail.CompApp.rootElementId),
-            t = document.createElement("div"),
-            i = document.createElement("div");
-        t.className = "fontNameControlContainer";
-        i.className = "fontSizeControlContainer";
-        n.appendChild(t);
-        n.appendChild(i);
-        r.appendChild(n);
-        this._fontNameControl = new FontSelector.NameControl({
-            host: n,
-            size: 4,
-            newOnFail: true
-        });
-        this._fontNameControl.initUI(t);
-        this._fontSizeControl = new FontSelector.SizeControl({
-            host: n,
-            size: 4
-        });
-        this._fontSizeControl.initUI(i);
-        this._makh = new MenuArrowKeyHandler(n, {
-            querySelector: "select",
-            itemsTabbable: true
-        });
+
+    var FontFlyout = Commands.FontFlyout = function () {
+        this._pxToPtRatio = 1 / 0.75;
+        this._flyout = null;
+        this._id = "FontFlyout";
+        this._fontNameControl = null;
+        this._fontSizeControl = null;
+        this._makh = null;
+    };
+
+    var prototype = FontFlyout.prototype;
+    prototype.register = Jx.fnEmpty;
+
+    prototype._createFlyoutMenu = function () {
+        Debug.assert(this._flyout === null); // This function should only get called once
+
+        // Create the flyout control
+        var element = document.createElement("div");
+        element.className = "fontFlyout";
+        element.id = this._id;
+        var appRoot = document.getElementById(Mail.CompApp.rootElementId),
+            fontNameDiv = document.createElement("div"),
+            fontSizeDiv = document.createElement("div");
+        fontNameDiv.className = "fontNameControlContainer";
+        fontSizeDiv.className = "fontSizeControlContainer";
+        element.appendChild(fontNameDiv);
+        element.appendChild(fontSizeDiv);
+        appRoot.appendChild(element);
+
+        this._fontNameControl = new FontSelector.NameControl({ host: element, size: 4, newOnFail: true });
+        this._fontNameControl.initUI(fontNameDiv);
+
+        this._fontSizeControl = new FontSelector.SizeControl({ host: element, size: 4 });
+        this._fontSizeControl.initUI(fontSizeDiv);
+
+        this._makh = new MenuArrowKeyHandler(element, { querySelector: "select", itemsTabbable: true });
         this._makh.activateUI();
-        this._flyout = new WinJS.UI.Flyout(n, {
-            alignment: "center",
-            placement: "top"
-        });
-        this._hooks = new Mail.Disposer(new Mail.EventHook(this._flyout, "contextmenu", Commands.MenuFlyout.onContextMenu, this), new Mail.EventHook(this._flyout, "pointerdown", Commands.MenuFlyout.onPointerDown), new Mail.EventHook(this._flyout, "aftershow", this._showFontListener, this), new Mail.EventHook(this._flyout, "afterhide", this._afterHide, this), new Mail.EventHook(this._fontNameControl, "change", this._onFontNameChange, this), new Mail.EventHook(this._fontSizeControl, "change", this._onFontSizeChange, this), new Mail.Disposable(this._fontNameControl, "shutdownUI"), new Mail.Disposable(this._fontSizeControl, "shutdownUI"), this._makh)
+
+        this._flyout = new WinJS.UI.Flyout(element, { alignment: "center", placement: "top" });
+        this._hooks = new Mail.Disposer(
+            new Mail.EventHook(this._flyout, "contextmenu", Commands.MenuFlyout.onContextMenu, this),
+            new Mail.EventHook(this._flyout,"MSPointerDown", Commands.MenuFlyout.onPointerDown),
+            new Mail.EventHook(this._flyout, "aftershow", this._showFontListener, this),
+            new Mail.EventHook(this._flyout, "afterhide", this._afterHide, this),
+            new Mail.EventHook(this._fontNameControl, "change", this._onFontNameChange, this),
+            new Mail.EventHook(this._fontSizeControl, "change", this._onFontSizeChange, this),
+            new Mail.Disposable(this._fontNameControl, "shutdownUI"),
+            new Mail.Disposable(this._fontSizeControl, "shutdownUI"),
+            this._makh);
     };
-    n._showFontListener = function () {
-        var u = Mail.Globals.commandManager,
-            r = u.getContext("composeSelection"),
-            i, n, t;
-        r && (i = r.getSelectionStyles(), n = i.fontSize, n && n.indexOf("px") > 0 && (n = Math.round(Number(n.replace("px", "")) / this._pxToPtRatio)), this._fontSizeControl.value = n, this._fontNameControl.clear(), t = i.fontFamily, t && (t = t.replace(/.Color.Emoji.,\s*/i, "").replace(/,.*/, "").replace(/"/g, "")), this._fontNameControl.value = t)
+
+    prototype._showFontListener = function () {
+        /// <summary>Sets the font family and size before the font flyout is shown.</summary>
+        // Set the font size selector
+        var commandManager = Mail.Globals.commandManager,
+        selection = commandManager.getContext("composeSelection");
+        if (!selection) { return; }
+        var selectionSyles = selection.getSelectionStyles();
+
+        var fontSize = selectionSyles.fontSize;
+        if (fontSize && (fontSize.indexOf("px") > 0)) {
+            fontSize = Math.round(Number(fontSize.replace("px", "")) / this._pxToPtRatio);
+        }
+        this._fontSizeControl.value = fontSize;
+
+        // Clear any temporary values from the font family selector
+        this._fontNameControl.clear();
+
+        // Set the font family selector
+        var fontFamily = selectionSyles.fontFamily;
+        if (fontFamily) {
+            fontFamily = fontFamily.replace(/.Color.Emoji.,\s*/i, "").replace(/,.*/, "").replace(/"/g, "");
+        }
+        this._fontNameControl.value = fontFamily;
     };
-    n._onFontNameChange = function (n) {
-        this._executeChangeCommand("setFontFamily", n, this._fontNameControl)
+
+    prototype._onFontNameChange = function (e) {
+        this._executeChangeCommand("setFontFamily", e, this._fontNameControl);
     };
-    n._onFontSizeChange = function (n) {
-        this._executeChangeCommand("setFontSize", n, this._fontSizeControl)
+
+    prototype._onFontSizeChange = function (e) {
+        this._executeChangeCommand("setFontSize", e, this._fontSizeControl);
     };
-    n._executeChangeCommand = function (n, t, i) {
-        var r = this._flyout,
-            u = Mail.Globals.commandManager.getContext("composeSelection"),
-            f;
-        r._sticky = true;
-        u && (f = new Mail.EventHook(u.getCanvasDocument(), "keydown", function (n) {
-            n.preventDefault();
-            n.stopImmediatePropagation()
-        }));
-        Commands.Handlers.composeCommand(n, t.value);
+
+    prototype._executeChangeCommand = function (command, e, control) {
+        var flyout = this._flyout,
+            selection = Mail.Globals.commandManager.getContext("composeSelection"),
+            keyEater;
+
+        flyout._sticky = true;
+        if (selection) {
+            // If the user is mashing on the keyboard (holding down the down arrow) keyboard events start to fire in the canvas.
+            // This happens because the command moves focus to the canvas while the it executes.  This will cause the selection to change which we don't want.
+            // So swallow all keyboard events in the canvas until after we move the focus back to this control in the setImmediates below
+            keyEater = new Mail.EventHook(selection.getCanvasDocument(), "keydown", function (e) { e.preventDefault(); e.stopImmediatePropagation(); });
+        }
+        Commands.Handlers.composeCommand(command, e.value);
+
         setImmediate(function () {
-            i.focus()
+            control.focus();
         });
         setImmediate(function () {
-            r._sticky = false;
-            Jx.dispose(f)
-        })
+            // We need to wait to set _sticky back to false or else focus might still be in the iframe and the flyout will go away.
+            flyout._sticky = false;
+            Jx.dispose(keyEater);
+        });
     };
-    n.dispose = function () {
-        this._flyout && (Jx.dispose(this._hooks), this._flyout.hide(), this._flyout = null)
+
+    prototype.dispose = function () {
+        if (this._flyout) {
+            Jx.dispose(this._hooks);
+            this._flyout.hide();
+            this._flyout = null;
+        }
     };
-    n.show = function (n) {
-        this._flyout === null && this._createFlyoutMenu();
-        this._flyout.show(n)
+
+    prototype.show = function (anchor) {
+
+        Debug.assert(Jx.isHTMLElement(anchor));
+        if (this._flyout === null) {
+            this._createFlyoutMenu();
+        }
+        Debug.assert(Jx.isObject(this._flyout));
+        this._flyout.show(anchor);
     };
-    n.hide = function () {
-        this._flyout.hide()
+
+    prototype.hide = function () {
+        Debug.assert(Jx.isObject(this._flyout));
+        this._flyout.hide();
     };
-    n._afterHide = function () {
-        var n = Mail.Globals.commandManager.getContext("composeSelection"),
-            t = n.getSelectionState();
-        t.hasSelection && !t.hasNonEmptySelection && n.focusBody();
-        this._activeElement = null
-    }
+
+    prototype._afterHide = function () {
+        // If a command has been executed, we need to restore focus to canvas 
+        // in order to preserve the applied styling on collapsed selections
+        var selection = Mail.Globals.commandManager.getContext("composeSelection"),
+            state = selection.getSelectionState();
+
+        if (state.hasSelection && !state.hasNonEmptySelection) {
+            selection.focusBody();
+        }
+        this._activeElement = null;
+    };
+
 });
+
 Jx.delayDefine(Commands, "ColorFlyout", function () {
     "use strict";
-    var t = Commands.ColorFlyout = function (n) {
-            this._flyout = null;
-            this._fontColorControl = null;
-            this._config = n
-        },
-        n = t.prototype;
-    n.register = Jx.fnEmpty;
-    n._createFlyoutMenu = function () {
-        var n, t;
-        n = document.createElement("div");
-        n.className = "colorFlyout";
-        n.id = this._id;
-        t = document.getElementById(Mail.CompApp.rootElementId);
-        t.appendChild(n);
+
+    var ColorFlyout = Commands.ColorFlyout = function (config) {
+        this._flyout = null;
+        this._fontColorControl = null;
+        this._config = config;
+        Debug.assert(Jx.isNonEmptyString(this._config.command), "Command is required");
+        Debug.assert(Jx.isArray(this._config.colors), "Colors are required");
+        Debug.assert(Jx.isNonEmptyString(this._config.selectionStyle), "Selection style required");
+    };
+
+    var prototype = ColorFlyout.prototype;
+    prototype.register = Jx.fnEmpty;
+
+    prototype._createFlyoutMenu = function () {
+        Debug.assert(this._flyout === null); // This function should only get called once
+
+        // Create the flyout control
+        var element = document.createElement("div");
+        element.className = "colorFlyout";
+        element.id = this._id;
+        var appRoot = document.getElementById(Mail.CompApp.rootElementId);
+        appRoot.appendChild(element);
+
         this._fontColorControl = new FontSelector.ColorControl({
-            host: n,
+            host: element,
             colors: this._config.colors,
             gridLayout: this._config.gridLayout,
             label: this._config.label
         });
-        this._fontColorControl.initUI(n);
-        this._flyout = new WinJS.UI.Flyout(n, {
-            alignment: "center",
-            placement: "top"
-        });
-        this._hooks = new Mail.Disposer(new Mail.EventHook(this._flyout, "contextmenu", Commands.MenuFlyout.onContextMenu, this), new Mail.EventHook(this._flyout, "pointerdown", Commands.MenuFlyout.onPointerDown), new Mail.EventHook(this._fontColorControl, "change", this._onChange, this), new Mail.EventHook(this._flyout, "beforeshow", this._showFontListener, this), new Mail.Disposable(this._fontColorControl, "shutdownUI"))
+        this._fontColorControl.initUI(element);
+
+        this._flyout = new WinJS.UI.Flyout(element, { alignment: "center", placement: "top" });
+        this._hooks = new Mail.Disposer(
+            new Mail.EventHook(this._flyout, "contextmenu", Commands.MenuFlyout.onContextMenu, this),
+            new Mail.EventHook(this._flyout, "MSPointerDown", Commands.MenuFlyout.onPointerDown),
+            new Mail.EventHook(this._fontColorControl, "change", this._onChange, this),
+            new Mail.EventHook(this._flyout, "beforeshow", this._showFontListener, this),
+            new Mail.Disposable(this._fontColorControl, "shutdownUI"));
     };
-    n._showFontListener = function () {
-        var r = Mail.Globals.commandManager,
-            t = r.getContext("composeSelection"),
-            i, n;
-        t && (i = t.getSelectionStyles(), n = i[this._config.selectionStyle], n && (n = n.toUpperCase()), this._fontColorControl.value = n)
+
+    prototype._showFontListener = function () {
+        /// <summary>Sets the font family and size before the font flyout is shown.</summary>
+        // Set the font size selector
+        var commandManager = Mail.Globals.commandManager,
+        selection = commandManager.getContext("composeSelection");
+        if (!selection) { return; }
+        var selectionStyles = selection.getSelectionStyles();
+
+        var color = selectionStyles[this._config.selectionStyle];
+        if (color) {
+            color = color.toUpperCase();
+        }
+        this._fontColorControl.value = color;
     };
-    n._onChange = function (n) {
-        Commands.Handlers.composeCommand(this._config.command, n.value);
-        var t = {};
-        t[this._config.selectionStyle] = n.value;
-        Jx.EventManager.fireDirect(null, "buttonColorUpdate", t)
+
+    prototype._onChange = function (e) {
+        Commands.Handlers.composeCommand(this._config.command, e.value);
+        var colors = {};
+        colors[this._config.selectionStyle] = e.value;
+        Jx.EventManager.fireDirect(null, "buttonColorUpdate", colors);
     };
-    n.dispose = function () {
-        this._flyout && (Jx.dispose(this._hooks), this._flyout.hide(), this._flyout = null)
+
+    prototype.dispose = function () {
+        if (this._flyout) {
+            Jx.dispose(this._hooks);
+            this._flyout.hide();
+            this._flyout = null;
+        }
     };
-    n.show = function (n) {
-        this._flyout === null && this._createFlyoutMenu();
-        this._flyout.show(n)
+
+    prototype.show = function (anchor) {
+
+        Debug.assert(Jx.isHTMLElement(anchor));
+        if (this._flyout === null) {
+            this._createFlyoutMenu();
+        }
+        Debug.assert(Jx.isObject(this._flyout));
+        this._flyout.show(anchor);
     };
-    n.hide = function () {
-        this._flyout.hide()
-    }
+
+    prototype.hide = function () {
+        Debug.assert(Jx.isObject(this._flyout));
+        this._flyout.hide();
+    };
+
 });
+
 Jx.delayDefine(Commands, "FontColorFlyout", function () {
     "use strict";
-    var n = Commands.FontColorFlyout = function () {
+
+    var FontColorFlyout = Commands.FontColorFlyout = function () {
         Commands.ColorFlyout.call(this, {
             command: "setFontColor",
             selectionStyle: "fontColor",
             label: Jx.res.getString("fontSelectorColorLabel"),
-            colors: [{
-                value: "#833C0B",
-                name: Jx.res.getString("darkbrown")
-            }, {
-                value: "#BD1398",
-                name: Jx.res.getString("pink")
-            }, {
-                value: "#FFFFFF",
-                name: Jx.res.getString("white")
-            }, {
-                value: "#1E4E79",
-                name: Jx.res.getString("mediumdarkblue")
-            }, {
-                value: "#7232AD",
-                name: Jx.res.getString("purple")
-            }, {
-                value: "#E2C501",
-                name: Jx.res.getString("yellow")
-            }, {
-                value: "#1F3864",
-                name: Jx.res.getString("darkblue")
-            }, {
-                value: "#006FC9",
-                name: Jx.res.getString("blue")
-            }, {
-                value: "#D05C12",
-                name: Jx.res.getString("orange")
-            }, {
-                value: "#375623",
-                name: Jx.res.getString("darkgreen")
-            }, {
-                value: "#4BA524",
-                name: Jx.res.getString("green")
-            }, {
-                value: "#D03A3A",
-                name: Jx.res.getString("red")
-            }, {
-                value: "#000000",
-                name: Jx.res.getString("black")
-            }, {
-                value: "#525252",
-                name: Jx.res.getString("darkgrey")
-            }, {
-                value: "#757B80",
-                name: Jx.res.getString("grey")
-            }],
+            colors: [
+                { value: "#833C0B", name: Jx.res.getString("darkbrown") },
+                { value: "#BD1398", name: Jx.res.getString("pink") },
+                { value: "#FFFFFF", name: Jx.res.getString("white") },
+                { value: "#1E4E79", name: Jx.res.getString("mediumdarkblue") },
+                { value: "#7232AD", name: Jx.res.getString("purple") },
+                { value: "#E2C501", name: Jx.res.getString("yellow") },
+                { value: "#1F3864", name: Jx.res.getString("darkblue") },
+                { value: "#006FC9", name: Jx.res.getString("blue") },
+                { value: "#D05C12", name: Jx.res.getString("orange") },
+                { value: "#375623", name: Jx.res.getString("darkgreen") },
+                { value: "#4BA524", name: Jx.res.getString("green") },
+                { value: "#D03A3A", name: Jx.res.getString("red") },
+                { value: "#000000", name: Jx.res.getString("black") },
+                { value: "#525252", name: Jx.res.getString("darkgrey") },
+                { value: "#757B80", name: Jx.res.getString("grey") }
+            ],
             gridLayout: {
                 columns: "50px 50px 50px",
                 rows: "50px 50px 50px 50px 50px"
             }
         });
-        this._id = "fontColorFlyout"
+        this._id = "fontColorFlyout";
     };
-    Jx.inherit(n, Commands.ColorFlyout)
+    Jx.inherit(FontColorFlyout, Commands.ColorFlyout);
+
 });
+
 Jx.delayDefine(Commands, "HighlightColorFlyout", function () {
     "use strict";
-    var n = Commands.HighlightColorFlyout = function () {
+
+    var HighlightColorFlyout = Commands.HighlightColorFlyout = function () {
         Commands.ColorFlyout.call(this, {
             command: "setFontHighlightColor",
             selectionStyle: "highlightColor",
             label: Jx.res.getString("composeAppBarSetFontHighlightColorButton"),
-            colors: [{
-                value: "#00FFFF",
-                name: Jx.res.getString("composeAppBarHighlightColor1Button")
-            }, {
-                value: "#FFFFFF",
-                name: Jx.res.getString("composeAppBarHighlightColor2Button")
-            }, {
-                value: "#0000FF",
-                name: Jx.res.getString("composeAppBarHighlightColor3Button")
-            }, {
-                value: "#99CCFF",
-                name: Jx.res.getString("composeAppBarHighlightColor4Button")
-            }, {
-                value: "#00FF00",
-                name: Jx.res.getString("composeAppBarHighlightColor5Button")
-            }, {
-                value: "#CCFFCC",
-                name: Jx.res.getString("composeAppBarHighlightColor6Button")
-            }, {
-                value: "#FF00FF",
-                name: Jx.res.getString("composeAppBarHighlightColor7Button")
-            }, {
-                value: "#FF99CC",
-                name: Jx.res.getString("composeAppBarHighlightColor8Button")
-            }, {
-                value: "#FFFF00",
-                name: Jx.res.getString("composeAppBarHighlightColor9Button")
-            }, {
-                value: "#FFFF99",
-                name: Jx.res.getString("composeAppBarHighlightColor10Button")
-            }],
+            colors: [
+                { value: "#00FFFF", name: Jx.res.getString("composeAppBarHighlightColor1Button") },
+                { value: "#FFFFFF", name: Jx.res.getString("composeAppBarHighlightColor2Button") },
+                { value: "#0000FF", name: Jx.res.getString("composeAppBarHighlightColor3Button") },
+                { value: "#99CCFF", name: Jx.res.getString("composeAppBarHighlightColor4Button") },
+                { value: "#00FF00", name: Jx.res.getString("composeAppBarHighlightColor5Button") },
+                { value: "#CCFFCC", name: Jx.res.getString("composeAppBarHighlightColor6Button") },
+                { value: "#FF00FF", name: Jx.res.getString("composeAppBarHighlightColor7Button") },
+                { value: "#FF99CC", name: Jx.res.getString("composeAppBarHighlightColor8Button") },
+                { value: "#FFFF00", name: Jx.res.getString("composeAppBarHighlightColor9Button") },
+                { value: "#FFFF99", name: Jx.res.getString("composeAppBarHighlightColor10Button") }
+            ],
             gridLayout: {
                 columns: "50px 50px",
                 rows: "50px 50px 50px 50px 50px"
             }
         });
-        this._id = "highlightColorFlyout"
+        this._id = "highlightColorFlyout";
     };
-    Jx.inherit(n, Commands.ColorFlyout)
-})
+    Jx.inherit(HighlightColorFlyout, Commands.ColorFlyout);
+
+});

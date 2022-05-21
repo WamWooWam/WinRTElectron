@@ -1,0 +1,261 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>MailUT</title>
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<script src="/Jx/Jx.js"></script>
+
+<script src="/ModernMail/ut/CodeCoverage.js"></script>
+
+<!-- This file is included in the build based on enviornment variable UT_CODECOVERAGE -->
+<script src="/ModernMail/ut/EnableCodeCoverage.js"></script>
+
+<script src="/ModernPeople/shared/JSUtil/Include.js"></script>
+<script> CodeCoverage.start(); </script>
+<script src="/ModernMail/util/Namespaces.js"></script>
+<script src="/ModernMail/Util/MailDebug.js"></script>
+<script src="/ModernMail/util/EventHook.js"></script>
+<script src="/ModernMail/util/Disposer.js"></script>
+<script src="/ModernMail/util/HtmlNodes.js"></script>
+<script src="/ModernMail/util/Logging.js"></script>
+<script src="/ModernMail/util/Globalization.js"></script>
+<script src="/ModernMail/util/Validators.js"></script>
+<script src="/ModernMail/util/ConnectivityHelper.js"></script>
+<script src="/ModernMail/util/composeHelper.js"></script>
+<script src="/ModernMail/util/AccountValidator.js"></script>
+<script src="/ModernMail/util/PromiseHelper.js"></script>
+<script src="/ModernMail/util/ListViewHelper.js"></script>
+<script src="/ModernMail/UIDataModel/PlatformEventForwarder.js"></script>
+<script src="/ModernMail/UIDataModel/UIMailFolder.js"></script>
+<script src="/ModernMail/UIDataModel/UIMailView.js"></script>
+<script src="/ModernMail/UIDataModel/UIMailItem.js"></script>
+<script src="/ModernMail/UIDataModel/UIMailMessage.js"></script>
+<script src="/ModernMail/UIDataModel/UIMailConversation.js"></script>
+<script src="/ModernMail/UIDataModel/CachedProperties.js"></script>
+<script src="/ModernMail/UIDataModel/FolderCache.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/Collection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/ArrayCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/ConcatenatedCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/CollectionCounter.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/MappedCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/QueryCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/SortedCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/MappedCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/DeferredCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Collections/FilteredCollection.js"></script>
+<script src="/ModernMail/UIDataModel/Objects/Account.js"></script>
+<script src="/ModernMail/components/Frame/SyncMessageBarHelper.js"></script>
+<script src="/ModernMail/components/Frame/Frame.js"></script>
+<script src="/ModernMail/components/Frame/GUIState.js"></script>
+<script src="/ModernMail/components/Frame/DefaultAccountAuthPresenter.js"></script>
+<script src="/ModernMail/components/Frame/Animations.js"></script>
+<script src="/ModernMail/components/Frame/SuspendResumeHelper.js"></script>
+<script src="/ModernMail/components/NavPane/NavPaneFlyout.js"></script>
+<script src="/ModernMail/components/ReadingPane/ShareHandler.js"></script>
+<script src="/ModernMail/components/ReadingPane/HeaderControl.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneHeader.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneHeader.html.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneSubjectArea.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneWarning.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPane.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPane.html.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneBody.js"></script>
+<script src="/ModernMail/components/ReadingPane/StandardReadingPane.js"></script>
+<script src="/ModernMail/components/ReadingPane/BodyLinkFlyout.js"></script>
+<script src="/ModernMail/components/ReadingPane/BodyWriter.js"></script>
+<script src="/ModernMail/components/ReadingPane/BodyCopyHandler.js"></script>
+<script src="/ModernMail/components/ReadingPane/EmbeddedAttachments.js"></script>
+<script src="/ModernMail/components/ReadingPane/CalendarInviteArea.js"></script>
+<script src="/ModernMail/components/ReadingPane/CalendarInviteArea.tmpl.js"></script>
+<script src="/ModernMail/Components/MessageList/MessageListTreeNode.js"></script>
+<script src="/ModernMail/Components/MessageList/ConversationNode.js"></script>
+<script src="/ModernMail/Components/MessageList/MessageListItemFactory.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListProgressRing.js"></script>
+<script src="/ModernMail/components/MessageList/CollectionHelper.js"></script>
+<script src="/ModernMail/components/MessageList/SelectionHelper.js"></script>
+<script src="/ModernMail/components/MessageList/MessageList.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListCollection.js"></script>
+<script src="/ModernMail/components/MessageList/MailHeaderRenderer.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListDataSource.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListNotificationHandler.js"></script>
+<script src="/ModernMail/components/MessageList/SelectAllCheckBox.js"></script>
+<script src="/ModernMail/components/MessageList/SelectionHandler.js"></script>
+<script src="/ModernMail/components/MessageList/SelectionModel.js"></script>
+<script src="/ModernMail/components/MessageList/FolderNameHeader.js"></script>
+<script src="/ModernMail/components/MessageList/EndOfListItem.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListItem.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListItemFactory.js"></script>
+<script src="/ModernMail/components/MessageList/ThreadedListCollection.js"></script>
+<script src="/ModernMail/components/MessageList/AccessibilityHelper.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListDataProvider.js"></script>
+<script src="/ModernMail/components/MessageList/TrailingItemCollection.js"></script>
+<script src="/ModernMail/components/MessageList/MessageListFilter.js"></script>
+<script src="/ModernMail/components/ViewSwitcher/AccountViews.js"></script>
+<script src="/ModernMail/components/ViewSwitcher/ViewSwitcher.js"></script>
+<script src="/ModernMail/components/ViewSwitcher/ViewItems.js"></script>
+<script src="/ModernMail/components/ViewSwitcher/ViewFlyout.js"></script>
+<script src="/ModernMail/App/Activation.js"></script>
+<script src="/ModernMail/App/AppSettings.js"></script>
+<script src="/ModernMail/App/Scheduler.js"></script>
+<script src="/ModernMail/App/SplashScreen.js"></script>
+<script src="/ModernMail/App/PostStartupQueue.js"></script>
+<script src="/ModernMail/App/StartupHelper.js"></script>
+<script src="/ModernMail/App/AppState.js"></script>
+<script src="/ModernMail/App/RestartCheck.js"></script>
+<script> CodeCoverage.stop(); </script>
+
+<script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+
+<script src="/ModernPeople/shared/JSUtil/Callback.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Flyout.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Hydration.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Localization.js"></script>
+<script src="/ModernPeople/shared/JSUtil/PeopleAnimation.js"></script>
+<script src="/ModernPeople/shared/JSUtil/PeopleLog.js"></script>
+<script src="/ModernPeople/shared/JSUtil/Promises.js"></script>
+
+<script src="/ModernPeople/shared/Accounts/AccountBarricadeDialog.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountControlBase.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountDialog.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountList.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountSettings.js"></script>
+<script src="/ModernPeople/shared/Accounts/AccountSynchronization.js"></script>
+<script src="/ModernPeople/shared/Accounts/ConnectedAccounts.js"></script>
+<script src="/ModernPeople/shared/Accounts/CredUI.js"></script>
+<script src="/ModernPeople/shared/Accounts/Dialog.js"></script>
+<script src="/ModernPeople/shared/Accounts/EasiIdConnector.js"></script>
+<script src="/ModernPeople/shared/Accounts/FlowLauncher.js"></script>
+<script src="/ModernPeople/shared/Accounts/LogonErrorDialog.js"></script>
+<script src="/ModernPeople/Shared/Accounts/NetworkConnectivity.js"></script>
+<script src="/ModernPeople/shared/Accounts/OAuthLauncher.js"></script>
+<script src="/ModernPeople/Shared/Accounts/ObjectList.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Overlay.js"></script>
+<script src="/ModernPeople/Shared/Accounts/PerAccountSettingsPage.js"></script>
+
+<script src="/ModernPeople/Shared/IdentityControl/IdentityControl.js"></script>
+<script src="/ModernPeople/Shared/IdentityControl/IdentityControlActions.js"></script>
+<script src="/ModernPeople/Shared/IdentityControl/IdentityControlNode.js"></script>
+<script src="/ModernPeople/Shared/IdentityControl/IdentityElements.js"></script>
+
+<script src="/ModernPeople/Shared/Navigation/Protocols.js"></script>
+<script src="/ModernPeople/Shared/Navigation/UriGenerator.js"></script>
+
+<script src="/ModernPeople/Shared/Platform/FetchContacts.js"></script>
+<script src="/ModernPeople/Shared/Platform/PlatformCache.js"></script>
+<script src="/ModernPeople/Shared/Platform/PlatformObjectBinder.js"></script>
+
+<script src="/ModernPeople/Shared/Sequence/Sequence.js"></script>
+
+<script src="/ModernPeople/Profile/Controls/CommitContact.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactAddControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactCommands.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactControlPosition.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactDeleteFlyout.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactEditControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactEditFlyout.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactLinkingControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactViewControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/MeCommands.js"></script>
+<script src="/ModernPeople/Profile/Controls/ProfilePictureControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ProfileViewControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/ContactPanel.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/DisambiguatedCommandButton.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/LandingPage.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/PanelView.js"></script>
+
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Jobset.js"></script>
+<script src="/ModernPeople/addressbook/Controls/Collections/DeferredCollection.js"></script>
+<script src="/ModernPeople/addressbook/Controls/Collections/DeferredListviewCollection.js"></script>
+<script src="/ModernPeople/addressbook/Controls/Collections/PlatformCollectionWatcher.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/CappedPlatformCollection.js"></script>
+<script src="/ModernCanvas/MCanvas.js"></script>
+<script src="/ModernCanvas/ModernCanvasPlugins.js"></script>
+<script src="/ModernCanvas/AutoReplaceDefinitionsMail.js"></script>
+<script src="/ModernCanvas/AutoReplaceDefinitionsMailConsume.js"></script>
+<script src="/ModernCanvas/AutoReplaceDefinitionsMailCompose.js"></script>
+<script src="/ModernCanvas/EmojiPicker.js"></script>
+
+<script> CodeCoverage.start(); </script>
+<script src="/ModernMail/components/NavPane/NavPane.js"></script>
+<script src="/ModernMail/components/AccountList/AccountListItem.js"></script>
+<script src="/ModernMail/components/AccountList/AccountList.js"></script>
+<script src="/ModernMail/components/AccountList/AccountNameHeader.js"></script>
+<script src="/ModernMail/components/AccountList/AccountSettings.js"></script>
+<script src="/ModernMail/App/RetailExperience.js"></script>
+<script src="/ModernMail/components/Frame/OutboxQueueHandlerBase.js"></script>
+<script src="/ModernMail/components/Frame/GenericQueueHandler.js"></script>
+<script src="/ModernMail/components/Frame/OutboxMonitor.js"></script>
+<script src="/ModernMail/components/MessageList/SearchCollection.js"></script>
+<script src="/ModernMail/components/MessageList/SearchEndOfListItem.js"></script>
+<script src="/ModernMail/components/MessageList/SearchHandler.js"></script>
+<script src="/ModernMail/components/MessageList/SearchItemRemover.js"></script>
+<script src="/ModernMail/components/MessageList/SearchResultsFetcher.js"></script>
+<script src="/ModernMail/components/ReadingPane/PrintHandler.js"></script>
+<script src="/ModernMail/Components/SettingsPane/SettingsPane.js"></script>
+
+<script src="/ModernMail/compose/components/attachmentwell.tmpl.js"></script>
+<script src="/ModernMail/compose/components/body.tmpl.js"></script>
+<script src="/ModernMail/compose/components/buttons.tmpl.js"></script>
+<script src="/ModernMail/compose/components/from.tmpl.js"></script>
+<script src="/ModernMail/compose/components/priority.tmpl.js"></script>
+<script src="/ModernMail/compose/components/irmchooser.tmpl.js"></script>
+<script src="/ModernMail/compose/components/replyheader.tmpl.js"></script>
+<script src="/ModernMail/compose/components/subject.tmpl.js"></script>
+<script src="/ModernMail/compose/components/toccbcc.tmpl.js"></script>
+<script src="/ModernMail/compose/components/warningmessage.tmpl.js"></script>
+
+<script src="/ModernMail/Compose/Core/Compose.js"></script>
+<script src="/ModernMail/Compose/Components/ComposeComponents.js"></script>
+<script src="/ModernMail/Compose/MailCompose/MailCompose.js"></script>
+<script> CodeCoverage.stop(); </script>
+
+<!-- Mocks -->
+<script src="/Platform/MockPlatform.js"></script>
+<script src="/ModernMail/Mock/JSObjects/SampleData.js"></script>
+
+<script>
+    // safely load the MailCompose group
+    Mail.Utilities.ComposeHelper.ensureComposeFiles();
+</script>
+
+<!-- UT helpers -->
+<script src="/ModernMail/ut/UnitTestHelpers.js"></script>
+<script src="/ModernMail/ut/jm.js"></script>
+<script src="/ModernMail/ut/jmdefs.js"></script>
+<script src="/ModernMail/ut/MockAppData.js"></script>
+<script src="/ModernMail/ut/CallVerifier.js"></script>
+
+<!-- UTs -->
+<script src="/ModernMail/ut/CalendarActionHandlerFactory_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarCancelMessageModelFactory_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarEditResponseMessageModelFactory_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarForwardMessageModelFactory_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarInviteArea_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarMessageModelFactory_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarReplyMessageModelFactory_UnitTest.js"></script>
+<script src="/ModernMail/ut/CalendarUtil_UnitTest.js"></script>
+<script src="/ModernMail/ut/MessageFromEventCreator_UnitTest.js"></script>
+
+<!-- CodeCoverageReport should be after all other unit tests are included for accurate results.-->
+<script src="/ModernMail/ut/CodeCoverageReport.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

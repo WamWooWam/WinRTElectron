@@ -16,6 +16,8 @@ import * as _ from "lodash"
 import "./core-window.css"
 import "./splash-screen.css"
 
+const electron = require('electron').remote.app
+
 export interface ICoreWindowActivateArgs {
     args?: string,
     files?: string[]

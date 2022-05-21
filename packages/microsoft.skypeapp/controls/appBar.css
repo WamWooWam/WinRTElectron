@@ -41,7 +41,7 @@
 
 #appBar .win-commandimage {
     color: #fff;
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-size: 40px;
     line-height: normal;
     text-align: center
@@ -159,7 +159,7 @@ body.RTL #skypeAppBar div.appBarConversationSwitcher div.recentsContainer.OVERLI
 }
 
 #skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBarLogo .icon::before {
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-weight: bold;
     content: "\E001";
     font-size: 40px;
@@ -175,7 +175,7 @@ body.RTL #skypeAppBar div.appBarConversationSwitcher div.recentsContainer.OVERLI
 }
 
 #skypeAppBar div.appBarConversationSwitcher div.recentsContainer div.appBarRecentsLink button.icon::before {
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-weight: bold;
     color: #FFF;
     font-size: 24px;
@@ -239,7 +239,7 @@ body.RTL #skypeAppBar .appBarConversationSwitcher div.recentsContainer div.appBa
 }
 
 #appBar #searchForContact .win-commandimage::after {
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-weight: bold;
     font-size: 16.2pt;
     content: "\E419";
@@ -255,7 +255,7 @@ body.RTL #appBar #searchForContact .win-commandimage::after {
 
 #appBar #skypeBar_favourite .win-commandimage {
     color: #fff;
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-weight: bold
 }
 

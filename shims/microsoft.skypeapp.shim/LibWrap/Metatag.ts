@@ -9,7 +9,7 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.Metatag')
 export class Metatag { 
-    static type_BINARY: number = null;
-    static type_STRING: number = null;
-    static type_INTEGER: number = null;
+    static type_BINARY: number = 2;
+    static type_STRING: number = 1;
+    static type_INTEGER: number = 0;
 }

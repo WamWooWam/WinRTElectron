@@ -42,6 +42,15 @@ export class SuiteUpdate implements ISuiteUpdate, IClosable {
             message: "YEP"
         });
 
+        app.insert(ApplicationId.calendar, {
+            minVersion: "17.2.9600.22013",
+            currentVersion: "17.2.9600.22013",
+            moreInfoUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+            id: ApplicationId.calendar,
+            message: "YEP"
+        });
+
+
         this.app = app;
     }    
 

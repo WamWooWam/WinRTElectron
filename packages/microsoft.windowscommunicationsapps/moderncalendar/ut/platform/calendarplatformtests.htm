@@ -1,0 +1,54 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<style>
+html, body, #host
+{
+    width:  100%;
+    height: 100%;
+    margin:  0;
+    padding: 0;
+}
+</style>
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- UT helpers -->
+<script src="CalendarManagerTestsCore.js"></script>
+<script src="NativeTestsCore.js"></script>
+
+<!-- UTs -->
+<script src="CalendarTests.js"></script>
+<script src="EventTests.js"></script>
+<script src="RecurrenceTests.js"></script>
+<script src="ReminderTests.js"></script>
+<script src="EventCollectionTests.js"></script>
+<script src="ExceptionTests.js"></script>
+<script src="ExceptionCollectionTests.js"></script>
+<script src="SyncStoreTests.js"></script>
+<script src="SyncFolderTests.js"></script>
+<script src="UpSyncTests.js"></script>
+<script src="SyncConflictTests.js"></script>
+<script src="AllDayTests.js"></script>
+<script src="CacheTests.js"></script>
+<script src="ImportTests.js"></script>
+<script src="SerializeTests.js"></script>
+<script src="EventHandleTests.js"></script>
+<script src="ErrorMessageTests.js"></script>
+<script src="InvitesTests.js"></script>
+<script src="NotificationTests.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html> 

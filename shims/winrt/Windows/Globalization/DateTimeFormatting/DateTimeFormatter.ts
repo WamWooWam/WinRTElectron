@@ -112,7 +112,7 @@ export class DateTimeFormatter {
     includeYear: YearFormat = null;
     languages: IVectorView<string> = null;
     resolvedGeographicRegion: string = null;
-    resolvedLanguage: string = null;
+    resolvedLanguage: string = "en-gb";
     template: string = null;
 
     // constructor(formatTemplate: string);

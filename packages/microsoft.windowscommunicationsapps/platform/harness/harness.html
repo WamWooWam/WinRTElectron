@@ -1,0 +1,209 @@
+﻿<!doctype html>
+<html>
+<head>
+<style>
+.pass
+{
+    color: Green;
+}
+.fail
+{
+    color: Red;
+}
+.header
+{
+    font-size: larger;
+    font-weight: bold;
+}
+.invisible
+{
+    visibility: hidden;
+}
+.columnLeft
+{
+    display: block;
+    float: left;
+    width: 59%;
+}
+.columnRight
+{
+    display: block;
+    float: right;
+    width: 39%;
+}
+.farRight
+{
+    display: block;
+    float: right;
+}
+.setting
+{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+</style>
+<title>Platform Test App</title>
+<!-- Include Jx before any of our our script files-->
+<script type="text/javascript" src="../../Jx/Jx.js"></script>
+<script type="text/javascript" defer="defer" src="PlatformStatus.js"></script>
+<script type="text/javascript" defer="defer" src="utils.js"></script>
+<script type="text/javascript" defer="defer" src="GalSearchUt.js"></script>
+<script type="text/javascript" defer="defer" src="MailServerSearchUt.js"></script>
+<script type="text/javascript" defer="defer" src="SetTileUt.js"></script>
+
+</head>
+<body onLoad="initSettings();">
+<div>
+<div class="farRight">
+    <span id="packageMode"></span>
+    <span class="setting"><span>Accounts Roaming </span><select id="accountsRoaming" onchange="onSettingChange('accountsRoaming')">
+        <option value="0">Off</option>
+        <option value="1">Read-only</option>
+        <option value="(null)" selected>Read-write</option>
+    </select></span>
+    <span class="setting"><span>Catalog mode </span><select id="catalogMode" onchange="onSettingChange('catalogMode')">
+        <option value="(null)" selected>Normal</option>
+        <option value="test=true">Using Test Catalog</option>
+    </select></span>
+    <span class="setting"><span>GOOG EAS </span><select id="googEasIsWorking" onchange="onSettingChange('googEasIsWorking')">
+        <option value="(null)" selected>disabled</option>
+        <option value="1">enabled</option>
+    </select></span>
+    <span class="setting"><span>Environment </span><select id="contactsEnvironment" onchange="onSettingChange('contactsEnvironment')">
+        <option value="Production" selected>Production</option>
+        <option value="INT">INT</option>
+    </select></span>
+    <span class="setting"><span>EASI mode </span><select id="easiMode" onchange="onSettingChange('easiMode')">
+        <option value="(null)" selected>via EAS</option>
+        <option value="0">Force Non-EASI</option>
+        <option value="1">Force EASI</option>
+    </select></span>
+</div>
+<hr />
+<div class='columnLeft'>
+<div id="scriptarea">
+<div class="header">Script Input</div>
+<textarea id="expressionInput" rows="15" cols="75">
+var wl = Microsoft.WindowsLive.Platform;
+var wlt = wl.Test;
+var harness = new wlt.ClientTestHarness("test_app", wlt.PluginsToStart.none, "default@live.com");
+var platform = harness.client;
+var accountManager = platform.accountManager;
+var peopleManager = platform.peopleManager;
+var contact = peopleManager.createContact();
+</textarea><br/>
+<button onclick="doExpr();">Execute</button>
+<hr/>
+<div class="header"><span>Script Result</span><span id='evaltime'></span></div>
+<div id='msglog'></div>
+</div>
+<hr/>
+<div id="utarea">
+    <div id="retailExperience">
+        <div class="header">Retail Experience</div>
+        <button id='retailExperienceButton' onclick="importRetailExperienceData();">Import Retail Experience Data</button>
+    </div>
+
+    <hr />
+
+    <div id="primaryAccount">
+        <div class="header">Primary Account Mode</div>
+        Company Name:
+        <input type="text" id="companyName"/>
+        <select id="primaryAccountMode" onchange="onPrimaryAccountModeChange()">
+            <option value="(null)" selected>Microsoft account required</option>
+            <option value="prompt">Prompt for work account</option>
+        </select>
+    </div>
+
+    <hr />
+
+    <div id="galsearch">
+        <div class="header">GAL Search</div>
+        <button onclick="GalSearchTest.StartEasPlugin();">Start EAS Plugin</button>
+
+        <hr/>
+
+        Search1 (return as unlocked):<input type="text" id="search1" /> count: <input type="text" id="count1" /> <button onclick="GalSearchTest.GalSearch(1);">Search</button> <button onclick="GalSearchTest.CancelGalSearch(1);">Cancel</button> <button onclick="GalSearchTest.FetchMore(5);">Fetch More</button>
+
+        <hr/>
+
+        Search2 (return as locked):<input type="text" id="search2" /> count: <input type="text" id="count2" /> <button onclick="GalSearchTest.GalSearch(2);">Search</button> <button onclick="GalSearchTest.CancelGalSearch(2);">Cancel</button><button onclick="GalSearchTest.Unlock2();">unlock</button>
+    </div>
+
+    Fake Result for Search request (input id):<input type="text" id="requestid" /> <button onclick="GalSearchTest.InsertResult();">Insert</button>
+    <hr />
+
+    <div id="mailServerSearch">
+        <div class="header">Mail Search</div>
+
+        <hr />
+
+        <div>
+            Search term:
+            <input type="text" id="mailSearchTerm" />
+            Account:
+            <input type="text" id="mailSearchAccount" />
+            View Source Object ID:
+            <input type="text" id="mailSearchViewObjectId" />
+            View Type
+            <input type="text" id="mailSearchViewType" />
+            Count:
+            <input type="text" id="mailSearchCount" />
+            <button onclick="MailServerSearchTest.Search();">Search</button>
+            <button onclick="MailServerSearchTest.FetchMoreItems();">More</button>
+        </div>
+    </div>
+
+    <hr />
+
+    <div id="setTile">
+        <div class="header">Set Usertile</div>
+
+        <hr />
+
+        <div>
+            Person Name:
+            <input type="text" id="setTileName" />
+            <button onclick="SetTileTest.SetTile();">Set Tile</button>
+            <button onclick="SetTileTest.ClearTile();">Clear Tile</button>
+            <button onclick="SetTileTest.CanClearTile();">Can Clear Tile</button>
+        </div>
+    </div>
+
+    <hr />
+
+    <button onclick="GalSearchTest.ClearUTLog();">Clear</button>
+</div>
+
+<hr/>
+
+<div class="header"><span>UT Result</span><span id='UTTime'></span><span id="UTResult"></span></div>
+<div id='UTLog'></div>
+</div>
+</div>
+<div id="replarea" class='columnRight'>
+<div class="header">Replication</div>
+<select class="columnRight" id="repltype" name="Plugins" multiple>
+    <option value="peopleAggregator" selected>Account and Contact Aggregation</option>
+    <option value="catalog" selected>Calendar Aggregation</option>
+    <option value="catalog" selected>Catalog</option>
+    <option value="config">Dynamic Config</option>
+    <option value="eas" selected>EAS and IMAP Sync</option>
+    <option value="mailChangeHandler">Mail Aggregation</option>
+    <option value="mailNotification">Mail Toast and Tile</option>
+    <option value="peopleTile">People Tile</option>
+    <option value="roamingSettings">Roaming Settings</option>
+    <option value="system">System</option>
+    <option value="binaryObject;profile">User Tiles</option>
+</select>
+<div>
+<button id='startReplicationButton' onclick="startReplication();">Start Replication</button><button id='stopReplicationButton' class="invisible" onclick="stopReplication();">Stop Replication</button>
+<div id='syncstatus'></div>
+<hr/>
+<div id='repllog'></div>
+<br/>
+<hr/>
+</div>
+</body>
+</html>

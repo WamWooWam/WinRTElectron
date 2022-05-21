@@ -37,7 +37,7 @@ export class GeneralSettingsConfiguration implements IGeneralSettingsConfigurati
     appLaunchesRequiredToShowRatingsDialog: number = null;
     appLaunchCount: number = null;
     appFirstLaunchDate: Date = null;
-    animationsEnabled: boolean = null;
+    animationsEnabled: boolean = true;
     alwaysPromptOnPurchase: boolean = null;
     accessMediaHangTimeoutSec: number = null;
     collectionBuildingProgressBatchSize: number = null;

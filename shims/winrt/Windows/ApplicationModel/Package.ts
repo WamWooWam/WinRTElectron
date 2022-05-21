@@ -32,7 +32,9 @@ export class Package {
         let manifestDocument = new DOMParser().parseFromString(content, 'application/xml');
         let identityElement = manifestDocument.querySelector("Identity");
 
-        let version = identityElement.getAttribute("Version").split('.').map(s => parseInt(s));
+        let version = identityElement.getAttribute("Version")
+                                     .split('.')
+                                     .map(s => parseInt(s));
 
         this.id.name = identityElement.getAttribute("Name");
         this.id.architecture = ProcessorArchitecture[identityElement.getAttribute("ProcessorArchitecture")]

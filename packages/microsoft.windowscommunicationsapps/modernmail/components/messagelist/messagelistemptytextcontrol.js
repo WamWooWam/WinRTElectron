@@ -1,1 +1,266 @@
-﻿Jx.delayDefine(Mail,["EmptyTextControl","SearchEmptyTextControl"],function(){"use strict";function u(n){var r="";switch(n.getSyncStatus()){case i.failed:r="mailMessageListFailedToSync";break;case i.completed:r=t[n.getSyncWindow()];break;case i.offline:r="mailMessageListOfflineStatusText"}return r?Jx.res.getString(r):""}function e(n){return n.getSyncStatus()===i.completed&&f.indexOf(n.getSyncWindow())!==-1?Jx.res.getString("mailMessageListGetOlderMessages"):""}function o(n){return function(t){Mail.AppSettings.openAccountUI(n);t.preventDefault()}}var r=Microsoft.WindowsLive.Platform,n=r.SyncWindowSize,i=Mail.ViewSyncMonitor.SyncStatus,t,f;Mail.EmptyTextControl=function(n,t,i){this._host=n;this._syncMonitor=t;this._lastSyncStatus=null;this._view=i;this._linkHook=null;this._disposer=new Mail.Disposer(new Mail.EventHook(this._syncMonitor,"syncWindowChanged",this._updateEmptyText,this))};Mail.EmptyTextControl.create=function(n,t,i){return i.type===r.MailViewType.allPinnedPeople?new Mail.AllPinnedEmptyTextControl(n,t,i):new Mail.EmptyTextControl(n,t,i)};t=[];t[n.all]="mailMessageListNoMessagesAnyTime";t[n.oneDay]="mailMessageListNoMessagesOneDay";t[n.threeDays]="mailMessageListNoMessagesThreeDays";t[n.oneWeek]="mailMessageListNoMessagesOneWeek";t[n.twoWeeks]="mailMessageListNoMessagesTwoWeeks";t[n.oneMonth]="mailMessageListNoMessagesOneMonth";t[n.threeMonths]="mailMessageListNoMessagesThreeMonths";t[n.sixMonths]="mailMessageListNoMessagesSixMonths";f=[n.oneDay,n.threeDays,n.oneWeek,n.twoWeeks,n.oneMonth,n.threeMonths,n.sixMonths];Mail.EmptyTextControl.prototype.setVisibility=function(n){if(n){var t=this._syncMonitor.getSyncStatus();t!==this._lastSyncStatus&&(this._lastSyncStatus=t,this._updateEmptyText())}Jx.setClass(this._host,"hidden",!n)};Mail.EmptyTextControl.prototype.dispose=function(){this._disposer.dispose();this._disposer=null;this._linkHook=null};Mail.EmptyTextControl.prototype._updateEmptyText=function(){var n,t,i,r;this._disposer.disposeNow(this._linkHook);this._linkHook=null;n=e(this._syncMonitor);t=n?"<a class='mailMessageListSettingsLink' href='' tabIndex='0' role='button'>"+Jx.escapeHtml(n)+"<\/a>":"";this._host.innerHTML="<div><span>"+Jx.escapeHtml(u(this._syncMonitor))+"<\/span>&nbsp;"+t+"<\/div>";n&&(i=this._host.querySelector("a"),r=this._view.account.platformObject,this._linkHook=this._disposer.add(new Mail.EventHook(i,"click",o(r),this)))};Mail.AllPinnedEmptyTextControl=function(n,t,i){this._host=n;this._syncMonitor=t;this._textElement=this._linkElement=null;this._collection=null;this._account=i.account;this._disposer=new Mail.Disposer(new Mail.EventHook(this._syncMonitor,"syncWindowChanged",this._updateEmptyText,this));this._linkHandler=null};Mail.AllPinnedEmptyTextControl.prototype.dispose=function(){Jx.dispose(this._disposer)};Mail.AllPinnedEmptyTextControl.prototype.setVisibility=function(n,t){var u=this._host,f,o,s,e;n||t?(u.classList.remove("hidden"),f=this._textElement,o=this._linkElement,f||(u.innerHTML="<span class='text'><\/span> <a class='mailMessageListSettingsLink' href='' tabIndex='0' role='button'><\/a>",f=this._textElement=u.querySelector(".text"),o=this._linkElement=u.querySelector("a")),Jx.setClass(o,"hidden",t),t?f.innerText=Jx.res.getString("mailMessageListAllPinnedFirstRun"):(s=this._syncMonitor.getSyncStatus(),s!==i.completed||this._collection||(e=this._collection=this._account.queryViews(r.MailViewScenario.navPane),this._disposer.addMany(e,new Mail.EventHook(e,"collectionchanged",this._onCollectionChange,this)),e.unlock()),this._updateEmptyText())):u.classList.add("hidden")};Mail.AllPinnedEmptyTextControl.prototype._onClick=function(n){Mail.PeopleFlyout.pickPeople(this._account);n.stopPropagation();n.preventDefault()};Mail.AllPinnedEmptyTextControl.prototype._onCollectionChange=function(){this._updateEmptyText()};Mail.AllPinnedEmptyTextControl.prototype._updateEmptyText=function(){var n=this._collection,s=false,i=false,t,h,f;if(n)for(t=0,h=n.count;t<h;++t)if(n.item(t).type===r.MailViewType.person){s=true;break}n&&!s?(this._textElement.innerText=Jx.res.getString("mailMessageListAllPinnedEmpty"),this._linkElement.innerText=Jx.res.getString("mailMessageListAllPinnedEmptyLink"),this._linkHandler=this._disposer.replace(this._linkHandler,new Mail.EventHook(this._linkElement,"click",this._onClick,this)),i=true):(this._textElement.innerText=u(this._syncMonitor),f=e(this._syncMonitor),f&&(this._linkElement.innerText=f,this._linkHandler=this._disposer.replace(this._linkHandler,new Mail.EventHook(this._linkElement,"click",o(this._account.platformObject),this)),i=true));Jx.setClass(this._linkElement,"hidden",!i)};Mail.SearchEmptyTextControl=function(n,t,i){this._host=n;this._scopeSwitcher=i;this._account=t.account;this._hook=null};Mail.SearchEmptyTextControl.prototype.setVisibility=function(n){n&&this._activateUI();Jx.setClass(this._host,"hidden",!n)};Mail.SearchEmptyTextControl.prototype.dispose=function(){Jx.dispose(this._hook)};Mail.SearchEmptyTextControl.prototype._getUpsellUI=function(){return this._scopeSwitcher.canUpsell()?"<div><a class='mailMessageListSettingsLink' href='' tabIndex='0'>"+this._scopeSwitcher.upsell.description+"<\/a><\/div>":""};Mail.SearchEmptyTextControl.prototype._activateUI=function(){var n,t;this._activateUI=Jx.fnEmpty;n=this._getUpsellUI();this._host.innerHTML="<div>"+Jx.escapeHtml(Jx.res.getString("mailMessageListEmptySearch"))+"<\/div>"+n;n&&(t=this._host.querySelector("a"),this._hook=new Mail.EventHook(t,"click",this._onInvoke,this))};Mail.SearchEmptyTextControl.prototype._onInvoke=function(n){this._scopeSwitcher.rescopeToUpsell();n.preventDefault()}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global Mail,Jx,Debug,Microsoft*/
+
+Jx.delayDefine(Mail, ["EmptyTextControl", "SearchEmptyTextControl"], function () {
+    "use strict";
+
+    var Plat = Microsoft.WindowsLive.Platform,
+        SyncWindowSize = Plat.SyncWindowSize,
+        SyncStatus = Mail.ViewSyncMonitor.SyncStatus;
+
+    ///
+    /// EmptyTextControl
+    ///
+    Mail.EmptyTextControl = function (host, syncMonitor, view) {
+        /// <summary> A control to show a custom UI when the collection is empty</summary>
+        Debug.assert(Jx.isHTMLElement(host));
+        Debug.assert(Jx.isInstanceOf(syncMonitor, Mail.FolderSyncMonitor));
+        Debug.assert(Jx.isInstanceOf(view, Mail.UIDataModel.MailView));
+        this._host = host;
+        this._syncMonitor = syncMonitor;
+        this._lastSyncStatus = null;
+        this._view = view;
+        this._linkHook = null;
+        this._disposer = new Mail.Disposer(new Mail.EventHook(this._syncMonitor, "syncWindowChanged", this._updateEmptyText, this));
+    };
+
+    Mail.EmptyTextControl.create = function (host, syncMonitor, view) {
+        if (view.type === Plat.MailViewType.allPinnedPeople) {
+            return new Mail.AllPinnedEmptyTextControl(host, syncMonitor, view);
+        } else {
+            return new Mail.EmptyTextControl(host, syncMonitor, view);
+        }
+    };
+
+    var noMessagesResources = [];
+    noMessagesResources[SyncWindowSize.all] = "mailMessageListNoMessagesAnyTime";
+    noMessagesResources[SyncWindowSize.oneDay] = "mailMessageListNoMessagesOneDay";
+    noMessagesResources[SyncWindowSize.threeDays] = "mailMessageListNoMessagesThreeDays";
+    noMessagesResources[SyncWindowSize.oneWeek] = "mailMessageListNoMessagesOneWeek";
+    noMessagesResources[SyncWindowSize.twoWeeks] = "mailMessageListNoMessagesTwoWeeks";
+    noMessagesResources[SyncWindowSize.oneMonth] = "mailMessageListNoMessagesOneMonth";
+    noMessagesResources[SyncWindowSize.threeMonths] = "mailMessageListNoMessagesThreeMonths";
+    noMessagesResources[SyncWindowSize.sixMonths] = "mailMessageListNoMessagesSixMonths";
+
+    function getEmptyText(syncMonitor) {
+        var resource = "";
+        switch (syncMonitor.getSyncStatus()) {
+        case SyncStatus.failed:
+            resource = "mailMessageListFailedToSync";
+            break;
+        case SyncStatus.completed:
+            resource = noMessagesResources[syncMonitor.getSyncWindow()];
+            break;
+        case SyncStatus.offline:
+            resource = "mailMessageListOfflineStatusText";
+            break;
+        }
+        var emptyText = resource ? Jx.res.getString(resource) : "";
+        return emptyText;
+    }
+
+    var showSettingsSyncWindows = [
+        SyncWindowSize.oneDay, SyncWindowSize.threeDays, SyncWindowSize.oneWeek,
+        SyncWindowSize.twoWeeks, SyncWindowSize.oneMonth, SyncWindowSize.threeMonths, SyncWindowSize.sixMonths
+    ];
+
+    function getSettingsText(syncMonitor) {
+        if ((syncMonitor.getSyncStatus() === SyncStatus.completed) &&
+            (showSettingsSyncWindows.indexOf(syncMonitor.getSyncWindow()) !== -1)) {
+            return Jx.res.getString("mailMessageListGetOlderMessages");
+        }
+        return "";
+    }
+
+    function createOpenSettingsHandler(account) {
+        Debug.assert(Jx.isInstanceOf(account, Microsoft.WindowsLive.Platform.Account));
+        return function (ev) {
+            Mail.AppSettings.openAccountUI(account);
+            ev.preventDefault(); // prevent navigation
+        };
+    }
+
+    Mail.EmptyTextControl.prototype.setVisibility = function (visible, showProgress) {
+        Debug.assert(Jx.isBoolean(visible));
+        if (visible) {
+            var syncStatus = this._syncMonitor.getSyncStatus();
+            if (syncStatus !== this._lastSyncStatus) {
+                this._lastSyncStatus = syncStatus;
+                this._updateEmptyText();
+            }
+        }
+        Jx.setClass(this._host, "hidden", !visible);
+    };
+
+    Mail.EmptyTextControl.prototype.dispose = function () {
+        this._disposer.dispose();
+        this._disposer = null;
+        this._linkHook = null;
+    };
+
+    Mail.EmptyTextControl.prototype._updateEmptyText = function () {
+        this._disposer.disposeNow(this._linkHook);
+        this._linkHook = null;
+
+        var settingsText = getSettingsText(this._syncMonitor),
+            settingsLink = settingsText ? "<a class='mailMessageListSettingsLink' href='' tabIndex='0' role='button'>" + Jx.escapeHtml(settingsText) + "</a>" : "";
+        this._host.innerHTML = "<div>" +
+            "<span>" + Jx.escapeHtml(getEmptyText(this._syncMonitor)) + "</span>&nbsp;" +
+                 settingsLink +
+            "</div>";
+        if (settingsText) {
+            var linkElement = this._host.querySelector("a"),
+                account = this._view.account.platformObject;
+            this._linkHook = this._disposer.add(new Mail.EventHook(linkElement, "click", createOpenSettingsHandler(account), this));
+        }
+    };
+
+    ///
+    /// AllPinnedEmptyTextControl
+    ///
+    Mail.AllPinnedEmptyTextControl = function (host, syncMonitor, view) {
+        Debug.assert(Jx.isHTMLElement(host));
+        Debug.assert(Jx.isInstanceOf(syncMonitor, Mail.AllPinnedSyncMonitor));
+        Debug.assert(Jx.isInstanceOf(view, Mail.UIDataModel.MailView));
+        this._host = host;
+        this._syncMonitor = syncMonitor;
+        this._textElement = this._linkElement = null;
+        this._collection = null;
+        this._account = view.account;
+        this._disposer = new Mail.Disposer(new Mail.EventHook(this._syncMonitor, "syncWindowChanged", this._updateEmptyText, this));
+        this._linkHandler = null;
+    };
+
+    Mail.AllPinnedEmptyTextControl.prototype.dispose = function () {
+        Jx.dispose(this._disposer);
+    };
+
+    Mail.AllPinnedEmptyTextControl.prototype.setVisibility = function (showEmpty, showProgress) {
+        var host = this._host;
+        if (showEmpty || showProgress) {
+            host.classList.remove("hidden");
+
+            var textElement = this._textElement,
+                linkElement = this._linkElement;
+
+            if (!textElement) {
+                host.innerHTML = "<span class='text'></span> <a class='mailMessageListSettingsLink' href='' tabIndex='0' role='button'></a>";
+                textElement = this._textElement = host.querySelector(".text");
+                linkElement = this._linkElement = host.querySelector("a");
+            }
+
+            Jx.setClass(linkElement, "hidden", showProgress); // Hide the linkElement to prevent it from receiving tab focus
+
+            if (showProgress) {
+                textElement.innerText = Jx.res.getString("mailMessageListAllPinnedFirstRun");
+            } else {
+                var syncStatus = this._syncMonitor.getSyncStatus();
+                if (syncStatus === SyncStatus.completed && !this._collection) {
+                    var collection = this._collection = this._account.queryViews(Plat.MailViewScenario.navPane);
+                    this._disposer.addMany(
+                        collection,
+                        new Mail.EventHook(collection, "collectionchanged", this._onCollectionChange, this)
+                    );
+                    collection.unlock();
+                }
+                this._updateEmptyText();
+            }
+        } else {
+            host.classList.add("hidden");
+        }
+    };
+
+    Mail.AllPinnedEmptyTextControl.prototype._onClick = function (ev) {
+        Mail.PeopleFlyout.pickPeople(this._account);
+        ev.stopPropagation();
+        ev.preventDefault();
+    };
+
+    Mail.AllPinnedEmptyTextControl.prototype._onCollectionChange = function () {
+        this._updateEmptyText();
+    };
+
+    Mail.AllPinnedEmptyTextControl.prototype._updateEmptyText = function () {
+        var collection = this._collection,
+            anyPinnedPeople = false,
+            showLink = false;
+
+        if (collection) {
+            for (var i = 0, len = collection.count; i < len; ++i) {
+                if (collection.item(i).type === Plat.MailViewType.person) {
+                    anyPinnedPeople = true;
+                    break;
+                }
+            }
+        }
+
+        if (collection && !anyPinnedPeople) {
+            this._textElement.innerText = Jx.res.getString("mailMessageListAllPinnedEmpty");
+            this._linkElement.innerText = Jx.res.getString("mailMessageListAllPinnedEmptyLink");
+            this._linkHandler = this._disposer.replace(this._linkHandler,
+                new Mail.EventHook(this._linkElement, "click", this._onClick, this));
+            showLink = true;
+        } else {
+            this._textElement.innerText = getEmptyText(this._syncMonitor);
+            var settingsText = getSettingsText(this._syncMonitor);
+            if (settingsText) {
+                this._linkElement.innerText = settingsText;
+                this._linkHandler = this._disposer.replace(this._linkHandler,
+                    new Mail.EventHook(this._linkElement, "click", createOpenSettingsHandler(this._account.platformObject), this));
+                showLink = true;
+            }
+        }
+        Jx.setClass(this._linkElement, "hidden", !showLink);
+    };
+
+    ///
+    /// SearchEmptyTextControl
+    ///
+    Mail.SearchEmptyTextControl = function (host, selection, scopeSwitcher) {
+        /// <summary> A control to show a custom UI when the search collection is empty</summary>
+        Debug.assert(Jx.isHTMLElement(host));
+        Debug.assert(Jx.isInstanceOf(selection, Mail.Selection));
+        Debug.assert(Jx.isInstanceOf(scopeSwitcher, Mail.SearchScopeSwitcher));
+        this._host = host;
+        this._scopeSwitcher = scopeSwitcher;
+        this._account = selection.account;
+        this._hook = null;
+    };
+
+    Mail.SearchEmptyTextControl.prototype.setVisibility = function (visible, showProgress) {
+        Debug.assert(Jx.isBoolean(visible));
+        if (visible) {
+            this._activateUI();
+        }
+        Jx.setClass(this._host, "hidden", !visible);
+    };
+
+    Mail.SearchEmptyTextControl.prototype.dispose = function () {
+        Jx.dispose(this._hook);
+    };
+
+    Mail.SearchEmptyTextControl.prototype._getUpsellUI = function () {
+        if (this._scopeSwitcher.canUpsell()) {
+            return "<div><a class='mailMessageListSettingsLink' href='' tabIndex='0'>" + this._scopeSwitcher.upsell.description + "</a></div>";
+        }
+        return "";
+    };
+
+    Mail.SearchEmptyTextControl.prototype._activateUI = function () {
+        this._activateUI = Jx.fnEmpty;
+        var upsellUI = this._getUpsellUI();
+        this._host.innerHTML = "<div>" + Jx.escapeHtml(Jx.res.getString("mailMessageListEmptySearch")) + "</div>" + upsellUI;
+        if (upsellUI) {
+            var linkElement = this._host.querySelector("a");
+            this._hook = new Mail.EventHook(linkElement, "click", this._onInvoke, this);
+        }
+    };
+
+    Mail.SearchEmptyTextControl.prototype._onInvoke = function (ev) {
+        this._scopeSwitcher.rescopeToUpsell();
+        ev.preventDefault(); // prevent navigation
+    };
+});

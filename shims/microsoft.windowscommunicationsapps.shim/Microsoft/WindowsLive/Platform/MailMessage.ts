@@ -30,20 +30,25 @@ import { Enumerable } from "winrt/Windows/Foundation/Interop/Enumerable";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 import { IRandomAccessStream } from "winrt/Windows/Storage/Streams/IRandomAccessStream";
 import { PlatformObject } from "./PlatformObject";
-import { DefaultAccount } from "./Account";
+// import { DefaultAccount } from "./Account";
 import { Vector } from "winrt/Windows/Foundation/Interop/Vector`1";
 import { Collection } from "./Collection";
 import { MailBody } from "./MailBody";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.MailMessage')
 export class MailMessage extends PlatformObject implements IMailMessage, IRightsManagementLicense {
-    constructor(view: IMailView) {
+
+    private _body: IMailBody;
+
+    constructor(accountId: string) {
         super("MailMessage", true, true);
-        this.accountId = DefaultAccount.objectId;
+        this.instanceNumber = 1;
+        this.accountId = accountId;
         this.toRecipients = new Vector();
         this.ccRecipients = new Vector();
         this.bccRecipients = new Vector();
         this.replyToRecipients = new Vector();
+        this.displayViewIdString = "balls";
     }
 
     to: string = "";
@@ -145,7 +150,7 @@ export class MailMessage extends PlatformObject implements IMailMessage, IRights
     }
     getBody(): IMailBody {
         // throw new Error('MailMessage#getBody not implemented')
-        return new MailBody();
+        return this._body;
     }
     getBody_ByType(eType: MailBodyType): IMailBody {
         throw new Error('MailMessage#getBody_ByType not implemented')
@@ -154,7 +159,8 @@ export class MailMessage extends PlatformObject implements IMailMessage, IRights
         throw new Error('MailMessage#getJunkBody not implemented')
     }
     createBody(): IMailBody {
-        throw new Error('MailMessage#createBody not implemented')
+        // throw new Error('MailMessage#createBody not implemented')
+        return this._body = new MailBody();
     }
     commitSanitizedBody(): void {
         console.warn('MailMessage#commitSanitizedBody not implemented')

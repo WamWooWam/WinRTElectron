@@ -1,683 +1,1210 @@
-﻿Jx.delayGroup("MailCompose", function () {
-    function t(n) {
-        var t = Compose.platform.accountManager;
-        return t.loadAccount(n)
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Jx, Compose, Debug, Mail, Microsoft, ModernCanvas, Windows, WinJS, setImmediate*/
+
+Jx.delayGroup("MailCompose", function () {
+
+    function _getAccount(accountId) {
+        /// <param name="accountId" type="String"></param>
+        var accountManager = Compose.platform.accountManager;
+        return accountManager.loadAccount(accountId);
     }
-    Compose.BodyComponent = function () {
+
+    Compose.BodyComponent = /*@constructor*/function () {
         Compose.Component.call(this);
+
         this._bindings = null;
-        this._canvas = null;
-        this._canvasControl = null;
-        this._createCanvasPromise = null;
-        this._irmQuotedBody = null;
-        this._dirtyTracker = null;
-        this._lastAccountId = null
+        this._canvas = /*@static_cast(HTMLElement)*/null;
+        this._canvasControl = /*@static_cast(ModernCanvas.ModernCanvas)*/null;
+        this._createCanvasPromise = /*@static_cast(WinJS.Promise)*/null;
+        this._irmQuotedBody = /*@static_cast(ModernCanvas.Plugins.IrmQuotedBody)*/null;
+        this._dirtyTracker =  /*@static_cast(ModernCanvas.Plugins.DirtyTracker)*/null;
+
+        this._lastAccountId = /*@static_cast(String)*/null;
     };
     Jx.augment(Compose.BodyComponent, Jx.Events);
     Jx.augment(Compose.BodyComponent, Compose.Component);
+
     Compose.util.defineClassName(Compose.BodyComponent, "Compose.BodyComponent");
-    var n = Compose.BodyComponent.prototype;
-    n.composeGetUI = function (n) {
-        n.html = Compose.Templates.body()
+
+    var proto = Compose.BodyComponent.prototype;
+
+    Debug.Events.define(proto, "font", "contextmenu", "beforecommand", "aftercommand", "selectionchange", "blur", "focus", "keydown", "mspointerdown");
+
+    proto.composeGetUI = function (ui) {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.body();
     };
-    n.composeActivateUI = function () {
-        var n = this;
-        this.getCanvasAsync().done(function (t) {
-            n._bindings = n.getComponentBinder().attach(n, [{
-                on: "changed",
-                fromComponent: Compose.ComponentBinder.messageModelClassName,
-                then: n._onMessageModelChange
-            }, {
-                on: "beforecommand",
-                from: t,
-                then: function (t) {
-                    n.raiseEvent("beforecommand", t)
-                }
-            }, {
-                on: "aftercommand",
-                from: t,
-                then: function (t) {
-                    n.raiseEvent("aftercommand", t)
-                }
-            }, {
-                on: "selectionchange",
-                from: t.getDocument(),
-                then: function (t) {
-                    n.raiseEvent("selectionchange", t)
-                }
-            }, {
-                on: "blur",
-                from: t.getIframeElement(),
-                then: function (t) {
-                    n.raiseEvent("blur", t)
-                }
-            }, {
-                on: "focus",
-                from: t.getIframeElement(),
-                then: function (t) {
-                    n.raiseEvent("focus", t)
-                }
-            }, {
-                on: "keydown",
-                from: t.getDocument(),
-                then: function (t) {
-                    n.raiseEvent("keydown", t)
-                }
-            }, {
-                on: "pointerdown",
-                from: t.getDocument(),
-                then: function (t) {
-                    n.raiseEvent("pointerdown", t)
-                }
-            }])
-        })
+
+    proto.composeActivateUI = function () {
+        var that = this;
+        this.getCanvasAsync()
+            .done(/*@bind(ModernCompose.ComposeWindow)*/function (canvasControl) {
+                /// <param name="canvasControl" type="ModernCanvas.ModernCanvas" />
+                Debug.assert(Jx.isObject(canvasControl));
+                that._bindings = that.getComponentBinder().attach(that, [
+                    { on: "changed", fromComponent: Compose.ComponentBinder.messageModelClassName, then: that._onMessageModelChange },
+                    { on: "beforecommand", from: canvasControl, then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("beforecommand", ev); } },
+                    { on: "aftercommand", from: canvasControl, then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("aftercommand", ev); } },
+                    { on: "selectionchange", from: canvasControl.getDocument(), then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("selectionchange", ev); } },
+                    { on: "blur", from: canvasControl.getIframeElement(), then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("blur", ev); } },
+                    { on: "focus", from: canvasControl.getIframeElement(), then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("focus", ev); } },
+                    { on: "keydown", from: canvasControl.getDocument(), then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("keydown", ev); } },
+                    { on: "MSPointerDown", from: canvasControl.getDocument(), then: /*@bind(Compose.BodyComponent)*/function (ev) { that.raiseEvent("mspointerdown", ev); } }
+                ]);
+            });
     };
-    n.composeDeactivateUI = function () {
+
+    proto.composeDeactivateUI = function () {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+
         this.getComponentBinder().detach(this._bindings);
         this._bindings = null;
-        this._canvasControl.deactivate()
+
+        this._canvasControl.deactivate();
     };
-    n.composeUpdateUI = function () {
-        var t = this,
-            n = this.getMailMessageModel();
-        this.getCanvasAsync().done(function (i) {
-            var h, e, u, f;
-            i.reset(true, true);
-            i.setMailMessage(n.getPlatformMessage());
-            t._setMailAccount(n.get("accountId"));
-            var l = n.getBodyContents(),
-                s = true,
-                r = null;
-            if (l.forEach(function (n) {
-                    Jx.isNullOrUndefined(n.content) ? r = n.signatureLocation : (i.addContent(n.content, n.format, n.location), (n.format !== ModernCanvas.ContentFormat.text || n.content !== "") && (s = false))
-                }), t._irmQuotedBody.setContent(null), h = n.get("irmCanEdit"), e = n.get("irmCanExtractContent"), (!h || !e) && (u = Compose.mailMessageFactoryUtil.getSourceMessage(n.getPlatformMessage()), Boolean(u))) {
-                var a = Mail.Account.load(u.accountId, Compose.platform),
-                    v = Mail.getScrubbedDocument(Compose.platform, new Mail.UIDataModel.MailMessage(u, a)),
-                    o = ModernCanvas.Mail.convertDocumentToDocumentFragment(v),
-                    y = Compose.mailMessageFactoryUtil.prepareReplyInfoFromOriginalMessage(u),
-                    c = document.createElement("div");
-                try {
-                    c.innerHTML = window.toStaticHTML(y);
-                    o.insertBefore(c, o.firstChild)
-                } catch (p) {
-                    Jx.log.exception("toStaticHTML threw", p)
+
+    proto.composeUpdateUI = function () {
+        Debug.assert(Jx.isObject(this._createCanvasPromise), "Expected canvas control to be activating");
+        var that = this,
+            messageModel = this.getMailMessageModel();
+
+        this.getCanvasAsync()
+            .done(/*@bind(ModernCompose.ComposeWindow)*/function (canvasControl) {
+                /// <param name="canvasControl" type="ModernCanvas.ModernCanvas" />
+                canvasControl.reset(true, true);
+
+                canvasControl.setMailMessage(messageModel.getPlatformMessage());
+                that._setMailAccount(messageModel.get("accountId"));
+
+                // Add contents to canvas
+                var bodyContents = messageModel.getBodyContents(),
+                    bodyIsEmpty = true,
+                    signatureLocation = /*@static_cast(ModernCanvas.SignatureLocation)*/null;
+                bodyContents.forEach(function (content) {
+                    /// <param name="content" type="Compose.BodyContent"></param>
+                    if (!Jx.isNullOrUndefined(content.content)) {
+                        canvasControl.addContent(content.content, content.format, content.location);
+
+                        // Check for the empty body we manually set for a new message
+                        if (content.format !== ModernCanvas.ContentFormat.text || content.content !== "") {
+                            bodyIsEmpty = false;
+                        }
+                    } else {
+                        // Signature can be added via the signature property on the mailMessageModel,
+                        // or in certain cases must be added through the body. This handles the latter.
+                        Debug.assert(Jx.isNonEmptyString(content.signatureLocation));
+                        Debug.assert(signatureLocation === null, "Signature location was set twice.");
+                        signatureLocation = content.signatureLocation;
+                    }
+                });
+
+                Debug.assert(!Jx.isNullOrUndefined(that._irmQuotedBody));
+                that._irmQuotedBody.setContent(null);
+                var canEdit = messageModel.get("irmCanEdit"),
+                    canExtractContent = messageModel.get("irmCanExtractContent");
+
+                if (!canEdit || !canExtractContent) {
+                    var quotedMessage = Compose.mailMessageFactoryUtil.getSourceMessage(messageModel.getPlatformMessage());
+                    if (Boolean(quotedMessage)) {
+                        var account = Mail.Account.load(quotedMessage.accountId, Compose.platform),
+                            irmDocument = Mail.getScrubbedDocument(Compose.platform, new Mail.UIDataModel.MailMessage(quotedMessage, account)),
+                            documentFragment = ModernCanvas.Mail.convertDocumentToDocumentFragment(irmDocument);
+
+                        // The reply header goes in the IRM quoted body.
+                        var header = Compose.mailMessageFactoryUtil.prepareReplyInfoFromOriginalMessage(quotedMessage),
+                            headerElement = document.createElement("div");
+
+                        try {
+                            headerElement.innerHTML = window.toStaticHTML(header);
+                            documentFragment.insertBefore(headerElement, documentFragment.firstChild);
+                        } catch (ex) {
+                            Jx.log.exception("toStaticHTML threw", ex);
+                        }
+
+                        that._irmQuotedBody.setContent(documentFragment);
+                    }
                 }
-                t._irmQuotedBody.setContent(o)
-            }
-            t._irmQuotedBody.disableCopy = !e;
-            Jx.isNullOrUndefined(r) && (r = n.getSignatureLocation());
-            Compose.log("activateCanvas", Compose.LogEvent.start);
-            i.activate(r);
-            Compose.log("activateCanvas", Compose.LogEvent.stop);
-            f = n.getInitAction();
-            f === Compose.ComposeAction.forward || f === Compose.ComposeAction.createNew && s ? setImmediate(i.showCueText.bind(i)) : f === Compose.ComposeAction.openDraft && Mail.guiState.isOnePane && document.activeElement === i.getIframeElement() && i.setSelection(null)
-        })
+
+                that._irmQuotedBody.disableCopy = !canExtractContent;
+
+                if (Jx.isNullOrUndefined(signatureLocation)) {
+                    signatureLocation = messageModel.getSignatureLocation();
+                }
+                Compose.log("activateCanvas", Compose.LogEvent.start);
+                canvasControl.activate(signatureLocation);
+                Compose.log("activateCanvas", Compose.LogEvent.stop);
+
+                // Only set the cue text on the canvas control when we are not going to set focus on it
+                var action = messageModel.getInitAction();
+                if ((action === Compose.ComposeAction.forward) ||
+                    (action === Compose.ComposeAction.createNew && bodyIsEmpty)) {
+                    // If we put a signature in the body, it will asynchronously remove the cue text; put it back when it's done
+                    setImmediate(canvasControl.showCueText.bind(canvasControl));
+                } else if (action === Compose.ComposeAction.openDraft && Mail.guiState.isOnePane &&
+                          document.activeElement === canvasControl.getIframeElement()) {
+                    // If we are in one pane mode and opening a draft, it's possible that the
+                    // selection is not correct in canvas. This happens because sometimes the
+                    // addContent happens after the focus event for canvas, causing the cursor
+                    // to appeaer in the previous selection range regardless of if it makes sense
+                    canvasControl.setSelection(/*selectionRange*/null);
+                }
+            });
     };
-    n.prepareForAnimation = function () {
+
+    proto.prepareForAnimation = function () {
+        /// <summary>Suspend canvas events during an animation.</summary>
+        Debug.assert(Jx.isObject(this._createCanvasPromise), "Expected canvas control to be activating");
         Compose.log("body.prepareForAnimation", Compose.LogEvent.start);
-        this.getCanvasAsync().done(function (n) {
-            var t = n.components.autoResize;
-            t.suspendEvents();
-            Compose.log("body.prepareForAnimation", Compose.LogEvent.stop)
-        })
+        this.getCanvasAsync()
+            .done(function (canvasControl) {
+                /// <param name="canvasControl" type="ModernCanvas.ModernCanvas" />
+                var autoResize = canvasControl.components.autoResize;
+                Debug.assert(autoResize);
+                autoResize.suspendEvents();
+                Compose.log("body.prepareForAnimation", Compose.LogEvent.stop);
+            });
     };
-    n.restoreFromAnimation = function () {
+
+    proto.restoreFromAnimation = function () {
+        /// <summary>Resume canvas events after an animation.</summary>
+        Debug.assert(Jx.isObject(this._createCanvasPromise), "Expected canvas control to be activating");
         Compose.log("body.restoreFromAnimation", Compose.LogEvent.start);
-        this.getCanvasAsync().done(function (n) {
-            var t = n.components.autoResize;
-            t.resumeEvents();
-            Compose.log("body.restoreFromAnimation", Compose.LogEvent.stop)
-        })
+        this.getCanvasAsync()
+            .done(function (canvasControl) {
+                /// <param name="canvasControl" type="ModernCanvas.ModernCanvas" />
+                var autoResize = canvasControl.components.autoResize;
+                Debug.assert(autoResize);
+                autoResize.resumeEvents();
+                Compose.log("body.restoreFromAnimation", Compose.LogEvent.stop);
+            });
     };
-    n.clear = function () {
-        this._canvasControl && (this._canvasControl.getDocument().getSelection().removeAllRanges(), this._canvasControl.clearContent())
+
+
+
+    proto.clear = function () {
+        if (this._canvasControl) {
+            this._canvasControl.getDocument().getSelection().removeAllRanges();
+            this._canvasControl.clearContent();
+        }
     };
-    n.setIsAddedToDOM = function (n) {
-        Compose.Component.prototype.setIsAddedToDOM.call(this, n);
-        n || (this._canvasControl.dispose(), this._canvasControl = null, this._createCanvasPromise = null)
+
+    proto.setIsAddedToDOM = function (isAddedToDOM) {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        Compose.Component.prototype.setIsAddedToDOM.call(this, isAddedToDOM);
+
+        if (!isAddedToDOM) {
+            // Tell the canvas to shut down
+            this._canvasControl.dispose();
+            this._canvasControl = null;
+            this._createCanvasPromise = null;
+        }
     };
-    n.updateModel = function (n) {
-        var i, t, u, f;
-        i = this._canvasControl;
-        t = this.getMailMessageModel();
-        n === "send" && !t.get("irmCanExtractContent") && Boolean(t.get("irmCanEdit")) && (u = Compose.mailMessageFactoryUtil.getSourceMessage(t.getPlatformMessage()), Boolean(u) && (f = Compose.mailMessageFactoryUtil.prepareReplyInfoFromOriginalMessage(u), t.prependBodyContents([{
-            content: f,
-            format: ModernCanvas.ContentFormat.htmlString,
-            location: ModernCanvas.ContentLocation.end
-        }]), this._dirtyTracker.pause(), i.addContent(f, ModernCanvas.ContentFormat.htmlString, ModernCanvas.ContentLocation.end), this._dirtyTracker.resume()));
-        n !== "save" && i.finalizeMailMessage();
-        var r = ModernCanvas.ContentFormat,
-            o = n === "send" ? ModernCanvas.ContentDestination.external : ModernCanvas.ContentDestination.internal,
-            e = i.getContent([r.htmlString, r.text], o);
-        return t.set({
-            htmlBody: e[r.htmlString],
-            textBody: e[r.text],
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+
+        var canvasControl = this._canvasControl,
+            messageModel = this.getMailMessageModel();
+        Debug.assert(Jx.isObject(messageModel));
+
+        if (action === "send" && !messageModel.get("irmCanExtractContent") && Boolean(messageModel.get("irmCanEdit"))) {
+            // For messages with copy disabled, the reply header is placed in the uneditable region,
+            //  but we need to place it into the body of the message before we send
+            var quotedMessage = Compose.mailMessageFactoryUtil.getSourceMessage(messageModel.getPlatformMessage());
+            if (Boolean(quotedMessage)) {
+                var content = Compose.mailMessageFactoryUtil.prepareReplyInfoFromOriginalMessage(quotedMessage);
+                messageModel.prependBodyContents([{
+                    content: content,
+                    format: ModernCanvas.ContentFormat.htmlString,
+                    location: ModernCanvas.ContentLocation.end
+                }]);
+
+                // We need to pause the dirty tracker so that it won't reset when we add content
+                this._dirtyTracker.pause();
+                canvasControl.addContent(content, ModernCanvas.ContentFormat.htmlString, ModernCanvas.ContentLocation.end);
+                this._dirtyTracker.resume();
+            }
+        }
+
+        if (action !== "save") {
+            // Save can happen any time during compose, so we don't want to finalize the message during a save.
+            canvasControl.finalizeMailMessage();
+        }
+
+        var ContentFormat = ModernCanvas.ContentFormat,
+            contentDestination = (action === "send") ? ModernCanvas.ContentDestination.external : ModernCanvas.ContentDestination.internal,
+            canvasContent = canvasControl.getContent([ContentFormat.htmlString, ContentFormat.text], contentDestination);
+        messageModel.set({
+            htmlBody: canvasContent[ContentFormat.htmlString],
+            textBody: canvasContent[ContentFormat.text],
             sanitizedVersion: Microsoft.WindowsLive.Platform.SanitizedVersion.locallyCreatedMessage
-        }), Compose.Component.prototype.updateModel.call(this, n)
+        });
+
+        return Compose.Component.prototype.updateModel.call(this, action);
     };
-    n.composeValidate = function () {
-        return Jx.isObject(this._canvasControl) && this._canvasControl.isContentReady()
+
+    proto.composeValidate = function () {
+        // Always validates, even for save
+        return Jx.isObject(this._canvasControl) && this._canvasControl.isContentReady();
     };
-    n.dispatchEvent = function (n, t) {
-        var i = this.getSelectionRange();
-        i && this._canvasControl.replaceSelection(i);
-        Jx.raiseEvent(this._canvasControl, "command", {
-            command: n,
-            value: t
-        })
+
+    proto.dispatchEvent = function (commandName, value) {
+        /// <summary>Fires a command event at the canvas element.</summary>
+        /// <param name="commandName" type="String">The name of the command to fire.</param>
+        /// <param name="value" type="String" optional="true">The value to send with the command.</param>
+        // If executing a command when the appbar is light-dismiss
+        Debug.assert(Jx.isNonEmptyString(commandName));
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+
+        // First safely normalize the selection and focus together. This allows the commands to execute perfectly.
+        var range = this.getSelectionRange();
+        if (range) {
+            this._canvasControl.replaceSelection(range);
+        }
+        Jx.raiseEvent(this._canvasControl, "command", { command: commandName, value: value });
     };
-    n.getCanvasControl = function () {
-        return this._canvasControl
+
+    proto.getCanvasControl = function () {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        return this._canvasControl;
     };
-    n.getCanvasDiv = function () {
-        return this._canvas = this._canvas || this.getComposeRootElement().querySelector(".composeCanvas"), this._canvas
+
+    proto.getCanvasDiv = function () {
+        this._canvas = this._canvas || this.getComposeRootElement().querySelector(".composeCanvas");
+        return this._canvas;
     };
-    n.getSelectionRange = function () {
-        return this._canvasControl.getSelectionRange()
+
+    proto.getSelectionRange = function () {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        return this._canvasControl.getSelectionRange();
     };
-    n.getSelectionAnchorElement = function () {
-        var n = this._canvasControl.getSelectionRange();
-        return n ? this._canvasControl.getAnchorElement(n) : null
+
+    proto.getSelectionAnchorElement = function () {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        var selectionRange = this._canvasControl.getSelectionRange();
+        if (selectionRange) {
+            return this._canvasControl.getAnchorElement(selectionRange);
+        }
+        return null;
     };
-    n.getUsageData = function () {
-        return this._canvasControl.getUsageData()
+
+    proto.getUsageData = function () {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        return this._canvasControl.getUsageData();
     };
-    n.focus = function () {
-        this.getCanvasAsync().done(function (n) {
-            n.focus()
-        })
+
+    proto.focus = function () {
+        Debug.assert(Jx.isObject(this._createCanvasPromise), "Expected canvas control to be activating");
+        this.getCanvasAsync()
+            .done(/*@bind(ModernCompose.ComposeWindow)*/function (canvasControl) {
+                /// <param name="canvasControl" type="ModernCanvas.ModernCanvas" />
+                canvasControl.focus();
+            });
     };
-    n.getSelectedLink = function () {
-        return this._canvasControl.getParentElementForSelection("a")
+
+    proto.getSelectedLink = function () {
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        return this._canvasControl.getParentElementForSelection("a");
     };
-    n.updateEnabledStates = function (n) {
-        this._canvasControl.components.commandManager.updateEnabledStates(n)
+
+    proto.updateEnabledStates = function (commands) {
+        /// <summary>Updates the enabled states of the given commands.</summary>
+        /// <param name="commands" type="Array">A list of commands to update.</param>
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        this._canvasControl.components.commandManager.updateEnabledStates(commands);
     };
-    n.getCommand = function (n) {
-        return this._canvasControl.components.commandManager.getCommand(n)
+
+    proto.getCommand = function (commandId) {
+        /// <summary>Retrieves the command object that corresponds to the given commandId.</summary>
+        /// <param name="commandId" type="String">The commandId of the command to get.</param>
+        /// <returns type="ModernCanvas.Command">The command object that corresponds to the given commandId.</returns>
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        return this._canvasControl.components.commandManager.getCommand(commandId);
     };
-    n.isDirty = function () {
-        return this._dirtyTracker.isDirty
+
+    proto.isDirty = function () {
+        return this._dirtyTracker.isDirty;
     };
-    n._onMessageModelChange = function () {
-        this._setMailAccount(this.getMailMessageModel().get("accountId"))
+
+    // Private
+
+    proto._onMessageModelChange = function () {
+        this._setMailAccount(this.getMailMessageModel().get("accountId"));
     };
-    n._setMailAccount = function (n) {
-        if (Jx.isNonEmptyString(n)) {
-            if (n !== this._lastAccountId) {
-                var i = t(n);
-                Boolean(i) ? (this._lastAccountId = n, this._canvasControl.setMailAccount(i)) : this._lastAccountId = null
+
+    proto._setMailAccount = function (accountId) {
+        /// <summary>Update the account on this body control</summary>
+        /// <param name="accountId" type="String"></param>
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        if (Jx.isNonEmptyString(accountId)) {
+            if (accountId !== this._lastAccountId) {
+                // Set the new account in canvas control
+                var account = _getAccount(accountId);
+                if (Boolean(account)) {
+                    this._lastAccountId = accountId;
+                    this._canvasControl.setMailAccount(account);
+                } else {
+                    this._lastAccountId = null;
+                }
             }
-        } else this._lastAccountId = null
+        } else {
+            this._lastAccountId = null;
+        }
     };
-    n.getCanvasAsync = function () {
-        var n = this;
-        return Jx.isNullOrUndefined(this._createCanvasPromise) && (this._irmQuotedBody = new ModernCanvas.Plugins.IrmQuotedBody, this._dirtyTracker = new ModernCanvas.Plugins.DirtyTracker, this._createCanvasPromise = ModernCanvas.createCanvasAsync(this.getCanvasDiv(), {
-            className: "mail",
-            delayActivation: true,
-            autoReplaceManager: Mail.Utilities.ComposeHelper.createAutoReplaceManager(),
-            plugins: {
-                indent: new ModernCanvas.Plugins.Indent,
-                irmQuotedBody: this._irmQuotedBody,
-                dirtyTracker: this._dirtyTracker,
-                defaultFont: new ModernCanvas.Plugins.DefaultFont,
-                imageResize: new ModernCanvas.Plugins.ImageResize
-            },
-            contextMenuManager: {
-                getUsageData: function () {
-                    return {}
+
+    proto.getCanvasAsync = function () {
+        var that = this;
+        if (Jx.isNullOrUndefined(this._createCanvasPromise)) {
+            this._irmQuotedBody = new ModernCanvas.Plugins.IrmQuotedBody();
+            this._dirtyTracker = new ModernCanvas.Plugins.DirtyTracker();
+            this._createCanvasPromise = ModernCanvas.createCanvasAsync(this.getCanvasDiv(), {
+                className: "mail",
+                delayActivation: true,
+                autoReplaceManager: Mail.Utilities.ComposeHelper.createAutoReplaceManager(),
+                plugins: {
+                    indent: new ModernCanvas.Plugins.Indent(),
+                    irmQuotedBody: this._irmQuotedBody,
+                    dirtyTracker: this._dirtyTracker,
+                    defaultFont: new ModernCanvas.Plugins.DefaultFont(),
+                    imageResize: new ModernCanvas.Plugins.ImageResize()
                 },
-                onContextMenu: this.raiseEvent.bind(this, "contextmenu")
-            }
-        }).then(function (t) {
-            n._canvasControl = t;
-            t.setCueText(Jx.res.getString("composeCanvasCueText"));
-            var i = n._canvasControl.components.commandManager;
-            return i.setCommand(new ModernCanvas.Command("focusNext", n._focusNext.bind(n), {
-                undoable: false
-            })), i.setCommand(new ModernCanvas.Command("focusPrevious", n._focusPrevious.bind(n), {
-                undoable: false
-            })), i.setCommand(new ModernCanvas.Command("font", function (t) {
-                n.raiseEvent("font", t)
-            }, {
-                undoable: false
-            })), i.setCommand(new ModernCanvas.Command("openLink", n._openLink.bind(n), {
-                undoable: false
-            })), t
-        })), this._createCanvasPromise
-    };
-    n.updateCanvasStylesAsync = function (n) {
-        var t = false;
-        return new WinJS.Promise(function (i) {
-            Jx.log.info("Compose.BodyComponent.updateCanvasStylesAsync: about to set Canvas styles for width " + n);
-            this.getCanvasAsync().done(function (r) {
-                if (!t) {
-                    Jx.log.info("Compose.BodyComponent.updateCanvasStylesAsync: setting Canvas styles for width " + n);
-                    var e = r.getDocument().body,
-                        o = Jx.ApplicationView,
-                        u = o.State,
-                        f = o.getStateFromWidth(n);
-                    Jx.glomManager.getIsChild() ? (Jx.setClass(e, "composeLarge", f === u.large || f === u.full || f === u.wide), Jx.setClass(e, "composeMedium", f === u.more), Jx.setClass(e, "composeSmall", f === u.snap || f === u.minimum)) : (Jx.setClass(e, "composeLarge", f === u.wide), Jx.setClass(e, "composeMedium", f === u.full), Jx.setClass(e, "composeSmall", f === u.snap || f === u.minimum || f === u.more));
-                    i()
+                contextMenuManager: {
+                    getUsageData: function () { return {}; },
+                    onContextMenu: this.raiseEvent.bind(this, "contextmenu")
                 }
             })
+                .then(/*@bind(ModernCompose.ComposeWindow)*/function (canvasControl) {
+                    /// <param name="canvasControl" type="ModernCanvas.ModernCanvas" />
+                    that._canvasControl = canvasControl;
+                    canvasControl.setCueText(Jx.res.getString("composeCanvasCueText"));
+
+                var commandManager = that._canvasControl.components.commandManager;
+                commandManager.setCommand(new ModernCanvas.Command("focusNext", that._focusNext.bind(that), /*@static_cast(__ModernCanvas.Command.Options)*/{ undoable: false }));
+                commandManager.setCommand(new ModernCanvas.Command("focusPrevious", that._focusPrevious.bind(that), /*@static_cast(__ModernCanvas.Command.Options)*/{ undoable: false }));
+                commandManager.setCommand(new ModernCanvas.Command("font", function (ev) { that.raiseEvent("font", ev); }, /*@static_cast(__ModernCanvas.Command.Options)*/{ undoable: false }));
+                commandManager.setCommand(new ModernCanvas.Command("openLink", that._openLink.bind(that),  /*@static_cast(__ModernCanvas.Command.Options)*/{ undoable: false }));
+
+                return canvasControl;
+            });
+        }
+        return this._createCanvasPromise;
+    };
+
+    proto.updateCanvasStylesAsync = function (width) {
+        /// <summary>Updates canvas styles based on the size of the window.</summary>
+        /// <param name="width" type="number">App width</param>
+        /// <returns>Promise that completes when the Canvas has been updated for the new width</returns>
+
+        // We don't actually want the getCanvasAsync() promise to be cancelled, so we wrap it in another promise and handle
+        // canceling manually
+        var canceled = false;
+        return new WinJS.Promise(function (complete) {
+            Jx.log.info("Compose.BodyComponent.updateCanvasStylesAsync: about to set Canvas styles for width " + width);
+            this.getCanvasAsync().done(function (canvasControl) {
+                Debug.assert(Jx.isObject(canvasControl), "Expected canvas control to be finished activating");
+                if (canceled) {
+                    return;
+                }
+
+                Jx.log.info("Compose.BodyComponent.updateCanvasStylesAsync: setting Canvas styles for width " + width);
+                var iframeBodyElement = canvasControl.getDocument().body,
+                    ApplicationView = Jx.ApplicationView,
+                    ViewState = ApplicationView.State,
+                    state = ApplicationView.getStateFromWidth(width);
+                // The canvas is inside an iframe and therefore any media queries within it relate to the size of the iframe 
+                // viewport, not the size of the app's viewport. This means that the iframe doesn't have enough information to 
+                // determine what padding it should have, so we set classes that it can use in CSS selectors.
+                if (Jx.glomManager.getIsChild()) {
+                    Jx.setClass(iframeBodyElement, "composeLarge", state === ViewState.large || state === ViewState.full || state === ViewState.wide);
+                    Jx.setClass(iframeBodyElement, "composeMedium", state === ViewState.more);
+                    Jx.setClass(iframeBodyElement, "composeSmall", state === ViewState.snap || state === ViewState.minimum);
+                } else {
+                    Jx.setClass(iframeBodyElement, "composeLarge", state === ViewState.wide);
+                    Jx.setClass(iframeBodyElement, "composeMedium", state === ViewState.full);
+                    Jx.setClass(iframeBodyElement, "composeSmall", state === ViewState.snap || state === ViewState.minimum || state === ViewState.more);
+                }
+
+                complete();
+            });
         }.bind(this), function () {
-            Jx.log.info("Compose.BodyComponent.updateCanvasStylesAsync: Canvas style update canceled for width " + n);
-            t = true
-        })
+            Jx.log.info("Compose.BodyComponent.updateCanvasStylesAsync: Canvas style update canceled for width " + width);
+            canceled = true;
+        });
     };
-    n._focusNext = function () {
-        var n = this.getComponentCache().getComponent("Compose.Selection"),
-            t;
-        n && n.isActivated() && !n.appBarHidden ? n.focusAppBar() : (t = this.getComponentCache().getComponent("Compose.SendButton"), t.focus())
+
+    proto._focusNext = function () {
+        /// <summary>Moves focus to the next element outside of the body</summary>
+
+        var selection = this.getComponentCache().getComponent("Compose.Selection");
+        if (selection && selection.isActivated() && !selection.appBarHidden) {
+            selection.focusAppBar();
+        } else {
+            var sendButton = this.getComponentCache().getComponent("Compose.SendButton");
+            sendButton.focus();
+        }
     };
-    n._focusPrevious = function () {
-        var n = this.getComponentCache().getComponent("Compose.AttachmentWell"),
-            t;
-        Boolean(n) && n.isActivated() && !n.isHidden() ? n.focus() : (t = this.getComponentCache().getComponent("Compose.Subject"), t.focus())
+
+    proto._focusPrevious = function () {
+        /// <summary>Moves focus to the previous element outside of the body</summary>
+        /// <param name="e" type="__ModernCanvas.CommandManager.CommandEvent" optional="false">The event fired by another component when a command should be executed.</param>
+
+        var attachmentWell = /*@static_cast(Compose.AttachmentWell)*/this.getComponentCache().getComponent("Compose.AttachmentWell");
+        if (Boolean(attachmentWell) && attachmentWell.isActivated() && !attachmentWell.isHidden()) {
+            attachmentWell.focus();
+        } else {
+            var subject = /*@static_cast(Compose.Subject)*/this.getComponentCache().getComponent("Compose.Subject");
+            subject.focus();
+        }        
     };
-    n._openLink = function (n) {
-        var t, i;
-        if (t = this.getSelectedLink() || n.target, Boolean(t) && (i = t.getAttribute("href"), Boolean(i))) try {
-            Windows.System.Launcher.launchUriAsync(new Windows.Foundation.Uri(i)).done()
-        } catch (r) {}
-    }
+
+    proto._openLink = function (e) {
+        /// <summary>Launches the current selected link</summary>
+        /// <param name="e" type="Event" optional="false">The event fired by another component when a command should be executed.</param>
+        Debug.assert(e);
+        Debug.assert(Jx.isObject(this._canvasControl), "Expected canvas control to be finished activating");
+        ///<disable>JS3092</disable>
+        var linkElement = this.getSelectedLink() || e.target;
+        ///<enable>JS3092</enable>
+        if (Boolean(linkElement)) {
+            var hrefValue = linkElement.getAttribute("href");
+            if (Boolean(hrefValue)) {
+                try {
+                    Windows.System.Launcher.launchUriAsync(new Windows.Foundation.Uri(hrefValue)).done();
+                } catch (er) { }
+            }
+        }
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Compose, FromControl, Debug, Mail*/
+
 Jx.delayGroup("MailCompose", function () {
+
     Compose.From = function () {
         Compose.Component.call(this);
+
         this._fromControl = new FromControl.FromControl(Compose.platform.accountManager, Compose.platform.peopleManager);
         this._fromArea = null;
         this._fromControlActivated = false;
         this._initialValue = null;
-        this._updateModelHelper = this._updateModelHelper.bind(this)
+
+        this._updateModelHelper = this._updateModelHelper.bind(this);
     };
     Jx.augment(Compose.From, Compose.Component);
+
     Compose.util.defineClassName(Compose.From, "Compose.From");
-    var n = Compose.From.prototype;
-    n.composeGetUI = function (n) {
-        n.html = Compose.Templates.from({
+
+    var proto = Compose.From.prototype;
+
+    proto.composeGetUI = function (ui) {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.from({
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
             from: Jx.getUI(this._fromControl).html
-        })
+        });
     };
-    n.composeActivateUI = function () {
+
+    proto.composeActivateUI = function () {
         this._fromArea = this.getComposeRootElement().querySelector(".addressbarFromField");
-        this._fromControlActivated || (this._fromControlActivated = true, this._fromControl.activateUI(), this._fromControl.onAccountChanged = this._updateModelHelper)
-    };
-    n.composeDeactivateUI = function () {
-        this._fromArea = null;
-        this._fromControl.onAccountChanged = null
-    };
-    n.composeUpdateUI = function () {
-        this._fromControl.onAccountChanged = null;
-        this._fromControl.refresh() && (this._fromControl.initUI(this._fromArea), Jx.res.processAll(this._fromArea));
-        var n = this.getMailMessageModel();
-        this._initialValue = n.get("fromEmail");
-        this._fromControl.select(n.get("accountId"), this._initialValue);
-        this._fromControl.onAccountChanged = this._updateModelHelper;
-        this._updateModelHelper()
-    };
-    n.updateModel = function (n) {
-        return this._updateModelHelper(), Compose.Component.prototype.updateModel.call(this, n)
-    };
-    n.setDisabled = function (n) {
-        this._fromControl.disabled !== n && (this._fromControl.disabled = n, this.composeUpdateUI())
-    };
-    n.isDirty = function () {
-        return this._fromControl.selectedEmailAddress !== this._initialValue
-    };
-    n.isVisible = function () {
-        var n = Compose.util.getHeaderController(this.getComponentCache());
-        return n.getCurrentState() === Compose.HeaderController.State.editFull
-    };
-    n._updateModelHelper = function (n) {
-        try {
-            n = n || this._fromControl.selectedAccount;
-            this.getMailMessageModel().set({
-                accountId: n.objectId,
-                fromEmail: this._fromControl.selectedEmailAddress
-            })
-        } catch (t) {
-            Jx.fault("from.js", "_updateMessage", t)
+        if (!this._fromControlActivated) {
+            this._fromControlActivated = true;
+            this._fromControl.activateUI();
+            this._fromControl.onAccountChanged = this._updateModelHelper;
         }
     };
-    n.performClick = function () {
-        this._fromControl.click()
+
+    proto.composeDeactivateUI = function () {
+        this._fromArea = null;
+        this._fromControl.onAccountChanged = null;
     };
-    n.getAccount = function () {
-        return this._fromControl.selectedAccount
-    }
+
+    proto.composeUpdateUI = function () {
+        // Rebuild the From control if needed (may have changed from our last initialization)
+        // Avoid re-entrancy by temporarily ignoring account changes
+        this._fromControl.onAccountChanged = null;
+
+        if (this._fromControl.refresh()) {
+            this._fromControl.initUI(this._fromArea);
+            Jx.res.processAll(this._fromArea);
+        }
+
+        var messageModel = this.getMailMessageModel();
+        this._initialValue = messageModel.get("fromEmail");
+        this._fromControl.select(messageModel.get("accountId"), this._initialValue);
+
+        this._fromControl.onAccountChanged = this._updateModelHelper;
+
+        // If the selected account changed, make sure we sync to it.
+        this._updateModelHelper();
+    };
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+
+        this._updateModelHelper();
+
+        return Compose.Component.prototype.updateModel.call(this, action);
+    };
+
+    proto.setDisabled = function (disabled) {
+        /// <param name="disabled" type="boolean" />
+        if (this._fromControl.disabled !== disabled) {
+            this._fromControl.disabled = disabled;
+            this.composeUpdateUI();
+        }
+    };
+
+    proto.isDirty = function () {
+        Debug.assert(Jx.isString(this._initialValue));
+        return this._fromControl.selectedEmailAddress !== this._initialValue;
+    };
+
+    proto.isVisible = function () {
+        var headerController = Compose.util.getHeaderController(this.getComponentCache());
+
+        // Only visible in full edit mode
+        return headerController.getCurrentState() === Compose.HeaderController.State.editFull;
+    };
+
+    // Private
+
+    proto._updateModelHelper = function (account) {
+        /// <summary>
+        /// Set the associated account
+        /// For currently unknown reasons there is sometimes a WinRT error when trying to do this.  To minimize data loss
+        /// we catch the error and still save the message off.  Typically the account will not have changed, making this
+        /// assignment unneeded.
+        /// </summary>
+        /// <param name="account" type="Microsoft.WindowsLive.Platform.IAccount" optional="true"></param>
+        try {
+            account = account || this._fromControl.selectedAccount;
+            Debug.assert(account === this._fromControl.selectedAccount);
+
+            this.getMailMessageModel().set({ accountId: account.objectId,
+                                             fromEmail: this._fromControl.selectedEmailAddress});
+        } catch (er) {
+            Jx.fault("from.js", "_updateMessage", er);
+            Debug.assert(false, "Error when trying to update account for message: " + er);
+        }
+    };
+
+    proto.performClick = function () {
+        this._fromControl.click();
+    };
+
+    proto.getAccount = function () {
+        return this._fromControl.selectedAccount;
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Compose, Microsoft, Debug, Mail*/
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.Priority = function () {
+
+    Compose.Priority = /*@constructor*/function () {
         Compose.Component.call(this);
-        this._priorityField = null;
+
+        this._priorityField = /*@static_cast(HTMLElement)*/null;
         this._priorityArea = null;
-        this._currentPriority = null;
-        this._initialValue = null;
-        this._bindings = null
+        this._currentPriority = /*@static_cast(Number)*/null;
+        this._initialValue = /*@static_cast(Number)*/null;
+        this._bindings = null;
     };
     Jx.augment(Compose.Priority, Compose.Component);
+
     Compose.util.defineClassName(Compose.Priority, "Compose.Priority");
-    var n = Compose.Priority.prototype;
-    n.composeGetUI = function (n) {
-        n.html = Compose.Templates.priority()
+
+    var proto = Compose.Priority.prototype;
+
+    proto.composeGetUI = function (ui) {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.priority();
     };
-    n.composeActivateUI = function () {
+
+    proto.composeActivateUI = function () {
         this._priorityField = this.getComposeRootElement().querySelector(".composePriorityField");
-        this._bindings = this.getComponentBinder().attach(this, [{
-            on: "change",
-            from: this._priorityField,
-            then: this._priorityValueChanged
-        }, {
-            on: "changed",
-            fromComponent: "Compose.HeaderController",
-            then: this._onHeaderStateChange
-        }])
+        this._bindings = this.getComponentBinder().attach(this, [
+            { on: "change", from: this._priorityField, then: this._priorityValueChanged },
+            { on: "changed", fromComponent: "Compose.HeaderController", then: this._onHeaderStateChange }
+        ]);
     };
-    n.composeDeactivateUI = function () {
+
+    proto.composeDeactivateUI = function () {
         this.getComponentBinder().detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n.composeUpdateUI = function () {
-        var r = Microsoft.WindowsLive.Platform.MailMessageImportance,
-            t = this.getMailMessageModel(),
-            i = t.get("importance"),
-            n;
-        this._priorityField.value = this._currentPriority = this._initialValue = i;
-        n = Compose.util.getHeaderController(this.getComponentCache());
-        this._updateFieldVisibility(n.getCurrentState())
+
+    proto.composeUpdateUI = function () {
+        var priorities = Microsoft.WindowsLive.Platform.MailMessageImportance,
+            messageModel = this.getMailMessageModel(),
+            priority = /*@static_cast(Number)*/messageModel.get("importance");
+
+        Debug.assert((priority === /*@static_cast(Number)*/priorities.high) ||
+            (priority === /*@static_cast(Number)*/priorities.low) ||
+            (priority === /*@static_cast(Number)*/priorities.normal),
+            "Unrecognized priority setting");
+        this._priorityField.value = this._currentPriority = this._initialValue = priority;
+
+        // Reset the field visibility
+        var headerController = Compose.util.getHeaderController(this.getComponentCache());
+        this._updateFieldVisibility(headerController.getCurrentState());
     };
-    n.updateModel = function (n) {
-        return this._updateModelHelper(), Compose.Component.prototype.updateModel.call(this, n)
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+
+        this._updateModelHelper();
+
+        return Compose.Component.prototype.updateModel.call(this, action);
     };
-    n.isDirty = function () {
-        return this._initialValue !== this._currentPriority
+
+    proto.isDirty = function () {
+        return this._initialValue !== this._currentPriority;
     };
-    n.isVisible = function () {
-        var n = Compose.util.getHeaderController(this.getComponentCache());
-        return n.getCurrentState() !== Compose.HeaderController.State.readOnly && !this._getPriorityArea().classList.contains("hidden")
+
+    proto.isVisible = function () {
+        // Visible when not in read only mode and not explicitly hidden
+        var headerController = Compose.util.getHeaderController(this.getComponentCache());
+        return headerController.getCurrentState() !== Compose.HeaderController.State.readOnly && !this._getPriorityArea().classList.contains("hidden");
     };
-    n.focus = function () {
-        this._priorityField.focus()
+
+    proto.focus = function () {
+        Debug.assert(Jx.isHTMLElement(this._priorityField));
+        this._priorityField.focus();
     };
-    n.focusableElementId = function () {
-        return this._priorityField.id
+
+    proto.focusableElementId = function () {
+        Debug.assert(Jx.isHTMLElement(this._priorityField));
+        return this._priorityField.id;
     };
-    n._updateModelHelper = function () {
-        var n = this.getMailMessageModel();
-        n.set({
-            importance: this._currentPriority
-        })
+
+    // Private
+
+    proto._updateModelHelper = function () {
+        var messageModel = this.getMailMessageModel();
+
+        // Set the importance level
+        Debug.assert(this._currentPriority === this._getPriorityFieldValue(), "Cached priority flag does not match actual priority value.");
+        Debug.assert((this._currentPriority === Microsoft.WindowsLive.Platform.MailMessageImportance.high) ||
+            (this._currentPriority === Microsoft.WindowsLive.Platform.MailMessageImportance.low) ||
+            (this._currentPriority === Microsoft.WindowsLive.Platform.MailMessageImportance.normal),
+            "Priority is set to an invalid value.");
+
+        messageModel.set({ importance: this._currentPriority });
     };
-    n._priorityValueChanged = function () {
+
+    proto._priorityValueChanged = function () {
+        /// <summary>Listener to record when a priority value has changed.</summary>
         this._currentPriority = this._getPriorityFieldValue();
-        this._updateModelHelper()
+        this._updateModelHelper();
     };
-    n._getPriorityFieldValue = function () {
-        return parseInt(this._priorityField.value, 10)
+
+    proto._getPriorityFieldValue = function () {
+        return parseInt(this._priorityField.value, 10);
     };
-    n._onHeaderStateChange = function (n) {
-        this._updateFieldVisibility(n.newState)
+
+    proto._onHeaderStateChange = function (event) {
+        this._updateFieldVisibility(event.newState);
     };
-    n._updateFieldVisibility = function (n) {
-        var t = Compose.doc.querySelectorAll(".priorityElement"),
-            i = n === Compose.HeaderController.State.editCondensed && this.getMailMessageModel().get("importance") === 1;
-        Array.prototype.forEach.call(t, function (n) {
-            i ? n.classList.add("hidden") : n.classList.remove("hidden")
-        })
+
+    proto._updateFieldVisibility = function (headerState) {
+        // Get the entire priority element
+        var priorityElements = Compose.doc.querySelectorAll(".priorityElement");
+
+        // We may need to hide the priority field in the condensed edit header, if it has no value
+        var shouldHide = headerState === Compose.HeaderController.State.editCondensed && this.getMailMessageModel().get("importance") === 1;
+        Array.prototype.forEach.call(priorityElements, function (priorityElement) {
+            if (shouldHide) {
+                priorityElement.classList.add("hidden");
+            } else {
+                priorityElement.classList.remove("hidden");
+            }
+        });
     };
-    n._getPriorityArea = function () {
-        return this._priorityArea || (this._priorityArea = this.getComposeRootElement().querySelector(".composePriority")), this._priorityArea
-    }
+
+    proto._getPriorityArea = function () {
+        if (!this._priorityArea) {
+            this._priorityArea = this.getComposeRootElement().querySelector(".composePriority");
+        }
+        Debug.assert(Jx.isObject(this._priorityArea));
+        return this._priorityArea;
+    };
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Jx, Compose, Debug, Mail, Microsoft*/
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.IrmChooser = function () {
+
+    Compose.IrmChooser = /*@constructor*/function () {
         Compose.Component.call(this);
+
         this._accountId = null;
-        this._irmTemplateField = null;
+        this._irmTemplateField = /*@static_cast(HTMLSelectElement)*/null;
         this._templates = null;
-        this._currentTemplate = null;
+        this._currentTemplate = /*@static_cast(Microsoft.WindowsLive.Platform.IRightsManagementTemplate)*/null;
         this._isDirty = false;
         this._bindings = null;
         this._isDisabled = true;
+
         this._chooserElement = null;
-        this._descriptionElement = null
+        this._descriptionElement = null;
     };
     Jx.augment(Compose.IrmChooser, Compose.Component);
+
     Compose.util.defineClassName(Compose.IrmChooser, "Compose.IrmChooser");
-    var n = Compose.IrmChooser.prototype;
-    n.composeGetUI = function (n) {
-        n.html = Compose.Templates.irmChooser()
+
+    var proto = Compose.IrmChooser.prototype;
+
+    proto.composeGetUI = function (ui) {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.irmChooser();
     };
-    n.composeActivateUI = function () {
-        this._irmTemplateField = Compose.doc.querySelector(".composeIrmField");
-        this._bindings = this.getComponentBinder().attach(this, [{
-            on: "change",
-            from: this._irmTemplateField,
-            then: this._irmValueChanged
-        }, {
-            on: "changed",
-            fromComponent: Compose.ComponentBinder.messageModelClassName,
-            then: this._onMessageModelChange
-        }, {
-            on: "changed",
-            fromComponent: "Compose.HeaderController",
-            then: this._setElementVisibility
-        }])
+
+    proto.composeActivateUI = function () {
+        this._irmTemplateField = /*@static_cast(HTMLSelectElement)*/Compose.doc.querySelector(".composeIrmField");
+        this._bindings = this.getComponentBinder().attach(this, [
+            { on: "change", from: this._irmTemplateField, then: this._irmValueChanged },
+            { on: "changed", fromComponent: Compose.ComponentBinder.messageModelClassName, then: this._onMessageModelChange },
+            { on: "changed", fromComponent: "Compose.HeaderController", then: this._setElementVisibility }
+        ]);
     };
-    n.composeDeactivateUI = function () {
+
+    proto.composeDeactivateUI = function () {
         this.getComponentBinder().detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n.composeUpdateUI = function () {
-        var i = this.getMailMessageModel(),
-            e, u, n, r, f, t, o;
-        if (this._accountId = i.get("accountId"), this._isDirty = false, this._currentTemplate = null, e = this._getDescriptionElement(), e.innerText = "", this._templates = this._getTemplates(), u = i.get("irmTemplateId"), (Jx.isNullOrUndefined(this._templates) || this._templates.count === 0) && !Jx.isNonEmptyString(u)) i.set({
-            irmHasTemplate: false
-        });
-        else {
-            for (this._irmTemplateField.innerHTML = "", n = document.createElement("option"), n.innerText = Jx.res.getString("composeIrmNoRestrictions"), n.value = this._noRestrictionValue, n.classList.add("composeFieldOption"), this._irmTemplateField.add(n), r = 0; r < this._templates.count; r++) f = this._templates.item(r), t = document.createElement("option"), t.innerText = f.name, t.value = f.id, t.classList.add("composeFieldOption"), this._irmTemplateField.add(t);
-            o = i.get("irmHasTemplate");
-            o && this._selectTemplate(u);
-            this._updateIrmTemplateField()
+
+    proto.composeUpdateUI = function () {
+        // Store the accountId
+        var model = this.getMailMessageModel();
+        this._accountId = model.get("accountId");
+
+        // Clear the template, description, and the dirty flag
+        this._isDirty = false;
+        this._currentTemplate = null;
+        var el = this._getDescriptionElement();
+        el.innerText = "";
+
+        // Get the templates
+        this._templates = this._getTemplates();
+        var templateId = model.get("irmTemplateId");
+        if ((Jx.isNullOrUndefined(this._templates) || this._templates.count === 0) && !Jx.isNonEmptyString(templateId)) {
+            // Current template stays null so irmHasTemplate should be false
+            model.set({ irmHasTemplate: false });
+        } else {
+            // Clear the options
+            this._irmTemplateField.innerHTML = "";
+
+            // Add the "No restrictions" Option
+            var noRestriction = /*@static_cast(HTMLOptionElement)*/document.createElement("option");
+            noRestriction.innerText = Jx.res.getString("composeIrmNoRestrictions");
+            noRestriction.value = this._noRestrictionValue;
+            noRestriction.classList.add("composeFieldOption");
+            this._irmTemplateField.add(noRestriction);
+
+            // Add the other templates associated with this account
+            for (var i = 0; i < this._templates.count; i++) {
+                var template = /*@static_cast(Microsoft.WindowsLive.Platform.RightsManagementTemplate)*/this._templates.item(i);
+                var option = /*@static_cast(HTMLOptionElement)*/document.createElement("option");
+                option.innerText = template.name;
+                option.value = template.id;
+                option.classList.add("composeFieldOption");
+                this._irmTemplateField.add(option);
+            }
+
+            // Select the appropriate option
+            var hasTemplate = /*@static_cast(Boolean)*/model.get("irmHasTemplate");
+            if (hasTemplate) {
+                // Find the matching template
+                this._selectTemplate(templateId);
+            }
+
+            this._updateIrmTemplateField();
         }
-        this._setElementVisibility()
+
+        // Update which elements are visible
+        this._setElementVisibility();
     };
-    n._updateIrmTemplateField = function () {
-        var n = this.getMailMessageModel();
-        this._irmTemplateField.disabled = this._isDisabled || n.get("irmHasTemplate") && !n.get("irmIsContentOwner") && !n.get("irmCanRemoveRightsManagement") ? true : false
+
+    proto._updateIrmTemplateField = function () {
+        /// <summary>Updates the disabled state of the _irmTemplateField based on current component state</summary>
+
+        var model = this.getMailMessageModel();
+
+        // Disable the control if we don't have rights to change the irm,
+        // or if another control has requested that it be disabled.
+        if (this._isDisabled || (/*@static_cast(Boolean)*/model.get("irmHasTemplate") && !model.get("irmIsContentOwner") && !model.get("irmCanRemoveRightsManagement"))) {
+            this._irmTemplateField.disabled = true;
+        } else {
+            this._irmTemplateField.disabled = false;
+        }
     };
-    n.setDisabled = function (n) {
-        n !== this._isDisabled && (this._isDisabled = n, this._updateIrmTemplateField())
+
+    proto.setDisabled = function (isDisabled) {
+        /// <summary>Allows other components to disable the control</summary>
+        /// <param name="isDisabled" type="Boolean"></param>
+
+        if (isDisabled !== this._isDisabled) {
+
+            this._isDisabled = isDisabled;
+
+            this._updateIrmTemplateField();
+        }
     };
-    n.updateModel = function (n) {
-        return this._updateModel(), Compose.Component.prototype.updateModel.call(this, n)
-    };
-    n.isDirty = function () {
-        return this._isDirty
-    };
-    n.isVisible = function () {
-        return !this._getChooserElement().classList.contains("hidden")
-    };
-    n.focus = function () {
-        this._irmTemplateField.focus()
-    };
-    n.focusableElementId = function () {
-        return this._irmTemplateField.id
-    };
-    n._updateModel = function () {
-        var n = this.getMailMessageModel(),
-            i = n.get("irmTemplateId"),
-            t;
-        (this._currentTemplate === null && Jx.isNonEmptyString(i) || this._currentTemplate !== null && i !== this._currentTemplate.id) && (t = n.getPlatformMessage(), n.get("irmIsContentOwner") || t.removeRightsManagementTemplate(), t.setRightsManagementTemplate(this._currentTemplate), this._isDirty = true)
-    };
-    n._onMessageModelChange = function () {
-        var n = this.getMailMessageModel(),
-            i = n.get("accountId"),
-            t;
-        this._accountId !== i && (this._currentTemplate = null, t = n.getPlatformMessage(), t.setRightsManagementTemplate(null), n.set({
-            irmHasTemplate: n.get("irmHasTemplate"),
-            irmTemplateId: ""
-        }), this.composeUpdateUI())
-    };
-    n._getChooserElement = function () {
-        return this._chooserElement || (this._chooserElement = Compose.doc.querySelector(".composeIrmChooser")), this._chooserElement
-    };
-    n._getDescriptionElement = function () {
-        return this._descriptionElement || (this._descriptionElement = Compose.doc.querySelector(".composeIrmDescription")), this._descriptionElement
-    };
-    n._getTemplates = function () {
-        var t = null,
-            r = Compose.platform.accountManager,
-            i = r.loadAccount(this._accountId),
-            n = null;
-        return i && (n = i.getServerByType(Microsoft.WindowsLive.Platform.ServerType.eas)), n && (t = n.rightsManagementTemplates), t
-    };
-    n._findTemplate = function (n) {
-        for (var i, t = 0; t < this._templates.count; t++)
-            if (i = this._templates.item(t), i.id === n) return i;
-        return null
-    };
-    n._irmValueChanged = function () {
-        this._updateIrm()
-    };
-    n._updateIrm = function (n) {
-        var i = this._irmTemplateField.value,
-            t;
-        i === this._noRestrictionValue ? this._currentTemplate = null : Jx.isNullOrUndefined(n) ? (n = this._findTemplate(i), this._currentTemplate = n) : this._currentTemplate = n;
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+
         this._updateModel();
-        t = this._getDescriptionElement();
-        t.innerText = this._currentTemplate ? this._currentTemplate.description : "";
-        Jx.isNonEmptyString(t.innerText) ? t.classList.remove("hidden") : t.classList.add("hidden")
+        return Compose.Component.prototype.updateModel.call(this, action);
     };
-    n._selectTemplate = function (n) {
-        var i, t, r;
-        var f = false,
-            u = 0,
-            e = null;
-        for (i = 0; i < this._irmTemplateField.options.length; i++)
-            if (this._irmTemplateField.options[i].value === n) {
-                u = i;
-                f = true;
-                break
-            } f || (t = this.getMailMessageModel(), r = document.createElement("option"), r.innerText = t.get("irmTemplateName"), r.value = t.get("irmTemplateId"), this._irmTemplateField.add(r), e = {
-            id: t.get("irmTemplateId"),
-            name: t.get("irmTemplateName"),
-            description: t.get("irmTemplateDescription")
-        }, u = this._irmTemplateField.options.length - 1);
-        this._irmTemplateField.selectedIndex = u;
-        this._updateIrm(e)
+
+    proto.isDirty = function () {
+        return this._isDirty;
     };
-    n._setElementVisibility = function () {
-        var r = this.getMailMessageModel(),
-            u = this.getComponentCache().getComponent("Compose.HeaderController"),
-            n;
-        var t = r.get("irmTemplateId") === "",
-            f = Jx.isNullOrUndefined(this._templates) || this._templates.count === 0,
-            e = u.getCurrentState() === Compose.HeaderController.State.editCondensed,
-            i = (f || e) && t,
-            o = i || t,
-            s = Compose.doc.querySelectorAll(".irmElement");
-        Array.prototype.forEach.call(s, function (n) {
-            i ? n.classList.add("hidden") : n.classList.remove("hidden")
+
+    proto.isVisible = function () {
+        return !this._getChooserElement().classList.contains("hidden");
+    };
+
+    proto.focus = function () {
+        Debug.assert(Jx.isHTMLElement(this._irmTemplateField));
+        this._irmTemplateField.focus();
+    };
+
+    proto.focusableElementId = function () {
+        Debug.assert(Jx.isHTMLElement(this._irmTemplateField));
+        return this._irmTemplateField.id;
+    };
+
+    // Private
+    proto._updateModel = function () {
+        // Remove the template if necessary
+        var model = this.getMailMessageModel();
+        var templateId = model.get("irmTemplateId");
+        if ((this._currentTemplate === null && Jx.isNonEmptyString(templateId)) || (this._currentTemplate !== null && (templateId !== this._currentTemplate.id))) {
+            var platformMessage = /*@static_cast(Microsoft.WindowsLive.Platform.IRightsManagementLicense)*/model.getPlatformMessage();
+            if (!model.get("irmIsContentOwner")) {
+                Debug.assert(model.get("irmCanRemoveRightsManagement"));
+                platformMessage.removeRightsManagementTemplate();
+            }
+
+            // Set the template
+            platformMessage.setRightsManagementTemplate(this._currentTemplate);
+            this._isDirty = true;
+        }
+    };
+
+    proto._onMessageModelChange = function () {
+        var model = this.getMailMessageModel();
+        var accountId = model.get("accountId");
+        if (this._accountId !== accountId) {
+            this._currentTemplate = null;
+            var platformMessage = /*@static_cast(Microsoft.WindowsLive.Platform.IRightsManagementLicense)*/model.getPlatformMessage();
+            platformMessage.setRightsManagementTemplate(null);
+            model.set({ irmHasTemplate: model.get("irmHasTemplate"), irmTemplateId: "" });
+            this.composeUpdateUI();
+        }
+    };
+
+    proto._getChooserElement = function () {
+        if (!this._chooserElement) {
+            this._chooserElement = Compose.doc.querySelector(".composeIrmChooser");
+        }
+        Debug.assert(Jx.isObject(this._chooserElement));
+        return this._chooserElement;
+    };
+
+    proto._getDescriptionElement = function () {
+        if (!this._descriptionElement) {
+            this._descriptionElement = Compose.doc.querySelector(".composeIrmDescription");
+        }
+        Debug.assert(Jx.isObject(this._descriptionElement));
+        return this._descriptionElement;
+    };
+
+    proto._getTemplates = function () {
+        /// <summary>Return the collection of templates</summary>
+        var templates = null,
+            accountManager = Compose.platform.accountManager,
+            account = accountManager.loadAccount(this._accountId),
+            server = null;
+        if (account) {
+            server = account.getServerByType(Microsoft.WindowsLive.Platform.ServerType.eas);
+        }
+        if (server) {
+            templates = server.rightsManagementTemplates;
+        }
+        return templates;
+    };
+
+    proto._findTemplate = function (id) {
+        for (var i = 0; i < this._templates.count; i++) {
+            var template = /*@static_cast(Microsoft.WindowsLive.Platform.IRightsManagementTemplate)*/this._templates.item(i);
+            if (template.id === id) {
+                return template;
+            }
+        }
+        return null;
+    };
+
+    proto._irmValueChanged = function () {
+        this._updateIrm();
+    };
+
+    proto._updateIrm = function (template) {
+        /// <param name="template" type="Microsoft.WindowsLive.Platform.IRightsManagementTemplate" optional="true" />
+        var id = this._irmTemplateField.value;
+
+        if (id === this._noRestrictionValue) {
+            this._currentTemplate = null;
+        } else if (!Jx.isNullOrUndefined(template)) {
+            this._currentTemplate = template;
+        } else {
+            // Find the template with an id that matches the selected option's value property
+            template = this._findTemplate(id);
+            Debug.assert(!Jx.isNullOrUndefined(template));
+            this._currentTemplate = template;
+        }
+
+        // Update the model to set the new template
+        this._updateModel();
+
+        // Set the description text
+        var el = this._getDescriptionElement();
+        el.innerText = this._currentTemplate ? this._currentTemplate.description : "";
+        if (Jx.isNonEmptyString(el.innerText)) {
+            el.classList.remove("hidden");
+        } else {
+            el.classList.add("hidden");
+        }
+    };
+
+    proto._selectTemplate = function (templateId) {
+        /// <summary> Select the option whose value matches the template id </summary>
+        /// <param name="templateId" type="String" />
+        Debug.assert(!Jx.isNullOrUndefined(templateId));
+        var found = false,
+            index = 0,
+            template = null;
+        for (var i = 0; i < this._irmTemplateField.options.length; i++) {
+            if (this._irmTemplateField.options[i].value === templateId) {
+                index = i;
+                found = true;
+                break;
+            }
+        }
+        if (!found) {
+            // Add un-found template to drop down
+            var model = this.getMailMessageModel();
+            var option = /*@static_cast(HTMLOptionElement)*/document.createElement("option");
+            option.innerText = model.get("irmTemplateName");
+            option.value = model.get("irmTemplateId");
+            this._irmTemplateField.add(option);
+
+            template = /*@static_cast(Microsoft.WindowsLive.Platform.IRightsManagementTemplate)*/{
+                id: model.get("irmTemplateId"),
+                name: model.get("irmTemplateName"),
+                description: model.get("irmTemplateDescription")
+            };
+            index = this._irmTemplateField.options.length - 1;
+        }
+
+        this._irmTemplateField.selectedIndex = index;
+        this._updateIrm(template);
+    };
+
+    proto._setElementVisibility = function () {
+        // Sets the HTML elements as visible or invisible based on the current state
+        var model = this.getMailMessageModel(),
+            headerController = this.getComponentCache().getComponent("Compose.HeaderController");
+        Debug.assert(Jx.isObject(headerController));
+
+        // Check which elements we should be hiding
+        var noSelectedTemplate = model.get("irmTemplateId") === "",
+            noTemplatesExist = (Jx.isNullOrUndefined(this._templates) || this._templates.count === 0),
+            condensedEditMode = headerController.getCurrentState() === Compose.HeaderController.State.editCondensed,
+            shouldHideChooser = (noTemplatesExist || condensedEditMode) && noSelectedTemplate,
+            shouldHideDescription = shouldHideChooser || noSelectedTemplate;
+
+        // Set the chooser element as visible or invisible
+        var irmElements = Compose.doc.querySelectorAll(".irmElement");
+        Array.prototype.forEach.call(irmElements, function (irmElement) {
+            if (shouldHideChooser) {
+                irmElement.classList.add("hidden");
+            } else {
+                irmElement.classList.remove("hidden");
+            }
         });
-        n = this._getDescriptionElement();
-        o ? n.classList.add("hidden") : n.classList.remove("hidden")
+
+        // Set the description element as visible or invisible
+        var description = this._getDescriptionElement();
+        if (shouldHideDescription) {
+            description.classList.add("hidden");
+        } else {
+            description.classList.remove("hidden");
+        }
     };
-    n._noRestrictionValue = "-1"
+
+    proto._noRestrictionValue = "-1";
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="components.ref.js" />
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.Subject = function () {
+
+    Compose.Subject = /*@constructor*/function () {
         Compose.Component.call(this);
+
         this._subjectLine = null;
         this._initialValue = null;
         this._bindings = null;
-        this._scrollingIntoViewPaused = false
+        this._scrollingIntoViewPaused = false;
     };
     Jx.augment(Compose.Subject, Compose.Component);
+
     Compose.util.defineClassName(Compose.Subject, "Compose.Subject");
-    var n = Compose.Subject.prototype;
-    n.composeGetUI = function (n) {
-        n.html = Compose.Templates.subject()
+
+    var proto = Compose.Subject.prototype;
+
+    proto.composeGetUI = function (ui) {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.subject();
     };
-    n.composeActivateUI = function () {
-        var n = this._subjectLine = this.getComposeRootElement().querySelector(".composeSubjectLine"),
-            t = this.getComposeRootElement().querySelector(".composeSubjectParent");
-        this._bindings = Compose.binder.attach(this, [{
-            on: "click",
-            from: t,
-            then: function () {
+
+    proto.composeActivateUI = function () {
+        var subjectLine = this._subjectLine = /*@static_cast(HTMLElement)*/this.getComposeRootElement().querySelector(".composeSubjectLine"),
+            subjectParent = this.getComposeRootElement().querySelector(".composeSubjectParent");
+
+        this._bindings = Compose.binder.attach(this, [
+
+            { on: "click", from: subjectParent, then: function () {
+                // Won't bring up the touch keyboard if we don't wrap this in a setImmediate
                 setImmediate(function () {
-                    n.focus()
-                })
-            }
-        }, {
-            on: "blur",
-            from: n,
-            then: function () {
-                var t = n.createTextRange();
-                t.offsetTop >= 0 && !this._scrollingIntoViewPaused && (Compose.mark("Subject.scrollIntoView", Compose.LogEvent.start), t.scrollIntoView(), Compose.mark("Subject.scrollIntoView", Compose.LogEvent.stop))
-            }
-        }, {
-            on: "change",
-            from: n,
-            then: function () {
-                Jx.EventManager.fire(null, "subjectChanged", {
-                    subject: this.getSubject()
-                })
-            }
-        }])
+                    subjectLine.focus();
+                });
+            }},
+
+            // Hook up a listener to scroll the Subject line to the beginning on blur if the subject is not scrolled offscreen
+            { on: "blur", from: subjectLine, then: function onBlur() {
+                var range = subjectLine.createTextRange();
+                if (range.offsetTop >= 0 && !this._scrollingIntoViewPaused) {
+                    Compose.mark("Subject.scrollIntoView", Compose.LogEvent.start);
+                    range.scrollIntoView();
+                    Compose.mark("Subject.scrollIntoView", Compose.LogEvent.stop);
+                }
+            }},
+
+            // Hook up a listener to broadcast subject changed events
+            { on: "change", from: subjectLine, then: /*@bind(Compose.Subject)*/function onSubjectChanged() {
+                Jx.EventManager.fire(null, "subjectChanged", { subject: this.getSubject() });
+            }}
+        ]);
     };
-    n.composeDeactivateUI = function () {
+
+    proto.composeDeactivateUI = function () {
         Compose.binder.detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n.composeUpdateUI = function () {
-        var n = this.getMailMessageModel();
+
+    proto.composeUpdateUI = function () {
+        var messageModel = this.getMailMessageModel();
+
         Compose.mark("setSubject", Compose.LogEvent.start);
-        this._subjectLine.value = this._initialValue = n.get("subject");
-        Compose.mark("setSubject", Compose.LogEvent.stop)
+        this._subjectLine.value = this._initialValue = messageModel.get("subject");
+        Compose.mark("setSubject", Compose.LogEvent.stop);
     };
-    n.updateModel = function (n) {
-        return this.getMailMessageModel().set({
-            subject: this.getSubject().replace(/^\s+|\s+$/g, "")
-        }), Compose.Component.prototype.updateModel.call(this, n)
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+
+        this.getMailMessageModel().set({
+            subject: this.getSubject().replace(/^\s+|\s+$/g, '') // trim whitepsace
+        });
+
+        return Compose.Component.prototype.updateModel.call(this, action);
     };
-    n.getSubject = function () {
-        return this._subjectLine.value
+
+    proto.getSubject = function () {
+        return this._subjectLine.value;
     };
-    n.focus = function () {
-        this._subjectLine.focus()
+
+    proto.focus = function () {
+        this._subjectLine.focus();
     };
-    n.isActiveElement = function () {
-        return Compose.doc.activeElement === this._subjectLine
+
+    proto.isActiveElement = function () {
+        return Compose.doc.activeElement === this._subjectLine;
     };
-    n.isDirty = function () {
-        return this.getSubject() !== this._initialValue
+
+    proto.isDirty = function () {
+        Debug.assert(Jx.isString(this._initialValue));
+        return this.getSubject() !== this._initialValue;
     };
-    n.pauseScrollingIntoView = function () {
-        this._scrollingIntoViewPaused = true
+
+    proto.pauseScrollingIntoView = function () {
+        this._scrollingIntoViewPaused = true;
     };
-    n.resumeScrollingIntoView = function () {
-        this._scrollingIntoViewPaused = false
-    }
+
+    proto.resumeScrollingIntoView = function () {
+        this._scrollingIntoViewPaused = false;
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Jx, Compose, AddressWell, Debug, Mail*/
+
 Jx.delayGroup("MailCompose", function () {
-    function t(n) {
-        var t = Compose.platform.accountManager;
-        return t.loadAccount(n)
-    }
+
     Compose.ToCcBcc = function () {
         Compose.Component.call(this);
-        var n = Compose.platform;
+
+        var platform = Compose.platform;
         this._controls = {
-            to: new AddressWell.Controller("to", null, n, true),
-            cc: new AddressWell.Controller("cc", null, n, true),
-            bcc: new AddressWell.Controller("bcc", null, n, true)
+            to: new AddressWell.Controller("to", null, platform, true /*showSuggestions*/),
+            cc: new AddressWell.Controller("cc", null, platform, true /*showSuggestions*/),
+            bcc: new AddressWell.Controller("bcc", null, platform, true /*showSuggestions*/)
         };
+
         this._errorElement = null;
         this._bccElement = null;
+
         this._labelElements = {
             to: null,
             cc: null,
@@ -690,1188 +1217,2243 @@ Jx.delayGroup("MailCompose", function () {
         };
         this._lastAccountId = null;
         this._bindings = null;
-        this._controlsActivated = false
+
+        this._controlsActivated = false;
     };
     Jx.inherit(Compose.ToCcBcc, Jx.Events);
     Jx.augment(Compose.ToCcBcc, Compose.Component);
+
     Compose.util.defineClassName(Compose.ToCcBcc, "Compose.ToCcBcc");
-    var n = Compose.ToCcBcc.prototype;
-    n.composeGetUI = function (n) {
-        var t = this._controls;
-        n.html = Compose.Templates.toCcBcc({
-            to: Jx.getUI(t.to).html,
-            cc: Jx.getUI(t.cc).html,
-            bcc: Jx.getUI(t.bcc).html
-        })
+
+    var proto = Compose.ToCcBcc.prototype;
+
+    Debug.Events.define(proto, "autoresolvecompleted");
+
+    proto.composeGetUI = function (ui) {
+        var controls = this._controls;
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.toCcBcc({
+            /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
+            to: Jx.getUI(controls.to).html,
+            cc: Jx.getUI(controls.cc).html,
+            bcc: Jx.getUI(controls.bcc).html
+        });
     };
-    n.composeActivateUI = function () {
-        var t = this,
-            n, u, r;
+
+    proto.composeActivateUI = function () {
+        var that = this;
         if (!this._controlsActivated) {
-            n = Compose.doc;
-            u = this.getComposeRootElement();
+            var doc = Compose.doc,
+                rootElement = this.getComposeRootElement();
+
             this._controlsActivated = true;
-            var s = this._errorElement = u.querySelector(".addressWellError"),
-                i = Jx.res.getString("/addresswellstrings/awPickerLink"),
-                f = Jx.res.getString("composeTo"),
-                e = Jx.res.getString("composeCc"),
-                o = Jx.res.getString("composeBcc");
-            this._labelElements.to = n.getElementById("addressbarToFieldLabel");
-            this._labelElements.to.setAttribute("aria-label", Jx.res.loadCompoundString("composePickerLabel", f, i));
-            this._labelElements.cc = n.getElementById("addressbarCcFieldLabel");
-            this._labelElements.cc.setAttribute("aria-label", Jx.res.loadCompoundString("composePickerLabel", e, i));
-            this._labelElements.bcc = n.getElementById("addressbarBccFieldLabel");
-            this._labelElements.bcc.setAttribute("aria-label", Jx.res.loadCompoundString("composePickerLabel", o, i));
-            r = this._controls;
-            Object.keys(r).forEach(function (n) {
-                var i = r[n];
-                i.activateUI();
-                i.addListener(AddressWell.Events.addressWellBlur, function () {
-                    var r, u;
-                    i.getIsDirty() && (r = t.getMailMessageModel(), r && (u = {}, u[n] = i.getRecipientsStringInNameEmailPairs(), r.set(u), i.getError() ? t._errorAriaElements[n].innerText = Jx.res.getString("composeToErrorDescription") : (t._errorAriaElements[n].innerText = "", s.innerText = "")))
+
+            var errorElement = this._errorElement = rootElement.querySelector(".addressWellError");
+
+            var awPickerLink = Jx.res.getString("/addresswellstrings/awPickerLink"),
+                composeTo = Jx.res.getString("composeTo"),
+                composeCc = Jx.res.getString("composeCc"),
+                composeBcc = Jx.res.getString("composeBcc");
+
+            this._labelElements.to = doc.getElementById("addressbarToFieldLabel");
+            this._labelElements.to.setAttribute("aria-label", Jx.res.loadCompoundString("composePickerLabel", composeTo, awPickerLink));
+            this._labelElements.cc = doc.getElementById("addressbarCcFieldLabel");
+            this._labelElements.cc.setAttribute("aria-label", Jx.res.loadCompoundString("composePickerLabel", composeCc, awPickerLink));
+            this._labelElements.bcc = doc.getElementById("addressbarBccFieldLabel");
+            this._labelElements.bcc.setAttribute("aria-label", Jx.res.loadCompoundString("composePickerLabel", composeBcc, awPickerLink));
+
+            var controls = this._controls;
+            Object.keys(controls).forEach(function (type) {
+                var control = controls[type];
+                control.activateUI();
+
+                // We want to keep the message up-to-date because several other controls need the change notifications
+                control.addListener(AddressWell.Events.addressWellBlur, function () {
+                    // Only update the message model if there has been a change
+                    if (control.getIsDirty()) {
+                        // Get the message model object
+                        var messageModel = that.getMailMessageModel();
+                        
+                        // messageModel may be null if we recieve a blur event while switching between drafts
+                        if (messageModel) {
+                            // Set the appropriate value in the message model
+                            var valueMap = {};
+                            valueMap[type] = control.getRecipientsStringInNameEmailPairs();
+                            messageModel.set(valueMap);
+
+                            // Also check if we have an error
+                            if (control.getError()) {
+                                that._errorAriaElements[type].innerText = Jx.res.getString("composeToErrorDescription");
+                            } else {
+                                that._errorAriaElements[type].innerText = "";
+
+                                // This text is set elsewhere, but when the user corrects any error we'll clear it here
+                                errorElement.innerText = "";
+                            }
+                        }
+                    }
                 });
-                i.addListener(AddressWell.Events.autoResolveSuccessful, function () {
-                    t.raiseEvent("autoresolvecompleted", {
-                        type: n
-                    })
-                })
+
+                // We also want to notify listeners when an auto resolve completes
+                control.addListener(AddressWell.Events.autoResolveSuccessful, function () {
+                    // Pass on auto resolve completes
+                    that.raiseEvent("autoresolvecompleted", { type: type });
+                });
             });
-            this._errorAriaElements.to = n.getElementById("addressbarToErrorDescription");
-            this._errorAriaElements.cc = n.getElementById("addressbarCcErrorDescription");
-            this._errorAriaElements.bcc = n.getElementById("addressbarBccErrorDescription");
-            n.getElementById("addressbarToDescription").innerText = Jx.res.loadCompoundString("composeToDescription", f);
-            n.getElementById("addressbarCcDescription").innerText = Jx.res.loadCompoundString("composeToDescription", e);
-            n.getElementById("addressbarBccDescription").innerText = Jx.res.loadCompoundString("composeToDescription", o);
+
+            // Attach labels to the address well elements
+            this._errorAriaElements.to = doc.getElementById("addressbarToErrorDescription");
+            this._errorAriaElements.cc = doc.getElementById("addressbarCcErrorDescription");
+            this._errorAriaElements.bcc = doc.getElementById("addressbarBccErrorDescription");
+            doc.getElementById("addressbarToDescription").innerText = Jx.res.loadCompoundString("composeToDescription", composeTo);
+            doc.getElementById("addressbarCcDescription").innerText = Jx.res.loadCompoundString("composeToDescription", composeCc);
+            doc.getElementById("addressbarBccDescription").innerText = Jx.res.loadCompoundString("composeToDescription", composeBcc);
             this._controls.to.setLabelledBy("addressbarToDescription addressbarToErrorDescription");
             this._controls.cc.setLabelledBy("addressbarCcDescription addressbarCcErrorDescription");
             this._controls.bcc.setLabelledBy("addressbarBccDescription addressbarBccErrorDescription");
-            this._controls.to.setAriaFlow(this._labelElements.to.id, this._labelElements.cc.id)
+
+            this._controls.to.setAriaFlow(this._labelElements.to.id /*flowFrom*/, this._labelElements.cc.id /*flowTo*/);
         }
-        this._bindings = this.getComponentBinder().attach(this, [{
-            on: "displayvalidstate",
-            fromComponent: Compose.ComponentBinder.validationViewControllerClassName,
-            then: this._displayValidState
-        }, {
-            on: "changed",
-            fromComponent: Compose.ComponentBinder.messageModelClassName,
-            then: this._onMessageModelChange
-        }, {
-            on: "changed",
-            fromComponent: "Compose.HeaderController",
-            then: this._onHeaderStateChange
-        }, {
-            on: "click",
-            from: this._labelElements.to,
-            then: function () {
-                t.launchPeoplePicker("to")
-            }
-        }, {
-            on: "click",
-            from: this._labelElements.cc,
-            then: function () {
-                t.launchPeoplePicker("cc")
-            }
-        }, {
-            on: "click",
-            from: this._labelElements.bcc,
-            then: function () {
-                t.launchPeoplePicker("bcc")
-            }
-        }])
+
+        this._bindings = this.getComponentBinder().attach(this, [
+            { on: "displayvalidstate", fromComponent: Compose.ComponentBinder.validationViewControllerClassName, then: this._displayValidState },
+            { on: "changed", fromComponent: Compose.ComponentBinder.messageModelClassName, then: this._onMessageModelChange },
+            { on: "changed", fromComponent: "Compose.HeaderController", then: this._onHeaderStateChange},
+            { on: "click", from: this._labelElements.to, then: function () { that.launchPeoplePicker("to"); } },
+            { on: "click", from: this._labelElements.cc, then: function () { that.launchPeoplePicker("cc"); } },
+            { on: "click", from: this._labelElements.bcc, then: function () { that.launchPeoplePicker("bcc"); } }
+        ]);
     };
-    n.composeDeactivateUI = function () {
-        var n = this._controls;
-        Object.keys(n).forEach(function (t) {
-            n[t].cancelPendingSearches()
+
+    proto.composeDeactivateUI = function () {
+        var controls = this._controls;
+        Object.keys(controls).forEach(function (type) {
+            controls[type].cancelPendingSearches();
         });
+
         this.getComponentBinder().detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n.composeUpdateUI = function () {
+
+    proto.composeUpdateUI = function () {
         this.clear();
         this._onMessageModelChange();
-        this._updateCcAndBccAriaFlow()
+        this._updateCcAndBccAriaFlow();
     };
-    n.clear = function () {
-        var n = this._controls,
-            t = this._errorAriaElements;
-        Object.keys(n).forEach(function (i) {
-            n[i].clear();
-            t[i].innerText = ""
+
+    proto.clear = function () {
+        // Clear the address wells
+        var controls = this._controls,
+            errorAriaElements = this._errorAriaElements;
+        Object.keys(controls).forEach(function (type) {
+            controls[type].clear();
+            errorAriaElements[type].innerText = "";
         });
-        this._errorElement.innerText = ""
+        this._errorElement.innerText = "";
     };
-    n.onEntranceComplete = function () {
-        var t;
+
+    proto.onEntranceComplete = function () {
+        // Populate recipients
         Compose.log("addRecipients", Compose.LogEvent.start);
-        var n = this._controls,
-            i = this._errorAriaElements,
-            r = this.getMailMessageModel();
-        Object.keys(n).forEach(function (t) {
-            var u = r.get(t);
-            Jx.isNonEmptyString(u) && (n[t].addRecipientsByString(u), n[t].getError() && (i[t].innerText = Jx.res.getString("composeToErrorDescription")));
-            n[t].resetIsDirty()
+        var controls = this._controls,
+            errorAriaElements = this._errorAriaElements,
+            messageModel = this.getMailMessageModel();
+        Object.keys(controls).forEach(function (type) {
+            var recipients = messageModel.get(type);
+            if (Jx.isNonEmptyString(recipients)) {
+                controls[type].addRecipientsByString(recipients);
+
+                // Check if we're starting with an error that needs to be clarified via an ARIA label
+                if (controls[type].getError()) {
+                    errorAriaElements[type].innerText = Jx.res.getString("composeToErrorDescription");
+                }
+            }
+            controls[type].resetIsDirty();
         });
         Compose.log("addRecipients", Compose.LogEvent.stop);
-        t = Compose.util.getHeaderController(this.getComponentCache());
-        t.setDefaultState()
+
+        // We may need to reset the header state now that we've initialized the address wells
+        var headerController = Compose.util.getHeaderController(this.getComponentCache());
+        headerController.setDefaultState();
     };
-    n.ensureUpdateModel = function () {
-        var n = this.getMailMessageModel();
-        n.set({
+
+    proto.ensureUpdateModel = function () {
+        var messageModel = this.getMailMessageModel();
+        Debug.assert(messageModel, "messageModel should not be null");
+
+        messageModel.set({
             to: this.getRecipientsStringInNameEmailPairs("to"),
             cc: this.getRecipientsStringInNameEmailPairs("cc"),
             bcc: this.getRecipientsStringInNameEmailPairs("bcc")
-        })
-    };
-    n.updateModel = function (n) {
-        return this.ensureUpdateModel(), Compose.Component.prototype.updateModel.call(this, n)
-    };
-    n.composeValidate = function (n) {
-        return n === "save" ? true : this._validateRecipients()
-    };
-    n.isToEmpty = function () {
-        var n = this.getMailMessageModel().get("to");
-        return !Jx.isNonEmptyString(n)
-    };
-    n.getRecipients = function (n) {
-        return this._controls[n].getRecipients()
-    };
-    n.getRecipientsStringInNameEmailPairs = function (n) {
-        return this._controls[n].getRecipientsStringInNameEmailPairs()
-    };
-    n.focus = function (n, t) {
-        t && this._controls[n].setAutoSuggestOnFocus(false);
-        this._controls[n].focusInput()
-    };
-    n.launchPeoplePicker = function (n) {
-        this._controls[n].launchPeoplePicker()
-    };
-    n.setDisabled = function (n) {
-        var t, i;
-        t = this._controls;
-        Object.keys(t).forEach(function (i) {
-            t[i].setDisabled(n)
         });
-        i = this._labelElements;
-        Object.keys(i).forEach(function (t) {
-            i[t].disabled = n
-        })
     };
-    n.isDirty = function () {
-        var n = this._controls;
-        return Object.keys(n).reduce(function (t, i) {
-            return t || n[i].getIsDirty()
-        }, false)
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+        this.ensureUpdateModel();
+        return Compose.Component.prototype.updateModel.call(this, action);
     };
-    n.isVisible = function (n) {
-        var i = Compose.util.getHeaderController(this.getComponentCache()),
-            t = i.getCurrentState();
-        return n === "bcc" ? t === Compose.HeaderController.State.editFull || t === Compose.HeaderController.State.editCondensed && !this._getBccElement().classList.contains("hidden") : t !== Compose.HeaderController.State.readOnly
+
+    proto.composeValidate = function (type) {
+        /// <param name="type" type="String">save|send</param>
+        Debug.assert(["save", "send"].indexOf(type) !== -1);
+
+        if (type === "save") {
+            // No need to validate addresswells for a save action
+            return true;
+        }
+
+        return this._validateRecipients();
     };
-    n.hasError = function (n) {
-        return this._controls[n].getRecipients().length > 0 && this._controls[n].getError()
+
+    proto.isToEmpty = function () {
+        var toString = this.getMailMessageModel().get("to");
+        return !Jx.isNonEmptyString(toString);
     };
-    n._onMessageModelChange = function () {
-        this._setMailAccount(this.getMailMessageModel().get("accountId"))
+
+    proto.getRecipients = function (type) {
+        /// <summary>Returns recipients for given control type</summary>
+        /// <param name="type" type="String">to|cc|bcc</param>
+        Debug.ToCcBcc.assertIsValidControlType(type);
+        return this._controls[type].getRecipients();
     };
-    n._onHeaderStateChange = function (n) {
-        var t = this.getComposeRootElement().querySelectorAll(".bccElement"),
-            i = n.newState === Compose.HeaderController.State.editCondensed && !Boolean(this.getMailMessageModel().get("bcc"));
-        Array.prototype.forEach.call(t, function (n) {
-            i ? n.classList.add("hidden") : n.classList.remove("hidden")
+
+    proto.getRecipientsStringInNameEmailPairs = function (type) {
+        /// <summary>Returns recipients for given control type</summary>
+        /// <param name="type" type="String">to|cc|bcc</param>
+        Debug.ToCcBcc.assertIsValidControlType(type);
+        return this._controls[type].getRecipientsStringInNameEmailPairs();
+    };
+
+    proto.focus = function (type, suppressAutoSuggest) {
+        /// <param name="type" type="String">to|cc|bcc</param>
+        /// <param name="suppressAutoSuggest" type="Boolean" optional="true" />
+
+        Debug.ToCcBcc.assertIsValidControlType(type);
+        if (suppressAutoSuggest) {
+            this._controls[type].setAutoSuggestOnFocus(false);
+        }
+        this._controls[type].focusInput();
+    };
+
+    proto.launchPeoplePicker = function (type) {
+        /// <param name="field" type="string">to|cc|bcc</param>
+        Debug.ToCcBcc.assertIsValidControlType(type);
+        this._controls[type].launchPeoplePicker();
+    };
+
+    proto.setDisabled = function (disabled) {
+        /// <param name="disabled" type="boolean" />
+        Debug.assert(Jx.isBoolean(disabled));
+        var controls = this._controls;
+        Object.keys(controls).forEach(function (type) {
+            controls[type].setDisabled(disabled);
         });
+        var labels = this._labelElements;
+        Object.keys(labels).forEach(function (type) {
+            labels[type].disabled = disabled;
+        });
+    };
+
+    proto.isDirty = function () {
+        // Dirty when any one of our address wells is dirty
+        var controls = this._controls;
+        return Object.keys(controls).reduce(function (dirty, type) {
+            return dirty || controls[type].getIsDirty();
+        }, false);
+    };
+
+    proto.isVisible = function (type) {
+        /// <param name="type" type="String">to|cc|bcc</param>
+        Debug.ToCcBcc.assertIsValidControlType(type);
+
+        // Which fields are hidden is determined by the current header state
+        var headerController = Compose.util.getHeaderController(this.getComponentCache()),
+            headerState = headerController.getCurrentState();
+
+        // The bcc field is shown in full edit mode, or sometimes in edit mode
+        if (type === "bcc") {
+            return (headerState === Compose.HeaderController.State.editFull) ||
+                   (headerState === Compose.HeaderController.State.editCondensed && !this._getBccElement().classList.contains("hidden"));
+        }
+
+        // The to and cc fields are shown in all but the read only mode
+        return headerState !== Compose.HeaderController.State.readOnly;
+    };
+
+    proto.hasError = function (type) {
+        /// <summary>Returns true when the given address well has an error in it</summary>
+        /// <param name="type" type="String">to|cc|bcc</param>
+        /// <returns type="Boolean"></returns>
+
+        return this._controls[type].getRecipients().length > 0 && this._controls[type].getError();
+    };
+
+    // Private
+
+    proto._onMessageModelChange = function () {
+        this._setMailAccount(this.getMailMessageModel().get("accountId"));
+    };
+
+    proto._onHeaderStateChange = function (event) {
+        // Get the bcc elements
+        var bccElements = this.getComposeRootElement().querySelectorAll(".bccElement");
+
+        // When we switch to condensed edit mode, we may want to hide the bcc fields
+        var shouldHide = event.newState === Compose.HeaderController.State.editCondensed && !Boolean(this.getMailMessageModel().get("bcc"));
+        Array.prototype.forEach.call(bccElements, function (bccElement) {
+            if (shouldHide) {
+                // No bcc data, safe to hide the bcc field
+                bccElement.classList.add("hidden");
+            } else {
+                bccElement.classList.remove("hidden");
+            }
+        });
+
+        // The flow-to element for the CC and BCC fields can vary, based on various factors. Which element we flow
+        // to will be determined based on the final results of the processing for this event--by all listeners.
+        // We therefore have to wait until the event has been completely processed before setting the flow-to property.
         setImmediate(function () {
-            this._updateCcAndBccAriaFlow()
-        }.bind(this))
+            this._updateCcAndBccAriaFlow();
+        }.bind(this));
     };
-    n._updateCcAndBccAriaFlow = function () {
-        var t = this.getComponentCache().getComponent("Compose.DOMFocus"),
-            n;
-        Jx.isObject(t) && (n = t.getAfterBccFocusComponent(), Jx.isObject(n) && (this._labelElements.bcc.classList.contains("hidden") ? this._controls.cc.setAriaFlow(this._labelElements.cc.id, n.focusableElementId()) : (this._controls.cc.setAriaFlow(this._labelElements.cc.id, this._labelElements.bcc.id), this._controls.bcc.setAriaFlow(this._labelElements.bcc.id, n.focusableElementId()))))
-    };
-    n._getBccElement = function () {
-        return this._bccElement || (this._bccElement = Compose.doc.getElementById("addressbarBccField")), this._bccElement
-    };
-    n._setMailAccount = function (n) {
-        var i, r;
-        Jx.isNonEmptyString(n) ? n !== this._lastAccountId && (i = t(n), Boolean(i) ? (this._lastAccountId = n, r = this._controls, Object.keys(r).forEach(function (n) {
-            r[n].setContextualAccount(i)
-        })) : this._lastAccountId = null) : this._lastAccountId = null
-    };
-    n._displayValidState = function (n) {
-        var r, u;
-        if (n.invalidControls.indexOf(this.getClassName()) !== -1) {
-            var t = this._getControlErrors(),
-                i = this._errorElement,
-                f = Compose.util.getHeaderController(this.getComponentCache());
-            f.changeState(Compose.HeaderController.State.editFull);
-            r = false;
-            u = this;
-            Object.keys(t).filter(function (n) {
-                return !Jx.isNullOrUndefined(t[n])
-            }).forEach(function (n) {
-                r || (u.focus(n, true), r = true)
-            });
-            i.innerText = "";
-            Object.keys(t).forEach(function (n) {
-                i.innerText === "" && (i.innerText = t[n] || "")
-            })
+
+    proto._updateCcAndBccAriaFlow = function () {
+        var domFocus = this.getComponentCache().getComponent("Compose.DOMFocus");
+        Debug.assert(Jx.isObject(domFocus));
+        if (Jx.isObject(domFocus)) {
+            var component = domFocus.getAfterBccFocusComponent();
+
+            if (Jx.isObject(component)) {
+                if (this._labelElements.bcc.classList.contains("hidden")) {
+                    this._controls.cc.setAriaFlow(this._labelElements.cc.id /*flowFrom*/, component.focusableElementId()/*flowTo*/);
+                } else {
+                    this._controls.cc.setAriaFlow(this._labelElements.cc.id /*flowFrom*/, this._labelElements.bcc.id /*flowTo*/);
+                    this._controls.bcc.setAriaFlow(this._labelElements.bcc.id /*flowFrom*/, component.focusableElementId()/*flowTo*/);
+                }
+            }
         }
     };
-    n._validateRecipients = function () {
-        var n = this._getControlErrors(),
-            t = Object.keys(n).every(function (t) {
-                return !Jx.isNonEmptyString(n[t])
-            });
-        return t && (this._errorElement.innerText = ""), t
+
+    proto._getBccElement = function () {
+        if (!this._bccElement) {
+            this._bccElement = Compose.doc.getElementById("addressbarBccField");
+        }
+        Debug.assert(Jx.isObject(this._bccElement));
+        return this._bccElement;
     };
-    n._getControlErrors = function () {
-        var i = this._controls,
-            n = {
-                to: null,
-                cc: null,
-                bcc: null
-            },
-            t;
-        return Object.keys(i).forEach(function (t) {
-            n[t] = this.getRecipientsStringInNameEmailPairs(t)
-        }.bind(this)), t = {
-            to: null,
-            cc: null,
-            bcc: null
-        }, n.cc && (t.cc = i.cc.getError()), n.bcc && (t.bcc = i.bcc.getError()), !Boolean(n.to) && (n.cc || n.bcc) || (t.to = i.to.getError()), t
-    };
-    Debug.ToCcBcc = {
-        isValidControlType: function (n) {
-            return ["to", "cc", "bcc"].indexOf(n) !== -1
-        },
-        assertIsValidControlType: function () {}
+
+    function _getAccount(accountId) {
+        /// <param name="accountId" type="String"></param>
+        var accountManager = Compose.platform.accountManager;
+        return accountManager.loadAccount(accountId);
     }
+
+    proto._setMailAccount = function (accountId) {
+        /// <summary>Update the account on the address wells</summary>
+        /// <param name="accountId" type="String"></param>
+        if (Jx.isNonEmptyString(accountId)) {
+            if (accountId !== this._lastAccountId) {
+                // Set the new account in canvas control
+                var account = _getAccount(accountId);
+                if (Boolean(account)) {
+                    this._lastAccountId = accountId;
+
+                    var controls = this._controls;
+                    Object.keys(controls).forEach(function (type) {
+                        controls[type].setContextualAccount(account);
+                    });
+                } else {
+                    this._lastAccountId = null;
+                }
+            }
+        } else {
+            this._lastAccountId = null;
+        }
+    };
+
+    proto._displayValidState = function (ev) {
+        /// <param name="ev" type="Event"></param>
+        Debug.assert(Jx.isArray(ev.invalidControls));
+        if (ev.invalidControls.indexOf(this.getClassName()) !== -1) {
+            var errors = this._getControlErrors(),
+                errorElement = this._errorElement;
+
+            // Switch to the full edit mode so the user can see their mistake
+            var headerController = Compose.util.getHeaderController(this.getComponentCache());
+            headerController.changeState(Compose.HeaderController.State.editFull);
+
+            // Hook up events to remove any error descriptions when user inputs new text in the address wells
+            var didSetFocus = false,
+                that = this;
+            Object.keys(errors).filter(function (type) {
+                return !Jx.isNullOrUndefined(errors[type]);
+            }).forEach(function (type) {               
+                // Set focus on the first address well with an error
+                if (!didSetFocus) {
+                    that.focus(type, true/*suppressAutoSuggest*/);
+                    didSetFocus = true;
+                }
+            });
+
+            // Now display the errors
+            errorElement.innerText = "";
+            Object.keys(errors).forEach(function (type) {
+                if (errorElement.innerText === "") {
+                    errorElement.innerText = errors[type] || "";
+                }
+            });
+        }
+    };
+
+    proto._validateRecipients = function () {
+        /// <summary>Returns true if all controls are valid. Else, returns false.</summary>
+        var errors = this._getControlErrors();
+        var isValid = Object.keys(errors).every(function (type) {
+            return !Jx.isNonEmptyString(errors[type]);
+        });
+        if (isValid) {
+            this._errorElement.innerText = "";
+        }
+        return isValid;
+    };
+
+    proto._getControlErrors = function () {
+        /// <summary>Validates the recipient boxes for valid email.</summary>
+        /// <returns>{ to: errorStr, cc: errorStr, bcc: erroStr }</returns>
+        var controls = this._controls;
+
+        // Get the content of each control
+        var recipients = { to: null, cc: null, bcc: null };
+        Object.keys(controls).forEach(function (type) {
+            recipients[type] = this.getRecipientsStringInNameEmailPairs(type);
+        } .bind(this));
+
+        // Update error messages for each field
+        var errors = { to: null, cc: null, bcc: null };
+
+        // Only try to get an error if the field has content
+        if (recipients.cc) {
+            errors.cc = controls.cc.getError();
+        }
+        if (recipients.bcc) {
+            errors.bcc = controls.bcc.getError();
+        }
+        // Also get an error for the to field if none of the other fields have content, that way we catch the
+        // no recipients error
+        if (Boolean(recipients.to) || !(recipients.cc || recipients.bcc)) {
+            errors.to = controls.to.getError();
+        }
+
+        return errors;
+    };
+
+    Debug.ToCcBcc = {
+        isValidControlType: function (type) {
+            /// <param name="type" type="String"></param>
+            return ["to", "cc", "bcc"].indexOf(type) !== -1;
+        },
+
+        assertIsValidControlType: function (type) {
+            Debug.assert(Debug.ToCcBcc.isValidControlType(type), "Invalid control type:" + type);
+        }
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="components.ref.js" />
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.AttachmentWell = function () {
+
+    Compose.AttachmentWell = /*@constructor*/function () {
         Compose.Component.call(this);
+
         this._filePickerShowing = false;
         this._attachmentWellModule = null;
-        this._attachmentArea = null
+        this._attachmentArea = /*@static_cast(HTMLElement)*/null;
     };
     Jx.augment(Compose.AttachmentWell, Compose.Component);
+
     Compose.util.defineClassName(Compose.AttachmentWell, "Compose.AttachmentWell");
-    var n = Compose.AttachmentWell.prototype;
-    n.getProgressBarHTML = function () {
-        return Compose.Templates.attachmentWellProgressBar()
+
+    var proto = Compose.AttachmentWell.prototype;
+
+    // We don't implement the normal getUI or composeGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getProgressBarHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.attachmentWellProgressBar();
     };
-    n.getAttachmentAreaHTML = function () {
-        return Compose.Templates.attachmentWellArea()
+
+    proto.getAttachmentAreaHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.attachmentWellArea();
     };
-    n.composeActivateUI = function () {
-        var n = this.getComposeRootElement(),
-            t;
-        t = this.getComponentCache();
-        this._attachButton = t.getComponent("Compose.AttachButton");
-        this._neighborElement = t.getComponent("Compose.BodyComponent").getCanvasDiv();
-        this._attachmentArea = n.querySelector(".composeAttachmentArea");
-        this._contentScrollArea = n.querySelector(".composeContentScrollArea");
-        this._statusProgressBar = n.querySelector(".compose-progress-bar");
+
+    proto.composeActivateUI = function () {
+        var rootElement = this.getComposeRootElement();
+        Debug.assert(Jx.isObject(rootElement));
+
+        var elements = this.getComponentCache();
+        this._attachButton = elements.getComponent("Compose.AttachButton");
+        this._neighborElement = elements.getComponent("Compose.BodyComponent").getCanvasDiv();
+        this._attachmentArea = rootElement.querySelector(".composeAttachmentArea");
+        this._contentScrollArea = rootElement.querySelector(".composeContentScrollArea");
+        this._statusProgressBar = rootElement.querySelector(".compose-progress-bar");
+        Debug.assert(Jx.isObject(this._statusProgressBar));
+
+        // Note: Cannot use Compose.binder here because Jx.EventManager.addListener is
+        // not the traditional addListener API.
         Jx.EventManager.addListener(null, "attachcomplete", this._onAttachComplete, this);
         Jx.EventManager.addListener(null, "attachstarted", this._onAttachStarted, this);
-        Jx.EventManager.addListener(null, "hide", this._onHide, this)
+        Jx.EventManager.addListener(null, "hide", this._onHide, this);
     };
-    n.deactivateUI = function () {
+
+    proto.deactivateUI = function () {
         Jx.EventManager.removeListener(null, "attachcomplete", this._onAttachComplete, this);
         Jx.EventManager.removeListener(null, "attachstarted", this._onAttachStarted, this);
         Jx.EventManager.removeListener(null, "hide", this._onHide, this);
+
         this._hideProgressBar();
         this._shutdownAttachmentWellFrame();
-        Compose.Component.prototype.deactivateUI.call(this)
+
+        Compose.Component.prototype.deactivateUI.call(this);
     };
-    n.composeUpdateUI = function () {
+
+    proto.composeUpdateUI = function () {
+        // Shutdown and remove the attachment well.
+        // Attachmentwell requires that we always do this before showing new UI.
         this._shutdownAttachmentWellFrame();
-        this.getMailMessageModel().get("hasOrdinaryAttachments") && this._ensureAttachmentWellFrame()
+
+        if (this.getMailMessageModel().get("hasOrdinaryAttachments")) {
+            // We will need to immediately show these ordinary attachements in the attachment well.
+            this._ensureAttachmentWellFrame();
+        }
     };
-    n.attachAnyFiles = function () {
-        this._attachFiles(["*"])
+
+    proto.attachAnyFiles = function () {
+        /// <summary>Launches file picker to select all type of files and adds it to attachment collection</summary>
+        this._attachFiles(["*"]);
     };
-    n.discard = function () {
+
+    proto.discard = function () {
+        /// <summary>Discards the underlying attachment well</summary>
         this._hideProgressBar();
-        this._attachmentWellModule && this._attachmentWellModule.discard()
+        if (this._attachmentWellModule) {
+            this._attachmentWellModule.discard();
+        }
     };
-    n.updateModel = function (n) {
-        var t = this.getMailMessageModel();
-        return n === "send" ? this._attachmentWellModule && this._attachmentWellModule.finalizeForSend() : t.set({
-            photoMailFlags: t.get("photoMailFlags") & -2
-        }), Compose.Component.prototype.updateModel.call(this, n)
+
+    proto.updateModel = function (action) {
+        /// <param name="action" type="String">send|save</param>
+        Debug.assert(Mail.composeUtil.isValidAction(action));
+
+        // Default to basic attachments if the Attachment Well Compose Frame has not been created yet.
+        var messageModel = this.getMailMessageModel();
+
+        if (action === "send") {
+            // We are sending the message, ask attachment well to finalize the message
+            if (this._attachmentWellModule) {
+                this._attachmentWellModule.finalizeForSend();
+            }
+        } else {
+            // Remove the OneDrive mail mark, so we know that any attachments are basic attachments the next time we open this draft.
+            messageModel.set({ photoMailFlags: (/*@static_cast(Number)*/messageModel.get("photoMailFlags")) & ~0x1 });
+        }
+
+        return Compose.Component.prototype.updateModel.call(this, action);
     };
-    n.composeValidate = function (n) {
-        return n === "save" ? true : !Jx.isObject(this._attachmentWellModule) || this._attachmentWellModule.validate()
+
+    proto.composeValidate = function (type) {
+        /// <param name="type" type="String">save|send</param>
+        Debug.assert(["save", "send"].indexOf(type) !== -1);
+
+        if (type === "save") {
+            // No need to validate addresswells for a save action
+            return true;
+        }
+
+        return !Jx.isObject(this._attachmentWellModule) || this._attachmentWellModule.validate();
     };
-    n.isDirty = function () {
-        return this._attachmentWellModule ? this._attachmentWellModule.isDirty : false
+
+    proto.isDirty = function () {
+        /// <summary> Returns true if the attachment well has been modified since isDirty was last set to false</summary>
+        if (this._attachmentWellModule) {
+            return this._attachmentWellModule.isDirty;
+        }
+
+        return false;
     };
-    n.isHidden = function () {
-        return !Jx.isObject(this._attachmentWellModule) || this._attachmentWellModule.isHidden()
+
+    proto.isHidden = function () {
+        /// <summary>Returns true if the view is not visible.</summary>
+        return !Jx.isObject(this._attachmentWellModule) || this._attachmentWellModule.isHidden();
     };
-    n.focus = function () {
-        Jx.isObject(this._attachmentWellModule) && this._attachmentWellModule.focus()
+
+    proto.focus = function () {
+        /// <summary>Sets the focus on the first attachement if there is one.</summary>
+        if (Jx.isObject(this._attachmentWellModule)) {
+            this._attachmentWellModule.focus();
+        }
     };
-    n.getCount = function () {
-        var n = this._attachmentWellModule;
-        return n ? n.getMetrics().count : 0
+
+    // Private
+
+    proto.getCount = function () {
+        var module = this._attachmentWellModule;
+        return module ? module.getMetrics().count : 0;
     };
-    n._onHide = function () {
-        this._attachButton.focus()
+
+    proto._onHide = function () {
+        /// <summay>Sets focus on the attach button when the last attachment is removed.</summary>
+        this._attachButton.focus();
     };
-    n._onAttachStarted = function () {
+
+    proto._onAttachStarted = function () {
+        /// <summary>Hides the progress message bar.</summary>
         Jx.mark("Mail.Compose.AttachmentWell._onAttachStarted,Info,Compose.AttachmentWell");
         this._contentScrollArea.scrollTop = 0;
-        this._showProgressBar()
+        this._showProgressBar();
     };
-    n._onAttachComplete = function () {
+
+    proto._onAttachComplete = function () {
+        /// <summary>Hides the progress message bar.</summary>
         Jx.mark("Mail.Compose.AttachmentWell._onAttachComplete,Info,Compose.AttachmentWell");
-        this._hideProgressBar()
+        this._hideProgressBar();
     };
-    n._showProgressBar = function () {
-        this._statusProgressBar && this._statusProgressBar.setAttribute("aria-hidden", "false")
+
+    proto._showProgressBar = function () {
+        /// <summary>Shows the progress message bar.</summary>
+        if (this._statusProgressBar) {
+            this._statusProgressBar.setAttribute("aria-hidden", "false");
+        }
     };
-    n._hideProgressBar = function () {
-        this._statusProgressBar && this._statusProgressBar.setAttribute("aria-hidden", "true")
+
+    proto._hideProgressBar = function () {
+        /// <summary>Hides the progress message bar.</summary>
+        if (this._statusProgressBar) {
+            this._statusProgressBar.setAttribute("aria-hidden", "true");
+        }
     };
-    n._attachFiles = function (n) {
-        var r, i, t;
-        this._filePickerShowing || (this._filePickerShowing = true, this._ensureAttachmentWellFrame(), r = this.getComponentCache().getComponent("Compose.Subject"), Jx.EventManager.fire(null, "subjectChanged", {
-            subject: r.getSubject()
-        }), i = Windows.Storage.Pickers, t = new i.FileOpenPicker, t.fileTypeFilter.replaceAll(n), t.settingsIdentifier = "ModernCompose.ComposeWindow", t.suggestedStartLocation = i.PickerLocationId.picturesLibrary, t.viewMode = i.PickerViewMode.list, t.commitButtonText = Jx.res.getString("attachCommand"), t.pickMultipleFilesAsync().then(function (n) {
-            Jx.isObject(this._attachmentWellModule) && n.size !== 0 && this._attachmentWellModule.add(n)
-        }.bind(this)).done(function () {
-            this._filePickerShowing = false
-        }.bind(this), function () {
-            this._filePickerShowing = false
-        }.bind(this)))
+
+    proto._attachFiles = function (filter) {
+        /// <summary>Launches file picker to select files and adds it to attachment collection</summary>
+        Debug.assert(filter);
+
+        if (this._filePickerShowing) {
+            // WinLive 547876 - Touch events can trigger this method to be called again while the picker is already up.
+            return;
+        }
+
+        this._filePickerShowing = true;
+
+        // Invoke picker only if we are running in WWA
+        
+        if (Jx.isWWA) {
+            
+
+            // Before we attach any files, we configure the Attachment Well.
+            this._ensureAttachmentWellFrame();
+
+            // Ensure attachment well has current subject
+            var subject = /*@static_cast(Compose.Subject)*/this.getComponentCache().getComponent("Compose.Subject");
+            Debug.assert(Jx.isObject(subject));
+            Jx.EventManager.fire(null, "subjectChanged", { subject: subject.getSubject() });
+
+            // Launch picker and let user pick files to attach
+            var pickers = Windows.Storage.Pickers,
+                filePicker = new pickers.FileOpenPicker();
+
+            // Allow the user to select any file type
+            /// <disable>JS3092</disable>
+            // def file doesn't include .replaceAll definition
+            filePicker.fileTypeFilter.replaceAll(filter);
+            /// <enable>JS3092</enable>
+
+            // Using the settings identifier allows us to persist the state of the picker.
+            filePicker.settingsIdentifier = "ModernCompose.ComposeWindow";
+            filePicker.suggestedStartLocation = pickers.PickerLocationId.picturesLibrary;
+            filePicker.viewMode = pickers.PickerViewMode.list;
+            filePicker.commitButtonText = Jx.res.getString("attachCommand");
+
+            filePicker.pickMultipleFilesAsync()
+                .then(/*@bind(Compose.AttachmentWell)*/function onFilePicked(pickedFiles) {
+                    /// <param name="pickedFiles" type="Windows.Foundation.Collections.IVectorView"></param>
+                    if (!Jx.isObject(this._attachmentWellModule) || pickedFiles.size === 0) {
+                        // Attachment Well has been disposed or the user hit cancel instead of picking files.
+                        return;
+                    }
+
+                    // Add files to attachment well
+                    this._attachmentWellModule.add(/*@static_cast(Array)*/pickedFiles);
+                }.bind(this))
+                .done(/*@bind(Compose.AttachmentWell)*/function () {
+                    this._filePickerShowing = false;
+                }.bind(this), /*@bind(Compose.AttachmentWell)*/function (err) {
+                    Debug.assert(false, err);
+                    this._filePickerShowing = false;
+                }.bind(this));
+            
+        }
+        
     };
-    n._shutdownAttachmentWellFrame = function () {
-        Jx.isObject(this._attachmentWellModule) && (this._attachmentWellModule.shutdownUI(), this._attachmentWellModule = null)
+
+    proto._shutdownAttachmentWellFrame = function () {
+        /// <summary>Shuts down and removes the attachment well.</summary>
+        if (Jx.isObject(this._attachmentWellModule)) {
+            this._attachmentWellModule.shutdownUI();
+            this._attachmentWellModule = null;
+        }
     };
-    n._ensureAttachmentWellFrame = function () {
-        var n, t;
+
+    proto._ensureAttachmentWellFrame = function () {
         Compose.log("ensureAttachmentWellFrame", Compose.LogEvent.start);
-        Jx.isObject(this._attachmentWellModule) || (n = this.getMailMessageModel(), n.isCommitted() || n.commit(), t = n.getPlatformMessage(), this._attachmentWellModule = new AttachmentWell.Compose.Module(Compose.platform.mailManager, t, this._neighborElement), this._attachmentWellModule.initUI(this._attachmentArea), Jx.res.processAll(this._attachmentArea), WinJS.UI.Animation.createExpandAnimation(this._attachmentArea).execute());
-        Compose.log("ensureAttachmentWellFrame", Compose.LogEvent.stop)
-    }
+        if (!Jx.isObject(this._attachmentWellModule)) {
+
+            // Attachments aren't reflected in the message until we commit them.
+            var messageModel = this.getMailMessageModel();
+            if (!messageModel.isCommitted()) {
+                messageModel.commit();
+            }
+
+            // Initialize the attachment well.
+            var mailMessage = /*@static_cast(Microsoft.WindowsLive.Platform.IMailMessage)*/messageModel.getPlatformMessage();
+            this._attachmentWellModule = new AttachmentWell.Compose.Module(Compose.platform.mailManager, mailMessage, this._neighborElement);
+            this._attachmentWellModule.initUI(this._attachmentArea);
+
+            Jx.res.processAll(this._attachmentArea);
+
+            // BLUE:394028 Without animation, sometimes body text overlaps with attachment well
+            // upon first initialization especially when the attachment area takes up the whole screen.
+            // Using animation forces a repaint and hides this bug.
+            WinJS.UI.Animation.createExpandAnimation(this._attachmentArea).execute();
+        }
+        Compose.log("ensureAttachmentWellFrame", Compose.LogEvent.stop);
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Jx,Compose,Debug,Mail*/
+
 Jx.delayGroup("MailCompose", function () {
+
     Compose.AutoSaver = function () {
         Compose.Component.call(this);
+
         this._autoSaveTimerId = null;
         this._lastSaveTime = null;
         this._autoSaveJob = null;
         this._bindings = null;
-        this._suspended = false
+        this._suspended = false;
     };
     Jx.augment(Compose.AutoSaver, Compose.Component);
+
     Compose.util.defineClassName(Compose.AutoSaver, "Compose.AutoSaver");
-    Compose.AutoSaver.Delay = 18e4;
-    var n = Compose.AutoSaver.prototype;
-    n.composeActivateUI = function () {
-        this._bindings = this.getComponentBinder().attach(this, [{
-            on: "msvisibilitychange",
-            from: Compose.doc,
-            then: this._visibilityChanged
-        }, {
-            on: "aftercommit",
-            fromComponent: Compose.ComponentBinder.messageModelClassName,
-            then: this._updateLastSaveTime
-        }, {
-            on: "suspending",
-            from: Jx.activation,
-            then: this._onSuspending
-        }, {
-            on: "resuming",
-            from: Jx.activation,
-            then: this._onResuming
-        }])
+
+    Compose.AutoSaver.Delay = 3 * 60 * 1000; // 3 minutes in milli-seconds
+
+    var proto = Compose.AutoSaver.prototype;
+
+    proto.composeActivateUI = function () {
+        this._bindings = this.getComponentBinder().attach(this, [
+            { on: "msvisibilitychange", from: Compose.doc, then: this._visibilityChanged },
+            { on: "aftercommit", fromComponent: Compose.ComponentBinder.messageModelClassName, then: this._updateLastSaveTime },
+            { on: "suspending", from: Jx.activation, then: this._onSuspending },
+            { on: "resuming", from: Jx.activation, then: this._onResuming }
+        ]);
     };
-    n.composeDeactivateUI = function () {
+
+    proto.composeDeactivateUI = function () {
         this.getComponentBinder().detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n.composeUpdateUI = function () {
+
+    proto.composeUpdateUI = function () {
+        // Set current time as the last save time and start timer for 3 minutes
         this._updateLastSaveTime();
-        this._onAutoSaveTimer()
+        this._onAutoSaveTimer();
     };
-    n.clear = function () {
+
+    proto.clear = function () {
+        // Cancel scheduled save
         Jx.dispose(this._autoSaveJob);
         this._autoSaveJob = null;
-        this._autoSaveTimerId && (window.clearTimeout(this._autoSaveTimerId), this._autoSaveTimerId = null)
-    };
-    n._updateLastSaveTime = function () {
-        this._lastSaveTime = Date.now()
-    };
-    n._onAutoSaveTimer = function () {
-        if (this.clear(), !Compose.doc.msHidden) {
-            var n = Compose.AutoSaver.Delay,
-                t = Date.now() - this._lastSaveTime;
-            t >= n ? (Mail.Utilities.ComposeHelper.isComposeShowing && (this._autoSaveJob = Jx.scheduler.addJob(null, Mail.Priority.composeAutoSave, "Compose.AutoSaver - run auto save", this._save, this)), this._autoSaveTimerId = window.setTimeout(this._onAutoSaveTimer.bind(this), n)) : this._autoSaveTimerId = window.setTimeout(this._onAutoSaveTimer.bind(this), n - t)
+
+        // Cancel the auto save timer if there is one
+        if (this._autoSaveTimerId) {
+            window.clearTimeout(this._autoSaveTimerId);
+            this._autoSaveTimerId = null;
         }
     };
-    n._onSuspending = function () {
+
+    // Private
+
+    proto._updateLastSaveTime = function () {
+        this._lastSaveTime = Date.now();
+    };
+
+    proto._onAutoSaveTimer = function () {
+        /// <summary>Handles auto save timer trigger.</summary>
+        Debug.assert(Jx.isInstanceOf(this, Compose.AutoSaver));
+
+        // Make sure there isn't a timer still hanging around
         this.clear();
-        this._suspended = true
+
+        // First check if we are still active and not hidden.
+        if (!Compose.doc.msHidden) {
+            var delay = Compose.AutoSaver.Delay,
+                delta = (Date.now() - this._lastSaveTime);
+            if (delta >= delay) {
+                if (Mail.Utilities.ComposeHelper.isComposeShowing) {
+                    // Save message
+                    this._autoSaveJob = Jx.scheduler.addJob(null, Mail.Priority.composeAutoSave,
+                        "Compose.AutoSaver - run auto save", this._save, this);
+                }
+
+                // Restart timer for full 3 min
+                this._autoSaveTimerId = window.setTimeout(this._onAutoSaveTimer.bind(this), delay);
+            } else {
+                // Restart timer for the remaining time
+                this._autoSaveTimerId = window.setTimeout(this._onAutoSaveTimer.bind(this), (delay - delta));
+            }
+        }
     };
-    n._onResuming = function () {
+
+    proto._onSuspending = function () {
+        /// <summary>Reacts to a suspending event for the application by canceling any outstanding autosaves.</summary>
+        this.clear();
+
+        Debug.assert(!this._suspended);
+        this._suspended = true;
+    };
+
+    proto._onResuming = function () {
+        /// <summary>Reacts to a resuming event for the application by restarting the auto save timer.</summary>
+        Debug.assert(this._suspended);
         this._suspended = false;
-        this._onAutoSaveTimer()
+
+        this._onAutoSaveTimer();
     };
-    n._visibilityChanged = function () {
-        if (!this._suspended)
-            if (Compose.doc.msHidden) {
-                var n = Mail.Utilities.ComposeHelper;
-                n.isComposeShowing && (n.setDirty(), this._save())
-            } else this._updateLastSaveTime(), Boolean(this._autoSaveTimerId) || this._onAutoSaveTimer()
+
+    proto._visibilityChanged = function () {
+        /// <summary>Reacts to a visibility changed event for the application - performing an autosave when needed.</summary>
+
+        if (this._suspended) {
+            // The suspending event can fire before the msvisibilitychanged event in some cases.
+            return;
+        }
+
+        // If we just switched to a hidden state
+        if (Compose.doc.msHidden) {
+            var helper = Mail.Utilities.ComposeHelper;
+            if (helper.isComposeShowing) {
+                // Save the message
+                helper.setDirty();
+                this._save();
+            }
+        } else {
+            // We are now visible, so store this as the last save time because we saved when we were hidden.
+            this._updateLastSaveTime();
+            // Restart timer if it is not running
+            if (!Boolean(this._autoSaveTimerId)) {
+                this._onAutoSaveTimer();
+            }
+        }
     };
-    n._save = function () {
-        Compose.ComposeImpl.quietSave(this.getComponentCache())
-    }
+
+    proto._save = function () {
+        Debug.assert(!this._suspended);
+        Compose.ComposeImpl.quietSave(this.getComponentCache());
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Debug, Jx, Compose, Mail*/
+
 Jx.delayGroup("MailCompose", function () {
+
     Compose.DOMFocus = function () {
+        /// <summary>Handles data-focusfrompointer property for the main compose window</summary>
         Compose.Component.call(this);
-        this._bindings = null
+
+        this._bindings = null;
     };
     Jx.augment(Compose.DOMFocus, Compose.Component);
+
     Compose.util.defineClassName(Compose.DOMFocus, "Compose.DOMFocus");
-    var n = Compose.DOMFocus.prototype;
-    n.composeActivateUI = function () {
-        var n = Compose.ComposeImpl.getComposeWindow(this.getComponentCache()),
-            t;
-        n.addEventListener("pointerdown", this._onMSPointerDown, true);
-        n.addEventListener("focus", this._onFocus, true);
-        n.addEventListener("beforedeactivate", this._onBeforeDeactivate, true);
-        t = [{
-            selector: ".compose-after-delete-tab-anchor",
-            fn: this._onAfterDeleteAnchorFocus
-        }, {
-            selector: ".compose-before-readOnlyHeader-tab-anchor",
-            fn: this._onBeforeReadOnlyHeaderFocus
-        }, {
-            selector: ".compose-before-to-tab-anchor",
-            fn: this._onBeforeToFocus
-        }, {
-            selector: ".compose-before-toccbcc-tab-anchor",
-            fn: this._deleteButtonFocus
-        }, {
-            selector: ".compose-after-toccbcc-tab-anchor",
-            fn: this._onAfterToCcBccFocus
-        }, {
-            selector: ".compose-after-bcc-tab-anchor",
-            fn: this._onAfterBccFocus
-        }, {
-            selector: ".compose-before-expand-tab-anchor",
-            fn: this._onBeforeExpandButtonFocus
-        }, {
-            selector: ".compose-to-subject-tab-anchor",
-            fn: this._subjectFocus
-        }, {
-            selector: ".compose-before-priority-tab-anchor",
-            fn: this._onBeforePriorityFocus
-        }, {
-            selector: ".compose-after-priority-tab-anchor",
-            fn: this._onAfterPriorityFocus
-        }, {
-            selector: ".compose-before-irm-tab-anchor",
-            fn: this._onBeforeIrmFocus
-        }, {
-            selector: ".compose-after-irm-tab-anchor",
-            fn: this._onAfterIrmFocus
-        }, {
-            selector: ".compose-before-subject-tab-anchor",
-            fn: this._onBeforeSubjectFocus
-        }, {
-            selector: ".compose-before-back-tab-anchor",
-            fn: this._onBeforeBackButtonFocus
-        }, {
-            selector: ".compose-after-back-tab-anchor",
-            fn: this._onAfterBackButtonFocus
-        }, {
-            selector: ".compose-before-newSnap-tab-anchor",
-            fn: this._onBeforeButtonAreaFocus
-        }, {
-            selector: ".compose-before-from-tab-anchor",
-            fn: this._onBeforeFromFocus
-        }, {
-            selector: ".compose-after-from-tab-anchor",
-            fn: this._toAWFocus
-        }, {
-            selector: ".compose-after-backSnap-tab-anchor",
-            fn: this._onAfterBackButtonFocus
-        }, {
-            selector: ".compose-before-backSnap-tab-anchor",
-            fn: this._onBeforeBackButtonFocus
-        }, {
-            selector: ".compose-after-deleteSnap-tab-anchor",
-            fn: this._onAfterDeleteAnchorFocus
-        }, {
-            selector: ".compose-before-new-tab-anchor",
-            fn: this._onBeforeButtonAreaFocus
-        }, {
-            selector: ".before-compose-tab-anchor",
-            fn: this._bodyFocus
-        }];
+
+    var proto = Compose.DOMFocus.prototype;
+
+    proto.composeActivateUI = function () {
+        var composeWindow = Compose.ComposeImpl.getComposeWindow(this.getComponentCache());
+        Debug.assert(Jx.isObject(composeWindow));
+
+        // Can't use the binder for these because we need to capture the events, rather than wait for them to bubble
+        composeWindow.addEventListener("MSPointerDown", this._onMSPointerDown, true);
+        composeWindow.addEventListener("focus", this._onFocus, true);
+        composeWindow.addEventListener("beforedeactivate", this._onBeforeDeactivate, true);
+
+        var selectorsAndFunctions = [
+            { selector: ".compose-after-delete-tab-anchor", fn: this._onAfterDeleteAnchorFocus },
+            { selector: ".compose-before-readOnlyHeader-tab-anchor", fn: this._onBeforeReadOnlyHeaderFocus },
+            { selector: ".compose-before-to-tab-anchor", fn: this._onBeforeToFocus },
+            { selector: ".compose-before-toccbcc-tab-anchor", fn: this._deleteButtonFocus },
+            { selector: ".compose-after-toccbcc-tab-anchor", fn: this._onAfterToCcBccFocus },
+            { selector: ".compose-after-bcc-tab-anchor", fn: this._onAfterBccFocus },
+            { selector: ".compose-before-expand-tab-anchor", fn: this._onBeforeExpandButtonFocus },
+            { selector: ".compose-to-subject-tab-anchor", fn: this._subjectFocus },
+            { selector: ".compose-before-priority-tab-anchor", fn: this._onBeforePriorityFocus },
+            { selector: ".compose-after-priority-tab-anchor", fn: this._onAfterPriorityFocus },
+            { selector: ".compose-before-irm-tab-anchor", fn: this._onBeforeIrmFocus },
+            { selector: ".compose-after-irm-tab-anchor", fn: this._onAfterIrmFocus },
+            { selector: ".compose-before-subject-tab-anchor", fn: this._onBeforeSubjectFocus },
+            { selector: ".compose-before-back-tab-anchor", fn: this._onBeforeBackButtonFocus },
+            { selector: ".compose-after-back-tab-anchor", fn: this._onAfterBackButtonFocus },
+            { selector: ".compose-before-newSnap-tab-anchor", fn: this._onBeforeButtonAreaFocus },
+            { selector: ".compose-before-from-tab-anchor", fn: this._onBeforeFromFocus },
+            { selector: ".compose-after-from-tab-anchor", fn: this._toAWFocus },
+            { selector: ".compose-after-backSnap-tab-anchor", fn: this._onAfterBackButtonFocus },
+            { selector: ".compose-before-backSnap-tab-anchor", fn: this._onBeforeBackButtonFocus },
+            { selector: ".compose-after-deleteSnap-tab-anchor", fn: this._onAfterDeleteAnchorFocus },
+            { selector: ".compose-before-new-tab-anchor", fn: this._onBeforeButtonAreaFocus },
+            { selector: ".before-compose-tab-anchor", fn: this._bodyFocus }
+        ];
+
         this._bindings = [];
-        t.forEach(function (n) {
-            var t = Compose.doc.querySelector(n.selector);
-            this._bindings.push(Compose.binder.attach(this, [{
-                on: "focus",
-                from: t,
-                then: n.fn
-            }])[0])
-        }.bind(this))
+        selectorsAndFunctions.forEach(function (obj) {
+            var element = Compose.doc.querySelector(obj.selector);
+            this._bindings.push(Compose.binder.attach(this, [{ on: "focus", from: element, then: obj.fn }])[0]);
+        }.bind(this));
     };
-    n.composeDeactivateUI = function () {
-        var n = Compose.ComposeImpl.getComposeWindow(this.getComponentCache());
-        n.removeEventListener("pointerdown", this._onMSPointerDown, true);
-        n.removeEventListener("focus", this._onFocus, true);
-        n.removeEventListener("beforedeactivate", this._onBeforeDeactivate, true);
+
+    proto.composeDeactivateUI = function () {
+        var composeWindow = Compose.ComposeImpl.getComposeWindow(this.getComponentCache());
+        Debug.assert(Jx.isObject(composeWindow));
+
+        composeWindow.removeEventListener("MSPointerDown", this._onMSPointerDown, true);
+        composeWindow.removeEventListener("focus", this._onFocus, true);
+        composeWindow.removeEventListener("beforedeactivate", this._onBeforeDeactivate, true);
+
         Compose.binder.detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n._onMSPointerDown = function (n) {
-        n.target.setAttribute("data-focusfrompointer", "true")
+
+    // Private
+
+    proto._onMSPointerDown = function (e) {
+        /// <summary>Handles touch or mouse clicks inside Compose.</summary>
+        /// <param name="e" type="Event">The MSPointerDown event.</param>
+        // Mark the button as having been invoked via touch/mouse.
+        e.target.setAttribute("data-focusfrompointer", "true");
     };
-    n._onFocus = function (n) {
-        var t = n.target.querySelector("[data-focusfrompointer='true']");
-        t && (t.removeAttribute("data-focusfrompointer"), n.target.setAttribute("data-focusfrompointer", "true"))
+
+    proto._onFocus = function (e) {
+        /// <summary>Handles focus events inside Compose.</summary>
+        /// <param name="e" type="Event">The focus event.</param>
+        // Focus sometimes jumps to the parent of the element that was actually clicked, so we 
+        // move around the attribute as necessary.
+        var clickedElement = e.target.querySelector("[data-focusfrompointer='true']");
+        if (clickedElement) {
+            clickedElement.removeAttribute("data-focusfrompointer");
+            e.target.setAttribute("data-focusfrompointer", "true");
+        }
     };
-    n._onBeforeDeactivate = function (n) {
-        n.target.removeAttribute("data-focusfrompointer")
+
+    proto._onBeforeDeactivate = function (e) {
+        /// <summary>Handles before deactivate events inside Compose.</summary>
+        /// <param name="e" type="Event">The before deactivate event.</param>
+        // Remove the mark of having been invoked via touch/mouse, if it exists.
+        e.target.removeAttribute("data-focusfrompointer");
     };
-    n._isSmallerView = function () {
-        var r = Mail.guiState.width,
-            i = Jx.ApplicationView,
-            n = i.State,
-            t = i.getStateFromWidth(r);
-        return t === n.snap || t === n.minimum || t === n.less || t === n.more || t === n.large
+
+    proto._isSmallerView = function () {
+        var width = Mail.guiState.width,
+            ApplicationView = Jx.ApplicationView,
+            ViewState = ApplicationView.State,
+            state = ApplicationView.getStateFromWidth(width);
+        
+        return state === ViewState.snap || state === ViewState.minimum || state === ViewState.less || state === ViewState.more || state === ViewState.large;
     };
-    n._focusOnElementWithSelector = function (n) {
-        var t = Compose.doc.querySelector(n);
-        t && t.focus()
+
+    proto._focusOnElementWithSelector = function (selector) {
+        /// <param name="selector" type="String">The selector of an element on which to set focus</param>
+        var element = Compose.doc.querySelector(selector);
+        if (element) {
+            element.focus();
+        }
     };
-    n._onAfterDeleteAnchorFocus = function () {
-        var n = this.getComponentCache().getComponent("Compose.ToCcBcc"),
-            t;
-        n.isVisible("bcc") ? this._focusOnElementWithSelector("#addressbarBccFieldLabel") : n.isVisible("cc") ? this._focusOnElementWithSelector("#addressbarCcFieldLabel") : n.isVisible("to") ? this._focusOnElementWithSelector("#addressbarToFieldLabel") : this._focusOnComponentIfVisible("Compose.BackButton") || (t = this.getComponentCache().getComponent("Compose.ReadOnlyHeader"), t.focus())
+
+    proto._onAfterDeleteAnchorFocus = function () {
+        // Set focus on the last visible to/cc/bcc field
+        var toCcBcc = this.getComponentCache().getComponent("Compose.ToCcBcc");
+        Debug.assert(Jx.isObject(toCcBcc) && toCcBcc.isActivated());
+
+        if (toCcBcc.isVisible("bcc")) {
+            // Set focus on the bcc button
+            this._focusOnElementWithSelector("#addressbarBccFieldLabel");
+        } else if (toCcBcc.isVisible("cc")) {
+            // Set focus on the cc button
+            this._focusOnElementWithSelector("#addressbarCcFieldLabel");
+        } else if (toCcBcc.isVisible("to")) {
+            // Set focus on the to button
+            this._focusOnElementWithSelector("#addressbarToFieldLabel");
+        } else if(!this._focusOnComponentIfVisible("Compose.BackButton")) {
+            // Set focus on the read-only header
+            var readOnlyHeader = this.getComponentCache().getComponent("Compose.ReadOnlyHeader");
+            Debug.assert(Jx.isObject(readOnlyHeader) && readOnlyHeader.isActivated() && readOnlyHeader.isVisible());
+            readOnlyHeader.focus();
+        }
     };
-    n._onBeforeToFocus = function () {
-        var n = this.getComponentCache().getComponent("Compose.From");
-        n.isVisible() ? this._fromControlFocus() : this._focusOnComponentIfVisible("Compose.BackButton") || this._toPickerFocus()
+
+    proto._onBeforeToFocus = function () {
+        // If the from control is visible, focus goes there
+        var from = this.getComponentCache().getComponent("Compose.From");
+        Debug.assert(Jx.isObject(from) && from.isActivated());
+        if (from.isVisible()) {
+            this._fromControlFocus();
+        } else {
+            // Next up would be the back button if it's visible
+            if (!this._focusOnComponentIfVisible("Compose.BackButton")) {
+                // Finally, set focus on the To people picker button
+                this._toPickerFocus();
+            }
+        }
     };
-    n._onAfterBackButtonFocus = function () {
+
+    proto._onAfterBackButtonFocus = function () {
+        // If the readonly header is visible, focus goes there
         if (!this._focusOnComponentIfVisible("Compose.ReadOnlyHeader")) {
-            var n = this.getComponentCache().getComponent("Compose.From");
-            n.isVisible() ? this._fromControlFocus() : this._toAWFocus()
+            // Next is the from control
+            var from = this.getComponentCache().getComponent("Compose.From");
+            Debug.assert(Jx.isObject(from) && from.isActivated());
+            if (from.isVisible()) {
+                this._fromControlFocus();
+            } else {
+                // Set focus on the to line
+                this._toAWFocus();
+            }
         }
     };
-    n._fromControlFocus = function () {
-        this._focusOnElementWithSelector(".fromControl-wrapper")
+
+    proto._fromControlFocus = function () {
+        // Set focus on the from control
+        Debug.assert(this.getComponentCache().getComponent("Compose.From").isVisible());
+        this._focusOnElementWithSelector(".fromControl-wrapper");
     };
-    n._onBeforeReadOnlyHeaderFocus = function () {
-        this._focusOnComponentIfVisible("Compose.BackButton") || this._deleteButtonFocus()
-    };
-    n._deleteButtonFocus = function () {
-        var n = this._focusOnComponentIfVisible("Compose.DeleteButton")
-    };
-    n._onAfterToCcBccFocus = function () {
+
+    proto._onBeforeReadOnlyHeaderFocus = function () {
+        // Set focus on the back button if it exists
         if (!this._focusOnComponentIfVisible("Compose.BackButton")) {
-            var n = this.getComponentCache().getComponent("Compose.From");
-            n.isVisible() ? this._fromControlFocus() : this._toAWFocus()
+            // Otherwise focus goes to the delete button
+            this._deleteButtonFocus();
         }
     };
-    n._onBeforeBackButtonFocus = function () {
-        var n = this.getComponentCache().getComponent("Compose.ToCcBcc");
-        n.isVisible("to") ? this._toPickerFocus() : this._deleteButtonFocus()
+
+    proto._deleteButtonFocus = function () {
+        var focusWasSet = this._focusOnComponentIfVisible("Compose.DeleteButton");
+        Debug.assert(focusWasSet, "Delete button should always be visible in Compose.");
     };
-    n._toPickerFocus = function () {
-        this._focusOnElementWithSelector("#addressbarToFieldLabel")
-    };
-    n._awFocus = function (n) {
-        var t = this.getComponentCache().getComponent("Compose.ToCcBcc");
-        t.focus(n)
-    };
-    n._toAWFocus = function () {
-        this._awFocus("to")
-    };
-    n._subjectFocus = function () {
-        this._focusOnElementWithSelector(".composeSubjectLine")
-    };
-    n._focusOnComponentIfVisible = function (n) {
-        var t = this.getComponentCache().getComponent(n);
-        return t.isVisible() ? (t.focus(), true) : false
-    };
-    n._onAfterBccFocus = function () {
-        var n = this.getAfterBccFocusComponent();
-        n.focus()
-    };
-    n._getFirstVisibleComponent = function (n) {
-        var t = null,
-            i = this.getComponentCache();
-        return n.some(function (n) {
-            var r = i.getComponent(n);
-            return r.isVisible() ? (t = r, true) : false
-        }), t
-    };
-    n.getAfterBccFocusComponent = function () {
-        return this._isSmallerView() ? this._getFirstVisibleComponent(["Compose.Priority", "Compose.IrmChooser", "Mail.ExpandButton"]) : this._getFirstVisibleComponent(["Compose.IrmChooser", "Compose.Priority", "Mail.ExpandButton"])
-    };
-    n._focusOnLowestAddressWell = function () {
-        var n = this.getComponentCache().getComponent("Compose.ToCcBcc");
-        n.isVisible("bcc") ? n.focus("bcc") : n.focus("cc")
-    };
-    n._onBeforePriorityFocus = function () {
-        this._isSmallerView() ? this._focusOnLowestAddressWell() : this._focusOnComponentIfVisible("Compose.IrmChooser") || this._focusOnLowestAddressWell()
-    };
-    n._onAfterPriorityFocus = function () {
-        this._isSmallerView() ? this._focusOnComponentIfVisible("Compose.IrmChooser") || this._focusOnComponentIfVisible("Mail.ExpandButton") || this._subjectFocus() : this._focusOnComponentIfVisible("Mail.ExpandButton") || this._subjectFocus()
-    };
-    n._onBeforeIrmFocus = function () {
-        this._isSmallerView() && this._focusOnComponentIfVisible("Compose.Priority") || this._focusOnLowestAddressWell()
-    };
-    n._onAfterIrmFocus = function () {
-        if (this._isSmallerView()) this._focusOnComponentIfVisible("Mail.ExpandButton") || this._subjectFocus();
-        else if (!this._focusOnComponentIfVisible("Compose.Priority")) var n = this._focusOnComponentIfVisible("Mail.ExpandButton")
-    };
-    n._onBeforeExpandButtonFocus = function () {
-        this._isSmallerView() ? this._focusOnComponentIfVisible("Compose.IrmChooser") || this._focusOnComponentIfVisible("Compose.Priority") || this._focusOnLowestAddressWell() : this._focusOnComponentIfVisible("Compose.Priority") || this._focusOnComponentIfVisible("Compose.IrmChooser") || this._focusOnLowestAddressWell()
-    };
-    n._onBeforeSubjectFocus = function () {
-        var n, t = this.getComponentCache().getComponent("Compose.ReadOnlyHeader");
-        t.isVisible() ? this._focusOnElementWithSelector(".cmdEditHeader") : this._focusOnComponentIfVisible("Mail.ExpandButton") || (this._isSmallerView() ? this._focusOnComponentIfVisible("Compose.IrmChooser") || (n = this._focusOnComponentIfVisible("Compose.Priority")) : n = this._focusOnComponentIfVisible("Compose.Priority"))
-    };
-    n._bodyFocus = function () {
-        var n = this.getComponentCache().getComponent("Compose.BodyComponent");
-        n.focus()
-    };
-    n._onBeforeFromFocus = function () {
-        this._focusOnComponentIfVisible("Compose.BackButton") || this._toPickerFocus()
-    };
-    n._onBeforeButtonAreaFocus = function () {
-        if (Mail.guiState.isOnePane) this._bodyFocus();
-        else {
-            var n = document.getElementById("mailMessageListCollection");
-            n.focus()
+
+    proto._onAfterToCcBccFocus = function () {
+        // Set focus on the back button if it exists
+        if (!this._focusOnComponentIfVisible("Compose.BackButton")) {
+            // Set focus on from control if back button is currently hidden
+            var from = this.getComponentCache().getComponent("Compose.From");
+            Debug.assert(Jx.isObject(from) && from.isActivated());
+            if (from.isVisible()) {
+                this._fromControlFocus();
+            } else {
+                // Set focus on the to line if none of those are available
+                this._toAWFocus();
+            }
         }
-    }
+    };
+
+    proto._onBeforeBackButtonFocus = function () {
+        var toCcBcc = this.getComponentCache().getComponent("Compose.ToCcBcc");
+        Debug.assert(Jx.isObject(toCcBcc) && toCcBcc.isActivated());
+        if (toCcBcc.isVisible("to")) {
+            this._toPickerFocus();
+        } else {
+            this._deleteButtonFocus();
+        }
+    };
+
+    proto._toPickerFocus = function () {
+        // Set focus on the to button
+        Debug.assert(this.getComponentCache().getComponent("Compose.ToCcBcc").isVisible("to"));
+        this._focusOnElementWithSelector("#addressbarToFieldLabel");
+    };
+
+    proto._awFocus = function (type) {
+        // Focus on the chosen address well
+        var toCcBcc = this.getComponentCache().getComponent("Compose.ToCcBcc");
+        Debug.assert(Jx.isObject(toCcBcc) && toCcBcc.isActivated() && toCcBcc.isVisible(type));
+        toCcBcc.focus(type);
+    };
+
+    proto._toAWFocus = function () {
+        this._awFocus("to");
+    };
+
+    proto._subjectFocus = function () {
+        this._focusOnElementWithSelector(".composeSubjectLine");
+    };
+
+    proto._focusOnComponentIfVisible = function (componentName) {
+        /// <summary>Sets focus on a given compose component if it is currently visible.</summary>
+        /// <param name="componentName" type="String">The class name of the component to retrieve</param>
+        /// <returns type="Boolean">True when focus was set on the component</returns>
+
+        var component = this.getComponentCache().getComponent(componentName);
+        Debug.assert(Jx.isObject(component) && component.isActivated());
+        Debug.assert(Jx.isFunction(component.isVisible));
+        Debug.assert(Jx.isFunction(component.focus));
+        if (component.isVisible()) {
+            component.focus();
+            return true;
+        }
+
+        return false;
+    };
+
+    proto._onAfterBccFocus = function () {
+        var component = this.getAfterBccFocusComponent();
+        Debug.assert(Jx.isObject(component) && component.isActivated());
+        Debug.assert(Jx.isFunction(component.focus));
+        component.focus();
+    };
+
+    proto._getFirstVisibleComponent = function (componentNames) {
+        Debug.assert(Jx.isArray(componentNames));
+
+        var firstVisible = null;
+        var componentCache = this.getComponentCache();
+
+        componentNames.some(function (name) {
+            var component = componentCache.getComponent(name);
+            Debug.assert(Jx.isObject(component) && component.isActivated());
+            Debug.assert(Jx.isFunction(component.isVisible));
+            if (component.isVisible()) {
+                firstVisible = component;
+                return true;
+            }
+            return false;
+        });
+        return firstVisible;
+    };
+
+    proto.getAfterBccFocusComponent = function () {
+        // Priority and permission switch places at a certain size
+        if (!this._isSmallerView()) {
+            // Permission goes first, then priority, then the "More" button.
+            return this._getFirstVisibleComponent(["Compose.IrmChooser", "Compose.Priority", "Mail.ExpandButton"]);
+        } else {
+            // Priority goes first, then permission, then the "More" button
+            return this._getFirstVisibleComponent(["Compose.Priority", "Compose.IrmChooser", "Mail.ExpandButton"]);
+        }
+    };
+
+    proto._focusOnLowestAddressWell = function () {
+        var toCcBcc = this.getComponentCache().getComponent("Compose.ToCcBcc");
+        Debug.assert(Jx.isObject(toCcBcc) && toCcBcc.isActivated());
+        if (toCcBcc.isVisible("bcc")) {
+            toCcBcc.focus("bcc");
+        } else {
+            Debug.assert(toCcBcc.isVisible("cc"));
+            toCcBcc.focus("cc");
+        }
+    };
+
+    proto._onBeforePriorityFocus = function () {
+        // Priority and permission switch places at a certain size
+        if (!this._isSmallerView()) {
+            // Permission goes first
+            if (!this._focusOnComponentIfVisible("Compose.IrmChooser")) {
+                // Permission is hidden, focus on lowest address well
+                this._focusOnLowestAddressWell();
+            }
+        } else {
+            // Priority goes first, so the bcc field is before it
+            this._focusOnLowestAddressWell();
+        }
+    };
+
+    proto._onAfterPriorityFocus = function () {
+        // Priority and permission switch places at a certain size
+        if (!this._isSmallerView()) {
+            // Permission goes first, check for more link
+            if (!this._focusOnComponentIfVisible("Mail.ExpandButton")) {
+                // More link was hidden, jump to subject
+                this._subjectFocus();
+            }
+        } else {
+            // Priority goes first, irm field is next
+            if (!this._focusOnComponentIfVisible("Compose.IrmChooser")) {
+                // Permission is hidden, focus on more link
+                if (!this._focusOnComponentIfVisible("Mail.ExpandButton")) {
+                    // No more link, jump straight to subject
+                    this._subjectFocus();
+                }
+            }
+        }
+    };
+
+    proto._onBeforeIrmFocus = function () {
+        // Priority and permission switch places at a certain size
+        if (!this._isSmallerView() || !this._focusOnComponentIfVisible("Compose.Priority")) {
+            // Permission goes first, focus on the lowest address well
+            this._focusOnLowestAddressWell();
+        }
+    };
+
+    proto._onAfterIrmFocus = function () {
+        // Priority and permission switch places at a certain size
+        if (!this._isSmallerView()) {
+            // Permission goes first, so priority field is next
+            if (!this._focusOnComponentIfVisible("Compose.Priority")) {
+                // Priority was hidden, that means More link is next
+                var focusWasSet = this._focusOnComponentIfVisible("Mail.ExpandButton");
+                Debug.assert(focusWasSet, "Expected the More button to be visible if Priority is not");
+            }
+        } else {
+            // Priority goes first, check for more link
+            if (!this._focusOnComponentIfVisible("Mail.ExpandButton")) {
+                // More link was hidden, jump to subject
+                this._subjectFocus();
+            }
+        }
+    };
+
+    proto._onBeforeExpandButtonFocus = function () {
+        // Priority and permission switch places at a certain size
+        if (!this._isSmallerView()) {
+            // Permission goes first, so priority is last
+            if (!this._focusOnComponentIfVisible("Compose.Priority")) {
+                // Priority is hidden, so try permission
+                if (!this._focusOnComponentIfVisible("Compose.IrmChooser")) {
+                    // No permission, so select the last address well
+                    this._focusOnLowestAddressWell();
+                }
+            }
+        } else {
+            // Priority goes first, so permission is last
+            if (!this._focusOnComponentIfVisible("Compose.IrmChooser")) {
+                // Permission is hidden, so try priority
+                if (!this._focusOnComponentIfVisible("Compose.Priority")) {
+                    // No priority, so select the last address well
+                    this._focusOnLowestAddressWell();
+                }
+            }
+        }
+    };
+
+    proto._onBeforeSubjectFocus = function () {
+        // If the read only header is visible, select the change link
+        var focusWasSet,
+            readOnlyHeader = this.getComponentCache().getComponent("Compose.ReadOnlyHeader");
+        Debug.assert(Jx.isObject(readOnlyHeader) && readOnlyHeader.isActivated());
+        if (readOnlyHeader.isVisible()) {
+            this._focusOnElementWithSelector(".cmdEditHeader");
+        } else {
+            // If the more link is visible, select it
+            if (!this._focusOnComponentIfVisible("Mail.ExpandButton")) {
+                // Priority and permission switch places at a certain size
+                if (!this._isSmallerView()) {
+                    // Permission goes first, so priority is last
+                    focusWasSet = this._focusOnComponentIfVisible("Compose.Priority");
+                    Debug.assert(focusWasSet, "If read-only header and More button are hidden, priority should be visible.");
+                } else {
+                    // Priority goes first, permission is last
+                    if (!this._focusOnComponentIfVisible("Compose.IrmChooser")) {
+                        // Permission is hidden, focus on priority anyway
+                        focusWasSet = this._focusOnComponentIfVisible("Compose.Priority");
+                        Debug.assert(focusWasSet, "If read-only header and More button are hidden, priority should be visible.");
+                    }
+                }
+            }
+        }
+    };
+
+    proto._bodyFocus = function () {
+        // Set focus on the body
+        var body = this.getComponentCache().getComponent("Compose.BodyComponent");
+        Debug.assert(Jx.isObject(body));
+        body.focus();
+    };
+    
+    proto._onBeforeFromFocus = function () {
+        // Focus goes to the back button if it's visible
+        if (!this._focusOnComponentIfVisible("Compose.BackButton")) {
+            this._toPickerFocus();
+        }
+    };
+
+    proto._onBeforeButtonAreaFocus = function () {
+        if (Mail.guiState.isOnePane) {
+            // In one pane mode, we want to wrap back around to the body
+            this._bodyFocus();
+        } else {
+            // In two pane mode, we go back to the message list
+            var messageListElement = document.getElementById("mailMessageListCollection");
+            Debug.assert(!Jx.isNullOrUndefined(messageListElement));
+            messageListElement.focus();
+        }
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Mail,Compose,Jx,Debug*/
+/*jshint browser:true*/
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.KeyboardResizer = function () {
+
+    Compose.KeyboardResizer = /*@constructor*/function () {
         Compose.Component.call(this);
+
         this._inputPaneHandle = null;
         this._peekBarHeight = Jx.PeekBar.height;
         this._keyboardAdjusted = false;
         this._mainFrame = null;
+
         this._bindings = null;
-        this._paused = false
+        this._paused = false;
     };
     Jx.augment(Compose.KeyboardResizer, Compose.Component);
+
     Compose.util.defineClassName(Compose.KeyboardResizer, "Compose.KeyboardResizer");
-    var n = Compose.KeyboardResizer.prototype;
-    n.composeActivateUI = function () {
-        var i = this.getComposeRootElement(),
-            n, t;
-        this._mainFrame = i.querySelector(".composeContentScrollArea");
-        n = this._inputPaneHandle = Compose.InputPane.getForCurrentView();
-        t = n.occludedRect.height;
-        t > 0 ? (t -= this._peekBarHeight, this._keyboardAdjusted = true) : this._keyboardAdjusted = false;
-        this._mainFrame.style.bottom = t + "px";
-        this._bindings = Compose.binder.attach(this, [{
-            on: "showing",
-            from: n,
-            then: this._keyboardUp
-        }, {
-            on: "hiding",
-            from: n,
-            then: this._keyboardDown
-        }])
-    };
-    n.composeDeactivateUI = function () {
-        Compose.binder.detach(this._bindings)
-    };
-    n.pause = function () {
-        this._paused = true
-    };
-    n.resume = function () {
-        this._paused = false;
-        var n = this._inputPaneHandle.occludedRect.height;
-        n > 0 ? (n -= this._peekBarHeight, this._keyboardAdjusted = true) : this._keyboardAdjusted = false;
-        this._mainFrame.style.bottom = n + "px"
-    };
-    n.isAdjustingForKeyboard = function () {
-        return this._keyboardAdjusted
-    };
-    n._keyboardUp = function (n) {
-        if (Mail.isElementOrDescendant(document.activeElement, document.getElementById(Mail.CompApp.rootElementId)) && (n.ensuredFocusedElementInView = true), !this._paused) {
-            var t = n.occludedRect.height - this._peekBarHeight + "px";
-            this._mainFrame.style.bottom = t;
+
+    var proto = Compose.KeyboardResizer.prototype;
+
+    proto.composeActivateUI = function () {
+        var rootElement = this.getComposeRootElement();
+        Debug.assert(Jx.isHTMLElement(rootElement));
+
+        this._mainFrame = rootElement.querySelector(".composeContentScrollArea");
+        Debug.assert(Jx.isHTMLElement(this._mainFrame));
+
+        var inputPaneHandle = this._inputPaneHandle = Compose.InputPane.getForCurrentView();
+        Debug.assert(Jx.isObject(inputPaneHandle));
+
+        var currentKeyboardHeight = inputPaneHandle.occludedRect.height;
+        if (currentKeyboardHeight > 0) {
+            currentKeyboardHeight -= this._peekBarHeight;
             this._keyboardAdjusted = true;
-            Compose.WinJsUI.executeAnimation(this._mainFrame, {
-                property: "bottom",
-                delay: 0,
-                duration: 367,
-                timing: "cubic-bezier(0.1, 0.9, 0.2, 1)",
-                from: "0px",
-                to: t
-            }).done(null, function () {})
-        }
-    };
-    n._keyboardDown = function () {
-        if (!this._paused) {
-            var n = this._mainFrame.style.bottom;
-            this._mainFrame.style.bottom = "0px";
+        } else {
             this._keyboardAdjusted = false;
-            Compose.WinJsUI.executeAnimation(this._mainFrame, {
-                property: "bottom",
-                delay: 0,
-                duration: 367,
-                timing: "cubic-bezier(0.1, 0.9, 0.2, 1)",
-                from: n,
-                to: "0px"
-            }).done(null, function () {})
         }
-    }
+        this._mainFrame.style.bottom = currentKeyboardHeight + "px";
+
+        // Hook up listeners for the IHM
+        this._bindings = Compose.binder.attach(this, [
+            { on: "showing", from: inputPaneHandle, then: this._keyboardUp },
+            { on: "hiding", from: inputPaneHandle, then: this._keyboardDown }
+        ]);
+    };
+
+    proto.composeDeactivateUI = function () {
+        Compose.binder.detach(this._bindings);
+    };
+
+    proto.pause = function () {
+        Debug.assert(!this._paused, "Already paused");
+        this._paused = true;
+    };
+
+    proto.resume = function () {
+        Debug.assert(this._paused, "Not paused");
+        this._paused = false;
+        // Set the position we expected at the end of the animation
+        var currentKeyboardHeight = this._inputPaneHandle.occludedRect.height;
+        if (currentKeyboardHeight > 0) {
+            currentKeyboardHeight -= this._peekBarHeight;
+            this._keyboardAdjusted = true;
+        } else {
+            this._keyboardAdjusted = false;
+        }
+        this._mainFrame.style.bottom = currentKeyboardHeight + "px";
+    };
+
+    proto.isAdjustingForKeyboard = function () {
+        return this._keyboardAdjusted;
+    };
+
+    // Private
+
+    proto._keyboardUp = function (e) {
+        /// <summary>Reacts to the IHM coming up by resizing the window appropriately. </summary>
+        /// <param name="e" type="__InputPaneViewEvent" optional="false">The showing event from the IHM.</param>
+        // Tell the IHM that we are taking care of ensuring the correct elements are in view        
+        if (Mail.isElementOrDescendant(document.activeElement, document.getElementById(Mail.CompApp.rootElementId))) {
+            e.ensuredFocusedElementInView = true;
+        }
+
+        if (this._paused) {
+            return;
+        }
+
+        // Calculate new position
+        var newPosition = (e.occludedRect.height - this._peekBarHeight) + "px";
+
+        // Set the position we expect at the end of the animation
+        this._mainFrame.style.bottom = newPosition;
+        this._keyboardAdjusted = true;
+
+        // Animate in time with the keyboad, and when finished
+        // scroll the selection into view
+        Compose.WinJsUI.executeAnimation(this._mainFrame, {
+            property: "bottom",
+            delay: 0,
+            duration: 367,
+            timing: "cubic-bezier(0.1, 0.9, 0.2, 1)",
+            from: "0px",
+            to: newPosition
+        }).done(null, function (ex) {
+            Debug.assert(false, "_keyboardUp animation failed: " + ex);
+        });
+    };
+
+    proto._keyboardDown = function () {
+        /// <summary>Reacts to the IHM going down by resizing the window appropriately. </summary>
+        // Save start position
+        if (this._paused) {
+            return;
+        }
+
+        var startPosition = this._mainFrame.style.bottom;
+
+        // Set the position we expect at the end of the animation
+        this._mainFrame.style.bottom = "0px";
+        this._keyboardAdjusted = false;
+
+        // Animate in time with the keyboad
+        Compose.WinJsUI.executeAnimation(this._mainFrame, {
+            property: "bottom",
+            delay: 0,
+            duration: 367,
+            timing: "cubic-bezier(0.1, 0.9, 0.2, 1)",
+            from: startPosition,
+            to: "0px"
+        }).done(null, function (ex) {
+            Debug.assert(false, "_keyboardDown animation failed: " + ex);
+        });
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx,Compose,Debug,Mail*/
+
 Jx.delayGroup("MailCompose", function () {
+
     Compose.HeaderController = function () {
+        /// <summary>Manages the header state by manipulating CSS classes on the root element</summary>
         Compose.Component.call(this);
-        this._currentState = null
+
+        this._currentState = null;
     };
     Jx.inherit(Compose.HeaderController, Jx.Events);
     Jx.augment(Compose.HeaderController, Compose.Component);
+
     Compose.util.defineClassName(Compose.HeaderController, "Compose.HeaderController");
+
     Compose.HeaderController.State = {
         readOnly: "header-readonly",
         editCondensed: "header-edit-condensed",
         editFull: "header-edit-full"
     };
-    var n = Compose.HeaderController.prototype;
-    n.composeUpdateUI = function () {
-        var n = this.getDefaultState();
-        this.changeState(n)
+
+    var proto = Compose.HeaderController.prototype;
+
+    Debug.Events.define(proto, "changed");
+
+    proto.composeUpdateUI = function () {
+        var state = this.getDefaultState();
+        this.changeState(state);
     };
-    n.changeState = function (n) {
-        if (this._currentState !== n) {
+
+    proto.changeState = function (newState) {
+        /// <summary>Change to a new header state</summary>
+        /// <param name="newState" type="String">Compose.HeaderController.State</param>
+        if (this._currentState !== newState) {
             Compose.mark("HeaderController.changeState", Compose.LogEvent.start);
-            var i = {
-                    oldState: this._currentState,
-                    newState: n
-                },
-                t = Compose.ComposeImpl.getComposeWindow(this.getComponentCache());
-            Jx.isNullOrUndefined(this._currentState) || t.classList.remove(this._currentState);
-            Jx.isNullOrUndefined(n) || t.classList.add(n);
-            this._currentState = n;
-            this.raiseEvent("changed", i);
-            Compose.mark("HeaderController.changeState", Compose.LogEvent.stop)
+
+            // Store an object for the event we will be firing
+            var event = {
+                oldState: this._currentState,
+                newState: newState
+            };
+
+            // Change the class name on the root element
+            var composeWindow = Compose.ComposeImpl.getComposeWindow(this.getComponentCache());
+            if (!Jx.isNullOrUndefined(this._currentState)) {
+                composeWindow.classList.remove(this._currentState);
+            }
+            if (!Jx.isNullOrUndefined(newState)) {
+                composeWindow.classList.add(newState);
+            }
+            this._currentState = newState;
+
+            // Fire the changed event
+            this.raiseEvent("changed", event);
+
+            Compose.mark("HeaderController.changeState", Compose.LogEvent.stop);
         }
     };
-    n.getCurrentState = function () {
-        return this._currentState
+
+    proto.getCurrentState = function () {
+        return this._currentState;
     };
-    n.getDefaultState = function () {
-        var t = this.getMailMessageModel(),
-            r = t.get("to"),
-            u = t.get("cc"),
-            f = t.get("bcc"),
-            i = this.getComponentCache().getComponent("Compose.ToCcBcc"),
-            e = r.length === 0 && u.length === 0 && f.length === 0,
-            n, o;
-        return n = Compose.HeaderController.State, o = null, i.hasError("bcc") ? n.editFull : e || i.hasError("to") || i.hasError("cc") ? n.editCondensed : n.readOnly
+
+    proto.getDefaultState = function () {
+        /// <summary>Returns the default state of the header given the values in the address wells</summary>
+        var messageModel = this.getMailMessageModel(),
+            to = messageModel.get("to"),
+            cc = messageModel.get("cc"),
+            bcc = messageModel.get("bcc"),
+            toCcBccComponent = this.getComponentCache().getComponent("Compose.ToCcBcc"),
+            allWellsEmpty = to.length === 0 && cc.length === 0 && bcc.length === 0;
+
+        Debug.assert(Jx.isObject(toCcBccComponent));
+
+        var headerState = Compose.HeaderController.State,
+            state = null;
+        if (toCcBccComponent.hasError("bcc")) {
+            // When the bcc field has an error, go to full edit mode
+            state = headerState.editFull;
+        } else if (allWellsEmpty || toCcBccComponent.hasError("to") || toCcBccComponent.hasError("cc")) {
+            // When all three address wells are empty or there is an error in the to or cc fields, go to condensed edit
+            state = headerState.editCondensed;
+        } else {
+            // Otherwise go to read mode
+            state = headerState.readOnly;
+        }
+
+        return state;
     };
-    n.setDefaultState = function () {
-        var i = Compose.HeaderController.State,
-            n = this.getDefaultState(),
-            t;
-        n !== this.getCurrentState() && (t = function () {
-            this.changeState(n)
-        }.bind(this), n === i.readOnly ? Compose.ComposeImpl.quietSave(this.getComponentCache()).done(t) : t())
-    }
+
+    proto.setDefaultState = function () {
+        /// <summary>Sets the default state of the header</summary>
+        var headerState = Compose.HeaderController.State,
+            state = this.getDefaultState();
+
+        if (state !== this.getCurrentState()) {
+            var changeStateFunction = function () {
+                this.changeState(state);
+            }.bind(this);
+
+            if (state === headerState.readOnly) {
+                // Save so that the readOnly header has updated info
+                Compose.ComposeImpl.quietSave(this.getComponentCache()).done(changeStateFunction);
+            } else {
+                changeStateFunction();
+            }
+        }
+    };
+
+    // Private
+
+    
+    // Debug hook so tests can get the current header state
+    Debug.HeaderController = {
+        getHeaderState: function () {
+            var compose = Mail.composeBuilder.getCurrent();
+            if (compose) {
+                var headerController = compose.getComponentCache().getComponent("Compose.HeaderController");
+                if (headerController) {
+                    return headerController.getCurrentState();
+                }
+            }
+
+            return null;
+        }
+    };
+    
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx,Compose,Mail,Debug*/
+
 Jx.delayGroup("MailCompose", function () {
+
     Compose.ReadOnlyHeader = function () {
         Compose.Component.call(this);
+
         this._bindings = null;
         this._editButton = null;
         this._header = new Mail.HeaderControl(Mail.Utilities.ComposeHelper._selection);
         this._headerRootDiv = null;
         this._initializedHeader = false;
         this._headerControllerComponent = null;
-        this._autoCollapsesHeader = false
+        this._autoCollapsesHeader = false;
     };
     Jx.augment(Compose.ReadOnlyHeader, Compose.Component);
+
     Compose.util.defineClassName(Compose.ReadOnlyHeader, "Compose.ReadOnlyHeader");
-    var n = Compose.ReadOnlyHeader.prototype;
-    n.composeGetUI = function (n) {
-        n.html = "<div class='composeReadOnlyHeader'><\/div>"
+
+    var proto = Compose.ReadOnlyHeader.prototype;
+
+    proto.composeGetUI = function (ui) {
+        ui.html = "<div class='composeReadOnlyHeader'></div>";
     };
-    n.composeActivateUI = function () {
-        if (this._headerRootDiv = this.getComposeRootElement().querySelector(".composeReadOnlyHeader"), !this._initializedHeader) {
+
+    proto.composeActivateUI = function () {
+        this._headerRootDiv = this.getComposeRootElement().querySelector(".composeReadOnlyHeader");
+        Debug.assert(Jx.isHTMLElement(this._headerRootDiv));
+
+        // We only need to initialize the header on the first activation
+        if (!this._initializedHeader) {
             this._header.initialize(this._headerRootDiv);
-            var n = this._headerRootDiv.querySelector(".mailReadingPaneHeaderDetails");
-            this._createEditButton(n);
-            this._initializedHeader = true
+
+            // Add the edit button to the header details div
+            var detailsDiv = this._headerRootDiv.querySelector(".mailReadingPaneHeaderDetails");
+            this._createEditButton(detailsDiv);
+
+            this._initializedHeader = true;
         }
-        this._bindings = this.getComponentBinder().attach(this, [{
-            on: "aftercommit",
-            fromComponent: Compose.ComponentBinder.messageModelClassName,
-            then: this._onPlatformMessageChange
-        }, {
-            on: "autoresolvecompleted",
-            fromComponent: "Compose.ToCcBcc",
-            then: this._onRecipientResolution
-        }, {
-            on: "click",
-            from: this._editButton,
-            then: this._editHeader
-        }])
+
+        this._bindings = this.getComponentBinder().attach(this, [
+            { on: "aftercommit", fromComponent: Compose.ComponentBinder.messageModelClassName, then: this._onPlatformMessageChange },
+            { on: "autoresolvecompleted", fromComponent: "Compose.ToCcBcc", then: this._onRecipientResolution },
+            { on: "click", from: this._editButton, then: this._editHeader }
+        ]);
     };
-    n.composeDeactivateUI = function () {
+
+    proto.composeDeactivateUI = function () {
         this.getComponentBinder().detach(this._bindings);
-        this._bindings = null
+        this._bindings = null;
     };
-    n.composeUpdateUI = function () {
-        var t, n, i, r;
-        for (t = this._headerRootDiv.querySelectorAll(".hideOnReload"), n = 0, i = t.length; n < i; n++) t[n].classList.add("hidden");
-        r = this.getMailMessageModel();
+
+    proto.composeUpdateUI = function () {
+        Debug.assert(Jx.isObject(this._headerRootDiv), "Expected header root div to be set.");
+
+        // Hide all "hide on reload" elements
+        var controls = this._headerRootDiv.querySelectorAll(".hideOnReload");
+        for (var i = 0, max = controls.length; i < max; i++) {
+            controls[i].classList.add("hidden");
+        }
+
+        var messageModel = this.getMailMessageModel();
         this._autoCollapsesHeader = true;
-        r.isCommitted() && this._onPlatformMessageChange();
-        this._autoCollapsesHeader = false
+        if (messageModel.isCommitted()) {
+            this._onPlatformMessageChange();
+        }
+        this._autoCollapsesHeader = false;
+
     };
-    n.isVisible = function () {
-        return this._getHeaderControllerComponent().getCurrentState() === Compose.HeaderController.State.readOnly
+
+    proto.isVisible = function () {
+        // Only visible in the read-only state
+        return this._getHeaderControllerComponent().getCurrentState() === Compose.HeaderController.State.readOnly;
     };
-    n.focus = function () {
-        this._headerRootDiv.querySelector(".mailReadingPaneHeaderIC").focus()
+
+    proto.focus = function () {
+        // Sets focus on the from recipient
+        this._headerRootDiv.querySelector(".mailReadingPaneHeaderIC").focus();
     };
-    n._createEditButton = function (n) {
-        var t = Compose.doc.createElement("div");
-        t.className = "editHeaderButtonParent";
+
+    // Private
+
+    proto._createEditButton = function (div) {
+        var editDiv = Compose.doc.createElement("div");
+        Debug.assert(Jx.isHTMLElement(editDiv), "Unable to create edit div");
+        editDiv.className = "editHeaderButtonParent";
+
         this._editButton = Compose.doc.createElement("button");
+        Debug.assert(Jx.isHTMLElement(this._editButton), "Unable to create edit button");
+
         this._editButton.setAttribute("type", "button");
         this._editButton.className = "cmdEditHeader typeSizeNormal composeLinkButton";
-        this._editButton.innerHTML = "<span data-win-res='innerText:composeEditLabel'>WChangeL<\/span>";
-        t.appendChild(this._editButton);
-        n.appendChild(t)
+        this._editButton.innerHTML = "<span data-win-res='innerText:composeEditLabel'>WChangeL</span>";
+
+        editDiv.appendChild(this._editButton);
+        div.appendChild(editDiv);
     };
-    n._onPlatformMessageChange = function () {
-        var n = this.getMailMessageModel(),
-            t = n.get("fromRecipient"),
-            i = Jx.isNullOrUndefined(t) ? [] : [t],
-            r = Mail.UIDataModel.MailItem.convertVectorToArray(n.get("toRecipients")),
-            u = Mail.UIDataModel.MailItem.convertVectorToArray(n.get("ccRecipients")),
-            f = Mail.UIDataModel.MailItem.convertVectorToArray(n.get("bccRecipients")),
-            e = this._autoCollapsesHeader ? false : this._header.isExpanded();
-        this._header.updateIrmInfo(n.get("irmHasTemplate"), n.get("irmTemplateName"), n.get("irmTemplateDescription"));
-        this._header.updateHeader(r, u, f, i, Jx.res.getString("mailUIMailMessageNoSender"), e, false, false, null)
+
+    proto._onPlatformMessageChange = function () {
+        // Re-display the data in the mail message
+        var messageModel = this.getMailMessageModel(),
+            fromRecipient = messageModel.get("fromRecipient"),
+            fromArray = Jx.isNullOrUndefined(fromRecipient) ? [] : [fromRecipient],
+            to = Mail.UIDataModel.MailItem.convertVectorToArray(messageModel.get("toRecipients")),
+            cc = Mail.UIDataModel.MailItem.convertVectorToArray(messageModel.get("ccRecipients")),
+            bcc = Mail.UIDataModel.MailItem.convertVectorToArray(messageModel.get("bccRecipients")),
+            autoExpand = this._autoCollapsesHeader ? false : this._header.isExpanded();
+
+        this._header.updateIrmInfo(messageModel.get("irmHasTemplate"), messageModel.get("irmTemplateName"), messageModel.get("irmTemplateDescription"));
+        this._header.updateHeader(to, cc, bcc, fromArray, Jx.res.getString("mailUIMailMessageNoSender"), autoExpand, false /*preventCollapse*/, false /*isSent*/, null /*sender*/);
     };
-    n._getHeaderControllerComponent = function () {
-        var n = this._headerControllerComponent;
-        return Jx.isNullOrUndefined(n) && (n = this._headerControllerComponent = this.getComponentCache().getComponent("Compose.HeaderController")), n
+
+    proto._getHeaderControllerComponent = function () {
+        var headerController = this._headerControllerComponent;
+        if (Jx.isNullOrUndefined(headerController)) {
+            headerController = this._headerControllerComponent = this.getComponentCache().getComponent("Compose.HeaderController");
+        }
+        Debug.assert(Jx.isObject(headerController) && headerController.isActivated());
+        
+        return headerController;
     };
-    n._onRecipientResolution = function () {
-        var n = this._getHeaderControllerComponent().getCurrentState();
-        n === Compose.HeaderController.State.readOnly && Compose.ComposeImpl.quietSave(this.getComponentCache())
-    };
-    n._editHeader = function () {
-        this._getHeaderControllerComponent().changeState(Compose.HeaderController.State.editCondensed);
-        var n = this.getComponentCache().getComponent("Compose.ToCcBcc");
-        n.focus("to", true)
-    }
-});
-Jx.delayGroup("MailCompose", function () {
-    Compose.Button = function () {
-        Compose.Component.call(this);
-        this._normalButton = null;
-        this._snapButton = null
-    };
-    Jx.augment(Compose.Button, Compose.Component);
-    var n = Compose.Button.prototype;
-    n.getFullHTML = function () {
-        return ""
-    };
-    n.getSnapHTML = function () {
-        return ""
-    };
-    n.getQuerySelector = function () {
-        return ""
-    };
-    n.getSnapQuerySelector = function () {
-        return ""
-    };
-    n.getClickHandler = function () {
-        return function () {}
-    };
-    n.composeActivateUI = function () {
-        var n = this.getComposeRootElement();
-        this._normalButton = n.querySelector(this.getQuerySelector());
-        this._snapButton = n.querySelector(this.getSnapQuerySelector());
-        this._bindings = Compose.binder.attach(this, [{
-            on: "click",
-            from: this._normalButton,
-            then: this.getClickHandler()
-        }, {
-            on: "click",
-            from: this._snapButton,
-            then: this.getClickHandler()
-        }]);
-        this.buttonActivateUI()
-    };
-    n.buttonActivateUI = function () {};
-    n.buttonDeactivateUI = function () {};
-    n.composeDeactivateUI = function () {
-        Compose.binder.detach(this._bindings);
-        this._bindings = null;
-        this.buttonDeactivateUI()
-    };
-    n.isVisible = function () {
-        return true
-    };
-    n.focus = function () {
-        if (this.isActivated()) {
-            var n = this._normalButton;
-            n.getComputedStyle().display === "none" && (n = this._snapButton);
-            n.focus()
+
+    proto._onRecipientResolution = function () {
+        // When the header state is read only mode, we want to save so we can display new data
+        var headerState = this._getHeaderControllerComponent().getCurrentState();
+
+        if (headerState === Compose.HeaderController.State.readOnly) {
+            Compose.ComposeImpl.quietSave(this.getComponentCache());
         }
     };
-    n.performClick = function () {
-        this.getClickHandler().call(this)
-    }
+
+    proto._editHeader = function () {
+        // Get the header object and change to edit mode
+        this._getHeaderControllerComponent().changeState(Compose.HeaderController.State.editCondensed);
+
+        // Set focus on the to line
+        var toCcBcc = this.getComponentCache().getComponent("Compose.ToCcBcc");
+        Debug.assert(Jx.isObject(toCcBcc) && toCcBcc.isActivated());
+        toCcBcc.focus("to", true/*suppressAutoSuggest*/);
+    };
+
 });
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Compose, Debug*/
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.BackButton = function () {
+
+    Compose.Button = /*@constructor*/function () {
+        Compose.Component.call(this);
+
+        this._normalButton = /*@static_cast(HTMLElement)*/null;
+        this._snapButton = /*@static_cast(HTMLElement)*/null;
+    };
+    Jx.augment(Compose.Button, Compose.Component);
+
+    var proto = Compose.Button.prototype;
+
+    // We don't implement the normal getUI or compseGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getFullHTML = function () {
+        /// <returns type="String">The HTML for the normal button</returns>
+        Debug.assert(false, "NOT IMPL");
+        return "";
+    };
+    proto.getSnapHTML = function () {
+        /// <returns type="String">The HTML for the snap button</returns>
+        Debug.assert(false, "NOT IMPL");
+        return "";
+    };
+
+    // Subclasses should override the following two getters to return the IDs of their normal and snap buttons
+    proto.getQuerySelector = function () {
+        /// <returns type="String">The query selector of the normal button HTML element</returns>
+        Debug.assert(false, "NOT IMPL");
+        return "";
+    };
+    proto.getSnapQuerySelector = function () {
+        /// <returns type="String">The query selector of the snap button HTML element</returns>
+        Debug.assert(false, "NOT IMPL");
+        return "";
+    };
+
+    // Subclasses should override this function to return the on-click handler for the button
+    proto.getClickHandler = function () {
+        /// <returns type="Function">The function to call when the button is clicked</returns>
+        Debug.assert(false, "NOT IMPL");
+        return function () { };
+    };
+
+    proto.composeActivateUI = function () {
+        var rootElement = this.getComposeRootElement();
+        Debug.assert(Jx.isObject(rootElement));
+
+        this._normalButton = rootElement.querySelector(this.getQuerySelector());
+        this._snapButton = rootElement.querySelector(this.getSnapQuerySelector());
+        Debug.assert(Jx.isObject(this._normalButton));
+        Debug.assert(Jx.isObject(this._snapButton));
+
+        this._bindings = Compose.binder.attach(this, [
+            { on: "click", from: this._normalButton, then: this.getClickHandler() },
+            { on: "click", from: this._snapButton, then: this.getClickHandler() }
+        ]);
+
+        this.buttonActivateUI();
+    };
+
+    // This function will be called after the button is done hooking up its listeners
+    // It can optionally be overridden by subclasses to do additional activation
+    proto.buttonActivateUI = function () {
+        
+    };
+
+    // This function will be called after the button is done tearing down its listeners
+    // It can optionally be overridden by subclasses to do additional activation
+    proto.buttonDeactivateUI = function () {
+
+    };
+
+    proto.composeDeactivateUI = function () {
+        Compose.binder.detach(this._bindings);
+        this._bindings = null;
+
+        this.buttonDeactivateUI();
+    };
+
+    // Buttons are assumed to be always visible. Subclasses can override this when not true
+    proto.isVisible = function () {
+        return true;
+    };
+
+    proto.focus = function () {
+        if (this.isActivated()) {
+            /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+            var button = this._normalButton;
+            if (button.currentStyle.display === "none") {
+                button = this._snapButton;
+            }
+            button.focus();
+        }
+    };
+
+    proto.performClick = function () {
+        this.getClickHandler().call(this);
+    };
+
+    // Private
+
+});
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Jx, Compose, Mail, Debug*/
+
+Jx.delayGroup("MailCompose", function () {
+
+    Compose.BackButton = /*@constructor*/function () {
         Compose.Button.call(this);
+
+        // We need to bind to some events in addition to the normal button ones
         this._extraBindings = null;
-        this._hideKeyboardDisposer = null
+        this._hideKeyboardDisposer = null;
     };
     Jx.augment(Compose.BackButton, Compose.Button);
+
     Compose.util.defineClassName(Compose.BackButton, "Compose.BackButton");
-    var n = Compose.BackButton.prototype;
-    n.getFullHTML = function () {
-        return Compose.Templates.backButton()
+
+    var proto = Compose.BackButton.prototype;
+
+    // We don't implement the normal getUI or composeGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getFullHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.backButton();
     };
-    n.getSnapHTML = function () {
-        return Compose.Templates.backButtonSnap()
+    proto.getSnapHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.backButtonSnap();
     };
-    n.getQuerySelector = function () {
-        return ".cmdBack"
+
+    proto.getQuerySelector = function () {
+        return ".cmdBack";
     };
-    n.getSnapQuerySelector = function () {
-        return ".cmdBackSnap"
+
+    proto.getSnapQuerySelector = function () {
+        return ".cmdBackSnap";
     };
-    n.getClickHandler = function () {
-        return this._handleBack
+
+    proto.getClickHandler = function () {
+        /// <returns type="Function">The function to call when the button is clicked</returns>
+        return this._handleBack;
     };
-    n.buttonActivateUI = function () {
-        this._extraBindings = Compose.binder.attach(this, [{
-            on: "resize",
-            from: window,
-            then: this._updateVisibility
-        }]);
-        this._hideKeyboardDisposer = new Mail.Disposer(new Mail.KeyboardDismisser(Compose.doc.querySelector(this.getQuerySelector())), new Mail.KeyboardDismisser(Compose.doc.querySelector(this.getSnapQuerySelector())))
+
+    proto.buttonActivateUI = function () {
+        this._extraBindings = Compose.binder.attach(this, [
+            { on: "resize", from: window, then: this._updateVisibility }
+        ]);
+        this._hideKeyboardDisposer = new Mail.Disposer(
+            new Mail.KeyboardDismisser(Compose.doc.querySelector(this.getQuerySelector())),
+            new Mail.KeyboardDismisser(Compose.doc.querySelector(this.getSnapQuerySelector()))
+        );
     };
-    n.buttonDeactivateUI = function () {
+
+    proto.buttonDeactivateUI = function () {
         Compose.binder.detach(this._extraBindings);
         this._extraBindings = null;
         Jx.dispose(this._hideKeyboardDisposer);
-        this._hideKeyboardDisposer = null
+        this._hideKeyboardDisposer = null;
     };
-    n.show = function (n) {
-        Jx.setClass(Compose.doc.querySelector(this.getQuerySelector()), "hidden", !n);
-        Jx.setClass(Compose.doc.querySelector(this.getSnapQuerySelector()), "hidden", !n)
+
+    proto.show = function (visible) {
+        /// <param name="visible" type="Boolean">show for true, hide for false</param>
+        Jx.setClass(Compose.doc.querySelector(this.getQuerySelector()), "hidden", !visible);
+        Jx.setClass(Compose.doc.querySelector(this.getSnapQuerySelector()), "hidden", !visible);
     };
-    n.isVisible = function () {
-        return (!Compose.doc.querySelector(this.getQuerySelector()).classList.contains("hidden") || !Compose.doc.querySelector(this.getSnapQuerySelector()).classList.contains("hidden")) && !Compose.doc.querySelector("#mailFrameReadingPaneSection").classList.contains("parentVisible")
+
+    proto.isVisible = function () {
+        return ((!Compose.doc.querySelector(this.getQuerySelector()).classList.contains("hidden") ||
+            !Compose.doc.querySelector(this.getSnapQuerySelector()).classList.contains("hidden")) &&
+            !Compose.doc.querySelector("#mailFrameReadingPaneSection").classList.contains("parentVisible"));
     };
-    n.composeUpdateUI = function () {
-        this._updateVisibility()
+
+    proto.composeUpdateUI = function () {
+        this._updateVisibility();
     };
-    n._handleBack = function () {
-        if (Jx.glomManager.getIsParent()) Mail.Globals.animator.animateNavigateBack();
-        else {
-            var n = Mail.Utilities.ComposeHelper;
-            n.handleHomeButton()
+
+    // Private
+
+    proto._handleBack = function () {
+        if (Jx.glomManager.getIsParent()) {
+            // In the parent window, animate back
+            Debug.assert(Jx.isObject(Mail.Globals.animator));
+            Mail.Globals.animator.animateNavigateBack();
+        } else {
+            // In a child window, save and close
+            var helper = Mail.Utilities.ComposeHelper;
+            helper.handleHomeButton();
         }
     };
-    n._updateVisibility = function () {
-        this.show(Mail.guiState.isOnePane)
-    }
+
+    proto._updateVisibility = function () {
+        // Only show the back button when mail is in one pane mode
+        this.show(Mail.guiState.isOnePane);
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="components.ref.js" />
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.AttachButton = function () {
-        Compose.Button.call(this)
+
+    Compose.AttachButton = /*@constructor*/function () {
+        Compose.Button.call(this);
     };
     Jx.augment(Compose.AttachButton, Compose.Button);
+
     Compose.util.defineClassName(Compose.AttachButton, "Compose.AttachButton");
-    var n = Compose.AttachButton.prototype;
-    n.getFullHTML = function () {
-        return Compose.Templates.attachButton()
+
+    var proto = Compose.AttachButton.prototype;
+
+    // We don't implement the normal getUI or compseGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getFullHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.attachButton();
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
     };
-    n.getSnapHTML = function () {
-        return Compose.Templates.attachButtonSnap()
+    proto.getSnapHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.attachButtonSnap();
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
     };
-    n.getQuerySelector = function () {
-        return ".cmdAttach"
+
+    proto.getQuerySelector = function () {
+        return ".cmdAttach";
     };
-    n.getSnapQuerySelector = function () {
-        return ".cmdAttachSnap"
+
+    proto.getSnapQuerySelector = function () {
+        return ".cmdAttachSnap";
     };
-    n.getClickHandler = function () {
-        return this._attachAnyFiles
+
+    proto.getClickHandler = function () {
+        /// <returns type="Function">The function to call when the button is clicked</returns>
+        return this._attachAnyFiles;
     };
-    n._attachAnyFiles = function () {
-        var n = this.getComponentCache().getComponent("Compose.AttachmentWell");
-        n.attachAnyFiles()
-    }
+
+    // Private
+
+    proto._attachAnyFiles = function () {
+        var attachmentWell = /*@static_cast(Compose.AttachmentWell)*/this.getComponentCache().getComponent("Compose.AttachmentWell");
+        Debug.assert(Jx.isObject(attachmentWell));
+        attachmentWell.attachAnyFiles();
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Mail,Compose,Jx,Debug*/
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.DeleteButton = function () {
+
+    Compose.DeleteButton = /*@constructor*/function () {
         Compose.Button.call(this);
-        this._extraBindings = null
+
+        // We need to bind to some events in addition to the normal button ones
+        this._extraBindings = null;
     };
     Jx.augment(Compose.DeleteButton, Compose.Button);
+
     Compose.util.defineClassName(Compose.DeleteButton, "Compose.DeleteButton");
-    var n = Compose.DeleteButton.prototype,
-        t = Mail.Instrumentation;
-    n.getFullHTML = function () {
-        return Compose.Templates.deleteButton()
+
+    var proto = Compose.DeleteButton.prototype,
+        Instr = Mail.Instrumentation;
+
+    // We don't implement the normal getUI or composeGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getFullHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.deleteButton();
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
     };
-    n.getSnapHTML = function () {
-        return Compose.Templates.deleteButtonSnap()
+    proto.getSnapHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.deleteButtonSnap();
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
     };
-    n.getQuerySelector = function () {
-        return ".cmdDelete"
+
+    proto.getQuerySelector = function () {
+        return ".cmdDelete";
     };
-    n.getSnapQuerySelector = function () {
-        return ".cmdDeleteSnap"
+
+    proto.getSnapQuerySelector = function () {
+        return ".cmdDeleteSnap";
     };
-    n.getClickHandler = function () {
-        return this._deleteAndExit
+
+    proto.getClickHandler = function () {
+        /// <returns type="Function">The function to call when the button is clicked</returns>
+        return this._deleteAndExit;
     };
-    n.buttonActivateUI = function () {
-        this._extraBindings = Compose.binder.attach(this, [{
-            on: "messagesChanged",
-            from: Mail.Utilities.ComposeHelper._selection,
-            then: this._show
-        }]);
-        this._show()
+
+    proto.buttonActivateUI = function () {
+        this._extraBindings = Compose.binder.attach(this, [
+            { on: "messagesChanged", from: Mail.Utilities.ComposeHelper._selection, then: this._show }
+        ]);
+        this._show();
     };
-    n.composeUpdateUI = function () {
-        this._show()
+
+    proto.composeUpdateUI = function () {
+        this._show();
     };
-    n.buttonDeactivateUI = function () {
+
+    proto.buttonDeactivateUI = function () {
         Compose.binder.detach(this._extraBindings);
-        this._extraBindings = null
+        this._extraBindings = null;
     };
-    n._deleteAndExit = function () {
-        var n = Compose.ComposeImpl.getComposeImpl(this.getComponentCache()),
-            e = function () {
-                n.discard()
-            },
-            i = Mail.Utilities.ComposeHelper._selection,
-            r = i.messages,
-            o = r.filter(function (n) {
-                return n.hasDraft
-            }),
-            u = o.length,
-            f = this.getMailMessageModel();
-        r.length === 1 && (u = n.isDirty() ? 1 : 0);
-        Mail.Commands.Handlers.deleteMessages(u, e, t.UIEntryPoint.onCanvas, i)
+
+    // Private
+
+    proto._deleteAndExit = function () {
+        var composeImpl = Compose.ComposeImpl.getComposeImpl(this.getComponentCache()),
+            discard = function () {
+                composeImpl.discard();
+            };
+        var selection = Mail.Utilities.ComposeHelper._selection,
+            messages = selection.messages,
+            drafts = messages.filter(function (msg) { return msg.hasDraft; }),
+            draftCount = drafts.length,
+            messageModel = this.getMailMessageModel();
+
+        Debug.assert(messages.some(function (msg) { return msg.objectId === messageModel.get("objectId") || msg.objectId === messageModel.get("parentConversationId"); }));
+
+        if (messages.length === 1) {
+            // We don't need to show the prompt if there is only one draft and it is not dirty
+            draftCount = composeImpl.isDirty() ? 1 : 0;
+        }
+        Mail.Commands.Handlers.deleteMessages(draftCount, discard, Instr.UIEntryPoint.onCanvas, selection);
     };
-    n._show = function () {
-        var r = this.getMailMessageModel(),
-            n = r.get("objectId"),
-            t = Mail.Utilities.ComposeHelper._selection.message,
-            i = n !== "0" && t && t.objectId === n;
-        Compose.doc.querySelector(this.getQuerySelector()).disabled = !i;
-        Compose.doc.querySelector(this.getSnapQuerySelector()).disabled = !i
-    }
+
+    proto._show = function () {
+        var messageModel = this.getMailMessageModel(),
+            objectId = messageModel.get("objectId"),
+            message = Mail.Utilities.ComposeHelper._selection.message,
+            enabled = objectId !== "0" && message && message.objectId === objectId;
+
+        Compose.doc.querySelector(this.getQuerySelector()).disabled = !enabled;
+        Compose.doc.querySelector(this.getSnapQuerySelector()).disabled = !enabled;
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Compose, Mail, Debug*/
+
 Jx.delayGroup("MailCompose", function () {
+
     Compose.SendButton = function () {
-        Compose.Button.call(this)
+        Compose.Button.call(this);
     };
     Jx.augment(Compose.SendButton, Compose.Button);
+
     Compose.util.defineClassName(Compose.SendButton, "Compose.SendButton");
-    var n = Compose.SendButton.prototype;
-    n.getFullHTML = function () {
-        return Compose.Templates.sendButton()
+
+    var proto = Compose.SendButton.prototype;
+
+    // We don't implement the normal getUI or composeGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getFullHTML = function () {
+        return Compose.Templates.sendButton();
     };
-    n.getSnapHTML = function () {
-        return Compose.Templates.sendButtonSnap()
+
+    proto.getSnapHTML = function () {
+        return Compose.Templates.sendButtonSnap();
     };
-    n.getQuerySelector = function () {
-        return ".cmdSend"
+
+    proto.getQuerySelector = function () {
+        return ".cmdSend";
     };
-    n.getSnapQuerySelector = function () {
-        return ".cmdSendSnap"
+
+    proto.getSnapQuerySelector = function () {
+        return ".cmdSendSnap";
     };
-    n.getClickHandler = function () {
-        return this._sendMail
+
+    proto.getClickHandler = function () {
+        /// <returns type="Function">The function to call when the button is clicked</returns>
+        return this._sendMail;
     };
-    n._sendMail = function () {
+
+    // Private
+
+    proto._sendMail = function () {
         Mail.writeProfilerMark("Compose.SendButton._sendMail", Mail.LogEvent.start);
-        Compose.ComposeImpl.getComposeImpl(this.getComponentCache()).send().done(function (n) {
-            n.success && Mail.guiState.ensureNavMessageList();
-            Mail.writeProfilerMark("Compose.SendButton._sendMail", Mail.LogEvent.stop)
-        })
-    }
+        Compose.ComposeImpl.getComposeImpl(this.getComponentCache()).send().done(function (result) {
+            Debug.assert(!Jx.isNullOrUndefined(result));
+            if (result.success) {
+                Mail.guiState.ensureNavMessageList();
+            }
+            Mail.writeProfilerMark("Compose.SendButton._sendMail", Mail.LogEvent.stop);
+        });
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="components.ref.js" />
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.NewButton = function () {
-        Compose.Button.call(this)
+
+    Compose.NewButton = /*@constructor*/function () {
+        Compose.Button.call(this);
     };
     Jx.augment(Compose.NewButton, Compose.Button);
+
     Compose.util.defineClassName(Compose.NewButton, "Compose.NewButton");
-    var n = Compose.NewButton.prototype;
-    n.getFullHTML = function () {
-        return Compose.Templates.newButton()
+
+    var proto = Compose.NewButton.prototype;
+
+    // We don't implement the normal getUI or composeGetUI because we need to place UI in two different places.
+    // Mail implements a component that brings all this html together itself.
+    proto.getFullHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.newButton();
     };
-    n.getSnapHTML = function () {
-        return Compose.Templates.newButtonSnap()
+    proto.getSnapHTML = function () {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        return Compose.Templates.newButtonSnap();
     };
-    n.getQuerySelector = function () {
-        return ".cmdNew"
+
+    proto.getQuerySelector = function () {
+        return ".cmdNew";
     };
-    n.getSnapQuerySelector = function () {
-        return ".cmdNewSnap"
+
+    proto.getSnapQuerySelector = function () {
+        return ".cmdNewSnap";
     };
-    n.getClickHandler = function () {
-        return this._newClicked
+
+    proto.getClickHandler = function () {
+        /// <returns type="Function">The function to call when the button is clicked</returns>
+        return this._newClicked;
     };
-    n.composeUpdateUI = function () {
-        var n = Jx.glomManager.getIsParent();
-        Jx.setClass(Compose.doc.querySelector(this.getQuerySelector()), "hidden", !n);
-        Jx.setClass(Compose.doc.querySelector(this.getSnapQuerySelector()), "hidden", !n)
+
+    proto.composeUpdateUI = function () {
+        var visible = Jx.glomManager.getIsParent();
+        Jx.setClass(Compose.doc.querySelector(this.getQuerySelector()), "hidden", !visible);
+        Jx.setClass(Compose.doc.querySelector(this.getSnapQuerySelector()), "hidden", !visible);
     };
-    n._newClicked = function () {
-        Mail.Utilities.ComposeHelper.onNewButton(Mail.Instrumentation.UIEntryPoint.onCanvas)
-    }
+
+    // Private
+
+    proto._newClicked = function () {
+        Mail.Utilities.ComposeHelper.onNewButton(Mail.Instrumentation.UIEntryPoint.onCanvas);
+    };
+
 });
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="components.ref.js" />
+
 Jx.delayGroup("MailCompose", function () {
-    Compose.WarningMessage = function () {
-        Compose.Component.call(this)
+
+    Compose.WarningMessage = /*@constructor*/function () {
+        Compose.Component.call(this);
     };
     Jx.augment(Compose.WarningMessage, Compose.Component);
+
     Compose.util.defineClassName(Compose.WarningMessage, "Compose.WarningMessage");
-    var n = Compose.WarningMessage.prototype;
-    n.composeGetUI = function (n) {
-        n.html = Compose.Templates.warningMessage()
+
+    var proto = Compose.WarningMessage.prototype;
+
+    proto.composeGetUI = function (ui) {
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        ui.html = Compose.Templates.warningMessage();
     };
-    n.composeUpdateUI = function () {
-        var r = Compose.doc.querySelector(".warningMessage"),
-            n = this.getMailMessageModel(),
-            u = n.get("irmCanEdit"),
-            f = n.get("irmCanExtractContent"),
-            t = false,
-            i;
-        u && f || (i = Compose.mailMessageFactoryUtil.getSourceMessage(n.getPlatformMessage()), Boolean(i) && i.hasOrdinaryAttachments && n.get("sourceVerb") === Microsoft.WindowsLive.Platform.MailMessageLastVerb.forward && (t = true));
-        r.innerText = t ? Jx.res.getString("composeIrmAttachmentWarning") : "";
-        Jx.setClass(r, "hidden", !t)
-    }
-})
+
+    proto.composeUpdateUI = function () {
+        var messageDiv = Compose.doc.querySelector(".warningMessage"),
+            messageModel = this.getMailMessageModel(),
+            canEdit = messageModel.get("irmCanEdit"),
+            canCopy = messageModel.get("irmCanExtractContent"),
+            showAttachmentWarning = false;
+
+        if (!canEdit || !canCopy) {
+            var quotedMessage = Compose.mailMessageFactoryUtil.getSourceMessage(messageModel.getPlatformMessage());
+            if (Boolean(quotedMessage) && quotedMessage.hasOrdinaryAttachments &&
+                /*@static_cast(Number)*/messageModel.get("sourceVerb") === Microsoft.WindowsLive.Platform.MailMessageLastVerb.forward) {
+                // We are forwarding a mail with attachments but they won't show up in the compose pane
+                showAttachmentWarning = true;
+            }
+        }
+
+        if (showAttachmentWarning) {
+            messageDiv.innerText = Jx.res.getString("composeIrmAttachmentWarning");
+        } else {
+            messageDiv.innerText = "";
+        }
+        Jx.setClass(messageDiv, "hidden", !showAttachmentWarning);
+    };
+
+});

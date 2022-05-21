@@ -24,7 +24,7 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 import { MediaStore } from "../Platform/MediaStore";
 import { DBAlbum, DBArtist, dbPromise, DBGenre, DBTrack } from "../Database/Utils";
 
-@GenerateShim('Microsoft.Entertainment.Queries.TracksQuery')
+// @GenerateShim('Microsoft.Entertainment.Queries.TracksQuery')
 export class TracksQuery implements ITracksQuery, IQuery, IClosable {
     watchAll: number = null;
     trackUrl: string = null;
@@ -90,7 +90,7 @@ export class TracksQuery implements ITracksQuery, IQuery, IClosable {
                 resultSet.push({
                     AlbumBingId: "00000000-0000-0000-0000-000000000000",
                     AlbumId: album.id,
-                    AlbumImageUrl: album.imageUrl,
+                    AlbumImageUrl: track.imageUrl,
                     AlbumName: album.title,
                     AlbumMediaServiceId: "00000000-0000-0000-0000-000000000000",
                     AlbumSortName: album.sortTitle,
@@ -110,7 +110,7 @@ export class TracksQuery implements ITracksQuery, IQuery, IClosable {
                     DateAdded: new Date(Date.now()),
                     DiscNumber: 1,
                     Duration: track.duration,
-                    FilePath: track.filePath,
+                    FilePath: `file:///${track.filePath}`,
                     GenreId: track.genreId,
                     GenreName: genre.name,
                     HasBlockedMusicVideo: false,

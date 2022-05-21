@@ -44,14 +44,16 @@ export class MailManager implements IMailManager {
         throw new Error('MailManager#getPermanentlyFailedMessageCollection not implemented')
     }
     createMessage(pAccount: IAccount): IMailMessage {
-        throw new Error('MailManager#createMessage not implemented')
+        // throw new Error('MailManager#createMessage not implemented')
+        return new MailMessage(pAccount.objectId);
     }
     createMessageInFolder(pFolder: IFolder): IMailMessage {
-        throw new Error('MailManager#createMessageInFolder not implemented')
+        //throw new Error('MailManager#createMessageInFolder not implemented')
+        return new MailMessage(pFolder.accountId);
     }
     createDraftMessage(pSourceView: IMailView): IMailMessage {
         // throw new Error('MailManager#createDraftMessage not implemented')
-        return new MailMessage(pSourceView);
+        return new MailMessage(pSourceView.accountId);
     }
     createMessageFromMime(pFolder: IFolder, pStream: IRandomAccessStream, fAllowCommit: boolean): IMailMessage {
         throw new Error('MailManager#createMessageFromMime not implemented')
@@ -96,7 +98,7 @@ export class MailManager implements IMailManager {
             return null;
 
         if (!this._mailViews.has(type)) {
-            var newView = new MailView(objectId, type);
+            var newView = new MailView(objectId, accountId, type);
             this._mailViews.set(type, newView);
             return newView;
         }

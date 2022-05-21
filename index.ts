@@ -1,4 +1,4 @@
-import { app, protocol, BrowserWindow, shell, ipcMain, session } from "electron"
+import { app, protocol, BrowserWindow, shell, ipcMain, session, dialog } from "electron"
 const path = require("path")
 const fs = require('fs')
 const rename = require('deep-rename-keys')
@@ -71,7 +71,7 @@ function lookupResource(pathName: string, resourceMap: Map<string, any>, propert
     if (resourceMap.has(key)) {
       var data = resourceMap.get(key);
 
-      if ((resource = lookupInJson(data, subsplits, name)) !== null)
+      if ((resource = lookupInJson(data, subsplits, name)))
         return resource;
     }
   }
@@ -79,7 +79,7 @@ function lookupResource(pathName: string, resourceMap: Map<string, any>, propert
   for (const language of resourceMap) {
     let json = language[1];
 
-    if ((resource = lookupInJson(json, subsplits, name)) !== null)
+    if ((resource = lookupInJson(json, subsplits, name)))
       return resource;
   }
 }
@@ -160,10 +160,25 @@ app.whenReady().then(() => {
     callback(pathname);
   });
 
-  session.defaultSession.webRequest.onBeforeSendHeaders({ urls: ["*://*.discord.com/", "*://*.discord.gg/"] }, (details, callback) => {
+  session.defaultSession.webRequest.onBeforeSendHeaders({ urls: ["*://*.discord.com/*", "*://*.discord.gg/*", "*://discord.com/*"] }, (details, callback) => {
     details.requestHeaders['User-Agent'] = 'DiscordBot (https://github.com/WamWooWam/WinRTElectron, 1.0.0)';
     callback({ cancel: false, requestHeaders: details.requestHeaders });
   });
+
+  app.on('session-created', (session) => {
+    console.log(session)
+
+    session.protocol.registerFileProtocol("ms-appx", appxUriHandler);
+    session.protocol.registerFileProtocol("ms-appx-web", appxUriHandler);
+    session.protocol.registerFileProtocol('file', (request, callback) => {
+      const pathname = decodeURIComponent(request.url.replace('file:///', ''));
+      callback(pathname);
+    });
+    session.webRequest.onBeforeSendHeaders({ urls: ["*://*.discord.com/*", "*://*.discord.gg/*", "*://discord.com/*"] }, (details, callback) => {
+      details.requestHeaders['User-Agent'] = 'DiscordBot (https://github.com/WamWooWam/WinRTElectron, 1.0.0)';
+      callback({ cancel: false, requestHeaders: details.requestHeaders });
+    });
+  })
 
 
   let win = new BrowserWindow({
@@ -172,12 +187,32 @@ app.whenReady().then(() => {
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: true,
+      nodeIntegrationInSubFrames: true,
       webviewTag: true,
       webSecurity: false, // fuck you.
       contextIsolation: false,
       enableRemoteModule: true,
     },
     autoHideMenuBar: true,
+  });
+
+  ipcMain.on("windows.storage.pickers.fileopenpicker", async (e, arg) => {
+    let properties = ["dontAddToRecent"];
+    if (arg.data.mode != 'single-file')
+      properties.push("multiSelections");
+
+    let filters: Electron.FileFilter[] = [{
+      name: 'Selected Files',
+      extensions: [...(<string[]>arg.data.fileTypeFilter).map(x => x.length > 1 ? x.substr(1) : x)]
+    }];
+
+    let result = await dialog.showOpenDialog(win, {
+      buttonLabel: arg.data.commitButtonText,
+      properties: <any>properties,
+      filters: filters
+    })
+
+    e.reply(arg.responseChannel, result.filePaths);
   });
 
   win.webContents.on("will-navigate", (event: Electron.Event, url: string) => {
@@ -188,5 +223,5 @@ app.whenReady().then(() => {
     }
   });
 
-  win.loadURL("ms-appx://wankerr.desktop1/index.html")
+  win.loadURL("ms-appx://wankerr.desktop/index.html")
 });

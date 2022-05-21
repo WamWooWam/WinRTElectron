@@ -9,7 +9,7 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.AccountManager')
 export class AccountManager { 
-    static local_SETTINGS_KEY_USER_CID: string = null;
+    static local_SETTINGS_KEY_USER_CID: string = 'skype.liveuser.CID';
     static isTheSameLiveUser(): boolean {
         throw new Error('AccountManager#isTheSameLiveUser not implemented')
     }

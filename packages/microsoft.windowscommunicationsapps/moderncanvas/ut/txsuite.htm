@@ -1,0 +1,26 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx framework -->
+<link rel="stylesheet" href="/Tx/ui/Tx.css">
+<script src="/Tx/core/TxLoader.js"></script>
+
+<!-- UT config -->
+<script src="/ModernCanvas/ut/config.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.initSuite(document.getElementById("txSuite"));
+    };
+
+    window.onunload = function () {
+        Tx.shutdownSuite();
+    };
+</script>
+</head>
+<body>
+<div id="txSuite"></div>
+</body>
+</html> 

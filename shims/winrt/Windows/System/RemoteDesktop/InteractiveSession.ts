@@ -9,5 +9,5 @@ import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
 
 @GenerateShim('Windows.System.RemoteDesktop.InteractiveSession')
 export class InteractiveSession { 
-    static isRemote: boolean = null;
+    static isRemote: boolean = false;
 }

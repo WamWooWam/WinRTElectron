@@ -13,7 +13,7 @@
 }
 :-ms-lang(ar,dv,fa,he,ku-Arab,pa-Arab,prs,ps,sd-Arab,syr,ug,ur,qps-plocm).win-backbutton::before,button.backbutton::before{
     content:"\E41C";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 body.RTL button.win-backbutton::before,body.RTL button.backbutton::before{
@@ -21,61 +21,61 @@ body.RTL button.win-backbutton::before,body.RTL button.backbutton::before{
 }
 div.chat div.log div.node[type=file] div.message div.body::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text.file::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.text.file::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.text.file::before{
     content:"\E306";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.chat div.log div.node div.message.initialAuthRequest div.body div.text::before,div.chat div.log div.node div.message.auth div.body::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text.auth::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.text.auth::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.text.auth::before{
     content:"\E201";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.chat div.log div.node div.message.auth div.authorized::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.text.authorized::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.text.authorized::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.text.authorized::before{
     content:"\E202";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.ico.sms::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.ico.sms::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.ico.sms::before{
     content:"\E60B";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div span.icon,div.fragment.dialer div.categoryContainer.recents div.item div.message div span.icon,div.fragment.allHistory div.recents.win-listview div.item div.message div span.icon,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div span.icon{
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.incoming span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.incoming span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.incoming span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.incoming span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.current span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.current span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.current span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.current span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.starting span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.starting span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.starting span.icon::before,div.chat div.log div.node.notification.UNKNOWNCALL div.iconContainer span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.starting span.icon::before{
     content:"\E100";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.hold span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.hold span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.hold span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.hold span.icon::before{
     content:"\E40f";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done.UNKNOWN span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done.UNKNOWN span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done.UNKNOWN span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done.UNKNOWN span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done span.icon::before,div.chat div.log div.node.notification div.iconContainer span.icon::before{
     content:"\E101";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.missed span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.missed span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.missed span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.missed span.icon::before,div.chat div.log div.node.notification.MISSED div.iconContainer span.icon::before{
     content:"\E10D";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done.OUTGOING span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done.OUTGOING span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done.OUTGOING span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done.OUTGOING span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.noanswer span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.noanswer span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.noanswer span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.noanswer span.icon::before,div.chat div.log div.node.notification.NOANSWER div.iconContainer span.icon::before,div.chat div.log div.node.notification.OUTGOINGCALL div.iconContainer span.icon::before{
     content:"\E10F";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.done.INCOMING span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.done.INCOMING span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.done.INCOMING span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.done.INCOMING span.icon::before,div.fragment.hub div.categoryContainer.recents div.item div.message div.call.declined span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.declined span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.declined span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.declined span.icon::before,div.chat div.log div.node.notification.DECLINED div.iconContainer span.icon::before,div.chat div.log div.node.notification.INCOMINGCALL div.iconContainer span.icon::before{
     content:"\E10E";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 div.fragment.hub div.categoryContainer.recents div.item div.message div.call.busy span.icon::before,div.fragment.dialer div.categoryContainer.recents div.item div.message div.call.busy span.icon::before,div.fragment.allHistory div.recents.win-listview div.item div.message div.call.busy span.icon::before,#skypeAppBar div.win-appbar.win-top div.recentsContainer div.win-listview.recents div.item div.message div.call.busy span.icon::before,div.chat div.log div.node.notification.BUSY div.iconContainer span.icon::before{
     content:"\E10F";
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 body.RTL h1.title.link::after,body.RTL button.title.link::after{
@@ -252,7 +252,7 @@ div.fragment header h2.title,div.fragment.allHistory header div.wrapper.DEFAULTV
 }
 button.backbutton{
     background:transparent;
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold
 }
 button.backbutton::before{
@@ -592,7 +592,7 @@ h1.title.link::after,button.title.link::after{
     margin-right:15px;
     content:"\E421";
     display:inline-block;
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     position:relative;
     top:-2px;
     line-height:normal;
@@ -921,7 +921,7 @@ body.RTL #skypeAppBar input.skype-placeholder,body.RTL #skypeAppBar input.appBar
     border:none
 }
 div.fragment.participantList div.participants>div.win-listview div.win-selectioncheckmark,div.fragment.hub div.surface div.categoryContainer.favorites div.itemsContainer div.favoritesList div.win-selected div.win-selectioncheckmark{
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-weight:bold;
     font-size:20px;
     padding-top:4px;

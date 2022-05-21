@@ -1,0 +1,111 @@
+body
+{
+    font-family: Segoe UI;
+    font-size: 11pt;
+    margin: 0px;
+    padding: 0px;
+}
+
+h1
+{
+    font-family: Segoe UI Light;
+    background-color: #00749E;
+    color: #FFFFFF;
+    font-size: 30pt;
+    text-align: left;
+    margin: 0px;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+div.scenario
+{
+    margin: 10px;
+}
+
+h2
+{
+    margin: 0px;
+    padding: 10px;
+    text-align: left;
+    background-color: #00B0E0;
+    font-family: Segoe UI Light;
+    color: #FFFFFF;
+    font-size: 16pt;
+}
+
+a
+{
+    text-decoration: none;
+    color: #00749E;
+}
+
+a.scenariolink
+{
+    display: block;
+    text-decoration: none;
+    color: #00749E;
+}
+
+div.bodycontainer
+{
+}
+
+div.scenariodescription
+{
+    padding: 2px;
+}
+
+div.footer
+{
+    position: absolute;
+    bottom: 55px;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+div.footermargin
+{
+    position: absolute;
+    bottom: 0px;
+    height: 50px;
+    width: 100%;
+    background-color: #00749E;
+}
+
+input.button
+{
+    font-family: Segoe UI;
+    font-size: 10.5pt;
+    color: #00749E;
+    background-color: #F7F7F7;
+    border: 1px solid #999999;
+    margin: 5px;
+}
+
+input.button:hover
+{
+    font-family: Segoe UI;
+    font-size: 10.5pt;
+    color: #00749E;
+    background-color: #F7F7F7;
+    border: 1px solid #999999;
+}
+
+div#console
+{
+    font-family: Consolas;
+    font-size: 9.5pt;
+    padding: 10px;
+    border: 1px solid #000000;
+    margin: 50px;
+}
+
+div.contactData
+{
+    font-family: Consolas;
+    font-size: 8pt;
+    margin: 10px;
+    padding: 10px;
+    border: 2px solid #F7F7F7;
+}

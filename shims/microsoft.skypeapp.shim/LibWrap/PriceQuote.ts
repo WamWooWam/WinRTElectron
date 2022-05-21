@@ -12,26 +12,27 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.PriceQuote')
 export class PriceQuote implements IClosable { 
-    static failurereason_CALL_NOT_IN_PROGRESS: number = null;
-    static failurereason_ACCOUNT_ON_HOLD: number = null;
-    static failurereason_TIMEOUT: number = null;
-    static failurereason_OUT_OF_FUNDS: number = null;
-    static failurereason_SECURITY_CHECK_FAILED: number = null;
-    static failurereason_PAYMENTS_STOPPED: number = null;
-    static failurereason_NOT_SUPPORTED_BY_BUYER: number = null;
-    static failurereason_PRICE_EXCEEDS_LIMIT: number = null;
-    static failurereason_SIGNUP_REQUIRED: number = null;
-    static failurereason_GW_AUTHENTICATION_FAILED: number = null;
-    static failurereason_INTERNAL_ERROR: number = null;
-    static failurereason_NETWORK_PROBLEM: number = null;
-    static failurereason_REJECTED_BY_BUYER: number = null;
-    static failurereason_NO_FAILURE: number = null;
-    static status_FINISHED: number = null;
-    static status_INPROGRESS: number = null;
-    static status_ACCEPTED: number = null;
-    static status_PENDING: number = null;
-    static type_CALL_EVENT: number = null;
-    static type_CALL_MINUTE: number = null;
+    static failurereason_CALL_NOT_IN_PROGRESS: number = 13;
+    static failurereason_ACCOUNT_ON_HOLD: number = 12;
+    static failurereason_TIMEOUT: number = 11;
+    static failurereason_OUT_OF_FUNDS: number = 10;
+    static failurereason_SECURITY_CHECK_FAILED: number = 9;
+    static failurereason_PAYMENTS_STOPPED: number = 8;
+    static failurereason_NOT_SUPPORTED_BY_BUYER: number = 7;
+    static failurereason_PRICE_EXCEEDS_LIMIT: number = 6;
+    static failurereason_SIGNUP_REQUIRED: number = 5;
+    static failurereason_GW_AUTHENTICATION_FAILED: number = 4;
+    static failurereason_INTERNAL_ERROR: number = 3;
+    static failurereason_NETWORK_PROBLEM: number = 2;
+    static failurereason_REJECTED_BY_BUYER: number = 1;
+    static failurereason_NO_FAILURE: number = 0;
+    static status_FINISHED: number = 4;
+    static status_INPROGRESS: number = 3;
+    static status_ACCEPTED: number = 2;
+    static status_PENDING: number = 1;
+    static type_CALL_EVENT: number = 2;
+    static type_CALL_MINUTE: number = 1;
+    
     getObjectID(): number {
         throw new Error('PriceQuote#getObjectID not implemented')
     }

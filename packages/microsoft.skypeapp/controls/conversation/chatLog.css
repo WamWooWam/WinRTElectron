@@ -1,1 +1,1034 @@
-﻿/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.chatLog div.node.me:not(.notification)+div.node:not(.me){border-top:none}div.chatLog{overflow-y:auto;overflow-x:hidden;-ms-user-select:element;height:100%}div.chatLog div.ariaLiveContainer{display:none}div.chatLog div.messagesContainer{overflow-y:auto;overflow-x:hidden;height:100%;touch-action:pan-y}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog{margin-right:0px;padding-right:0px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog{margin-left:0px;padding-left:0px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node[type="videomessage"] div.videoMessage{top:-8px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node{-ms-grid-columns:58px 1fr}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message{padding-left:0}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message{padding-left:10px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message h3.name{width:150px;overflow:hidden;text-overflow:ellipsis}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message div.fileTransfersContainer>div{padding-right:20px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message div.fileTransfersContainer>div{padding-right:0;padding-left:20px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message div.fileTransferMessage div.fileTransfersContainer.ISMULTIFILETRANSFER>div{width:100%;min-width:0}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message time{margin-right:20px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message time{margin-right:0px;margin-left:20px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.img{right:5px;top:-4px;width:30px;height:30px;border-width:4px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.img{right:auto;left:5px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.img div.protectionLayer{background:url("/images/svg/prot30x30circle.svg") no-repeat}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.border{right:4px;top:-5px;width:38px;height:38px;clip:rect(0px, 43px, 5px, 0px)}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.border{right:auto;left:4px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node.EDITED div.message time{margin-right:20px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node.EDITED div.message time{margin-right:0px;margin-left:20px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.EDITED) div.message time{margin-right:20px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.EDITED) div.message time{margin-right:20px;margin-left:20px}@media screen and (max-aspect-ratio: 1 / 1){body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.EDITED):not(.light) div.message time{margin-left:20px;margin-right:0px}}@media screen and (min-aspect-ratio: 1 / 1){div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light):not(.SMS) div.message div.edited{margin-top:-21px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light):not(.SMS) div.message time{margin-top:-18px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light):not(.SMS) div.message:hover div.edited{margin-top:-13px}}@media screen and (min-aspect-ratio: 1 / 1){div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light).SMS div.message div.edited{margin-top:0}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light).SMS div.message time{margin-top:-18px}}@media screen and (min-aspect-ratio: 1 / 1){div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.SMS) div.message:hover time{margin-right:20px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.SMS) div.message:hover time{margin-right:0px;margin-left:20px}}@media screen and (max-aspect-ratio: 1 / 1){body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.SMS) div.message:hover time{margin-right:0px;margin-left:20px}}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="group"] div.message,div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="blocked"] div.message{-ms-grid-columns:1px 1fr;-ms-grid-column:2}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="group"] div.message div.avatar,div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="blocked"] div.message div.avatar{min-height:30px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="group"] div.message div.avatar div.img,div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="blocked"] div.message div.avatar div.img{width:30px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification div.iconContainer span.icon{font-size:15px;right:6px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.unsupported div.iconContainer span.icon{font-size:24px;right:12px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node[type="videomessage"]{height:260px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node[type="videomessage"] div.videoMessage{height:225px}div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.light[type="videomessage"]{height:255px}div.chatLog div.list-selectable:focus{border:2px solid #00aff0 !important}div.chatLog div.rateCallQualityNode div.rating:focus{border:2px solid #00aff0}div.chatLog div.node{position:relative;display:-ms-grid;box-sizing:border-box;-ms-grid-columns:minmax(128px, 1fr) minmax(660px, 940px) minmax(136px, 1fr);-ms-grid-rows:1fr;border-top:1px solid #E7F1F5;outline:none}div.chatLog div.node.light,div.chatLog div.node.me{border-top:none}div.chatLog div.node time.date em{color:#d6d6d6;font-weight:100;margin:0 1px}div.chatLog div.node div.avatar{-ms-grid-column:1;position:relative;overflow:visible;-ms-high-contrast-adjust:none}div.chatLog div.node div.avatar div.img{position:absolute;right:0px;top:-8px;width:40px;height:40px;border-radius:50%;border:8px solid #fff;background-image:url("/images/avatar.default.unknown.png");z-index:8}body.RTL div.chatLog div.node div.avatar div.img{right:auto;left:0}div.chatLog div.node div.avatar div.img div.protectionLayer{position:absolute;width:100%;height:100%;border-radius:50%;background:url("/images/svg/prot40x40circle.svg") no-repeat}div.chatLog div.node div.avatar.DEFAULTAVATAR div.protectionLayer{background-image:none}div.chatLog div.node div.avatar div.border{position:absolute;right:-1px;top:-9px;width:56px;height:56px;border:1px solid #E7F1F5;border-radius:50%;background-color:#fff;clip:rect(0px, 57px, 9px, 0px);z-index:7}body.RTL div.chatLog div.node div.avatar div.border{right:auto;left:-1px}div.chatLog div.node.me{background-color:#D8F3FE}div.chatLog div.node.me div.avatar div.img{border-color:#D8F3FE}div.chatLog div.node.me div.avatar div.border{display:none}div.chatLog div.node.me div.message{background-color:#D8F3FE}div.chatLog div.node div.message{-ms-grid-column:2;padding:0 0 0 13px;background-color:#fff;-ms-user-select:text}div.chatLog div.node div.message span.deleted{color:#939999}div.chatLog div.node div.message a[href]:hover{color:#0182b3}div.chatLog div.node div.message a[href]:active{color:#015c80}div.chatLog div.node div.message a[href*='skype:+']:after,div.chatLog div.node div.message a[href*='skype:+']:before{content:"\200E"}div.chatLog div.node div.message h3.name{color:#00aff0;margin-top:10px;font-weight:600}div.chatLog div.node div.message h3.name a{color:#0095cc}div.chatLog div.node div.confirmAuthRequest div.controls{padding-top:1em;white-space:normal}div.chatLog div.node div.confirmAuthRequest div.controls button{max-width:250px;font-weight:normal}div.chat.LIVE div.chatLog div.node div.confirmAuthRequest div.controls button{margin-bottom:10px;height:auto;min-height:30px}body.RTL div.chatLog div.node div.confirmAuthRequest div.controls button{margin-left:10px;margin-right:0}div.chatLog div.node.unsupported{margin-top:10px}div.chatLog div.node.unsupported div.message{color:#93999d;padding-top:30px;padding-bottom:30px}div.chatLog div.node.unsupported div.message span.name{display:none}div.chatLog div.node.unsupported div.message time{padding-left:20px}body.RTL div.chatLog div.node.unsupported div.message time{padding-left:0;padding-right:20px}div.chatLog div.node.unsupported div.message div.body{white-space:normal}div.chatLog div.node.unsupported div.iconContainer span.icon{font-family:"Skype UI Symbol";font-weight:bold;position:absolute;right:16px;top:25px}body.RTL div.chatLog div.node.unsupported div.iconContainer span.icon{right:auto;left:16px}div.chatLog div.node.unsupported[type='file'] div.iconContainer span.icon::before{content:"\E306"}div.chatLog div.node.unsupported[type='auth'] div.iconContainer span.icon::before{content:"\E201"}div.chatLog div.node.unsupported[type='contacts'] div.iconContainer span.icon::before{content:"\E201"}div.chatLog div.node.unsupported[type='voicemail'] div.iconContainer span.icon::before{content:"\E304"}div.chatLog div.node.unsupported[type='videomessage'] div.iconContainer span.icon::before{content:"\E305"}div.chatLog div.node.me:not(.notification)+div.node:not(.me)>div.avatar div.border{display:none}div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.avatar div.img:hover::before{content:' ';display:block;position:absolute;width:100%;height:100%;background:rgba(0,0,0,0.15);pointer-events:none;border-radius:50%}div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.message h3.name a:hover{color:#0182b3}div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.message h3.name a:active{color:#015c80}div.chatLog div.node.notification{background-color:#fff;color:#93999d;border-top:1px solid #E7F1F5}div.chatLog div.node div.iconContainer span.icon{color:#93999d}div.chatLog div.node.me:not(.notification)+div.node.notification{border-top:none}div.chatLog div.node.notification div.iconContainer,div.chatLog div.node.unsupported div.iconContainer{-ms-grid-column:1;position:relative}div.chatLog div.node.notification div.iconContainer span.icon{position:absolute;right:5px;top:25px;font-family:"Skype UI Symbol";font-weight:bold;margin-right:10px}body.RTL div.chatLog div.node.notification div.iconContainer span.icon{right:auto;left:5px;margin-right:0;margin-left:10px}div.chatLog div.node.notification div.message{padding-bottom:5px;padding-top:20px}div.chatLog div.node.me.notification div.message{background-color:#fff}div.chatLog div.node:not(.unsupported) div.message div.body{padding-bottom:15px}div.chatLog div.node.notification div.message div.body{word-wrap:normal}div.chatLog div.node.notification div.message div.body span{margin-right:5px}body.RTL div.chatLog div.node.notification div.message div.body span{margin-right:0;margin-left:5px}div.chatLog div.node.notification div.message div.body span.msgDetail{font-size:9pt}div.chatLog div.node.notification.genericNotification,div.chatLog div.node.notification[type="blocked"]{margin-top:0px}@media screen and (max-aspect-ratio: 1 / 1){div.chatLog div.node.notification.genericNotification,div.chatLog div.node.notification[type="blocked"]{-ms-grid-columns:30px 1fr 30px}}div.chatLog div.node.notification.genericNotification div.message,div.chatLog div.node.notification[type="blocked"] div.message{padding-right:0;padding-left:0}div.chatLog div.node.notification.genericNotification div.message div.body,div.chatLog div.node.notification[type="blocked"] div.message div.body{text-align:center;padding-right:0;padding-left:0}div.chatLog div.node.notification.genericNotification div.message div.body strong,div.chatLog div.node.notification[type="blocked"] div.message div.body strong{font-weight:normal}div.chatLog div.node div.message div.body{padding-right:80px;word-wrap:break-word;white-space:pre-wrap}body.RTL div.chatLog div.node div.message div.body{padding-right:0;padding-left:80px}div.chatLog div.node div.message.initialAuthRequest div.body div.text::before,div.chatLog div.node div.message.auth div.body::before,div.chatLog div.node div.message.authorized div.body::before{padding-right:5px}body.RTL div.chatLog div.node div.message.initialAuthRequest div.body div.text::before,body.RTL div.chatLog div.node div.message.auth div.body::before,body.RTL div.chatLog div.node div.message.authorized div.body::before{padding-right:0;padding-left:5px}div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body{padding-right:30px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body{padding-right:0;padding-left:30px}@media screen and (max-aspect-ratio: 1 / 1){div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body{padding-right:0px}body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body{padding-right:0;padding-left:15px}}div.chatLog div.node div.message time{float:right;text-align:right;color:#93999d}body.RTL div.chatLog div.node div.message time{float:left}div.chatLog div.node.notification:not([type='group']) div.message time{margin-top:-13px}div.chatLog div.node.SMS div.message time{background:url("/images/svg/sms.svg") no-repeat 0px 0px;margin-right:0px;padding-left:20px}@media screen and (-ms-high-contrast: active){div.chatLog div.node.SMS div.message time{background:url("/images/svg/sms-hc.svg") no-repeat 0px 0px}}body.RTL div.chatLog div.node.SMS div.message time{background-position:top right;padding-left:1px;padding-right:20px}div.chatLog div.node:not(.SMS) div.message div.edited{color:#93999d;display:block;float:right;display:block;width:20px;margin-top:-3px}body.RTL div.chatLog div.node:not(.SMS) div.message div.edited{float:left}@media screen and (max-aspect-ratio: 1 / 1){div.chatLog div.node:not(.SMS) div.message div.edited{margin-top:-20px}}div.chatLog div.node:not(.SMS).light div.message div.edited{margin-top:-2px}div.chatLog div.node:not(.SMS).me div.message:hover div.edited{margin-top:5px}@media screen and (max-aspect-ratio: 1 / 1){div.chatLog div.node:not(.SMS).me div.message:hover div.edited{margin-top:-15px}}div.chatLog div.node:not(.SMS).me div.message:hover time{margin-left:0}body.RTL div.chatLog div.node:not(.SMS).me div.message:hover time{margin-right:0}div.chatLog div.node:not(.SMS).me.light div.message:hover div.edited{margin-top:5px}div.chatLog div.node:not(.EDITED) div.message time{margin-left:20px}body.RTL div.chatLog div.node:not(.EDITED) div.message time{margin-left:0px;margin-right:20px}@media screen and (max-aspect-ratio: 1 / 1){div.chatLog div.node:not(.EDITED):not(.light) div.message time{margin-left:0px}body.RTL div.chatLog div.node:not(.EDITED):not(.light) div.message time{margin-left:0px;margin-right:0px}}div.chatLog div.node.EDITED div.message div.edited::after,div.chatLog div.node.me:not(.SMS) div.message:hover div.edited::after{position:relative;font-family:"Skype UI Symbol";font-weight:300;font-size:25px;content:"\E40D";line-height:10px;vertical-align:bottom;right:4px}body.RTL div.chatLog div.node.EDITED div.message div.edited::after,body.RTL div.chatLog div.node.me:not(.SMS) div.message:hover div.edited::after{right:auto;left:4px}div.chatLog div.node.me:not(.SMS) div.message:hover div.edited{background:url("/images/svg/menu-hover.svg") no-repeat;background-position:center;height:12px;background-size:10px 10px}@media screen and (-ms-high-contrast: active){div.chatLog div.node.me:not(.SMS) div.message:hover div.edited{background:url("/images/svg/menu-hover-hc.svg") no-repeat}}div.chatLog div.node.me:not(.SMS) div.message:hover div.edited::after{content:none}div.chatLog div.node.SMS[smsstatus='delivered'] div.message time{background:url("/images/svg/sms-delivered.svg") no-repeat 0px 0px}@media screen and (-ms-high-contrast: active){div.chatLog div.node.SMS[smsstatus='delivered'] div.message time{background:url("/images/svg/sms-delivered-hc.svg") no-repeat 0px 0px}}div.chatLog div.node.SMS[smsstatus='failed'] div.message time{background:url("/images/svg/sms-failed.svg") no-repeat 0px 0px}@media screen and (-ms-high-contrast: active){div.chatLog div.node.SMS[smsstatus='failed'] div.message time{background:url("/images/svg/sms-failed-hc.svg") no-repeat 0px 0px}}div.chatLog div.node div.message p{margin:5px 0 0 0;padding:0}div.chatLog div.node div.message p:first-child{margin-top:0}div.chatLog div.node[type="file"] div.message div.heading{color:#6e6e73;line-height:20px;margin-bottom:8px}div.chatLog div.node[type="file"] div.message div.heading span.icon{display:inline-block;font-family:"Skype UI Symbol";font-weight:bold;font-size:20px;height:20px;width:20px;margin-right:5px}div.chatLog div.node[type="file"] div.message div.heading span.icon::before{content:"\E306"}div.chatLog div.node[type="videomessage"]{height:290px}div.chatLog div.node[type="videomessage"] div.videoMessage{-ms-user-select:none;width:100%;clear:both;height:250px;top:-14px;position:relative}@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 320px){div.chatLog div.node[type="videomessage"] div.videoMessage{margin-left:-30px}div.chatLog div.node[type="videomessage"] div.videoMessage div.preview{max-width:270px;overflow:hidden}body.RTL div.chatLog div.node[type="videomessage"] div.videoMessage{margin-right:-30px;margin-left:0}}@media screen and (min-aspect-ratio: 1 / 1){div.chat.LIVE div.chatLog div.node[type="videomessage"] div.videoMessage{margin-left:-30px}div.chat.LIVE div.chatLog div.node[type="videomessage"] div.videoMessage div.preview{max-width:270px;overflow:hidden}body.RTL div.chat.LIVE div.chatLog div.node[type="videomessage"] div.videoMessage{margin-right:-30px;margin-left:0}}div.chatLog div.node.light[type="videomessage"]{height:260px}div.chatLog div.node div.message div.confirmAuthRequest{white-space:nowrap}div.chatLog div.node div.message div.confirmAuthRequest>div:not(.controls){white-space:normal}.win-ui-dark .win-rating .win-star.win-user.win-full,.win-ui-dark .win-rating .win-star.win-user.win-full.win-disabled{color:orange}.win-ui-dark .win-rating .win-star.win-tentative.win-full{color:red}.win-ui-dark .win-rating .win-star.win-average.win-full,.win-ui-dark .win-rating .win-star.win-average.win-full.win-disabled{color:#fff}.win-ui-dark .win-rating .win-star.win-empty{color:rgba(255,255,255,0.35)}.win-rating .win-star.win-user.win-full,.win-rating .win-star.win-user.win-full.win-disabled{color:#00aff0}.win-rating .win-star.win-tentative.win-full{color:#93999d}.win-rating .win-star.win-tentative.win-full:active{color:#0095cc;transform:scale(0.9, 0.9)}.win-rating .win-star.win-average.win-full,.win-rating .win-star.win-average.win-full.win-disabled{color:green}.win-rating .win-star.win-empty{color:#c9ccce}div.CHATLOG_HOLD_MENU{min-height:80px}@media screen and (max-width: 1280px){div.chatLog{margin-right:0px;padding-right:0px}body.RTL div.chatLog{margin-left:0px;padding-left:0px}div.chatLog div.node{-ms-grid-columns:78px 1fr 30px}div.chatLog div.node div.message div.body{padding-right:30px}body.RTL div.chatLog div.node div.message div.body{padding-right:0;padding-left:30px}div.chatLog div.node.notification.genericNotification{-ms-grid-columns:1px 1fr}}@media screen and (max-aspect-ratio: 1 / 1){div.chatLog div.node div.confirmAuthRequest div.controls button{margin-bottom:10px;height:auto;min-height:30px}div.chatLog div.node,div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node{-ms-grid-columns:58px 1fr}html div.chatLog div.nodenot>div,div.chatLog div.node>div.message{padding:0 20px 10px 0px}html body.RTL html div.chatLog div.nodenot>div,html body.RTL div.chatLog div.node>div.message{padding:0 0 10px 20px}div.chatLog div.node.notification>div.message{padding:20px 20px 5px 0px}html body.RTL div.chatLog div.node.notification>div.message{padding:20px 0 5px 20px}div.chatLog div.node div.message h3.name{line-height:20px;max-width:calc(100% - 60px);height:20px;text-overflow:ellipsis;white-space:nowrap;overflow:hidden;margin-bottom:0;margin-top:4px}div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message time{margin-right:0}div.chatLog div.node:not(.notification):not(.light):not(.unsupported) div.message time{margin-top:-19px;padding-left:0px}body.RTL div.chatLog div.node:not(.notification):not(.light):not(.unsupported) div.message time{padding-right:0px}div.chatLog div.node.SMS:not(.notification):not(.light):not(.unsupported) div.message time{padding-left:20px}body.RTL div.chatLog div.node.SMS:not(.notification):not(.light):not(.unsupported) div.message time{padding-left:0;padding-right:20px}div.chatLog div.node.notification:not([type='group']) div.message time{margin-top:12px}div.chatLog div.node div.message div.body{padding-right:0px}body.RTL div.chatLog div.node div.message div.body{padding-left:0}div.chatLog div.node div.avatar div.img{right:5px;top:-4px;width:30px;height:30px;border-width:4px}body.RTL div.chatLog div.node div.avatar div.img{right:auto;left:5px}div.chatLog div.node div.avatar div.img div.protectionLayer{background:url("/images/svg/prot30x30circle.svg") no-repeat}div.chatLog div.node div.avatar div.border{right:4px;top:-5px;width:38px;height:38px;clip:rect(0px, 43px, 5px, 0px)}body.RTL div.chatLog div.node div.avatar div.border{right:auto;left:4px}div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification.genericNotification div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification[type="blocked"]{-ms-grid-columns:1px 1fr}div.chatLog div.node.notification.genericNotification div.message,div.chatLog div.node.notification[type="blocked"] div.message{-ms-grid-columns:1px 1fr;-ms-grid-column:2;padding-left:20px;padding-right:20px}div.chatLog div.node.notification.genericNotification div.message div.avatar,div.chatLog div.node.notification[type="blocked"] div.message div.avatar{min-height:30px}div.chatLog div.node.notification.genericNotification div.message div.avatar div.img,div.chatLog div.node.notification[type="blocked"] div.message div.avatar div.img{width:30px}div.chatLog div.node.notification div.iconContainer span.icon{font-size:15px;right:6px}div.chatLog div.node.unsupported div.iconContainer span.icon{font-size:24px;right:12px}div.chatLog div.node[type="videomessage"]{height:260px}div.chatLog div.node[type="videomessage"] div.videoMessage{height:225px;position:static;top:0}div.chatLog div.node.light[type="videomessage"]{height:255px}}@media screen and (-ms-high-contrast: active){div.chatLog div.node div.avatar div.img,div.chatLog div.node.me div.avatar div.img{border-color:transparent}div.chatLog div.node div.avatar div.border{display:none}div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.avatar div.img:hover::before{background:none;box-shadow:0 0 0 5px WindowText}div.chatLog div.node div.confirmAuthRequest div.controls button{border:1px solid WindowText}div.chatLog div.node div.message a[href]:hover{color:highlight}}
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.chatLog div.node.me:not(.notification)+div.node:not(.me) {
+    border-top: none
+}
+
+div.chatLog {
+    overflow-y: auto;
+    overflow-x: hidden;
+    -ms-user-select: element;
+    height: 100%
+}
+
+div.chatLog div.ariaLiveContainer {
+    display: none
+}
+
+div.chatLog div.messagesContainer {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    touch-action: pan-y
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog {
+    margin-right: 0px;
+    padding-right: 0px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog {
+    margin-left: 0px;
+    padding-left: 0px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node[type="videomessage"] div.videoMessage {
+    top: -8px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node {
+    -ms-grid-columns: 58px 1fr
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message {
+    padding-left: 0
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message {
+    padding-left: 10px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message h3.name {
+    width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message div.fileTransfersContainer>div {
+    padding-right: 20px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message div.fileTransfersContainer>div {
+    padding-right: 0;
+    padding-left: 20px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message div.fileTransferMessage div.fileTransfersContainer.ISMULTIFILETRANSFER>div {
+    width: 100%;
+    min-width: 0
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message time {
+    margin-right: 20px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.message time {
+    margin-right: 0px;
+    margin-left: 20px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.img {
+    right: 5px;
+    top: -4px;
+    width: 30px;
+    height: 30px;
+    border-width: 4px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.img {
+    right: auto;
+    left: 5px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.img div.protectionLayer {
+    background: url("/images/svg/prot30x30circle.svg") no-repeat
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.border {
+    right: 4px;
+    top: -5px;
+    width: 38px;
+    height: 38px;
+    clip: rect(0px, 43px, 5px, 0px)
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.avatar div.border {
+    right: auto;
+    left: 4px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node.EDITED div.message time {
+    margin-right: 20px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node.EDITED div.message time {
+    margin-right: 0px;
+    margin-left: 20px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.EDITED) div.message time {
+    margin-right: 20px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.EDITED) div.message time {
+    margin-right: 20px;
+    margin-left: 20px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.EDITED):not(.light) div.message time {
+        margin-left: 20px;
+        margin-right: 0px
+    }
+}
+
+@media screen and (min-aspect-ratio: 1 / 1) {
+    div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light):not(.SMS) div.message div.edited {
+        margin-top: -21px
+    }
+    div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light):not(.SMS) div.message time {
+        margin-top: -18px
+    }
+    div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light):not(.SMS) div.message:hover div.edited {
+        margin-top: -13px
+    }
+}
+
+@media screen and (min-aspect-ratio: 1 / 1) {
+    div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light).SMS div.message div.edited {
+        margin-top: 0
+    }
+    div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.light).SMS div.message time {
+        margin-top: -18px
+    }
+}
+
+@media screen and (min-aspect-ratio: 1 / 1) {
+    div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.SMS) div.message:hover time {
+        margin-right: 20px
+    }
+    body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.SMS) div.message:hover time {
+        margin-right: 0px;
+        margin-left: 20px
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node:not(.SMS) div.message:hover time {
+        margin-right: 0px;
+        margin-left: 20px
+    }
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="group"] div.message,
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="blocked"] div.message {
+    -ms-grid-columns: 1px 1fr;
+    -ms-grid-column: 2
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="group"] div.message div.avatar,
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="blocked"] div.message div.avatar {
+    min-height: 30px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="group"] div.message div.avatar div.img,
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification[type="blocked"] div.message div.avatar div.img {
+    width: 30px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.notification div.iconContainer span.icon {
+    font-size: 15px;
+    right: 6px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.unsupported div.iconContainer span.icon {
+    font-size: 24px;
+    right: 12px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node[type="videomessage"] {
+    height: 260px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node[type="videomessage"] div.videoMessage {
+    height: 225px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chatLog div.node div.node.light[type="videomessage"] {
+    height: 255px
+}
+
+div.chatLog div.list-selectable:focus {
+    border: 2px solid #00aff0 !important
+}
+
+div.chatLog div.rateCallQualityNode div.rating:focus {
+    border: 2px solid #00aff0
+}
+
+div.chatLog div.node {
+    position: relative;
+    display: -ms-grid;
+    box-sizing: border-box;
+    -ms-grid-columns: minmax(128px, 1fr) minmax(660px, 940px) minmax(136px, 1fr);
+    -ms-grid-rows: 1fr;
+    border-top: 1px solid #E7F1F5;
+    outline: none
+}
+
+div.chatLog div.node.light,
+div.chatLog div.node.me {
+    border-top: none
+}
+
+div.chatLog div.node time.date em {
+    color: #d6d6d6;
+    font-weight: 100;
+    margin: 0 1px
+}
+
+div.chatLog div.node div.avatar {
+    -ms-grid-column: 1;
+    position: relative;
+    overflow: visible;
+    -ms-high-contrast-adjust: none
+}
+
+div.chatLog div.node div.avatar div.img {
+    position: absolute;
+    right: 0px;
+    top: -8px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 8px solid #fff;
+    background-image: url("/images/avatar.default.unknown.png");
+    z-index: 8
+}
+
+body.RTL div.chatLog div.node div.avatar div.img {
+    right: auto;
+    left: 0
+}
+
+div.chatLog div.node div.avatar div.img div.protectionLayer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: url("/images/svg/prot40x40circle.svg") no-repeat
+}
+
+div.chatLog div.node div.avatar.DEFAULTAVATAR div.protectionLayer {
+    background-image: none
+}
+
+div.chatLog div.node div.avatar div.border {
+    position: absolute;
+    right: -1px;
+    top: -9px;
+    width: 56px;
+    height: 56px;
+    border: 1px solid #E7F1F5;
+    border-radius: 50%;
+    background-color: #fff;
+    clip: rect(0px, 57px, 9px, 0px);
+    z-index: 7
+}
+
+body.RTL div.chatLog div.node div.avatar div.border {
+    right: auto;
+    left: -1px
+}
+
+div.chatLog div.node.me {
+    background-color: #D8F3FE
+}
+
+div.chatLog div.node.me div.avatar div.img {
+    border-color: #D8F3FE
+}
+
+div.chatLog div.node.me div.avatar div.border {
+    display: none
+}
+
+div.chatLog div.node.me div.message {
+    background-color: #D8F3FE
+}
+
+div.chatLog div.node div.message {
+    -ms-grid-column: 2;
+    padding: 0 0 0 13px;
+    background-color: #fff;
+    -ms-user-select: text
+}
+
+div.chatLog div.node div.message span.deleted {
+    color: #939999
+}
+
+div.chatLog div.node div.message a[href]:hover {
+    color: #0182b3
+}
+
+div.chatLog div.node div.message a[href]:active {
+    color: #015c80
+}
+
+div.chatLog div.node div.message a[href*='skype:+']:after,
+div.chatLog div.node div.message a[href*='skype:+']:before {
+    content: "\200E"
+}
+
+div.chatLog div.node div.message h3.name {
+    color: #00aff0;
+    margin-top: 10px;
+    font-weight: 600
+}
+
+div.chatLog div.node div.message h3.name a {
+    color: #0095cc
+}
+
+div.chatLog div.node div.confirmAuthRequest div.controls {
+    padding-top: 1em;
+    white-space: normal
+}
+
+div.chatLog div.node div.confirmAuthRequest div.controls button {
+    max-width: 250px;
+    font-weight: normal
+}
+
+div.chat.LIVE div.chatLog div.node div.confirmAuthRequest div.controls button {
+    margin-bottom: 10px;
+    height: auto;
+    min-height: 30px
+}
+
+body.RTL div.chatLog div.node div.confirmAuthRequest div.controls button {
+    margin-left: 10px;
+    margin-right: 0
+}
+
+div.chatLog div.node.unsupported {
+    margin-top: 10px
+}
+
+div.chatLog div.node.unsupported div.message {
+    color: #93999d;
+    padding-top: 30px;
+    padding-bottom: 30px
+}
+
+div.chatLog div.node.unsupported div.message span.name {
+    display: none
+}
+
+div.chatLog div.node.unsupported div.message time {
+    padding-left: 20px
+}
+
+body.RTL div.chatLog div.node.unsupported div.message time {
+    padding-left: 0;
+    padding-right: 20px
+}
+
+div.chatLog div.node.unsupported div.message div.body {
+    white-space: normal
+}
+
+div.chatLog div.node.unsupported div.iconContainer span.icon {
+    font-family: "Skype UI Symbol" !important;
+    font-weight: bold;
+    position: absolute;
+    right: 16px;
+    top: 25px
+}
+
+body.RTL div.chatLog div.node.unsupported div.iconContainer span.icon {
+    right: auto;
+    left: 16px
+}
+
+div.chatLog div.node.unsupported[type='file'] div.iconContainer span.icon::before {
+    content: "\E306"
+}
+
+div.chatLog div.node.unsupported[type='auth'] div.iconContainer span.icon::before {
+    content: "\E201"
+}
+
+div.chatLog div.node.unsupported[type='contacts'] div.iconContainer span.icon::before {
+    content: "\E201"
+}
+
+div.chatLog div.node.unsupported[type='voicemail'] div.iconContainer span.icon::before {
+    content: "\E304"
+}
+
+div.chatLog div.node.unsupported[type='videomessage'] div.iconContainer span.icon::before {
+    content: "\E305"
+}
+
+div.chatLog div.node.me:not(.notification)+div.node:not(.me)>div.avatar div.border {
+    display: none
+}
+
+div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.avatar div.img:hover::before {
+    content: ' ';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);
+    pointer-events: none;
+    border-radius: 50%
+}
+
+div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.message h3.name a:hover {
+    color: #0182b3
+}
+
+div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.message h3.name a:active {
+    color: #015c80
+}
+
+div.chatLog div.node.notification {
+    background-color: #fff;
+    color: #93999d;
+    border-top: 1px solid #E7F1F5
+}
+
+div.chatLog div.node div.iconContainer span.icon {
+    color: #93999d
+}
+
+div.chatLog div.node.me:not(.notification)+div.node.notification {
+    border-top: none
+}
+
+div.chatLog div.node.notification div.iconContainer,
+div.chatLog div.node.unsupported div.iconContainer {
+    -ms-grid-column: 1;
+    position: relative
+}
+
+div.chatLog div.node.notification div.iconContainer span.icon {
+    position: absolute;
+    right: 5px;
+    top: 25px;
+    font-family: "Skype UI Symbol" !important;
+    font-weight: bold;
+    margin-right: 10px
+}
+
+body.RTL div.chatLog div.node.notification div.iconContainer span.icon {
+    right: auto;
+    left: 5px;
+    margin-right: 0;
+    margin-left: 10px
+}
+
+div.chatLog div.node.notification div.message {
+    padding-bottom: 5px;
+    padding-top: 20px
+}
+
+div.chatLog div.node.me.notification div.message {
+    background-color: #fff
+}
+
+div.chatLog div.node:not(.unsupported) div.message div.body {
+    padding-bottom: 15px
+}
+
+div.chatLog div.node.notification div.message div.body {
+    word-wrap: normal
+}
+
+div.chatLog div.node.notification div.message div.body span {
+    margin-right: 5px
+}
+
+body.RTL div.chatLog div.node.notification div.message div.body span {
+    margin-right: 0;
+    margin-left: 5px
+}
+
+div.chatLog div.node.notification div.message div.body span.msgDetail {
+    font-size: 9pt
+}
+
+div.chatLog div.node.notification.genericNotification,
+div.chatLog div.node.notification[type="blocked"] {
+    margin-top: 0px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.chatLog div.node.notification.genericNotification,
+    div.chatLog div.node.notification[type="blocked"] {
+        -ms-grid-columns: 30px 1fr 30px
+    }
+}
+
+div.chatLog div.node.notification.genericNotification div.message,
+div.chatLog div.node.notification[type="blocked"] div.message {
+    padding-right: 0;
+    padding-left: 0
+}
+
+div.chatLog div.node.notification.genericNotification div.message div.body,
+div.chatLog div.node.notification[type="blocked"] div.message div.body {
+    text-align: center;
+    padding-right: 0;
+    padding-left: 0
+}
+
+div.chatLog div.node.notification.genericNotification div.message div.body strong,
+div.chatLog div.node.notification[type="blocked"] div.message div.body strong {
+    font-weight: normal
+}
+
+div.chatLog div.node div.message div.body {
+    padding-right: 80px;
+    word-wrap: break-word;
+    white-space: pre-wrap
+}
+
+body.RTL div.chatLog div.node div.message div.body {
+    padding-right: 0;
+    padding-left: 80px
+}
+
+div.chatLog div.node div.message.initialAuthRequest div.body div.text::before,
+div.chatLog div.node div.message.auth div.body::before,
+div.chatLog div.node div.message.authorized div.body::before {
+    padding-right: 5px
+}
+
+body.RTL div.chatLog div.node div.message.initialAuthRequest div.body div.text::before,
+body.RTL div.chatLog div.node div.message.auth div.body::before,
+body.RTL div.chatLog div.node div.message.authorized div.body::before {
+    padding-right: 0;
+    padding-left: 5px
+}
+
+div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body {
+    padding-right: 30px
+}
+
+body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body {
+    padding-right: 0;
+    padding-left: 30px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body {
+        padding-right: 0px
+    }
+    body.RTL div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message div.body {
+        padding-right: 0;
+        padding-left: 15px
+    }
+}
+
+div.chatLog div.node div.message time {
+    float: right;
+    text-align: right;
+    color: #93999d
+}
+
+body.RTL div.chatLog div.node div.message time {
+    float: left
+}
+
+div.chatLog div.node.notification:not([type='group']) div.message time {
+    margin-top: -13px
+}
+
+div.chatLog div.node.SMS div.message time {
+    background: url("/images/svg/sms.svg") no-repeat 0px 0px;
+    margin-right: 0px;
+    padding-left: 20px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.chatLog div.node.SMS div.message time {
+        background: url("/images/svg/sms-hc.svg") no-repeat 0px 0px
+    }
+}
+
+body.RTL div.chatLog div.node.SMS div.message time {
+    background-position: top right;
+    padding-left: 1px;
+    padding-right: 20px
+}
+
+div.chatLog div.node:not(.SMS) div.message div.edited {
+    color: #93999d;
+    display: block;
+    float: right;
+    display: block;
+    width: 20px;
+    margin-top: -3px
+}
+
+body.RTL div.chatLog div.node:not(.SMS) div.message div.edited {
+    float: left
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.chatLog div.node:not(.SMS) div.message div.edited {
+        margin-top: -20px
+    }
+}
+
+div.chatLog div.node:not(.SMS).light div.message div.edited {
+    margin-top: -2px
+}
+
+div.chatLog div.node:not(.SMS).me div.message:hover div.edited {
+    margin-top: 5px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.chatLog div.node:not(.SMS).me div.message:hover div.edited {
+        margin-top: -15px
+    }
+}
+
+div.chatLog div.node:not(.SMS).me div.message:hover time {
+    margin-left: 0
+}
+
+body.RTL div.chatLog div.node:not(.SMS).me div.message:hover time {
+    margin-right: 0
+}
+
+div.chatLog div.node:not(.SMS).me.light div.message:hover div.edited {
+    margin-top: 5px
+}
+
+div.chatLog div.node:not(.EDITED) div.message time {
+    margin-left: 20px
+}
+
+body.RTL div.chatLog div.node:not(.EDITED) div.message time {
+    margin-left: 0px;
+    margin-right: 20px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.chatLog div.node:not(.EDITED):not(.light) div.message time {
+        margin-left: 0px
+    }
+    body.RTL div.chatLog div.node:not(.EDITED):not(.light) div.message time {
+        margin-left: 0px;
+        margin-right: 0px
+    }
+}
+
+div.chatLog div.node.EDITED div.message div.edited::after,
+div.chatLog div.node.me:not(.SMS) div.message:hover div.edited::after {
+    position: relative;
+    font-family: "Skype UI Symbol" !important;
+    font-weight: 300;
+    font-size: 25px;
+    content: "\E40D";
+    line-height: 10px;
+    vertical-align: bottom;
+    right: 4px
+}
+
+body.RTL div.chatLog div.node.EDITED div.message div.edited::after,
+body.RTL div.chatLog div.node.me:not(.SMS) div.message:hover div.edited::after {
+    right: auto;
+    left: 4px
+}
+
+div.chatLog div.node.me:not(.SMS) div.message:hover div.edited {
+    background: url("/images/svg/menu-hover.svg") no-repeat;
+    background-position: center;
+    height: 12px;
+    background-size: 10px 10px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.chatLog div.node.me:not(.SMS) div.message:hover div.edited {
+        background: url("/images/svg/menu-hover-hc.svg") no-repeat
+    }
+}
+
+div.chatLog div.node.me:not(.SMS) div.message:hover div.edited::after {
+    content: none
+}
+
+div.chatLog div.node.SMS[smsstatus='delivered'] div.message time {
+    background: url("/images/svg/sms-delivered.svg") no-repeat 0px 0px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.chatLog div.node.SMS[smsstatus='delivered'] div.message time {
+        background: url("/images/svg/sms-delivered-hc.svg") no-repeat 0px 0px
+    }
+}
+
+div.chatLog div.node.SMS[smsstatus='failed'] div.message time {
+    background: url("/images/svg/sms-failed.svg") no-repeat 0px 0px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.chatLog div.node.SMS[smsstatus='failed'] div.message time {
+        background: url("/images/svg/sms-failed-hc.svg") no-repeat 0px 0px
+    }
+}
+
+div.chatLog div.node div.message p {
+    margin: 5px 0 0 0;
+    padding: 0
+}
+
+div.chatLog div.node div.message p:first-child {
+    margin-top: 0
+}
+
+div.chatLog div.node[type="file"] div.message div.heading {
+    color: #6e6e73;
+    line-height: 20px;
+    margin-bottom: 8px
+}
+
+div.chatLog div.node[type="file"] div.message div.heading span.icon {
+    display: inline-block;
+    font-family: "Skype UI Symbol" !important;
+    font-weight: bold;
+    font-size: 20px;
+    height: 20px;
+    width: 20px;
+    margin-right: 5px
+}
+
+div.chatLog div.node[type="file"] div.message div.heading span.icon::before {
+    content: "\E306"
+}
+
+div.chatLog div.node[type="videomessage"] {
+    height: 290px
+}
+
+div.chatLog div.node[type="videomessage"] div.videoMessage {
+    -ms-user-select: none;
+    width: 100%;
+    clear: both;
+    height: 250px;
+    top: -14px;
+    position: relative
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) and (max-width: 320px) {
+    div.chatLog div.node[type="videomessage"] div.videoMessage {
+        margin-left: -30px
+    }
+    div.chatLog div.node[type="videomessage"] div.videoMessage div.preview {
+        max-width: 270px;
+        overflow: hidden
+    }
+    body.RTL div.chatLog div.node[type="videomessage"] div.videoMessage {
+        margin-right: -30px;
+        margin-left: 0
+    }
+}
+
+@media screen and (min-aspect-ratio: 1 / 1) {
+    div.chat.LIVE div.chatLog div.node[type="videomessage"] div.videoMessage {
+        margin-left: -30px
+    }
+    div.chat.LIVE div.chatLog div.node[type="videomessage"] div.videoMessage div.preview {
+        max-width: 270px;
+        overflow: hidden
+    }
+    body.RTL div.chat.LIVE div.chatLog div.node[type="videomessage"] div.videoMessage {
+        margin-right: -30px;
+        margin-left: 0
+    }
+}
+
+div.chatLog div.node.light[type="videomessage"] {
+    height: 260px
+}
+
+div.chatLog div.node div.message div.confirmAuthRequest {
+    white-space: nowrap
+}
+
+div.chatLog div.node div.message div.confirmAuthRequest>div:not(.controls) {
+    white-space: normal
+}
+
+.win-ui-dark .win-rating .win-star.win-user.win-full,
+.win-ui-dark .win-rating .win-star.win-user.win-full.win-disabled {
+    color: orange
+}
+
+.win-ui-dark .win-rating .win-star.win-tentative.win-full {
+    color: red
+}
+
+.win-ui-dark .win-rating .win-star.win-average.win-full,
+.win-ui-dark .win-rating .win-star.win-average.win-full.win-disabled {
+    color: #fff
+}
+
+.win-ui-dark .win-rating .win-star.win-empty {
+    color: rgba(255, 255, 255, 0.35)
+}
+
+.win-rating .win-star.win-user.win-full,
+.win-rating .win-star.win-user.win-full.win-disabled {
+    color: #00aff0
+}
+
+.win-rating .win-star.win-tentative.win-full {
+    color: #93999d
+}
+
+.win-rating .win-star.win-tentative.win-full:active {
+    color: #0095cc;
+    transform: scale(0.9, 0.9)
+}
+
+.win-rating .win-star.win-average.win-full,
+.win-rating .win-star.win-average.win-full.win-disabled {
+    color: green
+}
+
+.win-rating .win-star.win-empty {
+    color: #c9ccce
+}
+
+div.CHATLOG_HOLD_MENU {
+    min-height: 80px
+}
+
+@media screen and (max-width: 1280px) {
+    div.chatLog {
+        margin-right: 0px;
+        padding-right: 0px
+    }
+    body.RTL div.chatLog {
+        margin-left: 0px;
+        padding-left: 0px
+    }
+    div.chatLog div.node {
+        -ms-grid-columns: 78px 1fr 30px
+    }
+    div.chatLog div.node div.message div.body {
+        padding-right: 30px
+    }
+    body.RTL div.chatLog div.node div.message div.body {
+        padding-right: 0;
+        padding-left: 30px
+    }
+    div.chatLog div.node.notification.genericNotification {
+        -ms-grid-columns: 1px 1fr
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.chatLog div.node div.confirmAuthRequest div.controls button {
+        margin-bottom: 10px;
+        height: auto;
+        min-height: 30px
+    }
+    div.chatLog div.node,
+    div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node {
+        -ms-grid-columns: 58px 1fr
+    }
+    html div.chatLog div.nodenot>div,
+    div.chatLog div.node>div.message {
+        padding: 0 20px 10px 0px
+    }
+    html body.RTL html div.chatLog div.nodenot>div,
+    html body.RTL div.chatLog div.node>div.message {
+        padding: 0 0 10px 20px
+    }
+    div.chatLog div.node.notification>div.message {
+        padding: 20px 20px 5px 0px
+    }
+    html body.RTL div.chatLog div.node.notification>div.message {
+        padding: 20px 0 5px 20px
+    }
+    div.chatLog div.node div.message h3.name {
+        line-height: 20px;
+        max-width: calc(100% - 60px);
+        height: 20px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-bottom: 0;
+        margin-top: 4px
+    }
+    div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node div.message time {
+        margin-right: 0
+    }
+    div.chatLog div.node:not(.notification):not(.light):not(.unsupported) div.message time {
+        margin-top: -19px;
+        padding-left: 0px
+    }
+    body.RTL div.chatLog div.node:not(.notification):not(.light):not(.unsupported) div.message time {
+        padding-right: 0px
+    }
+    div.chatLog div.node.SMS:not(.notification):not(.light):not(.unsupported) div.message time {
+        padding-left: 20px
+    }
+    body.RTL div.chatLog div.node.SMS:not(.notification):not(.light):not(.unsupported) div.message time {
+        padding-left: 0;
+        padding-right: 20px
+    }
+    div.chatLog div.node.notification:not([type='group']) div.message time {
+        margin-top: 12px
+    }
+    div.chatLog div.node div.message div.body {
+        padding-right: 0px
+    }
+    body.RTL div.chatLog div.node div.message div.body {
+        padding-left: 0
+    }
+    div.chatLog div.node div.avatar div.img {
+        right: 5px;
+        top: -4px;
+        width: 30px;
+        height: 30px;
+        border-width: 4px
+    }
+    body.RTL div.chatLog div.node div.avatar div.img {
+        right: auto;
+        left: 5px
+    }
+    div.chatLog div.node div.avatar div.img div.protectionLayer {
+        background: url("/images/svg/prot30x30circle.svg") no-repeat
+    }
+    div.chatLog div.node div.avatar div.border {
+        right: 4px;
+        top: -5px;
+        width: 38px;
+        height: 38px;
+        clip: rect(0px, 43px, 5px, 0px)
+    }
+    body.RTL div.chatLog div.node div.avatar div.border {
+        right: auto;
+        left: 4px
+    }
+    div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification.genericNotification div.fragment.conversation.SHOWINGFULLLIVE div.chat div.log div.node.notification[type="blocked"] {
+        -ms-grid-columns: 1px 1fr
+    }
+    div.chatLog div.node.notification.genericNotification div.message,
+    div.chatLog div.node.notification[type="blocked"] div.message {
+        -ms-grid-columns: 1px 1fr;
+        -ms-grid-column: 2;
+        padding-left: 20px;
+        padding-right: 20px
+    }
+    div.chatLog div.node.notification.genericNotification div.message div.avatar,
+    div.chatLog div.node.notification[type="blocked"] div.message div.avatar {
+        min-height: 30px
+    }
+    div.chatLog div.node.notification.genericNotification div.message div.avatar div.img,
+    div.chatLog div.node.notification[type="blocked"] div.message div.avatar div.img {
+        width: 30px
+    }
+    div.chatLog div.node.notification div.iconContainer span.icon {
+        font-size: 15px;
+        right: 6px
+    }
+    div.chatLog div.node.unsupported div.iconContainer span.icon {
+        font-size: 24px;
+        right: 12px
+    }
+    div.chatLog div.node[type="videomessage"] {
+        height: 260px
+    }
+    div.chatLog div.node[type="videomessage"] div.videoMessage {
+        height: 225px;
+        position: static;
+        top: 0
+    }
+    div.chatLog div.node.light[type="videomessage"] {
+        height: 255px
+    }
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.chatLog div.node div.avatar div.img,
+    div.chatLog div.node.me div.avatar div.img {
+        border-color: transparent
+    }
+    div.chatLog div.node div.avatar div.border {
+        display: none
+    }
+    div.fragment.conversation.GROUP div.chat div.log div.node:not(.me) div.avatar div.img:hover::before {
+        background: none;
+        box-shadow: 0 0 0 5px WindowText
+    }
+    div.chatLog div.node div.confirmAuthRequest div.controls button {
+        border: 1px solid WindowText
+    }
+    div.chatLog div.node div.message a[href]:hover {
+        color: highlight
+    }
+}

@@ -1,6 +1,27 @@
 {
   "Files": {
+    "Assert": {
+      "Assert150x150.png": "Assert\\Assert150x150.png",
+      "Assert30x30.png": "Assert\\Assert30x30.png",
+      "Assert620x300.png": "Assert\\Assert620x300.png"
+    },
+    "FromControl": {
+      "TestApp": {
+        "FromControlTestApp.png": "Fromcontrol\\TestApp\\FromControlTestApp.png"
+      }
+    },
+    "Jx": {
+      "img": {
+        "Jx150x150.png": "Jx\\img\\Jx150x150.png",
+        "Jx30x30.png": "Jx\\img\\Jx30x30.png",
+        "Jx50x50.png": "Jx\\img\\Jx50x50.png",
+        "Jx620x300.png": "Jx\\img\\Jx620x300.png"
+      }
+    },
     "ModernAddressWell": {
+      "TestApp": {
+        "AddressWellLogo.png": "ModernAddressWell\\TestApp\\AddressWellLogo.png"
+      },
       "UserPawn.png": "ModernAddressWell\\UserPawn.png"
     },
     "ModernCalendar": {
@@ -19,6 +40,11 @@
       },
       "WeekBackground.png": "ModernCalendar\\WeekBackground.png",
       "WeekendBackground.png": "ModernCalendar\\WeekendBackground.png"
+    },
+    "ModernCanvas": {
+      "TestApp": {
+        "ModernCanvasTestApp.png": "moderncanvas\\TestApp\\ModernCanvasTestApp.png"
+      }
     },
     "ModernMail": {
       "Res": {
@@ -66,13 +92,35 @@
         "WLActiveSmall.png": "ModernPeople\\images\\WLActiveSmall.png"
       },
       "people.png": "ModernPeople\\People.targetsize-16.png",
-      "peopleSmall.png": "ModernPeople\\PeopleSmall.targetsize-16.png"
+      "peopleSmall.png": "ModernPeople\\PeopleSmall.targetsize-16.png",
+      "test": {
+        "picker": {
+          "logo.png": "ModernPeople\\test\\picker\\logo.png"
+        },
+        "ProtocolActivation": {
+          "tile.png": "ModernPeople\\test\\ProtocolActivation\\tile.png"
+        },
+        "skype": {
+          "SkypeTestAppLogo.png": "ModernPeople\\test\\skype\\SkypeTestAppLogo.png"
+        }
+      }
     },
     "ModernShared": {
       "Resources": {
         "img": {
           "suite_logo.png": "ModernShared\\Resources\\img\\suite_logo.png"
         }
+      }
+    },
+    "modernsharetarget": {
+      "TestApp": {
+        "AppLogo-wide.jpg": "modernsharetarget\\TestApp\\AppLogo-wide.jpg",
+        "AppLogo.png": "modernsharetarget\\TestApp\\AppLogo.png"
+      }
+    },
+    "Platform": {
+      "Harness": {
+        "tile.png": "Platform\\Harness\\tile.png"
       }
     },
     "Resources": {
@@ -91,6 +139,26 @@
         "images": {
           "MailQuickLinkIcon.png": "Resources\\ModernShareTarget\\images\\MailQuickLinkIcon.png"
         }
+      }
+    },
+    "SharingTestApp": {
+      "images": {
+        "ShareAnythingLogo.png": "SharingTestApp\\images\\ShareAnythingLogo.png",
+        "ShareAnythingLogoLarge.png": "SharingTestApp\\images\\ShareAnythingLogoLarge.png"
+      },
+      "inlineHtmlFiles": {
+        "bert.jpg": "SharingTestApp\\inlineHtmlFiles\\bert.jpg",
+        "bigbird.jpg": "SharingTestApp\\inlineHtmlFiles\\bigbird.jpg",
+        "heart.gif": "SharingTestApp\\inlineHtmlFiles\\heart.gif",
+        "outlook.png": "SharingTestApp\\inlineHtmlFiles\\outlook.png"
+      }
+    },
+    "Tx": {
+      "img": {
+        "Tx150x150.png": "Tx\\img\\Tx150x150.png",
+        "Tx30x30.png": "Tx\\img\\Tx30x30.png",
+        "Tx50x50.png": "Tx\\img\\Tx50x50.png",
+        "Tx620x300.png": "Tx\\img\\Tx620x300.png"
       }
     }
   }

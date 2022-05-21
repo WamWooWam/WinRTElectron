@@ -1,1 +1,183 @@
-﻿Jx.delayDefine(Calendar,"NavBar",function(){function r(n){Jx.mark("Calendar.NavBar."+n+",StartTA,Calendar")}function u(n){Jx.mark("Calendar.NavBar."+n+",StopTA,Calendar")}var i=WinJS.UI.Orientation,t=Jx.res,f=[{view:"agenda",icon:"",label:t.getString("AgendaCommand")},{view:"day",icon:"",label:t.getString("DayCommand")},{view:"workweek",icon:"",label:t.getString("WorkWeekCommand")},{view:"week",icon:"",label:t.getString("WeekCommand")},{view:"month",icon:"",label:t.getString("MonthCommand")},],o=[{view:"agenda",icon:"",label:t.getString("AgendaCommand")},{view:"day",icon:"",label:t.getString("DayCommand")},],e=Calendar.NavBar=function(){this.initComponent();this._id="calNavBar";this._companion=false;this._navBar=null;this._navBarElt=null;this._navBarContainer=null;this._onInvoked=this._onInvoked.bind(this);var n=this._onSnapChanged=this._onSnapChanged.bind(this),t=this._snapListener=matchMedia("(max-width: 499px)");t.addListener(n)},n;Jx.augment(e,Jx.Component);n=e.prototype;n.dispose=function(){this._snapListener&&(this._snapListener.removeListener(this._onSnapChanged),this._snapListener=null);this._onSnapChanged=null};n.buildUI=function(n){if(r("buildUI"),this._companion!==n&&(this.destroyUI(),this._companion=n),!this._navBar){document.body.insertAdjacentHTML("beforeend",'<div id="navBar" class="win-ui-dark"><div><div id="calNBC"><\/div><\/div><\/div>');this._navBarElt=$.id("navBar");this._navBar=new WinJS.UI.NavBar(this._navBarElt);var t=this._companion?o:f,e=this._navBarContainer=new WinJS.UI.NavBarContainer($.id("calNBC"),{data:new WinJS.Binding.List(t),layout:this._snapListener.matches?i.vertical:i.horizontal});e.addEventListener("invoked",this._onInvoked);$(".win-navbarcommand").each(function(n,t){t.classList.add("cal-navbar-"+f[n].view)})}u("buildUI")};n.destroyUI=function(){r("destroyUI");this._navBar&&(this._navBarContainer.dispose(),this._navBarContainer=null,this._navBar.dispose(),this._navBar=null,this._navBarElt.outerHTML="",this._navBarElt=null);u("destroyUI")};n.shutdownUI=function(){this.destroyUI();Jx.Component.prototype.shutdownUI.call(this)};n.hide=function(){this._navBar&&this._navBar.hide()};n.show=function(){this._navBar&&this._navBar.show()};n._onInvoked=function(n){this._navBar.hide();this.fire("goToView",{view:n.detail.data.view})};n._onSnapChanged=function(n){this._navBar&&(this._navBarContainer.layout=n.matches?i.vertical:i.horizontal)}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global document,matchMedia,WinJS,Debug,Jx,$,Calendar*/
+
+Jx.delayDefine(Calendar, "NavBar", function () {
+
+    function _markStart(s) { Jx.mark("Calendar.NavBar." + s + ",StartTA,Calendar"); }
+    function _markStop(s) { Jx.mark("Calendar.NavBar." + s + ",StopTA,Calendar"); }
+
+    var Orientation = WinJS.UI.Orientation;
+    var _res = Jx.res;
+
+    // view is a custom property, it should be in Calendar.Views.Manager.Views
+    var _commands = [
+        {
+            view: "agenda",
+            icon: "\uE199",
+            label: _res.getString("AgendaCommand")
+        },
+        {
+            view: "day",
+            icon: "\uE161",
+            label: _res.getString("DayCommand")
+        },
+        {
+            view: "workweek",
+            icon: "\uE186",
+            label: _res.getString("WorkWeekCommand")
+        },
+        {
+            view: "week",
+            icon: "\uE162",
+            label: _res.getString("WeekCommand")
+        },
+        {
+            view: "month",
+            icon: "\uE163",
+            label: _res.getString("MonthCommand")
+        },
+    ];
+
+    var _companionCommands = [
+        {
+            view: "agenda",
+            icon: "\uE199",
+            label: _res.getString("AgendaCommand")
+        },
+        {
+            view: "day",
+            icon: "\uE161",
+            label: _res.getString("DayCommand")
+        },
+    ];
+
+    var NavBar = Calendar.NavBar = function () {
+        this.initComponent();
+        this._id = "calNavBar";
+
+        this._companion = false;
+
+        this._navBar = null;
+        this._navBarElt = null;
+        this._navBarContainer = null;
+
+        this._onInvoked = this._onInvoked.bind(this);
+
+        // Create an MQL listener to determine when we are too narrow to show a horizontal view
+        var onSnapChanged = this._onSnapChanged = this._onSnapChanged.bind(this);
+        var snapListener = this._snapListener = matchMedia("(max-width: 499px)");
+        snapListener.addListener(onSnapChanged);
+
+        //Debug.only(Object.seal(this)); // TODO: currently not working for Jx components
+    };
+
+    Jx.augment(NavBar, Jx.Component);
+
+    var proto = NavBar.prototype;
+
+    proto.dispose = function () {
+        Debug.assert(this._navBar === null);
+        Debug.assert(this._navBarElt === null);
+        Debug.assert(this._navBarContainer === null);
+
+        if (this._snapListener) {
+            this._snapListener.removeListener(this._onSnapChanged);
+            this._snapListener = null;
+        }
+
+        this._onSnapChanged = null;
+    };
+
+    proto.buildUI = function (companion) {
+        _markStart("buildUI");
+
+        if (this._companion !== companion) {
+            this.destroyUI();
+            this._companion = companion;
+        }
+
+        if (!this._navBar) {
+            Debug.assert(this._navBarElt === null);
+            Debug.assert(this._navBarContainer === null);
+
+            document.body.insertAdjacentHTML("beforeend",
+                '<div id="navBar" class="win-ui-dark">' +
+                    '<div>' +
+                        '<div id="calNBC">' +
+                        '</div>' +
+                    '</div>' +
+                '</div>'
+                );
+
+            this._navBarElt = $.id("navBar");
+            Debug.assert(this._navBarElt);
+            this._navBar = new WinJS.UI.NavBar(this._navBarElt);
+
+            Debug.assert($.id("calNBC"));
+            var commands = this._companion ? _companionCommands : _commands;
+            var navBarContainer = this._navBarContainer = new WinJS.UI.NavBarContainer($.id("calNBC"), {
+                data: new WinJS.Binding.List(commands),
+                layout: this._snapListener.matches ? Orientation.vertical : Orientation.horizontal,
+            });
+            navBarContainer.addEventListener("invoked", this._onInvoked);
+
+            // add a specific class to each command button
+            $(".win-navbarcommand").each(function (i, e) {
+                e.classList.add("cal-navbar-" + _commands[i].view);
+            });
+        }
+
+        _markStop("buildUI");
+    };
+
+    proto.destroyUI = function () {
+        _markStart("destroyUI");
+        
+        if (this._navBar) {
+            this._navBarContainer.dispose();
+            this._navBarContainer = null;
+            
+            this._navBar.dispose();
+            this._navBar = null;
+            
+            this._navBarElt.outerHTML = "";
+            this._navBarElt = null;
+        }
+        
+        _markStop("destroyUI");
+    };
+
+    proto.shutdownUI = function () {
+        this.destroyUI();
+        Jx.Component.prototype.shutdownUI.call(this);
+    };
+
+    proto.hide = function () {
+        if (this._navBar) {
+            this._navBar.hide();
+        }
+    };
+
+    proto.show = function () {
+        if (this._navBar) {
+            this._navBar.show();
+        }
+    };
+
+    proto._onInvoked = function (ev) {
+        this._navBar.hide();
+        this.fire("goToView", { view: ev.detail.data.view });
+    };
+
+    proto._onSnapChanged = function (mql) {
+        if (this._navBar) {
+            Debug.assert(Jx.isObject(this._navBarContainer), 'Jx.isObject(this._navBarContainer)');
+
+            this._navBarContainer.layout = mql.matches ? Orientation.vertical : Orientation.horizontal;
+        }
+    };
+});

@@ -36,16 +36,16 @@ export class LoggingChannel implements ILoggingChannel, IClosable {
         console.warn('LoggingChannel#close not implemented')
     }
 
-    #loggingEnabled: Set<TypedEventHandler<ILoggingChannel, any>> = new Set();
+    __loggingEnabled: Set<TypedEventHandler<ILoggingChannel, any>> = new Set();
     @Enumerable(true)
     set onloggingenabled(handler: TypedEventHandler<ILoggingChannel, any>) {
-        this.#loggingEnabled.add(handler);
+        this.__loggingEnabled.add(handler);
     }
 
     addEventListener(name: string, handler: any) {
         switch (name) {
             case 'loggingenabled':
-                this.#loggingEnabled.add(handler);
+                this.__loggingEnabled.add(handler);
                 break;
         }
     }
@@ -53,7 +53,7 @@ export class LoggingChannel implements ILoggingChannel, IClosable {
     removeEventListener(name: string, handler: any) {
         switch (name) {
             case 'loggingenabled':
-                this.#loggingEnabled.delete(handler);
+                this.__loggingEnabled.delete(handler);
                 break;
         }
     }

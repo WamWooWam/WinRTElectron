@@ -1,1 +1,3766 @@
-﻿Jx.delayDefine(window,"AttachmentWell",function(){window.AttachmentWell={AttachmentManager:{},Base:{},Read:{},Compose:{},DownloadSaveAllControl:{},ErrorManager:{},FilesAttachedControl:{},Templates:{},ShareAnythingControl:{},ShareAnything:{},Utils:{},ThumbnailResizer:{}},function(){var t=Microsoft.WindowsLive.Platform.AttachmentComposeStatus,i={count:1e3,sizeInBytes:26214400},n;AttachmentWell.AttachmentManager=function(n,t){this.initComponent();this._mailManager=n;this._mailMessage=t;this._changedListeners=[];this._attachmentManager=Microsoft.WindowsLive.Photomail.AttachmentManager.getManager(t.objectId);this._attachmentObjects={};this._attachmentSizes={};this._pendingAttachments={};this._failedAttachments={};this._attachmentCollection=t.getOrdinaryAttachmentCollection();this._attachmentChanged=this._attachmentChanged.bind(this);this._attachmentCollectionChanged=this._attachmentCollectionChanged.bind(this)};Jx.augment(AttachmentWell.AttachmentManager,Jx.Component);n=AttachmentWell.AttachmentManager.prototype;n.activate=function(){var n,t,r,i;for(this._attachmentCollection.addEventListener("collectionchanged",this._attachmentCollectionChanged),t=0,r=this._attachmentCollection.count;t<r;t++)n=this._attachmentCollection.item(t),n.addEventListener("changed",this._attachmentChanged),i=n.objectId,this._attachmentObjects[i]=n,this._update(i);this._isDirty=false;this._attachmentCollection.unlock();this._attachmentQueueEmpty=this._attachmentQueueEmpty.bind(this);this._attachmentManager.addEventListener("attachqueueempty",this._attachmentQueueEmpty)};n.addFiles=function(n){var i,r,t,u;if(this.canAddMore(n.length)){for(i=[],r=n.length,t=0;t<r;t++)i.push(n[t]);this.fire("clearerror",{errorId:AttachmentWell.ErrorIds.maxFiles});Jx.EventManager.fire(null,"attachstarted",{});this._attachmentManager.addFiles(i)}else u=new AttachmentWell.Error(AttachmentWell.ErrorIds.maxFiles,Jx.res.getString("composeMaxFilesErrorMessage")),this.fire("error",{error:u})};n.isAttaching=function(n){return this._attachmentManager.isAttaching(n||"")};n.isDirty=function(){return this._isDirty};n.canAddMore=function(n){return this._attachmentCollection.count+n<=i.count};n.canSendMail=function(){var n=this.isAttaching(""),t,i,r;return n&&(this._attachStartTime||(this._attachStartTime=(new Date).getTime()),t=new AttachmentWell.Error(AttachmentWell.ErrorIds.inProgress,Jx.res.getString("composeInProgressErrorMessage")),this.fire("error",{error:t}),this._numberOfValidateFailures++),i=Object.keys(this._failedAttachments).length,r=i>0,!n&&!r};n.removeFailedFiles=function(){Object.keys(this._failedAttachments).forEach(function(n){this.removeFile(n)},this)};n.finalizeForSend=function(){this._attachmentManager.finalizeForSend()};n.removeFile=function(n){this._attachmentManager.removeFile(n)};n.fileCategoryMap=[0,1,4,2,5,5,5,3,7,7,7,6,7,7,7];n.getAttachmentMetrics=function(){var n=0,i=0,r=/\.((doc)|(docx)|(xls)|(xlsx)|(ppt)|(pptx))$/i;return Object.keys(this._attachmentObjects).forEach(function(u){var f=this._attachmentObjects[u],e;Boolean(f)&&f.composeStatus===t.done&&(e=f.contentType,n|=e.indexOf("image")>=0?1:e.indexOf("video")>=0?2:f.fileName.match(r)?4:8,i++)},this),{totalSize:Math.round(this._totalAttachmentSize/1024),category:this.fileCategoryMap[n-1]||0,count:i,duration:Math.round(this._totalAttachDuration/1e3),validateFailures:this._numberOfValidateFailures}};n.discard=function(){this._attachmentManager.discard()};n.shutdown=function(){try{this._removeAttachmentListeners();this._attachmentManager.stopAll();this._attachmentManager.dispose();this._attachmentManager=null}catch(n){}};n._removeAttachmentListeners=function(){this._attachmentManager.removeEventListener("attachqueueempty",this._attachmentQueueEmpty);this._attachmentCollection.lock();this._attachmentCollection.removeEventListener("collectionchanged",this._attachmentCollectionChanged);Object.keys(this._attachmentObjects).forEach(function(n){var t=this._attachmentObjects[n];t&&t.removeEventListener("changed",this._attachmentChanged)},this);this._attachmentObjects={}};n._attachmentChanged=function(n){var i,r,u;i=n.target.objectId;r=this._attachmentObjects[i];r&&(this.fire("attachmentchanged",{id:i,dbObject:r}),u=r.composeStatus,(u===t.failed||u===t.done)&&(delete this._pendingAttachments[i],this._checkAndFireQueueEmpty()));this._update(i)};n._attachmentCollectionChanged=function(n){var i,r,u,f;i=n.objectId;n.eType===Microsoft.WindowsLive.Platform.CollectionChangeType.itemAdded?(this._isDirty=true,r=this._attachmentCollection.item(n.index),this._attachStartTime||(this._attachStartTime=(new Date).getTime()),r.addEventListener("changed",this._attachmentChanged),this._attachmentObjects[i]=r,u=r.composeStatus,u!==t.failed&&u!==t.done&&(this._pendingAttachments[i]=true),this.fire("attachmentadded",{id:i,dbObject:r})):n.eType===Microsoft.WindowsLive.Platform.CollectionChangeType.itemRemoved&&(this._isDirty=true,delete this._pendingAttachments[i],f=this._attachmentObjects[i],f&&(f.removeEventListener("changed",this._attachmentChanged),delete this._attachmentObjects[i],this.fire("attachmentremoved",{id:i,dbObject:null})),this._checkAndFireQueueEmpty());this._update(i)};n._update=function(n){var t=this._attachmentObjects[n]||null;this._updateFailedAttachments(n,t);this._updateTotalAttachmentSize(n,t)};n._updateFailedAttachments=function(n,i){var f=Boolean(i),r,u,e,o;if(f&&i.composeStatus===t.failed)this._failedAttachments[n]=true;else if((!f||i.composeStatus!==t.failed)&&this._failedAttachments[n]&&(delete this._failedAttachments[n],Object.keys(this._failedAttachments).length===0)){this.fire("clearerror",{errorId:AttachmentWell.ErrorIds.attachFailed});return}r=Object.keys(this._failedAttachments).length;u=this._attachmentCollection.count;r>0&&(e=r===1&&u>1?Jx.res.getString("composeOneAttachFailedErrorMessage"):r===u?u===1?Jx.res.getString("composeOneOfOneAttachFailedErrorMessage"):Jx.res.getString("composeAllAttachFailedErrorMessage"):Jx.res.getString("composeMultipleAttachFailedErrorMessage"),o=new AttachmentWell.Error(AttachmentWell.ErrorIds.attachFailed,e),this.fire("error",{error:o}))};n._updateTotalAttachmentSize=function(n,t){var f=this._totalAttachmentSize,o=this._attachmentSizes[n]||0,u,r,e;this._totalAttachmentSize-=o;u=t?t.size:0;this._totalAttachmentSize+=u;t?this._attachmentSizes[n]=u:delete this._attachmentSizes[n];r=i.sizeInBytes;f>=r&&this._totalAttachmentSize<r?this.fire("clearerror",{errorId:AttachmentWell.ErrorIds.maxBasicAttachmentsSize}):f<r&&this._totalAttachmentSize>=r&&(e=new AttachmentWell.Error(AttachmentWell.ErrorIds.maxBasicAttachmentsSize,Jx.res.getString("composeMaxBasicAttachmentsSizeErrorMessage")),this.fire("error",{error:e}))};n._attachmentQueueEmpty=function(){this._needToFireAttachComplete=true;this._checkAndFireQueueEmpty()};n._checkAndFireQueueEmpty=function(){this._needToFireAttachComplete&&Object.keys(this._pendingAttachments).length===0&&(this.fire("clearerror",{errorId:AttachmentWell.ErrorIds.inProgress}),this._attachStartTime>0&&(this._totalAttachDuration+=(new Date).getTime()-this._attachStartTime,this._attachStartTime=0),Jx.EventManager.fire(null,"attachcomplete",{}),this._needToFireAttachComplete=false)};n._mailManager=null;n._mailMessage=null;n._attachmentManager=null;n._attachmentCollection=null;n._attachmentCount=0;n._attachmentObjects=null;n._attachmentSizes=null;n._totalAttachmentSize=0;n._changedListeners=null;n._pendingAttachments=null;n._failedAttachments=null;n._totalAttachDuration=0;n._attachStartTime=0;n._numberOfValidateFailures=0;n._isDirty=null;n._needToFireAttachComplete=false}(),function(){var n=AttachmentWell.Templates={errorMessage:function(n){for(var t=n.error,r='<div data-errorId="'+t.id+'" class="attachmentWell-error-message">'+Jx.escapeHtml(t.message),i=0,u=t.commands.length;i<u;i++)r+='<button class="attachmentWell-error-command" type="button">'+t.commands[i].label+"<\/button>";return r+"<\/div>"},basicProperties:function(n){return'<li class="attachmentWell-item-property-fileName">'+Jx.escapeHtml(n.name)+'<\/li><li class="attachmentWell-item-property-fileExtension">'+Jx.escapeHtml(n.fileExtension)+'<\/li><li class="attachmentWell-item-property-fileSize">'+Jx.escapeHtml(n.fileSize)+"<\/li>"},properties:function(t){return'<ul class="attachmentWell-item-properties">'+n.basicProperties(t)+"<\/ul>"},image:function(n,t,i){return i=i?i:"",'<img class="'+i+'" src="'+t+'" alt="'+Jx.escapeHtml(n.name)+'">'},defaultImage:function(t,i,r){return n.image(t,"/resources/modernattachmentwell/images/"+i,r)},fileIcon:function(t){return t.isEml?'<div class="attachmentWell-item-status">'+n.defaultImage(t,"emlIcon.png","attachmentWell-photo-video-icon")+"<\/div>":t.fileIconUrl?'<div class="attachmentWell-item-status"><img src="'+t.fileIconUrl+'" alt="'+Jx.escapeHtml(t.name)+'" height="'+t.fileIconHeight+'" width="'+t.fileIconWidth+'"><\/div>':'<div class="attachmentWell-item-status attachmentWell-item-placeholder">'+n.defaultImage(t,"default.png","attachmentWell-default-icon")+"<\/div>"},photoVideoItemPlaceholder:function(t){return'<div class="attachmentWell-item-photoVideo attachmentWell-item-placeholder" aria-hidden="true">'+n.defaultImage(t,"default.png","attachmentWell-default-icon")+"<\/div>"},videoItem:function(t){return'<div class="attachmentWell-item-photoVideoDone" aria-hidden="true">'+n.image(t,t.thumbnailUrl)+'<div class="attachments-videoInfo" aria-hidden="true"><div class="videoPlayGlyph"><\/div><\/div><\/div>'},photoItem:function(n){return'<div class="attachmentWell-item-photoVideoDone" aria-hidden="true"><img src="'+n.thumbnailUrl+'"><\/div>'},otherItem:function(t){return'<div class="attachmentWell-item-other attachmentWell-item-downloaded" aria-hidden="true">'+n.fileIcon(t)+n.properties(t)+"<\/div>"},propertiesWithRemoveCommand:function(n){return'<ul class="attachmentWell-item-properties"><li class="attachmentWell-item-property-fileName">'+Jx.escapeHtml(n.name)+'<\/li><li class="attachmentWell-item-command">'+n.commandLabel+"<\/li><\/ul>"},composeItemWithProgress:function(){return'<div class="attachmentWell-item-progress" aria-hidden="true"><\/div>'},composeErrorItem:function(t){return'<div class="attachmentWell-item-other attachmentWell-item-error" aria-hidden="true"><div class="attachmentWell-item-status">'+n.defaultImage(t,"default.png","attachmentWell-default-icon")+"<\/div>"+n.propertiesWithRemoveCommand(t)+"<\/div>"},propertiesWithDownloadCommand:function(t){return'<ul class="attachmentWell-item-properties">'+n.basicProperties(t)+'<li class="attachmentWell-item-command">'+t.commandLabel+"<\/li><\/ul>"},propertiesWithCancelCommand:function(t){return'<ul class="attachmentWell-item-properties">'+n.basicProperties(t)+'<li class="attachmentWell-item-command"><progress class="win-ring"><\/progress>'+t.commandLabel+"<\/li><\/ul>"},notDownloadedPhotoVideo:function(t){return'<div class="attachmentWell-item-status attachmentWell-item-placeholder">'+n.defaultImage(t,"photoVideoIcon.png","attachmentWell-photo-video-icon")+"<\/div>"},readOtherItemDownloading:function(t){return'<div class="attachmentWell-item-other attachmentWell-item-downloading" aria-hidden="true">'+n.fileIcon(t)+n.propertiesWithCancelCommand(t)+"<\/div>"},readOtherItemNotDownloaded:function(t){return'<div class="attachmentWell-item-other attachmentWell-item-notDownloaded" aria-hidden="true">'+n.fileIcon(t)+n.propertiesWithDownloadCommand(t)+"<\/div>"},readPhotoVideoItemDownloading:function(t){return'<div class="attachmentWell-item-photoVideo attachmentWell-item-downloading" aria-hidden="true">'+n.notDownloadedPhotoVideo(t)+n.propertiesWithCancelCommand(t)+"<\/div>"},readPhotoVideoItemNotDownloaded:function(t){return'<div class="attachmentWell-item-photoVideo attachmentWell-item-notDownloaded" aria-hidden="true">'+n.notDownloadedPhotoVideo(t)+n.propertiesWithDownloadCommand(t)+"<\/div>"}}}(),function(){var n,t;AttachmentWell.ErrorIds={attachFailed:"attachFailed",downloadFailed:"downloadFailed",inProgress:"inProgress",maxBasicAttachmentsSize:"maxBasicAttachmentsSize",maxFiles:"maxFiles",openFailed:"openFailed"};AttachmentWell.Error=function(n,t){this.commands=[];this.id=n;this.message=t};n=AttachmentWell.Error.prototype;n.commands=null;n.id=null;n.message=null;AttachmentWell.ErrorCommand=function(n,t){this.action=t;this.label=n};t=AttachmentWell.ErrorCommand.prototype;t.action=null;t.label=null}(),function(){AttachmentWell.ErrorManager=function(){this.initComponent()};Jx.augment(AttachmentWell.ErrorManager,Jx.Component);var n=AttachmentWell.ErrorManager.prototype;n.getUI=function(n){n.html='<div class="attachmentWell-errorList" aria-hidden="true" aria-live="polite"><\/div>'};n.activateUI=function(){this._activeErrors={};this._commandCallbacks={};this._errorWrapper=document.createElement("div");var n=this.getParent();this._errorListElement=n.getElement().querySelector(".attachmentWell-errorList")};n._addCommandEventListeners=function(n,t){var s=n.querySelectorAll(".attachmentWell-error-command"),r,u,e,i,o,f;for(e=this,i=0,o=t.commands.length;i<o;i++)r=t.commands[i],u=s[i],u&&(f=function(){e.clearError(t.id);r.action()},this._commandCallbacks[r.action]=f,u.addEventListener("click",f,false))};n.clearError=function(n){var i,t;try{if(i=this._activeErrors[n],i&&(t=this._errorListElement.querySelector('[data-errorId="'+n+'"]'),t))return this._removeCommandEventListeners(t,i),this._errorListElement.removeChild(t),delete this._activeErrors[n],this._showOrHide(),true}catch(r){Jx.log.error("Failed to clear Attachment Well error "+n+": "+r)}return false};n.clearAllErrors=function(){var n,i,r,t;if(this._activeErrors)for(n=Object.keys(this._activeErrors),t=n.length;t--;)i=this._activeErrors[n[t]],r=this.clearError(i.id)};n._createErrorElement=function(n){return this._errorWrapper.innerHTML=AttachmentWell.Templates.errorMessage.call(this,{error:n}),this._errorWrapper.querySelector(".attachmentWell-error-message")};n._removeCommandEventListeners=function(n,t){for(var o=n.querySelectorAll(".attachmentWell-error-command"),f,r,u,i=0,e=t.commands.length;i<e;i++)f=t.commands[i],r=o[i],r&&(u=this._commandCallbacks[f.action],u&&r.removeEventListener("click",u,false))};n._showOrHide=function(){var n=Object.keys(this._activeErrors).length,t=this._errorListElement.querySelectorAll(".attachmentWell-error-message[aria-hidden='true']");n>0&&t.length!==n?this._errorListElement.removeAttribute("aria-hidden"):this._errorListElement.setAttribute("aria-hidden","true")};n.hideError=function(n){try{var t=this._errorListElement.querySelector('[data-errorId="'+n.id+'"]');if(t)return t.setAttribute("aria-hidden","true"),this._showOrHide(),true}catch(i){Jx.log.error("Failed to hide Attachment Well error "+n.id+": "+i)}return false};n.showError=function(n){var t,i,r;try{return Jx.log.info("AttachmentWell.ErrorManager.showError: "+n.id),this.clearError(n.id),t=this._createErrorElement(n),this._addCommandEventListeners(t,n),i=this._errorListElement,r=i.firstChild,r?i.insertBefore(t,r):i.appendChild(t),this._activeErrors[n.id]=n,this._showOrHide(),true}catch(u){Jx.log.error("Failed to show Attachment Well error "+n.id+": "+u)}return false};n.deactivateUI=function(){this.clearAllErrors();this._activeErrors=null;this._commandCallbacks=null;this._errorWrapper=null;this._errorListElement=null;Jx.Component.prototype.deactivateUI.call(this)};n._activeErrors=null;n._commandCallbacks=null;n._errorWrapper=null;n._errorListElement=null}(),function(){var n=AttachmentWell.Utils;n.GroupOrdering={photoVideo:0,others:1};n.FileCategory={photo:"photo",video:"video",others:"others"};n._photoExtensions=[".jpg",".jpeg",".png",".gif",".bmp",".tif",".tiff",".jpe",".jfif",".dib",".wdp",".pano",".arw",".cr2",".crw",".erf",".mrw",".nef",".orf",".pef",".sr2",".mef",".nrw",".raw",".rw2",".rwl"];n._videoExtensions=[".avi",".wmv",".mpg",".mpeg",".dvr-ms",".mp4",".mov",".m4v",".3g2",".3gp2",".3gp",".3gpp",".m4a",".mp4v",".mts",".m2ts",".ts",".wm",".wtv"];n.isSupportedPhotoOrVideoFormat=function(t){return n.isSupportedPhotoFormat(t)||n.isSupportedVideoFormat(t)};n.isSupportedPhotoFormat=function(t){return n._photoExtensions.indexOf(t.toLowerCase())>=0};n.isSupportedVideoFormat=function(t){return n._videoExtensions.indexOf(t.toLowerCase())>=0};n.isEml=function(n){return n.toLowerCase()===".eml"};n.getFileFromBodyUri=function(t){var i=n.encodeUri(t.bodyUri),r=new Windows.Foundation.Uri(i);try{return Windows.Storage.StorageFile.getFileFromApplicationUriAsync(r)}catch(u){return WinJS.Promise.wrapError(u)}};n.encodeUri=function(n){return n.replace(/%/g,"%25").replace(/#/g,"%23")};n.getFileName=function(n){var t=n.fileName,i=t.lastIndexOf(".");return i>=0&&(t=t.substr(0,i)),t};n.getFileExtension=function(n){var t=n.fileName,i="",r=t.lastIndexOf(".");return r>=0&&(i=t.substr(r).toLowerCase()),i};n.markFileAsWritable=function(n){if(n){var t="System.FileAttributes";return n.properties.retrievePropertiesAsync([t]).then(function(i){return i[t]=Windows.Storage.FileAttributes.normal,n.properties.savePropertiesAsync(i)})}};n._numSuggestedNumerals=3;n._ordersOfMagnitude=["bytes","kilobytes","megabytes","gigabytes","terabytes","petabytes","exabytes"];n.getFileSize=function(t){var s=t.size,o,c,l,a,r,e,v,y;if(s===1)return Jx.res.getString("singleByte");var i=s,u=i.toString(10),h=n._ordersOfMagnitude,f=0;if(i>=1024){for(o=n._numSuggestedNumerals,c=1024*Math.pow(10,o),f=1,l=h.length;f<l&&i>=c;f++)i/=1024;i/=1024;a=Math.floor(i);r=new Windows.Globalization.NumberFormatting.DecimalFormatter;r.fractionDigits=0;u=r.format(a);e=o-u.length;e>0&&(v=i.toFixed(e),y=parseFloat(v),r.fractionDigits=e,u=r.format(y))}return Jx.res.loadCompoundString(h[f],u)}}(),function(){AttachmentWell.Base.Module=function(){this.initComponent();this._id="idAttachmentWell_"+Jx.uid()};Jx.augment(AttachmentWell.Base.Module,Jx.Component);var n=AttachmentWell.Base.Module.prototype;n.getUI=function(n){n.html='<div id="'+this._id+'" class="attachmentWell-module">'+Jx.getUI(this._view).html+"<\/div>"};n._id=null;n._view=null}(),function(){var t=AttachmentWell.Utils,n;AttachmentWell.Base.ItemController=function(n){this._view=n};Jx.augment(AttachmentWell.Base.ItemController,Jx.EventTarget);n=AttachmentWell.Base.ItemController.prototype;n._getAttachmentStatus=function(){};n._getItemInvokedCallback=function(n){return this._itemInvokedCallbacks||(this._itemInvokedCallbacks=this._createItemInvokedCallbacks()),this._itemInvokedCallbacks[n]};n._createItemInvokedCallbacks=function(){};n._getContextMenuCallbacks=function(n){return this._contextMenuCallbacks||(this._contextMenuCallbacks=this._createContextMenuCallbacks()),this._contextMenuCallbacks[n]||[]};n._getContextMenuCommands=function(n,i){var f=this._getAttachmentStatus(n),e=this._getContextMenuCallbacks(f),r,u;return r=this._getContextMenu(),u=t.getFileExtension(n),e.filter(function(n){return n.isEnabled(u)}).map(function(t){var u=r.getCommandById(t.commandId);return u.onclick=function(){t.invoke(n,i)},u})};n._alwaysEnable=function(){return true};n._disableForEml=function(n){return!t.isEml(n)};n._enableForEml=function(n){return t.isEml(n)};n._getContextMenu=function(){var n,t;return this._contextMenu||(n=this._view.getElement().querySelector(".attachments-contextMenu"),WinJS.UI.processAll(n),Jx.res.processAll(n),t=this._getFlyoutContainerElement(),t&&t.appendChild(n),this._contextMenu=n.winControl),this._contextMenu};n._getFlyoutContainerElement=function(){};n.showContextMenu=function(n,t){var i,r;i=this._getContextMenuCommands(n,t);i.length>0&&(r=this._getContextMenu(),r.showOnlyCommands(i),r.show(t.itemDiv,"top","center"))};n.onItemInvoked=function(n,t){var r=this._getAttachmentStatus(n),i=this._getItemInvokedCallback(r);i?i(n,t):this.showContextMenu(n,t)};n._openWith=function(n,t){Jx.log.info("AttachmentWell.Base.ItemController._openWith");var i=new Windows.System.LauncherOptions;i.displayApplicationPicker=true;t.launcherOptions=i;this._open(n,t)};n._open=function(n,i){Jx.log.info("AttachmentWell.Base.ItemController._open");var u=t.getFileExtension(n),r=i?i.launcherOptions:null,f=this;this._view.fire("clearerror",{errorId:AttachmentWell.ErrorIds.openFailed});t.getFileFromBodyUri(n).then(function(n){return Jx.isNullOrUndefined(r)&&t.isEml(u)?n.openAsync(Windows.Storage.FileAccessMode.read).then(function(n){return Jx.EventManager.broadcast("openEml",[n]),true}):(r=r||new Windows.System.LauncherOptions,r.desiredRemainingView=t.isSupportedPhotoOrVideoFormat(u)?Windows.UI.ViewManagement.ViewSizePreference.useLess:Windows.UI.ViewManagement.ViewSizePreference.useHalf,Windows.System.Launcher.launchFileAsync(n,r))}).done(function(t){t||(Jx.log.error("Failed to open "+n.objectId+": Windows launcher failed to launch"),f._fireOpenFailedError(n))},function(t){Jx.log.error("Failed to open "+n.objectId+": "+t);f._fireOpenFailedError(n)})};n._fireOpenFailedError=function(){};n.dispose=function(){if(this._contextMenu){var n=this._contextMenu.element;n&&n.parentNode.removeChild(n);this._contextMenu=null}this._contextMenuCallbacks=null;this._itemInvokedCallbacks=null};n._contextMenu=null;n._contextMenuCallbacks=null;n._itemInvokedCallbacks=null}(),function(){var i=AttachmentWell.Templates,r=AttachmentWell.ThumbnailResizer,f=Windows.Storage.FileProperties.ThumbnailType,t=AttachmentWell.Utils,n,u;AttachmentWell.Base.Item=function(n,t,i){this._controller=t;this._attachment=n;this._host=i;this._currentStatus=this._getCurrentStatus();this._id="idAttachmentItem_"+Jx.uid();this._disposed=false;this._animationPromise=null;this._ignoreItemInvokedEvent=false;this._attachmentChanged=this._onAttachmentChanged.bind(this);n.addEventListener("changed",this._attachmentChanged,false);this._buildItemContainer()};n=AttachmentWell.Base.Item.prototype;u=Math.round(120);n._thumbnailDimensions={photoVideo:{height:90,width:u,minWidth:48,maxWidth:1024},fileIcon:{height:40,width:40}};n._setBasicProperties=function(){var n=this._attachment;return this._properties={ariaLabel:n.fileName,fileExtension:t.getFileExtension(n),name:t.getFileName(n)}};n._buildItemContainer=function(){var u=this._attachment,t=this._itemWrapperDiv=document.createElement("div"),n,i,r;t.setAttribute("aria-hidden","true");t.className="attachmentWell-item-wrapper";new WinJS.UI.Tooltip(t,{innerHTML:u.fileName,extraClass:"attachments-tooltip"});n=this._itemContainerDiv=document.createElement("div");n.id=this._id;n.tabIndex=-1;n.setAttribute("role","option");n.appendChild(t);i=new WinJS.UI.ItemContainer(n);i.selectionDisabled=true;i.oninvoked=this._onItemInvoked.bind(this);this._contextMenuHandler=this._onContextMenu.bind(this);this._keydownHandler=this._onKeyDown.bind(this);this._holdVisualHandler=this._onMSHoldVisual.bind(this);n.addEventListener("contextmenu",this._contextMenuHandler,false);n.addEventListener("keydown",this._keydownHandler,false);n.addEventListener("MSHoldVisual",this._holdVisualHandler,true);r=this._host.getContainerWidth();r>0&&(this._thumbnailDimensions.photoVideo.maxWidth=r);this._updateItemDiv()};n._onAttachmentChanged=function(n){var t=this._getCurrentStatus();t!==this._currentStatus&&(Jx.log.info("AttachmentWell.Base.Item._onAttachmentChanged: "+n.target.objectId+" status changed from "+this._currentStatus+" to "+t),this._currentStatus=t,this._updateItemDiv())};n._updateItemDiv=function(){var r=this._attachment,t=this._itemWrapperDiv,i=this._setBasicProperties(),u=this._getItemRenderer(i.fileExtension,this._currentStatus).render,n=this;u(r,i).done(function(r){var u,f,e;n._disposed||(t.hasChildNodes()?(Jx.isNullOrUndefined(n._animationPromise)||n._animationPromise.cancel(),u=t.firstChild,u.style.position="absolute",t.appendChild(r),r.style.opacity="0",f=function(){t.removeChild(u);r.style.opacity="1";n._animationPromise=null},n._animationPromise=WinJS.UI.Animation.crossFade(r,u),n._animationPromise.done(f,f)):t.appendChild(r),e=r.querySelector("img"),Jx.isNullOrUndefined(e)||e.setAttribute("draggable","false"),n._itemContainerDiv.setAttribute("aria-label",i.ariaLabel))})};n.getItemContainer=function(){return this._itemContainerDiv};n._onKeyDown=function(n){n.key==="Spacebar"&&this._onContextMenu(n)};n._onMSHoldVisual=function(n){n.stopImmediatePropagation();this._ignoreItemInvokedEvent=true};n._onItemInvoked=function(){if(!this._ignoreItemInvokedEvent)this._controller.onItemInvoked(this._attachment,{itemDiv:this._itemContainerDiv});this._ignoreItemInvokedEvent=false};n._onContextMenu=function(n){n.preventDefault();this._controller.showContextMenu(this._attachment,{itemDiv:this._itemContainerDiv})};n._getCurrentStatus=function(){};n._getItemRenderer=function(){};n.dispose=function(){this._disposed=true;this._animationPromise&&this._animationPromise.cancel();this._itemContainerDiv.removeEventListener("keydown",this._keydownHandler,false);this._itemContainerDiv.removeEventListener("contextmenu",this._contextMenuHandler,false);this._itemContainerDiv.removeEventListener("MSHoldVisual",this._holdVisualHandler,true);this._itemContainerDiv=null;this._itemWrapperDiv.winControl instanceof WinJS.UI.Tooltip&&(this._itemWrapperDiv.winControl.innerHTML="",this._itemWrapperDiv.winControl=null);this._itemWrapperDiv=null;this._attachment.removeEventListener("changed",this._attachmentChanged,false);this._attachment=null};n._renderWithTemplate=function(n,t){var i=document.createElement("div");return i.innerHTML=n.call(this,t),i.firstChild};n._photoItemRenderer={canRender:function(n,i,r){return i===r.done&&t.isSupportedPhotoFormat(n)},render:function(n,u){var f=this;return u.command="openCommand",r.getThumbnail(n,t.FileCategory.photo,this._thumbnailDimensions).then(function(t){return f._renderPhotoVideoItem(n,t,i.photoItem,u)})}.bind(n)};n._videoItemRenderer={canRender:function(n,i,r){return i===r.done&&t.isSupportedVideoFormat(n)},render:function(n,u){var f=this;return u.command="openCommand",r.getThumbnail(n,t.FileCategory.video,this._thumbnailDimensions).then(function(t){return f._renderPhotoVideoItem(n,t,i.videoItem,u)})}.bind(n)};n._otherItemRenderer={canRender:function(n,i,r){return i===r.done&&!t.isSupportedPhotoOrVideoFormat(n)},render:function(n,u){var f=t.isEml(u.fileExtension)?WinJS.Promise.wrap():r.getThumbnail(n,t.FileCategory.others,this._thumbnailDimensions),e=this;return f.then(function(t){return e._renderFileIconItem(n,t,i.otherItem,u,"openCommand")})}.bind(n)};n._renderPhotoVideoItem=function(n,u,e,o){if(o.fileSize=t.getFileSize(n),o.ariaLabel=Jx.res.loadCompoundString("label",o.name,o.fileSize,Jx.res.getString(o.command)),u){if(u.type===f.icon)return this._renderFileIconItem(n,u,i.otherItem,o,o.command);o.thumbnailUrl=URL.createObjectURL(u,{oneTimeOnly:true});var s=this._renderWithTemplate(e,o),h=r.calcDesiredDisplaySize(u,this._thumbnailDimensions.photoVideo);return r.scaleAndCenter(s.querySelector("img"),u.originalWidth,u.originalHeight,h.width,h.height,true),s}return Jx.log.info("AttachmentWell.Base.Item._renderPhotoVideoItem: failed to get thumbnailStream from file"),this._renderWithTemplate(i.photoVideoItemPlaceholder,o)};n._renderFileIconItem=function(n,i,r,u,f){return i&&(u.fileIconUrl=URL.createObjectURL(i,{oneTimeOnly:true})),u.isEml=u.fileExtension===".eml",u.fileIconHeight=this._thumbnailDimensions.fileIcon.height,u.fileIconWidth=this._thumbnailDimensions.fileIcon.width,u.commandLabel=Jx.res.getString(f),u.fileSize=t.getFileSize(n),u.ariaLabel=Jx.res.loadCompoundString("label",u.name,u.fileSize,u.commandLabel),this._renderWithTemplate(r,u)};n._itemRenderers=null}(),function(){var t=AttachmentWell.Utils,i=WinJS.UI.Animation,n;AttachmentWell.Base.ViewLayout=function(n,t){this.initComponent();this._id="idAttachmentWellView_"+Jx.uid();this._mailMessage=n;this._attachmentCollection=n.getOrdinaryAttachmentCollection();this._containerWidth=0;this._attachmentItems={};this._neighborElement=t;this._elementResize=this._onElementResize.bind(this);this._attachmentCollectionChanged=this._onAttachmentCollectionChanged.bind(this);this._onClearError=this.onClearError.bind(this);this._onError=this.onError.bind(this);this._filesAttachedControl=new AttachmentWell.FilesAttachedControl;this._errorManager=new AttachmentWell.ErrorManager;this.append(this._filesAttachedControl,this._errorManager)};Jx.augment(AttachmentWell.Base.ViewLayout,Jx.Component);n=AttachmentWell.Base.ViewLayout.prototype;n.getUI=function(n){n.html='<div id="'+this._id+'" class="attachmentWell-view">'+Jx.getUI(this._errorManager).html+'<div class="attachmentWell-controls">'+Jx.getUI(this._filesAttachedControl).html+'<\/div><div class="attachmentWell-repeater" role="listbox"><\/div>'+this._contextMenuUI()+"<\/div>"};n._contextMenuUI=function(){return'<div class="attachments-contextMenu" aria-hidden="true" data-win-control="WinJS.UI.Menu" data-win-res="aria-label:attachmentContextMenuLabel"><button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'openCommand\'}" data-win-res="innerText:openCommand;aria-label:openCommand" type="button"><\/button><button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'openInMailCommand\'}" data-win-res="innerText:openWithMailCommand;aria-label:openWithMailCommand" type="button"><\/button><button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'openWithCommand\'}" data-win-res="innerText:openWithCommand;aria-label:openWithCommand" type="button"><\/button><button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'removeCommand\'}" data-win-res="innerText:removeCommand;aria-label:removeCommand" type="button"><\/button><button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'saveCommand\'}" data-win-res="innerText:saveCommand;aria-label:saveCommand" type="button"><\/button><\/div>'};n.activateUI=function(){Jx.Component.prototype.activateUI.call(this);this.getElement().addEventListener("mselementresize",this._elementResize,false)};n._onElementResize=function(){if(this._containerWidth=parseInt(getComputedStyle(this.getElement()).width,10),Jx.isNullOrUndefined(this._repeater)&&this._containerWidth>0){var t=this.getElement(),n=t.querySelector(".attachmentWell-repeater");this._controller=this._createController();this._attachmentCollection.addEventListener("collectionchanged",this._attachmentCollectionChanged);this.on("clearerror",this._onClearError,this);this.on("error",this._onError,this);this._repeater=new WinJS.UI.Repeater(n,{data:this._getSortedBindingList(),template:this._getItemTemplate.bind(this)});this._keyboardNavigation=new Jx.KeyboardNavigation(n,"horizontal");this._updateCount();this._attachmentCollection.unlock()}};n._getItemTemplate=function(n){var i=this._mailMessage.loadAttachment(n),t=this._createAttachmentItem(i);return this._attachmentItems[n]=t,t.getItemContainer()};n._createAttachmentItem=function(){};n._createController=function(){};n._getSortedBindingList=function(){for(var r=this._attachmentCollection,s=this._mailMessage,u=new WinJS.Binding.List,e,i,o,n=0,f=r.count;n<f;n++)e=r.item(n),u.push(e.objectId);return i=function(n){var i=s.loadAttachment(n),r=t.getFileExtension(i);return t.isSupportedPhotoOrVideoFormat(r)?"photoVideo":"others"},o=function(n,t){var i=AttachmentWell.Utils.GroupOrdering;return i[n]-i[t]},u.createGrouped(i,i,o)};n._onAttachmentCollectionChanged=function(n){var i=n.objectId,t=Microsoft.WindowsLive.Platform.CollectionChangeType;switch(n.eType){case t.itemAdded:this._addAttachment(i);break;case t.itemRemoved:this._removeAttachment(i);break;case t.reset:this._resetAttachmentCollection()}this._updateCount();this._keyboardNavigation.update(true)};n._updateCount=function(){var n=this._attachmentCollection.count;this.isHidden=n===0;this._filesAttachedControl.updateCount(n)};n._addAttachment=function(n){Jx.log.info("AttachmentWell.Base.ViewLayout._addAttachment: "+n);this._repeater.data.push(n);var t=this._getRepeaterItem(n),r=this._getAffectedRepeaterItems(n),u=i.createAddToListAnimation(t,r);u.execute()};n._removeAttachment=function(n){var f,e,o;Jx.log.info("AttachmentWell.Base.ViewLayout._removeAttachment: "+n);var u=this._repeater,r=u.data,t=r.indexOf(n),s=this._getRepeaterItem(n),h=this._getAffectedRepeaterItems(n),c=i.createDeleteFromListAnimation(s,h);r.splice(t,1);c.execute();r.length>0&&(f=t===0?t:t-1,e=u.elementFromIndex(f),Jx.safeSetActive(e));o=this._attachmentItems[n];o.dispose();delete this._attachmentItems[n]};n._getRepeaterItem=function(n){var t=this._repeater.data,i=t.indexOf(n);return this._repeater.elementFromIndex(i)};n._getAffectedRepeaterItems=function(n){for(var i=this._repeater.data,u=i.indexOf(n),r=[],t=u+1;t<i.length;t++)r.push(this._repeater.elementFromIndex(t));return r};n._resetAttachmentCollection=function(){Jx.log.info("AttachmentWell.Base.ViewLayout._resetAttachmentCollection");this._disposeAttachmentItems();this._removeCollectionListener();this._attachmentCollection=this._mailMessage.getOrdinaryAttachmentCollection();this._attachmentCollection.addEventListener("collectionchanged",this._attachmentCollectionChanged);this._attachmentCollection.unlock();this._repeater.data=this._getSortedBindingList()};n.deactivateUI=function(){this._element.removeEventListener("mselementresize",this._elementResize,false);this._repeater&&(this._removeCollectionListener(),this._disposeAttachmentItems(),this._controller.dispose(),this._controller=null,this._repeater.dispose(),this._repeater=null,this._keyboardNavigation.dispose(),this._keyboardNavigation=null,this.detach("clearerror",this._onClearError,this),this.detach("error",this._onError,this),Jx.Component.prototype.deactivateUI.call(this))};n._removeCollectionListener=function(){var n=this._attachmentCollection;n.lock();n.removeEventListener("collectionchanged",this._attachmentCollectionChanged)};n._disposeAttachmentItems=function(){var n=this._attachmentItems;Object.keys(n).forEach(function(t){n[t].dispose()},this);this._attachmentItems={}};n.getElement=function(){return this._element||(this._element=document.getElementById(this._id)),this._element};n.getContainerWidth=function(){return this._containerWidth};Object.defineProperty(n,"isCollapsed",{get:function(){return Jx.hasClass(this._repeater.element,"hidden")},set:function(n){Jx.log.info("AttachmentWell.Base.ViewLayout.isCollapsed: "+n);var t=this._repeater.element,i=this._collapsed?WinJS.UI.Animation.createCollapseAnimation(t,this._neighborElement):WinJS.UI.Animation.createExpandAnimation(t,this._neighborElement);Jx.setClass(t,"hidden",n);i.execute()},enumerable:true});Object.defineProperty(n,"isHidden",{get:function(){return Jx.hasClass(this._element,"hidden")},set:function(n){Jx.log.info("AttachmentWell.Base.ViewLayout.isHidden: "+n);Jx.setClass(this._element,"hidden",n)},enumerable:true});n.onClearError=function(n){this._errorManager.clearError(n.data.errorId)&&(n.cancel=true)};n.onError=function(n){this._errorManager.showError(n.data.error)&&(n.cancel=true)};n._id=null;n._mailMessage=null;n._element=null;n._attachmentCollection=null;n._attachmentCollectionChanged=null;n._repeater=null}(),function(){AttachmentWell.Compose.ActivationType={compose:0,shareAnything:1};AttachmentWell.Compose.AttachmentTypeBici={skyDrive:0,convertedToAttachment:1,attachment:2,convertedToSkyDrive:3};AttachmentWell.Compose.Module=function(n,t,i){AttachmentWell.Base.Module.call(this);this._activationType=AttachmentWell.Compose.ActivationType.compose;this._removeFileHandler=this._onRemoveFile.bind(this);this._onClearError=this._onClearError.bind(this);this._onError=this._onError.bind(this);this._view=this._getViewLayout(t,i);this._attachmentManager=new AttachmentWell.AttachmentManager(n,t);this.append(this._attachmentManager,this._view)};Jx.inherit(AttachmentWell.Compose.Module,AttachmentWell.Base.Module);var n=AttachmentWell.Compose.Module.prototype;n._getViewLayout=function(n,t){return new AttachmentWell.Compose.ViewLayout(n,t)};n.activateUI=function(){Jx.Component.prototype.activateUI.call(this);this._element=document.getElementById(this._id);this._element.addEventListener("removeFile",this._removeFileHandler,false);this.on("clearerror",this._onClearError,this);this.on("error",this._onError,this);this._attachmentManager.activate()};n.deactivateUI=function(){this.detach("clearerror",this._onClearError,this);this.detach("error",this._onError,this);this._element.removeEventListener("removeFile",this._removeFileHandler,false);this._attachmentManager.shutdown();Jx.Component.prototype.deactivateUI.call(this)};n.discard=function(){var n=this._view;n&&n.isInit()&&n.shutdownUI();this._attachmentManager.discard()};n._onRemoveFile=function(n){var t=n.detail.objectId,i=n.detail.fileName;Jx.log.info("AttachmentWell.Compose.Module._onRemoveFile");this._attachmentManager.removeFile(t)};n.add=function(n){Jx.log.info("AttachmentWell.Compose.Module.add: adding "+n.length+" file(s)");this._attachmentManager.addFiles(n)};n.getMetrics=function(){return this._attachmentManager.getAttachmentMetrics()};n.finalizeForSend=function(){var n,i,t;try{n=this._attachmentManager.getAttachmentMetrics();n.count>0&&(i=AttachmentWell.Compose.AttachmentTypeBici.attachment,t=1,Jx.bici.addToStream(Microsoft.WindowsLive.Instrumentation.Ids.Mail.sendMailWithAttachment,t,n.totalSize,i,n.count,n.validateFailures,0,0,n.category,n.count),Jx.bici.addToStream(Microsoft.WindowsLive.Instrumentation.Ids.Mail.sendButtonActive,this._activationType,t,n.count,n.duration))}catch(r){Jx.log.error("AttachmentWell - Failed to report instrumentation "+r)}this._attachmentManager.finalizeForSend()};n.canAddMore=function(n){return this._attachmentManager.canAddMore(n)};n.isAttaching=function(){return this._attachmentManager.isAttaching()};n.validate=function(){return this._attachmentManager.canSendMail()};n.focus=function(){this._view.focusFirst()};n.isHidden=function(){return this._view.isHidden};Object.defineProperty(n,"isDirty",{get:function(){return this._attachmentManager.isDirty()},enumarable:true});n._onClearError=function(n){this._view.onClearError(n)};n._onError=function(n){this._view.onError(n)};n._element=null;n._attachmentManager=null;n._removeFileHandler=null}(),function(){var t=Microsoft.WindowsLive.Platform.AttachmentComposeStatus,n;AttachmentWell.Compose.ItemController=function(n){AttachmentWell.Base.ItemController.call(this,n)};Jx.inherit(AttachmentWell.Compose.ItemController,AttachmentWell.Base.ItemController);n=AttachmentWell.Compose.ItemController.prototype;n._createContextMenuCallbacks=function(){var n={},i={commandId:"openCommand",invoke:this._open.bind(this),isEnabled:this._disableForEml},r={commandId:"removeCommand",invoke:this._remove.bind(this),isEnabled:this._alwaysEnable},u={commandId:"openInMailCommand",invoke:this._open.bind(this),isEnabled:this._enableForEml},f={commandId:"openWithCommand",invoke:this._openWith.bind(this),isEnabled:this._alwaysEnable};return n[t.done]=[u,i,f,r],n};n._createItemInvokedCallbacks=function(){var i=this._remove.bind(this),n={};return n[t.failed]=i,n};n._getAttachmentStatus=function(n){return n.composeStatus};n._getFlyoutContainerElement=function(){return document.getElementById(Mail.CompApp.rootElementId)};n._remove=function(n,t){Jx.log.info("AttachmentWell.Compose.ItemController._remove");this._view.fire("clearerror",{errorId:AttachmentWell.ErrorIds.openFailed});var r=t.itemDiv,i=document.createEvent("CustomEvent");i.initCustomEvent("removeFile",true,false,{objectId:n.objectId,fileName:n.fileName});r.dispatchEvent(i)};n._fireOpenFailedError=function(){var n=new AttachmentWell.Error(AttachmentWell.ErrorIds.openFailed,Jx.res.getString("composeOpenFailedErrorMessage"));this._view.fire("error",{error:n})}}(),function(){var t=Microsoft.WindowsLive.Platform.AttachmentComposeStatus,i=AttachmentWell.Templates,n;AttachmentWell.Compose.Item=function(n,t,i){this._itemRenderers=[this._otherItemRenderer,this._photoItemRenderer,this._videoItemRenderer,this._inProgressItemRenderer,this._failedItemRenderer];AttachmentWell.Base.Item.call(this,n,t,i)};Jx.inherit(AttachmentWell.Compose.Item,AttachmentWell.Base.Item);n=AttachmentWell.Compose.Item.prototype;n._getCurrentStatus=function(){return this._attachment.composeStatus};n._getItemRenderer=function(n,t){var i=this._itemRenderers.filter(function(i){return i.canRender(n,t,Microsoft.WindowsLive.Platform.AttachmentComposeStatus)});return i[0]};n._inProgressItemRenderer={canRender:function(n,i){return i===t.inProgress},render:function(n,t){t.commandLabel=Jx.res.getString("removeCommand");t.ariaLabel=Jx.res.loadCompoundString("label",t.name,t.fileSize,t.commandLabel);var r=this._renderWithTemplate(i.composeItemWithProgress,t);return WinJS.Promise.wrap(r)}.bind(n)};n._failedItemRenderer={canRender:function(n,i){return i===t.failed},render:function(n,t){Jx.log.info("AttachmentWell.Compose.Item._failedItemRenderer: failed to attach the file");t.commandLabel=Jx.res.getString("removeCommand");t.ariaLabel=Jx.res.loadCompoundString("label",t.name,t.fileSize,t.commandLabel);var r=this._renderWithTemplate(i.composeErrorItem,t);return WinJS.Promise.wrap(r)}.bind(n)};n._itemRenderers=null}(),function(){AttachmentWell.Compose.ViewLayout=function(n,t){AttachmentWell.Base.ViewLayout.call(this,n,t)};Jx.inherit(AttachmentWell.Compose.ViewLayout,AttachmentWell.Base.ViewLayout);var n=AttachmentWell.Compose.ViewLayout.prototype;n._createAttachmentItem=function(n){return new AttachmentWell.Compose.Item(n,this._controller,this)};n._createController=function(){return new AttachmentWell.Compose.ItemController(this)};n.focusFirst=function(){!this.isHidden&&!this.isCollapsed&&this._repeater.length>0&&this._repeater.elementFromIndex(0).focus()};Object.defineProperty(n,"isHidden",{get:function(){return Jx.hasClass(this._element,"hidden")},set:function(n){Jx.log.info("AttachmentWell.Compose.ViewLayout.isHidden: "+n);Jx.setClass(this._element,"hidden",n);n&&Jx.EventManager.fire(null,"hide",{})},enumerable:true});n._statusProperty="composeStatus"}(),function(){AttachmentWell.ShareAnything.Module=function(n,t,i){AttachmentWell.Compose.Module.call(this,n,t,i);this._activationType=AttachmentWell.Compose.ActivationType.shareAnything};Jx.inherit(AttachmentWell.ShareAnything.Module,AttachmentWell.Compose.Module);var n=AttachmentWell.ShareAnything.Module.prototype;n._getViewLayout=function(n){return new AttachmentWell.ShareAnything.ViewLayout(n)}}(),function(){var t=Microsoft.WindowsLive.Platform.AttachmentComposeStatus,n;AttachmentWell.ShareAnything.ItemController=function(n){AttachmentWell.Compose.ItemController.call(this,n)};Jx.inherit(AttachmentWell.ShareAnything.ItemController,AttachmentWell.Compose.ItemController);n=AttachmentWell.ShareAnything.ItemController.prototype;n._createContextMenuCallbacks=function(){var i={commandId:"removeCommand",invoke:this._remove.bind(this),isEnabled:this._alwaysEnable},n={};return n[t.done]=[i],n};n._getFlyoutContainerElement=function(){return document.getElementById("shareFlyout")}}(),function(){var i=AttachmentWell.Templates,r=AttachmentWell.ThumbnailResizer,t=AttachmentWell.Utils,n;AttachmentWell.ShareAnything.Item=function(n,t,i){AttachmentWell.Compose.Item.call(this,n,t,i)};Jx.inherit(AttachmentWell.ShareAnything.Item,AttachmentWell.Compose.Item);n=AttachmentWell.ShareAnything.Item.prototype;n._otherItemRenderer={canRender:function(n,i,r){return i===r.done&&!t.isSupportedPhotoOrVideoFormat(n)},render:function(n,u){var f=t.isEml(u.fileExtension)?WinJS.Promise.wrap():r.getThumbnail(n,t.FileCategory.others,this._thumbnailDimensions),e=this;return f.then(function(t){return e._renderFileIconItem(n,t,i.otherItem,u,"removeCommand")})}.bind(n)};n._photoItemRenderer={canRender:function(n,i,r){return i===r.done&&t.isSupportedPhotoFormat(n)},render:function(n,u){var f=this;return u.command="removeCommand",r.getThumbnail(n,t.FileCategory.photo,this._thumbnailDimensions).then(function(t){return f._renderPhotoVideoItem(n,t,i.photoItem,u)})}.bind(n)};n._videoItemRenderer={canRender:function(n,i,r){return i===r.done&&t.isSupportedVideoFormat(n)},render:function(n,u){var f=this;return u.command="removeCommand",r.getThumbnail(n,t.FileCategory.video,this._thumbnailDimensions).then(function(t){return f._renderPhotoVideoItem(n,t,i.videoItem,u)})}.bind(n)};n._itemRenderers=null}(),function(){AttachmentWell.ShareAnything.ViewLayout=function(n,t){AttachmentWell.Compose.ViewLayout.call(this,n,t)};Jx.inherit(AttachmentWell.ShareAnything.ViewLayout,AttachmentWell.Compose.ViewLayout);var n=AttachmentWell.ShareAnything.ViewLayout.prototype;n._createAttachmentItem=function(n){return new AttachmentWell.ShareAnything.Item(n,this._controller,this)};n._createController=function(){return new AttachmentWell.ShareAnything.ItemController(this)}}(),function(){AttachmentWell.Read.Module=function(n,t){AttachmentWell.Base.Module.call(this);this._view=new AttachmentWell.Read.ViewLayout(n,t);this.append(this._view)};Jx.inherit(AttachmentWell.Read.Module,AttachmentWell.Base.Module);var n=AttachmentWell.Read.Module.prototype}(),function(){var r=AttachmentWell.Utils,i=Microsoft.WindowsLive.Platform.AttachmentSyncStatus,t=Windows.Networking.Connectivity,n;AttachmentWell.Read.ItemController=function(n){AttachmentWell.Base.ItemController.call(this,n);this._networkStatusChangedHandler=this._onNetworkStatusChanged.bind(this)};Jx.inherit(AttachmentWell.Read.ItemController,AttachmentWell.Base.ItemController);n=AttachmentWell.Read.ItemController.prototype;n._createContextMenuCallbacks=function(){var n={},t={commandId:"saveCommand",invoke:this._save.bind(this),isEnabled:this._alwaysEnable},r={commandId:"openInMailCommand",invoke:this._open.bind(this),isEnabled:this._enableForEml},u={commandId:"openWithCommand",invoke:this._openWith.bind(this),isEnabled:this._alwaysEnable};return n[i.done]=[r,u,t],n};n._createItemInvokedCallbacks=function(){var t=this._download.bind(this),r=this._cancel.bind(this),u=this._open.bind(this),n={};return n[i.notStarted]=t,n[i.failed]=t,n[i.inProgress]=r,n[i.done]=u,n};n._getAttachmentStatus=function(n){return n.syncStatus};n._getFlyoutContainerElement=function(){return document.getElementById(Mail.CompApp.rootElementId)};n._download=function(n){this._view.fire("clearerror",{errorId:AttachmentWell.ErrorIds.downloadFailed});try{Jx.log.info("AttachmentWell.Read.ItemController._download: start downloading file");n.downloadBody()}catch(t){Jx.log.error("AttachmentWell.Read.ItemController._download: failed to download file: "+t);this.fireDownloadFailedError(n)}};n.fireDownloadFailedError=function(n){var f=this,i,r,u;this._getNetworkConnectivityLevel()===t.NetworkConnectivityLevel.internetAccess?(i=Jx.res.getString("readDownloadFailedGenericErrorMessage"),r=new AttachmentWell.ErrorCommand(Jx.res.getString("tryAgainCommand"),function(){f._download(n)})):(i=Jx.res.getString("readDownloadFailedConnectionErrorMessage"),this._registeredForNetworkStatusChange||(t.NetworkInformation.addEventListener("networkstatuschanged",this._networkStatusChangedHandler),this._registeredForNetworkStatusChange=true));u=new AttachmentWell.Error(AttachmentWell.ErrorIds.downloadFailed,i);r&&u.commands.push(r);this._view.fire("error",{error:u})};n._getNetworkConnectivityLevel=function(){var n=t.NetworkConnectivityLevel.internetAccess,i;try{i=t.NetworkInformation.getInternetConnectionProfile();n=i?i.getNetworkConnectivityLevel():t.NetworkConnectivityLevel.none}catch(r){Jx.log.error("Attachment Well failed to get connectivity information: "+r)}return Jx.log.info("AttachmentWell.Read.ItemController._getNetworkConnectivityLevel: connectivity level = "+n),n};n._onNetworkStatusChanged=function(){this._registeredForNetworkStatusChange&&this._getNetworkConnectivityLevel()===t.NetworkConnectivityLevel.internetAccess&&(Jx.log.info("AttachmentWell.Read.ItemController._onNetworkStatusChanged: has internet access now"),this._view.fire("clearerror",{errorId:AttachmentWell.ErrorIds.downloadFailed}),t.NetworkInformation.removeEventListener("networkstatuschanged",this._networkStatusChangedHandler),this._registeredForNetworkStatusChange=false)};n._cancel=function(n){try{Jx.log.info("AttachmentWell.Read.ItemController._cancel: cancel downloading file");n.cancelDownload()}catch(t){Jx.log.error("AttachmentWell.Read.ItemController._cancel: failed to cancel downloading file: "+t)}};n._save=function(n){var i,t,u,f;Jx.log.info("AttachmentWell.Read.ItemController._save");i=r.getFileExtension(n)||".ext";t=new Windows.Storage.Pickers.FileSavePicker;t.defaultFileExtension=i;t.fileTypeChoices.insert(i,[i]);t.settingsIdentifier="AttachmentWell.Read.ItemController";t.suggestedFileName=r.getFileName(n);t.suggestedStartLocation=Windows.Storage.Pickers.PickerLocationId.picturesLibrary;u=function(n,t){if(n)return r.getFileFromBodyUri(t).then(function(t){return t.copyAndReplaceAsync(n)})};t.pickSaveFileAsync().then(function(t){return f=t,u(t,n)}).then(function(){return r.markFileAsWritable(f)}).done(Jx.fnEmpty,function(n){Jx.log.error("AttachmentWell.Read.ItemController._save: failed to save file: "+n)})};n._fireOpenFailedError=function(n){var i=this,t=new AttachmentWell.Error(AttachmentWell.ErrorIds.openFailed,Jx.res.getString("readOpenFailedErrorMessage")),r=new AttachmentWell.ErrorCommand(Jx.res.getString("saveCommand"),function(){i._save(n)});t.commands.push(r);this._view.fire("error",{error:t})};n._dispose=function(){this._registeredForNetworkStatusChange&&(t.NetworkInformation.removeEventListener("networkstatuschanged",this._networkStatusChangedHandler),this._registeredForNetworkStatusChange=false);AttachmentWell.Base.ItemController.prototype.dispose.call(this)}}(),function(){var t=Microsoft.WindowsLive.Platform.AttachmentSyncStatus,r=AttachmentWell.Templates,u=AttachmentWell.ThumbnailResizer,i=AttachmentWell.Utils,n;AttachmentWell.Read.Item=function(n,t,i){this._itemRenderers=[this._otherItemRenderer,this._photoItemRenderer,this._videoItemRenderer,this._inProgressOtherItemRenderer,this._inProgressPhotoVideoItemRenderer,this._notDownloadedOtherItemRenderer,this._notDownloadedPhotoVideoItemRenderer];AttachmentWell.Base.Item.call(this,n,t,i)};Jx.inherit(AttachmentWell.Read.Item,AttachmentWell.Base.Item);n=AttachmentWell.Read.Item.prototype;n._getCurrentStatus=function(){return this._attachment.syncStatus};n._onAttachmentChanged=function(n){AttachmentWell.Base.Item.prototype._onAttachmentChanged.call(this,n);this._reportStatus()};n._reportStatus=function(){var n=this._attachment.fileName;switch(this._currentStatus){case t.notStarted:this._logAccessibility(Jx.res.loadCompoundString("attachmentDownloadCancelled",n));break;case t.inProgress:this._logAccessibility(Jx.res.loadCompoundString("attachmentDownloading",n));break;case t.done:this._logAccessibility(Jx.res.loadCompoundString("attachmentFinishedDownloading",n));break;case t.failed:this._controller.fireDownloadFailedError(this._attachment)}};n._getItemRenderer=function(n,t){var i=this._itemRenderers.filter(function(i){return i.canRender(n,t,Microsoft.WindowsLive.Platform.AttachmentSyncStatus)});return i[0]};n._inProgressOtherItemRenderer={canRender:function(n,r){return r===t.inProgress&&!i.isSupportedPhotoOrVideoFormat(n)},render:function(n,t){var f=this;return u.getThumbnail(n,i.FileCategory.others,this._thumbnailDimensions).then(function(i){return f._renderFileIconItem(n,i,r.readOtherItemDownloading,t,"cancelCommand")})}.bind(n)};n._inProgressPhotoVideoItemRenderer={canRender:function(n,r){return r===t.inProgress&&i.isSupportedPhotoOrVideoFormat(n)},render:function(n,t){var i=this._renderFileIconItem(n,null,r.readPhotoVideoItemDownloading,t,"cancelCommand");return WinJS.Promise.wrap(i)}.bind(n)};n._notDownloadedOtherItemRenderer={canRender:function(n,r){return(r===t.notStarted||r===t.failed)&&!i.isSupportedPhotoOrVideoFormat(n)},render:function(n,t){var f=this;return u.getThumbnail(n,i.FileCategory.others,this._thumbnailDimensions).then(function(i){return f._renderFileIconItem(n,i,r.readOtherItemNotDownloaded,t,"downloadCommand")})}.bind(n)};n._notDownloadedPhotoVideoItemRenderer={canRender:function(n,r){return(r===t.notStarted||r===t.failed)&&i.isSupportedPhotoOrVideoFormat(n)},render:function(n,t){var i=this._renderFileIconItem(n,null,r.readPhotoVideoItemNotDownloaded,t,"downloadCommand");return WinJS.Promise.wrap(i)}.bind(n)};n._logAccessibility=function(n){var t=document.createElement("div"),i;t.setAttribute("aria-live","polite");t.setAttribute("role","status");t.className="attachmentWell-statusListItem";t.innerText=n;i=this._statusListElement;Jx.isNullOrUndefined(i)&&(i=this._statusListElement=this._host.getElement().querySelector(".attachmentWell-statusList"));i.appendChild(t)};n._itemRenderers=null}(),function(){AttachmentWell.Read.ViewLayout=function(n,t){AttachmentWell.Base.ViewLayout.call(this,n,t);this._downloadSaveAllControl=new AttachmentWell.DownloadSaveAllControl(n);this.append(this._downloadSaveAllControl)};Jx.inherit(AttachmentWell.Read.ViewLayout,AttachmentWell.Base.ViewLayout);var n=AttachmentWell.Read.ViewLayout.prototype;n.getUI=function(n){n.html='<div id="'+this._id+'" class="attachmentWell-view">'+Jx.getUI(this._errorManager).html+'<div class="attachmentWell-controls">'+Jx.getUI(this._filesAttachedControl).html+Jx.getUI(this._downloadSaveAllControl).html+'<\/div><div class="attachmentWell-repeater"><\/div><div class="attachmentWell-statusList" aria-hidden="true"><\/div>'+this._contextMenuUI()+"<\/div>"};n._createAttachmentItem=function(n){return new AttachmentWell.Read.Item(n,this._controller,this)};n._createController=function(){return new AttachmentWell.Read.ItemController(this)};n._resetAttachmentCollection=function(){AttachmentWell.Base.ViewLayout.prototype._resetAttachmentCollection.call(this);this._downloadSaveAllControl.resetAttachmentCollection()};n._statusProperty="syncStatus"}(),function(){var t=Microsoft.WindowsLive.Platform.AttachmentSyncStatus,i=AttachmentWell.Utils,n;AttachmentWell.DownloadSaveAllControl=function(n){this.initComponent();this._mailMessage=n;this._attachmentCollection=n.getOrdinaryAttachmentCollection();this._attachmentObjects={};this._attachmentChanged=this._updateControlState.bind(this)};Jx.augment(AttachmentWell.DownloadSaveAllControl,Jx.Component);n=AttachmentWell.DownloadSaveAllControl.prototype;n.getUI=function(n){n.html='<div class="attachmentWell-downloadSaveAllControl"><span class="attachmentWell-downloadAll hidden" tabIndex="0" role="button">'+Jx.escapeHtml(Jx.res.getString("downloadAll"))+'<\/span><span class="attachmentWell-saveAll hidden" tabIndex="0" role="button">'+Jx.escapeHtml(Jx.res.getString("saveAll"))+"<\/span><\/div>"};n.activateUI=function(){this._view=this.getParent();var n=this._element=this._view.getElement().querySelector(".attachmentWell-downloadSaveAllControl");this._downloadAll=n.querySelector(".attachmentWell-downloadAll");this._saveAll=n.querySelector(".attachmentWell-saveAll");this._downloadAllClicker=new Jx.Clicker(this._downloadAll,this._onDownloadAllClicked,this);this._saveAllClicker=new Jx.Clicker(this._saveAll,this._onSaveAllClicked,this);this._addAttachmentListeners();this._updateControlState()};n._addAttachmentListeners=function(){var n=this._attachmentCollection,t,i,r;for(n.addEventListener("collectionchanged",this._attachmentChanged),i=0,r=n.count;i<r;i++)t=n.item(i),t.addEventListener("changed",this._attachmentChanged),this._attachmentObjects[t.objectId]=t;n.unlock()};n._onDownloadAllClicked=function(){var n,i,r;for(Jx.log.info("AttachmentWell.DownloadSaveAllControl._onDownloadAllClicked"),i=0,r=this._attachmentCollection.count;i<r;i++)n=this._attachmentCollection.item(i),(n.syncStatus===t.notStarted||n.syncStatus===t.failed)&&n.downloadBody()};n._onSaveAllClicked=function(){Jx.log.info("AttachmentWell.DownloadSaveAllControl._onSaveAllClicked");var n=this._attachmentCollection,r=function(t){var f,u,r,e;if(t){for(u=[],r=0,e=n.count;r<e;r++)f=n.item(r),u.push(i.getFileFromBodyUri(f).then(function(n){return n.copyAsync(t,n.name,Windows.Storage.NameCollisionOption.generateUniqueName)}));return WinJS.Promise.join(u)}},u=function(){for(var r,u=[],t=0,f=n.count;t<f;t++)r=n.item(t),u.push(i.getFileFromBodyUri(r).then(i.markFileAsWritable));return WinJS.Promise.join(u)},t=new Windows.Storage.Pickers.FolderPicker;t.suggestedStartLocation=Windows.Storage.Pickers.PickerLocationId.picturesLibrary;t.fileTypeFilter.replaceAll(["*"]);t.pickSingleFolderAsync().then(r).then(u).done(function(){Jx.log.info("AttachmentWell.DownloadSaveAllControl._onSaveAllClicked: all files saved successfully")},function(n){Jx.log.error("AttachmentWell.DownloadSaveAllControl._onSaveAllClicked: failed to save all files: "+n)})};n._updateControlState=function(){for(var e=this._attachmentCollection,n=e.count,r=0,u,f,i=0;i<n;i++)e.item(i).syncStatus===t.done&&r++;u=n<=1||r===n;f=n<=1||r!==n;Jx.setClass(this._downloadAll,"hidden",u);this._downloadAll.setAttribute("aria-hidden",u);Jx.setClass(this._saveAll,"hidden",f);this._saveAll.setAttribute("aria-hidden",f)};n.deactivateUI=function(){this._removeAttachmentListeners();Jx.dispose(this._downloadAllClicker);Jx.dispose(this._saveAllClicker);this._downloadAllClicker=null;this._saveAllClicker=null};n._removeAttachmentListeners=function(){this._attachmentCollection.lock();this._attachmentCollection.removeEventListener("collectionchanged",this._attachmentChanged);Object.keys(this._attachmentObjects).forEach(function(n){var t=this._attachmentObjects[n];t&&t.removeEventListener("changed",this._attachmentChanged)},this);this._attachmentObjects={}};n.resetAttachmentCollection=function(){this._removeAttachmentListeners();this._attachmentCollection=this._mailMessage.getOrdinaryAttachmentCollection();this._addAttachmentListeners();this._updateControlState()}}(),function(){AttachmentWell.FilesAttachedControl=function(){this.initComponent();this._collapsed=false};Jx.augment(AttachmentWell.FilesAttachedControl,Jx.Component);var n=AttachmentWell.FilesAttachedControl.prototype;n.getUI=function(n){n.html='<div class="attachmentWell-filesAttachedControl" tabIndex="0" role="button" aria-expanded="true"><span class="attachmentWell-numberOfFiles"><\/span>&ensp;<span class="attachmentWell-expandChevron"><\/span><span class="attachmentWell-collapseChevron hidden"><\/span><\/div>'};n.activateUI=function(){this._view=this.getParent();var n=this._element=this._view.getElement().querySelector(".attachmentWell-filesAttachedControl");this._numberOfFiles=n.querySelector(".attachmentWell-numberOfFiles");this._expandChevron=n.querySelector(".attachmentWell-expandChevron");this._collapseChevron=n.querySelector(".attachmentWell-collapseChevron");this._observer=Jx.observeAttribute(n,"aria-expanded",function(){this.collapse(n.getAttribute("aria-expanded")==="false")},this);this._clicker=new Jx.Clicker(n,function(){this._element.setAttribute("aria-expanded",this._collapsed)},this)};n.collapse=function(){var n=this._collapsed=!this._collapsed;this._view.isCollapsed=n;Jx.setClass(this._expandChevron,"hidden",n);Jx.setClass(this._collapseChevron,"hidden",!n)};n.updateCount=function(n){Jx.log.info("AttachmentWell.FilesAttachedControl.updateCount: count = "+n);var t=this._numberOfFiles.innerText=n===1?Jx.res.getString("oneFileAttached"):Jx.res.loadCompoundString("numberOfFilesAttached",n);this._element.setAttribute("aria-label",t)};n.deactivateUI=function(){Jx.dispose(this._clicker);this._clicker=null;this._observer.disconnect();this._observer=null}}(),function(){var i=Windows.Storage.FileProperties,n=AttachmentWell.ThumbnailResizer,t=AttachmentWell.Utils,f="Attachments",e="empty",o=function(n){if(n.bodyUri)return t.getFileFromBodyUri(n);var i=Windows.Storage.CreationCollisionOption.openIfExists;return Windows.Storage.ApplicationData.current.temporaryFolder.createFolderAsync(f,i).then(function(r){var u=t.getFileExtension(n);return r.createFileAsync(e+u,i)})},s=function(n,i,r,u){var e,f,o,s;return i?(e=u.photoVideo,f={width:r===t.FileCategory.photo?"System.Image.HorizontalSize":"System.Video.FrameWidth",height:r===t.FileCategory.photo?"System.Image.VerticalSize":"System.Video.FrameHeight"},n.properties.retrievePropertiesAsync([f.width,f.height]).then(function(n){var i=n[f.width],r=n[f.height],u=e.width,t=e.height;return r>t&&i>u?i<=r?t:Math.round(i*t/r):Math.max(u,t)})):(o=u.fileIcon,s=Math.max(o.width,o.height),WinJS.Promise.wrap(s))},r,u;n.getThumbnail=function(n,r,u){var f=r===t.FileCategory.photo||r===t.FileCategory.video,e;return o(n).then(function(n){return e=n,s(n,f,r,u)}).then(function(n){var t=f?i.ThumbnailMode.singleItem:i.ThumbnailMode.listView,r=i.ThumbnailOptions.useCurrentScale;return e.getThumbnailAsync(t,n,r)}).then(null,function(n){return Jx.log.exception("ThumbnailResizer.getThumbnail: failed to get thumbnail",n),WinJS.Promise.wrap(null)})};n.calcDesiredDisplaySize=function(t,i){var r=t.originalWidth,u=t.originalHeight,f=i.height,e=i.minWidth,o=i.maxWidth;return u>f||r>o?n.scaleAspect(o,f,false,r,u):r<e?n.scaleAspect(e,f,false,r,u):{width:r,height:u}};r=2;u=3;n.scaleAspect=function(n,t,i,r,u){if(r>0&&u>0&&n>0&&t>0){var f=r*t>n*u;i&&f||!i&&!f?(r=Math.round(t*r/u),u=t,r<1&&(r=1)):(u=Math.round(n*u/r),r=n,u<1&&(u=1))}else r=0,u=0;return{width:r,height:u}};n.centerElement=function(n,t,i,f){var e=n.style,c,l;var a=f.width,h=f.height,o=0,s=0;return t!==a?(c=(t-a)/r,o=Math.floor(c),e.marginLeft=o.toString()+"px",e.marginRight=Math.ceil(c).toString()+"px"):(o=0,e.marginLeft="",e.marginRight=""),i!==h?(l=(i-h)/(h>i?u:r),s=Math.floor(l),e.marginTop=s.toString()+"px",e.marginBottom=Math.ceil(l).toString()+"px"):(s=0,e.marginTop="",e.marginBottom=""),{top:s,left:o}};n.scaleAndCenter=function(t,i,r,u,f,e,o){var s=n.scaleAspect(u,f,e,i,r),h,c;return o&&(s.width>i*2||s.height>r*2)&&(s.width=i*2,s.height=r*2),t.style.width=String(s.width)+"px",t.style.height=String(s.height)+"px",h=n.centerElement(t,u,f,s),c={top:h.top,left:h.left,width:s.width,height:s.height},c}}()})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global Jx,window,$include*/
+
+Jx.delayDefine(window, "AttachmentWell", function () {
+    window.AttachmentWell = {
+        AttachmentManager: {},
+        Base: {},
+        Read: {},
+        Compose: {},
+        DownloadSaveAllControl: {},
+        ErrorManager: {},
+        FilesAttachedControl: {},
+        Templates: {},
+        ShareAnythingControl: {},
+        ShareAnything: {},
+        Utils: {},
+        ThumbnailResizer: {}
+    };
+
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global AttachmentWell,Jx,Microsoft,Debug,MockAttachments,window*/
+(function () {
+
+    var AttachmentComposeStatus = Microsoft.WindowsLive.Platform.AttachmentComposeStatus,
+        BasicAttachmentsMax = {
+            count: 1000,
+            sizeInBytes: 26214400 /* 25MB */
+        };
+
+    AttachmentWell.AttachmentManager = /*@constructor*/function (mailManager, mailMessage) {
+        /// <summary>Returns an initialized attachment manager object</summary>
+        /// <param name="mailManager" type="Microsoft.WindowsLive.Platform.IMailManager">mail manager</param>
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">mail message</param>
+
+        // Call the Jx component initialization code.
+        this.initComponent();
+
+        Debug.assert(mailManager);
+        Debug.assert(mailMessage);
+        this._mailManager = mailManager;
+        this._mailMessage = mailMessage;
+        this._changedListeners = [];
+
+        
+        // Running in IE, create mock manager
+        if (!Jx.isWWA) {
+            this._attachmentManager = /*@static_cast(Microsoft.WindowsLive.Photomail.AttachmentManager)*/MockAttachments.getManager(mailMessage.objectId);
+        } else {
+            
+            // Create and initialize the background worker manager for the passed in message
+            this._attachmentManager = /*@static_cast(Microsoft.WindowsLive.Photomail.AttachmentManager)*/Microsoft.WindowsLive.Photomail.AttachmentManager.getManager(mailMessage.objectId);
+            
+        }
+        
+
+        // Create an empty attachment list
+        this._attachmentObjects = {};
+        this._attachmentSizes = {};
+        this._pendingAttachments = {};
+        this._failedAttachments = {};
+
+        // Get all the ordinary attachment and register for change notification
+        this._attachmentCollection = mailMessage.getOrdinaryAttachmentCollection();
+        Debug.assert(this._attachmentCollection, "Expecting at least an empty collection");
+
+        this._attachmentChanged = this._attachmentChanged.bind(this);
+        this._attachmentCollectionChanged = this._attachmentCollectionChanged.bind(this);
+    };
+
+    Jx.augment(AttachmentWell.AttachmentManager, Jx.Component);
+
+    var proto = AttachmentWell.AttachmentManager.prototype;
+
+    proto.activate = function () {
+        /// <summary>Starts listening to and firing notifications.</summary>
+        this._attachmentCollection.addEventListener("collectionchanged", this._attachmentCollectionChanged);
+
+        // Add all existing attachments to the collection
+        var attachment;
+        for (var i = 0, len = this._attachmentCollection.count; i < len; i++) {
+            attachment = this._attachmentCollection.item(i);
+
+            // Add a changed handler so when the file is finished attaching, we can fire events
+            attachment.addEventListener("changed", this._attachmentChanged);
+
+            var objectId = attachment.objectId;
+
+            // Hold on to this object so it doesn't get garbage collected until we remove the listener
+            this._attachmentObjects[objectId] = attachment;
+
+            this._update(objectId);
+        }
+
+        // The attachmentwell starts as not dirty by default
+        this._isDirty = false;
+
+        // Now unlock to listen for changes
+        this._attachmentCollection.unlock();
+
+        this._attachmentQueueEmpty = this._attachmentQueueEmpty.bind(this);
+        this._attachmentManager.addEventListener("attachqueueempty", this._attachmentQueueEmpty);
+    };
+
+    proto.addFiles = function (files) {
+        /// <summary>add a file to the current message</summary>
+        /// <param name="files" type="Array">list of files to attach</param>
+        Debug.assert(files);
+        Debug.assert(this._mailMessage);
+        Debug.assert(this._attachmentManager);
+
+        if (this.canAddMore(files.length)) {
+            // The array we get may not always marshall to IVectorView<StorageFile*> (for e.g SAC).
+            var filesToAttach = [];
+            for (var len = files.length, i = 0; i < len; i++) {
+                filesToAttach.push(files[i]);
+            }
+
+            // If we can add files, then we no longer have 'reached max limit' error, clear it.
+            this.fire("clearerror", { errorId: AttachmentWell.ErrorIds.maxFiles });
+
+            // Inform listeners we are about start attaching files.
+            Jx.EventManager.fire(null, "attachstarted", {});
+
+            this._attachmentManager.addFiles(filesToAttach);
+        } else {
+            var maxFilesError = new AttachmentWell.Error(AttachmentWell.ErrorIds.maxFiles, Jx.res.getString("composeMaxFilesErrorMessage"));
+            this.fire("error", { error: maxFilesError });
+        }
+    };
+    proto.isAttaching = function (attachmentId) {
+        /// <summary>returns true if attaching is in progress. If attachmentId is not passed, then
+        /// this checks if any file is being attached.
+        ///</summary>
+        /// <param name="attachmentId" type="String" optional="true">Attachment Id to check</param>
+        /// <returns type="Boolean">Returns true if given attachmentId is attaching.</returns>
+        Debug.assert(this._attachmentManager);
+
+        // Pass null if we were not passed in an attachmentId as the native function expects a param
+        return this._attachmentManager.isAttaching(attachmentId || "");
+    };
+    proto.isDirty = function () {
+        /// <summary>returns true if the contents of the attachment well have been modified since the dirty
+        /// flag was last set to false
+        /// </summary>
+        /// <returns type="Boolean">Returns true if the attachment well contents have been modified</returns>
+        return this._isDirty;
+    };
+    proto.canAddMore = function (newCount) {
+        /// <summary>Checks if specified number of attachments can be added</summary>
+        /// <param name="newCount" type="Number">Number of new attachments to be added</param>
+        /// <returns type="Boolean">Returns true if specified number of attachments can be added</returns>
+        Debug.assert(this._attachmentCollection);
+
+        // Support upto 1000 attachments
+        return (this._attachmentCollection.count + newCount <= BasicAttachmentsMax.count);
+    };
+    proto.canSendMail = function () {
+        /// <summary>
+        ///    Validates attachments on this message for sending the mail. 
+        ///    Returns false if there are any errors in the attached files or attaching is still in progress.
+        /// </summary>
+        /// <returns type="Boolean">Returns true if the message can be sent, otherwise false.</returns>
+        var isAttaching = this.isAttaching("");
+        if (isAttaching) {
+            if (!this._attachStartTime) {
+                this._attachStartTime = (new Date()).getTime();
+            }
+            // If we are still attaching, then fire the attach in progress error event
+            var inProgressError = new AttachmentWell.Error(AttachmentWell.ErrorIds.inProgress, Jx.res.getString("composeInProgressErrorMessage"));
+            this.fire("error", { error: inProgressError });
+
+            // Number of times we failed because we were still attaching, for instrumentation purpose
+            this._numberOfValidateFailures++;
+        }
+
+        // If we are done attaching, then check if there are any failed files.
+        var failedAttachmentsCount = Object.keys(this._failedAttachments).length,
+            isFailed = failedAttachmentsCount > 0;
+
+        return !isAttaching && !isFailed;
+    };
+    proto.removeFailedFiles = function () {
+        /// <summary>Removes all attachments that have failed to attach.</summary>
+        Object.keys(this._failedAttachments).forEach(/*@bind(AttachmentWell.AttachmentManager)*/function (key) {
+            // Remove the file
+            this.removeFile(key);
+        }, this);
+    };
+    proto.finalizeForSend = function () {
+        /// <summary>Finalize for sending the message, including any instrumentation reporting etc.</summary>
+
+        // Let attachment manager finalize
+        Debug.assert(this._attachmentManager);
+        this._attachmentManager.finalizeForSend();
+    };
+    proto.removeFile = function (attachmentId) {
+        /// <summary>Removes the specified attachment</summary>
+        /// <param name="attachmentId" type="String">Attachment Id to remove</param>
+        Debug.assert(attachmentId);
+        Debug.assert(this._attachmentManager);
+
+        // Now remove the attachment from the message
+        this._attachmentManager.removeFile(attachmentId);
+    };
+    // For mapping the category bitmap value to BiCi bucket value.
+    proto.fileCategoryMap = [
+        0,  /* 1 - Photos */
+        1,  /* 2 - Videos */
+        4,  /* 3 - PhotosVideos */
+        2,  /* 4 - Doc */
+        5,  /* 5 - PhotosVideosPlusDocs */
+        5,  /* 6 - PhotosVideosPlusDocs */
+        5,  /* 7 - PhotosVideosPlusDocs */
+        3,  /* 8 - Other */
+        7,  /* 9 - PhotosVideosPlusOther */
+        7,  /* 10 - PhotosVideosPlusOther */
+        7,  /* 11 - PhotosVideosPlusOther */
+        6,  /* 12 - DocsPlusOther */
+        7,  /* 13 - PhotosVideosPlusOther */
+        7,  /* 14 - PhotosVideosPlusOther */
+        7   /* 15 - PhotosVideosPlusOther */
+    ];
+    proto.getAttachmentMetrics = function () {
+        /// <summary>Returns metrics of attachments in the message currently for instrumentation purpose.</summary>
+        /// <returns type="Object">Returns total size, category and duration of attaching</returns>
+        var category = 0,
+            attachmentCount = 0,
+            officeDocRegEx = /\.((doc)|(docx)|(xls)|(xlsx)|(ppt)|(pptx))$/i;
+        Object.keys(this._attachmentObjects).forEach(/*@bind(AttachmentWell.AttachmentManager)*/function (key) {
+            var attachmentObject = /*@static_cast(Microsoft.WindowsLive.Platform.IMailAttachment)*/this._attachmentObjects[key];
+            if (Boolean(attachmentObject) && attachmentObject.composeStatus === AttachmentComposeStatus.done) {
+                // Identify the category
+                // The final category value is a bit wise map of individual one
+                var contentType = attachmentObject.contentType;
+                if (contentType.indexOf("image") >= 0) {
+                    category |= 1;
+                } else if (contentType.indexOf("video") >= 0) {
+                    category |= 2;
+                } else if (attachmentObject.fileName.match(officeDocRegEx)) {
+                    // extension matches one of the office doc
+                    category |= 4;
+                } else {
+                    category |= 8;
+                }
+
+                attachmentCount++;
+            }
+        }, this);
+
+        Debug.assert(category < 16);
+        return {
+            totalSize: Math.round(this._totalAttachmentSize / 1024),
+            category: this.fileCategoryMap[category - 1] || 0,
+            count: attachmentCount,
+            duration: Math.round(this._totalAttachDuration / 1000),  // convert to seconds 
+            validateFailures: this._numberOfValidateFailures
+        };
+    };
+    proto.discard = function () {
+        /// <summary>Discards attachments</summary>
+        // We are not going to actually remove the attachment from the message, 
+        // assumption is who ever is calling this (compose) is going to discard the message
+        // itself and so the attachments should go with that.
+        Debug.assert(this._attachmentManager);
+        this._attachmentManager.discard();
+    };
+    proto.shutdown = function () {
+        /// <summary>Clean up routine</summary>
+        Debug.assert(this._attachmentManager);
+
+        try {
+            this._removeAttachmentListeners();
+
+            this._attachmentManager.stopAll();
+            this._attachmentManager.dispose();
+            this._attachmentManager = null;
+        } catch (ex) {
+            Debug.assert("Exception while shutting down AttachmentManager: " + ex);
+        }
+    };
+    proto._removeAttachmentListeners = function () {
+        /// <summary>Removes all db object notification listeners</summary>
+
+        this._attachmentManager.removeEventListener("attachqueueempty", this._attachmentQueueEmpty);
+
+        // Remove listeners
+        this._attachmentCollection.lock();
+        this._attachmentCollection.removeEventListener("collectionchanged", this._attachmentCollectionChanged);
+        Object.keys(this._attachmentObjects).forEach(/*@bind(AttachmentWell.AttachmentManager)*/function (key) {
+            var attachmentObject = /*@static_cast(Microsoft.WindowsLive.Platform.IMailAttachment)*/this._attachmentObjects[key];
+            if (attachmentObject) {
+                attachmentObject.removeEventListener("changed", this._attachmentChanged);
+            }
+        }, this);
+        this._attachmentObjects = {};
+    };
+    proto._attachmentChanged = function (/*@dynamic*/eventArgs) {
+        /// <summary>Responds to attachment changed event notifications</summary>
+        /// <param name="eventArgs" type="Object">Event arguments</param>
+
+        Debug.assert(eventArgs);
+        // One of the attachment item changed
+        // If the file is no longer being attached, then attaching is complete
+        var objectId = eventArgs.target.objectId,
+            changedAttachment = /*@static_cast(Microsoft.WindowsLive.Platform.IMailAttachment)*/this._attachmentObjects[objectId];
+        if (changedAttachment) {
+            // Inform listeners
+            this.fire("attachmentchanged", { id: objectId, dbObject: changedAttachment });
+
+            // Is this attachment completed or failed attaching?
+            var composeStatus = changedAttachment.composeStatus;
+            if (composeStatus === AttachmentComposeStatus.failed || composeStatus === AttachmentComposeStatus.done) {
+                delete this._pendingAttachments[objectId];
+
+                this._checkAndFireQueueEmpty();
+            }
+        }
+
+        this._update(objectId);
+    };
+    proto._attachmentCollectionChanged = function (eventArgs) {
+        /// <summary>Responds to attachment collection changed event notifications</summary>
+        /// <param name="eventArgs" type="Microsoft.WindowsLive.Platform.CollectionChangedEventArgs">Event arguments</param>
+        Debug.assert(eventArgs);
+        // A new attachment being added?
+        var objectId = eventArgs.objectId;
+        if (eventArgs.eType === /*@static_cast(Microsoft.WindowsLive.Platform.CollectionChangeType)*/Microsoft.WindowsLive.Platform.CollectionChangeType.itemAdded) {
+            this._isDirty = true;
+            var changedAttachment = /*@static_cast(Microsoft.WindowsLive.Platform.IMailAttachment)*/this._attachmentCollection.item(eventArgs.index);
+
+            // If we haven't started the timer, then start it as we just added a new file
+            // and so we are attaching.
+            if (!this._attachStartTime) {
+                this._attachStartTime = (new Date()).getTime();
+            }
+
+            // Add a changed handler so when the file is finished attaching, we can fire events
+            changedAttachment.addEventListener("changed", this._attachmentChanged);
+            // Hold on to this object so it doesn't get garbage collected until we remove the listener
+            this._attachmentObjects[objectId] = changedAttachment;
+
+            // Is this new attachment already in completed or failed state?
+            var composeStatus = changedAttachment.composeStatus;
+            if (composeStatus !== AttachmentComposeStatus.failed && composeStatus !== AttachmentComposeStatus.done) {
+                this._pendingAttachments[objectId] = true;
+            }
+
+            // Inform listeners
+            this.fire("attachmentadded", { id: objectId, dbObject: changedAttachment });
+        } else if (eventArgs.eType === /*@static_cast(Microsoft.WindowsLive.Platform.CollectionChangeType)*/Microsoft.WindowsLive.Platform.CollectionChangeType.itemRemoved) {
+            // An attachment is being removed
+            this._isDirty = true;
+            delete this._pendingAttachments[objectId];
+
+            var removedAttachment = /*@static_cast(Microsoft.WindowsLive.Platform.IMailAttachment)*/this._attachmentObjects[objectId];
+            if (removedAttachment) {
+                // Remove the listener and from our cache
+                removedAttachment.removeEventListener("changed", this._attachmentChanged);
+                delete this._attachmentObjects[objectId];
+                // Inform listeners
+                this.fire("attachmentremoved", { id: objectId, dbObject: null });
+            }
+
+            this._checkAndFireQueueEmpty();
+        }
+
+        this._update(objectId);
+
+        // Do we need to handle Microsoft.WindowsLive.Platform.CollectionChangeType.reset?
+        Debug.assert(eventArgs.eType !== /*@static_cast(Microsoft.WindowsLive.Platform.CollectionChangeType)*/Microsoft.WindowsLive.Platform.CollectionChangeType.reset);
+    };
+    proto._update = function (objectId) {
+        /// <summary>Updates the internal state relating to the given attachment.</summary>
+        /// <param name="objectId" type="String">The unique id of the attachment.</param>
+        var attachment = this._attachmentObjects[objectId] || null;
+        this._updateFailedAttachments(objectId, attachment);
+        this._updateTotalAttachmentSize(objectId, attachment);
+    };
+    proto._updateFailedAttachments = function (objectId, attachment) {
+        /// <summary>Keeps track of failed attachments.</summary>
+        /// <param name="objectId" type="String">The unique id of the attachment.</param>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment" optional="true">The attachment object. This is null if the attachment no longer exists.</param>
+        var attachmentExists = Boolean(attachment);
+        if (attachmentExists && attachment.composeStatus === AttachmentComposeStatus.failed) {
+            this._failedAttachments[objectId] = true;
+        } else if ((!attachmentExists || attachment.composeStatus !== AttachmentComposeStatus.failed) && this._failedAttachments[objectId]) {
+            delete this._failedAttachments[objectId];
+
+            // If we removed the last failed attachment, then clear the error
+            if (Object.keys(this._failedAttachments).length === 0) {
+                this.fire("clearerror", { errorId: AttachmentWell.ErrorIds.attachFailed });
+                return;
+            }
+        }
+
+        var failedAttachmentsCount = Object.keys(this._failedAttachments).length,
+            totalAttachmentsCount = this._attachmentCollection.count,
+            errorMessage;
+        if (failedAttachmentsCount > 0) {
+            // Fire failed file error event
+            if (failedAttachmentsCount === 1 && totalAttachmentsCount > 1) {
+                // One of many attachments failed.
+                errorMessage = Jx.res.getString("composeOneAttachFailedErrorMessage");
+            } else if (failedAttachmentsCount === totalAttachmentsCount) {
+                errorMessage = totalAttachmentsCount === 1 ?
+                    Jx.res.getString("composeOneOfOneAttachFailedErrorMessage") : Jx.res.getString("composeAllAttachFailedErrorMessage");
+            } else {
+                // More than one (but not all) attachments failed.
+                errorMessage = Jx.res.getString("composeMultipleAttachFailedErrorMessage");
+            }
+
+            var attachFailedError = new AttachmentWell.Error(AttachmentWell.ErrorIds.attachFailed, errorMessage);
+            this.fire("error", { error: attachFailedError });
+        }
+    };
+    proto._updateTotalAttachmentSize = function (objectId, attachment) {
+        /// <summary>Keeps track of the total size of all attachments.</summary>
+        /// <param name="objectId" type="String">The unique id of the attachment.</param>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment" optional="true">The attachment object. This is null if the attachment no longer exists.</param>
+        var previousTotalAttachmentSize = this._totalAttachmentSize;
+
+        // Default to zero for the case that this is a brand new attachment that was just added.
+        var oldAttachmentSize = this._attachmentSizes[objectId] || 0;
+        this._totalAttachmentSize -= oldAttachmentSize;
+        Debug.assert(this._totalAttachmentSize >= 0, "Expected total attachment size to be a positive number");
+
+        // Default to zero for the case that this attachment was just removed.
+        var newAttachmentSize = attachment ? attachment.size : 0;
+        this._totalAttachmentSize += newAttachmentSize;
+
+        if (attachment) {
+            // Save this for the future.
+            this._attachmentSizes[objectId] = newAttachmentSize;
+        } else {
+            // The attachment does not exist anymore.
+            delete this._attachmentSizes[objectId];
+        }
+
+        // Check if we need to show or hide the error for basic attachments.
+        var maxBasicAttachmentsSizeInBytes = BasicAttachmentsMax.sizeInBytes;
+        if (previousTotalAttachmentSize >= maxBasicAttachmentsSizeInBytes && this._totalAttachmentSize < maxBasicAttachmentsSizeInBytes) {
+            // We were over the max size, but now we are under.
+            this.fire("clearerror", { errorId: AttachmentWell.ErrorIds.maxBasicAttachmentsSize });
+        } else if (previousTotalAttachmentSize < maxBasicAttachmentsSizeInBytes && this._totalAttachmentSize >= maxBasicAttachmentsSizeInBytes) {
+            // We were under the max size but now we are over.
+            var maxBasicAttachmentsSizeError = new AttachmentWell.Error(AttachmentWell.ErrorIds.maxBasicAttachmentsSize, Jx.res.getString("composeMaxBasicAttachmentsSizeErrorMessage"));
+            this.fire("error", { error: maxBasicAttachmentsSizeError });
+        }
+    };
+    proto._attachmentQueueEmpty = function () {
+        /// <summary>Responds to attachment queue empty event notifications</summary>
+        this._needToFireAttachComplete = true;
+        this._checkAndFireQueueEmpty();
+    };
+    proto._checkAndFireQueueEmpty = function () {
+        /// <summary>Checks if we are ready to fire attachcomplete event and fires accordingly. 
+        ///          Fires event if the queue empty event is received and all pending attachments are either completed or failed.
+        /// </summary>
+        if (this._needToFireAttachComplete && Object.keys(this._pendingAttachments).length === 0) {
+            // Clear progress error
+            this.fire("clearerror", { errorId: AttachmentWell.ErrorIds.inProgress });
+
+            // Queue is empty, that means message can be sent, calculate the time in processing
+            if (this._attachStartTime > 0) {
+                this._totalAttachDuration += ((new Date()).getTime() - this._attachStartTime);
+                this._attachStartTime = 0;
+            }
+            // Inform clients that attaching is complete for the current queue
+            Jx.EventManager.fire(null, "attachcomplete", {});
+
+            this._needToFireAttachComplete = false;
+        }
+    };
+    /* @type(Microsoft.WindowsLive.Platform.IMailManager) */proto._mailManager = null;
+    /* @type(Microsoft.WindowsLive.Platform.IMailMessage) */proto._mailMessage = null;
+    /* @type(Microsoft.WindowsLive.Photomail.AttachmentManager) */proto._attachmentManager = null;
+    /* @type(Microsoft.WindowsLive.Platform.ICollection) */proto._attachmentCollection = null;
+    /* @type(Number)*/proto._attachmentCount = 0;
+    /* @type(Object)*/proto._attachmentObjects = null;
+    /* @type(Object)*/proto._attachmentSizes = null;
+    /* @type(Number)*/proto._totalAttachmentSize = 0;
+    /* @type(Array)*/proto._changedListeners = null;
+    /* @type(Object)*/proto._pendingAttachments = null;
+    /* @type(Object)*/proto._failedAttachments = null;
+    /* @type(Number)*/proto._totalAttachDuration = 0;
+    /* @type(Number)*/proto._attachStartTime = 0;
+    /* @type(Number)*/proto._numberOfValidateFailures = 0;
+    /* @type(Boolean)*/proto._isDirty = null;
+    /* @type(Boolean)*/proto._needToFireAttachComplete = false;
+
+
+    
+    // Mock Microsoft.WindowsLive.Photomail.AttachmentManager for running in IE
+    window.MockAttachments = {};
+    MockAttachments.getManager = function (messageId) {
+        return {
+            _messageId: messageId,
+            _files: [],
+            _isAttaching: false,
+            imageSize: 0,
+            addFiles: function (files) {
+                // Do something with files
+                this._isAttaching = true;
+                this._files = this._files.concat(files);
+            },
+            addFile: function (attachmentId, aFile) {
+                this.addFiles([aFile]);
+            },
+            removeFile: function (attachmentId) {
+                // Do something
+            },
+            isAttaching: function (attachmentId) {
+                // Check if this file is being attaching
+                // since we are mock, we are always attaching something
+                return this._isAttaching;
+            },
+            discard: function () {
+                // Discard any intermediate state (transcoded files etc) and stop everything
+            },
+            stopAll: function () {
+                // Stop everything
+            },
+            dispose: function () {
+                // Cleanup routine to explicitly clean and not rely on JS GC
+            }
+        };
+    };
+    
+
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+/*global AttachmentWell*/
+/// <reference path="AttachmentWell.ref.js" />
+
+(function () {
+    
+    var T = AttachmentWell.Templates = {
+
+        // Error Manager
+        errorMessage: function (data) {
+            var err = data.error;
+            var s = '<div data-errorId="' + err.id + '" class="attachmentWell-error-message">' +  Jx.escapeHtml(err.message);
+            for (var i = 0, len = err.commands.length; i < len; i++) {
+                s += '<button class="attachmentWell-error-command" type="button">' +  err.commands[i].label + '</button>';
+            }
+            s += '</div>';
+            return s;
+        },
+
+        // Shared helpers
+        basicProperties: function (data) {
+            return  '' + 
+                '<li class="attachmentWell-item-property-fileName">' + Jx.escapeHtml(data.name) + '</li>' + 
+                '<li class="attachmentWell-item-property-fileExtension">' + Jx.escapeHtml(data.fileExtension) + '</li>' + 
+                '<li class="attachmentWell-item-property-fileSize">' +  Jx.escapeHtml(data.fileSize) + '</li>';
+        },
+
+        properties: function (data) {
+            return '' +
+                '<ul class="attachmentWell-item-properties">' +
+                    T.basicProperties(data) +
+                '</ul>';
+        },
+
+        image: function (data, src, className) {
+            Debug.assert(!Jx.isNullOrUndefined(data) && !Jx.isNullOrUndefined(data.name), "AttachmentWell.Templates.image: data cannot be null");
+            Debug.assert(Jx.isNonEmptyString(src), "AttachmentWell.Templates.image: src has to be a non-empty string");
+            className = className ? className : "";
+            return '<img class="' + className + '" src="' + src + '" alt="' + Jx.escapeHtml(data.name) + '">'
+        },
+
+        defaultImage: function (data, iconFileName, className) {
+            return T.image(data, "/resources/modernattachmentwell/images/" + iconFileName, className);
+        },
+
+        fileIcon: function (data) {
+            if (data.isEml) {
+                return '' +
+                    '<div class="attachmentWell-item-status">' +
+                        T.defaultImage(data, "emlIcon.png", "attachmentWell-photo-video-icon") +
+                    '</div>';
+            }
+
+            if (data.fileIconUrl) {
+                return '' +
+                    '<div class="attachmentWell-item-status">' +
+                        '<img src="' + data.fileIconUrl + '" alt="' + Jx.escapeHtml(data.name) + '" height="' + data.fileIconHeight + '" width="' + data.fileIconWidth + '">' +
+                    '</div>';
+            }
+
+            return '' +
+                '<div class="attachmentWell-item-status attachmentWell-item-placeholder">' +
+                    T.defaultImage(data, "default.png", "attachmentWell-default-icon") +
+                '</div>';
+        },
+
+        // Shared renderers
+        photoVideoItemPlaceholder: function (data) {
+            return '' +
+                '<div class="attachmentWell-item-photoVideo attachmentWell-item-placeholder" aria-hidden="true">' +
+                     T.defaultImage(data, "default.png", "attachmentWell-default-icon") +
+                '</div>';
+        },
+
+        videoItem: function (data) {
+            return '' +
+                '<div class="attachmentWell-item-photoVideoDone" aria-hidden="true">' +
+                    T.image(data, data.thumbnailUrl) + 
+                    '<div class="attachments-videoInfo" aria-hidden="true">' +
+                        '<div class="videoPlayGlyph">\uE102</div>' +
+                    '</div>' +
+                '</div>';
+        },
+
+        photoItem: function (data) {
+            return '' +
+                '<div class="attachmentWell-item-photoVideoDone" aria-hidden="true">' +
+                    '<img src="' + data.thumbnailUrl + '">' +
+                '</div>';
+        },
+
+        otherItem: function (data) {
+            return '' +
+                '<div class="attachmentWell-item-other attachmentWell-item-downloaded" aria-hidden="true">' +
+                    T.fileIcon(data) +
+                    T.properties(data) +
+                '</div>';
+        },
+
+        // Compose helpers
+        propertiesWithRemoveCommand: function (data) {
+            return '' +
+                '<ul class="attachmentWell-item-properties">' +
+                    '<li class="attachmentWell-item-property-fileName">' + Jx.escapeHtml(data.name) + '</li>' +
+                    '<li class="attachmentWell-item-command">' + data.commandLabel + '</li>' +
+                '</ul>';
+        },
+
+        // Compose renderers
+        composeItemWithProgress: function(/*data*/) {
+            return '<div class="attachmentWell-item-progress" aria-hidden="true"></div>';
+        },
+
+        composeErrorItem: function(data) {
+            return '' + 
+                '<div class="attachmentWell-item-other attachmentWell-item-error" aria-hidden="true">' + 
+                    '<div class="attachmentWell-item-status">' +
+                         T.defaultImage(data, "default.png", "attachmentWell-default-icon") +
+                    '</div>' + 
+                    T.propertiesWithRemoveCommand(data) + 
+                '</div>';
+        },
+
+        // Read helpers
+        propertiesWithDownloadCommand: function(data) {
+            return '' + 
+                '<ul class="attachmentWell-item-properties">' + 
+                    T.basicProperties(data) + 
+                    '<li class="attachmentWell-item-command">' + data.commandLabel + '</li>' + 
+                '</ul>';
+        },
+       
+        propertiesWithCancelCommand: function(data) {
+            return '' + 
+                '<ul class="attachmentWell-item-properties">' + 
+                    T.basicProperties(data) + 
+                    '<li class="attachmentWell-item-command">' + 
+                        '<progress class="win-ring"></progress>' + 
+                        data.commandLabel + 
+                    '</li>' + 
+                '</ul>';
+        },
+
+        notDownloadedPhotoVideo: function (data) {
+            return '' +
+                '<div class="attachmentWell-item-status attachmentWell-item-placeholder">' +
+                     T.defaultImage(data, "photoVideoIcon.png", "attachmentWell-photo-video-icon") +
+                '</div>';
+        },
+       
+        // Read
+        readOtherItemDownloading: function(data) {
+            return '' + 
+                '<div class="attachmentWell-item-other attachmentWell-item-downloading" aria-hidden="true">' + 
+                    T.fileIcon(data) + 
+                    T.propertiesWithCancelCommand(data) + 
+                '</div>';
+        },
+
+        readOtherItemNotDownloaded: function(data) {
+            return '' + 
+                '<div class="attachmentWell-item-other attachmentWell-item-notDownloaded" aria-hidden="true">' + 
+                    T.fileIcon(data) + 
+                    T.propertiesWithDownloadCommand(data) + 
+                '</div>';
+        },
+
+        readPhotoVideoItemDownloading: function(data) {
+            return '' + 
+                '<div class="attachmentWell-item-photoVideo attachmentWell-item-downloading" aria-hidden="true">' + 
+                    T.notDownloadedPhotoVideo(data) + 
+                    T.propertiesWithCancelCommand(data) + 
+                '</div>';
+        },
+
+        readPhotoVideoItemNotDownloaded: function(data) {
+            return '' + 
+                '<div class="attachmentWell-item-photoVideo attachmentWell-item-notDownloaded" aria-hidden="true">' + 
+                    T.notDownloadedPhotoVideo(data) + 
+                    T.propertiesWithDownloadCommand(data) + 
+                '</div>';
+        }
+    };
+
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/// <reference path="AttachmentWell.ref.js" />
+/*global AttachmentWell,Jx,Debug*/
+
+(function () {
+    AttachmentWell.ErrorIds = {
+        attachFailed: "attachFailed",
+        downloadFailed: "downloadFailed",
+        inProgress: "inProgress",
+        maxBasicAttachmentsSize: "maxBasicAttachmentsSize",
+        maxFiles: "maxFiles",
+        openFailed: "openFailed"
+    };
+
+    AttachmentWell.Error = /*@constructor*/function (id, message) {
+        /// <param name="id" type="String">The unique ID for the error.</param>
+        /// <param name="message" type="String">The localized message for the error.</param>
+        Debug.assert(Jx.isNonEmptyString(id), "Expected id to be a valid string");
+        Debug.assert(Jx.isNonEmptyString(message), "Expected message to be a valid string");
+        this.commands = [];
+        this.id = id;
+        this.message = message;
+    };
+
+    var errorProto = AttachmentWell.Error.prototype;
+    errorProto.commands = /*static_cast(Array)*/null;
+    errorProto.id = /*static_cast(String)*/null;
+    errorProto.message = /*static_cast(String)*/null;
+
+
+    AttachmentWell.ErrorCommand = /*@constructor*/function (label, action) {
+        /// <param name="label" type="String">The localized label for the error command.</param>
+        /// <param name="action" type="Function">The event handler for the error command.</param>
+        this.action = action;
+        this.label = label;
+    };
+
+    var errorCommandProto = AttachmentWell.ErrorCommand.prototype;
+    errorCommandProto.action = /*@static_cast(Function)*/null;
+    errorCommandProto.label = /*static_cast(String)*/null;
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders errors for the attachment well.
+//
+/*global AttachmentWell,Jx,Debug,document*/
+
+(function () {
+    AttachmentWell.ErrorManager = /*@constructor*/function () {
+        /// <summary>Renders errors from the compose attachment well.</summary>
+        this.initComponent();
+    };
+
+    Jx.augment(AttachmentWell.ErrorManager, Jx.Component);
+
+    var proto = AttachmentWell.ErrorManager.prototype;
+
+    proto.getUI = function (ui) {
+        ui.html = '<div class="attachmentWell-errorList" aria-hidden="true" aria-live="polite"></div>';
+    };
+
+    proto.activateUI = function () {
+        /// <summary>Used to interact with the DOM after it was built.</summary>
+        this._activeErrors = {};
+        this._commandCallbacks = {};
+        this._errorWrapper = document.createElement("div");
+
+        var view = this.getParent();
+        this._errorListElement = view.getElement().querySelector(".attachmentWell-errorList");
+    };
+
+    proto._addCommandEventListeners = function (errorElement, error) {
+        /// <summary>Adds event listeners to each command.</summary>
+        /// <param name="errorElement" type="HTMLElement">The HTML element that holds the error.</param>
+        /// <param name="error" type="AttachmentWell.Error">The error containing commands.</param>
+        var commandElements = errorElement.querySelectorAll(".attachmentWell-error-command");
+        Debug.assert(commandElements.length === error.commands.length, "Expected all error commands to be present in error element");
+
+        var command,
+            commandElement,
+            that = this;
+        for (var i = 0, len = error.commands.length; i < len; i++) {
+            command = /*@static_cast(AttachmentWell.ErrorCommand)*/error.commands[i];
+            commandElement = /*@static_cast(HTMLElement)*/commandElements[i];
+            if (commandElement) {
+                var commandCallback = function () {
+                    that.clearError(error.id);
+                    command.action();
+                };
+                this._commandCallbacks[command.action] = commandCallback;
+                commandElement.addEventListener("click", commandCallback, false);
+                
+            } else {
+                Debug.assert(false, "Expected to find command element in error element");
+                
+            }
+        }
+    };
+
+    proto.clearError = function (errorId) {
+        /// <summary>Clears the given error.</summary>
+        /// <param name="errorId" type="String">The unique ID of the error to clear.</param>
+        /// <returns type="Boolean">true if the error was cleared and false otherwise.</returns>
+        try {
+            // If the error doesn't exist then we just no-op so that clients can attempt to clear errors 
+            // without having to check if they exist first.
+            var existingError = this._activeErrors[errorId];
+            if (existingError) {
+                var errorElement = this._errorListElement.querySelector('[data-errorId="' + errorId + '"]');
+                if (errorElement) {
+                    // We pass existingError to _removeCommandEventListeners as it is the original error 
+                    // object that referenced all of the associated commands. The new error object passed 
+                    // to use via the parameter may not contain these same exact commands.
+                    this._removeCommandEventListeners(errorElement, existingError);
+                    this._errorListElement.removeChild(errorElement);
+                    delete this._activeErrors[errorId];
+                    this._showOrHide();
+                    return true;
+                    
+                } else {
+                    Debug.assert(false, "Expected to find error element");
+                    
+                }
+            }
+        } catch (ex) {
+            Jx.log.error("Failed to clear Attachment Well error " + errorId + ": " + ex);
+        }
+
+        return false;
+    };
+
+    proto.clearAllErrors = function () {
+        /// <summary>Clears all errors.</summary>
+        if (this._activeErrors) {
+            var keys = Object.keys(this._activeErrors),
+                error,
+                cleared;
+            for (var i = keys.length; i--;) {
+                error = /*@static_cast(AttachmentWell.Error)*/this._activeErrors[keys[i]];
+                cleared = this.clearError(error.id);
+                Debug.assert(cleared, "Expected to successfully clear Attachment well error " + error.id);
+            }
+        }
+    };
+
+    proto._createErrorElement = function (error) {
+        /// <summary>Creates an element for the error, including all associated commands.</summary>
+        /// <param name="error" type="AttachmentWell.Error">The error to create an element for.</param>
+        /// <returns type="HTMLElement">The element containing error info.</returns>
+        this._errorWrapper.innerHTML = AttachmentWell.Templates.errorMessage.call(this, { error: error });
+
+        return this._errorWrapper.querySelector(".attachmentWell-error-message");
+    };
+
+    proto._removeCommandEventListeners = function (errorElement, error) {
+        /// <summary>Removes event listeners from each command.</summary>
+        /// <param name="errorElement" type="HTMLElement">The HTML element that holds the error.</param>
+        /// <param name="error" type="AttachmentWell.Error">The error containing commands.</param>
+        var commandElements = errorElement.querySelectorAll(".attachmentWell-error-command");
+        Debug.assert(commandElements.length === error.commands.length, "Expected all error commands to be present in error element");
+
+        var command,
+            commandElement,
+            commandCallback;
+        for (var i = 0, len = error.commands.length; i < len; i++) {
+            command = /*@static_cast(AttachmentWell.ErrorCommand)*/error.commands[i];
+            commandElement = /*@static_cast(HTMLElement)*/commandElements[i];
+            if (commandElement) {
+                commandCallback = this._commandCallbacks[command.action];
+                if (commandCallback) {
+                    commandElement.removeEventListener("click", commandCallback, false);
+                    
+                } else {
+                    Debug.assert(false, "Expected to find command callback");
+                    
+                }
+                
+            } else {
+                Debug.assert(false, "Expected to find command element in error element");
+                
+            }
+        }
+    };
+
+    proto._showOrHide = function () {
+        /// <summary>Shows or hides the error manager depending on if there are any visible errors.</summary>
+        var numErrors = Object.keys(this._activeErrors).length,
+            hiddenErrors = this._errorListElement.querySelectorAll(".attachmentWell-error-message[aria-hidden='true']");
+        if (numErrors > 0 && hiddenErrors.length !== numErrors) {
+            this._errorListElement.removeAttribute("aria-hidden");
+        } else {
+            this._errorListElement.setAttribute("aria-hidden", "true");
+        }
+    };
+
+    proto.hideError = function (error) {
+        /// <summary>Hides the given error.</summary>
+        /// <param name="error" type="AttachmentWell.Error">The error to hide.</param>
+        /// <returns type="Boolean">true if the error was hidden and false otherwise.</returns>
+        try {
+            // If the error doesn't exist then we just no-op so that clients can attempt to hide errors 
+            // without having to check if they exist first.
+            var errorElement = this._errorListElement.querySelector('[data-errorId="' + error.id + '"]');
+            if (errorElement) {
+                errorElement.setAttribute("aria-hidden", "true");
+                this._showOrHide();
+                return true;
+            
+            } else {
+                Debug.assert(false, "Expected to find error element");
+            
+            }
+        } catch (ex) {
+            Jx.log.error("Failed to hide Attachment Well error " + error.id + ": " + ex);
+        }
+
+        return false;
+    };
+
+    proto.showError = function (error) {
+        /// <summary>Shows the given error.</summary>
+        /// <param name="error" type="AttachmentWell.Error">The error to show.</param>
+        /// <returns type="Boolean">true if the error was shown and false otherwise.</returns>
+        try {
+            Jx.log.info("AttachmentWell.ErrorManager.showError: " + error.id);
+
+            // Always clear the error first so that if it is already being shown it will be bumped to the top of the list.
+            this.clearError(error.id);
+
+            var errorElement = this._createErrorElement(error);
+            this._addCommandEventListeners(errorElement, error);
+
+            var errorListElement = this._errorListElement,
+                firstChild = errorListElement.firstChild;
+
+            // Always insert at the beginning of the list.
+            if (firstChild) {
+                errorListElement.insertBefore(errorElement, firstChild);
+            } else {
+                errorListElement.appendChild(errorElement);
+            }
+
+            this._activeErrors[error.id] = error;
+
+            this._showOrHide();
+
+            return true;
+        } catch (ex) {
+            Jx.log.error("Failed to show Attachment Well error " + error.id + ": " + ex);
+        }
+
+        return false;
+    };
+
+    proto.deactivateUI = function () {
+        /// <summary>Used to interact with the DOM just before it is destroyed.</summary>
+        this.clearAllErrors();
+        this._activeErrors = null;
+        this._commandCallbacks = null;
+        this._errorWrapper = null;
+        this._errorListElement = null;
+        Jx.Component.prototype.deactivateUI.call(this);
+    };
+
+    proto._activeErrors = null;
+    proto._commandCallbacks = null;
+    proto._errorWrapper = /*@static_cast(HTMLElement)*/null;
+    proto._errorListElement = /*@static_cast(HTMLElement)*/null;
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+/*global AttachmentWell,Jx,Debug,Windows,WinJS*/
+(function () {
+
+    var Utils = AttachmentWell.Utils;
+
+    // Defines file display ordering with smaller number indicating closer to the front
+    Utils.GroupOrdering = {
+        photoVideo: 0,
+        others: 1
+    };
+
+    Utils.FileCategory = {
+        photo: "photo",
+        video: "video",
+        others: "others"
+    };
+
+    // File extensions that we recognize as a photo file
+    Utils._photoExtensions = [
+        ".jpg", ".jpeg", ".png", ".gif", ".bmp", ".tif", ".tiff", ".jpe", ".jfif", ".dib", ".wdp", ".pano",
+        ".arw", ".cr2", ".crw", ".erf", ".mrw", ".nef", ".orf", ".pef", ".sr2", ".mef", ".nrw", ".raw", ".rw2", ".rwl" // Raw image extensions
+    ];
+
+    // File extensions that we recognize as a video file
+    Utils._videoExtensions = [
+        ".avi", ".wmv", ".mpg", ".mpeg", ".dvr-ms", ".mp4", ".mov", ".m4v", ".3g2",
+        ".3gp2", ".3gp", ".3gpp", ".m4a", ".mp4v", ".mts", ".m2ts", ".ts", ".wm", ".wtv"
+    ];
+
+    Utils.isSupportedPhotoOrVideoFormat = function (fileExtension) {
+        /// <summary>Gets whether the given file extension is a photo or video type that we recognize.</summary>
+        /// <param name="fileExtension" type="String">File extension, ex: ".jpg"</param>
+        return Utils.isSupportedPhotoFormat(fileExtension) || Utils.isSupportedVideoFormat(fileExtension);
+    };
+
+    Utils.isSupportedPhotoFormat = function (fileExtension) {
+        /// <summary>Gets whether the given file extension is a photo type that we recognize.</summary>
+        /// <param name="fileExtension" type="String">File extension, ex: ".jpg"</param>
+        return Utils._photoExtensions.indexOf(fileExtension.toLowerCase()) >= 0;
+    };
+
+    Utils.isSupportedVideoFormat = function (fileExtension) {
+        /// <summary>Gets whether the given file extension is a video type that we recognize.</summary>
+        /// <param name="fileExtension" type="String">File extension, ex: ".jpg"</param>
+        return Utils._videoExtensions.indexOf(fileExtension.toLowerCase()) >= 0;
+    };
+
+    Utils.isEml = function (fileExtension) {
+        /// <summary>Gets whether the given file extension is an EML extension.</summary>
+        /// <param name="fileExtension" type="String">File extension, ex: ".eml"</param>
+        return fileExtension.toLowerCase() === ".eml";
+    };
+
+    Utils.getFileFromBodyUri = function (attachment) {
+        Debug.assert(attachment.bodyUri, "AttachmentWell.Utils.getFileFromBodyUri: the given attachment's bodyUri is not available");
+        var encodedUri = Utils.encodeUri(attachment.bodyUri);
+        var uri = new Windows.Foundation.Uri(encodedUri);
+        try {
+            // getFileFromApplicationUriAsync throws exception instead of returning failed promise
+            // for cases like when the file path exceeds the system max file size
+            return Windows.Storage.StorageFile.getFileFromApplicationUriAsync(uri);
+        } catch (e) {
+            return WinJS.Promise.wrapError(e);
+        }
+    };
+
+    Utils.encodeUri = function (uri) {
+        /// <summary>Encodes special characters that are allowed as part of the file name but not in an URI.</summary>
+        /// <param name="uri" type="String">URI string to encode.</param>
+        Debug.assert(Jx.isString(uri), "AttachmentWell.Utils._encodeUri: given uri is not a string");
+        return uri.replace(/%/g, "%25")   // encode %
+                  .replace(/#/g, "%23");   // encode # 
+    };
+
+    Utils.getFileName = function (attachment) {
+        /// <summary>Gets the file name of the given attachment without file extension.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        // Default to the full file name because there may not be a file extension at all
+        var fileName = attachment.fileName;
+        var index = fileName.lastIndexOf(".");
+        if (index >= 0) {
+            fileName = fileName.substr(0, index);
+        }
+        return fileName;
+    };
+
+    Utils.getFileExtension = function (attachment) {
+        /// <summary>Gets the file extension of the given attachment in lower case in the format of ".jpg"
+        /// Returns an empty string if the given attachment file name does not have an extension.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var fileName = attachment.fileName;
+        var extension = ""; // Default to empty string because there may not be a file extension at all
+        var index = fileName.lastIndexOf(".");
+        if (index >= 0) {
+            extension = fileName.substr(index).toLowerCase();
+        }
+        return extension;
+    };
+
+    Utils.markFileAsWritable = function (file) {
+        /// <summary>Sets the given file's attributes so that it is marked as writable / not read-only.</summary>
+        /// <param name="file" type="Windows.Storage.StorageFile">File to mark as writable</param>
+        if (file) {
+            var fileAttributesProperty = "System.FileAttributes";
+            return file.properties.retrievePropertiesAsync([fileAttributesProperty])
+                .then(function (properties) {
+                    // make sure the saved file is not marked as read-only by setting its fil attributes to "normal"
+                    properties[fileAttributesProperty] = Windows.Storage.FileAttributes.normal;
+                    return file.properties.savePropertiesAsync(properties);
+                });
+        }
+    };
+
+    Utils._numSuggestedNumerals = 3;
+    Utils._ordersOfMagnitude = ["bytes", "kilobytes", "megabytes", "gigabytes", "terabytes", "petabytes", "exabytes"];
+    Utils.getFileSize = function (attachment) {
+        /// <summary>Gets a human-readable string that represents the file size.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var fileSizeInBytes = attachment.size;
+
+        if (fileSizeInBytes === 1) {
+            // Special case for the singular "1 byte".
+            return Jx.res.getString("singleByte");
+        }
+
+        var size = fileSizeInBytes,
+            sizeString = size.toString(10),
+            ordersOfMagnitude = Utils._ordersOfMagnitude,
+            order = 0;
+
+        // This logic is borrowed from the implementation of PSStrFormatByteSizeW in //depot/winmain/shell/propsys/formatdisplay.cpp.
+        if (size >= 1024) {
+            // If the suggested number of numerals is 3, then we know that the string "1000" (10^3) is too long because it contains 4 
+            // numerals. We multiply this "too long" number by 1024 because we'll divide by 1024 again after the loop.
+            var numSuggestedNumerals = Utils._numSuggestedNumerals,
+                sizeThatIsTooLong = 1024 * Math.pow(10, numSuggestedNumerals),
+                len;
+
+            for (order = 1, len = ordersOfMagnitude.length; order < len && size >= sizeThatIsTooLong; order++) {
+                size /= 1024;
+            }
+
+            // Format the integer portion of the file size as a string to see if it is the right length already.
+            size /= 1024;
+            var integerPortion = Math.floor(size),
+                formatter = new Windows.Globalization.NumberFormatting.DecimalFormatter();
+            formatter.fractionDigits = 0;
+            sizeString = formatter.format(integerPortion);
+
+            var numFractionDigitsNeeded = numSuggestedNumerals - sizeString.length;
+            if (numFractionDigitsNeeded > 0) {
+                // We need to truncate the decimal portion to the appropriate length because it is probably too long, but the Windows 
+                // DecimalFormatter doesn't truncate  numbers (by design), so we do it manually. However, JavaScript doesn't have a 
+                // native method that can truncate a number in-place, so we have to use toFixed which converts the number to a string.
+                var truncatedSizeString = size.toFixed(numFractionDigitsNeeded),
+                    truncatedSize = parseFloat(truncatedSizeString);
+
+                // Format the final number.
+                formatter.fractionDigits = numFractionDigitsNeeded;
+                sizeString = formatter.format(truncatedSize);
+            }
+        }
+
+        return Jx.res.loadCompoundString(ordersOfMagnitude[order], sizeString);
+    };
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// A base component that encapsulates all compose attachment UX.
+//
+
+/*global AttachmentWell,Jx,Debug*/
+
+(function () {
+
+    AttachmentWell.Base.Module = /*@constructor*/function () {
+        /// <summary>A base component that encapsulates all compose attachment UX.</summary>
+        this.initComponent();
+        this._id = "idAttachmentWell_" + Jx.uid();
+    };
+
+    Jx.augment(AttachmentWell.Base.Module, Jx.Component);
+
+    var proto = AttachmentWell.Base.Module.prototype;
+
+    proto.getUI = function (ui) {
+        /// <summary>Gets the HTML and CSS for this component.</summary>
+        /// <param name="ui" type="JxUI">An object that contains the HTML and CSS as strings.</param>
+        Debug.assert(Jx.isObject(ui), "Expected ui to be a valid object");
+
+        ui.html =
+            '<div id="' + this._id + '" class="attachmentWell-module">' +
+                Jx.getUI(this._view).html +
+            '</div>';
+    };
+
+    proto._id = /*@static_cast(String)*/null;
+    proto._view = /*@static_cast(AttachmentWell.Compose.ViewLayout)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Base controller that controls an individual attachment item actions.
+//
+
+/*global AttachmentWell,Jx,Debug,WinJS,Microsoft,Windows*/
+
+(function () {
+
+    var Utils = AttachmentWell.Utils;
+
+    AttachmentWell.Base.ItemController = /*@constructor*/function (view) {
+        /// <summary>Base controller that controls an individual attachment item actions.</summary>
+        /// <param name="view" type="AttachmentWell.Base.ViewLayout">View that hosts the items this controller controls.</param>
+        Debug.assert(view && view.getElement, "AttachmentWell.Base.ItemController: given view is invalid or does not have getElement function implemented");
+        this._view = view;
+    };
+
+    Jx.augment(AttachmentWell.Base.ItemController, Jx.EventTarget);
+
+    var proto = AttachmentWell.Base.ItemController.prototype;
+
+    proto._getAttachmentStatus = function (attachment) {
+        /// <summary>Returns the sync or attach status state of the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        Debug.assert(false, "Expected AttachmentWell.Base.Controller._getAttachmentStatus() to be implemented by subclass");
+    };
+
+    proto._getItemInvokedCallback = function (attachmentStatus) {
+        /// <summary>Returns a function to be invoked when a user taps on an attachment.</summary>
+        /// <param name="attachmentStatus" type="Number">The status of the attachment.</param>
+        /// <returns type="Function">A callback function to execute.</returns>
+        if (!this._itemInvokedCallbacks) {
+            this._itemInvokedCallbacks = this._createItemInvokedCallbacks();
+        }
+        return this._itemInvokedCallbacks[attachmentStatus];
+    };
+
+    proto._createItemInvokedCallbacks = function () {
+        /// <returns type="Object">A mapping from attachment status to item invoked callback.</returns>
+        Debug.assert(false, "Expected AttachmentWell.Base.Controller._createItemInvokedCallbacks() to be implemented by subclass");
+    };
+
+    proto._getContextMenuCallbacks = function (attachmentStatus) {
+        /// <summary>Returns an array of context menu callbacks, one of which will be invoked when a user right-clicks on an attachment and chooses a command.</summary>
+        /// <param name="attachmentStatus" type="Number">The status of the attachment.</param>
+        /// <returns type="Array">An array of context menu callbacks.</returns>
+        if (!this._contextMenuCallbacks) {
+            this._contextMenuCallbacks = this._createContextMenuCallbacks();
+        }
+        return this._contextMenuCallbacks[attachmentStatus] || [];
+    };
+
+    proto._getContextMenuCommands = function (attachment, options) {
+        /// <summary>Returns an array of context menu commands to be shown when a user right-clicks on an attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="options" type="Object">Options for the context menu commands. 
+        /// options: {
+        ///         launcherOptions: null,  // Windows.System.LauncherOptions for Open windowing preference
+        ///         itemDiv: null           // HTMLElement to remove for Delete command
+        /// }
+        /// </param>
+        /// <returns type="Array">A list of WinJS.UI.MenuCommands to show.</returns>
+        var status = this._getAttachmentStatus(attachment),
+            callbacks = this._getContextMenuCallbacks(status);
+        Debug.assert(Jx.isArray(callbacks), "Expected callbacks to be a valid array");
+
+        var contextMenu = this._getContextMenu(),
+            fileExtension = Utils.getFileExtension(attachment);
+        return callbacks
+            .filter(function (callback) {
+                return callback.isEnabled(fileExtension);
+            })
+            .map(function (callback) {
+            /// <param name="callback" type="AttachmentWell.Base.ContextMenuCallback">The callback for the context menu item.</param>
+                var contextMenuCommand = contextMenu.getCommandById(callback.commandId);
+                contextMenuCommand.onclick = function () {
+                    callback.invoke(attachment, options);
+                };
+                return contextMenuCommand;
+            });
+    };
+
+    proto._alwaysEnable = function () {
+        return true;
+    };
+
+    proto._disableForEml = function (fileExtension) {
+        /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+        return !Utils.isEml(fileExtension);
+    };
+
+    proto._enableForEml = function (fileExtension) {
+        /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+        return Utils.isEml(fileExtension);
+    };
+
+    proto._getContextMenu = function () {
+        /// <returns type="WinJS.UI.Menu">The context menu for the attachment well.</returns>
+        if (!this._contextMenu) {
+            var contextMenuElement = this._view.getElement().querySelector(".attachments-contextMenu");
+            Debug.assert(Jx.isHTMLElement(contextMenuElement), "Expected valid context menu element");
+            WinJS.UI.processAll(contextMenuElement);
+            Jx.res.processAll(contextMenuElement);
+
+            // WinLive 625320 - Narrator won't move to the "close" button of context menus (i.e. win-flyoutmenuclickeater) 
+            // unless the context menu element is moved to be closer in the DOM to the "close" button.
+            var flyoutContainerElement = this._getFlyoutContainerElement();
+            Debug.assert(flyoutContainerElement, "Couldn't find flyout container for attachment well context menu");
+            if (flyoutContainerElement) {
+                flyoutContainerElement.appendChild(contextMenuElement);
+            }
+
+            this._contextMenu = contextMenuElement.winControl;
+        }
+        return this._contextMenu;
+    };
+
+    proto._getFlyoutContainerElement = function () {
+        /// <summary>Returns the parent element for flyouts.</summary>
+        /// <returns type="HTMLElement">The parent element for flyouts.</returns>
+        Debug.assert(false, "Expected AttachmentWell.Base.Controller._getFlyoutContainerElement() to be implemented by subclass");
+    };
+
+    proto.showContextMenu = function (attachment, options) {
+        /// <summary>Shows a context menu for the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="options" type="Object">Contains the DOM element to anchor the context menu.</param>
+        Debug.assert(Jx.isObject(attachment), "Expected attachment to be a valid object");
+        Debug.assert(options && Jx.isHTMLElement(options.itemDiv), "Expected itemDiv to be a valid HTMLElement");
+
+        var commands = this._getContextMenuCommands(attachment, options);
+        if (commands.length > 0) {
+            var menu = this._getContextMenu();
+            menu.showOnlyCommands(commands);
+            menu.show(options.itemDiv, "top", "center");
+        }
+    };
+
+    proto.onItemInvoked = function (attachment, options) {
+        /// <summary>Handles the iteminvoked event.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="options" type="Object">Contains the DOM element to anchor the context menu.</param>
+        Debug.assert(Jx.isObject(attachment), "Expected attachment to be a valid object");
+        Debug.assert(options && Jx.isHTMLElement(options.itemDiv), "Expected itemDiv to be a valid HTMLElement");
+
+        var status = this._getAttachmentStatus(attachment),
+            itemInvokedCallback = this._getItemInvokedCallback(status);
+        if (itemInvokedCallback) {
+            itemInvokedCallback(attachment, options);
+        } else {
+            // If there was no command to invoke, we show a context menu instead.
+            this.showContextMenu(attachment, options);
+        }
+    };
+
+    proto._openWith = function (attachment, options) {
+        /// <summary>Opens an attachment with the user-specified handler.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="options" type="Object" optional="true">Additional options.</param>
+        Jx.log.info("AttachmentWell.Base.ItemController._openWith");
+        var launcherOptions = new Windows.System.LauncherOptions();
+        launcherOptions.displayApplicationPicker = true;
+        options.launcherOptions = launcherOptions;
+        this._open(attachment, options);
+    };
+
+    proto._open = function (attachment, options) {
+        /// <summary>Opens an attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="options" type="Object" optional="true">Additional options.</param>
+        Jx.log.info("AttachmentWell.Base.ItemController._open");
+        var fileExtension = Utils.getFileExtension(attachment),
+            launcherOptions = options ? options.launcherOptions : null,
+            that = this;
+
+        // In case the last open attempt caused an error, clear the error before we attempt opening again.
+        this._view.fire("clearerror", { errorId: AttachmentWell.ErrorIds.openFailed });
+
+        Utils.getFileFromBodyUri(attachment).then(function (file) {
+            if (Jx.isNullOrUndefined(launcherOptions) && Utils.isEml(fileExtension)) {
+                return file.openAsync(Windows.Storage.FileAccessMode.read)
+                    .then(function (stream) {
+                        Jx.EventManager.broadcast("openEml", [stream]);
+                        return true;
+                    });
+            } else {
+                launcherOptions = launcherOptions || new Windows.System.LauncherOptions();
+                launcherOptions.desiredRemainingView = Utils.isSupportedPhotoOrVideoFormat(fileExtension) ?
+                    Windows.UI.ViewManagement.ViewSizePreference.useLess : Windows.UI.ViewManagement.ViewSizePreference.useHalf;
+                return Windows.System.Launcher.launchFileAsync(file, launcherOptions);
+            }
+        }).done(function (launched) {
+            if (!launched) {
+                Jx.log.error("Failed to open " + attachment.objectId + ": Windows launcher failed to launch");
+                that._fireOpenFailedError(attachment);
+            }
+        }, function (err) {
+            Jx.log.error("Failed to open " + attachment.objectId + ": " + err);
+            that._fireOpenFailedError(attachment);
+        });
+    };
+
+    proto._fireOpenFailedError = function (attachment) {
+        /// <summary>Fires the openFailed error for the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        Debug.assert(false, "Expected AttachmentWell.Base.ItemController._fireOpenFailedError() to be implemented by subclass");
+    };
+
+    proto.dispose = function () {
+        /// <summary>Releases all resources and shuts down this component.</summary>
+        if (this._contextMenu) {
+            var contextMenuElement = /*@static_cast(HTMLElement)*/this._contextMenu.element;
+            if (contextMenuElement) {
+                // The context menu element was likely re-parented outside of our component, so make sure we remove it from the DOM.
+                contextMenuElement.parentNode.removeChild(contextMenuElement);
+            }
+            this._contextMenu = null;
+        }
+        this._contextMenuCallbacks = null;
+        this._itemInvokedCallbacks = null;
+    };
+
+    proto._contextMenu = /*@static_cast(WinJS.UI.Menu)*/null;
+    proto._contextMenuCallbacks = /*@static_cast(Object)*/null;
+    proto._itemInvokedCallbacks = /*@static_cast(Object)*/null;
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/*global AttachmentWell,Jx,document,Debug,WinJS,Windows,URL*/
+/// <reference path="AttachmentWell.ref.js" />
+
+(function () {
+
+    var Templates = AttachmentWell.Templates,
+        ThumbnailResizer = AttachmentWell.ThumbnailResizer,
+        ThumbnailType = Windows.Storage.FileProperties.ThumbnailType,
+        Utils = AttachmentWell.Utils;
+
+    AttachmentWell.Base.Item = /*@constructor*/function (attachment, controller, host) {
+        /// <summary>Base Attachment Item</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="controller" type="AttachmentWell.Base.ItemController">Controls actions like context menu on an item.</param>
+        this._controller = controller;
+        this._attachment = attachment;
+        this._host = host;
+        this._currentStatus = this._getCurrentStatus();
+        this._id = "idAttachmentItem_" + Jx.uid();
+        this._disposed = false;
+        this._animationPromise = null;
+        this._ignoreItemInvokedEvent = false;
+
+        this._attachmentChanged = this._onAttachmentChanged.bind(this);
+        attachment.addEventListener("changed", this._attachmentChanged, false);
+
+        this._buildItemContainer();
+    };
+    var proto = AttachmentWell.Base.Item.prototype;
+
+    var _thumbnailWidth = Math.round(90 * 4 / 3); // Landscape-photo aspect ratio
+    proto._thumbnailDimensions = {
+        photoVideo: {
+            height: 90,
+            width: _thumbnailWidth,
+            minWidth: 48,
+            maxWidth: 1024
+        },
+        fileIcon: {
+            height: 40,
+            width: 40
+        }
+    };
+
+    proto._setBasicProperties = function () {
+        var attachment = this._attachment;
+        return this._properties = {
+            ariaLabel: attachment.fileName,
+            fileExtension: Utils.getFileExtension(attachment),
+            name: Utils.getFileName(attachment)
+        };
+    };
+
+    proto._buildItemContainer = function () {
+        var attachment = this._attachment;
+
+        // host the item div that gets replaced when the attachment's status is updated.
+        var itemWrapperDiv = this._itemWrapperDiv = document.createElement("div");
+        itemWrapperDiv.setAttribute("aria-hidden", "true");
+        itemWrapperDiv.className = "attachmentWell-item-wrapper";
+        new WinJS.UI.Tooltip(itemWrapperDiv, { innerHTML: attachment.fileName, extraClass: "attachments-tooltip" });
+
+        var itemContainerDiv = this._itemContainerDiv = document.createElement("div");
+        itemContainerDiv.id = this._id;
+        itemContainerDiv.tabIndex = -1;
+        itemContainerDiv.setAttribute("role", "option");
+        itemContainerDiv.appendChild(itemWrapperDiv);
+
+        var itemContainer = new WinJS.UI.ItemContainer(itemContainerDiv);
+        itemContainer.selectionDisabled = true;
+        itemContainer.oninvoked = this._onItemInvoked.bind(this);
+
+        this._contextMenuHandler = this._onContextMenu.bind(this);
+        this._keydownHandler = this._onKeyDown.bind(this);
+        this._holdVisualHandler = this._onMSHoldVisual.bind(this);
+        itemContainerDiv.addEventListener("contextmenu", this._contextMenuHandler, false);
+        itemContainerDiv.addEventListener("keydown", this._keydownHandler, false);
+        itemContainerDiv.addEventListener("MSHoldVisual", this._holdVisualHandler, true);
+
+        // Cap thumbnail width to its parent container's width. 
+        var containerWidth = this._host.getContainerWidth();
+        if (containerWidth > 0) {
+            this._thumbnailDimensions.photoVideo.maxWidth = containerWidth;
+        }
+
+        this._updateItemDiv();
+    };
+
+    proto._onAttachmentChanged = function (ev) {
+        /// <summary>Updates item rendering based on the changed status.</summary>
+        /// <param name="ev" type="Object">Event arguments</param>
+        var updatedStatus = this._getCurrentStatus();
+        if (updatedStatus !== this._currentStatus) {
+            Debug.assert(!Jx.isNullOrUndefined(ev.target), "AttachmentWell.Base.Item._onAttachmentChanged: ev.target is not valid");
+            Jx.log.info("AttachmentWell.Base.Item._onAttachmentChanged: " + ev.target.objectId + " status changed from " + this._currentStatus + " to " + updatedStatus);
+            this._currentStatus = updatedStatus;
+            this._updateItemDiv();
+        }
+    };
+
+    proto._updateItemDiv = function () {
+        /// <summary>Updates item rendering div based on the current attachment status.</summary>
+        var attachment = this._attachment,
+            itemWrapperDiv = this._itemWrapperDiv,
+            properties = this._setBasicProperties(),
+            renderer = this._getItemRenderer(properties.fileExtension, this._currentStatus).render;  // get a renderering function based on file type and attachment status
+        
+        // render the item and replace the existing rendered div if there is one
+        var that = this;
+        renderer(attachment, properties).done(function (itemDiv) {
+            if (!that._disposed) {
+                if (itemWrapperDiv.hasChildNodes()) {
+                    if (!Jx.isNullOrUndefined(that._animationPromise)) {
+                        that._animationPromise.cancel();
+                    }
+                    Debug.assert(itemWrapperDiv.children.length === 1, "There should be only one rendered div inside ItemContainer.");
+                    
+                    // cross-fade the update itemDiv
+                    var oldElement = itemWrapperDiv.firstChild;
+                    oldElement.style.position = "absolute";
+
+                    itemWrapperDiv.appendChild(itemDiv);
+                    itemDiv.style.opacity = "0";
+
+                    var removeOldChild = function () {
+                        itemWrapperDiv.removeChild(oldElement);
+                        itemDiv.style.opacity = "1";
+                        that._animationPromise = null;
+                    };
+                    that._animationPromise = WinJS.UI.Animation.crossFade(itemDiv, oldElement);
+                    that._animationPromise.done(removeOldChild /*success*/, removeOldChild /*error*/);
+                } else {
+                    itemWrapperDiv.appendChild(itemDiv);
+                }
+
+                // set image to be not draggable
+                var img = itemDiv.querySelector("img");
+                if (!Jx.isNullOrUndefined(img)) {
+                    img.setAttribute("draggable", "false");
+                }
+
+                that._itemContainerDiv.setAttribute("aria-label", properties.ariaLabel);
+            }
+        });
+    };
+
+    proto.getItemContainer = function () {
+        /// <summary>Gets the HTMLElement that hosts the ItemContainer control.</summary>
+        return this._itemContainerDiv;
+    };
+
+    proto._onKeyDown = function (ev) {
+        if (ev.key === "Spacebar") {
+            this._onContextMenu(ev);
+        }
+    };
+
+    proto._onMSHoldVisual = function (ev) {
+        // By default ItemContainer disables firing context menu events if selection is
+        // disabled. To get the event, we need to capture MSHoldVisual event before ItemContainer 
+        // and stop its propagation. 
+        ev.stopImmediatePropagation();
+        this._ignoreItemInvokedEvent = true;
+    };
+
+    proto._onItemInvoked = function (ev) {
+        // When doing a press-and-hold gesture with touch, ItemContainer would fire both 
+        // context menu and item invoked events on us. In this case we want to ignore 
+        // the item invoked event following the context menu event.
+        if (!this._ignoreItemInvokedEvent) {
+            this._controller.onItemInvoked(this._attachment, { itemDiv: this._itemContainerDiv });
+        }
+        this._ignoreItemInvokedEvent = false;
+    };
+
+    proto._onContextMenu = function (ev) {
+        ev.preventDefault();
+        this._controller.showContextMenu(this._attachment, { itemDiv: this._itemContainerDiv });
+    };
+
+    proto._getCurrentStatus = function () {
+        /// <summary>Returns the current status of the attachment.</summary>
+        Debug.assert(false, "Expected AttachmentWell.Base.Item._getCurrentStatus() to be implemented by subclass.");
+    };
+
+    proto._getItemRenderer = function (fileExtension, status) {
+        /// <summary>Returns a rendering function based on the given file type and attachment status</summary>
+        Debug.assert(false, "Expected AttachmentWell.Base.Controller._getItemRenderer() to be implemented by subclass");
+    };
+
+    proto.dispose = function () {
+        this._disposed = true;
+
+        if (this._animationPromise) {
+            this._animationPromise.cancel();
+        }
+
+        this._itemContainerDiv.removeEventListener("keydown", this._keydownHandler, false);
+        this._itemContainerDiv.removeEventListener("contextmenu", this._contextMenuHandler, false);
+        this._itemContainerDiv.removeEventListener("MSHoldVisual", this._holdVisualHandler, true);
+        this._itemContainerDiv = null;
+
+        if (this._itemWrapperDiv.winControl instanceof WinJS.UI.Tooltip) {
+            this._itemWrapperDiv.winControl.innerHTML = "";
+            this._itemWrapperDiv.winControl = null;
+        }
+        this._itemWrapperDiv = null;
+
+        this._attachment.removeEventListener("changed", this._attachmentChanged, false);
+        this._attachment = null;
+    };
+
+    proto._renderWithTemplate = function (template, properties) {
+        /// <summary>Renders a HTMLElement using the given template and set properties.</summary>
+        /// <param name="template" type="Function">The template to call.</param>
+        /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+        /// <returns type="HTMLElement">HTMLElement rendered by the given template and properties.</returns>
+        Debug.assert(Jx.isFunction(template), "Expected template to be a valid function");
+        Debug.assert(Jx.isObject(properties), "Expected properties to be a valid object");
+        Debug.assert(properties.ariaLabel, "ARIA label is not set by renderer.");
+        var templateDiv = document.createElement("div");
+        templateDiv.innerHTML = template.call(this, properties);
+        return templateDiv.firstChild;
+    };
+
+    proto._photoItemRenderer = {
+        /// <summary>Renders photo items that are done syncing or attaching.</summary>
+        canRender: function (fileExtension, status, statusEnums) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="status" type="Number">The compose or sync status of the mail attachment.</param>
+            /// <param name="statusEnums" type="Object">The sync or compose status enums to compare with.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return status === statusEnums.done && Utils.isSupportedPhotoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that contains a thumbnail image of the given photo attachment 
+            /// or a placeholder if a thumbnail cannot be obtained.</returns>
+            var that = this;
+            properties.command = "openCommand";
+            return ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.photo, this._thumbnailDimensions).then(function (thumbnailStream) {
+                return that._renderPhotoVideoItem(attachment, thumbnailStream, Templates.photoItem, properties);
+            });
+        }.bind(proto)
+    };
+
+    proto._videoItemRenderer = {
+        /// <summary>Renders video items that are done syncing or attaching.</summary>
+        canRender: function (fileExtension, status, statusEnums) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="status" type="Number">The compose or sync status of the mail attachment.</param>
+            /// <param name="statusEnums" type="Object">The sync or compose status enums to compare with.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return status === statusEnums.done && Utils.isSupportedVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that contains a thumbnail image of the given video attachment 
+            /// or a placeholder if a thumbnail cannot be obtained.</returns>
+            var that = this;
+            properties.command = "openCommand";
+            return ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.video, this._thumbnailDimensions).then(function (thumbnailStream) {
+                return that._renderPhotoVideoItem(attachment, thumbnailStream, Templates.videoItem, properties);
+            });
+        }.bind(proto)
+    };
+
+    proto._otherItemRenderer = {
+        /// <summary>Renders other items that are done syncing or attaching.</summary>
+        canRender: function (fileExtension, status, statusEnums) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="status" type="Number">The compose or sync status of the mail attachment.</param>
+            /// <param name="statusEnums" type="Object">The sync or compose status enums to compare with.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return status === statusEnums.done && !Utils.isSupportedPhotoOrVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that contains a file icon and file description of the given non-photo/video attachment</returns>
+            Debug.assert(Jx.isString(properties.fileExtension), "AttachmentWell.Base.Item._otherItemRenderer: File extension is not set on properties");
+            var promise = Utils.isEml(properties.fileExtension) ? WinJS.Promise.wrap() : ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.others, this._thumbnailDimensions);
+            var that = this;
+            return promise.then(function (thumbnailStream) {
+                return that._renderFileIconItem(attachment, thumbnailStream, Templates.otherItem, properties, "openCommand");
+            });
+        }.bind(proto)
+    };
+
+    proto._renderPhotoVideoItem = function (attachment, thumbnailStream, template, properties) {
+        /// <summary>Renders a photo or video item with the given thumbnail stream and resizes the result to the desired display size.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+        /// <returns type="HTMLElement">HTMLElement that contains a thumbnail image of the given photo or video attachment</returns>
+        Debug.assert(Jx.isNonEmptyString(properties.command), "AttachmentWell.Base.Item._renderPhotoVideoItem: properties.command needs to be set to an non-empty string");
+        properties.fileSize = Utils.getFileSize(attachment);
+        properties.ariaLabel = Jx.res.loadCompoundString("label", properties.name, properties.fileSize, Jx.res.getString(properties.command));
+        if (!thumbnailStream) {
+            // we failed to get a thumbnail, return error renderer
+            Jx.log.info("AttachmentWell.Base.Item._renderPhotoVideoItem: failed to get thumbnailStream from file");
+            return this._renderWithTemplate(Templates.photoVideoItemPlaceholder, properties);
+        } else if (thumbnailStream.type === ThumbnailType.icon) {
+            // the thumbnail stream we got back is of type icon, return the fallback file icon renderer
+            return this._renderFileIconItem(attachment, thumbnailStream, Templates.otherItem, properties, properties.command);
+        } else {
+            // able to get an image thumbnail, return photo/video renderer
+            properties.thumbnailUrl = URL.createObjectURL(thumbnailStream, { oneTimeOnly: true });
+            var div = this._renderWithTemplate(template, properties);
+
+            // Resize thumbnail to fit into our desired display dimensions
+            var desiredSize = ThumbnailResizer.calcDesiredDisplaySize(thumbnailStream, this._thumbnailDimensions.photoVideo);
+            ThumbnailResizer.scaleAndCenter(div.querySelector("img"), thumbnailStream.originalWidth, thumbnailStream.originalHeight, desiredSize.width, desiredSize.height, /*stretchToFill:*/true);
+            return div;
+        }
+    };
+
+    proto._renderFileIconItem = function (attachment, thumbnailStream, template, properties, command) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+        /// <returns type="HTMLElement">HTMLElement that contains a file icon and file description for the given attachment.</returns>
+        Debug.assert(!Jx.isNullOrUndefined(properties.fileExtension), "AttachmentWell.Base.Item._renderFileIconItem: File extension is not set on properties");
+        if (thumbnailStream) {
+            properties.fileIconUrl = URL.createObjectURL(thumbnailStream, { oneTimeOnly: true });
+        }
+        properties.isEml = properties.fileExtension === ".eml";
+        properties.fileIconHeight = this._thumbnailDimensions.fileIcon.height;
+        properties.fileIconWidth = this._thumbnailDimensions.fileIcon.width;
+        properties.commandLabel = Jx.res.getString(command);
+        properties.fileSize = Utils.getFileSize(attachment);
+        properties.ariaLabel = Jx.res.loadCompoundString("label", properties.name, properties.fileSize, properties.commandLabel);
+        return this._renderWithTemplate(template, properties);
+    };
+
+    proto._itemRenderers = /*@static_cast(Array)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders the view of the attachment well.
+//
+
+/*global AttachmentWell,Jx,Debug,document,WinJS,Microsoft*/
+
+(function () {
+
+    var Utils = AttachmentWell.Utils,
+        Animation = WinJS.UI.Animation;
+
+    AttachmentWell.Base.ViewLayout = /*@constructor*/function (mailMessage, neighborElement) {
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the view.</param>
+        /// <summary>Renders the view of the attachment well.</summary>
+        this.initComponent();
+        this._id = "idAttachmentWellView_" + Jx.uid();
+        this._mailMessage = mailMessage;
+        this._attachmentCollection = mailMessage.getOrdinaryAttachmentCollection();
+        Debug.assert(this._attachmentCollection, "Expecting at least an empty collection");
+
+        this._containerWidth = 0;
+        this._attachmentItems = {};
+        this._neighborElement = neighborElement;
+
+        // bind listeners
+        this._elementResize = this._onElementResize.bind(this);
+        this._attachmentCollectionChanged = this._onAttachmentCollectionChanged.bind(this);
+        this._onClearError = this.onClearError.bind(this);
+        this._onError = this.onError.bind(this);
+
+        // append child components
+        this._filesAttachedControl = new AttachmentWell.FilesAttachedControl();
+        this._errorManager = new AttachmentWell.ErrorManager();
+        this.append(this._filesAttachedControl, this._errorManager);
+    };
+
+    Jx.augment(AttachmentWell.Base.ViewLayout, Jx.Component);
+
+    var proto = AttachmentWell.Base.ViewLayout.prototype;
+
+    proto.getUI = function (ui) {
+        ui.html =
+            '<div id="' + this._id + '" class="attachmentWell-view">' +
+                Jx.getUI(this._errorManager).html +
+                '<div class="attachmentWell-controls">' + Jx.getUI(this._filesAttachedControl).html + '</div>' +
+                '<div class="attachmentWell-repeater" role="listbox"></div>' +
+                this._contextMenuUI() +
+            '</div>';
+    };
+
+    proto._contextMenuUI = function () {
+        return '<div class="attachments-contextMenu" aria-hidden="true" data-win-control="WinJS.UI.Menu" data-win-res="aria-label:attachmentContextMenuLabel">' +
+                    '<button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'openCommand\'}" data-win-res="innerText:openCommand;aria-label:openCommand" type="button"></button>' +
+                    '<button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'openInMailCommand\'}" data-win-res="innerText:openWithMailCommand;aria-label:openWithMailCommand" type="button"></button>' +
+                    '<button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'openWithCommand\'}" data-win-res="innerText:openWithCommand;aria-label:openWithCommand" type="button"></button>' +
+                    '<button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'removeCommand\'}" data-win-res="innerText:removeCommand;aria-label:removeCommand" type="button"></button>' +
+                    '<button data-win-control="WinJS.UI.MenuCommand" data-win-options="{id:\'saveCommand\'}" data-win-res="innerText:saveCommand;aria-label:saveCommand" type="button"></button>' +
+                '</div>';
+    };
+
+    proto.activateUI = function () {
+        Jx.Component.prototype.activateUI.call(this);
+        this.getElement().addEventListener("mselementresize", this._elementResize, false);
+    };
+
+    proto._onElementResize = function () {
+        this._containerWidth = parseInt(getComputedStyle(this.getElement()).width, 10);
+        
+        if (Jx.isNullOrUndefined(this._repeater) && this._containerWidth > 0) {
+            // activate UI if we know the container width
+            var element = this.getElement(),
+            repeaterElement = element.querySelector(".attachmentWell-repeater");
+            this._controller = this._createController();
+
+            // attach listeners
+            this._attachmentCollection.addEventListener("collectionchanged", this._attachmentCollectionChanged);
+            this.on("clearerror", this._onClearError, this);
+            this.on("error", this._onError, this);
+
+            // Build Repeater
+            this._repeater = new WinJS.UI.Repeater(repeaterElement, {
+                data: this._getSortedBindingList(),
+                template: this._getItemTemplate.bind(this)
+            });
+            this._keyboardNavigation = new Jx.KeyboardNavigation(repeaterElement, "horizontal");
+            this._updateCount();
+
+            // unlock to listen for changes
+            this._attachmentCollection.unlock();
+        }
+    };
+
+    proto._getItemTemplate = function (objectId) {
+        /// <summary>Gets an HTMLElement that represents the corresponding attachment</summary>
+        /// <param name="objectId" type="String">An id that represents the corresponding attachment object.</param>
+        var attachment = this._mailMessage.loadAttachment(objectId),
+            item = this._createAttachmentItem(attachment);
+        this._attachmentItems[objectId] = item;
+        return item.getItemContainer();
+    };
+
+    proto._createAttachmentItem = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        Debug.assert(false, "Expected AttachmentWell.Base.ViewLayout._createAttachmentItem to be implemented by subclass");
+    };
+
+    proto._createController = function () {
+        Debug.assert(false, "Expected AttachmentWell.Base.ViewLayout._createController to be implemented by subclass");
+    };
+
+    proto._getSortedBindingList = function () {
+        var attachmentCollection = this._attachmentCollection,
+            mailMessage = this._mailMessage,
+            list = new WinJS.Binding.List();
+
+        for (var i = 0, len = attachmentCollection.count; i < len; i++) {
+            var attachment = attachmentCollection.item(i);
+            list.push(attachment.objectId);
+        }
+
+        var getGroupKey = function (itemId) {
+            var itemAttachment = mailMessage.loadAttachment(itemId),
+                fileExtension = Utils.getFileExtension(itemAttachment);
+            if (Utils.isSupportedPhotoOrVideoFormat(fileExtension)) {
+                return "photoVideo";
+            } else {
+                return "others";
+            }
+        };
+
+        var compareGroups = function (first, second) {
+            var groups = AttachmentWell.Utils.GroupOrdering;
+            Debug.assert(groups[first] !== undefined && groups[second] !== undefined, "Unexpected group key passed.");
+            return groups[first] - groups[second];
+        };
+
+        return list.createGrouped(getGroupKey, getGroupKey, compareGroups);
+    };
+
+    proto._onAttachmentCollectionChanged = function (eventArgs) {
+        /// <summary>Responds to attachment collection changed event notifications</summary>
+        /// <param name="eventArgs" type="Microsoft.WindowsLive.Platform.CollectionChangedEventArgs">Event arguments</param>
+        Debug.assert(eventArgs);
+        var objectId = eventArgs.objectId;
+
+        var changeType = Microsoft.WindowsLive.Platform.CollectionChangeType;
+        switch (eventArgs.eType) {
+            case changeType.itemAdded:
+                this._addAttachment(objectId);
+                break;
+            case changeType.itemRemoved:
+                this._removeAttachment(objectId);
+                break;
+            case changeType.reset:
+                // The attachment collection we have is somehow corrupted, need to get a new one from platform
+                this._resetAttachmentCollection();
+                break;
+        }
+        this._updateCount();
+        this._keyboardNavigation.update(true /*reset*/);
+    };
+
+    proto._updateCount = function () {
+        // Update the count and show/hide the well depending on if there are attachments to show
+        var count = this._attachmentCollection.count;
+        this.isHidden = count === 0;
+        this._filesAttachedControl.updateCount(count);
+    };
+
+    proto._addAttachment = function (objectId) {
+        /// <param name="objectId" type="String">An id that represents the corresponding attachment object.</param>
+        // adds the item to the repeater
+        Jx.log.info("AttachmentWell.Base.ViewLayout._addAttachment: " + objectId);
+        this._repeater.data.push(objectId);
+    
+        // create addToList animation
+        var addedElement = this._getRepeaterItem(objectId),
+            affectedItems = this._getAffectedRepeaterItems(objectId),
+            animation = Animation.createAddToListAnimation(addedElement, affectedItems);
+        animation.execute();
+    };
+
+    proto._removeAttachment = function (objectId) {
+        /// <param name="objectId" type="String">An id that represents the corresponding attachment object.</param>
+        Jx.log.info("AttachmentWell.Base.ViewLayout._removeAttachment: " + objectId);
+        var repeater = this._repeater,
+            repeaterData = repeater.data,
+            removedIndex = repeaterData.indexOf(objectId);
+
+        // Create deleteFromList animation
+        var removedElement = this._getRepeaterItem(objectId),
+            affectedItems = this._getAffectedRepeaterItems(objectId),
+            animation = Animation.createDeleteFromListAnimation(removedElement, affectedItems);
+
+        // Remove from repeater
+        repeaterData.splice(removedIndex, 1);
+
+        // Execute animation
+        animation.execute();
+
+        // Update focus
+        if (repeaterData.length > 0) {
+            // If the item removed is the first item, set focus to the next item, else to the previous item.
+            var nextIndex = removedIndex === 0 ? removedIndex : removedIndex - 1,
+                nextItem = repeater.elementFromIndex(nextIndex);
+            Jx.safeSetActive(nextItem);
+        }
+
+        // dispose the item
+        var item = this._attachmentItems[objectId];
+        Debug.assert(item, "Can not find the deleted attachment item in our list");
+        item.dispose();
+        delete this._attachmentItems[objectId];
+    };
+
+    proto._getRepeaterItem = function (objectId) {
+        var repeaterData = this._repeater.data,
+            index = repeaterData.indexOf(objectId);
+        Debug.assert(index >= 0, "AttachmentWell.Base.ViewLayout._getRepeaterItem: Cannot find the given objectId=" + objectId + " in repeater's data list");
+        return this._repeater.elementFromIndex(index);
+    };
+
+    proto._getAffectedRepeaterItems = function (objectId) {
+        var repeaterData = this._repeater.data,
+            actionIndex = repeaterData.indexOf(objectId),
+            affectedItems = [];
+        Debug.assert(actionIndex >= 0, "AttachmentWell.Base.ViewLayout._getAffectedItems: given objectId does not exit in the repeater data");
+
+        for (var i = actionIndex + 1; i < repeaterData.length; i++) {
+            affectedItems.push(this._repeater.elementFromIndex(i));
+        }
+        return affectedItems;
+    };
+
+    proto._resetAttachmentCollection = function () {
+        // dispose current item elements
+        Jx.log.info("AttachmentWell.Base.ViewLayout._resetAttachmentCollection");
+        this._disposeAttachmentItems();
+
+        // update collection
+        this._removeCollectionListener();
+        this._attachmentCollection = this._mailMessage.getOrdinaryAttachmentCollection();
+        this._attachmentCollection.addEventListener("collectionchanged", this._attachmentCollectionChanged);
+        this._attachmentCollection.unlock();
+
+        // ask the repeater to build upon the new collection
+        this._repeater.data = this._getSortedBindingList();
+    };
+
+    proto.deactivateUI = function () {
+        this._element.removeEventListener("mselementresize", this._elementResize, false);
+
+        if (this._repeater) {
+            this._removeCollectionListener();
+            this._disposeAttachmentItems();
+
+            this._controller.dispose();
+            this._controller = null;
+
+            this._repeater.dispose();
+            this._repeater = null;
+
+            this._keyboardNavigation.dispose();
+            this._keyboardNavigation = null;
+
+            this.detach("clearerror", this._onClearError, this);
+            this.detach("error", this._onError, this);
+
+            Jx.Component.prototype.deactivateUI.call(this);
+        }
+    };
+
+    proto._removeCollectionListener = function () {
+        var collection = this._attachmentCollection;
+        collection.lock();
+        collection.removeEventListener("collectionchanged", this._attachmentCollectionChanged);
+    };
+
+    proto._disposeAttachmentItems = function () {
+        var items = this._attachmentItems;
+        Object.keys(items).forEach(function (objectId) {
+            items[objectId].dispose();
+        }, this);
+        this._attachmentItems = {};
+    };
+
+    proto.getElement = function () {
+        if (!this._element) {
+            this._element = document.getElementById(this._id);
+        }
+        return this._element;
+    };
+
+    proto.getContainerWidth = function () {
+        Debug.assert(this._containerWidth > 0);
+        return this._containerWidth;
+    };
+    
+    Object.defineProperty(proto, "isCollapsed", {
+        get: function () { return Jx.hasClass(this._repeater.element, "hidden"); },
+        set: function (collapsed) {
+            Jx.log.info("AttachmentWell.Base.ViewLayout.isCollapsed: " + collapsed);
+            var repeaterElement = this._repeater.element,
+                animation = this._collapsed ?
+                    WinJS.UI.Animation.createCollapseAnimation(repeaterElement, this._neighborElement) : WinJS.UI.Animation.createExpandAnimation(repeaterElement, this._neighborElement);
+
+            // execute expand/collapse animation
+            Jx.setClass(repeaterElement, "hidden", collapsed);
+            animation.execute();
+        },
+        enumerable: true
+    });
+
+    Object.defineProperty(proto, "isHidden", {
+        get: function () { return Jx.hasClass(this._element, "hidden"); },
+        set: function (hide) {
+            Jx.log.info("AttachmentWell.Base.ViewLayout.isHidden: " + hide);
+            Jx.setClass(this._element, "hidden", hide);
+        },
+        enumerable: true
+    });
+
+    proto.onClearError = function (evt) {
+        /// <summary>Handles the clearerror event.</summary>
+        /// <param name="evt" type="JxEvent">Contains metadata about the convert event.</param>
+        Debug.assert(Jx.isNonEmptyString(evt.data.errorId), "Expected valid error ID");
+        if (this._errorManager.clearError(evt.data.errorId)) {
+            // The event has been handled, so no need to bubble it anymore.
+            evt.cancel = true;
+        }
+    };
+
+    proto.onError = function (evt) {
+        /// <summary>Handles the error event.</summary>
+        /// <param name="evt" type="JxEvent">Contains metadata about the convert event.</param>
+        Debug.assert(evt.data.error, "Expected valid error");
+        if (this._errorManager.showError(evt.data.error)) {
+            // The event has been handled, so no need to bubble it anymore.
+            evt.cancel = true;
+        }
+    };
+
+    proto._id = /*@static_cast(String)*/null;
+    proto._mailMessage = /*static_cast(Microsoft.WindowsLive.Platform.IMailMessage)*/null;
+    proto._element = /*@static_cast(HTMLElement)*/null;
+    proto._attachmentCollection = null;
+    proto._attachmentCollectionChanged = /*static_cast(Function)*/null;
+    proto._repeater = /*@static_cast(WinJS.UI.Repeater)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// A component that encapsulates all compose attachment UX.
+//
+
+/*global AttachmentWell,Jx,Debug,document,AttachmentWell,Microsoft*/
+
+/// <reference path="..\..\Photomail\JS\AttachmentManager.js" />
+
+(function () {
+
+    AttachmentWell.Compose.ActivationType = {
+        compose: 0,
+        shareAnything: 1
+    };
+
+    AttachmentWell.Compose.AttachmentTypeBici = {
+        skyDrive: 0,
+        convertedToAttachment: 1,
+        attachment: 2,
+        convertedToSkyDrive: 3
+    };
+
+    AttachmentWell.Compose.Module = /*@constructor*/function (mailManager, mailMessage, neighborElement) {
+        /// <summary>A component that encapsulates all compose attachment UX.</summary>
+        /// <param name="mailManager" type="Microsoft.WindowsLive.Platform.IMailManager">The mail manager.</param>
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the well.</param>
+        Debug.assert(Jx.isObject(mailManager), "Expected mailManager to be a valid object");
+        Debug.assert(Jx.isObject(mailMessage), "Expected mailMessage to be a valid object");
+
+        AttachmentWell.Base.Module.call(this);
+        this._activationType = AttachmentWell.Compose.ActivationType.compose;
+
+        this._removeFileHandler = this._onRemoveFile.bind(this);
+        this._onClearError = this._onClearError.bind(this);
+        this._onError = this._onError.bind(this);
+
+        this._view = this._getViewLayout(mailMessage, neighborElement);
+        this._attachmentManager = new AttachmentWell.AttachmentManager(mailManager, mailMessage);
+        this.append(this._attachmentManager, this._view);
+    };
+    Jx.inherit(AttachmentWell.Compose.Module, AttachmentWell.Base.Module);
+
+    var proto = AttachmentWell.Compose.Module.prototype;
+
+    proto._getViewLayout = function (mailMessage, neighborElement) {
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        return new AttachmentWell.Compose.ViewLayout(mailMessage, neighborElement);
+    };
+
+    proto.activateUI = function () {
+        Jx.Component.prototype.activateUI.call(this);
+        this._element = document.getElementById(this._id);
+        this._element.addEventListener("removeFile", this._removeFileHandler, false);
+
+        this.on("clearerror", this._onClearError, this);
+        this.on("error", this._onError, this);
+
+        this._attachmentManager.activate();
+    };
+
+    proto.deactivateUI = function () {
+        this.detach("clearerror", this._onClearError, this);
+        this.detach("error", this._onError, this);
+        this._element.removeEventListener("removeFile", this._removeFileHandler, false);
+        this._attachmentManager.shutdown();
+        Jx.Component.prototype.deactivateUI.call(this);
+    };
+
+    proto.discard = function () {
+        /// <summary>Discards any pending attachments in the current message</summary>
+        // Before we discard attachments, shutdown the attachment UI to remove UI
+        // This is faster than the component getting a bunch of itemRemoved notification that removes item one by one
+        var view = this._view;
+        if (view && view.isInit()) {
+            view.shutdownUI();
+        }
+
+        this._attachmentManager.discard();
+    };
+
+    proto._onRemoveFile = function (ev) {
+        /// <summary>removeFile event hanlder.</summary>
+        /// <param name="ev" type="Event">
+        /// ev.detail: {
+        ///     objectId: String // objectId of the attachment that needs to be removed
+        /// }
+        /// </param>
+        var objectId = ev.detail.objectId,
+            fileName = ev.detail.fileName;
+        Debug.assert(Jx.isNonEmptyString(objectId) && Jx.isNonEmptyString(fileName), "Expected ev.detail.objectId and fileName to be non-empty Strings");
+        Jx.log.info("AttachmentWell.Compose.Module._onRemoveFile");
+        this._attachmentManager.removeFile(objectId);
+    };
+
+    proto.add = function (files) {
+        /// <summary>Adds the given files to the current mail message.</summary>
+        /// <param name="files" type="Array">Files to add to the mail message.</param>
+        Debug.assert(Jx.isObject(files), "Expected files to be a valid object");
+        Jx.log.info("AttachmentWell.Compose.Module.add: adding " + files.length + " file(s)");
+        this._attachmentManager.addFiles(files);
+    };
+
+    proto.getMetrics = function () {
+        return this._attachmentManager.getAttachmentMetrics();
+    };
+
+    proto.finalizeForSend = function () {
+        /// <summary>Finalize for sending the message, including any instrumentation reporting etc.</summary>
+        // Report instrumentation
+        try {
+            var attachmentMetrics = this._attachmentManager.getAttachmentMetrics();
+            // If there are any attachments in the message, then capture the instrumentation for it.
+            if (attachmentMetrics.count > 0) {
+                var attachmentType = AttachmentWell.Compose.AttachmentTypeBici.attachment,
+                    mailType = 1; // Basic attachments
+
+                Jx.bici.addToStream(Microsoft.WindowsLive.Instrumentation.Ids.Mail.sendMailWithAttachment,
+                    mailType,    // MailType
+                    attachmentMetrics.totalSize, // PhotosAttachmentSize in KBs
+                    attachmentType, // AttachmentConversion
+                    attachmentMetrics.count, // PhotosAppSentFileCount
+                    attachmentMetrics.validateFailures, // TimesSendReclicked
+                    0, // SkyDriveFileSize, 0 for basic attachments
+                    0, // SkyDrivePermissions, 0 for basic attachments
+                    attachmentMetrics.category, // ContentType
+                    attachmentMetrics.count  // PhotosAppAttachments
+                    );
+
+                Jx.bici.addToStream(Microsoft.WindowsLive.Instrumentation.Ids.Mail.sendButtonActive,
+                    this._activationType, // PhotosMailExperience (MoMail/Share)
+                    mailType, // MailType
+                    attachmentMetrics.count, // PhotosAppSentFileCount
+                    attachmentMetrics.duration // TimeTakenForButtonActivation
+                    );
+            }
+        } catch (ex) {
+            // Failure to report instrumentation should not prevent sending the mail, so just log and move on
+            Jx.log.error("AttachmentWell - Failed to report instrumentation " + ex);
+        }
+        this._attachmentManager.finalizeForSend();
+    };
+
+    proto.canAddMore = function (newCount) {
+        /// <summary>Checks if specified number of attachments can be added</summary>
+        /// <param name="newCount" type="Number">Number of new attachments to be added</param>
+        /// <returns type="Boolean">Returns true if specified number of attachments can be added</returns>
+        Debug.assert(this._attachmentManager);
+        return this._attachmentManager.canAddMore(newCount);
+    };
+
+    proto.isAttaching = function () {
+        /// <summary>Returns true if any attaching is in progress.</summary>
+        /// <returns type="Boolean">Returns true if any file is being attached.</returns>
+        return this._attachmentManager.isAttaching();
+    };
+
+    proto.validate = function () {
+        /// <summary>Returns true if all files have successfully been attached.</summary>
+        /// <returns type="Boolean">Returns false if any files are still attaching or there are any failures in the attaching.</returns>
+        return this._attachmentManager.canSendMail();
+    };
+
+    proto.focus = function () {
+        /// <summary>Sets the focus on the first attachement if there is one.</summary>
+        this._view.focusFirst();
+    };
+
+    proto.isHidden = function () {
+        /// <summary>Returns true if the view is not visible.</summary>
+        return this._view.isHidden;
+    };
+
+    Object.defineProperty(proto, "isDirty", {
+        get: function () {
+            return this._attachmentManager.isDirty();
+        },
+        enumarable: true
+    });
+
+    proto._onClearError = function (evt) {
+        /// <summary>Handles the clearerror event.</summary>
+        /// <param name="evt" type="JxEvent">Contains metadata about the convert event.</param>
+        this._view.onClearError(evt);
+    };
+
+    proto._onError = function (evt) {
+        /// <summary>Handles the error event.</summary>
+        /// <param name="evt" type="JxEvent">Contains metadata about the convert event.</param>
+        this._view.onError(evt);
+    };
+
+    proto._element = /*@static_cast(HTMLElement)*/null;
+    proto._attachmentManager = /*@static_cast(AttachmentWell.AttachmentManager)*/null;
+    proto._removeFileHandler = /*@static_cast(Function)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Compose controller that controls an individual attachment item actions.
+//
+
+/*global AttachmentWell,Jx,Microsoft,Windows,document,Mail,Debug*/
+
+/// <reference path="AttachmentWellBaseItemController.js" />
+
+(function () {
+    var AttachmentComposeStatus = Microsoft.WindowsLive.Platform.AttachmentComposeStatus;
+
+    AttachmentWell.Compose.ItemController = /*@constructor*/function (view) {
+        /// <summary>Controls an individual attachment item actions</summar>
+        /// <param name="view" type="AttachmentWell.Base.ViewLayout">View that hosts the items this controller controls.</param>
+        AttachmentWell.Base.ItemController.call(this, view);
+    };
+
+    Jx.inherit(AttachmentWell.Compose.ItemController, AttachmentWell.Base.ItemController);
+
+    var proto = AttachmentWell.Compose.ItemController.prototype;
+
+    proto._createContextMenuCallbacks = function () {
+        /// <returns type="Object">A mapping from attachment status to an array of context menu callbacks.</returns>
+        var contextMenuCallbacks = {},
+            openCallback = {
+                commandId: "openCommand",
+                invoke: this._open.bind(this),
+                isEnabled: this._disableForEml
+            },
+            removeCallback = {
+                commandId: "removeCommand",
+                invoke: this._remove.bind(this),
+                isEnabled: this._alwaysEnable
+            },
+            openInMailCallback = {
+                commandId: "openInMailCommand",
+                invoke: this._open.bind(this),
+                isEnabled: this._enableForEml
+            },
+            openWithCallback = {
+                commandId: "openWithCommand",
+                invoke: this._openWith.bind(this),
+                isEnabled: this._alwaysEnable
+            };
+       
+        contextMenuCallbacks[AttachmentComposeStatus.done] = [openInMailCallback, openCallback, openWithCallback, removeCallback];
+        return contextMenuCallbacks;
+    };
+
+    proto._createItemInvokedCallbacks = function () {
+        /// <returns type="Object">A mapping from attachment status to item invoked callback.</returns>
+        var removeCallback = this._remove.bind(this),
+            itemInvokedCallbacks = {};
+        itemInvokedCallbacks[AttachmentComposeStatus.failed] = removeCallback;
+        return itemInvokedCallbacks;
+    };
+
+    proto._getAttachmentStatus = function (attachment) {
+        /// <summary>Returns the compose status of the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var status = attachment.composeStatus;
+        Debug.assert(Jx.isNumber(status), "Expected status to be a number");
+        return status;
+    };
+
+    proto._getFlyoutContainerElement = function () {
+        /// <summary>Returns the parent element for flyouts.</summary>
+        /// <returns type="HTMLElement">The parent element for flyouts.</returns>
+        // We can't use the compose root element because of its z-index, so we use the mail root element just as the 
+        //  ReadController does
+        return document.getElementById(Mail.CompApp.rootElementId);
+    };
+
+    proto._remove = function (attachment, options) {
+        /// <summary>Removes an attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object to remove.</param>
+        /// <param name="options" type="Object">Object contains the itemDiv to remove.</param>
+        Jx.log.info("AttachmentWell.Compose.ItemController._remove");
+        Debug.assert(options && Jx.isHTMLElement(options.itemDiv), "AttachmentWell.Compose.ItemController._remove: given options parameter does not have itemDiv set");
+
+        // In case the last open attempt caused an error, clear the error.
+        this._view.fire("clearerror", { errorId: AttachmentWell.ErrorIds.openFailed });
+
+        var itemDiv = options.itemDiv,
+            evt = document.createEvent("CustomEvent");
+        evt.initCustomEvent("removeFile", true, false, { objectId: attachment.objectId, fileName: attachment.fileName });
+        itemDiv.dispatchEvent(evt);
+    };
+
+    proto._fireOpenFailedError = function (attachment) {
+        /// <summary>Fires the openFailed error for the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var openFailedError = new AttachmentWell.Error(AttachmentWell.ErrorIds.openFailed, Jx.res.getString("composeOpenFailedErrorMessage"));
+        this._view.fire("error", { error: openFailedError });
+    };
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/*global AttachmentWell,Jx,Microsoft,Debug,WinJS*/
+
+/// <reference path="AttachmentWell.ref.js" />
+/// <reference path="AttachmentWellComposeItemController.js" />
+
+(function () {
+
+    var AttachmentComposeStatus = Microsoft.WindowsLive.Platform.AttachmentComposeStatus,
+        Templates = AttachmentWell.Templates;
+
+    AttachmentWell.Compose.Item = /*@constructor*/function (attachment, controller, host) {
+        /// <summary>Compose Item.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        this._itemRenderers = [
+            this._otherItemRenderer,
+            this._photoItemRenderer,
+            this._videoItemRenderer,
+            this._inProgressItemRenderer,
+            this._failedItemRenderer
+        ];
+
+        AttachmentWell.Base.Item.call(this, attachment, controller, host);
+    };
+
+    Jx.inherit(AttachmentWell.Compose.Item, AttachmentWell.Base.Item);
+
+    var proto = AttachmentWell.Compose.Item.prototype;
+
+    proto._getCurrentStatus = function () {
+        /// <summary>Returns the current composing status of the attachment.</summary>
+        /// <returns type="Microsoft.WindowsLive.Platform.AttachmentComposeStatus"></returns>
+        return this._attachment.composeStatus;
+    };
+
+    proto._getItemRenderer = function (fileExtension, status) {
+        /// <summary>Returns a rendering function based on the given file type and attachment status</summary>
+        var found = this._itemRenderers.filter(function (current) {
+            return current.canRender(fileExtension, status, Microsoft.WindowsLive.Platform.AttachmentComposeStatus);
+        });
+        Debug.assert(found.length === 1, "There should be one and only one render found.");
+        return found[0];
+    };
+
+    proto._inProgressItemRenderer = {
+        /// <summary>Renders items that are in the progress of getting attached.</summary>
+        canRender: function (fileExtension, composeStatus) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="composeStatus" type="Microsoft.WindowsLive.Platform.AttachmentComposeStatus">The compose status of the mail attachment.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return composeStatus === AttachmentComposeStatus.inProgress;
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that indicates that the item is still in the progress of attaching.</returns>
+            properties.commandLabel = Jx.res.getString("removeCommand");
+            properties.ariaLabel = Jx.res.loadCompoundString("label", properties.name, properties.fileSize, properties.commandLabel);
+            var div = this._renderWithTemplate(Templates.composeItemWithProgress, properties);
+            return WinJS.Promise.wrap(div);
+        }.bind(proto)
+    };
+
+    proto._failedItemRenderer = {
+        /// <summary>Renders items that failed to attach.</summary>
+        canRender: function (fileExtension, composeStatus) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="composeStatus" type="Microsoft.WindowsLive.Platform.AttachmentComposeStatus">The compose status of the mail attachment.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return composeStatus === AttachmentComposeStatus.failed;
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that indicates that the given attachment failed to attach.</returns>
+            Jx.log.info("AttachmentWell.Compose.Item._failedItemRenderer: failed to attach the file");
+            properties.commandLabel = Jx.res.getString("removeCommand");
+            properties.ariaLabel = Jx.res.loadCompoundString("label", properties.name, properties.fileSize, properties.commandLabel);
+            var div = this._renderWithTemplate(Templates.composeErrorItem, properties);
+            return WinJS.Promise.wrap(div);
+        }.bind(proto)
+    };
+
+    proto._itemRenderers = /*@static_cast(Array)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders the view of the attachment well.
+//
+
+/*global AttachmentWell,Jx,Debug*/
+
+/// <reference path="AttachmentWellComposeItem.js" />
+
+(function () {
+    AttachmentWell.Compose.ViewLayout = /*@constructor*/function (mailMessage, neighborElement) {
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the view.</param>
+        /// <summary>Renders the view of the attachment well.</summary>
+        AttachmentWell.Base.ViewLayout.call(this, mailMessage, neighborElement);
+    };
+
+    Jx.inherit(AttachmentWell.Compose.ViewLayout, AttachmentWell.Base.ViewLayout);
+
+    var proto = AttachmentWell.Compose.ViewLayout.prototype;
+
+    proto._createAttachmentItem = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        Debug.assert(this._controller, "AttachmentWell.Compose.ViewLayout._controller should have been set by parent class");
+        return new AttachmentWell.Compose.Item(attachment, this._controller, this);
+    };
+
+    proto._createController = function () {
+        return new AttachmentWell.Compose.ItemController(this);
+    };
+
+    proto.focusFirst = function () {
+        /// <summary>Sets the focus on the first attachement if there is one.</summary>
+        Debug.assert(this._repeater, "AttachmentWell.Compose.ViewLayout.focusFirst: repeater hasn't been initialized in activateUI yet");
+        if (!this.isHidden && !this.isCollapsed && this._repeater.length > 0) {
+            this._repeater.elementFromIndex(0).focus();
+        }
+    };
+
+    Object.defineProperty(proto, "isHidden", {
+        get: function () { return Jx.hasClass(this._element, "hidden"); },
+        set: function (hide) {
+            Jx.log.info("AttachmentWell.Compose.ViewLayout.isHidden: " + hide);
+            Jx.setClass(this._element, "hidden", hide);
+            if (hide) {
+                // Inform clients that the well is hidden for focus handling
+                Jx.EventManager.fire(null, "hide", {});
+            }
+        },
+        enumerable: true
+    });
+
+    proto._statusProperty = "composeStatus";
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// A component that encapsulates all compose attachment UX.
+//
+
+/// <reference path="AttachmentWellComposeModule.js" />
+
+/*global AttachmentWell,Jx,Debug,AttachmentWell*/
+
+
+(function () {
+    AttachmentWell.ShareAnything.Module = /*@constructor*/function (mailManager, mailMessage, neighborElement) {
+        /// <summary>A component that encapsulates all Share Anything attachment UX.</summary>
+        /// <param name="mailManager" type="Microsoft.WindowsLive.Platform.IMailManager">The mail manager.</param>
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the well.</param>
+        Debug.assert(Jx.isObject(mailManager), "Expected mailManager to be a valid object");
+        Debug.assert(Jx.isObject(mailMessage), "Expected mailMessage to be a valid object");
+
+        AttachmentWell.Compose.Module.call(this, mailManager, mailMessage, neighborElement);
+        this._activationType = AttachmentWell.Compose.ActivationType.shareAnything;
+    };
+
+    Jx.inherit(AttachmentWell.ShareAnything.Module, AttachmentWell.Compose.Module);
+
+    var proto = AttachmentWell.ShareAnything.Module.prototype;
+
+    proto._getViewLayout = function (mailMessage) {
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        return new AttachmentWell.ShareAnything.ViewLayout(mailMessage);
+    };
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// ShareAnything controller that controls an individual attachment item actions.
+//
+
+/*global AttachmentWell,Jx,Microsoft,document*/
+
+/// <reference path="AttachmentWellBaseItemController.js" />
+
+(function () {
+    var AttachmentComposeStatus = Microsoft.WindowsLive.Platform.AttachmentComposeStatus;
+
+    AttachmentWell.ShareAnything.ItemController = /*@constructor*/function (view) {
+        /// <summary>Controls an individual attachment item actions</summar>
+        /// <param name="view" type="AttachmentWell.Base.ViewLayout">View that hosts the items this controller controls.</param>
+        AttachmentWell.Compose.ItemController.call(this, view);
+    };
+
+    Jx.inherit(AttachmentWell.ShareAnything.ItemController, AttachmentWell.Compose.ItemController);
+
+    var proto = AttachmentWell.ShareAnything.ItemController.prototype;
+
+    proto._createContextMenuCallbacks = function () {
+        /// <returns type="Object">A mapping from attachment status to an array of context menu callbacks.</returns>
+        var removeCallback = {
+            commandId: "removeCommand",
+            invoke: this._remove.bind(this),
+            isEnabled: this._alwaysEnable
+        };
+
+        var contextMenuCallbacks = {};
+        contextMenuCallbacks[AttachmentComposeStatus.done] = [removeCallback];
+        return contextMenuCallbacks;
+    };
+
+    proto._getFlyoutContainerElement = function () {
+        /// <summary>Returns the parent element for flyouts.</summary>
+        /// <returns type="HTMLElement">The parent element for flyouts.</returns>
+        return document.getElementById("shareFlyout");
+    };
+
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/*global AttachmentWell,Jx,Debug,WinJS*/
+
+/// <reference path="AttachmentWell.ref.js" />
+
+(function () {
+
+    var Templates = AttachmentWell.Templates,
+        ThumbnailResizer = AttachmentWell.ThumbnailResizer,
+        Utils = AttachmentWell.Utils;
+
+    AttachmentWell.ShareAnything.Item = /*@constructor*/function (attachment, controller, host) {
+        /// <summary>Share Anything Item.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        AttachmentWell.Compose.Item.call(this, attachment, controller, host);
+    };
+
+    Jx.inherit(AttachmentWell.ShareAnything.Item, AttachmentWell.Compose.Item);
+
+    var proto = AttachmentWell.ShareAnything.Item.prototype;
+
+    proto._otherItemRenderer = {
+        /// <summary>Renders other items that are done syncing or attaching.</summary>
+        canRender: function (fileExtension, status, statusEnums) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="status" type="Number">The compose status of the mail attachment.</param>
+            /// <param name="statusEnums" type="Object">The compose status enums to compare with.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return status === statusEnums.done && !Utils.isSupportedPhotoOrVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that contains a file icon and file description of the given non-photo/video attachment</returns>
+            Debug.assert(Jx.isString(properties.fileExtension), "AttachmentWell.ShareAnything.Item._otherItemRenderer: File extension is not set on properties");
+            var promise = Utils.isEml(properties.fileExtension) ? WinJS.Promise.wrap() : ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.others, this._thumbnailDimensions);
+            var that = this;
+            return promise.then(function (thumbnailStream) {
+                // The open command is disabled in the Share to Mail scenario but the remove command is not, so we use use the "removeCommand" string here instead.
+                return that._renderFileIconItem(attachment, thumbnailStream, Templates.otherItem, properties, "removeCommand");
+            });
+        }.bind(proto)
+    };
+
+    proto._photoItemRenderer = {
+        /// <summary>Renders photo items that are done attaching.</summary>
+        canRender: function (fileExtension, status, statusEnums) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="status" type="Number">The compose status of the mail attachment.</param>
+            /// <param name="statusEnums" type="Object">The compose status enums to compare with.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return status === statusEnums.done && Utils.isSupportedPhotoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that contains a thumbnail image of the given photo attachment 
+            /// or a placeholder if a thumbnail cannot be obtained.</returns>
+            var that = this;
+            // The open command is disabled in the Share to Mail scenario but the remove command is not, so we use use the "removeCommand" string here instead.
+            properties.command = "removeCommand";
+            return ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.photo, this._thumbnailDimensions).then(function (thumbnailStream) {
+                return that._renderPhotoVideoItem(attachment, thumbnailStream, Templates.photoItem, properties);
+            });
+        }.bind(proto)
+    };
+
+    proto._videoItemRenderer = {
+        /// <summary>Renders video items that are done attaching.</summary>
+        canRender: function (fileExtension, status, statusEnums) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="status" type="Number">The compose status of the mail attachment.</param>
+            /// <param name="statusEnums" type="Object">The compose status enums to compare with.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return status === statusEnums.done && Utils.isSupportedVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that contains a thumbnail image of the given video attachment 
+            /// or a placeholder if a thumbnail cannot be obtained.</returns>
+            var that = this;
+            // The open command is disabled in the Share to Mail scenario but the remove command is not, so we use use the "removeCommand" string here instead.
+            properties.command = "removeCommand";
+            return ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.video, this._thumbnailDimensions).then(function (thumbnailStream) {
+                return that._renderPhotoVideoItem(attachment, thumbnailStream, Templates.videoItem, properties);
+            });
+        }.bind(proto)
+    };
+
+    proto._itemRenderers = /*@static_cast(Array)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders the view of the attachment well.
+//
+
+/*global AttachmentWell,Jx,Debug*/
+
+(function () {
+    AttachmentWell.ShareAnything.ViewLayout = /*@constructor*/function (mailMessage, neighborElement) {
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the view.</param>
+        /// <summary>Renders the view of the attachment well.</summary>
+        AttachmentWell.Compose.ViewLayout.call(this, mailMessage, neighborElement);
+    };
+
+    Jx.inherit(AttachmentWell.ShareAnything.ViewLayout, AttachmentWell.Compose.ViewLayout);
+
+    var proto = AttachmentWell.ShareAnything.ViewLayout.prototype;
+
+    proto._createAttachmentItem = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        Debug.assert(this._controller, "AttachmentWell.ShareAnything.ViewLayout._controller should have been set by parent class");
+        return new AttachmentWell.ShareAnything.Item(attachment, this._controller, this);
+    };
+
+    proto._createController = function () {
+        return new AttachmentWell.ShareAnything.ItemController(this);
+    };
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// A component that encapsulates the read attachment well UX.
+//
+
+/*global AttachmentWell,Jx,Debug*/
+
+/// <reference path="AttachmentWellBaseModule.js" />
+/// <reference path="AttachmentWellReadViewLayout.js" />
+
+(function () {
+    AttachmentWell.Read.Module = /*@constructor*/function (mailMessage, neighborElement) {
+        /// <summary>A component that encapsulates the read attachment well UX.</summary>
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the well.</param>
+        Debug.assert(Jx.isObject(mailMessage), "Expected mailMessage to be a valid object");
+        AttachmentWell.Base.Module.call(this);
+
+        this._view = new AttachmentWell.Read.ViewLayout(mailMessage, neighborElement);
+        this.append(this._view);
+    };
+    Jx.inherit(AttachmentWell.Read.Module, AttachmentWell.Base.Module);
+
+    var proto = AttachmentWell.Read.Module.prototype;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Read controller that controls an individual attachment item actions.
+//
+
+/*global AttachmentWell,Jx,Microsoft,Windows,document,Mail,Debug*/
+
+/// <reference path="AttachmentWellBaseItemController.js" />
+
+(function () {
+
+    var Utils = AttachmentWell.Utils,
+        AttachmentSyncStatus = Microsoft.WindowsLive.Platform.AttachmentSyncStatus,
+        Connectivity = Windows.Networking.Connectivity;
+
+    AttachmentWell.Read.ItemController = /*@constructor*/function (view) {
+        /// <summary>Controls an individual attachment item actions.</summary>
+        /// <param name="view" type="AttachmentWell.Base.ViewLayout">View that hosts the items this controller controls.</param>
+        AttachmentWell.Base.ItemController.call(this, view);
+        this._networkStatusChangedHandler = this._onNetworkStatusChanged.bind(this);
+    };
+
+    Jx.inherit(AttachmentWell.Read.ItemController, AttachmentWell.Base.ItemController);
+
+    var proto = AttachmentWell.Read.ItemController.prototype;
+
+    proto._createContextMenuCallbacks = function () {
+        /// <returns type="Object">A mapping from attachment status to an array of context menu callbacks.</returns>
+        var contextMenuCallbacks = {},
+            saveCallback = {
+                commandId: "saveCommand",
+                invoke: this._save.bind(this),
+                isEnabled: this._alwaysEnable
+            },
+            openInMailCallback = {
+                commandId: "openInMailCommand",
+                invoke: this._open.bind(this),
+                isEnabled: this._enableForEml
+            },
+            openWithCallback = {
+                commandId: "openWithCommand",
+                invoke: this._openWith.bind(this),
+                isEnabled: this._alwaysEnable
+            };
+
+        contextMenuCallbacks[AttachmentSyncStatus.done] = [openInMailCallback, openWithCallback, saveCallback];
+        return contextMenuCallbacks;
+    };
+
+    proto._createItemInvokedCallbacks = function () {
+        /// <returns type="Object">A mapping from attachment status to item invoked callback.</returns>
+        var downloadCallback = this._download.bind(this),
+            cancelCallback = this._cancel.bind(this),
+            openCallback = this._open.bind(this);
+
+        var itemInvokedCallbacks = {};
+        itemInvokedCallbacks[AttachmentSyncStatus.notStarted] = downloadCallback;
+        itemInvokedCallbacks[AttachmentSyncStatus.failed] = downloadCallback;
+        itemInvokedCallbacks[AttachmentSyncStatus.inProgress] = cancelCallback;
+        itemInvokedCallbacks[AttachmentSyncStatus.done] = openCallback;
+        return itemInvokedCallbacks;
+    };
+
+    proto._getAttachmentStatus = function (attachment) {
+        /// <summary>Returns the sync status of the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var status = attachment.syncStatus;
+        Debug.assert(Jx.isNumber(status), "Expected status to be a number");
+        return status;
+    };
+
+    proto._getFlyoutContainerElement = function () {
+        /// <summary>Returns the parent element for flyouts.</summary>
+        /// <returns type="HTMLElement">The parent element for flyouts.</returns>
+        return document.getElementById(Mail.CompApp.rootElementId);
+    };
+
+    proto._download = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <summary>Starts downloading an attachment.</summary>
+
+        // In case the last download attempt caused an error, clear the error before we attempt downloading again.
+        this._view.fire("clearerror", { errorId: AttachmentWell.ErrorIds.downloadFailed });
+
+        try {
+            Jx.log.info("AttachmentWell.Read.ItemController._download: start downloading file");
+            attachment.downloadBody();
+        } catch (err) {
+            Jx.log.error("AttachmentWell.Read.ItemController._download: failed to download file: " + err);
+            this.fireDownloadFailedError(attachment);
+        }
+    };
+
+    proto.fireDownloadFailedError = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var that = this,
+           errorMessage,
+           tryAgainCommand;
+        if (this._getNetworkConnectivityLevel() === Connectivity.NetworkConnectivityLevel.internetAccess) {
+            // We have internet access, so just assume this was a generic failure.
+            errorMessage = Jx.res.getString("readDownloadFailedGenericErrorMessage");
+            tryAgainCommand = new AttachmentWell.ErrorCommand(Jx.res.getString("tryAgainCommand"), function () { that._download(attachment); });
+        } else {
+            // We don't have full internet access, so assume the download failed due to lack of an internet connection.
+            errorMessage = Jx.res.getString("readDownloadFailedConnectionErrorMessage");
+
+            if (!this._registeredForNetworkStatusChange) {
+                // Make sure that this error message will be cleared out if the network connectivity level changes.
+                Connectivity.NetworkInformation.addEventListener("networkstatuschanged", this._networkStatusChangedHandler);
+                this._registeredForNetworkStatusChange = true;
+            }
+        }
+
+        var downloadFailedError = new AttachmentWell.Error(AttachmentWell.ErrorIds.downloadFailed, errorMessage);
+        if (tryAgainCommand) {
+            downloadFailedError.commands.push(tryAgainCommand);
+        }
+
+        this._view.fire("error", { error: downloadFailedError });
+    };
+
+    proto._getNetworkConnectivityLevel = function () {
+        /// <summary>Returns the current network connectivity level.</summary>
+        /// <returns type="Windows.Networking.Connectivity.NetworkConnectivityLevel">The current NetworkConnectivityLevel.</returns>
+        // Assume the user has internet access so that we don't show a "no internet connection" error by mistake.
+        var connectivityLevel = Connectivity.NetworkConnectivityLevel.internetAccess;
+        try {
+            // If there is no active internet connection profile, then we are not connected to the internet.
+            var internetConnectionProfile = Connectivity.NetworkInformation.getInternetConnectionProfile();
+            connectivityLevel = internetConnectionProfile ? internetConnectionProfile.getNetworkConnectivityLevel() : Connectivity.NetworkConnectivityLevel.none;
+        } catch (ex) {
+            Debug.assert(false, "Attachment Well failed to get connectivity information");
+            Jx.log.error("Attachment Well failed to get connectivity information: " + ex);
+        }
+
+        Jx.log.info("AttachmentWell.Read.ItemController._getNetworkConnectivityLevel: connectivity level = " + connectivityLevel);
+        return connectivityLevel;
+    };
+
+    proto._onNetworkStatusChanged = function () {
+        /// <summary>Handles the networkstatuschanged event by clearing out any errors related to internet connectivity.</summary>
+        // This handler can be called multiple times even after the call to removeEventListener.
+        if (this._registeredForNetworkStatusChange && this._getNetworkConnectivityLevel() === Connectivity.NetworkConnectivityLevel.internetAccess) {
+            Jx.log.info("AttachmentWell.Read.ItemController._onNetworkStatusChanged: has internet access now");
+            this._view.fire("clearerror", { errorId: AttachmentWell.ErrorIds.downloadFailed });
+            Connectivity.NetworkInformation.removeEventListener("networkstatuschanged", this._networkStatusChangedHandler);
+            this._registeredForNetworkStatusChange = false;
+        }
+    };
+
+    proto._cancel = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <summary>Cancels downloading an attachment.</summary>
+        try {
+            Jx.log.info("AttachmentWell.Read.ItemController._cancel: cancel downloading file");
+            attachment.cancelDownload();
+        } catch (err) {
+            Jx.log.error("AttachmentWell.Read.ItemController._cancel: failed to cancel downloading file: " + err);
+            Debug.assert(false, "Failed to cancel downloading file");
+        }
+    };
+
+    proto._save = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <summary>Saves an attachment.</summary>
+        Jx.log.info("AttachmentWell.Read.ItemController._save");
+
+        // The file picker requires a file extension so they can show a list of available file type choices. That means that even when there is no file 
+        // extension on this attachment we still need to pass a valid file extension (no wildcards allowed), so we default to a non-existent file 
+        // extension. This is intentionally not localized.
+        var fileExtension = Utils.getFileExtension(attachment) || ".ext";
+
+        var fileSavePicker = new Windows.Storage.Pickers.FileSavePicker();
+        fileSavePicker.defaultFileExtension = fileExtension;
+        fileSavePicker.fileTypeChoices.insert(fileExtension, [fileExtension]);
+        fileSavePicker.settingsIdentifier = "AttachmentWell.Read.ItemController";
+        fileSavePicker.suggestedFileName =  Utils.getFileName(attachment);
+        fileSavePicker.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.picturesLibrary;
+
+        var savePickedFile = function (pickedFile, attachment) {
+            if (pickedFile) {
+                return Utils.getFileFromBodyUri(attachment)
+                    .then(function (attachmentFile) {
+                        return attachmentFile.copyAndReplaceAsync(pickedFile);  // Copy the source file into the destination file.
+                    });
+            }
+        };
+
+        var savedFile;
+        fileSavePicker.pickSaveFileAsync()
+            .then(function (pickedFile) {
+                savedFile = pickedFile;
+                return savePickedFile(pickedFile, attachment);
+            })
+            .then(function () {
+                return Utils.markFileAsWritable(savedFile);
+            }).done(
+                Jx.fnEmpty, // result returned does not contain any values
+                function (err) {
+                    Jx.log.error("AttachmentWell.Read.ItemController._save: failed to save file: " + err);
+                    Debug.assert(false, "Failed to save file");
+                }
+            );
+    };
+
+    proto._fireOpenFailedError = function (attachment) {
+        /// <summary>Fires the openFailed error for the given attachment.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        var that = this,
+           openFailedError = new AttachmentWell.Error(AttachmentWell.ErrorIds.openFailed, Jx.res.getString("readOpenFailedErrorMessage")),
+           saveCommand = new AttachmentWell.ErrorCommand(Jx.res.getString("saveCommand"), function () { that._save(attachment); });
+
+        openFailedError.commands.push(saveCommand);
+        this._view.fire("error", { error: openFailedError });
+    };
+
+    proto._dispose = function () {
+        if (this._registeredForNetworkStatusChange) {
+            Connectivity.NetworkInformation.removeEventListener("networkstatuschanged", this._networkStatusChangedHandler);
+            this._registeredForNetworkStatusChange = false;
+        }
+        AttachmentWell.Base.ItemController.prototype.dispose.call(this);
+    };
+
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/*global AttachmentWell,Jx,Microsoft,Debug,WinJS,document*/
+
+/// <reference path="AttachmentWell.ref.js" />
+/// <reference path="AttachmentWellReadItemController.js" />
+
+(function () {
+
+    var AttachmentSyncStatus = Microsoft.WindowsLive.Platform.AttachmentSyncStatus,
+        Templates = AttachmentWell.Templates,
+        ThumbnailResizer = AttachmentWell.ThumbnailResizer,
+        Utils = AttachmentWell.Utils;
+
+    AttachmentWell.Read.Item = /*@constructor*/function (attachment, controller, host) {
+        /// <summary>Read Item.</summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        this._itemRenderers = [
+            this._otherItemRenderer,
+            this._photoItemRenderer,
+            this._videoItemRenderer,
+            this._inProgressOtherItemRenderer,
+            this._inProgressPhotoVideoItemRenderer,
+            this._notDownloadedOtherItemRenderer,
+            this._notDownloadedPhotoVideoItemRenderer
+        ];
+
+        AttachmentWell.Base.Item.call(this, attachment, controller, host);
+    };
+
+    Jx.inherit(AttachmentWell.Read.Item, AttachmentWell.Base.Item);
+
+    var proto = AttachmentWell.Read.Item.prototype;
+
+    proto._getCurrentStatus = function () {
+        /// <summary>Returns the current syncing status of the attachment.</summary>
+        /// <returns type="Microsoft.WindowsLive.Platform.AttachmentSyncStatus"></returns>
+        return this._attachment.syncStatus;
+    };
+
+    proto._onAttachmentChanged = function (ev) {
+        /// <summary>Updates item rendering based on the changed status.</summary>
+        /// <param name="ev" type="Object">Event arguments</param>
+        AttachmentWell.Base.Item.prototype._onAttachmentChanged.call(this, ev);
+        this._reportStatus();
+    };
+
+    proto._reportStatus = function () {
+        /// <summary>Log and report item status.</summary>
+        var fileName = this._attachment.fileName;
+        switch (this._currentStatus) {
+            case AttachmentSyncStatus.notStarted:
+                this._logAccessibility(Jx.res.loadCompoundString("attachmentDownloadCancelled", fileName));
+                break;
+            case AttachmentSyncStatus.inProgress:
+                this._logAccessibility(Jx.res.loadCompoundString("attachmentDownloading", fileName));
+                break;
+            case AttachmentSyncStatus.done:
+                this._logAccessibility(Jx.res.loadCompoundString("attachmentFinishedDownloading", fileName));
+                break;
+            case AttachmentSyncStatus.failed:
+                this._controller.fireDownloadFailedError(this._attachment);
+                break;
+        }
+    };
+
+    proto._getItemRenderer = function (fileExtension, status) {
+        /// <summary>Returns a rendering function based on the given file type and attachment status</summary>
+        var found = this._itemRenderers.filter(function (current) {
+            return current.canRender(fileExtension, status, Microsoft.WindowsLive.Platform.AttachmentSyncStatus);
+        });
+        Debug.assert(found.length === 1, "There should be one and only one render found.");
+        return found[0];
+    };
+
+    proto._inProgressOtherItemRenderer = {
+        /// <summary>Renders non-photo/video items that are in the process of being downloaded.</summary>
+        canRender: function (fileExtension, syncStatus) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="syncStatus" type="Microsoft.WindowsLive.Platform.AttachmentSyncStatus">The sync status of the mail attachment.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return syncStatus === AttachmentSyncStatus.inProgress && !Utils.isSupportedPhotoOrVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that indicates the given non-photo/video attachment is still in the progress of syncing.</returns>
+            var that = this;
+            return ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.others, this._thumbnailDimensions).then(function (thumbnailStream) {
+                return that._renderFileIconItem(attachment, thumbnailStream, Templates.readOtherItemDownloading, properties, "cancelCommand");
+            });
+        }.bind(proto)
+    };
+
+    proto._inProgressPhotoVideoItemRenderer = {
+        /// <summary>Renders photo/video items that are in the process of being downloaded.</summary>
+        canRender: function (fileExtension, syncStatus) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="syncStatus" type="Microsoft.WindowsLive.Platform.AttachmentSyncStatus">The sync status of the mail attachment.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return syncStatus === AttachmentSyncStatus.inProgress && Utils.isSupportedPhotoOrVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that indicates the given photo/video attachment is still in the progress of syncing.</returns>
+            var div = this._renderFileIconItem(attachment, null/*render with default file icon*/, Templates.readPhotoVideoItemDownloading, properties, "cancelCommand");
+            return WinJS.Promise.wrap(div);
+        }.bind(proto)
+    };
+
+    proto._notDownloadedOtherItemRenderer = {
+        /// <summary>Renders non-photo/video items that have not yet being downloaded.</summary>
+        canRender: function (fileExtension, syncStatus) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="syncStatus" type="Microsoft.WindowsLive.Platform.AttachmentSyncStatus">The sync status of the mail attachment.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return (syncStatus === AttachmentSyncStatus.notStarted || syncStatus === AttachmentSyncStatus.failed) && !Utils.isSupportedPhotoOrVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that indicates the given non-photo/video attachment has not yet start syncing.</returns>
+            var that = this;
+            return ThumbnailResizer.getThumbnail(attachment, Utils.FileCategory.others, this._thumbnailDimensions).then(function (thumbnailStream) {
+                return that._renderFileIconItem(attachment, thumbnailStream, Templates.readOtherItemNotDownloaded, properties, "downloadCommand");
+            });
+        }.bind(proto)
+    };
+
+    proto._notDownloadedPhotoVideoItemRenderer = {
+        /// <summary>Renders photo/video items that have not yet being downloaded.</summary>
+        canRender: function (fileExtension, syncStatus) {
+            /// <param name="fileExtension" type="String">The file extension of the attachment.</param>
+            /// <param name="syncStatus" type="Microsoft.WindowsLive.Platform.AttachmentSyncStatus">The sync status of the mail attachment.</param>
+            /// <returns type="Boolean">true if it can render the given item and false otherwise.</returns>
+            return (syncStatus === AttachmentSyncStatus.notStarted || syncStatus === AttachmentSyncStatus.failed) && Utils.isSupportedPhotoOrVideoFormat(fileExtension);
+        },
+        render: function (attachment, properties) {
+            /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+            /// <param name="properties" type="AttachmentWell.Base.TemplateProperties">The item properties to be rendered.</param>
+            /// <returns type="HTMLElement">HTMLElement that indicates the given photo/video attachment has not yet start syncing.</returns>
+            var div = this._renderFileIconItem(attachment, null/*render with default file icon*/, Templates.readPhotoVideoItemNotDownloaded, properties, "downloadCommand");
+            return WinJS.Promise.wrap(div);
+        }.bind(proto)
+    };
+
+    proto._logAccessibility = function (message) {
+        /// <summary>Logs a message to an aria-live region to be read by Narrator.</summary>
+        // Each message gets its own seperate aria-live region to avoid Narrator re-reading unchanged status and to work 
+        // around an issue where Narrator keeps reading the old message even after it has been updated.
+        var statusElement = document.createElement("div");
+        statusElement.setAttribute("aria-live", "polite");
+        statusElement.setAttribute("role", "status");
+        statusElement.className = "attachmentWell-statusListItem";
+        statusElement.innerText = message;
+
+        var statusListElement = this._statusListElement;
+        if (Jx.isNullOrUndefined(statusListElement)) {
+            statusListElement = this._statusListElement = this._host.getElement().querySelector(".attachmentWell-statusList");
+            Debug.assert(Jx.isHTMLElement(statusListElement));
+        }
+        statusListElement.appendChild(statusElement); 
+    };
+
+    proto._itemRenderers = /*@static_cast(Array)*/null;
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders the view of the attachment well.
+//
+
+/*global AttachmentWell,Jx,Debug*/
+
+/// <reference path="AttachmentWellReadItem.js" />
+
+(function () {
+    AttachmentWell.Read.ViewLayout = /*@constructor*/function (mailMessage, neighborElement) {
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        /// <param name="neighborElement" type="HTMLElement" optional="true">The neighboring element that gets affected when we expand/collapse the view.</param>
+        /// <summary>Renders the view of the attachment well.</summary>
+        AttachmentWell.Base.ViewLayout.call(this, mailMessage, neighborElement);
+        this._downloadSaveAllControl = new AttachmentWell.DownloadSaveAllControl(mailMessage);
+        this.append(this._downloadSaveAllControl);
+    };
+
+    Jx.inherit(AttachmentWell.Read.ViewLayout, AttachmentWell.Base.ViewLayout);
+
+    var proto = AttachmentWell.Read.ViewLayout.prototype;
+
+    proto.getUI = function (ui) {
+        ui.html =
+            '<div id="' + this._id + '" class="attachmentWell-view">' +
+                Jx.getUI(this._errorManager).html +
+                '<div class="attachmentWell-controls">' +
+                    Jx.getUI(this._filesAttachedControl).html +
+                    Jx.getUI(this._downloadSaveAllControl).html +
+                '</div>' +
+                '<div class="attachmentWell-repeater"></div>' +
+                '<div class="attachmentWell-statusList" aria-hidden="true"></div>' +
+                this._contextMenuUI() + 
+            '</div>';
+    };
+
+    proto._createAttachmentItem = function (attachment) {
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        Debug.assert(this._controller, "AttachmentWell.Read.ViewLayout._controller should have been set by parent class");
+        return new AttachmentWell.Read.Item(attachment, this._controller, this);
+    };
+
+    proto._createController = function () {
+        return new AttachmentWell.Read.ItemController(this);
+    };
+
+    proto._resetAttachmentCollection = function () {
+        AttachmentWell.Base.ViewLayout.prototype._resetAttachmentCollection.call(this);
+        this._downloadSaveAllControl.resetAttachmentCollection();
+    };
+
+    proto._statusProperty = "syncStatus";
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders the view of the attachment well.
+//
+
+/*global AttachmentWell,Jx,Microsoft,Debug,Windows,WinJS*/
+
+(function () {
+
+    var AttachmentSyncStatus = Microsoft.WindowsLive.Platform.AttachmentSyncStatus,
+        Utils = AttachmentWell.Utils;
+
+    AttachmentWell.DownloadSaveAllControl = /*@constructor*/function (mailMessage) {
+        /// <summary>Control that allows user to either start downloading all attachments that haven't been downloaded, 
+        /// or save all files that have been downloaded into a selected location when there are more than one attachments.</summary>
+        /// <param name="mailMessage" type="Microsoft.WindowsLive.Platform.IMailMessage">The mail message to show attachments for.</param>
+        Debug.assert(mailMessage, "AttachmentWell.DownloadSaveAllControl: given mail message is not valid.");
+        this.initComponent();
+        this._mailMessage = mailMessage;
+        this._attachmentCollection = mailMessage.getOrdinaryAttachmentCollection();
+        this._attachmentObjects = {};
+        this._attachmentChanged = this._updateControlState.bind(this);
+    };
+    Jx.augment(AttachmentWell.DownloadSaveAllControl, Jx.Component);
+
+    var proto = AttachmentWell.DownloadSaveAllControl.prototype;
+
+    proto.getUI = function (ui) {
+        ui.html =
+            '<div class="attachmentWell-downloadSaveAllControl">' +
+                '<span class="attachmentWell-downloadAll hidden" tabIndex="0" role="button">' + Jx.escapeHtml(Jx.res.getString("downloadAll")) + '</span>' +
+                '<span class="attachmentWell-saveAll hidden" tabIndex="0" role="button">' + Jx.escapeHtml(Jx.res.getString("saveAll")) + '</span>' +
+            '</div>';
+    };
+
+    proto.activateUI = function () {
+        this._view = this.getParent();
+        Debug.assert(this._view.getElement, "AttachmentWell.DownloadSaveAllControl.activateUI: given view needs to have the getElement function implemented");
+        var element = this._element = this._view.getElement().querySelector(".attachmentWell-downloadSaveAllControl");
+
+        this._downloadAll = element.querySelector(".attachmentWell-downloadAll");
+        this._saveAll = element.querySelector(".attachmentWell-saveAll");
+        this._downloadAllClicker = new Jx.Clicker(this._downloadAll, this._onDownloadAllClicked, this);
+        this._saveAllClicker = new Jx.Clicker(this._saveAll, this._onSaveAllClicked, this);
+
+        this._addAttachmentListeners();
+        this._updateControlState();
+    };
+
+    proto._addAttachmentListeners = function () {
+        // attach attachment listeners
+        var attachmentCollection = this._attachmentCollection;
+
+        attachmentCollection.addEventListener("collectionchanged", this._attachmentChanged);
+        var attachment;
+        for (var i = 0, len = attachmentCollection.count; i < len; i++) {
+            attachment = attachmentCollection.item(i);
+            attachment.addEventListener("changed", this._attachmentChanged);
+
+            // Hold on to this object so it doesn't get garbage collected until we remove the listener
+            this._attachmentObjects[attachment.objectId] = attachment;
+        }
+
+        // unlock to listen for changes
+        attachmentCollection.unlock();
+    };
+
+    proto._onDownloadAllClicked = function () {
+        /// <summary>Starts downloading all attachments that have not yet been downloaded.</summary>
+        Jx.log.info("AttachmentWell.DownloadSaveAllControl._onDownloadAllClicked");
+        var attachment;
+        for (var i = 0, len = this._attachmentCollection.count; i < len; i++) {
+            attachment = this._attachmentCollection.item(i);
+            if (attachment.syncStatus === AttachmentSyncStatus.notStarted || attachment.syncStatus === AttachmentSyncStatus.failed) {
+                attachment.downloadBody();
+            }
+        }
+    };
+
+    proto._onSaveAllClicked = function () {
+        /// <summary>Launch folder picker to allow user to pick a folder location to save all downloaded files. 
+        /// If duplicated file names are found, unique file names will be generated by appending a number to the name of the file.</summary>
+        Jx.log.info("AttachmentWell.DownloadSaveAllControl._onSaveAllClicked");
+        var attachmentCollection = this._attachmentCollection;
+        var saveAllFiles = function (folder) {
+            if (folder) {
+                var attachment,
+                    promises = [];
+                for (var i = 0, len = attachmentCollection.count; i < len; i++) {
+                    attachment = attachmentCollection.item(i);
+                    promises.push(
+                        Utils.getFileFromBodyUri(attachment)
+                        .then(function (attachmentFile) {
+                            return attachmentFile.copyAsync(folder, attachmentFile.name, Windows.Storage.NameCollisionOption.generateUniqueName);
+                        })
+                    );
+                }
+                return WinJS.Promise.join(promises);
+            }
+        };
+
+        var markAllFilesAsWritable = function () {
+            var attachment,
+                 promises = [];
+            for (var i = 0, len = attachmentCollection.count; i < len; i++) {
+                attachment = attachmentCollection.item(i);
+                promises.push(
+                    Utils.getFileFromBodyUri(attachment)
+                    .then(Utils.markFileAsWritable)
+                );
+            }
+            return WinJS.Promise.join(promises);
+        };
+
+        var folderPicker = new Windows.Storage.Pickers.FolderPicker();
+        folderPicker.suggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.picturesLibrary;
+        folderPicker.fileTypeFilter.replaceAll(["*"]);
+        folderPicker.pickSingleFolderAsync()
+            .then(saveAllFiles)
+            .then(markAllFilesAsWritable)
+            .done(function () {
+                Jx.log.info("AttachmentWell.DownloadSaveAllControl._onSaveAllClicked: all files saved successfully");
+            }, function (error) {
+                Jx.log.error("AttachmentWell.DownloadSaveAllControl._onSaveAllClicked: failed to save all files: " + error);
+            });
+    };
+
+    proto._updateControlState = function () {
+        /// <summary>Shows either 'Download all' or 'Save all' verb depending on the number of attachments and their sync status. 
+        /// When there are two more more attachments, shows 'Save all' when all files have been downloaded successfully else 'Download all.'
+        /// Shows nothing (hides both 'Download all' and 'Save all' when there are only one file.</summary>
+        var attachmentCollection = this._attachmentCollection,
+            totalCount = attachmentCollection.count,
+            downloadedFileCount = 0;
+
+        for (var i = 0; i < totalCount; i++) {
+            if (attachmentCollection.item(i).syncStatus === AttachmentSyncStatus.done) {
+                downloadedFileCount++;
+            }
+        }
+
+        var hideDownloadAll = totalCount <= 1 || downloadedFileCount === totalCount,
+            hideSaveAll = totalCount <= 1 || downloadedFileCount !== totalCount;
+        Jx.setClass(this._downloadAll, "hidden", hideDownloadAll);
+        this._downloadAll.setAttribute("aria-hidden", hideDownloadAll);
+        Jx.setClass(this._saveAll, "hidden", hideSaveAll);
+        this._saveAll.setAttribute("aria-hidden", hideSaveAll);
+    };
+
+    proto.deactivateUI = function () {
+        this._removeAttachmentListeners();
+
+        Jx.dispose(this._downloadAllClicker);
+        Jx.dispose(this._saveAllClicker);
+        this._downloadAllClicker = null;
+        this._saveAllClicker = null;
+    };
+
+    proto._removeAttachmentListeners = function () {
+        this._attachmentCollection.lock();
+        this._attachmentCollection.removeEventListener("collectionchanged", this._attachmentChanged);
+        Object.keys(this._attachmentObjects).forEach(function (key) {
+            var attachmentObject = this._attachmentObjects[key];
+            if (attachmentObject) {
+                attachmentObject.removeEventListener("changed", this._attachmentChanged);
+            }
+        }, this);
+        this._attachmentObjects = {};
+    };
+
+    proto.resetAttachmentCollection = function () {
+        this._removeAttachmentListeners();
+        this._attachmentCollection = this._mailMessage.getOrdinaryAttachmentCollection();
+        this._addAttachmentListeners();
+        this._updateControlState();
+    };
+
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+// Renders the view of the attachment well.
+//
+
+/*global AttachmentWell,Jx,Debug*/
+
+(function () {
+    AttachmentWell.FilesAttachedControl = /*@constructor*/function () {
+        /// <summary>Control that shows the number of files currently displayed in the view 
+        /// and allows user to expand or collapse the view by clicking on it.</summary>
+        this.initComponent();
+        this._collapsed = false;
+    };
+    Jx.augment(AttachmentWell.FilesAttachedControl, Jx.Component);
+
+    var proto = AttachmentWell.FilesAttachedControl.prototype;
+
+    proto.getUI = function (ui) {
+        ui.html =
+            '<div class="attachmentWell-filesAttachedControl" tabIndex="0" role="button" aria-expanded="true">' +
+                '<span class="attachmentWell-numberOfFiles"></span>&ensp;' +
+                '<span class="attachmentWell-expandChevron">\uE098</span>' +
+                '<span class="attachmentWell-collapseChevron hidden">\uE099</span>' +
+            '</div>';
+    };
+
+    proto.activateUI = function () {
+        this._view = this.getParent();
+        Debug.assert(this._view.getElement, "AttachmentWell.DownloadSaveAllControl.activateUI: given view needs to have the getElement function implemented");
+        var element = this._element = this._view.getElement().querySelector(".attachmentWell-filesAttachedControl");
+        this._numberOfFiles = element.querySelector(".attachmentWell-numberOfFiles");
+        this._expandChevron = element.querySelector(".attachmentWell-expandChevron");
+        this._collapseChevron = element.querySelector(".attachmentWell-collapseChevron");
+
+        // attach listeners
+        this._observer = Jx.observeAttribute(element, "aria-expanded", function () {
+            this.collapse(element.getAttribute("aria-expanded") === "false");
+        }, this);
+
+        this._clicker = new Jx.Clicker(element, function () {
+            this._element.setAttribute("aria-expanded", this._collapsed);
+        }, this);
+    };
+
+    proto.collapse = function (shouldCollapses) {
+        var collapsed = this._collapsed = !this._collapsed;
+        this._view.isCollapsed = collapsed;
+
+        Jx.setClass(this._expandChevron, "hidden", collapsed);
+        Jx.setClass(this._collapseChevron, "hidden", !collapsed);
+    };
+
+    proto.updateCount = function (count) {
+        /// <summary>Update count to reflect changes in number of files attached.</summary>
+        /// <param name="count" type="Number">Updated number of files attached</param>
+        Debug.assert(Jx.isNumber(count), "AttachmentWell.FilesAttachedControl.updateCount: given count is not a valid number");
+        Jx.log.info("AttachmentWell.FilesAttachedControl.updateCount: count = " + count);
+        var text = this._numberOfFiles.innerText =
+            count === 1 ? Jx.res.getString("oneFileAttached") : Jx.res.loadCompoundString("numberOfFilesAttached", count);
+        this._element.setAttribute("aria-label", text);
+    };
+
+    proto.deactivateUI = function () {
+        Jx.dispose(this._clicker);
+        this._clicker = null;
+        this._observer.disconnect();
+        this._observer = null;
+    };
+
+})();
+
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+/*global AttachmentWell,Jx,Debug,WinJS,Windows*/
+
+(function () {
+
+    var FileProperties = Windows.Storage.FileProperties,
+        ThumbnailResizer = AttachmentWell.ThumbnailResizer,
+        Utils = AttachmentWell.Utils;
+
+    var temporaryFolderName = "Attachments",
+        temporaryFileName = "empty";
+
+    var _getFile = function (attachment) {
+        if (attachment.bodyUri) {
+            return Utils.getFileFromBodyUri(attachment);
+        } else {
+            var collisionOption = Windows.Storage.CreationCollisionOption.openIfExists;
+            return Windows.Storage.ApplicationData.current.temporaryFolder.createFolderAsync(temporaryFolderName, collisionOption)
+                .then(function (folder) {
+                    var fileExtension = Utils.getFileExtension(attachment);
+                    return folder.createFileAsync(temporaryFileName + fileExtension, collisionOption);
+                });
+        }
+    };
+
+    var _requestedThumbnailSize = function (file, isPhotoOrVideo, fileCategory, thumbnailDimensions) {
+        /// <summary>Gets a promise that returns the requested size in pixels of the longest edge of the thumbnail.</summary>
+        Debug.assert(Jx.isObject(thumbnailDimensions), "ThumbnailResizer._requestedThumbnailSize: thumbnailDimensions is invalid");
+        if (isPhotoOrVideo) {
+            var photoVideoDimensions = thumbnailDimensions.photoVideo;
+            Debug.assert(Jx.isObject(photoVideoDimensions));
+            Debug.assert(Jx.isNumber(photoVideoDimensions.width) && Jx.isNumber(photoVideoDimensions.height));
+
+            var propertyNames = {
+                width: fileCategory === Utils.FileCategory.photo ? "System.Image.HorizontalSize" : "System.Video.FrameWidth",
+                height: fileCategory === Utils.FileCategory.photo ? "System.Image.VerticalSize" : "System.Video.FrameHeight"
+            };
+
+            return file.properties.retrievePropertiesAsync([propertyNames.width, propertyNames.height]).then(function (properties) {
+                var actualWidth = properties[propertyNames.width];
+                var actualHeight = properties[propertyNames.height];
+
+                var displayWidth = photoVideoDimensions.width;
+                var displayHeight = photoVideoDimensions.height;
+
+                // We only need to handle the case where the dimensions are larger than the requested dimensions.
+                if (actualHeight > displayHeight && actualWidth > displayWidth) {
+                    // For portrait image, pick height. Otherwise, constrain the width based on requested height and the aspect ratio of the original dimensions.
+                    return actualWidth <= actualHeight ? displayHeight : Math.round(actualWidth * displayHeight / actualHeight);
+                } else {
+                    return Math.max(displayWidth, displayHeight);
+                }
+            });
+        } else {
+            var fileIconDimensions = thumbnailDimensions.fileIcon;
+            Debug.assert(Jx.isObject(fileIconDimensions));
+            Debug.assert(Jx.isNumber(fileIconDimensions.width) && Jx.isNumber(fileIconDimensions.height));
+            var requestedSize = Math.max(fileIconDimensions.width, fileIconDimensions.height);
+            return WinJS.Promise.wrap(requestedSize);
+        }
+    };
+
+    ThumbnailResizer.getThumbnail = function (attachment, fileCategory, thumbnailDimensions) {
+        /// <summary>
+        /// Gets a promise that returns a thumbnail stream for the given attachment.
+        /// If the attachment is not available yet (hasn't been downloaded), returns a file icon for the given file type.
+        /// Returns a null promise if fail.
+        /// </summary>
+        /// <param name="attachment" type="Microsoft.WindowsLive.Platform.IMailAttachment">The attachment object.</param>
+        /// <param name="thumbnailDimensions" type="Object">Object that specifies the thumbnail's min and max dimensions.
+        /// options: {
+        ///     photoVideo: {
+        ///         width: 0,
+        ///         height: 0,
+        ///         minWidth: 0,
+        ///         maxWidth: 0
+        ///     },
+        ///     fileIcon: {
+        ///         width: 0,
+        ///         height: 0
+        ///     }
+        /// }
+        /// </param>
+        Debug.assert(Utils.FileCategory[fileCategory], "Invalide file category given.");
+        var isPhotoOrVideo = fileCategory === Utils.FileCategory.photo || fileCategory === Utils.FileCategory.video,
+            imgFile;
+
+        return _getFile(attachment)
+            .then(function (file){ 
+                imgFile = file;
+                return _requestedThumbnailSize(file, isPhotoOrVideo, fileCategory, thumbnailDimensions);
+            })
+            .then(function (requestedSize) {
+                var thumbnailMode = isPhotoOrVideo ? FileProperties.ThumbnailMode.singleItem : FileProperties.ThumbnailMode.listView;
+                var thumbnailOption = FileProperties.ThumbnailOptions.useCurrentScale; // Increase requested size based on the Pixels Per Inch (PPI) of the display
+                return imgFile.getThumbnailAsync(thumbnailMode, requestedSize, thumbnailOption);
+            })
+            .then(null, function (err) {
+                Debug.assert(Jx.isObject(err), "ThumbnailResizer.getThumbnail: given err is not an object");
+                Jx.log.exception("ThumbnailResizer.getThumbnail: failed to get thumbnail", err);
+                return WinJS.Promise.wrap(null);
+            });
+    };
+
+    ThumbnailResizer.calcDesiredDisplaySize = function (thumbnail, dimensions) {
+        /// <summary> Returns the desired size of the thumbnail based on the specified original media dimensions.</summary>
+        /// <returns type="Object">An object with {width, height} properties containing the desired display size.</returns>
+        var originalWidth = thumbnail.originalWidth;
+        var originalHeight = thumbnail.originalHeight;
+
+        var fixedHeight = dimensions.height,
+            minItemWidth = dimensions.minWidth,
+            maxItemWidth = dimensions.maxWidth;
+
+        if (originalHeight > fixedHeight || originalWidth > maxItemWidth) {
+            // Scale it down to fit within the fixed height and maximum width, letterboxing if necessary
+            // (Note: we won't pillarbox if the returned width is less than the maximum)
+            return ThumbnailResizer.scaleAspect(maxItemWidth, fixedHeight, /*stretchToFill:*/false, originalWidth, originalHeight);
+        } else if (originalWidth < minItemWidth) {
+            // Scale it up to fit within the minimum width, letterboxed or (in extremely rare cases) pillarboxed
+            return ThumbnailResizer.scaleAspect(minItemWidth, fixedHeight, /*stretchToFill:*/false, originalWidth, originalHeight);
+        } else {
+            // Use the original size
+            return { width: originalWidth, height: originalHeight };
+        }
+    };
+
+    // Constants
+    // IMPORTANT: DO NOT CHANGE THESE CONSTANTS WITHOUT UPDATING THE CONSTANTS IN THE NATIVE THUMBNAIL GENERATION CODE ALSO.
+    // IF YOU DON'T KNOW WHERE THAT CODE IS, THEN YOU SHOULDN'T BE TOUCHING THIS CODE.
+    var centeringDivisor = 2;
+    var favorTopCroppingDivisor = 3;
+    ThumbnailResizer.scaleAspect = function (widthToFitIn, heightToFitIn, stretchToFill, width, height) {
+        /// <summary>Function to scale a width and height to fit within specified bounds.</summary>
+        /// <param name="widthToFitIn" type="Number">The width that we want to scale to.</param>
+        /// <param name="heightToFitIn" type="Number">The height that we want to scale to.</param>
+        /// <param name="stretchToFill" type="Boolean">
+        ///     If true, stretch width/height to fill widthToFitIn/heightToFitIn (while maintaining same aspect ratio).
+        ///     Otherwise, letterbox: scale so that one dimension matches while the other is smaller than *toFitIn.
+        /// </param>
+        /// <param name="width" type="Number">The width that we want to scale.</param>
+        /// <param name="height" type="Number">The height that we want to scale.</param>
+        /// <returns type="Object">An object with {width, height} properties containing the element size.</returns>
+
+        Debug.assert(widthToFitIn >= 0, "Bad width to fit in for ScaleAspect: " + widthToFitIn.toString());
+        Debug.assert(heightToFitIn >= 0, "Bad height to fit in for ScaleAspect: " + heightToFitIn.toString());
+        Debug.assert(width >= 0, "Bad width for ScaleAspect: " + width.toString());
+        Debug.assert(height >= 0, "Bad height for ScaleAspect: " + height.toString());
+
+        if (width > 0 && height > 0 && widthToFitIn > 0 && heightToFitIn > 0) {
+            // Determine whether the original width and height gives a wider aspect ratio than the box to fit it in.
+            var widerThanBox = (width * heightToFitIn > widthToFitIn * height);
+
+            // Make the aspect width and height fit exactly in the rect's size.
+            if ((stretchToFill && widerThanBox) || (!stretchToFill && !widerThanBox)) {
+
+                // Image is wider than the display rectangle and needs cropping, or narrower and needs letterboxing.
+                width = Math.round(heightToFitIn * width / height);
+                height = heightToFitIn;
+
+                // Always have at least 1.
+                if (width < 1) {
+                    width = 1;
+                }
+            } else {
+
+                // Image is taller than the display rectangle and needs cropping, or shorter and needs letterboxing.
+                height = Math.round(widthToFitIn * height / width);
+                width = widthToFitIn;
+
+                // Always have at least 1.
+                if (height < 1) {
+                    height = 1;
+                }
+            }
+        } else {
+            width = 0;
+            height = 0;
+        }
+
+        return { width: width, height: height };
+    };
+
+    ThumbnailResizer.centerElement = function (htmlElement, widthToFitIn, heightToFitIn, elementSize) {
+        /// <summary>Function to center an HTML element within specified bounds using its margin properties.</summary>
+        /// <param name="htmlElement" type="HTMLElement">The DOM element to center.</param>
+        /// <param name="widthToFitIn" type="Number">The width of the area that we want to center in.</param>
+        /// <param name="heightToFitIn" type="Number">The height of the area that we want to center in.</param>
+        /// <param name="elementSize" type="RectSize">An object with {width, height} properties containing the element size.</param>
+        /// <returns type="Object">An object with {top, left} properties of the element.</returns>
+        var elementStyle = htmlElement.style;
+        Debug.assert(elementStyle);
+
+        var width = elementSize.width,
+            height = elementSize.height,
+            marginLeft = 0,
+            marginTop = 0;
+        if (widthToFitIn !== width) {
+            var horizontalMargin = (widthToFitIn - width) / centeringDivisor;
+            marginLeft = Math.floor(horizontalMargin);
+            elementStyle.marginLeft = marginLeft.toString() + "px";
+            elementStyle.marginRight = Math.ceil(horizontalMargin).toString() + "px";
+        } else {
+            marginLeft = 0;
+            elementStyle.marginLeft = "";
+            elementStyle.marginRight = "";
+        }
+        if (heightToFitIn !== height) {
+            // If cropping vertically, crop less off the top and more off the bottom to avoid cutting off people's faces
+            var verticalMargin = (heightToFitIn - height) / (height > heightToFitIn ? favorTopCroppingDivisor : centeringDivisor);
+            marginTop = Math.floor(verticalMargin);
+            elementStyle.marginTop = marginTop.toString() + "px";
+            elementStyle.marginBottom = Math.ceil(verticalMargin).toString() + "px";
+        } else {
+            marginTop = 0;
+            elementStyle.marginTop = "";
+            elementStyle.marginBottom = "";
+        }
+        return {
+            top: marginTop,
+            left: marginLeft
+        };
+    };
+
+    ThumbnailResizer.scaleAndCenter = function (htmlElement, currentWidth, currentHeight, displayWidth, displayHeight, stretchToFill, zoomCap) {
+        /// <summary>Scales and centers an HTML element in the given display area.</summary>
+        /// <param name="htmlElement" type="HTMLElement">The element to modify.</param>
+        /// <param name="currentWidth" type="Number">The width of the element.</param>
+        /// <param name="currentHeight" type="Number">The height of the element.</param>
+        /// <param name="displayWidth" type="Number">The width of the display area.</param>
+        /// <param name="displayHeight" type="Number">The height of the display area.</param>
+        /// <param name="stretchToFill" type="Boolean">
+        ///     If true, stretch width/height to fill displayWidth/displayHeight (while maintaining same aspect ratio).
+        ///     Otherwise, letterbox: scale so that one dimension matches while the other is smaller than display*.
+        /// </param>
+        /// <param name="zoomCap" type="Boolean" optional="true">If true, keep the scaling to no larger than 200%.</param>
+        /// <returns type="Object">An object with {top, left, width, height} properties of the element.</returns>
+
+        var newSize = ThumbnailResizer.scaleAspect(displayWidth, displayHeight, stretchToFill, currentWidth, currentHeight);
+
+        if (zoomCap) {
+            // Ensure our new size is no greater than 200% of original width/height.
+            if (newSize.width > (currentWidth * 2) || newSize.height > (currentHeight * 2)) {
+                newSize.width = currentWidth * 2;
+                newSize.height = currentHeight * 2;
+            }
+        }
+
+        htmlElement.style.width = String(newSize.width) + "px";
+        htmlElement.style.height = String(newSize.height) + "px";
+        var /*@type(ElementPosition)*/topLeftPosition = ThumbnailResizer.centerElement(htmlElement, displayWidth, displayHeight, newSize);
+        var /*@type(RectPosition)*/elementPosition = {
+            top: topLeftPosition.top,
+            left: topLeftPosition.left,
+            width: newSize.width,
+            height: newSize.height
+        };
+        return elementPosition;
+    };
+})();
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+});

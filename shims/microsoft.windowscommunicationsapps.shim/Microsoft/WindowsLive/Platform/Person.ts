@@ -29,12 +29,13 @@ import { Collection } from "./Collection";
 import { UserTile } from "./UserTile";
 import { Contact } from "./Contact";
 import { PeopleManager } from "./PeopleManager";
+import { IAccount } from "./IAccount";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.Person')
 export class Person extends PlatformObject implements IPerson, IBaseContact {
     _manager: PeopleManager;
 
-    constructor(peopleManager: PeopleManager, firstName: string = "", lastName: string = "") {
+    constructor(peopleManager: PeopleManager, account: IAccount, firstName: string = "", lastName: string = "") {
         super("Person");
         this._manager = peopleManager;
         this.firstName = firstName;
@@ -42,7 +43,7 @@ export class Person extends PlatformObject implements IPerson, IBaseContact {
         this.isFavorite = false;
         this.isInAddressBook = true;
         let linkedContacts = new Collection();
-        let contact = new Contact(this);
+        let contact = new Contact(this, account);
         linkedContacts._add(contact);
         this.linkedContacts = linkedContacts;
         this.suggestedPeople = new Collection();

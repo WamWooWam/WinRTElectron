@@ -23,6 +23,7 @@ import { SplashScreen } from "../../ApplicationModel/Activation/SplashScreen";
 import { WebUIFileActivatedEventArgs } from "./WebUIFileActivatedEventArgs";
 import { Vector } from "../../Foundation/Interop/Vector`1";
 import { StorageFile } from "../../Storage/StorageFile";
+import { IpcHelper } from "../../../IpcHelper";
 
 @GenerateShim('Windows.UI.WebUI.WebUIApplication')
 export class WebUIApplication {
@@ -31,42 +32,48 @@ export class WebUIApplication {
         ipcRenderer.on(AppLifecycleV2, WebUIApplication._handleAppLifecycleEvent);
     }
 
-    static _handleAppLifecycleEvent(ev, event: IAppLifecycleEvent) {
+    static _handleAppLifecycleEvent(ev: Electron.IpcRendererEvent, event: IAppLifecycleEvent) {
         let _this = WebUIApplication;
 
-        if (event.type === "activated") {
-            if (event.details) {
-                if (event.details.kind === ActivationKind.launch) {
-                    let args = new WebUILaunchActivatedEventArgs();
-                    args.arguments = event.details.args;
-                    args.splashScreen = new SplashScreen(event.details.splashRect);
-                    InvokeEvent(_this.__activated, "activated", args);
-                    return
-                }
-
-                if(event.details.kind === ActivationKind.file && event.details.files) {
-                    let args = new WebUIFileActivatedEventArgs();
-                    let fileVector = new Vector<StorageFile>();
-                    for (const filePath of event.details.files) {
-                        fileVector.append(StorageFile.getFileFromPath(filePath));
+        try {
+            if (event.type === "activated") {
+                if (event.details) {
+                    if (event.details.kind === ActivationKind.launch) {
+                        let args = new WebUILaunchActivatedEventArgs();
+                        args.arguments = event.details.args;
+                        args.splashScreen = new SplashScreen(event.details.splashRect);
+                        InvokeEvent(_this.__activated, "activated", args);
+                        return
                     }
 
-                    args.files = fileVector;
-                    args.splashScreen = new SplashScreen(event.details.splashRect);
-                    InvokeEvent(_this.__activated, "activated", args);
-                    return
+                    if (event.details.kind === ActivationKind.file && event.details.files) {
+                        let args = new WebUIFileActivatedEventArgs();
+                        let fileVector = new Vector<StorageFile>();
+                        for (const filePath of event.details.files) {
+                            fileVector.append(StorageFile.getFileFromPath(filePath));
+                        }
+
+                        args.files = fileVector;
+                        args.splashScreen = new SplashScreen(event.details.splashRect);
+                        InvokeEvent(_this.__activated, "activated", args);
+                        return
+                    }
                 }
+
+                InvokeEvent(_this.__activated, "activated", new WebUILaunchActivatedEventArgs())
             }
 
-            InvokeEvent(_this.__activated, "activated", new WebUILaunchActivatedEventArgs())
-        }
+            if (event.type === "suspending") {
+                InvokeEvent(_this.__suspending, "suspending", new SuspendingEventArgs())
+            }
 
-        if (event.type === "suspending") {
-            InvokeEvent(_this.__suspending, "suspending", new SuspendingEventArgs())
-        }
+            if (event.type === "resuming") {
+                InvokeEvent(_this.__resuming, "resuming", null)
+            }
 
-        if (event.type === "resuming") {
-            InvokeEvent(_this.__resuming, "resuming", null)
+        }
+        finally {
+            IpcHelper.post(AppLifecycleV2, { data: event });
         }
     }
 

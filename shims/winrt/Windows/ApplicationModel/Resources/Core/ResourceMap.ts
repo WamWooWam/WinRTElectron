@@ -19,6 +19,7 @@ import { Package } from "../../Package";
 
 import deepRename from "deep-rename-keys"
 import { getCurrentPackageName } from "../../../Foundation/Interop/Utils";
+import { ResourceQualifier } from "./ResourceQualifier";
 const path = require('path');
 const fs = require('fs');
 const { remote } = require("electron");
@@ -26,49 +27,59 @@ const { remote } = require("electron");
 const supportedLanguages = ["en-gb", "en-us", "en", "generic"]; // this should be detected from the system. KEEP IN SYNC WITH index.ts!!
 
 export class ResourceMap extends Dictionary<string, NamedResource> {
-    #parent: ResourceMap;
-    #languages: Map<any, any>;
-    #subtree: string;
+    __parent: ResourceMap;
+    __languages: Map<any, any>;
+    __subtree: string;
 
     get uri(): Uri {
-        return new Uri(this.#parent != null ? this.#parent.#subtree + this.#subtree : this.#subtree);
+        return new Uri(this.__parent != null ? this.__parent.__subtree + this.__subtree : this.__subtree);
     }
 
     constructor(parent?: ResourceMap, subtree?: string) {
         super();
         if (parent == null) {
-            this.#subtree = "ms-resource://"
-            this.#languages = new Map();
+            this.__subtree = "ms-resource://"
+            this.__languages = new Map();
             let basePath = path.join(remote.app.getAppPath(), "packages", getCurrentPackageName(), "resources");
             for (const language of supportedLanguages) {
                 let filePath = path.join(basePath, language + ".json");
                 if (fs.existsSync(filePath)) {
                     const resourcesJson = fs.readFileSync(filePath, "utf-8");
                     const parsedResource = deepRename(JSON.parse(resourcesJson), (k: string) => k.toLowerCase());
-                    this.#languages.set(language, parsedResource);
+                    this.__languages.set(language, parsedResource);
                 }
             }
         }
         else {
-            this.#parent = parent;
-            this.#subtree = subtree;
-            this.#languages = new Map();
-            for (const key of parent.#languages.keys()) {
-                this.#languages.set(key, parent.#languages.get(key)[subtree.toLowerCase()]);
+            this.__parent = parent;
+            this.__subtree = subtree;
+            this.__languages = new Map();
+            for (const key of parent.__languages.keys()) {
+                this.__languages.set(key, parent.__languages.get(key)[subtree.toLowerCase()]);
             }
         }
     }
 
     getValue(resource: string): ResourceCandidate {
+        if (resource.startsWith("ms-resource")) {
+            resource = resource.substring(12);
+        }
+
+        if (!resource.startsWith("/")) {
+            resource = "/resources/" + resource;
+        }
+
         let splits = resource.toLowerCase().split("/");
         let name = splits[splits.length - 1];
         let subsplits = splits.slice(0, splits.length - 1);
         let string = null;
 
-        for (const language of this.#languages) {
+        let lang = null;
+        for (const language of this.__languages) {
             if (string != null)
                 break;
 
+            lang = language[0];
             let json = language[1];
             for (const split of subsplits) {
                 if (json === undefined || split == null || split == "")
@@ -83,9 +94,16 @@ export class ResourceMap extends Dictionary<string, NamedResource> {
             string = json[name];
         }
 
-        console.debug(`ResourceMap:got ${string} for ${resource}`);
-        var candidate = new ResourceCandidate();
+        console.debug(`ResourceMap:got string ${string} for ${resource}`);
+
+        let candidate = new ResourceCandidate();
         candidate.valueAsString = string;
+
+        let qualifier = new ResourceQualifier();
+        qualifier.qualifierName = "Language";
+        qualifier.qualifierValue = lang;
+        candidate.qualifiers.append(qualifier);
+
         return candidate;
     }
 

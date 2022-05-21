@@ -1,0 +1,56 @@
+﻿﻿<!doctype html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Windows Contact Picker Sample</title>
+    <script language="javascript" type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <h1>
+        Windows Contact Picker Test Page</h1>
+    <div class="bodycontainer">
+        <div class="scenario">
+            <h2>
+                Windows Contact Picker Test Page</h2>
+            <br />
+            <form id="testContactPickerForm" action="#">
+            <div>
+                SelectionMode: <span>
+                    <input id="selectionMode0" name="selectionMode" value="0" type="radio" checked="checked" />Contacts
+                    <input id="selectionMode1" name="selectionMode" value="1" type="radio" />Fields</span></div>
+            <div>
+                DesiredFields: <span>
+                    <input id="desiredFields0" name="desiredFields" value="email" type="checkbox" />Email
+                    <input id="desiredFields1" name="desiredFields" value="phoneNumber" type="checkbox" />Phone
+                    <input id="desiredFields2" name="desiredFields" value="location" type="checkbox" />Location
+                    <input id="desiredFields3" name="desiredFields" value="instantMessage" type="checkbox" />InstantMessage
+                    <input id="desiredFields4" name="desiredFields" value="Windows.Live.Chat" type="checkbox" />Chat
+                    <input id="desiredFields5" name="desiredFields" value="Windows.Live.Link" type="checkbox" />Link</span></div>
+            <div>
+                Picking Mode: <span>
+                    <input id="pickingMode0" name="pickingMode" value="0" type="radio" checked="checked" />Single
+                    <input id="pickingMode1" name="pickingMode" value="1" type="radio" />Multiple</span></div>
+            <div>
+                CommitButtonText:
+                <input id="editCommitButtonText" type="text" /></div>
+            </form>
+            <input id="launchPicker" class="button" type="button" onclick="LaunchTestContactPicker()" value="Test Contact Picker" />
+        </div>
+    </div>
+    <label id="contacts" class="contacts" title="contacts">
+    </label>
+    <div id="templates" style="display: none;">
+        <div class="contact contactData">
+            <div>ContactInfo :: <span class="cname"></span></div>
+            <div>Email :: <div class="email"></div></div>
+            <div>PhoneNumber :: <div class="phoneNumber"></div></div>
+            <div>Location :: <div class="location"></div></div>
+            <div>InstantMessage :: <div class="instantMessage"></div></div>
+            <div>Custom :: <div class="custom"></div></div>
+        </div>
+    </div>
+    <div id="console">
+    </div>
+</body>
+</html>

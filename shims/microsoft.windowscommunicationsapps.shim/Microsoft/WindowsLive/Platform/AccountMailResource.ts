@@ -32,20 +32,16 @@ export class AccountMailResource extends PlatformObject implements IAccountResou
         this.lastSyncResult = 0;
         this.lastPushResult = 0;
         this.lastSendMailResult = 0;
+        this.isSendingMail = false;
+        this.isSyncingAllMail = false;
+        this.syncWindowSize = SyncWindowSize.oneWeek;
         this.resourceType = ResourceType.mail;
         this.resourceState = ResourceState.connected;
+        this.signatureType = SignatureType.disabled;
     }
     
     isSyncNeeded: boolean = null;
     isEnabled: boolean = null;
-    readonly hasEverSynchronized: boolean = null;
-    readonly isInitialSyncFinished: boolean = null;
-    readonly isSynchronizing: boolean = null;
-    readonly lastPushResult: number = null;
-    readonly lastSyncResult: number = null;
-    readonly lastSyncTime: Date = null;
-    readonly resourceState: ResourceState = null;
-    readonly resourceType: ResourceType = null;
     allowExternalImages: boolean = null;
     toastState: ToastState = null;
     syncWindowSize: SyncWindowSize = null;
@@ -59,6 +55,14 @@ export class AccountMailResource extends PlatformObject implements IAccountResou
     lastSendMailResult: number = null;
     isSendingMail: boolean = null;
     cancelSendMail: boolean = null;
+    readonly hasEverSynchronized: boolean = null;
+    readonly isInitialSyncFinished: boolean = null;
+    readonly isSynchronizing: boolean = null;
+    readonly lastPushResult: number = null;
+    readonly lastSyncResult: number = null;
+    readonly lastSyncTime: Date = null;
+    readonly resourceState: ResourceState = null;
+    readonly resourceType: ResourceType = null;
     readonly canCreateFolders: boolean = null;
     readonly canServerSearchAllFolders: boolean = null;
     readonly canUpdateFolders: boolean = null;

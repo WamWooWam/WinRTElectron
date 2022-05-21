@@ -1,0 +1,47 @@
+﻿/* Copyright (C) Microsoft Corporation.  All rights reserved. */
+
+.tx-loghost { 
+    font-family: "Tahoma"; 
+    font-size: 8pt; 
+    width: 100%;
+    height: 100%;
+    padding: 2px;
+    box-sizing: border-box;
+} 
+.tx-pass { 
+    color: green; 
+} 
+.tx-fail { 
+    color: red; 
+} 
+.tx-log { 
+    color: blue; 
+}
+.tx-header {
+    color: black;
+}
+.tx-page {
+    color: black;
+}
+.tx-toolbar {
+    padding-bottom: 2px;
+}
+.tx-toolbar button {
+    margin-right: 4px;
+}
+.tx-results {
+    margin: 20px;
+    font-size: 12pt;
+}
+.tx-pagelist {
+    margin: 4px 0;
+}
+.tx-pagelist-item {
+    cursor: pointer;
+}
+.tx-pagelist-item:hover {
+    background-color: #ccc;
+}
+.tx-pagenote {
+    margin: 8px 0;
+}

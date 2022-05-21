@@ -1,0 +1,16 @@
+{
+    "tests": [],
+
+    "files": [
+        "/ModernShared/uibvt/libShared.js",
+        "/ModernMail/compose/uibvt/libAddressWell.js",
+        "/ModernMail/compose/uibvt/composePom.js",
+        "/ModernMail/compose/uibvt/composeLfm.js",
+        "/ModernMail/uibvt/libMail.js",
+        "/ModernMail/compose/uibvt/defaultSettingsPom.js",
+        "/ModernMail/compose/uibvt/defaultSettingsLfm.js",
+
+        "/ModernMail/compose/uibvt/bvtNewMessageScenario.js",
+		"/ModernMail/compose/uibvt/bvtDefaultFontSettings.js"
+    ]
+}

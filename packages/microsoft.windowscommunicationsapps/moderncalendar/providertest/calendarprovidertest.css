@@ -1,0 +1,65 @@
+/*
+    Copyright (C) Microsoft Corporation.  All rights reserved.
+*/
+
+/* Currently most of the CSS for the test app is in the HTML - things should be moved opportunistically to this file as changes are made. */
+
+html, body {
+    height: 100%;
+}
+
+.appRoot {
+    display: -ms-grid;
+    -ms-grid-rows: auto auto 1fr auto;
+    -ms-grid-columns: 1fr;
+    height: 100%;
+    width: 100%;
+    margin: 20px;
+}
+
+.actionArea {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+}
+
+.inputChoiceArea {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+}
+
+.actionParams > .actionToggle {
+    float: left;
+    min-width: 50%;
+}
+
+.InputArea {
+    overflow-y:scroll;
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+}
+
+.InputArea .inputUnit {
+    /* Helps wrap content in appropriate units */
+    float:left;
+    width: 50%;
+}
+
+
+.OutputArea {
+    height: 200px;
+    overflow-y: scroll;
+    -ms-grid-row: 4;
+    -ms-user-select: text; /* Allows the user to select/highlight the result text */
+}
+
+.inputStyle {
+    margin: 10px 0 10px 0;
+}
+
+.shortInput {
+    width: 150px !important; 
+}
+
+label.inputStyle {
+    font-weight: 600;
+}

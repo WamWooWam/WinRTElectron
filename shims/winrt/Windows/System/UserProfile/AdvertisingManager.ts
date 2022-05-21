@@ -6,8 +6,9 @@
 // --------------------------------------------------
 
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
+import { uuidv4 } from "../../Foundation/Interop/Utils";
 
 @GenerateShim('Windows.System.UserProfile.AdvertisingManager')
 export class AdvertisingManager { 
-    static advertisingId: string = null;
+    static advertisingId: string = uuidv4();
 }

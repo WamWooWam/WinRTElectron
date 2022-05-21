@@ -1,1 +1,89 @@
-﻿Jx.delayDefine(Mail,"startRetailExperience",function(){"use strict";function n(){Windows.Storage.ApplicationData.current.localFolder.getFileAsync("RetailExperienceResult.log").then(function(n){return n.deleteAsync()},function(){}).done(MSApp.terminateApp)}function t(){Windows.Storage.ApplicationData.current.localFolder.createFileAsync("RetailExperienceResult.log",Windows.Storage.CreationCollisionOption.replaceExisting).then(function(n){return n.openAsync(Windows.Storage.FileAccessMode.readWrite)}).then(function(n){return n.getOutputStreamAt(0)}).then(function(n){var t=new Windows.Storage.Streams.DataWriter(n);return t.unicodeEncoding=Windows.Storage.Streams.UnicodeEncoding.utf8,t.writeString(Jx.res.getString("mailRetailExperienceFailureMessage")),t.storeAsync()}).done(MSApp.terminateApp)}function i(){var n=Windows.UI.Notifications,t=Windows.Data.Xml.Dom;return Windows.Storage.ApplicationData.current.localFolder.getFileAsync("RetailExperience\\Livecomm_Input.xml").then(function(n){return t.XmlDocument.loadFromFileAsync(n)}).then(function(i){i.selectNodes("/RetailExperience/TileData/Apps/App").forEach(function(i){var r=n.TileUpdateManager.createTileUpdaterForApplication(i.getAttribute("id"));r.enableNotificationQueue(true);i.selectNodes("Tiles/tile").forEach(function(i){var u=new t.XmlDocument;u.loadXml(i.getXml());r.update(new n.TileNotification(u))})})})}Mail.startRetailExperience=function(r){return WinJS.Promise.timeout().then(function(){var u=Mail.Globals.splashScreen;u&&u.dismiss();var n=new Microsoft.WindowsLive.Platform.Client("retailapp",Microsoft.WindowsLive.Platform.ClientCreateOptions.createRetailExperienceUser),r=n.accountManager.defaultAccount,t=n.createVerb("ImportRetailExperienceData","");return n.runResourceVerb(r,"retail",t),t=n.createVerb("ProcessUpdates",""),n.runResourceVerb(r,"peopleAggregator",t),n.runResourceVerb(r,"calendar",t),t=n.createVerb("ProcessUpdates",r.objectId),n.runResourceVerb(r,"mailNotification",t),i().then(function(){if(!Jx.isNullOrUndefined(People.Social.populateDemoDataAsync))return People.Social.populateDemoDataAsync("ms-appdata:///local/RetailExperience/Social_input.xml",n)}).then(function(){n&&n.dispose()})}).then(n,t).then(function(){return r})}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global Mail,Jx,Windows,People,Microsoft,WinJS,MSApp */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail, "startRetailExperience", function () {
+    "use strict";
+    Mail.startRetailExperience = function (ev) {
+        Debug.assert(Jx.isObject(ev));
+        // do not block activation
+        return WinJS.Promise.timeout().then(function () {
+            var splashScreen = Mail.Globals.splashScreen;
+            if (splashScreen) {
+                splashScreen.dismiss();
+            }
+            
+            // The app name used is 'retailapp' so that no plugins are started by default since the app is unrecognized
+            var platform = new Microsoft.WindowsLive.Platform.Client("retailapp", Microsoft.WindowsLive.Platform.ClientCreateOptions.createRetailExperienceUser);
+            var defaultAccount = platform.accountManager.defaultAccount;
+            // Import data
+            var verb = platform.createVerb("ImportRetailExperienceData", "");
+            platform.runResourceVerb(defaultAccount, "retail", verb);
+            // Wait for aggregation
+            verb = platform.createVerb("ProcessUpdates", "");
+            platform.runResourceVerb(defaultAccount, "peopleAggregator", verb);
+            platform.runResourceVerb(defaultAccount, "calendar", verb);
+            verb = platform.createVerb("ProcessUpdates", defaultAccount.objectId);
+            platform.runResourceVerb(defaultAccount, "mailNotification", verb);
+            // Populate tiles
+            return populateTiles().then(function () {
+                // Populate social
+                if (!Jx.isNullOrUndefined(People.Social.populateDemoDataAsync)) {
+                    return People.Social.populateDemoDataAsync("ms-appdata:///local/RetailExperience/Social_input.xml", platform);
+                }})
+                .then(function() { 
+                  if (platform) { 
+                      platform.dispose();
+                  }
+            });
+        }).then(importSucceeded, importFailed)
+          .then(function () {
+            return ev;
+        });
+    };
+
+    function importSucceeded () {
+        Windows.Storage.ApplicationData.current.localFolder.getFileAsync("RetailExperienceResult.log")
+            .then(function (file) { return file.deleteAsync(); }, function () { } )
+            .done(MSApp.terminateApp);
+    }
+
+    function importFailed () {
+        Windows.Storage.ApplicationData.current.localFolder.createFileAsync("RetailExperienceResult.log", Windows.Storage.CreationCollisionOption.replaceExisting)
+            .then (function (/*@type(Windows.Storage.StorageFile)*/file) { return file.openAsync(Windows.Storage.FileAccessMode.readWrite); })
+            .then (function (fileStream) { return fileStream.getOutputStreamAt(0); })
+            .then (function (outputStream) {
+                var writer = new Windows.Storage.Streams.DataWriter(outputStream);
+
+                writer.unicodeEncoding = Windows.Storage.Streams.UnicodeEncoding.utf8;
+
+                writer.writeString(Jx.res.getString("mailRetailExperienceFailureMessage"));
+                return writer.storeAsync();
+            })
+            .done(MSApp.terminateApp);
+    }
+
+    function populateTiles () {
+        var N = Windows.UI.Notifications,
+            Dom = Windows.Data.Xml.Dom;
+
+        return Windows.Storage.ApplicationData.current.localFolder.getFileAsync("RetailExperience\\Livecomm_Input.xml")
+            .then(function (file) {
+                return Dom.XmlDocument.loadFromFileAsync(file);
+            }).then(function (/*@type(Dom.XmlDocument)*/xml) {
+                // Push any tile notifications
+                xml.selectNodes("/RetailExperience/TileData/Apps/App").forEach(function (/*@type(Dom.XmlElement)*/appNode) {
+                    var updater = N.TileUpdateManager.createTileUpdaterForApplication(appNode.getAttribute("id"));
+                    updater.enableNotificationQueue(true);
+                    appNode.selectNodes("Tiles/tile").forEach(function (/*@type(Dom.XmlElement)*/tileNode) {
+                        var doc = new Dom.XmlDocument();
+                        doc.loadXml(tileNode.getXml());
+                        updater.update(new N.TileNotification(doc));
+                    });
+                });
+            });
+    }
+});

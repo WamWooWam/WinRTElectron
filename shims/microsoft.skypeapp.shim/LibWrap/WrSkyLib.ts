@@ -102,7 +102,7 @@ import { VideoMessage } from "./VideoMessage";
 import { Voicemail } from "./Voicemail";
 import { IMap } from "winrt/Windows/Foundation/Collections/IMap`2";
 import { IVector } from "winrt/Windows/Foundation/Collections/IVector`1";
-import { IAsyncAction } from "winrt/Windows/Foundation/IAsyncAction";
+import { AsyncAction, IAsyncAction } from "winrt/Windows/Foundation/IAsyncAction";
 import { AsyncOperation, IAsyncOperation } from "winrt/Windows/Foundation/IAsyncOperation`1";
 import { IClosable } from "winrt/Windows/Foundation/IClosable";
 import { Enumerable } from "winrt/Windows/Foundation/Interop/Enumerable";
@@ -535,60 +535,67 @@ export class WrSkyLib implements IClosable {
     static setupkey_DB_STORAGE_QUOTA_KB: string = '*Lib/DbManager/StorageQuotaKb';
 
     defaultVideoDeviceHandle: string = null;
-    logoutReason: number = null;
+    logoutReason: number = 0;
     myIdentity: string = null;
-    loginInProgress: boolean = null;
-    loggedIn: boolean = null;
+    loginInProgress: boolean = true;
+    loggedIn: boolean = false;
     myself: Contact = null;
     account: Account = null;
     setup: Setup = null;
     avatarmanager: AvatarManager = null;
+    client: Client;
 
     private static __instance: WrSkyLib;
-    private status: number = WrSkyLib.libstatus_CONSTRUCTED;
-    client: Client;
-    private sound: HTMLAudioElement;
-    private channelMap: Map<number, TextChannel>;
-    private messageMap: Map<number, DiscordMessage>;
-    private uiSettings: Map<number, any> = new Map();
+    private __status: number = WrSkyLib.libstatus_CONSTRUCTED;
+    private __sound: HTMLAudioElement;
+    private __channelMap: Map<number, TextChannel>;
+    private __messageMap: Map<number, DiscordMessage>;
+    private __uiSettings: Map<number, any> = new Map();
 
     constructor(skypeVersion: string) {
-        this.channelMap = new Map();
-        this.messageMap = new Map();
+        if (WrSkyLib.__instance)
+            throw new Error("WrSkyLib is a singleton?!");
+
+        WrSkyLib.__instance = this;
+        this.__channelMap = new Map();
+        this.__messageMap = new Map();
         this.setup = new Setup();
         this.client = new Client({})
         this.avatarmanager = new AvatarManager(this.client);
-        this.sound = document.createElement("audio");
-        this.uiSettings = new Map(ApplicationData.current.localSettings.values["__uisettings"] ?? []);
+        this.__uiSettings = new Map(ApplicationData.current.localSettings.values["__uisettings"] ?? []);
 
-        document.body.appendChild(this.sound);
+        if (document) {
+            this.__sound = document.createElement("audio");
+            document.body.appendChild(this.__sound);
+        }
 
         console.warn('WrSkyLib.ctor not implemented')
     }
 
     static getInstance(): WrSkyLib {
         if (!WrSkyLib.__instance)
-            WrSkyLib.__instance = new WrSkyLib("");
+            throw new Error("Actually how.")
 
         return WrSkyLib.__instance;
     }
     static initPlatform(): IAsyncAction {
-        return new AsyncOperation((resolve, reject) => resolve());
+        return AsyncAction.from(async () => { });
     }
     static log(subsystem: string, message: string): void {
         console.log(`[${subsystem}]: ${message}`)
     }
 
     getLibStatus(): number {
-        return this.status;
+        return this.__status;
     }
 
     start(block: boolean): void {
         console.warn('WrSkyLib#start not implemented')
-        InvokeEvent(this.__libReady, "libready", null)
 
         this.client.on('guildCreate', guild => {
             if (guild.id == GUILD_ID) {
+                if (this.myself == null)
+                    this.myself = new Contact(this.client.user);
 
                 // var conversationObjectId = args.detail[0];
                 // var filterType = args.detail[1];
@@ -600,20 +607,21 @@ export class WrSkyLib implements IClosable {
 
 
         this.client.on('message', msg => {
-            this.messageMap.set(msg.createdTimestamp, msg);
+            this.__messageMap.set(msg.createdTimestamp, msg);
             InvokeEvent(this.__incomingMessage, "incomingmessage", [msg.createdTimestamp,])
         })
 
         this.client.on('ready', () => {
-            this.status = WrSkyLib.libstatus_RUNNING;
+            this.__status = WrSkyLib.libstatus_RUNNING;
             this.loggedIn = true;
             this.myIdentity = this.client.user.id;
             this.account = new Account(this.client.user);
             this.myself = new Contact(this.client.user);
+            InvokeEvent(this.__libReady, "libready", null)
             InvokeEvent(this.__login, "login", null)
         });
 
-        
+        this.client.login(''); // todo: read token
     }
 
     getConversationList(conversations: VectUnsignedInt, type: number): void {
@@ -622,8 +630,8 @@ export class WrSkyLib implements IClosable {
         if (guild != null) {
             for (const channel of guild.channels.cache.values()) {
                 if (channel.type == "text" && !(channel as TextChannel).nsfw) {
-                    conversations.append(this.channelMap.size);
-                    this.channelMap.set(this.channelMap.size, channel as TextChannel);
+                    conversations.append(this.__channelMap.size);
+                    this.__channelMap.set(this.__channelMap.size, channel as TextChannel);
                 }
             }
         }
@@ -683,37 +691,37 @@ export class WrSkyLib implements IClosable {
     }
 
     playStop(soundid: number): void {
-        this.sound.pause();
+        this.__sound.pause();
     }
 
     playStartFromFile(soundid: number, datafile: Filename, loop: boolean, useCallOutDevice: Boolean): number {
         const basename = path.basename(datafile.filePath, path.extname(datafile.filePath))
         const newPath = path.join(path.dirname(datafile.filePath), basename + ".mp3")
 
-        this.sound.loop = loop;
-        this.sound.src = newPath;
-        this.sound.play();
+        this.__sound.loop = loop;
+        this.__sound.src = newPath;
+        this.__sound.play();
         return 0;
     }
 
     getConversation(objectID: number): Conversation {
-        if (this.channelMap.has(objectID))
-            return new Conversation(this.channelMap.get(objectID), objectID);
+        if (this.__channelMap.has(objectID))
+            return new Conversation(this.__channelMap.get(objectID), objectID);
 
         return null;
     }
 
     getConversationMessage(objectId: number): Message {
-        return new Message(this.messageMap.get(objectId), objectId);
+        return new Message(this.__messageMap.get(objectId), objectId);
     }
 
     getConversationByIdentity(identity: string): Conversation {
         if (identity.startsWith("channel_")) {
-            const id = identity.substr(8);
+            const id = identity.substring(8);
             const guild = this.client.guilds.cache.get("185067273613082634");
             const channel = guild.channels.cache.get(id) as TextChannel;
 
-            return new Conversation(channel, [...this.channelMap.values()].indexOf(channel));
+            return new Conversation(channel, [...this.__channelMap.values()].indexOf(channel));
         }
 
         return null;
@@ -729,31 +737,31 @@ export class WrSkyLib implements IClosable {
 
     setUIIntProp(key: number, value: number): void {
         console.info('shimmed function WrSkyLib.setUIIntProp');
-        this.uiSettings.set(key, value);
-        ApplicationData.current.localSettings.values["__uisettings"] = [...this.uiSettings];
+        this.__uiSettings.set(key, value);
+        ApplicationData.current.localSettings.values["__uisettings"] = [...this.__uiSettings];
     }
 
     setUIStrProp(key: number, value: string): void {
         console.info('shimmed function WrSkyLib.setUIStrProp');
-        this.uiSettings.set(key, value);
-        ApplicationData.current.localSettings.values["__uisettings"] = [...this.uiSettings];
+        this.__uiSettings.set(key, value);
+        ApplicationData.current.localSettings.values["__uisettings"] = [...this.__uiSettings];
     }
 
     getUIIntProp(key: number): number {
         console.info('shimmed function WrSkyLib.getUIIntProp');
-        return this.uiSettings.get(key);
+        return this.__uiSettings.get(key);
     }
 
     getUIStrProp(key: number, defaultValue: string): string {
         console.info('shimmed function WrSkyLib.getUIStrProp');
-        return this.uiSettings.get(key) ?? defaultValue;
+        return this.__uiSettings.get(key) ?? defaultValue;
     }
 
     deleteUIProp(key: number): void {
         console.info('shimmed function WrSkyLib.deleteUIProp');
-        this.uiSettings.delete(key);
+        this.__uiSettings.delete(key);
 
-        ApplicationData.current.localSettings.values["__uisettings"] = [...this.uiSettings];
+        ApplicationData.current.localSettings.values["__uisettings"] = [...this.__uiSettings];
     }
 
     isMe(identity: string): boolean {
@@ -860,7 +868,8 @@ export class WrSkyLib implements IClosable {
         throw new Error('WrSkyLib#codec_COMPATIBILITYToString not implemented')
     }
     getParticipant(objectId: number): Participant {
-        throw new Error('WrSkyLib#getParticipant not implemented')
+        // throw new Error('WrSkyLib#getParticipant not implemented')
+        return new Participant(new Contact(this.client.users.resolve(<string><any>objectId)));
     }
     createConference1(): Conversation {
         throw new Error('WrSkyLib#createConference1 not implemented')
@@ -1070,7 +1079,8 @@ export class WrSkyLib implements IClosable {
         throw new Error('WrSkyLib#submitConfirmationCode not implemented')
     }
     createOutgoingSms(sms: Sms): boolean {
-        throw new Error('WrSkyLib#createOutgoingSms not implemented')
+        // throw new Error('WrSkyLib#createOutgoingSms not implemented')
+        return false;
     }
     getValidatedSmsNumbers(numbers: VectGIString): void {
         console.warn('WrSkyLib#getValidatedSmsNumbers not implemented')
@@ -1325,10 +1335,24 @@ export class WrSkyLib implements IClosable {
         throw new Error('WrSkyLib#libproptoString not implemented')
     }
     getIntLibProp(key: number): number {
-        throw new Error('WrSkyLib#getIntLibProp not implemented')
+        // throw new Error('WrSkyLib#getIntLibProp not implemented')
+        console.warn("WrSkyLib#getIntLibProp " + key);
+        switch (key) {
+            case WrSkyLib.libprop_LIBPROP_MAX_CONFCALL_PARTICIPANTS:
+                return 100;
+        }
+
+        return 0;
     }
     getStrLibProp(key: number, defaultValue: string): string {
-        throw new Error('WrSkyLib#getStrLibProp not implemented')
+        // throw new Error('WrSkyLib#getStrLibProp not implemented')
+        console.warn("WrSkyLib#getStrLibProp " + key);
+        // switch (key) {
+        //     case WrSkyLib.libprop_LIBPROP_MAX_CONFCALL_PARTICIPANTS:
+        //         return 100;
+        // }
+
+        return "";
     }
     getStrLibPropInternal(lib_key: number, defaultValue: string): string {
         throw new Error('WrSkyLib#getStrLibPropInternal not implemented')
@@ -1586,7 +1610,8 @@ export class WrSkyLib implements IClosable {
         throw new Error('WrSkyLib#getVideoDeviceHandles not implemented')
     }
     getActiveVideoDeviceHandle(): string {
-        throw new Error('WrSkyLib#getActiveVideoDeviceHandle not implemented')
+        // throw new Error('WrSkyLib#getActiveVideoDeviceHandle not implemented')
+        return "active-video-device";
     }
     close(): void {
         console.warn('WrSkyLib#close not implemented')

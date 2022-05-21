@@ -158,4 +158,7 @@ export class TileUpdateManager {
         document.loadXml(TileUpdateManager.TEMPLATE_MAP[type]);
         return document;
     }
+    static EXT_getTemplateContent(type: TileTemplateType): string {
+        return TileUpdateManager.TEMPLATE_MAP[type];
+    }
 }

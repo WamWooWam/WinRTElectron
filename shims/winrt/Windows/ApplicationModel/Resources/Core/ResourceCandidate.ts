@@ -10,17 +10,25 @@ import { IVectorView } from "../../../Foundation/Collections/IVectorView`1";
 import { IAsyncOperation } from "../../../Foundation/IAsyncOperation`1";
 import { GenerateShim } from "../../../Foundation/Interop/GenerateShim";
 import { StorageFile } from "../../../Storage/StorageFile";
+import { Vector } from "../../../Foundation/Interop/Vector`1";
+import { IVector } from "../../../Foundation/Collections/IVector`1";
 
-export class ResourceCandidate { 
+export class ResourceCandidate {
     isDefault: boolean = null;
-    isMatch: boolean = null;
+    isMatch: boolean = true;
     isMatchAsDefault: boolean = null;
-    qualifiers: IVectorView<ResourceQualifier> = null;
+    qualifiers: IVector<ResourceQualifier> = new Vector();
     valueAsString: string = null;
     getValueAsFileAsync(): IAsyncOperation<StorageFile> {
         throw new Error('ResourceCandidate#getValueAsFileAsync not implemented')
     }
     getQualifierValue(qualifierName: string): string {
-        throw new Error('ResourceCandidate#getQualifierValue not implemented')
+        // throw new Error('ResourceCandidate#getQualifierValue not implemented')
+        for (const qualifier of this.qualifiers) {
+            if (qualifier.qualifierName == qualifierName)
+                return qualifier.qualifierValue;
+        }
+
+        return "";
     }
 }

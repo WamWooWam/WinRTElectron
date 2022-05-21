@@ -1,1 +1,451 @@
-﻿Jx.delayDefine(Mail.Commands,"FolderOperations",function(){"use strict";function y(n,t,i){var u=t.view,f=t.account,e=u.folder,o=Mail.ViewCapabilities;e&&f.canCreateFolders&&(i.push({id:"MailFolderOperations.NewFolder",label:Jx.res.getString("mailCreateFolder"),onclick:function(){l(n,new r(t.account))}}),o.canHaveChildren(u)&&i.push({id:"MailFolderOperations.NewSubFolder",label:Jx.res.getString("mailCreateSubfolder"),onclick:function(){l(n,new s(t.view))}}))}function p(n,t,i){var r=t.view,f=t.account,e=Mail.ViewCapabilities;e.canRename(r)&&f.canUpdateFolders&&i.push({id:"MailFolderOperations.RenameFolder",label:Jx.res.getString("mailFolderOperationsRenameFolder"),onclick:function(){l(n,new u(t.view.folder))}})}function w(t,i,r){var u=i.view;u.canDeleteSource()&&r.push({id:"MailFolderOperations.DeleteFolder",label:Jx.res.getString("mailFolderOperationsDeleteFolder"),onclick:function(){return n.onDeleteView(i)}})}function b(n,t,i){var r=t.view,f=t.account,u=Mail.ViewCapabilities;u.canPinToStart(r)&&(Mail.Commands.Contexts.showPin(t)?i.push({id:"MailFolderOperations.pinFolder",label:Jx.res.getString("mailCommandPinFolder"),onclick:function(){return Mail.Commands.Handlers.onPinFolder(t,n)}}):i.push({id:"MailFolderOperations.unpinFolder",label:Jx.res.getString("mailCommandUnpinFolder"),onclick:function(){return Mail.Commands.Handlers.onUnpinFolder(t,n)}}))}function k(t,i,r){var u=i.view,l=i.account,f=u.folder,h;if(f){var e=u.getMessages(o.FilterCriteria.unread),s=u.getMessages(o.FilterCriteria.all),c=false;f.specialMailFolderType===v.deletedItems&&(h=f.getChildFolderCollection(),c=h.count>0,h.dispose());(s&&s.count>0||c)&&r.push({id:"MailFolderOperations.EmptyFolder",label:Jx.res.getString("mailFolderOperationsEmptyFolder"),onclick:function(){return n._onEmptyFolder(i)}});e&&e.count>0&&r.push({id:"MailFolderOperations.MarkAsRead",label:Jx.res.getString("mailFolderOperationsMarkAsRead"),onclick:function(){return n._onMarkViewAsRead(i)}});Jx.dispose(e);Jx.dispose(s)}}function l(n,t){if(!document.querySelector(".folderOperation")){var i={anchor:n,singleShow:true};return new Mail.Flyout(document.getElementById(Mail.CompApp.rootElementId),t,i).show()}}function f(n){Jx.mark("Mail.Commands.FolderOperations."+n+",StartTA,Mail")}function e(n){Jx.mark("Mail.Commands.FolderOperations."+n+",StopTA,Mail")}function a(n){Jx.mark("Mail.Commands.FolderOperations:"+n)}var o=Microsoft.WindowsLive.Platform,v=o.MailFolderType,n=Mail.Commands.FolderOperations={},h,c,t,u,r,s,i;n._areAnyFolderOperationsEnabled=function(){var n=Mail.guiState;return!(n.isOnePane&&n.isReadingPaneActive)&&!Mail.SearchHandler.isSearching};n.folderOperationsEnabled=function(t){var i=n._areAnyFolderOperationsEnabled(),r;return i&&(r=n._createCommandList("",t,true),i=r.length>0),i};h=[y,p,w,b];c=[k];n._createCommandList=function(n,t,i){f("_createCommandList");var u=[],o=[],r,s;for(i?a("StopAtOne"):a("FullList"),r=0,s=h.length;(!i||o.length===0)&&r<s;++r)h[r](n,t,o);if(o.length===0||!i)for(r=0,s=c.length;(!i||u.length===0)&&r<s;++r)c[r](n,t,u);return u.length>0&&o.length>0&&u.push({id:"MailFolderOperations.Separator",label:"",type:"separator"}),u=u.concat(o),e("_createCommandList"),u};n.onFolderOptionsButton=function(t,i){Mail.Globals.commandManager.showAppBar().then(function(){n._openFolderOperationsMenu(t,i)})};n._openFolderOperationsMenu=function(t,i){var r,u,o;f("onFolderOptionsButton");r=document.getElementById("mailFolderOperationsFlyout");Jx.isHTMLElement(r)?(u=document.getElementById(Mail.CompApp.rootElementId),u.removeChild(r)):(o=n.createFolderOperationsFlyout(t,i),o.show(t,"top","center"));e("onFolderOptionsButton")};n.createFolderOperationsFlyout=function(t,i){var r,o,u;return f("createFolderOperationsFlyout"),r=document.createElement("div"),r.id="mailFolderOperationsFlyout",Mail.setAttribute(r,"aria-label",Jx.res.getString("mailCommandFolderOperationsLabel")),o=document.getElementById(Mail.CompApp.rootElementId),o.appendChild(r),u=new WinJS.UI.Menu(r,{commands:n._createCommandList(t,i),sticky:true}),u.addEventListener("afterhide",function(){Mail.safeRemoveNode(r,true)},true),e("createFolderOperationsFlyout"),u};n._onEmptyFolder=function(t){var r=Windows.UI.Popups,i=new r.MessageDialog(Jx.res.getString("mailFolderOperationsEmptyFolderConfirmationBody"),Jx.res.getString("mailFolderOperationsEmptyFolderConfirmationTitle"));i.commands.append(new r.UICommand(Jx.res.getString("mailFolderOperationsEmptyFolderConfirm"),function(){n._emptyView(t)}));i.commands.append(new r.UICommand(Jx.res.getString("mailFolderOperationsEmptyFolderCancel"),Jx.fnEmpty));i.defaultCommandIndex=1;i.cancelCommandIndex=1;Mail.showPopupAsync(i)};n._emptyView=function(n){var t,i,r;if(f("_emptyView"),n.emptyView(),t=n.view,t.type===o.MailViewType.deletedItems)for(i=t.folder.getChildFolderCollection(),r=i.count;r--;)i.item(r).deleteObject();e("_emptyView")};n._onMarkViewAsRead=function(n){f("_onMarkViewAsRead");n.markViewRead();e("_onMarkViewAsRead")};n.onDeleteView=function(n){var t=n.view,i;t.canDeleteSource()&&(Mail.Commands.Contexts.showUnpin(n)?(i=n.view.startScreenTileId,t.deleteSource(),Mail.Globals.commandManager.showAppBar().then(function(){Mail.Commands.Handlers.unpinFolder(i)})):t.deleteSource())};t=function(){Mail.FlyoutContent.call(this);this._title="";this._error="";this._root=null;this._input=null;this._disposer=null};Jx.inherit(t,Mail.FlyoutContent);t.prototype.getUI=function(n){var t=Jx.escapeHtml(Jx.res.getString("mailFolderOperationsPlaceholderFolderName"));n.html="<div id='"+this._id+"' class='folderOperation'><div class='title'>"+Jx.escapeHtml(this._title)+"<\/div><input class='name' type='text' MaxLength='128' placeholder='"+t+"'>"+(this._error?"<div class='error'>"+Jx.escapeHtml(this._error)+"<\/div>":"")+"<button class='commit'>"+Jx.escapeHtml(Jx.res.getString("mailOkButton"))+"<\/button><\/div>"};t.prototype.onActivateUI=function(){var n=this._root=document.getElementById(this._id);this._input=n.querySelector(".name");this._disposer=new Mail.Disposer(new Mail.EventHook(n.querySelector(".commit"),"click",this._operate,this),new Mail.EventHook(n,"keypress",this._onKeyPress,this))};t.prototype.onDeactivateUI=function(){Jx.dispose(this._disposer)};t.prototype._onKeyPress=function(n){n.key==="Enter"&&(n.preventDefault(),this._operate())};t.prototype._operate=function(){var n=this._input.value;if(n)try{return this._commit(n)}catch(t){Jx.log.exception("Folder operation failed",t)}this._error=this._error||Jx.res.getString("mailFolderOperationsCreateFolderError");this._flyout.replace(this)};u=function(n){t.call(this);this._folder=n;this._title=Jx.res.getString("mailFolderOperationsRenameFolder")};Jx.inherit(u,t);u.prototype._commit=function(n){var t=this._folder.platformMailFolder;t&&t.canRename&&(t.folderName=n,t.commit());this._flyout.hide()};u.prototype.onActivateUI=function(){t.prototype.onActivateUI.call(this);this._input.value=this._folder.folderName};r=function(n){t.call(this);this._account=n;this._title=Jx.res.getString("mailCreateFolder")};Jx.inherit(r,t);r.prototype._commit=function(n){var t=this._account.createFolder(n);this._flyout.replace(new i(Jx.res.loadCompoundString("mailCreateFolderText",t.folderName)))};s=function(n){r.call(this,n.account);var t=this._parent=n.folder;this._title=Jx.res.loadCompoundString("mailCreateSubfolderTitle",t.folderName)};Jx.inherit(s,r);s.prototype._commit=function(n){var t=this._parent,r=this._account.createFolder(n,t),u=Jx.res.loadCompoundString("mailCreateSubfolderText",r.folderName,t.folderName);this._flyout.replace(new i(u))};i=function(n){Mail.FlyoutContent.call(this);this._text=n;this._hook=null};Jx.inherit(i,Mail.FlyoutContent);i.prototype.getUI=function(n){n.html="<div id='"+this._id+"' class='folderOperation'><div class='blurb'>"+Jx.escapeHtml(this._text)+"<\/div><button class='commit'>"+Jx.escapeHtml(Jx.res.getString("mailOkButton"))+"<\/button><\/div>"};i.prototype.activateUI=function(){this._hook=new Mail.EventHook(document.getElementById(this._id),"click",this._flyout.hide,this._flyout)};i.prototype.deactivateUI=function(){Jx.dispose(this._hook)}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global  Jx, Mail, Microsoft, WinJS, Windows, Debug */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail.Commands, "FolderOperations", function () {
+    "use strict";
+    var Plat = Microsoft.WindowsLive.Platform,
+        MailFolderType = Plat.MailFolderType;
+
+    var FolderOperations = Mail.Commands.FolderOperations = {};
+
+    FolderOperations._areAnyFolderOperationsEnabled = function () {
+        var guiState = Mail.guiState;
+        return !(guiState.isOnePane && guiState.isReadingPaneActive) && (!Mail.SearchHandler.isSearching);
+    };
+
+    FolderOperations.folderOperationsEnabled = function (selection) {
+        var enabled = FolderOperations._areAnyFolderOperationsEnabled();
+
+        if (enabled) {
+            var commands = FolderOperations._createCommandList("", selection, true/*stopAtOne*/);
+            enabled = commands.length > 0;
+        }
+
+        return enabled;
+    };
+
+    function commandNewFolder(anchor, selection, postCommands) {
+        var currentView = selection.view,
+            currentAccount = selection.account,
+            currentFolder = currentView.folder,
+            ViewCapabilities = Mail.ViewCapabilities;
+
+        Debug.assert(Jx.isInstanceOf(currentView, Mail.UIDataModel.MailView));
+        Debug.assert(Jx.isInstanceOf(currentAccount, Mail.Account));
+
+        if (currentFolder && currentAccount.canCreateFolders) {
+            postCommands.push({
+                id: "MailFolderOperations.NewFolder",
+                label: Jx.res.getString("mailCreateFolder"),
+                onclick: function () { showFlyout(anchor, new NewFolder(selection.account)); },
+            });
+            if (ViewCapabilities.canHaveChildren(currentView)) {
+                postCommands.push({
+                    id: "MailFolderOperations.NewSubFolder",
+                    label: Jx.res.getString("mailCreateSubfolder"),
+                    onclick: function () { showFlyout(anchor, new NewSubfolder(selection.view)); },
+                });
+            }
+        }
+    }
+
+    function commandRenameFolder(anchor, selection, postCommands) {
+        var currentView = selection.view,
+            currentAccount = selection.account,
+            ViewCapabilities = Mail.ViewCapabilities;
+
+        Debug.assert(Jx.isInstanceOf(currentView, Mail.UIDataModel.MailView));
+        Debug.assert(Jx.isInstanceOf(currentAccount, Mail.Account));
+
+        if (ViewCapabilities.canRename(currentView) && currentAccount.canUpdateFolders) {
+            postCommands.push({
+                id: "MailFolderOperations.RenameFolder",
+                label: Jx.res.getString("mailFolderOperationsRenameFolder"),
+                onclick: function () { showFlyout(anchor, new RenameFolder(selection.view.folder)); },
+            });
+        }
+    }
+
+    function commandDeleteFolder(anchor, selection, postCommands) {
+        var currentView = selection.view;
+            
+        Debug.assert(Jx.isInstanceOf(currentView, Mail.UIDataModel.MailView));
+
+        if (currentView.canDeleteSource()) {
+            postCommands.push({
+                id: "MailFolderOperations.DeleteFolder",
+                label: Jx.res.getString("mailFolderOperationsDeleteFolder"),
+                onclick: function () { return FolderOperations.onDeleteView(selection); }
+            });
+        }
+    }
+
+    function commandPinFolder(anchor, selection, postCommands) {
+        var currentView = selection.view,
+            currentAccount = selection.account,
+            ViewCapabilities = Mail.ViewCapabilities;
+
+        Debug.assert(Jx.isInstanceOf(currentView, Mail.UIDataModel.MailView));
+        Debug.assert(Jx.isInstanceOf(currentAccount, Mail.Account));
+
+        if (ViewCapabilities.canPinToStart(currentView)) {
+            if (Mail.Commands.Contexts.showPin(selection)) {
+                postCommands.push({
+                    id: "MailFolderOperations.pinFolder",
+                    label: Jx.res.getString("mailCommandPinFolder"),
+                    onclick: function () { return Mail.Commands.Handlers.onPinFolder(selection, anchor); }
+                });
+            } else {
+                postCommands.push({
+                    id: "MailFolderOperations.unpinFolder",
+                    label: Jx.res.getString("mailCommandUnpinFolder"),
+                    onclick: function () { return Mail.Commands.Handlers.onUnpinFolder(selection, anchor); }
+                });
+            }
+        }        
+    }
+
+    function commandEmptyAndMarkAsRead(anchor, selection, commands) {
+        var currentView = selection.view,
+            currentAccount = selection.account,
+            currentFolder = currentView.folder;
+
+        Debug.assert(Jx.isInstanceOf(currentView, Mail.UIDataModel.MailView));
+        Debug.assert(Jx.isInstanceOf(currentAccount, Mail.Account));
+
+        if (currentFolder) {
+            var unreadMessageCollection = currentView.getMessages(Plat.FilterCriteria.unread),
+                messageCollection = currentView.getMessages(Plat.FilterCriteria.all);
+
+            // Special case: If the current folder is the deleted folder, then the empty folder operations command can be used
+            // even if there are no messages in the folder.
+            var isDeletedItemFolderWithChildren = false;
+            if (currentFolder.specialMailFolderType ===  MailFolderType.deletedItems) {
+                var children = currentFolder.getChildFolderCollection();
+                isDeletedItemFolderWithChildren = children.count > 0;
+                children.dispose();
+            }
+            if ((messageCollection && messageCollection.count > 0) || isDeletedItemFolderWithChildren) {
+                commands.push({
+                    id: "MailFolderOperations.EmptyFolder",
+                    label: Jx.res.getString("mailFolderOperationsEmptyFolder"),
+                    onclick: function () { return FolderOperations._onEmptyFolder(selection); },
+                });
+            }
+            if (unreadMessageCollection && unreadMessageCollection.count > 0) {
+                commands.push({
+                    id: "MailFolderOperations.MarkAsRead",
+                    label: Jx.res.getString("mailFolderOperationsMarkAsRead"),
+                    onclick: function () { return FolderOperations._onMarkViewAsRead(selection); },
+                });
+            }
+            Jx.dispose(unreadMessageCollection);
+            Jx.dispose(messageCollection);
+        }
+    }
+
+    var postCommandFactories = [
+        commandNewFolder,
+        commandRenameFolder,
+        commandDeleteFolder,
+        commandPinFolder
+    ];
+    var commandFactories = [
+        commandEmptyAndMarkAsRead
+    ];
+
+    FolderOperations._createCommandList = function (anchor, selection, stopAtOne) {
+        _markStart("_createCommandList");
+        var commands = [],
+            postCommands = [],
+            factoryIndex,
+            maxFactoryIndex;
+        
+        if (stopAtOne) {
+            _markInfo("StopAtOne");
+        } else {
+            _markInfo("FullList");
+        }
+
+        for(factoryIndex = 0, maxFactoryIndex = postCommandFactories.length; (!stopAtOne || postCommands.length === 0) && factoryIndex < maxFactoryIndex; ++factoryIndex) {
+            postCommandFactories[factoryIndex](anchor, selection, postCommands);
+        }
+        if (postCommands.length === 0 || !stopAtOne) {
+            for(factoryIndex = 0, maxFactoryIndex = commandFactories.length; (!stopAtOne || commands.length === 0) && factoryIndex < maxFactoryIndex; ++factoryIndex) {
+                commandFactories[factoryIndex](anchor, selection, commands);
+            }
+        }
+        if (commands.length > 0 && postCommands.length > 0) {
+            commands.push({
+                id: "MailFolderOperations.Separator",
+                label: "",
+                type: "separator"
+            });
+        }
+
+        commands = commands.concat(postCommands);
+        _markStop("_createCommandList");
+        return commands;
+    };
+
+    FolderOperations.onFolderOptionsButton = function (anchor, selection) {
+        // Make sure the app bar is shown.  If it is already shown this will complete right away
+        Mail.Globals.commandManager.showAppBar().then(function () { FolderOperations._openFolderOperationsMenu(anchor, selection); });
+    };
+
+    FolderOperations._openFolderOperationsMenu = function (anchor, selection) {
+        // Check if flyout already exists:
+        _markStart("onFolderOptionsButton");
+        var flyoutElement = document.getElementById("mailFolderOperationsFlyout");
+        if (Jx.isHTMLElement(flyoutElement)) {
+            // This shouldn't happen except on strange race conditions on really slow machines.
+            // Or if the flyout is bugged.  Removing from dom and letting the user press the button again.
+            var appRoot = document.getElementById(Mail.CompApp.rootElementId);
+            Debug.assert(Jx.isHTMLElement(appRoot));
+            appRoot.removeChild(flyoutElement);
+        } else {
+            var flyout = FolderOperations.createFolderOperationsFlyout(anchor, selection);
+            flyout.show(anchor, "top", "center");
+        }
+        _markStop("onFolderOptionsButton");
+    };
+
+    FolderOperations.createFolderOperationsFlyout = function (anchor, selection) {
+        _markStart("createFolderOperationsFlyout");
+        Debug.assert(Jx.isNonEmptyString(anchor));
+        Debug.assert(Jx.isObject(selection));
+
+        var domFlyout = document.createElement("div");
+        domFlyout.id = "mailFolderOperationsFlyout";
+        Mail.setAttribute(domFlyout, "aria-label", Jx.res.getString("mailCommandFolderOperationsLabel"));
+
+        var appRoot = document.getElementById(Mail.CompApp.rootElementId);
+        Debug.assert(Jx.isHTMLElement(appRoot), "Cannot locate the HTML Element<idCompApp> to append the flyout too");
+        appRoot.appendChild(domFlyout);
+
+        var flyout = new WinJS.UI.Menu(domFlyout, { commands:FolderOperations._createCommandList(anchor, selection), sticky: true });
+        flyout.addEventListener("afterhide", function () {
+            // clicking the appbar button faster than the hide animation finishes can cause
+            // afterhide to trigger twice.  Should only remove the domFlyout once.
+            Mail.safeRemoveNode(domFlyout, true /* deep */);
+        }, true);
+
+        _markStop("createFolderOperationsFlyout");
+        return flyout;
+    };
+
+    FolderOperations._onEmptyFolder = function (selection) {
+        var popups = Windows.UI.Popups;
+        var messageDialog = new popups.MessageDialog(
+            Jx.res.getString("mailFolderOperationsEmptyFolderConfirmationBody"),
+            Jx.res.getString("mailFolderOperationsEmptyFolderConfirmationTitle")
+        );
+        messageDialog.commands.append(new popups.UICommand(
+            Jx.res.getString("mailFolderOperationsEmptyFolderConfirm"),
+            function () { FolderOperations._emptyView(selection); }
+        ));
+        messageDialog.commands.append(new popups.UICommand(
+            Jx.res.getString("mailFolderOperationsEmptyFolderCancel"),
+            Jx.fnEmpty
+        ));
+        messageDialog.defaultCommandIndex = 1;
+        messageDialog.cancelCommandIndex = 1;
+        Mail.showPopupAsync(messageDialog);
+    };
+
+    FolderOperations._emptyView = function (selection) {
+        _markStart("_emptyView");
+        selection.emptyView();
+
+        var view = selection.view;
+        if (view.type === Plat.MailViewType.deletedItems) {
+            Debug.assert(Jx.isObject(view.folder));
+
+            // Purge all the sub folders of deleted items as part of empty
+            var children = view.folder.getChildFolderCollection();
+            for (var i = children.count; i--;) {
+                children.item(i).deleteObject();
+            }
+        }
+        _markStop("_emptyView");
+    };
+
+    FolderOperations._onMarkViewAsRead = function (selection) {
+        _markStart("_onMarkViewAsRead");
+        selection.markViewRead();
+        _markStop("_onMarkViewAsRead");
+    };
+
+    FolderOperations.onDeleteView = function (selection) {
+        // Check to make sure the current view can be moved/deleted.
+        var view = selection.view;
+        if (view.canDeleteSource()) {
+            if (Mail.Commands.Contexts.showUnpin(selection)) {
+                // Collect tileID before deleting folder.
+                var tileId = selection.view.startScreenTileId;
+                view.deleteSource();
+
+                // Make sure app bar is on screen and offer to unpin
+                Mail.Globals.commandManager.showAppBar().then(function () {
+                    Mail.Commands.Handlers.unpinFolder(tileId);
+                });
+            } else {
+                view.deleteSource();
+            }
+        }
+    };
+
+    function showFlyout(anchor, content) {
+        if (!document.querySelector('.folderOperation')) {
+            var options = { anchor: anchor, singleShow: true };
+            return new Mail.Flyout(document.getElementById(Mail.CompApp.rootElementId), content, options).show();
+        }
+    }
+
+    var FolderOperation = function () {
+        Mail.FlyoutContent.call(this);
+        this._title = "";
+        this._error = "";
+        this._root = null;
+        this._input = null;
+        this._disposer = null;
+    };
+    Jx.inherit(FolderOperation, Mail.FlyoutContent);
+
+    FolderOperation.prototype.getUI = function (ui) {
+        var placeholder = Jx.escapeHtml(Jx.res.getString("mailFolderOperationsPlaceholderFolderName"));
+        ui.html = "<div id='" + this._id + "' class='folderOperation'>" +
+                    "<div class='title'>" + Jx.escapeHtml(this._title) + "</div>" +
+                    "<input class='name' type='text' MaxLength='128' placeholder='" + placeholder + "'>" +
+                    (this._error ? "<div class='error'>" + Jx.escapeHtml(this._error) + "</div>" : "") +
+                    "<button class='commit'>" + Jx.escapeHtml(Jx.res.getString("mailOkButton")) + "</button>" +
+                  "</div>";
+    };
+
+    FolderOperation.prototype.onActivateUI = function () {
+        var root = this._root = document.getElementById(this._id);
+        this._input = root.querySelector(".name");
+        this._disposer = new Mail.Disposer(
+            new Mail.EventHook(root.querySelector(".commit"), "click", this._operate, this),
+            new Mail.EventHook(root, "keypress", this._onKeyPress, this)
+        );
+    };
+
+    FolderOperation.prototype.onDeactivateUI = function () {
+        Jx.dispose(this._disposer);
+    };
+
+    FolderOperation.prototype._onKeyPress = function (ev) {
+        if (ev.key === "Enter") {
+            ev.preventDefault();
+            this._operate();
+        }
+    };
+
+    FolderOperation.prototype._operate = function () {
+        var name = this._input.value;
+        if (name) {
+            try {
+                return this._commit(name);
+            } catch (e) {
+                Jx.log.exception("Folder operation failed", e);
+            }
+        }
+
+        // Re-show our flyout in the error state - invalid name or commit failed
+        this._error = this._error || Jx.res.getString("mailFolderOperationsCreateFolderError");
+        this._flyout.replace(this);
+    };
+
+    var RenameFolder = function (folder) {
+        Debug.assert(Jx.isInstanceOf(folder, Mail.UIDataModel.MailFolder));
+        FolderOperation.call(this);
+
+        this._folder = folder;
+        this._title = Jx.res.getString("mailFolderOperationsRenameFolder");
+    };
+    Jx.inherit(RenameFolder, FolderOperation);
+
+    RenameFolder.prototype._commit = function (name) {
+        var folder = this._folder.platformMailFolder;
+        if (folder && folder.canRename) {
+            folder.folderName = name;
+            folder.commit();
+        }
+        this._flyout.hide();
+    };
+
+    RenameFolder.prototype.onActivateUI = function () {
+        FolderOperation.prototype.onActivateUI.call(this);
+        this._input.value = this._folder.folderName;
+    };
+
+    var NewFolder = function (account) {
+        Debug.assert(Jx.isInstanceOf(account, Mail.Account));
+        FolderOperation.call(this);
+
+        this._account = account;
+        this._title = Jx.res.getString("mailCreateFolder");
+    };
+    Jx.inherit(NewFolder, FolderOperation);
+
+    NewFolder.prototype._commit = function (name) {
+        var folder = this._account.createFolder(name);
+        this._flyout.replace(new CreatedFolder(Jx.res.loadCompoundString("mailCreateFolderText", folder.folderName)));
+    };
+
+    var NewSubfolder = function (parentView) {
+        Debug.assert(Jx.isInstanceOf(parentView, Mail.UIDataModel.MailView));
+        NewFolder.call(this, parentView.account);
+
+        var parent = this._parent = parentView.folder;
+        this._title = Jx.res.loadCompoundString("mailCreateSubfolderTitle", parent.folderName);
+    };
+    Jx.inherit(NewSubfolder, NewFolder);
+
+    NewSubfolder.prototype._commit = function (name) {
+        var parent = this._parent,
+            folder = this._account.createFolder(name, parent),
+            text = Jx.res.loadCompoundString("mailCreateSubfolderText", folder.folderName, parent.folderName);
+        this._flyout.replace(new CreatedFolder(text));
+    };
+
+    // Flyout that's shown once a new folder is successfully created
+    var CreatedFolder = function (text) {
+        Mail.FlyoutContent.call(this);
+        this._text = text;
+        this._hook = null;
+    };
+    Jx.inherit(CreatedFolder, Mail.FlyoutContent);
+
+    CreatedFolder.prototype.getUI = function (ui) {
+        ui.html = "<div id='" + this._id + "' class='folderOperation'>" +
+                      "<div class='blurb'>" + Jx.escapeHtml(this._text) + "</div>" +
+                      "<button class='commit'>" + Jx.escapeHtml(Jx.res.getString("mailOkButton")) + "</button>" +
+                  "</div>";
+    };
+
+    CreatedFolder.prototype.activateUI = function () {
+        this._hook = new Mail.EventHook(document.getElementById(this._id), "click", this._flyout.hide, this._flyout);
+    };
+
+    CreatedFolder.prototype.deactivateUI = function () {
+        Jx.dispose(this._hook);
+    };
+
+    function _markStart(str) {
+        Jx.mark("Mail.Commands.FolderOperations." + str + ",StartTA,Mail");
+    }
+    function _markStop(str) {
+        Jx.mark("Mail.Commands.FolderOperations." + str + ",StopTA,Mail");
+    }
+    function _markInfo(str) {
+        Jx.mark("Mail.Commands.FolderOperations:" + str);
+    }
+
+});

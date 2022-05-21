@@ -574,7 +574,10 @@ import { LogFileGeneratedEventArgs as Windows_Foundation_Diagnostics_LogFileGene
 import { LoggingActivity as Windows_Foundation_Diagnostics_LoggingActivity } from "./Windows/Foundation/Diagnostics/LoggingActivity";
 import { LoggingChannel as Windows_Foundation_Diagnostics_LoggingChannel } from "./Windows/Foundation/Diagnostics/LoggingChannel";
 import { LoggingLevel as Windows_Foundation_Diagnostics_LoggingLevel } from "./Windows/Foundation/Diagnostics/LoggingLevel";
+import { LoggingOpcode as Windows_Foundation_Diagnostics_LoggingOpcode } from "./Windows/Foundation/Diagnostics/LoggingOpcode";
+import { LoggingOptions as Windows_Foundation_Diagnostics_LoggingOptions } from "./Windows/Foundation/Diagnostics/LoggingOptions";
 import { LoggingSession as Windows_Foundation_Diagnostics_LoggingSession } from "./Windows/Foundation/Diagnostics/LoggingSession";
+import { LoggingChannelOptions as Windows_Foundation_Diagnostics_LoggingChannelOptions } from "./Windows/Foundation/Diagnostics/LoggingChannelOptions";
 import { RuntimeBrokerErrorSettings as Windows_Foundation_Diagnostics_RuntimeBrokerErrorSettings } from "./Windows/Foundation/Diagnostics/RuntimeBrokerErrorSettings";
 import { TracingStatusChangedEventArgs as Windows_Foundation_Diagnostics_TracingStatusChangedEventArgs } from "./Windows/Foundation/Diagnostics/TracingStatusChangedEventArgs";
 import { ActivatableAttribute as Windows_Foundation_Metadata_ActivatableAttribute } from "./Windows/Foundation/Metadata/ActivatableAttribute";
@@ -1316,8 +1319,16 @@ import { ProcessorArchitecture as Windows_System_ProcessorArchitecture } from ".
 import { VirtualKey as Windows_System_VirtualKey } from "./Windows/System/VirtualKey";
 import { VirtualKeyModifiers as Windows_System_VirtualKeyModifiers } from "./Windows/System/VirtualKeyModifiers";
 import { DisplayRequest as Windows_System_Display_DisplayRequest } from "./Windows/System/Display/DisplayRequest";
+import { AnalyticsInfo as Windows_System_Profile_AnalyticsInfo } from "./Windows/System/Profile/AnalyticsInfo";
+import { AnalyticsVersionInfo as Windows_System_Profile_AnalyticsVersionInfo } from "./Windows/System/Profile/AnalyticsVersionInfo";
 import { HardwareIdentification as Windows_System_Profile_HardwareIdentification } from "./Windows/System/Profile/HardwareIdentification";
 import { HardwareToken as Windows_System_Profile_HardwareToken } from "./Windows/System/Profile/HardwareToken";
+import { KnownRetailInfoProperties as Windows_System_Profile_KnownRetailInfoProperties } from "./Windows/System/Profile/KnownRetailInfoProperties";
+import { ProfileHardwareTokenContract as Windows_System_Profile_ProfileHardwareTokenContract } from "./Windows/System/Profile/ProfileHardwareTokenContract";
+import { ProfileRetailInfoContract as Windows_System_Profile_ProfileRetailInfoContract } from "./Windows/System/Profile/ProfileRetailInfoContract";
+import { ProfileSharedModeContract as Windows_System_Profile_ProfileSharedModeContract } from "./Windows/System/Profile/ProfileSharedModeContract";
+import { RetailInfo as Windows_System_Profile_RetailInfo } from "./Windows/System/Profile/RetailInfo";
+import { SharedModeSettings as Windows_System_Profile_SharedModeSettings } from "./Windows/System/Profile/SharedModeSettings";
 import { SmbiosInformation as Windows_System_Profile_SystemManufacturers_SmbiosInformation } from "./Windows/System/Profile/SystemManufacturers/SmbiosInformation";
 import { InteractiveSession as Windows_System_RemoteDesktop_InteractiveSession } from "./Windows/System/RemoteDesktop/InteractiveSession";
 import { AccountPictureKind as Windows_System_UserProfile_AccountPictureKind } from "./Windows/System/UserProfile/AccountPictureKind";
@@ -1356,6 +1367,10 @@ import { PropertyAnimation as Windows_UI_Core_AnimationMetrics_PropertyAnimation
 import { PropertyAnimationType as Windows_UI_Core_AnimationMetrics_PropertyAnimationType } from "./Windows/UI/Core/AnimationMetrics/PropertyAnimationType";
 import { ScaleAnimation as Windows_UI_Core_AnimationMetrics_ScaleAnimation } from "./Windows/UI/Core/AnimationMetrics/ScaleAnimation";
 import { TranslationAnimation as Windows_UI_Core_AnimationMetrics_TranslationAnimation } from "./Windows/UI/Core/AnimationMetrics/TranslationAnimation";
+import { AppViewBackButtonVisibility as Windows_UI_Core_AppViewBackButtonVisibility } from "./Windows/UI/Core/AppViewBackButtonVisibility";
+import { BackRequestedEventArgs as Windows_UI_Core_BackRequestedEventArgs } from "./Windows/UI/Core/BackRequestedEventArgs";
+import { CoreWindowDialogsContract as Windows_UI_Core_CoreWindowDialogsContract } from "./Windows/UI/Core/CoreWindowDialogsContract";
+import { SystemNavigationManager as Windows_UI_Core_SystemNavigationManager } from "./Windows/UI/Core/SystemNavigationManager";
 import { CrossSlideThresholds as Windows_UI_Input_CrossSlideThresholds } from "./Windows/UI/Input/CrossSlideThresholds";
 import { CrossSlidingEventArgs as Windows_UI_Input_CrossSlidingEventArgs } from "./Windows/UI/Input/CrossSlidingEventArgs";
 import { CrossSlidingState as Windows_UI_Input_CrossSlidingState } from "./Windows/UI/Input/CrossSlidingState";
@@ -2270,7 +2285,10 @@ export namespace Windows {
             export const LoggingActivity = Windows_Foundation_Diagnostics_LoggingActivity;
             export const LoggingChannel = Windows_Foundation_Diagnostics_LoggingChannel;
             export const LoggingLevel = Windows_Foundation_Diagnostics_LoggingLevel;
+            export const LoggingOpcode = Windows_Foundation_Diagnostics_LoggingOpcode;
+            export const LoggingOptions = Windows_Foundation_Diagnostics_LoggingOptions;
             export const LoggingSession = Windows_Foundation_Diagnostics_LoggingSession;
+            export const LoggingChannelOptions = Windows_Foundation_Diagnostics_LoggingChannelOptions;
             export const RuntimeBrokerErrorSettings = Windows_Foundation_Diagnostics_RuntimeBrokerErrorSettings;
             export const TracingStatusChangedEventArgs = Windows_Foundation_Diagnostics_TracingStatusChangedEventArgs;
         }
@@ -3133,9 +3151,18 @@ export namespace Windows {
         export namespace Display {
             export const DisplayRequest = Windows_System_Display_DisplayRequest;
         }
+
         export namespace Profile {
+            export const AnalyticsInfo = Windows_System_Profile_AnalyticsInfo;
+            export const AnalyticsVersionInfo = Windows_System_Profile_AnalyticsVersionInfo;
             export const HardwareIdentification = Windows_System_Profile_HardwareIdentification;
             export const HardwareToken = Windows_System_Profile_HardwareToken;
+            export const KnownRetailInfoProperties = Windows_System_Profile_KnownRetailInfoProperties;
+            export type ProfileHardwareTokenContract = Windows_System_Profile_ProfileHardwareTokenContract;
+            export type ProfileRetailInfoContract = Windows_System_Profile_ProfileRetailInfoContract;
+            export type ProfileSharedModeContract = Windows_System_Profile_ProfileSharedModeContract;
+            export const RetailInfo = Windows_System_Profile_RetailInfo;
+            export const SharedModeSettings = Windows_System_Profile_SharedModeSettings;
             export namespace SystemManufacturers {
                 export const SmbiosInformation = Windows_System_Profile_SystemManufacturers_SmbiosInformation;
             }
@@ -3181,6 +3208,10 @@ export namespace Windows {
             export type WebAccountProviderCommandInvokedHandler = Windows_UI_ApplicationSettings_WebAccountProviderCommandInvokedHandler;
         }
         export namespace Core {
+            export const AppViewBackButtonVisibility = Windows_UI_Core_AppViewBackButtonVisibility;
+            export const BackRequestedEventArgs = Windows_UI_Core_BackRequestedEventArgs;
+            export type CoreWindowDialogsContract = Windows_UI_Core_CoreWindowDialogsContract;
+            export const SystemNavigationManager = Windows_UI_Core_SystemNavigationManager;
             export namespace AnimationMetrics {
                 export const AnimationDescription = Windows_UI_Core_AnimationMetrics_AnimationDescription;
                 export const AnimationEffect = Windows_UI_Core_AnimationMetrics_AnimationEffect;
@@ -3512,206 +3543,7 @@ export namespace Windows {
     }
 }
 
-// still not 100% sure what this is meant to do?
-
-class WeakWinRTProperties {
-    static objectMap = new Map();
-
-    static getWeakProperty(winRtObject, key) {
-        if (WeakWinRTProperties.objectMap.has(winRtObject)) {
-            let propertyMap = WeakWinRTProperties.objectMap.get(winRtObject);
-            var val = propertyMap.get(key);
-
-            return val;
-        }
-
-        return null;
-    }
-
-    static setWeakProperty(winRtObject, key, value) {
-        let propertyMap = new Map();
-
-        if (!WeakWinRTProperties.objectMap.has(winRtObject)) {
-            WeakWinRTProperties.objectMap.set(winRtObject, propertyMap);
-        }
-
-        propertyMap = WeakWinRTProperties.objectMap.get(winRtObject);
-        propertyMap.set(key, value);
-        WeakWinRTProperties.objectMap.set(winRtObject, propertyMap);
-
-        console.log(`set ${winRtObject}['${key}'] -> ${value}`);
-    }
-
-}
-
-// set a bunch of globals to make apps happy. welcome to the IE11 emulator
-const globalThis = (() => {
-    if (typeof self !== 'undefined') {
-        return self;
-    } else if (typeof window !== 'undefined') {
-        return window;
-    } else {
-        return Function('return this')();
-    }
-})();
-
-if (globalThis.document) {
-    if (typeof globalThis["msMatchMedia"] !== "function")
-        globalThis["msMatchMedia"] = window.matchMedia;
-
-    globalThis["MSPointerEvent"] = PointerEvent;
-
-    Element.prototype["msMatchesSelector"] = Element.prototype.matches;
-    Object.defineProperty(HTMLElement.prototype, "currentStyle", {
-        get: function () {
-            return this.style;
-        },
-        enumerable: true
-    });
-
-    (<any>HTMLElement.prototype).setActive = HTMLElement.prototype.focus;
-    (<any>HTMLElement.prototype).createTextRange = function () {
-        return {
-            offsetTop: 0,
-            scrollIntoView: function () {
-            }
-        };
-    };
-    (<any>HTMLElement.prototype).getComputedStyle = function () {
-        return this.style;
-    };
-
-    // this handles focus rings like IE
-    let styleElement = document.createElement("style");
-    styleElement.append(document.createTextNode(":focus { outline: none !important; }"))
-    document.head.appendChild(styleElement);
-    function handleTab(e: KeyboardEvent) {
-        if (e.keyCode === 9) { // unsure how to replacethis
-            document.head.removeChild(styleElement);
-            window.removeEventListener("keydown", handleTab);
-            window.addEventListener("mousedown", handleMouseDown);
-        }
-    }
-
-    function handleMouseDown() {
-        document.head.appendChild(styleElement);
-        window.removeEventListener("mousedown", handleMouseDown);
-        window.addEventListener("keydown", handleTab);
-    }
-
-    window.addEventListener("keydown", handleTab);
-
-    let orig_createObjectURL = URL.createObjectURL;
-    URL.createObjectURL = function (...args) {
-        if (args[0].path !== undefined) {
-            return args[0].path;
-        }
-
-        return orig_createObjectURL(args[0]);
-    };
-
-    const progressStyle = require("css-loader!./imports/ms-progress.css");
-    class MSProgressElement extends HTMLElement {
-        constructor() {
-            super()
-
-            let shadow = this.attachShadow({ mode: 'open' })
-            let mainStyle = document.createElement("style");
-            mainStyle.setAttribute("scoped", "scoped");
-            mainStyle.innerHTML = progressStyle.default[0][1]; // ??
-            shadow.appendChild(mainStyle);
-
-            let style = document.createElement("style");
-            style.setAttribute("scoped", "scoped");
-            style.classList.add("sub-style")
-            shadow.appendChild(style);
-
-
-            let container = document.createElement("div");
-            container.classList.add('ms-progress-container');
-            for (let i = 0; i < 6; i++) {
-                let span = document.createElement("span");
-                container.appendChild(span);
-            }
-
-            shadow.appendChild(container);
-            console.info("created");
-        }
-
-        static get observedAttributes() {
-            return ["min", "max"]
-        }
-
-        connectedCallback() {
-            console.info("connected");
-
-            this.style.display = "block";
-
-            let computedStyle = window.getComputedStyle(this);
-            let width = parseInt(computedStyle.width);
-            let size = width / Math.SQRT2;
-            let pos = (width - size) / 2
-            let style = this.shadowRoot.querySelector(".sub-style");
-            style.innerHTML = `
-                .ms-progress-container.active span { width: ${size}px; height: ${size}px; left: ${pos}px; top:${pos}px; } 
-                .ms-progress-container.active span:after { background: ${computedStyle.color}; }`
-
-            this.update();
-        }
-
-        attributeChangedCallback(name, oldValue, newValue) {
-            this.update();
-        }
-
-        update() {
-            let root = this.shadowRoot.querySelector('.ms-progress-container')
-            if (!this.getAttribute('min') && !this.getAttribute('max')) {
-                root.classList.add("active");
-            }
-            else {
-                root.classList.remove("active");
-            }
-        }
-    }
-
-    customElements.define("ms-progress", MSProgressElement);
-}
-
-// let orig_Array_prototype_reduce = Array.prototype.reduce;
-// Array.prototype.reduce = function (...args) {
-//     if (this.reduce) {
-//         return this.reduce(...args);
-//     }
-
-//     if (args.length == 1)
-//         return orig_Array_prototype_reduce(args[0]);
-//     else
-//         return orig_Array_prototype_reduce(args[0], args[1]);
-// }
-
-globalThis["toStaticHTML"] = function (html) {
-    return html; // imagine sanitising OMEGALUL
-}
-
-globalThis["msSetWeakWinRTProperty"] = WeakWinRTProperties.setWeakProperty;
-globalThis["msGetWeakWinRTProperty"] = WeakWinRTProperties.getWeakProperty;
-globalThis["msWriteProfilerMark"] = function (...args) { /* console.debug("profiler:" + args[0]); */ performance.mark(args[0]) };
-globalThis["msRequestAnimationFrame"] = requestAnimationFrame;
-
-globalThis["setImmediate"] = typeof setImmediate === 'function' ? setImmediate : (...args) => {
-    args.splice(1, 0, 0);
-    setTimeout.apply(null, args);
-};
-
-globalThis["msSetImmediate"] = setImmediate;
-globalThis["Debug"] = {
-    write: console.log,
-    msTraceAsyncOperationStarting: () => { },
-    msTraceAsyncOperationCompleted: () => { },
-    msTraceAsyncCallbackStarting: () => { },
-    msTraceAsyncCallbackCompleted: () => { },
-}
-
+import "./IE11/ie11"
 
 globalThis['Windows'] = Windows;
 globalThis['MSApp'] = MSApp;

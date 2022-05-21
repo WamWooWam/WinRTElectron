@@ -1,43 +1,126 @@
-﻿Jx.delayDefine(Mail, "Validators", function() {
+﻿
+//
+// Copyright (C) Microsoft Corporation. All rights reserved.
+//
+
+Jx.delayDefine(Mail, "Validators", function () {
     "use strict";
-    var n = null;
+
+    var algorithmProvider = null;
+
     Mail.Validators = {
-        hasPropertyChanged: function(n, t) {
-            return Array.prototype.indexOf.call(n, t) !== -1
-        },
-        havePropertiesChanged: function(n, t) {
-            return t.some(function(t) {
-                return Mail.Validators.hasPropertyChanged(n, t)
-            })
-        },
-        areEqual: function(n, t) {
-            return n === t ? true : Jx.isObject(n) && Jx.isObject(t) && Jx.isNonEmptyString(n.objectId) && n.objectId === t.objectId
-        },
-        clamp: function(n, t, i) {
-            return Math.min(Math.max(n, t), i)
-        },
-        hashString: function(t) {
-            Mail.writeProfilerMark("Validators.hashString", Mail.LogEvent.start);
-
-            var cryptography = Windows.Security.Cryptography;
-            var cryptoBuffer = cryptography.CryptographicBuffer;
-            var core = cryptography.Core;
-
-            var algo = core.HashAlgorithmProvider.openAlgorithm(core.HashAlgorithmNames.sha1);
-            var binary = cryptoBuffer.convertStringToBinary(t); // should be UTF16 but i can't :)
-            var hash = algo.hashData(binary);
-            var base64 = cryptoBuffer.encodeToBase64String(hash);
-
-            Mail.writeProfilerMark("Validators.hashString", Mail.LogEvent.stop);
+        hasPropertyChanged : function (ev, propName) {
+            /// <param name="ev" type="Event" />
+            /// <param name="propName" type="String" />
+            Debug.assert(Jx.isObject(ev));
+            Debug.assert(Jx.isNonEmptyString(propName));
             
-            return base64;
+            // Debug checks to avoid bug regressions when events change.
+            // This list of events is from MailMessage.cpp::CMailMessageBase::StoreObjectChanged
+            Debug.call(function () {
+                var knownProperties = null;
+                if (Jx.isInstanceOf(ev.target, Microsoft.WindowsLive.Platform.MailMessage)) {
+                    knownProperties = [
+                        "read",
+                        "flagged",
+                        "from",
+                        "to",
+                        "cc",
+                        "bcc",
+                        "subject",
+                        "receivedDate",
+                        "modifiedDate",
+                        "bodyDownloadStatus",
+                        "importance",
+                        "preview",
+                        "lastVerb",
+                        "syncStatus",
+                        "hasOrdinaryAttachments",
+                        "needBody",
+                        "irmDontAllowProgramaticAccess",
+                        "irmCannotEdit",
+                        "irmCannotExtractContent",
+                        "irmCannotForward",
+                        "irmCannotModifyRecipients",
+                        "irmCannotRemoveRightsManagement",
+                        "irmCannotReply",
+                        "irmCannotReplyAll",
+                        "irmCannotPrint",
+                        "irmExpiryDate",
+                        "irmHasTemplate",
+                        "irmIsntContentOwner",
+                        "irmTemplateDescription",
+                        "irmTemplateId",
+                        "irmTemplateName",
+                        "sanitizedVersion",
+                        "hasNewsletterCategory",
+                        "hasSocialUpdateCategory",
+                        "displayViewIds",
+                        "parentConversationId",
+                        "allowExternalImages"
+                    ];
+                }
+                if (knownProperties) {
+                    for (var property in ev) {
+                        if (property !== "type") {
+                            var prop = ev[property];
+                            if (Jx.isNonEmptyString(prop)) {
+                                Debug.assert(knownProperties.indexOf(prop) !== -1, "Event changed unknown property " + prop);
+                            }
+                        }
+                    }
+                    Debug.assert(knownProperties.indexOf(propName) !== -1, "Looking for unknown property " + propName);
+                }
+            });
+            return Array.prototype.indexOf.call(ev, propName) !== -1;
         },
-        isDocumentReady: function(n) {
+        havePropertiesChanged : function (ev, propArray) {
+            /// <param name="ev" type="Event" />
+            /// <param name="propArray" type="Array" />
+            /// <returns type="Boolean" />
+            Debug.assert(Jx.isObject(ev));
+            Debug.assert(Jx.isArray(propArray));
+            return propArray.some(function (property) {
+                return Mail.Validators.hasPropertyChanged(ev, property);
+            });
+        },
+        areEqual: function (/*@dynamic*/a, /*@dynamic*/b) {
+            if (a === b) {
+                return true;
+            }
+            return Jx.isObject(a) && Jx.isObject(b) && Jx.isNonEmptyString(a.objectId) && (a.objectId === b.objectId);
+
+        },
+        clamp: function (x, min, max) {
+            return Math.min(Math.max(x, min), max);
+        },
+        hashString: function (string) {
+            Mail.writeProfilerMark("Validators.hashString", Mail.LogEvent.start);
+            var Cryptography = Windows.Security.Cryptography,
+                CryptographicBuffer = Cryptography.CryptographicBuffer,
+                encoding = Cryptography.BinaryStringEncoding.utf16BE;
+
+            if (!algorithmProvider) {
+                var Core = Cryptography.Core;
+                algorithmProvider = Core.HashAlgorithmProvider.openAlgorithm(Core.HashAlgorithmNames.sha1);
+            }
+
+            var dataBuffer = CryptographicBuffer.convertStringToBinary(string, encoding);
+            var hashBuffer = algorithmProvider.hashData(dataBuffer);
+            Debug.assert(hashBuffer.length === algorithmProvider.hashLength);
+            var hash = CryptographicBuffer.encodeToBase64String(hashBuffer);
+            Mail.writeProfilerMark("Validators.hashString", Mail.LogEvent.stop);
+            return hash;
+        },
+        isDocumentReady: function (doc) {
+            // Sometimes IE throws when accessing readyState.
+            // So we'll assume not-complete until we can actually read the property.
             try {
-                var t = n.readyState;
-                return t === "complete" || t === "interactive"
-            } catch (i) {}
-            return false
+                var readyState = doc.readyState;
+                return (readyState === "complete" || readyState === "interactive");
+            } catch (e) { }
+            return false;
         }
-    }
-})
+    };
+});
+

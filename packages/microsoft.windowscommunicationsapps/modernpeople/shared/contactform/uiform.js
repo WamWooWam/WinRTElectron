@@ -1,1 +1,1849 @@
-﻿Jx.delayDefine(People,"UiForm",function(){function d(n,t){return function(){try{return t.apply(this,arguments)}finally{}}}function ct(){return l||(l=new n.LocaleHelper),l}function h(n){if(n){var t=document.createElement("tempDiv"),i=document.createTextNode(n);t.appendChild(i);n=t.innerHTML}return n}function a(n){return n?n.replace(/^\s+|\s+$/g,""):n}function lt(n){return Boolean(n)&&n.length>0?false:true}function g(n){return typeof n!="object"?typeof n:n===null?"null":{}.toString.call(n).match(/\[object\s([\w\.]+)\]/)[1].toLowerCase()}function nt(n,t,i){var f=g(i),r=i,e,o,s,u;if(i===null)switch(g(n[t])){case"number":r=0;break;case"boolean":r=false;break;case"object":break;case"function":break;case"microsoft.windowslive.platform.location":f="object";i={street:"",city:"",state:"",zipCode:"",country:""};break;default:r=""}if(f==="object"){r=n[t]||{};for(e in i)nt(r,e,i[e])}if(f==="array"){for(o=n[t]||[],s=i.length,u=0;u<s;u++)o.push(i[u]);r=r}n[t]=r;return}function i(n,t,i,r){var h=false,s=n._residPrefix+t,e=s,u,o,f,c;if(i&&(e=s+"_"+i,h=true),r&&(e=r),u=null,!n._loc){if(u="{"+e+"}#",arguments.length>4)for(u+=" ",o=4;o<arguments.length;o++)u+="{"+arguments[o]+"};";return u}if(u=n._loc.getString(e),h&&!Jx.isNonEmptyString(u)&&(u=n._loc.getString(s)),u&&arguments.length>4)for(f=4;f<arguments.length;f++)c=new RegExp("%"+String(f-3),"g"),u=u.replace(c,arguments[f]);return u}function v(n,t,i){return n.display?typeof n.display=="function"?n.display(n,i):n.display:true}function tt(n){return n.mustEdit?typeof n.mustEdit=="function"?n.mustEdit(n):n.mustEdit:false}function y(n,t){return n._cssPrefix?n._cssPrefix+t:t}function p(n,t,i){Jx.addClass(t,y(n,i))}function t(n,t,i){var r=y(n,i);t.className+=" "+r}function o(n){n.setAttribute("aria-hidden","false");Jx.removeClass(n,"uiform-hide")}function u(n){n.setAttribute("aria-hidden","true");Jx.addClass(n,"uiform-hide")}function w(t,i,r,u,f,e,o){var h,c,s,l;return Boolean(f)&&v(u,r,f)&&(h=null,c=true,o&&(s=n.UiForm.showItem(o,r,u,f,e),s.exists&&!s.item.hasDisplayed?(h=s.item.fieldNetwork,s.item.hasDisplayed=true):c=false),c&&(l=t._viewFormatter.formatField(r,u,f,h),l))?(i.appendChild(l),true):false}function at(n,t){for(var o="",s=false,c=false,f=[],h=true,u,e,r=0;r<t.length;r++)u=t[r],e=u.imtype,e!==Microsoft.WindowsLive.Platform.ContactIMType.foreignNetwork&&e!==Microsoft.WindowsLive.Platform.ContactIMType.none&&(s=true),u.mobilePhoneNumber!==""&&(c=true),Microsoft.WindowsLive.Platform.ContactIMType.foreignNetwork===e&&Boolean(u.account)&&f.push(u.account.displayName);for(s&&f.push(i(n,"",null,"Messenger")),r=0;r<f.length;r++)h||(o+=", "),o+=f[r],h=false;return o}function vt(n){this._formData=n;this.fieldList=n.fieldList||null;this.groupList=n.groupList||null;this._loc=n.loc||null;this._fieldMap={};this._groupMap={};this._cssPrefix=n.cssPrefix||"uiform-";this._residPrefix=n.residPrefix||"";this._sourceData=null;this._onFormChanged=n.onFormChanged||function(){}}function it(n,i,r){var u=document.createElement("div");t(n,u,"groupTitle");u.id="groupTitle_"+i.id;u.setAttribute("aria-label",r);u.setAttribute("role","columnheader");u.innerText=r;i.appendChild(u)}function yt(r,u){return{formatField:function(f,e,o,s){var w=n.UiFormRenderers.getRenderer(e.type),h,c,y,a,v,b,p,l;if(displayValue=o,h=document.createElement("div"),h.id="fieldDiv_"+f,t(r,h,"fieldContainer"),c=document.createElement("div"),c.id="fieldValueDiv_"+f,t(r,c,"fieldValue"),y=i(r,"fieldTitle",f,e.locId),w.field(r,c,displayValue,y)){if(a=document.createElement("div"),a.id="fieldTitleDiv_"+f,a.innerText=y,t(r,a,"fieldTitle"),e.active===true&&c.setAttribute("role","link"),h.appendChild(c),h.appendChild(a),u&&e.type!=="email"&&n.UiForm.containsMultiple(u,f)){for(v=document.createElement("div"),v.id="fieldAttributionDiv_"+f,t(r,v,"fieldAttribution"),b=[],p="",l=0;l<s.length;l++)b.indexOf(s[l])===-1&&(b.push(s[l]),l>0&&(p+=", "),p+=s[l]);v.innerText=p;h.appendChild(v)}return w.section?(n.Animation.addPressStyling(c),w.section(r,h,c,e,o,y,displayValue)):h}return null}}}function pt(n){var t="ABCH",i=n._sourceData;return(i&&i.account&&(t=i.account.sourceId||t),rt[t])?true:false}function b(n,t,r,u,e,o){var h=f.validators[u],c,l;return c=h.validate(e,o,n),c!==true&&(l="",l=h.errorString?h.errorString(n,t,o):i(n,h.locId,t,h.locId),s.setError(n,t,r,l)),c}function wt(n,r,f){var tt,l,o,e,a,y,b,h;if(p(this,n,"container"),tt=this,this.container=n,this._fieldMap={},this._groupMap={},this._sourceData=r,l=document.createElement("form"),l.id="editForm",t(this,l,"form"),l.setAttribute("autocomplete","off"),this._formErrorDiv=document.createElement("div"),this._formErrorDiv.id="uif_formErrorDiv",t(this,this._formErrorDiv,"formError"),u(this._formErrorDiv),this._formErrorHeader=document.createElement("div"),this._formErrorDiv.id="uif_formErrorHeader",t(this,this._formErrorHeader,"formErrorHeader"),this._formErrorDiv.appendChild(this._formErrorHeader),this._formErrorBody=document.createElement("div"),this._formErrorDiv.id="uif_formErrorBody",t(this,this._formErrorBody,"formErrorBody"),this._formErrorDiv.appendChild(this._formErrorBody),n.appendChild(this._formErrorDiv),r)for(o in this.groupList){e=this.groupList[o];this._groupMap[o]={groupName:o,group:e};a=document.createElement("div");a.id="groupData"+o;t(this,a,"groupFields");var d=false,rt=true,k=null,g=0;for(y=0;y<e.fieldList.length;y++){var s=e.fieldList[y],nt=r[s],w=this.fieldList[s];this._fieldMap[s]={fieldName:s,fieldAttrib:w,groupName:o,group:e,displayIndex:-1};b=this._fieldMap[s];v(w,s,nt)?(b.displayIndex=g,g++,b.canDisplay=true,k||w.canEdit===false||e.canEdit===false||(k=s),ui(this,a,s,nt,w,e,f,true)?d=true:rt=false):b.canDisplay=false}h=document.createElement("div");h.id="groupDiv_"+o;t(this,h,"groupContainer");it(this,h,i(this,"groupTitle",o,e.locId));h.appendChild(a);e.multiple&&(d||e.showFirstFieldOnGroupEmpty===false||c(this,k,e),h.appendChild(kt(this,e,o)));l.appendChild(h)}n.appendChild(l)}function c(n,t){var i=n._fieldMap[t];Boolean(i)&&!i.visible&&(o(i.container),i.visible=true)}function ut(n,t,i){var r=n._fieldMap[t],f,e;Boolean(r)&&r.visible&&(u(r.container),r.visible=false,f=r.groupName,e=document.getElementById("addExtraDiv_"+f),o(e),k(n,i,f))}function bt(t,r,u,f){var e=n.UiFlyoutMenuItem.create({html:h(r),click:function(){var n=t._fieldMap[u],i=n.groupName;return t._groupMap[i].group.addFieldInPlace?n.moved&&st(t,f,u,-1):st(t,f,u,1e3),c(t,u,f),k(t,f,i),t._onFormChanged(),t.setInputFocus(u),false}});return e.setAriaLabel(i(t,"addMenuItemAria",u,null,r)),e}function ft(n,t){var i=t.addMenu,f,r,u,e,o;if(i){if(i.clear(),f=t.group,r=et(n,f,""),r!==null)for(u in r)e=n._fieldMap[u],!e.visible&&e.canDisplay&&(o=bt(n,r[u].label,u,f),i.add(o));return i.count()}}function k(n,t,i){var f=n._groupMap[i],r=f.addExtraDiv;r&&(ft(n,f)===0?u(r):o(r))}function kt(r,f,e){var p=i(r,"groupTitleAdd",e,f.locId),o=document.createElement("div"),c,s,l,h,a,v,y;return o.id="addExtraDiv_"+e,t(r,o,"groupAddExtra"),c=document.createElement("span"),t(r,c,"groupAddField"),s=document.createElement("div"),t(r,s,"groupAddExtraWrp"),l=document.createElement("div"),t(r,l,"groupAddExtraBtn"),l.innerText="",s.appendChild(l),l.setAttribute("role","menu"),s.setAttribute("role","menu"),h=document.createElement("span"),h.setAttribute("role","text"),h.setAttribute("id","groupAddExtraLbl_"+e),t(r,h,"groupAddExtraLbl"),WinJS.Utilities.setInnerHTML(h,i(r,"groupTitleAdd",e,f.locId)),s.appendChild(h),c.appendChild(s),a=n.UiFlyoutMenu.create({container:c}),a.setAriaMenuTitleByIds("groupAddExtraLbl_"+e+" groupAddExtraMenuLbl_"+e),o.appendChild(a.$obj),o.setAttribute("role","menubar"),n.Animation.addPressStyling(a._$a),v=document.createElement("span"),v.setAttribute("class","uiform-hide"),v.setAttribute("id","groupAddExtraMenuLbl_"+e),v.setAttribute("aria-label",i(r,"groupTitleAriaAdd",e,null,c)),s.appendChild(v),y=r._groupMap[e],y.addMenu=a,y.addExtraDiv=o,ft(r,y)===0&&u(o),o}function dt(n,t,i,r,u){var o=n._fieldMap[i],h=n._fieldMap[u],v=o.fieldAttrib,c=o.inputControl,l=h.inputControl,a=l.getValue(),s;l.setValue(c.getValue());c.setValue(a);s=e(o,i);f.validate(n,i,o.fieldAttrib,s)||(o.errorState=true);s=e(h,u);f.validate(n,u,h.fieldAttrib,s)||(o.errorState=true)}function gt(n,r,f,e,o){var l=document.createElement("div"),s=r.fieldName,v,h,c,a;return l.id="editFieldTitleDiv_"+s,t(n,l,"fieldTitle"),v=ot(e,f,s),h=document.createElement("span"),h.id="editLabel_"+s,h.setAttribute("aria-label",o),c=document.createElement("label"),c.setAttribute("for","#editInput_"+s),c.innerText=o,h.appendChild(c),l.appendChild(h),e.multiple&&v?(Jx.addClass(c,"uiform-hide"),l.appendChild(ti(n,o,s,e)),a=document.createElement("span"),a.setAttribute("class","uiform-hide"),a.id="ariaChangeEditLabel_"+s,a.setAttribute("aria-label",i(n,"changeFieldAriaMenuTitle",s,null)),h.appendChild(a)):f.hideLabel&&u(c),l}function ni(r,u,e,o){var s=u.fieldAttrib,c=u.fieldName,h=document.createElement("div"),v,y,a,w,p,l;return h.id="editFieldDiv_"+c,t(r,h,"fldCntr"),v=i(r,"fieldTitle",c,s.locId),y=gt(r,u,s,o,v),h.appendChild(y),u.titleDiv=y,u.container=h,a=null,w=!(s.canEdit===false)&&!(o.canEdit===false),w?(a=s.type==="select"?new n.UiFormSelectInputControl(r,h,c,s,e,f.validate):s.type==="location"||s.type==="mapLocation"?new n.UiFormAddressInputControl(r,h,c,s,e,f.validate):new n.UiFormTextInputControl(r,h,c,s,e,f.validate),u.inputControl=a,a.validate()):(p=n.UiFormRenderers.getRenderer(s.type),p&&(l=document.createElement("div"),l.id="fieldValueDiv_"+c,p.field(r,l,e,v)&&t(r,l,"displayValue"),h.appendChild(l))),h}function et(n,t,r){for(var o=t.fieldList,s={},u,f,h,e=0;e<o.length;e++)u=o[e],f=n._formData.fieldList[u],u!==r&&v(f,u,null)&&(h=!(f.canEdit===false)&&!(t.canEdit===false),h&&(s[u]={fieldAttr:f,label:i(n,"fieldTitle",u,f.locId)}));return s}function ti(i,r,u,f){var e=document.createElement("div"),o;return t(i,e,"changeField"),o=n.UiFlyoutMenu.create({html:h(r)}),o.setAriaMenuTitleByIds("editLabel_"+u+" ariaChangeEditLabel_"+u),o.addBeforeShowHandler(function(n){var t,r,e,o;if(n.clear(),t=et(i,f,u),t!==null)for(r in t)e=t[r].fieldAttr,ot(f,e,r)&&(o=ri(i,t[r].label,u,r,f),n.add(o))}),e.appendChild(o.$obj),e.setAttribute("role","menubar"),e}function ot(n,t,i){return!n.multiple||tt(t,i)||n.disallowFieldTypeChange||t.disallowFieldTypeChange||t.hideLabel?false:true}function ii(n,t,i,r){var h=n._fieldMap[i],v=n._fieldMap[r],u=h.container,f=v.container,y;if(!u||!f||u===f)return false;s.clear(n,i,h);s.clear(n,r,v);var e=u.parentNode,l=u.nextSibling,o=f.parentNode,a=f.nextSibling;return Boolean(l)&&l.id===f.id?(o.removeChild(f),e.insertBefore(f,u)):Boolean(a)&&a.id===u.id?(e.removeChild(u),o.insertBefore(u,f)):Boolean(a)?(o.removeChild(f),e.insertBefore(f,u),e.removeChild(u),o.insertBefore(u,a)):Boolean(l)?(e.removeChild(u),o.insertBefore(u,f),o.removeChild(f),e.insertBefore(f,l)):(e.removeChild(u),a?o.insertBefore(u,a):o.appendChild(u),o.removeChild(f),l?e.insertBefore(f,l):e.appendChild(f)),dt(n,u,i,f,r),v.moved=true,h.moved=true,h.visible!==v.visible&&(v.visible?ut(n,r,t):c(n,r,t),h.visible?ut(n,i,t):c(n,i,t),y=h.groupName,k(n,t,y)),true}function st(n,t,i,r){var s=n._fieldMap[i],u=s.container,o;if(!u)return false;var e=u.parentNode,h=u.previousSibling,f=-1;if(r===undefined||r<0){if(f=s.displayIndex,f===-1)return false}else f=r;return e.removeChild(u),o=e.childNodes,o.length<=f?e.appendChild(u):e.insertBefore(u,o[f]),n._fieldMap[i].moved=false,true}function ri(t,r,u,f,o){var c=t._fieldMap[f],l=e(c,f),a=i(t,"fldChngLbl",f,null,r,l),s=n.UiFlyoutMenuItem.create({html:h(a),click:function(){try{ii(t,o,u,f)&&t.setInputFocus(f)}catch(n){}return false}});return s.setAriaLabel(i(t,"changeFieldTypeAria",f,null,r)),s}function ui(n,t,i,r,f,e,o,s){var a=false,h,c,l;return o&&(o.fields&&o.fields[i]!==undefined&&(r=o.fields[i]),o.displayedFields&&o.displayedFields[i]!==undefined&&(a=true)),h=false,(!e.multiple||a||tt(f,i))&&(h=true),c=n._fieldMap[i],c.container=t,t.appendChild(ni(n,c,r,e)),l=c.inputControl,Boolean(l)&&!l.isEmpty()&&(h=true),c.visible=h,!h&&s&&u(c.container),h}function ht(n,t){var r=null,f=null,u=null,i;for(i in t._fieldMap)r=t._fieldMap[i],Boolean(r.container)&&Boolean(r.inputControl)&&(f=null,t._fieldMap[i].visible&&(u=e(r,i),Boolean(u)&&String(u)!==""&&(f=u)),nt(n,i,f))}function fi(n){var i,t,r;for(i in n._fieldMap)if(t=n._fieldMap[i],Boolean(t.container)&&Boolean(t.inputControl)&&(r=e(t,i),!f.validate(n,i,t.fieldAttrib,r)))return t.errorState=true,t.inputControl;return null}function e(n){if(!n)return"";if(Boolean(n.container)&&Boolean(n.inputControl)){var t=n.inputControl;if(t)return t.getValue()}return""}function ei(n,t,i){return i.maxLength?typeof i.maxLength=="function"?i.maxLength(n,t,i):i.maxLength:null}var n=window.People,l=null,s={_getErrorDiv:function(n,i,r,u){var f,e;return r?(f=r.errorDiv,f)?f:u?(f=document.createElement("div"),f.id="errorDiv_"+i,t(n,f,"fieldError"),r.errorDiv=f,e=r.container,Boolean(e)&&e.childNodes.length>0?e.insertBefore(f,e.childNodes[0]):e.appendChild(f),f):null:null},clear:function(n,t,i){i.errorState=false;var r=i.container;this.hide(n,t,i)},setError:function(n,t,i,r){var u=this._getErrorDiv(n,t,i,true);u&&(u.innerText=r,o(u),n._onFormChanged())},hide:function(n,t,i){var r=this._getErrorDiv(n,t,i,false);r&&(r.innerText="",u(r),n._onFormChanged())}},r,rt,f;n.UiForm=vt;n.UiForm.prototype={_formData:null,fieldList:null,_loc:null,_fieldMap:null,_groupMap:null,_cssPrefix:null,_sourceData:null,_viewFormatter:null,_formErrorDiv:null,_formErrorHeader:null,_formErrorBody:null};r=n.UiForm.prototype;r.groupList=null;r.setCssStyle=function(n,t){p(this,n,t)};r.getString=function(n,t,r){return i(this,n,t,r)};n.UiForm.isEmptyString=function(n){return Jx.isNullOrUndefined(n)?true:typeof n=="string"&&a(n).length===0?true:false};n.UiForm.getMarket=ct;n.UiForm.trim=a;n.UiForm.isEmpty=lt;n.UiForm.encodeHTML=h;r.getCssClass=function(n){return y(this,n)};r.createViewForm=d("createViewForm",function(r,u,f){var a,v,o,y,k,c,g,e,l;p(this,r,"container");this._viewFormatter=yt(this,f,u);this._sourceData=u;var tt=u&&u instanceof Array?true:false,nt=this.groupList;for(a in nt){for(v=nt[a],o=document.createElement("div"),o.id="groupData_"+a,t(this,o,"groupFields"),y=false,k=0;k<v.fieldList.length;k++){var h=v.fieldList[k],b=this.fieldList[h],s="",d="",rt=!(b.canView===false)&&!(v.canView===false);if(rt&&u)if(c=null,b.type==="chat")c=at(this,u),w(this,o,h,b,c,s,null)&&(y=true);else if(tt)for(g=0;g<u.length;g++)e=u[g],c=null,s="",e&&(d=e.account?e.account.sourceId:"",c=n.Contact.getFieldValue(e,h,d),e.account!==undefined&&e.account!==null&&(s=e.canEdit&&e.account.isDefault?Jx.res.getString("/strings/profile_fieldAttribution_addedByYou"):e.account.displayName)),w(this,o,h,b,c,s,f)&&(y=true);else s="",e&&e.account!==undefined&&e.account!==null&&(s=e.account.displayName,d=e.account.sourceId),w(this,o,h,b,n.Contact.getFieldValue(u,h,d),s,f)&&(y=true)}y&&(l=document.createElement("div"),l.id="groupDiv_"+a,t(this,l,"groupContainer"),it(this,l,i(this,"groupTitle",a,v.locId)),l.appendChild(o),r.appendChild(l))}});n.UiForm.showItem=function(t,i,r,u,f){for(var e,o=0;o<t.length;o++)if(e=t[o],r.type==="mapLocation"){if(e.fieldName===i&&e.fieldNetwork.indexOf(f)>-1&&n.Location.compare(e.fieldValue,u)===n.Compare.equal)return{exists:true,item:e}}else if(e.fieldName===i&&e.fieldValue===u&&e.fieldNetwork.indexOf(f)>-1)return{exists:true,item:e};return{exists:false,item:null}};n.UiForm.containsMultiple=function(n,t){for(var r=0,i=0;i<n.length;i++)n[i].fieldName===t&&r++;return r>1?true:false};rt={WL:true,ABCH:true};n.UiForm.Validators={_required:function(n){return n?a(n)!=="":false},_emailAddress:function(n,t,i){return pt(i)?n!==""&&!n.match("^.*[@]+.*[.]+.*$")?false:n!==""&&!n.match("^[ -]*$")?false:true:n!==""&&!n.match("^.*[@]+.*[.]+.*$")?null:true},_mobile:function(n){if(n!==""){if(n.match("^([A-Za-z0-9() +,-.])+$"))return true}else return true;return false},_specialNameChars:function(n){return n!==""&&n.match("[\x00-\x1f!-&(-,/:-@[-^{-]")?false:true},_noWwwHttp:function(n){if(n){var t=n.toLowerCase();if(t.indexOf("www.")!==-1||t.indexOf("http")!==-1)return false}return true}};f={validators:{required:{validate:n.UiForm.Validators._required,locId:"validationRequired"},email:{validate:n.UiForm.Validators._emailAddress,locId:"validationInvalidEmail"},mobile:{validate:n.UiForm.Validators._mobile,locId:"validationInvalidMobile"},specialNameChars:{validate:n.UiForm.Validators._specialNameChars,locId:"validationInvalidName"},noWwwHttp:{validate:n.UiForm.Validators._noWwwHttp,locId:"validationWwwHttp"}},validate:function(n,t,i,r){var o=true,f=false,e=n._fieldMap[t],u=null,h,c,l;if(i.required&&(u=b(n,t,e,"required",r,i),u===false?f=true:u===null&&(o=false)),f||(i.type==="email"||i.type==="mobile")&&(u=b(n,t,e,i.type,r,i),u===false?f=true:u===null&&(o=false)),i.validators)for(h=0,c=i.validators.length;h<c;h++)if(l=i.validators[h],u=b(n,t,e,l,r,i),u===false){f=true;break}else u===null&&(o=false);return!f&&o&&s.hide(n,t,e),e.errorState=f,!f}};r.setFormError=function(n,t){this._formErrorDiv&&(this._formErrorHeader.innerText=n,this._formErrorBody.innerText=t,o(this._formErrorDiv))};r.clearFormError=function(){this._formErrorDiv&&u(this._formErrorDiv)};r.createEditForm=d("createEditForm",wt);r.setInputFocus=function(n){var t=this._fieldMap[n],i;t&&Boolean(t.container)&&Boolean(t.inputControl)&&(i=t.inputControl,i&&i.setFocus())};r.saveEditForm=function(n){var t,i,r;if(this.clearFormError(),t=fi(this),t)return t.setFocus(),false;for(i in this._fieldMap)if(this._fieldMap[i].errorState)return this.setInputFocus(i),false;return this._formData.formValidator&&(r={},ht(r,this),!this._formData.formValidator(this,r,this._loc))?(this._onFormChanged(),false):(ht(n,this),true)};r.getFieldMaxLength=function(n,t){return ei(this._sourceData,n,t)};r.getInputFieldValueByName=function(n){var t=this._fieldMap[n];return e(t,n)};r.dehydrateEditForm=function(n){var t={},u,e,o,i,r,f;Boolean(document.activeElement)&&Boolean(document.activeElement.id)&&(u=document.activeElement,t.focus={},t.focus.id=u.id,t.focus.name=u.name,t.focus.type=u.type);t.fields={};t.displayedFields={};e=t.fields;o=t.displayedFields;for(i in this._fieldMap)r=this._fieldMap[i],Boolean(r.container)&&Boolean(r.inputControl)&&(f=null,this._fieldMap[i].visible&&(f=r.inputControl.getValue(),o[i]=true),r.inputControl.compareValues(f,n[i])||(e[i]=f));return t};r.isEditFormDirty=function(n){var i,t;for(i in this._fieldMap)if(t=this._fieldMap[i],Boolean(t.container)&&Boolean(t.inputControl)&&!t.inputControl.compare(n[i]))return true;return false}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="%_NTTREE%\drop\published\ModernContactPlatform\Microsoft.WindowsLive.Platform.js" />
+/// <reference path="../../Shared/JSUtil/Namespace.js"/>
+/// <reference path="../../Shared/JSUtil/Include.js"/>
+/// <reference path="../../../Shared/Jx/Core/Debug.js"/>
+/// <reference path="../../../Shared/Jx/Core/Jx.js"/>
+/// <reference path="../../../Shared/Jx/Core/Res.js"/>
+/// <reference path="./uimenu.js"/>
+/// <reference path="./uiform-refs.js"/>
+/// <reference path="./UiFormAddressInputControl.js"/>
+/// <reference path="./UiFormTextInputControl.js"/>
+/// <reference path="./UiFormSelectInputControl.js"/>
+/// <reference path="./UiFieldRenderers.js"/>
+
+/// <disable>JS2034.DoNotCompareToTrueOrFalse</disable>
+
+Jx.delayDefine(People, "UiForm", function () {
+    
+    var P = window.People;
+
+    function perfUiFormAction(actionOp, actionFunc) {
+        return function () {
+            try {
+                NoShip.People.etw("uiform_start", { action: actionOp });
+
+                return actionFunc.apply(this, arguments);
+            } finally {
+                NoShip.People.etw("uiform_end", { action: actionOp });
+            }
+        };
+    };
+
+    var resourceContext = /* @type(String) */null;
+    function _getMarket() {
+        if (!resourceContext) {
+            resourceContext = new P.LocaleHelper();
+        }
+        return resourceContext;
+    };
+
+    var _formFieldError = {
+        _getErrorDiv: function (uiform, fieldName, fieldMap, createMissing) {
+            /// <param name="uiform" type="People.UiForm" />
+            /// <param name="fieldName" type="String" />
+            /// <param name="fieldMap" type="_UiFormFieldMap" />
+            /// <param name="createMissing" type="Boolean" />
+            if (!fieldMap) {
+                return null;
+            }
+            var errorDiv = fieldMap.errorDiv;
+            if (errorDiv) {
+                return errorDiv;
+            }
+            if (!createMissing) {
+                return null;
+            }
+            errorDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+            errorDiv.id = 'errorDiv_' + fieldName;
+            _addCssStyle(uiform, errorDiv, "fieldError");
+            fieldMap.errorDiv = errorDiv;
+
+            var parentNode = fieldMap.container;
+            if (Boolean(parentNode) && parentNode.childNodes.length > 0) {
+                parentNode.insertBefore(/* @static_cast(Node) */errorDiv, parentNode.childNodes[0]);
+            } else {
+                parentNode.appendChild(/* @static_cast(Node) */errorDiv);
+            }
+
+            return errorDiv;
+        },
+        clear: function (/* @type(People.UiForm) */uiform, fieldName, /* @type(_UiFormFieldMap) */fieldMap) {
+            fieldMap.errorState = false;
+            var container = fieldMap.container;
+            this.hide(uiform, fieldName, fieldMap);
+        },
+
+        setError: function (/* @type(People.UiForm) */uiform, fieldName, fieldMap, message) {
+
+            var errorDiv = this._getErrorDiv(uiform, fieldName, fieldMap, true);
+            if (errorDiv) {
+                errorDiv.innerText = message;
+                _show(errorDiv);
+                // Until we have a better solution, we'll hook the edit container resize check into these methods
+                uiform._onFormChanged();
+            }
+        },
+
+        hide: function (/* @type(People.UiForm) */uiform, fieldName, fieldMap) {
+            var errorDiv = this._getErrorDiv(uiform, fieldName, fieldMap, false);
+            if (errorDiv) {
+                errorDiv.innerText = '';
+                _hide(errorDiv);
+                // Until we have a better solution, we'll hook the edit container resize check into these methods
+                uiform._onFormChanged();
+            }
+        }
+    };
+
+    // ----------------------------------------------------------------------------------------------------.
+    // Common internal helper functions hidden from the outside world by the closure.
+    // ----------------------------------------------------------------------------------------------------.
+    /// <summary>
+    /// Encodes a string to be displayed in the browser.
+    /// Usage: _divElement.innerHTML =_someValue.encodeHtml());
+    /// </summary>
+    /// <returns>Encode Xml/Html</returns>
+    function _encodeHtml(value) {
+        /// <param name="value" type="String" />
+        if (value) {
+            var div = document.createElement('tempDiv');
+            var text = document.createTextNode(value);
+            div.appendChild(text);
+            value = div.innerHTML;
+        }
+        return value;
+    };
+
+    function _trim(value) {
+        /// <param name="value" type="String" />
+        if (value) {
+            return value.replace(/^\s+|\s+$/g, '');
+        }
+        return value;
+    };
+
+    function _isEmpty(field) {
+        /// <param name="field" type="String" />
+        if (Boolean(field) && field.length > 0) {
+            return false;
+        }
+        return true;
+    };
+
+
+    // ----------------------------------------------------------------------------------------------------
+
+    function _typeof(value) {
+        /// <summary>
+        /// A helper function to identify the underlying type object correctly.
+        /// </summary>
+        /// <returns>Builtin type results: number, string, undefined, null, object, function, array, date, regexp, error</returns>
+
+        if (typeof value !== 'object') {
+            return typeof value;
+        }
+
+        if (value === null) {
+            return "null";
+        }
+
+        // Identify objects types.
+        // object, array, function, date, regexp, string, number, boolean, error 
+        return ({}).toString.call(value).match(/\[object\s([\w\.]+)\]/)[1].toLowerCase();
+    }
+
+    function _assignFieldValue(/*@dynamic*/target, fieldName, /* @dynamic */value) {
+        /// <param name="fieldName" type="String" />
+        /// <param name="value" type="Object" />
+
+        var valueType = _typeof(value);
+        var targetObj = value;
+
+        // ========== DELETE THIS WHEN FIXING TRACKING BUG (BEGIN) ==========.
+        // Shortcut method for most fields.
+        // Note: There's a bug in WLComm M1 (tracking #407953) that causes a null field assignment to instead
+        //   set the value of the field to the string "NULL".  For now, we'll trap the
+        //   null assignments and make an attempt to assign a reasonable default value.
+        //   When this bug is fixed then the line below can be uncommented out and the
+        //   block that follows should be deleted.
+        // Remark: Even if the bug is fixed, updating to reflect the fix may no longer be
+        //   as simple, due to recent changes in dealing with complex objects. -ankim
+        // target[fieldName] = value;
+        if (value === null) {
+            switch (_typeof(target[fieldName])) {
+                case "number":
+                    targetObj = 0;
+                    break;
+                case "boolean":
+                    ///<disable>JS3057.AvoidImplicitTypeCoercion</disable>
+                    targetObj = false;
+                    break;
+                case "object":
+                    // Nothing as code below will call back into this method, should also never occur
+                    break;
+                case "function":
+                    // Do Nothing
+                    break;
+                case "microsoft.windowslive.platform.location":
+                    // Special case: if address field is left unexpanded, save will fail since
+                    //   we assign an empty string to a complex object field. The code below
+                    //   fixes the issue for now. Note that this piece of code will have to
+                    //   remain even after the WLComm bug mentioned above is fixed.
+                    valueType = "object";
+                    value = { street: "", city: "", state: "", zipCode: "", country: "" };
+                    break;
+                default:
+                    targetObj = "";
+                    break;
+            }
+        }
+        // ========== DELETE THIS WHEN FIXING TRACKING BUG (END) ==========
+
+
+        if (valueType === "object") {
+            targetObj = target[fieldName] || {};
+            for (var fName in value) {
+                _assignFieldValue(targetObj, fName, value[fName]);
+            }
+        }
+        if (valueType === "array") {
+            var targetArr = /* @static_cast(Array) */target[fieldName] || [];
+            var len = value.length;
+            for (var lp = 0; lp < len; lp++) {
+                targetArr.push(value[lp]);
+            }
+            targetObj = targetObj;
+        }
+        target[fieldName] = targetObj;
+
+        return;
+    };
+
+    ////var _getString = perfUiFormAction("getString", _getStringX);
+    function _getString(uiform, baseResourceName, fieldName, locId) {
+        /// <summary>
+        /// Load a resource string and replace the {%#} with the values passed in
+        /// (this function accepts variable number of parameters, param2-n are the replacement values)
+        /// </summary>
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="baseResourceName" type="String">the base resource name for the resource string</param>
+        /// <param name="fieldName" type="String" optional="true">the fieldname to be added to the base resource name</param>
+        /// <param name="locId" type="String" optional="true">an override for the default locId</param>
+
+        var checkBase = false;
+        var resourceId = uiform._residPrefix + baseResourceName;
+        var fieldResourceId = resourceId;
+        if (fieldName) {
+            fieldResourceId = resourceId + "_" + fieldName;
+            checkBase = true;
+        }
+        if (locId) {
+            fieldResourceId = locId;
+        }
+
+        var str = null;
+
+        if (!uiform._loc) {
+            // If no Localizer has been passed in then return a string with the passed values,
+            // useful for identifying strings that have not been defined and for testing.
+            // Format: '{resourceid}#{arg0};{arg1};{argX}'.
+            str = '{' + fieldResourceId + '}#';
+            if (arguments.length > 4) {
+                str += ' ';
+                for (var i = 4; i < arguments.length; i++) {
+                    str += ('{' + arguments[i] + '};');
+                }
+            }
+            return str;
+        }
+
+        
+        // This code intentionally attempts to load resource strings that don't exist.
+        // Inhibit the assert in the IE resource loading code that results.
+        var oldAssert = Debug.assert;
+        Debug.assert = Jx.fnEmpty;
+        
+
+        str = uiform._loc.getString(fieldResourceId);
+        if (checkBase && !Jx.isNonEmptyString(str)) {
+            str = uiform._loc.getString(resourceId);
+        }
+
+        
+        Debug.assert = oldAssert;
+        
+
+        
+        if (str === null) {
+            // No Resource String present, using a default
+            str = "{#" + fieldResourceId + "}";
+        }
+        
+
+        if (str) {
+            if (arguments.length > 4) {
+                for (var idx = 4; idx < arguments.length; idx++) {
+                    var rx2 = new RegExp("%" + String(idx - 3), "g");
+                    str = str.replace(rx2, arguments[idx]);
+                }
+            }
+        }
+        return str;
+    };
+
+    function _canDisplayField(fieldAttr, fieldName, fieldValue) {
+        /// <summary>
+        /// Determines whether a field can be displayed, the 'display' value can be true/false or a function, this is used
+        /// to enable or disable a field completely, based on criteria like server supplied value (true/false) or the 
+        /// market we are running in and whether the field is available.
+        /// </summary>
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldValue" type="Object" />
+        if (fieldAttr.display) {
+            if (typeof fieldAttr.display === 'function') {
+                return fieldAttr.display(fieldAttr, fieldValue);
+            }
+            return fieldAttr.display;
+        }
+
+        return true;
+    };
+
+    function _mustEditField(fieldAttr, fieldName) {
+        /// <summary>
+        /// Determines whether a field must always be displayed for editing, the 'mustEdit' value can be true/false or a function, this is used
+        /// to display a field for editing by default if it does not contain a value, based on criteria like server supplied value (true/false) or the 
+        /// market we are running in and whether the field is available.
+        /// </summary>
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldValue" type="Object" />
+        if (fieldAttr.mustEdit) {
+            if (typeof fieldAttr.mustEdit === 'function') {
+                return fieldAttr.mustEdit(fieldAttr);
+            }
+            return fieldAttr.mustEdit;
+        }
+
+        return false;
+    };
+
+    function _getCssClass(uiform, styleName) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="styleName" type="String" />
+        if (uiform._cssPrefix) {
+            return uiform._cssPrefix + styleName;
+        }
+        return styleName;
+    };
+
+    function _applyCssStyle(uiform, target, referenceName) {
+        /// <summary>
+        /// Find and apply the Css Class and styles defined for the given type
+        /// </summary>
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="target" type="HTMLElement" />
+        /// <param name="referenceName" type="String" />
+
+        Jx.addClass(target, _getCssClass(uiform, referenceName));
+    };
+
+    function _addCssStyle(uiform, target, referenceName) {
+        /// <summary>
+        /// Find and apply the Css Class and styles defined for the given type, the different between
+        /// the _applyCssStyle and _addCssStyle is 2 fold.
+        /// 1. This assumes that the style does not already exist
+        /// 2. It's a LOT faster because Jx.addClass() checks for existence which is slow!
+        /// </summary>
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="target" type="HTMLElement" />
+        /// <param name="referenceName" type="String" />
+
+        var newClassName = _getCssClass(uiform, referenceName);
+        target.className += " " + newClassName;
+    };
+
+    function _show(target) {
+        /// <param name="target" type="HTMLElement" />
+        target.setAttribute("aria-hidden", "false");
+        Jx.removeClass(target, "uiform-hide");
+    };
+
+    function _hide(target) {
+        /// <param name="target" type="HTMLElement" />
+        target.setAttribute("aria-hidden", "true");
+        Jx.addClass(target, "uiform-hide");
+    };
+    ////var _renderField = perfUiFormAction("_renderField", _renderFieldX);
+    function _renderField(uiform, groupData, fieldName, fieldAttr, fieldValue, fieldNetwork, uniqueFields) {
+        ///<param name="uiform" type="People.UiForm" />
+        ///<param name="groupData" type="HTMLElement" />
+        ///<param name="fieldName" type="String" />
+        ///<param name="fieldAttr" type="_UiFormFieldAttrib" />
+        ///<param name="fieldValue" type="Object" />
+        ///<param name="fieldNetwork" type="String" />
+        ///<param name="uniqueFields" type="Array" />
+        if (Boolean(fieldValue) && _canDisplayField(fieldAttr, fieldName, fieldValue)) {
+            var formatFieldNetwork = null;
+            var renderField = true;
+
+            if (uniqueFields) {
+                var showItem = P.UiForm.showItem(uniqueFields, fieldName, fieldAttr, fieldValue, fieldNetwork);
+                if (showItem.exists && !showItem.item.hasDisplayed) {
+                    formatFieldNetwork = showItem.item.fieldNetwork;
+                    showItem.item.hasDisplayed = true;
+                } else {
+                    renderField = false;
+                }
+            }
+            if (renderField) {
+                var fieldDiv = uiform._viewFormatter.formatField(fieldName, fieldAttr, fieldValue, formatFieldNetwork);
+                if (fieldDiv) {
+                    groupData.appendChild(/* @static_cast(Node) */fieldDiv);
+                    return true;
+                }
+            }
+        }
+        return false;
+    };
+
+    function _getChatFieldValue(uiform, /* @type(Array) */contacts) {
+        // <param name="uiform" type="People.UiForm" />
+        var values = "";
+        var hasWLEmail = false;
+        var hasMobile = false;
+        var imEndpoints = [];
+        var first = true;
+
+        var i;
+        for (i = 0; i < contacts.length; i++) {
+            var contact = /* @static_cast(Microsoft.WindowsLive.Platform.Contact) */contacts[i];
+
+            var imType = contact.imtype;
+
+            /// <disable>JS3057.AvoidImplicitTypeCoercion</disable>
+            if ((imType !== Microsoft.WindowsLive.Platform.ContactIMType.foreignNetwork) && (imType !== Microsoft.WindowsLive.Platform.ContactIMType.none)) {
+                hasWLEmail = true;
+            }
+
+            if (contact.mobilePhoneNumber !== "") {
+                hasMobile = true;
+            }
+
+            if ((Microsoft.WindowsLive.Platform.ContactIMType.foreignNetwork === imType) && Boolean(contact.account)) {
+                imEndpoints.push(contact.account.displayName);
+            }
+        }
+
+        if (hasWLEmail) {
+            imEndpoints.push(_getString(uiform, "", null, "Messenger"));
+        }
+
+        /*** Bug 450677 Chat app does not support SMS in M2. Remove comment and enable code in M3
+        if (hasMobile) {
+        imEndpoints.push(_getString(uiform, "", null, "SMS"));
+        }
+
+        ******/
+
+        for (i = 0; i < imEndpoints.length; i++) {
+            if (!first) {
+                values += ", ";
+            }
+            values += imEndpoints[i];
+            first = false;
+        }
+
+        return values;
+    };
+
+    P.UiForm = UiForm;
+    /* @constructor */function UiForm(formData) {
+        ///<param name="formData" type="_UiFormFormData" />
+        Debug.assert(formData);
+
+        this._formData = formData;
+        this.fieldList = formData.fieldList || null;
+        this.groupList = formData.groupList || null;
+        this._loc = /* @static_cast(Jx.Res) */formData.loc || null;
+        this._fieldMap = /* @dynamic */{};
+        this._groupMap = /* @dynamic */{};
+        this._cssPrefix = formData.cssPrefix || "uiform-";
+        this._residPrefix = formData.residPrefix || "";
+        this._sourceData = /* @dynamic */null;
+        this._onFormChanged = formData.onFormChanged || function () {};
+    };
+    P.UiForm.prototype = {
+        /*@dynamic*/_formData: null,
+        /*@dynamic*/fieldList: null,
+        /*@type(Jx.Res)*/_loc: null,
+        /*@dynamic */_fieldMap: null,
+        /*@dynamic*/_groupMap: null,
+        /*@type(String)*/_cssPrefix: null,
+        /*@dynamic */_sourceData: null,
+        /*@type(_UiFormViewFormatter)*/_viewFormatter: null,
+        /*@type(HTMLElement)*/_formErrorDiv: null,
+        /*@type(HTMLElement)*/_formErrorHeader: null,
+        /*@type(HTMLElement)*/_formErrorBody: null
+    };
+
+    
+    P.UiForm.__class = true;
+    
+
+    /// <disable>JS2076.IdentifierIsMiscased</disable>
+    var UiFormPrototype = P.UiForm.prototype;
+    UiFormPrototype.groupList = /*@dynamic*/null;
+
+    UiFormPrototype.setCssStyle = function (element, styleName) {
+        /// <param name="element" type="HTMLElement" />
+        /// <param name="styleName" type="String" />
+
+        _applyCssStyle(this, element, styleName);
+    };
+
+    UiFormPrototype.getString = function (baseName, fieldName, locId) {
+        /// <param name="baseName" type="String" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="locId" type="String" optional="true" />
+
+        return _getString(this, baseName, fieldName, locId);
+    };
+
+    P.UiForm.isEmptyString = function (value) {
+        ///<summary>
+        /// Checks to see whether the provided string is null, undefined or an empty string and returns true for
+        /// all of these cases. Otherwise, returns false it is not a string or has a value.
+        ///</summary>
+        ///<param name="value" type="String" />
+
+        if (Jx.isNullOrUndefined(value)) {
+            return true;
+        }
+        if (typeof value === "string" && _trim(value).length === 0) {
+            return true;
+        }
+        return false;
+    };
+
+    P.UiForm.getMarket = _getMarket;
+    P.UiForm.trim = _trim;
+    P.UiForm.isEmpty = _isEmpty;
+    P.UiForm.encodeHTML = _encodeHtml;
+
+    UiFormPrototype.getCssClass = function (styleName) {
+        return _getCssClass(this, styleName);
+    };
+
+    function _createGroupTitle(uiform, container, groupLabel) {
+        ///<param name="uiform" type="People.UiForm" />
+        ///<param name="container" type="HTMLElement" />
+        ///<param name="groupLabel" type="String" />
+        var titleDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+        _addCssStyle(uiform, titleDiv, "groupTitle");
+        titleDiv.id = "groupTitle_" + container.id;
+        titleDiv.setAttribute('aria-label', groupLabel);
+        titleDiv.setAttribute('role', "columnheader");
+
+        titleDiv.innerText = groupLabel;
+
+        container.appendChild(/* @static_cast(Node) */titleDiv);
+    };
+
+    function _viewFormatter(uiform, uniqueFields, formData) {
+        // The field formatter to use for formatting the fields
+        return {
+            formatField: function (fieldName, fieldAttr, value, fieldNetwork) {
+                ///<param name="fieldName" type="String" />
+                ///<param name="fieldAttr" type="_UiFormFieldAttrib" />
+                ///<param name="value" type="Object" />
+                ///<param name="fieldNetwork" type="String" />
+                var formatter = P.UiFormRenderers.getRenderer(fieldAttr.type);
+
+                displayValue = value;
+
+                var fieldDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                fieldDiv.id = 'fieldDiv_' + fieldName;
+                _addCssStyle(uiform, fieldDiv, "fieldContainer");
+
+                var fieldValueDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                fieldValueDiv.id = 'fieldValueDiv_' + fieldName;
+                _addCssStyle(uiform, fieldValueDiv, "fieldValue");
+
+                var fieldNameString = _getString(uiform, 'fieldTitle', fieldName, fieldAttr.locId);
+                if (formatter.field(uiform, fieldValueDiv, displayValue, fieldNameString)) {
+
+                    var fieldTitleDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                    fieldTitleDiv.id = 'fieldTitleDiv_' + fieldName;
+                    fieldTitleDiv.innerText = fieldNameString;
+                    _addCssStyle(uiform, fieldTitleDiv, "fieldTitle");
+
+                    if (fieldAttr.active === true) {
+                        fieldValueDiv.setAttribute('role', "link");
+                    }
+
+                    fieldDiv.appendChild(/* @static_cast(Node) */fieldValueDiv);
+                    fieldDiv.appendChild(/* @static_cast(Node) */fieldTitleDiv);
+
+                    if (uniqueFields) {
+                        if ((fieldAttr.type !== "email") && P.UiForm.containsMultiple(uniqueFields, fieldName)) {
+                            var fieldAttributionDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                            fieldAttributionDiv.id = 'fieldAttributionDiv_' + fieldName;
+                            _addCssStyle(uiform, fieldAttributionDiv, "fieldAttribution");
+                            var fieldNetworkUnique = [];
+                            var fieldNetworkString = "";
+                            for (var i = 0; i < fieldNetwork.length; i++) {
+                                if (fieldNetworkUnique.indexOf(fieldNetwork[i]) === -1) {
+                                    fieldNetworkUnique.push(fieldNetwork[i]);
+                                    if (i > 0) {
+                                        fieldNetworkString += ", ";
+                                    }
+                                    fieldNetworkString += fieldNetwork[i];
+                                }
+                            }
+                            fieldAttributionDiv.innerText = fieldNetworkString;
+                            fieldDiv.appendChild(/* @static_cast(Node) */fieldAttributionDiv);
+                        }
+                    }
+
+                    if (formatter.section) {
+                        P.Animation.addPressStyling(fieldValueDiv);
+                        return formatter.section(uiform, fieldDiv, fieldValueDiv, fieldAttr, value, fieldNameString, displayValue);
+                    }
+                    return fieldDiv;
+                }
+                return null;
+            }
+        };
+    };
+
+    UiFormPrototype.createViewForm = perfUiFormAction("createViewForm", function (container, /* @dynamic */formData, uniqueFields) {
+        /// <summary>
+        /// Render the formData object for viewing using the provided field / group definition to 
+        /// process the formData
+        /// </summary>
+        /// <param name="container" type="HTMLElement" optional="false">
+        /// This is the container where the value should be rendered for display
+        /// </param>
+        /// <param name="formData" type="Object" optional="false">
+        /// This is the object that contains the information to be rendered. The value may be either a "normal" object 
+        /// or an Array of object, in the case of an Array this will be treated as "multiple" instances of the "normal"
+        /// object which will be rendered.
+        /// </param>
+        // <param name="uniqueFields" type="Array" />
+
+
+        _applyCssStyle(this, container, "container");
+        this._viewFormatter = _viewFormatter(this, uniqueFields, formData);
+        this._sourceData = formData;
+
+        var isArray = (formData && formData instanceof Array ? true : false);
+
+        var groupNum = 0;
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        var groupList = /* @dynamic*/this.groupList;
+        for (var groupName in groupList) {
+            var group = groupList[groupName];
+            var groupData = /* @static_cast(HTMLElement) */document.createElement('div');
+            groupData.id = 'groupData_' + groupName;
+            _addCssStyle(this, groupData, "groupFields");
+
+            var addGroup = false;
+
+            for (var i = 0; i < group.fieldList.length; i++) {
+
+                var fieldName = group.fieldList[i];
+                var fieldAttr = this.fieldList[fieldName];
+                var network = "";
+                var sourceId = "";
+
+                var canView = !(fieldAttr.canView === false) && !(group.canView === false);
+                if (canView && formData) {
+                    var fieldValue = null;
+                    if (fieldAttr.type === "chat") {
+                        fieldValue = _getChatFieldValue(this, formData);
+                        /// <disable>JS3057.AvoidImplicitTypeCoercion</disable>
+                        if (_renderField(this, groupData, fieldName, fieldAttr, fieldValue, network, null)) {
+                            addGroup = true;
+
+                        }
+                    } else if (isArray) {
+                        for (var lp = 0; lp < formData.length; lp++) {
+                            var data = formData[lp];
+                            fieldValue = null;
+                            network = "";
+                            if (data) {
+                                sourceId = data.account ? data.account.sourceId : "";
+                                fieldValue = P.Contact.getFieldValue(data, fieldName, sourceId);
+                                if ((data.account !== undefined) && (data.account !== null)) {
+                                    if (data.canEdit && data.account.isDefault) {
+                                        // ABCH contact
+                                        network = Jx.res.getString("/strings/profile_fieldAttribution_addedByYou");
+                                    } else {
+                                        network = data.account.displayName;
+                                    }
+                                }
+                            }
+                            if (_renderField(this, groupData, fieldName, fieldAttr, fieldValue, network, uniqueFields)) {
+                                addGroup = true;
+                            }
+                        }
+                    } else {
+                        network = "";
+                        if (data) {
+                            if ((data.account !== undefined) && (data.account !== null)) {
+                                network = data.account.displayName;
+                                sourceId = data.account.sourceId;
+                            }
+                        }
+                        if (_renderField(this, groupData, fieldName, fieldAttr, P.Contact.getFieldValue(formData, fieldName, sourceId), network, uniqueFields)) {
+                            addGroup = true;
+                        }
+                    }
+                }
+            }
+
+            // Assemble the group div
+            if (addGroup) {
+                var groupDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                groupDiv.id = 'groupDiv_' + groupName;
+                _addCssStyle(this, groupDiv, "groupContainer");
+
+                _createGroupTitle(this, groupDiv, _getString(this, 'groupTitle', groupName, group.locId));
+                groupDiv.appendChild(/* @static_cast(Node) */groupData);
+                container.appendChild(/* @static_cast(Node) */groupDiv);
+            }
+        }
+    });
+
+
+    // Returns true if the specified item in the specified network should be displayed in the UI, false otherwise.
+    P.UiForm.showItem = function (uniqueFields, fieldName, fieldAttr, fieldValue, network) {
+        /// <param name="uniqueFields" type="Array" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="fieldValue" type="Object" />
+        /// <param name="network" type="String" />
+        /// <returns type="_UiFormShowItem" />
+        for (var i = 0; i < uniqueFields.length; i++) {
+            var curr = /* @static_cast(_ContactUniqueField) */uniqueFields[i];
+            if (fieldAttr.type === "mapLocation") {
+                if ((curr.fieldName === fieldName) &&
+                    (curr.fieldNetwork.indexOf(network) > -1) &&
+                    (P.Location.compare(curr.fieldValue, fieldValue) === P.Compare.equal)) {
+                    return { exists: true, item: curr };
+                }
+            } else if ((curr.fieldName === fieldName) &&
+                (curr.fieldValue === fieldValue) &&
+                (curr.fieldNetwork.indexOf(network) > -1)) {
+                return { exists: true, item: curr };
+            }
+        }
+
+        return { exists: false, item: null };
+    };
+
+    // Returns true if there are multiple fields for the same fieldname (From different sources) 
+    P.UiForm.containsMultiple = function (uniqueFields, fieldName) {
+        /// <param name="uniqueFields" type="Array(_ContactUniqueField)" />
+        /// <param name="fieldName" type="String" />
+        var count = 0;
+        for (var i = 0; i < uniqueFields.length; i++) {
+            if (uniqueFields[i].fieldName === fieldName) {
+                count++;
+            }
+        }
+
+        if (count > 1) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+
+    var _abchSourceIds = {
+        WL: true,
+        ABCH: true
+    };
+
+    function _isAbchContact(uiform) {
+        var sourceId = "ABCH";
+        var target = uiform._sourceData;
+        if (target && target.account) {
+            sourceId = target.account.sourceId || sourceId;
+        }
+
+        if (_abchSourceIds[sourceId]) {
+            return true;
+        }
+
+        return false;
+    };
+
+    P.UiForm.Validators = {
+        _required: function (/*@dynamic*/fieldValue, fieldAttrib, uiform) {
+            /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+            /// <param name="uiform" type="People.UiForm" />
+            if (!fieldValue) {
+                return false;
+            }
+            return _trim(fieldValue) !== '';
+        },
+
+        _emailAddress: function (/*@dynamic*/fieldValue, fieldAttrib, uiform) {
+            /// <param name="fieldValue" />
+            /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+            /// <param name="uiform" type="People.UiForm" />
+            /*$ var regexp = new RegExp("^[-_a-z0-9\'+*$^&%=~!?{}]++(?:\.[-_a-z0-9\'+*$^&%=~!?{}]+)*+@(?:(?![-.])[-a-z0-9.]+(?<![-.])\.[a-z]{2,6}|\d{1,3}(?:\.\d{1,3}){3})(?::\d++)?$");
+            (!fieldValue.match("^[-a-zA-Z0-9~!$%^&*_=+}{\'?]+(\.[-a-zA-Z0-9~!$%^&*_=+}{\'?]+)*@([a-zA-Z0-9_][-a-zA-Z0-9_]*(\.[-a-zA-Z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$"))) {*/
+            if (_isAbchContact(uiform)) {
+                if ((fieldValue !== '') && (!fieldValue.match(/*@static_cast(RegExp)*/"^.*[@]+.*[\.]+.*$"))) {
+                    return false;
+                }
+                // restrict ABCH storage to ASCII only characters
+                if ((fieldValue !== '') && (!fieldValue.match(/*@static_cast(RegExp)*/"^[\x20-\x7f]*$"))) {
+                    return false;
+                }
+                return true;
+            }
+            if ((fieldValue !== '') && (!fieldValue.match(/*@static_cast(RegExp)*/"^.*[@]+.*[\.]+.*$"))) {
+                // Return failure as warning only
+                return null;
+            }
+            return true;
+        },
+
+        _mobile: function (/*@dynamic*/fieldValue, fieldAttrib, uiform) {
+            /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+            /// <param name="uiform" type="People.UiForm" />
+            // Phone Numbers can only contain characters : A-Z a-z, 0-9 . , ( ) - +
+            if (fieldValue !== '') {
+                if (fieldValue.match("^([A-Za-z0-9()\x20\x2B,\x2D\x2E])+$")) {
+                    return true;
+                }
+            } else {
+                // Allow Empty (will be picked up by the required validator if applied)
+                return true;
+            }
+            return false;
+        },
+
+        _specialNameChars: function (/*@dynamic*/fieldValue, fieldAttrib, uiform) {
+            /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+            /// <param name="uiform" type="People.UiForm" />
+            // Names can not contain characters : 0-31, 33-38, 40-44, 47, 58-64, 91-94, 123-127
+            if ((fieldValue !== '') &&
+                (fieldValue.match(/*@static_cast(RegExp)*/"[\x00-\x1F\x21-\x26\x28-\x2C\x2F\x3A-\x40\x5B-\x5E\x7B-\x7F]"))) {
+                return false;
+            }
+            return true;
+        },
+        _noWwwHttp: function (/*@dynamic*/fieldValue, fieldAttrib, uiform) {
+            /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+            /// <param name="uiform" type="People.UiForm" />
+            if (fieldValue) {
+                var lowerField = /* @static_cast(String) */fieldValue.toLowerCase();
+                if (lowerField.indexOf('www.') !== -1) {
+                    return false;
+                }
+                if (lowerField.indexOf('http') !== -1) {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+    };
+
+    // The field formatter to use for formatting the fields
+    function _validateValue(uiform, fieldName, fieldMap, type, /* @dynamic */value, fieldAttrib) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldMap" type="_UiFormFieldMap" />
+        /// <param name="type" type="String" />
+        /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+        var validator = /* @static_cast(_UiFormEditValidator) */_editValidators.validators[type];
+        Debug.assert(validator);
+        var validationResult = validator.validate(value, fieldAttrib, uiform);
+        if (validationResult !== true) {
+            var errorString = '';
+            if (validator.errorString) {
+                errorString = validator.errorString(uiform, fieldName, fieldAttrib);
+            } else {
+                errorString = _getString(uiform, validator.locId, fieldName, validator.locId);
+            }
+            _formFieldError.setError(uiform, fieldName, fieldMap, errorString);
+        }
+        // Returns whether there was a validation failure, validation results of true and null (non-blocking) are considered successful
+        // i.e. Not a failure, while false is always a failure
+        return validationResult;
+    };
+
+
+    var _editValidators = {
+        validators: {
+            required: {
+                validate: P.UiForm.Validators._required,
+                locId: 'validationRequired',
+            },
+
+            email: {
+                validate: P.UiForm.Validators._emailAddress,
+                locId: 'validationInvalidEmail',
+            },
+
+            mobile: {
+                validate: P.UiForm.Validators._mobile,
+                locId: 'validationInvalidMobile',
+            },
+
+            specialNameChars: {
+                validate: P.UiForm.Validators._specialNameChars,
+                locId: 'validationInvalidName',
+            },
+
+            noWwwHttp: {
+                validate: P.UiForm.Validators._noWwwHttp,
+                locId: 'validationWwwHttp',
+            }
+        },
+        validate: function (uiform, fieldName, fieldAttrib, fieldValue) {
+            /// <returns type="Boolean" />
+            /// <param name="uiform" type="People.UiForm" />
+            /// <param name="fieldName" type="String" />
+            /// <param name="fieldAttrib" type="_UiFormFieldAttrib" />
+            /// <param name="fieldValue" type="Object" />
+
+            var hideFieldError = true;
+            var blockingFieldError = false;
+            var fieldMap = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+            var validationResult = null;
+
+            if (fieldAttrib.required) {
+                validationResult = _validateValue(uiform, fieldName, fieldMap, 'required', fieldValue, fieldAttrib);
+                if (validationResult === false) {
+                    blockingFieldError = true;
+                } else if (validationResult === null) {
+                    hideFieldError = false;
+                }
+		    }
+            if (!blockingFieldError) {
+                if (fieldAttrib.type === 'email' || fieldAttrib.type === 'mobile') {
+                    validationResult = _validateValue(uiform, fieldName, fieldMap, fieldAttrib.type, fieldValue, fieldAttrib);
+                    if (validationResult === false) {
+                        blockingFieldError = true;
+                    } else if (validationResult === null) {
+                        hideFieldError = false;
+                    }
+                }
+            }
+            if (fieldAttrib.validators) {
+                for (var idx = 0, len = fieldAttrib.validators.length; idx < len; idx++) {
+                    var type = fieldAttrib.validators[idx];
+                    validationResult = _validateValue(uiform, fieldName, fieldMap, type, fieldValue, fieldAttrib);
+                    if (validationResult === false) {
+                        blockingFieldError = true;
+                        break;
+                    } else if (validationResult === null) {
+                        hideFieldError = false;
+                    }
+                }
+            }
+
+            if (!blockingFieldError && hideFieldError) {
+                _formFieldError.hide(uiform, fieldName, fieldMap);
+            }
+            fieldMap.errorState = blockingFieldError;
+
+            return !blockingFieldError;
+        }
+    };
+
+    UiFormPrototype.setFormError = function (heading, message) {
+        if (this._formErrorDiv) {
+            this._formErrorHeader.innerText = heading;
+            this._formErrorBody.innerText = message;
+            _show(this._formErrorDiv);
+        }
+    };
+
+    UiFormPrototype.clearFormError = function () {
+        if (this._formErrorDiv) {
+            _hide(this._formErrorDiv);
+        }
+    };
+
+    UiFormPrototype.createEditForm = perfUiFormAction("createEditForm", _createEditForm);
+    function _createEditForm(container, contact, hydrateContext) {
+
+        _applyCssStyle(this, container, "container");
+
+        var that = this;
+        this.container = container;
+        this._fieldMap = /* @dynamic */{};
+        this._groupMap = {};
+        this._sourceData = contact;
+
+        var form = document.createElement('form');
+        form.id = 'editForm';
+        _addCssStyle(this, form, "form");
+        form.setAttribute("autocomplete", "off");
+
+        this._formErrorDiv = document.createElement('div');
+        this._formErrorDiv.id = 'uif_formErrorDiv';
+        _addCssStyle(this, this._formErrorDiv, "formError");
+        _hide(this._formErrorDiv);
+
+        this._formErrorHeader = document.createElement('div');
+        this._formErrorDiv.id = 'uif_formErrorHeader';
+        _addCssStyle(this, this._formErrorHeader, "formErrorHeader");
+        this._formErrorDiv.appendChild(/* @static_cast(Node) */this._formErrorHeader);
+
+        this._formErrorBody = document.createElement('div');
+        this._formErrorDiv.id = 'uif_formErrorBody';
+        _addCssStyle(this, this._formErrorBody, "formErrorBody");
+        this._formErrorDiv.appendChild(/* @static_cast(Node) */this._formErrorBody);
+
+        container.appendChild(/* @static_cast(Node) */this._formErrorDiv);
+
+        if (contact) {
+            for (var groupName in this.groupList) {
+                var group = /* @static_cast(_UiFormGroupDef) */this.groupList[groupName];
+                this._groupMap[groupName] = {
+                    groupName: groupName,
+                    group: group
+                };
+
+                var groupData = /* @static_cast(HTMLElement) */document.createElement('div');
+                groupData.id = 'groupData' + groupName;
+                _addCssStyle(this, groupData, "groupFields");
+
+
+                var hasInputs = false;
+                var allInputsUsed = true;
+                var firstValidFieldName = null;
+                //// group.fieldCount = {};
+                var displayIndex = 0;
+                for (var i = 0; i < group.fieldList.length; i++) {
+
+                    var fieldName = group.fieldList[i];
+                    var fieldValue = contact[fieldName];
+                    var fieldAttr = this.fieldList[fieldName];
+                    this._fieldMap[fieldName] = /* @static_cast(_UiFormFieldMap) */
+                        {
+                        fieldName: fieldName,
+                        fieldAttrib: fieldAttr,
+                        groupName: groupName,
+                        group: group,
+                        displayIndex: -1
+                    };
+
+                    var fieldMap = /* @static_cast(_UiFormFieldMap) */this._fieldMap[fieldName];
+                    // Display check is used to check for market specific situations only
+                    if (_canDisplayField(fieldAttr, fieldName, fieldValue)) {
+                        fieldMap.displayIndex = displayIndex;
+                        displayIndex++;
+                        fieldMap.canDisplay = true;
+                        if (!firstValidFieldName && !(fieldAttr.canEdit === false) && !(group.canEdit === false)) {
+                            firstValidFieldName = fieldName;
+                        }
+                        //// group.fieldCount[fieldName] = 0;
+
+                        if (_addInputField(this, groupData, fieldName, fieldValue, fieldAttr, group, hydrateContext, true)) {
+                            //// group.fieldCount[fieldName]++;
+                            hasInputs = true;
+                        } else {
+                            allInputsUsed = false;
+                        }
+                    } else {
+                        fieldMap.canDisplay = false;
+                    }
+                }
+
+                // Assemble the group div
+                var groupDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                groupDiv.id = 'groupDiv_' + groupName;
+                _addCssStyle(this, groupDiv, "groupContainer");
+                _createGroupTitle(this, groupDiv, _getString(this, 'groupTitle', groupName, group.locId));
+                groupDiv.appendChild(/* @static_cast(Node) */groupData);
+
+                // Add the link to add a new item to the group if this is a multiple
+                if (group.multiple) {
+                    if (!hasInputs && !(group.showFirstFieldOnGroupEmpty === false)) {
+                        Debug.assert(firstValidFieldName !== null);
+
+                        _showField(this, firstValidFieldName, group);
+                    }
+
+                    groupDiv.appendChild(/* @static_cast(Node) */_createAddButton(this, group, groupName));
+                }
+
+                // Append the group div to the form
+                form.appendChild(/* @static_cast(Node) */groupDiv);
+            }
+        }
+
+        // Attach the form to the DOM
+        container.appendChild(/* @static_cast(Node) */form);
+    };
+
+    function _showField(uiform, fieldName, group) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="group" type="_UiFormGroupDef" />
+        var field = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+        if (Boolean(field) && !field.visible) {
+            _show(field.container);
+            field.visible = true;
+        }
+
+    }
+
+    function _hideField(uiform, fieldName, group) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="group" type="_UiFormGroupDef" />
+        var field = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+        if (Boolean(field) && field.visible) {
+            _hide(field.container);
+            field.visible = false;
+
+            var groupName = field.groupName;
+            //// group.fieldCount[fieldName]--;
+            var el = document.getElementById('addExtraDiv_' + groupName);
+            _show(/* @static_cast(HTMLElement) */el);
+            _updateAddFieldDisplay(uiform, group, groupName);
+        }
+    }
+
+    UiFormPrototype.setInputFocus = function (fieldName) {
+        /// <param name="fieldName" type="String" />
+        var field = /* @static_cast(_UiFormFieldMap) */this._fieldMap[fieldName];
+        if (!field) {
+            return;
+        }
+        if (Boolean(field.container) && Boolean(field.inputControl)) {
+            var inputControl = field.inputControl;
+            if (inputControl) {
+                inputControl.setFocus();
+            }
+        }
+    };
+
+    function _createAddMenuItem(uiform, label, fieldName, group) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="label" type="String" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="group" type="_UiFormGroupDef" />
+        // Uses closure pattern to re-use the parameters in the click event of the NavItem
+        var fieldMenuItem = P.UiFlyoutMenuItem.create(/* @static_cast(People.UiFlyoutMenuItem.DefaultOptions) */
+            {
+            html: _encodeHtml(label),
+            click: function (e) {
+                var fieldMap = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+                var groupName = fieldMap.groupName;
+                if (!uiform._groupMap[groupName].group.addFieldInPlace) {
+                    _repositionField(uiform, group, fieldName, 1000);
+                } else if (fieldMap.moved) {
+                    _repositionField(uiform, group, fieldName, -1);
+                }
+                _showField(uiform, fieldName, group);
+                _updateAddFieldDisplay(uiform, group, groupName);
+                uiform._onFormChanged();
+                uiform.setInputFocus(fieldName);
+
+                return false;
+            }
+        });
+        /// <disable>JS3053.IncorrectNumberOfArguments</disable>
+        fieldMenuItem.setAriaLabel(_getString(uiform, 'addMenuItemAria', fieldName, null, label));
+
+        return fieldMenuItem;
+    };
+
+    function _updateAddMenu(uiform, groupMap) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="groupMap" type="_UiFormGroupMap" />
+        /// <returns type="Number">The current number of entries</returns>
+        var addMenu = groupMap.addMenu;
+        if (!addMenu) {
+            return;
+        }
+        addMenu.clear();
+        var group = groupMap.group;
+        var entries = _createMenuEntries(uiform, group, '');
+
+        if (entries !== null) {
+            for (var key in entries) {
+                var fieldMap = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[key];
+                if (!fieldMap.visible && fieldMap.canDisplay) {
+                    var fieldMenuItem = _createAddMenuItem(uiform, entries[key].label, key, group);
+
+                    addMenu.add(fieldMenuItem);
+                }
+            }
+        }
+        return addMenu.count();
+    }
+
+
+    function _updateAddFieldDisplay(uiform, group, groupName) {
+        var groupMap = /* @static_cast(_UiFormGroupMap) */uiform._groupMap[groupName];
+        var addExtraDiv = groupMap.addExtraDiv;
+        if (addExtraDiv) {
+            if (_updateAddMenu(uiform, groupMap) === 0) {
+                _hide(addExtraDiv);
+            } else {
+                _show(addExtraDiv);
+            }
+        }
+    }
+
+    function _createAddButton(uiform, group, groupName) {
+        var label = _getString(uiform, 'groupTitleAdd', groupName, group.locId);
+
+        var addExtraDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+        addExtraDiv.id = 'addExtraDiv_' + groupName;
+        _addCssStyle(uiform, addExtraDiv, 'groupAddExtra');
+
+        var addExtraLabel = document.createElement('span');
+        _addCssStyle(uiform, addExtraLabel, 'groupAddField');
+
+        // Wrap in an additional div to stop the "jumping" of the label
+        var wrapperDiv = document.createElement('div');
+        _addCssStyle(uiform, wrapperDiv, 'groupAddExtraWrp');
+
+        var addGlyph = document.createElement('div');
+        _addCssStyle(uiform, addGlyph, 'groupAddExtraBtn');
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        addGlyph.innerText = "\uE109";
+        wrapperDiv.appendChild(/* @static_cast(Node) */addGlyph);
+        // Add role=menu to the elements. This is needed so that the on screen keyboard won't be dismissed by opening the menu. See Winlive#520714.
+        addGlyph.setAttribute("role", "menu");
+        wrapperDiv.setAttribute("role", "menu");
+
+        var text = document.createElement('span');
+        text.setAttribute("role", "text");
+        text.setAttribute("id", "groupAddExtraLbl_" + groupName);
+        _addCssStyle(uiform, text, "groupAddExtraLbl");
+
+        /// <disable>JS3053.IncorrectNumberOfArguments</disable>
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        WinJS.Utilities.setInnerHTML(text, _getString(uiform, 'groupTitleAdd', groupName, group.locId));
+        wrapperDiv.appendChild(/* @static_cast(Node) */text);
+        addExtraLabel.appendChild(/* @static_cast(Node) */wrapperDiv);
+
+
+        var addFieldMenu = P.UiFlyoutMenu.create(/* @static_cast(People.UiFlyoutMenu.DefaultOptions) */{container: addExtraLabel });
+        addFieldMenu.setAriaMenuTitleByIds("groupAddExtraLbl_" + groupName + " groupAddExtraMenuLbl_" + groupName);
+        addExtraDiv.appendChild(/* @static_cast(Node) */addFieldMenu.$obj);
+        addExtraDiv.setAttribute("role", "menubar");
+        // and because :active only applies to the immediate clicked element, we have this next line
+        P.Animation.addPressStyling(addFieldMenu._$a);
+
+        var ariaText = document.createElement('span');
+        ariaText.setAttribute("class", "uiform-hide");
+        ariaText.setAttribute("id", "groupAddExtraMenuLbl_" + groupName);
+        ariaText.setAttribute("aria-label", _getString(uiform, 'groupTitleAriaAdd', groupName, null, addExtraLabel));
+        wrapperDiv.appendChild(/* @static_cast(Node) */ariaText);
+
+        var groupMap = uiform._groupMap[groupName];
+        groupMap.addMenu = addFieldMenu;
+        groupMap.addExtraDiv = addExtraDiv;
+        if (_updateAddMenu(uiform, groupMap) === 0) {
+            _hide(addExtraDiv);
+        }
+        return addExtraDiv;
+    };
+
+    function _swapFieldInput(uiform, fieldDiv, fieldName, swapDiv, swapFieldName) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="fieldDiv" type="HTMLElement" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="swapDiv" type="HTMLElement" />
+        /// <param name="swapFieldName" type="String" />
+        var field = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+        var swapField = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[swapFieldName];
+        var fieldAttr = field.fieldAttrib;
+
+        // Single Field
+        var fieldInput = field.inputControl;
+        var swapFieldInput = swapField.inputControl;
+
+        
+        Debug.assert(fieldInput && swapFieldInput, "Unable to location fields to swap [" + fieldName + ", " + swapFieldName + "]");
+        
+
+        var hold = swapFieldInput.getValue();
+        swapFieldInput.setValue(fieldInput.getValue());
+        fieldInput.setValue(hold);
+
+        // Call helpers for future compound types???
+        var inputValue = _getInputFieldValue(field, fieldName);
+
+        if (!_editValidators.validate(uiform, fieldName, field.fieldAttrib, inputValue)) {
+            field.errorState = true;
+        }
+        // Call helpers for future compound types???
+        inputValue = _getInputFieldValue(swapField, swapFieldName);
+        if (!_editValidators.validate(uiform, swapFieldName, swapField.fieldAttrib, inputValue)) {
+            field.errorState = true;
+        }
+    }
+
+
+    function _createFieldTitleDiv(uiform, fieldMap, fieldAttr, group, fieldTitleString) {
+        var fieldTitle = /* @static_cast(HTMLElement) */document.createElement('div');
+        var fieldName = fieldMap.fieldName;
+        fieldTitle.id = 'editFieldTitleDiv_' + fieldName;
+        _addCssStyle(uiform, fieldTitle, "fieldTitle");
+
+        var canChangeType = _canChangeFieldType(group, fieldAttr, fieldName);
+
+        var fieldLabelSpan = document.createElement('span');
+        fieldLabelSpan.id = 'editLabel_' + fieldName;
+        fieldLabelSpan.setAttribute("aria-label", fieldTitleString);
+
+        var fieldLabel = document.createElement('label');
+        fieldLabel.setAttribute('for', '#editInput_' + fieldName);
+        fieldLabel.innerText = fieldTitleString;
+        fieldLabelSpan.appendChild(/* @static_cast(Node) */fieldLabel);
+        fieldTitle.appendChild(/* @static_cast(Node) */fieldLabelSpan);
+
+        if (group.multiple && canChangeType) {
+            Jx.addClass(fieldLabel, "uiform-hide");
+            //_hide(fieldLabel);
+            fieldTitle.appendChild(/* @static_cast(Node) */_createFieldTitleSelector(uiform, fieldTitleString, fieldName, group));
+
+            var changeFieldLabelSpan = document.createElement('span');
+            changeFieldLabelSpan.setAttribute("class", "uiform-hide");
+            changeFieldLabelSpan.id = 'ariaChangeEditLabel_' + fieldName;
+            changeFieldLabelSpan.setAttribute("aria-label", _getString(uiform, 'changeFieldAriaMenuTitle', fieldName, null));
+            fieldLabelSpan.appendChild(/* @static_cast(Node) */changeFieldLabelSpan);
+           
+        } else if (fieldAttr.hideLabel) {
+            _hide(fieldLabel);
+        }
+
+        return fieldTitle;
+    };
+
+    ////var _createInputDiv = perfUiFormAction("_createInputDiv", _createInputDivX);
+    function _createInputDiv(uiform, fieldMap, value, group) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="fieldMap" type="_UiFormFieldMap" />
+        /// <param name="value" type="Object" />
+        /// <param name="group" type="_UiFormGroupDef" />
+        /// <returns type="Node" />
+
+        var fieldAttr = fieldMap.fieldAttrib;
+        var fieldName = fieldMap.fieldName;
+        var div = /* @static_cast(HTMLElement) */document.createElement('div');
+        div.id = 'editFieldDiv_' + fieldName;
+        _addCssStyle(uiform, div, "fldCntr");
+
+        var fieldTitleString = _getString(uiform, 'fieldTitle', fieldName, fieldAttr.locId);
+        var fieldTitleDiv = _createFieldTitleDiv(uiform, fieldMap, fieldAttr, group, fieldTitleString);
+        div.appendChild(/* @static_cast(Node) */fieldTitleDiv);
+        fieldMap.titleDiv = fieldTitleDiv;
+        fieldMap.container = div;
+
+        var inputControl = /* @static_cast(_UiFormInputControl) */null;
+        var canEdit = !(fieldAttr.canEdit === false) && !(group.canEdit === false);
+        if (canEdit) {
+            ////if (fieldAttr.type === 'date') {
+            ////    inputControl = /* @static_cast(_UiFormInputControl) */new P.UiFormDateInputControl(uiform, div, fieldName, fieldAttr, value, /* @static_cast(_UiFormInputValidator) */_editValidators.validate);
+            ////} else 
+            if (fieldAttr.type === 'select') {
+                inputControl = /* @static_cast(_UiFormInputControl) */new P.UiFormSelectInputControl(uiform, div, fieldName, fieldAttr, value, /* @static_cast(_UiFormInputValidator) */_editValidators.validate);
+            } else if (fieldAttr.type === 'location' || fieldAttr.type === 'mapLocation') {
+                inputControl = /* @static_cast(_UiFormInputControl) */new P.UiFormAddressInputControl(uiform, div, fieldName, fieldAttr, value, /* @static_cast(_UiFormInputValidator) */_editValidators.validate);
+            } else {
+                inputControl = /* @static_cast(_UiFormInputControl) */new P.UiFormTextInputControl(uiform, div, fieldName, fieldAttr, value, /* @static_cast(_UiFormInputValidator) */_editValidators.validate);
+            }
+            fieldMap.inputControl = inputControl;
+
+            inputControl.validate();
+        } else {
+            // Display Read-Only field
+            var formatter = P.UiFormRenderers.getRenderer(fieldAttr.type);
+            if (formatter) {
+                var fieldValueDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+                fieldValueDiv.id = 'fieldValueDiv_' + fieldName;
+                if (formatter.field(uiform, fieldValueDiv, value, fieldTitleString)) {
+                    _addCssStyle(uiform, fieldValueDiv, "displayValue");
+                }
+                div.appendChild(/* @static_cast(Node) */fieldValueDiv);
+            }
+        }
+
+        return div;
+    };
+
+    function _createMenuEntries(uiform, group, currentFieldName) {
+        var fieldList = group.fieldList;
+
+        var entries = {};
+        for (var i = 0; i < fieldList.length; i++) {
+            var fieldName = fieldList[i];
+            var fieldAttr = uiform._formData.fieldList[fieldName];
+            if (fieldName !== currentFieldName) {
+                if (_canDisplayField(fieldAttr, fieldName, null)) {
+                    var canEdit = !(fieldAttr.canEdit === false) && !(group.canEdit === false);
+                    if (canEdit) {
+                        entries[fieldName] = {
+                            fieldAttr: fieldAttr,
+                            label: _getString(uiform, 'fieldTitle', fieldName, fieldAttr.locId)
+                        };
+                    }
+                }
+            }
+        }
+
+        return entries;
+    };
+
+    function _createFieldTitleSelector(uiform, label, selectedFieldName, group) {
+
+        var titleSelectorDiv = /* @static_cast(HTMLElement) */document.createElement('div');
+        _addCssStyle(uiform, titleSelectorDiv, 'changeField');
+        var titleMenu = P.UiFlyoutMenu.create(/* @static_cast(People.UiFlyoutMenu.DefaultOptions) */{html: _encodeHtml(label) });
+        titleMenu.setAriaMenuTitleByIds("editLabel_" + selectedFieldName + " ariaChangeEditLabel_" + selectedFieldName);
+
+        titleMenu.addBeforeShowHandler(function (/* @type(People.UiFlyoutMenu) */menu) {
+            menu.clear();
+            var entries = _createMenuEntries(uiform, group, selectedFieldName);
+
+            // Add Menu Entries
+            if (entries !== null) {
+                for (var key in entries) {
+                    var fieldAttr = entries[key].fieldAttr;
+                    if (_canChangeFieldType(group, fieldAttr, key)) {
+                        //// var fieldId = " id='changeType_" + key + "'";
+                        var fieldMenuItem = _createChangeType(uiform, entries[key].label, selectedFieldName, key, group);
+
+                        menu.add(fieldMenuItem);
+                    }
+                }
+            }
+        });
+
+        titleSelectorDiv.appendChild(/* @static_cast(Node) */titleMenu.$obj);
+        titleSelectorDiv.setAttribute("role", "menubar");
+
+        return titleSelectorDiv;
+    };
+
+    function _canChangeFieldType(group, fieldAttr, fieldName) {
+        /// <param name="group" type="_UiFormGroupDef" />
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="fieldName" type="String" />
+        if (!group.multiple || _mustEditField(fieldAttr, fieldName) || group.disallowFieldTypeChange || fieldAttr.disallowFieldTypeChange || fieldAttr.hideLabel) {
+            return false;
+        }
+        return true;
+    };
+
+    function _swapFields(uiform, group, existingField, swapFieldName) {
+        /// <param name="uiform" type="People.UiForm" />
+        /// <param name="group" type="_UiFormGroupDef" />
+        /// <param name="existingField" type="String" />
+        /// <param name="swapFieldName" type="String" />
+        var existFieldMap = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[existingField];
+        var swapFieldMap = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[swapFieldName];
+        var existDiv = existFieldMap.container;
+        var swapDiv = swapFieldMap.container;
+        if (!existDiv || !swapDiv) {
+            return false;
+        }
+        if (existDiv === swapDiv) {
+            
+            Debug.assert(existDiv !== swapDiv, "Attempt to swap the same field with itself! [" + existingField + "] [" + swapFieldName + "]");
+            
+            return false;
+        }
+
+        // Clear out any error(s)
+        _formFieldError.clear(uiform, existingField, existFieldMap);
+        _formFieldError.clear(uiform, swapFieldName, swapFieldMap);
+
+        var existParent = /* @static_cast(HTMLElement) */existDiv.parentNode;
+        var existNext = /* @static_cast(HTMLElement) */existDiv.nextSibling;
+        var swapParent = /* @static_cast(HTMLElement) */swapDiv.parentNode;
+        var swapNext = /* @static_cast(HTMLElement) */swapDiv.nextSibling;
+
+        if (Boolean(existNext) && existNext.id === swapDiv.id) {
+            // Swapping 2 adjacent fields (swap is below existing)
+            swapParent.removeChild(/* @static_cast(Node) */swapDiv);
+            existParent.insertBefore(/* @static_cast(Node) */swapDiv, /* @static_cast(Node) */existDiv);
+        } else if (Boolean(swapNext) && swapNext.id === existDiv.id) {
+            // Swapping 2 adjacent fields (swap is above existing)
+            existParent.removeChild(/* @static_cast(Node) */existDiv);
+            swapParent.insertBefore(/* @static_cast(Node) */existDiv, /* @static_cast(Node) */swapDiv);
+        } else if (Boolean(swapNext)) {
+            // Insert swapped item first before removing existing
+            swapParent.removeChild(/* @static_cast(Node) */swapDiv);
+            existParent.insertBefore(/* @static_cast(Node) */swapDiv, /* @static_cast(Node) */existDiv);
+            existParent.removeChild(/* @static_cast(Node) */existDiv);
+            swapParent.insertBefore(/* @static_cast(Node) */existDiv, /* @static_cast(Node) */swapNext);
+        } else if (Boolean(existNext)) {
+            // Insert existing item first before removing swapped
+            existParent.removeChild(/* @static_cast(Node) */existDiv);
+            swapParent.insertBefore(/* @static_cast(Node) */existDiv, /* @static_cast(Node) */swapDiv);
+            swapParent.removeChild(/* @static_cast(Node) */swapDiv);
+            existParent.insertBefore(/* @static_cast(Node) */swapDiv, /* @static_cast(Node) */existNext);
+        } else {
+            // Swapping 2 not co-located (== id's) or at top/bottom items (no swapNext or existNext)
+            existParent.removeChild(/* @static_cast(Node) */existDiv);
+            // Insert the existDiv after the swapDiv
+            if (swapNext) {
+                swapParent.insertBefore(/* @static_cast(Node) */existDiv, /* @static_cast(Node) */swapNext);
+            } else {
+                swapParent.appendChild(/* @static_cast(Node) */existDiv);
+            }
+
+            swapParent.removeChild(/* @static_cast(Node) */swapDiv);
+            // Insert the swapDiv before the previous existDiv's next sibling (or end if it was at the end)
+            if (existNext) {
+                existParent.insertBefore(/* @static_cast(Node) */swapDiv, /* @static_cast(Node) */existNext);
+            } else {
+                existParent.appendChild(/* @static_cast(Node) */swapDiv);
+            }
+        }
+        _swapFieldInput(uiform, existDiv, existingField, swapDiv, swapFieldName);
+        // Mark both as moved
+        swapFieldMap.moved = true;
+        existFieldMap.moved = true;
+
+        // Reset visibility (if swapped with a hidden field)
+        if (existFieldMap.visible !== swapFieldMap.visible) {
+            if (swapFieldMap.visible) {
+                _hideField(uiform, swapFieldName, group);
+            } else {
+                _showField(uiform, swapFieldName, group);
+            }
+            if (existFieldMap.visible) {
+                _hideField(uiform, existingField, group);
+            } else {
+                _showField(uiform, existingField, group);
+            }
+            var groupName = existFieldMap.groupName;
+            _updateAddFieldDisplay(uiform, group, groupName);
+        }
+
+        return true;
+    };
+
+    function _repositionField(uiform, group, fieldName, newPosition) {
+        /// <param name="uiform" type="People.UiForm" />
+        var fieldMap = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+        var fieldDiv = fieldMap.container;
+        if (!fieldDiv) {
+            return false;
+        }
+        var fieldParent = fieldDiv.parentNode;
+        var fieldPrev = fieldDiv.previousSibling;
+        var calcPosition = -1;
+        if (newPosition === undefined || newPosition < 0) {
+            calcPosition = fieldMap.displayIndex;
+            if (calcPosition === -1) {
+                return false;
+            }
+        } else {
+            calcPosition = newPosition;
+        }
+        fieldParent.removeChild(/* @static_cast(Node) */fieldDiv);
+        var children = fieldParent.childNodes;
+        if (children.length <= calcPosition) {
+            fieldParent.appendChild(/* @static_cast(Node) */fieldDiv);
+        } else {
+            fieldParent.insertBefore(/* @static_cast(Node) */fieldDiv, children[calcPosition]);
+        }
+
+        uiform._fieldMap[fieldName].moved = false;
+
+        return true;
+    };
+
+
+    function _createChangeType(uiform, label, existingFieldName, fieldName, group) {
+        /// <param name="uiform" type="People.UiForm" />
+        // Uses closure pattern to re-use the parameters in the click event of the NavItem
+        var field = uiform._fieldMap[fieldName];
+        var inputValue = _getInputFieldValue(field, fieldName);
+        /// <disable>JS3053.IncorrectNumberOfArguments</disable>
+        var changeLabel = _getString(uiform, 'fldChngLbl', fieldName, null, label, inputValue);
+
+        var fieldNavLink = P.UiFlyoutMenuItem.create(/* @static_cast(People.UiFlyoutMenuItem.DefaultOptions) */{html: _encodeHtml(changeLabel),
+            click: function (e) {
+                try {
+                    if (_swapFields(uiform, group, existingFieldName, fieldName)) {
+                        uiform.setInputFocus(fieldName);
+                    }
+                } catch (err) {
+                    
+                    Debug.assert(false, "Error swapping fields:" + err);
+                    
+                }
+
+                return false;
+            }
+        });
+        /// <disable>JS3053.IncorrectNumberOfArguments</disable>
+        fieldNavLink.setAriaLabel(_getString(uiform, 'changeFieldTypeAria', fieldName, null, label));
+
+        return fieldNavLink;
+    };
+
+
+    ////var _addInputField = perfUiFormAction("_addInputField", _addInputFieldX);
+    function _addInputField(uiform, container, fieldName, fieldValue, fieldAttr, group, /* @dynamic */hydratedContext, hideFields) {
+        /// <param name="uiform" type="People.UiForm" />
+
+        var forcedEdit = false;
+        if (hydratedContext) {
+            if (hydratedContext.fields && hydratedContext.fields[fieldName] !== undefined) {
+                fieldValue = hydratedContext.fields[fieldName];
+            }
+            if (hydratedContext.displayedFields && hydratedContext.displayedFields[fieldName] !== undefined) {
+                // Special case of the field being added to the form but no entered data
+                forcedEdit = true;
+            }
+        }
+        var displayField = false;
+        if (!group.multiple || forcedEdit || _mustEditField(fieldAttr, fieldName)) {
+            displayField = true;
+        }
+        var fieldMap = uiform._fieldMap[fieldName];
+        fieldMap.container = container;
+
+        container.appendChild(_createInputDiv(uiform, fieldMap, fieldValue, group));
+
+        var inputControl = fieldMap.inputControl;
+        if (Boolean(inputControl) && !inputControl.isEmpty()) {
+            displayField = true;
+        }
+
+        fieldMap.visible = displayField;
+        if (!displayField && hideFields) {
+            _hide(fieldMap.container);
+        }
+
+        return displayField;
+    };
+
+    function _updateTarget(target, uiform) {
+        /// <param name="uiform" type="People.UiForm" />
+
+        var field = /* @static_cast(_UiFormFieldMap) */null;
+        var fieldValue = null;
+        var inputValue = null;
+
+        for (var fieldName in uiform._fieldMap) {
+            field = uiform._fieldMap[fieldName];
+            if (Boolean(field.container) && Boolean(field.inputControl)) {
+                fieldValue = null;
+                if (uiform._fieldMap[fieldName].visible) {
+                    inputValue = _getInputFieldValue(field, fieldName);
+                    if (Boolean(inputValue) && String(inputValue) !== '') {
+                        fieldValue = inputValue;
+                    }
+                }
+                _assignFieldValue(target, fieldName, fieldValue);
+            }
+        }
+    };
+
+    UiFormPrototype.saveEditForm = function (/*@dynamic*/contact) {
+
+        // Clear the form error before doing any field validation
+        this.clearFormError();
+
+        // Force Revalidation
+        var failedControl = _revalidate(this);
+        if (failedControl) {
+            failedControl.setFocus();
+            return false;
+        }
+
+        // Set the focus to the field with errors.
+        for (var errFieldName in this._fieldMap) {
+            // Reset the processed flag (used below)
+            if (this._fieldMap[errFieldName].errorState) {
+                this.setInputFocus(errFieldName);
+                return false;
+            }
+        }
+
+        // Check to see if there's form-level validation
+        if (this._formData.formValidator) {
+            // copy the fields to a temporary object (so we dont override thereal one)
+            // May be able to remove with "real" system, this is really just a workaround
+            // for the shared mocks (testing)
+            var valObject = {};
+            _updateTarget(valObject, this);
+
+            if (!this._formData.formValidator(this, valObject, this._loc)) {
+                this._onFormChanged();
+                return false;
+            }
+        }
+
+        _updateTarget(contact, this);
+
+        return true;
+    };
+
+    function _revalidate(uiform) {
+        /// <param name="uiform" type="People.UiForm" />
+        ///<returns type="_UiFormInputControl" />
+        // Scan thru the edit fields and populate with the 'hydrated' data if present
+        for (var fieldName in uiform._fieldMap) {
+            var field = /* @static_cast(_UiFormFieldMap) */uiform._fieldMap[fieldName];
+            if (Boolean(field.container) && Boolean(field.inputControl)) {
+                var inputValue = _getInputFieldValue(field, fieldName);
+                if (!_editValidators.validate(uiform, fieldName, field.fieldAttrib, inputValue)) {
+                    field.errorState = true;
+                    return field.inputControl;
+                }
+            }
+        }
+
+        return null;
+    };
+
+    function _getInputFieldValue(/* @type(_UiFormFieldMap) */field, fieldName) {
+        // <returns type="Object">Returns the value of the field the type depends of the fields being requested</returns>
+        if (!field) {
+            return /* @static_cast(Object) */'';
+        }
+        if (Boolean(field.container) && Boolean(field.inputControl)) {
+            var inputField = field.inputControl;
+            if (inputField) {
+                return /* @static_cast(Object) */inputField.getValue();
+            }
+        }
+
+        return /* @static_cast(Object) */'';
+    };
+
+    function _getFieldMaxLength(target, fieldName, fieldAttr) {
+        /// <summary>
+        /// This is a helper method to fetch the maximum length to apply to a field based on the
+        /// fieldAttr configuration, the maxLength can be a function callback, fixed value or not defined.
+        /// The usage of a function would be in cases where the length is based on some other value of
+        /// the target object.
+        /// </summary>
+        /// <param name="target" type="Object" />
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        if (fieldAttr.maxLength) {
+            if (typeof fieldAttr.maxLength === 'function') {
+                return fieldAttr.maxLength(target, fieldName, fieldAttr);
+            }
+            return fieldAttr.maxLength;
+        }
+
+        return null;
+    };
+
+    UiFormPrototype.getFieldMaxLength = function (fieldName, fieldAttr) {
+        /// <summary>
+        /// This is a helper method to fetch the maximum length to apply to a field based on the
+        /// fieldAttr configuration, the maxLength can be a function callback, fixed value or not defined.
+        /// The usage of a function would be in cases where the length is based on some other value of
+        /// the target object.
+        /// </summary>
+        /// <param name="fieldName" type="String" />
+
+        return _getFieldMaxLength(this._sourceData, fieldName, fieldAttr);
+    };
+
+
+    UiFormPrototype.getInputFieldValueByName = function (fieldName) {
+        /// <summary>
+        /// Retrieves data from an input field by name. Used as part of a workaround so that
+        /// field input can be accessed from the controls. Messy, but necessary for now.
+        /// </summary>
+        /// <param name="fieldName" type="String" optional="false">
+        /// This is the name of the field to extract the value from.
+        /// </param>
+        var field = /* @static_cast(_UiFormFieldMap) */this._fieldMap[fieldName];
+        return _getInputFieldValue(field, fieldName);
+    };
+
+    UiFormPrototype.dehydrateEditForm = function (/*@dynamic*/contact) {
+        /// <summary>
+        /// Dehydrates the "edit Form" form and returns an object that can be used to rehydrate
+        /// the edit form back to the current state.
+        /// </summary>
+        /// <param name="contact" optional="false">
+        /// This is the original contact that will be checked of any fields have changed
+        /// </param>
+
+        var dehydrated = {};
+        if (Boolean(document.activeElement) && Boolean(document.activeElement.id)) {
+            // Save the current focus element (if available), assumes running on IE or
+            // a browser that supports this method. Saves the id, name and type as this
+            // may return a field that is not a member of our form.
+            var activeElement = /* @static_cast(HTMLElement) */document.activeElement;
+            dehydrated.focus = {};
+            dehydrated.focus.id = activeElement.id;
+            /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+            dehydrated.focus.name = activeElement.name;
+            /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+            dehydrated.focus.type = activeElement.type;
+        }
+
+        dehydrated.fields = {};
+        dehydrated.displayedFields = {};
+        var dehydratedFields = dehydrated.fields;
+        var displayedFields = dehydrated.displayedFields;
+
+        for (var fieldName in this._fieldMap) {
+            var field = /* @static_cast(_UiFormFieldMap) */this._fieldMap[fieldName];
+            if (Boolean(field.container) && Boolean(field.inputControl)) {
+                var fieldValue = null;
+                if (this._fieldMap[fieldName].visible) {
+                    fieldValue = field.inputControl.getValue();
+                    displayedFields[fieldName] = true;
+                }
+                // Record the value of all changed fields (visible or not)
+                if (!field.inputControl.compareValues(fieldValue, contact[fieldName])) {
+                    dehydratedFields[fieldName] = fieldValue;
+                }
+            }
+        }
+
+        return dehydrated;
+    };
+
+    UiFormPrototype.isEditFormDirty = function (contact) {
+        /// <summary>
+        /// Returns whether the edit form has changed fields (isDirty), rather than keeping "edit" state this implmenetation
+        /// simple checks against the current object for changes.
+        /// </summary>
+        /// <param name="contact" type="Object" optional="false">
+        /// This is the original contact that will be checked of any fields have changed
+        /// </param>
+
+        // Scan thru the edit fields and populate with the 'hydrated' data if present
+        for (var fieldName in this._fieldMap) {
+            var field = /* @static_cast(_UiFormFieldMap) */this._fieldMap[fieldName];
+            if (Boolean(field.container) && Boolean(field.inputControl)) {
+                if (!field.inputControl.compare(contact[fieldName])) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    };
+
+});

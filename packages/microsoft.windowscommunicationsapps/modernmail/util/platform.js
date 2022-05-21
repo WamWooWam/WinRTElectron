@@ -1,26 +1,57 @@
-﻿(function() {
-    var n = window.msWriteProfilerMark,
-        i, t;
-    window.getMailPlatform = function() {
-        if (t) return t;
-        n("getMailPlatform,StartTM,Mail");
-        try {
-            var r = Microsoft.WindowsLive.Platform;
-            t = new r.Client("mail", r.ClientCreateOptions.delayResources | r.ClientCreateOptions.failIfNoUser);
-            i = 0
-        } catch (u) {
-            n("Unable to make the real platform!");
-            n("Name: " + u.name);
-            n("Message: " + u.message);
-            i = u.number
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
 
-            console.error(u);
+(function () {
+    var log = window.msWriteProfilerMark;
+
+    window.getMailPlatform = function () {
+        if (platform) {
+            return platform;
         }
-        return n("getMailPlatform,StopTM,Mail"), t
+
+        log("getMailPlatform,StartTM,Mail");
+        try {
+            var wl = Microsoft.WindowsLive.Platform;
+            platform = new wl.Client("mail", wl.ClientCreateOptions.delayResources | wl.ClientCreateOptions.failIfNoUser);
+            hrPlatform = 0;
+        } catch (ex) {
+            // If we couldn't get the real platform, return null;
+            log("Unable to make the real platform!");
+            log("Name: " + ex.name);
+            log("Message: " + ex.message);
+            hrPlatform = ex.number;
+        }
+        log("getMailPlatform,StopTM,Mail");
+        return platform;
     };
-    window.getMailPlatformResult = function() {
-        return i
+
+    window.getMailPlatformResult = function () {
+        return hrPlatform;
     };
-    i = -1;
-    t = window.getMailPlatform()
-})()
+
+    
+    if (document.location.hash.indexOf("#testMode") !== -1) {
+
+        Debug.loadMockPlatform = function () {
+            log("loadMockPlatform,StartTM,Mail");
+            return Jx.loadScripts([
+                "/Platform/MockPlatform.js",
+                "/ModernMail/Mock/JSObjects/TestAppData.js"
+            ]).then(function () {
+                platform = Mail.makeTestAppPlatform();
+                log("loadMockPlatform,StopTM,Mail");
+                return platform;
+            });
+        };
+
+        window.getMailPlatform = function () {
+            return platform;
+        };
+    }
+    
+
+    var hrPlatform = -1, platform = window.getMailPlatform();
+
+})();

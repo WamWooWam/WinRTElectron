@@ -1,1 +1,141 @@
-﻿Jx.delayDefine(People,"ZoomableView",function(){var n=window.People;n.ZoomableView=function(n,t,i,r){this._scrollingViewport=t;this._className=n;this._orientation=i;this._jobSet=r;this._activeElement=null;this._disposed=false;this.initComponent();var u=this._childHasUI=t.hasUI();u||this.appendChild(t);this.zoomableView=this};Jx.augment(n.ZoomableView,Jx.Component);n.ZoomableView.prototype.getPanAxis=function(){return this._orientation};n.ZoomableView.prototype.configureForZoom=function(n,t,i){this._disposed||(this._triggerZoom=i,this._isZoomedOut=n,this._jobSet.setVisibility(t))};n.ZoomableView.prototype.setCurrentItem=function(n,t){getComputedStyle(this._element).direction==="rtl"&&(n=this._element.clientWidth-n);var i={},r=this._orientation==="horizontal";i.scrollPos=r?n:t;i.orthoPos=r?t:n;this._scrollingViewport.setCurrentItem(i)};n.ZoomableView.prototype.getCurrentItem=function(){var n={section:0,groupIndex:0,itemIndex:0},t=this._scrollingViewport.getCurrentItem(n);return WinJS.Promise.wrap({item:n,position:this._toSemanticZoomPosition(t)})};n.ZoomableView.prototype.beginZoom=function(){this._scrollingViewport.beginZoom()};n.ZoomableView.prototype.positionItem=function(n){return this._scrollingViewport.positionItem(n),this._activeElement=document.activeElement,null};n.ZoomableView.prototype.endZoom=function(n){this._disposed||(this._jobSet.setVisibility(n),this._scrollingViewport.endZoom(n))};n.ZoomableView.prototype.getUI=function(n){var t="";this._childHasUI||(t=Jx.getUI(this._scrollingViewport).html);n.html="<div id='"+this._id+"' class='"+this._className+"'>"+t+"<\/div>"};n.ZoomableView.prototype.activateUI=function(){Jx.Component.prototype.activateUI.call(this);this._element=document.getElementById(this._id);this._element.winControl=this;this._element.addEventListener("focus",this._onFocusHandler=this._onFocus.bind(this),false);this._childHasUI&&(this.appendChild(this._scrollingViewport),this._element.appendChild(this._scrollingViewport.getElement()))};n.ZoomableView.prototype.shutdownComponent=function(){this._disposed=true;Jx.isFunction(this._onFocusHandler)&&(this._element.removeEventListener("focus",this._onFocusHandler,false),this._onFocusHandler=null);Jx.Component.prototype.shutdownComponent.call(this)};n.ZoomableView.prototype._toSemanticZoomPosition=function(n){return this._orientation==="horizontal"?{left:n.scrollPos,top:n.orthoPos}:{top:n.scrollPos,left:n.orthoPos}};n.ZoomableView.prototype.getTriggerZoom=function(){return this._triggerZoom};n.ZoomableView.prototype._onFocus=function(){if(this._activeElement)try{this._activeElement.setActive()}catch(n){Jx.log.exception("People.ZoomableView._onFocus: setActive throws exception",n)}}})
+﻿
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+
+Jx.delayDefine(People, "ZoomableView", function () {
+
+    var P = window.People;
+    P.ZoomableView = /* @constructor*/function (className, scrollingViewport, orientation, jobSet) {
+        /// <param name="className" type="String" />
+        /// <param name="scrollingViewport" type="P.ScrollingViewport" />
+        /// <param name="orientation" type="String" />
+        /// <param name="host" type="P.CpMain">The object that hosts the app.</param>
+        /// <param name="jobSet" type="P.JobSet"/>
+        this._scrollingViewport = scrollingViewport;
+        this._className = className;
+        this._orientation = orientation;
+        this._jobSet = jobSet;
+        this._activeElement = null;
+        this._disposed = false;
+        this.initComponent();
+        Debug.assert(Jx.isObject(scrollingViewport));
+
+        var childHasUI = this._childHasUI = scrollingViewport.hasUI();
+        if (!childHasUI) {
+            // If the scrollingViewport is already activated, we'll wait to add it to the component tree until we are activated as well.
+            this.appendChild(/*@static_cast(Jx.TreeNode)*/scrollingViewport);
+        }
+
+        // For the indirection of the semantic zoom control.
+        this.zoomableView = this;
+    };
+    Jx.augment(P.ZoomableView, Jx.Component);
+
+    // The requisite methods to implement semantic zoom control's zoomableView interface.
+    P.ZoomableView.prototype.getPanAxis = function () {
+        return this._orientation;
+    };
+    P.ZoomableView.prototype.configureForZoom = function (isZoomedOut, isCurrentView, triggerZoom, prefetchedPages) {
+        if (!this._disposed) {
+            this._triggerZoom = triggerZoom;
+            this._isZoomedOut = isZoomedOut;
+            this._jobSet.setVisibility(isCurrentView);
+        }
+    };
+    P.ZoomableView.prototype.setCurrentItem = function (x, y) {
+        // Translate the screen coordinate to viewport's scroll coordinate
+        if (getComputedStyle(this._element).direction === "rtl") {
+            x = this._element.clientWidth - x;
+        }
+        var position = /*@static_cast(Position)*/{};
+        var isHorizontal = (this._orientation === "horizontal");
+        position.scrollPos = isHorizontal ? x : y;
+        position.orthoPos = isHorizontal ? y : x;
+
+        this._scrollingViewport.setCurrentItem(position);
+    };
+    P.ZoomableView.prototype.getCurrentItem = function () {
+        var item = { section: 0, groupIndex: 0, itemIndex: 0 };
+        var ourPosition = this._scrollingViewport.getCurrentItem(item);
+        return WinJS.Promise.wrap({
+            item: item,
+            position: this._toSemanticZoomPosition(ourPosition)
+        });
+    };
+    P.ZoomableView.prototype.beginZoom = function () {
+        // Hide the ScrollingViewport's scrollbar and extend the content beyond the ScrollingViewport's viewport
+        this._scrollingViewport.beginZoom();
+    };
+    P.ZoomableView.prototype.positionItem = function (item, position) {
+        // position the viewport and set element to be active
+        this._scrollingViewport.positionItem(item);
+
+        // store active element before it gets reset by the semantic zoom control
+        this._activeElement = document.activeElement;
+
+        // SeZo control no longer uses the position returned from positionItem to align the views
+        return null;    
+    };
+    P.ZoomableView.prototype.endZoom = function (isCurrentView) {
+        if (!this._disposed) {
+            this._jobSet.setVisibility(isCurrentView);
+            this._scrollingViewport.endZoom(isCurrentView);
+        }
+    };
+    // End of zoomableView interface methods
+
+    P.ZoomableView.prototype.getUI = /*@bind(P.ZoomableView)*/function (ui) {
+        /// <param name="ui" type="JxUI" />
+        var childHtml = "";
+        if (!this._childHasUI) {
+            childHtml = Jx.getUI(this._scrollingViewport).html;
+        }
+
+        ui.html =
+            "<div id='" + this._id + "' class='" + this._className + "'>" +
+                childHtml +
+            "</div>";
+    };
+    P.ZoomableView.prototype.activateUI = function () {
+        Jx.Component.prototype.activateUI.call(this);
+        this._element = document.getElementById(this._id);
+        this._element.winControl = this;
+        this._element.addEventListener("focus", this._onFocusHandler = this._onFocus.bind(this), false);
+
+        if (this._childHasUI) { // If our child was already activated, we can now add it our tree.
+            this.appendChild(this._scrollingViewport);
+            this._element.appendChild(this._scrollingViewport.getElement());
+        }
+    };
+    P.ZoomableView.prototype.shutdownComponent = function () {
+        this._disposed = true;
+        if (Jx.isFunction(this._onFocusHandler)) {
+            this._element.removeEventListener("focus", this._onFocusHandler, false);
+            this._onFocusHandler = null;
+        }
+        Jx.Component.prototype.shutdownComponent.call(this);
+    };
+    P.ZoomableView.prototype._toSemanticZoomPosition = function (position) {
+        if (this._orientation === "horizontal") {
+            return { left: position.scrollPos, top: position.orthoPos };
+        } else {
+            return { top: position.scrollPos, left: position.orthoPos };
+        }
+    };
+    P.ZoomableView.prototype.getTriggerZoom = function () {
+        return this._triggerZoom;
+    };
+    P.ZoomableView.prototype._onFocus = function () {
+        if (this._activeElement) {
+            try {
+                // Restores the active element previously set in positionItem but overriden by the control
+                this._activeElement.setActive();
+            } catch (err) {
+                Jx.log.exception("People.ZoomableView._onFocus: setActive throws exception", err);
+            }
+        }
+    };
+});

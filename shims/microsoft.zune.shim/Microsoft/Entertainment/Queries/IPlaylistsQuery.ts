@@ -27,7 +27,7 @@ export interface IPlaylistsQuery {
     title: string;
     watchAll: number;
     executeAsync(): IAsyncOperationWithProgress<IQueryResult, number>;
-    getCountAsync(): PlaylistsQueryCountOperation;
+    getCountAsync(): IAsyncOperation<number>;
     setCursorPosition(index: number): void;
     getGroupsAsync(): IAsyncOperationWithProgress<IQueryResult, number>;
     refreshAsync(): IAsyncAction;

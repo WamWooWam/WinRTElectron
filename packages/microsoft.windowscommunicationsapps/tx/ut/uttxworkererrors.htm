@@ -1,0 +1,24 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<script src="../core/TxLoader.js"></script>
+
+<link rel="stylesheet" href="../ui/tx.css">
+
+<script>
+    window.onload = function () {
+        // TODO: find a better API
+        Tx.runner.createWorker("../core/TxWorkerHost.js");
+
+        // TODO: use a json file for scripts
+        Tx.addWorkerScript("../ut/utTxErrors.js");
+        Tx.runWorker();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html> 

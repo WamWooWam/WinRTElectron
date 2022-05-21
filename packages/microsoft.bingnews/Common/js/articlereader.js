@@ -7299,47 +7299,6 @@ WinJS.Namespace.define('CommonJS', { Version: 'latest' });
                 else {
                     return defaultImpressionContext
                 }
-            }, getPageImpressionPartnerCodeAndAttributes: function getPageImpressionPartnerCodeAndAttributes() {
-                var state = this._state;
-                var results = {};
-                if (state && state.entryPoint === Platform.Instrumentation.InstrumentationArticleEntryPoint.partnerPano) {
-                    results.partnerCode = state.instrumentationId
-                }
-                if (state && state.pageId) {
-                    var attributes = {};
-                    attributes.pageId = state.pageId;
-                    if (state.clusterId) {
-                        attributes.clusterId = state.clusterId
-                    }
-                    if (state.pageType) {
-                        attributes.pageType = state.pageType
-                    }
-                    results.attributes = attributes
-                }
-                return results
-            }, _defaultArticleChanged: function _defaultArticleChanged(event) {
-                var state = this._state;
-                var clientArticleId = event.detail.clientArticleId;
-                state.initialArticleId = clientArticleId;
-                var instrumentationData = event.detail.instrumentationData;
-                if (instrumentationData) {
-                    this._recordArticleView(instrumentationData)
-                }
-            }, _defaultArticleError: function _defaultArticleError(event) {
-                var error = event.detail;
-                var message = error ? error.message : "";
-                if (!message && error.webErrorStatus) {
-                    message = "webErrorStatus = " + error.webErrorStatus;
-                    if (error.uri) {
-                        message += (" when visiting " + error.uri)
-                    }
-                }
-                var stack = error ? error.stack : "";
-                Microsoft.Bing.AppEx.Telemetry.FlightRecorder.logCodeError(Microsoft.Bing.AppEx.Telemetry.LogLevel.normal, Microsoft.Bing.AppEx.Telemetry.RuntimeEnvironment.javascript, message, stack)
-            }, _getSettingsContainer: function _getSettingsContainer() {
-                var localSettings = Windows.Storage.ApplicationData.current.localSettings;
-                var container = localSettings.createContainer("articleReaderSettings", Windows.Storage.ApplicationDataCreateDisposition.always);
-                return container
             }, _writeSettings: function _writeSettings() {
                 var container = this._getSettingsContainer();
                 var settings = this._settings;
@@ -7390,6 +7349,47 @@ WinJS.Namespace.define('CommonJS', { Version: 'latest' });
                     textSize: containerTextSize || optimalTextSize || sizeDefault, textStyle: containerTextStyle || styleDefault
                 };
                 this._settings = settings
+            }, getPageImpressionPartnerCodeAndAttributes: function getPageImpressionPartnerCodeAndAttributes() {
+                var state = this._state;
+                var results = {};
+                if (state && state.entryPoint === Platform.Instrumentation.InstrumentationArticleEntryPoint.partnerPano) {
+                    results.partnerCode = state.instrumentationId
+                }
+                if (state && state.pageId) {
+                    var attributes = {};
+                    attributes.pageId = state.pageId;
+                    if (state.clusterId) {
+                        attributes.clusterId = state.clusterId
+                    }
+                    if (state.pageType) {
+                        attributes.pageType = state.pageType
+                    }
+                    results.attributes = attributes
+                }
+                return results
+            }, _defaultArticleChanged: function _defaultArticleChanged(event) {
+                var state = this._state;
+                var clientArticleId = event.detail.clientArticleId;
+                state.initialArticleId = clientArticleId;
+                var instrumentationData = event.detail.instrumentationData;
+                if (instrumentationData) {
+                    this._recordArticleView(instrumentationData)
+                }
+            }, _defaultArticleError: function _defaultArticleError(event) {
+                var error = event.detail;
+                var message = error ? error.message : "";
+                if (!message && error.webErrorStatus) {
+                    message = "webErrorStatus = " + error.webErrorStatus;
+                    if (error.uri) {
+                        message += (" when visiting " + error.uri)
+                    }
+                }
+                var stack = error ? error.stack : "";
+                Microsoft.Bing.AppEx.Telemetry.FlightRecorder.logCodeError(Microsoft.Bing.AppEx.Telemetry.LogLevel.normal, Microsoft.Bing.AppEx.Telemetry.RuntimeEnvironment.javascript, message, stack)
+            }, _getSettingsContainer: function _getSettingsContainer() {
+                var localSettings = Windows.Storage.ApplicationData.current.localSettings;
+                var container = localSettings.createContainer("articleReaderSettings", Windows.Storage.ApplicationDataCreateDisposition.always);
+                return container
             }, _updateDefaultTextSize: function _updateDefaultTextSize(relayout) {
                 var container = this._getSettingsContainer();
                 var containerTextSize = container.values["textSize"];

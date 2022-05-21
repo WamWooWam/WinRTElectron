@@ -10,6 +10,6 @@ export class PackageRegistry {
 
     static registerPackage(pack: Package) {
         console.log(pack);
-        PackageRegistry.packages.set(pack.identity.name, pack);
+        PackageRegistry.packages.set(pack.identity.packageFamilyName, pack);
     }
 }

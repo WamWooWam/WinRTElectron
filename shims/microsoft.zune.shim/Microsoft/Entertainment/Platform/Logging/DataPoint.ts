@@ -18,15 +18,20 @@ export class DataPoint implements IDataPoint, ILogElement {
     level: LoggingLevel = null;
     authMethod: TelemetryAuthMethod = null;
     static properties: Partial<ComputedProperties> = { sessionGuid: uuidv4() };
+
+    target: string;
+    eventName: string;
+    parameters: Map<string, string>;
+
     // constructor();
     // constructor(level: LoggingLevel);
     // constructor(level: LoggingLevel, authMethod: TelemetryAuthMethod);
-    constructor(...args) { }
+    constructor(...args) { this.parameters = new Map(); }
     write(): void {
-        console.warn('DataPoint#write not implemented')
+        console.info("telemetry-event: %O -> %O, %O", this.eventName, this.target, [...this.parameters]);
     }
     appendTarget(value: string): void {
-        console.warn('DataPoint#appendTarget not implemented')
+        this.target = value;
     }
     appendGroupBegin(value: string): void {
         console.warn('DataPoint#appendGroupBegin not implemented')
@@ -44,10 +49,10 @@ export class DataPoint implements IDataPoint, ILogElement {
         console.warn('DataPoint#appendComponent not implemented')
     }
     appendEventName(value: string): void {
-        console.warn('DataPoint#appendEventName not implemented')
+        this.eventName = value;
     }
     appendParameter(name: string, value: string): void {
-        console.warn('DataPoint#appendParameter not implemented')
+        this.parameters.set(name, value);
     }
     appendDestination(listener: TelemetryListener): void {
         console.warn('DataPoint#appendDestination not implemented')

@@ -30,6 +30,8 @@ export class PointerPoint {
 
     static init() {
         document.addEventListener("mousemove", (e) => {
+            if (!!!document.documentElement) return;
+
             PointerPoint.x = e.pageX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
             PointerPoint.y = e.pageY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
         })

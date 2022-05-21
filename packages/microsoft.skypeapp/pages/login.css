@@ -94,7 +94,7 @@ div.page section.navigationContainer>div>div.login.fragment div.error div.icon {
 
 div.page section.navigationContainer>div>div.login.fragment div.error div.icon:before {
     content: "\E601";
-    font-family: "Skype UI Symbol";
+    font-family: "Skype UI Symbol" !important;
     font-weight: bold;
     font-size: 26.67px
 }

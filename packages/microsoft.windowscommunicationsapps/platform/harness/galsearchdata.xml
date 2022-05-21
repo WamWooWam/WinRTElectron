@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<tasksuite>
+
+    <task name="insert1">
+        <c type="insertsearchresult" table="SearchPerson" id="0">
+            <p name="FirstName" value="A" type="string" />
+            <p name="LastName" value="Person" type="string" />
+            <p name="CalculatedUIName" value="A Person" type="string" />
+            <p name="HomePhone" value="123-345-2134" type="string" />
+            <p name="Title" value="manager" type="string" />
+        </c>
+
+        <c type="insertsearchresult" table="SearchPerson" id="0">
+            <p name="FirstName" value="B" type="string" />
+            <p name="LastName" value="Contact1" type="string" />
+        </c>
+
+        <c type="updatesearchresult" table="SearchRequest" id="0">
+            <p name="Status" value="1" type="number"/>
+            <p name="TotalCount" value="4" type="number" />
+        </c>
+    </task>
+
+    <!-- for subsequent fetch or second gal search-->
+    <task name="insert2">
+        <c type="insertsearchresult" table="SearchPerson" id="1">
+            <p name="FirstName" value="A" type="string" />
+            <p name="LastName" value="Person" type="string" />
+            <p name="CalculatedUIName" value="A Person" type="string" />
+            <p name="HomePhone" value="123-345-2134" type="string" />
+            <p name="Title" value="manager" type="string" />
+        </c>
+
+        <c type="insertsearchresult" table="SearchPerson" id="1">
+            <p name="FirstName" value="B" type="string" />
+            <p name="LastName" value="Contact1" type="string" />
+        </c>
+
+        <c type="updatesearchresult" table="SearchRequest" id="1">
+            <p name="Status" value="1" type="number"/>
+            <p name="TotalCount" value="4" type="number" />
+        </c>
+    </task>
+</tasksuite>

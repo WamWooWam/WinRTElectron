@@ -1,0 +1,16 @@
+﻿<!doctype html>
+<html>
+    <head>        
+        <script>
+            Windows.UI.WebUI.WebUIApplication.addEventListener("activated", function (ev) {                
+                setImmediate(function () {
+                    var query = "";
+                    if (ev.uri) {
+                        query = encodeURIComponent(ev.uri.path + ev.uri.query);
+                    }
+                    document.location = "/ModernCalendar/app/app.html#testMode" + query;
+                });
+            });
+        </script>
+    </head>
+</html>

@@ -1,314 +1,624 @@
-﻿Jx.delayDefine(People, "IdentityControl", function() {
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+
+/// <reference path="Windows.UI.PopUps.js" />
+/// <reference path="../JSUtil/Include.js"/>
+/// <reference path="../JSUtil/PeopleLog.js"/>
+/// <reference path="../JSUtil/PeopleAnimation.js"/>
+/// <reference path="../../AddressBook/Controls/Scheduler/Priority.js"/>
+/// <reference path="../../AddressBook/Controls/Scheduler/JobSet.js"/>
+/// <reference path="../../AddressBook/Controls/Scheduler/Scheduler.js"/>
+/// <reference path="IdentityControl.ref.js"/>
+/// <reference path="IdentityControlActions.js"/>
+/// <reference path="../Platform/PlatformObjectBinder.js"/>
+
+/// <disable>JS2052.UsePrefixOrPostfixOperatorsConsistently</disable>
+/// <disable>JS2076.IdentifierIsMiscased</disable>
+
+/// <dictionary>jobset,accessor</dictionary>
+
+Jx.delayDefine(People, "IdentityControl", function () {
+    
     "use strict";
-    function r(n) {
-        this._identityControl = n
-    }
-    var i = window.People, n = i.IdentityControl = function(n, i, u) {
-        f();
+    var P = window.People;
+
+    var IdentityControl = P.IdentityControl = /*@constructor*/function (/*@dynamic*/dataObject, jobSet, options) {
+        ///<summary>Creates a new Identity control.</summary>
+        ///<param name="dataObject" optional="true">An IPerson, IRecipient, IContact or object literal.  Can be set or
+        ///changed later with a call to updateDataSource.</param>
+        ///<param name="jobSet" type="P.JobSet" optional="true"/>
+        ///<param name="options" type="Object" optional="true">
+        ///options: { // configuration options, defaults are as shown and can be omitted.
+        ///     interactive: true, // controls whether the IC responds to click/hover/etc
+        ///     getTooltip: function (dataObject, defaultText) {
+        ///         /// <summary>Can be used to override the default tooltip</summary>
+        ///         /// <param name="dataObject"/>
+        ///         /// <param name="defaultText" type="String">Default IC tooltip text</param>
+        ///         /// <returns type="String">The tooltip value</returns>
+        ///         return defaultText;
+        ///     },
+        ///     onClick: function (dataObject) {
+        ///         /// <summary>Can be used to override the click action</summary>
+        ///         /// <param name="dataObject"/>
+        ///         /// <returns type="Boolean">If true is returned, the IC will perform its default action,
+        ///         /// navigating to the profile.</returns>
+        ///         return true;
+        ///     },
+        ///     selectionManager: null, // Providing an implementation of selectionManager allows an IC to
+        ///                             // render selection UX.  It does not change the click behavior.
+        ///     createJobSet: true, // If this is set to false, the IC will just use the provided jobset directly.
+        ///                         // It will assume that the parent correctly cancels jobs before changing the 
+        ///                         // data source or shutting down the UI.  If true, the IC will create its own
+        ///                         // jobset, using the provided value as a parent, and will manage its own
+        ///                         // cancellation.
+        ///}
+        ///</param>
+        Debug.assert(Jx.isNullOrUndefined(jobSet) || Jx.isObject(jobSet));
+        Debug.assert(Jx.isNullOrUndefined(options) || Jx.isObject(options));
+
+        NoShip.People.etw("abIdentityControl_start");
+
+        loadCSS();
+
         this._ownJobSet = false;
-        this._jobSet = i;
-        this._elementHost = new r(this);
-        u && (this._options = u);
+        this._jobSet = jobSet;
+        this._elementHost = new ElementHost(this);
+        if (options) {
+            this._options = options;
+        }
         this._elements = [];
         this._bindings = [];
-        this._binder = this._lastBinder = null;
+        this._binder = this._lastBinder = /*@static_cast(P.PlatformObjectBinder)*/null;
         this._lastBinderType = "";
         this._dataObject = null;
-        n && this._setDataObject(n);
-        this._selectionManager = t(u, "selectionManager");
-        this._needsTooltip = false
-    }
-    , f = function() {
+        if (dataObject) { 
+            this._setDataObject(dataObject);
+        }
+        this._selectionManager = getOption(options, "selectionManager");
+        this._needsTooltip = false;
+
+        Debug.only(Object.seal(this));
+    };
+    var loadCSS = function () {
         $include("$(cssResources)/IdentityControl.css");
-        f = Jx.fnEmpty
-    }, e, o, t, u;
-    n.prototype.getUI = function(n, i) {
-        var r = this._options;
-        return t(r, "interactive", true) && (i = i ? Object.create(i) : {},
-        i.attributes = t(i, "attributes", "") + " tabIndex='" + t(i, "tabIndex", t(r, "tabIndex", "0")) + "' role='" + t(r, "role", "button") + "'"),
-        this._getUI(n, i, false)
-    }
-    ;
-    n.prototype._getUI = function(n, t, i) {
-        var r = new n
-          , u = "ic-locator-" + String(Jx.uid())
-          , f = r.getUI(this._elementHost, u, t);
-        return this._elements.push({
-            element: r,
-            selector: "." + u,
-            nested: Boolean(i)
-        }),
-        f
-    }
-    ;
-    n.prototype.activateUI = function(n) {
-        var o, e, c, r, f;
-        n = n || document.body;
-        t(this._options, "createJobSet", true) && (this._ownJobSet = true,
-        o = this._jobSet || u(),
-        this._jobSet = o.createChild());
-        var s = t(this._options, "interactive", true)
-          , h = this._elements
-          , l = this._elementHost;
-        for (e = 0,
-        c = h.length; e < c; ++e)
-            r = h[e],
-            f = n.querySelector(r.selector),
-            f === null && n.matches(r.selector) && (f = n),
-            r.node = f,
-            s && !r.nested && this.attachBehaviors(f),
-            r.element.activateUI(l, f);
-        s && (this._needsTooltip = true,
-        this._addTooltip());
-        this._bind(this._updateLabel, this, i.Priority.accessibility)
-    }
-    ;
-    n.prototype.updateDataSource = function(n) {
-        this._closeTooltip();
-        this._ownJobSet && this._jobSet.cancelJobs();
-        this._dataObject !== null && this._clearDataObject();
-        n !== null && (this._setDataObject(n),
-        this._bindings.forEach(this._startBinding, this),
-        this._addTooltip())
-    }
-    ;
-    n.prototype.clone = function(t, i, r) {
-        var u = new n(i,r,this._options)
-          , f = u._elementHost;
-        return u._elements = this._elements.map(function(n) {
-            var t = n.element
-              , i = t.clone(f);
-            return {
-                element: i,
-                selector: n.selector,
-                nested: n.nested
-            }
-        }),
-        u.activateUI(t),
-        u
-    }
-    ;
-    n.prototype.shutdownUI = function() {
-        var n, r;
-        this._closeTooltip();
-        this._ownJobSet && (this._jobSet.dispose(),
-        this._jobSet = null,
-        this._ownJobSet = false);
-        this._binder && (this._binder.dispose(),
-        this._binder = null);
-        this._dataObject = null;
-        var f = t(this._options, "interactive", true)
-          , i = this._elements
-          , u = this._elementHost;
-        for (n = 0,
-        r = i.length; n < r; ++n)
-            i[n].element.shutdownUI(u)
-    }
-    ;
-    e = ["click", "pointerdown", "keydown", "beforeopen"];
-    n.prototype.attachBehaviors = function(n) {
-        var i = this._onDomEvent.bind(this, n);
-        e.forEach(function(t) {
-            n.addEventListener(t, i, false)
+        loadCSS = Jx.fnEmpty;
+    };
+    IdentityControl.prototype.getUI = function (elementType, elementOptions) {
+        ///<summary>Produces HTML for an IC element.  This function can be called multiple times to get
+        ///HTML for different elements, all attached to the same IC.</summary>
+        ///<param name="elementType" type="Function">Constructor function for an IC or custom
+        ///element.</param>
+        ///<param name="elementOptions" type="Object" optional="true">Options to pass to the element's getUI
+        ///implementation.</param>
+        ///<returns type="String">An HTML string that represents the given element.</returns>
+        Debug.assert(Jx.isFunction(elementType));
+        Debug.assert(Jx.isNullOrUndefined(elementOptions) || Jx.isObject(elementOptions));
+        var controlOptions = this._options;
+        if (getOption(controlOptions, "interactive", true)) {
+            // Add tabIndex and role for interactive ICs
+            elementOptions = elementOptions ? Object.create(elementOptions) : {};
+            elementOptions.attributes = getOption(elementOptions, "attributes", "") + 
+                                 " tabIndex='" + getOption(elementOptions, "tabIndex", getOption(controlOptions, "tabIndex", "0")) + "'" +
+                                 " role='" + getOption(controlOptions, "role", "button") + "'";
+        }
+        return this._getUI(elementType, elementOptions, false /* not nested */);
+    };
+    IdentityControl.prototype._getUI = function (elementType, options, nested) {
+        ///<param name="elementType" type="Function"/>
+        ///<param name="options" type="Object" optional="true"/>
+        ///<param name="nested" type="Boolean" optional="true">False if this is a top level element</param>
+        Debug.assert(Jx.isFunction(elementType));
+        Debug.assert(Jx.isNullOrUndefined(options) || Jx.isObject(options));
+
+        ///<disable>JS2063.ConstructorNamesArePascalCased</disable> Unless they are held in a variable
+        var element = /*@static_cast(IdentityControlElement)*/new elementType();
+        ///<enable>JS2063.ConstructorNamesArePascalCased</enable>
+
+        var locator = "ic-locator-" + String(Jx.uid());
+
+        var html = element.getUI(this._elementHost, locator, options);
+
+        this._elements.push({
+            element: element,
+            selector: "." + locator,
+            nested: Boolean(nested)
         });
-        t(this._options, "onRightClick") && (n.addEventListener("contextmenu", i, false),
-        n.addEventListener("MSHoldVisual", function(n) {
-            n.preventDefault()
-        }, false))
-    }
-    ;
-    n.prototype._addTooltip = function() {
-        this._needsTooltip && this._jobSet.addUIJob(this, function() {
-            var i, n, r, t, u, f;
-            if (this._needsTooltip)
-                for (this._needsTooltip = false,
-                i = this._elements,
-                n = 0,
-                r = i.length; n < r; ++n)
-                    t = i[n],
-                    t.nested || (u = t.node,
-                    f = t.tooltip = new WinJS.UI.Tooltip(u))
-        }, null, i.Priority.tooltip)
-    }
-    ;
-    n.prototype._closeTooltip = function() {
-        for (var i = this._elements, t, n = 0, r = i.length; n < r; ++n)
-            t = i[n].tooltip,
-            t && t.close()
-    }
-    ;
-    n.prototype._onDomEvent = function(n, t) {
-        switch (t.type) {
-        case "click":
-            this._onClick(n, t);
-            break;
-        case "pointerdown":
-        case "MSPointerDown":
-            this._onPointerDown(n, t);
-            break;
-        case "keydown":
-            this._onKeyDown(n, t);
-            break;
-        case "beforeopen":
-            this._onTooltip(n);
-            break;
-        case "contextmenu":
-            this._onContextMenu(n, t)
+        return html;
+    };
+
+    IdentityControl.prototype.activateUI = function (ancestorNode) {
+        ///<summary>Activates interactivity and data updates for any HTML returned from getUI.  Must be
+        ///called after the HTML returned by getUI is instantiated.</summary>
+        ///<param name="ancestorNode" type="HTMLElement" optional="true">A node whose descendent tree
+        ///contains nodes created from the HTML returned by getUI.  Required if the instantiated nodes are
+        ///not part of window.document</param>        
+        Debug.assert(Jx.isNullOrUndefined(ancestorNode) || Jx.isHTMLElement(ancestorNode));
+        ancestorNode = ancestorNode || document.body;
+
+        if (getOption(this._options, "createJobSet", true)) {
+            this._ownJobSet = true;
+            var parentJobSet = this._jobSet || getParentJobSet();
+            this._jobSet = parentJobSet.createChild();
         }
-    }
-    ;
-    n.prototype._onPointerDown = function(n, r) {
-        var u, f;
-        u = this._dataObject;
-        u !== null && t(this._options, "pressEffect", true) && (f = t(this._options, "onRightClick"),
-        i.Animation.startTapAnimation(n, r, f))
-    }
-    ;
-    n.prototype._onClick = function(n, r) {
-        var u, f;
-        r.stopPropagation();
-        u = this._dataObject;
-        u !== null && (f = t(this._options, "onClick"),
-        (!f || f(u, n, r)) && i.IdentityControlActions.primaryAction(u, n))
-    }
-    ;
-    n.prototype._onContextMenu = function(n, i) {
-        var r, u;
-        i.which === 3 && (r = this._dataObject,
-        r !== null && (u = t(this._options, "onRightClick"),
-        i.stopPropagation(),
-        i.preventDefault(),
-        u(r, n)))
-    }
-    ;
-    n.prototype._onKeyDown = function(n, t) {
-        t.key !== "Spacebar" && (t.key !== "Enter" || this._selectionManager) || (t.stopPropagation(),
-        t.preventDefault(),
-        this._onClick(n, t))
-    }
-    ;
-    n.prototype._onTooltip = function(n) {
-        var i = "", f = this._dataObject, r, u, t;
-        for (f && (i = this._getTextLabel(f, "getTooltip")),
-        r = n.winControl,
-        u = "",
-        Jx.isNonEmptyString(i) && (u = i.split("\n").map(function(n) {
-            return "<div class='ic-tooltip'>" + Jx.escapeHtml(n) + "<\/div>"
-        }).join("")),
-        r.innerHTML = u,
-        t = n.parentElement; t; t = t.parentElement)
-            if (getComputedStyle(t).overflow === "scroll")
-                break;
-        t && n.addEventListener("opened", function e() {
-            n.removeEventListener("opened", e, false);
-            var i = function() {
-                r.close()
+
+        var interactive = getOption(this._options, "interactive", true);
+
+        var elements = this._elements;
+        var host = this._elementHost;
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            var item = /*@static_cast(IdentityControlElementData)*/elements[i];
+            var node = ancestorNode.querySelector(item.selector);
+            if (node === null && ancestorNode.msMatchesSelector(item.selector)) {
+                node = ancestorNode;
+            } else {
+                Debug.call(function () {
+                    Debug.assert(ancestorNode.querySelectorAll(item.selector).length === 1, "Error locating IC element");
+                });
+            }
+            item.node = node;
+
+            if (interactive && !item.nested) {
+                this.attachBehaviors(node);
+            }
+
+            item.element.activateUI(host, node);
+        }
+
+        if (interactive) {
+            this._needsTooltip = true;
+            this._addTooltip();
+        }
+
+        this._bind(this._updateLabel, this, P.Priority.accessibility);
+    };
+
+    IdentityControl.prototype.updateDataSource = function (/*@dynamic*/dataObject) {
+        ///<summary>Changes the person this IC is rendering.  This is not required, it just allows 
+        ///recycling of this control.</summary>
+        ///<param name="dataObject" optional="true">An IPerson, IContact, IRecipient or object literal</param>
+
+        this._closeTooltip();
+        // Cancel any outstanding jobs that related to the previous data object.  If the caller provided their own 
+        // jobset, they are expected to have cancelled it before calling updateDataSource.
+        if (this._ownJobSet) {
+            this._jobSet.cancelJobs();
+        }
+
+        if (this._dataObject !== null) {
+            this._clearDataObject();
+        }
+
+        if (dataObject !== null) { 
+            this._setDataObject(dataObject);
+
+            // Invoke all of our bindings with the new data (each at its own priority)
+            this._bindings.forEach(this._startBinding, this);
+
+            // Create the tooltip (delayed because it is a bit slow, retried here because the jobset may have just been cancelled)
+            this._addTooltip();
+       }
+    };
+
+    IdentityControl.prototype.clone = function (clonedNode, /*@dynamic*/dataObject, jobSet) {
+        ///<summary>An identity control supports cloning for faster creation of repeated elements.  After calling
+        ///cloneNode on this identity control's HTML element or some parent thereof, the new element can be passed to 
+        ///this method to create and activate a new IC with all of the same elements and options on the freshly cloned
+        ///HTML nodes.</summary>
+        ///<param name="clonedNode" type="HTMLElement">An HTML element cloned from this IC's UI</param>
+        ///<param name="dataObject" optional="true">A data object to populate the new IC</param>
+        ///<param name="jobSet" type="P.JobSet" optional="true"/>
+        ///<returns type="IdentityControl">The new IC</returns>
+
+        // Create the cloned control
+        var clonedControl = new IdentityControl(dataObject, jobSet, this._options);
+        var clonedHost = clonedControl._elementHost;
+
+        // Clone all of its elements
+        clonedControl._elements = this._elements.map(function (/*@type(IdentityControlElementData)*/item) {
+            var templateElement = item.element;
+            var clonedElement = templateElement.clone(clonedHost);
+            return {
+                element: clonedElement,
+                selector: item.selector,
+                nested: item.nested
             };
-            t.addEventListener("scroll", i, false);
-            n.addEventListener("closed", function u() {
-                n.removeEventListener("closed", u, false);
-                t.removeEventListener("scroll", i, false)
-            }, false)
-        }, false)
-    }
-    ;
-    n.prototype._getTextLabel = function(n, r) {
-        var e = this._elementHost
-          , u = [i.IdentityElements.Name.getName(n)].concat(this._elements.map(function(t) {
-            return t.element.getTooltip ? t.element.getTooltip(e, n, t.nested) : null
-        }).filter(Jx.isNonEmptyString)).join("\n")
-          , f = t(this._options, r);
-        return f && (u = f(n, u)),
-        u
-    }
-    ;
-    n.prototype._updateLabel = function(n) {
-        for (var f = this._getTextLabel(n, "getLabel"), r = this._elements, i, t = 0, u = r.length; t < u; ++t)
-            i = r[t],
-            i.nested || i.node.setAttribute("aria-label", f)
-    }
-    ;
-    n.prototype._clearDataObject = function() {
-        var n = this._binder;
-        n !== null && (this._binder = null,
-        this._lastBinder = n,
-        this._lastBinderType = this._dataObject.objectType,
-        n.dispose());
-        this._dataObject = null
-    }
-    ;
-    n.prototype._setDataObject = function(n) {
-        var t, r;
-        n.getPlatformObject && (n = n.getPlatformObject());
-        this._dataObject = n;
-        t = n.objectType;
-        t !== "literal" && (this._lastBinderType === t ? (r = this._binder = this._lastBinder,
-        r.setObject(n)) : this._binder = new i.PlatformObjectBinder(n));
-        this._lastBinder = null;
-        this._lastBinderType = ""
-    }
-    ;
-    n.prototype._bind = function(n, t, r) {
-        var u = {
-            callback: n,
-            context: t,
-            priority: r,
-            binder: null,
-            accessor: null
-        };
-        u.onUpdate = this._updateBinding.bind(this, u, i.Priority.propertyUpdate);
-        this._bindings.push(u);
-        this._dataObject && this._startBinding(u)
-    }
-    ;
-    n.prototype._startBinding = function(n) {
-        var t = this._binder;
-        t ? n.binder !== t && (n.binder = t,
-        n.accessor = t.createAccessor(n.onUpdate)) : n.accessor = this._dataObject;
-        this._updateBinding(n, n.priority)
-    }
-    ;
-    n.prototype._updateBinding = function(n, t) {
-        t === i.Priority.synchronous ? n.callback.call(n.context, n.accessor) : this._jobSet.addUIJob(n.context, n.callback, [n.accessor], t)
-    }
-    ;
-    o = n.addClassNameToOptions = function(n, t) {
-        return t ? t.className ? t.className += " " + n : t.className = n : t = {
-            className: n
-        },
-        t
-    }
-    ;
-    t = n.getOption = function(n, t, i) {
-        var r = i;
-        return n && (r = n[t],
-        r === undefined && (r = i)),
-        r
-    }
-    ;
-    r.prototype.bind = function(n, t, i) {
-        this._identityControl._bind(n, t, i)
-    }
-    ;
-    r.prototype.getUI = function(n, t) {
-        return this._identityControl._getUI(n, t, true)
-    }
-    ;
-    r.prototype.getSelectionManager = function() {
-        return this._identityControl._selectionManager
-    }
-    ;
-    r.prototype.getDataObject = function() {
-        return this._identityControl._dataObject
-    }
-    ;
-    u = function() {
-        var t = new i.Scheduler
-          , n = t.getJobSet();
-        return u = function() {
-            return n
+        });
+
+        // Activate it on the provided HTML node
+        clonedControl.activateUI(clonedNode);
+
+        return clonedControl;
+    };
+
+    IdentityControl.prototype.shutdownUI = function () {
+        ///<summary>Must be called when the IC is no longer used, to kill circular references between this 
+        ///control and the platform.</summary>
+        this._closeTooltip();
+        if (this._ownJobSet) {
+            this._jobSet.dispose();
+            this._jobSet = null;
+            this._ownJobSet = false;
         }
-        ,
-        n
+
+        if (this._binder) {
+            this._binder.dispose();
+            this._binder = null;
+        }
+        this._dataObject = null;
+
+        var interactive = getOption(this._options, "interactive", true);
+        var elements = this._elements;
+        var host = this._elementHost;
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            elements[i].element.shutdownUI(host);
+        }
+    };
+
+    var events = [ "click" , "MSPointerDown", "keydown", "beforeopen" ];
+    IdentityControl.prototype.attachBehaviors = function (node) {
+        ///<summary>Attachs interactive behaviors (click/contextmenu/tooltip/etc) to a top-level node
+        ///of an IC</summary>
+        ///<param name="node" type="HTMLElement"/>
+        Debug.assert(Jx.isHTMLElement(node));
+        var listener = this._onDomEvent.bind(this, node);
+        events.forEach(function (evt) { 
+            node.addEventListener(evt, listener, false);
+        });
+        if (getOption(this._options, "onRightClick")) {
+            node.addEventListener("contextmenu", listener, false);
+            node.addEventListener("MSHoldVisual", function (ev) { ev.preventDefault(); }, false); // We only want to handle right clicks with onContextMenu, so suppress the context menu hint.
+        }
+    };
+
+    IdentityControl.prototype._addTooltip = function () {
+        ///<summary>Schedules the tooltip to be added later, to mitigate its expense</summary>
+        if (this._needsTooltip) {
+            this._jobSet.addUIJob(this, /*@bind(IdentityControl)*/function () {
+                if (this._needsTooltip) {
+                    this._needsTooltip = false;
+
+                    var elements = this._elements;
+                    for (var i = 0, len = elements.length; i < len; ++i) {
+                        var element = /*@static_cast(IdentityControlElementData)*/elements[i];
+                        if (!element.nested) {
+                            var node = element.node;
+                            var tooltip = element.tooltip = new WinJS.UI.Tooltip(node);
+                        }
+                    }
+                }
+            }, null, P.Priority.tooltip);
+        }
+    };
+
+    IdentityControl.prototype._closeTooltip = function () {
+        ///<summary>Closes any opened tooltip in response to this control being destroyed or recycled</summary>
+        var elements = this._elements;
+        for (var i = 0, len = elements.length; i < len;  ++i) {
+            var tooltip = /*@static_cast(WinJS.UI.Tooltip)*/elements[i].tooltip;
+            if (tooltip) {
+                tooltip.close();
+            }
+        }
+    };
+
+    IdentityControl.prototype._onDomEvent = function (node, event) {
+        ///<summary>All events on the IC use a single listener to avoid the cost at creation of repetitive binds</summary>
+        ///<param name="node" type="HTMLElement">The node to which this event was bound in attachBehaviors</param>
+        ///<param name="event" type="Event"/>
+        Debug.assert(Jx.isHTMLElement(node));
+        Debug.assert(Jx.isObject(event));
+        switch (event.type) {
+            case "click": this._onClick(node, event); break;
+            case "pointerdown":
+            case "MSPointerDown":
+                this._onPointerDown(node, event);
+                break;
+            case "keydown": this._onKeyDown(node, event); break;
+            case "beforeopen": this._onTooltip(node); break;
+            case "contextmenu": this._onContextMenu(node, event); break;
+        }
+    };
+
+    IdentityControl.prototype._onPointerDown = function (node, event) {
+        ///<summary>Pointer down handler, starts the press animation</summary>
+        ///<param name="node" type="HTMLElement"/>
+        ///<param name="event" type="Event"/>
+        Debug.assert(Jx.isHTMLElement(node));
+        Debug.assert(Jx.isObject(event));
+
+        var dataObject = this._dataObject;
+        if (dataObject !== null && getOption(this._options, "pressEffect", true)) {
+            var supportsRightClick = getOption(this._options, "onRightClick");
+            P.Animation.startTapAnimation(node, event, supportsRightClick); 
+        }
+    };
+    IdentityControl.prototype._onClick = function (node, event) {
+        ///<summary>Click handler</summary>
+        ///<param name="node" type="HTMLElement"/>
+        ///<param name="event" type="Event"/>
+        Debug.assert(Jx.isHTMLElement(node));
+        Debug.assert(Jx.isObject(event));
+        event.stopPropagation();
+
+        var dataObject = this._dataObject;
+        if (dataObject !== null) {
+            var override = getOption(this._options, "onClick");
+            if (!override || override(dataObject, node, event)) {
+                P.IdentityControlActions.primaryAction(dataObject, node);
+            }
+        }
+    };
+
+    IdentityControl.prototype._onContextMenu = function (node, event) {
+        ///<summary>Context menu handler, to detect right clicks</summary>
+        ///<param name="node" type="HTMLElement"/>
+        ///<param name="event" type="Event"/>
+        if (event.which === 3) { // Mouse event
+            var dataObject = this._dataObject;
+            if (dataObject !== null) {
+                var onRightClick = getOption(this._options, "onRightClick");
+                Debug.assert(onRightClick, "We should not have subscribed this event without a handler");
+
+                event.stopPropagation();
+                event.preventDefault();
+                onRightClick(dataObject, node);
+            }
+        }
+    };
+
+    IdentityControl.prototype._onKeyDown = function (node, event) {
+        ///<summary>Keydown handler</summary>
+        ///<param name="node" type="HTMLElement"/>
+        ///<param name="event" type="Event"/>
+        Debug.assert(Jx.isHTMLElement(node));
+        Debug.assert(Jx.isObject(event));
+        if (event.key === "Spacebar" || (event.key === "Enter" && !this._selectionManager)) {
+            event.stopPropagation();
+            event.preventDefault();
+            this._onClick(node, event);
+        }
+    };
+
+    IdentityControl.prototype._onTooltip = function (node) {
+        ///<summary>Tooltip event handler</summary>
+        ///<param name="node" type="HTMLElement"/>
+        var tooltip = "";
+        var dataObject = this._dataObject;
+        if (dataObject) {
+            tooltip = this._getTextLabel(dataObject, "getTooltip");
+        }
+
+        // Set the tooltip into the PAC tooltip control requires converting it to HTML.
+        var tooltipControl = node.winControl;
+        var html = "";
+        if (Jx.isNonEmptyString(tooltip)) {
+            html = tooltip.split("\n").map(function (line) {
+                return "<div class='ic-tooltip'>" + Jx.escapeHtml(line) + "</div>"; }
+            ).join("");
+        }
+        tooltipControl.innerHTML = html;
+
+        // Windows 8 Bug #450298:  if the view is scrolled while the tooltip is showing, the tooltip control does not 
+        // update its position or dismiss.
+        for (var parentElement = node.parentElement; parentElement; parentElement = parentElement.parentElement) {
+            if (getComputedStyle(parentElement).overflow === "scroll") {
+                break;
+            }
+        }
+        if (parentElement) {
+            node.addEventListener("opened", function tooltipOpened() {
+                node.removeEventListener("opened", tooltipOpened, false);
+
+                var parentScrolled = function () { tooltipControl.close(); };
+                parentElement.addEventListener("scroll", parentScrolled, false);
+
+                node.addEventListener("closed", function tooltipClosed() {
+                    node.removeEventListener("closed", tooltipClosed, false);
+                    parentElement.removeEventListener("scroll", parentScrolled, false);
+                }, false);
+            }, false);
+        }
+    };
+
+    IdentityControl.prototype._getTextLabel = function (dataObject, overrideName) {
+        /// <summary>Gets the label text (tooltip or aria-label) for this control</summary>
+        /// <param name="dataObject">The person/recipient/contact/literal, or a bound accessor to the same</param>
+        /// <param name="overrideName" type="String">The override in the options that will adjust this text</param>
+
+        var host = this._elementHost;
+        // The default tooltip/label contains the name.
+        // But we'll add a line for any element that supports it (StatusIndicator).
+        var text = [P.IdentityElements.Name.getName(dataObject)].concat(
+            this._elements.map(function (/*@type(IdentityControlElementData)*/item) {
+                if (item.element.getTooltip) {
+                    return item.element.getTooltip(host, dataObject, item.nested);
+                } else {
+                    return null;
+                }
+            }).filter(Jx.isNonEmptyString)
+        ).join("\n");
+
+        // The override can modify/replace the label string any way it likes.
+        var override = getOption(this._options, overrideName);
+        if (override) {
+            text = override(dataObject, text);
+        }
+
+        return text;
+    };
+
+    IdentityControl.prototype._updateLabel = function (dataObject) {
+        /// <summary>Updates the aria-label for this control</summary>
+        /// <param name="dataObject">A bound accessor</param>
+        var text = this._getTextLabel(dataObject, "getLabel");
+
+        var elements = this._elements;
+        for (var i = 0, len = elements.length; i < len; ++i) {
+            var element = elements[i];
+            if (!element.nested) { 
+                element.node.setAttribute("aria-label", text);
+            }
+        }
+    };
+
+    IdentityControl.prototype._clearDataObject = function () {
+        ///<summary>Clears the current data object</summary>
+        Debug.assert(Jx.isObject(this._dataObject));
+
+        var binder = this._binder;
+        if (binder !== null) {
+           this._binder = null;
+           this._lastBinder = binder;
+           this._lastBinderType = this._dataObject.objectType;
+           binder.dispose();
+        }
+
+        this._dataObject = null;
+    };
+
+    IdentityControl.prototype._setDataObject = function (/*@dynamic*/dataObject) {
+        ///<summary>Stores the given data object</summary>
+        ///<param name="dataObject">An IPerson, IRecipient, IContact or object literal</param>
+        Debug.assert(Jx.isObject(dataObject));
+        Debug.assert(Jx.isNullOrUndefined(this._dataObject));
+
+        if (dataObject.getPlatformObject) {
+            // unwrap any accessor passed in, this code handles its own notifications and lifetime
+            dataObject = dataObject.getPlatformObject();
+        }
+
+        this._dataObject = dataObject;
+
+        // Get a binder if we need one
+        var objectType = dataObject.objectType;
+        if (objectType !== "literal") { 
+             if (this._lastBinderType === objectType) { // See if we can reuse the last binder
+                 var binder = this._binder = this._lastBinder;
+                 binder.setObject(dataObject);
+             } else {
+                 // If not, create a new binder
+                 this._binder = new P.PlatformObjectBinder(dataObject);
+             }
+        }
+
+        // The last binder has now either been reused or replaced.  Discard it.
+        this._lastBinder = null;
+        this._lastBinderType = "";
+    };
+
+    IdentityControl.prototype._bind = function (callback, /*@dynamic*/context, priority) {
+        ///<summary>When another object wants access to our dataObject, it will "bind" to it.  That means it will receive an accessor to the data, and calls to its callback whenever that data changes.  The accessor will track internally which
+        ///changes the caller is interested in by monitoring what they access.</summary>
+        var binding = { callback: callback, context: context, priority: priority, binder: null, accessor: null };
+        binding.onUpdate = this._updateBinding.bind(this, binding, P.Priority.propertyUpdate);
+        this._bindings.push(binding);
+        if (this._dataObject) { // If we already have data, serve it up now
+            this._startBinding(binding);
+        }
+    };
+
+    IdentityControl.prototype._startBinding = function (binding) {
+        ///<summary>Given a binding (a request from another object for access to our dataObject), run it.  This means preparing an accessor that will watch what data the binding is accessing, hooking it up for notifications on that accessor,
+        /// and giving it its first call at the priority it has specified.</summary>
+        ///<param name="binding" type="IdentityControlBinding"/>
+        var binder = this._binder;
+        if (binder) {
+            if (binding.binder !== binder) {
+                binding.binder = binder;
+                binding.accessor = binder.createAccessor(binding.onUpdate);
+            }
+        } else {
+            binding.accessor = this._dataObject;
+        }
+        this._updateBinding(binding, binding.priority);
+    };
+
+    IdentityControl.prototype._updateBinding = function (binding, priority) {
+        ///<summary>Calls the callback associated with the specified binding at the desired priority</summary>
+        ///<param name="binding" type="IdentityControlBinding"/>
+        ///<param name="priority"/> type="P.Priority"
+        if (priority === P.Priority.synchronous) {
+            binding.callback.call(binding.context, binding.accessor);
+        } else {
+            this._jobSet.addUIJob(binding.context, binding.callback, [ binding.accessor ], priority);
+        }
+    };
+
+    var addClassNameToOptions = IdentityControl.addClassNameToOptions = function (className, /*@dynamic*/options) {
+        ///<summary>A static helper function: given an option struct and a className, returns a new option struct
+        ///that combines the two</summary>
+        ///<param name="className" type="String"/>
+        ///<param name="options" optional="true"/>
+        ///<returns type="Object"/>
+        Debug.assert(Jx.isNonEmptyString(className));
+        Debug.assert(Jx.isNullOrUndefined(options) || Jx.isObject(options));
+        if (options) {
+            if (options.className) {
+                options.className += " " + className;
+            } else {
+                options.className = className;
+            }
+        } else {
+            options = { className: className };
+        }
+        return options;
+    };
+    var getOption = IdentityControl.getOption = function (options, optionName, /*@dynamic*/defaultValue) {
+        ///<summary>A static helper function: given an options struct, returns the specified option.  If not present, 
+        ///returns the provided default</summary>
+        ///<param name="options" type="Object"/>
+        ///<param name="optionName" type="String"/>
+        ///<param name="defaultValue" optional="true"/>
+        Debug.assert(Jx.isNullOrUndefined(options) || Jx.isObject(options));
+        Debug.assert(Jx.isNonEmptyString(optionName));
+        var value = defaultValue;
+        if (options) {
+            value = options[optionName];
+            if (value === undefined) {
+                value = defaultValue;
+            }
+        }
+        return value;
+    };
+
+    /*@constructor*/ function ElementHost(identityControl) {
+        ///<summary>The ElementHost acts as a private interface on IdentityControl.  It is provided to
+        ///IdentityElements.</summary>
+        ///<param name="identityControl" type="IdentityControl"/>
+        this._identityControl = identityControl;
     }
-})
+    ElementHost.prototype.bind = function (callback, context, priority) {
+        this._identityControl._bind(callback, context, priority);
+    };
+    ElementHost.prototype.getUI = function (elementType, options) {
+        ///<summary>Creates a child element and returns its HTML</summary>
+        ///<param name="elementType" type="Function"/>
+        ///<param name="options" optional="true" type="Object"/>
+        ///<returns type="String"/>
+        return this._identityControl._getUI(elementType, options, true /*nested*/);
+    };
+    ElementHost.prototype.getSelectionManager = function () {
+        ///<summary>Gets the selection manager object provided in the options.</summary>
+        return this._identityControl._selectionManager;
+    };
+    ElementHost.prototype.getDataObject = function () {
+        ///<summary>Gets the current data object.</summary>
+        return this._identityControl._dataObject;
+    };
+
+    var getParentJobSet = function () {
+        // If the client doesn't provide a jobset, we'll use a global scheduler for all of their ICs,
+        // but that activity won't be coordinated with / prioritized against any other scheduled work
+        // on the page.
+        var scheduler = new P.Scheduler();
+        var jobSet = scheduler.getJobSet();
+        getParentJobSet = function () { return jobSet; };
+        return jobSet;
+    };
+
+    Debug.only(IdentityControl = Debug.leaks.createInstrumentedConstructor(IdentityControl, "People.IdentityControl"));
+
+});

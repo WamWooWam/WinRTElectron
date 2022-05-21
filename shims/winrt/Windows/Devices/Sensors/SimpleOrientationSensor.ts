@@ -13,23 +13,28 @@ import { TypedEventHandler } from "../../Foundation/TypedEventHandler`2";
 
 @GenerateShim('Windows.Devices.Sensors.SimpleOrientationSensor')
 export class SimpleOrientationSensor { 
+
     getCurrentOrientation(): SimpleOrientation {
-        throw new Error('SimpleOrientationSensor#getCurrentOrientation not implemented')
-    }
-    static getDefault(): SimpleOrientationSensor {
-        throw new Error('SimpleOrientationSensor#getDefault not implemented')
+        // throw new Error('SimpleOrientationSensor#getCurrentOrientation not implemented')
+        return SimpleOrientation.notRotated;
     }
 
-    #orientationChanged: Set<TypedEventHandler<SimpleOrientationSensor, SimpleOrientationSensorOrientationChangedEventArgs>> = new Set();
+    private static __instance: SimpleOrientationSensor = new SimpleOrientationSensor();
+    static getDefault(): SimpleOrientationSensor {
+        // throw new Error('SimpleOrientationSensor#getDefault not implemented')
+        return this.__instance;
+    }
+
+    __orientationChanged: Set<TypedEventHandler<SimpleOrientationSensor, SimpleOrientationSensorOrientationChangedEventArgs>> = new Set();
     @Enumerable(true)
     set onorientationchanged(handler: TypedEventHandler<SimpleOrientationSensor, SimpleOrientationSensorOrientationChangedEventArgs>) {
-        this.#orientationChanged.add(handler);
+        this.__orientationChanged.add(handler);
     }
 
     addEventListener(name: string, handler: any) {
         switch (name) {
             case 'orientationchanged':
-                this.#orientationChanged.add(handler);
+                this.__orientationChanged.add(handler);
                 break;
         }
     }
@@ -37,7 +42,7 @@ export class SimpleOrientationSensor {
     removeEventListener(name: string, handler: any) {
         switch (name) {
             case 'orientationchanged':
-                this.#orientationChanged.delete(handler);
+                this.__orientationChanged.delete(handler);
                 break;
         }
     }

@@ -1,1 +1,46 @@
-﻿Share.AppSettings=function(){this._settingsContainer=Jx.appData.roamingSettings().container("Mail");var n=this.settingsKeys,t=[{propertyName:"composeFontFamily",containerKey:n.composeFontFamily},{propertyName:"composeFontSize",containerKey:n.composeFontSize},{propertyName:"composeFontColor",containerKey:n.composeFontColor}];t.forEach(function(n){var t=this._settingsContainer.get(n.containerKey);Object.defineProperty(this,n.propertyName,{get:function(){return t}})},this)};Share.AppSettings.prototype.settingsKeys={composeFontFamily:"compose-font-family",composeFontSize:"compose-font-size",composeFontColor:"compose-font-color"};Share.AppSettings.prototype.dispose=function(){this._settingsContainer.dispose()}
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="..\..\..\Shared\Jx\Core\Jx.dep.js" />
+
+Share.AppSettings = function () {
+    this._settingsContainer = Jx.appData.roamingSettings().container("Mail");
+    
+    var keys = this.settingsKeys;
+    var composeSettings = [
+    {
+        propertyName: "composeFontFamily",
+        containerKey: keys.composeFontFamily,
+    },
+    {
+        propertyName: "composeFontSize",
+        containerKey: keys.composeFontSize,
+    },
+    {
+        propertyName: "composeFontColor",
+        containerKey: keys.composeFontColor,
+    }
+    ];
+
+    composeSettings.forEach(function (composeSetting) {
+        var currentSetting = this._settingsContainer.get(composeSetting.containerKey);
+
+        Object.defineProperty(this, composeSetting.propertyName, {
+            get: function () {
+                return currentSetting;
+            }
+        });
+    },this);
+};
+
+Share.AppSettings.prototype.settingsKeys = {
+    composeFontFamily: "compose-font-family",
+    composeFontSize: "compose-font-size",
+    composeFontColor: "compose-font-color"
+};
+
+Share.AppSettings.prototype.dispose = function () {
+    this._settingsContainer.dispose();
+};

@@ -14,19 +14,20 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.VideoMessage')
 export class VideoMessage implements IClosable { 
-    static vod_STATUS_VOD_PLAYABLE_LOCAL: number = null;
-    static vod_STATUS_VOD_PLAYABLE: number = null;
-    static vod_STATUS_VOD_CONVERTING: number = null;
-    static vod_STATUS_VOD_NOT_AVAILABLE: number = null;
-    static status_EXPIRED: number = null;
-    static status_DELETED: number = null;
-    static status_INVALID: number = null;
-    static status_CANCELED: number = null;
-    static status_FAILED: number = null;
-    static status_UPLOADED: number = null;
-    static status_UPLOADING: number = null;
-    static status_RECORDED: number = null;
-    static status_BLANK: number = null;
+    static vod_STATUS_VOD_PLAYABLE_LOCAL: number = 3;
+    static vod_STATUS_VOD_PLAYABLE: number = 2;
+    static vod_STATUS_VOD_CONVERTING: number = 1;
+    static vod_STATUS_VOD_NOT_AVAILABLE: number = 0;
+    static status_EXPIRED: number = 8;
+    static status_DELETED: number = 7;
+    static status_INVALID: number = 6;
+    static status_CANCELED: number = 5;
+    static status_FAILED: number = 4;
+    static status_UPLOADED: number = 3;
+    static status_UPLOADING: number = 2;
+    static status_RECORDED: number = 1;
+    static status_BLANK: number = 0;
+    
     getObjectID(): number {
         throw new Error('VideoMessage#getObjectID not implemented')
     }

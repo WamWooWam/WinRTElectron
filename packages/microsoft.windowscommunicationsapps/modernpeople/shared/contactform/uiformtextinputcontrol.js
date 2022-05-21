@@ -1,1 +1,214 @@
-﻿Jx.delayDefine(People,"UiFormTextInputControl",function(){function r(n){return n?n.replace(/^\s+|\s+$/g,""):n}function u(n,t,i,r,u,f){var s=f?f:"",e=i.getFieldMaxLength(r,u),o;e&&(n.maxLength=e);n.setAttribute("aria-label",i.getString("fieldTitle",r,null));n.value=s;n.addEventListener("blur",function(){try{t.validate()}catch(n){}return false});u.showPlaceholder&&(o=i.getString("fieldPlaceholder",r,u.locId),n.setAttribute("placeholder",o));i.setCssStyle(n,"fieldInput");u.readonly&&(n.readonly="readonly",i.setCssStyle(n,"readonly"));t._$input=n;t._$div=n}function f(n,t,i,r,u){var c=u?u:"",o=r.lines||1,f=null,s,e,h;if(o>1)f=document.createElement("textarea"),f.setAttribute("autocomplete","off"),f.setAttribute("spellcheck","false"),f.rows=o;else{s=r.htmlType||r.type||"text";f=document.createElement("input");f.setAttribute("autocomplete","off");f.setAttribute("spellcheck","false");try{f.type=s}catch(l){f.type="text"}}f.name=i;f.id="editInput_"+i;e=t.getFieldMaxLength(i,r);e&&(f.maxLength=e);f.setAttribute("aria-labelledby","editLabel_"+i);f.value=c;f.addEventListener("blur",function(){try{n.validate()}catch(t){}return false});r.showPlaceholder&&(h=t.getString("fieldPlaceholder",i,r.locId),f.setAttribute("placeholder",h));t.setCssStyle(f,"fieldInput");r.readonly&&(f.readonly="readonly",t.setCssStyle(f,"readonly"));n._$input=f;n._$div=f}function t(n,t,i,r,e,o){this._$uiform=n;this._$fieldName=i;this._$fieldAttr=r;this._$validator=o;var s=t.querySelector("#editInput_"+i);s?u(s,this,n,i,r,e):(f(this,n,i,r,e),t.appendChild(this._$div))}var i=window.People,n;i.UiFormTextInputControl=t;n=t.prototype;n._$input=null;n.getValue=function(){return r(this._$input.value)};n.setValue=function(n){var t=this._$input;t.value=n;t.placeholder&&(t.placeholder=t.placeholder)};n.setFocus=function(){this._$input.focus()};n.validate=function(){return this._$validator?this._$validator(this._$uiform,this._$fieldName,this._$fieldAttr,this.getValue()):true};n.compare=function(n){return this.compareValues(this.getValue(),n)};n.compareValues=function(n,t){return n===null&&t===null?true:n!==null&&n!==""?String(n)===String(t):Jx.isNullOrUndefined(t)||t===""?true:String(n)===String(t)};n.isEmpty=function(){var n=this.getValue();return n===null||n===undefined||n===""}})
+﻿
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+
+///<reference path="../../Shared/JSUtil/Namespace.js"/>
+///<reference path="../../../Shared/Jx/Core/Jx.js"/>
+///<reference path="./uiform.js"/>
+/// <dictionary>uiform,Attr,Multiline</dictionary>
+
+Jx.delayDefine(People, "UiFormTextInputControl", function () {
+
+    var P = window.People;
+
+    // ---------------------------------------------------------------------------------------------------------------
+
+    function _trim(value) {
+        /// <param name="value" type="String" />
+        if (value) {
+            return value.replace(/^\s+|\s+$/g, '');
+        }
+        return value;
+    };
+
+    function _bindInputControl(fieldInput, control, uiform, fieldName, fieldAttr, value) {
+        /// <param name="fieldInput" type="HTMLElement">The existing DOM Element.</param>
+        /// <param name="control" type="People.UiFormTextInputControl">The control.</param>
+        /// <param name="uiform" type="People.UiForm">This is the owning uiform for the input control.</param>
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="value" type="String" />
+
+        var fieldValue = (value ? value : "");
+        var maxLength = uiform.getFieldMaxLength(fieldName, fieldAttr);
+        if (maxLength) {
+            fieldInput.maxLength = maxLength;
+        }
+        fieldInput.setAttribute("aria-label", uiform.getString("fieldTitle", fieldName, null));
+
+        fieldInput.value = fieldValue;
+        fieldInput.addEventListener("blur", function () {
+            var output = false;
+            try {
+                control.validate();
+            } catch (e) {
+            }
+            return output;
+        });
+        // Due to a bug with the placeholder text we need to set the placeholder AFTER the value
+        // otherwise the placeholder does not show.
+        if (fieldAttr.showPlaceholder) {
+            var fieldTitleString = uiform.getString("fieldPlaceholder", fieldName, fieldAttr.locId);
+            fieldInput.setAttribute("placeholder", fieldTitleString);
+        }
+
+        uiform.setCssStyle(fieldInput, "fieldInput");
+        if (fieldAttr.readonly) {
+            fieldInput.readonly = "readonly";
+            uiform.setCssStyle(fieldInput, "readonly");
+        }
+        control._$input = fieldInput;
+        control._$div = fieldInput;
+    };
+
+    function _createInputControl(control, uiform, fieldName, fieldAttr, value) {
+        /// <param name="control" type="People.UiFormTextInputControl">The control.</param>
+        /// <param name="uiform" type="People.UiForm">This is the owning uiform for the input control.</param>
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="value" type="String" />
+
+        var fieldValue = (value ? value : "");
+        var lines = fieldAttr.lines || 1;
+        var fieldInput = null;
+        if (lines > 1) {
+            // Multiline field required
+            fieldInput = document.createElement("textarea");
+            fieldInput.setAttribute("autocomplete", "off");
+            fieldInput.setAttribute("spellcheck", "false");
+            fieldInput.rows = lines;
+        } else {
+            var fieldType = fieldAttr.htmlType || fieldAttr.type || "text";
+            fieldInput = document.createElement("input");
+            fieldInput.setAttribute("autocomplete", "off");
+            fieldInput.setAttribute("spellcheck", "false");
+            try {
+                fieldInput.type = fieldType;
+            } catch (e) {
+                // work around a test platform issue where the PAC controls are not supported
+                fieldInput.type = 'text';
+            }
+        }
+        fieldInput.name = fieldName;
+        fieldInput.id = "editInput_" + fieldName;
+
+        var maxLength = uiform.getFieldMaxLength(fieldName, fieldAttr);
+        if (maxLength) {
+            fieldInput.maxLength = maxLength;
+        }
+        fieldInput.setAttribute('aria-labelledby', 'editLabel_' + fieldName);
+
+        fieldInput.value = fieldValue;
+        fieldInput.addEventListener("blur", function () {
+            var output = false;
+            try {
+                control.validate();
+            } catch (e) {
+            }
+            return output;
+        });
+        // Due to a bug with the placeholder text we need to set the placeholder AFTER the value
+        // otherwise the placeholder does not show.
+        if (fieldAttr.showPlaceholder) {
+            var fieldTitleString = uiform.getString("fieldPlaceholder", fieldName, fieldAttr.locId);
+            fieldInput.setAttribute("placeholder", fieldTitleString);
+        }
+
+        uiform.setCssStyle(fieldInput, "fieldInput");
+        if (fieldAttr.readonly) {
+            fieldInput.readonly = "readonly";
+            uiform.setCssStyle(fieldInput, "readonly");
+        }
+        control._$input = fieldInput;
+        control._$div = fieldInput;
+    }
+
+    // UiFormTextInputControl
+    P.UiFormTextInputControl = UiFormTextInputControl;
+    /* @constructor */function UiFormTextInputControl(uiform, container, fieldName, fieldAttr, value, validator) {
+        /// <summary>
+        /// A Simple Input field.
+        /// </summary>
+        /// <param name="uiform" type="People.UiForm">This is the owning uiform for the input control.</param>
+        /// <param name="container" type="HTMLElement" >This is the container item for the UiFormTextInputControl.</param>
+        /// <param name="fieldName" type="String" />
+        /// <param name="fieldAttr" type="_UiFormFieldAttrib" />
+        /// <param name="value" type="Object" />
+        /// <param name="validator" type="_UiFormInputValidator" />
+
+        this._$uiform = uiform;
+        this._$fieldName = fieldName;
+        this._$fieldAttr = fieldAttr;
+        this._$validator = validator;
+
+        var existing = container.querySelector("#editInput_" + fieldName);
+        if (!existing) {
+        	_createInputControl(this, uiform, fieldName, fieldAttr, value);
+
+        	// Add to the display container
+        	container.appendChild(this._$div);
+        } else {
+            // Bind to an existing element in the container
+            _bindInputControl(existing, this, uiform, fieldName, fieldAttr, value);
+        }
+    };
+
+    
+    UiFormTextInputControl.__class = true;
+    
+
+    /// <disable>JS2076.IdentifierIsMiscased</disable>
+    var UiFormTextInputControlPrototype = UiFormTextInputControl.prototype;
+    /* @type(HTMLInputElement) */UiFormTextInputControlPrototype._$input = null;
+
+    UiFormTextInputControlPrototype.getValue = function () {
+        return _trim(this._$input.value);
+    };
+
+    UiFormTextInputControlPrototype.setValue = function (newValue) {
+        var fieldInput = this._$input;
+        fieldInput.value = newValue;
+
+        if (fieldInput.placeholder) {
+            // Due to a bug with the placeholder text we need to RESET the placeholder AFTER the value
+            // otherwise the placeholder does not show.
+            fieldInput.placeholder = fieldInput.placeholder;
+        }
+    };
+
+    UiFormTextInputControlPrototype.setFocus = function () {
+        this._$input.focus();
+    };
+
+    UiFormTextInputControlPrototype.validate = function () {
+        if (this._$validator) {
+            return this._$validator(this._$uiform, this._$fieldName, this._$fieldAttr, this.getValue());
+        }
+        return true;
+    };
+
+    UiFormTextInputControlPrototype.compare = function (existingValue) {
+        return this.compareValues(this.getValue(), existingValue);
+    };
+
+    UiFormTextInputControlPrototype.compareValues = function (currentValue, existingValue) {
+        if (currentValue === null && existingValue === null) {
+            return true;
+        }
+        // Treat null, undefined and '' as the same (for now)
+        if (currentValue !== null && currentValue !== "") {
+            return (String(currentValue) === String(existingValue));
+        }
+        // Treat null, undefined and '' as the same (for now)
+        if (Jx.isNullOrUndefined(existingValue) || existingValue === "") {
+            return true;
+        }
+
+        return String(currentValue) === String(existingValue);
+    };
+
+    UiFormTextInputControlPrototype.isEmpty = function () {
+        var value = this.getValue();
+        return value === null || value === undefined || value === "";    
+    };
+
+});

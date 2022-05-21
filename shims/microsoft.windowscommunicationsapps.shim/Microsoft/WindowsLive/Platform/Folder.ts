@@ -24,7 +24,8 @@ import { MailView } from "./MailView";
 export class Folder extends PlatformObject implements IFolder {
     constructor(view?: MailView) {
         super("Folder");
-        if(view) {
+        if (view) {
+            this.accountId = view.accountId;
             this.folderType = FolderType.mail;
             this.folderName = "Inbox";
             this.syncStatus = 0;
@@ -41,15 +42,15 @@ export class Folder extends PlatformObject implements IFolder {
     folderType: FolderType = null;
     folderName: string = null;
     accountId: string = null;
-    readonly canHaveChildren: boolean = null;
-    readonly canMove: boolean = null;
-    readonly canRename: boolean = null;
-    readonly hasProcessedConversations: boolean = null;
-    readonly hasSynced: boolean = null;
-    readonly isFolderThreadingCapable: boolean = null;
-    readonly isLocalMailFolder: boolean = null;
-    readonly isPinnedToNavPane: boolean = null;
-    readonly selectionDisabled: boolean = null;
+    readonly canHaveChildren: boolean = true;
+    readonly canMove: boolean = true;
+    readonly canRename: boolean = true;
+    readonly hasProcessedConversations: boolean = true;
+    readonly hasSynced: boolean = true;
+    readonly isFolderThreadingCapable: boolean = true;
+    readonly isLocalMailFolder: boolean = true;
+    readonly isPinnedToNavPane: boolean = false;
+    readonly selectionDisabled: boolean = false;
     readonly specialContactFolderType: ContactFolderType = null;
     readonly specialMailFolderType: MailFolderType = null;
     readonly syncFolderContents: boolean = null;

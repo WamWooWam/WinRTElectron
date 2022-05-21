@@ -28,7 +28,10 @@ export class Uri implements IStringable {
     get query(): string { return this._url.search; }
     set query(value: string) { this._url.search = value; }
     get rawUri(): string { return this._rawUri; }
-    get schemeName(): string { return this._url.protocol; }
+    get schemeName(): string {
+        // URL returns the : at the end of the scheme, WinRT does not.
+        return this._url.protocol.substr(0, this._url.protocol.length - 1);
+    }
     get suspicious(): boolean { return false; }
     get userName(): string { return this._url.username; }
     get queryParsed(): WwwFormUrlDecoder { return new WwwFormUrlDecoder(this._url.search); }

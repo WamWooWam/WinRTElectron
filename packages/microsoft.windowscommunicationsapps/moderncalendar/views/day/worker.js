@@ -1,1 +1,600 @@
-﻿(function(){function i(n){Jx.mark("DayWorker."+n+",StartTA,Calendar")}function r(n){Jx.mark("DayWorker."+n+",StopTA,Calendar")}function u(t){var i=t.start?'<div class="startTime" aria-hidden="true">'+t.start+"<\/div>":"",r=t.end?'<div class="endTime" aria-hidden="true">'+t.end+"<\/div>":"";return'<div id="'+n.getIdFromEventHandle(t.handle,t.isCrossDay)+'" data-handle="'+t.handle+'" class="'+t.className+'" tabindex="0" data-status="'+t.status+'" role="button" aria-label="'+Jx.escapeHtml(t.label)+'" style="color:'+t.color+'"><div class="glyph" style="background-color:'+t.color+';"><div class="glyphInner"><\/div><\/div>'+i+'<div class="subject" aria-hidden="true">'+Jx.escapeHtml(t.subject)+"<\/div>"+r+'<div class="overlay"><\/div><\/div>'}function f(n){var t=n.location?"("+Jx.escapeHtml(n.location)+")":"";return'<span class="subject">'+Jx.escapeHtml(n.subject)+'<\/span> <span class="location">'+t+"<\/span>"}function e(n){return'<div class="subject">'+Jx.escapeHtml(n.subject)+'<\/div><div class="location">'+Jx.escapeHtml(n.location)+"<\/div>"}function o(t){var i=t.isOneLine?f(t):e(t);return'<div id="'+n.getIdFromEventHandle(t.handle,t.isCrossDay)+'" data-handle="'+t.handle+'" class="'+t.className+'" tabindex="0" data-status="'+t.status+'" role="button" aria-label="'+Jx.escapeHtml(t.label)+'" style="position:absolute;top:'+t.top+"%;"+t.dir+":"+t.left+"%;width:"+t.width+";height:"+t.height+"%;color:"+t.color+';"><div class="glyph" style="background-color: '+t.color+";"+t.glyphHeight+';"><div class="glyphInner"><\/div><\/div><div class="details" aria-hidden="true">'+i+'<\/div><div class="overlay"><\/div><\/div>'}var n=Calendar.Helpers,t=Calendar.Views.DayWorker=function(i,r,u){this._router=i;this._scheduler=r;this._manager=u;this._requests={};this._updateEvents=this._updateEvents.bind(this);this._router.route("Day/getEvents",this.getEvents,this);this._router.route("Day/setVisible",this.setVisible,this);this._router.route("Day/expandAllDay",this.expandAllDay,this);this._router.route("Day/cancel",this.cancel,this);t._allDayMore||(n.ensureFormats(),t._allDayMore=Jx.res.getFormatFunction("AllDayMore"))};t.prototype.getEvents=function(n){var u=n.id,t=n.data;t.id=u;t.start=new Date(t.start);t.end=new Date(t.end);i("getEvents");t.collection=this._manager.getEvents(t.start,t.end);t.job=this._scheduler.schedule(this._processEvents,this,[t],t.isVisible);r("getEvents");this._requests[u]=t};t.prototype.setVisible=function(n){var t=n.data;t&&(t.isVisible=n.data,this._scheduler.setVisible(t.job,n.data))};t.prototype.expandAllDay=function(n){var i=n.id,t=this._requests[i];t&&this._scheduler.schedule(this._expandAllDay,this,[t],true)};t.prototype.cancel=function(n){var f,t,u;i("cancel");f=n.id;t=this._requests[f];t&&(u=t.onCollectionChanged,u&&(t.collection.removeEventListener("collectionchanged",u),t.changeTimeout!==true&&clearTimeout(t.changeTimeout)),this._unhookEvents(t),t.collection.dispose(),this._scheduler.cancel(t.job),delete this._requests[n.id]);r("cancel")};t.prototype.dispose=function(){for(var n in this._requests)this.cancel({id:n});this._requests={};this._manager=null;this._scheduler=null;this._router=null};t.prototype._processEvents=function(t){var k;i("_processEvents");var h=new Date(t.start),nt=new Date(h.getFullYear(),h.getMonth(),h.getDate()+1).getTime(),w=h.getTime(),s=n.getCollection(h,nt,t.collection);t.requiresSort&&(s.sort(n.orderEvents),t.requiresSort=false);s.allDay=0;for(var l=[],a={width:1},d=0,e,v,o,g={},u,f=0,c=s.length;f<c;f++){u=s[f];var b=u.winrt,y=b.startDate,p=b.endDate;if(u.isCrossDay=!n.isSameDate(y,p),!b.allDayEvent&&u.isCrossDay&&(k=new Date(y.getTime()),k.setDate(k.getDate()+1),k<=p&&(u.isMultiDay=true)),b.allDayEvent||u.isMultiDay)s.allDay++;else for(u.dayStart=n.isSameDate(h,y)?w+y.getHours()*n.hourInMilliseconds+y.getMinutes()*n.minuteInMilliseconds:w,u.dayEnd=n.isSameDate(h,p)?w+p.getHours()*n.hourInMilliseconds+p.getMinutes()*n.minuteInMilliseconds:w+n.dayInMilliseconds,u.length=u.dayEnd-u.dayStart,u.length<=n.shortEventLength?(u.uiLength=n.shortEventLength,u.uiEnd=u.dayStart+u.uiLength,u.isShort=true):(u.uiLength=u.length,u.uiEnd=u.dayEnd,u.length<=n.mediumEventLength&&(u.isMedium=true)),g[u.uiEnd]=true,e=0;e<=f;e++)if(o=l[e],o||(o={uiEnd:n.zeroYearTime},a.width=e+1),o.uiEnd<=u.dayStart){for(v=e+1;v<a.width&&l[v].uiEnd<=o.dayStart;v++)o.width++;v===a.width&&(o.width=-1);e===0&&d<=u.dayStart&&(a={width:1},l=[]);d=Math.max(d,u.uiEnd);l[e]=u;u.cluster=a;u.position=e;u.width=1;break}}for(f=0,c=a.width;f<c;f++)for(o=l[f],e=f+1;e<c&&l[e].uiEnd<=o.dayStart;e++)o.width++;for(f=0,c=s.length;f<c;f++)u=s[f],g[u.dayStart]&&(u.hasPreviousEvent=true);t.events=s;t.allDayHtml="";t.eventHtml="";t.job=this._scheduler.schedule(this._buildAllDayHtml,this,[t],t.isVisible);r("_processEvents")};t.prototype._buildAllDayHtml=function(n){i("_buildAllDayHtml");var t=n.events,u=n.start;n.allDayHtml=this._getAllDayHtml(t,u,false);n.job=this._scheduler.schedule(this._buildEventHtml,this,[n],n.isVisible);r("_buildAllDayHtml")};t.prototype._getAllDayHtml=function(i,r,f){var y=new Date(r.getFullYear(),r.getMonth(),r.getDate()+1),l=!f&&3<i.allDay,p=l?2:i.allDay,h="",a="event",o,s,e;f&&(a+=" full");for(var c=0,v=0,w=i.length;c<w&&v<p;c++)o=i[c],s=o.winrt,(s.allDayEvent||o.isMultiDay)&&(e=n.getEventUiInfo(s,false),e.className=a,e.start="",e.end="",e.isCrossDay=o.isCrossDay,o.isMultiDay&&(r<=o.start?e.start=n.simpleTime.format(s.startDate):o.end<=y&&(e.end=n.simpleTime.format(s.endDate))),h+=u.call(this,e),v++);return l&&(h+="<div class='more' tabIndex='0' role='button'>"+Jx.escapeHtml(t._allDayMore(i.allDay-2))+"<\/div>"),h};t.prototype._buildEventHtml=function(t){var h,y,s,p,u,c,f;for(i("_buildEventHtml"),h=t.events,y=t.start,s=0,p=h.length;s<p;s++)if(u=h[s],c=u.winrt,!c.allDayEvent&&!u.isMultiDay){var b=y.getTime(),k=u.width===-1?u.cluster.width-u.position:u.width,d=(u.dayStart-b)*n.percentageOfDay,w=u.position*100/u.cluster.width,l=k*100/u.cluster.width,e,a="event",v=u.length*n.percentageOfDay;u.isShort?(e=u.uiLength*n.percentageOfDay,a+=" short"):e=v;u.hasPreviousEvent&&(a+=" hasPreviousEvent");f=n.getEventUiInfo(c,false);f.dir=this._isRtl?"right":"left";f.left=w;f.top=d;f.width=w+l!==100?"calc("+l+"% - 1px)":l+"%";f.height=e-100/1440;f.className=a;f.glyphHeight=v<e?"height: "+100*v/e+"%":"";f.isOneLine=u.isShort||u.isMedium;f.isCrossDay=u.isCrossDay;t.eventHtml+=o.call(this,f)}t.job=this._scheduler.schedule(this._sendEvents,this,[t],t.isVisible);r("_buildEventHtml")};t.prototype._sendEvents=function(n){i("_sendEvents");var t;n.onCollectionChanged?(t="Day/eventsChanged",n.job=this._scheduler.schedule(this._hookEvents,this,[n],n.isVisible),n.collection.unlock()):(t="Day/getEvents",n.job=this._scheduler.schedule(this._hookCollection,this,[n],n.isVisible));this._router.postMessage({command:t,id:n.id,allDayHtml:n.allDayHtml,eventHtml:n.eventHtml});r("_sendEvents")};t.prototype._expandAllDay=function(n){i("_expandAllDay");var t=n.events,u=n.start,f=this._getAllDayHtml(t,u,true);this._router.postMessage({command:"Day/expandAllDay",id:n.id,html:f});r("_expandAllDay")};t.prototype._hookCollection=function(n){i("_hookCollection");n.onCollectionChanged=this._onCollectionChanged.bind(this,n);n.collection.addEventListener("collectionchanged",n.onCollectionChanged);n.collection.unlock();this._hookEvents(n);r("_hookCollection")};t.prototype._hookEvents=function(n){i("_hookEvents");n.onItemChanged=this._onItemChanged.bind(this,n);for(var t=0,u=n.events.length;t<u;t++)n.events[t].winrt.addEventListener("changed",n.onItemChanged);r("_hookEvents")};t.prototype._unhookEvents=function(n){var u,t,f;if(i("_unhookEvents"),u=n.onItemChanged,u){for(t=0,f=n.events.length;t<f;t++)n.events[t].winrt.removeEventListener("changed",u);n.onItemChanged=null}r("_unhookEvents")};t.prototype._onCollectionChanged=function(n){if(i("_onCollectionChanged"),!n.changeTimeout){this._unhookEvents(n);this._scheduler.cancel(n.job);var t=Date.now()-(n.lastChanged?n.lastChanged:0);t<990?n.changeTimeout=setTimeout(this._updateEvents,1e3-t,n):(setImmediate(this._updateEvents,n),n.changeTimeout=true)}r("_onCollectionChanged")};t.prototype._updateEvents=function(n){this._requests[n.id]&&(i("_updateEvents"),n.changeTimeout=null,n.lastChanged=Date.now(),n.collection.lock(),this._processEvents(n),r("_updateEvents"))};t.prototype._onItemChanged=function(t,u){var e,f,o,h,s;for(i("_onItemChanged"),e=Array.prototype.slice.call(u.detail[0]),f=u.target,o=0,h=e.length;o<h;o++)if(s=e[o],s==="startDate"||s==="endDate"){t.requiresSort=true;this._onCollectionChanged(t,u);return}this._router.postMessage({command:"Day/eventChanged",id:t.id,properties:e,ev:{handle:f.handle,busyStatus:f.busyStatus,color:f.color,location:f.location,subject:f.subject||n.noSubject}});r("_onItemChanged")}})()
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx,Calendar,Debug,clearTimeout,setTimeout,setImmediate*/
+
+(function() {
+
+    function _start(s) { Jx.mark("DayWorker." + s + ",StartTA,Calendar"); }
+    function _stop(s)  { Jx.mark("DayWorker." + s + ",StopTA,Calendar");  }
+
+    var Helpers = Calendar.Helpers;
+
+    function tmplAllDayEvent (data) {
+        var startHtml = data.start ? '<div class="startTime" aria-hidden="true">' + data.start + '</div>' : '';
+        var endHtml = data.end ? '<div class="endTime" aria-hidden="true">' + data.end + '</div>' : '';
+
+        var html = 
+        '<div id="' + Helpers.getIdFromEventHandle(data.handle, data.isCrossDay) + '" data-handle="' + data.handle + '" class="' + data.className + '" tabindex="0" data-status="' + data.status + '" role="button" aria-label="' + Jx.escapeHtml(data.label) + '" style="color:' + data.color + '">' +
+            '<div class="glyph" style="background-color:' + data.color + ';">' + 
+                '<div class="glyphInner"></div>' + 
+            '</div>' +
+            startHtml +
+            '<div class="subject" aria-hidden="true">' + Jx.escapeHtml(data.subject) + '</div>' +
+            endHtml +
+            '<div class="overlay"></div>' +
+        '</div>';
+
+        return html;
+    }
+
+    function tmplDetailsOneLine (data) {
+        var locationHtml = data.location ? '(' + Jx.escapeHtml(data.location) + ')' : '';
+
+        var html =
+            '<span class="subject">' + Jx.escapeHtml(data.subject) + '</span>' + 
+            ' ' +
+            '<span class="location">' + locationHtml + '</span>';
+
+        return html;
+    }
+
+    function tmplDetails (data) {
+        var html =
+            '<div class="subject">' + Jx.escapeHtml(data.subject) + '</div>' +
+            '<div class="location">' + Jx.escapeHtml(data.location) + '</div>';
+
+        return html;
+    }
+
+    function tmplEvent (data) {
+        var detailHtml = data.isOneLine ? tmplDetailsOneLine(data) : tmplDetails(data);
+
+        var html =
+            '<div id="' + Helpers.getIdFromEventHandle(data.handle, data.isCrossDay) + '" data-handle="' + data.handle + '" class="' + data.className + '" tabindex="0" data-status="' + data.status + '" role="button" aria-label="' + Jx.escapeHtml(data.label) + '" style="' +
+                'position:absolute;' +
+                'top:' + data.top + '%;' +
+                data.dir + ':' + data.left + '%;' +
+                'width:' + data.width + ';' +
+                'height:' + data.height + '%;' +
+                'color:' + data.color + ';' +
+            '">' +
+                '<div class="glyph" style="background-color: ' + data.color + ';' + data.glyphHeight + ';">' + 
+                    '<div class="glyphInner"></div>' + 
+                '</div>' +
+                '<div class="details" aria-hidden="true">' +
+                    detailHtml +
+                '</div>' +
+                '<div class="overlay"></div>' +
+            '</div>';
+
+        return html;
+    }
+
+    var Day = Calendar.Views.DayWorker = function(router, scheduler, calendarManager) {
+        // save params
+        this._router    = router;
+        this._scheduler = scheduler;
+        this._manager   = calendarManager;
+
+        // init members
+        this._requests = {};
+
+        // bind callbacks
+        this._updateEvents = this._updateEvents.bind(this);
+
+        // register routes
+        this._router.route("Day/getEvents",    this.getEvents,    this);
+        this._router.route("Day/setVisible",   this.setVisible,   this);
+        this._router.route("Day/expandAllDay", this.expandAllDay, this);
+        this._router.route("Day/cancel",       this.cancel,       this);
+
+        if (!Day._allDayMore) {
+            Helpers.ensureFormats();
+            Day._allDayMore = Jx.res.getFormatFunction("AllDayMore");
+        }
+    };
+
+    Day.prototype.getEvents = function(command) {
+        Debug.assert(!this._requests[command.id]);
+
+        var id   = command.id,
+            data = command.data;
+
+        data.id    = id;
+        data.start = new Date(data.start);
+        data.end   = new Date(data.end);
+
+        _start("getEvents");
+        data.collection = this._manager.getEvents(data.start, data.end);
+        data.job        = this._scheduler.schedule(this._processEvents, this, [data], data.isVisible);
+        _stop("getEvents");
+
+        this._requests[id] = data;
+    };
+
+    Day.prototype.setVisible = function(command) {
+        var data = command.data;
+
+        if (data) {
+            data.isVisible = command.data;
+            this._scheduler.setVisible(data.job, command.data);
+        }
+    };
+
+    Day.prototype.expandAllDay = function(command) {
+        var id   = command.id,
+            data = this._requests[id];
+
+        if (data) {
+            this._scheduler.schedule(this._expandAllDay, this, [data], true);
+        }
+    };
+
+    Day.prototype.cancel = function(command) {
+        _start("cancel");
+
+        var id   = command.id,
+            data = this._requests[id];
+
+        if (data) {
+            var onCollectionChanged = data.onCollectionChanged;
+
+            if (onCollectionChanged) {
+                data.collection.removeEventListener("collectionchanged", onCollectionChanged);
+                // data.changeTimeout may be an integer, null or true
+                // True is used to prevent _onCollectionChanged from firing multiple setImmedites.
+                if (data.changeTimeout !== true) {
+                    clearTimeout(data.changeTimeout);
+                }
+            }
+
+            this._unhookEvents(data);
+            data.collection.dispose();
+
+            this._scheduler.cancel(data.job);
+            delete this._requests[command.id];
+        }
+
+        _stop("cancel");
+    };
+
+    Day.prototype.dispose = function() {
+        for (var id in this._requests) {
+            this.cancel({ id: id });
+        }
+
+        this._requests = {};
+
+        this._manager   = null;
+        this._scheduler = null;
+        this._router    = null;
+    };
+
+    Day.prototype._processEvents = function(data) {
+        _start("_processEvents");
+
+        var startDay = new Date(data.start);
+        var endDay   = (new Date(startDay.getFullYear(), startDay.getMonth(), startDay.getDate() + 1)).getTime();
+        var startNum = startDay.getTime();
+        var events   = Helpers.getCollection(startDay, endDay, data.collection);
+
+        if (data.requiresSort) {
+            events.sort(Helpers.orderEvents);
+            data.requiresSort = false;
+        }
+
+        events.allDay = 0;
+
+        var columns = [];
+        var cluster = { width: 1 };
+        var max     = 0;
+
+        var i, j, k, len, column, eventEndBorders = {};
+        var current;
+
+        for (i = 0, len = events.length; i < len; i++) {
+            current = events[i];
+
+            // cache some commonly used values
+            var winrt     = current.winrt;
+            var startDate = winrt.startDate;
+            var endDate   = winrt.endDate;
+
+            current.isCrossDay = !Helpers.isSameDate(startDate, endDate);
+
+            // calculate if this is a multi-day event
+            if (!winrt.allDayEvent && current.isCrossDay) {
+                // we only care about events that span a full day
+                var nextDay = new Date(startDate.getTime());
+                nextDay.setDate(nextDay.getDate() + 1);
+
+                if (nextDay <= endDate) {
+                    current.isMultiDay = true;
+                }                    
+            }
+
+            // the only events we'll do further processing on are single-day events
+            if (!winrt.allDayEvent && !current.isMultiDay) {
+                if (Helpers.isSameDate(startDay, startDate)) {
+                    current.dayStart = startNum + startDate.getHours() * Helpers.hourInMilliseconds + startDate.getMinutes() * Helpers.minuteInMilliseconds;
+                } else {
+                    current.dayStart = startNum;
+                }
+
+                if (Helpers.isSameDate(startDay, endDate)) {
+                    current.dayEnd = startNum + endDate.getHours() * Helpers.hourInMilliseconds + endDate.getMinutes() * Helpers.minuteInMilliseconds;
+                } else {
+                    current.dayEnd = startNum + Helpers.dayInMilliseconds;
+                }
+
+                current.length = current.dayEnd - current.dayStart;
+
+                // we always want our events to display at a certain minimum size
+                if (current.length <= Helpers.shortEventLength) {
+                    current.uiLength = Helpers.shortEventLength;
+                    current.uiEnd    = current.dayStart + current.uiLength;
+                    current.isShort  = true;
+                } else {
+                    current.uiLength = current.length;
+                    current.uiEnd    = current.dayEnd;
+
+                    if (current.length <= Helpers.mediumEventLength) {
+                        current.isMedium = true;
+                    }
+                }
+
+                eventEndBorders[current.uiEnd] = true;
+
+                // run the algorithm to figure out which column the event belongs in
+                for (j = 0; j <= i; j++) {
+                    column = columns[j];
+
+                    if (!column) {
+                        column = { uiEnd: Helpers.zeroYearTime };
+                        cluster.width = j + 1;
+                    }
+
+                    // the column value represents the lowest point in this column.  so,
+                    // if nothing is in the column yet or if this event starts after the
+                    // column ends, use it.
+                    if (column.uiEnd <= current.dayStart) {
+                        for (k = j + 1; k < cluster.width && columns[k].uiEnd <= column.dayStart; k++) {
+                            column.width++;
+                        }
+
+                        // we don't know how many columns this cluster will eventually take.
+                        // -1 signifies "all the remaining space".
+                        if (k === cluster.width) {
+                            column.width = -1;
+                        }
+
+                        // if this is the first column and the item starts after the
+                        // latest ending time of the previous set of events, start a new
+                        // set of events.
+                        if (j === 0) {
+                            if (max <= current.dayStart) {
+                                cluster = { width: 1 };
+                                columns = [];
+                            }
+                        }
+
+                        max = Math.max(max, current.uiEnd);
+
+                        columns[j] = current;
+                        current.cluster  = cluster;
+                        current.position = j;
+                        current.width    = 1;
+
+                        break;
+                    }
+                }
+            } else {
+                events.allDay++;
+            }
+        }
+
+        for (i = 0, len = cluster.width; i < len; i++) {
+            column = columns[i];
+
+            for (j = i + 1; j < len && columns[j].uiEnd <= column.dayStart; j++) {
+                column.width++;
+            }
+        }
+
+        for (i = 0, len = events.length; i < len; i++) {
+            current = events[i];
+
+            if (eventEndBorders[current.dayStart]) {
+                current.hasPreviousEvent = true;
+            }
+        }
+
+        // save the events
+        data.events = events;
+
+        // start building our ui
+        data.allDayHtml = "";
+        data.eventHtml  = "";
+
+        data.job = this._scheduler.schedule(this._buildAllDayHtml, this, [data], data.isVisible);
+        _stop("_processEvents");
+    };
+
+    Day.prototype._buildAllDayHtml = function(data) {
+        _start("_buildAllDayHtml");
+
+        var events = data.events,
+            day    = data.start;
+
+        data.allDayHtml = this._getAllDayHtml(events, day, false);
+        data.job        = this._scheduler.schedule(this._buildEventHtml, this, [data], data.isVisible);
+
+        _stop("_buildAllDayHtml");
+    };
+
+    Day.prototype._getAllDayHtml = function(events, day, showAll) {
+        var nextDay  = new Date(day.getFullYear(), day.getMonth(), day.getDate() + 1),
+            showMore = !showAll && (3 < events.allDay),
+            limit    = showMore ? 2 : events.allDay,
+            html     = "";
+
+        var className = "event";
+
+        // if we're expanding the all-day area, each event should take 100% width
+        if (showAll) {
+            className += " full";
+        }
+
+        for (var i = 0, count = 0, len = events.length; i < len && count < limit; i++) {
+            var current = events[i],
+                winrt   = current.winrt;
+
+            if (winrt.allDayEvent || current.isMultiDay) {
+                var info = Helpers.getEventUiInfo(winrt, false);
+
+                info.className = className;
+                info.start     = "";
+                info.end       = "";
+                info.isCrossDay = current.isCrossDay; 
+
+                // if this is a multi-day event, we might need to add the start or
+                // end time.
+                if (current.isMultiDay) {
+                    if (day <= current.start) {
+                        info.start = Helpers.simpleTime.format(winrt.startDate);
+                    } else if (current.end <= nextDay) {
+                        info.end   = Helpers.simpleTime.format(winrt.endDate);
+                    }
+                }
+
+                // run the template and append the resulting html
+                html += tmplAllDayEvent.call(this, info);
+                count++;
+            }
+        }
+
+        // add the more button
+        if (showMore) {
+            html += "<div class='more' tabIndex='0' role='button'>" + Jx.escapeHtml(Day._allDayMore(events.allDay - 2)) + "</div>";
+        }
+
+        return html;
+    };
+
+    Day.prototype._buildEventHtml = function(data) {
+        _start("_buildEventHtml");
+
+        var events = data.events,
+            day    = data.start;
+
+        for (var i = 0, len = events.length; i < len; i++) {
+            var current = events[i],
+                winrt   = current.winrt;
+
+            if (!winrt.allDayEvent && !current.isMultiDay) {
+                var time = day.getTime();
+
+                // if the event was shorter than the minimum, we lay it out a bit
+                // differently than a normal event.
+                var currentWidth = (current.width === -1) ? (current.cluster.width - current.position) : current.width;
+
+                var topPos = (current.dayStart - time) * Helpers.percentageOfDay,
+                    left   = current.position * 100 / current.cluster.width,
+                    width  = currentWidth     * 100 / current.cluster.width,
+                    height;
+
+                var className   = "event",
+                    glyphHeight = current.length * Helpers.percentageOfDay;
+
+                if (current.isShort) {
+                    height     = current.uiLength * Helpers.percentageOfDay;
+                    className += " short";
+                } else {
+                    height = glyphHeight;
+                }
+
+                if (current.hasPreviousEvent) {
+                    className += " hasPreviousEvent";
+                }
+            
+                // recurring events need the time on the id
+                var info = Helpers.getEventUiInfo(winrt, false);
+
+                info.dir    = this._isRtl ? "right" : "left";
+                info.left   = left;
+                info.top    = topPos;
+                info.width  = (left + width !== 100 ? "calc(" + width + "% - 1px)" : width + "%");
+                info.height = height - 100 / 24 / 60; // reduce height by one pixel
+
+                info.className   = className;
+                info.glyphHeight = (glyphHeight < height) ? "height: " + (100 * glyphHeight / height) + "%" : "";
+                info.isOneLine   = current.isShort || current.isMedium;
+
+                info.isCrossDay = current.isCrossDay; 
+
+                data.eventHtml += tmplEvent.call(this, info);
+            }
+        }
+
+        data.job = this._scheduler.schedule(this._sendEvents, this, [data], data.isVisible);
+        _stop("_buildEventHtml");
+    };
+
+    Day.prototype._sendEvents = function(data) {
+        _start("_sendEvents");
+
+        var command;
+
+        if (!data.onCollectionChanged) {
+            command = "Day/getEvents";
+            data.job = this._scheduler.schedule(this._hookCollection, this, [data], data.isVisible);
+        } else {
+            command = "Day/eventsChanged";
+
+            data.job = this._scheduler.schedule(this._hookEvents, this, [data], data.isVisible);
+            data.collection.unlock();
+        }
+
+        this._router.postMessage({
+            command: command,
+            id:      data.id,
+
+            allDayHtml: data.allDayHtml,
+            eventHtml:  data.eventHtml
+        });
+
+        _stop("_sendEvents");
+    };
+
+    Day.prototype._expandAllDay = function(data) {
+        _start("_expandAllDay");
+
+        var events = data.events,
+            day    = data.start,
+            html   = this._getAllDayHtml(events, day, true);
+
+        this._router.postMessage({
+            command: "Day/expandAllDay",
+            id:      data.id,
+            html:    html
+        });
+
+        _stop("_expandAllDay");
+    };
+
+    Day.prototype._hookCollection = function(data) {
+        _start("_hookCollection");
+
+        data.onCollectionChanged = this._onCollectionChanged.bind(this, data);
+        data.collection.addEventListener("collectionchanged", data.onCollectionChanged);
+        data.collection.unlock();
+
+        this._hookEvents(data);
+        _stop("_hookCollection");
+    };
+
+    Day.prototype._hookEvents = function(data) {
+        _start("_hookEvents");
+
+        data.onItemChanged = this._onItemChanged.bind(this, data);
+
+        for (var i = 0, len = data.events.length; i < len; i++) {
+            data.events[i].winrt.addEventListener("changed", data.onItemChanged);
+        }
+
+        _stop("_hookEvents");
+    };
+
+    Day.prototype._unhookEvents = function(data) {
+        _start("_unhookEvents");
+
+        var onItemChanged = data.onItemChanged;
+
+        if (onItemChanged) {
+            for (var i = 0, len = data.events.length; i < len; i++) {
+                data.events[i].winrt.removeEventListener("changed", onItemChanged);
+            }
+
+            data.onItemChanged = null;
+        }
+
+        _stop("_unhookEvents");
+    };
+
+    // Updates
+
+    Day.prototype._onCollectionChanged = function(data) {
+        _start("_onCollectionChanged");
+
+        if (!data.changeTimeout) {
+            this._unhookEvents(data);
+            this._scheduler.cancel(data.job);
+
+            var elapsedTime = Date.now() - (data.lastChanged ? data.lastChanged : 0);
+            
+            // We rate limit _updateEvents to once a second.  setTimeout must be a duration greater than 
+            // 10ms in order to prevent an extra DLL from loading. 1000 - 990 = 10ms
+            if (elapsedTime < 990) {
+                data.changeTimeout = setTimeout(this._updateEvents, 1000 - elapsedTime, data);
+            } else {
+                setImmediate(this._updateEvents, data);
+                data.changeTimeout = true;
+            }
+        }
+
+        _stop("_onCollectionChanged");
+    };
+
+    Day.prototype._updateEvents = function(data) {
+        if (!this._requests[data.id]) { return; }
+
+        _start("_updateEvents");
+
+        data.changeTimeout = null;
+        data.lastChanged = Date.now();
+        data.collection.lock();
+
+        this._processEvents(data);
+
+        _stop("_updateEvents");
+    };
+
+    Day.prototype._onItemChanged = function(data, ev) {
+        _start("_onItemChanged");
+
+        var properties = Array.prototype.slice.call(ev.detail[0]),
+            target     = ev.target;
+
+        for (var i = 0, len = properties.length; i < len; i++) {
+            var property = properties[i];
+
+            if (property === "startDate" || property === "endDate") {
+                // Since an item just changed, the collection may be out of order.
+                data.requiresSort = true;
+                this._onCollectionChanged(data, ev);
+                return;
+            }
+        }
+
+        this._router.postMessage({
+            command:    "Day/eventChanged",
+            id:         data.id,
+            properties: properties,
+            ev: {
+                handle: target.handle,
+
+                busyStatus: target.busyStatus,
+                color:      target.color,
+                location:   target.location,
+                subject:    target.subject || Helpers.noSubject
+            }
+        });
+
+        _stop("_onItemChanged");
+    };
+
+})();
+

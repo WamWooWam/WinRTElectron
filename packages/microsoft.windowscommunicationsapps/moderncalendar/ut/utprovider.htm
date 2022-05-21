@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Calendar Provider unit test page</title>
+    <meta charset="UTF-8" />
+
+    <!-- Tx -->
+    <script src="/Tx/core/TxLoader.js"></script>
+    <link rel="stylesheet" href="/Tx/ui/tx.css">
+
+    <!-- Jx -->
+    <script src="/Jx/Jx.js"></script>
+
+    <!-- Calendar -->
+    <script src="/ModernCalendar/common/common.js"></script>
+    <script src="/ModernCalendar/views/helpers/data.js"></script>
+    <script src="/ModernCalendar/views/helpers/helpers.js"></script>
+    <script src="/ModernCalendar/views/provider/providerpage.js"></script>
+    <script src="/ModernCalendar/views/eventdetails/calendarselector.js"></script>
+    <script src="/ModernCalendar/views/provider/providerconverter.js"></script>
+    <script src="/ModernCalendar/views/provider/providereventview.js"></script>
+    <script src="/ModernCalendar/views/provider/providermodel.js"></script>
+
+    <!-- UT helper -->
+    <script src="TestHelpers.js"></script>
+    <script src="ProviderUTHelper.js"></script>
+
+    <!-- UTs -->
+    <script src="utProviderConverter.js"></script>
+    <script src="utProviderEventView.js"></script>
+    <script src="utProviderModel.js"></script>
+    <script src="utProviderPage.js"></script>
+
+    <script>
+        Debug.throwOnAssert = true;
+        window.onload = function () {
+            Tx.run();
+        }
+    </script>
+</head>
+<body>
+    <div id="providerRoot"></div>
+    <div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

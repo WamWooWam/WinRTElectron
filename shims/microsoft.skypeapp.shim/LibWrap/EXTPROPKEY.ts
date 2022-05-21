@@ -9,6 +9,6 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.EXTPROPKEY')
 export class EXTPROPKEY { 
-    static ft_LOCALSTATUS: number = null;
-    static ft_LOCALFILENAME: number = null;
+    static ft_LOCALSTATUS: number = 1001;
+    static ft_LOCALFILENAME: number = 1000;
 }

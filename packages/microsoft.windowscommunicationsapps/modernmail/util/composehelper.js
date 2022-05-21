@@ -1,1 +1,801 @@
-﻿Jx.delayDefine(Mail.Utilities,"ComposeHelper",function(){"use strict";function o(n,t,i){var f=Mail.Globals.platform,e=f.mailManager.ensureMailView(Microsoft.WindowsLive.Platform.MailViewType.inbox,n.objectId,""),o=Compose.MessageReturner.instance(f.mailManager.createDraftMessage(e)),u=Compose.MailMessageModel.instance({initAction:Compose.ComposeAction.createNew,messageCreator:o}),r={};return["to","cc","bcc","subject"].filter(function(n){return Jx.isNonEmptyString(t[n])}).forEach(function(n){r[n]=t[n]}),Jx.isNonEmptyString(i)&&(r.to=Boolean(r.to)?i+","+r.to:i),u.set(r),Jx.isNonEmptyString(t.body)?u.setBodyContents([{content:t.body,format:ModernCanvas.ContentFormat.text,location:ModernCanvas.ContentLocation.end}]):u.setBodyContents([{signatureLocation:ModernCanvas.SignatureLocation.start}]),u}var n=Mail.Utilities,t=Mail.Instrumentation,r=Microsoft.WindowsLive.Platform.AttachmentSyncStatus,i;n.ComposeHelper={};n.ComposeHelper._builder=null;n.ComposeHelper._compose=null;n.ComposeHelper.currentSelectedFilter=null;n.ComposeHelper._selection=null;n.ComposeHelper.ensureComposeFiles=function(){n.ComposeHelper.ensureComposeFiles=Jx.fnEmpty;Jx.delayGroupExec("MailCompose");Compose.platform=Mail.Globals.platform};n.ComposeHelper.ensureComposeObject=function(){var u=Mail.Globals.platform,t=Microsoft.WindowsLive.Platform,f=u.accountManager.getConnectedAccountsByScenario(t.ApplicationScenario.mail,t.ConnectedFilter.normal,t.AccountSort.rank),i=false,r;return f.count>0&&(n.ComposeHelper._builder=Mail.composeBuilder,r=n.ComposeHelper._buildEmpty(),n.ComposeHelper._compose=r,n.ComposeHelper.ensureComposeObject=function(){return true},i=true),i};n.ComposeHelper.ensureComposeHTML=function(t){if(n.ComposeHelper._compose)n.ComposeHelper.ensureComposeHTML=Jx.fnEmpty,n.ComposeHelper._builder.ensureFullscreenInDOM(n.ComposeHelper._compose),n.ComposeHelper._compose=null;else if(Jx.log.warning("Skipping ensureComposeHTML because there is no compose object."),t)throw new Error("Utilities.ComposeHelper.ensureComposeHTML failed because there was no Compose object to use.")};n.ComposeHelper._parseQueryParams=function(t){var i,u,e,r,f,o;if(i=t.query,u={},i.length>0)for(i=i.substr(1),e=i.split("&"),o=e.length;o--;)r=e[o],f=r.indexOf("="),f>-1?u[r.substr(0,f).toLowerCase()]=n.ComposeHelper.decodeURIComponent(r.substr(f+1)):u[r.toLowerCase()]=true;return u};n.ComposeHelper.decodeURIComponent=function(n){try{return decodeURIComponent(n)}catch(t){return Jx.log.exception("decodeURIComponent failed",t),null}};n.ComposeHelper.onProtocol=function(t){Mail.log("Mail_MailTo_Command",Mail.LogEvent.start);var r=n.ComposeHelper._selection.account.platformObject,i=n.ComposeHelper._parseQueryParams(t.uri);t.uri.schemeName==="mailto"?n.ComposeHelper._mailToHandler(t.uri,i,r):i.action==="calendar"&&n.ComposeHelper._calendarProtocolHandler(i);Mail.log("Mail_MailTo_Command",Mail.LogEvent.stop)};n.ComposeHelper._mailToHandler=function(t,r,u){n.ComposeHelper.ensureComposeFiles();n.ComposeHelper.launchCompose(Compose.ComposeAction.createNew,i({messageModel:o(u,r,Jx.isNullOrUndefined(t.path)?null:n.ComposeHelper.decodeURIComponent(t.path))}),{startDirty:true,moveToInbox:true,suppressPerfTrack:true})};n.ComposeHelper._calendarProtocolHandler=function(t){var u,f,i,r,e,o;Mail.writeProfilerMark("ComposeHelper.calendarProtocolHandler",Mail.LogEvent.start);u=t.eventhandle;f=Mail.Globals.platform;try{i=f.calendarManager.getEventFromHandle(u)}catch(s){Jx.log.exception("Unable to load event",s);i=null}i&&(n.ComposeHelper.ensureComposeFiles(),r=t.calendaraction,Compose.util.isValidCalendarAction(r)?(e=Compose.util.convertToComposeAction(r),o={factorySpec:{originalEvent:i,calendarAction:r}},n.ComposeHelper.launchCompose(e,o,{startDirty:true,moveToDrafts:true,suppressPerfTrack:true})):Jx.log.info("Invalid calendar action, not proceeding with compose launch"));Mail.writeProfilerMark("ComposeHelper.calendarProtocolHandler",Mail.LogEvent.stop)};n.ComposeHelper.registerSelection=function(t){n.ComposeHelper._selection=t};var u=0,f=false,e=function(){return u>0};Object.defineProperty(n.ComposeHelper,"isComposeShowing",{get:function(){return e()}});Object.defineProperty(n.ComposeHelper,"isComposeLaunching",{get:function(){return f},set:function(n){f=n}});n.ComposeHelper.setComposeShowing=function(n){var t=u+(n?1:-1),i=t>0,r=e()!==i;u=t;r&&Jx.EventManager.fire(null,"composeVisibilityChanged")};n.ComposeHelper._buildEmpty=function(){return n.ComposeHelper._emptyCompose||(n.ComposeHelper._emptyCompose=n.ComposeHelper._builder.createBackgroundCompose()),n.ComposeHelper._emptyCompose};n.ComposeHelper.addRestartCheck=function(){Mail.Globals.appState.addRestartCheck("Compose is showing",function(){return!n.ComposeHelper.isComposeShowing});n.ComposeHelper.addRestartCheck=Jx.fnEmpty};n.ComposeHelper.launchCompose=function(t,i,r){Mail.writeProfilerMark("ComposeHelper.launchCompose",Mail.LogEvent.start);var u=function(){var u;if(i=i||{},i.factorySpec=i.factorySpec||{},i.factorySpec.initAction=t,r=r||{},u=n.ComposeHelper,u.isComposeLaunching=true,u.ensureComposeFiles(),u.addRestartCheck(),u.ensureComposeObject()){u.ensureComposeHTML(true);document.getElementById("idCompCompose").classList.remove("invisible");var e=t!==Compose.ComposeAction.openDraft,f=this._builder.createFullScreenCompose(i),o=this._builder.showCompose(i,r.suppressPerfTrack);o.done(function(){var t,i;u.isComposeLaunching=false;f.setDirtyState(Boolean(r.startDirty));e&&(t=f.getMailMessageModel(),t.commit(),i=t.get("objectId"),Jx.scheduler.addJob(null,Mail.Priority.composeSelectionUpdateNav,"ComposeHelper - update selected item in message list to newly created draft",function(){var s,e,u,c,h;if(t===f.getMailMessageModel()&&(s=n.ComposeHelper._selection,e=s.view,Mail.ViewCapabilities.canHaveDrafts(e)||(r.moveToDrafts=true),u=s.account,c=t.get("accountId"),c!==u.objectId&&(u=Mail.Account.load(c,u.platform)),u)){h=false;r.moveToDrafts&&e!==u.draftsView?(e=u.draftsView,h=true):r.moveToInbox&&e!==u.inboxView&&(e=u.inboxView,h=true);var o=t.getPlatformMessage(),l=new Mail.UIDataModel.MailMessage(o,u),a=function(){s.updateNav(u,e,l);s.updateMessages(l,-1,[l])},v=Mail.SearchHandler&&Mail.SearchHandler.isSearching;(h||v)&&(o.displayViewIdString===""||o.parentConversationId==="")?Mail.Promises.waitForEvent(o,"changed",function(){return o.displayViewIdString!==""&&o.parentConversationId!==""}).done(a):a();Mail.Globals.animator&&Mail.Globals.animator.animateNavigateForward(Jx.fnEmpty,true);Jx.glomManager.getIsChild()&&Jx.glomManager.changeGlomId(i)}}))}.bind(this));Mail.writeProfilerMark("ComposeHelper.launchCompose",Mail.LogEvent.stop)}}.bind(this);n.ComposeHelper.isComposeShowing&&n.ComposeHelper.hideCurrent();u()};n.ComposeHelper.save=function(t,i){var r,u;Jx.isNullOrUndefined(t)&&(t=false);r=n.ComposeHelper;r.ensureComposeObject()&&(u=r._builder.getCurrent(),Boolean(u)&&u.save(t,i))};n.ComposeHelper.hideCurrent=function(){return n.ComposeHelper.save(false,true)};i=function(n){n.factorySpec=n.factorySpec||{};var t=Mail.Globals.appState.selectedAccount;return n.factorySpec.accountId=t.objectId,n};n.ComposeHelper.onEdit=function(t,r){var e;Mail.log("CommandBar_onEdit",Mail.LogEvent.start);n.ComposeHelper.ensureComposeFiles();var o=Mail.composeBuilder,u=o.getCurrent(),f=null;u&&(f=u.getMailMessageModel().getPlatformMessage());Boolean(u)&&(!Boolean(u.getMailMessageModel())||Mail.Validators.areEqual(t,f))&&t.instanceNumber===f.instanceNumber?(document.getElementById("idCompCompose").classList.remove("invisible"),Mail.Utilities.ComposeHelper.isComposeShowing||(e=u.getComponentCache().getComponent("Compose.Selection"),e.isActivated()||e.composeActivateUI(),Mail.Utilities.ComposeHelper.setComposeShowing(true))):t.isDraft&&(Mail.Globals.appSettings.autoMarkAsRead&&t.canMarkRead&&!t.read&&!document.msHidden&&n.ComposeHelper._selection.setReadState(true,[t]),n.ComposeHelper.launchCompose(Compose.ComposeAction.openDraft,i({factorySpec:{messageCreator:Compose.MessageLoader.instance(t.objectId),moveFocus:!!r}}),{startDirty:true}));Mail.log("CommandBar_onEdit",Mail.LogEvent.stop)};n.ComposeHelper.onNewButton=function(r){var e,u,f,o;Mail.log("CommandBar_onNewButton",Mail.LogEvent.start);Jx.ptStart("Compose-NewMail");n.ComposeHelper.ensureComposeFiles();e=Mail.Utilities.ComposeHelper._builder;u=null;e&&(u=e.getCurrent());f=false;n.ComposeHelper.isComposeShowing&&(!u.getMailMessageModel().isNew()||u.isDirty())&&(f=true);o=Microsoft.WindowsLive.Platform.MailMessageLastVerb;!n.ComposeHelper.isComposeShowing||n.ComposeHelper.isComposeShowing&&u.getMailMessageModel().get("sourceVerb")!==o.unknown||f?(n.ComposeHelper.launchCompose(Compose.ComposeAction.createNew,i({})),t.instrumentTriageCommand(t.Commands.new,r,n.ComposeHelper._selection)):f||Mail.Globals.animator&&Mail.Globals.animator.animateNavigateForward(Jx.fnEmpty,true);Mail.log("CommandBar_onNewButton",Mail.LogEvent.stop)};n.ComposeHelper.onReplyButton=function(r,u){Mail.log("CommandBar_onReplyButton",Mail.LogEvent.start);Jx.ptStart("Compose-Reply");var f=r.message;n.ComposeHelper.launchReplyAsync(function(){f.recordAction(Microsoft.WindowsLive.Platform.FolderAction.messageAction);n.ComposeHelper.ensureComposeFiles();n.ComposeHelper.launchCompose(Compose.ComposeAction.reply,i({factorySpec:{messageCreator:Compose.MessageReturner.instance(f.platformMailMessage)}}));t.instrumentTriageCommand(t.Commands.reply,u,n.ComposeHelper._selection)},f);Mail.log("CommandBar_onReplyButton",Mail.LogEvent.stop)};n.ComposeHelper.onReplyAllButton=function(r,u){Mail.log("CommandBar_onReplyAllButton",Mail.LogEvent.start);Jx.ptStart("Compose-ReplyAll");var f=r.message;n.ComposeHelper.launchReplyAsync(function(){f.recordAction(Microsoft.WindowsLive.Platform.FolderAction.messageAction);n.ComposeHelper.ensureComposeFiles();n.ComposeHelper.launchCompose(Compose.ComposeAction.replyAll,i({factorySpec:{messageCreator:Compose.MessageReturner.instance(f.platformMailMessage)}}));t.instrumentTriageCommand(t.Commands.replyAll,u,n.ComposeHelper._selection)},f);Mail.log("CommandBar_onReplyAllButton",Mail.LogEvent.stop)};n.ComposeHelper.launchReplyAsync=function(t,i){if(i.isComposeBodyTruncated||i.hasAttachments){var r=i.getEmbeddedAttachmentCollection();n.ComposeHelper.launchAsync(t,i,r)}else t()};n.ComposeHelper.onForwardButton=function(r,u){Mail.log("CommandBar_onForwardButton",Mail.LogEvent.start);Jx.ptStart("Compose-Forward");var f=r.message;n.ComposeHelper.launchForwardAsync(function(){f.recordAction(Microsoft.WindowsLive.Platform.FolderAction.messageAction);n.ComposeHelper.ensureComposeFiles();n.ComposeHelper.launchCompose(Compose.ComposeAction.forward,i({factorySpec:{messageCreator:Compose.MessageReturner.instance(f.platformMailMessage)}}));t.instrumentTriageCommand(t.Commands.forward,u,n.ComposeHelper._selection)},f);Mail.log("CommandBar_onForwardButton",Mail.LogEvent.stop)};n.ComposeHelper.launchForwardAsync=function(t,i){if(i.isComposeBodyTruncated||i.hasAttachments){var r=i.getEmbeddedAttachmentCollection(),u=i.getOrdinaryAttachmentCollection();n.ComposeHelper.launchAsync(t,i,r,u)}else t()};n.ComposeHelper.launchAsync=function(t,i,r,u){var c=n.ComposeHelper.containsNotDownloadedAttachments,f,l,a;if(!i.isJunk&&(i.isComposeBodyTruncated||c(r)||c(u))){f=document.querySelector(".mailReadingPaneFinishDownloadingFlyout");f||(l=document.getElementById(Mail.CompApp.rootElementId),f=document.createElement("div"),f.className="mailReadingPaneFinishDownloadingFlyout",f.innerHTML="<div><div class='mailReadingPaneFinishDownloadingPrompt typeSizeNormal' data-win-res='innerText:mailReadingPaneFinishDownloadingPrompt'><\/div><div class='mailReadingPaneFinishDownloadingFlyoutButtons'><button class='mailReadingPaneFlyoutDefaultFocusButton mailReadingPaneContinueWithoutDownloadingButton' data-win-res='innerText:mailReadingPaneContinueWithoutDownloading' role='button' tabindex='0' type='button'><\/button><button class='mailReadingPaneFinishDownloadingButton' data-win-res='innerText:mailReadingPaneFinishDownloading' role='button' tabindex='0' type='button'><\/button><\/div><\/div>",Jx.res.processAll(f),l.appendChild(f),a=document.querySelector(".mailReadingPaneRespondButton"),new WinJS.UI.Flyout(f,{anchor:a}));var o=f.querySelector(".mailReadingPaneContinueWithoutDownloadingButton"),s=f.querySelector(".mailReadingPaneFinishDownloadingButton"),e=f.winControl,v=function(){h();e.hide();t()},y=function(){e.hide();n.ComposeHelper.finishDownloading(i,r,u)},p=function(n){var t=document.activeElement;n.key==="Enter"&&t!==o&&t!==s&&(n.preventDefault(),f.querySelector(".mailReadingPaneFlyoutDefaultFocusButton").click())},h=function(){o.removeEventListener("click",v,false);s.removeEventListener("click",y,false);f.removeEventListener("keydown",p,false);e.removeEventListener("afterhide",h,false)};o.addEventListener("click",v,false);s.addEventListener("click",y,false);f.addEventListener("keydown",p,false);e.addEventListener("afterhide",h,false);e.show()}else t()};n.ComposeHelper.containsNotDownloadedAttachments=function(n){var t,i,u;if(n)for(t=0,i=n.count;t<i;t++)if(u=n.item(t),u.syncStatus!==r.done)return true;return false};n.ComposeHelper.finishDownloading=function(t,i,r){t.isComposeBodyTruncated&&t.downloadFullBody();var u=n.ComposeHelper.startAttachmentDownloads;u(i);u(r)};n.ComposeHelper.startAttachmentDownloads=function(n){var t,u,i;if(n)for(t=0,u=n.count;t<u;t++)i=n.item(t),(i.syncStatus===r.notStarted||i.syncStatus===r.failed)&&i.downloadBody()};n.ComposeHelper.createAutoReplaceManager=function(){return this._ensureAutoReplaceManagerTables(),new ModernCanvas.AutoReplaceManager("mail",n.ComposeHelper._autoReplaceManagerTables)};n.ComposeHelper._autoReplaceManagerTables=null;n.ComposeHelper._ensureAutoReplaceManagerTables=function(){n.ComposeHelper._autoReplaceManagerTables=ModernCanvas.AutoReplaceManagerTables.instance();n.ComposeHelper._ensureAutoReplaceManagerTables=Jx.fnEmpty};n.ComposeHelper.setDirty=function(){var n=this._builder.getCurrent();n&&n.setDirtyState(true)};n.ComposeHelper.handleHomeButton=function(){var t=n.ComposeHelper;t.setDirty();t.save();t.composeComplete()};n.ComposeHelper.setGlomManager=function(t){n.ComposeHelper._glomManager=t};n.ComposeHelper.composeComplete=function(){var t=n.ComposeHelper._glomManager;t&&t.composeComplete()};n.ComposeHelper.updateWindowTitleWithMessage=function(t){var i=n.ComposeHelper._glomManager,r;i&&(r=Mail.Account.load(t.accountId,Compose.platform),i.updateWindowTitleWithMessage(new Mail.UIDataModel.MailMessage(t,r)))}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Mail,Microsoft,Compose,WinJS,Jx,Debug,ModernCanvas*/
+
+Jx.delayDefine(Mail.Utilities, "ComposeHelper", function () {
+    "use strict";
+
+    // Disable the DeclarePropertiesBeforeUse warning for the whole file
+    // Virtually every function in this file would need this warning otherwise.
+
+    var Utilities = Mail.Utilities,
+        Instr = Mail.Instrumentation,
+        AttachmentSyncStatus = Microsoft.WindowsLive.Platform.AttachmentSyncStatus;
+
+    Utilities.ComposeHelper = {};
+    Utilities.ComposeHelper._builder = null;
+    Utilities.ComposeHelper._compose = null;
+    Utilities.ComposeHelper.currentSelectedFilter = null;
+    Utilities.ComposeHelper._selection = null;
+
+    Utilities.ComposeHelper.ensureComposeFiles = function () {
+        Utilities.ComposeHelper.ensureComposeFiles = Jx.fnEmpty;
+
+        Jx.delayGroupExec("MailCompose");
+        Compose.platform = /*@static_cast(Microsoft.WindowsLive.Platform.Client)*/ Mail.Globals.platform;
+    };
+
+    Utilities.ComposeHelper.ensureComposeObject = function () {
+        // Only attempt to make the Compose object if the platform says we have a mail account to work with.
+        // We ignore the EASI ID test override because the compose window depends on components (e.g. the FromControl) that only work with real accounts.
+
+        var platform = /*@static_cast(Microsoft.WindowsLive.Platform.Client)*/ Mail.Globals.platform,
+            wl = Microsoft.WindowsLive.Platform,
+            accounts = platform.accountManager.getConnectedAccountsByScenario(wl.ApplicationScenario.mail, wl.ConnectedFilter.normal, wl.AccountSort.rank),
+            success = false;
+        if (accounts.count > 0) {
+            Utilities.ComposeHelper._builder = /*@static_cast(Mail.ComposeBuilder)*/Mail.composeBuilder;
+
+            Debug.assert(Jx.isObject(Utilities.ComposeHelper._builder));
+            var compose = Utilities.ComposeHelper._buildEmpty();
+            Utilities.ComposeHelper._compose = compose;
+            Utilities.ComposeHelper.ensureComposeObject = function () { return true; };
+            success = true;
+        }
+        return success;
+    };
+
+    Utilities.ComposeHelper.ensureComposeHTML = function (throwOnFailure) {
+        /// <param name="throwOnFailure" type="Boolean" optional="true">Flag to indicate that failure should throw an error because this is needed to continue.</param>
+        if (Utilities.ComposeHelper._compose) {
+            Utilities.ComposeHelper.ensureComposeHTML = Jx.fnEmpty;
+
+            Utilities.ComposeHelper._builder.ensureFullscreenInDOM(Utilities.ComposeHelper._compose);
+            Utilities.ComposeHelper._compose = null;
+
+        } else {
+            Jx.log.warning("Skipping ensureComposeHTML because there is no compose object.");
+            if (throwOnFailure) {
+                throw new Error("Utilities.ComposeHelper.ensureComposeHTML failed because there was no Compose object to use.");
+            }
+        }
+    };
+
+    function createMailToMessageModel(selectedAccount, queryParameters, to) {
+        /// <param name="selectedAccount" type="Microsoft.WindowsLive.Platform.IAccount"></param>
+        /// <param name="queryParameters" type="Object"></param>
+        /// <param name="to" type="String" optional="true"></param>
+        Debug.assert(Jx.isInstanceOf(selectedAccount, Microsoft.WindowsLive.Platform.Account));
+        Debug.assert(Jx.isString(to) || Jx.isNullOrUndefined(to));
+        Debug.assert(Jx.isObject(queryParameters));
+
+        var platform = Mail.Globals.platform,
+            platformView = platform.mailManager.ensureMailView(Microsoft.WindowsLive.Platform.MailViewType.inbox, selectedAccount.objectId, ""),
+            messageCreator = Compose.MessageReturner.instance(platform.mailManager.createDraftMessage(platformView)),
+            messageModel = Compose.MailMessageModel.instance({
+                initAction: Compose.ComposeAction.createNew,
+                messageCreator: messageCreator
+            });
+
+        // Set basic properties
+        var modelParameters = {};
+        ["to", "cc", "bcc", "subject"].filter(function (prop) {
+            return Jx.isNonEmptyString(queryParameters[prop]);
+        }).forEach(function (prop) {
+            modelParameters[prop] = queryParameters[prop];
+        });
+
+        // Set the "to" property
+        if (Jx.isNonEmptyString(to)) {
+            if (Boolean(modelParameters.to)) {
+                modelParameters.to = to + "," + modelParameters.to;
+            } else {
+                modelParameters.to = to;
+            }
+        }
+
+        messageModel.set(modelParameters);
+
+        // Set body
+        if (Jx.isNonEmptyString(queryParameters.body)) {
+            messageModel.setBodyContents([{
+                content: queryParameters.body,
+                format: ModernCanvas.ContentFormat.text,
+                location: ModernCanvas.ContentLocation.end
+            }]);
+        } else {
+            messageModel.setBodyContents([{
+                signatureLocation: ModernCanvas.SignatureLocation.start
+            }]);
+        }
+
+        return messageModel;
+    }
+
+    Utilities.ComposeHelper._parseQueryParams = function (uri) {
+        /// <param name="uri" type="Windows.Foundation.Uri"></param>
+        Debug.assert(Jx.isObject(uri));
+
+        var queryString = uri.query;
+
+        // Parse the query string
+        var queryParameters = {};
+        if (queryString.length > 0) {
+            // Drop the starting question mark from the query
+            Debug.assert(queryString[0] === "?", "Unexpected query format - did not start with a question mark.");
+            queryString = queryString.substr(1);
+            // Split the query into arguments
+            var queryArguments = queryString.split("&"),
+                queryArgument,
+                offsetIndex;
+            for (var m = queryArguments.length; m--;) {
+                queryArgument = /*@static_cast(String)*/queryArguments[m];
+                offsetIndex = queryArgument.indexOf("=");
+                if (offsetIndex > -1) {
+                    queryParameters[queryArgument.substr(0, offsetIndex).toLowerCase()] = Utilities.ComposeHelper.decodeURIComponent(queryArgument.substr(offsetIndex + 1));
+                } else {
+                    queryParameters[queryArgument.toLowerCase()] = true;
+                }
+            }
+        }
+        return queryParameters;
+    };
+
+    Utilities.ComposeHelper.decodeURIComponent = function (str) {
+        /// <summary>
+        /// No throw decodeURIComponent
+        /// </summary>
+        /// <param name="str" type="String" />
+
+        try {
+            return decodeURIComponent(str);
+        } catch (e) {
+            Jx.log.exception("decodeURIComponent failed", e);
+            return null;
+        }
+    };
+
+    Utilities.ComposeHelper.onProtocol = function (evt) {
+        /// <summary>
+        /// Handles all protocol activations
+        /// </summary>
+        /// <param name="evt" type="Windows.ApplicationModel.Activation.IProtocolActivatedEventArgs" />
+
+        // This protocol handler handles all protocol activations (mailto/ms-mail).
+        Mail.log("Mail_MailTo_Command", Mail.LogEvent.start);
+
+        // Perform some logic common to both protocol handlers, then invoke the appropriate handler.
+        var selectedAccount = Utilities.ComposeHelper._selection.account.platformObject,
+            parameters = Utilities.ComposeHelper._parseQueryParams(evt.uri);
+        // Figure out which protocol handler to invoke
+        if (evt.uri.schemeName === "mailto") {
+            Utilities.ComposeHelper._mailToHandler(evt.uri, parameters, selectedAccount);
+        } else if (parameters.action === "calendar") {
+            Utilities.ComposeHelper._calendarProtocolHandler(parameters);
+        }
+
+        Mail.log("Mail_MailTo_Command", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper._mailToHandler = function (uri, queryParameters, selectedAccount) {
+        /// <summary>
+        /// Handles mailto protocol activation
+        /// </summary>
+        /// <param name="uri" type="Windows.Foundation.Uri">URI used to launch app</param>
+        /// <param name="queryParameters" type="Object">Parsed query params (dictionary)</param>
+        /// <param name="selectedAccount" type="Microsoft.WindowsLive.Platform.IAccount">Current mail account</param>
+
+        Utilities.ComposeHelper.ensureComposeFiles();
+
+        Utilities.ComposeHelper.launchCompose(Compose.ComposeAction.createNew, _augmentActionParameters(/*@static_cast(Compose.ActionParameters)*/{
+            messageModel: createMailToMessageModel(
+                    selectedAccount,
+                    queryParameters,
+                    Jx.isNullOrUndefined(uri.path) ? null : Utilities.ComposeHelper.decodeURIComponent(uri.path)
+                    )
+        }), { startDirty: true, moveToInbox: true, suppressPerfTrack: true });
+
+    };
+
+    Utilities.ComposeHelper._calendarProtocolHandler = function (parameters) {
+        /// <summary>
+        /// Protocol handler for calendar integration
+        /// </summary>
+        /// <param name="parameters" type="Object">Parsed query params (dictionary)</param>
+
+        Mail.writeProfilerMark("ComposeHelper.calendarProtocolHandler", Mail.LogEvent.start);
+
+        var eventHandle = parameters.eventhandle;
+        var platform = /*@static_cast(Microsoft.WindowsLive.Platform.Client)*/Mail.Globals.platform;
+
+        // Load the calendar event.
+        var sourceEvent;
+
+        try {
+            sourceEvent = platform.calendarManager.getEventFromHandle(eventHandle);
+        } catch (e) {
+            // This error can occur if the event handle itself is malformed.  If
+            // it is formatted correctly but the event simply doesn't exist, we'll
+            // get null.
+
+            Jx.log.exception("Unable to load event", e);
+            sourceEvent = null;
+        }
+
+        if (sourceEvent) {
+            Utilities.ComposeHelper.ensureComposeFiles();
+
+            var calendarAction = parameters.calendaraction;
+
+            if (Compose.util.isValidCalendarAction(calendarAction)) {
+                var composeAction = Compose.util.convertToComposeAction(calendarAction);
+                var args = /*@static_cast(Compose.ActionParameters)*/{
+                    factorySpec: {
+                        originalEvent: sourceEvent,
+                        calendarAction: calendarAction
+                    }
+                };
+                Utilities.ComposeHelper.launchCompose(composeAction, args, { startDirty: true, moveToDrafts: true, suppressPerfTrack: true });
+            } else {
+                Jx.log.info("Invalid calendar action, not proceeding with compose launch");
+            }
+        }
+
+        Mail.writeProfilerMark("ComposeHelper.calendarProtocolHandler", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper.registerSelection = function (selection) {
+        Utilities.ComposeHelper._selection = selection;
+    };
+
+    var _isComposeShowingCount = 0,
+        _isComposeLaunching = false,
+        _isComposeShowing = function () { return _isComposeShowingCount > 0; };
+    Object.defineProperty(Utilities.ComposeHelper, "isComposeShowing", {
+        get: function () {
+            return _isComposeShowing();
+        }
+    });
+
+    Object.defineProperty(Utilities.ComposeHelper, "isComposeLaunching", {
+        get: function () {
+            return _isComposeLaunching;
+        },
+        set: function (launching) {
+            _isComposeLaunching = launching;
+        }
+    });
+
+    Utilities.ComposeHelper.setComposeShowing = function (showing) {
+        /// <summary>Updates compose showing refcount</summary>
+        /// <param name="showing" type="Boolean" />
+        Debug.assert(Jx.isBoolean(showing));
+
+        var newCount = _isComposeShowingCount + (showing ? 1 : -1),
+            newIsShowing = newCount > 0,
+            changed = _isComposeShowing() !== newIsShowing;
+        Debug.assert(newCount >= 0, "Invalid 'compose showing refcount'. count=" + String(newCount));
+
+        _isComposeShowingCount = newCount;
+
+        // If the view state is changing (it is possible Compose may be getting launched even though it is already in view via mailto)
+        if (changed) {
+            Jx.EventManager.fire(null, "composeVisibilityChanged");
+        }
+    };
+
+    Utilities.ComposeHelper._buildEmpty = function () {
+        /// <summary>Builds an empty fullscreen compose so we can pre-load the compose experience in the background</summary>
+        if (!Utilities.ComposeHelper._emptyCompose) {
+            Utilities.ComposeHelper._emptyCompose = Utilities.ComposeHelper._builder.createBackgroundCompose();
+        }
+        return Utilities.ComposeHelper._emptyCompose;
+    };
+
+    Utilities.ComposeHelper.addRestartCheck = function () {
+        Mail.Globals.appState.addRestartCheck("Compose is showing", function () { return !Utilities.ComposeHelper.isComposeShowing; });
+        Utilities.ComposeHelper.addRestartCheck = Jx.fnEmpty;
+    };
+
+    Utilities.ComposeHelper.launchCompose = function (action, args, options) {
+        /// <param name="action" type="Number">The Compose.ComposeAction to launch.</param>
+        /// <param name="args" type="Compose.ActionParameters" optional="true">The collection of parameters to pass to Compose.</param>
+        /// <param name="options" type="Object" optional="true">
+        ///    An object that has the following fields:
+        ///        startDirty: If true, marks Compose as dirty upon launch, which means it will always save
+        ///        moveToDrafts: If true, sets destination folder to drafts
+        ///        suppressPerfTrack: If true, will not fire perftrack stop events
+        /// <param>
+        Mail.writeProfilerMark("ComposeHelper.launchCompose", Mail.LogEvent.start);
+        var launchFn = function () {
+            args = args || {};
+            args.factorySpec = args.factorySpec || {};
+            args.factorySpec.initAction = action;
+
+            options = options || {};
+
+            var helper = Utilities.ComposeHelper;
+            helper.isComposeLaunching = true;
+            helper.ensureComposeFiles();
+            helper.addRestartCheck();
+            if (helper.ensureComposeObject()) {
+                helper.ensureComposeHTML(true);
+                document.getElementById("idCompCompose").classList.remove("invisible");
+                var isNewDraft = (action !== Compose.ComposeAction.openDraft),
+                    compose = this._builder.createFullScreenCompose(args),
+                    animationPromise = this._builder.showCompose(args, options.suppressPerfTrack);
+
+                animationPromise.done(function () {
+                    helper.isComposeLaunching = false;
+                    compose.setDirtyState(Boolean(options.startDirty));
+
+                    if (isNewDraft) {
+                        // Commit the message so that it will be added to the MessageList
+                        var mailMessage = compose.getMailMessageModel();
+                        mailMessage.commit();
+
+                        var messageId = mailMessage.get("objectId");
+
+                        Jx.scheduler.addJob(null,
+                            Mail.Priority.composeSelectionUpdateNav,
+                            "ComposeHelper - update selected item in message list to newly created draft",
+                            function () {
+                                // message model may have changed, no need to select the MessageList item
+                                if (mailMessage === compose.getMailMessageModel()) {
+                                    var selection = Utilities.ComposeHelper._selection,
+                                        view = selection.view;
+
+                                    if (!Mail.ViewCapabilities.canHaveDrafts(view)) {
+                                        // We don't allow drafts in certain folders
+                                        options.moveToDrafts = true;
+                                    }
+
+                                    var account = selection.account,
+                                        accountId = mailMessage.get("accountId");
+                                    if (accountId !== account.objectId) {
+                                        account = Mail.Account.load(accountId, account.platform);
+                                    }
+
+                                    if (account) {
+                                        var viewChanging = false;
+                                        if (options.moveToDrafts && view !== account.draftsView) {
+                                            view = account.draftsView;
+                                            viewChanging = true;
+                                        } else if (options.moveToInbox && view !== account.inboxView) {
+                                            view = account.inboxView;
+                                            viewChanging = true;
+                                        }
+
+                                        var platformMessage = mailMessage.getPlatformMessage(),
+                                            uiMailMessage = new Mail.UIDataModel.MailMessage(platformMessage, account),
+                                            updateSelection = function () {
+                                                selection.updateNav(account, view, uiMailMessage);
+                                                selection.updateMessages(uiMailMessage, -1, [uiMailMessage]);
+                                            },
+                                            isSearching = Mail.SearchHandler && Mail.SearchHandler.isSearching;
+
+                                        if ((viewChanging || isSearching) && (platformMessage.displayViewIdString === "" || platformMessage.parentConversationId === "")) {
+                                            Mail.Promises.waitForEvent(platformMessage, "changed", function () {
+                                                return platformMessage.displayViewIdString !== "" && platformMessage.parentConversationId !== "";
+                                            }).done(updateSelection);
+                                        } else {
+                                            updateSelection();
+                                        }
+
+                                        if (Mail.Globals.animator) {
+                                            // Animate forward if we are in one pane view
+                                            Mail.Globals.animator.animateNavigateForward(Jx.fnEmpty, true /* isSameSelection */);
+                                        }
+
+                                        if (Jx.glomManager.getIsChild()) {
+                                            // If in a child window, we need to update the glomId
+                                            Jx.glomManager.changeGlomId(messageId);
+                                        }
+                                    }
+                                }
+                            }
+                        );
+                    }
+                }.bind(this));
+
+                Mail.writeProfilerMark("ComposeHelper.launchCompose", Mail.LogEvent.stop);
+            }
+        }.bind(this);
+
+        if (Utilities.ComposeHelper.isComposeShowing) {
+            Utilities.ComposeHelper.hideCurrent();
+        }
+        launchFn();
+    };
+
+    Utilities.ComposeHelper.save = function (suppressClose, hideCurrent) {
+        /// <summary>
+        /// Saves the current compose experience (if there is one) and performs the default save before/after actions.
+        /// In the case of fullscreen compose, this will automatically close the compose experience after save by default.
+        /// In inline compose, this will just save. If nothing is being composed this function will do nothing, but it is
+        /// safe to call.
+        /// </summary>
+        /// <param name="suppressClose" type="Boolean" optional="true">Pass true to prevent the compose window from closing after saving</param>
+        /// <param name="hideCurrent" type="Boolean" optional="true">True when the save is a result of a switch in the selected message</param>
+
+        if (Jx.isNullOrUndefined(suppressClose)) {
+            suppressClose = false;
+        }
+
+        var helper = Utilities.ComposeHelper;
+
+        // This can be the first function call that requires _builder since launching the app. Ensure it exists.
+        if (helper.ensureComposeObject()) {
+            var compose = helper._builder.getCurrent();
+            if (Boolean(compose)) {
+                compose.save(suppressClose, hideCurrent);
+            }
+        }
+    };
+
+    Utilities.ComposeHelper.hideCurrent = function () {
+        /// <summary>
+        /// Informs compose that the currently open message will be hidden, some save actions are only taken during this hide, not save
+        /// </summary>
+        return Utilities.ComposeHelper.save(false /*suppressClose*/, true /*hideCurrent*/);
+    };
+
+    var _augmentActionParameters = function (actionParameters) {
+        /// <param name="actionParameters" type="Compose.ActionParameters"></param>
+        Debug.assert(Jx.isObject(actionParameters));
+
+        actionParameters.factorySpec = actionParameters.factorySpec || /*@static_cast(Mail.MessageModelFactoryFactorySpec)*/{};
+        Debug.assert(Jx.isNullOrUndefined(actionParameters.factorySpec.accountId));
+
+        var selectedAccount = /*@static_cast(Microsoft.WindowsLive.Platform.IAccount)*/Mail.Globals.appState.selectedAccount;
+        Debug.assert(Jx.isInstanceOf(Mail.Globals.appState.selectedAccount, Microsoft.WindowsLive.Platform.Account), "No selected Account set");
+        Debug.assert(Jx.isNonEmptyString(selectedAccount.objectId), "Selected account does not have an account ID");
+
+        actionParameters.factorySpec.accountId = selectedAccount.objectId;
+
+        return actionParameters;
+    };
+
+    Utilities.ComposeHelper.onEdit = function (message, moveFocus) {
+        Mail.log("CommandBar_onEdit", Mail.LogEvent.start);
+        Debug.assert(Jx.isBoolean(moveFocus) || Jx.isUndefined(moveFocus), "invalid moveFocus parameter");
+        Debug.assert(Jx.isInstanceOf(message, Mail.UIDataModel.MailMessage), "message param is empty");
+        Utilities.ComposeHelper.ensureComposeFiles();
+
+        // If this message is already open, make this a noop
+        var composeBuilder = Mail.composeBuilder,
+            currentCompose = composeBuilder.getCurrent(),
+            platformMessage = null;
+        if (currentCompose) {
+            platformMessage = currentCompose.getMailMessageModel().getPlatformMessage();
+        }
+        if (!Boolean(currentCompose) || (Boolean(currentCompose.getMailMessageModel()) &&
+            !Mail.Validators.areEqual(message, platformMessage)) ||
+            message.instanceNumber !== platformMessage.instanceNumber) {
+            // We can only edit the message if it is in the drafts folder or we successfully moved the message to the drafts folder first
+            if (message.isDraft) {
+                // If necessary, mark the Draft as read
+                if (Mail.Globals.appSettings.autoMarkAsRead && message.canMarkRead && !message.read && !document.msHidden) {
+                    Utilities.ComposeHelper._selection.setReadState(true, [message]);
+                }
+
+                // Launch Compose
+                Utilities.ComposeHelper.launchCompose(Compose.ComposeAction.openDraft, _augmentActionParameters({
+                    factorySpec: {
+                        messageCreator: Compose.MessageLoader.instance(message.objectId),
+                        moveFocus: !!moveFocus
+                    }
+                }), { startDirty: true });
+            }
+        } else {
+            document.getElementById("idCompCompose").classList.remove("invisible");
+            if (!Mail.Utilities.ComposeHelper.isComposeShowing) {
+                var selection = currentCompose.getComponentCache().getComponent("Compose.Selection");
+                if (!selection.isActivated()) {
+                    selection.composeActivateUI();
+                }
+                Mail.Utilities.ComposeHelper.setComposeShowing(true);
+            }
+        }
+
+        Mail.log("CommandBar_onEdit", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper.onNewButton = function (uiEntryPoint) {
+        Mail.log("CommandBar_onNewButton", Mail.LogEvent.start);
+        Jx.ptStart("Compose-NewMail");
+
+        Utilities.ComposeHelper.ensureComposeFiles();
+        var builder = Mail.Utilities.ComposeHelper._builder,
+            compose = null;
+        if (builder) {
+            compose = builder.getCurrent();
+        }
+        Debug.assert(!Utilities.ComposeHelper.isComposeShowing || compose);
+        // Don't create a new message if we are currently in compose and the message is new or not dirty
+        var composeOpenAndDirty = false;
+        if (Utilities.ComposeHelper.isComposeShowing && (!compose.getMailMessageModel().isNew() || compose.isDirty())) {
+            composeOpenAndDirty = true;
+        }
+
+        // Don't create a new message if we are currently in compose and the message is new or not dirty
+        var verb = Microsoft.WindowsLive.Platform.MailMessageLastVerb;
+        if (!Utilities.ComposeHelper.isComposeShowing ||
+            (Utilities.ComposeHelper.isComposeShowing && compose.getMailMessageModel().get("sourceVerb") !== verb.unknown) || // Launch compose if the current draft is a reply/forward
+            composeOpenAndDirty) {
+            Utilities.ComposeHelper.launchCompose(Compose.ComposeAction.createNew, _augmentActionParameters({}));
+            Instr.instrumentTriageCommand(Instr.Commands.new, uiEntryPoint, Utilities.ComposeHelper._selection);
+        } else if (!composeOpenAndDirty) {
+            if (Mail.Globals.animator) {
+                // Animate forward if we are in one pane view
+                Mail.Globals.animator.animateNavigateForward(Jx.fnEmpty, true /* isSameSelection */);
+            }
+        }
+
+        Mail.log("CommandBar_onNewButton", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper.onReplyButton = function (selection, uiEntryPoint) {
+        Mail.log("CommandBar_onReplyButton", Mail.LogEvent.start);
+        Jx.ptStart("Compose-Reply");
+        Debug.assert(Jx.isObject(selection));
+        Debug.assert(Jx.isValidNumber(uiEntryPoint));
+        var message = selection.message;
+        Utilities.ComposeHelper.launchReplyAsync(function () {
+            message.recordAction(Microsoft.WindowsLive.Platform.FolderAction.messageAction);
+            Utilities.ComposeHelper.ensureComposeFiles();
+            Utilities.ComposeHelper.launchCompose(Compose.ComposeAction.reply, _augmentActionParameters(/*@static_cast(Compose.ActionParameters)*/{
+                factorySpec: {
+                    messageCreator: Compose.MessageReturner.instance(message.platformMailMessage)
+                }
+            }));
+            Instr.instrumentTriageCommand(Instr.Commands.reply, uiEntryPoint, Utilities.ComposeHelper._selection);
+        }, message);
+        Mail.log("CommandBar_onReplyButton", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper.onReplyAllButton = function (selection, uiEntryPoint) {
+        Mail.log("CommandBar_onReplyAllButton", Mail.LogEvent.start);
+        Jx.ptStart("Compose-ReplyAll");
+        Debug.assert(Jx.isObject(selection));
+        Debug.assert(Jx.isValidNumber(uiEntryPoint));
+        var message = selection.message;
+        Utilities.ComposeHelper.launchReplyAsync(function () {
+            message.recordAction(Microsoft.WindowsLive.Platform.FolderAction.messageAction);
+            Utilities.ComposeHelper.ensureComposeFiles();
+            Utilities.ComposeHelper.launchCompose(Compose.ComposeAction.replyAll, _augmentActionParameters(/*@static_cast(Compose.ActionParameters)*/{
+                factorySpec: {
+                    messageCreator: Compose.MessageReturner.instance(message.platformMailMessage)
+                }
+            }));
+            Instr.instrumentTriageCommand(Instr.Commands.replyAll, uiEntryPoint, Utilities.ComposeHelper._selection);
+        }, message);
+        Mail.log("CommandBar_onReplyAllButton", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper.launchReplyAsync = function (launchReply, message) {
+        /// <summary>If the mail message is not downloaded yet, prompts the user to see if we should continue to the reply/reply all.</summary>
+        /// <param name="launchReply" type="Function">A function that launches compose to reply to a message.</param>
+        /// <param name="message" type="Mail.UIDataModel.MailMessage">The message to check.</param>
+        if (message.isComposeBodyTruncated || message.hasAttachments) {
+            // Ordinary attachments are dropped upon reply, so we only need to check the embedded attachments.
+            var embeddedAttachments = message.getEmbeddedAttachmentCollection();
+            Utilities.ComposeHelper.launchAsync(launchReply, message, embeddedAttachments);
+        } else {
+            // The message is ready to reply, so launch it synchronously.
+            launchReply();
+        }
+    };
+
+    Utilities.ComposeHelper.onForwardButton = function (selection, uiEntryPoint) {
+        Mail.log("CommandBar_onForwardButton", Mail.LogEvent.start);
+        Jx.ptStart("Compose-Forward");
+        Debug.assert(Jx.isObject(selection));
+        Debug.assert(Jx.isValidNumber(uiEntryPoint));
+        var message = selection.message;
+        Utilities.ComposeHelper.launchForwardAsync(function () {
+            message.recordAction(Microsoft.WindowsLive.Platform.FolderAction.messageAction);
+            Utilities.ComposeHelper.ensureComposeFiles();
+            Utilities.ComposeHelper.launchCompose(Compose.ComposeAction.forward, _augmentActionParameters(/*@static_cast(Compose.ActionParameters)*/{
+                factorySpec: {
+                    messageCreator: Compose.MessageReturner.instance(message.platformMailMessage)
+                }
+            }));
+            Instr.instrumentTriageCommand(Instr.Commands.forward, uiEntryPoint, Utilities.ComposeHelper._selection);
+        }, message);
+        Mail.log("CommandBar_onForwardButton", Mail.LogEvent.stop);
+    };
+
+    Utilities.ComposeHelper.launchForwardAsync = function (launchForward, message) {
+        /// <summary>If the mail message or its attachments are not downloaded yet, prompts the user to see if we should continue to the forward.</summary>
+        /// <param name="launchForward" type="Function">A function that launches compose to forward a message.</param>
+        /// <param name="message" type="Mail.UIDataModel.MailMessage">The message to check.</param>
+        if (message.isComposeBodyTruncated || message.hasAttachments) {
+            var embeddedAttachments = message.getEmbeddedAttachmentCollection(),
+                ordinaryAttachments = message.getOrdinaryAttachmentCollection();
+            Utilities.ComposeHelper.launchAsync(launchForward, message, embeddedAttachments, ordinaryAttachments);
+        } else {
+            // The message is ready to forward, so launch it synchronously.
+            launchForward();
+        }
+    };
+
+    Utilities.ComposeHelper.launchAsync = function (launch, message, embeddedAttachments, ordinaryAttachments) {
+        /// <summary>If the mail message or its attachments are not downloaded yet, prompts the user to see if we should continue.</summary>
+        /// <param name="launch" type="Function">A function that launches compose.</param>
+        /// <param name="message" type="Mail.UIDataModel.MailMessage">The message to check.</param>
+        /// <param name="embeddedAttachments" type="Microsoft.WindowsLive.Platform.ICollection">The collection of embeddedAttachments.</param>
+        /// <param name="ordinaryAttachments" type="Microsoft.WindowsLive.Platform.ICollection" optional="true">The optional collection of ordinaryAttachments.</param>
+        var containsNotDownloadedAttachments = Utilities.ComposeHelper.containsNotDownloadedAttachments;
+        if (!message.isJunk && (message.isComposeBodyTruncated || containsNotDownloadedAttachments(embeddedAttachments) || containsNotDownloadedAttachments(ordinaryAttachments))) {
+            // Some of the attachments are not downloaded, so the user may want to wait and download them. If the user chooses not to wait,
+            // the attachments will not be included in the forwarded message.
+            var flyoutElement = document.querySelector(".mailReadingPaneFinishDownloadingFlyout");
+            if (!flyoutElement) {
+                // Create the flyout's html
+                var appRoot = document.getElementById(Mail.CompApp.rootElementId);
+                flyoutElement = document.createElement("div");
+                flyoutElement.className = "mailReadingPaneFinishDownloadingFlyout";
+                flyoutElement.innerHTML = "<div>" +
+                                              "<div class='mailReadingPaneFinishDownloadingPrompt typeSizeNormal' data-win-res='innerText:mailReadingPaneFinishDownloadingPrompt'></div>" +
+                                              "<div class='mailReadingPaneFinishDownloadingFlyoutButtons'>" +
+                                                  "<button class='mailReadingPaneFlyoutDefaultFocusButton mailReadingPaneContinueWithoutDownloadingButton' data-win-res='innerText:mailReadingPaneContinueWithoutDownloading' role='button' tabindex='0' type='button'></button>" +
+                                                  "<button class='mailReadingPaneFinishDownloadingButton' data-win-res='innerText:mailReadingPaneFinishDownloading' role='button' tabindex='0' type='button'></button>" +
+                                              "</div>" +
+                                          "</div>";
+                Jx.res.processAll(flyoutElement);
+                appRoot.appendChild(flyoutElement);
+
+                // Create the flyout
+                var respondButton = document.querySelector(".mailReadingPaneRespondButton");
+                new WinJS.UI.Flyout(flyoutElement, { anchor: respondButton });
+            }
+
+            Debug.assert(document.querySelectorAll(".mailReadingPaneFinishDownloadingFlyout").length === 1);
+            var continueWithoutDownloadingButton = flyoutElement.querySelector(".mailReadingPaneContinueWithoutDownloadingButton"),
+                finishDownloadingButton = flyoutElement.querySelector(".mailReadingPaneFinishDownloadingButton"),
+                flyout = /*@static_cast(WinJS.UI.Flyout)*/flyoutElement.winControl;
+
+            var continueWithoutDownloading = function () {
+                cleanUp();
+                flyout.hide();
+                launch();
+            },
+                finishDownloading = function () {
+                    flyout.hide();
+                    Utilities.ComposeHelper.finishDownloading(message, embeddedAttachments, ordinaryAttachments);
+                },
+                onKeyDown = function (evt) {
+                    /// <param name="evt" type="Event">The keypress event.</param>
+                    var activeElement = document.activeElement;
+                    if (evt.key === "Enter" && activeElement !== continueWithoutDownloadingButton && activeElement !== finishDownloadingButton) {
+                        evt.preventDefault();
+                        flyoutElement.querySelector(".mailReadingPaneFlyoutDefaultFocusButton").click();
+                    }
+                },
+                cleanUp = function () {
+                    continueWithoutDownloadingButton.removeEventListener("click", continueWithoutDownloading, false);
+                    finishDownloadingButton.removeEventListener("click", finishDownloading, false);
+                    flyoutElement.removeEventListener("keydown", onKeyDown, false);
+                    flyout.removeEventListener("afterhide", cleanUp, false);
+                };
+
+            // The flyout doesn't return a value, we need to set up our eventing manually.
+            continueWithoutDownloadingButton.addEventListener("click", continueWithoutDownloading, false);
+            finishDownloadingButton.addEventListener("click", finishDownloading, false);
+            flyoutElement.addEventListener("keydown", onKeyDown, false);
+            flyout.addEventListener("afterhide", cleanUp, false);
+            flyout.show();
+        } else {
+            // The message is ready to forward, so launch it synchronously.
+            launch();
+        }
+    };
+
+    Utilities.ComposeHelper.containsNotDownloadedAttachments = function (attachmentCollection) {
+        /// <summary>Returns true if there is an attachment that is not downloaded yet and false otherwise.</summary>
+        /// <param name="attachmentCollection" type="Microsoft.WindowsLive.Platform.ICollection" optional="true">The attachment collection to check.</param>
+        if (attachmentCollection) {
+            for (var i = 0, len = attachmentCollection.count; i < len; i++) {
+                var attachment = /*@static_cast(Microsoft.WindowsLive.Platform.MailAttachment)*/attachmentCollection.item(i);
+                if (attachment.syncStatus !== /*@static_cast(Microsoft.WindowsLive.Platform.AttachmentComposeStatus)*/AttachmentSyncStatus.done) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    };
+
+    Utilities.ComposeHelper.finishDownloading = function (message, embeddedAttachments, ordinaryAttachments) {
+        /// <summary>Starts downloading the rest of the message and any attachments.</summary>
+        /// <param name="message" type="Mail.UIDataModel.MailMessage">The message to start downloading.</param>
+        /// <param name="embeddedAttachments" type="Microsoft.WindowsLive.Platform.ICollection">The collection of embeddedAttachments to start downloading.</param>
+        /// <param name="ordinaryAttachments" type="Microsoft.WindowsLive.Platform.ICollection" optional="true">The optional collection of ordinaryAttachments to start downloading.</param>
+        Debug.assert(Jx.isInstanceOf(message, Mail.UIDataModel.MailMessage), "Expected a valid message");
+        Debug.assert(Jx.isInstanceOf(embeddedAttachments, Microsoft.WindowsLive.Platform.Collection), "Expected a valid embedded attachments collection");
+        Debug.assert(Jx.isNullOrUndefined(ordinaryAttachments) || Jx.isInstanceOf(ordinaryAttachments, Microsoft.WindowsLive.Platform.Collection), "Expected a valid ordinary attachments collection");
+        if (message.isComposeBodyTruncated) {
+            message.downloadFullBody();
+        }
+
+        var startAttachmentDownloads = Utilities.ComposeHelper.startAttachmentDownloads;
+        startAttachmentDownloads(embeddedAttachments);
+        startAttachmentDownloads(ordinaryAttachments);
+    };
+
+    Utilities.ComposeHelper.startAttachmentDownloads = function (attachmentCollection) {
+        /// <summary>Starts downloading any attachments that are not already in progress or downloaded.</summary>
+        /// <param name="attachmentCollection" type="Microsoft.WindowsLive.Platform.ICollection">The attachment collection to download.</param>
+        Debug.assert(Jx.isNullOrUndefined(attachmentCollection) || Jx.isInstanceOf(attachmentCollection, Microsoft.WindowsLive.Platform.Collection), "Expected a valid attachments collection");
+        if (attachmentCollection) {
+            for (var i = 0, len = attachmentCollection.count; i < len; i++) {
+                var attachment = /*@static_cast(Microsoft.WindowsLive.Platform.MailAttachment)*/attachmentCollection.item(i);
+                if (attachment.syncStatus === /*@static_cast(Microsoft.WindowsLive.Platform.AttachmentComposeStatus)*/AttachmentSyncStatus.notStarted ||
+                    attachment.syncStatus === /*@static_cast(Microsoft.WindowsLive.Platform.AttachmentComposeStatus)*/AttachmentSyncStatus.failed) {
+                    attachment.downloadBody();
+                }
+            }
+        }
+    };
+
+    Utilities.ComposeHelper.createAutoReplaceManager = function () {
+        this._ensureAutoReplaceManagerTables();
+        return new ModernCanvas.AutoReplaceManager("mail", Utilities.ComposeHelper._autoReplaceManagerTables);
+    };
+
+    Utilities.ComposeHelper._autoReplaceManagerTables = /*@static_cast(ModernCanvas.AutoReplaceManager)*/null;
+    Utilities.ComposeHelper._ensureAutoReplaceManagerTables = function () {
+        Debug.assert(Jx.isNullOrUndefined(Utilities.ComposeHelper._autoReplaceManagerTables));
+
+        Utilities.ComposeHelper._autoReplaceManagerTables = ModernCanvas.AutoReplaceManagerTables.instance();
+        Debug.assert(Jx.isObject(Utilities.ComposeHelper._autoReplaceManagerTables));
+
+        Utilities.ComposeHelper._ensureAutoReplaceManagerTables = Jx.fnEmpty;
+    };
+
+    Utilities.ComposeHelper.setDirty = function () {
+        var compose = this._builder.getCurrent();
+        if (compose) {
+            compose.setDirtyState(true);
+        }
+    };
+
+    Utilities.ComposeHelper.handleHomeButton = function () {
+        var ComposeHelper = Utilities.ComposeHelper;
+        ComposeHelper.setDirty();
+        ComposeHelper.save();
+        ComposeHelper.composeComplete();
+    };
+
+    Utilities.ComposeHelper.setGlomManager = function (glomManager) {
+        Debug.assert((glomManager === null) || Jx.isObject(glomManager));
+        Debug.assert((glomManager === null) || Jx.isFunction(glomManager.composeComplete));
+        Debug.assert((glomManager === null) || Jx.isFunction(glomManager.updateWindowTitleWithMessage));
+        Utilities.ComposeHelper._glomManager = glomManager;
+    };
+
+    Utilities.ComposeHelper.composeComplete = function () {
+        var glomManager = Utilities.ComposeHelper._glomManager;
+        if (glomManager) {
+            glomManager.composeComplete();
+        } else {
+            Debug.assert(Mail.GlomManager.isParent(), "Method called in child window before MailGlomManager init complete");
+        }
+    };
+
+    Utilities.ComposeHelper.updateWindowTitleWithMessage = function (message) {
+        var glomManager = Utilities.ComposeHelper._glomManager;
+        if (glomManager) {
+            var account = Mail.Account.load(message.accountId, Compose.platform);
+            glomManager.updateWindowTitleWithMessage(new Mail.UIDataModel.MailMessage(message, account));
+        } else {
+            Debug.assert(Mail.GlomManager.isParent(), "Method called in child window before MailGlomManager init complete");
+        }
+    };
+
+});

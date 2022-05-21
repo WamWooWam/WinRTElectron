@@ -50,18 +50,20 @@ export class Account extends PlatformObject implements IAccount, IAccountScenari
     constructor() {
         super("Account");
 
-        this.sourceId = uuidv4();
+        (<any>this).objectId = "A673FFA9-F6E0-45DA-8F10-51C501FB32F5";
+        this.sourceId = "A673FFA9-F6E0-45DA-8F10-51C501FB32F5";
         this.isDefault = true;
-        this.meContact = new Me();
+        this.meContact = new Me(this);
         this.accountType = AccountType.liveId;
         this.iconSmallUrl = "https://cdn.discordapp.com/emojis/422838511553609728.gif";
         this.iconMediumUrl = "https://cdn.discordapp.com/emojis/422838511553609728.gif";
         this.iconType = AccountIconType.outlook;
         this.emailAddress = "wamwoowam@gmail.com";
         this.sendAsAddresses = new Vector(["wamwoowam@gmail.com"]);
+        this.color = 0x0078d7;
+        this.preferredSendAsAddress = "wamwoowam@gmail.com"
         this.displayName = "Wan Kerr Co. Ltd.";
         this.userDisplayName = "Thomas May";
-        this.color = 0x0078d7;
         this.syncType = SyncType.push;
         this.mailScenarioState = ScenarioState.connected;
         this.peopleScenarioState = ScenarioState.connected;
@@ -171,4 +173,4 @@ export class Account extends PlatformObject implements IAccount, IAccountScenari
     }
 }
 
-export const DefaultAccount = new Account();
+// export const DefaultAccount = new Account();

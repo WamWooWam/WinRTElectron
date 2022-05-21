@@ -1,1 +1,1168 @@
-﻿(function(){function t(n){Jx.mark("Calendar:FreeBusyWorker."+n+",StartTA,Calendar")}function i(n){Jx.mark("Calendar:FreeBusyWorker."+n+",StopTA,Calendar")}function o(n){return'<div class="event" data-status="'+n.status+'" title="'+n.tooltipHtml+'" style="color: '+n.color+"; "+n.dir+": "+(n.offset-1)+"px; width: "+n.width+'px;"><div class="glyph" style="background-color: '+n.color+';"><div class="glyphInner"><\/div><\/div><div class="subject">'+n.subjectHtml+"<\/div><\/div>"}function c(n){var t="unknown";return u.tentative<=n&&n<=u.outOfOffice&&(t=r.busyStatusClasses[n]),t}var r=Calendar.Helpers,u=Microsoft.WindowsLive.Platform.Calendar.BusyStatus,f=new Jx.DTFormatter("shortTime"),n=Calendar.Views.FreeBusyWorker=function(t,i,u,f){this._router=t;this._scheduler=i;this._accounts=u;this._manager=f;this._requests={};this._updateEvents=this._updateEvents.bind(this);this._router.route("FreeBusy/initialize",this.initialize,this);this._router.route("FreeBusy/refresh",this.refresh,this);this._router.route("FreeBusy/setVisible",this.setVisible,this);this._router.route("FreeBusy/setSelected",this.setSelected,this);this._router.route("FreeBusy/setWorkHours",this.setWorkHours,this);this._router.route("FreeBusy/setCalendar",this.setCalendar,this);this._router.route("FreeBusy/setAttendees",this.setAttendees,this);this._router.route("FreeBusy/pause",this.pause,this);this._router.route("FreeBusy/resume",this.resume,this);this._router.route("FreeBusy/cancel",this.cancel,this);r.ensureFormats();n._unknown=Jx.res.getString("FreeBusyUnknown");n._rangeFormatter=Jx.res.getFormatFunction("DateRange")};n.prototype.initialize=function(n){t("initialize");var u=n.id,r=n.data;r.id=u;r.visible.start=new Date(r.visible.start);r.visible.end=new Date(r.visible.end);r.selected.start=new Date(r.selected.start);r.selected.end=new Date(r.selected.end);r.results={};r.aria={};r.account=this._accounts.loadAccount(r.accountId);this._setHourBoundaries(r);this._adjustForDst(r);this._getEvents(r);this._getSchedules(r);this._requests[u]=r;i("initialize")};n.prototype.refresh=function(n){t("refresh");var u=n.id,r=this._requests[u];r&&(this._disposeEvents(r),this._getEvents(r),this._disposeSchedules(r),this._getSchedules(r));i("refresh")};n.prototype.setVisible=function(n){t("setVisible");var u=n.id,r=this._requests[u];r&&(r.visible.start=new Date(n.data.start),r.visible.end=new Date(n.data.end),this._disposeEvents(r),this._getEvents(r),this._disposeSchedules(r),this._adjustForDst(r),this._getSchedules(r));i("setVisible")};n.prototype.setSelected=function(n){t("setSelected");var u=n.id,r=this._requests[u];r&&(r.selected.start=new Date(n.data.start),r.selected.end=new Date(n.data.end),r.aria={},this._getMeAria(r),this._getAria(r));i("setSelected")};n.prototype.setWorkHours=function(n){var f,r,u;t("setWorkHours");f=n.id;r=this._requests[f];r&&(u=n.data.workHours,u!==r.workHours&&(r.workHours=u,this._setHourBoundaries(r),this._updateEvents(r),this._updateSchedules(r)));i("setWorkHours")};n.prototype.setCalendar=function(n){var e,r,u,f;t("setCalendar");e=n.id;r=this._requests[e];r&&(u=n.data.calendarId,f=n.data.accountId,u!==r.calendarId&&(r.calendarId=u,this._disposeEvents(r),this._getEvents(r)),f!==r.accountId&&(r.accountId=f,r.account=this._accounts.loadAccount(r.accountId),this._disposeSchedules(r),this._getSchedules(r)));i("setCalendar")};n.prototype.setAttendees=function(n){var c,r,f,u,l,o,a,e,v,s,h;if(t("setAttendees"),c=n.id,r=this._requests[c],r){for(f=r.attendees=n.data.attendees,u=r.request,u&&(l=u.attendees.some(function(n){return f.indexOf(n)!==-1}),l||(o=u.winrt,o.removeEventListener("changed",u.onChanged),o.dispose(),r.request=null)),a=r.results,r.results={},e=0,v=f.length;e<v;e++)s=f[e],h=a[s],h&&(r.results[s]=h);r.requestQueue=null;r.request||this._getSchedules(r)}i("setAttendees")};n.prototype.pause=function(n){t("pause");var u=n.id,r=this._requests[u];r&&(r.paused=true);i("pause")};n.prototype.resume=function(n){t("resume");var u=n.id,r=this._requests[u];r&&(r.paused=false,r.dirtyEvents?(this._getEvents(r),r.dirtyEvents=false,r.dirtyMeAria=false):r.dirtyMeAria&&(this._getMeAria(r),r.dirtyMeAria=false),r.dirtySchedules?(this._getSchedules(r),r.dirtySchedules=false,r.dirtyAria=false):r.dirtyAria&&(this._getAria(r),r.dirtyAria=false));i("resume")};n.prototype.cancel=function(n){t("cancel");var u=n.id,r=this._requests[u];r&&(this._disposeEvents(r),this._disposeSchedules(r),delete this._requests[n.id]);i("cancel")};n.prototype.dispose=function(){for(var n in this._requests)this.cancel({id:n});this._requests={};this._manager=null;this._accounts=null;this._scheduler=null;this._router=null};n._invalidResult="INVALID";n._hourWidth=160;n._halfWidth=n._hourWidth/2;n._numberOfDays=35;n._resultsPerDay=48;n._resultLength=n._numberOfDays*n._resultsPerDay;n._workStart=8;n._workEnd=19;n._workHours=n._workEnd-n._workStart;n._getNormalizedStatus=function(n,t){var i=parseInt(n.charAt(t),10);return(isNaN(i)||i<u.free||u.outOfOffice<i)&&(i=u.outOfOffice+1),i};n._formatScheduleBlock=function(t,i,e){var s=f.format(t),h=r.isSameDate(t,i)?f.format(i):r.dateAndTime.format(i),o=n._unknown;return u.free<=e&&e<=u.outOfOffice&&(o=r.accEventStatuses[e]),n._rangeFormatter(s,h)+", "+o+"; "};n.prototype._setHourBoundaries=function(t){t.workHours?(t.startBoundary=n._workStart,t.endBoundary=n._workEnd,t.hourOffset=n._workStart,t.hoursPerDay=n._workHours):(t.startBoundary=-1,t.endBoundary=25,t.hourOffset=0,t.hoursPerDay=24);t.startStatusBoundary=t.startBoundary*2;t.endStatusBoundary=t.endBoundary*2};n.prototype._getEvents=function(n){t("_getEvents");n.paused?n.dirtyEvents=true:(n.collection=this._manager.getEvents(n.visible.start,n.visible.end),n.jobIdEvents=this._scheduler.schedule(this._processEvents,this,[n]));i("_getEvents")};n._statusSorter=function(n,t){var i=n.status-t.status;return i||(i=n.start-t.start),i};n.prototype._processEvents=function(r){var v,w,c,y,p;t("_processEvents");var a=r.blocks=[],f={end:0,status:0},h=[],s;for(v=0,w=r.collection.count;v<w;v++)if(c=r.collection.item(v),c&&c.busyStatus!==u.free&&c.calendar.id===r.calendarId){var e=c.startDate,o=c.endDate,l=c.busyStatus;if(e<o&&(f.end<o||f.status<l)&&(e<r.visible.start&&(e=r.visible.start),r.visible.end<o&&(o=r.visible.end),y=e.getHours(),p=o.getHours(),y<r.startBoundary?(e.setHours(r.startBoundary),e.setMinutes(0)):r.endBoundary<=y&&(e.setHours(r.startBoundary+24),e.setMinutes(0)),p<r.startBoundary?(o.setHours(r.endBoundary-24),o.setMinutes(0)):r.endBoundary<=p&&(o.setHours(r.endBoundary),o.setMinutes(0)),e<o)){if(f.end<=e&&h.length){h.sort(n._statusSorter);do s=h.pop(),f.end<s.end&&(s.start=f.end,(s.start<e||l<=s.status)&&a.push(s),f=s);while(f.end<=e&&h.length)}f.end<=e?(f={ev:c,start:e,end:o,status:l},a.push(f)):f.status<l?(o<f.end&&h.push({ev:f.ev,start:f.start,end:f.end,status:f.status}),f.end=e,f={ev:c,start:e,end:o,status:l},a.push(f)):h.push({ev:c,start:e,end:o,status:l})}}if(h.length){h.sort(n._statusSorter);do s=h.pop(),f.end<s.end&&(s.start=f.end,a.push(s),f=s);while(h.length)}r.jobIdEvents=this._scheduler.schedule(this._buildEventHtml,this,[r]);i("_processEvents")};n.prototype._buildEventHtml=function(u){var e,w;t("_buildEventHtml");var v=u.visible.start,y=u.blocks,p="";for(e=0,w=y.length;e<w;e++){var s=y[e],c=s.start,l=s.end,h=s.ev,g=Math.floor((c-v)/r.dayInMilliseconds),nt=c.getHours()-u.hourOffset,b=g*u.hoursPerDay+nt+c.getMinutes()/60,tt=Math.floor((l-v)/r.dayInMilliseconds),it=l.getHours()-u.hourOffset,rt=tt*u.hoursPerDay+it+l.getMinutes()/60,ut=rt-b,k=Jx.escapeHtml(h.subject||r.noSubject),d=h.startDate,a=h.endDate,ft=r.isSameDate(d,a),et=r.dateAndTime.format(d),ot=ft?f.format(a):r.dateAndTime.format(a),st=Jx.escapeHtml(n._rangeFormatter(et,ot)),ht=k+" ("+st+")";p+=o({status:r.busyStatusClasses[s.status],color:r.processEventColor(h.color),dir:this._isRtl?"right":"left",subjectHtml:k,tooltipHtml:ht,offset:b*n._hourWidth,width:ut*n._hourWidth})}u.jobIdEvents=this._scheduler.schedule(this._sendEvents,this,[u,p]);i("_buildEventHtml")};n.prototype._sendEvents=function(n,r){t("_sendEvents");n.jobIdEvents=null;var u;n.onCollectionChanged?(u="FreeBusy/eventsChanged",n.collection.unlock(),this._getMeAria(n)):(u="FreeBusy/getEvents",n.jobIdEvents=this._scheduler.schedule(this._hookCollection,this,[n]));this._router.postMessage({command:u,id:n.id,html:r});i("_sendEvents")};n.prototype._disposeEvents=function(n){var t=n.onCollectionChanged;t&&(n.collection.removeEventListener("collectionchanged",t),n.onCollectionChanged=null,clearTimeout(n.changeTimeout));n.collection.dispose();n.collection=null;this._scheduler.cancel(n.jobIdEvents);n.jobIdEvents=null};n.prototype._hookCollection=function(n){t("_hookCollection");n.jobIdEvents=null;n.onCollectionChanged=this._onCollectionChanged.bind(this,n);n.collection.addEventListener("collectionchanged",n.onCollectionChanged);n.collection.unlock();this._getMeAria(n);i("_hookCollection")};n.prototype._getMeAria=function(n){t("_getMeAria");n.paused?n.dirtyMeAria=true:n.jobIdEvents||(n.jobIdEvents=this._scheduler.schedule(this._calculateMeAria,this,[n]));i("_getMeAria")};n.prototype._calculateMeAria=function(r){var c,h,e,f,s,l,o;if(t("_calculateMeAria"),r.jobIdEvents=null,c=r.blocks,h="",c.length){for(s=0,l=c.length;s<l;s++)if(o=c[s],r.selected.start<o.end)break;for(e=r.selected.start,f=e;s<l;s++){if(o=c[s],r.selected.end<=o.start)break;e<o.start&&(f=o.start,h=n._formatScheduleBlock(e,f,u.free),e=f);f=new Date(Math.min(r.selected.end,o.end));h+=n._formatScheduleBlock(e,f,o.ev.busyStatus);e=f}f<r.selected.end&&(e=f,f=r.selected.end,h+=n._formatScheduleBlock(e,f,u.free))}else e=r.selected.start,f=r.selected.end,h+=n._formatScheduleBlock(e,f,u.free);this._router.postMessage({command:"FreeBusy/meAria",id:r.id,label:h});i("_calculateMeAria")};n.prototype._onCollectionChanged=function(n){t("_onCollectionChanged");n.changeTimeout||(this._scheduler.cancel(n.jobIdEvents),n.changeTimeout=setTimeout(this._updateEvents,1e3,n));i("_onCollectionChanged")};n.prototype._updateEvents=function(n){this._requests[n.id]&&(t("_updateEvents"),this._scheduler.cancel(n.jobIdEvents),clearTimeout(n.changeTimeout),n.changeTimeout=null,n.collection.lock(),this._processEvents(n),i("_updateEvents"))};n._attendeeChunkSize=5;n.prototype._adjustForDst=function(n){var o=n.visible,s=o.start,f=o.end,u=s.getTimezoneOffset(),h=f.getTimezoneOffset(),t,i,e,r;if(u!==h){for(t=new Date(s),i=0;t<f&&t.getTimezoneOffset()===u;)t.setDate(t.getDate()+1),i+=48;for(t.setDate(t.getDate()-1),i-=48;t<f&&t.getTimezoneOffset()===u;)t.setMinutes(t.getMinutes()+30),i+=1;e=h-u;r=Math.abs(Math.floor(e/30));n.adjustSchedule=e<0?function(n){for(var f=n[i-1],u="",t=0;t<r;t++)u+=f;return n.substring(0,i)+u+n.substring(i)}:function(n){for(var e=i-r,o="",f,u,t=0;t<r;t++)f=parseInt(n.charAt(e+t),10),u=parseInt(n.charAt(e+t+r),10),o+=isNaN(f)?isNaN(u)?"X":u:isNaN(u)?f:Math.max(f,u);return n.substring(0,e)+o+n.substring(i+r)}}else n.adjustSchedule=function(n){return n}};n.prototype._getSchedules=function(r){if(t("_getSchedules"),r.paused)r.dirtySchedules=true;else if(r.requestQueue||(r.requestQueue=r.attendees.filter(function(n){return!r.results[n]})),r.requestQueue.length){var f=r.requestQueue.splice(0,n._attendeeChunkSize),u=r.request={attendees:f,winrt:this._manager.requestFreeBusyData(r.account,r.visible.start,r.visible.end,f)};u.onChanged=this._onRequestChanged.bind(this,r,u);u.winrt.addEventListener("changed",u.onChanged)}i("_getSchedules")};var e=Microsoft.WindowsLive.Platform,s=e.Calendar.FreeBusyStatus,h=e.SearchStatusCode;n.prototype._getAttendeeHtml=function(t,i,r){for(var e="",v=this._isRtl?"right":"left",h=0,o=0,u=0,f=0;f<n._resultLength;f++){var l=f%n._resultsPerDay,a=i<=l&&l<r,s=n._getNormalizedStatus(t,f);s!==u&&(u&&(e+=o-1+"px;'><\/div>"),s&&a?(e+="<div class='status "+c(s)+"' style='"+v+": "+h+"px; width: ",o=0):u=0);a&&(u=s,h+=n._halfWidth,o+=n._halfWidth)}return u&&(e+=o-1+"px;'><\/div>"),e};n.prototype._onRequestChanged=function(r,u){var o,a,d,v,b;if(t("_onRequestChanged"),o=u.winrt,o.status){var y=u.attendees,c=r.results,k=r.aria,p={},e,l,f;if(o.status===h.success){var w=o.results,g=r.startStatusBoundary,nt=r.endStatusBoundary;for(e=0,l=w.count;e<l;e++)a=w.item(e),f=a.attendee,r.attendees.indexOf(f)!==-1&&y.indexOf(f)!==-1&&(d=a.status,v=r.adjustSchedule(a.freebusy),d===s.success&&v?(c[f]=v,b=this._getAttendeeHtml(v,g,nt)):(c[f]=n._invalidResult,b="<div class='status unknown' style='width: 100%; height: 100%;'><\/div>"),p[f]=b,k[f]=null);w.dispose()}for(e=0,l=y.length;e<l;e++)f=y[e],c[f]||r.attendees.indexOf(f)===-1||(c[f]=n._invalidResult,p[f]="<div class='status unknown' style='width: 100%; height: 100%;'><\/div>",k[f]=null);this._router.postMessage({command:"FreeBusy/schedules",id:r.id,html:p});o.removeEventListener("changed",u.onChanged);o.dispose();r.request=null;this._getSchedules(r);this._getAria(r)}i("_onRequestChanged")};n.prototype._getAria=function(n){t("_getAria");n.paused?n.dirtyAria=true:n.jobIdAria||(n.jobIdAria=this._scheduler.schedule(this._calculateAria,this,[n]));i("_getAria")};n.prototype._calculateAria=function(u){var s,e,c,l,f,h,a,o;t("_calculateAria");u.jobIdAria=null;var v=u.results,y=u.aria,p={},w=false,b=Math.floor((u.selected.start-u.visible.start)/r.hourInMilliseconds*2),k=Math.ceil((u.selected.end-u.visible.start)/r.hourInMilliseconds*2);for(s in v)if(e=y[s]||"",!e){if(c=v[s],c===n._invalidResult)u.fullUnknown||(u.fullUnknown=n._formatScheduleBlock(u.selected.start,u.selected.end,-1)),e=u.fullUnknown;else{for(l=new Date(u.selected.start),h=n._getNormalizedStatus(c,b),o=b+1;o<k;o++)a=n._getNormalizedStatus(c,o),a!==h&&(f=new Date(u.visible.start),f.setMinutes(o*30),e+=n._formatScheduleBlock(l,f,h),l=f,h=a);f=new Date(u.visible.start);f.setMinutes(o*30);e+=n._formatScheduleBlock(l,f,h)}y[s]=p[s]=e;w=true}w&&this._router.postMessage({command:"FreeBusy/attendeeAria",id:u.id,labels:p});i("_calculateAria")};n.prototype._updateSchedules=function(n){var r,s,u,f;t("_updateSchedules");var e=n.attendees,h=n.results,o={},c=n.startStatusBoundary,l=n.endStatusBoundary;for(r=0,s=e.length;r<s;r++)u=e[r],f=h[u],f&&(o[u]=this._getAttendeeHtml(f,c,l));this._router.postMessage({command:"FreeBusy/schedules",id:n.id,html:o});i("_updateSchedules")};n.prototype._disposeSchedules=function(n){var r,u;t("_disposeSchedules");r=n.request;r&&(u=r.winrt,u.removeEventListener("changed",r.onChanged),u.dispose(),n.request=null);n.results={};n.aria={};n.requestQueue=null;this._scheduler.cancel(n.jobIdAria);n.jobIdAria=null;i("_disposeSchedules")}})()
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx,Calendar,Microsoft,Debug,clearTimeout,setTimeout*/
+
+(function() {
+
+function _start(evt) { Jx.mark("Calendar:FreeBusyWorker." + evt + ",StartTA,Calendar"); }
+function _stop(evt)  { Jx.mark("Calendar:FreeBusyWorker." + evt + ",StopTA,Calendar");  }
+
+var Helpers = Calendar.Helpers;
+var BusyStatus = Microsoft.WindowsLive.Platform.Calendar.BusyStatus;
+var _shortTime = new Jx.DTFormatter("shortTime");
+
+function tmplEvent(data) {
+    var s = 
+        '<div class="event" data-status="' + data.status + '" title="' + data.tooltipHtml + '" ' + 
+            'style="color: ' + data.color + '; ' + data.dir + ': ' + (data.offset - 1) + 'px; width: ' + (data.width) + 'px;">' + 
+            '<div class="glyph" style="background-color: ' + data.color + ';">' + 
+                '<div class="glyphInner"></div>' + 
+            '</div>' + 
+            '<div class="subject">' + 
+                data.subjectHtml + 
+            '</div>' + 
+        '</div>';
+    return s;
+}
+
+//
+// FreeBusyWorker
+//
+
+var FreeBusy = Calendar.Views.FreeBusyWorker = function(router, scheduler, accountManager, calendarManager) {
+    // save params
+    this._router    = router;
+    this._scheduler = scheduler;
+    this._accounts  = accountManager;
+    this._manager   = calendarManager;
+
+    // init members
+    this._requests = {};
+
+    // bind callbacks
+    this._updateEvents = this._updateEvents.bind(this);
+
+    // register routes
+    this._router.route("FreeBusy/initialize",   this.initialize,   this);
+    this._router.route("FreeBusy/refresh",      this.refresh,      this);
+    this._router.route("FreeBusy/setVisible",   this.setVisible,   this);
+    this._router.route("FreeBusy/setSelected",  this.setSelected,  this);
+    this._router.route("FreeBusy/setWorkHours", this.setWorkHours, this);
+    this._router.route("FreeBusy/setCalendar",  this.setCalendar,  this);
+    this._router.route("FreeBusy/setAttendees", this.setAttendees, this);
+
+    this._router.route("FreeBusy/pause",  this.pause,  this);
+    this._router.route("FreeBusy/resume", this.resume, this);
+    this._router.route("FreeBusy/cancel", this.cancel, this);
+
+    // ensure our helper formats are loaded
+    Helpers.ensureFormats();
+    FreeBusy._unknown        = Jx.res.getString("FreeBusyUnknown");
+    FreeBusy._rangeFormatter = Jx.res.getFormatFunction("DateRange");
+};
+
+//
+// Public
+//
+
+FreeBusy.prototype.initialize = function(command) {
+    Debug.assert(!this._requests[command.id]);
+    _start("initialize");
+
+    var id   = command.id,
+        data = command.data;
+    data.id = id;
+
+    data.visible.start = new Date(data.visible.start);
+    data.visible.end   = new Date(data.visible.end);
+
+    data.selected.start = new Date(data.selected.start);
+    data.selected.end   = new Date(data.selected.end);
+
+    data.results = {};
+    data.aria    = {};
+
+    // get the right account
+    data.account = this._accounts.loadAccount(data.accountId);
+
+    // set some extra data based on whether we're working with work hours
+    this._setHourBoundaries(data);
+
+    // get our events and schedules
+    this._adjustForDst(data);
+    this._getEvents(data);
+    this._getSchedules(data);
+
+    // save this request
+    this._requests[id] = data;
+
+    _stop("initialize");
+};
+
+FreeBusy.prototype.refresh = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("refresh");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        // re-get our events
+        this._disposeEvents(data);
+        this._getEvents(data);
+
+        // re-get our schedules
+        this._disposeSchedules(data);
+        this._getSchedules(data);
+    }
+
+    _stop("refresh");
+};
+
+FreeBusy.prototype.setVisible = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("setVisible");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        data.visible.start = new Date(command.data.start);
+        data.visible.end   = new Date(command.data.end);
+
+        // re-get our events
+        this._disposeEvents(data);
+        this._getEvents(data);
+
+        // re-get our schedules
+        this._disposeSchedules(data);
+        this._adjustForDst(data);
+        this._getSchedules(data);
+    }
+
+    _stop("setVisible");
+};
+
+FreeBusy.prototype.setSelected = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("setSelected");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        data.selected.start = new Date(command.data.start);
+        data.selected.end   = new Date(command.data.end);
+
+        data.aria = {};
+
+        this._getMeAria(data);
+        this._getAria(data);
+    }
+
+    _stop("setSelected");
+};
+
+FreeBusy.prototype.setWorkHours = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("setWorkHours");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        var workHours = command.data.workHours;
+
+        if (workHours !== data.workHours) {
+            data.workHours = workHours;
+            this._setHourBoundaries(data);
+
+            // re-process events and schedules
+            this._updateEvents(data);
+            this._updateSchedules(data);
+        }
+    }
+
+    _stop("setWorkHours");
+};
+
+FreeBusy.prototype.setCalendar = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("setCalendar");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        var calendarId = command.data.calendarId,
+            accountId  = command.data.accountId;
+
+        if (calendarId !== data.calendarId) {
+            data.calendarId = calendarId;
+
+            // re-get our events
+            this._disposeEvents(data);
+            this._getEvents(data);
+        }
+
+        if (accountId !== data.accountId) {
+            data.accountId = accountId;
+            data.account   = this._accounts.loadAccount(data.accountId);
+
+            // re-get our schedules
+            this._disposeSchedules(data);
+            this._getSchedules(data);
+        }
+    }
+
+    _stop("setCalendar");
+};
+
+FreeBusy.prototype.setAttendees = function(command) {
+    _start("setAttendees");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        var attendees = data.attendees = command.data.attendees,
+            request   = data.request;
+
+        // if we have an unfinished request, we need to verify it's still valid
+        if (request) {
+            var valid = request.attendees.some(function(attendee) {
+                return (attendees.indexOf(attendee) !== -1);
+            });
+
+            if (!valid) {
+                var winrt = request.winrt;
+
+                winrt.removeEventListener("changed", request.onChanged);
+                winrt.dispose();
+
+                data.request = null;
+            }
+        }
+
+        // we need to prune our old results
+        var results = data.results;
+        data.results = {};
+
+        for (var i = 0, len = attendees.length; i < len; i++) {
+            var attendee = attendees[i],
+                result   = results[attendee];
+
+            if (result) {
+                data.results[attendee] = result;
+            }
+        }
+
+        // reset our request queue
+        data.requestQueue = null;
+
+        // now if we don't an outstanding request, make one
+        if (!data.request) {
+            this._getSchedules(data);
+        }
+    }
+
+    _stop("setAttendees");
+};
+
+FreeBusy.prototype.pause = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("pause");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        data.paused = true;
+    }
+
+    _stop("pause");
+};
+
+FreeBusy.prototype.resume = function(command) {
+    Debug.assert(this._requests[command.id]);
+    _start("resume");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        data.paused = false;
+
+        if (data.dirtyEvents) {
+            this._getEvents(data);
+            data.dirtyEvents = false;
+            data.dirtyMeAria = false;
+        } else if (data.dirtyMeAria) {
+            this._getMeAria(data);
+            data.dirtyMeAria = false;
+        }
+
+        if (data.dirtySchedules) {
+            this._getSchedules(data);
+            data.dirtySchedules = false;
+            data.dirtyAria      = false;
+        } else if (data.dirtyAria) {
+            this._getAria(data);
+            data.dirtyAria = false;
+        }
+    }
+
+    _stop("resume");
+};
+
+FreeBusy.prototype.cancel = function(command) {
+    _start("cancel");
+
+    var id   = command.id,
+        data = this._requests[id];
+
+    if (data) {
+        this._disposeEvents(data);
+        this._disposeSchedules(data);
+
+        delete this._requests[command.id];
+    }
+
+    _stop("cancel");
+};
+
+FreeBusy.prototype.dispose = function() {
+    for (var id in this._requests) {
+        this.cancel({ id: id });
+    }
+
+    this._requests = {};
+
+    this._manager   = null;
+    this._accounts  = null;
+    this._scheduler = null;
+    this._router    = null;
+};
+
+//
+// Private
+//
+
+FreeBusy._invalidResult = "INVALID";
+
+FreeBusy._hourWidth    = 160;
+FreeBusy._halfWidth    = FreeBusy._hourWidth / 2;
+FreeBusy._numberOfDays = 35;
+
+FreeBusy._resultsPerDay = 24 * 2; // the data comes in per half hour
+FreeBusy._resultLength  = FreeBusy._numberOfDays * FreeBusy._resultsPerDay;
+
+FreeBusy._workStart = 8;
+FreeBusy._workEnd   = 19;
+FreeBusy._workHours = FreeBusy._workEnd - FreeBusy._workStart;
+
+// Utils
+
+FreeBusy._getNormalizedStatus = function(freebusy, index) {
+    var status = parseInt(freebusy.charAt(index), 10);
+
+    if (isNaN(status) || status < BusyStatus.free || BusyStatus.outOfOffice < status) {
+        status = BusyStatus.outOfOffice + 1;
+    }
+
+    return status;
+};
+
+FreeBusy._formatScheduleBlock = function(start, end, status) {
+    var first      = _shortTime.format(start),
+        second     = Helpers.isSameDate(start, end) ? _shortTime.format(end) : Helpers.dateAndTime.format(end),
+        statusText = FreeBusy._unknown;
+
+    if (BusyStatus.free <= status && status <= BusyStatus.outOfOffice) {
+        statusText = Helpers.accEventStatuses[status];
+    }
+
+    return FreeBusy._rangeFormatter(first, second) + ", " + statusText + "; ";
+};
+
+FreeBusy.prototype._setHourBoundaries = function(data) {
+    if (data.workHours) {
+        data.startBoundary = FreeBusy._workStart;
+        data.endBoundary   = FreeBusy._workEnd;
+
+        data.hourOffset  = FreeBusy._workStart;
+        data.hoursPerDay = FreeBusy._workHours;
+    } else {
+        // set invalid hours, as we don't want to arbitrarily bound
+        // our data in this case.
+        data.startBoundary = -1;
+        data.endBoundary   = 25;
+
+        data.hourOffset  = 0;
+        data.hoursPerDay = 24;
+    }
+
+    data.startStatusBoundary = data.startBoundary * 2;
+    data.endStatusBoundary   = data.endBoundary   * 2;
+};
+
+// Calendar Event
+
+FreeBusy.prototype._getEvents = function(data) {
+    _start("_getEvents");
+
+    if (!data.paused) {
+        data.collection  = this._manager.getEvents(data.visible.start, data.visible.end);
+        data.jobIdEvents = this._scheduler.schedule(this._processEvents, this, [data]);
+    } else {
+        data.dirtyEvents = true;
+    }
+
+    _stop("_getEvents");
+};
+
+FreeBusy._statusSorter = function(a, b) {
+    var result = a.status - b.status;
+
+    if (!result) {
+        result = a.start - b.start;
+    }
+
+    return result;
+};
+
+FreeBusy.prototype._processEvents = function(data) {
+    _start("_processEvents");
+
+    var blocks  = data.blocks = [],
+        current = { end: 0, status: 0 },
+        stack   = [],
+        stacked;
+
+    for (var i = 0, len = data.collection.count; i < len; i++) {
+        var ev = data.collection.item(i);
+
+        // ensure the event is valid
+        if (ev && ev.busyStatus !== BusyStatus.free && ev.calendar.id === data.calendarId) {
+            var startDate  = ev.startDate,
+                endDate    = ev.endDate,
+                busyStatus = ev.busyStatus;
+
+            // ignore zero-duration events.  include events that end after the
+            // current event or that are higher priority.
+            if (startDate < endDate && (current.end < endDate || current.status < busyStatus)) {
+                // adjust the event to ensure it's in our visible region
+                if (startDate < data.visible.start) {
+                    startDate = data.visible.start;
+                }
+
+                if (data.visible.end < endDate) {
+                    endDate = data.visible.end;
+                }
+
+                // then adjust to make sure it's within our boundaries
+                var startHours = startDate.getHours(),
+                    endHours   = endDate.getHours();
+
+                if (startHours < data.startBoundary) {
+                    startDate.setHours(data.startBoundary);
+                    startDate.setMinutes(0);
+                } else if (data.endBoundary <= startHours) {
+                    startDate.setHours(data.startBoundary + 24);
+                    startDate.setMinutes(0);
+                }
+
+                if (endHours < data.startBoundary) {
+                    endDate.setHours(data.endBoundary - 24);
+                    endDate.setMinutes(0);
+                } else if (data.endBoundary <= endHours) {
+                    endDate.setHours(data.endBoundary);
+                    endDate.setMinutes(0);
+                }
+
+                // ensure we still have a valid event
+                if (startDate < endDate) {
+                    // make sure we're dealing with the most valid current event
+                    if (current.end <= startDate && stack.length) {
+                        stack.sort(FreeBusy._statusSorter);
+
+                        do {
+                            stacked = stack.pop();
+
+                            // if the stacked event ends later, consider it current
+                            if (current.end < stacked.end) {
+                                // consider the stacked event to have started when
+                                // its higher priority conflict ended.
+                                stacked.start = current.end;
+
+                                // create a new ui block if the stacked event has
+                                // room and is equal or higher priority.
+                                if (stacked.start < startDate || busyStatus <= stacked.status) {
+                                    blocks.push(stacked);
+                                }
+
+                                // the stacked event is now our current event.
+                                current = stacked;
+                            }
+                        } while (current.end <= startDate && stack.length);
+                    }
+
+                    // we can be dealing with multiple potential cases.
+                    if (current.end <= startDate) {
+                        // this event doesn't overlap at all.  add it.
+                        current = { ev: ev, start: startDate, end: endDate, status: busyStatus };
+                        blocks.push(current);
+                    } else if (current.status < busyStatus) {
+                        // this event overlaps and is a higher priority based on
+                        // busy status.  save the old event if it's long enough.
+                        if (endDate < current.end) {
+                            stack.push({ ev: current.ev, start: current.start, end: current.end, status: current.status });
+                        }
+
+                        // shorten the previous entry
+                        current.end = startDate;
+
+                        // add this new event.
+                        current = { ev: ev, start: startDate, end: endDate, status: busyStatus };
+                        blocks.push(current);
+                    } else {
+                        // this event overlaps.  it's effectively a lower-
+                        // priority, longer-lasting event.
+                        stack.push({ ev: ev, start: startDate, end: endDate, status: busyStatus });
+                    }
+                }
+            }
+        }
+    }
+
+    // add any remaining stacked events
+    if (stack.length) {
+        stack.sort(FreeBusy._statusSorter);
+
+        do {
+            stacked = stack.pop();
+
+            // we only care about it if it goes later than the current event.
+            if (current.end < stacked.end) {
+                // consider the stacked event to have started when its higher
+                // priority conflict ended.
+                stacked.start = current.end;
+                blocks.push(stacked);
+
+                // the stacked event is now our current event.
+                current = stacked;
+            }
+        } while (stack.length);
+    }
+
+    data.jobIdEvents = this._scheduler.schedule(this._buildEventHtml, this, [data]);
+    _stop("_processEvents");
+};
+
+FreeBusy.prototype._buildEventHtml = function(data) {
+    _start("_buildEventHtml");
+
+    var anchor = data.visible.start,
+        blocks = data.blocks,
+        html   = "";
+
+    for (var i = 0, len = blocks.length; i < len; i++) {
+        var block = blocks[i],
+            start = block.start,
+            end   = block.end,
+            ev    = block.ev;
+
+        var startDay    = Math.floor((start - anchor) / Helpers.dayInMilliseconds),
+            startHours  = (start.getHours() - data.hourOffset),
+            startOffset = (startDay * data.hoursPerDay) + startHours + (start.getMinutes() / 60);
+
+        var endDay    = Math.floor((end - anchor) / Helpers.dayInMilliseconds),
+            endHours  = (end.getHours() - data.hourOffset),
+            endOffset = (endDay * data.hoursPerDay) + endHours + (end.getMinutes() / 60);
+
+        var width = endOffset - startOffset;
+
+        var subjectHtml = Jx.escapeHtml(ev.subject || Helpers.noSubject),
+            startDate   = ev.startDate,
+            endDate     = ev.endDate,
+            isSameDate  = Helpers.isSameDate(startDate, endDate),
+            from        = Helpers.dateAndTime.format(startDate),
+            to          = isSameDate ? _shortTime.format(endDate) : Helpers.dateAndTime.format(endDate),
+            rangeHtml   = Jx.escapeHtml(FreeBusy._rangeFormatter(from, to)),
+            tooltipHtml = subjectHtml + " (" + rangeHtml + ")";
+
+        html += tmplEvent({
+            status: Helpers.busyStatusClasses[block.status],
+            color:  Helpers.processEventColor(ev.color),
+
+            dir: this._isRtl ? "right" : "left",
+            subjectHtml: subjectHtml,
+            tooltipHtml: tooltipHtml,
+
+            offset: startOffset * FreeBusy._hourWidth,
+            width:  width       * FreeBusy._hourWidth
+        });
+    }
+
+    data.jobIdEvents = this._scheduler.schedule(this._sendEvents, this, [data, html]);
+    _stop("_buildEventHtml");
+};
+
+FreeBusy.prototype._sendEvents = function(data, html) {
+    _start("_sendEvents");
+
+    data.jobIdEvents = null;
+    var command;
+
+    if (!data.onCollectionChanged) {
+        command = "FreeBusy/getEvents";
+        data.jobIdEvents = this._scheduler.schedule(this._hookCollection, this, [data]);
+    } else {
+        command = "FreeBusy/eventsChanged";
+        data.collection.unlock();
+
+        this._getMeAria(data);
+    }
+
+    this._router.postMessage({
+        command: command,
+        id:      data.id,
+
+        html: html
+    });
+
+    _stop("_sendEvents");
+};
+
+FreeBusy.prototype._disposeEvents = function(data) {
+    var onCollectionChanged = data.onCollectionChanged;
+
+    if (onCollectionChanged) {
+        data.collection.removeEventListener("collectionchanged", onCollectionChanged);
+        data.onCollectionChanged = null;
+
+        clearTimeout(data.changeTimeout);
+    }
+
+    data.collection.dispose();
+    data.collection = null;
+
+    this._scheduler.cancel(data.jobIdEvents);
+    data.jobIdEvents = null;
+};
+
+// Listeners
+
+FreeBusy.prototype._hookCollection = function(data) {
+    _start("_hookCollection");
+
+    data.jobIdEvents = null;
+
+    data.onCollectionChanged = this._onCollectionChanged.bind(this, data);
+    data.collection.addEventListener("collectionchanged", data.onCollectionChanged);
+    data.collection.unlock();
+
+    this._getMeAria(data);
+
+    _stop("_hookCollection");
+};
+
+FreeBusy.prototype._getMeAria = function(data) {
+    _start("_getMeAria");
+
+    if (!data.paused) {
+        if (!data.jobIdEvents) {
+            data.jobIdEvents = this._scheduler.schedule(this._calculateMeAria, this, [data]);
+        }
+    } else {
+        data.dirtyMeAria = true;
+    }
+
+    _stop("_getMeAria");
+};
+
+FreeBusy.prototype._calculateMeAria = function(data) {
+    _start("_calculateMeAria");
+
+    data.jobIdEvents = null;
+
+    var blocks = data.blocks,
+        label  = "",
+        start, end;
+
+    if (blocks.length) {
+        var i, len, block;
+
+        // iterate our blocks until we reach the selected time
+        for (i = 0, len = blocks.length; i < len; i++) {
+            block = blocks[i];
+
+            if (data.selected.start < block.end) {
+                break;
+            }
+        }
+
+        // now build up our aria label until we're outside the selected range
+        start = data.selected.start;
+        end   = start;
+
+        for (; i < len; i++) {
+            block = blocks[i];
+
+            // we've reached the end, so we're done iterating these blocks
+            if (data.selected.end <= block.start) {
+                break;
+            }
+
+            if (start < block.start) {
+                end   = block.start;
+
+                label = FreeBusy._formatScheduleBlock(start, end, BusyStatus.free);
+                start = end;
+            }
+
+            end = new Date(Math.min(data.selected.end, block.end));
+
+            label += FreeBusy._formatScheduleBlock(start, end, block.ev.busyStatus);
+            start  = end;
+        }
+
+        // handle the potential free block at the end
+        if (end < data.selected.end) {
+            start  = end;
+            end    = data.selected.end;
+            label += FreeBusy._formatScheduleBlock(start, end, BusyStatus.free);
+        }
+    } else {
+        start  = data.selected.start;
+        end    = data.selected.end;
+        label += FreeBusy._formatScheduleBlock(start, end, BusyStatus.free);
+    }
+
+    this._router.postMessage({
+        command: "FreeBusy/meAria",
+        id:      data.id,
+
+        label: label
+    });
+
+    _stop("_calculateMeAria");
+};
+
+// Updates
+
+FreeBusy.prototype._onCollectionChanged = function(data) {
+    _start("_onCollectionChanged");
+
+    if (!data.changeTimeout) {
+        this._scheduler.cancel(data.jobIdEvents);
+        data.changeTimeout = setTimeout(this._updateEvents, 1000, data);
+    }
+
+    _stop("_onCollectionChanged");
+};
+
+FreeBusy.prototype._updateEvents = function(data) {
+    if (!this._requests[data.id]) { return; }
+
+    _start("_updateEvents");
+
+    this._scheduler.cancel(data.jobIdEvents);
+    clearTimeout(data.changeTimeout);
+
+    data.changeTimeout = null;
+    data.collection.lock();
+
+    this._processEvents(data);
+
+    _stop("_updateEvents");
+};
+
+// Schedules
+
+FreeBusy._attendeeChunkSize = 5;
+
+FreeBusy.prototype._adjustForDst = function(data) {
+    var range = data.visible,
+        start = range.start,
+        end   = range.end;
+
+    var firstOffset = start.getTimezoneOffset(),
+        lastOffset  = end.getTimezoneOffset();
+
+    if (firstOffset !== lastOffset) {
+        var current = new Date(start),
+            block   = 0;
+
+        // run forward through the days, until we find the one that switches timezone offsets
+        while (current < end && current.getTimezoneOffset() === firstOffset) {
+            current.setDate(current.getDate() + 1);
+
+            // every day we move forward, is equal to 48 schedule blocks
+            block += 48;
+        }
+
+        // roll back one day
+        current.setDate(current.getDate() - 1);
+        block -= 48;
+
+        // run forward through the hours, until we find the one that switches timezone offsets
+        while (current < end && current.getTimezoneOffset() === firstOffset) {
+            current.setMinutes(current.getMinutes() + 30);
+            block += 1;
+        }
+
+        // calculate the time difference, and fit it to the 30 minute periods of data we get
+        var diff   = lastOffset - firstOffset,
+            repeat = Math.abs(Math.floor(diff / 30));
+
+        // our adjustment is different, depending on whether we went in to or out of dst
+        if (diff < 0) {
+            // in this case, we're losing time.  we'll repeat the last valid block.
+            data.adjustSchedule = function(schedule) {
+                var value  = schedule[block-1],
+                    insert = "";
+
+                // depending on the time difference, we may need to repeat multiple times
+                for (var i = 0; i < repeat; i++) {
+                    insert += value;
+                }
+
+                // splice the string and insert the repeated block
+                return (schedule.substring(0, block) + insert + schedule.substring(block));
+            };
+        } else {
+            // we're losing time here.  in this case, we'll compare blocks on each side
+            // of the switch and take the higher-order value.
+            data.adjustSchedule = function(schedule) {
+                var begin = block - repeat,
+                    value = "";
+
+                for (var i = 0; i < repeat; i++) {
+                    var left  = parseInt(schedule.charAt(begin + i), 10),
+                        right = parseInt(schedule.charAt(begin + i + repeat), 10);
+
+                    // we have to make sure we're inserting valid values
+                    if (!isNaN(left)) {
+                        value += isNaN(right) ? left : Math.max(left, right);
+                    } else {
+                        value += isNaN(right) ? "X" : right;
+                    }
+                }
+
+                return (schedule.substring(0, begin) + value + schedule.substring(block + repeat));
+            };
+        }
+    } else {
+        // if the offsets are the same, we don't need to do any adjustment
+        data.adjustSchedule = function(schedule) {
+            return schedule;
+        };
+    }
+};
+
+FreeBusy.prototype._getSchedules = function(data) {
+    _start("_getSchedules");
+    Debug.assert(!data.request);
+
+    if (!data.paused) {
+        // build our queue, if we don't have one
+        if (!data.requestQueue) {
+            data.requestQueue = data.attendees.filter(function(attendee) {
+                return !data.results[attendee];
+            });
+        }
+
+        // make sure we have requests to make
+        if (data.requestQueue.length) {
+            // we don't want to make massive requests, so we only grab a few off the queue
+            var attendees = data.requestQueue.splice(0, FreeBusy._attendeeChunkSize);
+            var request   = data.request = {
+                attendees: attendees,
+                winrt:     this._manager.requestFreeBusyData(data.account, data.visible.start, data.visible.end, attendees)
+            };
+
+            request.onChanged = this._onRequestChanged.bind(this, data, request);
+            request.winrt.addEventListener("changed", request.onChanged);
+        }
+    } else {
+        data.dirtySchedules = true;
+    }
+
+    _stop("_getSchedules");
+};
+
+var Platform       = Microsoft.WindowsLive.Platform,
+    FreeBusyStatus = Platform.Calendar.FreeBusyStatus,
+    SearchStatus   = Platform.SearchStatusCode;
+
+function getAttendeeStatusClass(value) {
+    var status = "unknown";
+
+    if (BusyStatus.tentative <= value && value <= BusyStatus.outOfOffice) {
+        status = Helpers.busyStatusClasses[value];
+    }
+
+    return status;
+}
+
+FreeBusy.prototype._getAttendeeHtml = function(freebusy, startBoundary, endBoundary) {
+    var html  = "",
+        dir   = this._isRtl ? "right" : "left",
+        left  = 0,
+        width = 0,
+        last  = 0;
+
+    for (var i = 0; i < FreeBusy._resultLength; i++) {
+        var indexInDay = i % FreeBusy._resultsPerDay,
+            validSlot  = startBoundary <= indexInDay && indexInDay < endBoundary;
+
+        var current = FreeBusy._getNormalizedStatus(freebusy, i);
+
+        // we only have to create a new div at this point if we've changed values
+        if (current !== last) {
+            if (last) {
+                html += (width - 1) + "px;'></div>";
+            }
+
+            if (current && validSlot) {
+                html += "<div class='status " + getAttendeeStatusClass(current) + "' style='" + dir + ": " + left + "px; width: ";
+                width = 0;
+            } else {
+                last  = 0;
+            }
+        }
+
+        if (validSlot) {
+            last   = current;
+            left  += FreeBusy._halfWidth;
+            width += FreeBusy._halfWidth;
+        }
+    }
+
+    if (last) {
+        html += (width - 1) + "px;'></div>";
+    }
+
+    return html;
+};
+
+FreeBusy.prototype._onRequestChanged = function(data, request) {
+    _start("_onRequestChanged");
+
+    var winrt = request.winrt;
+
+    if (winrt.status) {
+        var attendees = request.attendees,
+            results   = data.results,
+            aria      = data.aria,
+            html      = {},
+            i, len, attendee;
+
+        // only loop through the results if the request was a success
+        if (winrt.status === SearchStatus.success) {
+            var collection    = winrt.results,
+                startBoundary = data.startStatusBoundary,
+                endBoundary   = data.endStatusBoundary;
+
+            for (i = 0, len = collection.count; i < len; i++) {
+                var item = collection.item(i);
+                attendee = item.attendee;
+
+                // ensure we still care about this attendee and that we requested his info
+                if (data.attendees.indexOf(attendee) !== -1 && attendees.indexOf(attendee) !== -1) {
+                    var status   = item.status,
+                        freebusy = data.adjustSchedule(item.freebusy),
+                        attendeeHtml;
+
+                    if (status === FreeBusyStatus.success && freebusy) {
+                        results[attendee] = freebusy;
+                        attendeeHtml = this._getAttendeeHtml(freebusy, startBoundary, endBoundary);
+                    } else {
+                        results[attendee] = FreeBusy._invalidResult;
+                        attendeeHtml = "<div class='status unknown' style='width: 100%; height: 100%;'></div>";
+                    }
+
+                    html[attendee] = attendeeHtml;
+                    aria[attendee] = null;
+                }
+            }
+
+            collection.dispose();
+        }
+
+        // send unknown for any attendees we didn't get data for
+        for (i = 0, len = attendees.length; i < len; i++) {
+            attendee = attendees[i];
+
+            // ensure we still care about this attendee
+            if (!results[attendee] && data.attendees.indexOf(attendee) !== -1) {
+                results[attendee] = FreeBusy._invalidResult;
+                html[attendee]    = "<div class='status unknown' style='width: 100%; height: 100%;'></div>";
+                aria[attendee]    = null;
+            }
+        }
+
+        this._router.postMessage({
+            command: "FreeBusy/schedules",
+            id:      data.id,
+
+            html: html
+        });
+
+        winrt.removeEventListener("changed", request.onChanged);
+        winrt.dispose();
+        data.request = null;
+
+        this._getSchedules(data);
+        this._getAria(data);
+    }
+
+    _stop("_onRequestChanged");
+};
+
+FreeBusy.prototype._getAria = function(data) {
+    _start("_getAria");
+
+    if (!data.paused) {
+        if (!data.jobIdAria) {
+            data.jobIdAria = this._scheduler.schedule(this._calculateAria, this, [data]);
+        }
+    } else {
+        data.dirtyAria = true;
+    }
+
+    _stop("_getAria");
+};
+
+FreeBusy.prototype._calculateAria = function(data) {
+    _start("_calculateAria");
+
+    data.jobIdAria = null;
+
+    var results   = data.results,
+        aria      = data.aria,
+        labels    = {},
+        hasLabels = false;
+
+    var startIndex = Math.floor((data.selected.start - data.visible.start) / Helpers.hourInMilliseconds * 2),
+        endIndex   = Math.ceil((data.selected.end    - data.visible.start) / Helpers.hourInMilliseconds * 2);
+
+    // we can only build aria labels for attendees we have results for
+    for (var attendee in results) {
+        var label = aria[attendee] || "";
+
+        // only build labels we don't already have
+        if (!label) {
+            var result = results[attendee],
+                start, end, prev, current;
+
+            if (result === FreeBusy._invalidResult) {
+                if (!data.fullUnknown) {
+                    data.fullUnknown = FreeBusy._formatScheduleBlock(data.selected.start, data.selected.end, -1);
+                }
+
+                label = data.fullUnknown;
+            } else {
+                start = new Date(data.selected.start);
+                prev  = FreeBusy._getNormalizedStatus(result, startIndex);
+
+                for (var j = startIndex + 1; j < endIndex; j++) {
+                    current = FreeBusy._getNormalizedStatus(result, j);
+
+                    if (current !== prev) {
+                        end = new Date(data.visible.start);
+                        end.setMinutes(j * 30);
+
+                        label += FreeBusy._formatScheduleBlock(start, end, prev);
+
+                        start = end;
+                        prev  = current;
+                    }
+                }
+
+                end = new Date(data.visible.start);
+                end.setMinutes(j * 30);
+
+                label += FreeBusy._formatScheduleBlock(start, end, prev);
+            }
+
+            aria[attendee] = labels[attendee] = label;
+            hasLabels = true;
+        }
+    }
+
+    if (hasLabels) {
+        this._router.postMessage({
+            command: "FreeBusy/attendeeAria",
+            id:      data.id,
+
+            labels: labels
+        });
+    }
+
+    _stop("_calculateAria");
+};
+
+FreeBusy.prototype._updateSchedules = function(data) {
+    _start("_updateSchedules");
+
+    var attendees = data.attendees,
+        results   = data.results,
+        html      = {};
+
+    var startBoundary = data.startStatusBoundary,
+        endBoundary   = data.endStatusBoundary;
+
+    for (var i = 0, len = attendees.length; i < len; i++) {
+        var attendee = attendees[i],
+            result   = results[attendee];
+
+        if (result) {
+            html[attendee] = this._getAttendeeHtml(result, startBoundary, endBoundary);
+        }
+    }
+
+    this._router.postMessage({
+        command: "FreeBusy/schedules",
+        id:      data.id,
+
+        html: html
+    });
+
+    _stop("_updateSchedules");
+};
+
+FreeBusy.prototype._disposeSchedules = function(data) {
+    _start("_disposeSchedules");
+
+    // first cancel our outstanding request, if we have one
+    var request = data.request;
+
+    if (request) {
+        var winrt = request.winrt;
+
+        winrt.removeEventListener("changed", request.onChanged);
+        winrt.dispose();
+
+        data.request = null;
+    }
+
+    // our existing results are invalid
+    data.results = {};
+    data.aria    = {};
+
+    // clear our request queue
+    data.requestQueue = null;
+
+    // cancel any outstanding aria job
+    this._scheduler.cancel(data.jobIdAria);
+    data.jobIdAria = null;
+
+    _stop("_disposeSchedules");
+};
+
+})();

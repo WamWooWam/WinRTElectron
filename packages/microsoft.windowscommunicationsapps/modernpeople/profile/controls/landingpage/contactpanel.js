@@ -1,668 +1,1097 @@
-﻿Jx.delayDefine(People, "ContactPanel", function() {
-    function e(t, i) {
-        var u, s, f, r, e, o;
-        for (u = [],
-        s = i.count,
-        f = 0; f < s; f++)
-            r = i.item(f),
-            r.isDefault || (e = "",
-            o = r.meContact,
-            Jx.isObject(o) && (r.sourceId === "FB" ? u.push({
-                display: r.displayName,
-                data: People.Protocol.createFromContact("profile", o).toUrl(),
-                bici: People.Bici.ReactionType.profile
-            }) : (e = c(o),
-            Jx.isNonEmptyString(e) && u.push({
-                display: r.displayName,
-                data: e,
-                bici: People.Bici.ReactionType.webProfile
-            }))));
-        t.updateValues(null, u)
-    }
-    function l(t, i) {
-        var r = People.Contact.createUniqueFields(i.linkedContacts, "email");
-        t.updateValues(o(i.mostRelevantEmail), r.map(function(n) {
-            return o(n.fieldValue)
-        }))
-    }
-    function o(t) {
-        var i = null;
-        return Jx.isNonEmptyString(t) && (i = {
-            display: t,
-            data: People.Protocol.create("mailto", {
-                email: t
-            }).toUrl(),
-            bici: People.Bici.ReactionType.mail
-        }),
-        i
-    }
-    function a(t, r) {
-        var f = r.linkedContacts.sort(function(n, t) {
-            return u.indexOf(n.imType) - u.indexOf(t.imType)
-        }).map(function(t) {
-            var r = t.imType, u, f;
-            return (r === Platform.ContactIMType.skype || r === Platform.ContactIMType.windowsLive || r === Platform.ContactIMType.foreignNetwork) && (u = t.account,
-            u && (f = u.displayName,
-            Jx.isNonEmptyString(f) && (r === Platform.ContactIMType.foreignNetwork && u.sourceId !== "FB" ? false : true))) ? {
-                display: f,
-                data: People.Protocol.createFromContact("message", t).toUrl(),
-                bici: People.Bici.ReactionType.message
-            } : null
-        })
-          , e = People.Contact.createUniqueFields(r.linkedContacts, "mobiletel").map(function(t) {
-            return {
-                display: Jx.res.loadCompoundString("/landingPage/sms", "‪" + t.fieldValue + "‬"),
-                data: People.Protocol.create("sms", {
-                    phoneNumber: t.fieldValue
-                }).toUrl(),
-                bici: People.Bici.ReactionType.sms
-            }
-        });
-        t.updateValues(null, f.concat(e))
-    }
-    function v(t, r) {
-        var u = [];
-        r.linkedContacts.forEach(function(t) {
-            var r, f;
-            t.imType === Platform.ContactIMType.skype && (r = t.account,
-            r && (f = r.displayName,
-            Jx.isNonEmptyString(f) && u.push({
-                display: f,
-                data: People.Protocol.createFromContact("videocall", t).toUrl(),
-                bici: People.Bici.ReactionType.videoCall
-            })))
-        });
-        t.updateValues(null, u)
-    }
-    function y(t, r) {
-        var u = [], f, e;
-        r.linkedContacts.forEach(function(t) {
-            var r, f;
-            t.imType === Platform.ContactIMType.skype && (r = t.account,
-            r && (f = r.displayName,
-            Jx.isNonEmptyString(f) && u.push({
-                display: f,
-                data: People.Protocol.createFromContact("audiocall", t).toUrl(),
-                bici: People.Bici.ReactionType.audioCall,
-                title: Jx.res.getString("/landingPage/call")
-            })))
-        });
-        f = People.Contact.createUniqueFields(r.linkedContacts, "tel");
-        e = f.map(function(n) {
-            return s(n.fieldValue, n.fieldName)
-        });
-        t.updateValues(u[0] || s(r.mostRelevantPhone), u.concat(e))
-    }
-    function s(t, i) {
-        var u = null, f, r;
-        return Jx.isNonEmptyString(t) && (f = {
-            mobilePhoneNumber: "profile_fieldTitle_callMobile",
-            mobile2PhoneNumber: "profile_fieldTitle_callMobile",
-            homePhoneNumber: "profile_fieldTitle_callHome",
-            home2PhoneNumber: "profile_fieldTitle_callHome",
-            businessPhoneNumber: "profile_fieldTitle_callWork",
-            business2PhoneNumber: "profile_fieldTitle_callWork"
-        },
-        r = "‪" + t + "‬",
-        u = {
-            display: i ? r + " (" + Jx.res.getString("/strings/profile_fieldTitle_" + i) + ")" : r,
-            shortDisplay: r,
-            data: People.Protocol.create("tel", {
-                phoneNumber: t
-            }).toUrl(),
-            title: i ? Jx.res.getString("/strings/" + f[i]) : null,
-            bici: People.Bici.ReactionType.call
-        }),
-        u
-    }
-    function p(t, i) {
-        var f = People.Contact.createUniqueFields(i.linkedContacts, "mapLocation")
-          , r = f.map(function(n) {
-            return {
-                value: n.fieldValue,
-                metadata: {
-                    type: n.fieldName,
-                    contactName: i.calculatedUIName
-                }
-            }
-        })
-          , u = People.Location.getBestLocation(r);
-        t.updateValues(u ? h(u) : null, r.map(function(n) {
-            return h(n)
-        }))
-    }
-    function h(t) {
-        return {
-            display: People.Location.chooseBestDisplayField(t.value),
-            data: JSON.stringify(t),
-            getUrl: function(t) {
-                return People.UiFormMapHelper.getMapUrl(JSON.parse(t))
-            },
-            bici: People.Bici.ReactionType.address
-        }
-    }
-    function w(n, t) {
-        var i = t.linkedContacts.filter(function(n) {
-            var i = false, t;
-            return n.isGal || (t = n.account,
-            i = Jx.isObject(t) && !t.isDefault),
-            i
-        }).map(function(n) {
-            return b(n)
-        }).filter(function(n) {
-            return Jx.isNonEmptyString(n.data)
-        });
-        n.updateValues(null, i)
-    }
-    function b(t) {
-        var i = t.account;
-        if (i)
-            return i.sourceId === "FB" ? {
-                display: i.displayName,
-                data: People.Protocol.createFromContact("profile", t).toUrl(),
-                bici: People.Bici.ReactionType.profile
-            } : {
-                display: k(i.displayName, i.sourceId, t.nickname),
-                data: c(t),
-                bici: People.Bici.ReactionType.webProfile
-            }
-    }
-    function c(n) {
-        var r = n.verbs, f, t, u;
-        if (r)
-            for (f = r.count,
-            t = 0; t < f; t++)
-                if (u = r.item(t),
-                Number(u.verbType) === Platform.VerbType.profile)
-                    return u.url;
-        return ""
-    }
-    function k(n, t, i) {
-        return t === "TWITR" && Jx.isNonEmptyString(i) ? n + " @" + i : n
-    }
-    var People = window.People, Platform = Microsoft.WindowsLive.Platform, ContactPanel, r, f, u;
-    InstruIds = Microsoft.WindowsLive.Instrumentation.Ids;
-    ContactPanel = People.ContactPanel = function(t, i, r) {
-        this._host = t;
-        this._jobSet = t.getJobSet().createChild();
-        this._objectType = i.objectType;
-        this._fields = r;
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+Jx.delayDefine(People, "ContactPanel", function () {
+
+    /// <disable>JS2076.IdentifierIsMiscased</disable>
+    var P = window.People,
+        Plat = Microsoft.WindowsLive.Platform;
+        InstruIds = Microsoft.WindowsLive.Instrumentation.Ids;
+
+    var ContactPanel = P.ContactPanel = /*@constructor*/function (host, /*@dynamic*/person, fields) {
+        ///<summary>The Contact panel contains an IC and a series of commands</summary>
+        ///<param name="host" type="P.PanelView"/>
+        ///<param name="person">Person, TemporaryPerson or MeContact</param>
+        ///<param name="fields">Additional context data</param>
+        this._host = host;
+        this._jobSet = host.getJobSet().createChild();
+        this._objectType = person.objectType;
+        this._fields = fields;
         this._isUpdateQueued = false;
         this._isReady = false;
-        var u = {
-            interactive: false
-        };
-        (this._objectType === "MeContact" || i.isInAddressBook) && (u = {
-            interactive: true,
-            onClick: this._onIdentityControlClick.bind(this)
-        });
-        this._identityControl = new People.IdentityControl(i,this._jobSet,u);
-        this._objectType === "Person" || this._objectType === "SearchPerson" ? (this._buttons = [{
-            id: "emailCommand",
-            title: Jx.res.getString("/landingPage/email"),
-            icon: "",
-            update: l,
-            key: "email"
-        }, {
-            id: "callCommand",
-            title: "",
-            icon: "",
-            update: y,
-            key: "call"
-        }, {
-            id: "chatCommand",
-            title: Jx.res.getString("/landingPage/chat"),
-            icon: "",
-            update: a,
-            key: "chat"
-        }, {
-            id: "videoCallCommand",
-            title: Jx.res.getString("/landingPage/videoCall"),
-            icon: "",
-            update: v,
-            key: "videoCall"
-        }, {
-            id: "mapCommand",
-            title: Jx.res.getString("/landingPage/map"),
-            icon: "",
-            update: p,
-            key: "location"
-        }, {
-            id: "allInfoCommand",
-            title: Jx.res.getString("/landingPage/profile"),
-            icon: "",
-            update: w,
-            key: null
-        }],
-        this._binder = new People.PlatformObjectBinder(i),
-        this._person = this._binder.createAccessor(this._queueUpdate.bind(this))) : this._objectType === "MeContact" ? (this._buttons = [{
-            id: "allInfoCommand",
-            title: Jx.res.getString("/landingPage/profile"),
-            icon: "",
-            update: this._updateMeInfoButton.bind(this),
-            key: null
-        }],
-        this._binder = new People.PlatformObjectBinder(i),
-        this._person = this._binder.createAccessor(this._queueUpdate.bind(this)),
-        this._accountCollection = null,
-        this._collectionChangeListener = this._accountCollectionChanged.bind(this)) : this._objectType === "SearchPerson" && (this._binder = new People.PlatformObjectBinder(i),
-        this._person = this._binder.createAccessor(this._queueUpdate.bind(this)));
-        this._buttons && (this._settingsContainer = i.objectId ? Jx.appData.localSettings().container("People").container("LandingPageMRU").container(i.objectId) : null,
-        this._buttons.forEach(function(t) {
-            t.button = new People.DisambiguatedCommandButton(t.id,t.title,t.icon,this._settingsContainer,t.key,this._jobSet)
-        }, this),
-        this._update());
+
+        var identityControlOptions = { interactive: false };
+        if ((this._objectType === "MeContact") || person.isInAddressBook) {
+            identityControlOptions = {
+                interactive: true,
+                onClick: this._onIdentityControlClick.bind(this)
+            }
+        }
+        this._identityControl = new P.IdentityControl(person, this._jobSet, identityControlOptions);
+
+        if ((this._objectType === "Person") || (this._objectType === "SearchPerson")) {
+            this._buttons = [{
+                id: "emailCommand",
+                title: Jx.res.getString("/landingPage/email"),
+                icon: "\uE135",  // Envelope
+                update: updateEmailButton,
+                key: "email"
+            }, {
+                id: "callCommand",
+                title: "", // Title is provided by individual values, customized as 'Call mobile','Call home'
+                icon: "\uE13A", // Telephone
+                update: updateCallButton,
+                key: "call"
+            }, {
+                id: "chatCommand",
+                title: Jx.res.getString("/landingPage/chat"),
+                icon: "\uE15F",  // Smiley-face speech balloon
+                update: updateChatButton,
+                key: "chat"
+            }, {
+                id: "videoCallCommand",
+                title: Jx.res.getString("/landingPage/videoCall"),
+                icon: "\uE13B",  // Camera speech balloon
+                update: updateVideoCallButton,
+                key: "videoCall"
+            }, {
+                id: "mapCommand",
+                title: Jx.res.getString("/landingPage/map"),
+                icon: "\uE139",  // Map pin
+                update: updateMapButton,
+                key: "location"
+            }, {
+                id: "allInfoCommand",
+                title: Jx.res.getString("/landingPage/profile"),
+                icon: "\uE136",  // Silhouette next to horizontal lines
+                update: updateAllInfoButton,
+                key: null
+            }];
+
+            this._binder = new P.PlatformObjectBinder(person);
+            this._person = /*@static_cast(P.PersonAccessor)*/this._binder.createAccessor(this._queueUpdate.bind(this));
+        } else if (this._objectType === "MeContact") {
+            this._buttons = [{
+                id: "allInfoCommand",
+                title: Jx.res.getString("/landingPage/profile"),
+                icon: "\uE136",  // Silhouette next to horizontal lines
+                update: this._updateMeInfoButton.bind(this),
+                key: null
+            }];
+            this._binder = new P.PlatformObjectBinder(person);
+            this._person = /*@static_cast(P.PersonAccessor)*/this._binder.createAccessor(this._queueUpdate.bind(this));
+            this._accountCollection = /*@static_cast(Plat.Collection)*/null;
+            this._collectionChangeListener = this._accountCollectionChanged.bind(this);
+        } else if (this._objectType === "SearchPerson") {
+            this._binder = new P.PlatformObjectBinder(person);
+            this._person = /*@static_cast(P.PersonAccessor)*/this._binder.createAccessor(this._queueUpdate.bind(this));
+        }
+
+        if (this._buttons) {
+            this._settingsContainer = person.objectId ? Jx.appData.localSettings().container("People").container("LandingPageMRU").container(person.objectId) : null;
+            this._buttons.forEach(/*@bind(ContactPanel)*/function (/*@type(ContactPanelButtonDefinition)*/buttonDefinition) {
+                buttonDefinition.button = new P.DisambiguatedCommandButton(
+                    buttonDefinition.id,
+                    buttonDefinition.title,
+                    buttonDefinition.icon,
+                    this._settingsContainer,
+                    buttonDefinition.key,
+                    this._jobSet
+                );
+            }, this);
+
+            this._update();
+        }
+
         this._augmentPerson();
-        this._commitContact = null
-    }
-    ;
-    ContactPanel.prototype.className = "panelView-inactivePanel profileLanding-contactPanel";
-    ContactPanel.prototype.position = People.PanelView.PanelPosition.contactPanel;
+
+        this._commitContact = /*static_cast(P.CommitContact)*/null;
+    };
+    ///<enable>JS2076.IdentifierIsMiscased</enable>
+
+    ContactPanel.prototype.className = "panelView-inactivePanel profileLanding-contactPanel"; // No hover effect
+    ContactPanel.prototype.position = P.PanelView.PanelPosition.contactPanel;
     ContactPanel.prototype._keyboardNavigation = null;
     ContactPanel.prototype._augmentAction = null;
-    ContactPanel.prototype.getUI = function() {
-        var r, h, u, t, i, e, o, a, s;
-        if (this._substituteImage = null,
-        this._fields && this._fields.extendedData && this._fields.extendedData.url && (this._substituteImage = this._fields.extendedData.url),
-        r = null,
-        this._objectType !== "MeContact" && (r = {
-            element: People.IdentityElements.Networks,
-            className: "profileLanding-networks",
-            priority: People.Priority.synchronous
-        }),
-        h = this._identityControl.getUI(People.IdentityElements.TileLayout, {
+
+    ContactPanel.prototype.getUI = function () {
+        ///<summary>Returns HTML for this panel</summary>
+
+        this._substituteImage = null;
+        if (this._fields && this._fields.extendedData && this._fields.extendedData.url) {
+            this._substituteImage = this._fields.extendedData.url;
+        }
+
+        var secondaryContent = null;
+        if (this._objectType !== "MeContact") {
+            secondaryContent = {
+                element: People.IdentityElements.Networks,
+                className: "profileLanding-networks",
+                priority: P.Priority.synchronous
+            }
+        }
+
+        var ic = this._identityControl.getUI(People.IdentityElements.TileLayout, {
             className: "contactPanel-ic",
             primaryContent: null,
-            secondaryContent: r,
+            secondaryContent: secondaryContent,
             defaultImage: this._substituteImage,
             useInnerHighlight: true,
             snap: true,
             portrait: true
-        }),
-        u = "",
-        this._objectType !== "MeContact" && this._person.isInAddressBook) {
-            var f = this._person.linkedContacts.filter(function(n) {
-                return !n.isGal
-            }).length
-              , c = "&#xE167;"
-              , l = "contactActions-button";
-            f >= 2 && (text = f > 99 ? Jx.escapeHtml(Jx.res.getString("/landingPage/linkButtonCount-99plus")) : Jx.escapeHtml(String(f)),
-            c = "<div class='commandimage-uppernumber'>" + text + "<\/div><div class='commandimage-lower'>&#xE167;<\/div>",
-            l += " show-number-on-commandimage");
-            t = Jx.escapeHtml(Jx.res.getString("/landingPage/profileCanvasButtonFavorite"));
-            i = Jx.escapeHtml(Jx.res.getString("/landingPage/profileCanvasButtonLink"));
-            u = "<div class='profileLanding-contactActions'><div class='profileLanding-contactActionContainer'><div id='favoriteButton' tabindex='0' class='contactActions-button' role='button' aria-label='" + t + "'><span class='win-commandicon win-commandring'><span class='win-commandimage'>&#xE113;<\/span><\/span><span class='contactActions-text'>" + t + "<\/span><div class='contactActions-tooltip' title='" + t + "'><\/div><\/div><div id='linkContactsButton' tabindex='0' class='" + l + "' role='button' aria-label='" + i + "'><span class='win-commandicon win-commandring'><span class='win-commandimage'>" + c + "<\/span><\/span><span class='contactActions-text'>" + i + "<\/span><div class='contactActions-tooltip' title='" + i + "'><\/div><\/div><\/div><\/div>"
+        });
+
+        var contactActions = "";
+        if (this._objectType !== "MeContact" && this._person.isInAddressBook) {
+            var numberOfLinkedContacts = this._person.linkedContacts.filter(function (/*@type(P.ContactAccessor)*/contact) { return !contact.isGal; }).length;
+
+            var linkCommandImageHtml = "&#xE167;";
+            var linkCommandButtonClass = "contactActions-button";
+            if (numberOfLinkedContacts >= 2) {
+                text = numberOfLinkedContacts > 99 ? Jx.escapeHtml(Jx.res.getString("/landingPage/linkButtonCount-99plus")) : Jx.escapeHtml(String(numberOfLinkedContacts));
+                linkCommandImageHtml = "<div class='commandimage-uppernumber'>" + text + "</div><div class='commandimage-lower'>&#xE167;</div>";
+                linkCommandButtonClass += " show-number-on-commandimage";
+            }
+
+            var favoriteContent = Jx.escapeHtml(Jx.res.getString("/landingPage/profileCanvasButtonFavorite"));
+            var linkContent = Jx.escapeHtml(Jx.res.getString("/landingPage/profileCanvasButtonLink"));
+            contactActions = "<div class='profileLanding-contactActions'>" +
+                                 "<div class='profileLanding-contactActionContainer'>" +
+                                     "<div id='favoriteButton' tabindex='0' class='contactActions-button' role='button' aria-label='" + favoriteContent + "'>" +
+                                         "<span class='win-commandicon win-commandring'>" +
+                                             "<span class='win-commandimage'>&#xE113;</span>" +
+                                         "</span>" +
+                                         "<span class='contactActions-text'>" + favoriteContent + "</span>" +
+                                         "<div class='contactActions-tooltip' title='" + favoriteContent + "'></div>" +
+                                     "</div>" +
+                                     "<div id='linkContactsButton' tabindex='0' class='" + linkCommandButtonClass + "' role='button' aria-label='" + linkContent + "'>" +
+                                         "<span class='win-commandicon win-commandring'>" +
+                                             "<span class='win-commandimage'>" + linkCommandImageHtml + "</span>" +
+                                         "</span>" +
+                                         "<span class='contactActions-text'>" + linkContent + "</span>" +
+                                         "<div class='contactActions-tooltip' title='" + linkContent + "'></div>" +
+                                     "</div>" +
+                                 "</div>" +
+                             "</div>";
         }
-        return e = "<div class='profileLanding-panelContent'><div class='profileLanding-panelContent-left'><div class='profileLanding-panelContent-left-background'><\/div><div class='profileLanding-identityControl'>" + h + "<\/div><div class='profileLanding-GAL'><\/div>" + u + "<\/div>",
-        this._buttons && (o = "",
-        (this._objectType === "MeContact" || this._person.isInAddressBook) && (a = Jx.isRtl() ? "" : "",
-        s = Jx.escapeHtml(Jx.res.getString("/landingPage/contactSectionMoreInfoLink")),
-        o = "<div id='moreInfoButton' class='moreInfo-link' tabindex='0' role='button' aria-label='" + s + "'><a class='moreInfo-link-text'>" + s + "<\/a><a class='moreInfo-link-chevron'>" + a + "<\/a><\/div>"),
-        e += "<div class='profileLanding-panelContent-right'><div class='profileLanding-panelContent-right-background'><\/div><div class='profileLanding-contact' role='group' aria-label='" + Jx.escapeHtml(Jx.res.loadCompoundString("/landingPage/communicationVerbs", this._person.calculatedUIName)) + "'>" + this._buttons.map(function(n) {
-            var t = n.button;
-            return t.getUI()
-        }).join("") + "<\/div>" + o + "<\/div>"),
-        e + "<\/div>"
-    }
-    ;
-    ContactPanel.prototype.activateUI = function(t) {
-        var f, i, r, u;
-        this._identityControl.activateUI(t);
-        this._buttons && (this._buttons.forEach(function(n) {
-            var i = n.button;
-            i.activateUI(t)
-        }),
-        f = t.querySelector(".profileLanding-contact"),
-        this._keyboardNavigation = new Jx.KeyboardNavigation(f,"vertical"));
-        i = t.querySelector(".moreInfo-link");
-        i && (this._moreInfoClicker = new Jx.Clicker(i,this._onMoreInfoClick,this),
-        People.Animation.addPressStyling(i));
-        r = t.querySelector("#favoriteButton");
-        r && (this._favoriteButton = r,
-        this._favoriteButton.addEventListener("click", this._onFavoriteClick = this._onFavoriteCommand.bind(this), false),
-        this._favoriteButton.addEventListener("keypress", this._onFavoriteKeypress = this._onFavoriteCommand.bind(this), false),
-        this._person.isFavorite && WinJS.Utilities.addClass(this._favoriteButton, "contactActions-checkedButton"));
-        u = t.querySelector("#linkContactsButton");
-        u && (this._linkContactsButton = u,
-        this._linkContactsButton.addEventListener("click", this._onLinkClick = this._onLinkCommand.bind(this), false),
-        this._linkContactsButton.addEventListener("keypress", this._onLinkKeypress = this._onLinkCommand.bind(this), false));
-        this._galContainer = t.querySelector(".profileLanding-GAL");
-        this._galContainer.style.display = "none";
+
+        var html = "<div class='profileLanding-panelContent'>" +
+                       "<div class='profileLanding-panelContent-left'>" +
+                           "<div class='profileLanding-panelContent-left-background'></div>" +
+                           "<div class='profileLanding-identityControl'>" + ic + "</div>" +
+                           "<div class='profileLanding-GAL'></div>" +
+                           contactActions +
+                       "</div>";
+
+        if (this._buttons) {
+            var moreInfoLink = "";
+            if ((this._objectType === "MeContact") || this._person.isInAddressBook) {
+                var chevron = Jx.isRtl() ? "\uE096" : "\uE097";
+                var moreInfoContent = Jx.escapeHtml(Jx.res.getString("/landingPage/contactSectionMoreInfoLink"));
+                moreInfoLink = "<div id='moreInfoButton' class='moreInfo-link' tabindex='0' role='button' aria-label='" + moreInfoContent + "'>" +
+                                   "<a class='moreInfo-link-text'>" + moreInfoContent + "</a>" +
+                                   "<a class='moreInfo-link-chevron'>" + chevron + "</a>" +
+                               "</div>";
+            }
+            html += "<div class='profileLanding-panelContent-right'>" +
+                        "<div class='profileLanding-panelContent-right-background'></div>" +
+                        "<div class='profileLanding-contact' role='group' aria-label='" + Jx.escapeHtml(Jx.res.loadCompoundString("/landingPage/communicationVerbs", this._person.calculatedUIName)) + "'>" +
+                            this._buttons.map(function (/*@type(ContactPanelButtonDefinition)*/buttonDefinition) {
+                                var button = /*@static_cast(P.DisambiguatedCommandButton)*/buttonDefinition.button;
+                                return button.getUI();
+                            }).join("") +
+                        "</div>" +
+                        moreInfoLink +
+                    "</div>";
+        }
+        html += "</div>";
+
+        return html;
+    };
+
+    ContactPanel.prototype.activateUI = function (element) {
+        ///<summary>Hooks events, fills in dynamic content for this panel</summary>
+        ///<param name="element" type="HTMLElement"/>
+        this._identityControl.activateUI(element);
+
+        if (this._buttons) {
+            this._buttons.forEach(function (/*@type(ContactPanelButtonDefinition)*/buttonDefinition) {
+                var button = /*@static_cast(P.DisambiguatedCommandButton)*/buttonDefinition.button;
+                button.activateUI(element);
+            });
+
+            // Setup Up & Down keyboard navigation for buttons
+            var buttonsContainer = element.querySelector(".profileLanding-contact");
+            Debug.assert(buttonsContainer);
+            this._keyboardNavigation = new Jx.KeyboardNavigation(buttonsContainer, "vertical");
+        }
+
+        // If the header is actionable, attach event listeners.
+        var moreInfoLink = element.querySelector(".moreInfo-link");
+        if (moreInfoLink) {
+            this._moreInfoClicker = new Jx.Clicker(moreInfoLink, this._onMoreInfoClick, this);
+            P.Animation.addPressStyling(moreInfoLink);
+        }
+
+        // Add click handlers for on-canvas contact action buttons
+        var favoriteButton = element.querySelector("#favoriteButton");
+        if (favoriteButton) {
+            this._favoriteButton = favoriteButton;
+            this._favoriteButton.addEventListener("click", this._onFavoriteClick = this._onFavoriteCommand.bind(this), false);
+            this._favoriteButton.addEventListener("keypress", this._onFavoriteKeypress = this._onFavoriteCommand.bind(this), false);
+            if (this._person.isFavorite) {
+                WinJS.Utilities.addClass(this._favoriteButton, "contactActions-checkedButton");
+            }
+        }
+        var linkContactsButton = element.querySelector('#linkContactsButton');
+        if (linkContactsButton) {
+            this._linkContactsButton = linkContactsButton;
+            this._linkContactsButton.addEventListener("click", this._onLinkClick = this._onLinkCommand.bind(this), false);
+            this._linkContactsButton.addEventListener("keypress", this._onLinkKeypress = this._onLinkCommand.bind(this), false);
+        }
+        
+        this._galContainer = element.querySelector(".profileLanding-GAL");
+        this._galContainer.style.display = "none"; // default state is hidden
         this._showGALInfo();
-        this._addFrameCommands()
-    }
-    ;
-    ContactPanel.prototype._onMoreInfoClick = function() {
-        People.Nav.navigate(People.Nav.getProfileDetailUri(this._person.objectId))
-    }
-    ;
-    ContactPanel.prototype.ready = function() {
+
+        this._addFrameCommands();
+    };
+
+    ContactPanel.prototype._onMoreInfoClick = function () {
+        P.Nav.navigate(P.Nav.getProfileDetailUri(this._person.objectId));
+    };
+
+    ContactPanel.prototype.ready = function () {
+        ///<summary>Performs any heavy post-startup work for the panel</summary>
+
         this._isReady = true;
-        this._applyQueuedUpdates();
-        this._objectType === "Person" ? this._person.isInAddressBook && People.ContactCommands.addCommands(this._host, this._binder) : this._objectType === "MeContact" && People.MeCommands.addCommands(this._host);
-        this._objectType === "MeContact" ? Jx.bici.addToStream(InstruIds.People.socialPageViewed, "", People.Bici.mePage) : this._objectType === "Person" && Jx.bici.addToStream(InstruIds.People.socialPageViewed, "", People.Bici.landingPage);
-        this._objectType === "Person" && this._person.isInAddressBook && this._jobSet.addUIJob(this, function() {
-            People.ContactLinkingControl.prepareSuggestions(this._person.getPlatformObject())
-        }, null, People.Priority.suggestions)
-    }
-    ;
-    ContactPanel.prototype._addFrameCommands = function() {
+        this._applyQueuedUpdates(); // Updates are deferred if they arrive before ready.
+
+        if (this._objectType === "Person") {
+            if (this._person.isInAddressBook) {
+                P.ContactCommands.addCommands(this._host, this._binder);
+            }
+        } else if (this._objectType === "MeContact") {
+            P.MeCommands.addCommands(this._host);
+        }
+
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        if (this._objectType === "MeContact") {
+            Jx.bici.addToStream(InstruIds.People.socialPageViewed, "", P.Bici.mePage);
+        } else if (this._objectType === "Person") {
+            Jx.bici.addToStream(InstruIds.People.socialPageViewed, "", P.Bici.landingPage);
+        }
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
+
+        if (this._objectType === "Person" && this._person.isInAddressBook) {
+            this._jobSet.addUIJob(this, /*@bind(ContactPanel)*/function () {
+                P.ContactLinkingControl.prepareSuggestions(this._person.getPlatformObject());
+            }, null, P.Priority.suggestions);
+        }
+    };
+
+    ContactPanel.prototype._addFrameCommands = function () {
         if (!this._person.isInAddressBook) {
-            var t = this._person.linkedContacts[0];
-            t && !t.thirdPartyObjectId && this._host.getFrameCommands().addCommand(new People.Command("cmdid_landingPage_save",null,"/landingPage/saveButtonTitle","",true,true,this,this._showSaveFlyout))
+            var contact = /*@static_cast(P.ContactAccessor)*/this._person.linkedContacts[0];
+            if (/*@static_cast(Boolean)*/contact && !contact.thirdPartyObjectId) { // Can't save 3rd party contacts
+                this._host.getFrameCommands().addCommand(new P.Command("cmdid_landingPage_save", null, "/landingPage/saveButtonTitle", "\uE105", true, true, this, this._showSaveFlyout));
+            }
+        }
+    };
+
+    ContactPanel.prototype._onIdentityControlClick = function (person, element, ev) {
+        if (this._objectType === "MeContact") {
+            P.Nav.navigate(P.Nav.getEditMePictureUri());
+        } else {
+            var commands = [];
+            if (person.canClearPersonTile) {
+                commands.push(new WinJS.UI.MenuCommand(null, {
+                    label: Jx.res.getString("/landingPage/changeTileMenuOption"),
+                    onclick: this._onChangeTile.bind(this)
+                }));
+                commands.push(new WinJS.UI.MenuCommand(null, {
+                    label: Jx.res.getString("/landingPage/removeTileMenuOption"),
+                    onclick: this._onClearTile.bind(this)
+                }));
+            } else {
+                var tileUri = person.getUserTile(Microsoft.WindowsLive.Platform.UserTileSize.original, true).appdataURI;
+                var label = tileUri ? Jx.res.getString("/landingPage/changeTileMenuOption") : Jx.res.getString("/landingPage/setTileMenuOption");
+                commands.push(new WinJS.UI.MenuCommand(null, {
+                    label: label,
+                    onclick: this._onChangeTile.bind(this)
+                }));
+            }
+
+            var flyout = new WinJS.UI.Menu(null, { commands: commands });
+            Jx.addClass(flyout.element, "profileLanding-identityControl-flyout");
+            document.body.appendChild(flyout.element);
+            flyout.addEventListener("afterhide", function () {
+                document.body.removeChild(flyout.element);
+            }, false);
+            var anchor = element.querySelector(".ic-tileContainer")
+            flyout.show(anchor, "bottom", Jx.isRtl ? "left" : "right");
         }
     }
-    ;
-    ContactPanel.prototype._onIdentityControlClick = function(t, i) {
-        var u, f, e, r, o;
-        this._objectType === "MeContact" ? People.Nav.navigate(People.Nav.getEditMePictureUri()) : (u = [],
-        t.canClearPersonTile ? (u.push(new WinJS.UI.MenuCommand(null,{
-            label: Jx.res.getString("/landingPage/changeTileMenuOption"),
-            onclick: this._onChangeTile.bind(this)
-        })),
-        u.push(new WinJS.UI.MenuCommand(null,{
-            label: Jx.res.getString("/landingPage/removeTileMenuOption"),
-            onclick: this._onClearTile.bind(this)
-        }))) : (f = t.getUserTile(Microsoft.WindowsLive.Platform.UserTileSize.original, true).appdataURI,
-        e = f ? Jx.res.getString("/landingPage/changeTileMenuOption") : Jx.res.getString("/landingPage/setTileMenuOption"),
-        u.push(new WinJS.UI.MenuCommand(null,{
-            label: e,
-            onclick: this._onChangeTile.bind(this)
-        }))),
-        r = new WinJS.UI.Menu(null,{
-            commands: u
-        }),
-        Jx.addClass(r.element, "profileLanding-identityControl-flyout"),
-        document.body.appendChild(r.element),
-        r.addEventListener("afterhide", function() {
-            document.body.removeChild(r.element)
-        }, false),
-        o = i.querySelector(".ic-tileContainer"),
-        r.show(o, "bottom", Jx.isRtl ? "left" : "right"))
+
+    ContactPanel.prototype._onClearTile = function () {
+        if (this._person.canClearPersonTile) {
+            this._person.clearPersonTile();
+        }
     }
-    ;
-    ContactPanel.prototype._onClearTile = function() {
-        this._person.canClearPersonTile && this._person.clearPersonTile()
+
+    var ENCODER_IDS = { };
+    ENCODER_IDS[Windows.Graphics.Imaging.BitmapDecoder.gifDecoderId] = Windows.Graphics.Imaging.BitmapEncoder.gifEncoderId;
+    ENCODER_IDS[Windows.Graphics.Imaging.BitmapDecoder.pngDecoderId] = Windows.Graphics.Imaging.BitmapEncoder.pngEncoderId;
+    ENCODER_IDS[Windows.Graphics.Imaging.BitmapDecoder.jpegDecoderId] = Windows.Graphics.Imaging.BitmapEncoder.jpegEncoderId;
+    var DEFAULT_ENCODER_ID = Windows.Graphics.Imaging.BitmapEncoder.jpegEncoderId;
+
+    ContactPanel.prototype._onChangeTile = function () {
+        var picker = new Windows.Storage.Pickers.FileOpenPicker();
+        picker.viewMode = Windows.Storage.Pickers.PickerViewMode.thumbnail;
+        picker.fileTypeFilter.replaceAll([".jpg", ".bmp", ".gif", ".png", ".jpeg"]);
+        var that = this;
+        var webReady = new Windows.Storage.Streams.InMemoryRandomAccessStream();
+        picker.pickSingleFileAsync().then(function (file) {
+            if (file) {
+                file.openReadAsync().then(function (stream) {
+                    Windows.Graphics.Imaging.BitmapDecoder.createAsync(stream).then(function (bitmapDecoder) {
+                        return bitmapDecoder.getPixelDataAsync(
+                            bitmapDecoder.bitmapPixelFormat,
+                            bitmapDecoder.bitmapAlphaMode,
+                            new Windows.Graphics.Imaging.BitmapTransform(),
+                            Windows.Graphics.Imaging.ExifOrientationMode.respectExifOrientation,
+                            Windows.Graphics.Imaging.ColorManagementMode.colorManageToSRgb
+                        ).then(function (pixelDataProvider) {
+                            var encoderId = ENCODER_IDS[bitmapDecoder.decoderInformation.codecId];
+                            if (!encoderId) {
+                                encoderId = DEFAULT_ENCODER_ID;
+                            }
+
+                            return Windows.Graphics.Imaging.BitmapEncoder.createAsync(encoderId, webReady).then(function (encoder) {
+                                encoder.setPixelData(
+                                    bitmapDecoder.bitmapPixelFormat,
+                                    bitmapDecoder.bitmapAlphaMode,
+                                    bitmapDecoder.orientedPixelWidth,
+                                    bitmapDecoder.orientedPixelHeight,
+                                    bitmapDecoder.dpiX,
+                                    bitmapDecoder.dpiY,
+                                    pixelDataProvider.detachPixelData());
+                                encoder.flushAsync().then(function() {
+                                    if (that._person.canClearPersonTile) {
+                                        that._person.clearPersonTile();
+                                    }
+                                    that._person.setPersonTile(webReady);
+                                });
+                            });
+                        });
+                    });
+                });
+            }
+        });
     }
-    ;
-    r = {};
-    r[Windows.Graphics.Imaging.BitmapDecoder.gifDecoderId] = Windows.Graphics.Imaging.BitmapEncoder.gifEncoderId;
-    r[Windows.Graphics.Imaging.BitmapDecoder.pngDecoderId] = Windows.Graphics.Imaging.BitmapEncoder.pngEncoderId;
-    r[Windows.Graphics.Imaging.BitmapDecoder.jpegDecoderId] = Windows.Graphics.Imaging.BitmapEncoder.jpegEncoderId;
-    f = Windows.Graphics.Imaging.BitmapEncoder.jpegEncoderId;
-    ContactPanel.prototype._onChangeTile = function() {
-        var t = new Windows.Storage.Pickers.FileOpenPicker, n, i;
-        t.viewMode = Windows.Storage.Pickers.PickerViewMode.thumbnail;
-        t.fileTypeFilter.replaceAll([".jpg", ".bmp", ".gif", ".png", ".jpeg"]);
-        n = this;
-        i = new Windows.Storage.Streams.InMemoryRandomAccessStream;
-        t.pickSingleFileAsync().then(function(t) {
-            t && t.openReadAsync().then(function(t) {
-                Windows.Graphics.Imaging.BitmapDecoder.createAsync(t).then(function(t) {
-                    return t.getPixelDataAsync(t.bitmapPixelFormat, t.bitmapAlphaMode, new Windows.Graphics.Imaging.BitmapTransform, Windows.Graphics.Imaging.ExifOrientationMode.respectExifOrientation, Windows.Graphics.Imaging.ColorManagementMode.colorManageToSRgb).then(function(u) {
-                        var e = r[t.decoderInformation.codecId];
-                        return e || (e = f),
-                        Windows.Graphics.Imaging.BitmapEncoder.createAsync(e, i).then(function(r) {
-                            r.setPixelData(t.bitmapPixelFormat, t.bitmapAlphaMode, t.orientedPixelWidth, t.orientedPixelHeight, t.dpiX, t.dpiY, u.detachPixelData());
-                            r.flushAsync().then(function() {
-                                n._person.canClearPersonTile && n._person.clearPersonTile();
-                                n._person.setPersonTile(i)
-                            })
-                        })
-                    })
-                })
-            })
-        })
-    }
-    ;
-    ContactPanel.prototype._showSaveFlyout = function(n, t) {
+
+    ContactPanel.prototype._showSaveFlyout = function (commandId, button) {
         if (this._commitContact) {
             Jx.log.error("Commit already in progress");
-            return
+            return;
         }
-        var i = new WinJS.UI.Menu(null,{
-            commands: [new WinJS.UI.MenuCommand(null,{
-                label: Jx.res.getString("/landingPage/saveMenuOption"),
-                onclick: this._onSave.bind(this)
-            }), new WinJS.UI.MenuCommand(null,{
-                label: Jx.res.getString("/landingPage/linkMenuOption"),
-                onclick: this._onLink.bind(this)
-            })]
+
+        var flyout = new WinJS.UI.Menu(null, {
+            commands: [
+                new WinJS.UI.MenuCommand(null, {
+                    label: Jx.res.getString("/landingPage/saveMenuOption"),
+                    onclick: this._onSave.bind(this)
+                }),
+                new WinJS.UI.MenuCommand(null, {
+                    label: Jx.res.getString("/landingPage/linkMenuOption"),
+                    onclick: this._onLink.bind(this)
+                })
+            ]
         });
-        return document.body.appendChild(i.element),
-        i.addEventListener("afterhide", function() {
-            document.body.removeChild(i.element)
-        }, false),
-        i.show(t, "bottom", Jx.isRtl ? "left" : "right"),
-        i
-    }
-    ;
-    ContactPanel.prototype._onSave = function() {
-        this._saveContact(null)
-    }
-    ;
-    ContactPanel.prototype._onFavoriteCommand = function(t) {
-        (t.type === "click" || t.type === "keypress" && (t.keyCode === WinJS.Utilities.Key.enter || t.keyCode === WinJS.Utilities.Key.space)) && (this._person.isFavorite ? this._person.removeFavorite() : (this._person.insertFavorite(Microsoft.WindowsLive.Platform.FavoriteInsertPosition.insertLast, null),
-        Jx.bici.addToStream(InstruIds.People.socialReactionUpdated, "", People.Bici.landingPage, 0, People.Bici.ReactionType.favorite)),
-        WinJS.Utilities.toggleClass(this._favoriteButton, "contactActions-checkedButton"),
-        People.AppTile.pushTiles(this._host.getPlatform()))
-    }
-    ;
-    ContactPanel.prototype._onLinkCommand = function(t) {
-        (t.type === "click" || t.type === "keypress" && (t.keyCode === WinJS.Utilities.Key.enter || t.keyCode === WinJS.Utilities.Key.space)) && People.Nav.navigate(People.Nav.getLinkPersonUri(this._person.objectId))
-    }
-    ;
-    ContactPanel.prototype._onLink = function() {
-        this._host.getLayout().unsnap(function() {
-            var n = new Windows.ApplicationModel.Contacts.ContactPicker;
-            n.commitButtonText = Jx.res.getString("/landingPage/linkButtonTitle");
-            n.selectionMode = Windows.ApplicationModel.Contacts.ContactSelectionMode.fields;
-            n.desiredFieldsWithContactFieldType.append(Windows.ApplicationModel.Contacts.ContactFieldType.custom);
-            n.pickContactAsync().done(this._onPeoplePickerComplete.bind(this), Jx.fnEmpty)
-        }, this)
-    }
-    ;
-    ContactPanel.prototype._onPeoplePickerComplete = function(n) {
-        if (n) {
-            var t = this._host.getPlatform().peopleManager.loadPerson(n.id);
-            t && this._saveContact(t)
-        }
-    }
-    ;
-    ContactPanel.prototype._saveContact = function(t) {
-        var s = this._host.getPlatform(), o = this._fields.extendedData && !Jx.isNullOrUndefined(this._fields.extendedData.accountId), f = null, e = o ? this._fields.extendedData.accountId : this._fields.accountId, contact, source, u;
-        if (Jx.isNonEmptyString(e)) {
-            try {
-                f = s.accountManager.loadAccount(e)
-            } catch (h) {
-                Jx.log.exception("Error loading account: " + e, h)
+        document.body.appendChild(flyout.element);
+        flyout.addEventListener("afterhide", function () { 
+            document.body.removeChild(flyout.element);
+        }, false);
+        flyout.show(button, "bottom", Jx.isRtl ? "left" : "right");
+        return flyout;
+    };
+
+    ContactPanel.prototype._onSave = function () {
+        this._saveContact(null);
+    };
+
+    ContactPanel.prototype._onFavoriteCommand = function (ev) {
+        if ((ev.type === "click") || ((ev.type === "keypress") && ((ev.keyCode === WinJS.Utilities.Key.enter) || (ev.keyCode === WinJS.Utilities.Key.space)))) {
+            if (this._person.isFavorite) {
+                this._person.removeFavorite();
+            } else {
+                this._person.insertFavorite(Microsoft.WindowsLive.Platform.FavoriteInsertPosition.insertLast, null);
+                /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+                Jx.bici.addToStream(InstruIds.People.socialReactionUpdated, "", P.Bici.landingPage, 0, P.Bici.ReactionType.favorite);
+                /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
             }
-            f && !People.CommitContact.canCreateContacts(f) && (Jx.log.warning("Specified account " + e + " does not support adding contacts, falling back to the default"),
-            f = null)
+            WinJS.Utilities.toggleClass(this._favoriteButton, "contactActions-checkedButton");
+            P.AppTile.pushTiles(this._host.getPlatform());
         }
-        contact = this._host.getPlatform().peopleManager.createContact(f);
-        this._fields.extendedData ? (source = this._person.linkedContacts[0],
-        contact.firstName = source.firstName,
-        o ? source.businessEmailAddress ? contact.businessEmailAddress = source.businessEmailAddress : source.otherEmailAddress && (contact.otherEmailAddress = source.otherEmailAddress) : (contact.lastName = source.lastName,
-        contact.middleName = source.middleName,
-        contact.title = source.title,
-        contact.suffix = source.suffix,
-        contact.yomiFirstName = source.yomiFirstName,
-        contact.yomiLastName = source.yomiLastName,
-        contact.notes = source.notes,
-        contact.webSite = source.webSite,
-        contact.significantOther = source.significantOther,
-        contact.homePhoneNumber = source.homePhoneNumber,
-        contact.home2PhoneNumber = source.home2PhoneNumber,
-        contact.mobilePhoneNumber = source.mobilePhoneNumber,
-        contact.mobile2PhoneNumber = source.mobile2PhoneNumber,
-        contact.businessPhoneNumber = source.businessPhoneNumber,
-        contact.business2PhoneNumber = source.business2PhoneNumber,
-        contact.personalEmailAddress = source.personalEmailAddress,
-        contact.businessEmailAddress = source.businessEmailAddress,
-        contact.otherEmailAddress = source.otherEmailAddress,
-        contact.companyName = source.companyName,
-        contact.yomiCompanyName = source.yomiCompanyName,
-        contact.officeLocation = source.officeLocation,
-        contact.jobTitle = source.jobTitle,
-        contact.homeLocation = source.homeLocation,
-        contact.businessLocation = source.businessLocation,
-        contact.otherLocation = source.otherLocation)) : (contact.firstName = this._person.firstName,
-        contact.lastName = this._person.lastName,
-        u = this._person.linkedContacts[1],
-        u ? (contact.businessEmailAddress = this._person.mostRelevantEmail,
-        contact.businessPhoneNumber = u.businessPhoneNumber,
-        contact.mobilePhoneNumber = u.mobilePhoneNumber) : contact.personalEmailAddress = this._person.mostRelevantEmail);
-        this._commitContact = new People.CommitContact(contact,t,function(t) {
-            var r, i;
-            t && u && (r = u.getPlatformObject(),
-            r.savePermanently(t));
-            this._substituteImage && t && (!o || Jx.isNullOrUndefined(this._fields.extendedData)) ? (i = this,
-            WinJS.xhr({
-                url: this._substituteImage,
-                responseType: "blob"
-            }).then(function(r) {
-                var u = r.response;
-                t.setPersonTile(u.msDetachStream());
-                i._host.back(People.Nav.getViewPersonUri(t.objectId))
-            }, function() {
-                i._host.back(People.Nav.getViewPersonUri(t.objectId))
-            })) : this._host.back(t ? People.Nav.getViewPersonUri(t.objectId) : null)
-        }
-        ,this)
     }
-    ;
-    ContactPanel.prototype.suspend = function() {}
-    ;
-    ContactPanel.prototype.deactivateUI = function() {
+
+    ContactPanel.prototype._onLinkCommand = function (ev) {
+        if ((ev.type === "click") || ((ev.type === "keypress") && ((ev.keyCode === WinJS.Utilities.Key.enter) || (ev.keyCode === WinJS.Utilities.Key.space)))) {
+            P.Nav.navigate(P.Nav.getLinkPersonUri(this._person.objectId));
+        }
+    }
+
+    ContactPanel.prototype._onLink = function () {
+        this._host.getLayout().unsnap(/*@bind(ContactPanel)*/function () {
+            var picker = new Windows.ApplicationModel.Contacts.ContactPicker();
+            picker.commitButtonText = Jx.res.getString("/landingPage/linkButtonTitle");
+            picker.selectionMode = Windows.ApplicationModel.Contacts.ContactSelectionMode.fields;
+            picker.desiredFieldsWithContactFieldType.append(Windows.ApplicationModel.Contacts.ContactFieldType.custom);
+            picker.pickContactAsync().done(this._onPeoplePickerComplete.bind(this), Jx.fnEmpty);
+        }, this);
+    };
+
+    ContactPanel.prototype._onPeoplePickerComplete = function (pickerContact) {
+        /// <param name="pickerContact" type="Windows.ApplicationModel.Contacts.ContactInformation" />
+        if (pickerContact) {
+            var person = this._host.getPlatform().peopleManager.loadPerson(pickerContact.id);
+            if (person) {
+                this._saveContact(person);
+            }
+        }
+    };
+
+    ContactPanel.prototype._saveContact = function (linkToPerson) {
+        /// <param name="linkToPerson" type="Microsoft.WindowsLive.Platform.IPerson" optional="true"/>
+        var platform = this._host.getPlatform();
+
+        var isAugmented = this._fields.extendedData && !Jx.isNullOrUndefined(this._fields.extendedData.accountId);
+
+        var account = null;
+        var accountId = isAugmented ? this._fields.extendedData.accountId : this._fields["accountId"];
+        if (Jx.isNonEmptyString(accountId)) {
+            try {
+                account = platform.accountManager.loadAccount(accountId);
+            } catch (ex) {
+                Jx.log.exception("Error loading account: " + accountId, ex);
+            }
+
+            if (/*@static_cast(Boolean)*/account && !P.CommitContact.canCreateContacts(account)) {
+                Jx.log.warning("Specified account " + accountId + " does not support adding contacts, falling back to the default");
+                account = null;
+            }
+        }
+
+        var newContact = this._host.getPlatform().peopleManager.createContact(account);
+
+        if (this._fields.extendedData) {
+            // Get the first linked contact from the temporary person that was created when we got here through the Contact Card
+            // We know we came from the Contact Card because that's the only way the extendedData can get populated
+            var tempContact = this._person.linkedContacts[0];
+
+            // If this is an augmented contact, that is, the contact came from Mail/Calendar (via the Add Contact Action),
+            // then we only save the contact's name and email address. This is because such contacts only fall in one of
+            // two buckets:
+            // 1. The contact is a GAL contact, in which case saving any additional information will result in stale data
+            //    since the platform automatically retrieves GAL data
+            // 2. The contact doesn't have any other data anyway (based on how Mail/Calendar populate the contact object)
+            newContact.firstName = tempContact.firstName;
+
+            if (isAugmented) {
+                // In the GAL scenario from Mail/Calendar, either businessEmailAddress OR otherEmailAddress will have the 
+                // email address that we need to save. So, we check for both of them here and save whichever one we find
+                Debug.assert(Jx.isNonEmptyString(tempContact.businessEmailAddress) || Jx.isNonEmptyString(tempContact.otherEmailAddress))
+
+                if (tempContact.businessEmailAddress) {
+                    newContact.businessEmailAddress = tempContact.businessEmailAddress;
+                } else if (tempContact.otherEmailAddress) {
+                    newContact.otherEmailAddress = tempContact.otherEmailAddress;
+                }
+            } else {
+                newContact.lastName = tempContact.lastName;
+                newContact.middleName = tempContact.middleName;
+                newContact.title = tempContact.title;
+                newContact.suffix = tempContact.suffix;
+                newContact.yomiFirstName = tempContact.yomiFirstName;
+                newContact.yomiLastName = tempContact.yomiLastName;
+                newContact.notes = tempContact.notes;
+                newContact.webSite = tempContact.webSite;
+                newContact.significantOther = tempContact.significantOther;
+                newContact.homePhoneNumber = tempContact.homePhoneNumber;
+                newContact.home2PhoneNumber = tempContact.home2PhoneNumber;
+                newContact.mobilePhoneNumber = tempContact.mobilePhoneNumber;
+                newContact.mobile2PhoneNumber = tempContact.mobile2PhoneNumber;
+                newContact.businessPhoneNumber = tempContact.businessPhoneNumber;
+                newContact.business2PhoneNumber = tempContact.business2PhoneNumber;
+                newContact.personalEmailAddress = tempContact.personalEmailAddress;
+                newContact.businessEmailAddress = tempContact.businessEmailAddress;
+                newContact.otherEmailAddress = tempContact.otherEmailAddress;
+                newContact.companyName = tempContact.companyName;
+                newContact.yomiCompanyName = tempContact.yomiCompanyName;
+                newContact.officeLocation = tempContact.officeLocation;
+                newContact.jobTitle = tempContact.jobTitle;
+                newContact.homeLocation = tempContact.homeLocation;
+                newContact.businessLocation = tempContact.businessLocation;
+                newContact.otherLocation = tempContact.otherLocation;
+            }
+        } else {
+            // Save the name.
+            newContact.firstName = this._person.firstName;
+            newContact.lastName = this._person.lastName;
+
+            // Save the email address.  If there's a GAL contact, switch the type from home to work.
+            var galContact = /*@static_cast(P.ContactAccessor)*/this._person.linkedContacts[1];
+            if (galContact) {
+                newContact.businessEmailAddress = this._person.mostRelevantEmail;
+                newContact.businessPhoneNumber = galContact.businessPhoneNumber;
+                newContact.mobilePhoneNumber = galContact.mobilePhoneNumber;
+            } else {
+                newContact.personalEmailAddress = this._person.mostRelevantEmail;
+            }
+        }
+
+        this._commitContact = new P.CommitContact(newContact, linkToPerson, /*@bind(ContactPanel)*/function (/*@type(Microsoft.WindowsLive.Platform.IPerson)*/person) {
+            if (/*@static_cast(Boolean)*/person && /*@static_cast(Boolean)*/galContact) {
+                var searchPerson = /*@static_cast(Microsoft.WindowsLive.Platform.SearchPerson)*/galContact.getPlatformObject();
+                searchPerson.savePermanently(person);
+            }
+
+            if (this._substituteImage && person && (!isAugmented || Jx.isNullOrUndefined(this._fields.extendedData))) {
+                var that = this;
+                WinJS.xhr({ url: this._substituteImage, responseType: "blob" }).then(function (request) {
+                    var blob = request.response;
+                    person.setPersonTile(blob.msDetachStream());
+                    that._host.back(P.Nav.getViewPersonUri(person.objectId))
+                }, function () {
+                    that._host.back(P.Nav.getViewPersonUri(person.objectId))
+                })
+            } else {
+                this._host.back(person ? P.Nav.getViewPersonUri(person.objectId) : null);
+            }
+        }, this);
+    };
+
+    ContactPanel.prototype.suspend = function (hydrationData) { };
+
+    ContactPanel.prototype.deactivateUI = function () {
+        ///<summary>Called when the panel is being removed from the document</summary>
         this._disposeAccountCollection();
         this._disposeAugmentAction();
-        this._identityControl && (this._identityControl.shutdownUI(),
-        this._identityControl = null);
-        this._favoriteButton && (this._onFavoriteClick && (this._favoriteButton.removeEventListener("click", this._onFavoriteClick, false),
-        this._favoriteButton.removeEventListener("keypress", this._onFavoriteKeypress, false),
-        this._onFavoriteClick = null),
-        this._favoriteButton = null);
-        this._linkContactsButton && (this._onLinkClick && (this._linkContactsButton.removeEventListener("click", this._onLinkClick, false),
-        this._linkContactsButton.removeEventListener("keypress", this._onLinkKeypress, false),
-        this._onLinkClick = null),
-        this._linkContactsButton = null);
+
+        if (this._identityControl) {
+            this._identityControl.shutdownUI();
+            this._identityControl = null;
+        }
+
+        if (this._favoriteButton) {
+            if (this._onFavoriteClick) {
+                this._favoriteButton.removeEventListener("click", this._onFavoriteClick, false);
+                this._favoriteButton.removeEventListener("keypress", this._onFavoriteKeypress, false);
+                this._onFavoriteClick = null;
+            }
+            this._favoriteButton = null;
+        }
+
+        if (this._linkContactsButton) {
+            if (this._onLinkClick) {
+                this._linkContactsButton.removeEventListener("click", this._onLinkClick, false);
+                this._linkContactsButton.removeEventListener("keypress", this._onLinkKeypress, false);
+                this._onLinkClick = null;
+            }
+            this._linkContactsButton = null;
+        }
+
         Jx.dispose(this._binder);
         Jx.dispose(this._jobSet);
         Jx.dispose(this._keyboardNavigation);
         Jx.dispose(this._moreInfoClicker);
         Jx.dispose(this._commitContact);
+
         this._binder = null;
         this._jobSet = null;
         this._keyboardNavigation = null;
         this._moreInfoClicker = null;
-        this._commitContact = null
-    }
-    ;
-    ContactPanel.prototype._queueUpdate = function() {
-        this._isUpdateQueued || (this._isUpdateQueued = true,
-        this._jobSet.addUIJob(this, this._applyQueuedUpdates, null, People.Priority.propertyUpdate))
-    }
-    ;
-    ContactPanel.prototype._applyQueuedUpdates = function() {
-        this._isUpdateQueued && this._isReady && (this._isUpdateQueued = false,
-        this._update(),
-        this._updateGALInfoAnimated(),
-        this._augmentPerson())
-    }
-    ;
-    ContactPanel.prototype._update = function() {
-        this._buttons.forEach(function(n) {
-            n.update(n.button, this._person)
+        this._commitContact = null;
+    };
+
+    ContactPanel.prototype._queueUpdate = function () {
+        if (!this._isUpdateQueued) {
+            this._isUpdateQueued = true;
+            this._jobSet.addUIJob(this, this._applyQueuedUpdates, null, P.Priority.propertyUpdate);
+        }
+    };
+    
+    ContactPanel.prototype._applyQueuedUpdates = function () {
+        if (this._isUpdateQueued && this._isReady) {
+            this._isUpdateQueued = false;
+
+            this._update();
+            this._updateGALInfoAnimated();
+
+            // Augment person again in case a property(email address or linked contact) that affects the GAL retrieval is updated
+            this._augmentPerson();
+        }
+    };
+
+    ContactPanel.prototype._update = function () {
+        this._buttons.forEach(/*@bind(ContactPanel)*/function (/*@type(ContactPanelButtonDefinition)*/buttonDefinition) {
+            buttonDefinition.update(buttonDefinition.button, this._person);
         }, this);
-        this._keyboardNavigation && this._keyboardNavigation.update()
-    }
-    ;
-    ContactPanel.prototype._isGALEnabled = function() {
-        return this._objectType !== "MeContact"
-    }
-    ;
-    ContactPanel.prototype._augmentPerson = function() {
-        if (this._disposeAugmentAction(),
-        this._isGALEnabled())
+
+        if (this._keyboardNavigation) {
+            this._keyboardNavigation.update();
+        } 
+    };
+    
+    ContactPanel.prototype._isGALEnabled = function () {
+        ///<summary>Returns whether GAL is enabled</summary>
+        ///<returns type="Boolean"/>
+        // Platform doesn't suppport GAL for Me contact. This is by design.
+        return (this._objectType !== "MeContact");
+    };
+
+    ContactPanel.prototype._augmentPerson = function () {
+        ///<summary>Call platform API to augment person with GAL contact</summary>
+        this._disposeAugmentAction();
+ 
+        if (this._isGALEnabled()) {
             try {
                 Jx.log.info("Calling augmentViaServerAsync on person: " + this._person.objectId);
                 Jx.mark("People.ContactPanel._augmentPerson,StartTM,People,ContactPanel");
-                this._augmentAction = this._person.augmentViaServerAsync(false).done(function() {
-                    Jx.mark("People.ContactPanel._augmentPerson,StopTM,People,ContactPanel")
-                }, Jx.fnEmpty)
-            } catch (n) {
-                Jx.log.exception("Error calling augmentViaServerAsync on person: " + this._person.objectId, n)
+                this._augmentAction = this._person.augmentViaServerAsync(false).done(function () {
+                    Jx.mark("People.ContactPanel._augmentPerson,StopTM,People,ContactPanel");
+                }, Jx.fnEmpty);
+            } catch (err) {
+                Jx.log.exception("Error calling augmentViaServerAsync on person: " + this._person.objectId, err);
             }
-    }
-    ;
-    ContactPanel.prototype._disposeAugmentAction = function() {
-        var n = this._augmentAction;
-        n && (n.cancel(),
-        this._augmentAction = null)
-    }
-    ;
-    ContactPanel.prototype._showGALInfo = function() {
-        this._updateGALInfo(false)
-    }
-    ;
-    ContactPanel.prototype._updateGALInfoAnimated = function() {
-        this._updateGALInfo(true)
-    }
-    ;
-    ContactPanel.prototype._updateGALInfo = function(t) {
-        var o, u, f, s, h;
-        if (this._isGALEnabled() && this._person.linkedContacts) {
-            var i = this._galContainer
-              , e = this._person.linkedContacts.filter(function(n) {
-                return Jx.isNonEmptyString(n.jobTitle) || Jx.isNonEmptyString(n.companyName) || Jx.isNonEmptyString(n.officeLocation)
-            })[0]
-              , r = "";
-            e && (o = false,
-            u = function(n) {
-                var t, i;
-                return Jx.isNonEmptyString(e[n]) ? (t = "gal-secondaryField",
-                o || (o = true,
-                t = "gal-primaryField"),
-                i = Jx.escapeHtml(e[n]),
-                "<div class='" + t + "' title='" + i + "'>" + i + "<\/div>") : ""
+        }
+    };
+
+    ContactPanel.prototype._disposeAugmentAction = function () {
+        var augmentAction = this._augmentAction;
+        if (augmentAction) {
+            augmentAction.cancel();
+            this._augmentAction = null;
+        }
+    };
+
+    ContactPanel.prototype._showGALInfo = function () {
+        ///<summary>Show GAL section without animation. This is for initial rendering if GAL data is available upfront.</summary>
+        this._updateGALInfo(false);
+    };
+    
+    ContactPanel.prototype._updateGALInfoAnimated = function () {
+        ///<summary>Update GAL section with animation. This is for inserting/deleting the GAL data after page is rendered.</summary>
+        this._updateGALInfo(true);
+    };
+
+    ContactPanel.prototype._updateGALInfo = function (needAnimation) {
+        ///<summary>Update GAL section using the job info in the linked contacts. The linked contacts are already in priority order</summary>
+        ///<param name="needAnimation" type="Boolean"/>
+        if (this._isGALEnabled()) {
+            if (this._person.linkedContacts) {
+                var galContainer = this._galContainer;
+                var galContact = this._person.linkedContacts.filter(function (/*@type(P.ContactAccessor)*/contact) {
+                    return Jx.isNonEmptyString(contact.jobTitle) || Jx.isNonEmptyString(contact.companyName) || Jx.isNonEmptyString(contact.officeLocation);
+                })[0];
+                var html = "";
+                // Update GAL section.
+                if (galContact) {
+                    // Show GAL section
+                    var primaryFieldUsed = false;
+
+                    var createGalField = function (key) {
+                        if (Jx.isNonEmptyString(galContact[key])) {
+                            var fieldClass = "gal-secondaryField";
+                            if (!primaryFieldUsed) {
+                                primaryFieldUsed = true;
+                                fieldClass = "gal-primaryField";
+                            }
+                            var text = Jx.escapeHtml(galContact[key]);
+                            return "<div class='" + fieldClass + "' title='" + text + "'>" + text + "</div>";
+                        }
+                        return "";
+                    }
+                    
+                    html += createGalField("jobTitle");
+                    html += createGalField("companyName");
+                    html += createGalField("officeLocation");
+                }
+                
+                var affectedNodes = [];
+                if (needAnimation && this._host.getLayout().getLayoutState() === P.Layout.layoutState.snapped) {
+                    // In snap, animations to the GAL data will move other panels.
+                    affectedNodes = this._host.getPanelElements();
+                }
+
+                if (Jx.isNonEmptyString(html)) {                    
+                    // Run add to list animation if the section is previously hidden
+                    if (galContainer.style.display === "none" && needAnimation) {
+                        var addToListAnimation = WinJS.UI.Animation.createAddToListAnimation(galContainer, affectedNodes);
+                        galContainer.innerHTML = html;
+                        galContainer.style.display = "";
+                        addToListAnimation.execute();
+                    } else {
+                        galContainer.innerHTML = html;
+                        galContainer.style.display = "";
+                    }
+                } else {
+                    // Hide GAL section
+                    // Run delete from list animation if the section was previously showing. If the section wasn't previously showing, nothing needs to be done.
+                    if (galContainer.style.display !== "none" && needAnimation) {
+                        var delteFromListAnimation = WinJS.UI.Animation.createDeleteFromListAnimation(galContainer, affectedNodes);
+                        galContainer.style.display = "none";
+                        galContainer.innerHTML = "";
+                        delteFromListAnimation.execute();                  
+                    } 
+                }
             }
-            ,
-            r += u("jobTitle"),
-            r += u("companyName"),
-            r += u("officeLocation"));
-            f = [];
-            t && this._host.getLayout().getLayoutState() === People.Layout.layoutState.snapped && (f = this._host.getPanelElements());
-            Jx.isNonEmptyString(r) ? i.style.display === "none" && t ? (s = WinJS.UI.Animation.createAddToListAnimation(i, f),
-            i.innerHTML = r,
-            i.style.display = "",
-            s.execute()) : (i.innerHTML = r,
-            i.style.display = "") : i.style.display !== "none" && t && (h = WinJS.UI.Animation.createDeleteFromListAnimation(i, f),
-            i.style.display = "none",
-            i.innerHTML = "",
-            h.execute())
+        }
+    };
+
+    ContactPanel.prototype._disposeAccountCollection = function () {
+        ///<summary>Dispose the account collection for Me profile button</summary>
+        if (this._accountCollection) {
+            this._accountCollection.removeEventListener("collectionchanged", this._collectionChangeListener);
+            this._accountCollection.dispose();
+            this._accountCollection = null;
+        }
+    };
+    
+    ContactPanel.prototype._updateMeInfoButton = function (control) {
+        ///<summary>Updates the view profile button for Me</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        if (!this._accountCollection) {
+            ///<disable>JS3057.AvoidImplicitTypeCoercion</disable>
+            this._accountCollection = /*static_cast(Plat.Collection)*/
+                this._host.getPlatform().accountManager.getConnectedAccountsByScenario(Plat.ApplicationScenario.people, Plat.ConnectedFilter.normal, Plat.AccountSort.rank);
+            ///<enable>JS3057.AvoidImplicitTypeCoercion</enable>
+            Debug.assert(this._accountCollection);
+            this._accountCollection.addEventListener("collectionchanged", this._collectionChangeListener);
+        } else {
+            this._accountCollection.lock();
+        }
+
+        // This is really this._buttons[0].button.
+        this._meInfoButton = control;
+        updateMeInfoButton(control, this._accountCollection);
+        this._accountCollection.unlock();
+    };
+
+    ContactPanel.prototype._accountCollectionChanged = function () {
+        ///<summary>Account colletion event handler</summary>
+        Debug.assert(this._accountCollection);
+        Debug.assert(this._meInfoButton);
+        this._accountCollection.lock();
+        updateMeInfoButton(this._meInfoButton, this._accountCollection);
+        this._accountCollection.unlock();
+    };
+
+    function updateMeInfoButton(control, accounts) {
+        ///<summary>Updates the view profile button for Me</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="accounts" type="Plat.Collection"/>
+        Debug.assert(accounts);
+        var values = [];
+        var count = accounts.count;
+        for (var i = 0; i < count; i++) {
+            var item = /*@static_cast(Plat.Account)*/accounts.item(i);
+            if (!item.isDefault) {
+
+                // Attempt to get the profileVerb Url from the account's MeContact
+                var profileUrl = "";
+                var meContact = item.meContact;
+
+                if (Jx.isObject(meContact)) {
+                    if (item.sourceId === "FB") {
+                        values.push({
+                            display: item.displayName,
+                            data: People.Protocol.createFromContact("profile", /*@static_cast(Plat.Contact)*/meContact).toUrl(),
+                            bici: P.Bici.ReactionType.profile
+                        });
+                    } else {
+                        profileUrl = getProfileVerb(meContact);
+
+                        if (Jx.isNonEmptyString(profileUrl)) {
+                            values.push({
+                                display: item.displayName,
+                                data: profileUrl,
+                                bici: P.Bici.ReactionType.webProfile
+                            });
+                        }
+                    }
+                }
+            }
+        }
+
+        control.updateValues(null, values);
+    };
+
+    function updateEmailButton(control, person) {
+        ///<summary>Updates the possible values for the email button</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="person" type="P.PersonAccessor"/>
+        var fields = P.Contact.createUniqueFields(person.linkedContacts, "email");
+        control.updateValues(
+            makeEmailValue(person.mostRelevantEmail),
+            fields.map(function (/*@type(_ContactUniqueField)*/field) { return makeEmailValue(field.fieldValue); })
+        );
+    }
+    function makeEmailValue(email) {
+        ///<param name="email" type="String"/>
+        ///<returns type="DisambiguatedCommandValue"/>
+        var value = null;
+        if (Jx.isNonEmptyString(email)) {
+            value = {
+                display: email,
+                data: People.Protocol.create("mailto", { email: email }).toUrl(),
+                bici: P.Bici.ReactionType.mail
+            };
+        }
+        return value;
+    }
+
+    var imTypeRanks = [ 
+        Plat.ContactIMType.skype,
+        Plat.ContactIMType.windowsLive,
+        Plat.ContactIMType.office,
+        Plat.ContactIMType.yahoo,
+        Plat.ContactIMType.foreignNetwork
+    ];
+    function updateChatButton(control, person) {
+        ///<summary>Updates the possible values for the chat button</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="person" type="P.PersonAccessor"/>
+        var chatValues = person.linkedContacts.sort(function (/*@type(P.ContactAccessor)*/contactA, /*@type(P.ContactAccessor)*/contactB) {
+            return imTypeRanks.indexOf(contactA.imType) - imTypeRanks.indexOf(contactB.imType);
+        }).map(function (/*@type(P.ContactAccessor)*/contact) {
+            ///<returns type="DisambiguatedCommandValue"/>
+            var imType = contact.imType;
+            if (imType === Plat.ContactIMType.skype || imType === Plat.ContactIMType.windowsLive || imType === Plat.ContactIMType.foreignNetwork) {
+                var account = /*@static_cast(Plat.Account)*/contact.account;
+                if (account) {
+                    var display = account.displayName;
+
+                    if (Jx.isNonEmptyString(display)) {
+                        // If the imType is foreignNetwork and the source is not Facebook skip the following because we do not support
+                        // foreign networks other than Facebook for the message action. We will process everything else.
+                        if (((imType === Plat.ContactIMType.foreignNetwork) && (account.sourceId !== "FB")) ? false : true) {                            
+                            return {
+                                display: display,
+                                data: People.Protocol.createFromContact("message", /*@static_cast(Plat.Contact)*/contact).toUrl(),
+                                bici: P.Bici.ReactionType.message
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        });
+
+        var smsValues = P.Contact.createUniqueFields(person.linkedContacts, "mobiletel").map(function (/*@type(_ContactUniqueField)*/field) {
+            return {
+                // Wrap mobile phone number with Unicode character for Left to Right layout so it doesn't get displayed RTL 
+                // in RTL build when the number contains spaces, brackets, etc..
+                display: Jx.res.loadCompoundString("/landingPage/sms", "\u202a" + field.fieldValue + "\u202c"),
+                data: People.Protocol.create("sms", { phoneNumber: field.fieldValue }).toUrl(),
+                bici: P.Bici.ReactionType.sms
+            };
+        });
+
+        control.updateValues(null, chatValues.concat(smsValues));
+    }
+    function updateVideoCallButton(control, person) {
+        ///<summary>Updates the possible values for the skype call button</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="person" type="P.PersonAccessor"/>
+        var values = [];
+        person.linkedContacts.forEach(function (/*@type(P.ContactAccessor)*/contact) {
+            if (contact.imType === Plat.ContactIMType.skype) {
+                var account = contact.account;
+                if (account) {
+                    var accountName = account.displayName;
+                    if (Jx.isNonEmptyString(accountName)) {
+                        values.push({
+                            display: accountName,
+                            data: People.Protocol.createFromContact("videocall", /*@static_cast(Plat.Contact)*/contact).toUrl(),
+                            bici: P.Bici.ReactionType.videoCall
+                        });
+                    }
+                }
+            }
+        });
+        control.updateValues(null, values);
+    }
+    function updateCallButton(control, person) {
+        ///<summary>Updates the possible values for the call button</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="person" type="P.PersonAccessor"/>
+        var skypeCommands = [];
+        person.linkedContacts.forEach(function (/*@type(P.ContactAccessor)*/contact) {
+            if (contact.imType === Plat.ContactIMType.skype) {
+                var account = contact.account;
+                if (account) {
+                    var accountName = account.displayName;
+                    if (Jx.isNonEmptyString(accountName)) {
+                        skypeCommands.push({
+                            display: accountName,
+                            data: People.Protocol.createFromContact("audiocall", /*@static_cast(Plat.Contact)*/contact).toUrl(),
+                            bici: P.Bici.ReactionType.audioCall,
+                            title: Jx.res.getString("/landingPage/call")
+                        });
+                    }
+                }
+            }
+        });
+
+        var fields = P.Contact.createUniqueFields(person.linkedContacts, "tel");
+        var telCommands = fields.map(function (/*@type(_ContactUniqueField)*/field) { return makeCallValue(field.fieldValue, field.fieldName); });
+
+        control.updateValues(
+            skypeCommands[0] || makeCallValue(person.mostRelevantPhone),
+            skypeCommands.concat(telCommands)
+        );
+    }
+
+    function makeCallValue(phone, fieldName) {
+        ///<param name="phone" type="String"/>
+        ///<param name="fieldName" type="String" optional="true"/>
+        ///<returns type="DisambiguatedCommandValue"/>
+        var value = null;
+        if (Jx.isNonEmptyString(phone)) {
+            var titleResources = {
+                mobilePhoneNumber: "profile_fieldTitle_callMobile",
+                mobile2PhoneNumber: "profile_fieldTitle_callMobile",
+                homePhoneNumber: "profile_fieldTitle_callHome",
+                home2PhoneNumber: "profile_fieldTitle_callHome",
+                businessPhoneNumber: "profile_fieldTitle_callWork",
+                business2PhoneNumber: "profile_fieldTitle_callWork"
+            };
+            Debug.assert(!fieldName || titleResources[fieldName]);
+            // Wrap phone number with Unicode character for Left to Right layout so it doesn't get displayed RTL 
+            // in RTL build when the number contains spaces, brackets, etc..
+            var phoneLTR = "\u202a" + phone + "\u202c";
+            value = {
+                display: fieldName ? phoneLTR + " (" + Jx.res.getString("/strings/profile_fieldTitle_" + fieldName) + ")" : phoneLTR,
+                shortDisplay: phoneLTR,
+                data: People.Protocol.create("tel", { phoneNumber: phone }).toUrl(),
+                title: fieldName ? Jx.res.getString("/strings/" + titleResources[fieldName]) : null,
+                bici: P.Bici.ReactionType.call
+            };
+        }
+        return value;
+    }
+
+    function updateMapButton(control, person) {
+        ///<summary>Updates the possible values for the map button</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="person" type="P.PersonAccessor"/>
+
+        var fields = P.Contact.createUniqueFields(person.linkedContacts, "mapLocation");
+        var locations = fields.map(function (/*@type(_ContactUniqueField)*/field) {
+            return {
+                value: field.fieldValue,
+                metadata: {
+                    type: field.fieldName,
+                    contactName: person.calculatedUIName
+                }
+            };
+        });
+        var bestLocation = P.Location.getBestLocation(locations);
+        control.updateValues(
+            bestLocation ? makeMapValue(bestLocation) : null,
+            locations.map(function (location) { return makeMapValue(location); })
+        );
+    }
+
+    function makeMapValue(location) {
+        ///<param name="locationValue" type="Plat.Location"/>
+        ///<returns type="DisambiguatedCommandValue"/>
+        return {
+            display: P.Location.chooseBestDisplayField(location.value),
+            data: JSON.stringify(location),
+            getUrl: function (data) {
+                return P.UiFormMapHelper.getMapUrl(JSON.parse(data));
+            },
+            bici: P.Bici.ReactionType.address
+        };
+    }
+
+    function updateAllInfoButton(control, person) {
+        ///<summary>Updates the view profile button</summary>
+        ///<param name="control" type="P.DisambiguatedCommandButton"/>
+        ///<param name="person" type="P.PersonAccessor"/>
+        
+        var values = person.linkedContacts.filter(
+                function (/*@type(P.ContactAccessor)*/contact) {
+                    // Filter out the default accounts and GAL contact
+                    var ret = false;
+                    if (!contact.isGal) {
+                        var account = contact.account;
+                        ret = Jx.isObject(account) && !account.isDefault;
+                    }
+                    return ret;
+                }
+            ).map(
+                function (/*@type(P.ContactAccessor)*/contact) { return makeProfileValue(contact); }
+            ).filter(
+                // Filter out account that doesn't have profile url.
+                function (/*@type(DisambiguatedCommandValue)*/value) { return Jx.isNonEmptyString(value.data); }
+            );
+
+        control.updateValues(null, values);
+    }
+    function makeProfileValue(contact) {
+        ///<summary>Returns the command value for the profile details button</summary>
+        ///<param name="contact" type="P.ContactAccessor"/>
+        ///<returns type="DisambiguatedCommandValue"/>
+        var account = contact.account;
+        Debug.assert(Jx.isObject(account));
+        if (account) {
+            if (account.sourceId === "FB") {
+                return {
+                    display: account.displayName,
+                    data: People.Protocol.createFromContact("profile", /*@static_cast(Plat.Contact)*/contact).toUrl(),
+                    bici: P.Bici.ReactionType.profile
+                };
+            } else {
+                return {
+                    display: getNetworkDisplayName(account.displayName, account.sourceId, contact.nickname),
+                    data: getProfileVerb(contact),
+                    bici: P.Bici.ReactionType.webProfile
+                };
+            }
         }
     }
-    ;
-    ContactPanel.prototype._disposeAccountCollection = function() {
-        this._accountCollection && (this._accountCollection.removeEventListener("collectionchanged", this._collectionChangeListener),
-        this._accountCollection.dispose(),
-        this._accountCollection = null)
+    function getProfileVerb(/*@dynamic*/contact) {
+        ///<summary>Returns the URL for the network profile page</summary>
+        ///<param name="contact">Can be a P.ContactAccessor or Plat.MeContact</param>
+        ///<returns type="String"/>
+        var verbs = /*@static_cast(Microsoft.WindowsLive.Platform.Collection)*/contact.verbs;
+        // Exchange contact doesn't have verbs. Platform returns null in that case.
+        if (verbs) {
+            var count = verbs.count;
+            for (var i = 0; i < count; i++) {
+                var item = /*@static_cast(Microsoft.WindowsLive.Platform.Verb)*/verbs.item(i);
+                if (Number(item.verbType) === Plat.VerbType.profile) {
+                    return item.url;
+                }
+            }
+        }
+        return "";
     }
-    ;
-    ContactPanel.prototype._updateMeInfoButton = function(n) {
-        this._accountCollection ? this._accountCollection.lock() : (this._accountCollection = this._host.getPlatform().accountManager.getConnectedAccountsByScenario(Platform.ApplicationScenario.people, Platform.ConnectedFilter.normal, Platform.AccountSort.rank),
-        this._accountCollection.addEventListener("collectionchanged", this._collectionChangeListener));
-        this._meInfoButton = n;
-        e(n, this._accountCollection);
-        this._accountCollection.unlock()
+
+    function getNetworkDisplayName(displayName, sourceId, nickname) {
+        ///<summary>Returns the text for the network on the profile button. Append Twitter nickname for Twitter.</summary>
+        ///<param name="displayName" type="String"/>
+        ///<param name="sourceId" type="String"/>
+        ///<param name="nickname" type="String"/>
+        ///<returns type="String"/>
+        if (sourceId === "TWITR" && Jx.isNonEmptyString(nickname)) {
+            return displayName + " @" + nickname;
+        }
+        return displayName;
     }
-    ;
-    ContactPanel.prototype._accountCollectionChanged = function() {
-        this._accountCollection.lock();
-        e(this._meInfoButton, this._accountCollection);
-        this._accountCollection.unlock()
-    }
-    ;
-    u = [Platform.ContactIMType.skype, Platform.ContactIMType.windowsLive, Platform.ContactIMType.office, Platform.ContactIMType.yahoo, Platform.ContactIMType.foreignNetwork]
-})
+});

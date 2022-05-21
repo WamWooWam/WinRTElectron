@@ -1,100 +1,178 @@
-﻿Jx.delayDefine(Mail, "WorkerOwner", function () {
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Mail, Debug */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail, "WorkerOwner", function () {
     "use strict";
 
-    function r(n) {
-        Jx.mark("WorkerOwner:" + n)
-    }
+    var workerGlomId = "Worker";
 
-    function n(n) {
-        Jx.mark("WorkerOwner." + n + ",StartTA,WorkerOwner")
-    }
+    var WorkerOwner = Mail.WorkerOwner = function (selection) {
+        _markStart("ctor");
+        this._selection = selection;
+        this._disposer = new Mail.Disposer();
+        this._working = false;
 
-    function t(n) {
-        Jx.mark("WorkerOwner." + n + ",StopTA,WorkerOwner")
-    }
-    var i = "Worker",
-        u = Mail.WorkerOwner = function (r) {
-            var f, u, o, e;
-            n("ctor");
-            this._selection = r;
-            this._disposer = new Mail.Disposer;
-            this._working = false;
-            f = Jx.GlomManager.Events;
-            u = Jx.glomManager;
-            this._onGlomCreatedHook = this._disposer.add(new Mail.EventHook(u, f.glomCreated, this._onGlomCreated, this));
-            this._disposer.add(new Mail.EventHook(u, f.glomClosed, this._onGlomClosed, this));
-            o = u.createGlom(i, null, "/modernmail/Worker/Worker.html" + document.location.hash);
-            this._disposer.addMany(new Mail.EventHook(r, "navChanged", this._onNavChanged, this), new Mail.EventHook(r, "messagesChanged", this._onMessagesChanged, this));
-            e = Mail.Globals.splashScreen;
-            this._isSplashScreenDismissed = !e.isShown;
-            this._isSplashScreenDismissed ? this._start() : this._splashScreenHook = this._disposer.add(new Mail.EventHook(e, Mail.SplashScreen.Events.dismissed, this._onSplashScreenDismissed, this));
-            t("ctor")
-        };
-    u.prototype = {
+        var Events = Jx.GlomManager.Events;
+        var glomManager = Jx.glomManager;
+        this._onGlomCreatedHook = this._disposer.add(new Mail.EventHook(glomManager, Events.glomCreated, this._onGlomCreated, this));
+        this._disposer.add(new Mail.EventHook(glomManager, Events.glomClosed, this._onGlomClosed, this));
+        var worker = glomManager.createGlom(workerGlomId, null, "/ModernMail/Worker/Worker.html" + document.location.hash);
+        Debug.assert(worker === this._worker);
+
+        this._disposer.addMany(
+            new Mail.EventHook(selection, "navChanged", this._onNavChanged, this),
+            new Mail.EventHook(selection, "messagesChanged", this._onMessagesChanged, this)
+        );
+
+        var splashScreen = Mail.Globals.splashScreen;
+        this._isSplashScreenDismissed = !splashScreen.isShown;
+        if (this._isSplashScreenDismissed) {
+            this._start();
+        } else {
+            this._splashScreenHook = this._disposer.add(new Mail.EventHook(splashScreen, Mail.SplashScreen.Events.dismissed, this._onSplashScreenDismissed, this));
+        }
+
+        Debug.only(this._closeStack = null);
+        Debug.only(Object.seal(this));
+        _markStop("ctor");
+    };
+
+    WorkerOwner.prototype = {
         dispose: function () {
-            n("dispose");
-            this._worker && (this._postMessage("shutdown"), this._worker = null);
+            // Needs to be safe for double-disposing
+            // If the worker closes first, we'll dispose this object
+            // and then the owning class (Frame) will also dispose it.
+            _markStart("dispose");
+            if (this._worker) {
+                this._postMessage("shutdown");
+                Debug.only(this._closeStack = Debug.callstack(2));
+                this._worker = null;
+            }
             this._disposer.dispose();
-            t("dispose")
+            _markStop("dispose");
         },
-        _onGlomCreated: function (r) {
-            r.glom.getGlomId() === i && (n("_onGlomCreated"), this._worker = r.glom, this._disposer.disposeNow(this._onGlomCreatedHook), this._onGlomCreatedHook = null, this._isSplashScreenDismissed && this._start(), t("_onGlomCreated"))
+        _onGlomCreated: function (evt) {
+            if (evt.glom.getGlomId() === workerGlomId) {
+                _markStart("_onGlomCreated");
+                Debug.assert(!this._worker);
+                this._worker = evt.glom;
+
+                Debug.assert(this._onGlomCreatedHook);
+                this._disposer.disposeNow(this._onGlomCreatedHook);
+                this._onGlomCreatedHook = null;
+
+                if (this._isSplashScreenDismissed) {
+                    this._start();
+                }
+                _markStop("_onGlomCreated");
+            }
         },
-        _onGlomClosed: function (n) {
-            n.glom.getGlomId() === i && (r("glom closed"), this._worker = null, this.dispose())
+        _onGlomClosed: function (evt) {
+            if (evt.glom.getGlomId() === workerGlomId) {
+                Debug.only(this._closeStack = Debug.callstack(2));
+                _mark("glom closed");
+                Debug.assert(this._worker);
+                this._worker = null;
+                this.dispose();
+            }
         },
         _onSplashScreenDismissed: function () {
-            n("_onSplashScreenDismissed");
+            _markStart("_onSplashScreenDismissed");
             this._isSplashScreenDismissed = true;
+            Debug.assert(this._splashScreenHook);
             this._disposer.disposeNow(this._splashScreenHook);
             this._splashScreenHook = null;
-            this._worker && this._start();
-            t("_onSplashScreenDismissed")
+            if (this._worker) {
+                this._start();
+            }
+            _markStop("_onSplashScreenDismissed");
         },
         _start: function () {
-            n("start");
+            _markStart("start");
+            Debug.assert(this._isSplashScreenDismissed);
+            Debug.assert(!this._working);
             this._working = true;
             this._fireEvent("accountChanged", this._selection.account);
-            var i = this._selection.view;
-            this._fireEvent("viewChanged", Jx.isObject(i) ? i : null);
+            var view = this._selection.view;
+            this._fireEvent("viewChanged", Jx.isObject(view) ? view : null);
             this._fireEvent("messageChanged", this._selection.message);
             this._postMessage("start");
             this._onVisibilityChange();
+
             this._disposer.add(new Mail.EventHook(document, "msvisibilitychange", this._onVisibilityChange, this, false));
-            t("start")
+            _markStop("start");
         },
         _onVisibilityChange: function () {
-            document.msHidden ? this._pause() : this._resume()
+            if (document.msHidden) {
+                this._pause();
+            } else {
+                this._resume();
+            }
         },
         _pause: function () {
-            this._working && (this._working = false, this._postMessage("pause"))
+            if (this._working) {
+                this._working = false;
+                this._postMessage("pause");
+            }
         },
         _resume: function () {
-            this._working || (this._working = true, this._postMessage("resume"))
-        },
-        _postMessage: function (n, t) {
-            if (this._worker) r("sending: " + n), this._worker.postMessage(n, t);
-            else {
-                var i = null;
-                Jx.fault("Mail.WorkerOwner", "NullWorker", i)
+            if (!this._working) {
+                this._working = true;
+                this._postMessage("resume");
             }
         },
-        _fireEvent: function (i, r) {
-            var u = "_fireEvent: " + i;
-            n(u);
-            this._postMessage(i, {
-                newValue: r ? r.objectId : null
+        _postMessage: function (eventType, context) {
+            Debug.assert(Jx.isNonEmptyString(eventType));
+            Debug.assert(Jx.isNullOrUndefined(context) || Jx.isObject(context));
+            if (this._worker) {
+                _mark("sending: " + eventType);
+                this._worker.postMessage(eventType, context);
+            } else {
+                var exception = null;
+                Debug.call(function () {
+                    if (this._closeStack) {
+                        exception = {
+                            stack: this._closeStack
+                        };
+                    }
+                }.bind(this));
+                Jx.fault("Mail.WorkerOwner", "NullWorker", exception);
+                Debug.assert(false, "We're trying to send a message to worker, but its gone.");
+            }
+        },
+        _fireEvent: function (eventType, newValue) {
+            Debug.assert(Jx.isNonEmptyString(eventType));
+            var log = "_fireEvent: " + eventType;
+            _markStart(log);
+            this._postMessage(eventType, {
+                newValue: newValue ? newValue.objectId : null
             });
-            t(u)
+            _markStop(log);
         },
-        _onNavChanged: function (n) {
-            if (n.accountChanged && this._fireEvent("accountChanged", n.target.account), n.viewChanged) {
-                var t = n.target.view;
-                this._fireEvent("viewChanged", Jx.isObject(t) ? t : null)
+        _onNavChanged: function (evt) {
+            if (evt.accountChanged) {
+                this._fireEvent("accountChanged", evt.target.account);
+            }
+            if (evt.viewChanged) {
+                var view = evt.target.view;
+                this._fireEvent("viewChanged", Jx.isObject(view) ? view : null);
             }
         },
-        _onMessagesChanged: function (n) {
-            n.messageChanged && this._fireEvent("messageChanged", n.target.message)
+        _onMessagesChanged: function (evt) {
+            if (evt.messageChanged) {
+                this._fireEvent("messageChanged", evt.target.message);
+            }
         }
-    }
-})
+    };
+
+    function _mark(s) { Jx.mark("WorkerOwner:" + s); }
+    function _markStart(s) { Jx.mark("WorkerOwner." + s + ",StartTA,WorkerOwner"); }
+    function _markStop(s) { Jx.mark("WorkerOwner." + s + ",StopTA,WorkerOwner"); }
+
+});
+

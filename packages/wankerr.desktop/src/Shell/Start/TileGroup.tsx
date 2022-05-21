@@ -17,7 +17,6 @@ export class TileGroup extends Component<TileGroupProps, TileGroupState> {
 
     groupRef: RefObject<HTMLDivElement>
     headerRef: RefObject<HTMLDivElement>
-    collapsedTiles: Array<any>;
 
     constructor(props: TileGroupProps) {
         super(props);
@@ -103,10 +102,7 @@ export class TileGroup extends Component<TileGroupProps, TileGroupState> {
             fullTiles.push(tile);
         }
 
-        if (currentFence) {
-            fullTiles.push(currentFence);
-        }
-
+        resetFence([]);
         console.log("collaped tiles");
 
         return fullTiles;
@@ -116,6 +112,7 @@ export class TileGroup extends Component<TileGroupProps, TileGroupState> {
     render(props: TileGroupProps, state: TileGroupState) {
         let tiles = [];
         let style: any = {};
+
         if (state.availableHeight !== undefined) {
             let availableHeight = state.availableHeight;
             let maxRows = Math.floor(availableHeight / 128);
@@ -129,10 +126,8 @@ export class TileGroup extends Component<TileGroupProps, TileGroupState> {
             let lastWidth = 0;
             let lastHeight = 0;
 
-            if (!this.collapsedTiles)
-                this.collapsedTiles = this.collapseTiles(props.tiles);
-
-            for (const tile of this.collapsedTiles) {
+            let collapsedTiles = this.collapseTiles(props.tiles);
+            for (const tile of collapsedTiles) {
                 let tileWidth = this.tileSizeToWidth(tile.size);
                 let tileHeight = this.tileSizeToHeight(tile.size);
 
@@ -166,6 +161,7 @@ export class TileGroup extends Component<TileGroupProps, TileGroupState> {
             <div class="start-tile-group" ref={this.groupRef}>
                 <div class="tile-group-header" ref={this.headerRef}>
                     <div class="tile-group-header-text">
+                        {/* a non breaking space is inserted here to ensure the layout remains the same */}
                         {props.title && props.title !== "" ? props.title : "\u00A0"}
                     </div>
                 </div>

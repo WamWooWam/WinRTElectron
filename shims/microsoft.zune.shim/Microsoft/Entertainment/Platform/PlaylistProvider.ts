@@ -31,7 +31,10 @@ export class PlaylistProvider implements IPlaylistProvider {
     }
 
     appendPlaylistItemsAsync(playlistId: number, libraryIds: IVectorView<number>, serviceMediaIds: IVectorView<string>, libraryTypeIds: IVectorView<number>, availabilityFilter: MediaAvailability): IAsyncAction {
-        throw new Error('PlaylistProvider#appendPlaylistItemsAsync not implemented')
+        // throw new Error('PlaylistProvider#appendPlaylistItemsAsync not implemented')
+        return AsyncAction.from(async () => {
+
+        });
     }
     appendPlaylistItemsAsync2(playlistId: number, libraryIds: IVectorView<number>, serviceMediaIds: IVectorView<string>, libraryTypeIds: IVectorView<number>, availabilityFilter: MediaAvailability, acquisitionContextTypes: IVectorView<number>, acquisitionContexts: IVectorView<number>, acquisitionContextIds: IVectorView<string>, acquisitionAdditionalContexts: IVectorView<string>): IAsyncAction {
         throw new Error('PlaylistProvider#appendPlaylistItemsAsync2 not implemented')

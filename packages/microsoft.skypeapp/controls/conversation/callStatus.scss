@@ -46,7 +46,7 @@ div.callStatusWrapper {
 
 			&::after {
 				padding-left: 5px;
-				font-family: "Skype UI Symbol";
+				font-family: "Skype UI Symbol" !important;
 				font-weight: bold;
 				content: "\E421";
 

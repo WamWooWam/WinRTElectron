@@ -13,38 +13,39 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.Voicemail')
 export class Voicemail implements IClosable { 
-    static failurereason_SENDER_BLOCKED: number = null;
-    static failurereason_SENDER_NOT_AUTHORIZED: number = null;
-    static failurereason_RECEIVER_DISABLED_VOICEMAIL: number = null;
-    static failurereason_NO_PERMISSION: number = null;
-    static failurereason_PLAYBACK_ERROR: number = null;
-    static failurereason_RECORDING_ERROR: number = null;
-    static failurereason_FILE_WRITE_ERROR: number = null;
-    static failurereason_FILE_READ_ERROR: number = null;
-    static failurereason_NO_SUCH_VOICEMAIL: number = null;
-    static failurereason_NO_VOICEMAIL_CAPABILITY: number = null;
-    static failurereason_CONNECT_ERROR: number = null;
-    static failurereason_MISC_ERROR: number = null;
-    static status_CANCELLED: number = null;
-    static status_CHECKING: number = null;
-    static status_DELETING_FAILED: number = null;
-    static status_FAILED: number = null;
-    static status_DELETING: number = null;
-    static status_UPLOADED: number = null;
-    static status_UPLOADING: number = null;
-    static status_RECORDED: number = null;
-    static status_RECORDING: number = null;
-    static status_BLANK: number = null;
-    static status_PLAYED: number = null;
-    static status_PLAYING: number = null;
-    static status_BUFFERING: number = null;
-    static status_UNPLAYED: number = null;
-    static status_DOWNLOADING: number = null;
-    static status_NOTDOWNLOADED: number = null;
-    static type_OUTGOING: number = null;
-    static type_CUSTOM_GREETING: number = null;
-    static type_DEFAULT_GREETING: number = null;
-    static type_INCOMING: number = null;
+    static failurereason_SENDER_BLOCKED: number = 12;
+    static failurereason_SENDER_NOT_AUTHORIZED: number = 11;
+    static failurereason_RECEIVER_DISABLED_VOICEMAIL: number = 10;
+    static failurereason_NO_PERMISSION: number = 9;
+    static failurereason_PLAYBACK_ERROR: number = 8;
+    static failurereason_RECORDING_ERROR: number = 7;
+    static failurereason_FILE_WRITE_ERROR: number = 6;
+    static failurereason_FILE_READ_ERROR: number = 5;
+    static failurereason_NO_SUCH_VOICEMAIL: number = 4;
+    static failurereason_NO_VOICEMAIL_CAPABILITY: number = 3;
+    static failurereason_CONNECT_ERROR: number = 2;
+    static failurereason_MISC_ERROR: number = 1;
+    static status_CANCELLED: number = 16;
+    static status_CHECKING: number = 15;
+    static status_DELETING_FAILED: number = 14;
+    static status_FAILED: number = 13;
+    static status_DELETING: number = 12;
+    static status_UPLOADED: number = 11;
+    static status_UPLOADING: number = 10;
+    static status_RECORDED: number = 9;
+    static status_RECORDING: number = 8;
+    static status_BLANK: number = 7;
+    static status_PLAYED: number = 6;
+    static status_PLAYING: number = 5;
+    static status_BUFFERING: number = 4;
+    static status_UNPLAYED: number = 3;
+    static status_DOWNLOADING: number = 2;
+    static status_NOTDOWNLOADED: number = 1;
+    static type_OUTGOING: number = 3;
+    static type_CUSTOM_GREETING: number = 2;
+    static type_DEFAULT_GREETING: number = 4;
+    static type_INCOMING: number = 1;
+    
     getObjectID(): number {
         throw new Error('Voicemail#getObjectID not implemented')
     }

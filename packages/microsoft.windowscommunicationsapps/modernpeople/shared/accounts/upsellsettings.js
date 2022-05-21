@@ -1,1 +1,61 @@
-﻿Jx.delayDefine(People.Accounts,"UpsellSettings",function(){var i=window.People,r=i.Accounts,n=r.UpsellSettings=function(n){this._settingsContainer=n.container("upsell");var t=this._settingsContainer.get("phase");this._phase=Jx.isNullOrUndefined(t)?1:t},t;Jx.inherit(n,Jx.Events);t=n.prototype;t.getPhase=function(){return this._phase};t.shouldShow=function(){return this.getPhase()<n.maxPhase};t.incrementPhase=function(){this._setPhase(this._phase+1)};t.markDismissed=function(){this._setPhase(n.maxPhase)};t._storePhase=function(n){this._settingsContainer.set("phase",n)};t._setPhase=function(n){n!==this._phase&&(this._phase=n,this._storePhase(n),this.raiseEvent("phaseChange",{phase:n}))};t.dispose=function(){Jx.dispose(this._settingsContainer)};n.maxPhase=3;Object.freeze(n)})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/// <disable>JS2076.IdentifierIsMiscased</disable>
+
+Jx.delayDefine(People.Accounts, "UpsellSettings", function () {
+    
+    var P = window.People,
+        A = P.Accounts;
+
+    var UpsellSettings = A.UpsellSettings = function (settingsContainer) {
+        /// <summary>Manages which Upsell we are supposed to show, and whether we should should show any upsell.</summary>
+        ///<param name="settingsContainer" type="Jx.AppDataContainer">An app-contextual appDataContainer for storing local value</param>
+        this._settingsContainer = settingsContainer.container("upsell");
+        var phase = this._settingsContainer.get("phase");
+        this._phase = Jx.isNullOrUndefined(phase) ? 1 : phase;
+    };
+    Jx.inherit(UpsellSettings, Jx.Events);
+    var proto = UpsellSettings.prototype;
+    Debug.Events.define(proto, "phaseChange");
+
+    proto.getPhase = function () {
+        return this._phase;
+    };
+
+    proto.shouldShow = function () {
+        return this.getPhase() < UpsellSettings.maxPhase;
+    };
+
+    proto.incrementPhase = function () {
+        Debug.assert(this._phase < UpsellSettings.maxPhase);
+        this._setPhase(this._phase + 1);
+    };
+
+    proto.markDismissed = function () {
+        /// <summary>Mark whether the Account upsell has been dismissed or not.</summary>
+        Debug.assert(this._phase < UpsellSettings.maxPhase);
+        this._setPhase(UpsellSettings.maxPhase);
+    };
+
+    proto._storePhase = function (phase) {
+        this._settingsContainer.set("phase", phase);
+    };
+
+    proto._setPhase = function (phase) {
+        if (phase !== this._phase) {
+            this._phase = phase;
+            this._storePhase(phase);
+            this.raiseEvent("phaseChange", { phase: phase });
+        }
+    };
+
+    proto.dispose = function () {
+        Jx.dispose(this._settingsContainer);
+    };
+
+    UpsellSettings.maxPhase = 3;
+    Object.freeze(UpsellSettings);
+
+});

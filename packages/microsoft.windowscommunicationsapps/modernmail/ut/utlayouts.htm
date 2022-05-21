@@ -1,0 +1,107 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>LayoutsUT</title>
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<script src="/ModernMail/ut/CodeCoverage.js"></script>
+
+<!-- This file is included in the build based on enviornment variable UT_CODECOVERAGE -->
+<script src="/ModernMail/ut/EnableCodeCoverage.js"></script>
+
+<script> CodeCoverage.start(); </script>
+
+<!-- Core -->
+<script src="/ModernMail/util/Namespaces.js"></script>
+<script src="/ModernMail/components/Frame/Frame.js"></script>
+<script src="/ModernMail/util/Logging.js"></script>
+<script src="/ModernMail/util/Disposer.js"></script>
+
+<!-- Reading Pane -->
+<script src="/ModernMail/components/ReadingPane/ReadingPaneHeader.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneHeader.html.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPaneSubjectArea.js"></script>
+<script src="/ModernMail/components/Frame/ReadingPaneSection.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPane.js"></script>
+<script src="/ModernMail/components/ReadingPane/ReadingPane.html.js"></script>
+<script src="/ModernMail/components/ReadingPane/StandardReadingPane.js"></script>
+
+<!-- MessageList -->
+<script src="/ModernMail/components/MessageList/MessageList.js"></script>
+<script src="/ModernMail/util/KeyboardDismisser.js"></script>
+
+<!-- NavBar -->
+<script src="/ModernMail/components/NavPane/NavPane.js"></script>
+<script src="/ModernMail/components/AccountList/AccountList.js"></script>
+<script src="/ModernMail/components/AccountList/AccountNameHeader.js"></script>
+<script src="/ModernMail/components/ViewSwitcher/ViewSwitcher.js"></script>
+<script src="/ModernMail/components/ViewSwitcher/AccountViews.js"></script>
+<script src="/ModernMail/components/AccountList/AccountSwitcherAggregator.js"></script>
+
+<!-- Command Bar -->
+<script src="/ModernMail/components/CommandBar/CommandHost.js"></script>
+<script src="/ModernMail/components/CommandBar/CommandBar.js"></script>
+
+<!-- Compose -->
+<script src="/ModernMail/Compose/Core/Compose.js"></script>
+<script src="/ModernMail/Compose/Components/ComposeComponents.js"></script>
+<script src="/ModernMail/Compose/MailCompose/MailCompose.js"></script>
+<script src="/ModernMail/compose/components/buttons.tmpl.js"></script>
+
+<!-- AppSettings -->
+<script src="/ModernMail/App/AppSettings.js"></script>
+
+<!-- UT Helper -->
+<script src="/ModernMail/ut/UnitTestHelpers.js"></script>
+<script src="/ModernMail/ut/MockAppData.js"></script>
+
+<script> CodeCoverage.stop(); </script>
+
+<script> $include = Jx.fnEmpty; Jx.delayGroupExec("MailCompose"); </script>
+
+<!-- UT -->
+<script src="/ModernMail/ut/Layouts_UnitTest.js"></script>
+
+<!-- CodeCoverageReport should be after all other unit tests are included for accurate results.-->
+<script src="/ModernMail/ut/CodeCoverageReport.js"></script>
+
+<script>
+    window.onload = function () {
+        var sandboxDocument = document.getElementById("sandbox").contentDocument;
+
+        function addStylesheet (stylesheet) {
+            var style = sandboxDocument.createElement("link");
+            style.setAttribute("rel", "stylesheet");
+            style.setAttribute("type", "text/css");
+            style.setAttribute("href", stylesheet);
+            sandboxDocument.head.appendChild(style);
+        }
+
+        addStylesheet("/ModernMail/resources/css/mail.css");
+        addStylesheet("/ModernMail/Controls/ComboBox/ComboBox.css");
+        addStylesheet("/ModernMail/compose/mailcompose/inline.css");
+        addStylesheet("/ModernShared/resources/css/shared_styles.css");
+
+        sandboxDocument.body.style.margin = "0px";
+
+        Tx.run();
+    };
+</script>
+</head>
+
+<body>
+    <div id="txLog" class="tx-loghost"></div>
+    <iframe id="sandbox" style="height: 800px; border: none;"></iframe>
+</body>
+</html>

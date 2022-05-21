@@ -11,10 +11,11 @@ import { IIterable } from "../../../Foundation/Collections/IIterable`1";
 import { IMapView } from "../../../Foundation/Collections/IMapView`2";
 import { GenerateShim } from "../../../Foundation/Interop/GenerateShim";
 import { IStorageFile } from "../../../Storage/IStorageFile";
+import { Dictionary } from "../../../Foundation/Interop/Dictionary`2";
 
 export class ResourceManager { 
-    allResourceMaps: IMapView<string, ResourceMap> = null;
-    defaultContext: ResourceContext = null;
+    allResourceMaps: IMapView<string, ResourceMap> = new Dictionary();
+    defaultContext: ResourceContext = new ResourceContext();
     mainResourceMap: ResourceMap = new ResourceMap();    
     static current: ResourceManager = new ResourceManager();
     loadPriFiles(files: IIterable<IStorageFile>): void {

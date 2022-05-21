@@ -15,12 +15,17 @@ import { ICertificateCollection } from "./ICertificateCollection";
 import { ICertificateObject } from "./ICertificateObject";
 import { ICollection } from "./ICollection";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
-import { Account, DefaultAccount } from "./Account";
+import { Account } from "./Account";
 import { Collection } from "./Collection";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.AccountManager')
 export class AccountManager implements IAccountManager { 
-    readonly defaultAccount: IAccount = DefaultAccount;
+    readonly defaultAccount: IAccount;
+
+    constructor(defaultAccount: IAccount) {
+        this.defaultAccount = defaultAccount;
+    }
+
     canSetSyncTypePush(): boolean {
         throw new Error('AccountManager#canSetSyncTypePush not implemented')
     }

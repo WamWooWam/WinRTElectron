@@ -23,6 +23,7 @@
       <tile AppID="Microsoft.Office.OneNote_8wekyb3d8bbwe!microsoft.onenoteim" size="square150x150" FencePost="0"/>
       <tile AppID="FileManager_cw5n1h2txyewy!Microsoft.Windows.FileManager" size="square150x150" FencePost="0"/>
       <tile AppID="Microsoft.BingNews_8wekyb3d8bbwe!AppexNews" size="square150x150" FencePost="0"/>
+      <tile AppID="ZeptoLabUKLimited.CutTheRope_sq9zxnwrk84pj!App" size="square150x150" FencePost="0"/>
     </group>
     <group>
       <tile AppID="winstore_cw5n1h2txyewy!Windows.Store" size="square310x310" FencePost="0"/>

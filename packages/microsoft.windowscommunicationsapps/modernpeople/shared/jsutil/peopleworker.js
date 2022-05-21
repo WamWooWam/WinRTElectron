@@ -1,21 +1,25 @@
-﻿(function() {
-    return;
-    
-    importScripts("//microsoft.windowscommunicationsapps.shim/dist/bundle.js")
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
 
-    function n(n) {
-        msWriteProfilerMark("PeopleWorker:" + n + ",StartTA,People")
-    }
+/*global self,Microsoft,Jx,msWriteProfilerMark */
 
-    function t(n) {
-        msWriteProfilerMark("PeopleWorker:" + n + ",StopTA,People")
-    }
-    n("Jx.abi");
+(function () {
+    function _start(s) { msWriteProfilerMark("PeopleWorker:" + s + ",StartTA,People"); }
+    function _stop(s)  { msWriteProfilerMark("PeopleWorker:" + s + ",StopTA,People"); }
+
+    // JxWorker.js contains the ETW initialization code but it's too much overhead to load the whole file.
+    // Assign the Jx abi to a global variable to keep it alive. It will speed up the initialization on the UI thread.
+
+    _start("Jx.abi");
     self.Jx = {
-        abi: new Microsoft.WindowsLive.Jx
+        abi: new Microsoft.WindowsLive.Jx()
     };
-    t("Jx.abi");
-    n("startSession");
+    _stop("Jx.abi");
+
+    // Start the ETW session. 
+    _start("startSession");
     Jx.abi.startSession();
-    t("startSession")
-})()
+    _stop("startSession");
+})();

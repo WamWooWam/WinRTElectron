@@ -1,1 +1,203 @@
-﻿Jx.delayDefine(Mail.UIDataModel,"FolderCache",function(){"use strict";var n=self.Mail.UIDataModel,t=Microsoft.WindowsLive.Platform,i={},r={};n.FolderCache={_onFolderChange:function(i){if(Mail.Validators.hasPropertyChanged(i,"specialMailFolderType")){var r=i.target;n.FolderCache._purgeAccount(r.accountId)}},_onAllFolderCollectionChange:function(r){var e,u,f;Mail.writeProfilerMark("FolderCache._onAllFolderCollectionChange",Mail.LogEvent.start);e=r.detail[0].eType;u=t.CollectionChangeType;switch(e){case u.itemAdded:case u.itemRemoved:case u.reset:case u.itemChanged:for(f in i)r.target===i[f].allFolderCollection&&n.FolderCache._purgeAccount(f)}Mail.writeProfilerMark("FolderCache._onAllFolderCollectionChange",Mail.LogEvent.stop)},_purgeFolder:function(r,u){var e=i[r],f,o;e&&(f=e[u],f&&(o=f.objectId,f.removeEventListener("changed",n.FolderCache._onFolderChange),delete e[u],n.FolderCache.raiseEvent(n.FolderCache.Events.folderPurged,o)))},_purgeAccount:function(u){var f,e,o;if(delete r[u],f=i[u],!Jx.isNullOrUndefined(f)){e=f.allFolderCollection;e.removeEventListener("collectionchanged",n.FolderCache._onAllFolderCollectionChange);e.dispose();delete f.allFolderCollection;for(o in f)n.FolderCache._purgeFolder(u,o);delete i[u];n.FolderCache.raiseEvent(n.FolderCache.Events.accountPurged,u)}},dispose:function(){for(var t in i)n.FolderCache._purgeAccount(t)},_initAccount:function(u){var f,o,e;Mail.writeProfilerMark("FolderCache._initAccount",Mail.LogEvent.start);f=u.objectId;Jx.isNullOrUndefined(i[f])&&(o=Mail.Globals.platform,e=o.folderManager.getAllFoldersCollection(t.FolderType.mail,u),e.addEventListener("collectionchanged",n.FolderCache._onAllFolderCollectionChange),e.unlock(),i[f]={allFolderCollection:e},r[f]={});Mail.writeProfilerMark("FolderCache._initAccount",Mail.LogEvent.stop)},getPlatformFolder:function(r,u){var e,f,o;return n.FolderCache._initAccount(r),e=r.objectId,f=i[e][u],Jx.isNullOrUndefined(f)&&(Mail.writeProfilerMark("FolderCache.getPlatformFolder - work",Mail.LogEvent.start),o=Mail.Globals.platform,f=o.folderManager.getSpecialMailFolder(r,u),Jx.isNullOrUndefined(f)||(f.addEventListener("changed",n.FolderCache._onFolderChange),i[e][u]=f),Mail.writeProfilerMark("FolderCache.getPlatformFolder - work",Mail.LogEvent.stop)),f},getPlatformView:function(i,u){var e,f,o;return n.FolderCache._initAccount(i),e=i.objectId,f=r[e][u],Jx.isNullOrUndefined(f)&&(Mail.writeProfilerMark("FolderCache.getPlatformFolder - work",Mail.LogEvent.start),o=Mail.Globals.platform,f=o.mailManager.getMailView(u,i),r[e][u]=f,Mail.writeProfilerMark("FolderCache.getPlatformFolder - work",Mail.LogEvent.stop)),f},getFolder:function(i,r){var u=n.FolderCache.getPlatformFolder(i,r),f=null;return u&&(f=new n.MailFolder(u)),f},Events:{accountPurged:"accountPurged",folderPurged:"folderPurged"}};Jx.mix(n.FolderCache,Jx.Events)})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Mail, self, Microsoft, Debug */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail.UIDataModel, "FolderCache", function () {
+    "use strict";
+
+    /// <disable>JS2076.IdentifierIsMiscased</disable>
+    var UIDataModel = self.Mail.UIDataModel,
+        Plat = Microsoft.WindowsLive.Platform;
+    /// <enable>JS2076.IdentifierIsMiscased</enable>
+
+    // This is a map between account ids and the special folders for that account
+    var specialFoldersMap = {};
+
+    // This is a map between accounts ids and the views for that account
+    var viewsMap = {};
+
+    UIDataModel.FolderCache = {
+        _onFolderChange : function (evt) {
+            /// <param name="evt" type="Event" />
+            if (Mail.Validators.hasPropertyChanged(evt, "specialMailFolderType")) {
+                var folder = /*@static_cast(Microsoft.WindowsLive.Platform.Folder)*/evt.target;
+                Debug.assert(Jx.isInstanceOf(folder, Plat.Folder));
+                UIDataModel.FolderCache._purgeAccount(folder.accountId);
+            }
+        },
+        _onAllFolderCollectionChange: function (evt) {
+            /// <param name="evt" type="Microsoft.WindowsLive.Platform.CollectionChangedEventArgs" />
+            Mail.writeProfilerMark("FolderCache._onAllFolderCollectionChange", Mail.LogEvent.start);
+            Debug.assert(evt);
+            Debug.assert(evt.detail);
+            Debug.assert(evt.detail.length > 0);
+            var eventType = evt.detail[0].eType,
+                collectionChangeType = Plat.CollectionChangeType;
+            switch (eventType) {
+                case collectionChangeType.itemAdded:
+                case collectionChangeType.itemRemoved:
+                case collectionChangeType.reset:
+                case collectionChangeType.itemChanged:
+                    for (var accountId in specialFoldersMap) {
+                        if (evt.target === specialFoldersMap[accountId].allFolderCollection) {
+                            UIDataModel.FolderCache._purgeAccount(accountId);
+                        }
+                    }
+                    break;
+                case collectionChangeType.batchBegin:
+                case collectionChangeType.batchEnd:
+                    break;
+                default:
+                    Debug.assert(false);
+                    break;
+            }
+            Mail.writeProfilerMark("FolderCache._onAllFolderCollectionChange", Mail.LogEvent.stop);
+        },
+        _purgeFolder: function (accountId, folderType) {
+            ///<param name="accountId" type="String"/>
+            ///<param name="folderType" type="Microsoft.WindowsLive.Platform.MailFolderType"/>
+            var accountMap = specialFoldersMap[accountId];
+            if (accountMap) {
+                var folder = /*@static_cast(Microsoft.WindowsLive.Platform.Folder)*/ accountMap[folderType];
+                if (folder) {
+                    var folderId = folder.objectId;
+                    Debug.assert(Jx.isInstanceOf(folder, Plat.Folder));
+                    folder.removeEventListener("changed", UIDataModel.FolderCache._onFolderChange);
+                    delete accountMap[folderType];
+                    UIDataModel.FolderCache.raiseEvent(UIDataModel.FolderCache.Events.folderPurged, folderId);
+                }
+            }
+        },
+
+        _purgeAccount : function (accountId) {
+            ///<param name="accountId" type="String"/>
+            Debug.assert(Jx.isNonEmptyString(accountId));
+
+            delete viewsMap[accountId];
+
+            var accountMap = specialFoldersMap[accountId];
+            // If we've never gotten anything from this account, then we don't need to do anything
+            if (Jx.isNullOrUndefined(accountMap)) {
+                return;
+            }
+
+            /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+            var allFolders = /*@static_cast(Microsoft.WindowsLive.Platform.Collection)*/ accountMap.allFolderCollection;
+            Debug.assert(Jx.isInstanceOf(allFolders, Plat.Collection));
+            allFolders.removeEventListener("collectionchanged", UIDataModel.FolderCache._onAllFolderCollectionChange);
+            allFolders.dispose();
+            /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
+            /// <disable>JS2078.DoNotDeleteObjectProperties</disable>
+            delete accountMap.allFolderCollection;
+            /// <enable>JS2078.DoNotDeleteObjectProperties</enable>
+
+            for (var folderType in accountMap) {
+                UIDataModel.FolderCache._purgeFolder(accountId, folderType);
+            }
+            delete specialFoldersMap[accountId];
+
+            UIDataModel.FolderCache.raiseEvent(UIDataModel.FolderCache.Events.accountPurged, accountId);
+        },
+        dispose : function () {
+            for (var accountId in specialFoldersMap) {
+                UIDataModel.FolderCache._purgeAccount(accountId);
+            }
+            Debug.assert(Object.keys(specialFoldersMap).length === 0);
+        },
+        _initAccount : function (account) {
+            ///<param name="account" type="Microsoft.WindowsLive.Platform.IAccount"/>
+            Debug.assert(Jx.isInstanceOf(account, Plat.Account));
+            Mail.writeProfilerMark("FolderCache._initAccount", Mail.LogEvent.start);
+            var accountId = account.objectId;
+            Debug.assert(Jx.isNonEmptyString(accountId));
+            if (Jx.isNullOrUndefined(specialFoldersMap[accountId])) {
+                var platform = /*@static_cast(Microsoft.WindowsLive.Platform.Client)*/Mail.Globals.platform;
+                var allFolders = platform.folderManager.getAllFoldersCollection(Plat.FolderType.mail, account);
+                Debug.assert(Jx.isInstanceOf(allFolders, Plat.Collection));
+                allFolders.addEventListener("collectionchanged", UIDataModel.FolderCache._onAllFolderCollectionChange);
+                allFolders.unlock();
+                specialFoldersMap[accountId] = {
+                    allFolderCollection: allFolders
+                };
+                viewsMap[accountId] = {};
+            }
+            Mail.writeProfilerMark("FolderCache._initAccount", Mail.LogEvent.stop);
+        },
+        getPlatformFolder : function (account, folderType) {
+            ///<param name="account" type="Microsoft.WindowsLive.Platform.IAccount"/>
+            ///<param name="folderType" type="Microsoft.WindowsLive.Platform.MailFolderType"/>
+            Debug.assert(Jx.isInstanceOf(account, Plat.Account));
+            Debug.assert(Jx.isNumber(folderType));
+            Debug.Mail.writeProfilerMark("FolderCache.getPlatformFolder", Mail.LogEvent.start);
+            UIDataModel.FolderCache._initAccount(account);
+            var accountId = account.objectId;
+            Debug.assert(specialFoldersMap[accountId]);
+
+            var folder = specialFoldersMap[accountId][folderType];
+            if (Jx.isNullOrUndefined(folder)) {
+                Mail.writeProfilerMark("FolderCache.getPlatformFolder - work", Mail.LogEvent.start);
+                var platform = /*@static_cast(Microsoft.WindowsLive.Platform.Client)*/Mail.Globals.platform;
+                Debug.assert(Jx.isInstanceOf(platform, Plat.Client));
+                folder = /*@static_cast(Microsoft.WindowsLive.Platform.IFolder)*/ platform.folderManager.getSpecialMailFolder(account, folderType);
+                if (!Jx.isNullOrUndefined(folder)) {
+                    Debug.assert(Jx.isInstanceOf(folder, Plat.Folder));
+                    folder.addEventListener("changed", UIDataModel.FolderCache._onFolderChange);
+                    specialFoldersMap[accountId][folderType] = folder;
+                }
+                Mail.writeProfilerMark("FolderCache.getPlatformFolder - work", Mail.LogEvent.stop);
+            }
+            // The junk folder doesn't always exist
+            Debug.assert((folderType === Plat.MailFolderType.junkMail) || Jx.isInstanceOf(folder, Plat.Folder));
+            Debug.Mail.writeProfilerMark("FolderCache.getPlatformFolder", Mail.LogEvent.stop);
+            return folder;
+        },
+        getPlatformView : function (account, viewType) {
+            ///<param name="account" type="Microsoft.WindowsLive.Platform.IAccount"/>
+            ///<param name="viewType" type="Microsoft.WindowsLive.Platform.MailViewType"/>
+            Debug.assert(Jx.isInstanceOf(account, Plat.Account));
+            Debug.assert(Jx.isNumber(viewType));
+            Debug.Mail.writeProfilerMark("FolderCache.getPlatformView", Mail.LogEvent.start);
+            UIDataModel.FolderCache._initAccount(account);
+            var accountId = account.objectId;
+            Debug.assert(viewsMap[accountId]);
+
+            var view = viewsMap[accountId][viewType];
+            if (Jx.isNullOrUndefined(view)) {
+                Mail.writeProfilerMark("FolderCache.getPlatformFolder - work", Mail.LogEvent.start);
+                var platform = /*@static_cast(Microsoft.WindowsLive.Platform.Client)*/Mail.Globals.platform;
+                Debug.assert(Jx.isInstanceOf(platform, Plat.Client));
+                view = /*@static_cast(Microsoft.WindowsLive.Platform.MailView)*/ platform.mailManager.getMailView(viewType, account);
+                Debug.assert(Jx.isInstanceOf(view, Plat.MailView));
+                viewsMap[accountId][viewType] = view;
+                Mail.writeProfilerMark("FolderCache.getPlatformFolder - work", Mail.LogEvent.stop);
+            }
+            Debug.Mail.writeProfilerMark("FolderCache.getPlatformView", Mail.LogEvent.stop);
+            return view;
+        },
+        getFolder : function (account, folderType) {
+            ///<param name="account" type="Microsoft.WindowsLive.Platform.IAccount"/>
+            ///<param name="folderType" type="Microsoft.WindowsLive.Platform.MailFolderType"/>
+            Debug.assert(Jx.isInstanceOf(account, Plat.Account));
+            Debug.assert(Jx.isNumber(folderType));
+            var platformMailFolder = UIDataModel.FolderCache.getPlatformFolder(account, folderType),
+                mailFolder = null;
+            if (platformMailFolder) {
+                mailFolder = new UIDataModel.MailFolder(platformMailFolder);
+            }
+            // The junk folder doesn't always exist
+            Debug.assert((folderType === Plat.MailFolderType.junkMail) || Jx.isInstanceOf(mailFolder, UIDataModel.MailFolder));
+            return mailFolder;
+        },
+        Events: {
+            accountPurged: "accountPurged",
+            folderPurged: "folderPurged"
+        }
+    };
+    Jx.mix(UIDataModel.FolderCache, Jx.Events);
+    Debug.Events.define.apply(Debug.Events, [UIDataModel.FolderCache].concat(Object.keys(UIDataModel.FolderCache.Events)));
+
+});

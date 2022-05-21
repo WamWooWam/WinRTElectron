@@ -19,22 +19,22 @@ export class SplashScreen {
     constructor(rect?: Rect) {
         this.imageLocation = rect;
         ipcRenderer.once(SplashScreenV2, () => {
-            InvokeEvent(this.#dismissed, "dismissed", null);
+            InvokeEvent(this.__dismissed, "dismissed", null);
         });
     }
 
     imageLocation: Rect = null;
 
-    #dismissed: Set<TypedEventHandler<SplashScreen, any>> = new Set();
+    __dismissed: Set<TypedEventHandler<SplashScreen, any>> = new Set();
     @Enumerable(true)
     set ondismissed(handler: TypedEventHandler<SplashScreen, any>) {
-        this.#dismissed.add(handler);
+        this.__dismissed.add(handler);
     }
 
     addEventListener(name: string, handler: any) {
         switch (name) {
             case 'dismissed':
-                this.#dismissed.add(handler);
+                this.__dismissed.add(handler);
                 break;
         }
     }
@@ -42,7 +42,7 @@ export class SplashScreen {
     removeEventListener(name: string, handler: any) {
         switch (name) {
             case 'dismissed':
-                this.#dismissed.delete(handler);
+                this.__dismissed.delete(handler);
                 break;
         }
     }

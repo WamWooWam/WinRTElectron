@@ -1,1 +1,47 @@
-﻿Jx.delayDefine(Mail,"ReadingPaneSection",function(){var t=Mail.ReadingPaneSection=function(n,t,i){this.initComponent();this._animator=t;var r=this._readingPane=new Mail.StandardReadingPane("mailFrameReadingPane",n,i,t);this.append(r);this._element=null},n;Jx.augment(t,Jx.Component);n=t.prototype;n.getUI=function(n){n.html="<div id='mailFrameReadingPaneSection'><div id='mailFrameReadingPane' class='mailFrameReadingPaneChild'>"+Jx.getUI(this._readingPane).html+"<\/div><div id='idCompCompose' class='invisible mailFrameReadingPaneChild'><\/div><\/div>"};n.onActivateUI=function(){var t=this._element=document.getElementById("mailFrameReadingPaneSection"),n=this._animator;n&&n.setReadingPaneElements(t)};n.setEnabled=function(n){Jx.setClass(this._element,"invisible",!n)}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*jshint browser:true*/
+/*global Debug,Mail,Jx*/
+Jx.delayDefine(Mail, "ReadingPaneSection", function () {
+
+    var ReadingPaneSection = Mail.ReadingPaneSection = function (selection, animator, glomManager) {
+        Debug.assert(Jx.isObject(selection));
+        Debug.assert(Jx.isNullOrUndefined(animator) || Jx.isObject(animator));
+
+        this.initComponent();
+        this._animator = animator;
+
+        var readingPane = this._readingPane = new Mail.StandardReadingPane("mailFrameReadingPane", selection, glomManager, animator);
+        this.append(readingPane);
+
+        this._element = null;
+    };
+    Jx.augment(ReadingPaneSection, Jx.Component);
+    var prototype = ReadingPaneSection.prototype;
+
+    prototype.getUI = function (ui) {
+        ui.html = "<div id='mailFrameReadingPaneSection'>" +
+                      "<div id='mailFrameReadingPane' class='mailFrameReadingPaneChild'>" +
+                          Jx.getUI(this._readingPane).html +
+                      "</div>" +
+                      "<div id='idCompCompose' class='invisible mailFrameReadingPaneChild'></div>" +
+                  "</div>";
+    };
+
+    prototype.onActivateUI = function () {
+        var element = this._element = document.getElementById("mailFrameReadingPaneSection"),
+            animator = this._animator;
+        if (animator) {
+            animator.setReadingPaneElements(element);
+        }
+    };
+
+    prototype.setEnabled = function (enabled) {
+        Jx.setClass(this._element, "invisible", !enabled);
+    };
+
+});
+

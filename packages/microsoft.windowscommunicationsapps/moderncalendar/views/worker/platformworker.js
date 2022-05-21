@@ -1,66 +1,164 @@
-﻿(function(n) {
-    function t(n) {
-        console.warn("Calendar:PlatformWorker." + n + ",StartTA,Calendar")
-    }
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
 
-    function i(n) {
-        console.warn("Calendar:PlatformWorker." + n + ",StopTA,Calendar")
-    }
+/*global Windows,Calendar,Microsoft,msWriteProfilerMark,Jx*/
 
-    function u() {
-        var r = Microsoft.WindowsLive.Platform,
-            u = r.ClientCreateOptions;
-        try {
-            t("CreatePlatform");
-            n._platform = new r.Client("calendarWorker", u.failIfNoUser | u.failIfUnverified);
-            n._manager = n._platform.calendarManager;
-            i("CreatePlatform")
-        } catch (f) {
-            console.warn("Calendar:PlatformWorker.CreatePlatform Error: " + f.number)
-        }
-        return n._platform
-    }
+(function(global) {
 
-    function f(t) {
-        n._isRtl = t;
-        r && (n._month._isRtl = t,
-            n._week._isRtl = t,
-            n._day._isRtl = t,
-            n._freeBusy._isRtl = t,
-            n._agenda._isRtl = t)
-    }
+function _start(evt) { msWriteProfilerMark("Calendar:PlatformWorker." + evt + ",StartTA,Calendar"); }
+function _stop(evt)  { msWriteProfilerMark("Calendar:PlatformWorker." + evt + ",StopTA,Calendar");  }
 
-    function e(t, i, u) {
-        var e = u.calendarManager;
-        n._month = new Calendar.Views.MonthWorker(t, i, e);
-        n._week = new Calendar.Views.WeekWorker(t, i, e);
-        n._day = new Calendar.Views.DayWorker(t, i, e);
-        n._freeBusy = new Calendar.Views.FreeBusyWorker(t, i, u.accountManager, e);
-        n._agenda = new Calendar.Views.AgendaWorker(t, i, e);
-        r = true;
-        n._isRtl && f(n._isRtl)
-    }
-    var o, r;
-    n.Calendar = n.Calendar || {
-        Helpers: {},
-        Views: {}
-    };
-    t("ImportScripts");
-    n.importScripts("/microsoft.windowscommunicationsapps/dist/bundle.js", "Router.js", "/microsoft.windowscommunicationsapps/Jx/JxWorker.js", "../Scheduler/Scheduler.js", "../Helpers/Data.js", "../Month/Worker.js", "../Week/Worker.js", "../Day/Worker.js", "../FreeBusy/Worker.js", "../Agenda/AgendaHelpers.js", "../Agenda/AgendaWorker.js");
-    i("ImportScripts");
-    t("createAppData");
-    o = Windows.Storage.ApplicationData.current.localSettings;
-    i("createAppData");
-    Jx.startSession();
-    u();
-    n._router = new Calendar.Router;
-    n._router.initialize(n);
-    n._scheduler = new Calendar.Scheduler(100);
-    r = false;
-    n._platform ? e(n._router, n._scheduler, n._platform) : n._router.route("Worker/restartPlatform", function() {
-        u() && e(n._router, n._scheduler, n._platform)
+//
+// Namespaces
+//
+
+global.Calendar = global.Calendar || {
+    Helpers: {},
+    Views:   {}
+};
+
+//
+// Imports
+//
+
+
+    global.addEventListener("message", function onInitialMessage(ev) {
+        var mode = ev.data.name;
+        
+
+            // we import all our scripts here, because IE blocks importScripts on the UI
+            // thread.  considering that, we can't afford to load them on demand.
+            _start("ImportScripts");
+                global.importScripts(
+                    "Router.js", 
+                    "/Jx/JxWorker.js", 
+                    "../Scheduler/Scheduler.js", 
+                    "../Helpers/Data.js",
+                    "../Month/Worker.js",
+                    "../Week/Worker.js",
+                    "../Day/Worker.js",
+                    "../FreeBusy/Worker.js",
+                    "../Agenda/AgendaHelpers.js",
+                    "../Agenda/AgendaWorker.js"
+                );
+            _stop("ImportScripts");
+
+            //
+            // AppData
+            //
+
+            // we want to load app data early.  this warms it for the entire app,
+            // so when the ui thread needs it, it'll be faster.
+            _start("createAppData");
+            var localSettings = Windows.Storage.ApplicationData.current.localSettings;
+            _stop("createAppData");
+
+            // Start the ETW session
+            Jx.startSession();
+
+            //
+            // Platform
+            //
+
+            function createPlatform() {
+                var Platform = Microsoft.WindowsLive.Platform,
+                    Options  = Platform.ClientCreateOptions;
+
+                try {
+                    _start("CreatePlatform");
+                        
+                            if (mode === "#testMode") {
+                                var wlt = Microsoft.WindowsLive.Platform.Test;
+
+                                global._harness  = new wlt.ClientTestHarness("calendarTest", wlt.PluginsToStart.defaultPlugins, "account@calendar.test");
+                                global._platform = global._harness.client;
+                            } else {
+                                
+                                    global._platform = new Platform.Client("calendarWorker", Options.failIfNoUser | Options.failIfUnverified);
+                                
+                            }
+                        
+
+                        global._manager = global._platform.calendarManager;
+                    _stop("CreatePlatform");
+                } catch (ex) {
+                    msWriteProfilerMark("Calendar:PlatformWorker.CreatePlatform Error: " + ex.number);
+                }
+
+                return global._platform;
+            }
+
+            createPlatform();
+
+            //
+            // Router
+            //
+
+            global._router = new Calendar.Router();
+            global._router.initialize(global);
+
+            //
+            // View Workers
+            //
+
+            global._scheduler = new Calendar.Scheduler(100 /* timeSlice */);
+
+            var viewWorkersCreated = false;
+
+            function setRtl(isRtl) {
+                global._isRtl = isRtl;
+
+                if (viewWorkersCreated) {
+                    global._month._isRtl    = isRtl;
+                    global._week._isRtl     = isRtl;
+                    global._day._isRtl      = isRtl;
+                    global._freeBusy._isRtl = isRtl;
+                    global._agenda._isRtl   = isRtl;
+                }
+            }
+
+            function createViewWorkers(router, scheduler, platform) {
+                var calendarManager = platform.calendarManager;
+
+                global._month    = new Calendar.Views.MonthWorker(router,    scheduler, calendarManager);
+                global._week     = new Calendar.Views.WeekWorker(router,     scheduler, calendarManager);
+                global._day      = new Calendar.Views.DayWorker(router,      scheduler, calendarManager);
+                global._freeBusy = new Calendar.Views.FreeBusyWorker(router, scheduler, platform.accountManager, calendarManager);
+                global._agenda   = new Calendar.Views.AgendaWorker(router,   scheduler, calendarManager);
+
+                viewWorkersCreated = true;
+
+                if (global._isRtl) {
+                    setRtl(global._isRtl);
+                }
+            }
+
+            //
+            // Initialization
+            //
+
+            // if we have a platform, go ahead and create everything else
+            if (global._platform) {
+                createViewWorkers(global._router, global._scheduler, global._platform);
+            } else {
+                // otherwise, wait to be retold to restart the platform
+                global._router.route("Worker/restartPlatform", function() {
+                    if (createPlatform()) {
+                        createViewWorkers(global._router, global._scheduler, global._platform);
+                    }
+                });
+            }
+
+            global._router.route("Worker/DOMContentLoaded", function (ev) {
+                setRtl(ev.data.isRtl);
+            });
+
+        
+        global.removeEventListener("message", onInitialMessage);
     });
-    n._router.route("Worker/DOMContentLoaded", function(n) {
-        f(n.data.isRtl)
-    })
-})(this)
+
+
+})(this);
+

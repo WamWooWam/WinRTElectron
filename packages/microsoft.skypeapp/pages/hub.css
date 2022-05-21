@@ -342,7 +342,7 @@ div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsP
     margin-bottom:9px
 }
 div.fragment.hub div.surface div.categoryContainer div.itemsContainer div.itemsPlaceholder div.icon::before{
-    font-family:"Skype UI Symbol";
+    font-family:"Skype UI Symbol" !important;
     font-size:64px;
     font-weight:bold;
     position:relative;

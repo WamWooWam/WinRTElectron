@@ -5,11 +5,18 @@
 // </auto-generated>
 // --------------------------------------------------
 
+import { IpcHelper } from "../../../IpcHelper";
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
+import { ActivatedDeferralV1 } from "../../Foundation/Interop/IpcConstants";
 
 @GenerateShim('Windows.UI.WebUI.ActivatedDeferral')
 export class ActivatedDeferral { 
+    private __deferralId : string;
+    constructor(deferralId: string) {
+        this.__deferralId = deferralId;
+    }
+
     complete(): void {
-        console.warn('ActivatedDeferral#complete not implemented')
+        IpcHelper.post(ActivatedDeferralV1, { deferralId: this.__deferralId, type: 'completed' })
     }
 }

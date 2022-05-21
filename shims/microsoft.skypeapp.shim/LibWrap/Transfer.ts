@@ -13,31 +13,32 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.Transfer')
 export class Transfer implements IClosable { 
-    static failurereason_PLACEHOLDER_TIMEOUT: number = null;
-    static failurereason_TOO_MANY_PARALLEL: number = null;
-    static failurereason_REMOTE_OFFLINE_FOR_TOO_LONG: number = null;
-    static failurereason_REMOTE_DOES_NOT_SUPPORT_FT: number = null;
-    static failurereason_FAILED_REMOTE_WRITE: number = null;
-    static failurereason_FAILED_WRITE: number = null;
-    static failurereason_FAILED_REMOTE_READ: number = null;
-    static failurereason_FAILED_READ: number = null;
-    static failurereason_REMOTELY_CANCELLED: number = null;
-    static failurereason_SENDER_NOT_AUTHORISED: number = null;
-    static status_CANCELLED_BY_REMOTE: number = null;
-    static status_OFFER_FROM_OTHER_INSTANCE: number = null;
-    static status_PLACEHOLDER: number = null;
-    static status_FAILED: number = null;
-    static status_COMPLETED: number = null;
-    static status_CANCELLED: number = null;
-    static status_REMOTELY_PAUSED: number = null;
-    static status_PAUSED: number = null;
-    static status_TRANSFERRING_OVER_RELAY: number = null;
-    static status_TRANSFERRING: number = null;
-    static status_WAITING_FOR_ACCEPT: number = null;
-    static status_CONNECTING: number = null;
-    static status_NEW: number = null;
-    static type_OUTGOING: number = null;
-    static type_INCOMING: number = null;
+    static failurereason_PLACEHOLDER_TIMEOUT: number = 10;
+    static failurereason_TOO_MANY_PARALLEL: number = 9;
+    static failurereason_REMOTE_OFFLINE_FOR_TOO_LONG: number = 8;
+    static failurereason_REMOTE_DOES_NOT_SUPPORT_FT: number = 7;
+    static failurereason_FAILED_REMOTE_WRITE: number = 6;
+    static failurereason_FAILED_WRITE: number = 5;
+    static failurereason_FAILED_REMOTE_READ: number = 4;
+    static failurereason_FAILED_READ: number = 3;
+    static failurereason_REMOTELY_CANCELLED: number = 2;
+    static failurereason_SENDER_NOT_AUTHORISED: number = 1;
+    static status_CANCELLED_BY_REMOTE: number = 12;
+    static status_OFFER_FROM_OTHER_INSTANCE: number = 11;
+    static status_PLACEHOLDER: number = 10;
+    static status_FAILED: number = 9;
+    static status_COMPLETED: number = 8;
+    static status_CANCELLED: number = 7;
+    static status_REMOTELY_PAUSED: number = 6;
+    static status_PAUSED: number = 5;
+    static status_TRANSFERRING_OVER_RELAY: number = 4;
+    static status_TRANSFERRING: number = 3;
+    static status_WAITING_FOR_ACCEPT: number = 2;
+    static status_CONNECTING: number = 1;
+    static status_NEW: number = 0;
+    static type_OUTGOING: number = 2;
+    static type_INCOMING: number = 1;
+    
     getObjectID(): number {
         throw new Error('Transfer#getObjectID not implemented')
     }

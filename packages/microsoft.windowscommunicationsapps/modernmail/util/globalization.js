@@ -1,1 +1,314 @@
-﻿(function(){"use strict";function o(n,t){var r=new Date(n.getFullYear(),n.getMonth(),n.getDate()),i=new Date(r);return i.setDate(i.getDate()-6),t>=i}function f(n,t){var i=new Date(n.getFullYear()-1,n.getMonth(),n.getDate()+1);return t>=i}function u(n,t){return n.getDate()===t.getDate()&&n.getMonth()===t.getMonth()&&n.getFullYear()===t.getFullYear()}var n=Mail.Utilities,e=Microsoft.WindowsLive.Platform,t=e.Result,i={},r;n.minValidDate=-116417952e5;n.msInOneHour=36e5;n.msInFourHours=n.msInOneHour*4;n.msInOneDay=n.msInOneHour*24;i[t.e_HTTP_BAD_REQUEST]="mailSendErrorMessageTooLarge";i[t.e_HTTP_DISK_SPACE]="mailSendErrorMessageTooLarge";i[t.e_NEXUS_STATUS_MAILBOX_SENDQUOTAEXCEEDED]="mailSendErrorMessageTooLarge";i[t.e_NEXUS_STATUS_MESSAGE_ATTACHMENTSTOOLARGE]="mailSendErrorMessageTooLarge";i[t.e_HTTP_REQUEST_TOO_LARGE]="mailSendErrorMessageTooLarge";i[t.ixp_E_SMTP_552_STORAGE_OVERFLOW]="mailSendErrorProblemWithAttachments";i[t.e_NEXUS_STATUS_MESSAGE_RECEIPIENTUNRESOLVED]="mailSendErrorUnresolvedRecipient";i[t.e_NEXUS_STATUS_MESSAGE_HASNORECIPIENT]="mailSendErrorUnresolvedRecipient";i[t.e_NEXUS_STATUS_MESSAGE_REPLYNOTALLOWED]="mailSendErrorReplyNotAllowed";i[t.e_NEXUS_STATUS_ITEM_NOTFOUND]="mailSendErrorOriginalEventDeleted";r=function(){if(Mail.writeProfilerMark("Utilities.initializeFormatters",Mail.LogEvent.start),!n.shortTimeFormatter){var t=Windows.Globalization.DateTimeFormatting;n.shortDateFormatterSameYear=new t.DateTimeFormatter(t.YearFormat.none,t.MonthFormat.abbreviated,t.DayFormat["default"],t.DayOfWeekFormat.none);n.shortTimeFormatter=new t.DateTimeFormatter("shorttime");n.shortWeekDayFormatter=new t.DateTimeFormatter(t.YearFormat.none,t.MonthFormat.none,t.DayFormat.none,t.DayOfWeekFormat.abbreviated);n.shortDateFormatter=t.DateTimeFormatter.shortDate;n.abbreviatedDateFormatter=new t.DateTimeFormatter(t.YearFormat.abbreviated,t.MonthFormat.abbreviated,t.DayFormat.default,t.DayOfWeekFormat.abbreviated);n.abbreviatedDateFormatterSameYear=new t.DateTimeFormatter(t.YearFormat.none,t.MonthFormat.abbreviated,t.DayFormat.default,t.DayOfWeekFormat.abbreviated);n.verboseDateFormatter=new t.DateTimeFormatter("year month dayofweek day");n.longDateFormatter=t.DateTimeFormatter.longDate}r=Jx.fnEmpty;Mail.writeProfilerMark("Utilities.initializeFormatters",Mail.LogEvent.stop)};n.getAbbreviatedDateString=function(t){return t?(r(),f(new Date,t)?n.abbreviatedDateFormatterSameYear.format(t):n.abbreviatedDateFormatter.format(t)):" "};n.getVerboseDateString=function(t){return t?(r(),n.verboseDateFormatter.format(t)):""};n.getShortTimeString=function(t){return t?(r(),n.shortTimeFormatter.format(t)):""};n.getShortDateString=function(t){return t?n._formatShortDate(new Date,t):""};n._formatShortDate=function(t,i){var s,e;return i?(s="",i&&i.getTime()!==0&&(e=null,r(),u(t,i)?e=n.shortTimeFormatter:(t>i&&(o(t,i)?e=n.shortWeekDayFormatter:f(t,i)&&(e=n.shortDateFormatterSameYear)),e||(e=n.shortDateFormatter)),s=e.format(i)),s):" "};n.getCalendarEventTimeRange=function(t,i){var o,f,s,c,y,l,p,a,e,h,v,w,b;if(o=i.startDate,f=i.endDate,o<n.minValidDate||f<n.minValidDate)return"";if(r(),s=n.longDateFormatter,c=n.shortTimeFormatter,i.eventType===Microsoft.WindowsLive.Platform.Calendar.EventType.series){y=Mail.Globals.platform;l=y.calendarManager;try{p=l.getEventFromUID(t,i.uid);a=l.getNextEvent(p.id);a&&(i=a)}catch(k){}}return e=s.format(o),i.allDayEvent?(f=new Date(f.getTime()-1),e=u(o,f)?Jx.res.loadCompoundString("AllDaySuffix",e):Jx.res.loadCompoundString("DateRange",e,s.format(f))):(h=c.format(o).replace(/ /g," "),o.getTime()===f.getTime()?e+=" "+h:(v=c.format(f).replace(/ /g," "),u(o,f)?e+=" "+Jx.res.loadCompoundString("TimeRange",h,v):(w=e+" "+h,b=s.format(f)+" "+v,e=Jx.res.loadCompoundString("DateRange",w,b)))),e};n.isRtlScript={arab:true,armi:true,avst:true,cprt:true,egyd:true,egyh:true,hebr:true,ital:true,khar:true,linb:true,lydi:true,mand:true,merc:true,nkoo:true,orkh:true,phli:true,phlp:true,phlv:true,phnx:true,prti:true,samr:true,sarb:true,syrc:true,syre:true,syrj:true,syrn:true,thaa:true};n._currentInputMethodLanguageTag=null;n._currentHaveRtlLanguage=null;n.haveRtlLanguage=function(){var t=Windows.Globalization.Language.currentInputMethodLanguageTag,i;return n._currentInputMethodLanguageTag!==t&&(Mail.writeProfilerMark("Utilities.haveRtlLanguage",Mail.LogEvent.start),n._currentInputMethodLanguageTag=t,i=Windows.System.UserProfile.GlobalizationPreferences.languages,n._currentHaveRtlLanguage=i.some(function(t){var i=new Windows.Globalization.Language(t);return n.isRtlScript[i.script.toLowerCase()]}),Mail.writeProfilerMark("Utilities.haveRtlLanguage",Mail.LogEvent.stop)),n._currentHaveRtlLanguage};n.getSendErrorString=function(n,r){var u=i[n];return Jx.res.loadCompoundString(Jx.isNonEmptyString(u)?u:"mailSendErrorGeneric",r.emailAddress)}})()
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global  Jx,Windows,Microsoft,Mail,Debug */
+(function () {
+    "use strict";
+
+    var Utilities = Mail.Utilities,
+        Plat = Microsoft.WindowsLive.Platform,
+        PlatResult = Plat.Result,
+        resIds = {};
+
+    // The calendar platform has a min valid date to help distinguish "not specified" dates
+    // This is the JS equivalent of MIN_EVENT_DATETIME (JS and C++ have different int representations of time)
+    // 2/1/1601, midnight UTC
+    Utilities.minValidDate = -11641795200000;
+
+    Utilities.msInOneHour = 1000 * 60 * 60;
+    Utilities.msInFourHours = Utilities.msInOneHour * 4;
+    Utilities.msInOneDay = Utilities.msInOneHour * 24;
+
+    
+    Utilities.shortDateFormatterSameYear = null;
+    Utilities.shortTimeFormatter = null;
+    Utilities.shortWeekDayFormatter = null;
+    Utilities.shortDateFormatter = null;
+    Utilities.verboseDateFormatter = null;
+    Utilities.longDateFormatter = null;
+    
+
+    // Map HRESULTs to ResIds
+    resIds[PlatResult.e_HTTP_BAD_REQUEST] = "mailSendErrorMessageTooLarge";
+    resIds[PlatResult.e_HTTP_DISK_SPACE] = "mailSendErrorMessageTooLarge";
+    resIds[PlatResult.e_NEXUS_STATUS_MAILBOX_SENDQUOTAEXCEEDED] = "mailSendErrorMessageTooLarge";
+    resIds[PlatResult.e_NEXUS_STATUS_MESSAGE_ATTACHMENTSTOOLARGE] = "mailSendErrorMessageTooLarge";
+    resIds[PlatResult.e_HTTP_REQUEST_TOO_LARGE] = "mailSendErrorMessageTooLarge";
+    resIds[PlatResult.ixp_E_SMTP_552_STORAGE_OVERFLOW] = "mailSendErrorProblemWithAttachments";
+    resIds[PlatResult.e_NEXUS_STATUS_MESSAGE_RECEIPIENTUNRESOLVED] = "mailSendErrorUnresolvedRecipient";
+    resIds[PlatResult.e_NEXUS_STATUS_MESSAGE_HASNORECIPIENT] = "mailSendErrorUnresolvedRecipient";
+    resIds[PlatResult.e_NEXUS_STATUS_MESSAGE_REPLYNOTALLOWED] = "mailSendErrorReplyNotAllowed";
+    resIds[PlatResult.e_NEXUS_STATUS_ITEM_NOTFOUND] = "mailSendErrorOriginalEventDeleted";
+
+    var initializeFormatters = function () {
+        Mail.writeProfilerMark("Utilities.initializeFormatters", Mail.LogEvent.start);
+        if (!Utilities.shortTimeFormatter) {
+            var DTF = Windows.Globalization.DateTimeFormatting;
+            Utilities.shortDateFormatterSameYear = new DTF.DateTimeFormatter(DTF.YearFormat.none, DTF.MonthFormat.abbreviated, DTF.DayFormat["default"], DTF.DayOfWeekFormat.none); // eg April 29
+            Utilities.shortTimeFormatter = new DTF.DateTimeFormatter("shorttime"); // eg 3:01 PM
+            Utilities.shortWeekDayFormatter = new DTF.DateTimeFormatter(DTF.YearFormat.none, DTF.MonthFormat.none, DTF.DayFormat.none, DTF.DayOfWeekFormat.abbreviated); // eg Sun
+            Utilities.shortDateFormatter = DTF.DateTimeFormatter.shortDate; // eg 4/29/2012
+            Utilities.abbreviatedDateFormatter = new DTF.DateTimeFormatter(DTF.YearFormat.abbreviated, DTF.MonthFormat.abbreviated, DTF.DayFormat.default, DTF.DayOfWeekFormat.abbreviated); // eg Sun, Apr 29, 12
+            Utilities.abbreviatedDateFormatterSameYear = new DTF.DateTimeFormatter(DTF.YearFormat.none, DTF.MonthFormat.abbreviated, DTF.DayFormat.default, DTF.DayOfWeekFormat.abbreviated); // eg Sun, Apr 29
+            Utilities.verboseDateFormatter = new DTF.DateTimeFormatter("year month dayofweek day"); // eg Sunday, April 29, 2012
+            Utilities.longDateFormatter = DTF.DateTimeFormatter.longDate; // eg Sunday, April 29, 2012 (specific fields displayed vary per-market)
+        }
+        initializeFormatters = Jx.fnEmpty;
+        Mail.writeProfilerMark("Utilities.initializeFormatters", Mail.LogEvent.stop);
+    };
+
+    Utilities.getAbbreviatedDateString = function (jsDate) {
+        /// <param name="jsDate" type="Date" optional="true"></param>
+        /// <returns type="String"></returns>
+        if (!jsDate) {
+            return " ";
+        }
+        initializeFormatters();
+        if (isWithinAnYear(new Date(), jsDate)) {
+            return Utilities.abbreviatedDateFormatterSameYear.format(jsDate);
+        } else {
+            return Utilities.abbreviatedDateFormatter.format(jsDate);
+        }
+    };
+
+    Utilities.getVerboseDateString = function (jsDate) {
+        /// <param name="jsDate" type="Date" optional="true"></param>
+        /// <returns type="String"></returns>
+        if (!jsDate) {
+            return "";
+        }
+        initializeFormatters();
+        return Utilities.verboseDateFormatter.format(jsDate);
+    };
+
+    Utilities.getShortTimeString = function (jsDate) {
+        /// <param name="jsDate" type="Date" optional="true"></param>
+        /// <returns type="String"></returns>
+        if (!jsDate) {
+            return "";
+        }
+        initializeFormatters();
+        return Utilities.shortTimeFormatter.format(jsDate);
+    };
+
+    Utilities.getShortDateString = function (jsDate) {
+        /// <param name="jsDate" type="Date" optional="true"></param>
+        /// <returns type="String"></returns>
+        if (!jsDate) {
+            return "";
+        }
+        return Utilities._formatShortDate(new Date(), jsDate);
+    };
+
+    function isWithinAWeek(now, jsDate) {
+        /// <param name="now" type="Date"></param>
+        /// <param name="jsDate" type="Date"></param>
+        /// <returns type="Boolean">returns true if jsDate is within a week from now</returns>
+        Debug.assert(Jx.isInstanceOf(now, Date));
+        Debug.assert(Jx.isInstanceOf(jsDate, Date));
+        var startOfToday = new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+            endDate = new Date(startOfToday);
+        endDate.setDate(endDate.getDate() - 6);
+        return jsDate >= endDate;
+    }
+
+    function isWithinAnYear(now, jsDate) {
+        /// <param name="now" type="Date"></param>
+        /// <param name="jsDate" type="Date"></param>
+        /// <returns type="Boolean">returns true if jsDate is within an year from now</returns>
+        Debug.assert(Jx.isInstanceOf(now, Date));
+        Debug.assert(Jx.isInstanceOf(jsDate, Date));
+        // We cannot do a -364 day check as it does not account for leap year
+        var startOfOneYearAgo = new Date(now.getFullYear() - 1, now.getMonth(), now.getDate() + 1);
+        return jsDate >= startOfOneYearAgo;
+    }
+
+    Utilities._formatShortDate = function (now, jsDate) {
+        /// <param name="now" type="Date"></param>
+        /// <param name="jsDate" type="Date"></param>
+        /// <returns type="String"></returns>
+        Debug.assert(Jx.isInstanceOf(now, Date));
+        Debug.assert(Jx.isInstanceOf(jsDate, Date));
+        if (!jsDate) {
+            return " ";
+        }
+        var result = "";
+        if (jsDate && jsDate.getTime() !== 0) {
+            var formatter = null;
+
+            initializeFormatters();
+            if (isSameDay(now, jsDate)) {
+                formatter = Utilities.shortTimeFormatter;
+            } else {
+                if (now > jsDate) {
+                    if (isWithinAWeek(now, jsDate)) {
+                        formatter = Utilities.shortWeekDayFormatter;
+                    } else if (isWithinAnYear(now, jsDate)) {
+                        formatter = Utilities.shortDateFormatterSameYear;
+                    }
+                }
+                if (!formatter) {
+                    formatter = Utilities.shortDateFormatter;
+                }
+            }
+            result = formatter.format(jsDate);
+        }
+        return result;
+    };
+
+    function isSameDay(a, b) {
+        /// <param name="a" type="Date" />
+        /// <param name="b" type="Date" />
+        return a.getDate()     === b.getDate()  &&
+               a.getMonth()    === b.getMonth() &&
+               a.getFullYear() === b.getFullYear();
+    }
+
+    Utilities.getCalendarEventTimeRange = function (account, ev) {
+        /// <param name="account" type="Microsoft.WindowsLive.Platform.IAccount" />
+        /// <param name="ev" type="Microsoft.WindowsLive.Platform.Calendar.Event" />
+        Debug.assert(Jx.isInstanceOf(account, Microsoft.WindowsLive.Platform.Account));
+        // we pull in Calendar.Event from a ref file and can't actually assert
+        // it's an instanceof anything.  so we just make sure it's valid.
+        Debug.assert(!Jx.isNullOrUndefined(ev));
+
+        // get some info about the event
+        var start = ev.startDate;
+        var end = ev.endDate;
+
+        // Some mail responses don't have date information specified
+        if (start < Utilities.minValidDate || end < Utilities.minValidDate) {
+            // We don't have anything appropriate to put in the date UI
+            return "";
+        }
+
+        initializeFormatters();
+
+        var longDate = Utilities.longDateFormatter,
+            shortTime = Utilities.shortTimeFormatter;
+
+        // if it's a recurring series, try to get a future event
+        if (ev.eventType === Microsoft.WindowsLive.Platform.Calendar.EventType.series) {
+            var platform = Mail.Globals.platform,
+                manager  = platform.calendarManager;
+
+            try {
+                var realEv = manager.getEventFromUID(account, ev.uid),
+                    nextEv = manager.getNextEvent(realEv.id);
+
+                if (nextEv) {
+                    ev = nextEv;
+                }
+            } catch (ex) {
+                // this will fail if there's no event on our calendar.  this can
+                // happen with certain providers for events that have not yet
+                // been accepted.
+            }
+        }
+
+        // we'll always show at least the starting date
+        var range = longDate.format(start);
+
+        // what we do depends on whether or not it's an all day event
+        if (ev.allDayEvent) {
+            // all-day events that end at midnight technically end on "the next day".
+            // however, that's not what we want to show when building the text, so we
+            // adjust the end date back by one millisecond for all-day events.  since
+            // we don't use the time itself in this case, it will only affect this
+            // particular scenario.
+            end = new Date(end.getTime() - 1);
+
+            // it's not the same day, so append the next date
+            if (!isSameDay(start, end)) {
+                range = Jx.res.loadCompoundString("DateRange", range, longDate.format(end));
+            } else {
+                range = Jx.res.loadCompoundString("AllDaySuffix", range);
+            }
+        } else {
+            var startTime = shortTime.format(start).replace(/ /g, "\u00a0");
+
+            if (start.getTime() === end.getTime()) {
+                // we only show one date/time if it's a zero-duration event
+                range += " " + startTime;
+            } else {
+                // the remaining text depends on whether or not it's the same day
+                var endTime = shortTime.format(end).replace(/ /g, "\u00a0");
+
+                if (isSameDay(start, end)) {
+                    range += " " + Jx.res.loadCompoundString("TimeRange", startTime, endTime);
+                } else {
+                    var startTimeAndDate = range + " " + startTime;
+                    var endTimeAndDate = longDate.format(end) + " " + endTime;
+                    range = Jx.res.loadCompoundString("DateRange", startTimeAndDate, endTimeAndDate);
+                }
+            }
+        }
+
+        return range;
+    };
+
+    Utilities.isRtlScript = {
+        "arab": true,   // RTL     Arabic
+        "armi": true,   // RTL     Imperial Aramaic
+        "avst": true,   // RTL     Avestan
+        "cprt": true,   // RTL     Cypriot
+        "egyd": true,   // RTL     Egyptian demotic
+        "egyh": true,   // RTL     Egyptian hieratic
+        "hebr": true,   // RTL     Hebrew
+        "ital": true,   // RTL     Old Italic (Etruscan, Oscan, etc.)
+        "khar": true,   // RTL     Kharoshthi
+        "linb": true,   // RTL     Linear B
+        "lydi": true,   // RTL     Lydian
+        "mand": true,   // RTL     Mandaic
+        "merc": true,   // RTL     Meroitic Cursive
+        "nkoo": true,   // RTL     N'Ko
+        "orkh": true,   // RTL     Old Turkic
+        "phli": true,   // RTL     Inscriptional Pahlavi
+        "phlp": true,   // RTL     Psalter Pahlavi
+        "phlv": true,   // RTL     Book Pahlavi
+        "phnx": true,   // RTL     Phoenician
+        "prti": true,   // RTL     Inscriptional Parthian
+        "samr": true,   // RTL     Samaritan
+        "sarb": true,   // RTL     Old South Arabian
+        "syrc": true,   // RTL     Syriac
+        "syre": true,   // RTL     Syriac (Estrangelo variant)
+        "syrj": true,   // RTL     Syriac (Western variant)
+        "syrn": true,   // RTL     Syriac (Eastern variant)
+        "thaa": true    // RTL     Thaana
+    };
+
+    Utilities._currentInputMethodLanguageTag = null;
+    Utilities._currentHaveRtlLanguage = null;
+
+    Utilities.haveRtlLanguage = function () {
+        /// <summary>returns true if the user has an RTL language pack installed</summary>
+
+        // currentInputMethodLanguageTag is a proxy for the user modifying their list of language packs.
+        var currentTag = Windows.Globalization.Language.currentInputMethodLanguageTag;
+        if (Utilities._currentInputMethodLanguageTag !== currentTag) {
+            Mail.writeProfilerMark("Utilities.haveRtlLanguage", Mail.LogEvent.start);
+            Utilities._currentInputMethodLanguageTag = currentTag;
+            var languages = Windows.System.UserProfile.GlobalizationPreferences.languages;
+            Utilities._currentHaveRtlLanguage = languages.some(function (language) {
+                var lang = new Windows.Globalization.Language(language);
+                return Utilities.isRtlScript[lang.script.toLowerCase()];
+            });
+            Mail.writeProfilerMark("Utilities.haveRtlLanguage", Mail.LogEvent.stop);
+        }
+
+        return Utilities._currentHaveRtlLanguage;
+    };
+
+    Utilities.getSendErrorString = function (syncStatus, account) {
+        /// <param name="syncStatus" type="Number" />
+        /// <param name="account" type="Microsoft.WindowsLive.Platform.IAccount" />
+        Debug.assert(Jx.isValidNumber(syncStatus));
+        Debug.assert(Jx.isInstanceOf(account, Microsoft.WindowsLive.Platform.Account));
+        Debug.assert(syncStatus !== PlatResult.success);
+
+        var resId = resIds[syncStatus];
+        return Jx.res.loadCompoundString(Jx.isNonEmptyString(resId) ? resId : "mailSendErrorGeneric", account.emailAddress);
+    };
+
+}());

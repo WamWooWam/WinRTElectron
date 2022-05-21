@@ -1,1 +1,69 @@
-﻿Jx.delayDefine(Mail,"ReadingDirectionSetting",function(){"use strict";function t(n){return Jx.escapeHtml(Jx.res.getString(n))}var i=Mail.Utilities,n;Mail.ReadingDirectionSetting=function(n){this._host=n;this._disposer=new Mail.Disposer};n=Mail.ReadingDirectionSetting.prototype;n.dispose=function(){this._disposer.dispose();this._disposer=null;this._host=null};n.getHTML=function(){return i.haveRtlLanguage()?'<div id="mailReadingDirectionWrapper"><span id="mailReadingDirectionText">'+t("mailReadingDirectionText")+'<\/span><select id="mailReadingDirectionSelect" aria-label="'+t("mailReadingDirectionText")+'"><option value="'+Mail.AppSettings.Direction.ltr+'">'+t("mailReadingDirectionLeft")+'<\/option><option value="'+Mail.AppSettings.Direction.auto+'">'+t("mailReadingDirectionAutomatic")+'<\/option><option value="'+Mail.AppSettings.Direction.rtl+'">'+t("mailReadingDirectionRight")+"<\/option><\/select><\/div>":""};n.populateControls=function(){if(i.haveRtlLanguage()){var n=this._host.querySelector("#mailReadingDirectionSelect"),t=Mail.Globals.appSettings;n.value=t.readingDirection;this._disposer.add(new Mail.EventHook(n,"change",this._onChange,this))}};n.update=Jx.fnEmpty;n._onChange=function(){var n=this._host.querySelector("#mailReadingDirectionSelect"),t=Mail.Globals.appSettings;t.readingDirection=n.value}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Mail,Debug,Jx */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail, "ReadingDirectionSetting", function () {
+    "use strict";
+
+    var Utilities = Mail.Utilities;
+
+    Mail.ReadingDirectionSetting = function (host) {
+        Debug.assert(Jx.isHTMLElement(host));
+
+        this._host = host;
+        this._disposer = new Mail.Disposer();
+
+        Debug.only(Object.seal(this));
+    };
+
+    var prototype = Mail.ReadingDirectionSetting.prototype;
+
+    prototype.dispose = function () {
+        this._disposer.dispose();
+        this._disposer = null;
+        this._host = null;
+    };
+
+    prototype.getHTML = function () {
+        if (!Utilities.haveRtlLanguage()) {
+            return '';
+        }
+        return '<div id="mailReadingDirectionWrapper">' +
+                '<span id="mailReadingDirectionText">' + escapedResource("mailReadingDirectionText") + '</span>' +
+                '<select id="mailReadingDirectionSelect" aria-label="' + escapedResource("mailReadingDirectionText")+'">' +
+                    '<option value="' + Mail.AppSettings.Direction.ltr + '">' + escapedResource("mailReadingDirectionLeft") + '</option>' +
+                    '<option value="' + Mail.AppSettings.Direction.auto + '">' + escapedResource("mailReadingDirectionAutomatic") + '</option>' +
+                    '<option value="' + Mail.AppSettings.Direction.rtl + '">' + escapedResource("mailReadingDirectionRight") + '</option>' +
+                '</select>' +
+                '</div>';
+    };
+
+    prototype.populateControls = function () {
+        if (!Utilities.haveRtlLanguage()) {
+            return;
+        }
+
+        var dirSelect = this._host.querySelector("#mailReadingDirectionSelect"),
+            appSettings = Mail.Globals.appSettings;
+
+        dirSelect.value = appSettings.readingDirection;
+        this._disposer.add(new Mail.EventHook(dirSelect, "change", this._onChange, this));
+    };
+
+    prototype.update = Jx.fnEmpty; // Feature parity
+
+    prototype._onChange = function () {
+        var dirSelect = this._host.querySelector("#mailReadingDirectionSelect"),
+            appSettings = Mail.Globals.appSettings;
+
+        appSettings.readingDirection = dirSelect.value;
+    };
+
+    function escapedResource(id) { return Jx.escapeHtml(Jx.res.getString(id)); }
+
+
+});

@@ -7,7 +7,7 @@
 
 import { GenerateShim } from "../../../Foundation/Interop/GenerateShim";
 
-@GenerateShim('Windows.ApplicationModel.Resources.Core.ResourceQualifier')
+// @GenerateShim('Windows.ApplicationModel.Resources.Core.ResourceQualifier')
 export class ResourceQualifier { 
     isDefault: boolean = null;
     isMatch: boolean = null;

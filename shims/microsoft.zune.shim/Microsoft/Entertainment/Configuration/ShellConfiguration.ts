@@ -14,7 +14,7 @@ export class ShellConfiguration implements IShellConfiguration {
     retailExperience: boolean = false;
     randomAccessCacheLifespanMS: number = 2000;
     previousSoftBlockVersion: string = null;
-    preventSelectionManagerSettingSaves: boolean = null;
+    preventSelectionManagerSettingSaves: boolean = false;
     notificationVersion: number = 2;
     musicDeviceView: number = null;
     showRemoveInPreferences: boolean = null;
@@ -30,7 +30,7 @@ export class ShellConfiguration implements IShellConfiguration {
     initializationSequence: number = null;
     ignoreLowPriorityAsserts: boolean = false;
     gamesDashboardRefreshTimer: number = null;
-    enableWindowSnap: boolean = null;
+    enableWindowSnap: boolean = true;
     enableWebHostResizeMessage: boolean = null;
     dragAndDropEnabled: boolean = true;
     video2DashboardRefreshTimer: number = null;
@@ -39,8 +39,8 @@ export class ShellConfiguration implements IShellConfiguration {
     backgroundImage: string = null;
     backgroundColor: number = null;
     backgroundBackStackTrimmingDelay: number = null;
-    attachLargeObjectToUnloadedControl: boolean = null;
-    attachCookieToRemovedDomElements: boolean = null;
+    attachLargeObjectToUnloadedControl: boolean = false;
+    attachCookieToRemovedDomElements: boolean = false;
     lastMarketplaceCulture: string = null;
     showAppsCollectionNotification: boolean = null;
     topBarColor: number = null;
@@ -55,7 +55,7 @@ export class ShellConfiguration implements IShellConfiguration {
     useUserEngagementService: boolean = null;
     useStickyPivots: boolean = null;
     useEDSForSearch: boolean = null;
-    uiRefresh: boolean = false;
+    uiRefresh: boolean = true;
     topBarSelectedHoveredColor: number = null;
     topBarSelectedColor: number = null;
     topBarHoveredColor: number = null;

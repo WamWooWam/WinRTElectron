@@ -1,1 +1,70 @@
-﻿(function(){"use strict";var n=Jx.Scheduler.BasePriority;Mail.Priority=Jx.scheduler.definePriorities({dismissSplashScreen:{base:n.aboveHigh},bodyContentChanged:{base:n.high},workerCurrentSelectionScrubber:{base:n.high},messageListSetSelection:{base:n.high},readingPaneNewSelectedMessage:{base:n.high},composeSelectionUpdateNav:{base:n.aboveNormal},bodyLinkFlyout:{base:n.aboveNormal},postHideAppBar:{base:n.aboveNormal},commandsEnabled:{base:n.aboveNormal},registerAuthPresenter:{base:n.aboveNormal},messageListAcceptPendingChanges:{base:n.aboveNormal},messageListTryAnimation:{base:n.aboveNormal},messageListPendingInvoke:{base:n.aboveNormal},messageListExitSelectionMode:{base:n.aboveNormal},readingPaneContentChanged:{base:n.aboveNormal},focusCompose:{base:n.aboveNormal},showAppBar:{base:n.normal},readingPaneBodyResetZoomLevel:{base:n.normal},readingPaneBodyResetFrameSize:{base:n.normal},readingPaneWriteContent:{base:n.normal},framePostStartupWork:{base:n.normal},registerCommandBar:{base:n.normal},registerPrintHandler:{base:n.normal},queryCount:{base:n.normal},readingPaneBodySecondPass:{base:n.normal},readingPaneCommandBar:{base:n.normal},workerScrubber:{base:n.normal},workerMessageGetter:{base:n.normal},workerRater:{base:n.normal},workerMessageScrubber:{base:n.normal},composeSelection:{base:n.normal},finishMessageListItem:{base:n.belowNormal},addOverflowReadingPaneICs:{base:n.belowNormal},hideKeyboard:{base:n.belowNormal},messageListInitSearch:{base:n.belowNormal},searchResultsFetch:{base:n.belowNormal},updateSyncStatus:{base:n.belowNormal},updateView:{base:n.belowNormal,description:"Bind and update properties in the view switcher"},updateCommandContext:{base:n.belowNormal},updateAriaFlow:{base:n.belowNormal},updateComposeWidth:{base:n.idle},createMoreMenu:{base:n.idle},postStartupWork:{base:n.idle},viewFlyout:{base:n.idle,description:"Prepopulate the view switcher flyout"},unrealizeMessageListItem:{base:n.idle},cleanupOldReadingPaneICs:{base:n.idle},galLookup:{base:n.idle,description:"Background GAL lookups"},composeAutoSave:{base:n.idle},reportTelemetryOnVisible:{base:n.idle},reportTelemetryOnNavigation:{base:n.idle},addSearchTooltips:{base:n.idle}})})()
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx,Mail*/
+
+(function () {
+    "use strict";
+    var Base = Jx.Scheduler.BasePriority;
+    Mail.Priority = Jx.scheduler.definePriorities({
+        dismissSplashScreen:                { base: Base.aboveHigh },
+
+        bodyContentChanged:                 { base: Base.high },
+        workerCurrentSelectionScrubber:     { base: Base.high },
+        messageListSetSelection:            { base: Base.high },
+        readingPaneNewSelectedMessage:      { base: Base.high },
+
+        composeSelectionUpdateNav:          { base: Base.aboveNormal },
+        bodyLinkFlyout:                     { base: Base.aboveNormal },
+        postHideAppBar:                     { base: Base.aboveNormal },
+        commandsEnabled:                    { base: Base.aboveNormal },
+        registerAuthPresenter:              { base: Base.aboveNormal },
+        messageListAcceptPendingChanges:    { base: Base.aboveNormal },
+        messageListTryAnimation:            { base: Base.aboveNormal },
+        messageListPendingInvoke:           { base: Base.aboveNormal },
+        messageListExitSelectionMode:       { base: Base.aboveNormal },
+        readingPaneContentChanged:          { base: Base.aboveNormal },
+        focusCompose:                       { base: Base.aboveNormal },
+
+        showAppBar:                         { base: Base.normal },
+        readingPaneBodyResetZoomLevel:      { base: Base.normal },
+        readingPaneBodyResetFrameSize:      { base: Base.normal },
+        readingPaneWriteContent:            { base: Base.normal },
+        framePostStartupWork:               { base: Base.normal },
+        registerCommandBar:                 { base: Base.normal },
+        registerPrintHandler:               { base: Base.normal },
+        queryCount:                         { base: Base.normal },
+        readingPaneBodySecondPass:          { base: Base.normal },
+        readingPaneCommandBar:              { base: Base.normal },
+        workerScrubber:                     { base: Base.normal },
+        workerMessageGetter:                { base: Base.normal },
+        workerRater:                        { base: Base.normal },
+        workerMessageScrubber:              { base: Base.normal },
+        composeSelection:                   { base: Base.normal },
+
+        finishMessageListItem:              { base: Base.belowNormal },
+        addOverflowReadingPaneICs:          { base: Base.belowNormal },
+        hideKeyboard:                       { base: Base.belowNormal },
+        messageListInitSearch:              { base: Base.belowNormal },
+        searchResultsFetch:                 { base: Base.belowNormal },
+        updateSyncStatus:                   { base: Base.belowNormal },
+        updateView:                         { base: Base.belowNormal, description: "Bind and update properties in the view switcher" },
+        updateCommandContext:               { base: Base.belowNormal },
+        updateAriaFlow:                     { base: Base.belowNormal },
+
+        updateComposeWidth:                 { base: Base.idle },
+        createMoreMenu:                     { base: Base.idle },
+        postStartupWork:                    { base: Base.idle },
+        viewFlyout:                         { base: Base.idle, description: "Prepopulate the view switcher flyout" },
+        unrealizeMessageListItem:           { base: Base.idle },
+        cleanupOldReadingPaneICs:           { base: Base.idle },
+        galLookup:                          { base: Base.idle, description: "Background GAL lookups" },
+        composeAutoSave:                    { base: Base.idle },
+        reportTelemetryOnVisible:           { base: Base.idle },
+        reportTelemetryOnNavigation:        { base: Base.idle },
+        addSearchTooltips:                  { base: Base.idle }
+    });
+
+})();

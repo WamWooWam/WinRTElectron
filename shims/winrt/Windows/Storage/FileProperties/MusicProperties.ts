@@ -18,7 +18,7 @@ import { IStorageItemExtraProperties } from "./IStorageItemExtraProperties";
 import * as mm from 'music-metadata';
 import { Vector } from "../../Foundation/Interop/Vector`1";
 
-@GenerateShim('Windows.Storage.FileProperties.MusicProperties')
+//@GenerateShim('Windows.Storage.FileProperties.MusicProperties')
 export class MusicProperties implements IStorageItemExtraProperties {
     year: number = 0;
     trackNumber: number = 0;

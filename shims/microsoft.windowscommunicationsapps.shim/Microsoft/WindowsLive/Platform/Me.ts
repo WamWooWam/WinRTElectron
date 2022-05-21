@@ -40,13 +40,13 @@ import { Contact } from "./Contact";
 @GenerateShim('Microsoft.WindowsLive.Platform.Me')
 export class Me extends PlatformObject implements IContact, IBaseContact, IPerson, IMe {
 
-    constructor() {
+    constructor(account: IAccount) {
         super("MeContact")
         this.firstName = "Thomas";
         this.lastName = "May";
         this.person = this;
         let linkedContacts = new Collection();
-        let contact = new Contact(this);
+        let contact = new Contact(this, account);
         linkedContacts._add(contact);
         this.linkedContacts = linkedContacts;
     }

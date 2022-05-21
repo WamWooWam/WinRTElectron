@@ -18,7 +18,7 @@ import { IIterable } from "winrt/Windows/Foundation/Collections/IIterable`1";
 import { EventHandler } from "winrt/Windows/Foundation/EventHandler`1";
 import { IAsyncAction } from "winrt/Windows/Foundation/IAsyncAction";
 import { AsyncOperationWithProgress, IAsyncOperationWithProgress } from "winrt/Windows/Foundation/IAsyncOperationWithProgress`2";
-import { IAsyncOperation } from "winrt/Windows/Foundation/IAsyncOperation`1";
+import { AsyncOperation, IAsyncOperation } from "winrt/Windows/Foundation/IAsyncOperation`1";
 import { IClosable } from "winrt/Windows/Foundation/IClosable";
 import { Enumerable } from "winrt/Windows/Foundation/Interop/Enumerable";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
@@ -39,10 +39,15 @@ export class PlaylistsQuery implements IPlaylistsQuery, IQuery, IClosable {
     nextPage: IQueryPage = null;
     previousPage: IQueryPage = null;
     executeAsync(): IAsyncOperationWithProgress<IQueryResult, number> {
-        return AsyncOperationWithProgress.from(async () => { return { json: "[]" }; })
+        let result = {
+            ResultSet: [],
+            TotalCount: 0
+        }
+        return AsyncOperationWithProgress.from(async () => { return { json: JSON.stringify(result) }; })
     }
-    getCountAsync(): PlaylistsQueryCountOperation {
-        throw new Error('PlaylistsQuery#getCountAsync not implemented')
+    getCountAsync(): IAsyncOperation<number> {
+        // throw new Error('PlaylistsQuery#getCountAsync not implemented')
+        return AsyncOperation.from(async () => { return 0 })
     }
     setCursorPosition(index: number): void {
         console.warn('PlaylistsQuery#setCursorPosition not implemented')

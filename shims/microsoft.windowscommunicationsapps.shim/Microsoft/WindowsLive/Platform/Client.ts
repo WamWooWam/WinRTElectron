@@ -33,10 +33,15 @@ import { ICalendarManager } from "./Calendar/ICalendarManager";
 import { IInvitesManager } from "./Meetings/IInvitesManager";
 import { CalendarManager } from "./Calendar/CalendarManager";
 import { InvitesManager } from "./Meetings/InvitesManager";
+import { Account } from "./Account";
 
 @GenerateShim('Microsoft.WindowsLive.Platform.Client')
 export class Client implements IClient, IDisposable, IClientServices, IPluginVerbManager {
-    static _instance: Client;
+    private static _instance: Client;
+
+    static get instance() {
+        return Client._instance;
+    }
 
     readonly accountManager: IAccountManager = null;
     readonly calendarManager: ICalendarManager = null;
@@ -51,11 +56,12 @@ export class Client implements IClient, IDisposable, IClientServices, IPluginVer
     constructor(applicationId: string, options: ClientCreateOptions = ClientCreateOptions.normal) {
         // throw new HResultError("The specified account does not exist.", 0x8009030E);
 
-        if (Client._instance)
-            return Client._instance;
+        // if (Client._instance)
+        //     return Client._instance;
 
         Client._instance = this;
-        this.accountManager = new AccountManager();
+        let defaultAccount = new Account();
+        this.accountManager = new AccountManager(defaultAccount);
         this.calendarManager = new CalendarManager();
         this.configManager = new ConfigManager();
         this.folderManager = new FolderManager();

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<script>
+    window.onload = function () {
+        // TODO: find a better API
+        Tx.runner.createWorker("/Tx/core/TxWorkerHost.js");
+
+        // Add code dependencies
+        Tx.addWorkerScript("/Jx/JxWorker.js");
+
+        // Add UTs
+        Tx.addWorkerScript("/Jx/ut/utDebug.js");
+        Tx.addWorkerScript("/Jx/ut/utEvents.js");
+        Tx.addWorkerScript("/Jx/ut/utJx.js");
+        Tx.addWorkerScript("/Jx/ut/utJxIs.js");
+        Tx.addWorkerScript("/Jx/ut/utAbi.js");
+        Tx.addWorkerScript("/Jx/ut/utLog.js");
+        Tx.addWorkerScript("/Jx/ut/utRes.js");
+        Tx.addWorkerScript("/Jx/ut/utSettings.js");
+        Tx.addWorkerScript("/Jx/ut/utSyncHelper.js");
+
+        Tx.runWorker();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html> 

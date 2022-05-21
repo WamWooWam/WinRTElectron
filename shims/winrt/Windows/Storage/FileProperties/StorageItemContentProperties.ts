@@ -18,7 +18,7 @@ import { MusicProperties } from "./MusicProperties";
 import { VideoProperties } from "./VideoProperties";
 import { StorageFile } from "../StorageFile";
 
-@GenerateShim('Windows.Storage.FileProperties.StorageItemContentProperties')
+//@GenerateShim('Windows.Storage.FileProperties.StorageItemContentProperties')
 export class StorageItemContentProperties implements IStorageItemExtraProperties {
     private _storageItem: StorageFile;
     

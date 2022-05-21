@@ -12,6 +12,10 @@ module.exports = {
                 loader: 'ts-loader',
                 options: { allowTsInNodeModules: true }
             },
+            {
+                test: /\.css$/i,
+                use: ["css-loader"],
+            },
         ],
     },
     resolve: {

@@ -1,0 +1,100 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Test Space</title>
+        <link href="ModernCanvasTestApp.css" rel="stylesheet">
+        <link href="/ModernCanvas/ModernCanvas.css" rel="stylesheet">
+        <link href="/Resources/ModernCanvas/css/EmojiPicker.css" rel="stylesheet">
+        <link href="/Resources/ModernShared/css/shared_styles.css" rel="stylesheet">
+        <script defer="defer" src="/Jx/Jx.js"></script>
+        <script defer="defer" src="//Microsoft.WinJS.2.0/js/base.js"></script>
+        <script defer="defer" src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+        <script defer="defer" src="/ModernCanvas/ModernCanvasNamespace.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/UndoRedo.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/Unit.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/Stack.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/EditTracker.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/RangeBookmark.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ElementBookmark.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ContentEditableUnit.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ContentEditableUnitBuilder.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ContentEditableEditTracker.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/AutoReplaceManagerTables.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/AutoReplaceManager.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/CommandManager.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ContextMenuManager.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/HyperlinkControl.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/HyperlinkManager.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ShortcutManager.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/ModernCanvas.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/WindowsLiveModernCanvas.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/AutoReplaceDefinitionsDefault.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/EmojiPicker.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/EmojiPicker.html.js" type="text/javascript"></script>
+        <script defer="defer" src="/ModernCanvas/AutoResize.js" type="text/javascript"></script>
+        <script defer="defer" src="ModernCanvasTestApp.js" type="text/javascript"></script>
+
+    </head>
+    <body>
+        <div id="modernCanvasToolbar">
+            <div id="listenerSection" class="toolbar-section">
+                <u>Listeners:</u><br>
+                <label for="commandIdRequested">Command ID requested:</label><input id="commandIdRequested" type="text" /><br>
+                <label for="commandIdExecuted">Command ID executed:</label><input id="commandIdExecuted" type="text" /><br>
+                <label for="testOutput">Test output:</label><input id="testOutput" type="text" /><br>
+                <label for="characterCount">Character count:</label><input id="characterCount" type="text" /><br>
+            </div>
+            <div id="commandSection" class="toolbar-section">
+                <u>Command Control:</u><br>
+                <label for="commandIdAdd">Command ID:</label><input id="commandIdAdd" type="text" /><br>
+                <label for="testOutputString">Test output string:</label><input id="testOutputString" type="text" /><br>
+                <input id="addCommand" type="submit" value="addCommand" /><br>
+                <label for="commandIdRemove">Command ID:</label><input id="commandIdRemove" type="text" /><br>
+                <input id="removeCommand" type="submit" value="removeCommand" />
+            </div>
+            <div id="shortcutSection" class="toolbar-section">
+                <u>Shorcut Control:</u><br>
+                <label for="shortcutStringAdd">Shortcut String:</label><input id="shortcutStringAdd" type="text" /><br>
+                <label for="shortcutCommandId">Command ID:</label><input id="shortcutCommandId" type="text" /><br>
+                <input id="addShortcut" type="submit" value="addShortcut" /><br>
+                <label for="shortcutStringRemove">Shortcut String:</label><input id="shortcutStringRemove" type="text" /><br>
+                <input id="removeShortcut" type="submit" value="removeShortcut" />
+            </div>
+            <div id="heightSection" class="toolbar-section">
+                <u>Height Control:</u><br>
+                <label for="maxHeight">Max Height:</label><input id="maxHeight" type="text" />
+                <label for="minHeight">Min Height:</label><input id="minHeight" type="text" />
+                <input id="setHeight" type="submit" value="setHeight" />
+                <input id="resetHeight" type="submit" value="resetHeight" />
+            </div>
+            <div id="contentSection" class="toolbar-section">
+                <u>Content Control:</u><br>
+                <label for="contentData">Data:</label><textarea id="contentData"></textarea><br>
+                <label for="format">Format:</label><input type="radio" id="htmlString" name="format" checked="checked" />HTML<input type="radio" id="text" name="format" />Text<br />
+                <input id="getContent" type="submit" value="getContent" /><br />
+                <label for="location">Location:</label><input type="radio" id="start" name="location" checked="checked" />Start<input type="radio" id="end" name="location" />End<input type="radio" id="all" name="location" />All<input type="radio" id="selection" name="location" />Selection<br />
+                <input id="addContent" type="submit" value="addContent" />
+            </div>
+            <div id="miscSection" class="toolbar-section">
+                <u>Misc Section:</u><br>
+                <label for="cueText">Cue Text:</label><input id="cueText" type="text" /><br>
+                <input id="setCueText" type="submit" value="setCueText" /><br>
+                <label for="usageData">Usage Data:</label><input id="usageData" type="text" /><br>
+                <input id="getUsageData" type="submit" value="getUsageData" />
+                <input id="clearUsageData" type="submit" value="clearUsageData" />
+                <input id="blockFormattingCommands" type="submit" value="blockFormattingCommands" />
+            </div>
+            <div id="miscSection2" class="toolbar-section">
+                <u>Misc Section2:</u><br>
+                <label for="SpellChecking">Future SpellChecking:</label><br>
+                <input type="radio" id="spellCheckingOn" name="spellChecking" checked="checked">On<input type="radio" id="spellCheckingOff" name="spellChecking">Off<br>
+                <input id="isRTL" type="submit" value="isRTL" /><input id="isRTLResult" type="text" /><br>
+                <input id="launchPicker" type="submit" value="launchPicker" unselectable="on"/><input id="pickerWithFocus" type="checkbox" />With Focus<br />
+                <label for="pickerResult">Picker Code Point:</label><input id="pickerResult" type="text" />
+            </div>
+        </div>
+        <div id="modernCanvas"></div>
+        <div id="emojiPickerAnchor"></div>
+    </body>
+</html>

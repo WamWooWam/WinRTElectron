@@ -1,0 +1,39 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<!-- Calendar -->
+<script src="/ModernCalendar/common/common.js"></script>
+<script src="/ModernCalendar/views/helpers/data.js"></script>
+
+<!-- UT helpers -->
+<script src="TestHelpers.js"></script>
+
+<!-- UTs -->
+<script src="utCalendarSelector.js"></script>
+
+<script>
+    window.onload = function () {
+        Jx.Dep.load("CalSel", function () {
+            Tx.run();
+        })
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+<div id="calendarSelector"></div>
+</body>
+</html>

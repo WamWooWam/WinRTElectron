@@ -1,1 +1,130 @@
-﻿Jx.delayDefine(People,"loadUrlRenderer",function(){function i(n){var t=["","","",""],r,i,u;if(n){for(r=n.replace(/^\s+|\s+$/g,""),i=r.indexOf(":"),i>0?(t[0]=r.substr(0,i),r.length>i+1&&(t[1]=r.substr(i+1))):t[1]=r,u=0;t[1][u]==="/";)u++;i=t[1].indexOf("/",u);i>0&&(t[2]=t[1].substr(i),t[1]=t[1].substr(0,i));i=t[1].indexOf(":");i>0&&(t[3]=t[1].substr(i),t[1]=t[1].substr(0,i))}return t}function r(n){var t=i(n);return t[0].length===0||t[0].toLowerCase()==="http"?true:false}function u(n){var t=i(n),r;return t[0].length===0&&(t[0]="http"),r=t[1].substr(0,2),r!=="//"&&r!=="\\\\"&&(t[1]="//"+t[1]),t[0]+":"+t[1]+t[3]+t[2]}function f(n,t,i,u){return r(i)&&n.setCssStyle(t,"link"),t.innerText=i,t.setAttribute("aria-label",u),true}function e(t,i,f,e,o,s,h){if(!r(o))return i;var l=s+"\n"+h,c=u(o);return n.setSectionAttributes(i),n.setComplexTooltip(i,c,l),n.hookupDomEvent(i,o,[{label:Jx.res.getString("/strings/profileFieldViewLink"),uri:c}]),i}var t=window.People,n=t.UiFormRenderers;t.loadUrlRenderer=Jx.fnEmpty;n.addRenderer("url",f,e)})
+﻿
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+Jx.delayDefine(People, "loadUrlRenderer", function () {
+
+    var P = window.People;
+    var R = P.UiFormRenderers;
+
+    P.loadUrlRenderer = Jx.fnEmpty;
+
+    function splitProtocol(value) {
+        /// <param name="value" type="String">The string url value to be split</param>
+        /// <returns type="Array" >A string array containing the parts of the url with index 0 being the protocol</returns>
+        var result = ["", "", "", ""];
+        if (value) {
+            var trimValue = value.replace(/^\s+|\s+$/g, "");
+
+            // split off the Protocol
+            var idx = trimValue.indexOf(":");
+            if (idx > 0) {
+                result[0] = trimValue.substr(0, idx);
+                if (trimValue.length > idx + 1) {
+                    result[1] = trimValue.substr(idx + 1);
+                }
+            } else {
+                result[1] = trimValue;
+            }
+
+            // Skip over leading slashes
+            var startPos = 0;
+            while (result[1][startPos] === "/") {
+                startPos++;
+            }
+
+            // split off any sub path
+            idx = result[1].indexOf("/", startPos);
+            if (idx > 0) {
+                result[2] = result[1].substr(idx);
+                result[1] = result[1].substr(0, idx);
+            }
+
+            // Split off any port #
+            idx = result[1].indexOf(":");
+            if (idx > 0) {
+                result[3] = result[1].substr(idx);
+                result[1] = result[1].substr(0, idx);
+            }
+        }
+        return result;
+    };
+
+    function isValid(value) {
+        /// <param name="value" type="String">A string representing a url.</param>
+        /// <returns type="Boolean" >true if http is defined otherwise false</returns>
+        var result = splitProtocol(value);
+        if (result[0].length === 0 || result[0].toLowerCase() === "http") {
+            return true;
+        }
+
+        return false;
+    };
+
+    function decorate(value) {
+        /// <param name="value" type="String">The string url value to be decorated with any missing http or trailing .com</param>
+        /// <returns type="String" >The url with any missing leading http or trailing .com included</returns>
+        var parts = splitProtocol(value);
+        if (parts[0].length === 0) {
+            parts[0] = "http";
+        }
+        var prefix = parts[1].substr(0, 2);
+        if (prefix !== "//" && prefix !== "\\\\") {
+            parts[1] = "//" + parts[1];
+        }
+
+        return parts[0] + ":" + parts[1] + parts[3] + parts[2];
+    }
+
+
+    function urlFieldView(uiform, container, value, fieldTitle) {
+        /// <summary>
+        /// Url field render
+        /// </summary>
+        /// <param name="container" type="HTMLElement" optional="false">
+        /// This is the container where the value should be rendered for display
+        /// </param>
+        /// <param name="value" type="Object" optional="false">
+        /// This is the value to be rendered.
+        /// </param>
+
+        if (isValid(value)) {
+            uiform.setCssStyle(container, "link");
+        }
+        container.innerText = value;
+        container.setAttribute('aria-label', fieldTitle);
+
+        return true;
+    };
+
+    function urlSectionView(uiform, container, valueContainer, fieldAttr, fieldValue, fieldTitle, displayValue) {
+        /// <summary>
+        /// Set a field formatter for the given type, the passed fieldFormatFunction will be
+        /// called to display any fields of the defined type.
+        /// </summary>
+        /// <param name="container" type="HTMLElement" optional="false">
+        /// The container where the field title and value has been rendered.
+        /// </param>
+        /// <param name="fieldAttr" type="Object" optional="false">
+        /// This is the field attributes for the field.
+        /// </param>
+        /// <param name="fieldValue" type="Function" optional="false">
+        /// This is the field formatter / renderer function that is called to populate a container div with the value.
+        /// The signature of the function is function(/*.
+        /// </param>
+
+        if (!isValid(fieldValue)) {
+            return container;
+        }
+        var toolTip = fieldTitle + "\n" + displayValue;
+        var uri = decorate(fieldValue);
+        R.setSectionAttributes(container),
+        R.setComplexTooltip(container, uri, toolTip);
+        R.hookupDomEvent(container, fieldValue, [{label: Jx.res.getString("/strings/profileFieldViewLink"), uri: uri}]);
+        return container;
+    };
+
+    R.addRenderer("url", urlFieldView, urlSectionView);
+
+});

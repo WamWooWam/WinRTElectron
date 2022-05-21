@@ -1,1 +1,323 @@
-﻿/* Copyright (c) Microsoft. All rights reserved. *//* Copyright (c) Microsoft. All rights reserved. */div.page section.navigationContainer>div>div.policyWarning.fragment{-ms-grid-rows:1fr}div.page section.navigationContainer>div>div.policyWarning.fragment header{-ms-grid-columns:120px 1fr 15px 40px}@media screen and (max-aspect-ratio: 1 / 1){div.page section.navigationContainer>div>div.policyWarning.fragment header{-ms-grid-columns:60px 1fr}}div.page section.navigationContainer>div>div.policyWarning.fragment.SKYPEDISABLED header{display:none}div.policyWarning.fragment{display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr;height:100%;font-size:26.67px;font-weight:200;background:-ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%)}div.policyWarning.fragment a.retryButton{display:none;font-size:18px;padding:5px 30px 5px 30px;color:#00AEEF;background-color:#fff;position:absolute;bottom:20px;right:30px}body.RTL div.policyWarning.fragment a.retryButton{right:auto;left:30px}div.policyWarning.fragment a.retryButton:hover{color:#0182b3}div.policyWarning.fragment a.retryButton:active{color:#015c80}@media screen and (-ms-high-contrast: active){div.policyWarning.fragment a.retryButton{color:#fff;border:1px solid #fff}}div.policyWarning.fragment div.disabledMessage{-ms-grid-column-align:center;-ms-grid-row-align:center;display:none;text-align:center;color:#fff;line-height:30px}div.policyWarning.fragment.SKYPEDISABLED{background:#00AEEF}div.policyWarning.fragment.SKYPEDISABLED div.disabledMessage,div.policyWarning.fragment.SKYPEDISABLED a.retryButton,div.policyWarning.fragment.SKYPEDISABLED div.logo{display:block}div.policyWarning.fragment.SKYPEDISABLED div.protectionLayer,div.policyWarning.fragment.SKYPEDISABLED div.bottomHolder{display:none}div.policyWarning.fragment div.retryingMessage{-ms-grid-column-align:center;-ms-grid-row-align:center;display:none;color:#fff;text-align:center}div.policyWarning.fragment div.retryingMessage progress{color:#fff}div.policyWarning.fragment div.retryingMessage div.message{margin-top:20px}div.policyWarning.fragment.RETRYING div.retryingMessage{display:block}div.policyWarning.fragment.RETRYING div.disabledMessage,div.policyWarning.fragment.RETRYING a.retryButton{display:none}div.policyWarning.fragment div.logo{display:none;position:absolute;top:0px;left:0px;background:url("/images/svg/logo_white.svg");width:310px;height:136px;transform:scale(0.5);transform-origin:130px 100px}body.RTL div.policyWarning.fragment div.logo{left:auto;right:0px}@media screen and (-ms-high-contrast: active){div.policyWarning.fragment div.logo{-ms-high-contrast-adjust:none}}div.policyWarning.fragment header{position:absolute;color:#fff;width:auto;height:120px;font-size:14.66px;overflow:hidden;-ms-grid-columns:120px 1fr;left:0;z-index:999;-ms-grid-row:1;display:-ms-grid;-ms-grid-columns:120px 1fr 1fr 40px;-ms-grid-rows:1fr;overflow:visible;line-height:normal}body.RTL div.policyWarning.fragment header{left:auto;right:0}div.policyWarning.fragment header button.backbutton{-ms-grid-column:1;margin-left:39px;margin-right:39px;margin-top:59px}div.policyWarning.fragment header h1.name{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}@media screen and (max-aspect-ratio: 1 / 1){div.policyWarning.fragment header h1.name{margin-right:0px;max-width:calc(100vw - 120px)}}div.policyWarning.fragment header span.callStatus{margin-top:71px;-ms-grid-column:4;display:block}@media screen and (max-aspect-ratio: 1 / 1){div.policyWarning.fragment header span.callStatus{-ms-grid-column:2;display:inline-block}}@media screen and (max-aspect-ratio: 1 / 1){div.policyWarning.fragment header div.callStatusContainer{margin-top:52px}}div.policyWarning.fragment div.bottomHolder{-ms-grid-row-align:end;display:-ms-grid;-ms-grid-columns:1fr;-ms-grid-rows:auto auto;margin-bottom:32px}div.policyWarning.fragment div.bottomHolder div.actions{-ms-grid-row:2;-ms-grid-column-align:center;-ms-grid-row-align:center;transition:opacity 0.3s linear 0s}@media screen and (max-aspect-ratio: 1 / 1){div.policyWarning.fragment div.bottomHolder div.actions{margin-bottom:15px}}div.policyWarning.fragment div.bottomHolder div.actions a{position:relative;z-index:100;display:inline-block;height:60px;width:60px;border-radius:50%;margin:0px 22.5px;font-family:"Skype UI Symbol";font-size:60px;line-height:normal;text-align:center;opacity:.9;color:#fff;border-color:#fff;box-shadow:0 0 0 5px rgba(0,0,0,0.1);background-color:#00aff0}div.policyWarning.fragment div.bottomHolder div.actions a.hangUp{background-color:#e81123}div.policyWarning.fragment div.bottomHolder div.actions a.hangUp:hover{background-color:#d00f1f}div.policyWarning.fragment div.bottomHolder div.actions a.hangUp:active{background-color:#a20c18}@media screen and (max-aspect-ratio: 1 / 1){div.policyWarning.fragment div.bottomHolder div.actions a{height:40px;width:40px;margin:0px 10px;font-size:40px}}div.policyWarning.fragment div.protectionLayer{width:100vw;height:100vh;background-color:rgba(0,0,0,0.5);display:-ms-grid;-ms-grid-rows:1fr;-ms-grid-columns:1fr;position:relative;z-index:999}div.policyWarning.fragment div.protectionLayer div.messageWrapper{-ms-grid-column-align:center;-ms-grid-row-align:center;width:100%;background-color:#00AEEF;color:#fff;padding-top:100px;min-height:200px;text-align:center}div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper{height:100%;text-align:right;display:inline-block;line-height:30px;padding:20px}div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton{margin-top:40px;margin-bottom:40px;font-size:18px;padding:5px 30px 5px 30px;color:#00AEEF;display:inline-block;background-color:#fff}div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton:hover{color:#0182b3}div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton:active{color:#015c80}@media screen and (-ms-high-contrast: active){div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton{color:#fff;border:1px solid #fff}}body.RTL div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper{text-align:left}@media screen and (-ms-high-contrast: active){div.policyWarning.fragment div.protectionLayer div.messageWrapper{border:2px solid #fff}}
+﻿/* Copyright (c) Microsoft. All rights reserved. */
+
+
+/* Copyright (c) Microsoft. All rights reserved. */
+
+div.page section.navigationContainer>div>div.policyWarning.fragment {
+    -ms-grid-rows: 1fr
+}
+
+div.page section.navigationContainer>div>div.policyWarning.fragment header {
+    -ms-grid-columns: 120px 1fr 15px 40px
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.page section.navigationContainer>div>div.policyWarning.fragment header {
+        -ms-grid-columns: 60px 1fr
+    }
+}
+
+div.page section.navigationContainer>div>div.policyWarning.fragment.SKYPEDISABLED header {
+    display: none
+}
+
+div.policyWarning.fragment {
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    height: 100%;
+    font-size: 26.67px;
+    font-weight: 200;
+    background: -ms-linear-gradient(top, #00aff0 0%, #02a9e9 17%, #0898d5 42%, #127cb4 73%, #1d5e91 100%)
+}
+
+div.policyWarning.fragment a.retryButton {
+    display: none;
+    font-size: 18px;
+    padding: 5px 30px 5px 30px;
+    color: #00AEEF;
+    background-color: #fff;
+    position: absolute;
+    bottom: 20px;
+    right: 30px
+}
+
+body.RTL div.policyWarning.fragment a.retryButton {
+    right: auto;
+    left: 30px
+}
+
+div.policyWarning.fragment a.retryButton:hover {
+    color: #0182b3
+}
+
+div.policyWarning.fragment a.retryButton:active {
+    color: #015c80
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.policyWarning.fragment a.retryButton {
+        color: #fff;
+        border: 1px solid #fff
+    }
+}
+
+div.policyWarning.fragment div.disabledMessage {
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    display: none;
+    text-align: center;
+    color: #fff;
+    line-height: 30px
+}
+
+div.policyWarning.fragment.SKYPEDISABLED {
+    background: #00AEEF
+}
+
+div.policyWarning.fragment.SKYPEDISABLED div.disabledMessage,
+div.policyWarning.fragment.SKYPEDISABLED a.retryButton,
+div.policyWarning.fragment.SKYPEDISABLED div.logo {
+    display: block
+}
+
+div.policyWarning.fragment.SKYPEDISABLED div.protectionLayer,
+div.policyWarning.fragment.SKYPEDISABLED div.bottomHolder {
+    display: none
+}
+
+div.policyWarning.fragment div.retryingMessage {
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    display: none;
+    color: #fff;
+    text-align: center
+}
+
+div.policyWarning.fragment div.retryingMessage progress {
+    color: #fff
+}
+
+div.policyWarning.fragment div.retryingMessage div.message {
+    margin-top: 20px
+}
+
+div.policyWarning.fragment.RETRYING div.retryingMessage {
+    display: block
+}
+
+div.policyWarning.fragment.RETRYING div.disabledMessage,
+div.policyWarning.fragment.RETRYING a.retryButton {
+    display: none
+}
+
+div.policyWarning.fragment div.logo {
+    display: none;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: url("/images/svg/logo_white.svg");
+    width: 310px;
+    height: 136px;
+    transform: scale(0.5);
+    transform-origin: 130px 100px
+}
+
+body.RTL div.policyWarning.fragment div.logo {
+    left: auto;
+    right: 0px
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.policyWarning.fragment div.logo {
+        -ms-high-contrast-adjust: none
+    }
+}
+
+div.policyWarning.fragment header {
+    position: absolute;
+    color: #fff;
+    width: auto;
+    height: 120px;
+    font-size: 14.66px;
+    overflow: hidden;
+    -ms-grid-columns: 120px 1fr;
+    left: 0;
+    z-index: 999;
+    -ms-grid-row: 1;
+    display: -ms-grid;
+    -ms-grid-columns: 120px 1fr 1fr 40px;
+    -ms-grid-rows: 1fr;
+    overflow: visible;
+    line-height: normal
+}
+
+body.RTL div.policyWarning.fragment header {
+    left: auto;
+    right: 0
+}
+
+div.policyWarning.fragment header button.backbutton {
+    -ms-grid-column: 1;
+    margin-left: 39px;
+    margin-right: 39px;
+    margin-top: 59px
+}
+
+div.policyWarning.fragment header h1.name {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.policyWarning.fragment header h1.name {
+        margin-right: 0px;
+        max-width: calc(100vw - 120px)
+    }
+}
+
+div.policyWarning.fragment header span.callStatus {
+    margin-top: 71px;
+    -ms-grid-column: 4;
+    display: block
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.policyWarning.fragment header span.callStatus {
+        -ms-grid-column: 2;
+        display: inline-block
+    }
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.policyWarning.fragment header div.callStatusContainer {
+        margin-top: 52px
+    }
+}
+
+div.policyWarning.fragment div.bottomHolder {
+    -ms-grid-row-align: end;
+    display: -ms-grid;
+    -ms-grid-columns: 1fr;
+    -ms-grid-rows: auto auto;
+    margin-bottom: 32px
+}
+
+div.policyWarning.fragment div.bottomHolder div.actions {
+    -ms-grid-row: 2;
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    transition: opacity 0.3s linear 0s
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.policyWarning.fragment div.bottomHolder div.actions {
+        margin-bottom: 15px
+    }
+}
+
+div.policyWarning.fragment div.bottomHolder div.actions a {
+    position: relative;
+    z-index: 100;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    margin: 0px 22.5px;
+    font-family: "Skype UI Symbol" !important;
+    font-size: 60px;
+    line-height: normal;
+    text-align: center;
+    opacity: .9;
+    color: #fff;
+    border-color: #fff;
+    box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #00aff0
+}
+
+div.policyWarning.fragment div.bottomHolder div.actions a.hangUp {
+    background-color: #e81123
+}
+
+div.policyWarning.fragment div.bottomHolder div.actions a.hangUp:hover {
+    background-color: #d00f1f
+}
+
+div.policyWarning.fragment div.bottomHolder div.actions a.hangUp:active {
+    background-color: #a20c18
+}
+
+@media screen and (max-aspect-ratio: 1 / 1) {
+    div.policyWarning.fragment div.bottomHolder div.actions a {
+        height: 40px;
+        width: 40px;
+        margin: 0px 10px;
+        font-size: 40px
+    }
+}
+
+div.policyWarning.fragment div.protectionLayer {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: -ms-grid;
+    -ms-grid-rows: 1fr;
+    -ms-grid-columns: 1fr;
+    position: relative;
+    z-index: 999
+}
+
+div.policyWarning.fragment div.protectionLayer div.messageWrapper {
+    -ms-grid-column-align: center;
+    -ms-grid-row-align: center;
+    width: 100%;
+    background-color: #00AEEF;
+    color: #fff;
+    padding-top: 100px;
+    min-height: 200px;
+    text-align: center
+}
+
+div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper {
+    height: 100%;
+    text-align: right;
+    display: inline-block;
+    line-height: 30px;
+    padding: 20px
+}
+
+div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 18px;
+    padding: 5px 30px 5px 30px;
+    color: #00AEEF;
+    display: inline-block;
+    background-color: #fff
+}
+
+div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton:hover {
+    color: #0182b3
+}
+
+div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton:active {
+    color: #015c80
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper a.okButton {
+        color: #fff;
+        border: 1px solid #fff
+    }
+}
+
+body.RTL div.policyWarning.fragment div.protectionLayer div.messageWrapper div.contentWrapper {
+    text-align: left
+}
+
+@media screen and (-ms-high-contrast: active) {
+    div.policyWarning.fragment div.protectionLayer div.messageWrapper {
+        border: 2px solid #fff
+    }
+}

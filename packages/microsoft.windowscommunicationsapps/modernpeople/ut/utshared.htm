@@ -1,0 +1,169 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+<script src="/Jx/JxUI.js"></script>
+
+<!-- People -->
+<script src="/ModernPeople/Shared/JSUtil/Include.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Callback.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Flyout.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Hydration.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Localization.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/PeopleAnimation.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/PeopleLog.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Promises.js"></script>
+
+<script src="/ModernPeople/AppFrame/AppBar.js"></script>
+<script src="/ModernPeople/AppFrame/AppCommand.js"></script>
+<script src="/ModernPeople/AppFrame/AppLayout.js"></script>
+<script src="/ModernPeople/AppFrame/AppNav.js"></script>
+<script src="/ModernPeople/AppFrame/BackgroundLoader.js"></script>
+<script src="/ModernPeople/AppFrame/Content.js"></script>
+<script src="/ModernPeople/AppFrame/ControlMap.js"></script>
+<script src="/ModernPeople/AppFrame/FrameCommands.js"></script>
+<script src="/ModernPeople/AppFrame/Header.js"></script>
+<script src="/ModernPeople/AppFrame/Main.js"></script>
+<script src="/ModernPeople/AppFrame/NavBar.js"></script>
+<script src="/ModernPeople/AppFrame/Settings.js"></script>
+<script src="/ModernPeople/AppFrame/Title.js"></script>
+
+<script src="/ModernPeople/Shared/Bici/Bici.js"></script>
+
+<script src="/ModernPeople/Shared/Accounts/AccountBarricadeDialog.js"></script>
+<script src="/ModernPeople/Shared/Accounts/AccountControlBase.js"></script>
+<script src="/ModernPeople/Shared/Accounts/AccountDialog.js"></script>
+<script src="/ModernPeople/Shared/Accounts/AccountList.js"></script>
+<script src="/ModernPeople/Shared/Accounts/AccountSettings.js"></script>
+<script src="/ModernPeople/Shared/Accounts/AccountSynchronization.js"></script>
+<script src="/ModernPeople/Shared/Accounts/CertificateSettings.js"></script>
+<script src="/ModernPeople/Shared/Accounts/ConnectedAccounts.js"></script>
+<script src="/ModernPeople/Shared/Accounts/CredUI.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Dialog.js"></script>
+<script src="/ModernPeople/Shared/Accounts/EasiIdConnector.js"></script>
+<script src="/ModernPeople/Shared/Accounts/FlowLauncher.js"></script>
+<script src="/ModernPeople/Shared/Accounts/LogonErrorDialog.js"></script>
+<script src="/ModernPeople/Shared/Accounts/NetworkConnectivity.js"></script>
+<script src="/ModernPeople/shared/Accounts/OAuthLauncher.js"></script>
+<script src="/ModernPeople/Shared/Accounts/ObjectList.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Overlay.js"></script>
+<script src="/ModernPeople/Shared/Accounts/PerAccountSettingsPage.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Phase1Upsell.js"></script>
+<script src="/ModernPeople/Shared/Accounts/Phase2Upsell.js"></script>
+<script src="/ModernPeople/Shared/Accounts/UpsellControl.js"></script>
+<script src="/ModernPeople/Shared/Accounts/UpsellSettings.js"></script>
+
+<script src="/ModernPeople/Shared/AppTile/Pinning.js"></script>
+
+<script src="/ModernPeople/AddressBook/Controls/Collections/AddressBookCollections.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/ArrayCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/BaseCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/CappedPlatformCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/ConcatenatedCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/DeferredCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/DeferredListviewCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/IndexedSearchCollection.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/PlatformCollectionWatcher.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Collections/QueryCollection.js"></script>
+
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+
+<script src="/ModernPeople/Profile/Controls/CommitContact.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactAddControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactCommands.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactControlPosition.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactDeleteFlyout.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactEditControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactEditFlyout.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactLinkingControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ContactViewControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/MeCommands.js"></script>
+<script src="/ModernPeople/Profile/Controls/ProfilePictureControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/ProfileViewControl.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/ContactPanel.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/DisambiguatedCommandButton.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/LandingPage.js"></script>
+<script src="/ModernPeople/Profile/Controls/LandingPage/PanelView.js"></script>
+
+<script src="/ModernPeople/Shared/ContactForm/AddressHelper.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/ContactForm.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/LocaleHelper.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/Location.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/NameHelper.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFieldRenderers.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/uiform.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFormAddressInputControl.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFormSelectInputControl.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiFormTextInputControl.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiLocationRenderer.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/uimenu.js"></script>
+<script src="/ModernPeople/Shared/ContactForm/UiUrlRenderer.js"></script>
+
+<script src="/ModernPeople/Shared/IdentityControl/IdentityControl.js"></script>
+<script src="/ModernPeople/Shared/IdentityControl/IdentityControlActions.js"></script>
+<script src="/ModernPeople/Shared/IdentityControl/IdentityControlNode.js"></script>
+<script src="/ModernPeople/Shared/IdentityControl/IdentityElements.js"></script>
+
+<script src="/ModernPeople/Shared/Navigation/Protocols.js"></script>
+<script src="/ModernPeople/Shared/Navigation/UriGenerator.js"></script>
+
+<script src="/ModernPeople/Shared/Platform/FetchContacts.js"></script>
+<script src="/ModernPeople/Shared/Platform/PlatformCache.js"></script>
+<script src="/ModernPeople/Shared/Platform/PlatformObjectBinder.js"></script>
+
+<script src="/ModernPeople/Shared/ShareSource/ShareSource.js"></script>
+
+<script src="/ModernPeople/Shared/Sequence/Sequence.js"></script>
+<script src="/Platform/MockPlatform.js"></script>
+<script src="/ModernPeople/Shared/Mocks/Platform/SampleData.js"></script>
+<script src="/ModernPeople/Shared/Mocks/Jx/MockSettings.js"></script>
+
+<!-- UT helpers -->
+<script src="AccountsQueryVerifier.js"></script>
+<script src="CallVerifier.js"></script>
+<script src="MockJobSet.js"></script>
+
+<!-- UTs -->
+<script src="utAccountDialog.js"></script>
+<script src="utAccountListControl.js"></script>
+<script src="utAddressHelper.js"></script>
+<script src="utConnectedTo.js"></script>
+<script src="utDeDuping.js"></script>
+<script src="utIdentityControl.js"></script>
+<script src="utLocaleHelper.js"></script>
+<script src="utNameHelper.js"></script>
+<script src="utPerAccountSettingsPage.js"></script>
+<script src="utPlatformObjectBinder.js"></script>
+<script src="utPromises.js"></script>
+<script src="utProtocols.js"></script>
+<script src="utSequence.js"></script>
+<script src="utShareSource.js"></script>
+<script src="utUiFormAddressInputControl.js"></script>
+<script src="utUiLocationRenderer.js"></script>
+<script src="utUpsellControl.js"></script>
+<script src="utUriGenerator.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

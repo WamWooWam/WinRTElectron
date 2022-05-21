@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using Newtonsoft.Json.Linq;
 using PriFormat;
 
@@ -102,17 +103,20 @@ namespace PriInfo
                                     value = Encoding.Unicode.GetString(data).TrimEnd('\0');
                                     break;
                                 case ResourceValueType.EmbeddedData:
-                                    value = string.Format("<{0} bytes>", data.Length);
-                                    break;
+                                    continue;
                             }
 
-                            //var name = item.Name;
-                            //if(scale != null && scale.Value != "100")
+                            var name = item.Name;
+                            //if (scale != null && scale.Value != "100")
                             //{
                             //    name = Path.ChangeExtension(name, $".scale-{scale.Value}" + Path.GetExtension(name));
                             //}
 
                             json[item.Name] = value;
+                            //var name = item.FullName.Substring(11).Replace('\\', '.');
+                            //json.WriteLine($"<data name=\"{name}\" xml:space=\"preserve\">");
+                            //json.WriteLine($"  <value><![CDATA[{value}]]></value>");
+                            //json.WriteLine($"</data>");
 
                             Console.WriteLine("    Candidate {0}: {1}", language, value);
                         }
@@ -123,6 +127,7 @@ namespace PriInfo
             foreach (var lang in languages)
             {
                 File.WriteAllText($"{lang.Key}.json", lang.Value.ToString());
+                //lang.Value.Flush();
             }
         }
     }

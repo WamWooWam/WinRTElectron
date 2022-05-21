@@ -34,32 +34,71 @@ import { UnitTestConfiguration } from "./UnitTestConfiguration";
 import { VideoConfiguration } from "./VideoConfiguration";
 import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
-@GenerateShim('Microsoft.Entertainment.Configuration.ConfigurationManager')
-export class ConfigurationManager implements IConfigurationManager { 
-    abTestingOverrides: ABTestingOverridesConfiguration = new ABTestingOverridesConfiguration;
-    ads: AdsConfiguration = new AdsConfiguration;
-    amsterdam: AmsterdamConfiguration = new AmsterdamConfiguration;
-    drm: DRMConfiguration = new DRMConfiguration;
-    fue: FUEConfiguration = new FUEConfiguration;
-    features: FeaturesConfiguration = new FeaturesConfiguration;
-    flighting: FlightingConfiguration = new FlightingConfiguration;
-    fulfillment: FulfillmentConfiguration = new FulfillmentConfiguration;
-    generalSettings: GeneralSettingsConfiguration = new GeneralSettingsConfiguration;
-    groveler: GrovelerConfiguration = new GrovelerConfiguration;
-    mbr: MBRConfiguration = new MBRConfiguration;
-    mdlc: MDLCConfiguration = new MDLCConfiguration;
-    marketplace: MarketplaceConfiguration = new MarketplaceConfiguration;
-    mediaStore: MediaStoreConfiguration = new MediaStoreConfiguration;
-    music: MusicConfiguration = new MusicConfiguration;
-    playback: PlaybackConfiguration = new PlaybackConfiguration;
-    queries: QueriesConfiguration = new QueriesConfiguration;
-    service: ServiceConfiguration = new ServiceConfiguration;
-    services: ServicesConfiguration = new ServicesConfiguration;
-    shell: ShellConfiguration = new ShellConfiguration;
-    shipAsserts: ShipAssertsConfiguration = new ShipAssertsConfiguration;
-    sync: SyncConfiguration = new SyncConfiguration;
-    telemetry: TelemetryConfiguration = new TelemetryConfiguration;
-    transfer: TransferConfiguration = new TransferConfiguration;
-    unitTest: UnitTestConfiguration = new UnitTestConfiguration;
-    video: VideoConfiguration = new VideoConfiguration;
+//@GenerateShim('Microsoft.Entertainment.Configuration.ConfigurationManager')
+export class ConfigurationManager implements IConfigurationManager {
+
+    static manager: ConfigurationManager;
+
+    constructor() {
+        if (!!!ConfigurationManager.manager) {
+            ConfigurationManager.manager = this;
+
+            this.abTestingOverrides = new ABTestingOverridesConfiguration;
+            this.ads = new AdsConfiguration;
+            this.amsterdam = new AmsterdamConfiguration;
+            this.drm = new DRMConfiguration;
+            this.fue = new FUEConfiguration;
+            this.features = new FeaturesConfiguration;
+            this.flighting = new FlightingConfiguration;
+            this.fulfillment = new FulfillmentConfiguration;
+            this.generalSettings = new GeneralSettingsConfiguration;
+            this.groveler = new GrovelerConfiguration;
+            this.mbr = new MBRConfiguration;
+            this.mdlc = new MDLCConfiguration;
+            this.marketplace = new MarketplaceConfiguration;
+            this.mediaStore = new MediaStoreConfiguration;
+            this.music = new MusicConfiguration;
+            this.playback = new PlaybackConfiguration;
+            this.queries = new QueriesConfiguration;
+            this.service = new ServiceConfiguration;
+            this.services = new ServicesConfiguration;
+            this.shell = new ShellConfiguration;
+            this.shipAsserts = new ShipAssertsConfiguration;
+            this.sync = new SyncConfiguration;
+            this.telemetry = new TelemetryConfiguration;
+            this.transfer = new TransferConfiguration;
+            this.unitTest = new UnitTestConfiguration;
+            this.video = new VideoConfiguration;
+        }
+        else {
+            return ConfigurationManager.manager;
+        }
+    }
+
+    abTestingOverrides: ABTestingOverridesConfiguration;
+    ads: AdsConfiguration;
+    amsterdam: AmsterdamConfiguration;
+    drm: DRMConfiguration;
+    fue: FUEConfiguration;
+    features: FeaturesConfiguration;
+    flighting: FlightingConfiguration;
+    fulfillment: FulfillmentConfiguration;
+    generalSettings: GeneralSettingsConfiguration;
+    groveler: GrovelerConfiguration;
+    mbr: MBRConfiguration;
+    mdlc: MDLCConfiguration;
+    marketplace: MarketplaceConfiguration;
+    mediaStore: MediaStoreConfiguration;
+    music: MusicConfiguration;
+    playback: PlaybackConfiguration;
+    queries: QueriesConfiguration;
+    service: ServiceConfiguration;
+    services: ServicesConfiguration;
+    shell: ShellConfiguration;
+    shipAsserts: ShipAssertsConfiguration;
+    sync: SyncConfiguration;
+    telemetry: TelemetryConfiguration;
+    transfer: TransferConfiguration;
+    unitTest: UnitTestConfiguration;
+    video: VideoConfiguration;
 }

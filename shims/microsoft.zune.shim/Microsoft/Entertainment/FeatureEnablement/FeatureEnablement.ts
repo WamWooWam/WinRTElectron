@@ -13,9 +13,12 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 import { TypedEventHandler } from "winrt/Windows/Foundation/TypedEventHandler`2";
 
 @GenerateShim('Microsoft.Entertainment.FeatureEnablement.FeatureEnablement')
-export class FeatureEnablement implements IFeatureEnablement { 
+export class FeatureEnablement implements IFeatureEnablement {
     isEnabled(feature: FeatureItem): number {
         console.log("requested feature enablement for " + FeatureItem[feature]);
+
+        if (feature == FeatureItem.cloudCollectionV2Enabled) return 0;
+
         return 1;
     }
     checkForNewFeatures(): void {

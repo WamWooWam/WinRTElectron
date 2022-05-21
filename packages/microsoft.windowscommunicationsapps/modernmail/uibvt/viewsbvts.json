@@ -1,0 +1,15 @@
+{
+    "tests": [
+    ],
+
+    "files": [
+        "/ModernShared/uibvt/libShared.js",
+
+        "/ModernMail/uibvt/libMail.js",
+        "/ModernMail/uibvt/libPowerPane.js",
+        "/ModernMail/uibvt/libMessageList.js",
+        "/ModernMail/uibvt/libViewFlyout.js",
+
+        "/ModernMail/uibvt/bvtViews.js"
+    ]
+}

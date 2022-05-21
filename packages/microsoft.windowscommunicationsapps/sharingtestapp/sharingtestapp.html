@@ -1,0 +1,153 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Share Anything Test Application</title>
+    <!-- framework/etc script files -->
+    <script defer="defer" src="//Microsoft.WinJS.2.0/js/base.js" type="text/javascript"></script>
+    <script defer="defer" src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+    <script defer="defer" src="../jx/jx.js" type="text/javascript"></script>
+
+    <script defer="defer" src="SharingTestApp.js" type="text/javascript"></script>
+
+    <style>
+        body {
+            overflow-y: auto;
+        }
+        #shareTargetDisplay {
+            display: none;
+            height: 100%;
+        }
+        #shareTargetContainer {
+            height: 100%;
+        }
+
+        .dataPackage
+        {
+            display:-ms-flexbox;
+            -ms-flex-direction:row;
+        }
+        .dataPackageInput
+        {
+            -ms-flex:1 auto;
+        }
+        .dataPackageOrder
+        {
+            -ms-flex:1 1 auto;
+        }
+        .shareFiles
+        {
+            padding-left:10px;
+        }
+        #soxeTestOptions {
+            width: 500px;
+            height: 650px;
+            margin-left: 500px;
+            top: 300px;
+            position: absolute;
+            background-color: White;
+            border: 1px solid Black;
+            display: none;
+            padding: 5px;
+        }
+    </style>
+
+    <link href="//Microsoft.WinJS.2.0/css/ui-light.css" rel="stylesheet" type="text/css" />
+    <link href="../modernshared/resources/css/shared_styles.css" rel="stylesheet" type="text/css"  />
+</head>
+<body>
+<div id="shareConfigure">
+    <h1>We are Ready to Share!</h1>
+    <br />
+    <button id="resetButton" onclick="reset()" type="button" >Start over</button>
+    <button id="shareButton" onclick="share()" type="submit" >Explicit Share</button>
+    <button id="defaultShareButton" onclick="defaultShare()" type="button" >Default Share</button>
+    <button id="inlineShareButton" onclick="createInline()" style="display:none" type="button">Share app inline</button>
+    <select id="inlineSelect" style="display:none"></select>
+    <h2>Data package</h2>
+    <div class="dataPackage">
+        <div class="dataPackageInput">
+            <input id="title" type="text" /> <label for="title">Title</label><br />
+            <br />
+            <input id="desc" type="text" /> <label for="desc">Description</label><br />
+            <br />
+            <input id="subject" type="text" /> <label for="subject">Subject</label><br />
+            <br />
+            <input id="textBox" onchange="textChange()" type="text" /> <label for="textBox">Text</label><br />
+            <br />
+            <input id="htmlBox" onchange="htmlChange()" type="text" /> <label for="htmlBox">Html</label><br />
+            <span>or, use generated HTML containing inline files</span>
+            <button onclick="htmlWithFiles()" type="button">HTML with files</button>
+            <select id="htmlFileLocation">
+                <option value="picker">From picker</option>
+                <option value="package">From package</option>
+            </select>
+            <br />
+            <input id="webLinkBox" onchange="webLinkChange()" type="text" /> <label for="webLinkBox">Web Link</label><br />
+            <br />
+            <input id="applicationLinkBox" onchange="applicationLinkChange()" type="text" /> <label for="applicationLinkBox">Application Link</label><br />
+            <br />
+            <input id="sourceWebLinkBox" onchange="sourceWebLinkChange()" type="text" /> <label for="sourceWebLinkBox">Source Web Link</label><br />
+            <br />
+            <input id="sourceApplicationLinkBox" onchange="sourceApplicationLinkChange()" type="text" /> <label for="sourceApplicationLinkBox">Source Application Link</label><br />
+            <br />
+            <label for="timeBox">Time before data is returned (ms)</label><br />
+            <input id="timeBox" type="number" /><br />
+            <br />
+            <input id="bitmap" onclick="addBitmap()" type="button" value="Add bitmap" />
+            <select id="bitmapLocation">
+                <option value="picker">From picker</option>
+                <option value="package">From package</option>
+            </select><br />
+            <input id="fileButton" onclick="addFiles()" type="button" value="Add files" />
+            <select id="fileLocation">
+                <option value="picker">From picker</option>
+                <option value="package">From package</option>
+            </select><br />
+            <input id="folderButton" onclick="addFolder()" type="button" value="Add folder" /><br />
+        </div>
+        <div class="dataPackageOrder">
+            <h3>Data package order</h3>
+            <div id="shareDataPackageDisplay"></div>
+        </div>
+    </div>
+    <div>
+        <h3>SOXE options (inline only)</h3>
+        <input id="soxeReal" checked="checked" name="soxe" onchange="soxeChange()" type="radio"  /><label for="soxeReal">Use real SOXE</label><br />
+        <input id="soxeFake" name="soxe" onchange="soxeChange()" type="radio" /><label for="soxeFake">Use fake SOXE</label> <a href="#" onclick="showSoxeOptions()">Fake SOXE options</a><br />
+    </div>
+    <div id="soxeTestOptions">
+        <form name="soxeTestForm" onsubmit="return false">
+            <input id="soxeTitle" name="title" type="text" /><label for="soxeTitle"><b>Title</b></label><br />
+            <input id="soxeDescription" name="desc" type="text" /><label for="soxeDescription">Description</label><br />
+            <input id="soxeThumbnail" name="thumb" type="text" /><label for="soxeThumbnail">Default Thumbnail</label><br />
+            <input id="soxeThumbCount" name="imagec" type="text" value="5" /><label for="soxeThumbCount">Thumbnail Count</label><br />
+            <input id="soxeThumbErrorCount" name="imageerrc" type="text" /><label for="soxeThumbErrorCount">Thumbnail Error Count</label><br />
+            <input id="soxeThumbSpecialCount" name="imagespc" type="text" /><label for="soxeThumbSpecialCount">Thumbnail Special Count</label><br />
+            <select id="soxeThumbPattern" name="imagep">
+                <option selected="selected" value="Sequential">Sequential</option>
+                <option value="Alternating">Alternating</option>
+            </select>
+            <label for="soxeThumbPattern">Thumbnail Pattern</label><br />
+            <br />
+            <br />
+            <input id="soxeVideo" name="video" type="text" /><label for="soxeVideo"><b>Video Source Url</b></label><br />
+            <input id="soxeVideoHeight" name="videoh" type="text" /><label for="soxeVideoHeight">Video Height</label><br />
+            <input id="soxeVideoWidth" name="videow" type="text" /><label for="soxeVideoWidth">Video Width</label><br />
+            <br />
+            <br />
+            <select id="soxeError" name="err">
+                <option selected="selected" value="0">Success</option>
+                <option value="1">Error</option>
+            </select>
+            <label for="soxeError">Response</label><br />
+            <br />
+            <input id="soxeSave" name="save" type="submit" value="Save" />
+        </form>
+    </div>
+</div>
+<div id="shareTargetDisplay">
+    <div id="shareTargetContainer">
+    </div>
+</div>
+</body>
+</html>

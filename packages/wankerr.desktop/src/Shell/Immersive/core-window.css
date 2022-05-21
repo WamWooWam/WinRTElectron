@@ -1,0 +1,119 @@
+.core-window-container {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.core-window {
+    position: absolute;
+    pointer-events: all;    
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+.core-window-frame {
+    border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1600px;
+    height: 900px;
+}
+
+.core-window-titlebar {
+    position: absolute;
+    width: 100%;
+    height: 30px;
+    background: #111111;
+    display: flex;
+    transition: transform 0.15s ease-out;
+    overflow: hidden;
+}
+
+.core-window-titlebar.hidden {
+    opacity: 1;    
+    display: flex;
+    transition-delay: 0.35s;
+    transform: translateY(-30px);
+}
+
+.core-window-icon-container {
+    margin: 3px;
+}
+
+.core-window-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.core-window-title {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.core-window-minimise {
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent;
+    font-family: "Segoe UI Symbol";
+    color: white;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    min-width: 0;
+    padding: 0;
+    border: none;
+}
+
+.core-window-minimise::after{
+    content: "\E108";
+    /* this is absurdly cursed */
+    transform: translateY(4px); 
+    display: inline-block;
+}
+
+.core-window-minimise:hover {
+    background: #3665b3;
+    border: none;
+}
+
+.core-window-minimise:active {
+    opacity: 0.8;
+    border: none;
+}
+
+.core-window-close {
+    -webkit-appearance: none;
+    border: 0;
+    background: transparent;
+    font-family: "Segoe UI Symbol";
+    color: white;
+    font-size: 12px;
+    width: 30px;
+    height: 30px;
+    min-width: 0;
+    padding: 0;
+    border: none;
+}
+
+.core-window-close::after{
+    content: "\E10A";
+}
+
+.core-window-close:hover {
+    background: #e04343;
+    border: none;
+}
+
+.core-window-close:active {
+    opacity: 0.8;
+    border: none;
+}

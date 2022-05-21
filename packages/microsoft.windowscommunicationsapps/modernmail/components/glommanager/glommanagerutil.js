@@ -1,1 +1,79 @@
-﻿Jx.delayDefine(Mail,"GlomManagerUtil",function(){Mail.GlomManagerUtil=function(n,t){Jx.EventManager.addListener(Jx.root,"openEml",this._onOpenEml,this);this._glomManager=n;this._selection=t};var n=Mail.GlomManagerUtil.prototype;n.dispose=function(){Jx.EventManager.removeListener(Jx.root,"openEml",this._onOpenEml,this)};n._onOpenEml=function(n){var t=n.data[0],i=Mail.Globals.platform,r=this._selection.account.platformObject,u=Mail.UIDataModel.FolderCache.getPlatformFolder(r,Microsoft.WindowsLive.Platform.MailFolderType.inbox);i.mailManager.createMessageFromMimeAsync(u,t,false).done(function(n){n&&this.openChildMailWindow(n,true)}.bind(this))};n.openChildMailWindow=function(n,t){var i,r,u,e,f;if(Mail.writeProfilerMark("Glom ManagerUtil openChildMailWindow"),Jx.ptStart("Mail-ChildStart"),i=n.getKeepAlive(),i){if(t)if(r=Mail.Globals.platform,u=r.mailManager.loadMessage(i.objectId),u)e=Mail.Account.load(u.accountId,r),Mail.synchronousScrub(r,new Mail.UIDataModel.MailMessage(u,e));else{i.dispose();return}else Mail.guiState.navigateBackward();f={messageId:i.objectId,instanceNumber:n.instanceNumber,isEmlMessage:t,isParentVisible:this._glomManager.getParentVisible()};Jx.isFunction(this._glomManager.addKeepAlive)&&this._glomManager.addKeepAlive(i);Jx.glomManager.createOrShowGlom(f.messageId,f,Jx.GlomManager.ShowType.shareScreen)}}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Jx, Mail, Debug, Microsoft */
+/*jshint browser:true*/
+
+Jx.delayDefine(Mail, "GlomManagerUtil", function () {
+
+    Mail.GlomManagerUtil = function (glomManager, selection) {
+        Debug.assert(Jx.isObject(glomManager));
+        Debug.assert(Jx.isInstanceOf(selection, Mail.Selection));
+        Jx.EventManager.addListener(Jx.root, "openEml", this._onOpenEml, this);
+        this._glomManager = glomManager;
+        this._selection = selection;
+    };
+    var proto = Mail.GlomManagerUtil.prototype;
+    proto.dispose = function () {
+        Jx.EventManager.removeListener(Jx.root, "openEml", this._onOpenEml, this);
+    };
+    proto._onOpenEml = function (event) {
+        // Create a MailMessage from the stream
+        var stream = event.data[0],
+            platform = Mail.Globals.platform,
+            account = this._selection.account.platformObject;
+
+        var inboxFolder = Mail.UIDataModel.FolderCache.getPlatformFolder(account, Microsoft.WindowsLive.Platform.MailFolderType.inbox);
+        Debug.assert(!Jx.isNullOrUndefined(inboxFolder));
+
+        platform.mailManager.createMessageFromMimeAsync(inboxFolder, stream, false/*allow commit*/).done(function (platformMessage) {
+            if (platformMessage) {
+                this.openChildMailWindow(platformMessage, /* isEmlMessage */ true);
+            }
+        }.bind(this));
+    };
+    proto.openChildMailWindow = function (message, isEmlMessage) {
+        Debug.assert(Jx.isInstanceOf(message, Microsoft.WindowsLive.Platform.IMailMessage));
+        Debug.assert(Jx.isBoolean(isEmlMessage));
+        // handle event from button on the command bar to create a new window
+        Mail.writeProfilerMark("Glom ManagerUtil openChildMailWindow");
+        Jx.ptStart("Mail-ChildStart");
+        var keepAlive = message.getKeepAlive();
+        if (keepAlive) {
+            if (isEmlMessage) { // We need to scrub EML messages before displaying them.
+                // Scrubbed bodies must be commited after keepalive has commited the main HTML body
+                // Committing both at the same time is not supported.
+                // Keepalive may have changed the objectId, so it needs to be loaded from mailManager
+                var platform = Mail.Globals.platform,
+                    loadedMessage = platform.mailManager.loadMessage(keepAlive.objectId);
+                if (loadedMessage) {
+                    var account = Mail.Account.load(loadedMessage.accountId, platform);
+                    Mail.synchronousScrub(platform, new Mail.UIDataModel.MailMessage(loadedMessage, account));
+                } else {
+                    Debug.assert(Jx.isObject(loadedMessage), "Failed to load message stored by keepAlive");
+                    keepAlive.dispose();
+                    return;
+                }
+            } else {
+                // If we are launching a non-EML child window, we always want to show NavPane + MessageList in the main window.
+                Mail.guiState.navigateBackward();
+            }
+
+            var startingContext = {
+                messageId: keepAlive.objectId,
+                instanceNumber: message.instanceNumber,
+                isEmlMessage: isEmlMessage,
+                isParentVisible : this._glomManager.getParentVisible()
+            };
+            Debug.assert(Jx.isNonEmptyString(startingContext.messageId));
+            Debug.assert(Jx.isNumber(startingContext.instanceNumber));
+            // If the current glom manager supports adding keepalive, call it.
+            if (Jx.isFunction(this._glomManager.addKeepAlive)) {
+                this._glomManager.addKeepAlive(keepAlive);
+            }
+            Jx.glomManager.createOrShowGlom(startingContext.messageId, startingContext, Jx.GlomManager.ShowType.shareScreen);
+        }
+    };
+});

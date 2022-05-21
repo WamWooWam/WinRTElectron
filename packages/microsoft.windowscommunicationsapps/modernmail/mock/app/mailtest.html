@@ -1,0 +1,46 @@
+﻿<!doctype html>
+<html>
+    <head>
+        <title>Mail Test app</title>
+        <style>
+            body {
+                background-color: #0072C6;
+                color: white;
+            }
+            #image {
+                position: absolute;
+            }
+            #text {
+                position: absolute;
+                font-size: 16pt;
+                font-family: Segoe UI Semilight;
+            }
+        </style>
+        <script>
+            Windows.UI.WebUI.WebUIApplication.addEventListener("activated", function (ev) {
+                var location = ev.splashScreen.imageLocation;
+                var image = document.getElementById("image");
+                image.style.left = location.x + "px";
+                image.style.top = location.y + "px";
+                image.style.width = location.width + "px";
+                image.style.height = location.height + "px";
+
+                var text = document.getElementById("text");
+                text.style.left = (location.x - (text.offsetWidth - location.width)/2)  + "px";
+                text.style.top = (location.y + location.height) + "px";
+
+                setImmediate(function () {
+                    var query = "";
+                    if (ev.uri) {
+                       query = "?mailtest=" + encodeURIComponent(ev.uri.path + ev.uri.query);
+                    }
+                    document.location = "/ModernMail/app/app.html#testMode" + query;
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <img id="image" src="/ModernMail/Res/MailSplash.png">
+        <div id="text">Loading mock data...</div>
+    </body>
+</html>

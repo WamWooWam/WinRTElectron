@@ -7,7 +7,7 @@
 
 import { GenerateShim } from "../../Foundation/Interop/GenerateShim";
 
-@GenerateShim('Windows.Globalization.Collation.CharacterGrouping')
+// @GenerateShim('Windows.Globalization.Collation.CharacterGrouping')
 export class CharacterGrouping { 
     constructor(char: string) {
         this.first = char;

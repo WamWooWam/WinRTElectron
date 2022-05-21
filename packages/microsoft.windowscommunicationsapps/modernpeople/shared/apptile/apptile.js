@@ -1,1 +1,47 @@
-﻿Jx.delayDefine(People,"AppTile",function(){var t=window.People,n=t.AppTile={};n._enabled=false;n._pending=false;n.subscribeNotifications=function(i){Jx.addListener(t.Social.unreadNotifications,"changed",function(){var r=t.Social.unreadNotifications;r.isEnabled()&&r.getCount()===0&&n.pushTiles(i)})};n.pushTiles=function(n){if(this._enabled)try{n.runResourceVerbAsync(n.accountManager.defaultAccount,"peopleTile",n.createVerb("PushTiles","5"))}catch(t){Jx.log.exception("pushTiles failed",t)}else this._pending=true};n.enableTilePush=function(n){Jx.log.info("People.AppTile._enableTilePush");this._enabled=true;this._pending&&(this._pending=false,this.pushTiles(n))}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+Jx.delayDefine(People, "AppTile", function () {
+    
+    /// <disable>JS2076.IdentifierIsMiscased</disable>
+    var P = window.People;
+    var AppTile = P.AppTile = {};
+    ///<enable>JS2076.IdentifierIsMiscased</enable>
+
+    AppTile._enabled = false;
+    AppTile._pending = false;
+
+    AppTile.subscribeNotifications = function (platform) {
+        Jx.addListener(P.Social.unreadNotifications, "changed", function (ev) {
+            var unreadNotifications = P.Social.unreadNotifications;
+            if (unreadNotifications.isEnabled() && unreadNotifications.getCount() === 0) {
+                AppTile.pushTiles(platform);
+            }
+        });
+    };
+
+    AppTile.pushTiles = function (platform) {
+        if (this._enabled) {
+            try {
+                platform.runResourceVerbAsync(platform.accountManager.defaultAccount, "peopleTile", platform.createVerb("PushTiles", "5"));
+                NoShip.People.etw("appTilePushTiles");
+            } catch (err) {
+                Jx.log.exception("pushTiles failed", err);
+            }
+        } else {
+            this._pending = true;
+        }
+    };
+
+    AppTile.enableTilePush = function (platform) {
+        Jx.log.info("People.AppTile._enableTilePush");
+        this._enabled = true;
+        if (this._pending) {
+            this._pending = false;
+            this.pushTiles(platform);
+        }
+    };
+
+});

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- Tx -->
+<script src="/Tx/core/TxLoader.js"></script>
+<link rel="stylesheet" href="/Tx/ui/tx.css">
+
+<!-- Jx -->
+<script src="/Jx/Jx.js"></script>
+
+<!-- WinJS -->
+<script src="//Microsoft.WinJS.2.0/js/base.js"></script>
+<script src="//Microsoft.WinJS.2.0/js/ui.js"></script>
+
+<!-- People -->
+<script src="/ModernPeople/Shared/JSUtil/Include.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/Namespace.js"></script>
+<script src="/ModernPeople/Shared/JSUtil/PeopleLog.js"></script>
+
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/JobSet.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Priority.js"></script>
+<script src="/ModernPeople/AddressBook/Controls/Scheduler/Scheduler.js"></script>
+
+<script src="/ModernPeople/Social/Social.Utilities.js"></script>
+<script src="/ModernPeople/Social/Social.Imports.js"></script>
+<script src="/ModernPeople/Social/Social.Core.js"></script>
+<script src="/ModernPeople/Social/Social.Platform.js"></script>
+<script src="/ModernPeople/Social/Social.Providers.js"></script>
+<script src="/ModernPeople/Social/Social.Model.js"></script>
+<script src="/ModernPeople/Social/Social.UI.Core.js"></script>
+
+<script>
+    People.loadSocialUICore();
+</script>
+
+<!-- UT helpers -->
+<script src="IdentityOverride.js"></script>
+<script src="MockConfiguration.js"></script>
+<script src="MockFacebookRequestFactory.js"></script>
+<script src="MockFactory.js"></script>
+<script src="MockFbGetFeedRequest.js"></script>
+<script src="MockFbGetNotificationsRequest.js"></script>
+<script src="MockLog.js"></script>
+<script src="MockLogEntry.js"></script>
+<script src="MockPlatform.js"></script>
+<script src="MockProvider.js"></script>
+<script src="MockRequest.js"></script>
+<script src="FacebookData.js"></script>
+<script src="FeedProviderEventsWrapper.js"></script>
+<script src="FeedProviderTestBase.js"></script>
+<script src="TestData.js"></script>
+<script src="TestUtils.js"></script>
+<script src="MockJobSet.js"></script>
+
+<!-- UTs -->
+<script src="utCommentCollection.js"></script>
+<script src="utContactCache.js"></script>
+<script src="utFacebookProvider.js"></script>
+<script src="utFacebookProviderNegative.js"></script>
+<script src="utFeed.js"></script>
+<script src="utLocalization.js"></script>
+<script src="utNetwork.js"></script>
+<script src="utPerson.js"></script>
+<script src="utReactionCollection.js"></script>
+
+<script>
+    window.onload = function () {
+        Tx.run();
+    }
+</script>
+</head>
+<body>
+<div id="txLog" class="tx-loghost"></div>
+</body>
+</html>

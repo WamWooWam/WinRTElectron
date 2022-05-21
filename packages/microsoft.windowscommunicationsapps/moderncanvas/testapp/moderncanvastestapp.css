@@ -1,0 +1,64 @@
+﻿body {
+    background-color: rgba(215, 227, 242, 1);
+    font: 16px "Segoe UI";
+}
+
+.toolbar-section {
+    border-left: 1px solid rgba(200, 200, 200, 1);
+    display: inline-block;
+    float: left;
+    height: 140px;
+    margin-bottom: 4px;
+    padding: 4px;
+}
+
+.toolbar-section:first-child {
+    border-left-width: 0px;
+    padding-left: 0px;
+}
+
+#commandSection {
+    width: 290px;
+}
+
+#contentSection {
+    width: 300px;
+}
+
+#contextMenuSection {
+    width: 420px;
+}
+
+#emojiPickerAnchor {
+    bottom: 0;
+    left: 0;
+    position:fixed;
+    top: 0;
+    width: 0;
+}
+
+#heightSection {
+    width: 250px;
+}
+
+#listenerSection {
+    width: 330px;
+}
+
+#miscSection {
+    width: 250px;
+}
+
+#modernCanvas {
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(200, 200, 200, 1);
+    border-radius: 5px;
+    clear: both;
+    max-height: 800px;
+    min-height: 400px;
+    width: 99%;
+}
+
+#shortcutSection {
+    width: 265px;
+}

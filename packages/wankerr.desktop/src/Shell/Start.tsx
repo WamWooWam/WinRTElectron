@@ -62,13 +62,13 @@ export class Start extends Component<any, StartState> {
                         tileProps.appId = rawAppId;
                     }
                     else {
-                        let packageFamilyName = rawAppId.substr(0, idx);
-                        let appId = rawAppId.substr(idx + 1);
+                        let packageFamilyName = rawAppId.substring(0, idx);
+                        let appId = rawAppId.substring(idx + 1);
 
-                        idx = packageFamilyName.lastIndexOf("_");
-                        if (idx !== -1) {
-                            packageFamilyName = packageFamilyName.substring(0, idx);
-                        }
+                        // idx = packageFamilyName.lastIndexOf("_");
+                        // if (idx !== -1) {
+                        //     packageFamilyName = packageFamilyName.substring(0, idx);
+                        // }
 
                         tileProps.packageName = packageFamilyName;
                         tileProps.appId = appId;

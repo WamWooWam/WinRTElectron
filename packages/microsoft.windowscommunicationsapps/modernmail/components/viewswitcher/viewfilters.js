@@ -1,1 +1,191 @@
-﻿Jx.delayDefine(Mail,"ViewFilters",function(){"use strict";function s(n,t){this._includedTypes=n;this._excludedTypes=t}function h(n){for(var u=n.objectType,e=n.type,r,t=0,f=i.length;t<f;++t)if(r=i[t],u===r.objectType&&(u!=="MailView"||e===r.viewType))return t}function c(){}function t(n){this._callback=null;this._context=null;this._properties=n}function r(){t.call(this,["isPinnedToNavPane","canChangePinState"])}function u(){t.call(this,["isEnabled"])}function e(){t.call(this,["type","name"])}function o(n){this._lastFirst=n.peopleManager.nameSortOrder;t.call(this,["sortName"])}var l=Microsoft.WindowsLive.Platform,n=l.MailViewType,i=[{objectType:"MailView",viewType:n.inbox},{objectType:"MailView",viewType:n.newsletter},{objectType:"MailView",viewType:n.social},{objectType:"FoldersIcon"},{objectType:"MailView",viewType:n.allPinnedPeople},{objectType:"MailView",viewType:n.flagged},],a=Mail.ViewFilters={topLevel:i.filter(function(n){return n.objectType==="MailView"}).map(function(n){return n.viewType}),people:[n.allPinnedPeople,n.person],categories:[n.newsletter,n.social],folders:[n.inbox,n.draft,n.sentItems,n.outbox,n.junkMail,n.deletedItems,n.userGeneratedFolder],filterByType:function(n,t,i){return new Mail.FilteredCollection(new s(t,i),n)},filterPinned:function(n){return new Mail.FilteredCollection(new r,n)},filterEnabled:function(n){return new Mail.FilteredCollection(new u,n)},topLevelSort:function(n){return new Mail.SortedCollection(new c,n)},sortFolders:function(n){return new Mail.SortedCollection(new e,n)},sortPeople:function(n,t){return new Mail.SortedCollection(new o(t),n)}},f;s.prototype={matches:function(n){var r=false,t,i;return n&&(t=n.type,i=this._excludedTypes,r=this._includedTypes.indexOf(t)!==-1&&(!i||i.indexOf(t)===-1)),r},setCallback:Jx.fnEmpty,hook:Jx.fnEmpty,unhook:Jx.fnEmpty};c.prototype={compare:function(n,t){return h(n)-h(t)},setCallback:Jx.fnEmpty,hook:Jx.fnEmpty,unhook:Jx.fnEmpty};t.prototype={setCallback:function(n,t){this._callback=n;this._context=t},hook:function(n){n.addListener("changed",this._changed,this)},unhook:function(n){n.removeListener("changed",this._changed,this)},_changed:function(n){Mail.Validators.havePropertiesChanged(n,this._properties)&&this._callback.call(this._context,n.target)}};Jx.inherit(r,t);r.prototype.matches=function(n){return n.isPinnedToNavPane&&n.canChangePinState};Jx.inherit(u,t);u.prototype.matches=function(n){return n.isEnabled};f=a.folders;Jx.inherit(e,t);e.prototype.compare=function(n,t){return f.indexOf(n.type)-f.indexOf(t.type)||n.name.localeCompare(t.name)};Jx.inherit(o,t);o.prototype.compare=function(n,t){var i=this._lastFirst,r=n.getSortName(i),u=t.getSortName(i);return r.localeCompare(u)}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/*global Mail,Jx,Debug,Microsoft*/
+
+Jx.delayDefine(Mail, "ViewFilters", function () {
+    "use strict";
+
+    var Plat = Microsoft.WindowsLive.Platform,
+        MailViewType = Plat.MailViewType;
+
+    var topLevelItems = [
+        { objectType: "MailView", viewType: MailViewType.inbox },
+        { objectType: "MailView", viewType: MailViewType.newsletter },
+        { objectType: "MailView", viewType: MailViewType.social },
+        { objectType: "FoldersIcon" },
+        { objectType: "MailView", viewType: MailViewType.allPinnedPeople },
+        { objectType: "MailView", viewType: MailViewType.flagged },
+    ];
+
+    var ViewFilters = Mail.ViewFilters = {
+
+        // Views shown at the top level of the nav pane
+        topLevel: topLevelItems.filter(function (item) {
+            return item.objectType === "MailView";
+        }).map(function (item) {
+            return item.viewType;
+        }),
+
+        // People-based views
+        people: [
+            MailViewType.allPinnedPeople,
+            MailViewType.person
+        ],
+
+        // Category-based views
+        categories: [
+            MailViewType.newsletter,
+            MailViewType.social
+        ],
+
+        // Folder-based views
+        folders: [
+            MailViewType.inbox,
+            MailViewType.draft,
+            MailViewType.sentItems,
+            MailViewType.outbox,
+            MailViewType.junkMail,
+            MailViewType.deletedItems,
+            MailViewType.userGeneratedFolder
+        ],
+
+        filterByType: function (collection, includedTypes, excludedTypes) {
+            return new Mail.FilteredCollection(new FilterByType(includedTypes, excludedTypes), collection);
+        },
+
+        filterPinned: function (collection) {
+            return new Mail.FilteredCollection(new FilterPinned(), collection);
+        },
+
+        filterEnabled: function (collection) {
+            return new Mail.FilteredCollection(new FilterEnabled(), collection);
+        },
+
+        topLevelSort: function (collection) {
+            return new Mail.SortedCollection(new TopLevelSort(), collection);
+        },
+
+        sortFolders: function (collection) {
+            return new Mail.SortedCollection(new SortFolders(), collection);
+        },
+
+        sortPeople: function (collection, platform) {
+            return new Mail.SortedCollection(new SortPeople(platform), collection);
+        },
+
+    };
+
+    function FilterByType(includedTypes, excludedTypes) {
+        Debug.assert(Jx.isArray(includedTypes));
+        Debug.assert(Jx.isNullOrUndefined(excludedTypes) || Jx.isArray(excludedTypes));
+        this._includedTypes = includedTypes;
+        this._excludedTypes = excludedTypes;
+        Debug.only(Object.seal(this));
+    }
+    FilterByType.prototype = {
+        matches: function (item) {
+            var result = false;
+            if (item) {
+                var type = item.type;
+                var excludedTypes = this._excludedTypes;
+                result = (this._includedTypes.indexOf(type) !== -1) &&
+                         (!excludedTypes || excludedTypes.indexOf(type) === -1);
+            }
+            return result;
+        },
+        setCallback: Jx.fnEmpty,
+        hook: Jx.fnEmpty,
+        unhook: Jx.fnEmpty
+    };
+
+    function getTopLevelIndex(item) {
+        var objectType = item.objectType;
+        var viewType = item.type;
+        for (var i = 0, len = topLevelItems.length; i < len; ++i) {
+            var topLevelItem = topLevelItems[i];
+            if (objectType === topLevelItem.objectType && (objectType !== "MailView" || viewType === topLevelItem.viewType)) {
+                return i;
+            }
+        }
+    }
+    function TopLevelSort() {
+        Debug.only(Object.seal(this));
+    }
+    TopLevelSort.prototype = {
+        compare: function (itemA, itemB) {
+            return getTopLevelIndex(itemA) - getTopLevelIndex(itemB);
+        },
+        setCallback: Jx.fnEmpty,
+        hook: Jx.fnEmpty,
+        unhook: Jx.fnEmpty
+    };
+
+
+    function LiveFilter(properties) {
+        this._callback = null;
+        this._context = null;
+        this._properties = properties;
+        Debug.only(Object.seal(this));
+    }
+    LiveFilter.prototype = {
+        setCallback: function (callback, context) {
+            this._callback = callback;
+            this._context = context;
+        },
+        hook: function (item) {
+            item.addListener("changed", this._changed, this);
+        },
+        unhook: function (item) {
+            item.removeListener("changed", this._changed, this);
+        },
+        _changed: function (ev) {
+            if (Mail.Validators.havePropertiesChanged(ev, this._properties)) {
+                this._callback.call(this._context, ev.target);
+            }
+        }
+    };
+
+    function FilterPinned() {
+        LiveFilter.call(this, [ "isPinnedToNavPane", "canChangePinState" ]);
+    }
+    Jx.inherit(FilterPinned, LiveFilter);
+    FilterPinned.prototype.matches = function (item) {
+        return item.isPinnedToNavPane && item.canChangePinState;
+    };
+
+    function FilterEnabled() {
+        LiveFilter.call(this, [ "isEnabled" ]);
+    }
+    Jx.inherit(FilterEnabled, LiveFilter);
+    FilterEnabled.prototype.matches = function (item) {
+        return item.isEnabled;
+    };
+
+    var folders = ViewFilters.folders;
+    function SortFolders() {
+        LiveFilter.call(this, [ "type", "name" ]);
+    }
+    Jx.inherit(SortFolders, LiveFilter);
+    SortFolders.prototype.compare = function (itemA, itemB) {
+        return (folders.indexOf(itemA.type) - folders.indexOf(itemB.type)) ||
+                itemA.name.localeCompare(itemB.name);
+    };
+
+    function SortPeople(platform) {
+        this._lastFirst = platform.peopleManager.nameSortOrder;
+        LiveFilter.call(this, [ "sortName" ]);
+    }
+    Jx.inherit(SortPeople, LiveFilter);
+
+    SortPeople.prototype.compare = function (itemA, itemB) {
+        var lastFirst = this._lastFirst;
+        var aName = itemA.getSortName(lastFirst);
+        var bName = itemB.getSortName(lastFirst);
+        return aName.localeCompare(bName);
+    };
+
+});
+

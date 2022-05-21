@@ -1,41 +1,44 @@
-<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <Package IgnorableNamespaces="windowsbuild" xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest" xmlns:windowsbuild="http://schemas.microsoft.com/developer/appx/2013/windowsbuild">
-	<Identity Name="microsoft.windowscommunicationsapps" 
-		ProcessorArchitecture="x86" 
-		Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" 
-		Version="17.5.9600.22013"/>
-
+	<Identity Name="microsoft.windowscommunicationsapps" ProcessorArchitecture="x64" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" Version="17.5.9883.20674"/>
 	<Properties>
 		<DisplayName>ms-resource:communicationsPackageName</DisplayName>
 		<Description>ms-resource:communicationsPackageName</Description>
 		<PublisherDisplayName>Microsoft Corporation</PublisherDisplayName>
 		<Logo>ModernShared\Resources\img\suite_logo.png</Logo>
 	</Properties>
-
 	<Resources>
 		<Resource m2:Scale="100"/>
 		<Resource Language="en-us"/>
 		<Resource Language="en"/>
-		<Resource Language="en-gb"/>		
+		<Resource Language="en-gb"/>
+		
 	</Resources>
-
 	<Prerequisites>
 		<OSMinVersion>6.3.0</OSMinVersion>
 		<OSMaxVersionTested>6.3.0</OSMaxVersionTested>
 	</Prerequisites>
-
 	<windowsbuild:Metadata>
-		<windowsbuild:Item Name="AppXArch" Value="x86"/>
-		<windowsbuild:Item Name="Type" Value="fre"/>
-		<windowsbuild:Item Name="Branch" Value="winblue_ltsb"/>
-		<windowsbuild:Item Name="Date" Value="180707-0600"/>
-		<windowsbuild:Item Name="BuildUser" Value="REDMOND\cxesa"/>
-		<windowsbuild:Item Name="Version" Value="17.5.9600.22013"/>
-		<windowsbuild:Item Name="ProductVersion" Value="6.3.9600.19095"/>
+		<windowsbuild:Item Name="AppXArch" Value="x64"/>
+		<windowsbuild:Item Name="Type" Value="chk"/>
+		<windowsbuild:Item Name="Branch" Value="fbl_release"/>
+		<windowsbuild:Item Name="Date" Value="141106-1705"/>
+		<windowsbuild:Item Name="BuildUser" Value="NTDEV\winpbld"/>
+		<windowsbuild:Item Name="Version" Value="17.5.9883.20674"/>
+		<windowsbuild:Item Name="ProductVersion" Value="6.4.9883.0"/>
 	</windowsbuild:Metadata>
-
 	<Applications>
-	
+		<Application Id="CommUT" StartPage="ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="CommUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="CommUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="CommUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="commut"/>
+				</Extension>
+			</Extensions>
+		</Application>
 		<Application Id="Microsoft.WindowsLive.Mail" StartPage="ModernMail\App\App.html">
 			<m2:VisualElements DisplayName="ms-resource:mailAppTitle" Square150x150Logo="ModernMail\Res\MailLogo.png" Square30x30Logo="ModernMail\Res\MailSmallLogo.png" Description="ms-resource:mailAppTitle" ForegroundText="light" BackgroundColor="#0072C6" ToastCapable="true">
 				<m2:DefaultTile ShortName="ms-resource:mailAppTitle" Square70x70Logo="ModernMail\Res\MailTinyLogo.png" Wide310x150Logo="ModernMail\Res\MailWideLogo.png" Square310x310Logo="ModernMail\Res\MailLargeLogo.png">
@@ -129,7 +132,35 @@
 				</Extension>
 			</Extensions>
 		</Application>
-		
+		<Application Id="MailUT" StartPage="ModernMail\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="MailUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="MailUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="MailUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="mailut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Microsoft.WindowsLive.Mail.Test" StartPage="ModernMail\Mock\app\mailtest.html">
+			<VisualElements ToastCapable="true" DisplayName="MailTest" Logo="ModernMail\Res\MailLogo.png" SmallLogo="ModernMail\Res\MailSmallLogo.png" Description="MailTest" ForegroundText="light" BackgroundColor="black">
+				<DefaultTile ShowName="allLogos"/>
+				<SplashScreen Image="ModernMail\Res\MailSplash.png" BackgroundColor="#0072C6"/>
+				<InitialRotationPreference>
+					<Rotation Preference="landscape"/>
+					<Rotation Preference="landscapeFlipped"/>
+					<Rotation Preference="portrait"/>
+					<Rotation Preference="portraitFlipped"/>
+				</InitialRotationPreference>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="mailtest"/>
+				</Extension>
+				<Extension Category="windows.search"/>
+			</Extensions>
+		</Application>
 		<Application Id="Microsoft.WindowsLive.Calendar" StartPage="ModernCalendar\app\App.html">
 			<m2:VisualElements DisplayName="ms-resource:calendarAppTitle" Square150x150Logo="ModernCalendar\CalendarLogo.png" Square30x30Logo="ModernCalendar\CalendarSmallLogo.png" Description="ms-resource:calendarAppTitle" ForegroundText="light" BackgroundColor="#5133AB" ToastCapable="true">
 				<m2:DefaultTile ShortName="ms-resource:calendarAppTitle" Wide310x150Logo="ModernCalendar\CalendarWideLogo.png" Square310x310Logo="ModernCalendar\CalendarLargeLogo.png" Square70x70Logo="ModernCalendar\CalendarTinyLogo.png">
@@ -171,7 +202,46 @@
 				</m2:Extension>
 			</Extensions>
 		</Application>
-
+		<Application Id="CalendarUT" StartPage="ModernCalendar\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="CalendarUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="CalendarUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="CalendarUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="calut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Microsoft.WindowsLive.Calendar.Test" StartPage="ModernCalendar\views\test\calendartest.html">
+			<VisualElements ToastCapable="true" DisplayName="Test Calendar" Logo="ModernCalendar\CalendarLogo.png" SmallLogo="ModernCalendar\CalendarSmallLogo.png" Description="Test Calendar" ForegroundText="light" BackgroundColor="#5133AB">
+				<DefaultTile ShortName="CalendarTest" WideLogo="ModernCalendar\CalendarWideLogo.png" ShowName="allLogos"/>
+				<SplashScreen Image="ModernCalendar\CalendarSplash.png" BackgroundColor="#5133AB"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="calendartest"/>
+				</Extension>
+				<Extension Category="windows.search"/>
+			</Extensions>
+		</Application>
+		<Application Id="Inbox.Test.CalendarProviderTestApp" StartPage="ModernCalendar\ProviderTest\CalendarProviderTest.htm">
+			<VisualElements ToastCapable="true" DisplayName="Calendar Provider Test" Logo="ModernCalendar\CalendarLogo.png" SmallLogo="ModernCalendar\CalendarSmallLogo.png" Description="Calendar Provider Test" ForegroundText="dark" BackgroundColor="#B9AAE6">
+				<DefaultTile ShowName="allLogos"/>
+				<SplashScreen Image="ModernCalendar\CalendarSplash.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="CalPlatUT" StartPage="ModernCalendar\ut\platform\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="CalPlatUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="CalPlatUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="CalPlatUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="calplatut"/>
+				</Extension>
+			</Extensions>
+		</Application>
 		<Application Id="Microsoft.WindowsLive.People" StartPage="ModernPeople\AppFrame\People.htm">
 			<m2:VisualElements DisplayName="ms-resource:///strings/peopleAppName" Square150x150Logo="ModernPeople\People.png" Square30x30Logo="ModernPeople\PeopleSmall.png" Description="ms-resource:///strings/peopleAppName" ForegroundText="light" BackgroundColor="#d24726">
 				<m2:DefaultTile ShortName="ms-resource:///strings/peopleAppName" Square70x70Logo="ModernPeople\PeopleTiny.png" Wide310x150Logo="ModernPeople\PeopleWide.png" Square310x310Logo="ModernPeople\PeopleLarge.png">
@@ -257,15 +327,264 @@
 				</m2:Extension>
 			</Extensions>
 		</Application>
+		<Application Id="PeopleUT" StartPage="ModernPeople\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="PeopleUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="PeopleUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="PeopleUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="peopleut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Inbox.Test.IdentityControlTestApp" StartPage="ModernPeople\test\identitycontrol\IdentityControlTestApp.html">
+			<VisualElements ToastCapable="true" DisplayName="Identity Control Test App" Logo="ModernPeople\People.png" SmallLogo="ModernPeople\People.png" Description="Identity Control Test App" ForegroundText="light" BackgroundColor="black">
+				<DefaultTile ShortName="IC Test" ShowName="allLogos"/>
+				<SplashScreen Image="ModernPeople\PeopleSplash.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="Inbox.Test.PeoplePickerTestApp" StartPage="ModernPeople\test\Picker\default.html">
+			<VisualElements ToastCapable="true" DisplayName="People Picker Test App" Logo="ModernPeople\test\Picker\logo.png" SmallLogo="ModernPeople\test\Picker\logo.png" Description="People Picker Test App" ForegroundText="light" BackgroundColor="black">
+				<DefaultTile ShortName="Picker Test" ShowName="allLogos"/>
+				<SplashScreen Image="ModernPeople\test\Picker\logo.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="Inbox.Test.ProtocolActivationTestApp" StartPage="ModernPeople\test\ProtocolActivation\default.html">
+			<VisualElements ToastCapable="true" DisplayName="Protocol Activation Test App" Logo="ModernPeople\test\ProtocolActivation\tile.png" SmallLogo="ModernPeople\test\ProtocolActivation\tile.png" Description="Protocol Activation Test App" ForegroundText="light" BackgroundColor="black">
+				<SplashScreen Image="ModernPeople\test\ProtocolActivation\tile.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="Inbox.Test.SkypeTestApp" StartPage="ModernPeople\test\skype\SkypeTestApp.html">
+			<VisualElements ToastCapable="true" DisplayName="Skype Test App" Logo="ModernPeople\test\skype\SkypeTestAppLogo.png" SmallLogo="ModernPeople\test\skype\SkypeTestAppLogo.png" Description="Skype Test App" ForegroundText="light" BackgroundColor="blue">
+				<DefaultTile ShortName="Skype Test App" WideLogo="ModernPeople\test\skype\SkypeTestAppLogo.png"/>
+				<SplashScreen Image="ModernPeople\test\skype\SkypeTestAppLogo.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\test\skype\SkypeTestApp.html">
+					<Protocol Name="audiocall-skype-com"/>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\test\skype\SkypeTestApp.html">
+					<Protocol Name="videocall-skype-com"/>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\test\skype\SkypeTestApp.html">
+					<Protocol Name="tel-skype-com"/>
+				</Extension>
+				<Extension Category="windows.protocol" StartPage="ModernPeople\test\skype\SkypeTestApp.html">
+					<Protocol Name="message-skype-com"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="JxUT" StartPage="Jx\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="JxUT" Logo="Tx\img\Tx150x150.png" SmallLogo="Tx\img\Tx30x30.png" Description="JxUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="JxUT"/>
+				<SplashScreen Image="Tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="jxut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="TxUT" StartPage="tx\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="TxUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="TxUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="TxUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="txut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Inbox.Test.Platform.Harness" StartPage="platform/harness/harness.html">
+			<VisualElements ToastCapable="true" DisplayName="Platform Test Harness" Logo="platform/harness/tile.png" SmallLogo="platform/harness/tile.png" Description="Platform Test Harness" ForegroundText="light" BackgroundColor="black">
+				<DefaultTile ShowName="allLogos" ShortName="Test Harness"/>
+				<SplashScreen Image="platform/harness/tile.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="Inbox.Test.PlatformUT" StartPage="Platform\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="PlatformUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="PlatformUT" ForegroundText="light" BackgroundColor="#6F1233">
+				<DefaultTile ShowName="allLogos" ShortName="PlatformUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="platformut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="ModernSyncUT" StartPage="ModernSync\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="SyncUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="SyncUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="SyncUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="syncut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="CanvasUT" StartPage="ModernCanvas\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="CanvasUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="CanvasUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="CanvasUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="canvasut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Microsoft.WindowsLive.ModernCanvasTestApp" StartPage="moderncanvas\TestApp\ModernCanvasTestApp.html">
+			<VisualElements ToastCapable="true" DisplayName="Windows Live Modern Canvas Test App" Logo="moderncanvas\TestApp\ModernCanvasTestApp.png" SmallLogo="moderncanvas\TestApp\ModernCanvasTestApp.png" Description="Windows Live Modern Canvas Test App" ForegroundText="light" BackgroundColor="black">
+				<SplashScreen Image="moderncanvas\TestApp\ModernCanvasTestApp.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="AddressWellUT" StartPage="ModernAddressWell\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="AddressWellUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="AddressWellUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="AddressWellUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="addresswellut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Inbox.Test.AddressWellTestApp" StartPage="ModernAddressWell\TestApp\AddressWellTestApp.html">
+			<VisualElements ToastCapable="true" DisplayName="AddressWell Test App" Logo="ModernAddressWell\TestApp\AddressWellLogo.png" SmallLogo="ModernAddressWell\TestApp\AddressWellLogo.png" Description="AddressWell Test App" ForegroundText="light" BackgroundColor="black">
+				<DefaultTile ShowName="allLogos"/>
+				<SplashScreen Image="ModernAddressWell\TestApp\AddressWellLogo.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="AttachmentWellUT" StartPage="ModernAttachmentWell\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="AttachmentWellUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="AttachmentWellUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="AttachmentWellUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="attachmentwellut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Microsoft.WindowsLive.FromControlTestApp" StartPage="Fromcontrol\TestApp\FromControlTestApp.html">
+			<VisualElements ToastCapable="true" DisplayName="Windows Live From Control Test App" Logo="Fromcontrol\TestApp\FromControlTestApp.png" SmallLogo="Fromcontrol\TestApp\FromControlTestApp.png" Description="Windows Live From Control Test App" ForegroundText="light" BackgroundColor="black">
+				<SplashScreen Image="Fromcontrol\TestApp\FromControlTestApp.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="FromControlUT" StartPage="FromControl\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="FromControlUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="FromControlUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="FromControlUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="fromcontrolut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="FontSelectorUT" StartPage="FontSelector\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="FontSelectorUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="FontSelectorUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="FontSelectorUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="fontselectorut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="ShareAnythingUT" StartPage="ModernShareAnything\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="ShareAnythingUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="ShareAnythingUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="ShareAnythingUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="shareanythingut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="ShareTargetUT" StartPage="ModernShareTarget\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="ShareTargetUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="ShareTargetUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="ShareTargetUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="sharetargetut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Inbox.Test.ShareTargetTestApp" StartPage="ModernShareTarget\TestApp\target.html">
+			<VisualElements ToastCapable="true" BackgroundColor="#3333ff" ForegroundText="light" SmallLogo="ModernShareTarget\TestApp\AppLogo.png" DisplayName="ShareTargetTestApp" Logo="ModernShareTarget\TestApp\AppLogo.png" Description="Basic Share Target">
+				<DefaultTile ShortName="ShareTargetTestApp" WideLogo="ModernShareTarget\TestApp\AppLogo-wide.jpg" ShowName="noLogos"/>
+				<SplashScreen BackgroundColor="white" Image="ModernShareTarget\TestApp\AppLogo-wide.jpg"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.shareTarget" StartPage="ModernShareTarget\TestApp\target.html">
+					<ShareTarget>
+						<SupportedFileTypes>
+							<SupportsAnyFileType/>
+						</SupportedFileTypes>
+						<DataFormat>Uri</DataFormat>
+						<DataFormat>Text</DataFormat>
+						<DataFormat>Html</DataFormat>
+					</ShareTarget>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="SendASmileUT" StartPage="SendASmile\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="SendASmileUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="SendASmileUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="SendASmileUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<ApplicationContentUriRules>
+				<Rule Type="include" Match="https://support.microsoft.com/"/>
+			</ApplicationContentUriRules>
+		</Application>
+		<Application Id="MenuArrowKeyHandlerUT" StartPage="MenuArrowKeyHandler\ut\TxSuite.htm">
+			<VisualElements ToastCapable="true" DisplayName="MenuArrowKeyHandlerUT" Logo="tx\img\Tx150x150.png" SmallLogo="tx\img\Tx30x30.png" Description="MenuArrowKeyHandlerUT" ForegroundText="light" BackgroundColor="#3F48CC">
+				<DefaultTile ShowName="allLogos" ShortName="MenuArrowKeyHandlerUT"/>
+				<SplashScreen Image="tx\img\Tx620x300.png"/>
+			</VisualElements>
+			<Extensions>
+				<Extension Category="windows.protocol">
+					<Protocol Name="menuarrowkeyhandlerut"/>
+				</Extension>
+			</Extensions>
+		</Application>
+		<Application Id="Inbox.Test.SharingTestApp" StartPage="SharingTestApp\SharingTestApp.html">
+			<VisualElements ToastCapable="true" DisplayName="Sharing Test" Logo="SharingTestApp\images\ShareAnythingLogoLarge.png" SmallLogo="SharingTestApp\images\ShareAnythingLogo.png" Description="Sharing Test" ForegroundText="dark" BackgroundColor="#008a17">
+				<DefaultTile ShowName="allLogos"/>
+				<SplashScreen Image="SharingTestApp\images\ShareAnythingLogoLarge.png"/>
+			</VisualElements>
+		</Application>
+		<Application Id="Assert" StartPage="Assert\Assert.htm">
+			<VisualElements DisplayName="Assert" Logo="Assert\Assert150x150.png" SmallLogo="Assert\Assert30x30.png" Description="Assert" ForegroundText="light" BackgroundColor="#880015" ToastCapable="true">
+				<DefaultTile ShowName="allLogos" ShortName="Assert"/>
+				<SplashScreen Image="Assert\Assert620x300.png"/>
+			</VisualElements>
+		</Application>
+		<Application EntryPoint="ProcessHostApplication" Executable="Te.ProcessHost.Managed.exe" Id="Te.ProcessHost.Managed">
+			<VisualElements ToastCapable="true" BackgroundColor="#222222" ForegroundText="light" Description="TAEF Tailored Managed Application Host Process" SmallLogo="ModernShared\Resources\img\suite_logo.png" Logo="ModernShared\Resources\img\suite_logo.png" DisplayName="TAEF Tailored Managed Application Host Process">
+				<SplashScreen Image="ModernShared\Resources\img\suite_logo.png"/>
+			</VisualElements>
+		</Application>
+		<Application EntryPoint="ProcessHostNativeApplication" Executable="Te.ProcessHost.exe" Id="Te.ProcessHost.Native">
+			<VisualElements ToastCapable="true" BackgroundColor="#222222" ForegroundText="light" Description="TAEF Tailored Application Host Process" SmallLogo="ModernShared\Resources\img\suite_logo.png" Logo="ModernShared\Resources\img\suite_logo.png" DisplayName="TAEF Tailored Application Host Process">
+				<SplashScreen Image="ModernShared\Resources\img\suite_logo.png"/>
+			</VisualElements>
+		</Application>
 	</Applications>
-
 	<Capabilities>
 		<Capability Name="privateNetworkClientServer"/>
 		<Capability Name="sharedUserCertificates"/>
 		<Capability Name="internetClient"/>
 		<DeviceCapability Name="webcam"/>
 	</Capabilities>
-
 	<Extensions>
 		<Extension Category="windows.activatableClass.inProcessServer">
 			<InProcessServer>
@@ -309,6 +628,13 @@
 		</Extension>
 		<Extension Category="windows.activatableClass.inProcessServer">
 			<InProcessServer>
+				<Path>diagnostics.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Diagnostics.AssertDialog" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Diagnostics.ScriptDebugger" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
 				<Path>bici.dll</Path>
 				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.Bici" ThreadingModel="both"/>
 				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Instrumentation.DatapointValueList" ThreadingModel="both"/>
@@ -321,6 +647,12 @@
 				<Path>Microsoft.WindowsLive.Launch.dll</Path>
 				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Config.Shared.SuiteUpdate" ThreadingModel="both"/>
 				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Config.Shared.Feedback" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>tx.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Tx.FileSystem" ThreadingModel="STA"/>
 			</InProcessServer>
 		</Extension>
 		<Extension Category="windows.activatableClass.inProcessServer">
@@ -397,6 +729,68 @@
 		</Extension>
 		<Extension Category="windows.activatableClass.inProcessServer">
 			<InProcessServer>
+				<Path>Microsoft.WindowsLive.Platform.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Test.ClientTestHarness" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Test.AuthenticatorController" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Platform.Test.WaitableObjectStateHandler" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.proxyStub">
+			<ProxyStub ClassId="3F0E13A0-4667-4C78-84B0-9BB753C5EF0E">
+				<Path>Microsoft.WindowsLive.Platform.dll</Path>
+				
+				<Interface InterfaceId="A9E418CF-B981-41F1-9DF8-4EA0F3F334E0" Name="IDb"/>
+				
+				<Interface InterfaceId="BBE0490B-C898-464F-889C-2C3ED832D2B8" Name="IAutoDiscoverTest"/>
+				<Interface InterfaceId="6BDA65DC-ACED-4836-A637-E7AAD1DFF893" Name="ISyncStoreTest"/>
+				<Interface InterfaceId="D8DE2002-03D2-4F4F-96F1-6E7C2BD03BB3" Name="ISyncFolderTest"/>
+				<Interface InterfaceId="4B28C1C5-B4B4-49FB-9514-464FADED79F1" Name="ISyncObject"/>
+				<Interface InterfaceId="CB755E87-0EC9-4155-B562-076424AA50A6" Name="IMassSyncObjectFactory"/>
+				
+				<Interface InterfaceId="6B81D6B1-F35D-44FE-9E70-64E96720DD2D" Name="IAuthProvider"/>
+				<Interface InterfaceId="F1AEC517-EA2B-4614-B204-F4FC7A86BDE4" Name="IAuthTokenCallback"/>
+				<Interface InterfaceId="0EE8DEB1-8FBB-4435-A3BA-4F5FD69614D2" Name="IContactSynchronization"/>
+				<Interface InterfaceId="18727277-0C61-4024-B971-AFCF403499BE" Name="IContactSynchronizationCallback"/>
+				<Interface InterfaceId="29548067-3B5A-4CE6-9E45-35FB439D78DC" Name="IResultCallback"/>
+				<Interface InterfaceId="B7B15BA9-CFDD-43A3-9064-ADE84E5D9939" Name="ISynchronizationRequest"/>
+				<Interface InterfaceId="87F93E31-BEF4-4769-8D05-527AAB5123B8" Name="ISynchronizationRequestCallback"/>
+				<Interface InterfaceId="FB28B08E-A3FB-4D6A-9866-23B3B93EA287" Name="ISynchronizationRequestFactory"/>
+				<Interface InterfaceId="B06CBA59-A87F-4621-9297-AF6A87FB57DA" Name="ISynchronizationOperationManager"/>
+				
+				<Interface InterfaceId="A701B1DB-5CB2-4B69-B3C4-FC4950E37F9F" Name="ISynchronizationPolicyManager"/>
+				<Interface InterfaceId="D6A5C7F3-9D7F-4DFE-95BC-055B07A374F3" Name="ISimulatedTimeline"/>
+				<Interface InterfaceId="7397BDAC-254E-480A-A29B-AA1A73EA00E2" Name="ISimulatedSystemEvents"/>
+				
+				<Interface InterfaceId="D134326D-629C-47BD-BA1A-2678B73F5799" Name="ILivePlatformRemoteUserForTest"/>
+				<Interface InterfaceId="87683ADE-6D44-4F86-BF8D-A96197EE0066" Name="IRemoteProcessIdleEvents"/>
+				
+				<Interface InterfaceId="DF3CCF8B-13BB-471F-8FC1-6DBE998B61C3" Name="ILivePlatformServiceRegistrarForTest"/>
+				<Interface InterfaceId="AAC8BC5E-4E55-41C5-A85B-CE4C43916539" Name="ILivePlatformVisibilityState"/>
+				<Interface InterfaceId="7522E26D-8FFB-4F1E-9C53-EC5E77EFA5E4" Name="ILivePlatformVisibilityHandler"/>
+				
+				<Interface InterfaceId="AEFEF47D-DBCA-4E11-904C-1C2DFB151C29" Name="ISearchResult"/>
+				<Interface InterfaceId="1150735B-1CB7-451f-8967-0B1120DDF1BB" Name="ISearchResponse"/>
+				<Interface InterfaceId="1150735B-1CB7-451f-8967-0B1120DDF1CC" Name="ISearchCmd"/>
+				<Interface InterfaceId="798211EE-4D1C-4549-982A-F65CD072A1EA" Name="ISearchCallback"/>
+			</ProxyStub>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>CLRHost.dll</Path>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.Badge" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.Binding" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.Image" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.MailMessagePrivate" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.MailTestHelpers" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.MailSecondaryTile" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.SenderMessage" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.Text" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.Tile" ThreadingModel="both"/>
+				<ActivatableClass ActivatableClassId="Platform.TestApi.Mail.Visual" ThreadingModel="both"/>
+			</InProcessServer>
+		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
 				<Path>Microsoft.WindowsLive.Photomail.dll</Path>
 				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Photomail.PhotomailTranscoder" ThreadingModel="MTA"/>
 				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Photomail.AttachmentManager" ThreadingModel="MTA"/>
@@ -413,10 +807,15 @@
 				<Interface Name="IQueueEmptyHandler" InterfaceId="009D04BE-4567-48BA-BBE7-7B18CB8547B2"/>
 			</ProxyStub>
 		</Extension>
+		<Extension Category="windows.activatableClass.inProcessServer">
+			<InProcessServer>
+				<Path>Microsoft.WindowsLive.ErrorReporting.UT.dll</Path>
+				<ActivatableClass ActivatableClassId="Microsoft.WindowsLive.Shared.ErrorReporting.UT.ErrorReportingApiTest" ThreadingModel="STA"/>
+			</InProcessServer>
+		</Extension>
 	</Extensions>
-
 	<Dependencies>
 		<PackageDependency Name="Microsoft.WinJS.2.0" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"/>
-		<PackageDependency Name="Microsoft.VCLibs.120.00" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" MinVersion="12.0.20501.1"/>
+		<PackageDependency Name="Microsoft.VCLibs.120.00.Debug" Publisher="CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US" MinVersion="12.0.20501.1"/>
 	</Dependencies>
 </Package>

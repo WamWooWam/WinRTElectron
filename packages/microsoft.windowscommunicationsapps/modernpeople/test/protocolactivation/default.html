@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Protocol Activation Test App</title>
+    <link rel="stylesheet" type="text/css" href="program.css" />
+    <script type="text/javascript" src="program.js"></script>
+</head>
+<body>
+<button id="reloadButton" onclick="window.location.reload();">reload</button>
+<br />
+<div id="LaunchPeopleAppLinksTitle">Launch People app using links</div>
+<div><a id="idLinkLaunchPeopleDefault" href="wlpeople:">Click to launch People default page "wlpeople:"</a></div>
+<div><a id="idLinkLaunchPeopleAddressbook" href="wlpeople:viewab">Click to launch People address book page"wlpeople:viewab"</a></div>
+<div><a id="idLinkLaunchPeopleProfile" href="wlpeople:viewprofile">Click to launch People "wlpeople:viewprofile"</a></div>
+<div><a id="idLinkLaunchPeopleRA" href="wlpeople:viewra">Click to launch People App "wlpeople:viewra"</a></div>
+<br />
+<div>Launch People app using URI launcher(Windows.UI.Activation.Launcher)</div>
+<br /><button id="idBtnLaunchPeople" onclick="openUri('wlpeople:')">Open wlpeople:</button>
+<br /><button id="idBtnLaunchPeopleWithUri" onclick="openUriFromInput()">OpenUri</button>
+<input id="uriInput" />
+<br/>
+</body>
+</html>

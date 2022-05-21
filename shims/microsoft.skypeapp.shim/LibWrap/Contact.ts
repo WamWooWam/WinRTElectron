@@ -72,9 +72,13 @@ export class Contact implements IClosable {
     static type_SKYPE: number = 1;
     static type_UNRECOGNIZED: number = 0;
 
-    private user: User;
+    private __user: User;
     constructor(user: User) {
-        this.user = user;
+        this.__user = user;
+    }
+
+    getUser() {
+        return this.__user;
     }
 
     getStrProperty(propKey: number): string {
@@ -85,7 +89,7 @@ export class Contact implements IClosable {
         }
 
         if (propKey == PROPKEY.contact_SKYPENAME) {
-            return `${this.user.username}#${this.user.discriminator}`
+            return `${this.__user.username}#${this.__user.discriminator}`
         }
 
 
@@ -110,7 +114,7 @@ export class Contact implements IClosable {
         }
 
         if (propKey == PROPKEY.contact_AVAILABILITY) {
-            switch (this.user.presence.status) {
+            switch (this.__user.presence.status) {
                 case "online":
                     return Contact.availability_ONLINE;
                 case "dnd":
@@ -126,14 +130,14 @@ export class Contact implements IClosable {
     }
 
     getObjectID(): number {
-        return parseInt(this.user.id);
+        return parseInt(this.__user.id);
     }
     getDbID(): number {
-        return parseInt(this.user.id);
+        return parseInt(this.__user.id);
     }
 
     getIdentity(): string {
-        return "user_" + this.user.id;
+        return "user_" + this.__user.id;
     }
 
     setExtendedStrProperty(propKey: number, value: string): void {
@@ -236,10 +240,10 @@ export class Contact implements IClosable {
         throw new Error('Contact#getAuthRequestMessageHtml not implemented')
     }
     getDisplayNameHtml(): string {
-        return `<b>${this.user.username}</b>#${this.user.discriminator}`;
+        return `<b>${this.__user.username}</b>#${this.__user.discriminator}`;
     }
     getFullNameHtml(): string {
-        return `<b>${this.user.username}</b>#${this.user.discriminator}`;
+        return `<b>${this.__user.username}</b>#${this.__user.discriminator}`;
     }
     getMoodTextHtml(): string {
         return ""

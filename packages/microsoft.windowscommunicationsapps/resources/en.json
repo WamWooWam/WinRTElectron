@@ -135,6 +135,7 @@
       "ModernAddressWell": {
         "css": {
           "AddressWell.css": "Resources\\ModernAddressWell\\css\\en\\AddressWell.css",
+          "AddressWellTileView.css": "Resources\\ModernAddressWell\\css\\en\\AddressWellTileView.css",
           "CalendarAddressWellColor.css": "Resources\\ModernAddressWell\\css\\en\\CalendarAddressWellColor.css",
           "MailAddressWellColor.css": "Resources\\ModernAddressWell\\css\\en\\MailAddressWellColor.css",
           "PeopleAddressWellColor.css": "Resources\\ModernAddressWell\\css\\en\\PeopleAddressWellColor.css"

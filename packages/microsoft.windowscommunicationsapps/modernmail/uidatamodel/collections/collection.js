@@ -1,1 +1,217 @@
-﻿Jx.delayDefine(Mail,["Collection","CollectionWrapper"],function(){"use strict";function n(n){Jx.mark("Mail.Collection."+n)}Mail.Collection=function(t){this.initEvents();this.name=t||"<unnamed>";var i=this._logString="collection="+Jx.uid()+" name="+this.name;this.locked=true;n("ctor:"+i)};Jx.augment(Mail.Collection,Jx.Events);Mail.Collection.prototype.dispose=Jx.fnEmpty;Mail.Collection.prototype.addEventListener=Mail.Collection.prototype.addListener;Mail.Collection.prototype.removeEventListener=Mail.Collection.prototype.removeListener;Mail.Collection.prototype.unlock=function(){this.locked&&(this.locked=false,this.raiseEvent("unlocked",{target:this}))};Mail.Collection.prototype._raiseChange=function(t){n("_raiseChange:"+this._logString+" type="+t.eType+" id="+t.objectId+" index="+t.index+" prev="+t.previousIndex);t.target=t.target||this;t.detail=t.detail||[t];this.raiseEvent("collectionchanged",t)};Mail.Collection.prototype._raiseAdded=function(n,t){this._raiseChange({eType:Microsoft.WindowsLive.Platform.CollectionChangeType.itemAdded,objectId:n.objectId,index:t})};Mail.Collection.prototype._raiseRemoved=function(n,t){this._raiseChange({eType:Microsoft.WindowsLive.Platform.CollectionChangeType.itemRemoved,objectId:n.objectId,index:t,removed:[n]})};Mail.Collection.prototype._raiseMoved=function(n,t,i){this._raiseChange({eType:Microsoft.WindowsLive.Platform.CollectionChangeType.itemChanged,objectId:n.objectId,index:i,previousIndex:t})};Mail.Collection.prototype.forEach=function(n,t){return Mail.Collection.forEach(this,n,t)};Mail.Collection.prototype.indexOf=function(n){return Mail.Collection.indexOf(this,n)};Mail.Collection.prototype.map=function(n,t){return Mail.Collection.map(this,n,t)};Mail.Collection.prototype.reduce=function(n,t){return Mail.Collection.reduce(this,n,t)};Mail.Collection.prototype.find=function(n,t){return Mail.Collection.find(this,n,t)};Mail.Collection.prototype.findIndex=function(n,t){return Mail.Collection.findIndex(this,n,t)};Mail.Collection.prototype.findById=function(n){return Mail.Collection.findById(this,n)};Mail.Collection.prototype.findIndexById=function(n){return Mail.Collection.findIndexById(this,n)};Mail.Collection.forEach=function(n,t,i){for(var r=0,u=n.count;r<u;r++)t.call(i,n.item(r),r,n)};Mail.Collection.indexOf=function(n,t){return t?Mail.Collection.findIndexById(n,t.objectId):-1};Mail.Collection.map=function(n,t,i){for(var u=n.count,f=Array(u),r=0;r<u;r++)f[r]=t.call(i,n.item(r),r,n);return f};Mail.Collection.reduce=function(n,t,i){var f=n.count,r=0,u;for(arguments.length<3?(u=n.item(0),r=1):u=i;r<f;r++)u=t(u,n.item(r),r,n);return u};Mail.Collection.find=function(n,t,i){var r=Mail.Collection.findIndex(n,t,i);return r!==-1?n.item(r):null};Mail.Collection.findIndex=function(n,t,i){for(var r=0,u=n.count;r<u;r++)if(t.call(i,n.item(r),r,n))return r;return-1};Mail.Collection.findById=function(n,t){var i=Mail.Collection.findIndexById(n,t);return i!==-1?n.item(i):null};Mail.Collection.findIndexById=function(n,t){return Mail.Collection.findIndex(n,function(n){return n.objectId===t})};Mail.CollectionWrapper=function(n,t){Mail.Collection.call(this,t||"wrap:"+n.name);this._collection=n;n.addListener("collectionchanged",this._onCollectionChanged,this);this.locked=n.locked;this.locked&&n.addListener("unlocked",this._onCollectionUnlocked,this)};Jx.inherit(Mail.CollectionWrapper,Mail.Collection);Mail.CollectionWrapper.prototype.dispose=function(){this.locked&&this._collection.removeListener("unlocked",this._onCollectionUnlocked,this);this._collection.removeListener("collectionchanged",this._onCollectionChanged,this)};Mail.CollectionWrapper.prototype.unlock=function(){this.locked&&this._collection.unlock()};Object.defineProperty(Mail.CollectionWrapper.prototype,"count",{get:function(){return this._collection.count},enumerable:true});Mail.CollectionWrapper.prototype._onCollectionUnlocked=function(){this._collection.removeListener("unlocked",this._onCollectionUnlocked,this);Mail.Collection.prototype.unlock.call(this)}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global Mail,Jx,Debug,Microsoft */
+
+Jx.delayDefine(Mail, ["Collection","CollectionWrapper"], function () {
+    "use strict";
+
+    Mail.Collection = /*@constructor*/function (collectionName) {
+        /// <summary>Base class for all collection interfaces/wrappers in mail. This intentionally
+        /// mimics the platform interface so that this can be used in any piece of code that currently
+        /// operates on a collection.</summary>
+        /// <param name='collectionName' type='String' optional='true' />
+        this.initEvents();
+        this.name = collectionName || "<unnamed>";
+        var logString = this._logString = "collection=" + Jx.uid() + " name=" + this.name;
+        this.locked = true;
+
+        _mark("ctor:" + logString);
+    };
+
+    Jx.augment(Mail.Collection, Jx.Events);
+    Debug.Events.define(Mail.Collection.prototype, "collectionchanged", "unlocked");
+    Mail.Collection.prototype.dispose = Jx.fnEmpty;
+
+    // Delegate add/remove event listener to Jx.Events. These just won't have the third context param.
+    Mail.Collection.prototype.addEventListener = Mail.Collection.prototype.addListener;
+    Mail.Collection.prototype.removeEventListener = Mail.Collection.prototype.removeListener;
+
+    
+    Object.defineProperty(Mail.Collection.prototype, "count", { get: function () {
+        Debug.assert(false, "Derived class must provide a count property");
+    }, enumerable: true });
+
+    Mail.Collection.prototype.item = function (index) {
+        Debug.assert(false, "Derived class must provide an item indexer");
+    };
+    
+
+    Mail.Collection.prototype.unlock = function () {
+        if (this.locked) {
+            this.locked = false;
+            this.raiseEvent("unlocked", { target: this });
+        }
+    };
+
+    // Helper for firing collection changes, ensures that target and detail are included
+    Mail.Collection.prototype._raiseChange = function (/*@dynamic*/ev) {
+        Debug.assert(!this.locked, "change while locked: " + this.name);
+        Debug.assert(Jx.isDefined(ev.eType));
+
+        _mark("_raiseChange:" + this._logString + " type=" + ev.eType +
+            " id=" + ev.objectId + " index=" + ev.index + " prev=" + ev.previousIndex);
+
+        ev.target = ev.target || this;
+        ev.detail = ev.detail || [ev];
+        this.raiseEvent("collectionchanged", ev);
+    };
+
+    Mail.Collection.prototype._raiseAdded = function (/*@dynamic*/item, index) {
+        this._raiseChange({
+            eType: Microsoft.WindowsLive.Platform.CollectionChangeType.itemAdded,
+            objectId: item.objectId,
+            index: index
+        });
+    };
+
+    Mail.Collection.prototype._raiseRemoved = function (/*@dynamic*/item, index) {
+        this._raiseChange({
+            eType: Microsoft.WindowsLive.Platform.CollectionChangeType.itemRemoved,
+            objectId: item.objectId,
+            index: index,
+            removed: [item]
+        });
+    };
+
+    Mail.Collection.prototype._raiseMoved = function (/*@dynamic*/item, previousIndex, index) {
+        this._raiseChange({
+            eType: Microsoft.WindowsLive.Platform.CollectionChangeType.itemChanged,
+            objectId: item.objectId,
+            index: index,
+            previousIndex: previousIndex
+        });
+    };
+
+    // Instance enumerators to make mail collections more like array
+    Mail.Collection.prototype.forEach = function (fn, /*@optional,@dynamic*/context) { return Mail.Collection.forEach(this, fn, context); };
+    Mail.Collection.prototype.indexOf = function (item) { return Mail.Collection.indexOf(this, item); };
+    Mail.Collection.prototype.map = function (fn, /*@optional,@dynamic*/context) { return Mail.Collection.map(this, fn, context); };
+    Mail.Collection.prototype.reduce = function (fn, /*@optional*/initial) { return Mail.Collection.reduce(this, fn, initial); };
+
+    // Instance helpers for finding items in the collections
+    Mail.Collection.prototype.find = function (fn, /*@optional*/context) { return Mail.Collection.find(this, fn, context); };
+    Mail.Collection.prototype.findIndex = function (fn, /*@optional*/context) { return Mail.Collection.findIndex(this, fn, context); };
+    Mail.Collection.prototype.findById = function (id) { return Mail.Collection.findById(this, id); };
+    Mail.Collection.prototype.findIndexById = function (id) { return Mail.Collection.findIndexById(this, id); };
+
+    // Static enumerators like those on array. These work on both on mail collections and platform collections
+    Mail.Collection.forEach = function (/*@dynamic*/collection, /*@type(Function)*/fn, /*@optional*/context) {
+        for (var i = 0, len = collection.count; i < len; i++) {
+            fn.call(context, collection.item(i), i, collection);
+        }
+    };
+
+    Mail.Collection.indexOf = function (/*@dynamic*/collection, /*@dynamic*/item) {
+        // This uses findById instead of an object equality comparison because we may not get the same
+        // instance across calls to a platform collection's item() method.
+        return item ? Mail.Collection.findIndexById(collection, item.objectId) : -1;
+    };
+
+    Mail.Collection.map = function (/*@dynamic*/collection, /*@type(Function)*/fn, /*@optional*/context) {
+        var len = collection.count,
+            arr = Array(len);
+        for (var i = 0; i < len; i++) {
+            arr[i] = fn.call(context, collection.item(i), i, collection);
+        }
+        return arr;
+    };
+
+    Mail.Collection.reduce = function (/*@dynamic*/collection, /*@type(Function)*/fn, /*@optional*/initial) {
+        var len = collection.count, index = 0, current;
+
+        if (arguments.length < 3) {
+            Debug.assert(len > 0, "Must provide an initial value");
+            current = collection.item(0);
+            index = 1;
+        } else {
+            current = initial;
+        }
+
+        for (; index < len; index++) {
+            current = fn(current, collection.item(index), index, collection);
+        }
+        return current;
+    };
+
+    // Static find helpers to find the items in mail or platform collections
+    Mail.Collection.find = function (/*@dynamic*/collection, /*@type(Function)*/fn, /*@optional*/context) {
+        var index = Mail.Collection.findIndex(collection, fn, context);
+        return index !== -1 ? collection.item(index) : null;
+    };
+
+    Mail.Collection.findIndex = function (/*@dynamic*/collection, /*@type(Function)*/fn, /*@optional*/context) {
+        for (var i = 0, len = collection.count; i < len; i++) {
+            if (fn.call(context, collection.item(i), i, collection)) {
+                return i;
+            }
+        }
+        return -1;
+    };
+
+    Mail.Collection.findById = function (/*@dynamic*/collection, /*@type(String)*/id) {
+        var index = Mail.Collection.findIndexById(collection, id);
+        return index !== -1 ? collection.item(index) : null;
+    };
+
+    Mail.Collection.findIndexById = function (/*@dynamic*/collection, /*@type(String)*/id) {
+        return Mail.Collection.findIndex(collection, function (/*@dynamic*/candidate) { return candidate.objectId === id; });
+    };
+
+
+    // Base class for collections which wrap other collections to transform them in some way
+    Mail.CollectionWrapper = /*@constructor*/function (/*@type(Mail.Collection)*/collection, /*@optional*/collectionName) {
+        Debug.assert(Jx.isObject(collection));
+
+        Mail.Collection.call(this, collectionName || ("wrap:" + collection.name));
+        this._collection = collection;
+        collection.addListener("collectionchanged", this._onCollectionChanged, this);
+
+        // Inherit locked state from the inner collection
+        this.locked = collection.locked;
+        if (this.locked) {
+            collection.addListener("unlocked", this._onCollectionUnlocked, this);
+        }
+    };
+
+    Jx.inherit(Mail.CollectionWrapper, Mail.Collection);
+
+    Mail.CollectionWrapper.prototype.dispose = function () {
+        if (this.locked) {
+            this._collection.removeListener("unlocked", this._onCollectionUnlocked, this);
+        }
+        this._collection.removeListener("collectionchanged", this._onCollectionChanged, this);
+    };
+
+    Mail.CollectionWrapper.prototype.unlock = function () {
+        // Unlock the inner collection, we'll update our state in response to the unlocked event
+        if (this.locked) {
+            this._collection.unlock();
+        }
+    };
+
+    Object.defineProperty(Mail.CollectionWrapper.prototype, "count", { get: function () {
+        return this._collection.count;
+    }, enumerable: true });
+
+    Mail.CollectionWrapper.prototype._onCollectionUnlocked = function (/*@dynamic*/ev) {
+        Debug.assert(ev.target === this._collection);
+        Debug.assert(this.locked);
+
+        this._collection.removeListener("unlocked", this._onCollectionUnlocked, this);
+        Mail.Collection.prototype.unlock.call(this);
+    };
+
+    
+    Mail.CollectionWrapper.prototype._onCollectionChanged = function (/*@dynamic*/ev) {
+        Debug.assert(false, "Wrappers must respond to collection changes");
+    };
+    
+    
+    function _mark(str) {
+        Jx.mark("Mail.Collection." + str);
+    }
+
+});
+

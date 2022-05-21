@@ -38,6 +38,7 @@ export interface DBTrack {
     albumId: number;
     artistId: number;
     genreId: number;
+    imageUrl: string;
     filePath: string;
     duration: number;
     number: number;

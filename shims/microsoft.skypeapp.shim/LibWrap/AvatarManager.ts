@@ -13,9 +13,9 @@ import { WrSkyLib } from "./WrSkyLib";
 
 @GenerateShim('LibWrap.AvatarManager')
 export class AvatarManager {
-    private client: Client;
+    private __client: Client;
     constructor(client: Client) {
-        this.client = client;
+        this.__client = client;
     }
 
     static offlineAvatarURI(identity: string): string {
@@ -30,13 +30,13 @@ export class AvatarManager {
         console.warn("getAvatarUrl: " + identity)
 
         if (identity.startsWith("user_")) {
-            return this.client.users.resolve(identity.substr(5))?.displayAvatarURL();
+            return this.__client.users.resolve(identity.substr(5))?.displayAvatarURL();
         }
         if (identity.startsWith("channel_")) {
-            return (this.client.channels.resolve(identity.substr(8)) as TextChannel)?.guild?.iconURL();
+            return (this.__client.channels.resolve(identity.substr(8)) as TextChannel)?.guild?.iconURL();
         }
 
-        return this.client.users.cache.find(u => `${u.username}#${u.discriminator}` == identity)?.displayAvatarURL({ size: 1024 });
+        return this.__client.users.cache.find(u => `${u.username}#${u.discriminator}` == identity)?.displayAvatarURL({ size: 1024 });
     }
 
     private __avatarURIChange: Set<OnAvatarURIChangeType> = new Set();

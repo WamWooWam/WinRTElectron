@@ -1,64 +1,29 @@
-﻿(function() {
-    function n(n) {
-        console.warn("MailWorker:" + n + ",StartTA,Mail")
-    }
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
 
-    function t(n) {
-        console.warn("MailWorker:" + n + ",StopTA,Mail")
-    }
+/*global self,Microsoft,Jx,msWriteProfilerMark */
 
-    class Jx_Impl {
-        startSession() {
-            console.log("jx::startSession");
-        }
+(function () {
+    function _markStart(s) { msWriteProfilerMark("MailWorker:" + s + ",StartTA,Mail"); }
+    function _markStop(s)  { msWriteProfilerMark("MailWorker:" + s + ",StopTA,Mail"); }
 
-        flushSession() {
-            console.log("jx::flushSession");
-        }
+    importScripts(
+        "ms-appx://winrt/dist/winrt.bundle.js", 
+        "ms-appx://microsoft.windowscommunicationsapps.shim/dist/bundle.js");
 
-        fault(...args) {
-            console.log("jx::fault", args);
-        }
+    // JxWorker.js contains the ETW initialization code but it's too much overhead to load the whole file.
+    // Assign the Jx abi to a global variable to keep it alive. It will speed up the initialization on the UI thread.
 
-        erRegisterFile(...args) {
-            console.log("jx::erRegisterFile", args);
-        }
-
-        ptStopResize(...args) {
-            console.log("jx::ptStopResize", args);
-        }
-
-        ptStopResume(...args) {
-            console.log("jx::ptStopResume", args);
-        }
-
-        ptStopLaunch(...args) {
-            console.log("jx::ptStopLaunch", args);
-        }
-
-        ptStopData(...args) {
-            console.log("jx::ptStopData", args);
-        }
-
-        ptStop(...args) {
-            console.log("jx::ptStop", args);
-        }
-
-        ptStart(...args) {
-            console.log("jx::ptStart", args);
-        }
-
-        etw(...args) {
-            console.log("jx::etw", args);
-        }
-    }
-
-    n("Jx.abi");
+    _markStart("Jx.abi");
     self.Jx = {
-        abi: new Jx_Impl()
+        abi: new Microsoft.WindowsLive.Jx()
     };
-    t("Jx.abi");
-    n("startSession");
+    _markStop("Jx.abi");
+
+    // Start the ETW session. 
+    _markStart("startSession");
     Jx.abi.startSession();
-    t("startSession")
-})()
+    _markStop("startSession");
+})();

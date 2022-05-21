@@ -41,7 +41,7 @@ export class PlaybackConfiguration implements IPlaybackConfiguration {
     enableVideo2SmoothFastForwardRewindForH264: boolean = null;
     mcplayerAdapterSeekBackDeltaHNS: number = null;
     previewOnly: boolean = null;
-    musicMuteState: boolean = null;
+    musicMuteState: boolean = false;
     xmediaEnvironment: string = null;
     videoRatingValues: string = null;
     videoRatingAvailable: string = "ALL";

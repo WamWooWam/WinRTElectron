@@ -1,1 +1,182 @@
-﻿Jx.delayDefine(Mail,"MessageListFilter",function(){"use strict";function t(n){Jx.mark("MessageListFilter:"+n)}function e(n){Jx.mark("MessageListFilter."+n+",StartTA,MessageListFilter")}function o(n){Jx.mark("MessageListFilter."+n+",StopTA,MessageListFilter")}var f=Microsoft.WindowsLive.Platform,i=f.FilterCriteria,u=[{value:i.all,textId:"mailFilterAll",tooltipId:"mailFilterTooltipAll"},{value:i.unread,textId:"mailFilterUnread",tooltipId:"mailFilterTooltipUnread"}],n,r;Mail.MessageListFilter=function(n,t,i){e("ctor");this._selection=t;this._settings=i;this._container=null;this._combobox=new Mail.ComboBox(n,u,this._getLastAppliedFilter(),{getDropdownAriaLabel:this._getDropdownAriaLabel.bind(this),getHostAriaLabel:this._getHostAriaLabel.bind(this)});var r=Mail.Commands.Events;this._disposer=new Mail.Disposer(this._combobox,new Mail.EventHook(this._combobox,"changed",this._onComboBoxChanged,this),Mail.EventHook.createGlobalHook(r.allFilterApplied,this._onKeyboardShortcut,this),Mail.EventHook.createGlobalHook(r.unreadFilterApplied,this._onKeyboardShortcut,this),Mail.EventHook.createGlobalHook(r.reapplyFilter,this._onKeyboardShortcut,this));o("ctor")};Jx.augment(Mail.MessageListFilter,Jx.Events);n=Mail.MessageListFilter.prototype;n.dispose=function(){this._disposer.dispose()};n._getHostAriaLabel=function(n){return Jx.res.getString(u[n].textId)};n._getDropdownAriaLabel=function(){return Jx.res.getString("mailFilterDropdownMenuAriaLabel")};Object.defineProperty(n,"currentFilter",{get:function(){return this._combobox.value},enumerable:true});r={appliedViewId:"mail-filter-appliedViewId",lastAppliedFilter:"mail-filter-lastAppliedFilter"};n._getLastAppliedFilter=function(){var u,f,n,e;return(this._container=this._settings.getLocalSettings(),u=this._selection.view.objectId,f=this._container.get(r.appliedViewId),t("_getLastAppliedFilter - views: "+u+", "+f),f===u&&(n=this._container.get(r.lastAppliedFilter),n===i.unread||n===i.all))?(t("_getLastAppliedFilter - last applied filter is "+n),n):(t("_getLastAppliedFilter - stored view/filter pair is out of date, defaulting to All"),e=i.all,this._saveAppliedFilter(e),e)};n._onComboBoxChanged=function(){t("_onComboBoxChanged");this._saveAppliedFilter(this.currentFilter);this.raiseEvent("changed")};n._saveAppliedFilter=function(n){var i=this._selection.view.objectId,u=this._container;t("_onComboBoxChanged - storing view and filter: "+i+", "+n);u.set(r.appliedViewId,i);u.set(r.lastAppliedFilter,n)};n.setToAll=function(){t("setToAll");var n=i.all;this._saveAppliedFilter(n);this._combobox.updateNewValue(n,false)};n.apply=function(n,i){var r=this.currentFilter;return t("apply - applying "+r+"; threaded = "+i),i?n.getConversations(r):n.getMessages(r)};n._onKeyboardShortcut=function(n){var f=Mail.Commands.Events,r=null,u=this._combobox.updateNewValue;switch(n.type){case f.allFilterApplied:r=i.all;t("_onKeyboardShortcut - applying All filter");break;case f.unreadFilterApplied:r=i.unread;t("_onKeyboardShortcut - applying Unread filter");break;case f.reapplyFilter:Mail.ViewCapabilities.isFiltered(this._selection.view,this.currentFilter)?(r=this.currentFilter,u=this._combobox.updateValue,t("_onKeyboardShortcut - reapplying filter "+r)):(u=null,t("_onKeyboardShortcut - not changing filter"))}u&&u.call(this._combobox,r,true)};n.hide=function(){t("hide");this._combobox.hide()};n.show=function(){t("show");this._combobox.show()}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*global Mail,Jx,Debug,Microsoft*/
+
+Jx.delayDefine(Mail, "MessageListFilter", function () {
+    "use strict";
+
+    var P = Microsoft.WindowsLive.Platform,
+        filterCriteria = P.FilterCriteria,
+        menuItems = [
+            {
+                value: filterCriteria.all,
+                textId: "mailFilterAll",
+                tooltipId: "mailFilterTooltipAll"
+            },
+            {
+                value: filterCriteria.unread,
+                textId: "mailFilterUnread",
+                tooltipId: "mailFilterTooltipUnread"
+            }
+        ];
+
+    Mail.MessageListFilter = function (host, selection, settings) {
+        _markStart("ctor");
+
+        Debug.assert(Jx.isHTMLElement(host));
+        Debug.assert(Jx.isObject(selection));
+        Debug.assert(Jx.isObject(settings));
+
+        this._selection = selection;
+        this._settings = settings;
+        this._container = null;
+
+        this._combobox = new Mail.ComboBox(host, menuItems, this._getLastAppliedFilter(), {
+            getDropdownAriaLabel: this._getDropdownAriaLabel.bind(this),
+            getHostAriaLabel: this._getHostAriaLabel.bind(this)
+        });
+
+        var commandEvents = Mail.Commands.Events;
+        this._disposer = new Mail.Disposer(
+            this._combobox,
+            new Mail.EventHook(this._combobox, "changed", this._onComboBoxChanged, this),
+            Mail.EventHook.createGlobalHook(commandEvents.allFilterApplied, this._onKeyboardShortcut, this),
+            Mail.EventHook.createGlobalHook(commandEvents.unreadFilterApplied, this._onKeyboardShortcut, this),
+            Mail.EventHook.createGlobalHook(commandEvents.reapplyFilter, this._onKeyboardShortcut, this)
+        );
+
+        _markStop("ctor");
+    };
+    Jx.augment(Mail.MessageListFilter, Jx.Events);
+
+    var MLFProto = Mail.MessageListFilter.prototype;
+    Debug.Events.define(MLFProto, "changed");
+
+    MLFProto.dispose = function () {
+        this._disposer.dispose();
+    };
+
+    MLFProto._getHostAriaLabel = function (currentFilter) {
+        return Jx.res.getString(menuItems[currentFilter].textId);
+    };
+
+    MLFProto._getDropdownAriaLabel = function () {
+        return Jx.res.getString("mailFilterDropdownMenuAriaLabel");
+    };
+
+    Object.defineProperty(MLFProto, "currentFilter", { get: function () { return this._combobox.value; }, enumerable: true });
+
+    var filterStateStorageNames = {
+        appliedViewId: "mail-filter-appliedViewId",
+        lastAppliedFilter: "mail-filter-lastAppliedFilter"
+    };
+
+    MLFProto._getLastAppliedFilter = function () {
+        Debug.assert(this._container === null);
+
+        // Try to restore the last applied filter on the current view
+        this._container = this._settings.getLocalSettings();
+        var currentViewId = this._selection.view.objectId,
+            storedViewId = this._container.get(filterStateStorageNames.appliedViewId);
+
+        _mark("_getLastAppliedFilter - views: " + currentViewId + ", " + storedViewId);
+
+        if (storedViewId === currentViewId) {
+            var filter = this._container.get(filterStateStorageNames.lastAppliedFilter);
+            if (filter === filterCriteria.unread || filter === filterCriteria.all) {
+                _mark("_getLastAppliedFilter - last applied filter is " + filter);
+                return filter;
+            }
+        }
+
+        _mark("_getLastAppliedFilter - stored view/filter pair is out of date, defaulting to All");
+        var filterCriteriaAll = filterCriteria.all;
+        this._saveAppliedFilter(filterCriteriaAll);
+        return filterCriteriaAll;
+    };
+
+    MLFProto._onComboBoxChanged = function () {
+        _mark("_onComboBoxChanged");
+        this._saveAppliedFilter(this.currentFilter);
+        this.raiseEvent("changed");
+    };
+
+    MLFProto._saveAppliedFilter = function (filter) {
+        Debug.assert(Jx.isValidNumber(filter));
+        var viewId = this._selection.view.objectId;
+        var container = this._container;
+        _mark("_onComboBoxChanged - storing view and filter: " + viewId + ", " + filter);
+        container.set(filterStateStorageNames.appliedViewId, viewId);
+        container.set(filterStateStorageNames.lastAppliedFilter, filter);
+    };
+
+    MLFProto.setToAll = function () {
+        _mark("setToAll");
+        var filterCriteriaAll = filterCriteria.all;
+        this._saveAppliedFilter(filterCriteriaAll);
+        this._combobox.updateNewValue(filterCriteriaAll, false /* fireEvent */);
+    };
+
+    MLFProto.apply = function (view, threaded) {
+        Debug.assert(Jx.isInstanceOf(view, Mail.UIDataModel.MailView));
+        Debug.assert(Jx.isBoolean(threaded));
+
+        var filter = this.currentFilter;
+        _mark("apply - applying " + filter + "; threaded = " + threaded);
+        return threaded ? view.getConversations(filter) : view.getMessages(filter);
+    };
+
+    MLFProto._onKeyboardShortcut = function (evt) {
+        Debug.assert(Jx.isObject(evt));
+        Debug.assert(Jx.isNonEmptyString(evt.type));
+
+        var commandEvents = Mail.Commands.Events,
+            newFilter = null,
+            updateFunc = this._combobox.updateNewValue;
+        switch (evt.type) {
+            case commandEvents.allFilterApplied:
+                newFilter = filterCriteria.all;
+                _mark("_onKeyboardShortcut - applying All filter");
+                break;
+            case commandEvents.unreadFilterApplied:
+                newFilter = filterCriteria.unread;
+                _mark("_onKeyboardShortcut - applying Unread filter");
+                break;
+            case commandEvents.reapplyFilter:
+                if (!Mail.ViewCapabilities.isFiltered(this._selection.view, this.currentFilter)) {
+                    // There is no point re-applying the filter if nothing is filtered out
+                    updateFunc = null;
+                    _mark("_onKeyboardShortcut - not changing filter");
+                } else {
+                    newFilter = this.currentFilter;
+                    updateFunc = this._combobox.updateValue;
+                    _mark("_onKeyboardShortcut - reapplying filter " + newFilter);
+                }
+                break;
+            default:
+                Debug.assert(false);
+                break;
+        }
+
+        if (updateFunc) {
+            updateFunc.call(this._combobox, newFilter, true /* fireEvent */);
+        }
+    };
+
+    MLFProto.hide = function () {
+        _mark("hide");
+        this._combobox.hide();
+    };
+
+    MLFProto.show = function () {
+        _mark("show");
+        this._combobox.show();
+    };
+
+    function _mark(s) { Jx.mark("MessageListFilter:" + s); }
+    function _markStart(s) { Jx.mark("MessageListFilter." + s + ",StartTA,MessageListFilter"); }
+    function _markStop(s) { Jx.mark("MessageListFilter." + s + ",StopTA,MessageListFilter"); }
+
+});

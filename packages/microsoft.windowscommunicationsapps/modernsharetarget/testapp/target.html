@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Windows Live Basic Share App</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <script type="text/javascript" src="target.js">
+    </script>
+</head>
+<body bgcolor="white" onload="onLoad()">
+    <div id="targetIdDiv">
+        This app was activated with a target ID: 
+        <input type="text" id="targetId" size="50" style="border:none;width:50;background:none" readonly="readonly"/>
+    </div>
+    <div id="sourceInfo">
+    </div>
+    <h2>Shared content preview</h2>
+    
+    <div id="dataPreview">
+        
+        <div id="thumbnailPreviewDiv"><b>This datapackage contains a thumbnail:</b><img id="ThumbnailPreview" width="70" /></div>
+        <div id="dataPreviewTextDiv">
+            <div><B style="color:Orange">Title: </B><input type="text" id="TitlePreview" size="150" style="border:none;width:150;background:none" readonly="readonly"/><br /></div>
+            <div><b style="color:Orange">Descr: </b><input type="text" id="DescrPreview" size="150" style="border:none;width:150;background:none" readonly="readonly"/><br /></div>
+            <div id="WebLinkPreviewDiv"><b style="color:Orange">This datapackage contains a Web Link:</b><input type="text" id="WebLinkPreview" size="200" style="border:none;width:250;background:none" readonly="readonly"/><br /></div>
+            <div id="ApplicationLinkPreviewDiv"><b style="color:Orange">This datapackage contains an Application Link:</b><input type="text" id="ApplicationLinkPreview" size="200" style="border:none;width:250;background:none" readonly="readonly"/><br /></div>
+            <div id="TextPreviewDiv"><b style="color:Orange">This datapackage contains text:</b><input type="text" id="TextPreview" size="200" style="border:none;width:250;background:none" readonly="readonly"/><br /></div>
+            
+            <label id="dataPreviewText" />
+        </div>
+        <div id="ImagePreviewDiv"><b style="color:Orange">This datapackage contains an image:</b><br /><img id="ImagePreview" width="70" /></div>
+        <div><b style="color:Orange"> Status:</b><input type="text" id="statusText" size="250" style="border:none;width:250;background:none" readonly="readonly"/><br /></div>
+    </div>
+    <br />
+    <div id="htmlPreview" style="border: 2px solid #fff; width: 100%; height: 350px; overflow: scroll;" >
+        <div><B>DataPackage contains HTML:</B></div>
+        <iframe id="htmlContent" style="font-family:'segoe ui semilight';background-color:rgba(255,255,255,1);" width="600" height="200"></iframe>
+        <div id="htmlPlainText"></div>
+    </div>
+ 
+    <div id="shareControls" class="lrLayout">
+        <br /><br /><u><b>Logging:</b></u><br /><br />
+        <div id="logTxt"></div>
+    </div>
+</body>
+</html>

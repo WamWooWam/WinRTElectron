@@ -1,1 +1,384 @@
-﻿Jx.delayDefine(Mail,"ViewIntroductionHeader",function(){"use strict";function e(n,t){var i=parseInt(t.getLocalSettings().container("ViewIntroCounts").get(n),10);return Jx.isValidNumber(i)?i:0}function o(n,t,i){t.getLocalSettings().container("ViewIntroCounts").set(n,i.toString())}function n(n,t,i){this.initEvents();this._viewName=n;this._view=t;this._settings=i;this._disposer=new Mail.Disposer;this._incremented=false;this._show=false;this._update()}function u(t,i){this._eas=null;this._enabledCategories=null;n.call(this,"Inbox",t,i)}function f(t,i){this._account=null;n.call(this,"AllFavorites",t,i)}function s(t,i){switch(t.type){case r.inbox:return new u(t,i);case r.newsletter:return new n("Newsletter",t,i);case r.social:return new n("Social",t,i);case r.allPinnedPeople:return new f(t,i);default:return null}}var i=Microsoft.WindowsLive.Platform,r=i.MailViewType,t;Jx.augment(n,Jx.Events);n.prototype.dispose=function(){Jx.dispose(this._disposer)};n.prototype.shouldShow=function(){return this._show};n.prototype.getText=function(){return Jx.res.getString("mail"+this._viewName+"Intro")};n.prototype.dismiss=function(){this._settings["dismissed"+this._viewName+"Intro"]=true;this._update()};n.prototype._isSupported=function(){return true};n.prototype._isDismissed=function(){return this._settings["dismissed"+this._viewName+"Intro"]||this._settings.isRetailExperience};n.prototype._shouldAutoDismiss=function(){var t=this._settings,n=e(this._viewName,t);return this._incremented||(this._incremented=true,n++,o(this._viewName,t,n)),n>3};n.prototype._update=function(){var n=!this._isDismissed()&&this._isSupported();n&&this._shouldAutoDismiss()&&(n=false,this.dismiss());n!==this._show&&(this._show=n,this.raiseEvent("updated",{shouldShow:n}))};Jx.inherit(u,n);u.prototype._isSupported=function(){var r=n.prototype._isSupported.call(this),t,u;return r&&(t=this._eas,t||(u=this._view.account,u&&(t=this._eas=u.platformObject.getServerByType(i.ServerType.eas),t&&this._disposer.add(new Mail.EventHook(t,"changed",this._update,this)))),r=t&&t.isWlasSupported),r};u.prototype._shouldAutoDismiss=function(){var r=n.prototype._shouldAutoDismiss.call(this),f,t,o,u;return r&&(f=this._settings,r=e("Newsletter",f)>=1&&e("Social",f)>=1),r||(t=this._enabledCategories,t||(o=this._view.account,o&&(u=o.queryViews(i.MailViewScenario.systemCategories),u&&(t=this._enabledCategories=Mail.ViewFilters.filterEnabled(u),t.unlock(),this._disposer.addMany(u,t,new Mail.EventHook(t,"collectionchanged",this._update,this))))),r=t.count<2),r};Jx.inherit(f,n);f.prototype._shouldAutoDismiss=function(){var r=n.prototype._shouldAutoDismiss.call(this),t,u,f;if(!r&&(t=this._account,t||(t=this._account=this._view.account,t&&this._disposer.add(new Mail.EventHook(t,"changed",this._onAccountChanged,this))),t&&t.peopleViewComplete)){for(u=t.queryViews(i.MailViewScenario.allPeople),r=true,f=0;f<u.count;f++)if(u.item(f).isPinnedToNavPane){r=false;break}Jx.dispose(u)}return r};f.prototype._onAccountChanged=function(n){Mail.Validators.hasPropertyChanged(n,"peopleViewComplete")&&this._update()};t=Mail.ViewIntroductionHeader=function(n){this.initComponent();this._settings=n;this._container=null;this._disposer=null;this._view=null;this._intro=null;this._visible=false;this._animationPromise=null};Jx.inherit(t,Jx.Component);t.prototype.getUI=function(n){n.html="<div id='"+this._id+"' class='mailMessageListViewIntro'><div class='descriptionText' role='note'><\/div><div class='buttonContainer'><button class='dismiss' tabIndex='0'>"+Jx.res.getString("mailOkButton")+"<\/button><\/div><\/div>"};t.prototype.setContainer=function(n){this._container=n};t.prototype.onDeactivateUI=function(){Jx.dispose(this._disposer)};t.prototype.waitForAnimation=function(){return Jx.Promise.fork(this._animationPromise)};t.prototype.setView=function(n){var t,i;Jx.dispose(this._disposer);this._disposer=null;this._view=n;t=this._intro=s(n,this._settings);t&&(this._disposer=new Mail.Disposer(t,new Mail.EventHook(t,"updated",this._onUpdate,this)));i=t&&t.shouldShow();i?this._show():this._hide(false)};t.prototype._show=function(){var t=this._disposer,i=this._getElement(),r=i.querySelector(".descriptionText"),n;r.innerHTML=Jx.escapeHtml(this._intro.getText()).replace("%1",function(){return"<span class='settingsLink' role='button' tabIndex='0'>"+Jx.escapeHtml(Jx.res.getString("mailViewIntroSettingsLink"))+"<\/span>"});n=r.querySelector(".settingsLink");n&&t.add(new Jx.Clicker(n,this._onSettingsClick,this));t.add(new Mail.EventHook(i.querySelector(".dismiss"),"click",this._onDismissClick,this));this._visible||(this._container.classList.add("showViewIntro"),this._visible=true)};t.prototype._hide=function(n){var i;if(this._visible)if(this._visible=false,n){var t=this._getElement(),r=Array.prototype.filter.call(this._container.parentElement.children,function(n){return n!==t}),u=WinJS.UI.Animation.createCollapseAnimation(t,r);t.classList.add("collapsing");i=this._animationPromise=u.execute();this._disposer.add(new Mail.Disposable(i,"cancel"));i.done(function(){this._animationPromise=null;t.classList.remove("collapsing");this._container.classList.remove("showViewIntro")}.bind(this))}else this._container.classList.remove("showViewIntro")};t.prototype._onUpdate=function(n){var t=n.shouldShow;t!==this._visible&&(t?this._show():this._hide(true))};t.prototype._getElement=function(){return document.getElementById(this._id)};t.prototype._onSettingsClick=function(n){Mail.AppSettings.openAccountUI(this._view.account.platformObject);n.preventDefault()};t.prototype._onDismissClick=function(){this._intro.dismiss()}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*jshint browser:true*/
+/*global Debug,Mail,Microsoft,Jx,WinJS*/
+
+Jx.delayDefine(Mail, "ViewIntroductionHeader", function () {
+    "use strict";
+
+    var Platform = Microsoft.WindowsLive.Platform;
+    var MailViewType = Platform.MailViewType;
+
+    function getCount(viewName, settings) {
+        ///<returns type="Number">The number of times the intro message for a given view has been seen</returns>
+        Debug.assert(Jx.isNonEmptyString(viewName));
+        Debug.assert(Jx.isObject(settings));
+
+        var value = parseInt(settings.getLocalSettings().container("ViewIntroCounts").get(viewName), 10);
+        return Jx.isValidNumber(value) ? value : 0;
+    }
+
+    function setCount(viewName, settings, count) {
+        ///<summary>Sets a value to be returned by a future call to getCount</summary>
+        Debug.assert(Jx.isNonEmptyString(viewName));
+        Debug.assert(Jx.isObject(settings));
+        Debug.assert(Jx.isNumber(count));
+        settings.getLocalSettings().container("ViewIntroCounts").set(viewName, count.toString());
+    }
+
+    function BaseIntro(viewName, view, settings) {
+        ///<summary>The intro messages for various views each have their own intricacies.  BaseIntro represents the
+        ///shared default behavior, individual views can override _isSupported and _shouldAutoDismiss with additional
+        ///behavior.</summary>
+        Debug.assert(Jx.isNonEmptyString(viewName));
+        Debug.assert(Jx.isInstanceOf(view, Mail.UIDataModel.MailView));
+        Debug.assert(Jx.isObject(settings));
+
+        this.initEvents();
+
+        this._viewName = viewName;
+        this._view = view;
+        this._settings = settings;
+
+        this._disposer = new Mail.Disposer();
+        this._incremented = false;
+
+        this._show = false;
+        this._update();
+    }
+    Jx.augment(BaseIntro, Jx.Events);
+    Debug.Events.define(BaseIntro.prototype, "updated");
+    BaseIntro.prototype.dispose = function () {
+        Jx.dispose(this._disposer);
+    };
+    BaseIntro.prototype.shouldShow = function () {
+        ///<returns type="Boolean">Called externally, represents the aggregate of _isSupported, _isDismissed and
+        ///_shouldAutoDismiss.  Updated by calls to _update.</summary>
+        return this._show;
+    };
+    BaseIntro.prototype.getText = function () {
+        ///<returns type="Boolean">Called externally, returns the text of the intro message.  May contain a %1 which will
+        ///be replaced by a settings link</returns>
+        return Jx.res.getString("mail" + this._viewName + "Intro");
+    };
+    BaseIntro.prototype.dismiss = function () {
+        ///<summary>Can be called externally based on a button click or internally based on _shouldAutoDismiss.  Once
+        ///dismissed, an intro will never show again.</summary>
+        this._settings["dismissed" + this._viewName + "Intro"] = true;
+        this._update();
+    };
+    BaseIntro.prototype._isSupported = function () {
+        ///<summary>Derived views may only be supported under special conditions (e.g. based on account type)</summary>
+        return true;
+    };
+    BaseIntro.prototype._isDismissed = function () {
+        ///<summary>Checks whether the intro has been dismissed (either manually or automatically) previously.</summary>
+        return this._settings["dismissed" + this._viewName + "Intro"] ||
+               this._settings.isRetailExperience;
+    };
+    BaseIntro.prototype._shouldAutoDismiss = function () {
+        ///<summary>Checks whether the intro should be automatically dismissed.  The default is that the intro for a view
+        ///is automatically dismissed when it has already been seen 3 times, but individual views may override or augment
+        ///this functionality</summary>
+        var settings = this._settings;
+        var count = getCount(this._viewName, settings);
+
+        if (!this._incremented) {
+            this._incremented = true;
+            count++;
+            setCount(this._viewName, settings, count);
+        }
+
+        return count > 3;
+    };
+    BaseIntro.prototype._update = function () {
+        ///<summary>Sets the initial visibility of the intro, and updates it when circumstances change (platform change
+        ///events).</summary>
+        var show = !this._isDismissed() && this._isSupported();
+        if (show && this._shouldAutoDismiss()) {
+            show = false;
+            this.dismiss();
+        }
+
+        if (show !== this._show) {
+            this._show = show;
+            this.raiseEvent("updated", { shouldShow: show });
+        }
+    };
+
+    function InboxIntro(view, settings) {
+        ///<summary>The inbox intro is only supported in Outlook.com accounts, and has has special autodismiss rules</summary>
+        this._eas = null;
+        this._enabledCategories = null;
+        BaseIntro.call(this, "Inbox", view, settings);
+    }
+    Jx.inherit(InboxIntro, BaseIntro);
+    InboxIntro.prototype._isSupported = function () {
+        ///<summary>Note that we override _isSupported here and not _shouldAutoDismiss.  We don't want to dismiss
+        ///an intro permanently just because you visited that view in an unsupported account.  Note also that we 
+        ///subscribe for changes:  accounts don't know until first sync whether they are WLAS.</summary>
+        var supported = BaseIntro.prototype._isSupported.call(this);
+        if (supported) {
+            var eas = this._eas;
+            if (!eas) {
+                var account = this._view.account;
+                if (account) {
+                    eas = this._eas = account.platformObject.getServerByType(Platform.ServerType.eas);
+                    if (eas) {
+                        this._disposer.add(new Mail.EventHook(eas, "changed", this._update, this));
+                    }
+                }
+            }
+
+            supported = eas && eas.isWlasSupported;
+        }
+        return supported;
+    };
+    InboxIntro.prototype._shouldAutoDismiss = function () {
+        var dismiss = BaseIntro.prototype._shouldAutoDismiss.call(this);
+
+        if (dismiss) {
+            // We won't autodismiss the Inbox intro based on count alone until both newsletter and social views
+            // have been visited at least once.  This ensures the user really gets a chance to understand how 
+            // their messages have been organized, and the opportunity to disable.
+            var settings = this._settings;
+            dismiss = (getCount("Newsletter", settings) >= 1) && (getCount("Social", settings) >= 1);
+        }
+
+        if (!dismiss) {
+            // If either category is disabled, the intro will be immediately dismissed.
+            var enabledCategories = this._enabledCategories;
+            if (!enabledCategories) {
+                var account = this._view.account;
+                if (account) {
+                    var categoryViews = account.queryViews(Platform.MailViewScenario.systemCategories);
+                    if (categoryViews) {
+                        enabledCategories = this._enabledCategories = Mail.ViewFilters.filterEnabled(categoryViews);
+                        enabledCategories.unlock();
+                        this._disposer.addMany(
+                            categoryViews,
+                            enabledCategories,
+                            new Mail.EventHook(enabledCategories, "collectionchanged", this._update, this)
+                        );
+                    }
+                }
+            }
+
+            Debug.assert(enabledCategories.count <= 2); // If we ever add more categories, we'd need a FilterByType[newsletter, social] above to maintain this behavior.
+            dismiss = (enabledCategories.count < 2);
+        }
+
+        return dismiss;
+    };
+
+    function AllFavoritesIntro(view, settings) {
+        ///<summary>The All Favorites view hints that we have autopinned some frequent contacts for the user.  We want
+        ///to dismiss this message if we haven't.  That's only necessary if the user visits the view before autopinning
+        ///completes, otherwise they'd just be presented the flyout directly.</summary>
+        this._account = null;
+        BaseIntro.call(this, "AllFavorites", view, settings);
+    }
+    Jx.inherit(AllFavoritesIntro, BaseIntro);
+    AllFavoritesIntro.prototype._shouldAutoDismiss = function () {
+        var dismiss = BaseIntro.prototype._shouldAutoDismiss.call(this);
+        if (!dismiss) {
+            // We'll pivot this decision off of peopleViewComplete.  So the user will see this message until that property
+            // is set, at which point we may autodismiss.
+            var account = this._account;
+            if (!account) {
+                account = this._account = this._view.account;
+                if (account) {
+                    this._disposer.add(new Mail.EventHook(account, "changed", this._onAccountChanged, this));
+                }
+            }
+
+            if (account && account.peopleViewComplete) {
+                // We won't subscribe the collection for changes.  If the user unpins someone while they are looking 
+                // at the all favorites view, there is no reason to dismiss the message.
+                var peopleViews = account.queryViews(Platform.MailViewScenario.allPeople);
+
+                dismiss = true;
+                for (var i = 0; i < peopleViews.count; i++) {
+                    if (peopleViews.item(i).isPinnedToNavPane) {
+                        dismiss = false;
+                        break;
+                    }
+                }
+                Jx.dispose(peopleViews);
+            }
+        }
+
+        return dismiss;
+    };
+    AllFavoritesIntro.prototype._onAccountChanged = function (ev) {
+        if (Mail.Validators.hasPropertyChanged(ev, "peopleViewComplete")) {
+            this._update();
+        }
+    };
+
+    function createIntro(view, settings) {
+        switch (view.type) {
+        case MailViewType.inbox:
+            return new InboxIntro(view, settings);
+        case MailViewType.newsletter:
+            return new BaseIntro("Newsletter", view, settings);
+        case MailViewType.social:
+            return new BaseIntro("Social", view, settings);
+        case MailViewType.allPinnedPeople:
+            return new AllFavoritesIntro(view, settings);
+        default:
+            return null;
+        }
+    }
+
+    var ViewIntroductionHeader = Mail.ViewIntroductionHeader = function (settings) {
+        ///<summary>The ViewIntroductionHeader is the Jx Component that renders the intro message</summary>
+        this.initComponent();
+        this._settings = settings;
+        this._container = null;
+        this._disposer = null;
+        this._view = null;
+        this._intro = null;
+        this._visible = false;
+        this._animationPromise = null;
+    };
+    Jx.inherit(ViewIntroductionHeader, Jx.Component);
+
+    ViewIntroductionHeader.prototype.getUI = function (ui) {
+        ui.html = "<div id='" + this._id + "' class='mailMessageListViewIntro'>" +
+                      "<div class='descriptionText' role='note'></div>" +
+                      "<div class='buttonContainer'>" +
+                          "<button class='dismiss' tabIndex='0'>" + Jx.res.getString("mailOkButton") + "</button>" +
+                      "</div>" +
+                  "</div>";
+    };
+
+    ViewIntroductionHeader.prototype.setContainer = function (container) {
+        ///<summary>Instead of setting classes on its own element, the intro will set a showViewIntro class on this
+        ///container element.  This is because other components may adjust their styling based on the presence of the
+        ///intro (particularly the search mode rendering). The peers of this container element are animated when
+        ///the intro is hidden.</summary>
+        Debug.assert(Jx.isHTMLElement(container));
+        this._container = container;
+    };
+
+    ViewIntroductionHeader.prototype.onDeactivateUI = function () {
+        Jx.dispose(this._disposer);
+    };
+
+    ViewIntroductionHeader.prototype.waitForAnimation = function () {
+        return Jx.Promise.fork(this._animationPromise);
+    };
+
+    ViewIntroductionHeader.prototype.setView = function (view) {
+        ///<summary>When the message list switches to a new view, it will call this method, which will decide
+        ///what intro message to show and whether to show it</summary>
+        Debug.assert(Jx.isInstanceOf(view, Mail.UIDataModel.MailView));
+
+        Jx.dispose(this._disposer);
+        this._disposer = null;
+
+        this._view = view;
+        var intro = this._intro = createIntro(view, this._settings);
+        if (intro) {
+            this._disposer = new Mail.Disposer(
+                intro,
+                new Mail.EventHook(intro, "updated", this._onUpdate, this)
+            );
+        }
+
+        var shouldShow = intro && intro.shouldShow();
+        if (shouldShow) {
+            this._show();
+        } else {
+            this._hide(false /* not animated */);
+        }
+    };
+
+    ViewIntroductionHeader.prototype._show = function () {
+        ///<summary>Displays the intro message</summary>
+        var disposer = this._disposer;
+        var element = this._getElement();
+
+        var textElement = element.querySelector(".descriptionText");
+        textElement.innerHTML = Jx.escapeHtml(this._intro.getText()).replace("%1", function () {
+            return "<span class='settingsLink' role='button' tabIndex='0'>" + Jx.escapeHtml(Jx.res.getString("mailViewIntroSettingsLink")) + "</span>";
+        });
+
+        var link = textElement.querySelector(".settingsLink");
+        if (link) {
+            disposer.add(new Jx.Clicker(link, this._onSettingsClick, this));
+        }
+
+        disposer.add(new Mail.EventHook(element.querySelector(".dismiss"), "click", this._onDismissClick, this));
+
+        if (!this._visible) {
+            this._container.classList.add("showViewIntro");
+            this._visible = true;
+        }
+    };
+
+    ViewIntroductionHeader.prototype._hide = function (animated) {
+        ///<summary>Hides the intro message, optionally animating it away</summary>
+        Debug.assert(Jx.isBoolean(animated));
+
+        if (this._visible) {
+            this._visible = false;
+            if (!animated) {
+                this._container.classList.remove("showViewIntro");
+            } else {
+                var element = this._getElement();
+                var affected = Array.prototype.filter.call(this._container.parentElement.children, function (el) { return el !== element; });
+                var animation = WinJS.UI.Animation.createCollapseAnimation(element, affected);
+                element.classList.add("collapsing");
+
+                var animationPromise = this._animationPromise = animation.execute();
+                this._disposer.add(new Mail.Disposable(animationPromise, "cancel"));
+                animationPromise.done(function () {
+                    this._animationPromise = null;
+                    element.classList.remove("collapsing");
+                    this._container.classList.remove("showViewIntro");
+                }.bind(this));
+            }
+        }
+    };
+
+    ViewIntroductionHeader.prototype._onUpdate = function (ev) {
+        ///<summary>Called when the intro message internal state changes, which may cause us to show or hide the
+        ///message</summary>
+        var shouldShow = ev.shouldShow;
+        if (shouldShow !== this._visible) {
+            if (shouldShow) {
+                this._show();
+            } else {
+                this._hide(true /* animated */);
+            }
+        }
+    };
+
+    ViewIntroductionHeader.prototype._getElement = function () {
+        return document.getElementById(this._id);
+    };
+
+    ViewIntroductionHeader.prototype._onSettingsClick = function (ev) {
+        Mail.AppSettings.openAccountUI(this._view.account.platformObject);
+        ev.preventDefault();
+    };
+
+    ViewIntroductionHeader.prototype._onDismissClick = function () {
+        this._intro.dismiss();
+    };
+
+
+    ViewIntroductionHeader.reset = function () {
+        [ "Inbox", "Newsletter", "Social", "AllFavorites" ].forEach(function (viewName) {
+            Debug.assert(Jx.isBoolean(Mail.Globals.appSettings["dismissed" + viewName + "Intro"]));
+            Mail.Globals.appSettings["dismissed" + viewName + "Intro"] = false;
+        });
+        Mail.Globals.appSettings.getLocalSettings().deleteContainer("ViewIntroCounts");
+    };
+
+
+});

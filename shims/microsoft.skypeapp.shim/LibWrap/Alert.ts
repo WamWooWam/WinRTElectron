@@ -12,12 +12,12 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('LibWrap.Alert')
 export class Alert implements IClosable { 
-    static window_SIZE_LARGE: number = null;
-    static window_SIZE_PIC: number = null;
-    static window_SIZE_SMALL: number = null;
-    static type_AUTHREQ: number = null;
-    static type_INFO: number = null;
-    static type_NOTICE: number = null;
+    static window_SIZE_LARGE: number = 2;
+    static window_SIZE_PIC: number = 1;
+    static window_SIZE_SMALL: number = 0;
+    static type_AUTHREQ: number = 2;
+    static type_INFO: number = 1;
+    static type_NOTICE: number = 0;
     getObjectID(): number {
         throw new Error('Alert#getObjectID not implemented')
     }

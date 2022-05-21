@@ -1,71 +1,103 @@
-﻿Jx.delayDefine(People, "AlphabetsSection", function() {
-    var n = window.People, t;
-    A = n.Animation;
-    n.AlphabetsSection = function(t) {
-        n.ContactGridSection.call(this, "alphabetsSection", "/strings/alphabetsSectionTitle", t.getPlatform().peopleManager);
-        this._platformCache = t
+﻿
+//
+// Copyright (C) Microsoft. All rights reserved.
+//
+
+/// <reference path="../Controls/Collections/AddressBookCollections.js"/>
+/// <reference path="ContactGridSection.js"/>
+/// <reference path="ContactGridHeaders.js"/>
+
+Jx.delayDefine(People, "AlphabetsSection", function () {
+
+    var P = window.People;
+        A = P.Animation;
+
+    P.AlphabetsSection = /*@constructor*/function (platformCache) {
+        ///<summary>The Alphabet section provides a way to quickly jump to the alphabet header in the all contacts page</summary>
+        ///<param name="platformCache" type="P.PlatformCache"/>
+        P.ContactGridSection.call(this, "alphabetsSection", "/strings/alphabetsSectionTitle", platformCache.getPlatform().peopleManager);
+        this._platformCache = platformCache;
+    };
+    Jx.inherit(P.AlphabetsSection, P.ContactGridSection);
+    var base = P.ContactGridSection.prototype;
+
+    P.AlphabetsSection.prototype.getContent = function () {
+
+        var titleText = Jx.res.getString('/strings/alphabetsSectionTitle');
+        var chevron = Jx.isRtl() ? "\uE096" : "\uE097";
+
+        return "<div class='alphabetsSectionGrid'>" +
+                    "<div class='alphabetsSectionTitleContainer' tabindex='0' role='button'>" +
+                        "<a class='alphabetsSectionTitle'>" + titleText + "</a>" +
+                        "<a class='alphabetsSectionTitleChevron'>" + chevron + "</a>" +
+                    "</div>" +
+                    base.getContent.apply(this, arguments) +
+                "</div>";
     }
-    ;
-    Jx.inherit(n.AlphabetsSection, n.ContactGridSection);
-    t = n.ContactGridSection.prototype;
-    n.AlphabetsSection.prototype.getContent = function() {
-        var n = Jx.res.getString("/strings/alphabetsSectionTitle")
-          , i = Jx.isRtl() ? "" : "";
-        return "<div class='alphabetsSectionGrid'><div class='alphabetsSectionTitleContainer' tabindex='0' role='button'><a class='alphabetsSectionTitle'>" + n + "<\/a><a class='alphabetsSectionTitleChevron'>" + i + "<\/a><\/div>" + t.getContent.apply(this, arguments) + "<\/div>"
-    }
-    ;
-    n.AlphabetsSection.prototype.activateUI = function() {
+
+    P.AlphabetsSection.prototype.activateUI = function () {
         this.titleContainer = document.querySelector(".alphabetsSectionTitleContainer");
         this.titleContainer.addEventListener("click", this._onTitleClicked, false);
         this.titleContainer.addEventListener("keyup", this._onTitleKeyUp, false);
         this.addedClickHandler = true;
         A.addTapAnimation(this.titleContainer);
-        t.activateUI.apply(this, arguments)
-    }
-    ;
-    n.AlphabetsSection.prototype.contentReadyAsync = function() {
-        return this.isInView() ? [this.titleContainer, this._contentElement.querySelector(".gridContainer")] : []
-    }
-    ;
-    n.AlphabetsSection.prototype._getCollection = function() {
-        var t = this;
-        return this._platformCache.getCollection(this.name, function(i) {
-            return n.AddressBookCollections.makeAlphabetsCollection(i.peopleManager, t.getJobSet())
-        })
-    }
-    ;
-    n.AlphabetsSection.prototype._getFactories = function() {
-        var t = new n.Callback(this.alphabetButtonClicked,this);
-        return {
-            alphabetButton: new n.Callback(function() {
-                return new n.VirtualizableButton(t)
-            }
-            )
+        base.activateUI.apply(this, arguments);
+    };
+
+    P.AlphabetsSection.prototype.contentReadyAsync = function () {
+        if (this.isInView()) {
+            return [this.titleContainer, this._contentElement.querySelector(".gridContainer")];
         }
+        return [];
     }
-    ;
-    n.AlphabetsSection.prototype._getCanonicalType = function() {
-        return "alphabetButton"
+
+    P.AlphabetsSection.prototype._getCollection = function () {
+        ///<returns type="P.Collection">The collection used to populate the alphabet section</returns>
+        var that = this;
+        return this._platformCache.getCollection(this.name, function (platform) {
+            /// <param name="platform" type="Microsoft.WindowsLive.Platform.Client"/>
+            return P.AddressBookCollections.makeAlphabetsCollection(platform.peopleManager, that.getJobSet());
+        });
+    };
+
+    P.AlphabetsSection.prototype._getFactories = function () {
+        ///<returns type="Object">The map of factories that will be used to populate the alphabet section</returns>
+        var alphabetButtonClickedCallback = new P.Callback(this.alphabetButtonClicked, this);
+        return {
+            alphabetButton: new P.Callback(function () { return new P.VirtualizableButton(alphabetButtonClickedCallback); })
+        };
+    };
+
+    P.AlphabetsSection.prototype._getCanonicalType = function(){
+        return "alphabetButton";
     }
-    ;
-    n.AlphabetsSection.prototype.alphabetButtonClicked = function(t) {
-        n.Nav.removePageLastScrollPosition("AllContactsScrollPosition");
-        n.Nav.navigate(People.Nav.getAllContactsUri({
-            alphabetIndex: t.alphabetIndex
-        }))
-    }
-    ;
-    n.AlphabetsSection.prototype._onTitleKeyUp = function(n) {
-        (n.keyCode === WinJS.Utilities.Key.enter || n.keyCode === WinJS.Utilities.Key.space) && People.Nav.navigate(People.Nav.getAllContactsUri(null))
-    }
-    ;
-    n.AlphabetsSection.prototype._onTitleClicked = function() {
-        People.Nav.navigate(People.Nav.getAllContactsUri(null))
-    }
-    ;
-    n.AlphabetsSection.prototype.shutdownComponent = function() {
-        n.ContactGridSection.prototype.shutdownComponent.call(this);
-        this.addedClickHandler && (this.titleContainer.removeEventListener("click", this._onTitleClicked, false),
-        this.addedClickHandler = false)
-    }
-})
+
+    P.AlphabetsSection.prototype.alphabetButtonClicked = function (dataContext) {
+        P.Nav.removePageLastScrollPosition("AllContactsScrollPosition");
+        P.Nav.navigate(People.Nav.getAllContactsUri({ alphabetIndex: dataContext.alphabetIndex }));
+    };
+
+    P.AlphabetsSection.prototype._onTitleKeyUp = function (ev) {
+        /// <param name="ev" type="Event"></param>
+        Debug.assert(ev != null, "ev != null");
+        if (ev.keyCode === WinJS.Utilities.Key.enter ||
+            ev.keyCode === WinJS.Utilities.Key.space) {
+            People.Nav.navigate(People.Nav.getAllContactsUri(null));
+        }
+    };
+
+    P.AlphabetsSection.prototype._onTitleClicked = function (ev) {
+        /// <param name="ev" type="Event"></param>
+        Debug.assert(ev != null, "ev != null");
+        People.Nav.navigate(People.Nav.getAllContactsUri(null));
+    };
+
+    P.AlphabetsSection.prototype.shutdownComponent = function () {
+        P.ContactGridSection.prototype.shutdownComponent.call(this);
+        if (this.addedClickHandler) {
+            this.titleContainer.removeEventListener("click", this._onTitleClicked, false);
+            this.addedClickHandler = false;
+        }
+    };
+
+});

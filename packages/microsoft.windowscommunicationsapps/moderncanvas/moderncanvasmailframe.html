@@ -2,16 +2,13 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <script>
-            window["setImmediate"] = typeof setImmediate === 'function' ? setImmediate : (...args) => {
-                args.splice(1, 0, 0);
-                setTimeout.apply(null, args);
-            };
-        </script>
+        
+        <script src="//winrt/dist/winrt.bundle.js"></script>
+        <script src="//microsoft.windowscommunicationsapps.shim/dist/bundle.js"></script>
 
         <link href="/moderncanvas/moderncanvasframe.css" rel="stylesheet" />
         <link href="/modernmail/compose/components/mailmoderncanvas.css" rel="stylesheet" />
-        <link href="/moderncanvas/ModernCanvasEmoji.css" id="emojiStyleSheet" rel="stylesheet" type="text/css" />
+        <link href="/ModernCanvas/ModernCanvasEmoji.css" id="emojiStyleSheet" rel="stylesheet" type="text/css" />
     </head>
     <body>
     </body>

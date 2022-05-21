@@ -56784,7 +56784,7 @@ const XboxJS = null;
                     if (this.disabled)
                         return;
                     var scrollableWidth = parseInt(this._cachedValues.msScrollLimitXMax);
-                    var percentage = (scrollableWidth - this._scroller.scrollLeft) / scrollableWidth;
+                    var percentage = (scrollableWidth - this._getScroll()) / scrollableWidth;
                     var newPosition = (this.max - this.min) * percentage + this.min;
                     this._scrubValue = newPosition;
                     this._scrubValue = this._scrubValue < 0 ? 0 : this._scrubValue;
@@ -57058,6 +57058,15 @@ const XboxJS = null;
                     this.updateScrollerState();
                     this._initialized = true
                 },
+                _setScroll: function _setScroll(value) {
+                    this._cachedValues._scroll = value;
+                    this._thumb.style.left = (Math.abs(value - parseInt(this._cachedValues.msScrollLimitXMax)) + 40) + "px";
+                    this._thumbText.style.left = (Math.abs(value - parseInt(this._cachedValues.msScrollLimitXMax))) + "px";
+                    this._thumbText.style.right = "initial"
+                },
+                _getScroll: function _getScroll() {
+                    return this._cachedValues._scroll;
+                },
                 _updateSize: function _updateSize() {
                     if (this._track) {
                         this._cachedValues._seekbarPosition = WinJS.Utilities.getPosition(this._track);
@@ -57070,10 +57079,10 @@ const XboxJS = null;
                         var msScrollLimitXMax = this._scroller.clientWidth - 2 * this._seekbarThumbOffset;
                         msScrollLimitXMax = (msScrollLimitXMax > 0) ? msScrollLimitXMax : 0;
                         this._scroller.style.msScrollLimitXMax = msScrollLimitXMax + "px";
-                        this._cachedValues.msScrollLimitXMax = this._scroller.style.msScrollLimitXMax;
+                        this._cachedValues.msScrollLimitXMax = msScrollLimitXMax;
                         var scrollableWidth = parseInt(this._cachedValues.msScrollLimitXMax);
                         if (this._scroller)
-                            this._scroller.scrollLeft = (scrollableWidth - (this._millisecondsToDecimal(this.value) * scrollableWidth))
+                            this._setScroll(scrollableWidth - (this._millisecondsToDecimal(this.value) * scrollableWidth))
                     }
                     this._mediaPositionChanged()
                 },
@@ -57093,7 +57102,7 @@ const XboxJS = null;
                             this.seekBarFill.style.transform = "scaleX(" + this._millisecondsToDecimal(this.value) + ")";
                         var scrollableWidth = parseInt(this._cachedValues.msScrollLimitXMax);
                         if (this._scroller)
-                            this._scroller.scrollLeft = (scrollableWidth - (this._millisecondsToDecimal(this.value) * scrollableWidth));
+                            this._setScroll(scrollableWidth - (this._millisecondsToDecimal(this.value) * scrollableWidth));
                         this.seekBarPositionText = MS.Entertainment.Utilities.millisecondsToTimeCode(this.value);
                         this.thumbVisible = this.playbackSession && this.playbackSession.canSeek
                     }
@@ -57148,7 +57157,7 @@ const XboxJS = null;
                     if (!this._scroller)
                         return;
                     if (forceUpdate || (this.isManipulating && e.eventPhase === e.AT_TARGET && (this._isMousePointerType(e.pointerType) || this._isPenPointerType(e.pointerType))))
-                        this._scroller.scrollLeft = (parseInt(this._cachedValues.msScrollLimitXMax) - e.x) + this._seekbarThumbOffset
+                        this._setScroll((parseInt(this._cachedValues.msScrollLimitXMax) - e.offsetX) + this._seekbarThumbOffset)
                 },
                 _onPointerEvent: function _onPointerEvent(e) {
                     if (this.disabled)
@@ -57170,7 +57179,7 @@ const XboxJS = null;
                                 return;
                             if (e.eventPhase === e.AT_TARGET) {
                                 if (this._scroller) {
-                                    this._scroller.scrollLeft = (parseInt(this._cachedValues.msScrollLimitXMax) - e.x) + this._seekbarThumbOffset; { }
+                                    this._setScroll((parseInt(this._cachedValues.msScrollLimitXMax) - e.offsetX) + this._seekbarThumbOffset);
                                 }
                                 this._scrollPositionChanged();
                                 this.value = this._scrubValue;
@@ -57186,11 +57195,15 @@ const XboxJS = null;
                         case "MSPointerCancel":
                         case "pointercancel":
                             this._releaseSeekBarInput(e);
+                            this._scrollPositionChanged();
+                            this._updateAriaSliderValues(true);
                             e.cancelBubble = true;
                             break;
                         case "MSPointerMove":
                         case "pointermove":
                             this._seekBarMove(e);
+                            this._scrollPositionChanged();
+                            this._updateAriaSliderValues(true);
                             break
                     }
                 },

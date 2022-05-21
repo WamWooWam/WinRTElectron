@@ -1,1 +1,242 @@
-﻿Jx.delayDefine(People,"ViewportPage",function(){var t=window.People,n=t.ViewportPage=function(n){this._host=n;$include("$(cssResources)/AddressBook.css")};n.prototype.load=function(n){var r=this._host,e=r.getJobSet(),o=this._jobSet=e.createChild(),s=this._element=n.element,c,f,i,l,a,v;this._semanticZoomActivated&&Jx.addClass(s,"semanticZoomEnabled");var u=this._layout=r.getLayout(),y=this._layoutState=u.getLayoutState(),h=this._orientation=y===t.Layout.layoutState.snapped?t.Orientation.vertical:t.Orientation.horizontal;return Jx.addListener(u,u.layoutChanged,this._onLayoutChange,this),r.getCommandBar().addCommand(new t.Command("addContact","/strings/abAddContactCommandText","/strings/abAddContactCommandTooltip","",true,true,null,null,t.Nav.getCreateContactUri())),c=this._zoomedOutJobSet=e.createChild(),o.setOrder(0),c.setOrder(1),f=this._createViewportChild(n.data,n.fields),i=this._viewport=new t.ScrollingViewport(o,f,h),this._initViewportChild(f,h),l=Jx.getUI(i),s.innerHTML=l.html,i.activateUI(),Jx.mark("People.Viewport.load:abBuildHtml,StopTA,People"),Jx.mark("People.Viewport.load:abHydrate,StartTA,People"),i.hydrate(n.state,!(n.fields&&n.fields.pos==="home")),Jx.mark("People.Viewport.load:abHydrate,StopTA,People"),this._semanticZoomActivated&&n.isZoomedOut&&this._initializeSemanticZoom(true),a=i.contentReadyAsync(),v=function(r){return{elements:r,onEnterComplete:function(){i===this._viewport&&(this._semanticZoomActivated&&!n.isZoomedOut&&this._jobSet.addUIJob(this,this._initializeSemanticZoom,[false],t.Priority.semanticZoom),i.onEnterComplete())}}},WinJS.Promise.as(a).then(v)};n.prototype._initializeSemanticZoom=function(n){if(document.getElementById(this._element.id)){var i={initiallyZoomedOut:n};this._zoom=t.ZoomHost.create(this._viewport,this._jobSet,this._zoomedOutJobSet,this._orientation,this._host,i,this._element)}};n.prototype.resetScrollPosition=function(){this._viewport!==null&&this._viewport.setScrollPosition(0)};n.prototype.prepareSaveState=function(){return this._viewport!==null?this._viewport.dehydrate():null};n.prototype.prepareSuspension=function(){return null};n.prototype.activate=function(){};n.prototype.deactivate=function(){var n=this._jobSet,t=this._zoomedOutJobSet;return n&&n.cancelAllChildJobs(),t&&t.cancelAllChildJobs(),this._layout!==null&&(Jx.removeListener(this._layout,this._layout.layoutChanged,this._onLayoutChange,this),this._layout=null),this._unhookNavigationCompletedEvent(),true};n.prototype.unload=function(){var n=this._zoom||this._viewport;n!==null&&(n.shutdownUI(),n.shutdownComponent());this._zoom=null;this._viewport=null;Jx.dispose(this._jobSet);Jx.dispose(this._zoomedOutJobSet);this._jobSet=this._zoomedOutJobSet=null;this._element=null};n.prototype._onLayoutChange=function(){var n=this._host;n.isNavigating()?this._navigationCompletedListener||(this._navigationCompletedListener=this._onNavigationCompleted.bind(this),Jx.addListener(n,n.navigationCompleted,this._navigationCompletedListener,null)):this._reload()};n.prototype._onNavigationCompleted=function(){this._unhookNavigationCompletedEvent();this._reload()};n.prototype._unhookNavigationCompletedEvent=function(){if(this._navigationCompletedListener){var n=this._host;Jx.removeListener(n,n.navigationCompleted,this._navigationCompletedListener,null);this._navigationCompletedListener=null}};n.prototype._reload=function(){var i=this._element,r=!Jx.isNullOrUndefined(this._zoom)&&this._zoom.zoomedOut,u=this.prepareSaveState(),n,t;this.deactivate();this.unload();n=this;t=this.load({element:i,state:u,isZoomedOut:r});WinJS.Promise.wrap(t).done(function(t){t.onEnterComplete.call(n)});this.activate();this._host.getCommandBar().refresh()};n.prototype._host=null;n.prototype._element=null;n.prototype._viewport=null;n.prototype._jobSet=null;n.prototype._zoom=null;n.prototype._semanticZoomActivated=false;n.prototype._navigationCompletedListener=null})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+
+/// <reference path="../../Shared/JSUtil/Namespace.js"/>
+/// <reference path="../../Shared/Accounts/AccountDialog.js"/>
+/// <reference path="../Controls/Viewport/Viewport.js"/>
+/// <reference path="../Controls/Viewport/ScrollingViewport.js"/>
+/// <reference path="../../AppFrame/main.js"/>
+
+Jx.delayDefine(People, "ViewportPage", function () {
+
+    var P = window.People;
+
+    /// <disable>JS2076.IdentifierIsMiscased</disable>
+    var ViewportPage = P.ViewportPage = /* @constructor*/function (host, options) {
+        ///<summary>Base class for a page that is a viewport.</summary>
+        ///<param name="host" type="P.CpMain">The object that hosts the viewport.</param>
+        ///<param name="options" type="Object" optional="true">Unused</param>
+        this._host = host;
+        $include("$(cssResources)/AddressBook.css");
+    };
+    ViewportPage.prototype.load = function (/*@dynamic*/params) {
+        ///<summary>Loads the page into the view.</summary>
+        var host = this._host;
+        var parentJobSet = /*@static_cast(P.JobSet)*/host.getJobSet();
+        var jobSet = this._jobSet = parentJobSet.createChild();
+
+        
+        /// <disable>JS3092.DeclarePropertiesBeforeUse</disable>
+        if (Boolean(Debug) && Debug.abLoad) {
+            Debug.abLoad = false;
+            msSetImmediate(this.load.bind(this, params));
+            return WinJS.Promise.wrap({});
+        }
+        /// <enable>JS3092.DeclarePropertiesBeforeUse</enable>
+        
+
+        var element = this._element = params.element;
+        Debug.assert(Jx.isHTMLElement(element));
+        if (this._semanticZoomActivated) {
+            Jx.addClass(element, "semanticZoomEnabled");
+        }
+
+        // Get the current layout state
+        var layout = this._layout = host.getLayout();
+        var layoutState = this._layoutState = layout.getLayoutState();
+        var orientation = this._orientation = (layoutState === P.Layout.layoutState.snapped) ? P.Orientation.vertical : P.Orientation.horizontal;
+        Jx.addListener(layout, layout.layoutChanged, this._onLayoutChange, this);
+
+        // Add the commands
+        host.getCommandBar().addCommand(
+            new P.Command("addContact", "/strings/abAddContactCommandText", "/strings/abAddContactCommandTooltip",
+                "\uE109", true, true, null, null, P.Nav.getCreateContactUri()));
+
+        var zoomedOutJobSet = this._zoomedOutJobSet = parentJobSet.createChild();
+        jobSet.setOrder(0);
+        zoomedOutJobSet.setOrder(1);
+
+        // Create the components
+        var child = this._createViewportChild(params.data, params.fields);
+        var viewport = this._viewport = new P.ScrollingViewport(jobSet, child, orientation);
+        this._initViewportChild(child, orientation);
+
+        // Add the UI to the view
+        NoShip.People.etw("abBuildHtml_start");
+        var ui = Jx.getUI(viewport);
+        element.innerHTML = ui.html;
+        viewport.activateUI();
+        NoShip.People.etw("abBuildHtml_end");
+        Jx.mark("People.Viewport.load:abBuildHtml,StopTA,People"); 
+
+        NoShip.People.etw("abHydrate_start");
+        Jx.mark("People.Viewport.load:abHydrate,StartTA,People");
+        viewport.hydrate(params.state, !(params.fields && params.fields.pos === "home"));
+        NoShip.People.etw("abHydrate_end");
+        Jx.mark("People.Viewport.load:abHydrate,StopTA,People");
+        if (this._semanticZoomActivated && params.isZoomedOut) {
+            this._initializeSemanticZoom(true);
+        }
+        var viewportContent = viewport.contentReadyAsync();
+
+        var getAnimationData = function (elements) {
+            return {
+                elements: elements,
+                // Prevent the Semantic Zoom DOM manipulation from interfering with exit/enter animations
+                onEnterComplete: /*@bind(ViewportPage)*/function () {
+                    if (viewport === this._viewport) { // If we snap/unsnap before this event arrives, we should ignore this event.
+                        if (this._semanticZoomActivated && !params.isZoomedOut) {
+                            this._jobSet.addUIJob(this, this._initializeSemanticZoom, [false], P.Priority.semanticZoom);
+                        }
+                        viewport.onEnterComplete();
+                    }
+                }
+            };
+        };
+
+        return WinJS.Promise.as(viewportContent).then(getAnimationData);
+    };
+
+    ViewportPage.prototype._initializeSemanticZoom = function (isZoomedOut) {
+        ///<summary>Initializes the semantic zoom control on the page</summary>
+        ///<param name="isZoomedOut" type="Boolean">Whether to enter the page in an initially zoomed state</param>
+
+        // It's possible the user navigated away from the page and our element is no longer in the UI
+        if (document.getElementById(this._element.id)) {
+            var options = { initiallyZoomedOut: isZoomedOut };
+            this._zoom = P.ZoomHost.create(this._viewport, this._jobSet, this._zoomedOutJobSet, this._orientation, this._host, options, this._element);
+        }
+    };
+    ViewportPage.prototype.resetScrollPosition = function () {
+        ///<summary>Reset scroll position to zero</summary>
+        if (this._viewport !== null) {
+            this._viewport.setScrollPosition(0);
+        }
+    };
+    ViewportPage.prototype.prepareSaveState = function () {
+        /// <summary>Dehydrate the control</summary>
+        /// <returns type="Object"/>
+        if (this._viewport !== null) {
+            return this._viewport.dehydrate();
+        } else {
+            return null;
+        }
+    };
+    ViewportPage.prototype.prepareSuspension = function () {
+        /// <summary>All the data is stored in prepareSaveState</summary>
+        /// <returns type="Object"/>
+        return null;
+    };
+    ViewportPage.prototype.activate = function () {
+        ///<summary>Called when the page is activated</summary>
+    };
+    ViewportPage.prototype.deactivate = function () {
+        /// <summary>Called when the page is deactivated</summary>
+        /// <returns type="Boolean">Indicates whether it is okay to proceed with navigation</returns>
+        var jobSet = this._jobSet,
+            zoomedOutJobSet = this._zoomedOutJobSet;
+        if (jobSet) {
+            jobSet.cancelAllChildJobs();
+        }
+        if (zoomedOutJobSet) {
+            zoomedOutJobSet.cancelAllChildJobs();
+        }
+        if (this._layout !== null) {
+            Jx.removeListener(this._layout, this._layout.layoutChanged, this._onLayoutChange, this);
+            this._layout = null;
+        }
+        this._unhookNavigationCompletedEvent();
+        return true;
+    };
+    ViewportPage.prototype.unload = function () {
+        ///<summary>Called asynchronously, after the control has been unloaded</summary>
+        var root = /*@static_cast(Jx.Component)*/this._zoom || this._viewport;
+        if (root !== null) {
+            root.shutdownUI();
+            root.shutdownComponent();
+        }
+        this._zoom = null;
+        this._viewport = null;
+        Jx.dispose(this._jobSet);
+        Jx.dispose(this._zoomedOutJobSet);
+        this._jobSet = this._zoomedOutJobSet = null;
+        this._element = null;
+    };
+    ViewportPage.prototype._onLayoutChange = function () {
+        ///<summary>Changing layouts simulates a navigation to reload the tree</summary>
+        var host = this._host;
+        if (host.isNavigating()) {
+            // If navigation is happening, postpone page reload until navigation is completed.
+            if (!this._navigationCompletedListener) {
+                this._navigationCompletedListener = this._onNavigationCompleted.bind(this);
+                Jx.addListener(host, host.navigationCompleted, this._navigationCompletedListener, null);
+            }
+        } else {
+            this._reload();
+        }
+    };
+    ViewportPage.prototype._onNavigationCompleted = function () {
+        ///<summary>Navigation completed event handler</summary>
+        this._unhookNavigationCompletedEvent();
+        this._reload();
+    };
+    ViewportPage.prototype._unhookNavigationCompletedEvent = function () {
+        ///<summary>Unhook navigation completed event</summary>
+        if (this._navigationCompletedListener) {
+            var host = this._host;
+            Jx.removeListener(host, host.navigationCompleted, this._navigationCompletedListener, null);
+            this._navigationCompletedListener = null;
+        }
+    };
+
+    ViewportPage.prototype._reload = function () {
+        ///<summary>Reload the control</summary>
+        var element = this._element;
+        var isZoomedOut = !Jx.isNullOrUndefined(this._zoom) && this._zoom.zoomedOut;
+        var state = this.prepareSaveState();
+        this.deactivate();
+        this.unload();
+
+        var that = this;
+        var contentAnimationData = this.load({ element: element, state: state, isZoomedOut: isZoomedOut });
+        WinJS.Promise.wrap(contentAnimationData).done(function (/*@dynamic*/contentResult) {
+            Debug.assert(contentResult && contentResult.onEnterComplete);
+            contentResult.onEnterComplete.call(that);
+        });
+
+        this.activate();
+        this._host.getCommandBar().refresh();
+    };
+
+    
+    ViewportPage.prototype._initViewportChild = function (child, orientation) {
+        Debug.assert(false, "Derived classes must implement");
+    };
+    ViewportPage.prototype._createViewportChild = function (data, fields) {
+        ///<returns type="ViewportChild" />
+        Debug.assert(false, "Derived classes must implement");
+    };
+    ViewportPage.prototype._getViewportChild = function (orientation, data) {
+        ///<summary>Derived classes must provide the section(s) to populate the viewport</summary>
+        ///<param name="orientation">Scroll orientation, e.g. vertical or horizontal</param>
+        ///<param name="data">The params.data value provided when the control is loaded</param>
+        ///<returns type="P.Section" />
+        Debug.assert(false, "Derived classes must implement");
+    };
+    ViewportPage.prototype.save = function () {
+        ///<summary>Not applicable</summary>
+        ///<returns type="Boolean"/>
+        Debug.assert(false, "Page does not support save");
+    };
+    
+
+    ViewportPage.prototype._host = /* @static_cast(P.CpMain)*/null;
+    ViewportPage.prototype._element = /* @static_cast(HTMLElement)*/null;
+    ViewportPage.prototype._viewport = /* @static_cast(P.ScrollingViewport)*/null;
+    ViewportPage.prototype._jobSet = /* @static_cast(P.JobSet)*/null;
+    ViewportPage.prototype._zoom = /* @static_cast(P.ZoomHost)*/null;
+    ViewportPage.prototype._semanticZoomActivated = false;
+    ViewportPage.prototype._navigationCompletedListener = null;
+});

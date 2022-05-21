@@ -1,1 +1,112 @@
-﻿Jx.delayDefine(Mail,"AccountSwitcherAggregator",function(){"use strict";function t(n){return n>999?"999":n}function i(n){return n>999?"⁺":""}Mail.AccountSwitcherAggregator=function(n){Mail.log("AccountSwitcherAggregator_Ctor",Mail.LogEvent.start);this.initComponent();this._accounts=n;this._disposer=new Mail.Disposer(Mail.ItemDemux.createHook(n,this._onAccountChanged,this),new Mail.EventHook(n,"collectionchanged",this._onAccountsCollectionChanged,this));Mail.log("AccountSwitcherAggregator_Ctor",Mail.LogEvent.stop)};Jx.augment(Mail.AccountSwitcherAggregator,Jx.Component);var n=Mail.AccountSwitcherAggregator.prototype;n.shutdownComponent=function(){Jx.dispose(this._disposer);Jx.Component.prototype.shutdownComponent.call(this)};n.getUI=function(n){var r=this._unseenInboxCount();n.html="<div id='"+this._id+"' class='accountSwitcherAggregator"+(this._hasError()?" showError":"")+(r>0?" showUnseenInbox":"")+(this._hasUnseenFav()?" showUnseenFav":"")+"' tabIndex='-1'><div class='aggregatedError icon-acError'><\/div><div class='aggregatedUnseenInbox'><span class='unseenCount'>"+t(r)+"<\/span><span class='unseenPlus'>"+i(r)+"<\/span><\/div><div class='aggregatedUnseenFav'><\/div><\/div>"};n._onAccountChanged=function(n){var t=document.getElementById(this._id);t&&(Mail.Validators.hasPropertyChanged(n,"unseenInboxCount")&&this._updateUnseenInbox(t),Mail.Validators.hasPropertyChanged(n,"hasUnseenFav")&&this._updateUnseenFav(t),Mail.Validators.hasPropertyChanged(n,"hasError")&&this._updateErrorState(t))};n._onAccountsCollectionChanged=function(n){var i=Microsoft.WindowsLive.Platform.CollectionChangeType,t;(n.eType===i.itemRemoved||n.eType===i.itemAdded||n.eType===i.reset)&&(t=document.getElementById(this._id),t&&(this._updateUnseenInbox(t),this._updateUnseenFav(t),this._updateErrorState(t)))};n._updateUnseenInbox=function(n){var r=this._unseenInboxCount();Jx.setClass(n,"showUnseenInbox",r>0);n.querySelector(".unseenCount").innerText=t(r);n.querySelector(".unseenPlus").innerText=i(r)};n._updateUnseenFav=function(n){Jx.setClass(n,"showUnseenFav",this._hasUnseenFav())};n._updateErrorState=function(n){Jx.log.error("updateAggregatedError: "+this._hasError());Jx.setClass(n,"showError",this._hasError())};n._hasError=function(){return this._accounts.reduce(function(n,t){return n||t.hasError},false)};n._unseenInboxCount=function(){return this._accounts.reduce(function(n,t){return n+t.unseenInboxCount},0)};n._hasUnseenFav=function(){return this._accounts.reduce(function(n,t){return n||t.hasUnseenFav},false)}})
+﻿
+//
+// Copyright (C) Microsoft Corporation.  All rights reserved.
+//
+/*jshint browser:true */
+/*global Mail,Jx,Debug,Microsoft*/
+
+Jx.delayDefine(Mail, "AccountSwitcherAggregator", function () {
+    "use strict";
+
+    Mail.AccountSwitcherAggregator = function (accounts) {
+        /// <param name="items" type="Mail.MappedCollection"/>
+        Mail.log("AccountSwitcherAggregator_Ctor", Mail.LogEvent.start);
+        Debug.assert(Jx.isObject(accounts));
+
+        this.initComponent();
+        this._accounts = accounts;
+
+        this._disposer = new Mail.Disposer(
+            Mail.ItemDemux.createHook(accounts, this._onAccountChanged, this),
+            new Mail.EventHook(accounts, "collectionchanged", this._onAccountsCollectionChanged, this)
+        );
+
+        Mail.log("AccountSwitcherAggregator_Ctor", Mail.LogEvent.stop);
+    };
+
+    Jx.augment(Mail.AccountSwitcherAggregator, Jx.Component);
+    var proto = Mail.AccountSwitcherAggregator.prototype;
+
+    proto.shutdownComponent = function () {
+        Jx.dispose(this._disposer);
+        Jx.Component.prototype.shutdownComponent.call(this);
+    };
+
+    function getDisplayCount(count) { return count > 999 ? "999" : count; }
+    function getOverflowGlyph(count) { return count > 999 ? "\u207A" /* '+' glyph */ : ""; }
+
+    proto.getUI = function (ui) {
+        var unseenInboxCount = this._unseenInboxCount();
+
+        ui.html =
+            "<div id='" + this._id + "' class='accountSwitcherAggregator" + (this._hasError() ? " showError" : "") +
+                (unseenInboxCount > 0 ? " showUnseenInbox" : "") + (this._hasUnseenFav() ? " showUnseenFav" : "") + "' tabIndex='-1'>" +
+                "<div class='aggregatedError icon-acError'></div>" +
+                "<div class='aggregatedUnseenInbox'>" +
+                    "<span class='unseenCount'>" + getDisplayCount(unseenInboxCount) + "</span>" +
+                    "<span class='unseenPlus'>" + getOverflowGlyph(unseenInboxCount) + "</span>" +
+                "</div>" +
+                "<div class='aggregatedUnseenFav'>\uE13D</div>" + // buddy glyph
+            "</div>";
+    };
+
+    proto._onAccountChanged = function (ev) {
+        var root = document.getElementById(this._id);
+        if (root) {
+            if (Mail.Validators.hasPropertyChanged(ev, "unseenInboxCount")) {
+                this._updateUnseenInbox(root);
+            }
+            if (Mail.Validators.hasPropertyChanged(ev, "hasUnseenFav")) {
+                this._updateUnseenFav(root);
+            }
+            if (Mail.Validators.hasPropertyChanged(ev, "hasError")) {
+                this._updateErrorState(root);
+            }
+        }
+    };
+
+    proto._onAccountsCollectionChanged = function (ev) {
+        var ChangeType = Microsoft.WindowsLive.Platform.CollectionChangeType;
+        if (ev.eType === ChangeType.itemRemoved || ev.eType === ChangeType.itemAdded || ev.eType === ChangeType.reset) {
+            var root = document.getElementById(this._id);
+            if (root) {
+                this._updateUnseenInbox(root);
+                this._updateUnseenFav(root);
+                this._updateErrorState(root);
+            }
+        }
+    };
+
+    proto._updateUnseenInbox = function (root) {
+        Debug.assert(Jx.isHTMLElement(root));
+        var unseenInboxCount = this._unseenInboxCount();
+        Jx.setClass(root, "showUnseenInbox", unseenInboxCount > 0);
+        root.querySelector(".unseenCount").innerText = getDisplayCount(unseenInboxCount);
+        root.querySelector(".unseenPlus").innerText = getOverflowGlyph(unseenInboxCount);
+    };
+
+    proto._updateUnseenFav = function (root) {
+        Debug.assert(Jx.isHTMLElement(root));
+        Jx.setClass(root, "showUnseenFav", this._hasUnseenFav());
+    };
+
+    proto._updateErrorState = function (root) {
+        Debug.assert(Jx.isHTMLElement(root));
+        Jx.log.error("updateAggregatedError: " + this._hasError());
+        Jx.setClass(root, "showError", this._hasError());
+    };
+
+    proto._hasError = function () {
+        return this._accounts.reduce(function (hasError, account) { return hasError || account.hasError; }, false);
+    };
+
+    proto._unseenInboxCount = function () {
+        return this._accounts.reduce(function (count, account) { return count + account.unseenInboxCount; }, 0);
+    };
+
+    proto._hasUnseenFav = function () {
+        return this._accounts.reduce(function (hasUnseen, account) { return hasUnseen || account.hasUnseenFav; }, false);
+    };
+
+});
+

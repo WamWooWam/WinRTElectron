@@ -14,6 +14,7 @@ import { CollectionBuildingManager } from "../Platform/CollectionBuildingManager
 import * as crypto from "crypto"
 import * as mime from "mime-types"
 import * as mm from "music-metadata"
+import { CollectionBuildingSource } from "../Platform/CollectionBuildingSource";
 // import { File } from "node-taglib-sharp"
 
 function parseGenre(genre: string) {
@@ -34,12 +35,13 @@ export class Indexer {
             return;
 
         Indexer.isIndexing = true;
-        await MediaStore.instance.ensureDatabaseOpenedAsync();
+
+        await (MediaStore.instance ?? new MediaStore()).ensureDatabaseOpenedAsync();
 
         let database = MediaStore.instance.database;
         let manager = CollectionBuildingManager.instance;
 
-        manager?.dispatchEvent('collectionbuildbeginevent', [0]);
+        manager?.dispatchEvent('collectionbuildbeginevent', [CollectionBuildingSource.local]);
 
         let localFolder = ApplicationData.current.localFolder;
         let library = await AsyncOperation.to(StorageLibrary.getLibraryAsync(KnownLibraryId.music));
@@ -154,6 +156,7 @@ export class Indexer {
                         artistId: artist.id,
                         genreId: genre.id,
                         filePath: file.path,
+                        imageUrl: albumArtPath,
                         duration: (metadata.format.duration ?? 0) * 1000,
                         number: metadata.common.track.no ?? 0,
                         date: new Date(Date.parse(metadata.common.date))

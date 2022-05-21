@@ -10,9 +10,9 @@ import { GenerateShim } from "winrt/Windows/Foundation/Interop/GenerateShim";
 
 @GenerateShim('Microsoft.Entertainment.Configuration.FUEConfiguration')
 export class FUEConfiguration implements IFUEConfiguration { 
-    showLXFUE: boolean = true;
-    showFirstLaunchVideo: boolean = true;
-    showFUE: boolean = true;
+    showLXFUE: boolean = false;
+    showFirstLaunchVideo: boolean = false;
+    showFUE: boolean = false;
     settingsVersion: number = null;
     musicCloudContentV2FlyoutFilterShown: boolean = null;
     musicCloudContentV1CleanupDialogDismissed: boolean = null;
